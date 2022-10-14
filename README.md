@@ -184,9 +184,9 @@ class Solution1:
 
 class Solution:
     def addOneRow(self, root: TreeNode, v: int, d: int, isLeft: bool = True) -> TreeNode:
-        return TreeNode(v, root if isLeft else None, root if not isLeft else None) if d==1 else \
-        root.__setattr__("left",self.addOneRow(root.left, v, d - 1, True)) or \
-        root.__setattr__("right",self.addOneRow(root.right, v, d - 1, False)) or root if root else None
+        return TreeNode(v, root if isLeft else None, root if not isLeft else None) if d==1 else\
+        root.__setattr__('left', self.addOneRow(root.left, v, d - 1, True)) or\
+        root.__setattr__('right', self.addOneRow(root.right, v, d - 1, False)) or root if root else None
 ```
 
 * https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/discuss/1685130/Python-Recursive-with-comments
@@ -226,9 +226,9 @@ class Solution1:
 
 class Solution:
     def maxAreaOfIsland(self, g: List[List[int]]) -> int:
-        return max((f:=lambda i,j:g[i].__setitem__(j,0) or 1 + sum(map(f,(i+1,i,i-1,i),(j,j+1,j,j-1)))\
-        if 0<=i<len(g) and 0<=j<len(g[0]) and g[i][j] else 0)(i,j)\
-        for i in range(len(g)) for j in range(len(g[0])))
+        return max((f:=lambda i,j:g[i].__setitem__(j,0) or 1 + sum(map(f,(i+1,i,i-1,i),(j,j+1,j,j-1)))
+            if 0<=i<len(g) and 0<=j<len(g[0]) and g[i][j] else 0)(i,j)
+            for i in range(len(g)) for j in range(len(g[0])))
 ```
 
 It's shorter to use complex numbers for 2d maps.
@@ -245,8 +245,8 @@ class Solution1:
 
 class Solution:
     def maxAreaOfIsland(self, grid):
-        return max(map((g:= {i + j*1j: val for i, row in enumerate(grid) for j, val in enumerate(row)},\
-        a:=lambda z: g.pop(z, 0) and 1 + sum(a(z + 1j**k) for k in range(4)))[1], set(g)))
+        return max(map((g:= {i + j*1j: val for i, row in enumerate(grid) for j, val in enumerate(row)},
+            a:=lambda z: g.pop(z, 0) and 1 + sum(a(z + 1j**k) for k in range(4)))[1], set(g)))
 
 ```
 

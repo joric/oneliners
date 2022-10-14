@@ -173,14 +173,14 @@ Use `__setattr__` (or `__setitem__` for indexes) if you need an assignment (this
 
 ```python
 class Solution1:
-  def addOneRow(self, root: TreeNode, v: int, d: int, isLeft: bool = True) -> TreeNode:
-    if d == 1:
-      return TreeNode(v, root if isLeft else None, root if not isLeft else None)
-    if not root:
-      return None
-    root.left = self.addOneRow(root.left, v, d - 1, True)
-    root.right = self.addOneRow(root.right, v, d - 1, False)
-    return root
+    def addOneRow(self, root: TreeNode, v: int, d: int, isLeft: bool = True) -> TreeNode:
+        if d == 1:
+        return TreeNode(v, root if isLeft else None, root if not isLeft else None)
+        if not root:
+        return None
+        root.left = self.addOneRow(root.left, v, d - 1, True)
+        root.right = self.addOneRow(root.right, v, d - 1, False)
+        return root
 
 class Solution:
     def addOneRow(self, root: TreeNode, v: int, d: int, isLeft: bool = True) -> TreeNode:

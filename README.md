@@ -226,8 +226,8 @@ class Solution1:
 
 class Solution:
     def maxAreaOfIsland(self, g: List[List[int]]) -> int:
-        return max((f:=lambda i,j:(g[i].__setitem__(j,0), 1 + sum(map(f,(i+1,i,i-1,i),\
-        (j,j+1,j,j-1))))[1] if 0<=i<len(g) and 0<=j<len(g[0]) and g[i][j] else 0)(i,j) \
+        return max((f:=lambda i,j:g[i].__setitem__(j,0) or 1 + sum(map(f,(i+1,i,i-1,i),(j,j+1,j,j-1)))\
+        if 0<=i<len(g) and 0<=j<len(g[0]) and g[i][j] else 0)(i,j)\
         for i in range(len(g)) for j in range(len(g[0])))
 ```
 

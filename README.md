@@ -189,7 +189,7 @@ class Solution:
         root.__setattr__("right",self.addOneRow(root.right, v, d - 1, False)) or root if root else None
 ```
 
-* https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list
+* https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/discuss/1685130/Python-Recursive-with-comments
 
 ```python
 

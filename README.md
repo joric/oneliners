@@ -175,17 +175,17 @@ Use `__setattr__` (or `__setitem__` for indexes) if you need an assignment (this
 class Solution1:
     def addOneRow(self, root: TreeNode, v: int, d: int, isLeft: bool = True) -> TreeNode:
         if d == 1:
-        return TreeNode(v, root if isLeft else None, root if not isLeft else None)
+            return TreeNode(v, root if isLeft else None, root if not isLeft else None)
         if not root:
-        return None
+            return None
         root.left = self.addOneRow(root.left, v, d - 1, True)
         root.right = self.addOneRow(root.right, v, d - 1, False)
         return root
 
 class Solution:
     def addOneRow(self, root: TreeNode, v: int, d: int, isLeft: bool = True) -> TreeNode:
-        return TreeNode(v, root if isLeft else None, root if not isLeft else None) if d==1 else\
-        root.__setattr__('left', self.addOneRow(root.left, v, d - 1, True)) or\
+        return TreeNode(v, root if isLeft else None, root if not isLeft else None) if d==1 else \
+        root.__setattr__('left', self.addOneRow(root.left, v, d - 1, True)) or \
         root.__setattr__('right', self.addOneRow(root.right, v, d - 1, False)) or root if root else None
 ```
 
@@ -204,8 +204,8 @@ class Solution1(object):
 
 class Solution(object):
     def deleteMiddle(self, head):
-        return (f:=lambda a,b:a.__setattr__('next', f(a.next, b.next.next) if b.next \
-        else f(a.next, b.next)) or a if b else a.next)(head, head.next)
+        return (f:=lambda a,b:a.__setattr__('next', f(a.next, b.next.next) if b.next
+            else f(a.next, b.next)) or a if b else a.next)(head, head.next)
 ```
 
 #### map

@@ -100,12 +100,10 @@ def test(Solution, s):
         for i in range(1, func.__code__.co_argcount):
             args[i-1] = vcast(func, func.__code__.co_varnames[i], args[i-1])
 
-        res = func(*args)
-        res = vcast(func, 'result', res)
+        res = vcast(func, 'result', func(*args))
 
         if type(exp) != type(res):
-            res = str(res)
-            exp = str(exp)
+            res, exp = map(str, (res, exp))
 
-        print('%s\x1b[0m result "%.40s" expected "%.40s"' % ('\x1b[32mPASSED' if res==exp else '\x1b[31mFAILED',  res, exp))
+        print('%s\x1b[0m args "%.40s" result "%.40s" expected "%.40s"' % ('\x1b[32mPASSED' if res==exp else '\x1b[31mFAILED', args, res, exp))
 

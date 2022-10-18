@@ -22,17 +22,7 @@ can use lambdas as parameters `(lambda a,b,c: code)(lambda a: code, lamda b: cod
 
 #### walrus operator
 
-Use walrus operator (:=) if you need to define a lambda function that's called multiple times in the code.
-
-* https://leetcode.com/problems/deepest-leaves-sum
-
-```python
-class Solution:
-    def deepestLeavesSum(self, root: TreeNode) -> int:
-        return (dfs:=lambda node,i:0 if not node \
-        else dfs(node.left,i-1) + dfs(node.right,i-1) if i else node.val) \
-        (root,(level:=lambda node:max(level(node.left),level(node.right))+1 if node else 0)(root)-1)
-```
+Use walrus operator (:=) if you need to define a lambda function that's called recursively.
 
 * https://leetcode.com/problems/guess-number-higher-or-lower
 
@@ -54,6 +44,22 @@ class Solution1(object):
 class Solution:
     def guessNumber(self, n: int) -> int:
         return (f:=lambda l,h:h if l+1==h else f(m,h) if guess(m:=(l+h)//2)>0 else f(l,m))(0,n)
+```
+
+* https://leetcode.com/problems/reverse-integer
+
+```python
+class Solution1:
+    def reverse(self, x: int) -> int:
+        r, x = 0, abs(x)
+        while x:
+            r = r*10 + x%10
+            x //= 10
+        return ((x>0)-(x<0))*min(2**31, r)
+
+class Solution:
+    def reverse(self, x: int) -> int:
+        return ((x>0)-(x<0))*min(2**31,(f:=lambda r,x:f(r*10 + x%10, x//10) if x else r)(0,abs(x)))
 ```
 
 #### getitem

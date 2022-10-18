@@ -66,24 +66,33 @@ class ListNode:
         list_node = ListNode(val[0], sub_nodes)
         return list_node
 
-def test(Solution, s):
+def test(Solution, s, init=None):
     import re
 
     tests = []
-
     for s in s.splitlines():
         if s.startswith('Input:'):
-            tests.append([])
+            tests.append([[],[]])
             if m:=re.split(r'[\, ]*\w+ = ',s):
                 for i in range(1, len(m)):
-                    tests[-1].append(m[i])
+                    tests[-1][0].append(m[i])
         elif s.startswith('Output:'):
-            tests[-1].append(s[8:])
+            tests[-1][1].append(s[8:])
 
-    for t in tests:
-        t = list(map(lambda a: eval(a.replace('null','None').replace('true','True').replace('false','False')), t))
+    for args, exp in tests:
+        def vparse(s):
+            return eval(s.replace('null','None').replace('true','True').replace('false','False'))
 
-        args, exp = t[:-1], t[-1]
+        args = list(map(vparse,args))
+        exp = list(map(vparse,exp))[0]
+
+        func = getattr(Solution(), dir(Solution)[-1])
+        argc = func.__code__.co_argcount - 1
+
+        if init:
+            (init)(*args[argc:])
+
+        args = args[:argc]
 
         def vcast(func, vname, val):
             tname = str(get_type_hints(func).get(vname, None))
@@ -95,10 +104,8 @@ def test(Solution, s):
                 val = list(val)
             return val
 
-        func = getattr(Solution(), dir(Solution)[-1])
-
-        for i in range(1, func.__code__.co_argcount):
-            args[i-1] = vcast(func, func.__code__.co_varnames[i], args[i-1])
+        for i in range(argc):
+            args[i] = vcast(func, func.__code__.co_varnames[i-1], args[i])
 
         res = vcast(func, 'result', func(*args))
 

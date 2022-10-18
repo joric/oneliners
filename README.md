@@ -28,10 +28,10 @@ Use walrus operator (:=) if you need to define a lambda function that's called r
 
 ```python
 class Solution1(object):
-    def guessNumber(self, n):
+    def guessNumber(self, n: int) -> int:
         l,r = 1, n
         while l <= r:
-            m = (l + r) / 2
+            m = (l + r) // 2
             res = guess(m)
             if res == 0:
                 return m

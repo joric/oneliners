@@ -121,7 +121,8 @@ class Solution1:
 
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        return (lambda x:x if x!=inf else -1)((f:=cache(lambda n: min([1 + f(n-c) for c in coins]) if n>0 else 0 if n==0 else inf))(amount))
+        return (lambda x:x if x!=inf else -1)((f:=cache(lambda n:
+            min([1+f(n-c) for c in coins]) if n>0 else 0 if n==0 else inf))(amount))
 ```
 
 #### reduce

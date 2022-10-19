@@ -1,6 +1,6 @@
 from Leetcode import *
 
-class Solution(object):
+class Solution1(object):
     def lengthOfLongestSubstring(self, s):
         start, res, h = 0, 0, {}
         for i, c in enumerate(s):
@@ -9,19 +9,18 @@ class Solution(object):
             h[c] = i + 1
         return res
 
-def fn(a,b):
-    start, res, h = a
-    i, c = b
-    start = max(start, h.get(c,0))
-    res = max(res, i - start + 1)
-    h[c] = i + 1
-    return start,res,h
-
-class Solution1:
+class Solution2:
     def lengthOfLongestSubstring(self, s):
+        def fn(a,b):
+            start, res, h = a
+            i, c = b
+            start = max(start, h.get(c,0))
+            res = max(res, i - start + 1)
+            h[c] = i + 1
+            return start,res,h
         return reduce(fn,enumerate(s),[0,0,{}])[1]
 
-class Solution0:
+class Solution:
     def lengthOfLongestSubstring(self, s):
         return reduce(lambda a,b:(s:=max(a[0],a[2].get(b[1],0)),max(a[1],b[0]-s+1),\
             {**a[2],b[1]:b[0]+1}),enumerate(s),(0,0,{}))[1]

@@ -62,7 +62,7 @@ class Solution:
         return ((x>0)-(x<0))*min(2**31,(f:=lambda r,x:f(r*10 + x%10, x//10) if x else r)(0,abs(x)))
 ```
 
-* https://leetcode.com/problems/top-k-frequent-words
+* https://leetcode.com/problems/top-k-frequent-words/discuss/573662/Python-2-lines-heap/1650650
 
 ```python
 class Solution:

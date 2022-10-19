@@ -62,6 +62,16 @@ class Solution:
         return ((x>0)-(x<0))*min(2**31,(f:=lambda r,x:f(r*10 + x%10, x//10) if x else r)(0,abs(x)))
 ```
 
+Or if you just want to define a variable in the same line without semicolons.
+
+* https://leetcode.com/problems/top-k-frequent-words
+
+```python
+class Solution:
+    def topKFrequent(self, words: List[str], k: int) -> List[str]:
+        return (f:=Counter(words)) and nsmallest(k, f.keys(), key=lambda x:(-f[x],x))
+```
+
 #### getitem
 
 You can use it to construct a bisect comparator object (but we have the key parameter now).

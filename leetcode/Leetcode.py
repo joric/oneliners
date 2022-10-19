@@ -66,7 +66,7 @@ class ListNode:
         list_node = ListNode(val[0], sub_nodes)
         return list_node
 
-def test(Solution, s, init=None):
+def test(Solution, s, init=None, check=None):
     import re
 
     tests = []
@@ -79,12 +79,12 @@ def test(Solution, s, init=None):
         elif s.startswith('Output:'):
             tests[-1][1].append(s[8:])
 
-    for args, exp in tests:
+    for args, expected in tests:
         def vparse(s):
             return eval(s.replace('null','None').replace('true','True').replace('false','False'))
 
         args = list(map(vparse,args))
-        exp = list(map(vparse,exp))[0]
+        expected = list(map(vparse,expected))[0]
 
         func = getattr(Solution(), dir(Solution)[-1])
         argc = func.__code__.co_argcount - 1
@@ -109,11 +109,15 @@ def test(Solution, s, init=None):
 
         res = vcast(func, 'result', func(*args))
 
-        if type(exp) != type(res):
-            res, exp = map(str, (res, exp))
+        if type(expected) != type(res):
+            res, expected = map(str, (res, expected))
+
+        if not check:
+            def check(args, res):
+                nonlocal expected
+                return res==expected
 
         c = lambda c,t,w=60: '\x1b[{1}m{2}\x1b[0m'.format(s:=str(t), 30+c, s[:w]+'...' if len(s)>=w else s)
-        e = 2 if res==exp else 1
-        print('%s args %s result %s expected %s' % (c(e,'PASSED' if res==exp else 'FAILED'), c(5,args), c(e,res), c(2,exp)))
-
-
+        passed = check(*args, res)
+        e = 2 if passed else 1
+        print('%s args %s result %s expected %s' % (c(e,'PASSED' if passed else 'FAILED'), c(5,args), c(e,res), c(2,expected)))

@@ -108,6 +108,22 @@ class Solution:
             else max(f(i+1,k-s,1-s)+prices[i]*(2*s-1),f(i+1,k,s))))(0,k,0)
 ```
 
+* https://leetcode.com/problems/coin-change
+
+```python
+class Solution1:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        @cache
+        def f(n):
+            return min([1 + f(n-c) for c in coins]) if n>0 else 0 if n==0 else inf
+        x = f(amount)
+        return x if x!=inf else -1
+
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        return (lambda x:x if x!=inf else -1)((f:=cache(lambda n: min([1 + f(n-c) for c in coins]) if n>0 else 0 if n==0 else inf))(amount))
+```
+
 #### reduce
 
 Use it to flatten a loop.

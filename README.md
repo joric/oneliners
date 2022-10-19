@@ -22,7 +22,7 @@ can use lambdas as parameters `(lambda a,b,c: code)(lambda a: code, lamda b: cod
 
 #### walrus operator
 
-Use walrus operator (:=) if you need to define a lambda function that's called recursively.
+Use walrus operator (:=) if you need to define a variable that's used repeatedly.
 
 * https://leetcode.com/problems/guess-number-higher-or-lower
 
@@ -62,14 +62,12 @@ class Solution:
         return ((x>0)-(x<0))*min(2**31,(f:=lambda r,x:f(r*10 + x%10, x//10) if x else r)(0,abs(x)))
 ```
 
-Or if you just want to define a variable in the same line without semicolons.
-
 * https://leetcode.com/problems/top-k-frequent-words
 
 ```python
 class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
-        return (f:=Counter(words)) and nsmallest(k, f.keys(), key=lambda x:(-f[x],x))
+        return nsmallest(k, (f:=Counter(words)).keys(), key=lambda x:(-f[x],x))
 ```
 
 #### getitem

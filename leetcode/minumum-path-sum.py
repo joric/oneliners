@@ -41,21 +41,7 @@ class Solution4:
                 grid[i][j] += 0 if i==0 and j==0 else min(grid[i-1][j] if i>0 else inf, grid[i][j-1] if j>0 else inf);
         return grid[-1][-1]
 
-
 class Solution5:
-    def minPathSum(self, grid: List[List[int]]) -> int:
-        m, n = len(grid), len(grid[0])
-        @cache
-        def f(i, j):
-            if i == m-1 and j == n-1: return grid[i][j]
-            try:
-                return grid[i][j] + min(f(i+1, j), f(i, j+1))
-            except:
-                return float('inf')
-        return f(0, 0)
-
-
-class Solution6:
     def minPathSum(self, grid: List[List[int]]) -> int:
         r = 0
         for i in range(len(grid)):
@@ -64,7 +50,7 @@ class Solution6:
                 r = grid[i][j]
         return r
 
-class Solution7:
+class Solution6:
     def minPathSum(self, grid: List[List[int]]) -> int:
         def fn(a,b):
             print(a,b)
@@ -77,41 +63,28 @@ class Solution7:
 
 class Solution:
     def minPathSum(self, grid: List[List[int]]) -> int:
-        def fn(a,b):
-            i,j = b
-            grid[i][j] += min(a,grid[i-1][j]) if i else a
-            return grid[i][j]
-
-        return reduce(fn, product(range(len(grid)), range(len(grid[0]))), 0)
+        return reduce(lambda a,b:grid[b[0]].__setitem__(b[1], grid[b[0]][b[1]]+(min(a, grid[b[0]-1][b[1]]) if b[0] else a)) or grid[b[0]][b[1]], product(range(len(grid)), range(len(grid[0]))), 0)
 
 
 test(Solution,'''
+64. Minimum Path Sum
+
 Medium
 
-8829
-
-115
-
-Add to List
-
-Share
 Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path.
 
 Note: You can only move either down or right at any point in time.
 
- 
-
 Example 1:
-
 
 Input: grid = [[1,3,1],[1,5,1],[4,2,1]]
 Output: 7
 Explanation: Because the path 1 → 3 → 1 → 1 → 1 minimizes the sum.
+
 Example 2:
 
 Input: grid = [[1,2,3],[4,5,6]]
 Output: 12
- 
 
 Constraints:
 
@@ -119,5 +92,6 @@ m == grid.length
 n == grid[i].length
 1 <= m, n <= 200
 0 <= grid[i][j] <= 100
+
 ''')
 

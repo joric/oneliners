@@ -112,7 +112,7 @@ def test(Solution, s, init=None):
         if type(exp) != type(res):
             res, exp = map(str, (res, exp))
 
-        c = lambda c,t,w=60: '\x1b[{1}m{2}\x1b[0m'.format(s:=str(t), 30+c, s+'...' if len(s)>=w else s)
+        c = lambda c,t,w=60: '\x1b[{1}m{2}\x1b[0m'.format(s:=str(t), 30+c, s[:w]+'...' if len(s)>=w else s)
         e = 2 if res==exp else 1
         print('%s args %s result %s expected %s' % (c(e,'PASSED' if res==exp else 'FAILED'), c(5,args), c(e,res), c(2,exp)))
 

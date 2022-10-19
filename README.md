@@ -196,6 +196,14 @@ class Solution:
         return next((s[:i]+'a'+s[i+1:] for i in range(len(s)//2) if s[i]!='a'), s[:-1] and s[:-1]+'b')
 ```
 
+Use `next` and default value to update the first element that matches a certain condition.
+
+```python
+(i:=next((i+1 for i,x in enumerate(v) if cond(x)), None)) and v.__setitem__(i-1, val)
+
+```
+
+
 #### setattr
 
 Use `__setattr__` (or `__setitem__` for indexes) if you need an assignment (this function returns None).

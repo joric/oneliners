@@ -199,7 +199,7 @@ class Solution:
 Use `next` and default value to update the first element that matches a certain condition.
 
 ```python
-(i:=next((i+1 for i,x in enumerate(v) if cond(x)), None)) and v.__setitem__(i-1, val)
+(i:=next((i+1 for i,x in enumerate(v) if cond(x)), 0)) and v.__setitem__(i-1, val)
 
 ```
 

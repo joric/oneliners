@@ -113,11 +113,11 @@ def test(Solution, s, init=None, check=None):
             res, expected = map(str, (res, expected))
 
         if not check:
-            def check(args, res):
+            def check(res, *args):
                 nonlocal expected
                 return res==expected
 
         c = lambda c,t,w=60: '\x1b[{1}m{2}\x1b[0m'.format(s:=str(t), 30+c, s[:w]+'...' if len(s)>=w else s)
-        passed = check(*args, res)
+        passed = check(res, *args)
         e = 2 if passed else 1
         print('%s args %s result %s expected %s' % (c(e,'PASSED' if passed else 'FAILED'), c(5,args), c(e,res), c(2,expected)))

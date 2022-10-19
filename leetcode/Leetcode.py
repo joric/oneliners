@@ -105,14 +105,14 @@ def test(Solution, s, init=None):
             return val
 
         for i in range(argc):
-            args[i] = vcast(func, func.__code__.co_varnames[i-1], args[i])
+            args[i] = vcast(func, func.__code__.co_varnames[i+1], args[i])
 
         res = vcast(func, 'result', func(*args))
 
         if type(exp) != type(res):
             res, exp = map(str, (res, exp))
 
-        c = lambda c,t,w=80: f'\x1b[{30+c}m{str(t):.{w}}\x1b[0m'
+        c = lambda c,t,w=60: '\x1b[{0}m{1}\x1b[0m'.format(30+c, str(t)+'...' if len(str(t))>=w else str(t))
         e = 2 if res==exp else 1
         print('%s args %s result %s expected %s' % (c(e,'PASSED' if res==exp else 'FAILED'), c(5,args), c(e,res), c(2,exp)))
 

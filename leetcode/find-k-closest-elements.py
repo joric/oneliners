@@ -22,6 +22,8 @@ class Solution2:
     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
         return sorted(sorted(arr, key = lambda e: abs(x-e))[:k])
 
+# https://leetcode.com/problems/find-k-closest-elements/discuss/782319/Python:-Easy-Heap/1651775
+
 class Solution:
     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
         return sorted(nsmallest(k, arr, key=lambda n:(abs(n-x),n)))

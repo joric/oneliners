@@ -112,5 +112,8 @@ def test(Solution, s, init=None):
         if type(exp) != type(res):
             res, exp = map(str, (res, exp))
 
-        print('%s\x1b[0m args "%.50s" result "%.50s" expected "%.50s"' % ('\x1b[32mPASSED' if res==exp else '\x1b[31mFAILED', args, res, exp))
+        c = lambda c,t,w=60: f'\x1b[{30+c}m{str(t):.{w}}\x1b[0m'
+        e = 2 if res==exp else 1
+        print('%s args %s result %s expected %s' % (c(e,'PASSED' if res==exp else 'FAILED'), c(5,args), c(e,res), c(2,exp)))
+
 

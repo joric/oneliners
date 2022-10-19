@@ -196,10 +196,10 @@ class Solution:
         return next((s[:i]+'a'+s[i+1:] for i in range(len(s)//2) if s[i]!='a'), s[:-1] and s[:-1]+'b')
 ```
 
-Use `next` and default value to update the first element that matches a certain condition.
+Use `next` and default value to update the first element that matches a predicate.
 
 ```python
-(i:=next((i+1 for i,x in enumerate(v) if cond(x)), 0)) and v.__setitem__(i-1, val)
+(i:=next((i+1 for i,x in enumerate(v) if pred(x)), 0)) and v.__setitem__(i-1, val)
 
 ```
 

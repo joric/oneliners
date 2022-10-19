@@ -100,7 +100,7 @@ def test(Solution, s, init=None, check=None):
                 val = ListNode.parse(val)
             elif 'TreeNode' in tname:
                 val = TreeNode.parse(val)
-            elif 'List' in tname or type(val) is tuple:
+            elif 'List' in tname or type(val) is tuple or isinstance(val, Generator):
                 val = list(val)
             return val
 

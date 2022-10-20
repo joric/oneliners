@@ -21,7 +21,7 @@ class Solution2:
 
 class Solution:
     def countTime(self, time: str) -> int:
-        return sum(fullmatch(time.replace('?', '.'), f'{hour:02}:{minute:02}') is not None for hour in range(24) for minute in range(60))
+        return sum(bool(fullmatch(time.replace('?', '.'), f'{h:02}:{m:02}')) for h in range(24) for m in range(60))
 
 test(Solution,'''
 2437. Number of Valid Clock Times

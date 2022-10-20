@@ -1,11 +1,6 @@
 from Leetcode import *
 
-class Solution1(object):
-  def addTwoNumbers(self, l1, l2):
-        l = lambda n: ListNode(n%10) if n<9 else l(n//10)
-        i = lambda x: x.val + i(x.next)*10 if x else 0; return l(i(l1)+i(l2))
-
-class Solution:
+class Solution1:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         carry = 0    
         root = p = ListNode(0)
@@ -17,6 +12,12 @@ class Solution:
             p.next = ListNode(val)
             p = p.next
         return root.next
+
+class Solution(object):
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        return (i:=lambda x: x.val + i(x.next)*10 if x else 0) and (l:=
+            lambda n: ListNode(n%10, l(n//10) if n>9 else None))(i(l1) + i(l2))
+
 
 test(Solution, '''
 Input: l1 = [2,4,3], l2 = [5,6,4]

@@ -20,8 +20,8 @@ def check(res, s):
         for j in range(i+1, len(s)+1):
             if s[i:j] == s[i:j][::-1]:
                 p.append(s[i:j])
-    longest = len(max(p, key = len))
-    return res in filter(lambda s: len(s)==longest, p)
+    w = len(max(p, key = len))
+    return res in (s for s in p if len(s)==w)
 
 # Manacher algorithm http://en.wikipedia.org/wiki/Longest_palindromic_substring
 class Solution:

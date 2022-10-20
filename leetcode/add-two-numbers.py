@@ -15,8 +15,7 @@ class Solution1:
 
 class Solution(object):
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        return (i:=lambda x: x.val + i(x.next)*10 if x else 0) and (l:=lambda n: ListNode(n%10, l(n//10) if n>9 else None))(i(l1) + i(l2))
-
+        return (l:=lambda n: ListNode(n%10, l(n//10) if n>9 else None))((i:=lambda x: x.val + i(x.next)*10 if x else 0)(l1)+i(l2))
 
 test(Solution, '''
 2. Add Two Numbers
@@ -47,5 +46,4 @@ Constraints:
 The number of nodes in each linked list is in the range [1, 100].
 0 <= Node.val <= 9
 It is guaranteed that the list represents a number that does not have leading zeros.
-
 ''')

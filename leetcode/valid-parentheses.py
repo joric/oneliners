@@ -45,6 +45,9 @@ class Solution3:
     def isValid(self, s: str) -> bool:
         return (x := []) or not (b := {'(':')','{':'}','[':']'}) or (not (sum([1 for c in s if (c not in b or x.append(b[c])) and not (x and c==x.pop())]) or x))
 
+class Solution4:
+    def isValid(self, s: str) -> bool:
+        return s=='' if s==(s:=s.replace('()', '').replace('{}', '').replace('[]', '')) else self.isValid(s)
 
 test(Solution,'''
 20. Valid Parentheses

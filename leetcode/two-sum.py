@@ -9,9 +9,13 @@ class Solution1:
             seen[x] = i
         return False
 
-class Solution:
+class Solution2:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         return (f:=lambda i,seen:False if i==len(nums) else (seen[target-nums[i]], i) if target-nums[i] in seen else seen.__setitem__(nums[i], i) or f(i+1, seen))(0,{})
+
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        return (f:=lambda i,m:i<len(nums) and (target-nums[i] in m and (m[target-nums[i]], i) or m.__setitem__(nums[i], i) or f(i+1, m)))(0,{})
 
 test(Solution, '''
 1. Two Sum
@@ -38,6 +42,11 @@ Example 3:
 
 Input: nums = [3,3], target = 6
 Output: [0,1]
+
+Example 4:
+
+Input: nums = [3,3], target = 5
+Output: False
 
 Constraints:
 

@@ -1,7 +1,7 @@
 from Leetcode import *
 
-def check(res, args):
-    return args==sorted(args)
+def check(res, nums):
+    return nums==sorted(nums)
 
 class Solution1:
     def sortColors(self, nums: List[int]) -> None:

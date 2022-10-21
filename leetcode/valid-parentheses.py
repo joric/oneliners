@@ -18,7 +18,7 @@ class Solution1:
 
 class Solution:
     def isValid(self, s: str) -> bool:
-        return (s.count('()') +s.count('[]') +s.count('{}'))*2==len(s)
+        return (s.count('()')+s.count('[]')+s.count('{}'))*2==len(s)
 
 
 test(Solution,'''

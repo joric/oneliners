@@ -33,7 +33,7 @@ class Solution2:
 
 class Solution3:
     def isValid(self, s: str) -> bool:
-        stack, brackets = [], {'(': ')', '{': '}', '[': ']'}
+        stack, brackets = [], {'(':')', '{':'}', '[':']'}
         for c in s:
             if c in brackets:
                 stack.append(brackets[c])

@@ -33,6 +33,16 @@ class Solution2:
 
 class Solution3:
     def isValid(self, s: str) -> bool:
+        stack, brackets = [], {'(': ')', '{': '}', '[': ']'}
+        for c in s:
+            if c in brackets:
+                stack.append(brackets[c])
+            elif not stack or c != stack.pop():
+                return False
+        return not stack
+
+class Solution3:
+    def isValid(self, s: str) -> bool:
         return (x := []) or not (b := {'(':')','{':'}','[':']'}) or (not (sum([1 for c in s if (c not in b or x.append(b[c])) and not (x and c==x.pop())]) or x))
 
 

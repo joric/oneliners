@@ -1,6 +1,5 @@
 from Leetcode import *
 
-
 class Solution1:
     def countTime(self, time: str) -> int:
         f = lambda x,y: (x[0] == '?' or x[0] == y[0]) and (x[1] == '?' or x[1] == y[1])
@@ -8,16 +7,6 @@ class Solution1:
         hrs = zeros|{str(num) for num in range(10,24)}
         mns = zeros|{str(num) for num in range(10,60)}
         return  sum(f(time[:2], h) for h in hrs) * sum(f(time[3:], m) for m in mns)
-
-class Solution2:
-    def countTime(self, time: str) -> int:
-        time, ans = time.replace('?', '.'), 0
-        for i in range(60 * 24):
-            hours = i // 60
-            mins = i - 60 * hours
-            candidate = f'{hours:02}:{mins:02}'
-            ans += re.match(time, candidate) is not None
-        return ans
 
 class Solution:
     def countTime(self, time: str) -> int:

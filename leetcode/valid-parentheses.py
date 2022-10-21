@@ -18,11 +18,22 @@ class Solution1:
 
 class Solution2:
     def isValid(self, s: str) -> bool:
-        return (x := []) or not (b := {'(':')','{':'}','[':']'}) or (not (sum([1 for c in s if (c not in b or x.append(b[c])) and not (x and c==x.pop())]) or x))
+        s,i,m = list(s), 0, {'(':')','[':']', '{':'}'}
+        for c in s:
+            if c in m:
+                s[i] = m[c]
+                i += 1
+            elif i==0:
+                return False
+            else:
+                i -= 1
+                if c != s[i]:
+                    return False
+        return i == 0
 
-class Solution:
+class Solution3:
     def isValid(self, s: str) -> bool:
-        return (s.count('()')+s.count('[]')+s.count('{}'))*2==len(s)
+        return (x := []) or not (b := {'(':')','{':'}','[':']'}) or (not (sum([1 for c in s if (c not in b or x.append(b[c])) and not (x and c==x.pop())]) or x))
 
 
 test(Solution,'''

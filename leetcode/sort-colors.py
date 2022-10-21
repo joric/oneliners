@@ -1,5 +1,8 @@
 from Leetcode import *
 
+def check(res, args):
+    return args==sorted(args)
+
 class Solution1:
     def sortColors(self, nums: List[int]) -> None:
         red, white, blue = 0, 0, len(nums)-1
@@ -13,7 +16,6 @@ class Solution1:
             else:
                 nums[white], nums[blue] = nums[blue], nums[white]
                 blue -= 1
-        return nums
 
 class Solution2:
     def sortColors(self, nums: List[int]) -> None:
@@ -32,7 +34,6 @@ class Solution2:
             a = red, white, blue
             return a
         reduce(fn, nums, [0,0,len(nums)-1])
-        return nums
 
 class Solution3:
     def sortColors(self, nums: List[int]) -> None:
@@ -40,19 +41,24 @@ class Solution3:
             red, white, blue = t
             return (swap:=lambda a,x,y: exec('a[x],a[y]=a[y],a[x]'), (swap(nums,red,white),(red+1,white+1,blue))[1] if nums[white]==0 else ((red,white+1,blue) if nums[white]==1 else (swap(nums,white,blue),(red,white,blue-1))[1]))[1]
         reduce(fn, nums, [0,0,len(nums)-1])
-        return nums
 
 class Solution4:
     def sortColors(self, nums: List[int]) -> None:
-        return (reduce(lambda a,_:(f:=lambda a,x,y:exec('a[x],a[y]=a[y],a[x]'),(f(nums,a[0],a[1]),(a[0]+1,a[1]+1,a[2]))[1]if nums[a[1]]==0 else((a[0],a[1]+1,a[2])if nums[a[1]]==1 else(f(nums,a[1],a[2]),(a[0],a[1],a[2]-1))[1]))[1],nums,[0,0,len(nums)-1]),nums)[-1]
+        reduce(lambda a,_:(f:=lambda a,x,y:exec('a[x],a[y]=a[y],a[x]'),(f(nums,a[0],a[1]),(a[0]+1,a[1]+1,a[2]))[1]if nums[a[1]]==0 else((a[0],a[1]+1,a[2])if nums[a[1]]==1 else(f(nums,a[1],a[2]),(a[0],a[1],a[2]-1))[1]))[1],nums,[0,0,len(nums)-1])
 
 class Solution5:
     def sortColors(self, nums: List[int]) -> None:
-        return (reduce(lambda a,_:(f:=lambda a,x,y:(t:=a[x],a.__setitem__(x,a[y]),a.__setitem__(y,t)),(f(nums,a[0],a[1]),(a[0]+1,a[1]+1,a[2]))[1] if nums[a[1]]==0 else ((a[0],a[1]+1,a[2]) if nums[a[1]]==1 else (f(nums,a[1],a[2]),(a[0],a[1],a[2]-1))[1]))[1], nums, [0,0,len(nums)-1]),nums)[-1]
+        reduce(lambda a,_:(f:=lambda a,x,y:(t:=a[x],a.__setitem__(x,a[y]),a.__setitem__(y,t)),(f(nums,a[0],a[1]),(a[0]+1,a[1]+1,a[2]))[1] if nums[a[1]]==0 else ((a[0],a[1]+1,a[2]) if nums[a[1]]==1 else (f(nums,a[1],a[2]),(a[0],a[1],a[2]-1))[1]))[1], nums, [0,0,len(nums)-1])
+
+class Solution6:
+    def sortColors(self, nums: List[int]) -> None:
+        s = lambda a,x,y:(t:=a[x],a.__setitem__(x,a[y]),a.__setitem__(y,t),a)[3]
+        f = lambda a,i,j,k:(f(s(a,i,j),i+1,j+1,k) if a[j]==0 else f(a,i,j+1,k) if a[j]==1 else f(s(a,j,k),i,j,k-1)) if i<=j<=k else None
+        f(nums,0,0,len(nums)-1)
 
 class Solution:
     def sortColors(self, nums: List[int]) -> None:
-        return ((s:=lambda a,x,y:(t:=a[x],a.__setitem__(x,a[y]),a.__setitem__(y,t),a)[3],f:=lambda a,i,j,k:(f(s(a,i,j),i+1,j+1,k) if a[j]==0 else f(a,i,j+1,k) if a[j]==1 else f(s(a,j,k),i,j,k-1)) if i<=j<=k else None)[1](nums,0,0,len(nums)-1),nums)[-1]
+        (s:=lambda a,x,y:(t:=a[x],a.__setitem__(x,a[y]),a.__setitem__(y,t),a)[3],f:=lambda a,i,j,k:(f(s(a,i,j),i+1,j+1,k) if a[j]==0 else f(a,i,j+1,k) if a[j]==1 else f(s(a,j,k),i,j,k-1)) if i<=j<=k else None)[1](nums,0,0,len(nums)-1)
 
 test(Solution, '''
 75. Sort Colors
@@ -80,17 +86,5 @@ n == nums.length
 1 <= n <= 300
 nums[i] is either 0, 1, or 2.
 
-''')
-
-
-
-
-
-
-
-
-
-
-
-
+''', check=check)
 

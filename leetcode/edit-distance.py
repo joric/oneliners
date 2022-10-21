@@ -16,14 +16,14 @@ class Solution1:
 class Solution2:
     def minDistance(self, word1: str, word2: str) -> int:
         @cache
-        def dp(w1, w2):
-            if not len(w1) or not len(w2):
-                return len(w1) or len(w2)
-            if w1[0] == w2[0]:
-                return dp(w1[1:], w2[1:])
-            insert = 1 + dp(w1, w2[1:])
-            delete = 1 + dp(w1[1:], w2)
-            replace = 1 + dp(w1[1:], w2[1:])
+        def dp(a, b):
+            if not len(a) or not len(b):
+                return len(a) or len(b)
+            if a[0] == b[0]:
+                return dp(a[1:], b[1:])
+            insert = 1 + dp(a, b[1:])
+            delete = 1 + dp(a[1:], b)
+            replace = 1 + dp(a[1:], b[1:])
             return min(insert, delete, replace)
         return dp(word1, word2)
 

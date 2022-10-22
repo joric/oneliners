@@ -9,6 +9,8 @@ class Solution1(object):
             h[c] = i + 1
         return res
 
+# https://leetcode.com/problems/longest-substring-without-repeating-characters/discuss/1006208/Python-oneliner
+
 class Solution2:
     def lengthOfLongestSubstring(self, s):
         def fn(a,b):
@@ -24,6 +26,9 @@ class Solution3:
     def lengthOfLongestSubstring(self, s):
         return reduce(lambda a,b:(s:=max(a[0],a[2].get(b[1],0)),max(a[1],b[0]-s+1),{**a[2],b[1]:b[0]+1}),enumerate(s),(0,0,{}))[1]
 
+
+# https://leetcode.com/problems/longest-substring-without-repeating-characters/discuss/2021476/Python3-1-Line-Sliding-Window
+
 class Solution4:
     def lengthOfLongestSubstring(self, s):
         d = {}
@@ -36,9 +41,17 @@ class Solution4:
             res = max(res, j-i)
         return res
 
-class Solution:
+class Solution5:
     def lengthOfLongestSubstring(self, s):
         return ((d:={}),(i:=-1)) and max(j-(i:=max(i,(d.pop(c,-1),d.setdefault(c,j))[0])) for j,c in enumerate(s)) if s else 0
+
+
+# https://leetcode.com/problems/longest-substring-without-repeating-characters/discuss/372028/One-line-Scala-Solution%3A-faster-than-64-memory-less-than-100
+
+class Solution:
+    def lengthOfLongestSubstring(self, s):
+        return max(map(len,accumulate(s, lambda x,y: x[1+(x.index(y) if y in x else -1):]+y, initial='')))
+
 
 test(Solution,'''
 3. Longest Substring Without Repeating Characters
@@ -66,7 +79,7 @@ Output: 3
 Explanation: The answer is "wke", with the length of 3.
 Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
 
-Custom tests
+Custom tests:
 
 Input: s = "aab"
 Output: 2

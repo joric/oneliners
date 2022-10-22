@@ -2,9 +2,7 @@ from Leetcode import *
 
 class Solution1:
     def romanToInt(self, s: str) -> int:
-        return sum(s.count(c)*d for c,d in zip(
-            ('M','D','C','L','X','V','I','IV','IX','XL','XC','CD','CM'),
-            (1000,500,100,50,10,5,1,-2,-2,-20,-20,-200,-200)))
+        return sum(s.count(c)*d for c,d in zip(('M','D','C','L','X','V','I','IV','IX','XL','XC','CD','CM'),(1000,500,100,50,10,5,1,-2,-2,-20,-20,-200,-200)))
 
 class Solution2:
     def romanToInt(self, s: str) -> int:
@@ -16,8 +14,7 @@ class Solution2:
 
 class Solution:
     def romanToInt(self, s: str) -> int:
-        return (d:={'M':1000,'D':500,'C':100,'L':50,'X':10,'V':5,'I':1}) and reduce(
-            lambda a,c:(a[0]-d[c] if d[c]<d[a[1]] else a[0]+d[c], c), s[::-1], (0,'I'))[0]
+        return reduce(lambda a,c:(a[0]-d[c] if d[c]<d[a[1]] else a[0]+d[c], c), s[::-1], (0,'I',d:={'M':1000,'D':500,'C':100,'L':50,'X':10,'V':5,'I':1}))[0]
 
 test(Solution,'''
 13. Roman to Integer

@@ -20,27 +20,64 @@ class Solution2:
             return start,res,h
         return reduce(fn,enumerate(s),[0,0,{}])[1]
 
+class Solution3:
+    def lengthOfLongestSubstring(self, s):
+        return reduce(lambda a,b:(s:=max(a[0],a[2].get(b[1],0)),max(a[1],b[0]-s+1),{**a[2],b[1]:b[0]+1}),enumerate(s),(0,0,{}))[1]
+
+class Solution4:
+    def lengthOfLongestSubstring(self, s):
+        d = {}
+        i = -1
+        res = 0
+        for j,c in enumerate(s):
+            k = d.pop(c,-1)
+            d.setdefault(c,j)
+            i = max(i, k)
+            res = max(res, j-i)
+        return res
+
 class Solution:
     def lengthOfLongestSubstring(self, s):
-        return reduce(lambda a,b:(s:=max(a[0],a[2].get(b[1],0)),max(a[1],b[0]-s+1),\
-            {**a[2],b[1]:b[0]+1}),enumerate(s),(0,0,{}))[1]
-
+        return ((d:={}),(i:=-1)) and max(j-(i:=max(i,(d.pop(c,-1),d.setdefault(c,j))[0])) for j,c in enumerate(s)) if s else 0
 
 test(Solution,'''
+3. Longest Substring Without Repeating Characters
+Medium
+
+Given a string s, find the length of the longest substring without repeating characters.
+
 Example 1:
 
 Input: s = "abcabcbb"
 Output: 3
 Explanation: The answer is "abc", with the length of 3.
+
 Example 2:
 
 Input: s = "bbbbb"
 Output: 1
 Explanation: The answer is "b", with the length of 1.
+
 Example 3:
 
 Input: s = "pwwkew"
 Output: 3
+
 Explanation: The answer is "wke", with the length of 3.
 Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
+
+Custom tests
+
+Input: s = "aab"
+Output: 2
+
+Input: s = " "
+Output: 1
+
+Constraints:
+
+0 <= s.length <= 5 * 104
+s consists of English letters, digits, symbols and spaces.
+
+
 ''')

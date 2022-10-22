@@ -30,17 +30,17 @@ class Solution3:
     def trap(self, v: List[int]) -> int:
         l = list(accumulate(v, max))
         r = list(accumulate(v[::-1], max))[::-1]
-        return  sum([max(0,min(l[i],r[i])-v[i]) for i in range(len(v))])
+        return sum([max(0,min(l[i],r[i])-v[i]) for i in range(len(v))])
 
 class Solution4:
     def trap(self, v: List[int]) -> int:
         l = list(accumulate(v, max))
         r = list(accumulate(v[::-1], max))[::-1]
-        return  sum([max(0,min(l[i],r[i])-v[i]) for i in range(len(v))])
+        return sum([max(0,min(l[i],r[i])-v[i]) for i in range(len(v))])
 
 class Solution:
     def trap(self, v: List[int]) -> int:
-        return  sum([max(0,min(list(accumulate(v, max))[i],list(accumulate(v[::-1], max))[::-1][i])-v[i]) for i in range(len(v))])
+        return sum([max(0,min(list(accumulate(v, max))[i],list(accumulate(v[::-1], max))[::-1][i])-v[i]) for i in range(len(v))])
 
 test(Solution,'''
 42. Trapping Rain Water

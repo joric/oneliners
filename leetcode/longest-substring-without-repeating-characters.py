@@ -50,7 +50,7 @@ class Solution5:
 
 class Solution:
     def lengthOfLongestSubstring(self, s):
-        return max(map(len,accumulate(s, lambda x,y: x[1+(x.index(y) if y in x else -1):]+y)))
+        return max(map(len,accumulate(s,lambda x,y:x[1+(x.index(y) if y in x else -1):]+y,initial='')))
 
 
 test(Solution,'''
@@ -86,6 +86,9 @@ Output: 2
 
 Input: s = " "
 Output: 1
+
+Input: s = ""
+Output: 0
 
 Constraints:
 

@@ -1,6 +1,6 @@
 from Leetcode import *
 
-class Solution0:
+class Solution1:
     def coinChange(self, coins, amount):
         dp = [inf] * (amount+1)
         dp[0] = 0;
@@ -9,26 +9,11 @@ class Solution0:
                     dp[i] = min(dp[i], dp[i - coin] + 1)
         return dp[amount] if dp[amount]<=amount else -1
 
-class Solution4:
-    def coinChange(self, coins, amount):
-        return (lambda x:x[-1]if x[-1]<=amount else-1)((lambda a:[a,[a.__setitem__(i,min(a[i],a[i-c]+1)) for c in coins for i in range(c, amount+1)]][0])([0]+[amount+1]*amount))
-
 class Solution2:
-    def coinChange(self, coins: List[int], amount: int) -> int:
-        @cache
-        def dp(n):
-            return min([1 + dp(n-c) for c in coins]) if n>0 else 0 if n==0 else inf
-        return (lambda x:x if x!=inf else -1)(dp(amount))
+    def coinChange(self, coins, amount):
+        return (lambda x:x[-1] if x[-1]<=amount else -1)((lambda a:[a,[a.__setitem__(i,min(a[i],a[i-c]+1)) for c in coins for i in range(c, amount+1)]][0])([0]+[amount+1]*amount))
 
 class Solution3:
-    def coinChange(self, coins: List[int], amount: int) -> int:
-        return (lambda x:x if x!=inf else -1)((t:=lambda n:min([1 + t(n-c) for c in coins]) if n>0 else 0 if n==0 else inf)(amount))
-
-class Solution4:
-    def coinChange(self, coins: List[int], amount: int) -> int:
-        return (lambda x:x if x!=inf else -1)(cache(t:=lambda n:min([1 + t(n-c) for c in coins]) if n>0 else 0 if n==0 else inf)(amount))
-
-class Solution1:
     def coinChange(self, coins: List[int], amount: int) -> int:
         @cache
         def f(n):

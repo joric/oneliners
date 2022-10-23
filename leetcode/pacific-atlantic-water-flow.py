@@ -16,8 +16,8 @@ class Solution1:
 
 class Solution:
     def pacificAtlantic(self, m: List[List[int]]) -> List[List[int]]:
-        return (h:=len(m),w:=len(m[0]) if m else 0,p:=set(),a:=set(),f:=lambda y, x, s, v=-inf:
-            0<=x<w and 0<=y<h and (y,x) not in s and m[y][x]>=v and (s.add((y,x)),list(map(f,(y,y,y-1,y+1),(x-1,x+1,x,x),[s]*4,[m[y][x]]*4))),
+        return (h:=len(m),w:=len(m[0]) if m else 0,p:=set(),a:=set(),f:=lambda y,x,s,v=-inf: 0<=x<w and 0<=y<h
+            and (y,x) not in s and m[y][x]>=v and (s.add((y,x)),list(map(f,(y,y,y-1,y+1),(x-1,x+1,x,x),[s]*4,[m[y][x]]*4))),
             [list(map(f,(0,h-1),(x,x),(p,a))) for x in range(w)],[list(map(f,(y,y),(0,w-1),(p,a))) for y in range(h)],p&a)[-1]
 
 

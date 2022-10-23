@@ -95,14 +95,17 @@ def test(Solution, s, init=None, check=None):
 
         args = args[:argc]
 
+        is_seq = lambda v: type(v) is dict or type(v) is tuple or type(v) is set or type(v) is Generator
+        to_list = lambda v: v if not is_seq(v) else [to_list(x) for x in v]
+
         def vcast(func, vname, val):
             tname = str(get_type_hints(func).get(vname, None))
             if 'ListNode' in tname:
                 val = ListNode.parse(val)
             elif 'TreeNode' in tname:
                 val = TreeNode.parse(val)
-            elif 'List' in tname or isinstance(val, tuple) or isinstance(val, Generator):
-                val = [list(x) if isinstance(x, tuple) else x for x in val]
+            elif 'List' in tname or is_sequence(val):
+                val = to_list(val)
             return val
 
         for i in range(argc):

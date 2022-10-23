@@ -104,7 +104,7 @@ def test(Solution, s, init=None, check=None):
                 val = ListNode.parse(val)
             elif 'TreeNode' in tname:
                 val = TreeNode.parse(val)
-            elif 'List' in tname or is_sequence(val):
+            elif 'List' in tname or is_seq(val):
                 val = to_list(val)
             return val
 

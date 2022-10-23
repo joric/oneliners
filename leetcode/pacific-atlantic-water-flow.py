@@ -3,7 +3,7 @@ from Leetcode import *
 def check(res, expected, m):
     return sorted(res)==sorted(expected)
 
-class Solution:
+class Solution1:
     def pacificAtlantic(self, m: List[List[int]]) -> List[List[int]]:
         h,w,p,a = len(m), len(m[0]) if m else 0, set(), set()
         def dfs(y, x, s, v=-inf):
@@ -13,6 +13,13 @@ class Solution:
         [list(map(dfs,(0,h-1),(x,x),(p,a))) for x in range(w)]
         [list(map(dfs,(y,y),(0,w-1),(p,a))) for y in range(h)]
         return p&a
+
+class Solution:
+    def pacificAtlantic(self, m: List[List[int]]) -> List[List[int]]:
+        return (h:=len(m),w:=len(m[0]) if m else 0,p:=set(),a:=set(),f:=lambda a,b: a|b,dfs:=lambda y, x, s, v=-inf:
+            0<=x<w and 0<=y<h and (y,x) not in s and m[y][x]>=v and (s.add((y,x)),list(map(dfs,(y,y,y-1,y+1),(x-1,x+1,x,x),[s]*4,[m[y][x]]*4))),
+            [list(map(dfs,(0,h-1),(x,x),(p,a))) for x in range(w)],[list(map(dfs,(y,y),(0,w-1),(p,a))) for y in range(h)],p&a)[-1]
+
 
 test(Solution,'''
 

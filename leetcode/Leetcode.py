@@ -95,7 +95,7 @@ def test(Solution, s, init=None, check=None):
 
         args = args[:argc]
 
-        is_seq = lambda v: type(v) is dict or type(v) is tuple or type(v) is set or type(v) is Generator
+        is_seq = lambda v: type(v) in (dict, tuple, set, Generator)
         to_list = lambda v: v if not is_seq(v) else [to_list(x) for x in v]
 
         def vcast(func, vname, val):

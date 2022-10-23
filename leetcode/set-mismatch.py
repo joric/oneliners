@@ -27,8 +27,8 @@ Output: [1,2]
 
 Constraints:
 
-2 <= nums.length <= 104
-1 <= nums[i] <= 104
+2 <= nums.length <= 10**4
+1 <= nums[i] <= 10**4
 
 ''')
 

@@ -1,5 +1,14 @@
 from Leetcode import *
 
+def check(res, expected, s):
+    p = []
+    for i in range(len(s)+1):
+        for j in range(i+1, len(s)+1):
+            if s[i:j] == s[i:j][::-1]:
+                p.append(s[i:j])
+    w = len(max(p, key = len))
+    return res in (s for s in p if len(s)==w)
+
 class Solution1:
     def longestPalindrome(self, s: str) -> str:
         n = len(s)
@@ -13,15 +22,6 @@ class Solution1:
                     if i - j + 1 > len(ans):
                         ans = s[j:i+1]
         return ans
-
-def check(res, s):
-    p = []
-    for i in range(len(s)+1):
-        for j in range(i+1, len(s)+1):
-            if s[i:j] == s[i:j][::-1]:
-                p.append(s[i:j])
-    w = len(max(p, key = len))
-    return res in (s for s in p if len(s)==w)
 
 # Manacher algorithm http://en.wikipedia.org/wiki/Longest_palindromic_substring
 class Solution:

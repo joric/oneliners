@@ -101,24 +101,23 @@ def test(Solution, s, init=None, check=None):
                 val = ListNode.parse(val)
             elif 'TreeNode' in tname:
                 val = TreeNode.parse(val)
-            elif 'List' in tname or type(val) is tuple or isinstance(val, Generator):
-                val = list(val)
+            elif 'List' in tname or isinstance(val, tuple) or isinstance(val, Generator):
+                val = [list(x) if isinstance(x, tuple) else x for x in val]
             return val
 
         for i in range(argc):
             args[i] = vcast(func, func.__code__.co_varnames[i+1], args[i])
 
-        res = vcast(func, 'result', func(*args))
+        res = vcast(func, 'return', func(*args))
 
         if type(expected) != type(res):
             res, expected = map(str, (res, expected))
 
         if not check:
-            def check(res, *args):
-                nonlocal expected
+            def check(res, expected, *args):
                 return res==expected
 
         c = lambda c,t,w=60: '\x1b[{1}m{2}\x1b[0m'.format(s:=str(t), 30+c, s[:w]+'...' if len(s)>=w else s)
-        passed = check(res, *args)
+        passed = check(res, expected, *args)
         e = 2 if passed else 1
         print('%s args %s result %s expected %s' % (c(e,'PASSED' if passed else 'FAILED'), c(e,args), c(e,res), c(e,expected)))

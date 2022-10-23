@@ -1,6 +1,6 @@
 from Leetcode import *
 
-def check(res, nums):
+def check(res, expected, nums):
     return nums==sorted(nums)
 
 class Solution1:

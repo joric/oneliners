@@ -158,9 +158,15 @@ def test(classname, text, init=None, check=None):
                 res.append(None)
             else:
                 func = getattr(instance, methods[i])
+
+                argc = func.__code__.co_argcount - 1
+                for j in range(argc):
+                    args[i][j] = vc(func, func.__code__.co_varnames[j+1], args[i][j])
+
                 r = func(*args[i])
                 if type(r) is float:
                     r = round(r, 5)
+                r = vc(func, 'return', r)
                 res.append(r)
 
         passed = res == expected

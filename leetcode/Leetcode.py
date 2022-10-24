@@ -9,6 +9,7 @@ from heapq import *
 from bisect import *
 from random import *
 from re import *
+import re
 import collections
 import bisect
 
@@ -69,8 +70,6 @@ class ListNode:
         return list_node
 
 def test(classname, text, init=None, check=None):
-    import re
-
     def vp(s):
         return eval(s.replace('null','None').replace('true','True').replace('false','False'))
 

@@ -73,19 +73,19 @@ def test(classname, text, init=None, check=None):
     def vp(s):
         return eval(s.replace('null','None').replace('true','True').replace('false','False'))
 
-    def vc(func, vname, val):
+    def vc(func, name, v):
         is_seq = lambda v: type(v) in (dict, tuple, set, Generator)
         to_list = lambda v: v if not is_seq(v) else [to_list(x) for x in v]
-        tname = str(get_type_hints(func).get(vname, None))
-        if 'ListNode' in tname and type(val)!=ListNode:
-            val = ListNode.parse(val)
-        elif 'TreeNode' in tname and type(val)!=TreeNode:
-            val = TreeNode.parse(val)
-        elif 'List' in tname or is_seq(val):
-            val = to_list(val)
-        elif type(val) is float:
-            val = round(val, 5)
-        return val
+        hint = str(get_type_hints(func).get(name, None))
+        if 'ListNode' in hint and type(v)!=ListNode:
+            v = ListNode.parse(v)
+        elif 'TreeNode' in hint and type(v)!=TreeNode:
+            v = TreeNode.parse(v)
+        elif 'List' in hint or is_seq(v):
+            v = to_list(v)
+        elif type(v) is float:
+            v = round(v, 5)
+        return v
 
     def vcast(func, args, init=None):
         argc = func.__code__.co_argcount - 1

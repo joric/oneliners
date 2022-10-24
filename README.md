@@ -22,7 +22,7 @@ can use lambdas as parameters `(lambda a,b,c: code)(lambda a: code, lamda b: cod
 
 #### walrus operator
 
-Use walrus operator (:=) if you need to define a variable that's used repeatedly.
+Use walrus operator (:=) if you need to define a variable or a function.
 
 * https://leetcode.com/problems/guess-number-higher-or-lower
 

@@ -83,7 +83,15 @@ def test(classname, text, init=None, check=None):
             val = TreeNode.parse(val)
         elif 'List' in tname or is_seq(val):
             val = to_list(val)
+        elif type(val) is float:
+            val = round(val, 5)
         return val
+
+    def vcast(func, args, init=None):
+        argc = func.__code__.co_argcount - 1
+        args, iargs = args[:argc], args[argc:]
+        args = [vc(func, func.__code__.co_varnames[i+1], x) for i,x in enumerate(args)]
+        return args, iargs
 
     def print_res(passed, res, expected, *args):
         c = lambda c,t,w=60: '\x1b[{1}m{2}\x1b[0m'.format(s:=str(t), 30+c, s[:w]+'...' if len(s)>=w else s)
@@ -108,66 +116,52 @@ def test(classname, text, init=None, check=None):
 
     for args, expected in tests:
         func = getattr(classname(), dir(classname)[-1])
-        argc = func.__code__.co_argcount - 1
+
+        args, iargs = vcast(func, args, init)
 
         if init:
-            (init)(*args[argc:])
+            init(*iargs)
 
-        args = args[:argc]
-
-        for i in range(argc):
-            args[i] = vc(func, func.__code__.co_varnames[i+1], args[i])
-
-        res = func(*args)
-        res = vc(func, 'return', res)
+        res = vc(func, 'return', func(*args))
 
         if type(expected) != type(res):
             res, expected = map(str, (res, expected))
 
-        print_res(check(res, expected, *args), res, expected, *args)
+        passed = check(res, expected, *args)
+        print_res(passed, res, expected, *args)
 
-    # Class implementation tests
+    # Custom class tests
 
     param = []
-    state = 0
+    t = 0
     for s in text.splitlines():
         if s=='Input':
-            state = 1
-        elif state == 1:
+            t = 1
+        elif t == 1:
             param.append([[],[],[]])
             param[-1][0] = vp(s)
-            state = 2
-        elif state == 2:
+            t = 2
+        elif t == 2:
             param[-1][1] = vp(s)
-            state = 0
+            t = 0
         elif s=='Output':
-            state = 3
-        elif state == 3:
+            t = 3
+        elif t == 3:
             param[-1][2] = vp(s)
-            state = 0
+            t = 0
 
-    for methods, args, expected in param:
-        passed = True
-        res = []
-        instance = None
-
-        for i in range(len(methods)):
-            if methods[i] == classname.__name__:
+    for methods, arglist, expected in param:
+        results = []
+        for name,args in zip(methods,arglist):
+            if name == classname.__name__:
                 instance = classname()
-                res.append(None)
+                results.append(None)
             else:
-                func = getattr(instance, methods[i])
+                func = getattr(instance, name)
+                args, _ = vcast(func, args)
+                res = vc(func, 'return', func(*args))
+                results.append(res)
 
-                argc = func.__code__.co_argcount - 1
-                for j in range(argc):
-                    args[i][j] = vc(func, func.__code__.co_varnames[j+1], args[i][j])
-
-                r = func(*args[i])
-                if type(r) is float:
-                    r = round(r, 5)
-                r = vc(func, 'return', r)
-                res.append(r)
-
-        passed = res == expected
-        print_res(passed, res, expected, args)
+        passed = results == expected
+        print_res(passed, results, expected, arglist)
 

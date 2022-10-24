@@ -149,16 +149,18 @@ def test(classname, text, init=None, check=None):
 
     for calls, args, expected in param:
         passed = True
-        res = [None]
+        res = []
         instance = None
+
         for i in range(len(calls)):
-            if calls[i] == type(classname()).__name__:
+            if calls[i] == classname.__name__:
                 instance = classname()
+                res.append(None)
             else:
                 func = getattr(instance, calls[i])
                 r = func(*args[i])
                 if type(r) is float:
-                    r = round(r,5)
+                    r = round(r, 5)
                 res.append(r)
 
         passed = res == expected

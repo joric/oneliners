@@ -147,17 +147,17 @@ def test(classname, text, init=None, check=None):
             param[-1][2] = vp(s)
             state = 0
 
-    for calls, args, expected in param:
+    for methods, args, expected in param:
         passed = True
         res = []
         instance = None
 
-        for i in range(len(calls)):
-            if calls[i] == classname.__name__:
+        for i in range(len(methods)):
+            if methods[i] == classname.__name__:
                 instance = classname()
                 res.append(None)
             else:
-                func = getattr(instance, calls[i])
+                func = getattr(instance, methods[i])
                 r = func(*args[i])
                 if type(r) is float:
                     r = round(r, 5)

@@ -1,5 +1,8 @@
 from Leetcode import *
 
+# this is originally my entry for the weekly contest 182
+# https://leetcode.com/contest/weekly-contest-182/problems/design-underground-system/
+
 class UndergroundSystem:
 
     def getSid(self,a,b):

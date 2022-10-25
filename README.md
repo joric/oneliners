@@ -177,6 +177,48 @@ class Solution:
             and a[1][-1][1]=='(' else (a[0],a[1]+[b]),enumerate(s),(0,[(-1,')')]))[0]
 ```
 
+#### setattr
+
+Use `__setattr__` (or `__setitem__` for indexes) if you need an assignment (this function returns None).
+
+* https://leetcode.com/problems/add-one-row-to-tree/discuss/764593/Python-7-lines
+
+```python
+class Solution1:
+    def addOneRow(self, root: TreeNode, v: int, d: int, isLeft: bool = True) -> TreeNode:
+        if d == 1:
+            return TreeNode(v, root if isLeft else None, root if not isLeft else None)
+        if not root:
+            return None
+        root.left = self.addOneRow(root.left, v, d - 1, True)
+        root.right = self.addOneRow(root.right, v, d - 1, False)
+        return root
+
+class Solution:
+    def addOneRow(self, root: TreeNode, v: int, d: int, isLeft: bool = True) -> TreeNode:
+        return TreeNode(v, root if isLeft else None, root if not isLeft else None) if d==1 else \
+        root.__setattr__('left', self.addOneRow(root.left, v, d - 1, True)) or \
+        root.__setattr__('right', self.addOneRow(root.right, v, d - 1, False)) or root if root else None
+```
+
+* https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/discuss/1685130/Python-Recursive-with-comments
+
+```python
+class Solution1(object):
+    def deleteMiddle(self, head):
+        def f(a, b):
+            if not b:
+                return a.next
+            a.next = f(a.next, b.next.next) if b.next else f(a.next, b.next)
+            return a
+        return f(head, head.next)
+
+class Solution(object):
+    def deleteMiddle(self, head):
+        return (f:=lambda a,b:a.__setattr__('next', f(a.next, b.next.next) if b.next
+            else f(a.next, b.next)) or a if b else a.next)(head, head.next)
+```
+
 #### next
 
 Use `next` whether you need an oneliner loop with an early exit.
@@ -222,48 +264,6 @@ Use `next`, element index, default value and conjunction to update the first ele
 
 ```
 
-
-#### setattr
-
-Use `__setattr__` (or `__setitem__` for indexes) if you need an assignment (this function returns None).
-
-* https://leetcode.com/problems/add-one-row-to-tree/discuss/764593/Python-7-lines
-
-```python
-class Solution1:
-    def addOneRow(self, root: TreeNode, v: int, d: int, isLeft: bool = True) -> TreeNode:
-        if d == 1:
-            return TreeNode(v, root if isLeft else None, root if not isLeft else None)
-        if not root:
-            return None
-        root.left = self.addOneRow(root.left, v, d - 1, True)
-        root.right = self.addOneRow(root.right, v, d - 1, False)
-        return root
-
-class Solution:
-    def addOneRow(self, root: TreeNode, v: int, d: int, isLeft: bool = True) -> TreeNode:
-        return TreeNode(v, root if isLeft else None, root if not isLeft else None) if d==1 else \
-        root.__setattr__('left', self.addOneRow(root.left, v, d - 1, True)) or \
-        root.__setattr__('right', self.addOneRow(root.right, v, d - 1, False)) or root if root else None
-```
-
-* https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/discuss/1685130/Python-Recursive-with-comments
-
-```python
-class Solution1(object):
-    def deleteMiddle(self, head):
-        def f(a, b):
-            if not b:
-                return a.next
-            a.next = f(a.next, b.next.next) if b.next else f(a.next, b.next)
-            return a
-        return f(head, head.next)
-
-class Solution(object):
-    def deleteMiddle(self, head):
-        return (f:=lambda a,b:a.__setattr__('next', f(a.next, b.next.next) if b.next
-            else f(a.next, b.next)) or a if b else a.next)(head, head.next)
-```
 
 #### map
 

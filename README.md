@@ -181,6 +181,24 @@ class Solution:
 
 Use `next` whether you need an oneliner loop with an early exit.
 
+* https://leetcode.com/problems/two-sum
+
+```python
+class Solution1:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        seen = {}
+        for i,x in enumerate(nums):
+            if target-x in seen:
+                return seen[target-x], i
+            seen[x] = i
+        return False
+
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        return (seen:={}) or next((((seen[target-x],i) for i,x in enumerate(nums)
+            if target-x in seen or seen.__setitem__(x,i))), False)
+```
+
 * https://leetcode.com/problems/break-a-palindrome/discuss/1481905/Python-3-one-line
 
 ```python
@@ -196,7 +214,8 @@ class Solution:
         return next((s[:i]+'a'+s[i+1:] for i in range(len(s)//2) if s[i]!='a'), s[:-1] and s[:-1]+'b')
 ```
 
-Use `next` and default value to update the first element that matches a predicate.
+
+Use `next`, element index, default value and conjunction to update the first element that matches a predicate.
 
 ```python
 (i:=next((i+1 for i,x in enumerate(v) if pred(x)), 0)) and v.__setitem__(i-1, val)
@@ -231,7 +250,6 @@ class Solution:
 * https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/discuss/1685130/Python-Recursive-with-comments
 
 ```python
-
 class Solution1(object):
     def deleteMiddle(self, head):
         def f(a, b):

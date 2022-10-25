@@ -108,7 +108,7 @@ def test(classname, text, init=None, check=None):
     for s in text.splitlines():
         if s.startswith('Input:'):
             tests.append([[],[]])
-            if m:=re.split(r'[\, ]*\w+ = ',s):
+            if m:=re.split(r'[\, ]*\w+\s*=\s*',s):
                 for i in range(1, len(m)):
                     tests[-1][0].append(vp(m[i]))
         elif s.startswith('Output:'):

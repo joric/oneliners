@@ -74,14 +74,14 @@ def test(classname, text, init=None, check=None):
         return eval(s.replace('null','None').replace('true','True').replace('false','False'))
 
     def vc(func, name, v):
-        is_seq = lambda v: type(v) in (dict, tuple, set, Generator)
-        to_list = lambda v: v if not is_seq(v) else [to_list(x) for x in v]
+        is_iter = lambda v: type(v) in (tuple, set, Generator)
+        to_list = lambda v: v if not is_iter(v) else [to_list(x) for x in v]
         hint = str(get_type_hints(func).get(name, None))
         if 'ListNode' in hint and type(v)!=ListNode:
             v = ListNode.parse(v)
         elif 'TreeNode' in hint and type(v)!=TreeNode:
             v = TreeNode.parse(v)
-        elif 'List' in hint or is_seq(v):
+        elif 'List' in hint or is_iter(v):
             v = to_list(v)
         elif type(v) is float:
             v = round(v, 5)

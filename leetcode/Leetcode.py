@@ -91,6 +91,8 @@ def test(classname, text, init=None, check=None):
         argc = func.__code__.co_argcount - 1
         args, iargs = args[:argc], args[argc:]
         args = [vc(func, func.__code__.co_varnames[i+1], x) for i,x in enumerate(args)]
+        if init:
+            iargs = [vc(init, init.__code__.co_varnames[i], x) for i,x in enumerate(iargs)]
         return args, iargs
 
     def print_res(passed, res, expected, *args):

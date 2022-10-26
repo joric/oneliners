@@ -28,7 +28,7 @@ class Solution2:
                 i += 1
         return i
 
-class Solution:
+class Solution1:
     def removeDuplicates(self, nums: List[int]) -> int:
         return reduce(lambda i,n:nums.__setitem__(i,n) or i+1 if i<2 or n>nums[i-2] else i, nums, 0)
 

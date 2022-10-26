@@ -87,7 +87,7 @@ def test(classname, text, check=None, init=None):
         elif type(v) is float:
             return round(v, 5)
         if t:=next((t for t in (str,int,bool) if hint==str(t)), None):
-            return t(v) if v else None
+            return t(v) if v is not None else None
         return v
 
     def vcast(func, args, init=None):
@@ -156,6 +156,8 @@ def test(classname, text, check=None, init=None):
         results = []
         for name,args in zip(methods,arglist):
             if name == classname.__name__:
+                func = getattr(classname, dir(classname)[-1])
+                args, _ = vcast(func, args)
                 instance = classname(*args)
                 results.append(None)
             else:

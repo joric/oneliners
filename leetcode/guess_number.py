@@ -73,4 +73,4 @@ Constraints:
 1 <= n <= 2**31 - 1
 1 <= pick <= n
 
-''', init)
+''', init=init)

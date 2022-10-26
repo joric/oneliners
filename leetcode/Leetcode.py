@@ -70,7 +70,7 @@ class ListNode:
         list_node = ListNode(val[0], sub_nodes)
         return list_node
 
-def test(classname, text, init=None, check=None):
+def test(classname, text, check=None, init=None):
     def vp(s):
         return json.loads(s)
 
@@ -128,9 +128,6 @@ def test(classname, text, init=None, check=None):
             init(*iargs)
 
         res = vc(func, 'return', func(*args))
-
-        if type(expected) != type(res):
-            res, expected = map(str, (res, expected))
 
         passed = check(res, expected, *args)
         print_res(passed, res, expected, *args)

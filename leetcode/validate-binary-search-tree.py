@@ -20,9 +20,10 @@ class Solution1:
 class Solution2:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         def f(r,a,b):
-            if not r: return True
-            if a and a.val>=r.val: return False
-            if b and b.val<=r.val: return False
+            if not r:
+                return True
+            if (a and a.val>=r.val) or (b and b.val<=r.val):
+                return False
             return f(r.left,a,r) and f(r.right,r,b)
         return f(root,None,None)
 

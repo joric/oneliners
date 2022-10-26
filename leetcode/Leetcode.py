@@ -156,7 +156,7 @@ def test(classname, text, check=None, init=None):
         results = []
         for name,args in zip(methods,arglist):
             if name == classname.__name__:
-                instance = classname()
+                instance = classname(*args)
                 results.append(None)
             else:
                 func = getattr(instance, name)

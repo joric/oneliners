@@ -12,6 +12,7 @@ from re import *
 import re
 import collections
 import bisect
+import json
 
 class TreeNode(object):
     def __init__(self, x, left=None, right=None):
@@ -71,7 +72,7 @@ class ListNode:
 
 def test(classname, text, init=None, check=None):
     def vp(s):
-        return eval(s.replace('null','None').replace('true','True').replace('false','False'))
+        return json.loads(s)
 
     def vc(func, name, v):
         is_iter = lambda v: type(v) in (tuple, set, Generator)

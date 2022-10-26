@@ -14,7 +14,7 @@ class Solution1:
 
 class Solution:
     def checkSubarraySum(self, nums: List[int], k: int) -> bool:
-        return (m:={0:-1},c:=0) and next((True for i,x in enumerate(nums) if i-m.setdefault(c:=(c+x)%abs(k) if k else c+x or 1,i)>1), False)
+        return (m:={0:-1},c:=0) and next((1 for i,x in enumerate(nums) if i-m.setdefault(c:=(c+x)%abs(k) if k else c+x or 1,i)>1),0)
 
 test(Solution,'''
 523. Continuous Subarray Sum

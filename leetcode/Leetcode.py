@@ -79,13 +79,15 @@ def test(classname, text, init=None, check=None):
         to_list = lambda v: v if not is_iter(v) else [to_list(x) for x in v]
         hint = str(get_type_hints(func).get(name, None))
         if 'ListNode' in hint and type(v)!=ListNode:
-            v = ListNode.parse(v)
+            return ListNode.parse(v)
         elif 'TreeNode' in hint and type(v)!=TreeNode:
-            v = TreeNode.parse(v)
+            return TreeNode.parse(v)
         elif 'List' in hint or is_iter(v):
-            v = to_list(v)
+            return to_list(v)
         elif type(v) is float:
-            v = round(v, 5)
+            return round(v, 5)
+        if t:=next((t for t in (str,int,bool) if hint==str(t)), None):
+            return t(v)
         return v
 
     def vcast(func, args, init=None):

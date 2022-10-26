@@ -1,18 +1,18 @@
 from Leetcode import *
 
 # inorder/prev
-class Solution1:
+class Solution:
     def isValidBST(self, root: TreeNode) -> bool:
-        p = -inf
+        p = None
         def f(r):
             nonlocal p
             if not r:
                 return True
             if not f(r.left):
                 return False
-            if p >= r.val:
+            if p and p.val >= r.val:
                 return False
-            p = r.val
+            p = r
             return f(r.right)
         return f(root)
 
@@ -36,7 +36,7 @@ class Solution4:
     def isValidBST(self, p: Optional[TreeNode], min=-inf, max=inf) -> bool:
         return (not p or (p.val>min and p.val<max) and self.isValidBST(p.left, min, p.val) and self.isValidBST(p.right, p.val, max))
 
-class Solution:
+class Solution5:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         return (f:=lambda p,a,b: not p or p.val>a and p.val<b and f(p.left,a,p.val) and f(p.right,p.val,b))(root,-inf,inf)
 

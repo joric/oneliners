@@ -19,7 +19,7 @@ class Solution3:
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        return (m:={}) or next((((m[target-x],i) for i,x in enumerate(nums) if target-x in m or m.__setitem__(x,i))), False)
+        return next((((m[target-x],i) for i,x in enumerate(nums) if target-x in m or m.__setitem__(x,i))),m:={})
 
 test(Solution, '''
 1. Two Sum
@@ -46,11 +46,6 @@ Example 3:
 
 Input: nums = [3,3], target = 6
 Output: [0,1]
-
-Example 4:
-
-Input: nums = [3,3], target = 5
-Output: False
 
 Constraints:
 

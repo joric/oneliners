@@ -5,7 +5,7 @@ def check(res, expected, nums):
 
 # https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/discuss/968017/Python-binary-search-solution-(upper-bound-aka-bisect_right)
 
-class Solution:
+class Solution1:
     def removeDuplicates(self, nums: List[int]) -> int:
         i = j = k = 0
         while k<len(nums):
@@ -19,7 +19,7 @@ class Solution:
 
 # https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/discuss/27976/3-6-easy-lines-C%2B%2B-Java-Python-Ruby
 
-class Solution:
+class Solution2:
     def removeDuplicates(self, nums):
         i = 0
         for n in nums:
@@ -27,6 +27,10 @@ class Solution:
                 nums[i] = n
                 i += 1
         return i
+
+class Solution:
+    def removeDuplicates(self, nums):
+        return reduce(lambda i,n:nums.__setitem__(i,n) or i+1 if i<2 or n>nums[i-2] else i, nums, 0)
 
 test(Solution,'''
 80. Remove Duplicates from Sorted Array II

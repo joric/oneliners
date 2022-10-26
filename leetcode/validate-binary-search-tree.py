@@ -1,7 +1,7 @@
 from Leetcode import *
 
 # inorder/prev
-class Solution:
+class Solution1:
     def isValidBST(self, root: TreeNode) -> bool:
         p = None
         def f(r):
@@ -36,7 +36,7 @@ class Solution4:
     def isValidBST(self, p: Optional[TreeNode], min=-inf, max=inf) -> bool:
         return (not p or (p.val>min and p.val<max) and self.isValidBST(p.left, min, p.val) and self.isValidBST(p.right, p.val, max))
 
-class Solution5:
+class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         return (f:=lambda p,a,b: not p or p.val>a and p.val<b and f(p.left,a,p.val) and f(p.right,p.val,b))(root,-inf,inf)
 

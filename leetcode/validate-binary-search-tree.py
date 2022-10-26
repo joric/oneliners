@@ -1,33 +1,44 @@
 from Leetcode import *
 
+# inorder/prev
 class Solution1:
     def isValidBST(self, root: TreeNode) -> bool:
-        def f(root, prev):
-            if root:
-                if not f(root.left, prev):
-                    return False
-                if prev and prev.val>=root.val:
-                    return False
-                prev = root
-                return f(root.right, prev)
-            return True
-        return f(root, None)
+        p = -inf
+        def f(r):
+            nonlocal p
+            if not r:
+                return True
+            if not f(r.left):
+                return False
+            if p >= r.val:
+                return False
+            p = r.val
+            return f(r.right)
+        return f(root)
 
+# left/right
 class Solution2:
-    def isValidBST(self, root: TreeNode) -> bool:
-        return (f:=lambda r,p:not r or (False if not f(r.left,p) or (p and p.val>=r.val) else ((p:=r) and f(r.right, p))))(root,None)
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        def f(r,a,b):
+            if not r: return True
+            if a and a.val>=r.val: return False
+            if b and b.val<=r.val: return False
+            return f(r.left,a,r) and f(r.right,r,b)
+        return f(root,None,None)
 
-class Solution:
-    def isValidBST(self, root: TreeNode) -> bool:
-        return (f:=lambda r,p:not r or f(r.left, p) and (not (p and p.val>=r.val)) and f(r.right, p:=r))(root,None)
+class Solution3:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        return (f:=lambda r,a,b:not r or (not ((a and a.val>=r.val) or (b and b.val<=r.val))) and f(r.left,a,r) and f(r.right,r,b))(root,None,None)
 
+# min/max
 class Solution4:
     def isValidBST(self, p: Optional[TreeNode], min=-inf, max=inf) -> bool:
         return (not p or (p.val>min and p.val<max) and self.isValidBST(p.left, min, p.val) and self.isValidBST(p.right, p.val, max))
 
-class Solution5:
+class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         return (f:=lambda p,a,b: not p or p.val>a and p.val<b and f(p.left,a,p.val) and f(p.right,p.val,b))(root,-inf,inf)
+
 
 test(Solution,'''
 98. Validate Binary Search Tree
@@ -61,6 +72,11 @@ Input: root = [5,1,4,null,null,3,6]
 Output: false
 Explanation: The root node's value is 5 but its right child's value is 4.
  
+
+Custom:
+
+Input: root = [1,1]
+Output: false
 
 Constraints:
 

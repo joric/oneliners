@@ -20,7 +20,7 @@ class Solution1:
 # https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/discuss/27976/3-6-easy-lines-C%2B%2B-Java-Python-Ruby
 
 class Solution2:
-    def removeDuplicates(self, nums):
+    def removeDuplicates(self, nums) -> int:
         i = 0
         for n in nums:
             if i < 2 or n > nums[i-2]:
@@ -29,7 +29,7 @@ class Solution2:
         return i
 
 class Solution:
-    def removeDuplicates(self, nums):
+    def removeDuplicates(self, nums) -> int:
         return reduce(lambda i,n:nums.__setitem__(i,n) or i+1 if i<2 or n>nums[i-2] else i, nums, 0)
 
 test(Solution,'''
@@ -66,21 +66,19 @@ for (int i = 0; i < k; i++) {
 }
 If all assertions pass, then your solution will be accepted.
 
- 
-
 Example 1:
 
 Input: nums = [1,1,1,2,2,3]
 Output: [1,1,2,2,3]
 Explanation: Your function should return k = 5, with the first five elements of nums being 1, 1, 2, 2 and 3 respectively.
 It does not matter what you leave beyond the returned k (hence they are underscores).
+
 Example 2:
 
 Input: nums = [0,0,1,1,1,1,2,3,3]
 Output: [0,0,1,1,2,3,3]
 Explanation: Your function should return k = 7, with the first seven elements of nums being 0, 0, 1, 1, 2, 3 and 3 respectively.
 It does not matter what you leave beyond the returned k (hence they are underscores).
- 
 
 Constraints:
 

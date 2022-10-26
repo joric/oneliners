@@ -1,9 +1,12 @@
 from Leetcode import *
 
 class Solution1:
-    def generate(self, numRows: int) -> List[List[int]]:
-        return list(map(lambda i:list(map(lambda x:factorial(i)//factorial(x)//factorial(i-x),range(i+1))),range(numRows)))
-
+    def generate(self, numRows):
+        pascal = [[1]*(i+1) for i in range(numRows)]
+        for i in range(numRows):
+            for j in range(1,i):
+                pascal[i][j] = pascal[i-1][j-1] + pascal[i-1][j]
+        return pascal
 
 class Solution2:
     def generate(self, numRows):
@@ -12,17 +15,14 @@ class Solution2:
                 res += [list(map(lambda x, y: x+y, res[-1] + [0], [0] + res[-1]))]
             return res[:numRows]
 
+
 class Solution3:
-    def generate(self, numRows):
-        return reduce(lambda a,_:a+[list(map(lambda x,y:x+y,a[-1]+[0],[0]+a[-1]))],range(1,numRows),[[1]])[:numRows]
+    def generate(self, numRows: int) -> List[List[int]]:
+        return list(map(lambda i:list(map(lambda x:factorial(i)//factorial(x)//factorial(i-x),range(i+1))),range(numRows)))
 
 class Solution:
     def generate(self, numRows):
-        pascal = [[1]*(i+1) for i in range(numRows)]
-        for i in range(numRows):
-            for j in range(1,i):
-                pascal[i][j] = pascal[i-1][j-1] + pascal[i-1][j]
-        return pascal
+        return reduce(lambda a,_:a+[list(map(lambda x,y:x+y,a[-1]+[0],[0]+a[-1]))],range(1,numRows),[[1]])[:numRows]
 
 test(Solution,'''
 118. Pascal's Triangle

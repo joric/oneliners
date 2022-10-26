@@ -20,7 +20,7 @@ class Solution1:
 # https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/discuss/27976/3-6-easy-lines-C%2B%2B-Java-Python-Ruby
 
 class Solution2:
-    def removeDuplicates(self, nums) -> int:
+    def removeDuplicates(self, nums: List[int]) -> int:
         i = 0
         for n in nums:
             if i < 2 or n > nums[i-2]:
@@ -29,7 +29,7 @@ class Solution2:
         return i
 
 class Solution:
-    def removeDuplicates(self, nums) -> int:
+    def removeDuplicates(self, nums: List[int]) -> int:
         return reduce(lambda i,n:nums.__setitem__(i,n) or i+1 if i<2 or n>nums[i-2] else i, nums, 0)
 
 test(Solution,'''

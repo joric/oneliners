@@ -1,5 +1,8 @@
 from Leetcode import *
 
+# In short, start with mod =0, then we always do mod = (mod+nums[i])%k,
+# if mod repeats, that means between these two mod = x occurences the sum is multiple of k.
+
 class Solution1:
     def checkSubarraySum(self, nums: List[int], k: int) -> bool:
         m, c = {0: -1}, 0
@@ -24,7 +27,8 @@ Medium
 Add to List
 
 Share
-Given an integer array nums and an integer k, return true if nums has a continuous subarray of size at least two whose elements sum up to a multiple of k, or false otherwise.
+Given an integer array nums and an integer k, return true if nums has a continuous subarray of size at least two
+whose elements sum up to a multiple of k, or false otherwise.
 
 An integer x is a multiple of k if there exists an integer n such that x = n * k. 0 is always a multiple of k.
 

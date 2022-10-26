@@ -25,7 +25,7 @@ class LRUCache1:
 class LRUCache:
     def __init__(self, capacity):
         self.capacity = capacity
-        self.dic = collections.OrderedDict()
+        self.dic = OrderedDict()
                 
     def get(self, key):
         if key not in self.dic:

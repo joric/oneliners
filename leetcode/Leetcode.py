@@ -64,7 +64,7 @@ class ListNode:
         return str(a)==str(b)
 
     def parse(val):
-        if len(val)==0:
+        if not val:
             return None
         sub_nodes = ListNode.parse(val[1:])
         list_node = ListNode(val[0], sub_nodes)

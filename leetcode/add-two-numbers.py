@@ -6,14 +6,16 @@ class Solution1:
         root = p = ListNode(0)
         while l1 or l2 or carry:
             v1 = v2 = 0
-            if l1: v1, l1 = l1.val, l1.next
-            if l2: v2, l2 = l2.val, l2.next
+            if l1:
+                v1, l1 = l1.val, l1.next
+            if l2:
+                v2, l2 = l2.val, l2.next
             carry, val = divmod(v1 + v2 + carry, 10)
             p.next = ListNode(val)
             p = p.next
         return root.next
 
-class Solution(object):
+class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         return (l:=lambda n: ListNode(n%10, l(n//10) if n>9 else None))((i:=lambda x: x.val + i(x.next)*10 if x else 0)(l1)+i(l2))
 

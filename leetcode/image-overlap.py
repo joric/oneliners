@@ -1,16 +1,35 @@
 from Leetcode import *
 
-class Solution:
+# https://leetcode.com/problems/image-overlap/discuss/130623/C%2B%2BJavaPython-Straight-Forward
+
+class Solution1:
     def largestOverlap(self, img1: List[List[int]], img2: List[List[int]]) -> int:
         n = len(img1)
         a = [i // n * 50 + i % n for i in range(n * n) if img1[i // n][i % n]]
         b = [i // n * 50 + i % n for i in range(n * n) if img2[i // n][i % n]]
         return max(Counter(i - j for i in a for j in b).values() or [0])
 
-class Solution:
+class Solution2:
     def largestOverlap(self, img1: List[List[int]], img2: List[List[int]]) -> int:
         return (f:=lambda v:(n:=len(v)) and [i//n*50+i%n for i in range(n*n) if v[i//n][i%n]],
             a:=f(img1), b:=f(img2)) and max(Counter(i-j for i in a for j in b).values() or [0])
+
+
+# https://leetcode.com/problems/image-overlap/discuss/832472/Python-by-offset-vector-counting-w-Comment
+
+class Solution3:
+    def largestOverlap(self, A, B):
+        N = len(A)
+        pos_of_1_in_A = [(xi, yi) for xi in range(N) for yi in range(N) if A[xi][yi]]
+        pos_of_1_in_B = [(xi, yi) for xi in range(N) for yi in range(N) if B[xi][yi]]
+        offset_vector_counting = Counter([(x1 - x2, y1 - y2) for (x1, y1) in pos_of_1_in_A for (x2, y2) in pos_of_1_in_B ])
+        return max(offset_vector_counting.values() or [0])
+
+class Solution:
+    def largestOverlap(self, img1: List[List[int]], img2: List[List[int]]) -> int:
+        return (f:=lambda v:(n:=len(v)) and [(i,j) for i in range(n) for j in range(n) if v[i][j]],
+            a:=f(img1), b:=f(img2)) and max(Counter([(x1-x2, y1-y2) for (x1,y1) in a for (x2,y2) in b]).values() or [0])
+
 
 test(Solution, '''
 835. Image Overlap

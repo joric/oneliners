@@ -157,10 +157,16 @@ class Solution2:
             return start,res,h
         return reduce(fn,enumerate(s),[0,0,{}])[1]
 
+class Solution3:
+    def lengthOfLongestSubstring(self, s):
+        return reduce(lambda a,b:(s:=max(a[0],a[2].get(b[1],0)),max(a[1],b[0]-s+1),
+            {**a[2],b[1]:b[0]+1}),enumerate(s),(0,0,{}))[1]
+
+
 class Solution:
     def lengthOfLongestSubstring(self, s):
-        return reduce(lambda a,b:(s:=max(a[0],a[2].get(b[1],0)),max(a[1],b[0]-s+1),\
-            {**a[2],b[1]:b[0]+1}),enumerate(s),(0,0,{}))[1]
+        return reduce(lambda a,b:(lambda t,r,h,i,c:(s:=max(t,h.get(c,0)),max(r,i-s+1),
+            {**h,c:i+1}))(*a,*b),enumerate(s),(0,0,{}))[1]
 ```
 
 Another example:

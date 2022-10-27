@@ -1,5 +1,28 @@
 from Leetcode import *
 
+# https://leetcode.com/problems/image-overlap/discuss/832150/Python-2-lines-using-convolutions-explained
+
+from scipy.ndimage import convolve
+import numpy as np
+
+class Solution:
+    def largestOverlap(self, A, B):
+        B = np.pad(B, len(A), mode='constant', constant_values=(0, 0))
+        return np.amax(convolve(B, np.flip(np.flip(A,1),0), mode='constant'))
+
+# https://leetcode.com/problems/image-overlap/discuss/199638/Python-using-Fast-Fourier-Transform-O(N2-log-N)
+
+import numpy as np
+
+class Solution:
+    def largestOverlap(self, A, B):
+        n = len(A)
+        A1 = np.pad(A, [(0, n), (0, n)], mode='constant', constant_values=0)
+        B1 = np.pad(B, [(0, n), (0, n)], mode='constant', constant_values=0)
+        A2 = np.fft.fft2(A1)
+        B2 = np.fft.ifft2(B1)
+        return int(np.round(np.max(np.abs(np.fft.fft2(A2 * B2)))))
+
 # https://leetcode.com/problems/image-overlap/discuss/130623/C%2B%2BJavaPython-Straight-Forward
 
 class Solution1:

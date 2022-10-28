@@ -340,8 +340,8 @@ class Solution:
 
 ```python
 class Solution:
-    def maxAreaOfIsland(self, grid):
-        return sum(map(a:=lambda z:g.pop(z, 0) and max(1,sum(a(z + 1j**k) for k in range(4))),
+    def numIslands(self, grid):
+        return sum(map(a:=lambda z:g.pop(z, 0) and bool(1+sum(a(z + 1j**k) for k in range(4))),
             set(g:= {i + j*1j:int(val) for i, row in enumerate(grid) for j, val in enumerate(row)})))
 ```
 

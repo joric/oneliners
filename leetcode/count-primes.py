@@ -1,17 +1,12 @@
 from lc import *
 
-class Solution1:
-    def countPrimes(self, n: int) -> int:
-        nums = [False, False] + [True] * (n - 2)
-        for i in range(2, int(sqrt(n))+1):
-            if nums[i]:
-                for j in range(i*i, n, i):
-                    nums[j] = False
-        return sum(nums)
-
 class Solution:
-    def countPrimes(self, n: int) -> int:
-        return sum(reduce(lambda a,i:([a.__setitem__(j,0) for j in range(i*i,n,i) if a[i]],a)[-1], range(2,int(sqrt(n))+1),[0,0]+[1]*(n-2)))
+    def countPrimes(self, n):
+        a = [0,0]+[1]*(n-2)
+        for i in range(2,int(n**0.5)+1):
+            if a[i]:
+                a[i*i:n:i] = [0]*len(a[i*i:n:i])
+        return sum(a)
 
 test('''
 204. Count Primes

@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution1:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
@@ -21,7 +21,7 @@ class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         return next((((m[target-x],i) for i,x in enumerate(nums) if target-x in m or m.__setitem__(x,i))),m:={})
 
-test(Solution, '''
+test('''
 1. Two Sum
 Easy
 

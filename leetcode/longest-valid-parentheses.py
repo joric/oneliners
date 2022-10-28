@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution1:
     def longestValidParentheses(self, s: str) -> int:
@@ -23,7 +23,7 @@ class Solution:
     def longestValidParentheses(self, s: str) -> int:
         return reduce(lambda a,i:(a[0],a[1]+[i]) if s[i]=='(' else ((a[0],[i]) if len(a[1])==1 else (max(a[0],i-a[1][-2]),a[1][:-1])),range(len(s)),(0,[-1]))[0]
 
-test(Solution,'''
+test('''
 Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) parentheses substring.
 
  

@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 # https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/2555929/python-oneliner-dfs-with-a-cache-decorator
 
@@ -21,7 +21,7 @@ class Solution:
     def maxProfit(self, k: int, prices: List[int]) -> int:
         return (f:=cache(lambda i,k,s:0 if k==0 or i==len(prices) else max(f(i+1,k-s,1-s)+prices[i]*(2*s-1),f(i+1,k,s))))(0,k,0)
 
-test(Solution,'''
+test('''
 188. Best Time to Buy and Sell Stock IV
 Hard
 

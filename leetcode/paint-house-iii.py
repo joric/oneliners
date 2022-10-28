@@ -1,6 +1,4 @@
-#!/usr/bin/env python3
-
-from Leetcode import *
+from lc import *
 
 class Solution:
     def minCost(self, houses: List[int], cost: List[List[int]], m: int, n: int, target: int) -> int:
@@ -15,7 +13,7 @@ class Solution:
         ret = dfs(0, target, -1)
         return ret if ret < float('inf') else -1
 
-test(Solution,'''
+test('''
 There is a row of m houses in a small city, each house must be painted with one of the n colors (labeled from 1 to n), some houses that have been painted last summer should not be painted again.
 
 A neighborhood is a maximal group of continuous houses that are painted with the same color.

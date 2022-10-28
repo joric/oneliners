@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 # In short, start with mod =0, then we always do mod = (mod+nums[i])%k,
 # if mod repeats, that means between these two mod = x occurences the sum is multiple of k.
@@ -16,7 +16,7 @@ class Solution:
     def checkSubarraySum(self, nums: List[int], k: int) -> bool:
         return next((1 for i,x in enumerate(nums) if i-m.setdefault(c:=(c+x)%abs(k) if k else c+x or 1,i)>1),(m:={0:-1}) and (c:=0))
 
-test(Solution,'''
+test('''
 523. Continuous Subarray Sum
 Medium
 

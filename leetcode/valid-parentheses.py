@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution1:
     def isValid(self, s: str) -> bool:
@@ -56,7 +56,7 @@ class Solution:
     def isValid(self, s: str) -> bool:
         return s=='' if s==(s:=s.replace('()','').replace('{}','').replace('[]','')) else self.isValid(s)
 
-test(Solution,'''
+test('''
 20. Valid Parentheses
 
 Easy

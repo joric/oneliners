@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution1:
     def maximumUnits(self, boxTypes: List[List[int]], truckSize: int) -> int:
@@ -44,7 +44,7 @@ class Solution:
     def maximumUnits(self, b: List[List[int]], t: int) -> int:
         return sum(sorted(u for n, u in b for u in [u] * n)[-t:])
 
-test(Solution,'''
+test('''
 
 1710. Maximum Units on a Truck
 Easy

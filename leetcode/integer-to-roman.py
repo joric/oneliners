@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution1:
     def intToRoman(self, num: int) -> str:
@@ -37,7 +37,7 @@ class Solution:
             lambda i,x,r: f(*a(i,x,r)) if x else (i,x,r))(0,num,'')[-1]
 
 
-test(Solution, '''
+test('''
 
 12. Integer to Roman
 Medium

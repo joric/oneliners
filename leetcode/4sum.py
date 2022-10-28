@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
@@ -33,7 +33,7 @@ class Solution:
         nums.sort()
         return kSum(nums, target, 4)
 
-test(Solution,'''
+test('''
 Example 1:
 
 Input: nums = [1,0,-1,0,-2,2], target = 0

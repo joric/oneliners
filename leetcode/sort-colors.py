@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 def check(res, expected, nums):
     return nums==sorted(nums)
@@ -60,7 +60,7 @@ class Solution:
     def sortColors(self, nums: List[int]) -> None:
         (s:=lambda a,x,y:(t:=a[x],a.__setitem__(x,a[y]),a.__setitem__(y,t),a)[3],f:=lambda a,i,j,k:(f(s(a,i,j),i+1,j+1,k) if a[j]==0 else f(a,i,j+1,k) if a[j]==1 else f(s(a,j,k),i,j,k-1)) if i<=j<=k else None)[1](nums,0,0,len(nums)-1)
 
-test(Solution, '''
+test('''
 75. Sort Colors
 Medium
 

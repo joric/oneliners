@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution0:
     def solveNQueens(self, n):
@@ -24,7 +24,7 @@ class Solution:
         return[['.'*v+'Q'+'.'*(n-v-1)for v in c]for c in permutations(range(n))if(len(set(x for i,v in enumerate(c)for x in(i+v+n,i-v)))==2*n)]
 
 
-test(Solution,'''
+test('''
 51. N-Queens
 
 Hard

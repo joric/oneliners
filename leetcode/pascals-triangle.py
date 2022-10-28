@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution1:
     def generate(self, numRows):
@@ -24,7 +24,7 @@ class Solution:
     def generate(self, numRows):
         return reduce(lambda a,_:a+[list(map(lambda x,y:x+y,a[-1]+[0],[0]+a[-1]))],range(1,numRows),[[1]])[:numRows]
 
-test(Solution,'''
+test('''
 118. Pascal's Triangle
 Easy
 

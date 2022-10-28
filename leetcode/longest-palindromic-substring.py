@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 def check(res, expected, s):
     p = []
@@ -39,7 +39,7 @@ class Solution:
         maxLen, centerIndex = max((n, i) for i, n in enumerate(P))
         return s[(centerIndex  - maxLen)//2: (centerIndex  + maxLen)//2]
 
-test(Solution,'''
+test('''
 5. Longest Palindromic Substring
 
 Medium

@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 # https://www.hackerrank.com/contests/knitopencontest/challenges/rain-harvester/problem
 
@@ -42,7 +42,7 @@ class Solution:
     def trap(self, v: List[int]) -> int:
         return sum([max(0,min(list(accumulate(v, max))[i],list(accumulate(v[::-1], max))[::-1][i])-v[i]) for i in range(len(v))])
 
-test(Solution,'''
+test('''
 42. Trapping Rain Water
 
 Hard

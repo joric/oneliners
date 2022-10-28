@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class LRUCache1:
     def __init__(self, capacity):
@@ -40,7 +40,7 @@ class LRUCache:
         if len(self.dic) > self.capacity:
             self.dic.popitem(last=False)
 
-test(LRUCache,'''
+test('''
 146. LRU Cache
 Medium
 
@@ -90,4 +90,4 @@ Constraints:
 0 <= value <= 10^5
 At most 2 * 10^5 calls will be made to get and put.
 
-''')
+''', LRUCache)

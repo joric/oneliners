@@ -1,10 +1,10 @@
-from Leetcode import *
+from lc import *
 
 class Solution:
     def maxDepth(self, s: str) -> int:
         return max(accumulate(filter(None, map({"(": 1, ")": -1}.get, s))), default=0)
 
-test(Solution,'''
+test('''
 1614. Maximum Nesting Depth of the Parentheses
 
 Easy

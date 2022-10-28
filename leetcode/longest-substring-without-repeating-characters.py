@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution1(object):
     def lengthOfLongestSubstring(self, s):
@@ -56,7 +56,7 @@ class Solution:
         return max(map(len,accumulate(s,lambda x,y:x[y in x and 1+x.index(y):]+y,initial='')))
 
 
-test(Solution,'''
+test('''
 3. Longest Substring Without Repeating Characters
 Medium
 

@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 def init(n):
     global p
@@ -38,7 +38,7 @@ class Solution:
     def guessNumber(self, n: int) -> int:
         return bisect_left(range(n), 0, key=lambda num: -guess(num))
 
-test(Solution,'''
+test('''
 
 We are playing the Guess Game. The game is as follows:
 

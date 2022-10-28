@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution1:
     def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:

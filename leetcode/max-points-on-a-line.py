@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution1:
     def maxPoints(self, points: List[List[int]]) -> int:
@@ -30,7 +30,7 @@ class Solution:
         return 1 + reduce(lambda r,x: max(list(reduce(lambda c,b:c+Counter([(x[1][1]-b[1])/(x[1][0]-b[0])
             if x[1][0]-b[0] else inf]), points[x[0]+1:],Counter()).values())+[r]), enumerate(points), 0)
 
-test(Solution,'''
+test('''
 149. Max Points on a Line
 Hard
 

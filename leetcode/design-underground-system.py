@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 # this is originally my entry for the weekly contest 182
 # https://leetcode.com/contest/weekly-contest-182/problems/design-underground-system/
@@ -31,7 +31,7 @@ class UndergroundSystem:
         return t/count
 
 
-test(UndergroundSystem,'''
+test('''
 1396. Design Underground System
 Medium
 
@@ -112,4 +112,4 @@ Constraints:
 All strings consist of uppercase and lowercase English letters and digits.
 There will be at most 2 * 104 calls in total to checkIn, checkOut, and getAverageTime.
 Answers within 10-5 of the actual value will be accepted.
-''')
+''', UndergroundSystem)

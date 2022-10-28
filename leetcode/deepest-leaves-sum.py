@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution1:
     def deepestLeavesSum(self, root: TreeNode) -> int:
@@ -29,7 +29,7 @@ class Solution:
     def deepestLeavesSum(self, root: TreeNode) -> int:
         return (f:=lambda a: f(b) if (b:=[c for n in a for c in (n.left,n.right) if c]) else sum(n.val for n in a))([root])
 
-test(Solution,'''
+test('''
 Example 1:
 
 Input: root = [1,2,3,4,5,null,6,7,null,null,null,null,8]

@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 def check(res, expected, strs):
     u = lambda v: sorted(list(map(sorted,v)))
@@ -8,7 +8,7 @@ class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         return [list(v) for k,v in groupby(sorted(strs,key=sorted),sorted)]
 
-test(Solution,'''
+test('''
 49. Group Anagrams
 Medium
 

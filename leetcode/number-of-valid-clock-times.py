@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution1:
     def countTime(self, time: str) -> int:
@@ -12,7 +12,7 @@ class Solution:
     def countTime(self, time: str) -> int:
         return sum(bool(fullmatch(time.replace('?', '.'), f'{h:02}:{m:02}')) for h in range(24) for m in range(60))
 
-test(Solution,'''
+test('''
 2437. Number of Valid Clock Times
 Easy
 

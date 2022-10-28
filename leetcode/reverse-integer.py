@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution1:
     def reverse(self, x: int) -> int:
@@ -39,7 +39,7 @@ class Solution:
         return ((x>0)-(x<0))*min(2**31,(f:=lambda r,x:f(r*10+x%10,x//10) if x else r)(0,abs(x)))
 
 
-test(Solution,'''
+test('''
 7. Reverse Integer
 
 Medium

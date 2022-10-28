@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution1:
     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
@@ -28,7 +28,7 @@ class Solution:
     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
         return sorted(nsmallest(k, arr, key=lambda n:(abs(n-x),n)))
 
-test(Solution,'''
+test('''
 658. Find K Closest Elements
 
 Medium

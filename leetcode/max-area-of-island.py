@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from Leetcode import *
+from lc import *
 
 class Solution1:
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
@@ -30,7 +30,7 @@ class Solution:
             a:=lambda z: g.pop(z, 0) and 1 + sum(a(z + 1j**k) for k in range(4)))[1], set(g)))
 
 
-test(Solution,'''
+test('''
 You are given an m x n binary matrix grid. An island is a group of 1's (representing land) connected 4-directionally (horizontal or vertical.) You may assume all four edges of the grid are surrounded by water.
 
 The area of an island is the number of cells with a value 1 in the island.

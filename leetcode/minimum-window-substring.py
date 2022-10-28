@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution1:
     def minWindow(self, s: str, t: str) -> str:
@@ -26,7 +26,7 @@ class Solution:
                 a[s[q.popleft()]] -= 1
         return r
 
-test(Solution,'''
+test('''
 76. Minimum Window Substring
 
 Hard

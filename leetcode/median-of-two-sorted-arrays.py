@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
@@ -9,7 +9,7 @@ class Solution:
         nextfew = sorted(a[i:i+2] + b[after-i:after-i+2])
         return (nextfew[0] + nextfew[1 - (m+n)%2]) / 2.0
 
-test(Solution, '''
+test('''
 Example 1:
 
 Input: nums1 = [1,3], nums2 = [2]

@@ -1,6 +1,4 @@
-#!/usr/bin/env python3
-
-from Leetcode import *
+from lc import *
 
 class Solution1:
     def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
@@ -29,7 +27,7 @@ class Solution(object):
         return (f:=lambda a,b:a.__setattr__('next', f(a.next, b.next.next) if b.next
             else f(a.next, b.next)) or a if b else a.next)(head, head.next)
 
-test(Solution,'''
+test('''
 You are given the head of a linked list. Delete the middle node, and return the head of the modified linked list.
 
 The middle node of a linked list of size n is the ⌊n / 2⌋th node from the start using 0-based indexing, where ⌊x⌋ denotes the largest integer less than or equal to x.

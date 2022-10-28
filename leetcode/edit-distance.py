@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution1:
     def minDistance(self, a: str, b: str) -> int:
@@ -31,7 +31,7 @@ class Solution:
     def minDistance(self, word1: str, word2: str) -> int:
         return (f:=cache(lambda a,b:(len(a) or len(b)) if (not len(a) or not len(b)) else f(a[1:], b[1:]) if a[0]==b[0] else 1 + min(f(a, b[1:]), f(a[1:], b), f(a[1:], b[1:]))))(word1, word2)
 
-test(Solution,'''
+test('''
 72. Edit Distance
 
 Hard

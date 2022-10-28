@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution1:
     def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
@@ -16,7 +16,7 @@ class Solution:
     def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
         return len(rooms)==len((f:=lambda q,v:q and f(q|(n:=set(rooms[q.pop()])-v),v|n) or v)({0},{0}))
 
-test(Solution,'''
+test('''
 841. Keys and Rooms
 
 Medium

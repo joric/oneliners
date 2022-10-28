@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 def check(res, expected, m):
     return sorted(res)==sorted(expected)
@@ -21,7 +21,7 @@ class Solution:
             [list(map(f,(0,h-1),(x,x),(p,a))) for x in range(w)],[list(map(f,(y,y),(0,w-1),(p,a))) for y in range(h)],p&a)[-1]
 
 
-test(Solution,'''
+test('''
 
 417. Pacific Atlantic Water Flow
 Medium

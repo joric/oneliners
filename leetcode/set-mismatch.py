@@ -1,10 +1,10 @@
-from Leetcode import *
+from lc import *
 
 class Solution:
     def findErrorNums(self, nums: List[int]) -> List[int]:
         return sum(nums) - sum(set(nums)), sum(range(1, len(nums)+1)) - sum(set(nums))
 
-test(Solution,'''
+test('''
 
 645. Set Mismatch
 Easy

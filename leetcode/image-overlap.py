@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 # https://leetcode.com/problems/image-overlap/discuss/832150/Python-2-lines-using-convolutions-explained
 
@@ -58,7 +58,7 @@ class Solution(object):
             if v[i//n][i%n]]) and max(Counter(i-j for i in f(a) for j in f(b)).values() or [0])
 
 
-test(Solution, '''
+test('''
 835. Image Overlap
 Medium
 

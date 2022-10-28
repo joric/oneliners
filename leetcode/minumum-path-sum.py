@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution1:
     def minPathSum(self, grid: List[List[int]]) -> int:
@@ -66,7 +66,7 @@ class Solution:
         return reduce(lambda a,b:grid[b[0]].__setitem__(b[1], grid[b[0]][b[1]]+(min(a, grid[b[0]-1][b[1]]) if b[0] else a)) or grid[b[0]][b[1]], product(range(len(grid)), range(len(grid[0]))), 0)
 
 
-test(Solution,'''
+test('''
 64. Minimum Path Sum
 
 Medium

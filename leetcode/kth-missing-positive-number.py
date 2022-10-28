@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution1:
     def findKthPositive(self, arr: List[int], k: int) -> int:
@@ -15,7 +15,7 @@ class Solution:
     def findKthPositive(self, arr: List[int], k: int) -> int:
         return bisect_left(range(len(arr)), k, key=lambda i:arr[i]-i-1) + k
 
-test(Solution,'''
+test('''
 1539. Kth Missing Positive Number
 
 Easy

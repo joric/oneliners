@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 def check(res, expected, nums):
     return nums[:res]==expected
@@ -38,7 +38,7 @@ class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         [[nums.remove(num) for i in range(nums.count(num)-2)] for num in nums]
 
-test(Solution,'''
+test('''
 80. Remove Duplicates from Sorted Array II
 Medium
 

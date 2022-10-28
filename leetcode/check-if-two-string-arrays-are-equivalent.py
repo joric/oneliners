@@ -1,10 +1,10 @@
-from Leetcode import *
+from lc import *
 
 class Solution:
     def arrayStringsAreEqual(self, word1: List[str], word2: List[str]) -> bool:
         return all(a==b for a,b in zip_longest(chain(*word1), chain(*word2)))
 
-test(Solution,'''
+test('''
 1662. Check If Two String Arrays are Equivalent
 Easy
 

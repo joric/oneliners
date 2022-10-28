@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution1:
     def romanToInt(self, s: str) -> int:
@@ -16,7 +16,7 @@ class Solution:
     def romanToInt(self, s: str) -> int:
         return reduce(lambda a,c:(a[0]-d[c] if d[c]<d[a[1]] else a[0]+d[c], c), s[::-1], (0,'I',d:={'M':1000,'D':500,'C':100,'L':50,'X':10,'V':5,'I':1}))[0]
 
-test(Solution,'''
+test('''
 13. Roman to Integer
 
 Easy

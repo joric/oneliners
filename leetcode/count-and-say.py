@@ -1,10 +1,10 @@
-from Leetcode import *
+from lc import *
 
 class Solution:
    def countAndSay(self, n: int) -> str:
        return reduce(lambda a,i:''.join(str(len(list(v)))+str(k) for k,v in groupby(a)),range(1,n),'1')
 
-test(Solution,'''
+test('''
 
 The count-and-say sequence is a sequence of digit strings defined by the recursive formula:
 

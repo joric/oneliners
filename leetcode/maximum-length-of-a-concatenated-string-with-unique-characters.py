@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution1:
     def maxLength(self, arr: List[str]) -> int:
@@ -26,7 +26,7 @@ class Solution:
     def maxLength(self, arr: List[str]) -> int:
         return max(map(len,reduce(lambda p,s:p|{s+x for x in p if not (set(s)&set(x))},filter(lambda s:len(set(s))==len(s),arr),{''})))
 
-test(Solution,'''
+test('''
 1239. Maximum Length of a Concatenated String with Unique Characters
 Medium
 

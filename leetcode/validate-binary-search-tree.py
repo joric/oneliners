@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 # inorder/prev
 class Solution1:
@@ -41,7 +41,7 @@ class Solution:
         return (f:=lambda p,a,b: not p or p.val>a and p.val<b and f(p.left,a,p.val) and f(p.right,p.val,b))(root,-inf,inf)
 
 
-test(Solution,'''
+test('''
 98. Validate Binary Search Tree
 Medium
 

@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution1:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
@@ -27,7 +27,7 @@ class Solution:
         return nsmallest(k, (f:=Counter(words)).keys(), key=lambda x:(-f[x],x))
 
 
-test(Solution,'''
+test('''
 692. Top K Frequent Words
 
 Medium

@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution1:
     def maximumScore(self, n: List[int], m: List[int]) -> int:
@@ -22,7 +22,7 @@ class Solution:
     def maximumScore(self, n: List[int], m: List[int]) -> int:
         return (f:=cache(lambda i,j: i<len(m) and max(m[i]*n[j]+f(i+1, j+1), m[i]*n[len(n)-1-(i-j)]+f(i+1, j))))(0,0)
 
-test(Solution,'''
+test('''
 1770. Maximum Score from Performing Multiplication Operations
 Hard
 

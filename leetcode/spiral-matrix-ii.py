@@ -1,4 +1,4 @@
-from Leetcode import *
+from lc import *
 
 class Solution2:
     def generateMatrix(self, n):
@@ -47,7 +47,7 @@ class Solution:
     def generateMatrix(self, n):
         return (f:=lambda l,w,b:l*[[]]and[list(range(b,b+l))]+list(map(list,zip(*f(w-1,l,b+l)[::-1]))))(n,n,1)
 
-test(Solution,'''
+test('''
 59. Spiral Matrix II
 
 Medium

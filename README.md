@@ -230,6 +230,25 @@ class Solution(object):
             else f(a.next, b.next)) or a if b else a.next)(head, head.next)
 ```
 
+Note that `__setitem__` also supports slices:
+
+* https://leetcode.com/problems/count-primes/discuss/111420/Python3-solution-using-Sieve-of-Eratosthenes-time-is-O(n)
+
+```python
+class Solution:
+    def countPrimes(self, n):
+        a = [0,0]+[1]*(n-2)
+        for i in range(2,int(n**0.5)+1):
+            if a[i]:
+                a[i*i:n:i] = [0]*len(a[i*i:n:i])
+        return sum(a)
+
+class Solution:
+    def countPrimes(self, n):
+        return sum(reduce(lambda a,i:a.__setitem__(slice(i*i,n,i),[0]*len(a[i*i:n:i])) or a,
+            range(2,int(n**0.5)+1), [0,0]+[1]*(n-2)))
+```
+
 #### next
 
 Use `next` whether you need an oneliner loop with an early exit.

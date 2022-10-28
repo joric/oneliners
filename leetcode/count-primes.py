@@ -12,7 +12,7 @@ class Solution1:
 
 class Solution:
     def countPrimes(self, n):
-        return sum(reduce(lambda a,i:a.__setitem__(slice(i*i,n,i),[0]*len(a[i*i:n:i])) or a,range(2,int(n**0.5)+1), [0,0]+[1]*(n-2)))
+        return sum(reduce(lambda a,i:a.__setitem__(slice(i*i,n,i),[0]*len(a[i*i:n:i])) or a, range(2,int(n**0.5)+1), [0,0]+[1]*(n-2)))
 
 test('''
 204. Count Primes

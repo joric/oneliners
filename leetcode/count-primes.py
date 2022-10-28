@@ -1,12 +1,18 @@
 from lc import *
 
-class Solution:
+# https://leetcode.com/problems/count-primes/discuss/111420/Python3-solution-using-Sieve-of-Eratosthenes-time-is-O(n)
+
+class Solution1:
     def countPrimes(self, n):
         a = [0,0]+[1]*(n-2)
         for i in range(2,int(n**0.5)+1):
             if a[i]:
                 a[i*i:n:i] = [0]*len(a[i*i:n:i])
         return sum(a)
+
+class Solution:
+    def countPrimes(self, n):
+        return sum(reduce(lambda a,i:a.__setitem__(slice(i*i,n,i),[0]*len(a[i*i:n:i])) or a,range(2,int(n**0.5)+1), [0,0]+[1]*(n-2)))
 
 test('''
 204. Count Primes

@@ -26,9 +26,8 @@ class Solution2:
 
 class Solution:
     def maxAreaOfIsland(self, grid):
-        return max(map((g:= {i + j*1j: val for i, row in enumerate(grid) for j, val in enumerate(row)},
-            a:=lambda z: g.pop(z, 0) and 1 + sum(a(z + 1j**k) for k in range(4)))[1], set(g)))
-
+        return max(map(a:=lambda z: g.pop(z, 0) and 1 + sum(a(z + 1j**k) for k in range(4)),
+            set(g:= {i + j*1j: val for i, row in enumerate(grid) for j, val in enumerate(row)})))
 
 test('''
 You are given an m x n binary matrix grid. An island is a group of 1's (representing land) connected 4-directionally (horizontal or vertical.) You may assume all four edges of the grid are surrounded by water.

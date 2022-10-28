@@ -114,16 +114,23 @@ def test(text, classname=None, check=None, init=None):
     # Solution tests
 
     tests = []
+    t = 0
     for s in text.splitlines():
         if s.startswith('Input:'):
             tests.append([[],[]])
             if m:=re.split(r'[\, ]*\w+\s*=\s*',s):
                 for i in range(1, len(m)):
-                    tests[-1][0].append(vp(m[i]))
+                    tests[-1][0].append(m[i])
+                    t = 1
         elif s.startswith('Output:'):
+            t = 0
             tests[-1][1] = vp(s[8:])
+        elif t == 1:
+            tests[-1][0][-1] += s
 
     for args, expected in tests:
+        args = list(map(vp, args))
+
         func = getattr(classname(), dir(classname)[-1])
 
         args, iargs = vcast(func, args, init)

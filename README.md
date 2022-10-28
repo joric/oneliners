@@ -332,8 +332,16 @@ class Solution1:
 
 class Solution:
     def maxAreaOfIsland(self, grid):
-        return max(map((g:= {i + j*1j: val for i, row in enumerate(grid) for j, val in enumerate(row)},
-            a:=lambda z: g.pop(z, 0) and 1 + sum(a(z + 1j**k) for k in range(4)))[1], set(g)))
+        return max(map(a:=lambda z: g.pop(z, 0) and 1 + sum(a(z + 1j**k) for k in range(4)),
+            set(g:= {i + j*1j: val for i, row in enumerate(grid) for j, val in enumerate(row)})))
+```
 
+* https://leetcode.com/problems/number-of-islands
+
+```python
+class Solution:
+    def maxAreaOfIsland(self, grid):
+        return sum(map(a:=lambda z: g.pop(z, 0) and max(1, sum(a(z + 1j**k) for k in range(4))),
+            set(g:= {i + j*1j:int(val) for i, row in enumerate(grid) for j, val in enumerate(row)})))
 ```
 

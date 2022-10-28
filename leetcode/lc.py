@@ -9,6 +9,7 @@ from heapq import *
 from bisect import *
 from random import *
 from re import *
+from operator import *
 import re
 import collections
 import bisect

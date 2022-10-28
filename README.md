@@ -297,7 +297,7 @@ Use `next`, element index, default value and conjunction to update the first ele
 
 #### map
 
-You can use `map` to traverse through adjacent cells.
+You can use `map` to traverse through adjacent cells. Note you need a function or `[]` to run list comprehension.
 
 * https://leetcode.com/problems/max-area-of-island
 

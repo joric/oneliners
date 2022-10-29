@@ -12,6 +12,7 @@ from re import *
 from operator import *
 import re
 import collections
+import itertools
 import bisect
 import json
 import importlib

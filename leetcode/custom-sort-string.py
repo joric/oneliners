@@ -1,7 +1,7 @@
 from lc import *
 
 def check(res, expected, order, s):
-    return (o:=[order.index(c) for c in s if c in order]) == sorted(o)[::-1]
+    return (o:=[order.index(c) for c in res if c in order]) == sorted(o)
 
 class Solution:
     def customSortString(self, order: str, s: str) -> str:

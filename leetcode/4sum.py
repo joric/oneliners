@@ -29,6 +29,18 @@ class Solution2:
                             r.add(tuple(p))
         return r
 
+class Solution:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        r,c = set(), Counter(nums)
+        for v in (d:=reduce(lambda p,a:p[sum(a)].add(a) or p,combinations(nums, 2), defaultdict(set))):
+            if target-v in d:
+                for p1 in d[v]:
+                    for p2 in d[target-v]:
+                        p = sorted(p1+p2)
+                        if tuple(p) not in r and all(p.count(n)<=c[n] for n in p):
+                            r.add(tuple(p))
+        return r
+
 test('''
 
 18. 4Sum

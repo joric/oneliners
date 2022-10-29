@@ -24,9 +24,9 @@ class Solution2:
             if target-v in d:
                 for p1 in d[v]:
                     for p2 in d[target-v]:
-                        p = sorted(p1+p2)
-                        if tuple(p) not in r and all(p.count(n)<=c[n] for n in p):
-                            r.add(tuple(p))
+                        p = tuple(sorted(p1+p2))
+                        if p not in r and all(p.count(n)<=c[n] for n in p):
+                            r.add(p)
         return r
 
 class Solution3:
@@ -39,9 +39,9 @@ class Solution3:
 
 class Solution:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
-        return (c:=Counter(nums),d:=reduce(lambda d,t:d[sum(t)].add(t) or d, combinations(nums, 2),
+        return (c:=Counter(nums),d:=reduce(lambda d,t: d[sum(t)].add(t) or d, combinations(nums, 2),
             defaultdict(set))) and reduce(lambda r,v: reduce(lambda r,p: (p not in r and all(p.count(n)<=c[n] for n in p))
-            and r.add(p) or r, (tuple(sorted(a+b)) for a in d[v] for b in d[target-v]), r), (v for v in d if target-v in d), set())
+            and r.add(p) or r, (tuple(sorted(a+b)) for a in d[v] for b in d[target-v]), r), (v for v in d if target-v in d),set())
 
 test('''
 

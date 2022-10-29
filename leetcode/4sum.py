@@ -4,21 +4,20 @@ def check(res, expected, nums, target):
     return (u:=lambda v: sorted(list(map(sorted,v))))(res)==u(expected)
 
 class Solution:
-    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
-        nums.sort()
-        n, r = len(nums), []
+    def fourSum(self, v: List[int], target: int) -> List[List[int]]:
+        v.sort()
+        n, r = len(v), []
         for i in range(n):
             for j in range(i + 1, n):
-                goal = target - nums[i] - nums[j]
+                d = target - v[i] - v[j]
                 a, b = j + 1, n - 1
-
                 while a < b:
-                    if nums[a] + nums[b] < goal:
+                    if v[a] + v[b] < d:
                         a += 1
-                    elif nums[a] + nums[b] > goal:
+                    elif v[a] + v[b] > d:
                         b -= 1
                     else:
-                        r.append((nums[i], nums[j], nums[a], nums[b]))
+                        r.append((v[i], v[j], v[a], v[b]))
                         a += 1
                         b -= 1
         return set(r)

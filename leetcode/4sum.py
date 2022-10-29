@@ -18,16 +18,17 @@ class Solution1:
 class Solution2:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
         r,c,d = set(), Counter(nums), defaultdict(set)
-        for a,b in combinations(nums, 2):
-            d[a+b].add((a,b))
+        for t in combinations(nums, 2):
+            d[sum(t)].add(t)
         for v in d:
             if target-v in d:
-                for p1 in d[v]:
-                    for p2 in d[target-v]:
-                        p = tuple(sorted(p1+p2))
+                for a in d[v]:
+                    for b in d[target-v]:
+                        p = tuple(sorted(a+b))
                         if p not in r and all(p.count(n)<=c[n] for n in p):
                             r.add(p)
         return r
+
 
 class Solution3:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
@@ -37,11 +38,19 @@ class Solution3:
         f = lambda r,v: reduce(k, (tuple(sorted(a+b)) for a in d[v] for b in d[target-v]), r)
         return reduce(f, (v for v in d if target-v in d), set())
 
+class Solution4:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        c = Counter(nums)
+        d = reduce(lambda d,t:d[sum(t)].add(t) or d, combinations(nums, 2), defaultdict(set))
+        k = lambda r,p: (p not in r and all(p.count(n)<=c[n] for n in p)) and r.add(p) or r
+        return reduce(k, (tuple(sorted(a+b)) for v in d for a in d[v] for b in d.get(target-v,{})), set())
+
 class Solution:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
         return (c:=Counter(nums),d:=reduce(lambda d,t: d[sum(t)].add(t) or d, combinations(nums, 2),
-            defaultdict(set))) and reduce(lambda r,v: reduce(lambda r,p: (p not in r and all(p.count(n)<=c[n] for n in p))
-            and r.add(p) or r, (tuple(sorted(a+b)) for a in d[v] for b in d[target-v]), r), (v for v in d if target-v in d),set())
+            defaultdict(set))) and reduce(lambda r,p: (p not in r and all(p.count(n)<=c[n] for n in p))
+            and r.add(p) or r, (tuple(sorted(a+b)) for v in d for a in d[v] for b in d.get(target-v,{})), set())
+
 
 test('''
 
@@ -64,6 +73,11 @@ Example 2:
 
 Input: nums = [2,2,2,2,2], target = 8
 Output: [[2,2,2,2]]
+
+Example 3:
+
+Input: nums = [1,1], target = 2
+Output: []
 
 Constraints:
 

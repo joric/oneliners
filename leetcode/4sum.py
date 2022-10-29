@@ -15,7 +15,7 @@ class Solution1:
               if len(set(head + tail)) == 4)
         return list(map(list, res))
 
-class Solution:
+class Solution2:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
         r,c,d = set(), Counter(nums), defaultdict(set)
         for a,b in combinations(nums, 2):
@@ -28,6 +28,20 @@ class Solution:
                         if tuple(p) not in r and all(p.count(n)<=c[n] for n in p):
                             r.add(tuple(p))
         return r
+
+class Solution3:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        c = Counter(nums)
+        d = reduce(lambda d,t:d[sum(t)].add(t) or d, combinations(nums, 2), defaultdict(set))
+        k = lambda r,p: (p not in r and all(p.count(n)<=c[n] for n in p)) and r.add(p) or r
+        f = lambda r,v: reduce(k, (tuple(sorted(a+b)) for a in d[v] for b in d[target-v]), r)
+        return reduce(f, (v for v in d if target-v in d), set())
+
+class Solution:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        return (c:=Counter(nums),d:=reduce(lambda d,t:d[sum(t)].add(t) or d, combinations(nums, 2),
+            defaultdict(set))) and reduce(lambda r,v: reduce(lambda r,p: (p not in r and all(p.count(n)<=c[n] for n in p))
+            and r.add(p) or r, (tuple(sorted(a+b)) for a in d[v] for b in d[target-v]), r), (v for v in d if target-v in d), set())
 
 test('''
 

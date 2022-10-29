@@ -24,20 +24,23 @@ class Solution2:
 class Solution3:
     def reverse(self, x: int) -> int:
         r = int(str(abs(x))[::-1])
-        return(r<2**31)*(r,-r)[x<0]
+        return (r<2**31)*(r,-r)[x<0]
 
 class Solution4:
     def reverse(self, x: int) -> int:
-        r,x = 0, abs(x)
+        r,x,s = 0,abs(x),x<0
         while x:
             r = r*10 + x%10
             x //= 10
-        return ((x>0)-(x<0))*min(2**31,r)
+        return (r<2**31)*(r,-r)[s]
+
+class Solution5:
+    def reverse(self, x: int) -> int:
+        return ((r:=(f:=lambda r,x:f(r*10+x%10,x//10) if x else r)(0,abs(x)))<2**31)*(r,-r)[x<0]
 
 class Solution:
     def reverse(self, x: int) -> int:
-        return ((x>0)-(x<0))*min(2**31,(f:=lambda r,x:f(r*10+x%10,x//10) if x else r)(0,abs(x)))
-
+        return ((r:=int(str(abs(x))[::-1]))<2**31)*(r,-r)[x<0]
 
 test('''
 7. Reverse Integer

@@ -5,6 +5,17 @@ def check(res, expected, arr):
 
 class Solution1:
     def duplicateZeros(self, arr: List[int]) -> None:
+        q, i, n = deque(), 0, len(arr)
+        while i < n:
+            if arr[i] == 0:
+                q.append(0)
+            if q:
+                q.append(arr[i])
+                arr[i] = q.popleft()
+            i += 1
+
+class Solution2:
+    def duplicateZeros(self, arr: List[int]) -> None:
         [arr.insert(i,0) or arr.pop() for i in range(len(arr)-1,-1,-1) if not arr[i]]
 
 class Solution:

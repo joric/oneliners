@@ -1,8 +1,7 @@
 from lc import *
 
 def check(res, expected, strs):
-    u = lambda v: sorted(list(map(sorted,v)))
-    return u(res)==u(expected)
+    return (u:=lambda v: sorted(list(map(sorted,v))))(res)==u(expected)
 
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:

@@ -1,8 +1,12 @@
 from lc import *
 
-class Solution:
+class Solution1:
     def earliestFullBloom(self, p: List[int], g: List[int]) -> int:
         return reduce(lambda l,r:(l[0]+r[0],max(l[1],l[0]+sum(r))),sorted(zip(p,g), key=lambda v:(-v[1],v[0])),(0,0))[1]
+
+class Solution:
+    def earliestFullBloom(self, plantTime: List[int], growTime: List[int]) -> int:
+        return (d:=0) or max((d:=d+p) + g for g,p in reversed(sorted(zip(growTime,plantTime))))
 
 test('''
 2136. Earliest Possible Day of Full Bloom

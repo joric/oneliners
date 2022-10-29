@@ -15,24 +15,12 @@ class Solution1:
               if len(set(head + tail)) == 4)
         return list(map(list, res))
 
-class Solution2:
+class Solution:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
         r,c,d = set(), Counter(nums), defaultdict(set)
         for a,b in combinations(nums, 2):
             d[a+b].add((a,b))
         for v in d:
-            if target-v in d:
-                for p1 in d[v]:
-                    for p2 in d[target-v]:
-                        p = sorted(p1+p2)
-                        if tuple(p) not in r and all(p.count(n)<=c[n] for n in p):
-                            r.add(tuple(p))
-        return r
-
-class Solution:
-    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
-        r,c = set(), Counter(nums)
-        for v in (d:=reduce(lambda p,a:p[sum(a)].add(a) or p,combinations(nums, 2), defaultdict(set))):
             if target-v in d:
                 for p1 in d[v]:
                     for p2 in d[target-v]:

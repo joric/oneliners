@@ -1,23 +1,33 @@
 from lc import *
 
 def check(res, expected, nums, target):
-    return (u:=lambda v: sorted(list(map(sorted,v))))(res)==u(expected)
+    return sorted(res)==sorted(expected)
 
-class Solution:
+# TLE https://leetcode.com/problems/4sum/discuss/8595/5-lines-simple-Python
+class Solution1:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
-        res,c,d = set(), Counter(nums), defaultdict(set)
+        nums, dic = sorted(nums), collections.defaultdict(list)
+        for (i, a), (j, b) in itertools.combinations(enumerate(nums), 2):
+            dic[a+b].append([i, j])
 
+        res = set(tuple(sorted(nums[i] for i in (head + tail))) for ab in dic \
+              if target - ab in dic for head in dic[ab] for tail in dic[target-ab] \
+              if len(set(head + tail)) == 4)
+        return list(map(list, res))
+
+class Solution2:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        r,c,d = set(), Counter(nums), defaultdict(set)
         for a,b in combinations(nums, 2):
             d[a+b].add((a,b))
-
         for v in d:
             if target-v in d:
                 for p1 in d[v]:
                     for p2 in d[target-v]:
                         p = sorted(p1+p2)
-                        if tuple(p) not in res and all(p.count(n)<=c[n] for n in p):
-                            res.add(tuple(p))
-        return [list(p) for p in res]
+                        if tuple(p) not in r and all(p.count(n)<=c[n] for n in p):
+                            r.add(tuple(p))
+        return r
 
 test('''
 

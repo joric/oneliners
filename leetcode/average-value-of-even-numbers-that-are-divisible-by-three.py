@@ -1,7 +1,7 @@
 from lc import *
 
 class Solution1:
-    def averageValue(self, nums):
+    def averageValue(self, nums: List[int]) -> int:
         s = c = 0
         for x in nums:
             if x%2==0 and x%3==0:
@@ -10,8 +10,12 @@ class Solution1:
         return s // c if c else 0
 
 class Solution:
-    def averageValue(self, nums):
+    def averageValue(self, nums: List[int]) -> int:
         return (lambda s,c:c and s//c)(*reduce(lambda a,b:(a[0]+b,a[1]+1),(x for x in nums if not x%6),[0,0]))
+
+class Solution:
+    def averageValue(self, nums: List[int]) -> int:
+        return ((v:=[x for x in nums if not x%6]) or 0) and sum(v)//len(v)
 
 test('''
 

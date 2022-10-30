@@ -9,9 +9,13 @@ class Solution1:
             s1, s2 = min(s1, n), min(s2, max(n, s1))
         return max(l1 * l2 * l3, s1 * s2 * l1)
 
-class Solution:
+class Solution2:
     def maximumProduct(self, nums: List[int]) -> int:
         return max((v:=sorted(nums))[-1]*v[-2]*v[-3], v[0]*v[1]*v[-1])
+
+class Solution:
+    def maximumProduct(self, nums: List[int]) -> int:
+        return max(prod((v:=sorted(nums))[-3:]), v[0]*v[1]*v[-1])
 
 test('''
 

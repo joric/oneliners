@@ -11,7 +11,7 @@ class Solution1:
 
 class Solution2:
     def averageValue(self, nums):
-        return (lambda s,c: s//c if c else 0)(*reduce(lambda a,b:(a[0]+b,a[1]+1), filter(x for x in nums if not x%6), [0,0]))
+        return (lambda s,c: s//c if c else 0)(*reduce(lambda a,b:(a[0]+b,a[1]+1),(x for x in nums if not x%6),[0,0]))
 
 class Solution:
     def averageValue(self, nums):

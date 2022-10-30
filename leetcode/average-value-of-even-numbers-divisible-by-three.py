@@ -1,13 +1,17 @@
 from lc import *
 
-class Solution:
+class Solution1:
     def averageValue(self, nums):
-        t = c = 0
+        s = c = 0
         for x in nums:
             if x%2==0 and x%3==0:
-                t += x
+                s += x
                 c += 1
-        return t // c if c else 0
+        return s // c if c else 0
+
+class Solution:
+    def averageValue(self, nums):
+        return (lambda s,c: s//c if c else 0)(*reduce(lambda a,b:(a[0]+b,a[1]+1), (x for x in nums if not x%6), [0,0]))
 
 test('''
 

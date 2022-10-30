@@ -3,19 +3,20 @@
 from typing import *
 from collections import *
 from functools import *
+from heapq import *
 from itertools import *
 from math import *
-from heapq import *
 from bisect import *
 from random import *
 from re import *
 from operator import *
-import re
-import collections
-import itertools
 import bisect
-import json
+import collections
+import heapq
+import itertools
 import importlib
+import json
+import re
 
 class TreeNode(object):
     def __init__(self, x, left=None, right=None):

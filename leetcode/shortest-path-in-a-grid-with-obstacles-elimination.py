@@ -5,14 +5,11 @@ class Solution1:
         q, d = deque([(0,0)]), {(0,0):(0,0)}
         while q:
             i,j = q.popleft()
-
             r, o = d[(i,j)]
-
             for m,n in [(i-1,j),(i,j-1),(i+1,j),(i,j+1)]:
                 if 0<=m<len(grid) and 0<=n<len(grid[0]) and o+grid[m][n] < d.get((m,n),(0,inf))[1]:
                         d[(m,n)] = (r+1, o+grid[m][n])
                         q.append((m,n))
-
             r, o = d.get((len(grid)-1,len(grid[0])-1), (0,inf))
             if o <= k:
                 return r
@@ -22,15 +19,12 @@ class Solution2:
     def shortestPath(self, grid: List[List[int]], k: int) -> int:
         m, n = len(grid), len(grid[0])
         q, v = deque([(0, 0, 0, k)]), set()
-        
         if k >= m + n - 2:
             return m + n - 2
-        
         while q:
             steps, x, y, k = q.popleft()
             if (x, y) == (n-1, m-1):
                 return steps
-            
             for dx, dy in (x, y-1), (x, y+1), (x-1, y), (x+1, y):
                 if 0 <= dx < n and 0 <= dy < m and k - grid[dy][dx] >= 0:
                     new = (dx, dy, k - grid[dy][dx])

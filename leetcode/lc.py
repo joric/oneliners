@@ -80,7 +80,11 @@ class ListNode:
 
 def test(text, classname=None, check=None, init=None):
     def vp(s):
-        return json.loads(s)
+        res = s
+        try:
+            return json.loads(s)
+        except:
+            return s
 
     def vc(func, name, v):
         is_iter = lambda v: type(v) in (tuple, set, Generator)

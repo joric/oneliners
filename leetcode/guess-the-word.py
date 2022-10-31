@@ -21,14 +21,9 @@ class Master:
 
 class Launcher:
     def run(self, secret, words, guesses):
-        if self.init:
-            init = False
-            self.master = Master(secret, words, guesses)
-        Solution().findSecretWord(words, self.master)
-        return self.master.result()
-    def __init__(self):
-        self.init = True
-
+        master = Master(secret, words, guesses)
+        Solution().findSecretWord(words, master)
+        return master.result()
 
 class Solution1:
     def findSecretWord(self, wordlist: List[str], master: 'Master') -> None:

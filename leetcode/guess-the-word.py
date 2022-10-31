@@ -4,20 +4,23 @@ class Master:
     def __init__(self, secret, words, guesses):
         self.n = guesses
         self.secret = secret
-        self.words = set(words)
-        self.res = 'Either you took too many guesses, or you did not find the secret word.'
+        self.words = words
+        self.found = False
     def guess(self, word):
+        self.found = False
         self.n -= 1
         if self.n==0:
             return 0
         if word not in self.words:
             return -1
-        d = sum(self.secret[i]==word[i] for i in range(6))
-        if d==6:
-            self.res = 'You guessed the secret word correctly.'
+        if (d:=sum(self.secret[i]==word[i] for i in range(6)))==6:
+            self.found = True
         return d
     def result(self):
-        return self.res
+        return (
+            'Either you took too many guesses, or you did not find the secret word.',
+            'You guessed the secret word correctly.',
+        )[self.found]
 
 class Launcher:
     def run(self, secret, words, guesses):

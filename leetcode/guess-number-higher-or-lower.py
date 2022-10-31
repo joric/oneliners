@@ -39,6 +39,8 @@ class Solution:
         return bisect_left(range(n), 0, key=lambda num: -guess(num))
 
 test('''
+374. Guess Number Higher or Lower
+Easy
 
 We are playing the Guess Game. The game is as follows:
 

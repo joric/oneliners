@@ -42,14 +42,18 @@ class TreeNode(object):
     def __eq__(a, b):
         return str(a)==str(b)
 
-    def parse(x):
-        nodes = [None if val==None else TreeNode(val) for val in x]
+    def parse(val):
+        if not val:
+            return None
+        nodes = [None if not x else TreeNode(x) for x in val]
         kids = nodes[::-1]
         root = kids and kids.pop()
         for node in nodes:
             if node:
-                if kids: node.left  = kids.pop()
-                if kids: node.right = kids.pop()
+                if kids:
+                    node.left  = kids.pop()
+                if kids:
+                    node.right = kids.pop()
         return root
 
 class ListNode:

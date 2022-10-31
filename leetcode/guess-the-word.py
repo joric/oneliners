@@ -115,5 +115,5 @@ All the strings of wordlist are unique.
 secret exists in words.
 10 <= allowedGuesses <= 30
 
-''', classname=Launcher)
+''', Launcher)
 

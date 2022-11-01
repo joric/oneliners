@@ -6,7 +6,6 @@ class Master:
         self.secret = secret
         self.words = words
         self.found = False
-        self.g = 0
     def guess(self, word):
         self.found = False
         self.n -= 1
@@ -42,8 +41,7 @@ class Solution1:
 
 class Solution:
     def findSecretWord(self, wordlist: List[str], master: 'Master') -> None:
-        (r:=lambda w:not w or (n:=master.guess(e:=w.pop()))==6 or r({c for c in w if sum(x==y for x,y in zip(e,c))==n}))(set(wordlist))
-
+        (r:=lambda w:(n:=master.guess(e:=w.pop()))==6 or r({c for c in w if sum(x==y for x,y in zip(e,c))==n}))(set(wordlist))
 
 test('''
 

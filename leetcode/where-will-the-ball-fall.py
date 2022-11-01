@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def findBall(self, g: List[List[int]]) -> List[int]:
-        return reduce(lambda p,r: ((-1, y := x + r[x])[x >= 0 <= y < len(g[0]) and r[x] == r[y]] for x in p), g, range(len(g[0])))
+        return reduce(lambda p,r: ((-1, y:=x+r[x])[x>=0<=y<len(g[0]) and r[x]==r[y]] for x in p), g, range(len(g[0])))
 
 test('''
 

@@ -42,7 +42,7 @@ class Solution1:
 
 class Solution:
     def findSecretWord(self, wordlist: List[str], master: 'Master') -> None:
-        (w:=set(wordlist)) and next(e for _ in range(31) if (n:=master.guess(e:=w.pop()))==6 or not (w:={c for c in w if (lambda a,b: sum(a[i]==b[i] for i in range(6)))(e,c)==n}))
+        (w:=set(wordlist)) and next(e for _ in range(20) if (n:=master.guess(e:=w.pop()))==6 or not (w:={c for c in w if sum(x==y for x,y in zip(e,c))==n}))
 
 test('''
 

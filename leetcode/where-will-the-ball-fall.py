@@ -1,11 +1,10 @@
 from lc import *
 
 # https://leetcode.com/problems/where-will-the-ball-fall/discuss/1235182/Python-3-one-line
-# apparently there's another oneliner guy, see profile here: https://leetcode.com/l1ne
 
 class Solution:
     def findBall(self, g: List[List[int]]) -> List[int]:
-        return reduce(lambda p,r: ((-1, y:=x+r[x])[x>=0<=y<len(g[0]) and r[x]==r[y]] for x in p), g, range(len(g[0])))
+        return reduce(lambda p,r:((-1, y:=x+r[x])[x>=0<=y<len(g[0]) and r[x]==r[y]] for x in p), g, range(len(g[0])))
 
 test('''
 

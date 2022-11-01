@@ -1,6 +1,7 @@
 from lc import *
 
 # https://leetcode.com/problems/where-will-the-ball-fall/discuss/1235182/Python-3-one-line
+# apparently there's another oneliner guy here, check it out https://leetcode.com/l1ne
 
 class Solution:
     def findBall(self, g: List[List[int]]) -> List[int]:

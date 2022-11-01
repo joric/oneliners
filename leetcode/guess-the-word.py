@@ -31,17 +31,17 @@ class Launcher:
 class Solution1:
     def findSecretWord(self, wordlist: List[str], master: 'Master') -> None:
         f = lambda a,b: sum(a[i]==b[i] for i in range(6))
-        s = set(wordlist)
-        while s:
-            w = s.pop()
-            n = master.guess(w)
+        d = set(wordlist)
+        while d:
+            s = d.pop()
+            n = master.guess(s)
             if n == 6:
                 return
-            s = {x for x in s if f(w,x)==n}
+            d = {x for x in d if f(s,x)==n}
 
 class Solution:
     def findSecretWord(self, wordlist: List[str], master: 'Master') -> None:
-        (f:=lambda s:(n:=master.guess(w:=s.pop()))==6 or f({x for x in s if sum(a==b for a,b in zip(w,x))==n}))(set(wordlist))
+        (f:=lambda d:(n:=master.guess(s:=d.pop()))==6 or f({x for x in d if sum(a==b for a,b in zip(s,x))==n}))(set(wordlist))
 
 test('''
 

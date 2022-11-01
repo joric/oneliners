@@ -11,11 +11,12 @@ class Solution2:
 
 class Solution3:
     def isPalindrome(self, s: str) -> bool:
-        return (f:=lambda s,i,j:i==j or (s[i]==s[j] and f(s,i+1,j-1)))(s:=''.join(filter(str.isalnum,s)).lower(),0,len(s)-1)
+        return (f:=lambda s,i,j:i>=j or (s[i]==s[j] and f(s,i+1,j-1)))(s:=''.join(filter(str.isalnum,s)).lower(),0,len(s)-1)
 
+# TLE
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        return (f:=lambda s,i,j:i==j or (not s[i].isalnum() and f(s,i+1,j)) or (not s[j].isalnum() and f(s,i,j-1)) or (s[i].lower()==s[j].lower() and f(s,i+1,j-1)))(s,0,len(s)-1)
+        return (f:=lambda s,i,j:i>=j or (not s[i].isalnum() and f(s,i+1,j)) or (not s[j].isalnum() and f(s,i,j-1)) or (s[i].lower()==s[j].lower() and f(s,i+1,j-1)))(s,0,len(s)-1)
 
 test('''
 
@@ -44,6 +45,11 @@ Input: s = " "
 Output: true
 Explanation: s is an empty string "" after removing non-alphanumeric characters.
 Since an empty string reads the same forward and backward, it is a palindrome.
+
+Custom examples:
+
+Input: s="aa"
+Output: true
 
 Constraints:
 

@@ -11,7 +11,7 @@ class Solution2:
 
 class Solution3:
     def isPalindrome(self, s: str) -> bool:
-        return (f:=lambda s,i,j:i>=j or (s[i]==s[j] and f(s,i+1,j-1)))(s:=''.join(filter(str.isalnum,s)).lower(),0,len(s)-1)
+        return (f:=lambda s,i,j:i==j or (s[i]==s[j] and f(s,i+1,j-1)))(s:=''.join(filter(str.isalnum,s)).lower(),0,len(s)-1)
 
 class Solution:
     def isPalindrome(self, s: str) -> bool:

@@ -33,15 +33,15 @@ class Solution1:
         f = lambda a,b: sum(a[i]==b[i] for i in range(6))
         d = set(wordlist)
         while d:
-            s = d.pop()
-            n = master.guess(s)
+            w = d.pop()
+            n = master.guess(w)
             if n == 6:
                 return
-            d = {x for x in d if f(s,x)==n}
+            d = {s for s in d if f(w,s)==n}
 
 class Solution:
     def findSecretWord(self, wordlist: List[str], master: 'Master') -> None:
-        (f:=lambda d:(n:=master.guess(s:=d.pop()))==6 or f({x for x in d if sum(a==b for a,b in zip(s,x))==n}))(set(wordlist))
+        (f:=lambda d:(n:=master.guess(w:=d.pop()))==6 or f({s for s in d if sum(a==b for a,b in zip(w,s))==n}))(set(wordlist))
 
 test('''
 

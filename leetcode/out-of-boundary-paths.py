@@ -19,11 +19,10 @@ class Solution2:
             return g.get(z,1) or t and sum(f(t-1, z + 1j**k) for k in range(4))
         return f(maxMove, startRow + startColumn*1j) % (10**9+7)
 
-
 class Solution:
     def findPaths(self, m: int, n: int, maxMove: int, startRow: int, startColumn: int) -> int:
-        return (g:={i+j*1j:0 for i in range(m) for j in range(n)}) and (f:=lambda t,z: g.get(z,1) or t
-            and sum(f(t-1,z+1j**k) for k in range(4)))(maxMove, startRow+startColumn*1j) % (10**9+7)
+        return (g:={i+j*1j:0 for i in range(m) for j in range(n)}) and (f:=cache(lambda t,z: g.get(z,1)
+            or t and sum(f(t-1,z+1j**k) for k in range(4))))(maxMove, startRow+startColumn*1j) % (10**9+7)
 
 
 test('''

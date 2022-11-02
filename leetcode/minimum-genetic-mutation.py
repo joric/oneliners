@@ -20,7 +20,7 @@ class Solution1:
 class Solution:
     def minMutation(self, start: str, end: str, bank: list[str]) -> int:
         return (bank:=set(bank)|{start}) and (f:=lambda v,n:n if v==end else bank.remove(v) or next((r for i,a in
-        enumerate(v) for c in 'ACGT' if (a!=c and (t:=v[:i]+c+v[i+1:]) in bank and (r:=f(t,n+1))!=-1)), -1))(start, 0)
+            enumerate(v) for c in 'ACGT' if (a!=c and (t:=v[:i]+c+v[i+1:]) in bank and (r:=f(t,n+1))!=-1)), -1))(start, 0)
 
 
 test('''

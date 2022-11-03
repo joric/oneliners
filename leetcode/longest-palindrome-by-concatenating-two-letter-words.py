@@ -1,6 +1,18 @@
 from lc import *
 
-class Solution:
+class Solution1:
+    def longestPalindrome(self, words: List[str]) -> int:
+        c,r = defaultdict(Counter),0
+        for w in words:
+            a, b = w[0], w[1]
+            if c[b][a]:
+                r += 4
+                c[b][a] -= 1
+            else:
+                c[a][b] += 1
+        return next((r+2 for x in c if c[x][x]), r)
+
+class Solution2:
     def longestPalindrome(self, words: List[str]) -> int:
         d = Counter(words)
         n=c=p=0
@@ -13,10 +25,11 @@ class Solution:
                 p += min(d[w],d[w[::-1]])*0.5
         return n*2 + c + 4*int(p)
 
-class Solution1:
+class Solution:
     def longestPalindrome(self, words: List[str]) -> int:
         return (lambda r:r[0]*2+r[1]+4*int(r[2]))(reduce(lambda a,w:(a[0]+d[w]//2*2, 2 if d[w]%2 else a[1],a[2])
             if w[0]==w[1] else (a[0],a[1],a[2]+min(d[w],d[w[::-1]])*0.5), (d:=Counter(words)), [0,0,0]))
+
 
 test('''
 2131. Longest Palindrome by Concatenating Two Letter Words

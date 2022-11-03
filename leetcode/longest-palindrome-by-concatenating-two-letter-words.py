@@ -30,11 +30,10 @@ class Solution3:
                 c[w] += 1
         return r+2 if any(c[w]>0 and w[0]==w[1] for w in c) else r
 
-#TLE
 class Solution:
     def longestPalindrome(self, words: List[str]) -> int:
-        return (r:=0, c:=Counter(), [(c:=c-Counter([w[::-1]]),r:=r+4) if c[w[::-1]]>0 else (c:=c+Counter([w]))
-            for w in words]) and (r + 2*any(c[w]>0 and w[0]==w[1] for w in c))
+        return (r:=0, c:=Counter(), [(c.__setitem__(b,c[b]-1),r:=r+4) if (c[b:=a[::-1]]>0) else (c.__setitem__(a,c[a]+1)) for a in words]) and (r + 2*any(c[w]>0 and w[0]==w[1] for w in c))
+
 
 test('''
 2131. Longest Palindrome by Concatenating Two Letter Words
@@ -55,27 +54,31 @@ Return the length of the longest palindrome that you can create. If it is imposs
 
 A palindrome is a string that reads the same forward and backward.
 
- 
-
 Example 1:
 
 Input: words = ["lc","cl","gg"]
 Output: 6
 Explanation: One longest palindrome is "lc" + "gg" + "cl" = "lcggcl", of length 6.
 Note that "clgglc" is another longest palindrome that can be created.
+
 Example 2:
 
 Input: words = ["ab","ty","yt","lc","cl","ab"]
 Output: 8
 Explanation: One longest palindrome is "ty" + "lc" + "cl" + "yt" = "tylcclyt", of length 8.
 Note that "lcyttycl" is another longest palindrome that can be created.
+
 Example 3:
 
 Input: words = ["cc","ll","xx"]
 Output: 2
 Explanation: One longest palindrome is "cc", of length 2.
 Note that "ll" is another longest palindrome that can be created, and so is "xx".
- 
+
+Example 4:
+
+Input: words = ["qo","fo","fq","qf","fo","ff","qq","qf","of","of","oo","of","of","qf","qf","of"]
+Output: 14
 
 Constraints:
 

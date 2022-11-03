@@ -19,7 +19,7 @@ class Solution2:
             if w[0]==w[1] else (a[0],a[1],a[2]+min(d[w],d[w[::-1]])*0.5), (d:=Counter(words)), [0,0,0]))
 
 
-class Solution3:
+class Solution:
     def longestPalindrome(self, words: List[str]) -> int:
         c,r = Counter(), 0
         for w in words:
@@ -29,11 +29,6 @@ class Solution3:
             else:
                 c[w] += 1
         return r+2 if any(c[w]>0 and w[0]==w[1] for w in c) else r
-
-class Solution:
-    def longestPalindrome(self, words: List[str]) -> int:
-        return (r:=0, c:=Counter(), [(c:=c-Counter([w[::-1]]),r:=r+4) if c[w[::-1]]>0 else (c:=c+Counter([w]))
-            for w in words]) and (r + 2*any(c[w]>0 and w[0]==w[1] for w in c))
 
 
 test('''

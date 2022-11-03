@@ -38,7 +38,7 @@ class Solution2:
 
 class Solution:
     def longestPalindrome(self, words: List[str]) -> int:
-        return (lambda c:2*(sum(min(c[w],c[w[::-1]]) if w!=w[::-1] else c[w]-(c[w]%2) for w in c.keys())+int(any(w==w[::-1] and c[w]%2 for w in c.keys()))))(Counter(words))
+        return (c:=Counter(words)) and 2*(sum(min(c[w],c[w[::-1]]) if w!=w[::-1] else c[w]-(c[w]%2) for w in c)+int(any(w==w[::-1] and c[w]%2 for w in c)))
 
 test('''
 2131. Longest Palindrome by Concatenating Two Letter Words

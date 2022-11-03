@@ -4,8 +4,6 @@ class Solution1:
     def checkIfPangram(self, sentence: str) -> bool:
         return len(set(sentence))==26
 
-class Solution: checkIfPangram = lambda _,s: len(set(s))==26
-
 test('''
 A pangram is a sentence where every letter of the English alphabet appears at least once.
 

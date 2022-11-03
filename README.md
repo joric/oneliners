@@ -12,7 +12,9 @@ The only exception is `bisect.bisect()` because `bisect()` triggers `'module' ob
 Leetcode header has `import * from itertools`, so we use `comb()` instead of `itertools.comb()`:
 
 ```python
-class Solution: numberOfSets = lambda _,n,k: comb(n+k-1,k*2) % (10**9+7)
+class Solution:
+    def numberOfSets(self, n: int, k: int) -> int:
+        return comb(n+k-1,k*2) % (10**9+7)
 ```
 
 #### lambdas

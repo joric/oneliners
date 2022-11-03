@@ -30,11 +30,15 @@ class Solution3:
                 c[w] += 1
         return r+2 if any(c[w]>0 and w[0]==w[1] for w in c) else r
 
+class Solution2:
+    def longestPalindrome(self, words: List[str]) -> int:
+        return (r:=0, c:=Counter(), [(c.__setitem__(b,c[b]-1),r:=r+4) if (c[b:=a[::-1]]>0) else (c.__setitem__(a,c[a]+1)) for a in words]) and (r + 2*any(c[w]>0 and w[0]==w[1] for w in c))
+
+# https://leetcode.com/problems/longest-palindrome-by-concatenating-two-letter-words/discuss/2772116/One-Line-Python
+
 class Solution:
     def longestPalindrome(self, words: List[str]) -> int:
-        return (r:=0, c:=Counter(), [(c.__setitem__(b,c[b]-1),r:=r+4) if (c[b:=a[::-1]]>0) else
-            (c.__setitem__(a,c[a]+1)) for a in words]) and (r + 2*any(c[w]>0 and w[0]==w[1] for w in c))
-
+        return (lambda c:2*(sum(min(c[w],c[w[::-1]]) if w!=w[::-1] else c[w]-(c[w]%2) for w in c.keys())+int(any(w==w[::-1] and c[w]%2 for w in c.keys()))))(Counter(words))
 
 test('''
 2131. Longest Palindrome by Concatenating Two Letter Words

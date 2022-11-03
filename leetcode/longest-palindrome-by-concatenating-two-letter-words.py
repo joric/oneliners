@@ -1,21 +1,19 @@
 from lc import *
 
-# https://leetcode.com/problems/longest-palindrome-by-concatenating-two-letter-words/discuss/1675386/Python-Simple-O(N)-Solution-oror-Straightforward
-
-class Solution1:
+class Solution:
     def longestPalindrome(self, words: List[str]) -> int:
         d = Counter(words)
         n=c=p=0
-        for w, i in d.items():
+        for w in d:
             if w[0]==w[1]:
-                n += i//2*2
-                if i%2:
+                n += d[w]//2*2
+                if d[w]%2:
                     c = 2
             else:
                 p += min(d[w],d[w[::-1]])*0.5
-        return n * 2 + c + int(p) * 4
+        return n*2 + c + 4*int(p)
 
-class Solution:
+class Solution1:
     def longestPalindrome(self, words: List[str]) -> int:
         return (lambda r:r[0]*2+r[1]+4*int(r[2]))(reduce(lambda a,w:(a[0]+d[w]//2*2, 2 if d[w]%2 else a[1],a[2])
             if w[0]==w[1] else (a[0],a[1],a[2]+min(d[w],d[w[::-1]])*0.5), (d:=Counter(words)), [0,0,0]))

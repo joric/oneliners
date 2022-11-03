@@ -35,12 +35,30 @@ class Solution3:
             reduce(lambda a, x: ((t:=refuel(a[0], a[1] - x[0]))[0], t[1]*(not heappush(heap, -x[1]))), deltas, (0, startFuel))[0]
         )[-1]
 
-class Solution:
+class Solution4:
     def minRefuelStops(self, target: int, startFuel: int, stations: List[List[int]]) -> int:
         return (heap:=[],s:=[[0,startFuel]]+stations+[[target,0]],deltas:=[(b[0]-a[0],b[1]) for a,b in zip(s,s[1:])],
             refuel:=lambda r,f:(-1,0) if r<0 else refuel(r+1,f-heappop(heap)) if f<0 and heap else (r,f) if f>=0 else(-1,0),
             reduce(lambda a,x:((t:=refuel(a[0],a[1]-x[0]))[0],t[1]*(not heappush(heap,-x[1]))),deltas,(0,startFuel))[0])[-1]
 
+class Solution5:
+    def minRefuelStops(self, target: int, startFuel: int, stations: List[List[int]]) -> int:
+        q,t,s,g,c = [],target,stations+[[target,0]],startFuel,0
+        while s:
+            if g >= t:
+                return c
+            while s and s[0][0] <= g:
+                _, p = s.pop(0)
+                heappush(q,-p)
+            if not q:
+                return -1
+            g -= heappop(q)
+            c += 1
+
+class Solution:
+    def minRefuelStops(self, target: int, startFuel: int, stations: List[List[int]]) -> int:
+        return (f:=lambda q,t,s,g,c: c if (r:=lambda s:heappush(q,-s.pop(0)[1]) or r(s) if s and s[0][0]<=g else 1)(s)
+            and g>=t else f(q,t,s,g-heappop(q),c+1) if q else -1)([],target,stations+[[target,0]],startFuel,0)
 
 test('''
 
@@ -64,18 +82,19 @@ Return the minimum number of refueling stops the car must make in order to reach
 
 Note that if the car reaches a gas station with 0 fuel left, the car can still refuel there. If the car reaches the destination with 0 fuel left, it is still considered to have arrived.
 
- 
 
 Example 1:
 
 Input: target = 1, startFuel = 1, stations = []
 Output: 0
 Explanation: We can reach the target without refueling.
+
 Example 2:
 
 Input: target = 100, startFuel = 1, stations = [[10,100]]
 Output: -1
 Explanation: We can not reach the target (or even the first gas station).
+
 Example 3:
 
 Input: target = 100, startFuel = 10, stations = [[10,60],[20,30],[30,30],[60,40]]
@@ -85,7 +104,11 @@ We drive to position 10, expending 10 liters of fuel.  We refuel from 0 liters t
 Then, we drive from position 10 to position 60 (expending 50 liters of fuel),
 and refuel from 10 liters to 50 liters of gas.  We then drive to and reach the target.
 We made 2 refueling stops along the way, so we return 2.
- 
+
+Example 4:
+
+Input: target = 100, startFuel = 50, stations = [[25,25],[50,50]]
+Output: 1
 
 Constraints:
 

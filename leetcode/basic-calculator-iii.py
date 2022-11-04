@@ -6,9 +6,9 @@ class Solution:
             x, q, r = 0, [], "+"
             def update(op, v):
                 if op == "+": q.append(v)
-                if op == "-": q.append(-v)
-                if op == "*": q.append(q.pop() * v)
-                if op == "/": q.append(int(q.pop() / v))
+                elif op == "-": q.append(-v)
+                elif op == "*": q.append(q.pop() * v)
+                elif op == "/": q.append(int(q.pop() / v))
             while i < len(s):
                 if s[i].isdigit():
                     x = x * 10 + int(s[i])

@@ -25,7 +25,9 @@ Fictitious (anonymous) lambdas also may be nested. E.g. you can use lambdas as p
 
 You can't unpack lambda tuples in Python 3 since [PEP 3113](https://peps.python.org/pep-3113/), however, if your lambda is flat, there is an upgrade path:
 
-* `lambda (x, y): x + y` in Python 2 becomes `lambda xy: (lambda x, y: x + y)(*xy)` in Python 3.
+* `lambda (x, y): x + y` in Python 2 becomes `lambda xy:(lambda x,y: x+y)(*xy)` in Python 3.
+
+You can also unpack multiple tuples as `lambda xy,ab:(lambda x,y,a,b: x+y+a+b)(*(xy+ab))`.
 
 #### walrus operator
 

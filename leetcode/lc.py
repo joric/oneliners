@@ -81,7 +81,6 @@ class ListNode:
 
 def test(text, classname=None, check=None, init=None):
     def vp(s):
-        res = s
         try:
             return json.loads(s)
         except:

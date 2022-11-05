@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/word-search-ii/discuss/59804/27-lines-uses-complex-numbers/1672624
+
 class Solution:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
         res, trie = [], (Trie:=lambda: defaultdict(Trie))()

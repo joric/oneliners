@@ -1,8 +1,5 @@
 from lc import *
 
-def check(res, expected, board, words):
-    return sorted(res)==sorted(expected)
-
 class Solution:
     def findWords(self, board, words):
         Trie = lambda: defaultdict(Trie)
@@ -76,4 +73,4 @@ board[i][j] is a lowercase English letter.
 words[i] consists of lowercase English letters.
 All the strings of words are unique.
 
-''', check=check)
+''', check=lambda res, expected, board, words: sorted(res)==sorted(expected))

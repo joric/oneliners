@@ -3,8 +3,7 @@ from lc import *
 class Solution:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
         res, trie = [], (Trie:=lambda: defaultdict(Trie))()
-        for word in words:
-            reduce(dict.__getitem__, word, trie)[None] = word
+        [reduce(dict.__getitem__, word, trie).__setitem__(None, word) for word in words]
         board = {i + j * 1j: c for i, row in enumerate(board) for j, c in enumerate(row)}
         def rm(trie, word):
             path = [trie]

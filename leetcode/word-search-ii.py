@@ -1,0 +1,79 @@
+from lc import *
+
+def check(res, expected, board, words):
+    return sorted(res)==sorted(expected)
+
+class Solution:
+    def findWords(self, board, words):
+        Trie = lambda: defaultdict(Trie)
+        ans, trie = [], Trie()
+        for word in words:
+            reduce(dict.__getitem__, word, trie)['$'] = word
+        board = {i+1j*j: c for i, row in enumerate(board) for j, c in enumerate(row)}
+        def dfs(node, z):
+            if '$' in node and node['$']:
+                ans.append(node['$'])
+                del node['$']
+            tmp = board.get(z)
+            if tmp in node:
+                board[z] = '#'
+                for k in range(4):
+                    dfs(node[tmp], z+1j**k)
+                board[z] = tmp  
+        for z in board: dfs(trie, z)
+        return ans
+
+test('''
+
+212. Word Search II
+Hard
+
+6981
+
+302
+
+Add to List
+
+Share
+Given an m x n board of characters and a list of strings words, return all words on the board.
+
+Each word must be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.
+
+Example 1:
+
+Input: board = [["o","a","a","n"],["e","t","a","e"],["i","h","k","r"],["i","f","l","v"]], words = ["oath","pea","eat","rain"]
+Output: ["eat","oath"]
+
+Example 2:
+
+Input: board = [["a","b"],["c","d"]], words = ["abcb"]
+Output: []
+
+Example 3:
+
+Input: board = [["a","b","c","e"],["z","z","d","z"],["z","z","c","z"],["z","a","b","z"]], words = ["abcdce"]
+Output: ["abcdce"]
+
+Example 4:
+
+Input: board = [["a","a"]], words = ["aaa"]
+Output: []
+
+Example 5:
+
+Input: board = [["a","b"],["a","a"]], words = ["aba","baa","bab","aaab","aaa","aaaa","aaba"]
+Output: ["aba","aaa","aaab","baa","aaba"]
+
+
+Constraints:
+
+m == board.length
+n == board[i].length
+1 <= m, n <= 12
+board[i][j] is a lowercase English letter.
+1 <= words.length <= 3 * 10^4
+1 <= words[i].length <= 10
+words[i] consists of lowercase English letters.
+All the strings of words are unique.
+
+''', check=check)

@@ -1,24 +1,30 @@
 from lc import *
 
 class Solution:
-    def findWords(self, board, words):
-        Trie = lambda: defaultdict(Trie)
-        ans, trie = [], Trie()
+    def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
+        res, trie = [], (Trie:=lambda: defaultdict(Trie))()
         for word in words:
-            reduce(dict.__getitem__, word, trie)['$'] = word
-        board = {i+1j*j: c for i, row in enumerate(board) for j, c in enumerate(row)}
+            reduce(dict.__getitem__, word, trie)[None] = word
+        board = {i + j * 1j: c for i, row in enumerate(board) for j, c in enumerate(row)}
+        def rm(trie, word):
+            path = [trie]
+            [path.append(path[-1].get(c)) for c in word]
+            if not path[-1]:
+                for char, parent in zip(word[::-1], path[::-1][1:]):
+                    if len(parent) > 1:
+                        break
+                    del parent[char]
         def dfs(node, z):
-            if '$' in node and node['$']:
-                ans.append(node['$'])
-                del node['$']
+            if (word:=node.pop(None, None)):
+                res.append(word)
+                rm(trie, word)
             tmp = board.get(z)
             if tmp in node:
-                board[z] = '#'
-                for k in range(4):
-                    dfs(node[tmp], z+1j**k)
-                board[z] = tmp  
-        for z in board: dfs(trie, z)
-        return ans
+                board[z] = None
+                [dfs(node[tmp], z+1j**k) for k in range(4)]
+                board[z] = tmp
+        [dfs(trie, z) for z in board]
+        return res
 
 test('''
 

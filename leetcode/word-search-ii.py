@@ -7,9 +7,12 @@ class Solution:
         for word in words:
             reduce(dict.__getitem__, word, trie)[None] = word
         def dfs(z, parent):
-            if not (c:=board.get(z)) in parent:
+            c = board.get(z)
+            if not c in parent:
                 return
-            if (word:=(node:=parent[c]).pop(None, None)):
+            node = parent[c]
+            word = node.pop(None, None)
+            if word:
                 res.append(word)
             board[z] = None
             for k in range(4):

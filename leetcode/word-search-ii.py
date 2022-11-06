@@ -21,10 +21,10 @@ class Solution1:
 class Solution:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
         return ([b:={i+j*1j: c for i, row in enumerate(board) for j, c in enumerate(row)}, r:=[],
-        t:=(T:=lambda: defaultdict(T))(), [reduce(dict.__getitem__, w, t).__setitem__('$',w) for w in words],
-        (f:=lambda z,p: (c:=b.get(z)) in p and (((w:=(n:=p[c]).pop('$',0)) and r.append(w))
-        or ((b.__setitem__(z,0) or [f(z+1j**k, n) for k in range(4)] and b.__setitem__(z,c))
-        or (n or p.pop(c)))))] and [f(z,t) for z in b] and r)
+            t:=(T:=lambda: defaultdict(T))(), [reduce(dict.__getitem__, w, t).__setitem__('$',w) for w in words],
+            (f:=lambda z,p: (c:=b.get(z)) in p and (((w:=(n:=p[c]).pop('$',0)) and r.append(w))
+            or ((b.__setitem__(z,0) or [f(z+1j**k, n) for k in range(4)] and b.__setitem__(z,c))
+            or (n or p.pop(c)))))] and [f(z,t) for z in b] and r)
 
 test('''
 212. Word Search II

@@ -4,27 +4,21 @@ class Solution:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
         board = {i+j*1j: c for i, row in enumerate(board) for j, c in enumerate(row)}
         res, trie = [], (Trie:=lambda: defaultdict(Trie))()
-        for word in words:
-            reduce(dict.__getitem__, word, trie)[None] = word
+        any(reduce(dict.__getitem__, w, trie).__setitem__('$', w) for w in words)
         def dfs(z, parent):
-            c = board.get(z)
-            if not c in parent:
+            if not (c:=board.get(z)) in parent:
                 return
-            node = parent[c]
-            word = node.pop(None, None)
-            if word:
+            if (word:=(node:=parent[c]).pop('$', None)):
                 res.append(word)
             board[z] = None
-            for k in range(4):
-                dfs(z+1j**k, node)
+            any(dfs(z+1j**k, node) for k in range(4))
             board[z] = c
             if not node:
                 parent.pop(c)
-        for z in board:
-            dfs(z, trie)
+        any(dfs(z, trie) for z in board)
         return res
 
-class Solution2:
+class Solution1:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
         return ([b:={i+j*1j: c for i, row in enumerate(board) for j, c in enumerate(row)}, r:=[],
             t:=(T:=lambda: defaultdict(T))(), [reduce(dict.__getitem__, w, t).__setitem__('$',w) for w in words],

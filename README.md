@@ -34,7 +34,8 @@ You can also unpack multiple tuples as `lambda xy,ab:(lambda x,y,a,b: x+y+a+b)(*
 List comprehension generators `()` are memory efficient since they only require memory for
 the one value they yield.
 You need a function or `[]` to run generator. However, `[]` or `list()` allocate memory,
-so you can exhaust a generator using `all()`,`any()`, `sum()`, `min()` or `max()`, depending on the return value.
+so you can exhaust a generator using `all()` or `any()` depending on the return value (even if you don't need the value).
+You can also use aggregate functions like `sum()`, `min()` or `max()`.
 
 #### next
 

@@ -1,8 +1,29 @@
 from lc import *
 
+class Solution1:
+    def orderlyQueue(self, s: str, k: int) -> str:
+        def booth(s: str) -> str:
+            n = len(s)
+            f = [-1] * (2 * n)
+            k = 0
+            for j in range(1, 2 * n):
+                i = f[j - k - 1]
+                while i != -1 and s[j % n] != s[(k + i + 1) % n]:
+                    if s[j % n] < s[(k + i + 1) % n]:
+                        k = j - i - 1
+                    i = f[i]
+                if i == -1 and s[j % n] != s[(k + i + 1) % n]:
+                    if s[j % n] < s[(k + i + 1) % n]:
+                        k = j
+                    f[j - k] = -1
+                else:
+                    f[j - k] = i + 1
+            return s[k:]+s[:k]
+        return booth(s) if k==1 else''.join(sorted(s))
+
 class Solution:
     def orderlyQueue(self, s: str, k: int) -> str:
-        return min(s[i:] + s[:i] for i in range(len(s))) if k==1 else "".join(sorted(s))
+        return min(s[i:]+s[:i] for i in range(len(s))) if k==1 else ''.join(sorted(s))
 
 test('''
 

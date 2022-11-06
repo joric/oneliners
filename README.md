@@ -29,9 +29,112 @@ You can't unpack lambda tuples in Python 3 since [PEP 3113](https://peps.python.
 
 You can also unpack multiple tuples as `lambda xy,ab:(lambda x,y,a,b: x+y+a+b)(*(xy+ab))`.
 
+#### Generators
+
+List comprehension generators `()` are memory efficient since they only require memory for
+the one value they yield.
+You need a function or `[]` to run generator. However, `[]` or `list()` allocate memory,
+so you can exhaust a generator using `all()`,`any()`, `sum()`, `min()` or `max()`, depending on the return value.
+
+#### next
+
+Use `next` whether you need an oneliner loop with an early exit.
+
+* https://leetcode.com/problems/two-sum
+
+```python
+class Solution1:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        seen = {}
+        for i,x in enumerate(nums):
+            if target-x in seen:
+                return seen[target-x], i
+            seen[x] = i
+        return False
+
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        return (seen:={}) or next((((seen[target-x],i) for i,x in enumerate(nums)
+            if target-x in seen or seen.__setitem__(x,i))), False)
+```
+
+* https://leetcode.com/problems/break-a-palindrome/discuss/1481905/Python-3-one-line
+
+```python
+class Solution1:
+    def breakPalindrome(self, s: str) -> str:
+        for i in range(len(s) // 2):
+            if s[i] != 'a':
+                return s[:i] + 'a' + s[i + 1:]
+        return s[:-1] + 'b' if s[:-1] else ''
+
+class Solution:
+    def breakPalindrome(self, s: str) -> str:
+        return next((s[:i]+'a'+s[i+1:] for i in range(len(s)//2) if s[i]!='a'), s[:-1] and s[:-1]+'b')
+```
+
+
+Use `next`, element index, default value and conjunction to update the first element that matches a predicate.
+
+```python
+(i:=next((i+1 for i,x in enumerate(v) if pred(x)), 0)) and v.__setitem__(i-1, val)
+
+```
+
+
+#### map
+
+You can use `map` to traverse through adjacent cells.
+
+* https://leetcode.com/problems/max-area-of-island
+
+```python
+class Solution1:
+    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
+        def dfs(i,j):
+            if 0<=i<len(grid) and 0<=j<len(grid[0]) and grid[i][j]:
+                grid[i][j] = 0
+                return 1 + sum(map(dfs,(i+1,i,i-1,i),(j,j+1,j,j-1)))
+            return 0
+        return max(dfs(i,j) for i in range(len(grid)) for j in range(len(grid[0])))
+
+class Solution:
+    def maxAreaOfIsland(self, g: List[List[int]]) -> int:
+        return max((f:=lambda i,j:g[i].__setitem__(j,0) or 1 + sum(map(f,(i+1,i,i-1,i),(j,j+1,j,j-1)))
+            if 0<=i<len(g) and 0<=j<len(g[0]) and g[i][j] else 0)(i,j)
+            for i in range(len(g)) for j in range(len(g[0])))
+```
+
+It's shorter to use complex numbers for 2d maps.
+
+* https://leetcode.com/problems/max-area-of-island/discuss/108565/4-lines
+
+```python
+class Solution1:
+    def maxAreaOfIsland(self, grid):
+        grid = {i + j*1j: val for i, row in enumerate(grid) for j, val in enumerate(row)}
+        def area(z):
+            return grid.pop(z, 0) and 1 + sum(area(z + 1j**k) for k in range(4))
+        return max(map(area, set(grid)))
+
+class Solution:
+    def maxAreaOfIsland(self, grid):
+        return max(map(a:=lambda z: g.pop(z, 0) and 1 + sum(a(z + 1j**k) for k in range(4)),
+            set(g:= {i + j*1j: val for i, row in enumerate(grid) for j, val in enumerate(row)})))
+```
+
+* https://leetcode.com/problems/number-of-islands
+
+```python
+class Solution:
+    def numIslands(self, grid):
+        return sum(map(a:=lambda z:g.pop(z, 0) and bool([a(z + 1j**k) for k in range(4)]),
+            set(g:={i + j*1j:int(val) for i, row in enumerate(grid) for j, val in enumerate(row)})))
+```
+
 #### Walrus operator
 
-Use walrus operator (:=) if you need to define a variable or a function.
+Use walrus operator (:=) if you need to define or update a variable or a function that's used repeatedly.
 
 * https://leetcode.com/problems/guess-number-higher-or-lower
 
@@ -81,7 +184,7 @@ class Solution:
 
 #### getitem
 
-You can use it to construct a bisect comparator object (but we have the key parameter now).
+Used to construct a bisect comparator object, now we have the key parameter (since Python 3.10).
 
 * https://leetcode.com/problems/guess-number-higher-or-lower
 
@@ -97,7 +200,7 @@ class Solution:
 
 #### cache
 
-Cache decorator may be used as an inline function `cache(fn)` in oneliners.
+Cache decorator may be used as an inline function `cache(lambda ...)` in oneliners.
 
 * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/2555929/python-oneliner-dfs-with-a-cache-decorator
 
@@ -251,103 +354,5 @@ class Solution:
     def countPrimes(self, n):
         return sum(reduce(lambda a,i:a[i] and a.__setitem__(slice(i*i,n,i),[0]*len(a[i*i:n:i])) or a,
             range(2,int(n**0.5)+1), [0,0]+[1]*(n-2)))
-```
-
-#### next
-
-Use `next` whether you need an oneliner loop with an early exit.
-
-* https://leetcode.com/problems/two-sum
-
-```python
-class Solution1:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-        seen = {}
-        for i,x in enumerate(nums):
-            if target-x in seen:
-                return seen[target-x], i
-            seen[x] = i
-        return False
-
-class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-        return (seen:={}) or next((((seen[target-x],i) for i,x in enumerate(nums)
-            if target-x in seen or seen.__setitem__(x,i))), False)
-```
-
-* https://leetcode.com/problems/break-a-palindrome/discuss/1481905/Python-3-one-line
-
-```python
-class Solution1:
-    def breakPalindrome(self, s: str) -> str:
-        for i in range(len(s) // 2):
-            if s[i] != 'a':
-                return s[:i] + 'a' + s[i + 1:]
-        return s[:-1] + 'b' if s[:-1] else ''
-
-class Solution:
-    def breakPalindrome(self, s: str) -> str:
-        return next((s[:i]+'a'+s[i+1:] for i in range(len(s)//2) if s[i]!='a'), s[:-1] and s[:-1]+'b')
-```
-
-
-Use `next`, element index, default value and conjunction to update the first element that matches a predicate.
-
-```python
-(i:=next((i+1 for i,x in enumerate(v) if pred(x)), 0)) and v.__setitem__(i-1, val)
-
-```
-
-
-#### map
-
-You can use `map` to traverse through adjacent cells. Note you need a function or `[]` to run generator.
-However, `[]` or `list()` allocate memory, so you can exhaust a generator using `all()` or `any()`, depending of the return value.
-
-
-* https://leetcode.com/problems/max-area-of-island
-
-```python
-class Solution1:
-    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
-        def dfs(i,j):
-            if 0<=i<len(grid) and 0<=j<len(grid[0]) and grid[i][j]:
-                grid[i][j] = 0
-                return 1 + sum(map(dfs,(i+1,i,i-1,i),(j,j+1,j,j-1)))
-            return 0
-        return max(dfs(i,j) for i in range(len(grid)) for j in range(len(grid[0])))
-
-class Solution:
-    def maxAreaOfIsland(self, g: List[List[int]]) -> int:
-        return max((f:=lambda i,j:g[i].__setitem__(j,0) or 1 + sum(map(f,(i+1,i,i-1,i),(j,j+1,j,j-1)))
-            if 0<=i<len(g) and 0<=j<len(g[0]) and g[i][j] else 0)(i,j)
-            for i in range(len(g)) for j in range(len(g[0])))
-```
-
-It's shorter to use complex numbers for 2d maps.
-
-* https://leetcode.com/problems/max-area-of-island/discuss/108565/4-lines
-
-```python
-class Solution1:
-    def maxAreaOfIsland(self, grid):
-        grid = {i + j*1j: val for i, row in enumerate(grid) for j, val in enumerate(row)}
-        def area(z):
-            return grid.pop(z, 0) and 1 + sum(area(z + 1j**k) for k in range(4))
-        return max(map(area, set(grid)))
-
-class Solution:
-    def maxAreaOfIsland(self, grid):
-        return max(map(a:=lambda z: g.pop(z, 0) and 1 + sum(a(z + 1j**k) for k in range(4)),
-            set(g:= {i + j*1j: val for i, row in enumerate(grid) for j, val in enumerate(row)})))
-```
-
-* https://leetcode.com/problems/number-of-islands
-
-```python
-class Solution:
-    def numIslands(self, grid):
-        return sum(map(a:=lambda z:g.pop(z, 0) and bool([a(z + 1j**k) for k in range(4)]),
-            set(g:={i + j*1j:int(val) for i, row in enumerate(grid) for j, val in enumerate(row)})))
 ```
 

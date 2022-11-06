@@ -6,7 +6,7 @@ class Solution:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
         res, trie = [], (Trie:=lambda: defaultdict(Trie))()
         [reduce(dict.__getitem__, word, trie).__setitem__(None, word) for word in words]
-        board = {i + j * 1j: c for i, row in enumerate(board) for j, c in enumerate(row)}
+        board = {i+j*1j: c for i, row in enumerate(board) for j, c in enumerate(row)}
         def rm(trie, word):
             path = [trie]
             [path.append(path[-1].get(c)) for c in word]

@@ -39,7 +39,7 @@ so you can exhaust a generator using `all()` or `any()` depending on the return 
 
 #### next
 
-Use `next` whether you need an oneliner loop with an early exit.
+Use `next` whether you need an inline loop with an early exit.
 
 * https://leetcode.com/problems/two-sum
 

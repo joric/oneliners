@@ -17,7 +17,7 @@ class Solution:
         return comb(n+k-1, k*2) % (10**9+7)
 ```
 
-#### lambdas
+#### Lambdas
 
 Fictitious (anonymous) lambdas also may be nested. E.g. you can use lambdas as parameters:
 
@@ -29,7 +29,7 @@ You can't unpack lambda tuples in Python 3 since [PEP 3113](https://peps.python.
 
 You can also unpack multiple tuples as `lambda xy,ab:(lambda x,y,a,b: x+y+a+b)(*(xy+ab))`.
 
-#### walrus operator
+#### Walrus operator
 
 Use walrus operator (:=) if you need to define a variable or a function.
 
@@ -301,7 +301,9 @@ Use `next`, element index, default value and conjunction to update the first ele
 
 #### map
 
-You can use `map` to traverse through adjacent cells. Note you need a function or `[]` to run list comprehension.
+You can use `map` to traverse through adjacent cells. Note you need a function to run generator.
+However, `[]` or `list()` allocate memory, so you can exhaust a generator using `all()` or `any()`, depending of the return value.
+
 
 * https://leetcode.com/problems/max-area-of-island
 

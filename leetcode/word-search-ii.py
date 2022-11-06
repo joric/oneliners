@@ -2,7 +2,8 @@ from lc import *
 
 # https://leetcode.com/problems/word-search-ii/discuss/59804/27-lines-uses-complex-numbers/1672624
 
-class Solution:
+# TLE
+class Solution1:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
         res, trie = [], (Trie:=lambda: defaultdict(Trie))()
         [reduce(dict.__getitem__, word, trie).__setitem__(None, word) for word in words]
@@ -25,6 +26,46 @@ class Solution:
                 [dfs(node[tmp], z+1j**k) for k in range(4)]
                 board[z] = tmp
         [dfs(trie, z) for z in board]
+        return res
+
+class Solution:
+    def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
+        board = {i+j*1j:c for i,row in enumerate(board) for j,c in enumerate(row)}
+        res = []
+        trie = Counter()
+
+        def add(t, word):
+            for c in word:
+                if c not in t:
+                    t[c] = Counter()
+                t = t[c]
+                t['refs'] += 1
+            t['$'] = word
+
+        def remove(t, word):
+            for c in word:
+                if c in t:
+                    t = t[c]
+                    t['refs'] -= 1
+
+        for word in words:
+            add(trie, word)
+
+        def dfs(t, z):
+            c = board.get(z)
+            if not c or c not in t or (t:=t[c])['refs']<1:
+                return
+
+            if (word:=t.pop('$', None)):
+                del t['$']
+                res.append(word)
+                remove(trie, word)
+
+            board[z] = None
+            any(dfs(t, z+1j**k) for k in range(4))
+            board[z] = c
+
+        any(dfs(trie, z) for z in board)
         return res
 
 test('''

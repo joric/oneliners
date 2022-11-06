@@ -301,7 +301,7 @@ Use `next`, element index, default value and conjunction to update the first ele
 
 #### map
 
-You can use `map` to traverse through adjacent cells. Note you need a function to run generator.
+You can use `map` to traverse through adjacent cells. Note you need a function or `[]` to run generator.
 However, `[]` or `list()` allocate memory, so you can exhaust a generator using `all()` or `any()`, depending of the return value.
 
 

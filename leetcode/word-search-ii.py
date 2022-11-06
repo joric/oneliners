@@ -1,69 +1,21 @@
 from lc import *
 
-# TLE
-class Solution1:
-    def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
-        res, trie = [], (Trie:=lambda: defaultdict(Trie))()
-        [reduce(dict.__getitem__, word, trie).__setitem__(None, word) for word in words]
-        board = {i+j*1j: c for i, row in enumerate(board) for j, c in enumerate(row)}
-        def rm(trie, word):
-            path = [trie]
-            [path.append(path[-1].get(c)) for c in word]
-            if not path[-1]:
-                for char, parent in zip(word[::-1], path[::-1][1:]):
-                    if len(parent) > 1:
-                        break
-                    del parent[char]
-        def dfs(node, z):
-            if (word:=node.pop(None, None)):
-                res.append(word)
-                rm(trie, word)
-            tmp = board.get(z)
-            if tmp in node:
-                board[z] = None
-                [dfs(node[tmp], z+1j**k) for k in range(4)]
-                board[z] = tmp
-        [dfs(trie, z) for z in board]
-        return res
-
 class Solution:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
-        board = {i+j*1j:c for i,row in enumerate(board) for j,c in enumerate(row)}
-        res = []
-        trie = Counter()
-
-        def add(t, word):
-            for c in word:
-                if c not in t:
-                    t[c] = Counter()
-                t = t[c]
-                t['refs'] += 1
-            t['$'] = word
-
-        def remove(t, word):
-            for c in word:
-                if c in t:
-                    t = t[c]
-                    t['refs'] -= 1
-
-        for word in words:
-            add(trie, word)
-
-        def dfs(t, z):
-            c = board.get(z)
-            if not c or c not in t or (t:=t[c])['refs']<1:
+        board = {i+j*1j: c for i, row in enumerate(board) for j, c in enumerate(row)}
+        res, trie = [], (Trie:=lambda: defaultdict(Trie))()
+        any(reduce(dict.__getitem__, word, trie).__setitem__('$', word) for word in words)
+        def dfs(z, parent):
+            if not (c:=board.get(z)) in parent:
                 return
-
-            if (word:=t.pop('$', None)):
-                del t['$']
+            if (word:=(node:=parent[c]).pop('$', False)):
                 res.append(word)
-                remove(trie, word)
-
             board[z] = None
-            any(dfs(t, z+1j**k) for k in range(4))
+            any(dfs(z+1j**k, node) for k in range(4))
             board[z] = c
-
-        any(dfs(trie, z) for z in board)
+            if not node:
+                parent.pop(c)
+        any(dfs(z, trie) for z in board)
         return res
 
 test('''

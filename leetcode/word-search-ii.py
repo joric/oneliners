@@ -1,6 +1,8 @@
 from lc import *
 
-class Solution:
+# https://leetcode.com/problems/word-search-ii/discuss/2783455/Python-3-one-line
+
+class Solution1:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
         board = {i+j*1j: c for i, row in enumerate(board) for j, c in enumerate(row)}
         res, trie = [], (Trie:=lambda: defaultdict(Trie))()
@@ -18,7 +20,7 @@ class Solution:
         any(dfs(z, trie) for z in board)
         return res
 
-class Solution1:
+class Solution:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
         return ([b:={i+j*1j: c for i, row in enumerate(board) for j, c in enumerate(row)}, r:=[],
             t:=(T:=lambda: defaultdict(T))(), [reduce(dict.__getitem__, w, t).__setitem__('$',w) for w in words],

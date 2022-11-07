@@ -74,7 +74,14 @@ class Solution:
     def breakPalindrome(self, s: str) -> str:
         return next((s[:i]+'a'+s[i+1:] for i in range(len(s)//2) if s[i]!='a'), s[:-1] and s[:-1]+'b')
 ```
+* https://leetcode.com/problems/construct-target-array-with-multiple-sums
 
+```python
+class Solution:
+    def isPossible(self, target: List[int]) -> bool:
+        return (s:=sum(target),q:=[-a for a in target],heapify(q)) and next((x==1 for _ in count()
+            if (x:=-heappop(q))==1 or s==x or (d:=1+(x-1)%(s-x))==x or not (s:=s-x+d,heappush(q,-d))),1)
+```
 
 Use `next`, element index, default value and conjunction to update the first element that matches a predicate.
 

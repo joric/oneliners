@@ -28,6 +28,20 @@ class Solution2:
 
 class Solution3:
     def deepestLeavesSum(self, root: TreeNode) -> int:
+        def level(node):
+            if not node:
+                return 0
+            return 1 + max(level(node.left), level(node.right))
+        def dfs(node, i):
+            if not node:
+                return 0
+            if i==0:
+                return node.val
+            return dfs(node.left, i-1) + dfs(node.right, i-1)
+        return dfs(root, level(root))
+
+class Solution4:
+    def deepestLeavesSum(self, root: TreeNode) -> int:
         return (dfs:=lambda node,i:0 if not node else dfs(node.left,i-1) +
             dfs(node.right,i-1) if i else node.val)(root,(level:=lambda node:
             max(level(node.left),level(node.right))+1 if node else 0)(root)-1)

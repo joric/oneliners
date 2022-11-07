@@ -21,27 +21,21 @@ class Solution1:
 
 class Solution2:
     def deepestLeavesSum(self, root: TreeNode) -> int:
+        q = [root]
+        while q:
+            pre, q = q, [child for p in q for child in [p.left, p.right] if child]
+        return sum(node.val for node in pre)
+
+class Solution3:
+    def deepestLeavesSum(self, root: TreeNode) -> int:
         return (dfs:=lambda node,i:0 if not node else dfs(node.left,i-1) +
             dfs(node.right,i-1) if i else node.val)(root,(level:=lambda node:
             max(level(node.left),level(node.right))+1 if node else 0)(root)-1)
 
-class Solution3:
+class Solution:
     def deepestLeavesSum(self, root: TreeNode) -> int:
         return (f:=lambda a: f(b) if (b:=[c for n in a for c in (n.left,n.right) if c]) else sum(n.val for n in a))([root])
 
-class Solution4:
-    def deepestLeavesSum(self, root: TreeNode) -> int:
-        q = [root]
-        while q:
-            pre, q = q, [child for p in q for child in [p.left, p.right] if child]
-        return sum(node.val for node in pre)
-
-class Solution:
-    def deepestLeavesSum(self, root: TreeNode) -> int:
-        q = [root]
-        while q:
-            pre, q = q, [child for p in q for child in [p.left, p.right] if child]
-        return sum(node.val for node in pre)
 
 test('''
 Example 1:

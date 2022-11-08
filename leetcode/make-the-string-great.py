@@ -10,9 +10,13 @@ class Solution1:
                 q.append(c)
         return ''.join(q)
 
-class Solution:
+class Solution2:
     def makeGood(self, s: str) -> str:
         return ''.join(reduce(lambda q,c:(q and ord(q[-1])^ord(c)==32 and q.pop() or q.append(c),q)[1], s, []))
+
+class Solution:
+    def makeGood(self, s: str) -> str:
+        return (q:=[]) or [q and ord(q[-1])^ord(c)==32 and q.pop() or q.append(c) for c in s] and ''.join(q)
 
 test('''
 

@@ -19,8 +19,8 @@ class Solution1:
 
 class Solution:
     def isPossible(self, target: List[int]) -> bool:
-        return (s:=sum(target),q:=[-a for a in target],heapify(q)) and next((x==1 for _ in count()
-        if (x:=-heappop(q))==1 or s==x or (d:=1+(x-1)%(s-x))==x or not (s:=s-x+d,heappush(q,-d))),1)
+        return next((x==1 for _ in count() if (x:=-heappop(q))==1 or s==x or (d:=1+(x-1)%(s-x))==x
+            or not (s:=s-x+d,heappush(q,-d))),(s:=sum(target),q:=[-a for a in target],heapify(q)))
 
 test('''
 

@@ -12,7 +12,7 @@ class Solution1:
 
 class Solution:
     def makeGood(self, s: str) -> str:
-        return ''.join(reduce(lambda q,c:(q.pop() if q and ord(q[-1])^ord(c)==32 else q.append(c),q)[1], s, []))
+        return ''.join(reduce(lambda q,c:(q and ord(q[-1])^ord(c)==32 and q.pop() or q.append(c),q)[1], s, []))
 
 test('''
 

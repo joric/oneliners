@@ -16,7 +16,7 @@ class Solution2:
 
 class Solution:
     def makeGood(self, s: str) -> str:
-        return (q:=[]) or [q and ord(q[-1])^ord(c)==32 and q.pop() or q.append(c) for c in s] and ''.join(q)
+        return (q:=[],[q and ord(q[-1])^ord(c)==32 and q.pop() or q.append(c) for c in s],''.join(q))[2]
 
 test('''
 

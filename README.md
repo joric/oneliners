@@ -45,7 +45,7 @@ Note that `next` default parameter gets initialized first so you can use it for 
 * https://leetcode.com/problems/two-sum
 
 ```python
-class Solution1:
+class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         seen = {}
         for i,x in enumerate(nums):
@@ -63,7 +63,7 @@ class Solution:
 * https://leetcode.com/problems/break-a-palindrome/discuss/1481905/Python-3-one-line
 
 ```python
-class Solution1:
+class Solution:
     def breakPalindrome(self, s: str) -> str:
         for i in range(len(s) // 2):
             if s[i] != 'a':
@@ -98,7 +98,7 @@ You can use `map` to traverse through adjacent cells.
 * https://leetcode.com/problems/max-area-of-island
 
 ```python
-class Solution1:
+class Solution:
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
         def dfs(i,j):
             if 0<=i<len(grid) and 0<=j<len(grid[0]) and grid[i][j]:
@@ -119,7 +119,7 @@ It's shorter to use complex numbers for 2d maps.
 * https://leetcode.com/problems/max-area-of-island/discuss/108565/4-lines
 
 ```python
-class Solution1:
+class Solution:
     def maxAreaOfIsland(self, grid):
         grid = {i + j*1j: val for i, row in enumerate(grid) for j, val in enumerate(row)}
         def area(z):
@@ -148,7 +148,7 @@ Use walrus operator (:=) if you need to define or update a variable or a functio
 * https://leetcode.com/problems/guess-number-higher-or-lower
 
 ```python
-class Solution1(object):
+class Solution(object):
     def guessNumber(self, n: int) -> int:
         l,r = 1, n
         while l <= r:
@@ -170,7 +170,7 @@ class Solution:
 * https://leetcode.com/problems/reverse-integer
 
 ```python
-class Solution1:
+class Solution:
     def reverse(self, x: int) -> int:
         r, x = 0, abs(x)
         while x:
@@ -198,7 +198,7 @@ Used to construct a bisect comparator object, now we have the key parameter (sin
 * https://leetcode.com/problems/guess-number-higher-or-lower
 
 ```python
-class Solution1:
+class Solution:
     def guessNumber(self, n: int) -> int:        
         return bisect_left(type('',(),{'__getitem__':lambda _,i: -guess(i)})(), 0, 1, n)
 
@@ -214,7 +214,7 @@ Cache decorator may be used as an inline function `cache(lambda ...)` in oneline
 * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/2555929/python-oneliner-dfs-with-a-cache-decorator
 
 ```python
-class Solution1:
+class Solution:
     def maxProfit(self, k: int, prices: List[int]) -> int:
         @cache
         def dfs(i, k, sell):
@@ -232,7 +232,7 @@ class Solution:
 * https://leetcode.com/problems/coin-change
 
 ```python
-class Solution1:
+class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         @cache
         def f(n):
@@ -253,7 +253,7 @@ Use it to flatten a loop.
 * https://leetcode.com/problems/longest-substring-without-repeating-characters/discuss/1006208/python-oneliner-hashmap
 
 ```python
-class Solution1(object):
+class Solution:
     def lengthOfLongestSubstring(self, s):
         start, res, h = 0, 0, {}
         for i, c in enumerate(s):
@@ -262,7 +262,7 @@ class Solution1(object):
             h[c] = i + 1
         return res
 
-class Solution2:
+class Solution:
     def lengthOfLongestSubstring(self, s):
         def fn(a,b):
             start, res, h = a
@@ -273,7 +273,7 @@ class Solution2:
             return start,res,h
         return reduce(fn,enumerate(s),[0,0,{}])[1]
 
-class Solution3:
+class Solution:
     def lengthOfLongestSubstring(self, s):
         return reduce(lambda a,b:(s:=max(a[0],a[2].get(b[1],0)),max(a[1],b[0]-s+1),
             {**a[2],b[1]:b[0]+1}),enumerate(s),(0,0,{}))[1]
@@ -290,7 +290,7 @@ Another example:
 * https://leetcode.com/problems/longest-valid-parentheses/
 
 ```python
-class Solution1:
+class Solution:
     def longestValidParentheses(self, s: str) -> int:
         def fn(a,b):
             r, s = a
@@ -311,7 +311,7 @@ Use `__setattr__` (or `__setitem__` for indexes) if you need an assignment (this
 * https://leetcode.com/problems/add-one-row-to-tree/discuss/764593/Python-7-lines
 
 ```python
-class Solution1:
+class Solution:
     def addOneRow(self, root: TreeNode, v: int, d: int, isLeft: bool = True) -> TreeNode:
         if d == 1:
             return TreeNode(v, root if isLeft else None, root if not isLeft else None)
@@ -331,7 +331,7 @@ class Solution:
 * https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/discuss/1685130/Python-Recursive-with-comments
 
 ```python
-class Solution1(object):
+class Solution(object):
     def deleteMiddle(self, head):
         def f(a, b):
             if not b:

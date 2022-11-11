@@ -15,7 +15,7 @@ class Solution:
 
 class Solution1:
     def removeDuplicates(self, nums: List[int]) -> int:
-        nums[:] = sorted(list(set(nums)))
+        nums[:] = sorted(set(nums))
 
 test('''
 

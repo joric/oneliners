@@ -75,5 +75,5 @@ Constraints:
 nums is sorted in non-decreasing order.
 
 ''', 
-check=lambda res,exp,nums:nums[:exp[0]]==eval(exp[1].replace(',_',''))
+check=lambda res,exp,nums:nums[:exp[0]]==json.loads(exp[1].replace(',_',''))
 )

@@ -56,8 +56,8 @@ class Solution:
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        return (seen:={}) or next((((seen[target-x],i) for i,x in enumerate(nums)
-            if target-x in seen or seen.__setitem__(x,i))), False)
+        return next((((m[target-x],i) for i,x in enumerate(nums)
+            if target-x in m or m.__setitem__(x,i))),m:={})
 ```
 
 * https://leetcode.com/problems/break-a-palindrome/discuss/1481905/Python-3-one-line

@@ -127,31 +127,39 @@ def test(text, classname=None, check=None, init=None):
 
     tests = []
     t = 0
+
+    def split_vars(s):
+        out = []
+        if m:=re.split(r'[\, ]*\w+\s*=\s*',s):
+            for i in range(len(m)):
+                if m[i]:
+                    out.append(m[i])
+        return out
+
     for s in text.splitlines():
         if s.startswith('Input:'):
-            tests.append([[],[]])
-            if m:=re.split(r'[\, ]*\w+\s*=\s*',s):
-                for i in range(1, len(m)):
-                    tests[-1][0].append(m[i])
-                    t = 1
+            t = 1
+            tests.append({'input':[],'output':[]})
+            tests[-1]['input'] = split_vars(s[7:])
         elif s.startswith('Output:'):
             t = 0
-            tests[-1][1] = vp(s[8:])
+            tests[-1]['output'] = split_vars(s[8:])
         elif t == 1:
-            tests[-1][0][-1] += s
+            tests[-1]['input'][-1] += s
 
-    for args, expected in tests:
-        args = list(map(vp, args))
+    for t in tests:
+        args = tuple(map(vp, t['input']))
+        expected = tuple(map(vp, t['output']))
+        if len(expected)==1:
+            expected = expected[0]
 
         func = getattr(classname(), dir(classname)[-1])
-
         args, iargs = vcast(func, args, init)
 
         if init:
             init(*iargs)
 
         res = vc(func, 'return', func(*args))
-
         passed = check(res, expected, *args)
         print_res(passed, res, expected, *args)
 

@@ -39,12 +39,13 @@ class Solution:
         [[nums.remove(num) for i in range(nums.count(num)-2)] for num in nums]
 
 test('''
+
 80. Remove Duplicates from Sorted Array II
 Medium
 
-4138
+4195
 
-953
+959
 
 Add to List
 
@@ -72,26 +73,30 @@ for (int i = 0; i < k; i++) {
 }
 If all assertions pass, then your solution will be accepted.
 
+ 
+
 Example 1:
 
 Input: nums = [1,1,1,2,2,3]
-Output: [1,1,2,2,3]
+Output: 5, nums = [1,1,2,2,3,_]
 Explanation: Your function should return k = 5, with the first five elements of nums being 1, 1, 2, 2 and 3 respectively.
 It does not matter what you leave beyond the returned k (hence they are underscores).
-
 Example 2:
 
 Input: nums = [0,0,1,1,1,1,2,3,3]
-Output: [0,0,1,1,2,3,3]
+Output: 7, nums = [0,0,1,1,2,3,3,_,_]
 Explanation: Your function should return k = 7, with the first seven elements of nums being 0, 0, 1, 1, 2, 3 and 3 respectively.
 It does not matter what you leave beyond the returned k (hence they are underscores).
-
-Input: nums = [-50,-50,-49,-48,-47,-47,-47,-46,-45,-43,-42,-41,-40,-40,-40,-40,-40,-40,-39,-38,-38,-38,-38,-37,-36,-35,-34,-34,-34,-33,-32,-31,-30,-28,-27,-26,-26,-26,-25,-25,-24,-24,-24,-22,-22,-21,-21,-21,-21,-21,-20,-19,-18,-18,-18,-17,-17,-17,-17,-17,-16,-16,-15,-14,-14,-14,-13,-13,-12,-12,-10,-10,-9,-8,-8,-7,-7,-6,-5,-4,-4,-4,-3,-1,1,2,2,3,4,5,6,6,7,8,8,9,9,10,10,10,11,11,12,12,13,13,13,14,14,14,15,16,17,17,18,20,21,22,22,22,23,23,25,26,28,29,29,29,30,31,31,32,33,34,34,34,36,36,37,37,38,38,38,39,40,40,40,41,42,42,43,43,44,44,45,45,45,46,47,47,47,47,48,49,49,49,50]
-Output: [-50,-50,-49,-48,-47,-47,-46,-45,-43,-42,-41,-40,-40,-39,-38,-38,-37,-36,-35,-34,-34,-33,-32,-31,-30,-28,-27,-26,-26,-25,-25,-24,-24,-22,-22,-21,-21,-20,-19,-18,-18,-17,-17,-16,-16,-15,-14,-14,-13,-13,-12,-12,-10,-10,-9,-8,-8,-7,-7,-6,-5,-4,-4,-3,-1,1,2,2,3,4,5,6,6,7,8,8,9,9,10,10,11,11,12,12,13,13,14,14,15,16,17,17,18,20,21,22,22,23,23,25,26,28,29,29,30,31,31,32,33,34,34,36,36,37,37,38,38,39,40,40,41,42,42,43,43,44,44,45,45,46,47,47,48,49,49,50]
+ 
 
 Constraints:
 
 1 <= nums.length <= 3 * 10^4
 -10^4 <= nums[i] <= 10^4
 nums is sorted in non-decreasing order.
-''', check=check)
+
+''', 
+
+check=lambda res,exp,nums:nums[:exp[0]]==eval(exp[1].replace(',_',''))
+
+)

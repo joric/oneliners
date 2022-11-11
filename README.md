@@ -40,6 +40,7 @@ so you can exhaust a generator using `all()` or `any()` depending on the return 
 #### next
 
 Use `next` whether you need an early exit. Use `intertools.count()` generator for infinite loops.
+Note that `next` default parameter gets initialized first so you can use it for the startup code.
 
 * https://leetcode.com/problems/two-sum
 

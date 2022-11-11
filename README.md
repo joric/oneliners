@@ -224,7 +224,7 @@ class Solution:
 
 class Solution:
     def maxProfit(self, k: int, prices: List[int]) -> int:
-        return (f:=cache(lambda i,k,s:0 if k==0 or i==len(prices) \
+        return (f:=cache(lambda i,k,s:0 if k==0 or i==len(prices)
             else max(f(i+1,k-s,1-s)+prices[i]*(2*s-1),f(i+1,k,s))))(0,k,0)
 ```
 

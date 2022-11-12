@@ -4,6 +4,19 @@ from lc import *
 
 class MedianFinder:
     def __init__(self):
+        self.data = 1, [], []
+
+    def addNum(self, num):
+        sign, h1, h2 = self.data
+        heappush(h2, -heappushpop(h1, num * sign))
+        self.data = -sign, h2, h1
+
+    def findMedian(self):
+        sign, h1, h2 = d = self.data
+        return (h1[0] * sign - d[-sign][0]) / 2.0
+
+class MedianFinder:
+    def __init__(self):
         h,self.addNum,self.findMedian=[[],1,-1,i:=[]],lambda n:heapq.heappush(h[-1], -heapq.heappushpop(h[0], n*h[1])) or h.reverse(),lambda:(h[0][0]*h[1]-i[0])/2
 
 test('''

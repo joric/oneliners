@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/string-compression/discuss/1050976/A-two-line-Python3-groupby-solution
+
 class Solution:
     def compress(self, chars: List[str]) -> int:
         chars[:] = ''.join((lambda c,x:c+str(x) if x>1 else c)(c,len(list(g))) for c,g in groupby(chars))

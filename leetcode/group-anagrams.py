@@ -1,8 +1,5 @@
 from lc import *
 
-def check(res, expected, strs):
-    return (u:=lambda v: sorted(list(map(sorted,v))))(res)==u(expected)
-
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         return [list(v) for k,v in groupby(sorted(strs,key=sorted),sorted)]
@@ -43,4 +40,6 @@ Constraints:
 1 <= strs.length <= 10^4
 0 <= strs[i].length <= 100
 strs[i] consists of lowercase English letters.
-''',check=check)
+''', 
+check=lambda res,exp,s:(u:=lambda v: sorted(list(map(sorted,v))))(res)==u(exp)
+)

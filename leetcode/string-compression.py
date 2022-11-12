@@ -4,11 +4,7 @@ from lc import *
 
 class Solution:
     def compress(self, chars: List[str]) -> int:
-        chars[:] = ''.join((lambda c,x:c+str(x) if x>1 else c)(c,len(list(g))) for c,g in groupby(chars))
-
-class Solution:
-    def compress(self, chars: List[str]) -> int:
-        chars[:] = ''.join((lambda c,x:c+('',str(x))[x>1])(c,len(list(g))) for c,g in groupby(chars))
+        chars[:] = ''.join((lambda c,x:(c,c+str(x))[x>1])(c,len(list(g))) for c,g in groupby(chars))
 
 class Solution:
     def compress(self, chars: List[str]) -> int:

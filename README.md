@@ -36,7 +36,7 @@ the one value they yield.
 You need a function or `[]` to run generator. Note, `[]` or `list()` allocate memory,
 so you can exhaust a generator using `all()` or `any()` depending on the return values
 (even if you don't need the values, e.g. for the inline loop).
-You can get generator length as `len(1 for _ in g)` (it's the same as `len(list(g))` but uses constant memory).
+You can get generator length as `sum(1 for _ in g)` (it's about the same as `len(list(g))` but uses constant memory).
 
 #### next
 

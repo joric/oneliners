@@ -104,9 +104,10 @@ def test(text, classname=None, check=None, init=None):
         return v
 
     def vcast(func, args, init=None):
-        argc = func.__code__.co_argcount - 1
+        d = 1 if 'self' in func.__code__.co_varnames else 0
+        argc = func.__code__.co_argcount - d
         args, iargs = args[:argc], args[argc:]
-        args = [vc(func, func.__code__.co_varnames[i+1], x) for i,x in enumerate(args)]
+        args = [vc(func, func.__code__.co_varnames[i+d], x) for i,x in enumerate(args)]
         if init:
             iargs = [vc(init, init.__code__.co_varnames[i], x) for i,x in enumerate(iargs)]
         return args, iargs

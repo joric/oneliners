@@ -2,9 +2,11 @@ from lc import *
 
 class Solution:
     def spellchecker(self, wordlist: List[str], queries: List[str]) -> List[str]:
-        return (w:= set(wordlist), c:= {s.lower(): s for s in wordlist[::-1]},
+        return (
+            w:= {s:s for s in wordlist},
+            c:= {s.lower(): s for s in wordlist[::-1]},
             v:= {re.sub("[aeiou]", '#', s.lower()): s for s in wordlist[::-1]}
-            ) and [(s in w and s) or c.get(s.lower()) or v.get(re.sub("[aeiou]", '#', s.lower()), "") for s in queries]
+        ) and [w.get(s) or c.get(s.lower()) or v.get(re.sub("[aeiou]", '#', s.lower()), "") for s in queries]
 
 test('''
 

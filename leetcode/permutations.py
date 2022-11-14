@@ -50,19 +50,8 @@ class Solution:
 
 class Solution:
     def permute(self, a: List[int]) -> List[List[int]]:
-        return (
-            r:=[],
-            s:=lambda a,x,y:exec('a[x],a[y]=a[y],a[x]'),
-            h:=lambda j=0: j==len(a)-1 and r.append(a[:]) or any(s(a,i,j) or h(j+1) or s(a,i,j) for i in range(j,len(a)))
-        ) and h() or r
-
-class Solution:
-    def permute(self, a: List[int]) -> List[List[int]]:
-        return (
-            r:=[],
-            s:=lambda a,x,y:(t:=a[x],a.__setitem__(x,a[y]),a.__setitem__(y,t))[1],
-            h:=lambda j=0: j==len(a)-1 and r.append(a[:]) or any(s(a,i,j) or h(j+1) or s(a,i,j) for i in range(j,len(a)))
-        ) and h() or r
+        return (r:=[], s:=lambda x,y: (t:=a[x],a.__setitem__(x,a[y]),a.__setitem__(y,t)), (h:=lambda j=0:
+            j==len(a)-1 and r.append(a[:]) or [(s(i,j),h(j+1),s(i,j)) for i in range(j,len(a))])()) and r
 
 test('''
 
@@ -78,21 +67,25 @@ Add to List
 Share
 Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
 
- 
 
 Example 1:
 
 Input: nums = [1,2,3]
 Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+
 Example 2:
 
 Input: nums = [0,1]
 Output: [[0,1],[1,0]]
+
 Example 3:
 
 Input: nums = [1]
 Output: [[1]]
- 
+
+Example 4:
+Input: nums = [0,-1,1]
+Output: [[0,-1,1],[0,1,-1],[-1,0,1],[-1,1,0],[1,0,-1],[1,-1,0]]
 
 Constraints:
 
@@ -101,5 +94,5 @@ Constraints:
 All the integers of nums are unique.
 
 '''
-, check=lambda res,exp,s:(u:=lambda v: sorted(list(map(sorted,v))))(res)==u(exp)
+, check=lambda res,exp,_:sorted(res)==sorted(exp)
 )

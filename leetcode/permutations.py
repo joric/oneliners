@@ -31,6 +31,8 @@ class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         return permutations(nums)
 
+# minus-two-liner:
+class Solution: permute=permutations
 
 # Heap's permutation scheme with 2 swaps, see https://en.wikipedia.org/wiki/Heap%27s_algorithm
 class Solution:

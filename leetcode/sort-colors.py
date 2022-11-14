@@ -1,8 +1,5 @@
 from lc import *
 
-def check(res, expected, nums):
-    return nums==sorted(nums)
-
 class Solution1:
     def sortColors(self, nums: List[int]) -> None:
         red, white, blue = 0, 0, len(nums)-1
@@ -86,5 +83,8 @@ n == nums.length
 1 <= n <= 300
 nums[i] is either 0, 1, or 2.
 
-''', check=check)
+'''
+, check=lambda res,exp,nums: nums==sorted(nums)
+
+)
 

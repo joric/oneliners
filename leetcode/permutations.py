@@ -69,8 +69,8 @@ class Solution:
 
 class Solution:
     def permute(self, a: List[int]) -> List[List[int]]:
-        return (r:=[]) or (h:=lambda j=0: j==len(a)-1 and r.append(a) or any((s:=lambda a,x,y:
-            (t:=a[x]) and (a.__setitem__(x,a[y]) or a.__setitem__(y,t)))(a,i,j) or h(j+1) or s(a,i,j) for i in range(j,len(a))))() or r
+        return (r:=[]) or (h:=lambda j=0: j==len(a)-1 and r.append(a) or any((s:=lambda a,x,y: (t:=a[x]) and
+            (a.__setitem__(x,a[y]) or a.__setitem__(y,t)))(a,i,j) or h(j+1) or s(a,i,j) for i in range(j,len(a))))() or r
 
 test('''
 

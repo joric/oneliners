@@ -48,31 +48,19 @@ class Solution:
 
 class Solution:
     def permute(self, a: List[int]) -> List[List[int]]:
-        r = []
-        s = lambda a,x,y:exec('a[x],a[y]=a[y],a[x]')
-        h = lambda j=0: j==len(a)-1 and r.append(a) or any(s(a,i,j) or h(j+1) or s(a,i,j) for i in range(j,len(a)))
-        h()
-        return r
+        return (
+            r:=[],
+            s:=lambda a,x,y:exec('a[x],a[y]=a[y],a[x]'),
+            h:=lambda j=0: j==len(a)-1 and r.append(a) or any(s(a,i,j) or h(j+1) or s(a,i,j) for i in range(j,len(a)))
+        ) and h() or r
 
 class Solution:
     def permute(self, a: List[int]) -> List[List[int]]:
-        return (r:=[]) or (h:=lambda j=0: j==len(a)-1 and r.append(a) or any(
-            (s:=lambda a,x,y:exec('a[x],a[y]=a[y],a[x]'))(a,i,j)
-            or h(j+1) or s(a,i,j) for i in range(j,len(a))))() or r
-
-class Solution:
-    def permute(self, a: List[int]) -> List[List[int]]:
-        r = []
-        s = lambda a,x,y:(t:=a[x],a.__setitem__(x,a[y]),a.__setitem__(y,t))[1]
-        h = lambda j=0: j==len(a)-1 and r.append(a) or any(s(a,i,j) or h(j+1) or s(a,i,j) for i in range(j,len(a)))
-        h()
-        return r
-
-class Solution:
-    def permute(self, a: List[int]) -> List[List[int]]:
-        return (r:=[]) or (h:=lambda j=0: j==len(a)-1 and r.append(a) or any(
-            (s:=lambda a,x,y:(t:=a[x],a.__setitem__(x,a[y]),a.__setitem__(y,t))[1])(a,i,j)
-            or h(j+1) or s(a,i,j) for i in range(j,len(a))))() or r
+        return (
+            r:=[],
+            s:=lambda a,x,y:(t:=a[x],a.__setitem__(x,a[y]),a.__setitem__(y,t))[1],
+            h:=lambda j=0: j==len(a)-1 and r.append(a) or any(s(a,i,j) or h(j+1) or s(a,i,j) for i in range(j,len(a)))
+        ) and h() or r
 
 test('''
 

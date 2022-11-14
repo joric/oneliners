@@ -38,7 +38,7 @@ class Solution:
         res = []
         def h(j):
             if j==len(nums)-1:
-                res.append(nums)
+                res.append(nums[:])
             for i in range(j, len(nums)):
                 nums[i], nums[j] = nums[j], nums[i]
                 h(j+1)
@@ -51,7 +51,7 @@ class Solution:
         return (
             r:=[],
             s:=lambda a,x,y:exec('a[x],a[y]=a[y],a[x]'),
-            h:=lambda j=0: j==len(a)-1 and r.append(a) or any(s(a,i,j) or h(j+1) or s(a,i,j) for i in range(j,len(a)))
+            h:=lambda j=0: j==len(a)-1 and r.append(a[:]) or any(s(a,i,j) or h(j+1) or s(a,i,j) for i in range(j,len(a)))
         ) and h() or r
 
 class Solution:
@@ -59,7 +59,7 @@ class Solution:
         return (
             r:=[],
             s:=lambda a,x,y:(t:=a[x],a.__setitem__(x,a[y]),a.__setitem__(y,t))[1],
-            h:=lambda j=0: j==len(a)-1 and r.append(a) or any(s(a,i,j) or h(j+1) or s(a,i,j) for i in range(j,len(a)))
+            h:=lambda j=0: j==len(a)-1 and r.append(a[:]) or any(s(a,i,j) or h(j+1) or s(a,i,j) for i in range(j,len(a)))
         ) and h() or r
 
 test('''

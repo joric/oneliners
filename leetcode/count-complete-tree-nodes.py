@@ -11,8 +11,23 @@ class Solution:
 
 class Solution:
     def countNodes(self, root: TreeNode) -> int:
+        lh = lambda root: 1+lh(root.left) if root else -1
+        n,h = 0, lh(root)
+        while root:
+            if lh(root.right)==h-1:
+                n += 1<<h
+                root = root.right
+            else:
+                n += 1<<h-1
+                root = root.left
+            h -=1
+        return n
+
+class Solution:
+    def countNodes(self, root: TreeNode) -> int:
         return 0 if (h:=(lh:=lambda root: 1+lh(root.left) if root else -1)(root))<0 else \
             (1<<h)+self.countNodes(root.right) if lh(root.right)==h-1 else (1<<h-1)+self.countNodes(root.left)
+
 
 test('''
 

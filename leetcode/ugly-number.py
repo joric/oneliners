@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def isUgly(self, n: int) -> bool:
-        return n>0 and (2*3*5)**32%n==0
+        return n>0 and (2*3*5)**20%n==0
 
 test('''
 

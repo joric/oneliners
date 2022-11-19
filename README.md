@@ -40,7 +40,8 @@ You can get generator length as `sum(1 for _ in g)` (longer than `len(list(g))`,
 
 #### While
 
-For the while loops you could use  `count()` generator with `next()` or `takewhile()` (the latter is also a generator).
+While loops are not very onliner-friendly. You can use  `count()` generator with `next()` or `takewhile()`
+(the latter is also a generator, so you need to run it, i.e. with `any()` and `repeat(0)`).
 
 * https://leetcode.com/problems/sliding-window-maximum/
 
@@ -67,7 +68,7 @@ class Solution:
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
         return (d:=deque()) or reduce(lambda r,p:(
-            any(takewhile(lambda _:d and p[1]>=nums[d[-1]] and d.pop(), count())),
+            any(takewhile(lambda _:d and p[1]>=nums[d[-1]] and d.pop(), repeat(0))),
             d.append(p[0]), d[0]==p[0]-k and d.popleft(), r.append(nums[d[0]])) and r,
             enumerate(nums), [])[k-1:]
 

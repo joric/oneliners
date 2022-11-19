@@ -14,13 +14,19 @@ class Solution:
 
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        return (d:=deque()) or reduce(lambda r,p:(next(_ for _ in count() if not(d and p[1]>=nums[d[-1]] and d.pop())),
-            d.append(p[0]), d[0]==p[0]-k and d.popleft(), r.append(nums[d[0]])) and r, enumerate(nums), [])[k-1:]
+        return (d:=deque()) or reduce(lambda r,p:(
+
+            next(_ for _ in count() if not(d and p[1]>=nums[d[-1]] and d.pop())),
+
+            d.append(p[0]), d[0]==p[0]-k and d.popleft(), r.append(nums[d[0]])) and r,
+            enumerate(nums), [])[k-1:]
 
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        return (d:=deque()) or reduce(lambda r,p:(any(takewhile(lambda _:d and p[1]>=nums[d[-1]] and d.pop(), count())),
-            d.append(p[0]), d[0]==p[0]-k and d.popleft(), r.append(nums[d[0]])) and r, enumerate(nums), [])[k-1:]
+        return (d:=deque()) or reduce(lambda r,p:(
+            any(takewhile(lambda _:d and p[1]>=nums[d[-1]] and d.pop(), repeat(0))),
+            d.append(p[0]), d[0]==p[0]-k and d.popleft(), r.append(nums[d[0]])) and r,
+            enumerate(nums), [])[k-1:]
 
 
 test('''
@@ -52,6 +58,11 @@ Example 2:
 
 Input: nums = [1], k = 1
 Output: [1]
+
+Example 3:
+
+Input: nums = [-6,-10,-7,-1,-9,9,-8,-4,10,-5,2,9,0,-7,7,4,-2,-10,8,7], k = 7
+Output: [9,9,10,10,10,10,10,10,10,9,9,9,8,8]
 
 Constraints:
 

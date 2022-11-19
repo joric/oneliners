@@ -38,9 +38,44 @@ so you can exhaust a generator using `all()` or `any()` depending on the return 
 (even if you don't need the values, e.g. for the inline loop).
 You can get generator length as `sum(1 for _ in g)` (longer than `len(list(g))`, but uses constant memory).
 
+#### While
+
+For the while loops you could use  `count()` generator with `next()` or `takewhile()` (the latter is also a generator).
+
+* https://leetcode.com/problems/sliding-window-maximum/
+
+```python
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        r, d = [], deque()
+        for i, n in enumerate(nums):
+            while d and n>=nums[d[-1]]:
+                d.pop()
+            d.append(i)
+            if d[0] == i-k:
+                d.popleft()
+            r.append(nums[d[0]])
+        return r[k-1:]
+
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        return (d:=deque()) or reduce(lambda r,p:(
+            next(_ for _ in count() if not(d and p[1]>=nums[d[-1]] and d.pop())),
+            d.append(p[0]), d[0]==p[0]-k and d.popleft(), r.append(nums[d[0]])) and r,
+            enumerate(nums), [])[k-1:]
+
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        return (d:=deque()) or reduce(lambda r,p:(
+            any(takewhile(lambda _:d and p[1]>=nums[d[-1]] and d.pop(), count())),
+            d.append(p[0]), d[0]==p[0]-k and d.popleft(), r.append(nums[d[0]])) and r,
+            enumerate(nums), [])[k-1:]
+
+```
+
 #### next
 
-Use `next` whether you need an early exit. Use `intertools.count()` generator for infinite loops.
+Use `next` whether you need a loop with an early exit. Use `count()` generator for infinite loops.
 Note that `next` default parameter gets initialized first so you can use it for the startup code.
 
 * https://leetcode.com/problems/two-sum

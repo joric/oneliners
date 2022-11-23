@@ -1,8 +1,14 @@
 from lc import *
 
+# https://leetcode.com/problems/valid-sudoku/discuss/15460/1-7-lines-Python-4-solutions
+
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-        return len(s:=sum(([(c,i), (j,c), (i//3, j//3, c)] for i in range(9) for j in range(9) for c in [board[i][j]] if c != '.'), []))==len(set(s))
+        return len(s:=sum(([(c,i),(j,c),(i//3, j//3,c)] for i in range(9) for j in range(9) for c in [board[i][j]] if c != '.'), []))==len(set(s))
+
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        return 1==max(Counter(x for i,row in enumerate(board) for j,c in enumerate(row) if c != '.' for x in ((c,i),(j,c),(i/3,j//3,c))).values()or[1])
 
 test('''
 
@@ -26,10 +32,8 @@ Note:
 
 A Sudoku board (partially filled) could be valid but is not necessarily solvable.
 Only the filled cells need to be validated according to the mentioned rules.
- 
 
 Example 1:
-
 
 Input: board =
 [["5","3",".",".","7",".",".",".","."]
@@ -42,6 +46,7 @@ Input: board =
 ,[".",".",".","4","1","9",".",".","5"]
 ,[".",".",".",".","8",".",".","7","9"]]
 Output: true
+
 Example 2:
 
 Input: board =
@@ -56,7 +61,19 @@ Input: board =
 ,[".",".",".",".","8",".",".","7","9"]]
 Output: false
 Explanation: Same as Example 1, except with the 5 in the top left corner being modified to 8. Since there are two 8's in the top left 3x3 sub-box, it is invalid.
- 
+
+Example 3:
+Input: board =
+[[".",".",".",".",".",".",".",".","."]
+,[".",".",".",".",".",".",".",".","."]
+,[".",".",".",".",".",".",".",".","."]
+,[".",".",".",".",".",".",".",".","."]
+,[".",".",".",".",".",".",".",".","."]
+,[".",".",".",".",".",".",".",".","."]
+,[".",".",".",".",".",".",".",".","."]
+,[".",".",".",".",".",".",".",".","."]
+,[".",".",".",".",".",".",".",".","."]]
+Output: true
 
 Constraints:
 

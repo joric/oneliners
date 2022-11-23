@@ -127,8 +127,7 @@ def test(text, classname=None, check=None, init=None):
     # Solution tests
 
     tests = []
-    t = 0
-
+    p,t = '',0
     def split_vars(s):
         out = []
         if m:=re.split(r'[\, ]*\w+\s*=\s*',s):
@@ -137,16 +136,18 @@ def test(text, classname=None, check=None, init=None):
                     out.append(m[i])
         return out
 
+
     for s in text.splitlines():
         if s.startswith('Input:'):
             t = 1
             tests.append({'input':[],'output':[]})
-            tests[-1]['input'] = split_vars(s[7:])
+            p += s[7:]
         elif s.startswith('Output:'):
-            t = 0
+            tests[-1]['input'] = split_vars(p)
             tests[-1]['output'] = split_vars(s[8:])
+            p,t = '',0
         elif t == 1:
-            tests[-1]['input'][-1] += s
+            p += s
 
     for t in tests:
         args = tuple(map(vp, t['input']))

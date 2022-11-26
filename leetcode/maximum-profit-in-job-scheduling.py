@@ -13,6 +13,16 @@ class Solution:
 # https://leetcode.com/problems/maximum-profit-in-job-scheduling/discuss/616818/Python-4-liner-DFS%2BMemoization
 
 class Solution:
+    def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
+        a = sorted(zip(startTime, endTime, profit))
+        @cache
+        def f(i):
+            if i==len(a):
+                return 0
+            return max(f(bisect_left(a,a[i][1],key=itemgetter(0))) + a[i][2], f(i+1))
+        return f(0)
+
+class Solution:
     def jobScheduling(self, s: List[int], e: List[int], p: List[int]) -> int:
         return (a:=sorted(zip(s,e,p))) and (f:=cache(lambda i:i-len(a) and max(f(bisect_left(a,a[i][1],key=itemgetter(0)))+a[i][2],f(i+1))))(0)
 

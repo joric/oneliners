@@ -126,7 +126,6 @@ Use `next`, element index, default value and conjunction to update the first ele
 
 ```
 
-
 #### map
 
 You can use `map` to traverse through adjacent cells.
@@ -399,5 +398,24 @@ class Solution:
     def countPrimes(self, n):
         return sum(reduce(lambda a,i:a[i] and a.__setitem__(slice(i*i,n,i),[0]*len(a[i*i:n:i])) or a,
             range(2,int(n**0.5)+1), [0,0]+[1]*(n-2)))
+```
+
+#### Misc
+
+Note `itemgetter()` is the same length or shorter than lambda. Also try replacing `0 if x==y else z` with `x-y and z`.
+
+* https://leetcode.com/problems/maximum-profit-in-job-scheduling/discuss/616818/Python-4-liner-DFS%2BMemoization
+
+```python
+class Solution:
+    def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
+        return (a:=sorted(zip(startTime,endTime,profit))) and (f:=cache(lambda i:0 if i==len(a) else
+            max(f(bisect_left(a,a[i][1],key=lambda x:x[0]))+a[i][2],f(i+1))))(0)
+
+class Solution:
+    def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
+        return (a:=sorted(zip(startTime,endTime,profit))) and (f:=cache(lambda i:i-len(a) and
+            max(f(bisect_left(a,a[i][1],key=itemgetter(0)))+a[i][2],f(i+1))))(0)
+
 ```
 

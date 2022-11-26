@@ -13,8 +13,8 @@ class Solution:
 # https://leetcode.com/problems/maximum-profit-in-job-scheduling/discuss/616818/Python-4-liner-DFS%2BMemoization
 
 class Solution:
-    def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
-        return (a:=sorted(zip(startTime,endTime,profit))) and (f:=cache(lambda i:i-len(a) and max(f(bisect_left(a,a[i][1],key=itemgetter(0)))+a[i][2],f(i+1))))(0)
+    def jobScheduling(self, s: List[int], e: List[int], p: List[int]) -> int:
+        return (a:=sorted(zip(s,e,p))) and (f:=cache(lambda i:i-len(a) and max(f(bisect_left(a,a[i][1],key=itemgetter(0)))+a[i][2],f(i+1))))(0)
 
 test('''
 1235. Maximum Profit in Job Scheduling

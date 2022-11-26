@@ -14,7 +14,7 @@ class Solution:
 
 class Solution:
     def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
-        return (a:=sorted(list(zip(startTime,endTime,profit))),s:=[x[0] for x in a]) and (f:=cache(lambda i:0 if i==len(a) else max(f(bisect_left(s, a[i][1]))+a[i][2],f(i+1))))(0)
+        return (a:=sorted(zip(startTime,endTime,profit)),s:=[x[0] for x in a]) and (f:=cache(lambda i:0 if i==len(a) else max(f(bisect_left(s,a[i][1]))+a[i][2],f(i+1))))(0)
 
 
 test('''

@@ -14,7 +14,7 @@ class Solution:
 
 class Solution:
     def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
-        return (a:=sorted(zip(startTime,endTime,profit))) and (f:=cache(lambda i:0 if i==len(a) else max(f(bisect_left(a,a[i][1],key=itemgetter(0)))+a[i][2],f(i+1))))(0)
+        return (a:=sorted(zip(startTime,endTime,profit))) and (f:=cache(lambda i:i-len(a) and max(f(bisect_left(a,a[i][1],key=itemgetter(0)))+a[i][2],f(i+1))))(0)
 
 test('''
 1235. Maximum Profit in Job Scheduling

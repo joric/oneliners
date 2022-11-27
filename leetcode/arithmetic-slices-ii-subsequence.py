@@ -1,5 +1,6 @@
 from lc import *
 
+# https://leetcode.com/problems/arithmetic-slices-ii-subsequence/discuss/164610/Python-DP-solution-using-Counter
 
 class Solution:
     def numberOfArithmeticSlices(self, nums: List[int]) -> int:
@@ -10,8 +11,8 @@ class Solution:
                 diff = x - nums[ii]
                 ans += freq[ii].get(diff, 0)
                 freq[i][diff] += 1 + freq[ii][diff]
-        return ans         
-    
+        return ans
+
 class Solution:
     def numberOfArithmeticSlices(self, nums: List[int]) -> int:
         r, c = 0, [Counter() for _ in range(len(nums))]
@@ -22,7 +23,6 @@ class Solution:
                 c[i][d] += 1 + c[j][d]
                 print(c,d,r)
         return r 
-
 
 class Solution:
     def numberOfArithmeticSlices(self, nums: List[int]) -> int:

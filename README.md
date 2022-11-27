@@ -402,7 +402,10 @@ class Solution:
 
 #### Misc
 
-Note `itemgetter()` is the same length or shorter than lambda. Also try replacing `0 if x==y else z` with `x-y and z`.
+* Note `itemgetter(n)` is the same length or shorter than `lambda x:x[n]` but a little bit clearer to read.
+* You can replace `0 if x==y else z` with `x-y and z`.
+
+Example:
 
 * https://leetcode.com/problems/maximum-profit-in-job-scheduling/discuss/616818/Python-4-liner-DFS%2BMemoization
 

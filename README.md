@@ -408,7 +408,7 @@ Note `itemgetter()` is the same length or shorter than lambda. Also try replacin
 
 ```python
 class Solution:
-    def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
+    def jobScheduling(self, s: List[int], endTime: List[int], profit: List[int]) -> int:
         return (a:=sorted(zip(startTime,endTime,profit))) and (f:=cache(lambda i:0 if i==len(a) else
             max(f(bisect_left(a,a[i][1],key=lambda x:x[0]))+a[i][2],f(i+1))))(0)
 

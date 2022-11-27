@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def numberOfArithmeticSlices(self, nums: List[int]) -> int:
         total_sequences = seq_count = 0
         for i in range(2, len(nums)):
@@ -11,7 +11,7 @@ class Solution1:
                 seq_count = 0
         return total_sequences 
 
-class Solution2:
+class Solution:
     def numberOfArithmeticSlices(self, A: List[int]) -> int:
         return reduce(lambda a,i:((0,a[1]),(a[0]+1,a[0]+a[1]+1))[A[i]-A[i-1]==A[i-1]-A[i-2]],range(2,len(A)),(0,0))[1]
 

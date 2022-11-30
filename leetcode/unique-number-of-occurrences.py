@@ -1,8 +1,18 @@
 from lc import *
 
+# https://leetcode.com/problems/unique-number-of-occurrences/discuss/949934/python-3-one-line
+
+class Solution:
+    def uniqueOccurrences(self, arr: List[int]) -> bool:
+        return len(Counter(arr))==len(set(Counter(arr).values()))
+
 class Solution:
    def uniqueOccurrences(self, arr: List[int]) -> bool:
        return (lambda x:len(set(x))==len(x))(Counter(arr).values())
+
+class Solution:
+    def uniqueOccurrences(self, arr: List[int]) -> bool:
+        return len(set(arr))==len(set(Counter(arr).values()))
 
 test('''
 

@@ -1,8 +1,8 @@
 from lc import *
 
 class Solution:
-    def closeStrings(self, w1, w2):
-        return set(w1) == set(w2) and Counter(Counter(w1).values()) == Counter(Counter(w2).values())
+    def closeStrings(self, w1: str, w2: str) -> bool:
+        return set(w1)==set(w2) and set(Counter(w1).values())==set(Counter(w2).values())
 
 test('''
 

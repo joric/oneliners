@@ -4,30 +4,6 @@ class Solution:
     def frequencySort(self, s: str) -> str:
         return ''.join(v*k for k,v in Counter(s).most_common())
 
-
-def check(res,exp,s):
-    # check presence
-    if Counter(res)!=Counter(s):
-        return False
-
-    # check grouping
-    g = set()
-    for c,_ in groupby(res):
-        if c in g:
-            return False
-        g.add(c)
-
-    # check ordering
-    c,f = Counter(s), inf
-    for x in res:
-        if c[x]<=f:
-            f = c[x]
-        else:
-            return False
-
-    return True
-
-
 test('''
 
 451. Sort Characters By Frequency
@@ -72,5 +48,5 @@ Constraints:
 1 <= s.length <= 5 * 10^5
 s consists of uppercase and lowercase English letters and digits.
 
-''', check = check
+''', check = lambda res,exp,s: (g:=set(),c:=Counter(res),f:=inf) and next((0 for a,_ in groupby(res) if a in g or c[a]>f or not (f:=c[a],g.add(a)) ),c==Counter(s))
 )

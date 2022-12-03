@@ -48,5 +48,6 @@ Constraints:
 1 <= s.length <= 5 * 10^5
 s consists of uppercase and lowercase English letters and digits.
 
-''', check=lambda res,exp,s: (g:=set(),c:=Counter(res),f:=inf) and next((0 for a,_ in groupby(res) if a in g or c[a]>f or not (f:=c[a],g.add(a))),c==Counter(s))
+''',
+check=lambda res,exp,s:(g:=set(),c:=Counter(res),f:=inf) and next((0 for a,_ in groupby(res) if a in g or c[a]>f or not (f:=c[a],g.add(a))),c==Counter(s))
 )

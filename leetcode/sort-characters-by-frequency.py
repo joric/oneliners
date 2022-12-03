@@ -13,8 +13,7 @@ def check(res,exp,s):
         g.add(c)
 
     # check ordering
-    c = Counter(s)
-    f = inf
+    c,f = Counter(s), inf
     for x in res:
         if c[x]<=f:
             f = c[x]

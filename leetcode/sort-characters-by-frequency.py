@@ -1,5 +1,10 @@
 from lc import *
 
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        return ''.join(v*k for k,v in Counter(s).most_common())
+
+
 def check(res,exp,s):
     # check presence
     if Counter(res)!=Counter(s):
@@ -22,9 +27,6 @@ def check(res,exp,s):
 
     return True
 
-class Solution:
-    def frequencySort(self, s: str) -> str:
-        return ''.join(v*k for k,v in Counter(s).most_common())
 
 test('''
 
@@ -72,4 +74,3 @@ s consists of uppercase and lowercase English letters and digits.
 
 ''', check = check
 )
-

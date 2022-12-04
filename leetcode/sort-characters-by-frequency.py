@@ -2,7 +2,7 @@ from lc import *
 
 class Solution:
     def frequencySort(self, s: str) -> str:
-        return (v*k for k,v in Counter(s).most_common())
+        return ''.join(v*k for k,v in Counter(s).most_common())
 
 test('''
 

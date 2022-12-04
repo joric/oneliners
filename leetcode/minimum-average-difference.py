@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def minimumAverageDifference(self, nums: List[int]) -> int:
-        return (lambda p,l:min((abs((p[-1]-p[i])//((l-i-1) if l-i-1 else 1)-(p[i])//(i+1)),i) for i,x in enumerate(nums))[1])(list(accumulate(nums)),len(nums))
+        return (lambda p,l:min((abs((p[-1]-p[i])//(l-i-1 or 1)-(p[i])//(i+1)),i) for i,x in enumerate(nums))[1])(list(accumulate(nums)),len(nums))
 
 test('''
 

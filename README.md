@@ -403,7 +403,7 @@ class Solution:
 #### Misc
 
 * Note `itemgetter(n)` is the same length or shorter than `lambda x:x[n]` but a little bit clearer to read.
-* You can replace `0 if x==y else z` with `x-y and z`.
+* You can replace `0 if x==y else z` with `x-y and z`, it's a little bit counterintuitive, but much shorter.
 
 Example:
 

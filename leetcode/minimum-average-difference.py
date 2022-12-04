@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/minimum-average-difference/discuss/1995069/Python-2-Liner-oror-Prefix-Sum
+
 class Solution:
     def minimumAverageDifference(self, nums: List[int]) -> int:
         return (lambda p,l:min((abs((p[-1]-p[i])//((l-i-1) if l-i-1 else 1)-(p[i])//(i+1)),i) for i,x in enumerate(nums))[1])(list(accumulate(nums)),len(nums))

@@ -12,6 +12,10 @@ class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
         return next((s for _ in count() if not(f and f.next and (f:=f.next.next,s:=s.next))),(f:=head,s:=head))
 
+class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        return (g:=lambda f,s: g(f.next.next, s.next) if f and f.next else (f,s))(head,head)[1]
+
 test('''
 
 876. Middle of the Linked List

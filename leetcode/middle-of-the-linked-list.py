@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/middle-of-the-linked-list/discuss/2880828/Python-3-one-line-recursiveiterative
+
 class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
         fast, slow = head, head
@@ -11,6 +13,12 @@ class Solution:
 class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
         return next((s for _ in count() if not(f and f.next and (f:=f.next.next,s:=s.next))),(f:=head,s:=head))
+
+class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        def dfs(fast, slow):
+            return dfs(fast.next.next, slow.next) if fast and fast.next else (fast, slow)
+        return dfs(head, head)[1]
 
 class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:

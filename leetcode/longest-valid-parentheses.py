@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def longestValidParentheses(self, s: str) -> int:
         stack, result = [(-1, ')')], 0
         for i, paren in enumerate(s):
@@ -11,7 +11,7 @@ class Solution1:
                 stack.append((i, paren))
         return result
 
-class Solution2:
+class Solution:
     def longestValidParentheses(self, s: str) -> int:
         def fn(a,b):
             r, s = a
@@ -25,8 +25,6 @@ class Solution:
 
 test('''
 Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) parentheses substring.
-
- 
 
 Example 1:
 

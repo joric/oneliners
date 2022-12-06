@@ -1,8 +1,5 @@
 from lc import *
 
-def check(res, expected, nums, target):
-    return sorted(res)==sorted(expected)
-
 # TLE https://leetcode.com/problems/4sum/discuss/8595/5-lines-simple-Python
 class Solution1:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
@@ -84,4 +81,6 @@ Constraints:
 -10^9 <= nums[i] <= 10^9
 -10^9 <= target <= 10^9
 
-''', check=check)
+''',
+check=lambda res, expected, nums, target: sorted(res)==sorted(expected)
+)

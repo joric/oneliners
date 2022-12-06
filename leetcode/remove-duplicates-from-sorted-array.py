@@ -13,7 +13,7 @@ class Solution:
             j+=1
         return j
 
-class Solution1:
+class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         nums[:] = sorted(set(nums))
 

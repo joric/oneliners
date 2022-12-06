@@ -1,9 +1,6 @@
 from lc import *
 
-def check(res, expected, m):
-    return sorted(res)==sorted(expected)
-
-class Solution1:
+class Solution:
     def pacificAtlantic(self, m: List[List[int]]) -> List[List[int]]:
         h,w,p,a = len(m), len(m[0]) if m else 0, set(), set()
         def dfs(y, x, s, v=-inf):
@@ -78,4 +75,6 @@ n == heights[r].length
 1 <= m, n <= 200
 0 <= heights[r][c] <= 10^5
 
-''', check=check)
+''',
+check=lambda res, expected, m: sorted(res)==sorted(expected)
+)

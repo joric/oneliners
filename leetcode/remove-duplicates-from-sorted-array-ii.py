@@ -1,11 +1,8 @@
 from lc import *
 
-def check(res, expected, nums):
-    return nums[:res]==expected
-
 # https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/discuss/968017/Python-binary-search-solution-(upper-bound-aka-bisect_right)
 
-class Solution1:
+class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         i = j = k = 0
         while k<len(nums):
@@ -19,7 +16,7 @@ class Solution1:
 
 # https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/discuss/27976/3-6-easy-lines-C%2B%2B-Java-Python-Ruby
 
-class Solution2:
+class Solution:
     def removeDuplicates(self, nums) -> int:
         i = 0
         for n in nums:
@@ -28,7 +25,7 @@ class Solution2:
                 i += 1
         return i
 
-class Solution1:
+class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         return reduce(lambda i,n:nums.__setitem__(i,n) or i+1 if i<2 or n>nums[i-2] else i, nums, 0)
 

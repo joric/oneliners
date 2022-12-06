@@ -100,7 +100,7 @@ def test(text, classname=None, check=None, init=None):
         elif type(v) is float:
             return round(v, 5)
         if t:=next((t for t in (str,int,bool) if hint==str(t)), None):
-            return t(v)
+            return t(v) if v else 0
         return v
 
     def vcast(func, args, init=None):

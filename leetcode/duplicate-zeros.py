@@ -1,9 +1,6 @@
 from lc import *
 
-def check(res, expected, arr):
-    return arr==expected
-
-class Solution1:
+class Solution:
     def duplicateZeros(self, arr: List[int]) -> None:
         q, i, n = deque(), 0, len(arr)
         while i < n:
@@ -14,7 +11,7 @@ class Solution1:
                 arr[i] = q.popleft()
             i += 1
 
-class Solution2:
+class Solution:
     def duplicateZeros(self, arr: List[int]) -> None:
         [arr.insert(i,0) or arr.pop() for i in range(len(arr)-1,-1,-1) if not arr[i]]
 
@@ -49,4 +46,7 @@ Constraints:
 1 <= arr.length <= 10^4
 0 <= arr[i] <= 9
 
-''', check=check)
+''',
+check=lambda res, expected, arr: arr==expected
+
+)

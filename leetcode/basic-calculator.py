@@ -32,10 +32,6 @@ class Solution:
             return sum(q)
         return calc(0)
 
-class Solution:
-    def calculate(self, s):
-        return json.loads('{x:'+s+'}')
-
 test('''
 224. Basic Calculator
 Hard

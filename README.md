@@ -149,7 +149,7 @@ class Solution:
             for i in range(len(g)) for j in range(len(g[0])))
 ```
 
-It's shorter to use complex numbers for 2d maps.
+Though it's shorter to use complex numbers for 2d maps.
 
 * https://leetcode.com/problems/max-area-of-island/discuss/108565/4-lines
 

@@ -17,7 +17,7 @@ class Solution:
 
 class Solution:
     def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        return head and (next((0 for _ in count() if not(e and e.next and (o.__setattr__('next', o.next.next),e.__setattr__('next',e.next.next),o:=o.next,e:=e.next))),(o:=head,n:=o.next,e:=n)) or (o.__setattr__('next',n) or head))
+        return head and next((o.__setattr__('next',n) for _ in count() if not(e and e.next and (o.__setattr__('next', o.next.next),e.__setattr__('next',e.next.next),o:=o.next,e:=e.next))),(o:=head,n:=o.next,e:=n)) or head
 
 test('''
 

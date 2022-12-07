@@ -10,10 +10,9 @@ class Solution:
             return self.rangeSumBST(root.left, low, high)
         return root.val + self.rangeSumBST(root.left, low, high) + self.rangeSumBST(root.right, low, high)
 
-
 class Solution:
     def rangeSumBST(self, root: TreeNode, low: int, high: int) -> int:
-        return 0 if not root else self.rangeSumBST(root.right, low, high) if root.val<low else self.rangeSumBST(root.left, low, high) if root.val>high else root.val + self.rangeSumBST(root.left, low, high) + self.rangeSumBST(root.right, low, high)
+        return self.rangeSumBST(root.left, low, high) + self.rangeSumBST(root.right, low, high) + (root.val if root.val>=low and root.val<=high else 0) if root else 0
 
 test('''
 

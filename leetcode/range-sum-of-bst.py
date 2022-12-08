@@ -12,11 +12,12 @@ class Solution:
 
 class Solution:
     def rangeSumBST(self, root: TreeNode, low: int, high: int) -> int:
-        return self.rangeSumBST(root.left, low, high) + self.rangeSumBST(root.right, low, high) + (root.val if root.val>=low and root.val<=high else 0) if root else 0
+        return self.rangeSumBST(root.left, low, high) + self.rangeSumBST(root.right, low, high) + (low <= root.val <= high) * root.val if root else 0
 
 class Solution:
     def rangeSumBST(self, root: TreeNode, low: int, high: int) -> int:
-        return self.rangeSumBST(root.left, low, high) + self.rangeSumBST(root.right, low, high) + (low<=root.val<=high) * root.val if root else 0
+        return root and self.rangeSumBST(root.left, low, high) + self.rangeSumBST(root.right, low, high) + (low <= root.val <= high) * root.val or 0
+
 
 test('''
 

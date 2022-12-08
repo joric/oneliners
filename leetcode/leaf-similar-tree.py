@@ -2,7 +2,7 @@ from lc import *
 
 class Solution:
     def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
-        return (f:=lambda l,r: l if not r else l+[r.val] if not r.left and not r.right else f(f(l,r.left),r.right))([], root1)==f([], root2)
+        return (f:=lambda l,r:l if not r else l+[r.val] if not r.left and not r.right else f(f(l,r.left),r.right))([],root1)==f([],root2)
 
 test('''
 

@@ -46,7 +46,7 @@ class TreeNode(object):
     def parse(val):
         if not val:
             return None
-        nodes = [None if not x else TreeNode(x) for x in val]
+        nodes = [None if x is None else TreeNode(x) for x in val]
         kids = nodes[::-1]
         root = kids and kids.pop()
         for node in nodes:
@@ -160,6 +160,7 @@ def test(text, classname=None, check=None, init=None):
 
         if init:
             init(*iargs)
+
 
         res = vc(func, 'return', func(*args))
         passed = check(res, expected, *args)

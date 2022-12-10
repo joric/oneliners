@@ -1,11 +1,6 @@
 from lc import *
 
 class Solution:
-    def maxAncestorDiff(self, root: TreeNode, mn=100000, mx=0) -> int:
-        return max(self.maxAncestorDiff(root.left, min(mn, root.val), max(mx, root.val)),
-            self.maxAncestorDiff(root.right, min(mn, root.val), max(mx, root.val))) if root else mx - mn
-
-class Solution:
     def maxAncestorDiff(self, root: TreeNode) -> int:
         return (f:=lambda r,a,b:max(f(r.left, min(a, r.val), max(b, r.val)),f(r.right, min(a, r.val), max(b, r.val))) if r else b-a)(root,10000,0)
 

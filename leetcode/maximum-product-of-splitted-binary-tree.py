@@ -16,12 +16,13 @@ class Solution:
 class Solution:
     def maxProduct(self, root: Optional[TreeNode]) -> int:
         r = []
-        s = (f:=lambda x:r.append(a:=x.val+f(x.left)+f(x.right)) or a if x else 0)(root)
+        f = lambda x:r.append(a:=x.val+f(x.left)+f(x.right)) or a if x else 0
+        s = f(root)
         return max((s-x)*x for x in r) % (10**9+7)
 
 class Solution:
     def maxProduct(self, root: Optional[TreeNode]) -> int:
-        return (r:=[],s:=(f:=lambda x:r.append(a:=x.val+f(x.left)+f(x.right)) or a if x else 0)(root)) and max((s-x)*x for x in r) % (10**9+7)
+        return (r:=[],s:=(f:=lambda x:r.append(x.val+f(x.left)+f(x.right)) or r[-1] if x else 0)(root)) and max((s-x)*x for x in r) % (10**9+7)
 
 test('''
 

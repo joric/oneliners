@@ -1,5 +1,9 @@
 from lc import *
 
+class Solution:
+    def maxPathSum(self, root: TreeNode) -> int:
+        return max((f:=lambda x:(l:=f(x.left),r:=f(x.right)) and [x.val+max(l[0],r[0],0),max(l+r+[x.val+l[0]+r[0]])] if x else [-2**31]*2)(root))
+
 test('''
 
 124. Binary Tree Maximum Path Sum

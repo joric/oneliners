@@ -13,10 +13,9 @@ class Solution:
     def minFallingPathSum(self, m: List[List[int]]) -> int:
         return any(m[r].__setitem__(c,m[r][c]+min(m[r-1][max(0,c-1):c+2])) for r in range(1,len(m)) for c in range(len(m[0]))) or min(m[-1])
 
-
 class Solution:
     def minFallingPathSum(self, m: List[List[int]]) -> int:
-        return min(reduce(lambda f,r:[r[i]+min(f[max(i-1,0):i+2]) for i in range(len(m))],m))
+        return min(reduce(lambda a,b:[min(a[max(i-1,0):i+2])+b[i] for i in range(len(m))],m))
 
 test('''
 

@@ -16,7 +16,7 @@ class Solution:
 
 class Solution:
     def minFallingPathSum(self, m: List[List[int]]) -> int:
-        return min(reduce(lambda f,r: [r[i]+min(f[max(i-1, 0):i+2]) for i in range(len(m))],m))
+        return min(reduce(lambda f,r:[r[i]+min(f[max(i-1,0):i+2]) for i in range(len(m))],m))
 
 test('''
 

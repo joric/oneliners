@@ -28,12 +28,6 @@ class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
         return (f:=cache(lambda a,b:a and b and (a[0]==b[0] and 1+f(a[1:],b[1:]) or max(f(a,b[1:]),f(a[1:],b))) or 0))(text1,text2)
 
-
-class Solution:
-    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
-        return (f:=lambda i,j,a,b:0 if i==len(a) or j==len(b) else 1+f(i+1,j+1,a,b) if a[i]==b[j] else max(f(i+1,j,a,b),f(i,j+1,a,b)))(0,0,text1,text2)
-
-
 test('''
 
 1143. Longest Common Subsequence

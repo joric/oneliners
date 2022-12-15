@@ -22,15 +22,20 @@ class Solution:
                 return max(f(a, b[1:]), f(a[1:], b))
         return f(text1, text2)
 
+class Solution:
+    @cache
+    def longestCommonSubsequence(self, a: str, b: str, i=0, j=0) -> int:
+        return 0 if i==len(a) or j==len(b) else 1+self.longestCommonSubsequence(a,b,i+1,j+1) if a[i]==b[j] else max(self.longestCommonSubsequence(a,b,i+1,j), self.longestCommonSubsequence(a,b,i,j+1))
+
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        return (f:=cache(lambda a,b,i,j:0 if i==len(a) or j==len(b) else 1+f(a,b,i+1,j+1) if a[i]==b[j] else max(f(a,b,i+1,j),f(a,b,i,j+1))))(text1,text2,0,0)
+
 # https://leetcode.com/problems/longest-common-subsequence/solutions/2912811/python-3-one-line/
 
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
         return (f:=cache(lambda a,b:a and b and (a[0]==b[0] and 1+f(a[1:],b[1:]) or max(f(a,b[1:]),f(a[1:],b))) or 0))(text1,text2)
-
-class Solution:
-    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
-        return (f:=cache(lambda i,j,a,b:0 if i==len(a) or j==len(b) else 1+f(i+1,j+1,a,b) if a[i]==b[j] else max(f(i+1,j,a,b),f(i,j+1,a,b))))(0,0,text1,text2)
 
 test('''
 

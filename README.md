@@ -31,7 +31,7 @@ You can also unpack multiple tuples as `lambda xy,ab:(lambda x,y,a,b: x+y+a+b)(*
 
 #### Generators
 
-List comprehension generators `(x for y in z)` are memory efficient since they only require memory for
+Comprehension generators `(x for y in z)` are memory efficient since they only require memory for
 the one value they yield.
 You need a function or `[]` to run generator. Note, `[]` or `list()` allocate memory,
 so you can exhaust a generator using `all()` or `any()` depending on the return values

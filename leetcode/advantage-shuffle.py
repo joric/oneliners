@@ -4,6 +4,10 @@ class Solution:
     def advantageCount(self, nums1: List[int], nums2: List[int]) -> List[int]:
         return (lambda s: [s.pop(s[-1]>b and bisect_right(s, b)) for b in nums2])(sorted(nums1))
 
+class Solution:
+    def advantageCount(self, a: List[int], b: List[int]) -> List[int]:
+        return a.sort() or [a.pop(a[-1]>x and bisect_right(a,x)) for x in b]
+
 test('''
 
 870. Advantage Shuffle

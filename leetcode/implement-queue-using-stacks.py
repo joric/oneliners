@@ -1,27 +1,24 @@
 from lc import *
 
-# https://leetcode.com/problems/implement-queue-using-stacks/discuss/2912580/Python-or-Using-Stack-and-Amortized-way-(Both-Ways)
-
 class MyQueue:
     def __init__(self):
-        self.data = []   
-    def push(self, x: int) -> None:
-        self.data.append(x)
-    def pop(self) -> int:
-        new_stack = []
-        print(self.data)
-        while len(self.data) > 1:
-            new_stack.append(self.data.pop())   
+        self.i, self.o = [],[]
 
-        return_value = self.data.pop() 
+    def push(self, x):
+        self.i.append(x)
 
-        while new_stack:
-            self.data.append(new_stack.pop()) 
-        return return_value
-    def peek(self) -> int:
-        return self.data[0]
-    def empty(self) -> bool:
-        return not self.data
+    def pop(self):
+        self.peek()
+        return self.o.pop()
+
+    def peek(self):
+        if not self.o:
+            while self.i:
+                self.o.append(self.i.pop())
+        return self.o[-1]
+
+    def empty(self):
+        return not self.i and not self.o
 
 test('''
 

@@ -27,6 +27,10 @@ class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
         return reduce(lambda s,t:s[:-2]+[(lambda b,a:{'+':a+b,'-':b-a,'*':a*b,'/':a and int(b/a)}[t])(*s[-2:])] if t in '*/+-' else s+[int(t)],tokens,[])[-1]
 
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        return reduce(lambda s,t:s[:-2]+[int(eval(f'{s[-2]}{t}{s[-1]}'))]if t in'*/+-'else s+[int(t)],tokens,[])[-1]
+
 test('''
 
 150. Evaluate Reverse Polish Notation

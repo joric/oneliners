@@ -23,6 +23,8 @@ class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
         return reduce(lambda s,t:s+[(lambda a,b,c:{'+':a+b,'-':b-a,'*':a*b,'/':a and int(b/a)}[c])(s.pop(),s.pop(),t) if t in '*/+-' else int(t)],tokens,[])[-1]
 
+# not me
+
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
         return reduce(lambda s,t:s[:-2]+[(lambda b,a:{'+':a+b,'-':b-a,'*':a*b,'/':a and int(b/a)}[t])(*s[-2:])] if t in '*/+-' else s+[int(t)],tokens,[])[-1]

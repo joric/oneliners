@@ -17,7 +17,11 @@ class Solution:
 
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
-        return (s:=[]) or any(s.append( (lambda a,b,c:{'+':a+b,'-':b-a,'*':a*b,'/':a and int(b/a)}[c])(s.pop(),s.pop(),t) if t in '*/+-' else int(t)) for t in tokens) or s[-1]
+        return (s:=[]) or any(s.append((lambda a,b,c:{'+':a+b,'-':b-a,'*':a*b,'/':a and int(b/a)}[c])(s.pop(),s.pop(),t) if t in '*/+-' else int(t)) for t in tokens) or s[-1]
+
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        return reduce(lambda s,t:s+[(lambda a,b,c:{'+':a+b,'-':b-a,'*':a*b,'/':a and int(b/a)}[c])(s.pop(),s.pop(),t) if t in '*/+-' else int(t)],tokens,[])[-1]
 
 test('''
 

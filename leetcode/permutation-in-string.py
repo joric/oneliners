@@ -2,19 +2,19 @@ from lc import *
 
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
-        n1, n2 = len(s1), len(s2)
-        need = Counter(s1)
-        have = Counter(s2[:n1])
-        for i in range(n2-n1):
-            if need == have: return True
-            have[s2[i]] -= 1
-            have[s2[i+n1]] += 1
-            if not have[s2[i]]: del have[s2[i]]
+        n, m = len(s1), len(s2)
+        need, have = Counter(s1), Counter(s2[:n])
+        for i in range(m-n):
+            if need == have:
+                return True
+            have[s2[i]] -= have[s2[i]] > 0
+            have[s2[i+n]] += 1
         return need == have
 
-class Solution:
+class Solution2:
     def checkInclusion(self, s1: str, s2: str) -> bool:
         return any(Counter(s1)==Counter(s2[i:i+len(s1)]) for i in range(len(s2)-len(s1)+1))
+
 
 test('''
 

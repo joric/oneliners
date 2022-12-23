@@ -16,7 +16,7 @@ class Solution:
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        return max(reduce(lambda x,y:(max(x[0],x[2]),max(x[0]-y,x[1]),x[1]+y),prices,(0,0,0)))
+        return max(reduce(lambda x,y:(max(x[0],x[2]),max(x[0]-y,x[1]),x[1]+y),prices,(0,-inf,-inf)))
 
 test('''
 

@@ -5,6 +5,10 @@ class Solution:
     def numTilings(self, n: int) -> int:
         return 1 if n==0 else n if n<=2 else (2*self.numTilings(n-1) + self.numTilings(n-3)) % (10**9+7)
 
+class Solution:
+    def numTilings(self, n: int) -> int:
+        return (a:=[0,1,2,5]+[0]*(n-3),[a.__setitem__(i,(2*a[i-1]+a[i-3])%(10**9+7)) for i in range(4,n+1)]) and a[n]
+
 test('''
 790. Domino and Tromino Tiling
 Medium

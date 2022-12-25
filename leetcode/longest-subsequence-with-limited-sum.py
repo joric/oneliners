@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/longest-subsequence-with-limited-sum/discuss/2492742/Python3-2-line-binary-search
+
 class Solution:
     def answerQueries(self, nums: List[int], queries: List[int]) -> List[int]:
         return map(bisect_right,repeat(list(accumulate(sorted(nums)))),queries)

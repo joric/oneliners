@@ -2,11 +2,11 @@ from lc import *
 
 class Solution:
     def answerQueries(self, nums: List[int], queries: List[int]) -> List[int]:
-        return list(map(bisect_right, repeat(list(accumulate(sorted(nums)))), queries))
+        return map(bisect_right,repeat(list(accumulate(sorted(nums)))),queries)
 
 class Solution:
     def answerQueries(self, nums: List[int], queries: List[int]) -> List[int]:
-        return list(map(partial(bisect_right, list(accumulate(sorted(nums)))), queries))
+        return map(partial(bisect_right,list(accumulate(sorted(nums)))),queries)
 
 test('''
 

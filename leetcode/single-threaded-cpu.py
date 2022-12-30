@@ -2,41 +2,6 @@ from lc import *
 
 class Solution:
     def getOrder(self, tasks: List[List[int]]) -> List[int]:
-        res = []
-        tasks = sorted([(t[0], t[1], i) for i, t in enumerate(tasks)])
-        i = 0
-        h = []
-        time = tasks[0][0]
-        while len(res) < len(tasks):
-            while (i < len(tasks)) and (tasks[i][0] <= time):
-                heapq.heappush(h, (tasks[i][1], tasks[i][2]))
-                i += 1
-            if h:
-                t_diff, original_index = heapq.heappop(h)
-                time += t_diff
-                res.append(original_index)
-            elif i < len(tasks):
-                time = tasks[i][0]
-        return res
-
-class Solution:
-    def getOrder(self, tasks: List[List[int]]) -> List[int]:
-        tasks = sorted([t + [i] for i, t in enumerate(tasks)])
-        heap, ans = [], []
-        last_enq = 0
-        for enq, pro, idx in tasks:
-            while heap and last_enq < enq:
-                p, i, e = heapq.heappop(heap)
-                last_enq = max(e, last_enq) + p
-                ans.append(i)
-            heapq.heappush(heap, (pro, idx, enq))
-        while heap:
-            _, i, _ = heapq.heappop(heap)
-            ans.append(i)
-        return ans
-
-class Solution:
-    def getOrder(self, tasks: List[List[int]]) -> List[int]:
         heap, ans, last = [], [], 0
         for et, pt, idx in sorted((et, pt, idx) for idx, (et, pt) in enumerate(tasks)):
             while heap and last < et:
@@ -48,7 +13,9 @@ class Solution:
             ans.append(heapq.heappop(heap)[1])
         return ans
 
-# TODO
+class Solution:
+    def getOrder(self, tasks: List[List[int]]) -> List[int]:
+        return  (h:=[],a:=[],l:=0) and [next(1 for _ in count() if not(h and l<e and [r:=heapq.heappop(h),l:=max(r[2],l)+r[0],a.append(r[1])])) and heapq.heappush(h,(t,x,e)) for e,t,x in sorted((e,t,x) for x,(e,t) in enumerate(tasks))] and next(1 for _ in count() if not ([h,a.append(heapq.heappop(h)[1])][0])) and a
 
 test('''
 1834. Single-Threaded CPU

@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         def dfs(i, j):
             if 0 <= i < len(grid) and 0 <= j < len(grid[0]) and grid[i][j] == '1':
@@ -8,16 +8,16 @@ class Solution1:
                 list(map(dfs,(i-1,i,i+1,i),(j,j-1,j,j+1)))
         return sum(grid[i][j] == '1' and not dfs(i, j) for i in range(len(grid)) for j in range(len(grid[0])))
 
-class Solution2:
+class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         grid = {i + j*1j:int(val) for i,row in enumerate(grid) for j,val in enumerate(row)}
-        def area(z):
-            return grid.pop(z,0) and bool([area(z + 1j**k) for k in range(4)])
-        return sum(map(area, set(grid)))
+        def f(z):
+            return grid.pop(z,0) and bool([f(z + 1j**k) for k in range(4)])
+        return sum(map(f, set(grid)))
 
 class Solution:
     def numIslands(self, grid):
-        return sum(map(a:=lambda z:g.pop(z,0) and bool([a(z + 1j**k) for k in range(4)]),
+        return sum(map(f:=lambda z:g.pop(z,0) and bool([f(z + 1j**k) for k in range(4)]),
             set(g:={i + j*1j:int(x) for i,row in enumerate(grid) for j,x in enumerate(row)})))
 
 test('''

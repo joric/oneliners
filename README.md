@@ -170,9 +170,16 @@ class Solution:
 
 ```python
 class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        grid = {i + j*1j:int(val) for i,row in enumerate(grid) for j,val in enumerate(row)}
+        def f(z):
+            return grid.pop(z,0) and bool([f(z + 1j**k) for k in range(4)])
+        return sum(map(f, set(grid)))
+
+class Solution:
     def numIslands(self, grid):
-        return sum(map(a:=lambda z:g.pop(z, 0) and bool([a(z + 1j**k) for k in range(4)]),
-            set(g:={i + j*1j:int(val) for i, row in enumerate(grid) for j, val in enumerate(row)})))
+        return sum(map(f:=lambda z:g.pop(z,0) and bool([f(z + 1j**k) for k in range(4)]),
+            set(g:={i + j*1j:int(x) for i,row in enumerate(grid) for j,x in enumerate(row)})))
 ```
 
 #### Walrus operator

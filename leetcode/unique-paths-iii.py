@@ -21,9 +21,9 @@ class Solution:
                     r = r + 1
                 for k in range(4):
                    r = f(z + 1j**k, r)
-                g.update({z:x})
+                g.update({z: x})
             return r
-        g = {i + j*1j:x+1 for i, row in enumerate(grid) for j,x in enumerate(row) if x!=-1}
+        g = {i + j*1j: x+1 for i, row in enumerate(grid) for j,x in enumerate(row) if x!=-1}
         return f(next(z for z,x in g.items() if x==2),0)
 
 class Solution:

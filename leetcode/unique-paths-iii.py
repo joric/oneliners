@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/unique-paths-iii/discuss/2975134/python-3-one-line
+
 class Solution:
     def uniquePathsIII(self, grid: List[List[int]]) -> int:
         self.r = 0

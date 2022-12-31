@@ -9,8 +9,8 @@ class Solution:
                     self.r += 1
                 list(map(f,(i+1,i,i-1,i),(j,j+1,j,j-1)))
                 grid.update({(i,j): x})
-        grid = {(i,j): x + 1 for j, row in enumerate(grid) for i, x in enumerate(row) if x!=-1}
-        f(*next((i,j) for (i,j),v in grid.items() if v==2))
+        grid = {(i,j): x + 1 for j, row in enumerate(grid) for i,x in enumerate(row) if x!=-1}
+        f(*next((i,j) for (i,j),x in grid.items() if x==2))
         return self.r
 
 class Solution:

@@ -16,8 +16,10 @@ class Solution:
     def uniquePathsIII(self, grid: List[List[int]]) -> int:
         def f(z,r):
             if x:=g.pop(z,0):
-                x==3 and not g.values() and (r:=r+1)
-                [r:=f(z + 1j**k,r) for k in range(4)]
+                if x==3 and not g.values():
+                    r = r + 1
+                for k in range(4):
+                   r = f(z + 1j**k,r)
                 g.update({z:x})
             return r
         g = {i + j*1j:x+1 for i, row in enumerate(grid) for j,x in enumerate(row) if x!=-1}

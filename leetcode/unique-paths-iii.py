@@ -2,21 +2,18 @@ from lc import *
 
 class Solution:
     def uniquePathsIII(self, grid: List[List[int]]) -> int:
-        def f(x,y,r):
-            if val := grid.pop((x, y), False):
-                if val == 3 and not grid:
-                    r += 1
-                r = f(x+1, y, r)
-                r = f(x-1, y, r)
-                r = f(x, y+1, r)
-                r = f(x, y-1, r)
-                grid.update({(x,y): val})
-            return r
-        grid = {(x,y): val + 1 for y, row in enumerate(grid) for x, val in enumerate(row) if val != -1}
-        start = next((x,y) for (x,y),v in grid.items() if v == 2)
-        return f(*start, 0)
+        self.r = 0
+        def f(i,j):
+            if x:=grid.pop((i,j),0):
+                if x==3 and not grid:
+                    self.r += 1
+                list(map(f,(i+1,i,i-1,i),(j,j+1,j,j-1)))
+                grid.update({(i,j): x})
+        grid = {(i,j): x + 1 for j, row in enumerate(grid) for i, x in enumerate(row) if x!=-1}
+        f(*next((i,j) for (i,j),v in grid.items() if v==2))
+        return self.r
 
-class Solution1:
+class Solution:
     def uniquePathsIII(self, grid: List[List[int]]) -> int:
         def f(z,r):
             if x:=g.pop(z,0):
@@ -29,9 +26,10 @@ class Solution1:
         g = {i + j*1j:x+1 for i, row in enumerate(grid) for j,x in enumerate(row) if x!=-1}
         return f(next(z for z,x in g.items() if x==2),0)
 
-class Solution2:
+class Solution:
     def uniquePathsIII(self, grid: List[List[int]]) -> int:
         return (g:={i + j*1j:x+1 for i, row in enumerate(grid) for j,x in enumerate(row) if x!=-1}) and (f:=lambda z,r:[(x:=g.pop(z,0)) and (x==3 and not g and (r:=r+1), [r:=f(z + 1j**k,r) for k in range(4)],g.update({z:x}))] and r)(next(z for z,x in g.items() if x==2),0)
+
 
 test('''
 

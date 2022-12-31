@@ -200,7 +200,10 @@ class Solution:
 
 class Solution:
     def uniquePathsIII(self, grid: List[List[int]]) -> int:
-        return (g:={i + j*1j:x+1 for i, row in enumerate(grid) for j,x in enumerate(row) if x!=-1}) and (f:=lambda z,r:[(x:=g.pop(z,0)) and (x==3 and not g and (r:=r+1), [r:=f(z + 1j**k,r) for k in range(4)],g.update({z:x}))] and r)(next(z for z,x in g.items() if x==2),0)
+        return (g:={i + j*1j:x+1 for i, row in enumerate(grid) for j,x in enumerate(row)
+        if x!=-1}) and (f:=lambda z,r:[(x:=g.pop(z,0)) and (x==3 and not g and (r:=r+1),
+        [r:=f(z + 1j**k,r) for k in range(4)],g.update({z:x}))] and r)
+        (next(z for z,x in g.items() if x==2), 0)
 
 ```
 

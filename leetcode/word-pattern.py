@@ -4,6 +4,10 @@ class Solution:
     def wordPattern(self, pattern: str, s: str) -> bool:
         return len(set(pattern))==len(set(zip(p, s.split())))==len(set(s.split())) and len(pattern)==len(s.split())
 
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        return (lambda s,t:len(set(zip(s,t)))==len(set(s))==len(set(t)) and len(s)==len(t))(pattern, s.split())
+
 test('''
 
 290. Word Pattern

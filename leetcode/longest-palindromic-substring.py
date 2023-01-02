@@ -39,6 +39,8 @@ class Solution:
         maxLen, centerIndex = max((n, i) for i, n in enumerate(P))
         return s[(centerIndex  - maxLen)//2: (centerIndex  + maxLen)//2]
 
+# TODO
+
 test('''
 5. Longest Palindromic Substring
 

@@ -8,7 +8,7 @@ class Solution:
 
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-        return 1==max(Counter(x for i,row in enumerate(board) for j,c in enumerate(row) if c != '.' for x in ((c,i),(j,c),(i/3,j//3,c))).values()or[1])
+        return 1==max(Counter(x for i,row in enumerate(board) for j,c in enumerate(row) if c != '.' for x in ((c,i),(j,c),(i//3,j//3,c))).values()or[1])
 
 test('''
 

@@ -2,24 +2,11 @@ from lc import *
 
 class Solution:
     def minDeletionSize(self, strs: List[str]) -> int:
-        return sum(list(col) != sorted(col) for col in zip(*strs))
-
-class Solution:
-    def minDeletionSize(self, strs: List[str]) -> int:
-        return sum(any(a > b for a, b in zip(col, col[1:])) for col in zip(*strs))
+        return sum(list(col)!=sorted(col) for col in zip(*strs))
 
 test('''
-
 944. Delete Columns to Make Sorted
-Easy
 
-451
-
-2115
-
-Add to List
-
-Share
 You are given an array of n strings strs, all of the same length.
 
 The strings can be arranged such that there is one on each line, making a grid. For example, strs = ["abc", "bce", "cae"] can be arranged as:
@@ -27,21 +14,23 @@ The strings can be arranged such that there is one on each line, making a grid. 
 abc
 bce
 cae
-You want to delete the columns that are not sorted lexicographically. In the above example (0-indexed), columns 0 ('a', 'b', 'c') and 2 ('c', 'e', 'e') are sorted while column 1 ('b', 'c', 'a') is not, so you would delete column 1.
 
+You want to delete the columns that are not sorted lexicographically. In the above example (0-indexed), columns 0 ('a', 'b', 'c') and 2 ('c', 'e', 'e') are sorted while column 1 ('b', 'c', 'a') is not, so you would delete column 1.
 Return the number of columns that you will delete.
 
- 
 
 Example 1:
 
 Input: strs = ["cba","daf","ghi"]
 Output: 1
+
 Explanation: The grid looks as follows:
   cba
   daf
   ghi
 Columns 0 and 2 are sorted, but column 1 is not, so you only need to delete 1 column.
+
+
 Example 2:
 
 Input: strs = ["a","b"]
@@ -50,6 +39,8 @@ Explanation: The grid looks as follows:
   a
   b
 Column 0 is the only column and is sorted, so you will not delete any columns.
+
+
 Example 3:
 
 Input: strs = ["zyx","wvu","tsr"]
@@ -59,7 +50,7 @@ Explanation: The grid looks as follows:
   wvu
   tsr
 All 3 columns are not sorted, so you will delete all 3.
- 
+
 
 Constraints:
 

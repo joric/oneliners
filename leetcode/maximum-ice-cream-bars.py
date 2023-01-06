@@ -13,6 +13,18 @@ class Solution:
     def maxIceCream(self, costs: List[int], coins: int) -> int:
         return next((i for i,a in enumerate(sorted(costs)) if (coins:=coins-a) and coins<0),len(costs))
 
+class Solution:
+    def maxIceCream(self, costs: List[int], coins: int) -> int:
+        return next((i for i, x in enumerate(accumulate(sorted(costs))) if x>coins), len(costs))
+
+class Solution:
+    def maxIceCream(self, costs: List[int], coins: int) -> int:
+        return len(list(takewhile(partial(ge, coins), accumulate(sorted(costs)))))
+
+class Solution:
+    def maxIceCream(self, costs: List[int], coins: int) -> int:
+        return bisect_right(list(accumulate(sorted(costs))), coins)
+
 test('''
 
 1833. Maximum Ice Cream Bars

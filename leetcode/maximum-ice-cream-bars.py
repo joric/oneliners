@@ -29,6 +29,22 @@ class Solution:
     def maxIceCream(self, costs: List[int], coins: int) -> int:
         return bisect_right(list(accumulate(sorted(costs))), coins)
 
+class Solution:
+    def maxIceCream(self, costs: List[int], coins: int) -> int:
+        r, q = 0, Counter(costs)
+        for c in range(1, max(costs) + 1):
+            if not q[c]:
+                continue
+            if coins < c:
+                break
+            t = min(q[c],coins//c)
+            coins -= c*t
+            r += t
+        return r
+
+class Solution:
+    def maxIceCream(self, costs: List[int], coins: int) -> int:
+        return (r:=0,q:=Counter(costs),[q[c] and coins>=c and (t:=min(q[c],coins//c), coins:=coins-c*t, r:=r+t) for c in range(1,max(costs)+1)]) and r
 
 test('''
 

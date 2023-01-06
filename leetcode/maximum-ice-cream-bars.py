@@ -23,11 +23,12 @@ class Solution:
 
 class Solution:
     def maxIceCream(self, costs: List[int], coins: int) -> int:
-        return bisect_right(list(accumulate(sorted(costs))), coins)
+        return sum(1 for c in sorted(costs) if (coins:=coins-c)>=0)
 
 class Solution:
     def maxIceCream(self, costs: List[int], coins: int) -> int:
-        return sum(1 for c in sorted(costs) if (coins:=coins-c)>=0)
+        return bisect_right(list(accumulate(sorted(costs))), coins)
+
 
 test('''
 

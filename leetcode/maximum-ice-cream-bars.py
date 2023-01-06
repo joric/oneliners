@@ -44,7 +44,7 @@ class Solution:
 
 class Solution:
     def maxIceCream(self, costs: List[int], coins: int) -> int:
-        return (r:=0,q:=Counter(costs),[q[c] and coins>=c and (t:=min(q[c],coins//c), coins:=coins-c*t, r:=r+t) for c in range(1,max(costs)+1)]) and r
+        return (r:=0,q:=Counter(costs),[q[c] and coins>=c and (t:=min(q[c],coins//c),coins:=coins-c*t,r:=r+t) for c in range(1,max(costs)+1)]) and r
 
 test('''
 

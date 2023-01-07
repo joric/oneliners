@@ -46,6 +46,7 @@ class Solution:
     def maxIceCream(self, costs: List[int], coins: int) -> int:
         return (r:=0,q:=Counter(costs),all((t:=min(q[c],coins//c),coins:=coins-c*t,r:=r+t) for c in range(1,max(costs)+1) if q[c] and coins>=c)) and r
 
+
 test('''
 
 1833. Maximum Ice Cream Bars

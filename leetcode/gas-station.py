@@ -45,8 +45,15 @@ class Solution:
 
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
-        return ((r:=list(accumulate(gas[i]-cost[i] for i in range(0,len(gas))))).index(min(r))+1)%len(gas) if sum(cost)<=sum(gas) else -1
+        return -1 if sum(gas)<sum(cost) else (t:=0,b:=0) and [(t:=t+gas[i]-cost[i])<0 and (t:=0,b:=i+1) for i in range(len(gas))] and b
 
+class Solution:
+    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
+        return ((t:=0,b:=0,[(t:=t+gas[i]-cost[i])<0 and (t:=0,b:=i+1) for i in range(len(gas))],b)[3],-1)[sum(gas)<sum(cost)]
+
+class Solution:
+    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
+        return ((r:=list(accumulate(gas[i]-cost[i] for i in range(len(gas))))).index(min(r))+1)%len(gas) if sum(cost)<=sum(gas) else -1
 
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
@@ -54,11 +61,11 @@ class Solution:
 
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
-        return -1 if sum(gas)<sum(cost) else (t:=0,b:=0) and [(t:=t+gas[i]-cost[i])<0 and (t:=0,b:=i+1) for i in range(len(gas))] and b
+        return ((r:=list(accumulate(map(sub,gas,cost)))).index(min(r))+1)%len(gas) if sum(cost)<=sum(gas) else -1
 
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
-        return [(t:=0,b:=0,[(t:=t+gas[i]-cost[i])<0 and (t:=0,b:=i+1) for i in range(len(gas))],b)[3],-1][sum(gas)<sum(cost)]
+        return (((r:=list(accumulate(map(sub,gas,cost)))).index(min(r))+1)%len(gas),-1)[sum(cost)>sum(gas)]
 
 test('''
 

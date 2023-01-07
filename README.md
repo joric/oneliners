@@ -35,7 +35,7 @@ Comprehension generators `(x for y in z)` are memory efficient since they only r
 the one value they yield. Don't use square brackets or `list()`, if you don't need to allocate space for the list.
 You can exhaust a generator using `all()` or `any()` depending on the return values
 (you may not even need them when you running an inline loop).
-You can save 3 chars using `[*g]` syntax instead of `list(g)`.
+You can also save a few chars using `[*g]` syntax instead of `list(g)`.
 Generator length is `sum(1 for _ in g)` (longer than `len(list(g))` but uses constant memory).
 
 #### While

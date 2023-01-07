@@ -34,7 +34,7 @@ class Solution:
 
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
-        return -1 if sum(gas)<sum(cost) else reduce(lambda p,i:p.__setitem__(0, p[0]+gas[i]-cost[i]) or ([0,i+1] if p[0]<0 else p), range(len(gas)),[0,0])[1]
+        return -1 if sum(gas)<sum(cost) else reduce(lambda p,i:p.__setitem__(0, p[0]+gas[i]-cost[i]) or ([0,i+1] if p[0]<0 else p), range(len(gas)),(0,0))[1]
 
 
 class Solution:

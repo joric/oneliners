@@ -42,6 +42,11 @@ class Solution:
         return -1 if sum(gas)<sum(cost) else reduce(lambda p,d:(0,p[2]+1,p[2]+1) if p[0]+d<0 else (p[0]+d,p[1],p[2]+1),map(sub,gas,cost),(0,0,0))[1]
 
 
+class Solution:
+    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
+        return -1 if sum(gas)<sum(cost) else (t:=0,b:=0) and [(t:=t+gas[i]-cost[i],t<0)[1] and (t:=0,b:=i+1) for i in range(len(gas))] and b
+
+
 test('''
 
 134. Gas Station

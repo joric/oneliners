@@ -67,6 +67,10 @@ class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
         return (((r:=list(accumulate(map(sub,gas,cost)))).index(min(r))+1)%len(gas),-1)[sum(cost)>sum(gas)]
 
+class Solution:
+    def canCompleteCircuit(self, g: List[int], c: List[int]) -> int:
+        return (((r:=list(accumulate(map(sub,g,c)))).index(min(r))+1)%len(g),-1)[sum(c)>sum(g)]
+
 test('''
 
 134. Gas Station

@@ -32,10 +32,9 @@ You can also unpack multiple tuples as `lambda xy,ab:(lambda x,y,a,b: x+y+a+b)(*
 #### Generators
 
 Comprehension generators `(x for y in z)` are memory efficient since they only require memory for
-the one value they yield. If you don't care about memory you can use square brackets.
+the one value they yield. If you don't care about memory you can use square brackets to run the loop.
+You can also exhaust a generator using `all()` or `any()` depending on the return values.
 You can also save a few chars using `[*g]` syntax instead of `list(g)` when g is a function.
-You can also exhaust a generator using `all()` or `any()` depending on the return values
-(you may not even need them when you running an inline loop).
 Generator length can be calculated as `sum(1 for _ in g)` (longer than `len(list(g))` but uses constant memory).
 
 #### While

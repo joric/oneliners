@@ -44,8 +44,7 @@ class Solution:
 
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
-        return -1 if sum(gas)<sum(cost) else (t:=0,b:=0) and [(t:=t+gas[i]-cost[i],t<0)[1] and (t:=0,b:=i+1) for i in range(len(gas))] and b
-
+        return -1 if sum(gas)<sum(cost) else (t:=0,b:=0) and [(t:=t+gas[i]-cost[i])<0 and (t:=0,b:=i+1) for i in range(len(gas))] and b
 
 test('''
 

@@ -4,7 +4,6 @@ from lc import *
 # https://leetcode.com/contest/weekly-contest-182/problems/design-underground-system/
 
 class UndergroundSystem:
-
     def getSid(self,a,b):
         return a+' to '+b
 
@@ -48,6 +47,48 @@ class UndergroundSystem:
         
     def getAverageTime(self, startStation, endStation):
         return self.pairs[startStation, endStation]/self.freqs[startStation, endStation]
+
+class UndergroundSystem:
+    def __init__(self):
+        self.ids = {}
+        self.pairs = Counter()
+        self.freqs = Counter()
+        
+    def checkIn(self, id, stationName, t):
+        self.ids[id] = (stationName, t)
+
+    def checkOut(self, id, stationName, t):
+        Name2, t2 = self.ids.pop(id)
+        self.pairs[(Name2, stationName)] += t-t2
+        self.freqs[(Name2, stationName)] += 1
+        
+    def getAverageTime(self, startStation, endStation):
+        return self.pairs[startStation, endStation]/self.freqs[startStation, endStation]
+
+class UndergroundSystem:
+    def __init__(s):
+        s.i = {}
+        s.p = Counter()
+        s.f = Counter()
+    def checkIn(s,i,n,t):
+        s.i[i] = (n,t)
+    def checkOut(s,i,n,t):
+        m,q = s.i.pop(i)
+        s.p[(m,n)] += t-q
+        s.f[(m,n)] += 1
+    def getAverageTime(s,a,b):
+        return s.p[a,b]/s.f[a,b]
+
+UndergroundSystem = type('UndergroundSystem',(),{
+    '__init__':lambda s:setattr(s,'i',{}) or setattr(s,'p',Counter()) or setattr(s,'f',Counter()),
+    'checkIn':lambda s,i,n,t:s.i.__setitem__(i,(n,t)),
+    'checkOut':lambda s,i,n,t:(lambda m,q:s.p.__setitem__((m,n),s.p[(m,n)]+t-q) or s.f.__setitem__((m,n),s.f[(m,n)]+1))(*s.i.pop(i)),
+    'getAverageTime':lambda s,a,b:s.p[a,b]/s.f[a,b]
+    })
+
+
+UndergroundSystem = type('UndergroundSystem',(),{'__init__':lambda s:setattr(s,'i',{}) or setattr(s,'p',Counter()) or setattr(s,'f',Counter()),'checkIn':lambda s,i,n,t:s.i.__setitem__(i,(n,t)),'checkOut':lambda s,i,n,t:(lambda m,q:s.p.__setitem__((m,n),s.p[(m,n)]+t-q) or s.f.__setitem__((m,n),s.f[(m,n)]+1))(*s.i.pop(i)),'getAverageTime':lambda s,a,b:s.p[a,b]/s.f[a,b]})
+
 
 test('''
 1396. Design Underground System

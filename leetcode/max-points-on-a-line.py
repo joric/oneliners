@@ -32,8 +32,8 @@ class Solution:
 
 class Solution:
     def maxPoints(self, points: List[List[int]]) -> int:
-        return (r:=0) or [r:=max(list(Counter([(y1-y2)/(x1-x2) if x1-x2 else inf
-            for x2,y2 in points[i+1:]]).values())+[r]) for i,(x1,y1) in enumerate(points)] and 1 + r
+        return (r:=0) or [r:=max(list(Counter([(y1-y2)/(x1-x2) if x1-x2 else inf for x2,y2
+            in points[i+1:]]).values())+[r]) for i,(x1,y1) in enumerate(points)] and 1 + r
 
 test('''
 149. Max Points on a Line

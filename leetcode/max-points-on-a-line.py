@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def maxPoints(self, points: List[List[int]]) -> int:
         c = defaultdict(set)
         for p1, p2 in combinations(map(tuple, points), 2):
@@ -10,7 +10,7 @@ class Solution1:
         return max((len(c[x]) for x in c), default=1)
 
 
-class Solution2:
+class Solution:
     def maxPoints(self, points: List[List[int]]) -> int:
         res = 0
         for i,(x1,y1) in enumerate(points):
@@ -20,7 +20,7 @@ class Solution2:
             res = max(list(c.values())+[res])
         return 1 + res
 
-class Solution3:
+class Solution:
     def maxPoints(self, points: List[List[int]]) -> int:
         return 1 + reduce(lambda r,x:(f:=lambda i,a,r: max(list(reduce(lambda c,b:c+Counter({(a[1]-b[1])/(a[0]-b[0])
             if a[0]-b[0] else inf:1}), points[i+1:],Counter()).values())+[r]))(x[0],x[1],r), enumerate(points), 0)
@@ -29,6 +29,11 @@ class Solution:
     def maxPoints(self, points: List[List[int]]) -> int:
         return 1 + reduce(lambda r,x: max(list(reduce(lambda c,b:c+Counter([(x[1][1]-b[1])/(x[1][0]-b[0])
             if x[1][0]-b[0] else inf]), points[x[0]+1:],Counter()).values())+[r]), enumerate(points), 0)
+
+class Solution:
+    def maxPoints(self, points: List[List[int]]) -> int:
+        return (r:=0) or [r:=max(list(Counter([(y1-y2)/(x1-x2) if x1-x2 else inf
+            for x2,y2 in points[i+1:]]).values())+[r]) for i,(x1,y1) in enumerate(points)] and 1 + r
 
 test('''
 149. Max Points on a Line

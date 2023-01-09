@@ -4,6 +4,10 @@ class Solution:
     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         return [root.val] + self.preorderTraversal(root.left) + self.preorderTraversal(root.right) if root else []
 
+class Solution:
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        return (f:=lambda r:r and [r.val]+f(r.left)+f(r.right) or [])(root)
+
 test('''
 
 144. Binary Tree Preorder Traversal

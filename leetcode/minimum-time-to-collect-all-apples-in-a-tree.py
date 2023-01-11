@@ -6,8 +6,7 @@ class Solution:
         for a,b in edges:
             g[a].append(b)
             g[b].append(a)
-        def dfs(a,p):
-            d = 0
+        def dfs(a,p,d=0):
             for b in g[a]:
                 if b != p:
                     d += dfs(b,a)

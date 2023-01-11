@@ -19,6 +19,11 @@ class Solution:
         return (g:=[[] for _ in range(n)]) and [g[a].append(b) or g[b].append(a) for a,b in edges] and max(((f:=lambda a,p,d=0:([d:=d+f(b,a) for b in g[a] if b!=p] and d or hasApple[a]) and d+2 or 0))(0,-1)-2,0)
 
 
+class Solution:
+    def minTime(self, n: int, edges: List[List[int]], hasApple: List[bool]) -> int:
+        return (g:=defaultdict(list),s:=set(),[g[a].append(b) or g[b].append(a) for a,b in edges]) and (f:=lambda i:s.add(i) or int((d:=sum(f(j) for j in g[i] if not j in s)) or hasApple[i]) and 2*(i>0)+d)(0)
+
+
 test('''
 
 1443. Minimum Time to Collect All Apples in a Tree
@@ -54,6 +59,11 @@ Example 3:
 Input: n = 7, edges = [[0,1],[0,2],[1,4],[1,5],[2,3],[2,6]], hasApple = [false,false,false,false,false,false,false]
 Output: 0
  
+
+Example 4:
+
+Input: n = 4, edges = [[0,2],[0,3],[1,2]], hasApple = [false,true,false,false]
+Output: 4
 
 Constraints:
 

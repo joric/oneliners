@@ -21,6 +21,18 @@ class Solution:
 
 class Solution:
     def minTime(self, n: int, edges: List[List[int]], hasApple: List[bool]) -> int:
+        g,s = defaultdict(list), set()
+        for a,b in edges:
+            g[a].append(b)
+            g[b].append(a)
+        def f(i):
+            s.add(i)
+            d = sum(f(j) for j in g[i] if not j in s)
+            return 2*(i>0)+d if d or hasApple[i] else 0
+        return f(0)
+
+class Solution:
+    def minTime(self, n: int, edges: List[List[int]], hasApple: List[bool]) -> int:
         return (g:=defaultdict(list),s:=set(),[g[a].append(b) or g[b].append(a) for a,b in edges]) and (f:=lambda i:s.add(i) or int((d:=sum(f(j) for j in g[i] if not j in s)) or hasApple[i]) and 2*(i>0)+d)(0)
 
 

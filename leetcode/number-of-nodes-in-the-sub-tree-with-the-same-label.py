@@ -7,7 +7,6 @@ class Solution:
         for a,b in edges:
             g[a].add(b)
             g[b].add(a)
-
         def f(a):
             c = Counter([labels[a]])
             for b in g[a]:
@@ -15,7 +14,6 @@ class Solution:
                 c += f(b)
             r[a] = c[labels[a]]
             return c
-
         f(0)
         return r
 

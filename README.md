@@ -1,7 +1,5 @@
 ## Oneliners
 
-_"A brilliant repository of fantastic killer one-liners"_ &mdash; [Stephen Fry](https://youtu.be/8k2AbqTBxao?t=255)
-
 ### Tricks
 
 #### Imported modules

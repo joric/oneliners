@@ -8,7 +8,7 @@ class Solution:
             g[a].add(b)
             g[b].add(a)
         def f(a):
-            c = Counter([labels[a]])
+            c = Counter(labels[a])
             for b in g[a]:
                 g[b].discard(a)
                 c += f(b)
@@ -20,7 +20,8 @@ class Solution:
 
 class Solution:
     def countSubTrees(self, n: int, edges: List[List[int]], labels: str) -> List[int]:
-        return (r:=[0]*n,g:=defaultdict(set),[g[a].add(b) or g[b].add(a) for a,b in edges]) and (f:=lambda a:(c:=Counter([labels[a]]),[(g[b].discard(a),c:=c+f(b)) for b in g[a]],r.__setitem__(a,c[labels[a]])) and c)(0) and r
+        return (r:=[0]*n,g:=defaultdict(set),[g[a].add(b) or g[b].add(a) for a,b in edges]) and (f:=lambda a:(c:=Counter(labels[a]),
+            [(g[b].discard(a),c:=c+f(b)) for b in g[a]],r.__setitem__(a,c[labels[a]])) and c)(0) and r
 
 test('''
 1519. Number of Nodes in the Sub-Tree With the Same Label

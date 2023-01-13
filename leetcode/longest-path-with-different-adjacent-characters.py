@@ -19,19 +19,12 @@ class Solution:
 class Solution:
     def longestPath(self, parent: List[int], s: str) -> int:
         g = [[] for _ in range(len(s))]
-        for a,b in enumerate(parent):
-            if b>=0:
-                g[b].append(a)
-        def f(a,r):
-            c = [0]
-            for b in g[a]:
-                t,r = f(b,r)
-                if s[a]!=s[b]:
-                    c.append(t)
-            c = nlargest(2,c)
+        any(g[b].append(a) for a,b in enumerate(parent) if b>=0)
+        def f(a,r=0):
+            c = nlargest(2, [0] + [x[0] for b in g[a] if (x:=f(b,r),r:=x[1]) and s[a]!=s[b]])
             r = max(r,sum(c)+1)
             return max(c)+1,r
-        return f(0,0)[1]
+        return f(0)[1]
 
 
 class Solution:
@@ -72,6 +65,16 @@ Input: parent = [-1,0,0,0], s = "aabc"
 Output: 3
 Explanation: The longest path where each two adjacent nodes have different characters is the path: 2 -> 0 -> 3. The length of this path is 3, so 3 is returned.
  
+
+Example 3:
+
+Input: parent = [-1,0,1], s = "aab"
+Output: 2
+
+Example 4:
+
+Input: parent = [-1,17,37,80,9,16,12,78,63,8,29,30,71,16,5,80,62,14,71,41,9,13,31,80,36,18,66,62,62,39,5,56,80,27,71,37,69,36,28,47,78,28,21,78,17,39,7,71,39,22,58,66,66,54,27,56,78,9,27,9,78,40,63,36,75,63,27,50,10,0,11,80,24,5,42,47,18,69,36,25,27], s = "oozbypewdgpayutsufzpctovgkqrofjimkeckfzgvziqohymdtuppjcuytygjzlagiowhrfcjntjbbwru"
+Output: 16
 
 Constraints:
 

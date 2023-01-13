@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def isBalanced(self, root: TreeNode) -> bool:
         def dfs(root):
             if root is None:
@@ -12,9 +12,33 @@ class Solution1:
             return 1 + max(left, right)
         return dfs(root) != -1
 
+
 class Solution(object):
     def isBalanced(self, root: TreeNode):
         return not root or abs((f:=lambda r:1+max(f(r.left),f(r.right)) if r else 0)(root.left)-f(root.right))<2 and self.isBalanced(root.left) and self.isBalanced(root.right)
+
+
+class Solution:
+    def isBalanced(self, root: TreeNode) -> bool:
+        return (f:=lambda x:(l:=f(x.left),r:=f(x.right)) and ((l==-1 or r==-1 or abs(l-r)>1) and -1) or 1+max(l,r) if x else 0)(root)!=-1
+
+
+class Solution:
+    def isBalanced(self, root: TreeNode) -> bool:
+        def f(x):
+            if not x:
+                return 0
+            l = f(x.left)
+            r = f(x.right)
+            if l==None or r==None or abs(l-r)>1:
+                return None
+            return 1+max(l,r)
+        return f(root) if root else True
+
+
+class Solution:
+    def isBalanced(self, root: TreeNode) -> bool:
+        return not root or (f:=lambda x:not ((l:=f(x.left))==None or (r:=f(x.right))==None or abs(l-r)>1) and 1 + max(l,r) if x else 0)(root)
 
 test('''
 110. Balanced Binary Tree

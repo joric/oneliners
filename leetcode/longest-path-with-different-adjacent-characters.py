@@ -36,7 +36,8 @@ class Solution:
 
 class Solution:
     def longestPath(self, parent: List[int], s: str) -> int:
-        return (g:=[[] for _ in range(len(s))],[g[b].append(a) for a,b in enumerate(parent) if b>=0]) and (f:=lambda a,r:((c:=[0],[c.append(x[0]) for b in g[a] if (x:=f(b,r),r:=x[1]) and s[a]!=s[b]]) and max(c)+1,max(r,sum(c:=nlargest(2,c))+1)))(0,0)[1]
+        return (g:=[[] for _ in range(len(s))],[g[b].append(a) for a,b in enumerate(parent) if b>=0]) and (f:=lambda a,r:((c:=[0],
+        [c.append(x[0]) for b in g[a] if (x:=f(b,r),r:=x[1]) and s[a]!=s[b]]) and max(c)+1,max(r,sum(c:=nlargest(2,c))+1)))(0,0)[1]
 
 test('''
 

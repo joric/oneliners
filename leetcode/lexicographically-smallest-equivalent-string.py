@@ -3,8 +3,8 @@ from lc import *
 class Solution:
     def smallestEquivalentString(self, s1: str, s2: str, baseStr: str) -> str:
         p = {}
-        def f(c):
-            p.setdefault(c,c)
+        def f(x):
+            p.setdefault(x,x)
             return p[x] if x==p[x] else f(p[x])
         for a,b in zip(s1,s2):
             p[max(f(a),f(b))] = min(f(a),f(b))

@@ -44,6 +44,11 @@ class Solution:
         return (p:={},f:=lambda x: p.setdefault(x,x) and (p[x] if x==p[x] else f(p[x])),u:=lambda a,b:
         p.__setitem__(x if (x:=f(a))>(y:=f(b)) else y, y if x>y else x),any(u(a,b) for a,b in zip(s1,s2))) and ''.join(f(c) for c in baseStr)
 
+
+class Solution:
+    def smallestEquivalentString(self, s1: str, s2: str, baseStr: str) -> str:
+        return (p:={},f:=lambda x:p.setdefault(x,x) and (p[x] if x==p[x] else f(p[x])),[p.__setitem__(max(f(a),f(b)),min(f(a),f(b))) for a,b in zip(s1,s2)]) and ''.join(f(c) for c in baseStr)
+
 test('''
 
 1061. Lexicographically Smallest Equivalent String

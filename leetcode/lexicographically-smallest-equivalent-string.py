@@ -3,17 +3,15 @@ from lc import *
 class Solution:
     def smallestEquivalentString(self, s1: str, s2: str, baseStr: str) -> str:
         p = {c:c for c in set(s1+s2+baseStr)}
-        def f(c):
-            if p[c]!=p[p[c]]:
-                p[c] = f(p[c])
-            return p[c]
-        for a,b in zip(s1, s2):
+        f = lambda c:c if c not in p or p[c]==c else f(p[c])
+        for a,b in zip(s1,s2):
             p[max(f(a),f(b))] = min(f(a),f(b))
         return ''.join(f(c) for c in baseStr)
 
 class Solution:
     def smallestEquivalentString(self, s1: str, s2: str, baseStr: str) -> str:
-        return (p:={c:c for c in set(s1+s2+baseStr)}) and any(p.__setitem__(max((f:=lambda c: p.__setitem__(c,f(p[c]) if p[c]!=p[p[c]] else p[c]) or p[c])(a),f(b)), min(f(a),f(b))) for a,b in zip(s1, s2)) or ''.join(f(c) for c in baseStr)
+        return (p:={c:c for c in set(s1+s2+baseStr)}) and any(p.__setitem__(max((f:=lambda c:c if c not in p or p[c]==c
+            else f(p[c]))(a),f(b)),min(f(a),f(b))) for a,b in zip(s1,s2)) or ''.join(f(c) for c in baseStr)
 
 test('''
 

@@ -2,10 +2,16 @@ from lc import *
 
 class Solution:
     def smallestEquivalentString(self, s1: str, s2: str, baseStr: str) -> str:
-        p,f = {},lambda x:x if p.get(x,x)==x else f(p[x])
+        p = {}
+        def find(x):
+            return x if p.get(x,x)==x else find(p[x])
+        def union(a,b):
+            x = find(a)
+            y = find(b)
+            p[max(x,y)] = min(x,y)
         for a,b in zip(s1,s2):
-            p[max(f(a),f(b))] = min(f(a),f(b))
-        return ''.join(f(c) for c in baseStr)
+            union(a,b)
+        return ''.join(find(c) for c in baseStr)
 
 class Solution1:
     def smallestEquivalentString(self, s1: str, s2: str, baseStr: str) -> str:

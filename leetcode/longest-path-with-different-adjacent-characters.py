@@ -21,15 +21,16 @@ class Solution:
         g = [[] for _ in range(len(s))]
         any(g[b].append(a) for a,b in enumerate(parent) if b>=0)
         def f(a,r=0):
-            c = nlargest(2, [0] + [x[0] for b in g[a] if (x:=f(b,r),r:=x[1]) and s[a]!=s[b]])
-            r = max(r,sum(c)+1)
-            return max(c)+1,r
+            c = nlargest(2, [x[0] for b in g[a] if (x:=f(b,r),r:=x[1]) and s[a]!=s[b]])
+            return max(c+[0])+1, max(r,sum(c)+1)
         return f(0)[1]
 
 
 class Solution:
     def longestPath(self, parent: List[int], s: str) -> int:
-        return (g:=[[] for _ in range(len(s))],[g[b].append(a) for a,b in enumerate(parent) if b>=0]) and (f:=lambda a,r:((c:=[0]+[x[0] for b in g[a] if (x:=f(b,r),r:=x[1]) and s[a]!=s[b]]) and max(c)+1,max(r,sum(c:=nlargest(2,c))+1)))(0,0)[1]
+        return (g:=[[] for _ in range(len(s))],[g[b].append(a) for a,b in enumerate(parent) if b>=0]) and (f:=lambda a,r:
+        (max(c:=[0]+[x[0] for b in g[a] if (x:=f(b,r),r:=x[1]) and s[a]!=s[b]])+1,max(r,sum(c:=nlargest(2,c))+1)))(0,0)[1]
+
 
 test('''
 

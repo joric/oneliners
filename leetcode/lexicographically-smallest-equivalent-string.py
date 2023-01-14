@@ -3,16 +3,16 @@ from lc import *
 class Solution:
     def smallestEquivalentString(self, s1: str, s2: str, baseStr: str) -> str:
         p = {}
-        def f(x):
-            p.setdefault(x,x)
-            return x if x==p[x] else f(p[x])
-        for a in zip(map(f,s1),map(f,s2)):
-            p[max(a)] = min(a)
+        f = lambda x: x if p.get(x,x)==x else f(p[x])
+        for a,b in zip(s1,s2):
+            x = f(a)
+            y = f(b)
+            p[max(x,y)] = min(x,y)
         return ''.join(f(c) for c in baseStr)
 
 class Solution:
     def smallestEquivalentString(self, s1: str, s2: str, baseStr: str) -> str:
-        return (p:={},f:=lambda x:p.setdefault(x,x) and (x if x==p[x] else f(p[x])),[p.__setitem__(max(a),min(a)) for a in zip(map(f,s1),map(f,s2))]) and ''.join(f(c) for c in baseStr)
+        return (p:={},f:=lambda x:x if x==p.get(x,x) else f(p[x]),[p.__setitem__(max(w:=[*map(f,v)]),min(w)) for v in zip(s1,s2)]) and ''.join(f(c) for c in baseStr)
 
 test('''
 

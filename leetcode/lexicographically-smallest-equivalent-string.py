@@ -3,12 +3,11 @@ from lc import *
 class Solution:
     def smallestEquivalentString(self, s1: str, s2: str, baseStr: str) -> str:
         p,f = {}, lambda x:x if p.get(x,x)==x else f(p[x])
-        for a,b in zip(s1,s2):
-            w = f(a),f(b)
-            p[max(w)] = min(w)
+        for a in zip(map(f,s1),map(f,s2)):
+            p[max(a)] = min(a)
         return ''.join(f(c) for c in baseStr)
 
-class Solution:
+class Solution1:
     def smallestEquivalentString(self, s1: str, s2: str, baseStr: str) -> str:
         return (p:={},f:=lambda x:x if x==p.get(x,x) else f(p[x]),[p.__setitem__(max(w:=[*map(f,v)]),min(w)) for v in zip(s1,s2)]) and ''.join(f(c) for c in baseStr)
 

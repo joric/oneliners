@@ -6,8 +6,8 @@ class Solution:
         def find(x):
             return x if x==p.get(x,x) else find(p[x])
         def union(a,b):
-            xy = find(a), find(b)
-            p[max(xy)] = min(xy)
+            x,y = find(a), find(b)
+            p[max(x,y)] = min(x,y)
         for a,b in zip(s1,s2):
             union(a,b)
         return ''.join(map(find,baseStr))

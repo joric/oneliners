@@ -4,14 +4,10 @@ class Solution:
     def smallestEquivalentString(self, s1: str, s2: str, baseStr: str) -> str:
         p = {}
         def find(x):
-            p.setdefault(x,x)
-            if p[x] != x:
-                p[x] = find(p[x])
-            return p[x]
+            return x if x==p.get(x,x) else find(p[x])
         def union(a,b):
-            x = find(a)
-            y = find(b)
-            p[max(x,y)] = min(x,y)
+            xy = find(a), find(b)
+            p[max(xy)] = min(xy)
         for a,b in zip(s1,s2):
             union(a,b)
         return ''.join(map(find,baseStr))

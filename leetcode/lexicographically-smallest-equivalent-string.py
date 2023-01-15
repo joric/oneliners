@@ -4,7 +4,10 @@ class Solution:
     def smallestEquivalentString(self, s1: str, s2: str, baseStr: str) -> str:
         p = {}
         def find(x):
-            return x if p.get(x,x)==x else find(p[x])
+            p.setdefault(x,x)
+            if p[x] != x:
+                p[x] = find(p[x])
+            return p[x]
         def union(a,b):
             x = find(a)
             y = find(b)

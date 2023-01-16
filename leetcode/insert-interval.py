@@ -13,6 +13,8 @@ class Solution:
                 x = [min(x[0], y[0]), max(x[1], y[1])]
         return a[:j+1] + [x] + (a[i:] if found else [])
 
+# https://leetcode.com/problems/insert-interval/discuss/2544360/Python%3A-Just-add-one-line-to-the-solution-of-Merge-Interval
+
 class Solution:
     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
         intervals.append(newInterval) # just 1 extra line different from 56. merge intervals

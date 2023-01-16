@@ -34,6 +34,18 @@ class Solution:
 
 class Solution:
     def insert(self, v: List[List[int]], w: List[int]) -> List[List[int]]:
+        v.append(w)
+        res = []
+        v.sort()
+        for x in v:
+            if res and x[0] <= res[-1][1]:
+                res[-1][1] = max(res[-1][1], x[1])
+            else:
+                res.append(x)
+        return res
+
+class Solution:
+    def insert(self, v: List[List[int]], w: List[int]) -> List[List[int]]:
         return (v.append(w),v.sort(),o:=[],[o[-1].__setitem__(1,max(o[-1][1], x[1])) if o and x[0]<=o[-1][1] else o.append(x) for x in v]) and o
 
 

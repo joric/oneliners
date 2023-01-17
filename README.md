@@ -433,7 +433,6 @@ class Solution:
 
 #### Misc
 
-* `~` reverts every bit. Therefore, `~x` means `-x-1`. Use it as reversed index, i.e. for `i=0`, `a[~i]` means `a[-1]`, etc.
 * Note `key=itemgetter(n)` is the same length or shorter than `key=lambda x:x[n]` but a little bit clearer to read.
 * You can replace `0 if x==y else z` with `x-y and z`, it's a little bit counterintuitive, but much shorter.
 
@@ -453,6 +452,7 @@ class Solution:
             max(f(bisect_left(a,a[i][1],key=itemgetter(0)))+a[i][2],f(i+1))))(0)
 
 ```
+
 
 * You can can use `a!=b!=c` in a single boolean condition, similar to `a<=b<=c`.
 
@@ -479,4 +479,6 @@ class Solution:
             and (j:=j+1))and v[i-1:i+2]!=v[i]*3!=v[i-2:i+1]),1) and j==len(w))(s,w) for w in words)
 
 ```
+
+* `~` reverts every bit. Therefore, `~x` means `-x-1`. Use it as reversed index, i.e. for `i=0`, `a[~i]` means `a[-1]`, etc.
 

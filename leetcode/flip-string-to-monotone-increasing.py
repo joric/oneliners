@@ -17,7 +17,7 @@ class Solution:
 
 class Solution:
     def minFlipsMonoIncr(self, s: str) -> int:
-        return reduce(lambda a,c: a if int(c[0]) else min(c[1],a+1),zip(s,accumulate(map(int,s))),0)
+        return reduce(lambda a,c:a if int(c[0]) else min(c[1],a+1),zip(s,accumulate(map(int,s))),0)
 
 test('''
 926. Flip String to Monotone Increasing

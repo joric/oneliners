@@ -433,8 +433,9 @@ class Solution:
 
 #### Misc
 
-* Note `key=itemgetter(n)` is the same length or shorter than `key=lambda x:x[n]` but a little bit clearer to read.
 * You can replace `0 if x==y else z` with `x-y and z`, it's a little bit counterintuitive, but much shorter.
+* `key=itemgetter(n)` is the same length or shorter than `key=lambda x:x[n]` but a little bit clearer to read.
+
 
 Example:
 

@@ -14,6 +14,9 @@ class Solution:
                 cnt1 += 1
         return res
 
+class Solution:
+    def minFlipsMonoIncr(self, s: str) -> int:
+        return min(2*j-i for i,j in enumerate([0]+list(accumulate([int(i) for i in s]))))+len(s)-s.count('1')
 
 class Solution:
     def minFlipsMonoIncr(self, s: str) -> int:

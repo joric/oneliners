@@ -454,3 +454,29 @@ class Solution:
 
 ```
 
+* You can can use `a!=b!=c` in a boolean condition, similar to `a<=b<=c`.
+
+Example:
+
+* https://leetcode.com/problems/expressive-words/discuss/122660/C%2B%2BJavaPython-2-Pointers-and-4-pointers
+
+```python
+class Solution:
+    def expressiveWords(self, s: str, words: List[str]) -> int:
+        def f(v,w,j=0):
+            for i in range(len(v)):
+                if j<len(w) and v[i]==w[j]:
+                    j += 1
+                elif v[i-1:i+2] != v[i]*3 != v[i-2:i+1]:
+                    return False
+            return j==len(w)
+        return sum(f(s,w) for w in words)
+
+
+class Solution:
+    def expressiveWords(self, s: str, words: List[str]) -> int:
+        return sum((f:=lambda v,w,j=0:next((0 for i in range(len(v)) if not(j<len(w) and v[i]==w[j]
+            and (j:=j+1))and v[i-1:i+2]!=v[i]*3!=v[i-2:i+1]),1) and j==len(w))(s,w) for w in words)
+
+```
+

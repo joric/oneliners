@@ -17,36 +17,34 @@ class Solution:
 
 # https://leetcode.com/problems/expressive-words/discuss/122660/C%2B%2BJavaPython-2-Pointers-and-4-pointers
 
-# 4 pointers
 class Solution:
     def expressiveWords(self, s: str, words: List[str]) -> int:
         def f(v,w):
-            i=j=p=q=0
-            n,m = len(v), len(w)
+            i=j=a=b=0
+            n,m = len(v),len(w)
             while i<n and j<m:
                 if v[i]!=w[j]:
                     return False
-                while p<n and v[p]==v[i]:
-                    p += 1
-                while q<m and w[q]==w[j]:
-                    q += 1
-                if p-i != q-j and p-i<max(3,q-j):
+                while a<n and v[a]==v[i]:
+                    a += 1
+                while b<m and w[b]==w[j]:
+                    b += 1
+                if a-i != b-j and a-i<max(3,b-j):
                     return False
-                i,j = p,q
+                i,j = a,b
             return i==n and j==m
         return sum(f(s,w) for w in words)
 
-# 2 pointers
+
 class Solution:
     def expressiveWords(self, s: str, words: List[str]) -> int:
         def f(v,w,j=0):
-            n,m = len(v),len(w)
-            for i in range(n):
-                if j<m and v[i]==w[j]:
+            for i in range(len(v)):
+                if j<len(w) and v[i]==w[j]:
                     j += 1
                 elif v[i-1:i+2] != v[i]*3 != v[i-2:i+1]:
                     return False
-            return j==m
+            return j==len(w)
         return sum(f(s,w) for w in words)
 
 

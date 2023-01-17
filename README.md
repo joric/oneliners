@@ -433,7 +433,7 @@ class Solution:
 
 #### Misc
 
-* `~` reverts every bit. Therefore, `~x` means `-x-1`. Use it to reverse list index, i.e. for `i=0`, `~i` means `-1`.
+* `~` reverts every bit. Therefore, `~x` means `-x-1`. Use it to reverse list index, i.e. for `i=0`, `a[~i]` means `a[-1]`.
 * Note `itemgetter(n)` is the same length or shorter than `lambda x:x[n]` but a little bit clearer to read.
 * You can replace `0 if x==y else z` with `x-y and z`, it's a little bit counterintuitive, but much shorter.
 

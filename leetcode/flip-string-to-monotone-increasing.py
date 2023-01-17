@@ -16,11 +16,21 @@ class Solution:
 
 class Solution:
     def minFlipsMonoIncr(self, s: str) -> int:
-        return min(2*j-i for i,j in enumerate([0]+list(accumulate([int(i) for i in s]))))+len(s)-s.count('1')
+        return reduce(lambda a,c:a if int(c[0]) else min(c[1],a+1),zip(s,accumulate(map(int,s))),0)
+
+# https://leetcode.com/problems/flip-string-to-monotone-increasing/discuss/391665/Solution-in-Python-3-(-O(n)-time-)-(-O(1)-space-)-(one-line)
 
 class Solution:
     def minFlipsMonoIncr(self, s: str) -> int:
-        return reduce(lambda a,c:a if int(c[0]) else min(c[1],a+1),zip(s,accumulate(map(int,s))),0)
+        s, m, r = [0]+[int(i) for i in s], inf, 0
+        for i,j in enumerate(s):
+            r += j
+            m = min(2*r-i,m)
+        return len(s)-r+m-1
+
+class Solution:
+    def minFlipsMonoIncr(self, s: str) -> int:
+        return min(2*j-i for i,j in enumerate([0]+list(accumulate([int(i) for i in s]))))+len(s)-s.count('1')
 
 test('''
 926. Flip String to Monotone Increasing

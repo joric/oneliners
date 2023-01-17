@@ -1,18 +1,23 @@
 from lc import *
 
-# https://leetcode.com/problems/expressive-words/discuss/122660/C%2B%2BJavaPython-2-Pointers-and-4-pointers
+# https://leetcode.com/problems/expressive-words/discuss/730428/Python-in-4-lines
 
 class Solution:
     def expressiveWords(self, s: str, words: List[str]) -> int:
-        def f(v,w,j=0):
-            for i in range(len(v)):
-                if j<len(w) and a[i]==w[j]:
-                    j += 1
-                elif v[i-1:i+2] != v[i]*3 != v[i-2:i+1]:
-                    return False
-            return j==len(w)
-        return sum(f(s,w) for w in words)
+        r = lambda w:((k, len(list(g))) for k,g in groupby(w))
+        c = lambda a,b:a and b and (a==b or a[1]>=3 and a[1]>b[1])
+        f = lambda v:all(c(a,b) for a,b in zip_longest(r(s),r(v)))
+        return sum(map(f, words))
 
+
+class Solution:
+    def expressiveWords(self, s: str, words: List[str]) -> int:
+        return (r:=lambda w:((k,len(list(g))) for k,g in groupby(w))) and sum(map((f:=lambda v:all((c:=lambda a,b:a and b and (a==b or a[1]>=3 and a[1]>b[1]))(a,b) for a,b in zip_longest(r(s),r(v)))),words))
+
+
+# https://leetcode.com/problems/expressive-words/discuss/122660/C%2B%2BJavaPython-2-Pointers-and-4-pointers
+
+# 4 pointers
 class Solution:
     def expressiveWords(self, s: str, words: List[str]) -> int:
         def f(v,w):
@@ -31,19 +36,23 @@ class Solution:
             return i==n and j==m
         return sum(f(s,w) for w in words)
 
-# https://leetcode.com/problems/expressive-words/discuss/730428/Python-in-4-lines
+# 2 pointers
+class Solution:
+    def expressiveWords(self, s: str, words: List[str]) -> int:
+        def f(v,w,j=0):
+            n,m = len(v),len(w)
+            for i in range(n):
+                if j<m and v[i]==w[j]:
+                    j += 1
+                elif v[i-1:i+2] != v[i]*3 != v[i-2:i+1]:
+                    return False
+            return j==m
+        return sum(f(s,w) for w in words)
+
 
 class Solution:
     def expressiveWords(self, s: str, words: List[str]) -> int:
-        r = lambda w:((k, len(list(g))) for k,g in groupby(w))
-        c = lambda a,b:a and b and (a==b or a[1]>=3 and a[1]>b[1])
-        f = lambda v:all(c(a,b) for a,b in zip_longest(r(s),r(v)))
-        return sum(map(f, words))
-
-
-class Solution:
-    def expressiveWords(self, s: str, words: List[str]) -> int:
-        return (r:=lambda w:((k,len(list(g))) for k,g in groupby(w))) and sum(map((f:=lambda v:all((c:=lambda a,b:a and b and (a==b or a[1]>=3 and a[1]>b[1]))(a,b) for a,b in zip_longest(r(s),r(v)))),words))
+        return sum((f:=lambda v,w,j=0:next((0 for i in range(len(v)) if not(j<len(w) and v[i]==w[j] and (j:=j+1)) and v[i-1:i+2]!=v[i]*3!=v[i-2:i+1]),1) and j==len(w))(s,w) for w in words)
 
 test('''
 809. Expressive Words
@@ -81,6 +90,11 @@ Example 2:
 Input: s = "zzzzzyyyyy", words = ["zzyy","zy","zyy"]
 Output: 3
  
+
+Example 3:
+
+Input: s = "abcd", words = ["abc"]
+Output: 0
 
 Constraints:
 

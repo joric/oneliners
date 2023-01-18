@@ -16,7 +16,7 @@ class Solution:
 
 class Solution:
     def maxSubarraySumCircular(self, nums: List[int]) -> int:
-        return ((a:=(b:=(y:=(z:=nums[0])))),[(b:=max(x,b+x),a:=max(a,b),y:=min(x,y+x),z:=min(z,y)) for x in nums[1:]]) and (a if sum(nums)==z else max(a,sum(nums)-z))
+        return ((a:=(b:=(c:=(d:=nums[0])))),[(b:=max(x,b+x),a:=max(a,b),c:=min(x,c+x),d:=min(d,c)) for x in nums[1:]]) and (a if sum(nums)==d else max(a,sum(nums)-d))
 
 test('''
 918. Maximum Sum Circular Subarray

@@ -20,18 +20,10 @@ class Solution:
 
 class Solution:
     def subarraysDivByK(self, nums: List[int], k: int) -> int:
-        return reduce(lambda p,i:(p[0]+p[1][i%k],p[1].update({i%k:1}) or p[1]),accumulate(nums),[0,Counter([0])])[0]
-
-class Solution:
-    def subarraysDivByK(self, nums: List[int], k: int) -> int:
-        return (c:=Counter([0])) and reduce(lambda r,i:c.update({i%k:1}) or r+c[i%k]-1,accumulate(nums),0)
-
-class Solution:
-    def subarraysDivByK(self, nums: List[int], k: int) -> int:
         return reduce(lambda r,i:c.update({i%k:1})or r+c[i%k]-1,accumulate(nums),not(c:=Counter([0])))
 
 class Solution:
-    def subarraysDivByK(self, nums, k):
+    def subarraysDivByK(self, nums: List[int], k: int) -> int:
         return sum(x*(x-1)//2 for x in Counter(x%k for x in accumulate([0]+nums)).values())
 
 test('''

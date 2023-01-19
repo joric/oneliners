@@ -18,9 +18,10 @@ class Solution:
             c[i%k] += 1
         return r
 
+
 class Solution:
     def subarraysDivByK(self, nums: List[int], k: int) -> int:
-        return (c:=Counter({0:1})) and reduce(lambda r,i:(r+c[i%k],c.__setitem__(i%k,c[i%k]+1))[0],accumulate(nums),0)
+        return (c:=Counter([0])) and reduce(lambda r,i:c.update({i%k:1}) or r+c[i%k]-1,accumulate(nums),0)
 
 test('''
 

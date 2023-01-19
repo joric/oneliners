@@ -482,4 +482,22 @@ class Solution:
 ```
 
 * `~` reverts every bit. Therefore, `~x` means `-x-1`. Use it as reversed index, i.e. for `i=0`, `a[~i]` means `a[-1]`, etc.
+* Counter can be updated, similar to `dict.update()`, it's much faster than adding counters. Example:
+
+* https://leetcode.com/problems/subarray-sums-divisible-by-k/submissions
+
+```python
+class Solution:
+    def subarraysDivByK(self, nums: List[int], k: int) -> int:
+        c, r = [1]+[0]*(k-1), 0
+        for i in accumulate(nums):
+            r += c[i%k]
+            c[i%k] += 1
+        return r
+
+
+class Solution:
+    def subarraysDivByK(self, nums: List[int], k: int) -> int:
+        return (c:=Counter([0])) and reduce(lambda r,i:c.update({i%k:1}) or r+c[i%k]-1,accumulate(nums),0)
+```
 

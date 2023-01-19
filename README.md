@@ -501,5 +501,10 @@ class Solution:
 class Solution:
     def subarraysDivByK(self, nums: List[int], k: int) -> int:
         return (c:=Counter([0])) and reduce(lambda r,i:c.update({i%k:1}) or r+c[i%k]-1,accumulate(nums),0)
+
+
+class Solution:
+    def subarraysDivByK(self, nums, k):
+        return sum(x*(x-1)//2 for x in Counter(x%k for x in accumulate([0]+nums)).values())
 ```
 

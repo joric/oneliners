@@ -26,6 +26,9 @@ class Solution:
     def subarraysDivByK(self, nums: List[int], k: int) -> int:
         return (c:=Counter([0])) and reduce(lambda r,i:c.update({i%k:1}) or r+c[i%k]-1,accumulate(nums),0)
 
+class Solution:
+    def subarraysDivByK(self, nums: List[int], k: int) -> int:
+        return (c:=Counter([0]),reduce(lambda r,i:(r+c[i%k],c.update({i%k:1}))[0],accumulate(nums),0))[1]
 
 test('''
 

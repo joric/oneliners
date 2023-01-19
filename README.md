@@ -503,6 +503,6 @@ class Solution:
 
 class Solution:
     def subarraysDivByK(self, nums: List[int], k: int) -> int:
-        return sum(x*(x-1)//2 for x in Counter(x%k for x in accumulate([0]+nums)).values())
+        return sum(n*(n-1)//2 for n in Counter(x%k for x in accumulate([0]+nums)).values())
 ```
 

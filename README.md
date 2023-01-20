@@ -482,7 +482,7 @@ class Solution:
 ```
 
 * `~` reverts every bit. Therefore, `~x` means `-x-1`. Use it as reversed index, i.e. for `i=0`, `a[~i]` means `a[-1]`, etc.
-* Counter can be updated, similar to `dict.update()`, it's much faster than adding counters, function returns `None`.
+* Counter can be updated, similar to `dict.update()`, it's much faster than adding counters, method returns `None`.
 
 Example:
 

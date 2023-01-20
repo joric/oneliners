@@ -10,7 +10,7 @@ class Solution:
 
 class Solution:
     def findSubsequences(self, nums: List[int]) -> List[List[int]]:
-        return (s:={()},[s:=s|{a + (x,) for a in s if not a or a[-1]<=x} for x in nums],[a for a in s if len(a)>=2])[-1]
+        return (s:={()},[s:=s|({a+(x,) for a in s if not a or a[-1]<=x}) for x in nums],[a for a in s if len(a)>=2])[-1]
 
 test('''
 

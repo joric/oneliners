@@ -493,7 +493,7 @@ class Solution:
 
 Example:
 
-* https://leetcode.com/problems/subarray-sums-divisible-by-k/submissions
+* https://leetcode.com/problems/subarray-sums-divisible-by-k
 
 ```python
 class Solution:

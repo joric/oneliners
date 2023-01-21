@@ -1,5 +1,9 @@
 ## Oneliners
 
+This repository contains hundreds (hopefully, thousands, in the future) of one-liner solutions
+for problems collected from https://leetcode.com and other sites. Some of them are really, really
+hard and fundamental problems.
+
 ### Books
 
 There is a paper book about Python one-liners, search it online, it's an interesting read.

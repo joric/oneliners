@@ -1,17 +1,16 @@
 from lc import *
 
-
-class Solution:
-    def restoreIpAddresses(self, s: str) -> List[str]:
-        return ('.'.join(m.groups()) for m in (re.fullmatch(p, s) for p in map(''.join,product(*[('(.)','([^0].)','(1..|2[0-4].|25[0-5])')]*4))) if m)
-
 class Solution:
     def restoreIpAddresses(self, s: str) -> List[str]:
         return [".".join((s[:a],s[a:b],s[b:c],s[c:])) for a in range(1,4) for b in range(a+1,a+4) for c in range(b+1,b+4) if 0<len(s)-c<4 and all(int(x)<256 and str(int(x))==x for x in (s[:a],s[a:b],s[b:c],s[c:]))]
 
 class Solution:
     def restoreIpAddresses(self, s: str) -> List[str]:
-        return [] if len(s)>12 else [s[:i] + "." + s[i:j] + "." + s[j:k] + "." + s[k:] for i,j,k in combinations(range(1, len(s)),3) if (f:=lambda s:0<=int(s)<=255 and str(int(s))==s)(s[:i]) and f(s[i:j]) and f(s[j:k]) and f(s[k:])]
+        return [s[:i]+"."+s[i:j]+"."+s[j:k]+"."+s[k:] for i,j,k in combinations(range(1,len(s)),3) if (f:=lambda s:0<=int(s)<256 and str(int(s))==s)(s[:i]) and f(s[i:j]) and f(s[j:k]) and f(s[k:])]
+
+class Solution:
+    def restoreIpAddresses(self, s: str) -> List[str]:
+        return ('.'.join(m.groups()) for m in (re.fullmatch(p, s) for p in map(''.join,product(*[('(.)','([^0].)','(1..|2[0-4].|25[0-5])')]*4))) if m)
 
 test('''
 

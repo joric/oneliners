@@ -4,7 +4,7 @@
 
 There is a paper book about Python one-liners, search it online, it's an interesting read.
 
-* PYTHON ONE-LINERS: Write Concise, Eloquent Python Like a Professional by Christian Mayer
+* Python One-Liners: Write Concise, Eloquent Python Like a Professional by Christian Mayer
   (No Starch Press, Inc. ISBN-10: 1-7185-0050-5, ISBN-13: 978-1-7185-0050)
 
 ### Tricks

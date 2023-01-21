@@ -3,7 +3,7 @@
 ### Books
 
 After I started this I've discovered a real book on Python one-liners, that was kind of cool.
-Search it online, it should be an interesting read. I do not use it here though, if anything it's coincidental.
+Search it online, it's an interesting read.
 
 * PYTHON ONE-LINERS: Write Concise, Eloquent Python Like a Professional (by Christian Mayer, (c) 2020 No Starch
 Press, Inc. ISBN-10: 1-7185-0050-5, ISBN-13: 978-1-7185-0050)

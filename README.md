@@ -364,7 +364,7 @@ class Solution:
 
 Another example:
 
-* https://leetcode.com/problems/longest-valid-parentheses/
+* https://leetcode.com/problems/longest-valid-parentheses
 
 ```python
 class Solution:

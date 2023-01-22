@@ -2,7 +2,7 @@
 
 This repository contains hundreds (hopefully, thousands, in the future) of one-liner solutions
 for problems collected from https://leetcode.com and other sites. Some of them are really, really
-hard and fundamental problems.
+hard and interesting problems.
 
 ### Books
 

@@ -1,8 +1,8 @@
 ## Oneliners
 
 This repository contains hundreds (hopefully, thousands, in the future) of one-liner solutions
-for problems collected from https://leetcode.com and other sites. Some of them are really, really
-hard and challenging problems.
+for problems collected from https://leetcode.com and other sites.
+Some of the problems are really hard and challenging.
 
 ### Books
 

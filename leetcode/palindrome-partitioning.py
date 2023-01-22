@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/palindrome-partitioning/discuss/42025/1-liner-Python-Ruby
+
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
         return [[s[:i]]+r for i in range(1,len(s)+1) if s[:i]==s[i-1::-1] for r in self.partition(s[i:])] or [[]]

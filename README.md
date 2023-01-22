@@ -18,7 +18,7 @@ There is a paper book about Python one-liners, search it online, it's an interes
 Leetcode imports modules as wildcards, so you don't have to specify module names.
 The only exception is `bisect.bisect()` because `bisect()` triggers `'module' object is not callable`.
 
-* https://leetcode.com/problems/number-of-sets-of-k-non-overlapping-line-segments/
+* https://leetcode.com/problems/number-of-sets-of-k-non-overlapping-line-segments
 
 Leetcode header has `import * from itertools`, so we use `comb()` instead of `itertools.comb()`:
 
@@ -53,7 +53,7 @@ Generator length `len(list(g))` can be calculated in a constant memory as `sum(1
 While loops are not very onliner-friendly. You can use  `count()` generator with `next()` or `takewhile()`
 (the latter is also a generator, so you need to run it, i.e. with `any()` and `repeat(0)`).
 
-* https://leetcode.com/problems/sliding-window-maximum/
+* https://leetcode.com/problems/sliding-window-maximum
 
 ```python
 class Solution:

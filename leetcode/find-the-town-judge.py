@@ -1,7 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/find-the-town-judge/discuss/242938/JavaC%2B%2BPython-Directed-Graph
-
 class Solution:
     def findJudge(self, n: int, trust: List[List[int]]) -> int:
         c = [0]*(n+1)
@@ -12,22 +10,6 @@ class Solution:
             if c[i]==n-1:
                 return i
         return -1
-
-# https://leetcode.com/problems/find-the-town-judge/discuss/242938/JavaC%2B%2BPython-Directed-Graph
-
-class Solution:
-    def findJudge(self, n: int, trust: List[List[int]]) -> int:
-        c = Counter(b for _,b in trust)
-        for a,_ in trust:
-            del c[a]
-        j = c.most_common(1)[0] if c else (1,0)
-        return j[0] if j[1] == n-1 else -1
-
-class Solution:
-    def findJudge(self, n: int, trust: List[List[int]]) -> int:
-        return (c:=reduce(lambda c,t:delitem(c,t[0]) or c,trust, Counter(b for _,b in trust)),j := c.most_common(1)[0] if c else (1,0),j[0] if j[1]==n-1 else -1)[-1]
-
-# mine
 
 class Solution:
     def findJudge(self, n: int, trust: List[List[int]]) -> int:

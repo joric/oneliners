@@ -27,6 +27,12 @@ class Solution:
     def findJudge(self, n: int, trust: List[List[int]]) -> int:
         return (c:=reduce(lambda c,t:delitem(c,t[0]) or c,trust, Counter(b for _,b in trust)),j := c.most_common(1)[0] if c else (1,0),j[0] if j[1]==n-1 else -1)[-1]
 
+# mine
+
+class Solution:
+    def findJudge(self, n: int, trust: List[List[int]]) -> int:
+        return (c:=Counter(),[c.update({a:-1,b:1}) for a,b in trust]) and next((i for i in range(1,n+1) if c[i]==n-1),-1)
+
 test('''
 
 997. Find the Town Judge

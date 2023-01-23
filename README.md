@@ -1,7 +1,7 @@
 ## Oneliners
 
 This repository contains hundreds (hopefully, thousands, in the future) of one-liner solutions
-for problems collected from https://leetcode.com and other competition programming sites.
+for problems collected from https://leetcode.com and other competitive programming sites.
 Some of them are really hard problems.
 
 ### Books

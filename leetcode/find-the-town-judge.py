@@ -19,14 +19,14 @@ class Solution:
     def findJudge(self, n: int, trust: List[List[int]]) -> int:
         a = [x[0] for x in trust]
         b = [x[1] for x in trust]
-        for k in range(1,n+1):
-            if a.count(k)==0 and b.count(k)==n-1:
-                return k
+        for i in range(1,n+1):
+            if a.count(i)==0 and b.count(i)==n-1:
+                return i
         return -1
 
 class Solution:
     def findJudge(self, n: int, trust: List[List[int]]) -> int:
-        return (p:=[*zip(*trust)] or [[]]*2) and next((k for k in range(1,n+1) if p[0].count(k)==0 and p[1].count(k)==n-1),-1)
+        return (p:=[*zip(*trust)] or [[]]*2) and next((i for i in range(1,n+1) if p[0].count(i)==0 and p[1].count(i)==n-1),-1)
 
 test('''
 

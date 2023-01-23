@@ -15,6 +15,19 @@ class Solution:
     def findJudge(self, n: int, trust: List[List[int]]) -> int:
         return (c:=Counter(),[c.update({a:-1,b:1}) for a,b in trust]) and next((i for i in range(1,n+1) if c[i]==n-1),-1)
 
+class Solution:
+    def findJudge(self, n: int, trust: List[List[int]]) -> int:
+        a = [x[0] for x in trust]
+        b = [x[1] for x in trust]
+        for k in range(1,n+1):
+            if a.count(k)==0 and b.count(k)==n-1:
+                return k
+        return -1
+
+class Solution:
+    def findJudge(self, n: int, trust: List[List[int]]) -> int:
+        return (p:=[*zip(*trust)] or [[]]*2) and next((k for k in range(1,n+1) if p[0].count(k)==0 and p[1].count(k)==n-1),-1)
+
 test('''
 
 997. Find the Town Judge
@@ -52,7 +65,16 @@ Example 3:
 
 Input: n = 3, trust = [[1,3],[2,3],[3,1]]
 Output: -1
- 
+
+Example 4:
+
+Input: n=1, trust = []
+Output: 1
+
+Example 5:
+
+Input: n=2, trust = []
+Output: -1
 
 Constraints:
 

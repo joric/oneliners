@@ -444,8 +444,7 @@ class Solution:
 
 #### Misc
 
-* You can replace `0 if x==y else z` with `x-y and z`, it's a little bit counterintuitive, but much shorter.
-* `key=itemgetter(n)` is the same length or shorter than `key=lambda x:x[n]` but a little bit clearer to read.
+* `key=itemgetter(n)` is the same length as `key=lambda x:x[n]` but a little bit clearer to read.
 
 
 Example:
@@ -517,3 +516,35 @@ class Solution:
         return sum(n*(n-1)//2 for n in Counter(x%k for x in accumulate([0]+nums)).values())
 ```
 
+* You can replace `0 if x==y else z` with `x-y and z`, it's a little bit counterintuitive, but shorter.
+* Condition `x if c else y` can be written as `c and x or y` (shorter by 1 character).
+
+Example:
+
+* https://leetcode.com/problems/snakes-and-ladders/discuss/173378/Diagram-and-BFS
+
+```python
+class Solution:
+    def snakesAndLadders(self, board: List[List[int]]) -> int:
+        n,v,q = len(board),{1:0},[1]
+        def f(i):
+            x = (i - 1)%n
+            y = (i - 1)//n
+            c = board[~y][~x if y%2 else x]
+            return c if c>0 else i
+        for i in q:
+            for j in range(i+1, i+7):
+                k = f(j)
+                if k==n*n:
+                    return v[i]+1
+                if k not in v:
+                    v[k] = v[i]+1
+                    q.append(k)
+        return -1
+
+class Solution:
+    def snakesAndLadders(self, board: List[List[int]]) -> int:
+        return (n:=len(board),v:={1:0},q:=[1],f:=lambda i:(x:=(i-1)%n,y:=(i-1)//n,c:=board[~y][y%2 and ~x or x])
+            and (c>0 and c or i)) and next((v[i]+1 for i in q for j in range(i+1,i+7) if (k:=f(j))==n*n
+            or (k not in v and (v.__setitem__(k,v[i]+1) or q.append(k)))),-1)
+```

@@ -544,7 +544,5 @@ class Solution:
 
 class Solution:
     def snakesAndLadders(self, board: List[List[int]]) -> int:
-        return (n:=len(board),v:={1:0},q:=[1],f:=lambda i:(x:=(i-1)%n,y:=(i-1)//n,c:=board[~y][y%2
-            and ~x or x]) and (c>0 and c or i)) and next((v[i]+1 for i in q for j in range(i+1,i+7)
-            if (k:=f(j))==n*n or (k not in v and (v.__setitem__(k,v[i]+1) or q.append(k)))),-1)
+        return (n:=len(board),v:={1:0},q:=[1]) and next((v[i]+1 for i in q for j in range(i+1,i+7) if (k:=(lambda i:(x:=(i-1)%n,y:=(i-1)//n) and ((c:=board[~y][y%2 and ~x or x])>0 and c or i))(j))==n*n or (k not in v and (v.__setitem__(k,v[i]+1) or q.append(k)))),-1)
 ```

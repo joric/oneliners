@@ -3,9 +3,9 @@ from lc import *
 class Solution:
     def snakesAndLadders(self, board: List[List[int]]) -> int:
         n,v,q = len(board),{1:0},[1]
-        def f(i):
-            x = (i - 1)%n
-            y = (i - 1)//n
+        def f(j):
+            x = (j - 1)%n
+            y = (j - 1)//n
             c = board[~y][~x if y%2 else x]
             return c if c>0 else i
         for i in q:

@@ -16,7 +16,9 @@ class Solution:
 
 class Solution:
     def closestMeetingNode(self, e: List[int], a: int, b: int) -> int:
-        return (v:=set(),w:=set(),r:=set()) and next((min(r) if r else -1 for _ in count() if (a==-1 and b==-1) or not (a!=-1 and ((a in w) or a==b) and r.add(a),b!=-1 and ((b in v) or a==b) and r.add(b)) or r or not (a!=-1 and a not in v and (v.add(a),a:=e[a]) or (a:=-1),b!=-1 and b not in w and (w.add(b),b:=e[b]) or (b:=-1))),-1)
+        return (v:=set(),w:=set(),r:=set()) and next((min(r) if r else -1 for _ in count() if (a==-1 and b==-1)
+        or not (a!=-1 and ((a in w) or a==b) and r.add(a),b!=-1 and ((b in v) or a==b) and r.add(b)) or r
+        or not (a!=-1 and a not in v and (v.add(a),a:=e[a]) or (a:=-1),b!=-1 and b not in w and (w.add(b),b:=e[b]) or (b:=-1))),-1)
 
 test('''
 

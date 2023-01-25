@@ -517,7 +517,7 @@ class Solution:
 ```
 
 * You can replace `0 if x==y else z` with `x-y and z`, it's a little bit counterintuitive, but shorter.
-* Condition `x if c else y` can be written as `c and x or y` (shorter by 1 character).
+* Condition `x if c else y` can be written as `c and x or y`, it's shorter but depends on x value.
 
 Example:
 

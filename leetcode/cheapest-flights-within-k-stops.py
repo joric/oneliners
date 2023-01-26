@@ -2,13 +2,13 @@ from lc import *
 
 class Solution:
     def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
-        v=[inf]*n
-        v[src]=0
+        v = [inf]*n
+        v[src] = 0
         for _ in range(k+1):
             t = v.copy()
             for s,d,p in flights:
-                if v[s] != inf and v[s]+p < t[d]:
-                    t[d] = v[s] + p
+                if v[s]!=inf and v[s]+p<t[d]:
+                    t[d] = v[s]+p
             v = t
         return -1 if v[dst]==inf else v[dst]
 

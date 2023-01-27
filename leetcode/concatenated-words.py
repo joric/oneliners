@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/concatenated-words/discuss/337308/python-dfs-3-lines
+
 class Solution:
     def findAllConcatenatedWordsInADict(self, words: List[str]) -> List[str]:
         return (d:=set(words)) and filter((f:=lambda w:any(w[:i] in d and (w[i:] in d or f(w[i:])) for i in range(1,len(w)))), words)

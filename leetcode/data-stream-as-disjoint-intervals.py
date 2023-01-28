@@ -27,13 +27,10 @@ class SummaryRanges:
 SummaryRanges = type('SummaryRanges',(),{
     '__init__':lambda s:setattr(s,'v',set()),
     'addNum':lambda s,v:s.v.add(v),
-    'getIntervals':lambda s:(v:=[],e:=set()) and [(
-        next((_ for _ in count() if not(a-1 in s.v and (a:=a-1, e.add(a)))),a:=x),
-        next((_ for _ in count() if not(b+1 in s.v and (b:=b+1, e.add(b)))),b:=x),
-        v.append([a,b])) for x in s.v if x not in e] and sorted(v)
+    'getIntervals':lambda s:(v:=[],e:=set()) and [v.append([(f:=lambda x,d:next((a for _ in count() if not(a+d in s.v and (a:=a+d, e.add(a)))),a:=x))(x,-1),f(x,1)]) for x in s.v if x not in e] and sorted(v)
     })
 
-SummaryRanges = type('SummaryRanges',(),{'__init__':lambda s:setattr(s,'v',set()),'addNum':lambda s,v:s.v.add(v),'getIntervals':lambda s:(v:=[],e:=set()) and [(next((_ for _ in count() if not(a-1 in s.v and (a:=a-1, e.add(a)))),a:=x),next((_ for _ in count() if not(b+1 in s.v and (b:=b+1, e.add(b)))),b:=x),v.append([a,b])) for x in s.v if x not in e] and sorted(v)})
+SummaryRanges = type('SummaryRanges',(),{'__init__':lambda s:setattr(s,'v',set()),'addNum':lambda s,v:s.v.add(v),'getIntervals':lambda s:(v:=[],e:=set()) and [v.append([(f:=lambda x,d:next((a for _ in count() if not(a+d in s.v and (a:=a+d, e.add(a)))),a:=x))(x,-1),f(x,1)]) for x in s.v if x not in e] and sorted(v)})
 
 test('''
 

@@ -79,7 +79,7 @@ class UndergroundSystem:
     def getAverageTime(s,a,b):
         return s.p[a,b]/s.f[a,b]
 
-UndergroundSystem = type('UndergroundSystem',(),{
+UndergroundSystem = type('',(),{
     '__init__':lambda s:setattr(s,'i',{}) or setattr(s,'p',Counter()) or setattr(s,'f',Counter()),
     'checkIn':lambda s,i,n,t:s.i.__setitem__(i,(n,t)),
     'checkOut':lambda s,i,n,t:(lambda m,q:s.p.__setitem__((m,n),s.p[(m,n)]+t-q) or s.f.__setitem__((m,n),s.f[(m,n)]+1))(*s.i.pop(i)),
@@ -87,7 +87,7 @@ UndergroundSystem = type('UndergroundSystem',(),{
     })
 
 
-UndergroundSystem = type('UndergroundSystem',(),{'__init__':lambda s:setattr(s,'i',{}) or setattr(s,'p',Counter()) or setattr(s,'f',Counter()),'checkIn':lambda s,i,n,t:s.i.__setitem__(i,(n,t)),'checkOut':lambda s,i,n,t:(lambda m,q:s.p.__setitem__((m,n),s.p[(m,n)]+t-q) or s.f.__setitem__((m,n),s.f[(m,n)]+1))(*s.i.pop(i)),'getAverageTime':lambda s,a,b:s.p[a,b]/s.f[a,b]})
+UndergroundSystem = type('',(),{'__init__':lambda s:setattr(s,'i',{}) or setattr(s,'p',Counter()) or setattr(s,'f',Counter()),'checkIn':lambda s,i,n,t:s.i.__setitem__(i,(n,t)),'checkOut':lambda s,i,n,t:(lambda m,q:s.p.__setitem__((m,n),s.p[(m,n)]+t-q) or s.f.__setitem__((m,n),s.f[(m,n)]+1))(*s.i.pop(i)),'getAverageTime':lambda s,a,b:s.p[a,b]/s.f[a,b]})
 
 
 test('''

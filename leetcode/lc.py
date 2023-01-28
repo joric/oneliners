@@ -190,7 +190,7 @@ def test(text, classname=None, check=None, init=None):
     for methods, arglist, expected in param:
         results = []
         for name,args in zip(methods,arglist):
-            if name == classname.__name__:
+            if name not in dir(classname):
                 func = getattr(classname, '__init__')
                 args, _ = vcast(func, args)
                 instance = classname(*args)

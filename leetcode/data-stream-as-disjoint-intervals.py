@@ -31,8 +31,7 @@ SummaryRanges = type('SummaryRanges',(),{
         (a+d in s.v and (a:=a+d, e.add(a)))),a:=x))(x,-1),f(x,1)]) for x in s.v if x not in e] and sorted(v)
     })
 
-SummaryRanges = type('SummaryRanges',(),{'__init__':lambda s:setattr(s,'v',set()),'addNum':lambda s,v:s.v.add(v),
-    'getIntervals':lambda s:(v:=[],e:=set()) and [v.append([(f:=lambda x,d:next((a for _ in count() if not (a+d in s.v and (a:=a+d, e.add(a)))),a:=x))(x,-1),f(x,1)]) for x in s.v if x not in e] and sorted(v)})
+SummaryRanges = type('SummaryRanges',(),{'__init__':lambda s:setattr(s,'v',set()),'addNum':lambda s,v:s.v.add(v),'getIntervals':lambda s:(v:=[],e:=set()) and [v.append([(f:=lambda x,d:next((a for _ in count() if not (a+d in s.v and (a:=a+d,e.add(a)))),a:=x))(x,-1),f(x,1)]) for x in s.v if x not in e] and sorted(v)})
 
 test('''
 

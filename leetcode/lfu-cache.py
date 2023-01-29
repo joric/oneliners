@@ -12,7 +12,7 @@ class LFUCache:
             return -1
         f = self.k[key]
         x = self.f[f].pop(key)
-        self.k[key] = f+1       
+        self.k[key] = f+1
         if not self.f[f]:
             del self.f[f]
         self.f[f+1][key] = x
@@ -32,6 +32,8 @@ class LFUCache:
                     del self.f[l]
             self.f[1][key] = value
             self.k[key] = 1
+
+# TODO
 
 test('''
 

@@ -26,8 +26,8 @@ class LFUCache:
         elif self.c:
             if len(self.k) == self.c:
                 l = min(self.f)
-                k = self.f[l].popitem(last = False)[0]
-                del self.k[k]
+                p = self.f[l].popitem(last = False)[0]
+                del self.k[p]
                 if not self.f[l]:
                     del self.f[l]
             self.f[1][key] = value

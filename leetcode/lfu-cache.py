@@ -41,10 +41,10 @@ class LFUCache:
         return -1 if k not in s.k else (f:=s.k[k],x:=s.f[f].pop(k),setitem(s.k,k,f+1),not s.f[f] and s.f.pop(f),setitem(s.f[f+1],k,x)) and x
     def put(s,k,v):
         (f:=s.k[k],s.get(k),setitem(s.f[f+1],k,v)) if k in s.k else s.c and (len(s.k)==s.c and (l:=min(s.f),
-        p:=s.f[l].popitem(last=0)[0],s.k.pop(p), not s.f[l] and s.f.pop(l)),setitem(s.f[1],k,v),setitem(s.k,k,1))
+        p:=s.f[l].popitem(last=0)[0],s.k.pop(p),not s.f[l] and s.f.pop(l)),setitem(s.f[1],k,v),setitem(s.k,k,1))
 
 
-LFUCache = type('',(),{'__init__':lambda s,c:setattr(s,'f',defaultdict(OrderedDict)) or setattr(s,'k',{}) or setattr(s,'c',c),'get':lambda s,k:-1 if k not in s.k else (f:=s.k[k],x:=s.f[f].pop(k),setitem(s.k,k,f+1),not s.f[f] and s.f.pop(f),setitem(s.f[f+1],k,x)) and x,'put':lambda s,k,v:((f:=s.k[k],s.get(k),setitem(s.f[f+1],k,v)) if k in s.k else s.c and (len(s.k)==s.c and (l:=min(s.f),p:=s.f[l].popitem(last=0)[0],s.k.pop(p), not s.f[l] and s.f.pop(l)),setitem(s.f[1],k,v),setitem(s.k,k,1))) and None})
+LFUCache = type('',(),{'__init__':lambda s,c:setattr(s,'f',defaultdict(OrderedDict)) or setattr(s,'k',{}) or setattr(s,'c',c),'get':lambda s,k:-1 if k not in s.k else (f:=s.k[k],x:=s.f[f].pop(k),setitem(s.k,k,f+1),not s.f[f] and s.f.pop(f),setitem(s.f[f+1],k,x)) and x,'put':lambda s,k,v:((f:=s.k[k],s.get(k),setitem(s.f[f+1],k,v)) if k in s.k else s.c and (len(s.k)==s.c and (l:=min(s.f),p:=s.f[l].popitem(last=0)[0],s.k.pop(p),not s.f[l] and s.f.pop(l)),setitem(s.f[1],k,v),setitem(s.k,k,1))) and None})
 
 test('''
 

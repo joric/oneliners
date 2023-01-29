@@ -41,7 +41,7 @@ class LRUCache:
             self.dic.popitem(last=False)
 
 
-LRUCache = type('',(),{'__init__':lambda s,c: setattr(s,'c',c) or setattr(s,'d',OrderedDict()),'get':lambda s,k: -1 if k not in s.d else (v:=s.d[k],s.d.move_to_end(k)) and v,'put':lambda s,k,v: (setitem(s.d,k,v),s.d.move_to_end(k),len(s.d)>s.c and s.d.popitem(last=False)) and None})
+LRUCache = type('',(),{'__init__':lambda s,c:setattr(s,'c',c) or setattr(s,'d',OrderedDict()),'get':lambda s,k:-1 if k not in s.d else (v:=s.d[k],s.d.move_to_end(k)) and v,'put':lambda s,k,v:(setitem(s.d,k,v),s.d.move_to_end(k),len(s.d)>s.c and s.d.popitem(last=False)) and None})
 
 
 test('''

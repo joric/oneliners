@@ -383,7 +383,8 @@ class Solution:
 
 #### setattr
 
-Use `__setattr__` (or `__setitem__` for indexes) if you need an assignment (this function returns None).
+You can use `dict.__setattr__(key, value)` (or `list.__setitem__(index, value)` for indexes) if you need an assignment (functions return `None`).
+Though it's shorter to use global functions, `setattr(dict, key, value)` and `setitem(list, index, value)`.
 
 * https://leetcode.com/problems/add-one-row-to-tree/discuss/764593/Python-7-lines
 

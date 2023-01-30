@@ -44,6 +44,10 @@ class Solution:
     def tribonacci(self, n: int) -> int:
         return reduce(lambda p,_:(p[1],p[2],sum(p)),range(n),[0,1,1])[0]
 
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        return reduce(lambda p,_:p[1:]+[sum(p)],[0]*n,[0,1,1])[0]
+
 # https://leetcode.com/problems/n-th-tribonacci-number/discuss/2775508/Python3-One-Line-Solution-with-no-Recursion-that-looks-really-weird
 
 class Solution:

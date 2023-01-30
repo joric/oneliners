@@ -21,9 +21,9 @@ class Solution:
 class Solution:
     def tribonacci(self, n: int) -> int:
         a,b,c = 0,1,1
-        for i in range(3, n+1):
+        for i in range(n):
             a,b,c = b,c,a+b+c
-        return max(n,0) if n<2 else c
+        return a
 
 test('''
 

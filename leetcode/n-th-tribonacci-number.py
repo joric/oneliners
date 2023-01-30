@@ -20,10 +20,21 @@ class Solution:
 
 class Solution:
     def tribonacci(self, n: int) -> int:
+        dp = [0, 1, 1]
+        for i in range(3, n+1):
+            dp[i % 3] = sum(dp)
+        return dp[n % 3]
+
+class Solution:
+    def tribonacci(self, n: int) -> int:
         a,b,c = 0,1,1
-        for i in range(n):
+        for _ in range(n):
             a,b,c = b,c,a+b+c
         return a
+
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        return reduce(lambda p,_:(p[1],p[2],sum(p)),range(n),[0,1,1])[0]
 
 test('''
 

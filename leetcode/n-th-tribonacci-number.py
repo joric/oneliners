@@ -1,14 +1,15 @@
 from lc import *
 
+# recursive
+class Solution:
+    @cache
+    def tribonacci(self, n: int) -> int:
+        return self.tribonacci(n-1)+self.tribonacci(n-2)+self.tribonacci(n-3) if n>2 else 1 if n==2 else n
+
 class Solution:
     def tribonacci(self, n: int) -> int:
         return (f:=cache(lambda n:f(n-1)+f(n-2)+f(n-3) if n>2 else 1 if n==2 else n))(n)
 
-# https://leetcode.com/problems/n-th-tribonacci-number/discuss/2775508/Python3-One-Line-Solution-with-no-Recursion-that-looks-really-weird
-
-class Solution:
-    def tribonacci(self, n: int) -> int:
-        return round((1.83928675521**n)*0.33622811699)
 
 # https://leetcode.com/problems/n-th-tribonacci-number/discuss/1427626/Python-2-Line-DP
 
@@ -16,7 +17,14 @@ class Solution:
     def tribonacci(self, n: int) -> int:
         return (f:=cache(lambda n:max(n,0) if n<2 else f(n-1)+f(n-2)+f(n-3)))(n)
 
-# 3 vars
+# dp
+
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        dp = [0]+[1]*(n+2)
+        for i in range(3,n+1):
+            dp[i] = dp[i-1] + dp[i-2] + dp[i-3]
+        return dp[n]
 
 class Solution:
     def tribonacci(self, n: int) -> int:
@@ -35,6 +43,12 @@ class Solution:
 class Solution:
     def tribonacci(self, n: int) -> int:
         return reduce(lambda p,_:(p[1],p[2],sum(p)),range(n),[0,1,1])[0]
+
+# https://leetcode.com/problems/n-th-tribonacci-number/discuss/2775508/Python3-One-Line-Solution-with-no-Recursion-that-looks-really-weird
+
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        return round((1.83928675521**n)*0.33622811699)
 
 test('''
 

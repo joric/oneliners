@@ -4,6 +4,19 @@ class Solution:
     def tribonacci(self, n: int) -> int:
         return (f:=cache(lambda n:f(n-1)+f(n-2)+f(n-3)if n>2 else 1 if n==2 else n))(n)
 
+# https://leetcode.com/problems/n-th-tribonacci-number/discuss/2775508/Python3-One-Line-Solution-with-no-Recursion-that-looks-really-weird
+
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        return round((1.83928675521**n)*0.33622811699)
+
+# https://leetcode.com/problems/n-th-tribonacci-number/discuss/1427626/Python-2-Line-DP
+
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        return (f:=cache(lambda n:max(n,0)if n<2 else f(n-1)+f(n-2)+f(n-3)))(n)
+
+
 test('''
 
 1137. N-th Tribonacci Number

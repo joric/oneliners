@@ -33,12 +33,13 @@ class Solution:
             dp[i % 3] = sum(dp)
         return dp[n % 3]
 
+
 class Solution:
-    def tribonacci(self, n: int) -> int:
-        a,b,c = 0,1,1
+    def tribonacci(self, n):
+        a,b,c = 1,0,0
         for _ in range(n):
             a,b,c = b,c,a+b+c
-        return a
+        return c
 
 class Solution:
     def tribonacci(self, n: int) -> int:

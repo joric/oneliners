@@ -2,7 +2,7 @@ from lc import *
 
 class Solution:
     def tribonacci(self, n: int) -> int:
-        return (f:=cache(lambda n:f(n-1)+f(n-2)+f(n-3)if n>2 else 1 if n==2 else n))(n)
+        return (f:=cache(lambda n:f(n-1)+f(n-2)+f(n-3) if n>2 else 1 if n==2 else n))(n)
 
 # https://leetcode.com/problems/n-th-tribonacci-number/discuss/2775508/Python3-One-Line-Solution-with-no-Recursion-that-looks-really-weird
 
@@ -14,8 +14,16 @@ class Solution:
 
 class Solution:
     def tribonacci(self, n: int) -> int:
-        return (f:=cache(lambda n:max(n,0)if n<2 else f(n-1)+f(n-2)+f(n-3)))(n)
+        return (f:=cache(lambda n:max(n,0) if n<2 else f(n-1)+f(n-2)+f(n-3)))(n)
 
+# 3 vars
+
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        a,b,c = 0,1,1
+        for i in range(3, n+1):
+            a,b,c = b,c,a+b+c
+        return max(n,0) if n<2 else c
 
 test('''
 
@@ -49,6 +57,21 @@ Example 2:
 Input: n = 25
 Output: 1389537
  
+
+Example 2:
+
+Input: n = 0
+Output: 0
+
+Example 3:
+
+Input: n = 1
+Output: 1
+
+Example 4:
+
+Input: n = 2
+Output: 1
 
 Constraints:
 

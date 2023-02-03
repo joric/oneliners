@@ -2,7 +2,7 @@ from lc import *
 
 class Solution:
     def convert(self, s: str, n: int) -> str:
-        return ''.join([i[1] for i in sorted({((n-1)-abs((n-1)-i%(2*(n-1))),i):c for i,c in enumerate(s)}.items())]) if n > 1 else s
+        return ''.join([i[1] for i in sorted({((n-1)-abs((n-1)-i%(2*(n-1))),i):c for i,c in enumerate(s)}.items())]) if n>1 else s
 
 test('''
 The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)

@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def averageValue(self, nums: List[int]) -> int:
         s = c = 0
         for x in nums:

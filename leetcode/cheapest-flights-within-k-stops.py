@@ -14,7 +14,7 @@ class Solution:
 
 class Solution:
     def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
-        return ((v:=[inf]*n).__setitem__(src,0),[(t:=v.copy(),[v[s]!=inf and v[s]+p<t[d] and t.__setitem__(d,v[s]+p) for s,d,p in flights],v:=t) for _ in range(k+1)]) and (v[dst]==inf and -1 or v[dst])
+        return (setitem(v:=[inf]*n,src,0),[(t:=v.copy(),[v[s]!=inf and v[s]+p<t[d] and setitem(t,d,v[s]+p) for s,d,p in flights],v:=t) for _ in range(k+1)]) and (v[dst]==inf and -1 or v[dst])
 
 test('''
 

@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def coinChange(self, coins, amount):
         dp = [inf] * (amount+1)
         dp[0] = 0;
@@ -9,11 +9,11 @@ class Solution1:
                     dp[i] = min(dp[i], dp[i - coin] + 1)
         return dp[amount] if dp[amount]<=amount else -1
 
-class Solution2:
+class Solution:
     def coinChange(self, coins, amount):
-        return (lambda x:x[-1] if x[-1]<=amount else -1)((lambda a:[a,[a.__setitem__(i,min(a[i],a[i-c]+1)) for c in coins for i in range(c, amount+1)]][0])([0]+[amount+1]*amount))
+        return (lambda x:x[-1] if x[-1]<=amount else -1)((lambda a:[a,[setitem(a,i,min(a[i],a[i-c]+1)) for c in coins for i in range(c, amount+1)]][0])([0]+[amount+1]*amount))
 
-class Solution3:
+class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         @cache
         def f(n):

@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-        return len(s:=sum(([(c,i),(j,c),(i//3, j//3,c)] for i in range(9) for j in range(9) for c in [board[i][j]] if c != '.'), []))==len(set(s))
+        return len(s:=sum(([(c,i),(j,c),(i//3,j//3,c)] for i in range(9) for j in range(9) for c in [board[i][j]] if c!='.'),[]))==len(set(s))
 
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:

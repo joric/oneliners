@@ -26,7 +26,7 @@ class Solution:
 
 class Solution:
     def numberOfArithmeticSlices(self, nums: List[int]) -> int:
-        return (r:=0,c:=[Counter() for _ in nums]) and all((d:=x-nums[j],r:=r+c[j][d],c[i].__setitem__(d,1+c[i][d]+c[j][d])) for i,x in enumerate(nums) for j in range(i)) and r
+        return (r:=0,c:=[Counter() for _ in nums]) and all((d:=x-nums[j],r:=r+c[j][d],setitem(c[i],d,1+c[i][d]+c[j][d])) for i,x in enumerate(nums) for j in range(i)) and r
 
 test('''
 446. Arithmetic Slices II - Subsequence

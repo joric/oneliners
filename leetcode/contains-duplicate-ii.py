@@ -11,7 +11,7 @@ class Solution1:
 
 class Solution:
     def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
-        return (f:=lambda i,m:i<len(nums) and (nums[i] in m and abs(m[nums[i]]-i)<=k or m.__setitem__(nums[i], i) or f(i+1, m)))(0,{})
+        return (f:=lambda i,m:i<len(nums) and (nums[i] in m and abs(m[nums[i]]-i)<=k or setitem(m,nums[i], i) or f(i+1, m)))(0,{})
 
 test('''
 219. Contains Duplicate II

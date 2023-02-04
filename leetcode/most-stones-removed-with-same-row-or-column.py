@@ -15,8 +15,8 @@ class Solution:
 
 class Solution:
     def removeStones(self, stones: List[List[int]]) -> int:
-        return (uf:={},f:=lambda x: x!=uf.setdefault(x,x) and uf.__setitem__(x,f(uf[x])) or uf[x],
-            any(uf.__setitem__(f(i),f(~j)) for i, j in stones)) and len(stones) - len({f(x) for x in uf})
+        return (uf:={},f:=lambda x: x!=uf.setdefault(x,x) and setitem(uf,x,f(uf[x])) or uf[x],
+            any(setitem(uf,f(i),f(~j)) for i, j in stones)) and len(stones)-len({f(x) for x in uf})
 
 test('''
 

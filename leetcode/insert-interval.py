@@ -29,7 +29,7 @@ class Solution:
 
 class Solution:
     def insert(self, v: List[List[int]], w: List[int]) -> List[List[int]]:
-        return (v.append(w),v.sort(key=lambda x: x[0]),o:=[v[0]],[o[-1].__setitem__(1,max(o[-1][1], v[i][1])) if v[i][0]<=o[-1][1] else o.append(v[i]) for i in range(1,len(v))]) and o
+        return (v.append(w),v.sort(key=lambda x: x[0]),o:=[v[0]],[setitem(o[-1],1,max(o[-1][1], v[i][1])) if v[i][0]<=o[-1][1] else o.append(v[i]) for i in range(1,len(v))]) and o
 
 
 class Solution:
@@ -46,7 +46,7 @@ class Solution:
 
 class Solution:
     def insert(self, v: List[List[int]], w: List[int]) -> List[List[int]]:
-        return (v.append(w),v.sort(),o:=[],[o[-1].__setitem__(1,max(o[-1][1], x[1])) if o and x[0]<=o[-1][1] else o.append(x) for x in v]) and o
+        return (v.append(w),v.sort(),o:=[],[setitem(o[-1],1,max(o[-1][1], x[1])) if o and x[0]<=o[-1][1] else o.append(x) for x in v]) and o
 
 
 test('''

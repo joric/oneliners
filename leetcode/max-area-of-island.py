@@ -2,7 +2,7 @@
 
 from lc import *
 
-class Solution1:
+class Solution:
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
         def dfs(i,j):
             if 0<=i<len(grid) and 0<=j<len(grid[0]) and grid[i][j]:
@@ -11,12 +11,12 @@ class Solution1:
             return 0
         return max(dfs(i,j) for i in range(len(grid)) for j in range(len(grid[0])))
 
-class Solution2:
+class Solution:
     def maxAreaOfIsland(self, g: List[List[int]]) -> int:
-        return max((f:=lambda i,j:g[i].__setitem__(j,0) or 1 + sum(map(f,(i+1,i,i-1,i),(j,j+1,j,j-1)))
+        return max((f:=lambda i,j:setitem(g[i],j,0) or 1 + sum(map(f,(i+1,i,i-1,i),(j,j+1,j,j-1)))
             if 0<=i<len(g) and 0<=j<len(g[0]) and g[i][j] else 0)(i,j) for i in range(len(g)) for j in range(len(g[0])))
 
-class Solution3:
+class Solution:
     def maxAreaOfIsland(self, grid):
         grid = {i + j*1j: val for i, row in enumerate(grid) for j, val in enumerate(row)}
         def area(z):

@@ -11,7 +11,7 @@ class Solution:
 
 class Solution:
     def isBipartite(self, graph: List[List[int]]) -> bool:
-        return (p:={}) or all(i in p or (f:=lambda x,c:p[x]==c if x in p else p.__setitem__(x,c)
+        return (p:={}) or all(i in p or (f:=lambda x,c:p[x]==c if x in p else setitem(p,x,c)
             or all(f(y,-c) for y in graph[x]))(i, 1) for i in range(len(graph)))
 
 

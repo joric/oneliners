@@ -19,9 +19,9 @@ class Solution:
     def numberOfGoodPaths(self, vals: List[int], edges: List[List[int]]) -> int:
         return (n:=len(vals),e:=sorted((max(vals[a],vals[b]),a,b) for a,b in edges),
         p:=list(range(n)),c:=[Counter({vals[i]:1}) for i in range(n)],r:=n,
-        f:=lambda x:(p[x]!=x and p.__setitem__(x,f(p[x]))) or p[x],
-        [(x:=f(a),y:=f(b),r:=r+c[x][m]*c[y][m],p.__setitem__(x,y),
-        c[y].__setitem__(m,c[y][m]+c[x][m])) for m,a,b in e]) and r
+        f:=lambda x:(p[x]!=x and setitem(p,x,f(p[x]))) or p[x],
+        [(x:=f(a),y:=f(b),r:=r+c[x][m]*c[y][m],setitem(p,x,y),
+        setitem(c[y],m,c[y][m]+c[x][m])) for m,a,b in e]) and r
 
 test('''
 

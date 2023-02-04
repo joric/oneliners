@@ -14,7 +14,7 @@ class Solution:
 
 class Solution:
     def merge(self, v: List[List[int]]) -> List[List[int]]:
-        return (v.sort(),o:=[],[o[-1].__setitem__(1,max(o[-1][1], x[1])) if o and x[0]<=o[-1][1] else o.append(x) for x in v]) and o
+        return (v.sort(),o:=[],[setitem(o[-1],1,max(o[-1][1], x[1])) if o and x[0]<=o[-1][1] else o.append(x) for x in v]) and o
 
 
 test('''

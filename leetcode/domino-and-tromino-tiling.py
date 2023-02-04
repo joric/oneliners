@@ -7,7 +7,7 @@ class Solution:
 
 class Solution:
     def numTilings(self, n: int) -> int:
-        return (a:=[0,1,2,5]+[0]*(n-3),[a.__setitem__(i,(2*a[i-1]+a[i-3])%(10**9+7)) for i in range(4,n+1)]) and a[n]
+        return (a:=[0,1,2,5]+[0]*(n-3),[setitem(a,i,(2*a[i-1]+a[i-3])%(10**9+7)) for i in range(4,n+1)]) and a[n]
 
 class Solution:
     def numTilings(self, n: int) -> int:

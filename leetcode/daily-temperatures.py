@@ -20,7 +20,7 @@ class Solution:
 
 class Solution:
     def dailyTemperatures(self, t: List[int]) -> List[int]:
-        return (r:=[0]*len(t),s:=[]) and any(next(1 for _ in count() if not(s and x>t[s[-1]] and not r.__setitem__(j:=s.pop(),i-j))) and s.append(i) for i,x in enumerate(t)) or r
+        return (r:=[0]*len(t),s:=[]) and any(next(1 for _ in count() if not(s and x>t[s[-1]] and not setitem(r,j:=s.pop(),i-j))) and s.append(i) for i,x in enumerate(t)) or r
 
 test('''
 

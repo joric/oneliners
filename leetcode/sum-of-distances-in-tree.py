@@ -27,8 +27,8 @@ class Solution:
 class Solution:
     def sumOfDistancesInTree(self, n, edges):
         return (g:=defaultdict(set),m:=[0]*n,h:=[0]*n,r:=[0]*n) and all((g[i].add(j),g[j].add(i)) for i,j in edges) \
-        and (f:=lambda o,p,d,r=1: ([r:=r+f(b,o,d+1) for b in g[o] if b!=p], m.__setitem__(o,r),h.__setitem__(o,d)) and r)(0, -1, 0) \
-        and (e:=lambda o,p,w: (r.__setitem__(o,w),[e(b,o,w+n-2*m[b]) for b in g[o] if b!=p]))(0, -1, sum(h)) and r
+        and (f:=lambda o,p,d,r=1: ([r:=r+f(b,o,d+1) for b in g[o] if b!=p], setitem(m,o,r),setitem(h,o,d)) and r)(0, -1, 0) \
+        and (e:=lambda o,p,w: (setitem(r,o,w),[e(b,o,w+n-2*m[b]) for b in g[o] if b!=p]))(0, -1, sum(h)) and r
 
 test('''
 

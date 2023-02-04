@@ -2,11 +2,11 @@ from lc import *
 
 # https://leetcode.com/problems/word-search-ii/discuss/2783455/Python-3-one-line
 
-class Solution1:
+class Solution:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
         board = {i+j*1j: c for i, row in enumerate(board) for j, c in enumerate(row)}
         res, trie = [], (Trie:=lambda: defaultdict(Trie))()
-        any(reduce(dict.__getitem__, w, trie).__setitem__('$', w) for w in words)
+        any(setitem(reduce(dict.__getitem__,w,trie),'$',w) for w in words)
         def dfs(z, parent):
             if not (c:=board.get(z)) in parent:
                 return
@@ -23,9 +23,9 @@ class Solution1:
 class Solution:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
         return ([b:={i+j*1j: c for i, row in enumerate(board) for j, c in enumerate(row)}, r:=[],
-            t:=(T:=lambda: defaultdict(T))(), [reduce(dict.__getitem__, w, t).__setitem__('$',w) for w in words],
+            t:=(T:=lambda: defaultdict(T))(), [setitem(reduce(dict.__getitem__, w, t),'$',w) for w in words],
             (f:=lambda z,p: (c:=b.get(z)) in p and (((w:=(n:=p[c]).pop('$',0)) and r.append(w))
-            or ((b.__setitem__(z,0) or [f(z+1j**k, n) for k in range(4)] and b.__setitem__(z,c))
+            or ((setitem(b,z,0) or [f(z+1j**k, n) for k in range(4)] and setitem(b,z,c))
             or (n or p.pop(c)))))] and [f(z,t) for z in b] and r)
 
 test('''

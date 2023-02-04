@@ -27,7 +27,7 @@ class Solution:
 
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        return reduce(lambda i,n:nums.__setitem__(i,n) or i+1 if i<2 or n>nums[i-2] else i, nums, 0)
+        return reduce(lambda i,n:setitem(nums,i,n) or i+1 if i<2 or n>nums[i-2] else i, nums, 0)
 
 # https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/discuss/1133269/one-line-python-solution-python-one_line-Remove
 

@@ -15,7 +15,7 @@ class Solution:
 
 class Solution:
     def possibleBipartition(self, n: int, dislikes: List[List[int]]) -> bool:
-        return (g:=defaultdict(list),c:={},all((g[u].append(v),g[v].append(u)) for u,v in dislikes),f:=lambda k,v=0:c[k]==v if k in c else (c.__setitem__(k,v) or all(f(w, v^1) for w in g[k]))) and all(f(k) for k in range(1, n+1) if k not in c)
+        return (g:=defaultdict(list),c:={},all((g[u].append(v),g[v].append(u)) for u,v in dislikes),f:=lambda k,v=0:c[k]==v if k in c else (setitem(c,k,v) or all(f(w, v^1) for w in g[k]))) and all(f(k) for k in range(1, n+1) if k not in c)
 
 test('''
 

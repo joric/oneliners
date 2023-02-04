@@ -45,17 +45,17 @@ class Solution4:
 
 class Solution5:
     def sortColors(self, nums: List[int]) -> None:
-        reduce(lambda a,_:(f:=lambda a,x,y:(t:=a[x],a.__setitem__(x,a[y]),a.__setitem__(y,t)),(f(nums,a[0],a[1]),(a[0]+1,a[1]+1,a[2]))[1] if nums[a[1]]==0 else ((a[0],a[1]+1,a[2]) if nums[a[1]]==1 else (f(nums,a[1],a[2]),(a[0],a[1],a[2]-1))[1]))[1], nums, [0,0,len(nums)-1])
+        reduce(lambda a,_:(f:=lambda a,x,y:(t:=a[x],setitem(a,x,a[y]),setitem(a,y,t)),(f(nums,a[0],a[1]),(a[0]+1,a[1]+1,a[2]))[1] if nums[a[1]]==0 else ((a[0],a[1]+1,a[2]) if nums[a[1]]==1 else (f(nums,a[1],a[2]),(a[0],a[1],a[2]-1))[1]))[1], nums, [0,0,len(nums)-1])
 
 class Solution6:
     def sortColors(self, nums: List[int]) -> None:
-        s = lambda a,x,y:(t:=a[x],a.__setitem__(x,a[y]),a.__setitem__(y,t),a)[3]
+        s = lambda a,x,y:(t:=a[x],setitem(a,x,a[y]),setitem(a,y,t),a)[3]
         f = lambda a,i,j,k:(f(s(a,i,j),i+1,j+1,k) if a[j]==0 else f(a,i,j+1,k) if a[j]==1 else f(s(a,j,k),i,j,k-1)) if i<=j<=k else None
         f(nums,0,0,len(nums)-1)
 
 class Solution:
     def sortColors(self, nums: List[int]) -> None:
-        (s:=lambda a,x,y:(t:=a[x],a.__setitem__(x,a[y]),a.__setitem__(y,t),a)[3],f:=lambda a,i,j,k:(f(s(a,i,j),i+1,j+1,k) if a[j]==0 else f(a,i,j+1,k) if a[j]==1 else f(s(a,j,k),i,j,k-1)) if i<=j<=k else None)[1](nums,0,0,len(nums)-1)
+        (s:=lambda a,x,y:(t:=a[x],setitem(a,x,a[y]),setitem(a,y,t),a)[3],f:=lambda a,i,j,k:(f(s(a,i,j),i+1,j+1,k) if a[j]==0 else f(a,i,j+1,k) if a[j]==1 else f(s(a,j,k),i,j,k-1)) if i<=j<=k else None)[1](nums,0,0,len(nums)-1)
 
 test('''
 75. Sort Colors

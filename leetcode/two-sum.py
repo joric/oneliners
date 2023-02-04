@@ -11,15 +11,15 @@ class Solution:
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        return (f:=lambda i,seen:False if i==len(nums) else (seen[target-nums[i]], i) if target-nums[i] in seen else seen.__setitem__(nums[i], i) or f(i+1, seen))(0,{})
+        return (f:=lambda i,seen:False if i==len(nums) else (seen[target-nums[i]], i) if target-nums[i] in seen else setitem(seen,nums[i], i) or f(i+1, seen))(0,{})
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        return (f:=lambda i,m:i<len(nums) and (target-nums[i] in m and (m[target-nums[i]], i) or m.__setitem__(nums[i], i) or f(i+1, m)))(0,{})
+        return (f:=lambda i,m:i<len(nums) and (target-nums[i] in m and (m[target-nums[i]], i) or setitem(m,nums[i], i) or f(i+1, m)))(0,{})
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        return next((((m[target-x],i) for i,x in enumerate(nums) if target-x in m or m.__setitem__(x,i))),m:={})
+        return next((((m[target-x],i) for i,x in enumerate(nums) if target-x in m or setitem(m,x,i))),m:={})
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:

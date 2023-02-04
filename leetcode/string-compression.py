@@ -4,11 +4,11 @@ from lc import *
 
 class Solution:
     def compress(self, chars: List[str]) -> int:
-        chars[:] = ''.join((lambda c,x:(c,c+str(x))[x>1])(c,len(list(g))) for c,g in groupby(chars))
+        return reduce(lambda i,c:(lambda s:setitem(chars,slice(i,i+len(s)), s) or i+len(s))(c[0]+str(('',c[1])[c[1]>1])),((c,sum(1 for _ in g)) for c,g in groupby(chars)),0)
 
 class Solution:
     def compress(self, chars: List[str]) -> int:
-        return reduce(lambda i,c:(lambda s:chars.__setitem__(slice(i,i+len(s)), s) or i+len(s))(c[0]+str(('',c[1])[c[1]>1])),((c,sum(1 for _ in g)) for c,g in groupby(chars)),0)
+        chars[:] = ''.join((lambda c,x:(c,c+str(x))[x>1])(c,len(list(g))) for c,g in groupby(chars))
 
 test('''
 

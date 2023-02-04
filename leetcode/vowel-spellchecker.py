@@ -12,7 +12,7 @@ class Solution:
 class Solution1:
     def spellchecker(self, wordlist: List[str], queries: List[str]) -> List[str]:
         return (p:=((lambda x:x,{}),(lambda x:x.lower(),{}),(lambda x: ''.join([l if l not in set(list('aeiou')) else '*' for l in x.lower()]),{}))) \
-            and [h.__setitem__(f(w),w) for f,h in p for w in wordlist if f(w) not in h] and [next((h[f(w)] for f,h in p if f(w) in h),'') for w in queries]
+            and [setitem(h,f(w),w) for f,h in p for w in wordlist if f(w) not in h] and [next((h[f(w)] for f,h in p if f(w) in h),'') for w in queries]
 
 test('''
 

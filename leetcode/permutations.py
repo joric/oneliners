@@ -50,7 +50,7 @@ class Solution:
 
 class Solution:
     def permute(self, a: List[int]) -> List[List[int]]:
-        return (r:=[], s:=lambda x,y: (t:=a[x],a.__setitem__(x,a[y]),a.__setitem__(y,t)), (h:=lambda j=0:
+        return (r:=[], s:=lambda x,y: (t:=a[x],setitem(a,x,a[y]),setitem(a,y,t)), (h:=lambda j=0:
             j==len(a)-1 and r.append(a[:]) or [(s(i,j),h(j+1),s(i,j)) for i in range(j,len(a))])()) and r
 
 test('''

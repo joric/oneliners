@@ -24,7 +24,7 @@ class Solution2(object):
 
 class Solution(object):
     def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        return (f:=lambda a,b:a.__setattr__('next', f(a.next, b.next.next) if b.next
+        return (f:=lambda a,b:setattr(a,'next', f(a.next, b.next.next) if b.next
             else f(a.next, b.next)) or a if b else a.next)(head, head.next)
 
 test('''

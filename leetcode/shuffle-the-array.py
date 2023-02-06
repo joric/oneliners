@@ -14,7 +14,23 @@ class Solution:
 
 class Solution:
     def shuffle(self, nums: List[int], n: int) -> List[int]:
+        return [(nums[i//2],nums[i//2+n])[i%2] for i in range(2*n)]
+
+class Solution:
+    def shuffle(self, nums: List[int], n: int) -> List[int]:
         return sum(((nums[i],nums[i+n]) for i in range(n)),())
+
+class Solution:
+    def shuffle(self, nums: List[int], n: int) -> List[int]:
+        return [x for v in zip(nums[:n],nums[n:]) for x in v]
+
+class Solution:
+    def shuffle(self, nums: List[int], n: int) -> List[int]:
+        return reduce(lambda a,b:a+b,zip(nums[:n],nums[n:]))
+
+class Solution:
+    def shuffle(self, nums: List[int], n: int) -> List[int]:
+        return chain(*zip(nums[:n],nums[n:]))
 
 test('''
 

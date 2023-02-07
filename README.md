@@ -54,7 +54,7 @@ Counters can be updated, similar to `dict.update()`, it's much faster than a sum
 E.g. `c[i]+=1` is equivalent to `c.update({i:1})`, `c[i]-=1` is equivalent to `c.update({i:-1})`.
 To delete a key you can use the `.pop` method (same as `del`).
 To set a key, you can use a global `setitem` function, e.g. `c[x]=1` is the same as `setitem(c,x,1)`.
-A set (not a counter) uses `.update` to add multiple items, and `.add` to add a single one.
+A set uses `.update` to add multiple items, and `.add` (not supported by counters) to add a single one.
 
 
 #### While

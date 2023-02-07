@@ -384,8 +384,8 @@ class Solution:
 #### setattr
 
 You can use `__setattr__` for dictionaries or `__setitem__` for lists if you need an assignment (functions return `None`).
-There are also global functions that are usually shorter, `setattr(dict, ...)` and `setitem(list, ...)`.
-You can also use oneliner-friendly `delitem(dict, ...)` function instead of the `del` operator, but it's usually shorter to use `pop`.
+There are also global functions that are shorter, `setattr(dict, ...)` and `setitem(list, ...)`.
+You can also use oneliner-friendly `delitem(dict, ...)` function instead of the `del` operator, but it's shorter to use `pop(key)`.
 
 * https://leetcode.com/problems/add-one-row-to-tree/discuss/764593/Python-7-lines
 

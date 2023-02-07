@@ -48,6 +48,14 @@ You can also exhaust a generator using `all()` or `any()` depending on the retur
 You can also save a few chars using `[*g]` syntax instead of `list(g)` where g is a generator function.
 Generator length `len(list(g))` can be calculated in a constant memory as `sum(1 for _ in g)`.
 
+#### Dictionaries
+
+Counters can be updated, similar to `dict.update()`, it's much faster than a sum of objects, method returns `None`.
+E.g. `c[i]+=1` is equivalent to `c.update({i:1})`, `c[i]-=1` is equivalent to `c.update({i:-1})`.
+A set uses `.update` to add multiple items, and `.add` to add a single one.
+To delete a key you can replace `del` operator with the `.pop` function.
+
+
 #### While
 
 While loops are not very onliner-friendly. You can use  `count()` generator with `next()` or `takewhile()`
@@ -443,11 +451,6 @@ class Solution:
             range(2,int(n**0.5)+1), [0,0]+[1]*(n-2)))
 ```
 
-#### Del
-
-You can use oneliner-friendly `delitem(dict, ...)` function to remove the key from dictionary,
-instead of the `del` operator, but it's shorter to use `dict.pop(key)`.
-
 #### Misc
 
 * `key=itemgetter(n)` is the same length as `key=lambda x:x[n]` but a little bit clearer to read.
@@ -498,30 +501,6 @@ class Solution:
 ```
 
 * `~` reverts every bit. Therefore, `~x` means `-x-1`. Use it as reversed index, i.e. for `i=0`, `a[~i]` means `a[-1]`, etc.
-* Counter can be updated, similar to `dict.update()`, it's much faster than adding counters, method returns `None`.
-
-Example:
-
-* https://leetcode.com/problems/subarray-sums-divisible-by-k
-
-```python
-class Solution:
-    def subarraysDivByK(self, nums: List[int], k: int) -> int:
-        c, r = [1]+[0]*(k-1), 0
-        for i in accumulate(nums):
-            r += c[i%k]
-            c[i%k] += 1
-        return r
-
-class Solution:
-    def subarraysDivByK(self, nums: List[int], k: int) -> int:
-        return reduce(lambda r,i:c.update({i%k:1})or r+c[i%k]-1,accumulate(nums),not(c:=Counter([0])))
-
-class Solution:
-    def subarraysDivByK(self, nums: List[int], k: int) -> int:
-        return sum(n*(n-1)//2 for n in Counter(x%k for x in accumulate([0]+nums)).values())
-```
-
 * You can replace `0 if x==y else z` with `x-y and z`, it's a little bit counterintuitive, but shorter.
 * Condition `x if c else y` can be written as `c and x or y`, it's shorter but depends on x value.
 

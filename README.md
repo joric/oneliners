@@ -385,7 +385,6 @@ class Solution:
 
 You can use `__setattr__` for dictionaries or `__setitem__` for lists if you need an assignment (functions return `None`).
 There are also global functions that are shorter, `setattr(dict, ...)` and `setitem(list, ...)`.
-You can also use oneliner-friendly `delitem(dict, ...)` function instead of the `del` operator, but it's shorter to use `pop(key)`.
 
 * https://leetcode.com/problems/add-one-row-to-tree/discuss/764593/Python-7-lines
 
@@ -443,6 +442,11 @@ class Solution:
         return sum(reduce(lambda a,i:a[i] and a.__setitem__(slice(i*i,n,i),[0]*len(a[i*i:n:i])) or a,
             range(2,int(n**0.5)+1), [0,0]+[1]*(n-2)))
 ```
+
+#### Del
+
+You can use oneliner-friendly `delitem(dict, ...)` function to remove the key from dictionary,
+instead of the `del` operator, but it's shorter to use `pop(key)`.
 
 #### Misc
 

@@ -52,9 +52,9 @@ Generator length `len(list(g))` can be calculated in a constant memory as `sum(1
 
 Counters can be updated, similar to `dict.update()`, it's much faster than a sum of counters, method returns `None`.
 E.g. `c[i]+=1` is equivalent to `c.update({i:1})`, `c[i]-=1` is equivalent to `c.update({i:-1})`.
-A set uses `.update` to add multiple items, and `.add` to add a single one.
 To delete a key you can use the `.pop` method (same as `del`).
 To set a key, you can use a global `setitem` function, e.g. `c[x]=1` is the same as `setitem(c,x,1)`.
+A set (not a counter) uses `.update` to add multiple items, and `.add` to add a single one.
 
 
 #### While

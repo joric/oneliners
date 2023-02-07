@@ -39,18 +39,18 @@ class Solution:
 class Solution:
     def totalFruit(self, fruits: List[int]) -> int:
         c, i = Counter(), 0
-        for j, v in enumerate(fruits):
-            c[v] += 1
+        for f in fruits:
+            c[f] += 1
             if len(c) > 2:
                 c[fruits[i]] -= 1
                 if c[fruits[i]] == 0:
                     del c[fruits[i]]
                 i += 1
-        return j - i + 1
+        return len(fruits) - i
 
 class Solution:
-    def totalFruit(self, f: List[int]) -> int:
-        return (c:=Counter(),i:=0,[setitem(c,v,c[v]+1) or (len(c)>2 and (setitem(c,f[i],c[f[i]]-1),c[f[i]]==0 and delitem(c,f[i])) and (i:=i+1)) for j,v in enumerate(f)]) and len(f)-i
+    def totalFruit(self, t: List[int]) -> int:
+        return (c:=Counter(),i:=0,[setitem(c,f,c[f]+1) or (len(c)>2 and (setitem(c,t[i],c[t[i]]-1),c[t[i]]==0 and delitem(c,t[i])) and (i:=i+1)) for f in t]) and len(t)-i
 
 test('''
 904. Fruit Into Baskets

@@ -1,17 +1,5 @@
 from lc import *
 
-class Solution:
-    def totalFruit(self, fruits: List[int]) -> int:
-        c, i = Counter(), 0
-        for j, v in enumerate(fruits):
-            c[v] += 1
-            if len(c) > 2:
-                c[fruits[i]] -= 1
-                if c[fruits[i]] == 0:
-                    del c[fruits[i]]
-                i += 1
-        return j - i + 1
-
 # https://leetcode.com/problems/fruit-into-baskets/discuss/282633/Easy-and-short-O(N)-O(1)-Python-with-explanation
 
 class Solution:
@@ -45,6 +33,24 @@ class Solution:
 class Solution:
     def totalFruit(self, fruits: List[int]) -> int:
         return reduce(lambda p,x:(lambda a,b,c,d,e,f,x:(a,b,c,d+1,e+1,max(f,c+d+1)) if x==b else (b,a,d,c+1,1,max(f,d+c+1)) if x==a else (b,x,e,1,1,max(f,e+1)))(*p,x),fruits,[0]*6)[-1]
+
+# https://leetcode.com/problems/fruit-into-baskets/discuss/170740/JavaC%2B%2BPython-Sliding-Window-for-K-Elements
+
+class Solution:
+    def totalFruit(self, fruits: List[int]) -> int:
+        c, i = Counter(), 0
+        for j, v in enumerate(fruits):
+            c[v] += 1
+            if len(c) > 2:
+                c[fruits[i]] -= 1
+                if c[fruits[i]] == 0:
+                    del c[fruits[i]]
+                i += 1
+        return j - i + 1
+
+class Solution:
+    def totalFruit(self, f: List[int]) -> int:
+        return (c:=Counter(),i:=0,[setitem(c,v,c[v]+1) or (len(c)>2 and (setitem(c,f[i],c[f[i]]-1),c[f[i]]==0 and delitem(c,f[i])) and (i:=i+1)) for j,v in enumerate(f)]) and len(f)-i
 
 test('''
 904. Fruit Into Baskets

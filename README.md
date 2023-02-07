@@ -446,7 +446,7 @@ class Solution:
 #### Del
 
 You can use oneliner-friendly `delitem(dict, ...)` function to remove the key from dictionary,
-instead of the `del` operator, but it's shorter to use `pop(key)`.
+instead of the `del` operator, but it's shorter to use `d.pop(key)`.
 
 #### Misc
 

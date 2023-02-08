@@ -27,7 +27,7 @@ class Solution:
 
 class Solution:
     def jump(self, nums: List[int]) -> int:
-        return (j:=0,c:=0,f:=0,[(f:=max(f,nums[i]+i),i==c and (c:=f,j:=j+1)) for i in range(len(nums)-1)]) and j
+        return (j:=0,c:=0,f:=0,[(f:=max(f,x+i),i==c and (c:=f,j:=j+1)) for i,x in enumerate(nums[:-1])]) and j
 
 test('''
 45. Jump Game II

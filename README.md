@@ -48,7 +48,7 @@ You can also exhaust a generator using `all()` or `any()` depending on the retur
 You can also save a few chars using `[*g]` syntax instead of `list(g)` where g is a generator function.
 Generator length `len(list(g))` can be calculated in a constant memory as `sum(1 for _ in g)`.
 
-#### Dictionaries
+#### Counters
 
 Counters can be updated, similar to `dict.update()`, it's much faster than a sum of counters, method returns `None`.
 E.g. `c[i]+=1` is equivalent to `c.update({i:1})`, `c[i]-=1` is equivalent to `c.update({i:-1})`.

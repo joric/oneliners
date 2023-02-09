@@ -10,6 +10,7 @@ from bisect import *
 from random import *
 from re import *
 from operator import *
+from string import *
 import bisect
 import collections
 import heapq

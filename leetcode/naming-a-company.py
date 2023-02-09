@@ -1,9 +1,11 @@
 from lc import *
 
+# https://leetcode.com/problems/naming-a-company/discuss/2140916/Python3-Short-Counting
+
 class Solution:
     def distinctNames(self, ideas: List[str]) -> int:
-        return (m:=defaultdict(Counter),s:=set(ideas),t:=ascii_lowercase,[setitem(m[x],w[0],m[x][w[0]]+1) for w in s
-            for x in t if x+w[1:] not in s]) and sum(m[w[0]][x] if x+w[1:] not in s else 0 for x in t for w in s)
+        return (m:=defaultdict(Counter),s:=set(ideas),[setitem(m,w[0],m[w[0]]+Counter(x for x in
+        ascii_lowercase if x+w[1:] not in s)) for w in s]) and sum(m[x][y]*m[y][x] for x in m for y in m)
 
 test('''
 2306. Naming a Company

@@ -26,8 +26,7 @@ class Solution:
 
 class Solution:
     def maxDistance(self, grid: List[List[int]]) -> int:
-        return next((d or -1 for _ in count() if not(a and b and (a:={t for z in a for t in (z+1j**k for k in range(4)) if t in b},
-        b:=b-a,d:=d+1))),(d:=0,a:=(c:=lambda t:{i+j*1j for i,r in enumerate(grid) for j,x in enumerate(r) if x==t})(1),b:=c(0)))
+        return next((d or -1 for _ in count() if not(a and b and (b:=b-(a:={t for z in a for t in (z+1j**k for k in range(4)) if t in b}),d:=d+1))),(d:=0,a:=(c:=lambda t:{i+j*1j for i,r in enumerate(grid) for j,x in enumerate(r) if x==t})(1),b:=c(0)))
 
 test('''
 

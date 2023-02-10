@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/as-far-from-land-as-possible/discuss/360960/Python-BFS/822409
+
 class Solution:
     def maxDistance(self, grid: List[List[int]]) -> int:
         n, res = len(grid), 0

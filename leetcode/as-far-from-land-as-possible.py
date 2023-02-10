@@ -17,16 +17,16 @@ class Solution:
 class Solution:
     def maxDistance(self, grid: List[List[int]]) -> int:
         d,c = 0,lambda t:{i+j*1j for i,r in enumerate(grid) for j,x in enumerate(r) if x==t}
-        a,b = c(1), c(0)
-        while a and b:
-            a = {w for z in a for w in (z+1j**k for k in range(4)) if w in b}
-            b -= a
+        water, land = c(1), c(0)
+        while water and land:
+            water = {t for z in water for t in (z+1j**k for k in range(4)) if t in land}
+            land -= water
             d += 1
         return d or -1
 
 class Solution:
     def maxDistance(self, grid: List[List[int]]) -> int:
-        return next((d or -1 for _ in count() if not(a and b and (a:={w for z in a for w in (z+1j**k for k in range(4)) if w in b},b:=b-a,d:=d+1))),(d:=0,a:=(c:=lambda t:{i+j*1j for i,r in enumerate(grid) for j,x in enumerate(r) if x==t})(1),b:=c(0)))
+        return next((d or -1 for _ in count() if not(a and b and (a:={t for z in a for t in (z+1j**k for k in range(4)) if t in b},b:=b-a,d:=d+1))),(d:=0,a:=(c:=lambda t:{i+j*1j for i,r in enumerate(grid) for j,x in enumerate(r) if x==t})(1),b:=c(0)))
 
 test('''
 

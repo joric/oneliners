@@ -16,16 +16,6 @@ class Solution:
 
 class Solution:
     def maxDistance(self, grid: List[List[int]]) -> int:
-        d,c = 0,lambda t:{(i,j) for i,r in enumerate(grid) for j,x in enumerate(r) if x==t}
-        a,b = c(1), c(0)
-        while a and b:
-            a = {(x,y) for i,j in a for x,y in ((i+1,j), (i-1,j), (i,j+1), (i,j-1)) if (x,y) in b}
-            b -= a
-            d += 1
-        return d or -1
-
-class Solution:
-    def maxDistance(self, grid: List[List[int]]) -> int:
         d,c = 0,lambda t:{i+j*1j for i,r in enumerate(grid) for j,x in enumerate(r) if x==t}
         a,b = c(1), c(0)
         while a and b:

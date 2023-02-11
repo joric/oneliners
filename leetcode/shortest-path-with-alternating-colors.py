@@ -85,6 +85,11 @@ Input: n = 3, redEdges = [[0,1]], blueEdges = [[2,1]]
 Output: [0,1,-1]
  
 
+Example 3:
+
+Input: n = 3, redEdges = [[0,1],[0,2]], blueEdges = [[1,0]]
+Output: [0,1,1]
+
 Constraints:
 
 1 <= n <= 100

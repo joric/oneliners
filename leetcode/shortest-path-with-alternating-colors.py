@@ -20,28 +20,28 @@ class Solution:
 
 class Solution:
     def shortestAlternatingPaths(self, n: int, redEdges: List[List[int]], blueEdges: List[List[int]]) -> List[int]:
-        g,p,q = [[[],[]] for i in range(n)],[[0,0]] + [[n*2,n*2] for i in range(n-1)],[[0,0],[0,1]]
+        g,p,q = [[[],[]] for i in range(n)],[[0,0]] + [[inf,inf] for i in range(n-1)],[[0,0],[0,1]]
         for i,j in redEdges: g[i][0].append(j)
         for i,j in blueEdges: g[i][1].append(j)
         for i,c in q:
             for j in g[i][c]:
-                if p[j][c] == n*2:
+                if p[j][c] == inf:
                     p[j][c] = p[i][1-c] + 1
                     q.append([j, 1-c])
-        return [x if x<n*2 else -1 for x in map(min,p)]
+        return [x if x<inf else -1 for x in map(min,p)]
 
 
 class Solution:
     def shortestAlternatingPaths(self, n: int, redEdges: List[List[int]], blueEdges: List[List[int]]) -> List[int]:
-        g,p,q = [[[],[]] for i in range(n)],[[0,0]]+[[n*2,n*2] for i in range(n-1)],[[0,0],[0,1]]
+        g,p,q = [[[],[]] for i in range(n)],[[0,0]]+[[inf,inf] for i in range(n-1)],[[0,0],[0,1]]
         [g[i][c].append(j) for c,e in enumerate((redEdges,blueEdges)) for i,j in e]
-        [setitem(p[j],c,p[i][1-c]+1) or q.append([j,1-c]) for i,c in q for j in g[i][c] if p[j][c]==n*2]
-        return [x if x<n*2 else -1 for x in map(min,p)]
+        [setitem(p[j],c,p[i][1-c]+1) or q.append([j,1-c]) for i,c in q for j in g[i][c] if p[j][c]==inf]
+        return [x if x<inf else -1 for x in map(min,p)]
 
 
 class Solution:
     def shortestAlternatingPaths(self, n: int, redEdges: List[List[int]], blueEdges: List[List[int]]) -> List[int]:
-        return (g:=[[[],[]] for i in range(n)],p:=[[0,0]]+[[n*2,n*2] for i in range(n-1)],q:=[[0,0],[0,1]],[g[i][c].append(j) for c,e in enumerate((redEdges,blueEdges)) for i,j in e],[setitem(p[j],c,p[i][1-c]+1) or q.append([j,1-c]) for i,c in q for j in g[i][c] if p[j][c]==n*2],[x if x<n*2 else -1 for x in map(min,p)])[-1]
+        return (g:=[[[],[]] for i in range(n)],p:=[[0,0]]+[[inf,inf] for i in range(n-1)],q:=[[0,0],[0,1]],[g[i][c].append(j) for c,e in enumerate((redEdges,blueEdges)) for i,j in e],[setitem(p[j],c,p[i][1-c]+1) or q.append([j,1-c]) for i,c in q for j in g[i][c] if p[j][c]==inf],[x if x<inf else -1 for x in map(min,p)])[-1]
 
 test('''
 1129. Shortest Path with Alternating Colors

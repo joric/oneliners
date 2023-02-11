@@ -42,7 +42,7 @@ class Solution:
 class Solution:
     def shortestAlternatingPaths(self, n: int, redEdges: List[List[int]], blueEdges: List[List[int]]) -> List[int]:
         g = [[[],[]] for i in range(n)]
-        p = [[0,0]] + [[inf]*2 for i in range(n-1)]
+        p = [[0,0]] + [[inf,inf] for i in range(n-1)]
         q = [[0,0],[0,1]]
         any(g[i][c].append(j) for c,e in enumerate((redEdges,blueEdges)) for i,j in e)
         any(setitem(p[j],c,p[i][1-c]+1) or q.append([j,1-c]) for i,c in q for j in g[i][c] if p[j][c]==inf)
@@ -50,7 +50,7 @@ class Solution:
 
 class Solution:
     def shortestAlternatingPaths(self, n: int, redEdges: List[List[int]], blueEdges: List[List[int]]) -> List[int]:
-        return (g:=[[[],[]] for i in range(n)],p:=[[0,0]]+[[inf]*2 for i in range(n-1)],q:=[[0,0],[0,1]],[g[i][c].append(j) for c,e in enumerate((redEdges,blueEdges)) for i,j in e],[setitem(p[j],c,p[i][1-c]+1) or q.append([j,1-c]) for i,c in q for j in g[i][c] if p[j][c]==inf],[x if x<inf else -1 for x in map(min,p)])[-1]
+        return (g:=[[[],[]] for i in range(n)],p:=[[0,0]]+[[inf,inf] for i in range(n-1)],q:=[[0,0],[0,1]],[g[i][c].append(j) for c,e in enumerate((redEdges,blueEdges)) for i,j in e],[setitem(p[j],c,p[i][1-c]+1) or q.append([j,1-c]) for i,c in q for j in g[i][c] if p[j][c]==inf],[x if x<inf else -1 for x in map(min,p)])[-1]
 
 test('''
 1129. Shortest Path with Alternating Colors

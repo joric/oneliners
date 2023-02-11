@@ -4,9 +4,14 @@ from lc import *
 
 class Solution:
     def shortestAlternatingPaths(self, n: int, redEdges: List[List[int]], blueEdges: List[List[int]]) -> List[int]:
-        g,q,r,v = [defaultdict(set), defaultdict(set)],deque([(0,0,0),(0,0,1)]),[inf]*n,Counter()
-        for s,e in redEdges: g[0][s].add(e) 
-        for s,e in blueEdges: g[1][s].add(e)
+        g = [defaultdict(set), defaultdict(set)]
+        q = deque([(0,0,0),(0,0,1)])
+        r = [inf]*n
+        v = Counter()
+        for s,e in redEdges:
+            g[0][s].add(e) 
+        for s,e in blueEdges:
+            g[1][s].add(e)
         while q:
             i,d,c = q.popleft()
             r[i] = min(r[i],d)

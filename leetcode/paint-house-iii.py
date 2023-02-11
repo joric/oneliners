@@ -3,7 +3,7 @@ from lc import *
 class Solution:
     def minCost(self, houses: List[int], cost: List[List[int]], m: int, n: int, target: int) -> int:
         @cache
-        def dfs(i, t, p):
+        def dfs(i,t,p):
             if i == len(houses) or t < 0 or m - i < t:
                 return 0 if t == 0 and i == len(houses) else float('inf')
             if houses[i] == 0:
@@ -12,6 +12,12 @@ class Solution:
                 return dfs(i + 1, t - (houses[i] != p), houses[i])
         ret = dfs(0, target, -1)
         return ret if ret < float('inf') else -1
+
+
+class Solution:
+    def minCost(self, houses: List[int], cost: List[List[int]], m: int, n: int, target: int) -> int:
+        return r if (r:=(f:=cache(lambda i,t,p:(0 if t==0 and i==len(houses) else inf) if i==len(houses) or t<0 or m-i<t else (min(f(i+1,t-(d!=p),d)+cost[i][d-1] for d in range(1,n+1)) if houses[i]==0 else f(i+1,t-(houses[i]!=p),houses[i]))))(0,target,-1))<inf else -1
+
 
 test('''
 There is a row of m houses in a small city, each house must be painted with one of the n colors (labeled from 1 to n), some houses that have been painted last summer should not be painted again.

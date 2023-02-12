@@ -7,7 +7,7 @@ class Solution:
             g[u].append(v)
             g[v].append(u)
         self.r = 0
-        def f(u,p):
+        def f(u,p=None):
             c = 1
             for v in g[u]:
                 if v!=p:
@@ -15,7 +15,7 @@ class Solution:
             if u:
                 self.r += ceil(c/seats)
             return c
-        f(0,0)
+        f(0)
         return self.r
 
 class Solution:

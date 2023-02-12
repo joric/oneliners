@@ -7,8 +7,7 @@ class Solution:
             g[u].append(v)
             g[v].append(u)
         self.r = 0
-        def f(u,p=None):
-            c = 1
+        def f(u,p=None,c=1):
             for v in g[u]:
                 if v!=p:
                     c += f(v,u)

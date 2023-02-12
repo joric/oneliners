@@ -7,8 +7,7 @@ class Solution:
             g[u].append(v)
             g[v].append(u)
         r = [0]
-        def f(u,p):
-            c = 1
+        def f(u,p,c=1):
             for v in g[u]:
                 if v!=p:
                     c += f(v,u)
@@ -19,7 +18,7 @@ class Solution:
 
 class Solution:
     def minimumFuelCost(self, roads: List[List[int]], seats: int) -> int:
-        return (g:=defaultdict(list),[(g[u].append(v),g[v].append(u)) for u,v in roads],r:=[0],(f:=lambda u,p:(c:=1,[(c:=c+f(v,u)) for v in g[u] if v!=p],u and setitem(r,0,r[0]+ceil(c/seats)),c)[-1])(0,0)) and r[0]
+        return (g:=defaultdict(list),[(g[u].append(v),g[v].append(u)) for u,v in roads],r:=[0],(f:=lambda u,p,c=1:([(c:=c+f(v,u)) for v in g[u] if v!=p],u and setitem(r,0,r[0]+ceil(c/seats)),c)[-1])(0,0)) and r[0]
 
 test('''
 2477. Minimum Fuel Cost to Report to the Capital

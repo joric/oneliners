@@ -6,15 +6,17 @@ class Solution:
         for u,v in roads:
             g[u].append(v)
             g[v].append(u)
-        r = [0]
-        def f(u,p,c=1):
+        self.r = 0
+        def f(u,p):
+            c = 1
             for v in g[u]:
                 if v!=p:
                     c += f(v,u)
             if u:
-                r[0] += ceil(c/seats)
+                self.r += ceil(c/seats)
             return c
-        return f(0,0) and r[0]
+        f(0,0)
+        return self.r
 
 class Solution:
     def minimumFuelCost(self, roads: List[List[int]], seats: int) -> int:

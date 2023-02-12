@@ -132,7 +132,10 @@ class Solution:
 
 class Solution:
     def shortestPath(self, grid: List[List[int]], k: int) -> int:
-        return ((g:={i+j*1j:x for i,r in enumerate(grid) for j,x in enumerate(r)},n:=len(grid),m:=len(grid[0]),r:=[0]),setitem(r,0,inf),(f:=cache(lambda z,k,c:not((x:=g.get(z,-1))==-1 or (k==0 and x==1) or x==2 or r[0]==m+n-2) and not(z==(n-1)+(m-1)*1j and setitem(r,0,min(r[0],c))) and (setitem(g,z,2), (x==1 and (k:=k-1)), [f(z + 1j**i,k,c+1) for i in range(4)],setitem(g,z,x))))(0,k,0),r[0] if r[0]!=inf else -1)[-1]
+        return ((g:={i+j*1j:x for i,r in enumerate(grid) for j,x in enumerate(r)},n:=len(grid),m:=len(grid[0]),r:=[0]),
+        setitem(r,0,inf),(f:=cache(lambda z,k,c:not((x:=g.get(z,-1))==-1 or (k==0 and x==1) or x==2 or r[0]==m+n-2)
+        and not(z==(n-1)+(m-1)*1j and setitem(r,0,min(r[0],c))) and (setitem(g,z,2), (x==1 and (k:=k-1)), [f(z + 1j**i,k,c+1)
+        for i in range(4)],setitem(g,z,x))))(0,k,0),r[0] if r[0]!=inf else -1)[-1]
 
 test('''
 1293. Shortest Path in a Grid with Obstacles Elimination

@@ -68,7 +68,7 @@ class Solution:
 
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
-        return heapify(nums) or nlargest(k, nums)[-1]
+        return nlargest(k, heapify(nums) or nums)[-1]
 
 test('''
 215. Kth Largest Element in an Array

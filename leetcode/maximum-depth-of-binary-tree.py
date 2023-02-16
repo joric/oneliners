@@ -10,7 +10,7 @@ class Solution:
 
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        return 1 + max(map(self.maxDepth,(root.left, root.right))) if root else 0
+        return root and 1 + max(map(self.maxDepth, (root.left, root.right))) or 0
 
 test('''
 

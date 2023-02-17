@@ -2,7 +2,7 @@ from lc import *
 
 class Solution:
     def minDiffInBST(self, root: Optional[TreeNode]) -> int:
-        return (v:=(f:=lambda x:x and f(x.left)+[x.val]+f(x.right) or [])(root)) and min(a-b for a, b in zip(v[1:],v))
+        return (v:=(f:=lambda x:x and f(x.left)+[x.val]+f(x.right) or [])(root)) and min(a-b for a,b in zip(v[1:],v))
 
 test('''
 783. Minimum Distance Between BST Nodes

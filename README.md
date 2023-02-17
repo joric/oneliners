@@ -54,10 +54,12 @@ To set a key, you can use a global `setitem` function, e.g. `c[x]=1` is the same
 To delete a key you can use the `.pop` method (same as `del`), it's shorter than `popitem()`.
 
 
-#### While
+#### next
 
 While loops are not very oneliner-friendly. You can use  `count()` generator with `next()` or `takewhile()`
 (the latter is also a generator, so you need to run it, i.e. with `any()` and `repeat(0)`).
+
+Note that `next` default parameter gets initialized first so you can use it for the startup code.
 
 * https://leetcode.com/problems/sliding-window-maximum
 
@@ -89,11 +91,6 @@ class Solution:
             enumerate(nums), [])[k-1:]
 
 ```
-
-#### next
-
-Use `next` whether you need a loop with an early exit. Use `count()` generator for infinite loops.
-Note that `next` default parameter gets initialized first so you can use it for the startup code.
 
 * https://leetcode.com/problems/two-sum
 

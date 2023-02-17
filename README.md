@@ -12,7 +12,7 @@ There is a paper book about Python one-liners, search it online, it's an interes
 #### Imported modules
 
 Leetcode imports modules as wildcards, so you don't have to specify module names.
-The only exception is `bisect.bisect()` because `bisect()` triggers `'module' object is not callable`.
+The only exception is `bisect.bisect()` because just `bisect()` triggers `'module' object is not callable`.
 
 * https://leetcode.com/problems/number-of-sets-of-k-non-overlapping-line-segments
 

@@ -50,8 +50,7 @@ Counters (`collections.Counter()`) can be updated, similar to `dict.update()`, i
 but the method returns `None`.
 E.g. `c[i]+=1` is equivalent to `c.update({i:1})`, `c[i]-=1` is `c.update({i:-1})`.
 To set a key, you can use a global `setitem` function, e.g. `c[x]=1` is the same as `setitem(c,x,1)`.
-To delete a key you can use the `.pop` method (same as `del`), it's much shorter than `popitem()`.
-A set (not a Counter) uses `.update` to add multiple items, and `.add` to add a single one.
+To delete a key you can use the `.pop` method (same as `del`), it's shorter than `popitem()`.
 
 
 #### While

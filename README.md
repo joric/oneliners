@@ -56,7 +56,7 @@ To delete a key you can use the `.pop` method (same as `del`), it's shorter than
 
 #### While
 
-While loops are not very onliner-friendly. You can use  `count()` generator with `next()` or `takewhile()`
+While loops are not very oneliner-friendly. You can use  `count()` generator with `next()` or `takewhile()`
 (the latter is also a generator, so you need to run it, i.e. with `any()` and `repeat(0)`).
 
 * https://leetcode.com/problems/sliding-window-maximum

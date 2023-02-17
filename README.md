@@ -14,9 +14,10 @@ There is a paper book about Python one-liners, search it online, it's an interes
 Leetcode imports modules as wildcards, so you don't have to specify module names.
 The only exception is `bisect.bisect()` because just `bisect()` triggers `'module' object is not callable`.
 
+E.g. Leetcode header has `import * from itertools`, so we use `comb()` instead of `itertools.comb()`:
+
 * https://leetcode.com/problems/number-of-sets-of-k-non-overlapping-line-segments
 
-Leetcode header has `import * from itertools`, so we use `comb()` instead of `itertools.comb()`:
 
 ```python
 class Solution:

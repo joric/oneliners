@@ -47,7 +47,7 @@ class TreeNode(object):
 
     def parse(val):
         if not val:
-            return None
+            return []
         nodes = [None if x is None else TreeNode(x) for x in val]
         kids = nodes[::-1]
         root = kids and kids.pop()

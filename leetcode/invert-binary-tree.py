@@ -4,6 +4,10 @@ class Solution:
     def invertTree(self, root: TreeNode) -> TreeNode:
         return root and TreeNode(root.val, self.invertTree(root.right), self.invertTree(root.left))
 
+class Solution:
+    def invertTree(self, root: TreeNode) -> TreeNode:
+        return (f:=lambda x:x and TreeNode(x.val,f(x.right),f(x.left)))(root)
+
 test('''
 
 226. Invert Binary Tree

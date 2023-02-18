@@ -1,14 +1,6 @@
 from lc import *
 
 class Solution:
-    def invertTree(self, root: TreeNode) -> TreeNode:
-        return root and TreeNode(root.val, self.invertTree(root.right), self.invertTree(root.left))
-
-class Solution:
-    def invertTree(self, root: TreeNode) -> TreeNode:
-        return (f:=lambda x:x and TreeNode(x.val,f(x.right),f(x.left)))(root)
-
-class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if root:
             root.left,root.right=self.invertTree(root.right),self.invertTree(root.left)
@@ -17,6 +9,15 @@ class Solution:
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         return (f:=lambda x:x and [*map(setattr,(x,x),('left','right'),(f(x.right),f(x.left)))] and x)(root)
+
+class Solution:
+    def invertTree(self, root: TreeNode) -> TreeNode:
+        return root and TreeNode(root.val, self.invertTree(root.right), self.invertTree(root.left))
+
+class Solution:
+    def invertTree(self, root: TreeNode) -> TreeNode:
+        return (f:=lambda x:x and TreeNode(x.val,f(x.right),f(x.left)))(root)
+
 
 test('''
 

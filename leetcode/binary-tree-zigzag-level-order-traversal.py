@@ -6,7 +6,7 @@ class Solution:
         def f(x,h):
             if not x:
                 return
-            if h>len(r)-1:
+            if h==len(r):
                 r.append([])
             r[h] = [x.val]+r[h] if h%2 else r[h]+[x.val]
             f(x.left,h+1)

@@ -23,6 +23,10 @@ class Solution:
     def levelOrder(self, root: TreeNode) -> List[List[int]]:
         return [[root.val]] + [a+b for a,b in zip_longest(self.levelOrder(root.left), self.levelOrder(root.right), fillvalue=[])] if root else []
 
+class Solution:
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        return (f:=lambda x:x and [[x.val]]+[a+b for a,b in zip_longest(f(x.left),f(x.right),fillvalue=[])] or [])(root)
+
 test('''
 102. Binary Tree Level Order Traversal
 Medium

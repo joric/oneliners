@@ -107,7 +107,6 @@ def test(text, classname=None, check=None, init=None):
 
     def vcast(func, args, init=None):
         func = func.__wrapped__ if hasattr (func, '__wrapped__') else func
-        iargs = args
         if not hasattr(func,'__code__'):
             return args,args
         d = 1 if 'self' in func.__code__.co_varnames else 0

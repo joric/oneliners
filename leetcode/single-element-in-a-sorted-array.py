@@ -25,7 +25,7 @@ class Solution:
 
 class Solution:
     def singleNonDuplicate(self, nums: List[int]) -> int:
-        return nums[bisect_left(range(len(nums)//2),0,key=lambda i:int(nums[i*2]!=nums[i*2+1])-1)*2]
+        return nums[bisect_left(range(len(nums)//2),0,key=lambda i:(1,-1)[nums[i*2]==nums[i*2+1]])*2]
 
 class Solution:
     def singleNonDuplicate(self, nums: List[int]) -> int:

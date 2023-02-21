@@ -13,15 +13,18 @@ class Solution:
 
 class Solution:
     def singleNonDuplicate(self, nums: List[int]) -> int:
-        return reduce(xor, nums)
-
-class Solution:
-    def singleNonDuplicate(self, nums: List[int]) -> int:
-        return sum(set(nums))*2-sum(nums)
-
-class Solution:
-    def singleNonDuplicate(self, nums: List[int]) -> int:
         return next((nums[l] for _ in count() if not (l<r and (m:=(l+r)//2,nums[m]==nums[m^1] and (l:=m+1) or (r:=m)))),(l:=0,r:=len(nums)-1))
+
+class Solution:
+    def singleNonDuplicate(self, nums: List[int]) -> int:
+        class Wrap():
+            def __getitem__(self, i):
+                return nums[i*2] != nums[i*2+1]
+        return nums[bisect_left(Wrap(), True, 0, len(nums) // 2) * 2]
+
+class Solution:
+    def singleNonDuplicate(self, nums: List[int]) -> int:
+        return nums[bisect_left(type('',(),{'__getitem__':lambda _,i:nums[i*2]!=nums[i*2+1]})(),1,0,len(nums)//2)*2]
 
 class Solution:
     def singleNonDuplicate(self, nums: List[int]) -> int:
@@ -30,6 +33,14 @@ class Solution:
 class Solution:
     def singleNonDuplicate(self, nums: List[int]) -> int:
         return nums[bisect_left(range(len(nums)-1),0,key=lambda i:(1,-1)[nums[i]==nums[i^1]])]
+
+class Solution:
+    def singleNonDuplicate(self, nums: List[int]) -> int:
+        return sum(set(nums))*2-sum(nums)
+
+class Solution:
+    def singleNonDuplicate(self, nums: List[int]) -> int:
+        return reduce(xor, nums)
 
 test('''
 

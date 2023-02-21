@@ -40,7 +40,7 @@ class Solution:
 
 class Solution:
     def singleNonDuplicate(self, nums: List[int]) -> int:
-        return reduce(xor, nums)
+        return reduce(xor,nums)
 
 test('''
 

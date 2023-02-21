@@ -31,10 +31,6 @@ class Solution:
     def singleNonDuplicate(self, nums: List[int]) -> int:
         return nums[bisect_left(range(len(nums)-1),0,key=lambda i:(1,-1)[nums[i]==nums[i^1]])]
 
-class Solution:
-    def singleNonDuplicate(self, nums: List[int]) -> int:
-        return nums[bisect_left(range(len(nums)-1),0,key=lambda i:int(nums[i]!=nums[i^1])-1)]
-
 test('''
 
 540. Single Element in a Sorted Array

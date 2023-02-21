@@ -29,11 +29,11 @@ class Solution:
 
 class Solution:
     def singleNonDuplicate(self, nums: List[int]) -> int:
-        return nums[bisect_left(range(len(nums)-1),0,key=lambda m:(1,-1)[nums[m]==nums[m^1]])]
+        return nums[bisect_left(range(len(nums)-1),0,key=lambda i:(1,-1)[nums[i]==nums[i^1]])]
 
 class Solution:
     def singleNonDuplicate(self, nums: List[int]) -> int:
-        return nums[bisect_left(range(len(nums)-1),0,key=lambda m:int(nums[m]!=nums[m^1])-1)]
+        return nums[bisect_left(range(len(nums)-1),0,key=lambda i:int(nums[i]!=nums[i^1])-1)]
 
 test('''
 

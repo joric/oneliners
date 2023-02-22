@@ -25,6 +25,8 @@ class Solution:
   def shipWithinDays(self, weights: List[int], D: int) -> int:
     return bisect_left1(lambda c: reduce(lambda z, w: (c - w, z[1] + 1) if z[0] - w < 0 else (z[0] - w, z[1]), weights, (0, 0))[1], D, max(weights), sum(weights) + 1)
 
+# built in bisect_left: https://github.com/python/cpython/blob/main/Lib/bisect.py
+
 class Solution:
     def shipWithinDays(self, weights: List[int], days: int) -> int:
         return bisect_left(type('',(),{'__getitem__':lambda _,c:days-reduce(lambda z,w:(c-w,z[1]+1) if z[0]-w<0 else (z[0]-w,z[1]),weights,(0,0))[1]})(),0,lo=max(weights),hi=sum(weights))

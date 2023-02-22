@@ -25,37 +25,11 @@ class Solution:
   def shipWithinDays(self, weights: List[int], D: int) -> int:
     return bisect_left1(lambda c: reduce(lambda z, w: (c - w, z[1] + 1) if z[0] - w < 0 else (z[0] - w, z[1]), weights, (0, 0))[1], D, max(weights), sum(weights) + 1)
 
-
 # built in bisect_left: https://github.com/python/cpython/blob/main/Lib/bisect.py
-
-'''
-def bisect_left(a, x, lo=0, hi=None, *, key=None):
-    if lo < 0:
-        raise ValueError('lo must be non-negative')
-    if hi is None:
-        hi = len(a)
-    if key is None:
-        while lo < hi:
-            mid = (lo + hi) // 2
-            if a[mid] < x:
-                lo = mid + 1
-            else:
-                hi = mid
-    else:
-        while lo < hi:
-            mid = (lo + hi) // 2
-            if key(a[mid]) < x:
-                lo = mid + 1
-            else:
-                hi = mid
-    return lo
-'''
 
 class Solution:
     def shipWithinDays(self, weights: List[int], days: int) -> int:
         return bisect_left(type('',(),{'__getitem__':lambda _,c:days-reduce(lambda z,w:(c-w,z[1]+1) if z[0]-w<0 else (z[0]-w,z[1]),weights,(0,0))[1]})(),0,lo=max(weights),hi=sum(weights))
-
-# could you do it without a wrapper class?
 
 class Solution:
     def shipWithinDays(self, weights: List[int], days: int) -> int:

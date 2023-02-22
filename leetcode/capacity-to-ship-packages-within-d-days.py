@@ -2,6 +2,29 @@ from lc import *
 
 # https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/discuss/541735/Python-3-generalized-binary-search-1-line-excluding-binary-search
 
+def bisect_left1(f, x, lo, hi):
+    while lo < hi:
+        mid = (lo+hi)//2
+        if f(mid) > x: lo = mid+1
+        else: hi = mid
+    return lo
+
+class Solution:
+  def shipWithinDays(self, weights: List[int], D: int) -> int:
+    def shipit(capacity):
+      remaining = total = 0
+      for weight in weights:
+        if remaining - weight < 0:
+          remaining = capacity
+          total += 1
+        remaining -= weight
+      return total
+    return bisect_left1(shipit, D, max(weights), sum(weights))
+
+class Solution:
+  def shipWithinDays(self, weights: List[int], D: int) -> int:
+    return bisect_left1(lambda c: reduce(lambda z, w: (c - w, z[1] + 1) if z[0] - w < 0 else (z[0] - w, z[1]), weights, (0, 0))[1], D, max(weights), sum(weights) + 1)
+
 class Solution:
     def shipWithinDays(self, weights: List[int], days: int) -> int:
         return bisect_left(type('',(),{'__getitem__':lambda _,c:days-reduce(lambda z,w:(c-w,z[1]+1) if z[0]-w<0 else (z[0]-w,z[1]),weights,(0,0))[1]})(),0,lo=max(weights),hi=sum(weights))

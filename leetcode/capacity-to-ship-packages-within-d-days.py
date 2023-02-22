@@ -57,6 +57,10 @@ class Solution:
 
 # could you do it without a wrapper class?
 
+class Solution:
+    def shipWithinDays(self, weights: List[int], days: int) -> int:
+        return bisect_left(range(sum(weights)),0,lo=max(weights),key=lambda c:days-reduce(lambda z,w:(c-w,z[1]+1) if z[0]-w<0 else (z[0]-w,z[1]),weights,(0,0))[1])
+
 test('''
 
 1011. Capacity To Ship Packages Within D Days

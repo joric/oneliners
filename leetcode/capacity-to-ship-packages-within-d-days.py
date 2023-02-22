@@ -4,9 +4,11 @@ from lc import *
 
 def bisect_left1(f, x, lo, hi):
     while lo < hi:
-        mid = (lo+hi)//2
-        if f(mid) > x: lo = mid+1
-        else: hi = mid
+        mid = (lo + hi)//2
+        if f(mid) > x:
+            lo = mid+1
+        else:
+            hi = mid
     return lo
 
 class Solution:
@@ -30,7 +32,6 @@ class Solution:
 class Solution:
     def shipWithinDays(self, weights: List[int], days: int) -> int:
         return bisect_left(type('',(),{'__getitem__':lambda _,c:days-reduce(lambda z,w:(c-w,z[1]+1) if z[0]-w<0 else (z[0]-w,z[1]),weights,(0,0))[1]})(),0,lo=max(weights),hi=sum(weights))
-
 
 class Solution:
     def shipWithinDays(self, w: List[int], d: int) -> int:

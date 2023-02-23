@@ -16,7 +16,7 @@ class Solution:
 
 class Solution:
     def maxDistance(self, grid: List[List[int]]) -> int:
-        d,c = 0,lambda t:{i+j*1j for i,r in enumerate(grid) for j,x in enumerate(r) if x==t}
+        c, d = lambda t:{i+j*1j for i,r in enumerate(grid) for j,x in enumerate(r) if x==t}, 0
         water, land = c(1), c(0)
         while water and land:
             water = {t for z in water for t in (z+1j**k for k in range(4)) if t in land}

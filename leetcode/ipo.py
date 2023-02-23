@@ -12,7 +12,7 @@ class Solution:
 
 class Solution:
     def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
-        return (c:=[],f:=sorted(zip(capital,profits))[::-1],[next(c and (w:=w-heappop(c)) for _ in count() if not(f and f[-1][0]<=w and (heappush(c,-f.pop()[1]),1))) for _ in range(k)],w)[-1]
+        return (c:=[],f:=sorted(zip(capital,profits))[::-1],[next(c and (w:=w-heappop(c)) for _ in count() if not(f and f[-1][0]<=w and not heappush(c,-f.pop()[1]))) for _ in range(k)],w)[-1]
 
 test('''
 502. IPO

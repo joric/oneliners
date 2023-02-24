@@ -550,7 +550,7 @@ class Solution:
 
 class Solution:
     def minimumDeviation(self, n: List[int]) -> int:
-        return next((min(r,s[-1]-s[0]) for _ in count() if not(s[-1]%2==0 and (r:=min(r,s[-1]-s[0]),s.add
-        (s.pop()//2)))),(s:=__import__('sortedcontainers').SortedList(i%2 and i*2 or i for i in n),r:=inf))
+        return next((min(r,s[-1]-s[0]) for _ in count() if not(s[-1]%2==0 and (r:=min(r,s[-1]-s[0]),s.add(
+        s.pop()//2)))),(s:=__import__('sortedcontainers').SortedList(i%2 and i*2 or i for i in n),r:=inf))
 ```
 

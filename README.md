@@ -532,7 +532,7 @@ class Solution:
             or (k not in v and (v.update({k:v[i]+1}) or q.append(k)))),-1)
 ```
 
-* You can use `__import__('modulename')` to import modules in one line.
+* You can use `__import__('modulename')` to import missing modules in one line.
 
 Example:
 

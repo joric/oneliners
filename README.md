@@ -531,3 +531,26 @@ class Solution:
             if (k:=(x:=(j-1)%n,y:=(j-1)//n) and ((c:=board[~y][y%2 and ~x or x])>0 and c or j))==n*n
             or (k not in v and (v.update({k:v[i]+1}) or q.append(k)))),-1)
 ```
+
+* You can use `__import__('modulename')` to import modules in one line.
+
+Example:
+
+* https://leetcode.com/problems/minimize-deviation-in-array
+
+```python
+from sortedcontainers import SortedList
+class Solution:
+    def minimumDeviation(self, nums: List[int]) -> int:
+        s,r = SortedList(i*2 if i & 1 else i for i in nums), 10**9
+        while s[-1]%2==0:
+            r = min(r,s[-1]-s[0])
+            s.add(s.pop()//2)
+        return min(r,s[-1]-s[0])
+
+class Solution:
+    def minimumDeviation(self, nums: List[int]) -> int:
+        return next((min(r,s[-1]-s[0]) for _ in count() if not(s[-1]%2==0 and (r:=min(r,s[-1]-s[0]),
+        s.add(s.pop()//2)))),(s:=__import__('sortedcontainers').SortedList(i*2 if i & 1 else i for i in nums),r:=inf))
+```
+

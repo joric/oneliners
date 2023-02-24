@@ -17,7 +17,7 @@ class Solution:
 
 class Solution:
     def minimumDeviation(self, nums: List[int]) -> int:
-        return (r:=inf,q:=[],[heappush(q,a%2 and -a*2 or -a) for a in nums],m:=-max(q)) and next(r for _ in count() if not(len(q)==len(nums) and (a:=-heappop(q),r:=min(r,a-m),a%2==0 and (m:=min(m,a//2),heappush(q,-a//2)))))
+        return next((r for _ in count() if not(len(q)==len(nums) and (a:=-heappop(q),r:=min(r,a-m),a%2==0 and (m:=min(m,a//2),heappush(q,-a//2))))),(r:=inf,q:=[],[heappush(q,a%2 and -a*2 or -a) for a in nums],m:=-max(q)))
 
 test('''
 1675. Minimize Deviation in Array

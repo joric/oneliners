@@ -1,6 +1,5 @@
 from lc import *
 
-
 class Solution:
     def minimumDeviation(self, nums: List[int]) -> int:
         r,q = inf,[]
@@ -18,6 +17,19 @@ class Solution:
 class Solution:
     def minimumDeviation(self, nums: List[int]) -> int:
         return next((r for _ in count() if not(len(q)==len(nums) and (a:=-heappop(q),r:=min(r,a-m),a%2==0 and (m:=min(m,a//2),heappush(q,-a//2))))),(r:=inf,q:=[],[heappush(q,a%2 and -a*2 or -a) for a in nums],m:=-max(q)))
+
+from sortedcontainers import SortedList
+class Solution:
+    def minimumDeviation(self, nums: List[int]) -> int:
+        s,r = SortedList(i*2 if i & 1 else i for i in nums), 10**9
+        while s[-1]%2==0:
+            r = min(r,s[-1]-s[0])
+            s.add(s.pop()//2)
+        return min(r,s[-1]-s[0])
+
+class Solution:
+    def minimumDeviation(self, nums: List[int]) -> int:
+        return next((min(r,s[-1]-s[0]) for _ in count() if not(s[-1]%2==0 and (r:=min(r,s[-1]-s[0]),s.add(s.pop()//2)))),(s:=__import__('sortedcontainers').SortedList(i*2 if i & 1 else i for i in nums),r:=inf))
 
 test('''
 1675. Minimize Deviation in Array

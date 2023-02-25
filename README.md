@@ -439,7 +439,7 @@ class Solution(object):
 
 class Solution(object):
     def deleteMiddle(self, head):
-        return (f:=lambda a,b:setattr(a,'next', f(a.next, b.next.next) if b.next
+        return (f:=lambda a,b:setattr(a,'next',f(a.next, b.next.next) if b.next
             else f(a.next, b.next)) or a if b else a.next)(head, head.next)
 ```
 

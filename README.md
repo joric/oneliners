@@ -119,7 +119,7 @@ class Solution:
 
 class Solution:
     def twoSum(self, nums: List[int], t: int) -> List[int]:
-        return next((((m[t-x],i) for i,x in enumerate(nums) if t-x in m or m.__setitem__(x,i))),m:={})
+        return next((((m[t-x],i) for i,x in enumerate(nums) if t-x in m or setitem(m,x,i))),m:={})
 ```
 
 * https://leetcode.com/problems/break-a-palindrome/discuss/1481905/Python-3-one-line
@@ -148,7 +148,7 @@ class Solution:
 Use `next`, element index, default value and conjunction to update the first element that matches a predicate.
 
 ```python
-(i:=next((i+1 for i,x in enumerate(v) if pred(x)), 0)) and v.__setitem__(i-1, val)
+(i:=next((i+1 for i,x in enumerate(v) if pred(x)), 0)) and setitem(v, i-1, val)
 
 ```
 
@@ -170,7 +170,7 @@ class Solution:
 
 class Solution:
     def maxAreaOfIsland(self, g: List[List[int]]) -> int:
-        return max((f:=lambda i,j:g[i].__setitem__(j,0) or 1 + sum(map(f,(i+1,i,i-1,i),(j,j+1,j,j-1)))
+        return max((f:=lambda i,j:setitem(g[i],j,0) or 1 + sum(map(f,(i+1,i,i-1,i),(j,j+1,j,j-1)))
             if 0<=i<len(g) and 0<=j<len(g[0]) and g[i][j] else 0)(i,j)
             for i in range(len(g)) for j in range(len(g[0])))
 ```
@@ -439,7 +439,7 @@ class Solution(object):
 
 class Solution(object):
     def deleteMiddle(self, head):
-        return (f:=lambda a,b:a.__setattr__('next', f(a.next, b.next.next) if b.next
+        return (f:=lambda a,b:setattr(a,'next', f(a.next, b.next.next) if b.next
             else f(a.next, b.next)) or a if b else a.next)(head, head.next)
 ```
 

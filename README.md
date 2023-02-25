@@ -443,7 +443,7 @@ class Solution(object):
             else f(a.next, b.next)) or a if b else a.next)(head, head.next)
 ```
 
-Note that `__setitem__` also supports slices:
+Note that `setitem` also supports slices:
 
 * https://leetcode.com/problems/count-primes/discuss/111420/Python3-solution-using-Sieve-of-Eratosthenes-time-is-O(n)
 
@@ -458,7 +458,7 @@ class Solution:
 
 class Solution:
     def countPrimes(self, n):
-        return sum(reduce(lambda a,i:a[i] and setitem(a, slice(i*i,n,i),[0]*len(a[i*i:n:i])) or a,
+        return sum(reduce(lambda a,i:a[i] and setitem(a,slice(i*i,n,i),[0]*len(a[i*i:n:i])) or a,
             range(2,int(n**0.5)+1), [0,0]+[1]*(n-2)))
 ```
 

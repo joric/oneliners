@@ -9,6 +9,23 @@ class Solution:
             max_profit = max(max_profit, profit)
         return max_profit
 
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        m,r = inf, 0
+        for x in prices:
+            m = min(m,x)
+            r = max(r,x-m)
+        return r
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        return reduce(lambda p,x:(max(p[0],x-(m:=min(p[1],x))),m),prices,[0,inf])[0]
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        return (m:=inf,r:=0,[r:=max(r,x-(m:=min(m,x))) for x in prices],r)[3]
+
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         return max(x-y for x,y in zip(prices,list(accumulate(prices,min))))

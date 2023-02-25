@@ -61,8 +61,7 @@ Generator length `len(list(g))` can be calculated in a constant memory as `sum(1
 #### Counters
 
 Counters (`collections.Counter()`) can be updated, similar to `dict.update()`, it's much faster than a sum of counters,
-but the method returns `None`.
-E.g. `c[i]+=1` is equivalent to `c.update({i:1})`, `c[i]-=1` is `c.update({i:-1})`.
+the method returns `None`. E.g. `c[i]+=1` is equivalent to `c.update({i:1})`, `c[i]-=1` is `c.update({i:-1})`.
 To set a key, you can use a global `setitem` function, e.g. `c[x]=1` is the same as `setitem(c,x,1)`.
 To delete a key you can use the `.pop` method (same as `del`), it's shorter than `popitem()`.
 

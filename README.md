@@ -12,7 +12,7 @@ There is a paper book about Python one-liners, search it online, it's an interes
 #### Imported modules
 
 Leetcode imports modules as wildcards, so you don't have to specify module names.
-The only exception is `bisect.bisect()` because just `bisect()` triggers `'module' object is not callable`.
+The only exception is `bisect.bisect()` because bisect is a module name (just `bisect()` triggers `'module' object is not callable`).
 
 E.g. Leetcode header has `import * from itertools`, so we use `comb()` instead of `itertools.comb()`:
 

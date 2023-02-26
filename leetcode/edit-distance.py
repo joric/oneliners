@@ -31,6 +31,13 @@ class Solution:
     def minDistance(self, word1: str, word2: str) -> int:
         return (f:=cache(lambda a,b:(len(a) or len(b)) if (not len(a) or not len(b)) else f(a[1:], b[1:]) if a[0]==b[0] else 1 + min(f(a, b[1:]), f(a[1:], b), f(a[1:], b[1:]))))(word1, word2)
 
+# does not work on leetcode, no nltk
+# class Solution: minDistance = __import__('nltk').distance
+
+class Solution:
+    def minDistance(self, a: str, b: str) -> int:
+        return (f:=cache(lambda i,j,n=len(a),m=len(b):abs(m-j-n+i) if i==n or j==m else f(i+1,j+1) if a[i]==b[j] else 1+min(f(i+1,j+1),f(i+1,j),f(i,j+1))))(0,0)
+
 test('''
 72. Edit Distance
 

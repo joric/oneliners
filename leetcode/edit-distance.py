@@ -38,6 +38,10 @@ class Solution:
     def minDistance(self, a: str, b: str) -> int:
         return (f:=cache(lambda i,j,n=len(a),m=len(b):abs(m-j-n+i) if i==n or j==m else f(i+1,j+1) if a[i]==b[j] else 1+min(f(i+1,j+1),f(i+1,j),f(i,j+1))))(0,0)
 
+class Solution:
+    def minDistance(self, a: str, b: str) -> int:
+        return (f:=cache(lambda a,b:(len(a) or len(b)) if not(a and b) else f(a[1:],b[1:]) if a[0]==b[0] else 1+min(f(a,b[1:]),f(a[1:],b),f(a[1:],b[1:]))))(a,b)
+
 test('''
 72. Edit Distance
 

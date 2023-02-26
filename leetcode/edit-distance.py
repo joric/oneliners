@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def minDistance(self, a: str, b: str) -> int:
         m, n = len(a), len(b)
         dp = [[0] * (n+1) for _ in range(m+1)]
@@ -13,7 +13,7 @@ class Solution1:
                 dp[i][j] = dp[i-1][j-1] if a[i-1]==b[j-1] else 1 + min(dp[i-1][j-1], min(dp[i-1][j], dp[i][j-1]))
         return dp[m][n]
 
-class Solution2:
+class Solution:
     def minDistance(self, word1: str, word2: str) -> int:
         @cache
         def dp(a, b):

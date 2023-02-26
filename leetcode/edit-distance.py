@@ -1,5 +1,6 @@
 from lc import *
 
+# classic 2d dp
 class Solution:
     def minDistance(self, a: str, b: str) -> int:
         m, n = len(a), len(b)
@@ -13,6 +14,7 @@ class Solution:
                 dp[i][j] = dp[i-1][j-1] if a[i-1]==b[j-1] else 1 + min(dp[i-1][j-1], min(dp[i-1][j], dp[i][j-1]))
         return dp[m][n]
 
+# recursive dp
 class Solution:
     def minDistance(self, word1: str, word2: str) -> int:
         @cache
@@ -41,6 +43,24 @@ class Solution:
 class Solution:
     def minDistance(self, a: str, b: str) -> int:
         return (f:=cache(lambda a,b:(f(a[1:],b[1:]) if a[0]==b[0] else 1+min(f(a,b[1:]),f(a[1:],b),f(a[1:],b[1:]))) if a and b else len(a) or len(b)))(a,b)
+
+# https://leetcode.com/problems/edit-distance/discuss/3232797/Python-3-one-line-O(min(mn)-memory
+
+class Solution:
+    def minDistance(self, a: str, b: str) -> int:
+        m,n = len(a),len(b)
+        if m<n:
+            a,b,m,n = b,a,n,m
+        dp = [*range(n+1)]
+        for i in range(1,m+1):
+            p,dp[0] = dp[0],i
+            for j in range(1,n+1):
+                p,dp[j] = dp[j],min(min(dp[j-1],dp[j])+1,p+(a[i-1]!=b[j-1]))
+        return dp[n]
+
+class Solution:
+    def minDistance(self, a: str, b: str) -> int:
+        return self.minDistance(b,a) if (m:=len(a))<(n:=len(b)) else (dp:=[*range(n+1)],all((p:=dp[0],setitem(dp,0,i),all((t:=dp[j],setitem(dp,j,min(min(dp[j-1],dp[j])+1,p+(a[i-1]!=b[j-1]))),p:=t) for j in range(1,n+1))) for i in range(1,m+1)),dp[n])[-1]
 
 test('''
 72. Edit Distance

@@ -9,7 +9,11 @@ class Node:
         self.bottomLeft = bottomLeft
         self.bottomRight = bottomRight
 
-    def __repr__(self):
+    def __eq__(self, other):
+        # we only 
+        return all(a==b if (not a or not b or a[0]==1 or b[0]==1) else True for a,b in zip(self.serialize(),other))
+
+    def serialize(self):
         res = []
         root = self
         q = deque()
@@ -19,7 +23,7 @@ class Node:
             nodes = len(q)
             for _ in range(nodes):
                 root = q.popleft()
-                res.append(root and [int(root.isLeaf),int(root.val)])
+                res.append(root and [int(root.isLeaf), 1 if isinstance(root.val,str) else int(root.val)])
                 if root:
                     q.append(root.topLeft)
                     q.append(root.topRight)
@@ -27,39 +31,10 @@ class Node:
                     q.append(root.bottomRight)
         while res and res[-1] is None:
             res.pop()
-        return str(res)
+        return res
 
-# does not work locally but works on leetcode, bad check function?
-class Solution:
-    def construct(self, grid: List[List[int]]) -> 'Node':
-        N = len(grid)
-        return Node(val=bool(grid[0][0]), isLeaf=True, topLeft=None, topRight=None, bottomLeft=None, bottomRight=None) \
-            if all([all([i == grid[0][0] for i in j]) for j in grid]) \
-            else Node(val=bool(grid[0][0]), isLeaf=False,
-                      topLeft=self.construct([[grid[i][j] for j in range(N // 2)] for i in range(N // 2)]),
-                      topRight=self.construct([[grid[i][j] for j in range(N // 2, N)] for i in range(N // 2)]),
-                      bottomLeft=self.construct([[grid[i][j] for j in range(N // 2)] for i in range(N // 2, N)]),
-                      bottomRight=self.construct([[grid[i][j] for j in range(N // 2, N)] for i in range(N // 2, N)])
-                      )
-
-# this one works
-class Solution:
-    def construct(self, g: List[List[int]]) -> 'Node':
-        def f(x,y,l):
-            if l==1:
-                x = Node(g[x][y]==1,True,*([None]*4))
-            else:
-                tLeft = f(x, y, l // 2)
-                tRight = f(x, y + l // 2, l // 2)
-                bLeft = f(x + l // 2, y, l// 2)
-                bRight = f(x + l // 2, y + l // 2, l // 2)
-                v = tLeft.val or tRight.val or bLeft.val or bRight.val
-                if tLeft.isLeaf and tRight.isLeaf and bLeft.isLeaf and bRight.isLeaf and tLeft.val == tRight.val == bLeft.val == bRight.val:
-                    x = Node(v, True, None, None, None, None)
-                else:
-                    x = Node(v, False, tLeft, tRight, bLeft, bRight)
-            return x
-        return g and f(0,0,len(g)) or None
+    def __repr__(self):
+        return str(self.serialize())
 
 class Solution:
     def construct(self, g: List[List[int]]) -> 'Node':
@@ -78,8 +53,55 @@ class Solution:
         return g and f(0,0,len(g)) or None
 
 class Solution:
+    def construct(self, grid: List[List[int]]) -> 'Node':
+        N = len(grid)
+        return Node(val=bool(grid[0][0]), isLeaf=True, topLeft=None, topRight=None, bottomLeft=None, bottomRight=None) \
+            if all([all([i == grid[0][0] for i in j]) for j in grid]) \
+            else Node(val=bool(grid[0][0]), isLeaf=False,
+                      topLeft=self.construct([[grid[i][j] for j in range(N // 2)] for i in range(N // 2)]),
+                      topRight=self.construct([[grid[i][j] for j in range(N // 2, N)] for i in range(N // 2)]),
+                      bottomLeft=self.construct([[grid[i][j] for j in range(N // 2)] for i in range(N // 2, N)]),
+                      bottomRight=self.construct([[grid[i][j] for j in range(N // 2, N)] for i in range(N // 2, N)])
+                      )
+
+class Solution:
+    def construct(self, grid: List[List[int]]) -> 'Node':
+        def f(top, left, length):
+            if length == 1:
+                return Node(bool(grid[top][left]), True, None, None, None, None)
+            half = length // 2
+            right, bottom = left + half, top + half
+            kids = [
+                f(top, left, half),
+                f(top, right, half),
+                f(bottom, left, half),
+                f(bottom, right, half)
+            ]
+            if all(k.isLeaf for k in kids) and len(set(k.val for k in kids)) == 1:
+                return Node(kids[0].val, True, None, None, None, None)
+            else:
+                return Node('*', False, *kids)
+        return f(0, 0, len(grid))
+
+class Solution:
+    def construct(self, grid: List[List[int]]) -> 'Node':
+        N = len(grid)
+        return Node(val=bool(grid[0][0]), isLeaf=True, topLeft=None, topRight=None, bottomLeft=None, bottomRight=None) \
+            if all([all([i == grid[0][0] for i in j]) for j in grid]) \
+            else Node(val=bool(grid[0][0]), isLeaf=False,
+                      topLeft=self.construct([[grid[i][j] for j in range(N // 2)] for i in range(N // 2)]),
+                      topRight=self.construct([[grid[i][j] for j in range(N // 2, N)] for i in range(N // 2)]),
+                      bottomLeft=self.construct([[grid[i][j] for j in range(N // 2)] for i in range(N // 2, N)]),
+                      bottomRight=self.construct([[grid[i][j] for j in range(N // 2, N)] for i in range(N // 2, N)])
+                      )
+
+class Solution:
     def construct(self, g: List[List[int]]) -> 'Node':
         return g and (f:=lambda x,y,l,e=[None]*4:Node(g[x][y]==1,True,*e) if l==1 else ((h:=l//2,p:=[f(x,y,h),f(x,y+h,h),f(x+h,y,h),f(x+h,y+h,h)],v:=any(i.val for i in p)) and (Node(v,True,*e) if all(i.isLeaf for i in p) and 1==len(set(i.val for i in p)) else Node(v,False,*p))))(0,0,len(g)) or None
+
+class Solution:
+    def construct(self, g: List[List[int]]) -> 'Node':
+        return Node(bool(g[0][0]),True,*([None]*4)) if all([all([i==g[0][0] for i in j]) for j in g]) else Node((h:=len(g)//2,bool(g[0][0]))[1],False,*map(self.construct,[[[g[i][j] for j in range(k%2*h,(k%2+1)*h)] for i in range(k//2*h,(k//2+1)*h)] for k in range(4)]))
 
 test('''
 
@@ -141,6 +163,7 @@ Example 2:
 
 Input: grid = [[1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0],[1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1],[1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0]]
 Output: [[0,1],[1,1],[0,1],[1,1],[1,0],null,null,null,null,[1,0],[1,0],[1,1],[1,1]]
+
 Explanation: All values in the grid are not the same. We divide the grid into four sub-grids.
 The topLeft, bottomLeft and bottomRight each has the same value.
 The topRight have different values so we divide it into 4 sub-grids where each has the same value.
@@ -153,4 +176,6 @@ Constraints:
 n == grid.length == grid[i].length
 n == 2x where 0 <= x <= 6
 
-''', check=lambda res, expected, grid: str(res)==str(expected))
+''')
+
+

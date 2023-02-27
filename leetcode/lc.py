@@ -126,6 +126,8 @@ def test(text, classname=None, check=None, init=None):
         def check(res, expected, *args):
             return res==expected
 
+    # we only test the last "Solution" class in the file
+    # TODO: test all of them? is it possible?
     if not classname:
         classname = importlib.import_module('__main__').Solution
 

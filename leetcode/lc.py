@@ -186,8 +186,7 @@ def test(text=None, classname=None, check=None, init=None):
             print_res(ok, res, expected, *args)
             passed += int(ok)
 
-        if total:
-            print('Passed %d/%d tests.' % (passed, total))
+        #if total: print('Passed %d/%d tests.' % (passed, total))
 
     # Custom class tests
 
@@ -223,6 +222,6 @@ def test(text=None, classname=None, check=None, init=None):
                 res = vc(func, 'return', func(*args))
                 results.append(res)
 
-        passed = results == expected
-        print_res(passed, results, expected, methods, arglist)
+        ok = results == expected
+        print_res(ok, results, expected, methods, arglist)
 

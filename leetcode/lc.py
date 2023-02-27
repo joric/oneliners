@@ -84,7 +84,7 @@ class ListNode:
 cnames = []
 
 # use test(```leetcode description```) to run latest Solution
-# use test() between declarations to add them to queue (optional)
+# use test() between solutions to add them to queue (optional)
 
 def test(text=None, classname=None, check=None, init=None):
     if not text:

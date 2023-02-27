@@ -127,7 +127,7 @@ def test(text, classname=None, check=None, init=None):
             return res==expected
 
     # we only test the last "Solution" class in the file
-    # TODO: test all of them? is it possible?
+    # TODO: test all of them? prob. impossble because of shadowing
     if not classname:
         classname = importlib.import_module('__main__').Solution
 

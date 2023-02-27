@@ -82,6 +82,9 @@ class Solution:
                 return Node('*', False, *kids)
         return f(0, 0, len(grid))
 
+class Solution:
+    def construct(self, g: List[List[int]]) -> 'Node':
+        return g and (f:=lambda x,y,l,e=[None]*4:Node(g[x][y]==1,True,*e) if l==1 else ((h:=l//2,p:=[f(x,y,h),f(x,y+h,h),f(x+h,y,h),f(x+h,y+h,h)],v:=any(i.val for i in p)) and (Node(v,True,*e) if all(i.isLeaf for i in p) and 1==len(set(i.val for i in p)) else Node(v,False,*p))))(0,0,len(g)) or None
 
 # https://leetcode.com/problems/construct-quad-tree/discuss/160835/Python-2-lines
 
@@ -96,10 +99,6 @@ class Solution:
                       bottomLeft=self.construct([[grid[i][j] for j in range(N // 2)] for i in range(N // 2, N)]),
                       bottomRight=self.construct([[grid[i][j] for j in range(N // 2, N)] for i in range(N // 2, N)])
                       )
-
-class Solution:
-    def construct(self, g: List[List[int]]) -> 'Node':
-        return g and (f:=lambda x,y,l,e=[None]*4:Node(g[x][y]==1,True,*e) if l==1 else ((h:=l//2,p:=[f(x,y,h),f(x,y+h,h),f(x+h,y,h),f(x+h,y+h,h)],v:=any(i.val for i in p)) and (Node(v,True,*e) if all(i.isLeaf for i in p) and 1==len(set(i.val for i in p)) else Node(v,False,*p))))(0,0,len(g)) or None
 
 class Solution:
     def construct(self, g: List[List[int]]) -> 'Node':

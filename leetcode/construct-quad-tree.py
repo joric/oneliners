@@ -1,7 +1,7 @@
 from lc import *
 
 class Node:
-    def __init__(self, val, isLeaf, topLeft, topRight, bottomLeft, bottomRight):
+    def __init__(self, val=0, isLeaf=0, topLeft=None, topRight=None, bottomLeft=None, bottomRight=None):
         self.val = val
         self.isLeaf = isLeaf
         self.topLeft = topLeft
@@ -103,7 +103,11 @@ class Solution:
 
 class Solution:
     def construct(self, g: List[List[int]]) -> 'Node':
-        return len(set(sum(g,[])))<2 and Node(g[0][0],1,*([None]*4)) or Node(g[0][0],(h:=len(g)//2)*0,*map(self.construct,[[r[k%2*h:(k%2+1)*h] for r in g[k//2*h:(k//2+1)*h]] for k in range(4)]))
+        return len(set(sum(g,[])))<2 and Node(g[0][0],1) or Node(g[0][0],0*(h:=len(g)//2),*map(self.construct,[[r[k%2*h:(k%2+1)*h] for r in g[k//2*h:(k//2+1)*h]] for k in range(4)]))
+
+class Solution:
+    def construct(self, g: List[List[int]]) -> 'Node':
+        return Node(g[0][0*(h:=len(g)//2)],(t:=2-len(set(sum(g,[])))),*(1-t and map(self.construct,[[r[k%2*h:(k%2+1)*h] for r in g[k//2*h:(k//2+1)*h]] for k in range(4)])or[]))
 
 test('''
 

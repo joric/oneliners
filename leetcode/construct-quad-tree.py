@@ -88,16 +88,17 @@ class Solution:
                       bottomRight=self.construct([[grid[i][j] for j in range(N // 2, N)] for i in range(N // 2, N)])
                       )
 
-class Solution:
-    def construct(self, g: List[List[int]]) -> 'Node':
-        return all(all((s:=g[0][0])==i for i in r) for r in g) and Node(bool(s),1,*([None]*4)) or Node(bool(s),(h:=len(g)//2)*0,*map(self.construct,[[r[k%2*h:(k%2+1)*h] for r in g[k//2*h:(k//2+1)*h]] for k in range(4)]))
-
 # https://leetcode.com/problems/construct-quad-tree/discuss/3235773/Python-one-liner
 
 class Solution:
     def construct(self, g: List[List[int]]) -> 'Node':
         return (not(s:=sum(sum(r) for r in g)) or s==(n:=len(g))*n) and Node(bool(s),1,*([None]*4)) or Node(bool(s),(h:=n//2)*0,*map(self.construct,[[r[k%2*h:(k%2+1)*h] for r in g[k//2*h:(k//2+1)*h]] for k in range(4)]))
 
+# even shorter
+
+class Solution:
+    def construct(self, g: List[List[int]]) -> 'Node':
+        return all(all((s:=g[0][0])==i for i in r) for r in g) and Node(s,1,*([None]*4)) or Node(s,(h:=len(g)//2)*0,*map(self.construct,[[r[k%2*h:(k%2+1)*h] for r in g[k//2*h:(k//2+1)*h]] for k in range(4)]))
 
 test('''
 

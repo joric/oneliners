@@ -53,18 +53,6 @@ class Solution:
 
 class Solution:
     def construct(self, grid: List[List[int]]) -> 'Node':
-        N = len(grid)
-        return Node(val=bool(grid[0][0]), isLeaf=True, topLeft=None, topRight=None, bottomLeft=None, bottomRight=None) \
-            if all([all([i == grid[0][0] for i in j]) for j in grid]) \
-            else Node(val=bool(grid[0][0]), isLeaf=False,
-                      topLeft=self.construct([[grid[i][j] for j in range(N // 2)] for i in range(N // 2)]),
-                      topRight=self.construct([[grid[i][j] for j in range(N // 2, N)] for i in range(N // 2)]),
-                      bottomLeft=self.construct([[grid[i][j] for j in range(N // 2)] for i in range(N // 2, N)]),
-                      bottomRight=self.construct([[grid[i][j] for j in range(N // 2, N)] for i in range(N // 2, N)])
-                      )
-
-class Solution:
-    def construct(self, grid: List[List[int]]) -> 'Node':
         def f(top, left, length):
             if length == 1:
                 return Node(bool(grid[top][left]), True, None, None, None, None)

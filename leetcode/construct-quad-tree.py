@@ -100,6 +100,15 @@ class Solution:
     def construct(self, g: List[List[int]]) -> 'Node':
         return all(all((s:=g[0][0])==i for i in r) for r in g) and Node(s,1,*([None]*4)) or Node(s,(h:=len(g)//2)*0,*map(self.construct,[[r[k%2*h:(k%2+1)*h] for r in g[k//2*h:(k//2+1)*h]] for k in range(4)]))
 
+
+class Solution:
+    def construct(self, g: List[List[int]]) -> 'Node':
+        return len(set(sum(g,[])))==1 and Node(g[0][0],1,*([None]*4)) or Node(g[0][0],(h:=len(g)//2)*0,*map(self.construct,[[r[k%2*h:(k%2+1)*h] for r in g[k//2*h:(k//2+1)*h]] for k in range(4)]))
+
+class Solution:
+    def construct(self, g: List[List[int]]) -> 'Node':
+        return (q:=set(sum(g,[])),s:=q.pop())[0] and Node(s,(h:=len(g)//2)*0,*map(self.construct,[[r[k%2*h:(k%2+1)*h] for r in g[k//2*h:(k//2+1)*h]] for k in range(4)])) or Node(s,1,*([None]*4))
+
 test('''
 
 427. Construct Quad Tree

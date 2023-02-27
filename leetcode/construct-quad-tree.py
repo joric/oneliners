@@ -36,22 +36,6 @@ class Node:
         return str(self.serialize())
 
 class Solution:
-    def construct(self, g: List[List[int]]) -> 'Node':
-        def f(x,y,l,e=[None]*4):
-            if l==1:
-                r = Node(g[x][y]==1,True,*e)
-            else:
-                h = l//2
-                p = [f(x,y,h),f(x,y+h,h),f(x+h,y,h),f(x+h,y+h,h)]
-                v = any(i.val for i in p)
-                if all(i.isLeaf for i in p) and 1==len(set(i.val for i in p)):
-                    r = Node(v,True,*e)
-                else:
-                    r = Node(v,False,*p)
-            return r
-        return g and f(0,0,len(g)) or None
-
-class Solution:
     def construct(self, grid: List[List[int]]) -> 'Node':
         def f(top, left, length):
             if length == 1:
@@ -69,6 +53,22 @@ class Solution:
             else:
                 return Node('*', False, *kids)
         return f(0, 0, len(grid))
+
+class Solution:
+    def construct(self, g: List[List[int]]) -> 'Node':
+        def f(x,y,l,e=[None]*4):
+            if l==1:
+                r = Node(g[x][y]==1,True,*e)
+            else:
+                h = l//2
+                p = [f(x,y,h),f(x,y+h,h),f(x+h,y,h),f(x+h,y+h,h)]
+                v = any(i.val for i in p)
+                if all(i.isLeaf for i in p) and 1==len(set(i.val for i in p)):
+                    r = Node(v,True,*e)
+                else:
+                    r = Node(v,False,*p)
+            return r
+        return g and f(0,0,len(g)) or None
 
 class Solution:
     def construct(self, g: List[List[int]]) -> 'Node':

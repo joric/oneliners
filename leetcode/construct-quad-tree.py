@@ -10,7 +10,6 @@ class Node:
         self.bottomRight = bottomRight
 
     def __eq__(self, other):
-        # we only 
         return all(a==b if (not a or not b or a[0]==1 or b[0]==1) else True for a,b in zip(self.serialize(),other))
 
     def serialize(self):

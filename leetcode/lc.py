@@ -81,7 +81,17 @@ class ListNode:
         list_node = ListNode(val[0], sub_nodes)
         return list_node
 
-def test(text, classname=None, check=None, init=None):
+cnames = []
+
+# use test(```leetcode description```) to run latest Solution
+# use test() between declarations to add them to queue (optional)
+
+def test(text=None, classname=None, check=None, init=None):
+    if not text:
+        cname = importlib.import_module('__main__').Solution
+        cnames.append(cname)
+        return
+
     def vp(s):
         try:
             return json.loads(s)
@@ -126,11 +136,10 @@ def test(text, classname=None, check=None, init=None):
         def check(res, expected, *args):
             return res==expected
 
-    # we only test the last "Solution" class in the file
-    # TODO: test all of them? prob. impossible because of shadowing
-    # we can collect instances between declarations though
     if not classname:
         classname = importlib.import_module('__main__').Solution
+
+    cnames.append(classname)
 
     # Solution tests
 
@@ -157,22 +166,28 @@ def test(text, classname=None, check=None, init=None):
         elif t == 1:
             p += s
 
-    for t in tests:
-        args = tuple(map(vp, t['input']))
-        expected = tuple(map(vp, t['output']))
-        if len(expected)==1:
-            expected = expected[0]
+    for cname in cnames:
+        passed, total = 0, len(tests)
+        for t in tests:
+            args = tuple(map(vp, t['input']))
+            expected = tuple(map(vp, t['output']))
+            if len(expected)==1:
+                expected = expected[0]
 
-        func = getattr(classname(), dir(classname)[-1])
-        args, iargs = vcast(func, args, init)
+            func = getattr(cname(), dir(cname)[-1])
+            args, iargs = vcast(func, args, init)
 
-        if init:
-            init(*iargs)
+            if init:
+                init(*iargs)
 
 
-        res = vc(func, 'return', func(*args))
-        passed = check(res, expected, *args)
-        print_res(passed, res, expected, *args)
+            res = vc(func, 'return', func(*args))
+            ok = check(res, expected, *args)
+            print_res(ok, res, expected, *args)
+            passed += int(ok)
+
+        if total:
+            print('Passed %d/%d tests.' % (passed, total))
 
     # Custom class tests
 

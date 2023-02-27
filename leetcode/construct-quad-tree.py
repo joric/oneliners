@@ -82,6 +82,9 @@ class Solution:
                 return Node('*', False, *kids)
         return f(0, 0, len(grid))
 
+
+# https://leetcode.com/problems/construct-quad-tree/discuss/160835/Python-2-lines
+
 class Solution:
     def construct(self, grid: List[List[int]]) -> 'Node':
         N = len(grid)

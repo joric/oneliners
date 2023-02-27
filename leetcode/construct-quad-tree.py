@@ -90,7 +90,7 @@ class Solution:
 
 class Solution:
     def construct(self, g: List[List[int]]) -> 'Node':
-        return Node(bool(g[0][0]),True,*([None]*4)) if all([all([i==g[0][0] for i in j]) for j in g]) else Node((h:=len(g)//2,bool(g[0][0]))[1],False,*map(self.construct,[[[g[i][j] for j in range(k%2*h,(k%2+1)*h)] for i in range(k//2*h,(k//2+1)*h)] for k in range(4)]))
+        return (h:=len(g)//2,Node(bool(g[0][0]),True,*([None]*4)) if all([all([i==g[0][0] for i in j]) for j in g]) else Node(bool(g[0][0]),False,*map(self.construct,[[[g[i][j] for j in range(k%2*h,(k%2+1)*h)] for i in range(k//2*h,(k//2+1)*h)] for k in range(4)])))[1]
 
 test('''
 

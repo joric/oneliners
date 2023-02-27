@@ -96,7 +96,7 @@ class Solution:
 
 class Solution:
     def construct(self, g: List[List[int]]) -> 'Node':
-        return (not(s:=sum(sum(r) for r in g)) or s==(n:=len(g))*n+(h:=n//2)*0) and Node(bool(s),1,*([None]*4)) or Node(bool(s),0,*map(self.construct,[[r[k%2*h:(k%2+1)*h] for r in g[k//2*h:(k//2+1)*h]] for k in range(4)]))
+        return (not(s:=sum(sum(r) for r in g)) or s==(n:=len(g))*n) and Node(bool(s),1,*([None]*4)) or Node(bool(s),(h:=n//2)*0,*map(self.construct,[[r[k%2*h:(k%2+1)*h] for r in g[k//2*h:(k//2+1)*h]] for k in range(4)]))
 
 
 test('''

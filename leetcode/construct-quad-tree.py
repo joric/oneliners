@@ -90,7 +90,7 @@ class Solution:
 
 class Solution:
     def construct(self, g: List[List[int]]) -> 'Node':
-        return Node(bool(g[0][0]),1,*([None]*4)) if all(all(i==g[0][0] for i in j) for j in g) else Node(bool(g[0][0]),(h:=len(g)//2)*0,*map(self.construct,[[[g[i][j] for j in range(k%2*h,(k%2+1)*h)] for i in range(k//2*h,(k//2+1)*h)] for k in range(4)]))
+        return all(all(i==(s:=g[0][0]) for i in j) for j in g) and Node(bool(s),1,*([None]*4)) or Node(bool(s),(h:=len(g)//2)*0,*map(self.construct,[[r[k%2*h:(k%2+1)*h] for r in g[k//2*h:(k//2+1)*h]] for k in range(4)]))
 
 # https://leetcode.com/problems/construct-quad-tree/discuss/3235773/Python-one-liner
 

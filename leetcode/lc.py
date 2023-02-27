@@ -128,6 +128,7 @@ def test(text, classname=None, check=None, init=None):
 
     # we only test the last "Solution" class in the file
     # TODO: test all of them? prob. impossible because of shadowing
+    # we can collect instances between declarations though
     if not classname:
         classname = importlib.import_module('__main__').Solution
 

@@ -17,8 +17,7 @@ class Solution:
 
 class Solution:
     def findDuplicateSubtrees(self, root: Optional[TreeNode]) -> List[Optional[TreeNode]]:
-        return (t:=defaultdict(list),d:=defaultdict(),setattr(d,'default_factory',d.__len__),
-        (f:=lambda x:x and (t[i:=d[x.val,f(x.left),f(x.right)]].append(x) or i))(root),[r[0] for r in t.values() if r[1:]])[-1]
+        return (t:=defaultdict(list),d:=defaultdict(),setattr(d,'default_factory',d.__len__),(f:=lambda x:x and (t[i:=d[x.val,f(x.left),f(x.right)]].append(x) or i))(root),[r[0] for r in t.values() if r[1:]])[-1]
 
 test('''
 652. Find Duplicate Subtrees

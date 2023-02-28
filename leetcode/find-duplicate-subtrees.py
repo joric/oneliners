@@ -20,7 +20,8 @@ class Solution:
         return (t:=defaultdict(list),d:=defaultdict(),setattr(d,'default_factory',d.__len__),(f:=lambda x:x and (t[i:=d[x.val,f(x.left),f(x.right)]].append(x) or i))(root),[r[0] for r in t.values() if r[1:]])[-1]
 
 # https://leetcode.com/problems/find-duplicate-subtrees/discuss/3238948/Python-oror-short-clean-oror-hash(object)
-# the issue is that hash() functions puts some negative numbers (e.g. -1 and -2) in the same bucket, so we use str(x.val)
+# the issue is that hash() function collides some tuples, e.g. (1,0,0) and ((1,-2,-2)), so we need positive x.val or str(x.val)
+# see https://github.com/python/cpython/issues/78932 (hashing code mixes ^ and *)
 
 class Solution:
     def findDuplicateSubtrees(self, root: Optional[TreeNode]) -> List[Optional[TreeNode]]:

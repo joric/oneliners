@@ -20,6 +20,7 @@ class Solution:
         return (t:=defaultdict(list),d:=defaultdict(),setattr(d,'default_factory',d.__len__),(f:=lambda x:x and (t[i:=d[x.val,f(x.left),f(x.right)]].append(x) or i))(root),[r[0] for r in t.values() if r[1:]])[-1]
 
 # https://leetcode.com/problems/find-duplicate-subtrees/discuss/3238948/Python-oror-short-clean-oror-hash(object)
+# the issue is that hash() functions puts some negative numbers (e.g. -1 and -2) in the same bucket, so we use str(x.val)
 
 class Solution:
     def findDuplicateSubtrees(self, root: Optional[TreeNode]) -> List[Optional[TreeNode]]:
@@ -28,7 +29,7 @@ class Solution:
         def f(x):
             if not x:
                 return hash(x)
-            h = hash((f(x.left),x.val+200,f(x.right)))
+            h = hash((f(x.left),str(x.val),f(x.right)))
             c[h] += 1
             if c[h] > 1:
                 v[h] = x
@@ -38,7 +39,7 @@ class Solution:
 
 class Solution:
     def findDuplicateSubtrees(self, root: Optional[TreeNode]) -> List[Optional[TreeNode]]:
-        return (c:=Counter(),v:={},(f:=lambda x:x and ((h:=hash((f(x.left),x.val+200,f(x.right))),c.update({h:1}),c[h]>1 and setitem(v,h,x)) and h) or hash(x))(root)) and v.values()
+        return (c:=Counter(),v:={},(f:=lambda x:x and ((h:=hash((f(x.left),str(x.val),f(x.right))),c.update({h:1}),c[h]>1 and setitem(v,h,x)) and h) or hash(x))(root)) and v.values()
 
 test('''
 652. Find Duplicate Subtrees
@@ -76,6 +77,11 @@ Example 4:
 
 Input: root = [0,0,0,0,null,null,0,null,null,0]
 Output: [[0,0],[0]]
+
+Example 5:
+
+Input: root = [-2,-9,0,3,5,-1,9,5,2,null,null,-3,null,-7,6,-6,null,null,null,-1,null,null,null,-9,9,null,null,null,null,8,null,-2,5]
+Output: [[5]]
 
 Constraints:
 

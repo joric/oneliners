@@ -30,7 +30,7 @@ class Solution:
         def f(x):
             if not x:
                 return hash(x)
-            h = hash((f(x.left),str(x.val),f(x.right)))
+            h = hash((f(x.left),x.val+200,f(x.right)))
             c[h] += 1
             if c[h] > 1:
                 v[h] = x
@@ -38,7 +38,7 @@ class Solution:
         f(root)
         return v.values()
 
-# we can just use string representation instead of hash():
+# we can just use tuples instead of hash:
 
 class Solution:
     def findDuplicateSubtrees(self, root: Optional[TreeNode]) -> List[Optional[TreeNode]]:

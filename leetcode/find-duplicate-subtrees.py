@@ -38,9 +38,11 @@ class Solution:
         f(root)
         return v.values()
 
+# we can just use string representation instead of hash():
+
 class Solution:
     def findDuplicateSubtrees(self, root: Optional[TreeNode]) -> List[Optional[TreeNode]]:
-        return (c:=Counter(),v:={},(f:=lambda x:x and ((h:=hash((f(x.left),str(x.val),f(x.right))),c.update({h:1}),c[h]>1 and setitem(v,h,x)) and h) or hash(x))(root)) and v.values()
+        return (c:=Counter(),v:={},(f:=lambda x:x and ((c.update({(h:=(x.val,f(x.left),f(x.right))):1}),c[h]>1 and setitem(v,h,x)) and h) or x)(root)) and v.values()
 
 test('''
 652. Find Duplicate Subtrees

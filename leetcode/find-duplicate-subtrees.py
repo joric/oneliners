@@ -38,7 +38,7 @@ class Solution:
 
 class Solution:
     def findDuplicateSubtrees(self, root: Optional[TreeNode]) -> List[Optional[TreeNode]]:
-        return (c:=Counter(),v:={},(f:=lambda x:x and ((h:=hash((f(x.left),x.val+200,f(x.right))),setitem(c,h,c[h]+1),c[h]>1 and setitem(v,h,x)) and h) or hash(x))(root)) and v.values()
+        return (c:=Counter(),v:={},(f:=lambda x:x and ((h:=hash((f(x.left),x.val+200,f(x.right))),c.update({h:1}),c[h]>1 and setitem(v,h,x)) and h) or hash(x))(root)) and v.values()
 
 test('''
 652. Find Duplicate Subtrees

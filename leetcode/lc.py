@@ -22,13 +22,14 @@ import re
 import os
 
 class TreeNode(object):
-    def __init__(self, x, left=None, right=None):
+    def __init__(self, x=0, left=None, right=None):
         self.val = x
         self.left = left
         self.right = right
 
-    def __repr__(root):
-        q, res = [],[]
+    def serialize(root):
+        q = []
+        res = []
         q.append(root)
         while len(q):
             nodes = len(q)
@@ -40,21 +41,24 @@ class TreeNode(object):
                     q.append(root.right)
         while res and res[-1] is None:
             res.pop()
-        return str(res)
+        return res
+
+    def __repr__(self):
+        return str(self.serialize())
 
     def __eq__(a, b):
         return str(a)==str(b)
 
-    def parse(val):
-        if not val:
+    def parse(arr):
+        if not arr:
             return []
-        nodes = [None if x is None else TreeNode(x) for x in val]
+        nodes = [None if x is None else TreeNode(x) for x in arr]
         kids = nodes[::-1]
         root = kids and kids.pop()
         for node in nodes:
             if node:
                 if kids:
-                    node.left  = kids.pop()
+                    node.left = kids.pop()
                 if kids:
                     node.right = kids.pop()
         return root

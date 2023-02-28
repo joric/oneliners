@@ -38,7 +38,7 @@ class Solution:
         f(root)
         return v.values()
 
-# we can just use tuples instead of hash and it works:
+# we can just use tuples instead of hash and it works but it affects time complexity
 
 class Solution:
     def findDuplicateSubtrees(self, root: Optional[TreeNode]) -> List[Optional[TreeNode]]:

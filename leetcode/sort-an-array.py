@@ -29,17 +29,17 @@ class Solution:
 class Solution:
     def sortArray(self, nums: List[int]) -> List[int]:
         r = []
-        b = {k:0 for k in range(min(nums), max(nums)+1)}
+        c = {k:0 for k in range(min(nums), max(nums)+1)}
         for x in nums:
-            b[x] += 1
+            c[x] += 1
         for x in b.keys():
-            if b[x]:
-                r.extend(b[x]*[x])
+            if c[x]:
+                r.extend(c[x]*[x])
         return r
 
 class Solution:
     def sortArray(self, nums: List[int]) -> List[int]:
-        return (r:=[],b:={k:0 for k in range(min(nums),max(nums)+1)},any(setitem(b,x,b[x]+1) for x in nums),any(b[x] and r.extend([x]*b[x]) for x in b.keys()),r)[4]
+        return (r:=[],c:={k:0 for k in range(min(nums),max(nums)+1)},any(setitem(c,x,c[x]+1) for x in nums),any(c[x] and r.extend([x]*c[x]) for x in c.keys()),r)[4]
 
 class Solution:sortArray=sorted
 

@@ -16,12 +16,6 @@ class Solution:
                 g.append(i)
         return self.sortArray(l) + [m] + self.sortArray(g)
 
-# builtin
-
-class Solution:
-    def sortArray(self, nums: List[int]) -> List[int]:
-        return sorted(nums)
-
 # counting sort
 
 class Solution:
@@ -46,6 +40,8 @@ class Solution:
 class Solution:
     def sortArray(self, nums: List[int]) -> List[int]:
         return (r:=[],b:={k:0 for k in range(min(nums),max(nums)+1)},any(setitem(b,x,b[x]+1) for x in nums),any(b[x] and r.extend([x]*b[x]) for x in b.keys()),r)[4]
+
+class Solution:sortArray=sorted
 
 test('''
 

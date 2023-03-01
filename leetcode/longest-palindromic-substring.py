@@ -31,19 +31,19 @@ class Solution:
         p = [0]*n
         c = r = 0
         for i in range (1, n-1):
-            p[i] = (r>i) and min(r-i,p[2*c - i])
+            p[i] = (r>i) and min(r-i,p[2*c-i])
             while t[i+1+p[i]]==t[i-1-p[i]]:
                 p[i]+=1
             if i+p[i]>r:
                 c = i
                 r = i+p[i]
-        m,d = max((n, i) for i, n in enumerate(p))
+        m,d = max((n,i) for i, n in enumerate(p))
         return s[(d-m)//2:(d+m)//2]
 
 
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-        return (t:='#'.join('^{}$'.format(s)),n:=len(t),p:=[0]*n,c:=0,r:=0,[(setitem(p,i,(r>i) and min(r-i,p[2*c - i])),next(0 for _ in count() if not(t[i+1+p[i]]==t[i-1-p[i]] and (setitem(p,i,p[i]+1),i+p[i]>r and (c:=i,r:=i+p[i]))))) for i in range (1,n-1)],v:=max((n, i) for i, n in enumerate(p)),s[(v[1]-v[0])//2:sum(v)//2])[-1]
+        return (t:='#'.join('^{}$'.format(s)),n:=len(t),p:=[0]*n,c:=0,r:=0,[(setitem(p,i,(r>i) and min(r-i,p[2*c-i])),next(0 for _ in count() if not(t[i+1+p[i]]==t[i-1-p[i]] and (setitem(p,i,p[i]+1),i+p[i]>r and (c:=i,r:=i+p[i]))))) for i in range (1,n-1)],v:=max((n,i) for i, n in enumerate(p)),s[(v[1]-v[0])//2:sum(v)//2])[-1]
 
 test('''
 5. Longest Palindromic Substring

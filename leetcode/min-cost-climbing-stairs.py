@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def minCostClimbingStairs(self, cost: List[int]) -> int:
         a = b = 0
         for c in cost:

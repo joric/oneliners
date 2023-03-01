@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def mostVisitedPattern(self, users, timestamp, website):
         h, c = defaultdict(list), Counter()
         for _, u, w in sorted(zip(timestamp, users, website)):

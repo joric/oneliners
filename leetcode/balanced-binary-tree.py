@@ -13,7 +13,7 @@ class Solution:
         return dfs(root) != -1
 
 
-class Solution(object):
+class Solution:
     def isBalanced(self, root: TreeNode):
         return not root or abs((f:=lambda r:1+max(f(r.left),f(r.right)) if r else 0)(root.left)-f(root.right))<2 and self.isBalanced(root.left) and self.isBalanced(root.right)
 

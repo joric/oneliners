@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def originalDigits(self, s: str) -> str:
         res = ""
         res += "0"*s.count('z')

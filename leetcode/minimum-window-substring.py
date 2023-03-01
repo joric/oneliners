@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def minWindow(self, s: str, t: str) -> str:
         need, missing = Counter(t), len(t)
         i = I = J = 0

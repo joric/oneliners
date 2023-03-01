@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
         dummy = ListNode()
         dummy.next, slow, fast, prev = head, head, head, dummy
@@ -12,7 +12,7 @@ class Solution1:
         return dummy.next
 
 
-class Solution2(object):
+class Solution:
     def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
         def f(a, b):
             if not b:
@@ -22,7 +22,7 @@ class Solution2(object):
         return f(head, head.next)
 
 
-class Solution(object):
+class Solution:
     def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
         return (f:=lambda a,b:setattr(a,'next', f(a.next, b.next.next) if b.next
             else f(a.next, b.next)) or a if b else a.next)(head, head.next)

@@ -1,19 +1,19 @@
 from lc import *
 
 # OOM
-class Solution1:
+class Solution:
     def isPalindrome(self, s: str) -> bool:
         return (f:=lambda s:not s or (s[0]==s[-1] and f(s[1:-1])))(''.join(filter(str.isalnum,s)).lower())
 
 # TLE
-class Solution2:
+class Solution:
     def isPalindrome(self, s: str) -> bool:
         return (f:=lambda s,i,j:i>=j 
             or (not s[i].isalnum() and f(s,i+1,j))
             or (not s[j].isalnum() and f(s,i,j-1))
             or (s[i].lower()==s[j].lower() and f(s,i+1,j-1)))(s,0,len(s)-1)
 
-class Solution3:
+class Solution:
     def isPalindrome(self, s: str) -> bool:
         return (f:=lambda s,i,j:i>=j or (s[i]==s[j] and f(s,i+1,j-1)))(s:=''.join(filter(str.isalnum,s)).lower(),0,len(s)-1)
 

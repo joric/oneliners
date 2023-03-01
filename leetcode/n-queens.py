@@ -11,11 +11,11 @@ class Solution0:
         dfs([], 0, 0, 0, 0)
         return ans
 
-class Solution1:
+class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:
         return[['.'*v+'Q'+'.'*(n-v-1)for v in c]for c in permutations(range(n))if(len(set(i+v for i,v in enumerate(c)))==n)and(len(set(i-v for i,v in enumerate(c)))==n)]
 
-class Solution2:
+class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:
         return[['.'*v+'Q'+'.'*(n-v-1)for v in c]for c in permutations(range(n)) if (a,b:=zip(*[(i+v,i-v) for i,v in enumerate(c)])) and len(set(a))==len(set(b))==n]
 

@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def generate(self, numRows):
         pascal = [[1]*(i+1) for i in range(numRows)]
         for i in range(numRows):
@@ -8,7 +8,7 @@ class Solution1:
                 pascal[i][j] = pascal[i-1][j-1] + pascal[i-1][j]
         return pascal
 
-class Solution2:
+class Solution:
     def generate(self, numRows):
             res = [[1]]
             for i in range(1, numRows):
@@ -16,7 +16,7 @@ class Solution2:
             return res[:numRows]
 
 
-class Solution3:
+class Solution:
     def generate(self, numRows: int) -> List[List[int]]:
         return list(map(lambda i:list(map(lambda x:factorial(i)//factorial(x)//factorial(i-x),range(i+1))),range(numRows)))
 

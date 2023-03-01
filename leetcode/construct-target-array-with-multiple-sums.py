@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def isPossible(self, target: List[int]) -> bool:
         s = sum(target)
         q = [-a for a in target]

@@ -1,23 +1,23 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def intToRoman(self, num: int) -> str:
         return ''.join((('','M','MM','MMM','MMMM')[num//1000],
             ('','C','CC','CCC','CD','D','DC','DCC','DCCC','CM')[(num//100)%10],
             ('','X','XX','XXX','XL','L','LX','LXX','LXXX','XC')[(num//10)%10],
             ('','I','II','III','IV','V','VI','VII','VIII','IX')[num%10]))
 
-class Solution2:
+class Solution:
     def intToRoman(self, num: int) -> str:
         return (r := ('','I','II','III','IV','V','VI','VII','VIII','IX','','X','XX','XXX','XL','L','LX',
             'LXX','LXXX','XC','','C','CC','CCC','CD','D','DC','DCC','DCCC','CM','','M','MM','MMM',
             'MMMM')) and (r[num//1000+30]+r[(num//100)%10+20]+r[(num//10)%10+10]+r[num%10])
 
-class Solution3:
+class Solution:
     def intToRoman(self, n: int) -> str:
         return "M"*(n//1000)+"".join([[[r[0]*d,r[0]+r[1]][d>3],[r[1]+r[0]*(d-5),r[0]+r[2]][d>8]][d>4] for d,r in ((n%1000//100,"CDM"),(n%100//10,"XLC"),(n%10,"IVX"))])
 
-class Solution4:
+class Solution:
     def intToRoman(self, num: int) -> str:
         v = ('M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I')
         k = (1000,900,500,400,100,90,50,40,10,9,5,4,1)

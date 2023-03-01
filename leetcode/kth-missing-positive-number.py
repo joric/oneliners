@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def findKthPositive(self, arr: List[int], k: int) -> int:
         l, r = 0, len(arr)
         while l < r:

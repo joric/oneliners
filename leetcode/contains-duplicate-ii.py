@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
         m = {}
         for i,x in enumerate(nums):

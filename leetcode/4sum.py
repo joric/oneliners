@@ -1,7 +1,7 @@
 from lc import *
 
 # TLE https://leetcode.com/problems/4sum/discuss/8595/5-lines-simple-Python
-class Solution1:
+class Solution:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
         nums, dic = sorted(nums), collections.defaultdict(list)
         for (i, a), (j, b) in itertools.combinations(enumerate(nums), 2):
@@ -12,7 +12,7 @@ class Solution1:
               if len(set(head + tail)) == 4)
         return list(map(list, res))
 
-class Solution2:
+class Solution:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
         r,c,d = set(), Counter(nums), defaultdict(set)
         for t in combinations(nums, 2):
@@ -27,7 +27,7 @@ class Solution2:
         return r
 
 
-class Solution3:
+class Solution:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
         c = Counter(nums)
         d = reduce(lambda d,t:d[sum(t)].add(t) or d, combinations(nums, 2), defaultdict(set))
@@ -35,7 +35,7 @@ class Solution3:
         f = lambda r,v: reduce(k, (tuple(sorted(a+b)) for a in d[v] for b in d[target-v]), r)
         return reduce(f, (v for v in d if target-v in d), set())
 
-class Solution4:
+class Solution:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
         c = Counter(nums)
         d = reduce(lambda d,t:d[sum(t)].add(t) or d, combinations(nums, 2), defaultdict(set))

@@ -9,7 +9,7 @@ class Solution:
         ) and [w.get(s) or c.get(s.lower()) or v.get(f(s),'') for s in queries]
 
 
-class Solution1:
+class Solution:
     def spellchecker(self, wordlist: List[str], queries: List[str]) -> List[str]:
         return (p:=((lambda x:x,{}),(lambda x:x.lower(),{}),(lambda x: ''.join([l if l not in set(list('aeiou')) else '*' for l in x.lower()]),{}))) \
             and [setitem(h,f(w),w) for f,h in p for w in wordlist if f(w) not in h] and [next((h[f(w)] for f,h in p if f(w) in h),'') for w in queries]

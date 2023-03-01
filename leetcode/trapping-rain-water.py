@@ -17,22 +17,22 @@ class Solution0:
         return res
 
 #TLE
-class Solution1:
+class Solution:
     def trap(self, v: List[int]) -> int:
         return sum(max(0, (min(max(v[:i]), max(v[i+1:]))-v[i])) for i in range(1, len(v)-1))
 
 
-class Solution2:
+class Solution:
     def trap(self, v: List[int]) -> int:
         return sum(min((a:=[c:=h if i==0 else max(c,h) for i,h in enumerate(v)] if i==0 else a)[len(v)-1-i],c:=h if i==0 else max(c,h))-h for i,h in enumerate(reversed(v)))
 
-class Solution3:
+class Solution:
     def trap(self, v: List[int]) -> int:
         l = list(accumulate(v, max))
         r = list(accumulate(v[::-1], max))[::-1]
         return sum([max(0,min(l[i],r[i])-v[i]) for i in range(len(v))])
 
-class Solution4:
+class Solution:
     def trap(self, v: List[int]) -> int:
         l = list(accumulate(v, max))
         r = list(accumulate(v[::-1], max))[::-1]

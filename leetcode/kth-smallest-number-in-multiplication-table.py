@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def findKthNumber(self, m: int, n: int, k: int) -> int:
         l, r = 1, m*n
         while l < r: 

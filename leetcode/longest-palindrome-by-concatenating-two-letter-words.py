@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def longestPalindrome(self, words: List[str]) -> int:
         d = Counter(words)
         n=c=p=0
@@ -13,13 +13,13 @@ class Solution1:
                 p += min(d[w],d[w[::-1]])*0.5
         return n*2 + c + 4*int(p)
 
-class Solution2:
+class Solution:
     def longestPalindrome(self, words: List[str]) -> int:
         return (lambda r:r[0]*2+r[1]+4*int(r[2]))(reduce(lambda a,w:(a[0]+d[w]//2*2, 2 if d[w]%2 else a[1],a[2])
             if w[0]==w[1] else (a[0],a[1],a[2]+min(d[w],d[w[::-1]])*0.5), (d:=Counter(words)), [0,0,0]))
 
 
-class Solution3:
+class Solution:
     def longestPalindrome(self, words: List[str]) -> int:
         c,r = Counter(), 0
         for w in words:
@@ -30,7 +30,7 @@ class Solution3:
                 c[w] += 1
         return r+2 if any(c[w]>0 and w[0]==w[1] for w in c) else r
 
-class Solution2:
+class Solution:
     def longestPalindrome(self, words: List[str]) -> int:
         return (r:=0,c:=Counter(),[(setitem(c,b,c[b]-1),r:=r+4) if c[b:=a[::-1]]>0 else setitem(c,a,c[a]+1) for a in words]) and (r+2*any(c[w]>0 and w[0]==w[1] for w in c))
 

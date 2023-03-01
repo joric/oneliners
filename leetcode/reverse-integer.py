@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def reverse(self, x: int) -> int:
         neg =  False
         if x<0:
@@ -15,18 +15,18 @@ class Solution1:
         else:
             return 0
 
-class Solution2:
+class Solution:
     def reverse(self, x: int) -> int:
         s = (x > 0) - (x < 0)
         r = int(str(x*s)[::-1])
         return s*r * (r < 2**31)
 
-class Solution3:
+class Solution:
     def reverse(self, x: int) -> int:
         r = int(str(abs(x))[::-1])
         return (r<2**31)*(r,-r)[x<0]
 
-class Solution4:
+class Solution:
     def reverse(self, x: int) -> int:
         r,x,s = 0,abs(x),x<0
         while x:
@@ -34,7 +34,7 @@ class Solution4:
             x //= 10
         return (r<2**31)*(r,-r)[s]
 
-class Solution5:
+class Solution:
     def reverse(self, x: int) -> int:
         return ((r:=(f:=lambda r,x:f(r*10+x%10,x//10) if x else r)(0,abs(x)))<2**31)*(r,-r)[x<0]
 

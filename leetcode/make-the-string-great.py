@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def makeGood(self, s: str) -> str:
         q = []
         for c in s: 
@@ -10,7 +10,7 @@ class Solution1:
                 q.append(c)
         return ''.join(q)
 
-class Solution2:
+class Solution:
     def makeGood(self, s: str) -> str:
         return ''.join(reduce(lambda q,c:(q and ord(q[-1])^ord(c)==32 and q.pop() or q.append(c),q)[1], s, []))
 

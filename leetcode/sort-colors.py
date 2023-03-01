@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def sortColors(self, nums: List[int]) -> None:
         red, white, blue = 0, 0, len(nums)-1
         while white <= blue:
@@ -14,7 +14,7 @@ class Solution1:
                 nums[white], nums[blue] = nums[blue], nums[white]
                 blue -= 1
 
-class Solution2:
+class Solution:
     def sortColors(self, nums: List[int]) -> None:
         def f(a,b,l):l[a],l[b]=l[b],l[a]
         def fn(a,b):
@@ -32,22 +32,22 @@ class Solution2:
             return a
         reduce(fn, nums, [0,0,len(nums)-1])
 
-class Solution3:
+class Solution:
     def sortColors(self, nums: List[int]) -> None:
         def fn(t,b):
             red, white, blue = t
             return (swap:=lambda a,x,y: exec('a[x],a[y]=a[y],a[x]'), (swap(nums,red,white),(red+1,white+1,blue))[1] if nums[white]==0 else ((red,white+1,blue) if nums[white]==1 else (swap(nums,white,blue),(red,white,blue-1))[1]))[1]
         reduce(fn, nums, [0,0,len(nums)-1])
 
-class Solution4:
+class Solution:
     def sortColors(self, nums: List[int]) -> None:
         reduce(lambda a,_:(f:=lambda a,x,y:exec('a[x],a[y]=a[y],a[x]'),(f(nums,a[0],a[1]),(a[0]+1,a[1]+1,a[2]))[1]if nums[a[1]]==0 else((a[0],a[1]+1,a[2])if nums[a[1]]==1 else(f(nums,a[1],a[2]),(a[0],a[1],a[2]-1))[1]))[1],nums,[0,0,len(nums)-1])
 
-class Solution5:
+class Solution:
     def sortColors(self, nums: List[int]) -> None:
         reduce(lambda a,_:(f:=lambda a,x,y:(t:=a[x],setitem(a,x,a[y]),setitem(a,y,t)),(f(nums,a[0],a[1]),(a[0]+1,a[1]+1,a[2]))[1] if nums[a[1]]==0 else ((a[0],a[1]+1,a[2]) if nums[a[1]]==1 else (f(nums,a[1],a[2]),(a[0],a[1],a[2]-1))[1]))[1], nums, [0,0,len(nums)-1])
 
-class Solution6:
+class Solution:
     def sortColors(self, nums: List[int]) -> None:
         s = lambda a,x,y:(t:=a[x],setitem(a,x,a[y]),setitem(a,y,t),a)[3]
         f = lambda a,i,j,k:(f(s(a,i,j),i+1,j+1,k) if a[j]==0 else f(a,i,j+1,k) if a[j]==1 else f(s(a,j,k),i,j,k-1)) if i<=j<=k else None

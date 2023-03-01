@@ -3,7 +3,7 @@ from lc import *
 # In short, start with mod =0, then we always do mod = (mod+nums[i])%k,
 # if mod repeats, that means between these two mod = x occurences the sum is multiple of k.
 
-class Solution1:
+class Solution:
     def checkSubarraySum(self, nums: List[int], k: int) -> bool:
         m, c = {0: -1}, 0
         for i,x in enumerate(nums):

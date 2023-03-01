@@ -3,14 +3,14 @@ from lc import *
 # https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/2555929/python-oneliner-dfs-with-a-cache-decorator
 
 
-class Solution1:
+class Solution:
     def maxProfit(self, k: int, prices: List[int]) -> int:
         @cache
         def dfs(i, k, sell):
             return 0 if k==0 or i==len(prices) else max(dfs(i+1, k-1, 0) + prices[i], dfs(i+1, k, 1)) if sell else max(dfs(i+1, k, 1)-prices[i], dfs(i+1, k, sell))
         return dfs(0, k, 0)
 
-class Solution2:
+class Solution:
     def maxProfit(self, k: int, prices: List[int]) -> int:
         @cache
         def dfs(i, k, sell):

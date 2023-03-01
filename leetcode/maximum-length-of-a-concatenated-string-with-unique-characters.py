@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def maxLength(self, arr: List[str]) -> int:
         dp = [set()]
         for a in arr:
@@ -14,7 +14,7 @@ class Solution1:
 
 # https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters/discuss/1479802/Python-3-one-line
 
-class Solution2:
+class Solution:
     def maxLength(self, arr: List[str]) -> int:
         p = {''}
         for s in arr:

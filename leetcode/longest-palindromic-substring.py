@@ -9,7 +9,7 @@ def check(res, expected, s):
     w = len(max(p, key = len))
     return res in (s for s in p if len(s)==w)
 
-class Solution1:
+class Solution:
     def longestPalindrome(self, s: str) -> str:
         n = len(s)
         dp = [[False for i in range(n)] for j in range(n)]

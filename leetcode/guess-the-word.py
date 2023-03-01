@@ -28,7 +28,7 @@ class Launcher:
         Solution().findSecretWord(words, master)
         return master.result()
 
-class Solution1:
+class Solution:
     def findSecretWord(self, wordlist: List[str], master: 'Master') -> None:
         f = lambda a,b: sum(a[i]==b[i] for i in range(6))
         d = set(wordlist)

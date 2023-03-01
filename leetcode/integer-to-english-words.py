@@ -2,7 +2,7 @@ from lc import *
 
 # https://leetcode.com/problems/integer-to-english-words/discuss/70632/Recursive-Python
 
-class Solution1:
+class Solution:
     def numberToWords(self, num):
         to19 = 'One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve ' \
             'Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen'.split()

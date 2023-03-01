@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def shiftGrid(self, grid: List[List[int]], k: int) -> List[List[int]]:
         h, w = len(grid), len(grid[0])
         n = h * w
@@ -14,7 +14,7 @@ class Solution1:
         reverse(0, n)
         return grid
 
-class Solution2:
+class Solution:
     def shiftGrid(self, grid: List[List[int]], k: int) -> List[List[int]]:
         h, w = len(grid), len(grid[0])
         n = h * w
@@ -26,7 +26,7 @@ class Solution2:
                 j = k
         return grid
 
-class Solution3:
+class Solution:
     def shiftGrid(self, grid: List[List[int]], k: int) -> List[List[int]]:
         return (a:=deque(chain.from_iterable(grid)), a.rotate(k % len(a))) and [list(row) for row in zip(*[iter(a)]*len(grid[0]))]
 

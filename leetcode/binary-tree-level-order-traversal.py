@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def levelOrder(self, root: TreeNode) -> List[List[int]]:
         res = []
         q = deque()

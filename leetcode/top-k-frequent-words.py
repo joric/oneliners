@@ -1,21 +1,21 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
         return [w for w,_ in sorted(Counter(words).items(), key=lambda x:(-x[1],x[0]))[:k]]
 
-class Solution2:
+class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
         return list(zip(*nsmallest(k, Counter(words).items(), key=lambda x:(-x[1],x[0]))))[0]
         #return [w for w,_ in nsmallest(k, Counter(words).items(), key=lambda a:(-a[1],a[0]))]
         #return [w for w,_ in sorted(Counter(words).items(), key=lambda a:(-a[1],a[0]))[:k]]
 
-class Solution3:
+class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
         f=Counter(words);return nsmallest(k, f.keys(), key=lambda x:(-f[x],x))
         return (f:=Counter(words)) and nsmallest(k, f.keys(), key=lambda x:(-f[x],x))
 
-class Solution4:
+class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
         return list(zip(*Counter(sorted(words)).most_common(k)))[0]
         #return [w for _, w in nsmallest(k, [(-c, w) for w, c in Counter(words).items()])]

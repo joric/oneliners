@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution(object):
+class Solution:
     def findPaths(self, m: int, n: int, maxMove: int, startRow: int, startColumn: int) -> int:
         dp = [[[0] * n for j in range(m)] for k in range(maxMove+1)]
         for k in range(1, maxMove+1):
@@ -9,7 +9,7 @@ class Solution(object):
                     dp[k][i][j] = sum(dp[k-1][x][y] if -1<x<m and -1<y<n else 1 for x,y in ((i-1,j),(i+1,j),(i,j-1),(i,j+1)))%(10**9+7)
         return dp[maxMove][startRow][startColumn]
 
-class Solution2:
+class Solution:
     def findPaths(self, m: int, n: int, maxMove: int, startRow: int, startColumn: int) -> int:
         @cache
         def dfs(t,i,j):
@@ -20,7 +20,7 @@ class Solution2:
             return sum(map(dfs,[t-1]*4,(i+1,i,i-1,i),(j,j+1,j,j-1)))%(10**9+7)
         return dfs(maxMove, startRow, startColumn)
 
-class Solution3:
+class Solution:
     def findPaths(self, m: int, n: int, maxMove: int, startRow: int, startColumn: int) -> int:
         g = {r + c*1j: 0 for r in range(m) for c in range(n)}
         @cache
@@ -28,7 +28,7 @@ class Solution3:
             return g.get(z,1) or t and sum(f(t-1, z + 1j**k) for k in range(4))
         return f(maxMove, startRow + startColumn*1j) % (10**9+7)
 
-class Solution3:
+class Solution:
     def findPaths(self, m: int, n: int, maxMove: int, startRow: int, startColumn: int) -> int:
         return (g:={i+j*1j:0 for i in range(m) for j in range(n)}) and (f:=cache(lambda t,z: g.get(z,1)
             or t and sum(f(t-1,z+1j**k) for k in range(4))))(maxMove, startRow+startColumn*1j) % (10**9+7)

@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def isValid(self, s: str) -> bool:
         q = []
         for c in s:
@@ -16,7 +16,7 @@ class Solution1:
                 q.pop()
         return not q
 
-class Solution2:
+class Solution:
     def isValid(self, s: str) -> bool:
         s,i,m = list(s), 0, {'(':')','[':']', '{':'}'}
         for c in s:
@@ -31,7 +31,7 @@ class Solution2:
                     return False
         return i == 0
 
-class Solution3:
+class Solution:
     def isValid(self, s: str) -> bool:
         stack, brackets = [], {'(':')', '{':'}', '[':']'}
         for c in s:
@@ -41,12 +41,12 @@ class Solution3:
                 return False
         return not stack
 
-class Solution3:
+class Solution:
     def isValid(self, s: str) -> bool:
         return (x := []) or not (b := {'(':')','{':'}','[':']'}) or (not (sum([1 for c in s if (c not in b or x.append(b[c])) and not (x and c==x.pop())]) or x))
 
 # https://www.python.org/dev/peps/pep-0572
-class Solution4:
+class Solution:
     def isValid(self, s: str) -> bool:
         while True:
             q, s = s, s.replace('()','').replace('{}','').replace('[]','')

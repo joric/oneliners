@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def getLengthOfOptimalCompression(self, s: str, k: int) -> int:
         @cache 
         def dp(i, k, prev, cnt):
@@ -19,7 +19,7 @@ class Solution1:
         return dp(0, k, "", 0)
 
 
-class Solution2:
+class Solution:
     def getLengthOfOptimalCompression(self, s: str, k: int) -> int:
         @cache 
         def dp(i, k, p, c):

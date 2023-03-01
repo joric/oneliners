@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def orderlyQueue(self, s: str, k: int) -> str:
         def booth(s: str) -> str:
             n = len(s)

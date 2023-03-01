@@ -2,7 +2,7 @@ from lc import *
 
 # https://leetcode.com/problems/count-primes/discuss/111420/Python3-solution-using-Sieve-of-Eratosthenes-time-is-O(n)
 
-class Solution1:
+class Solution:
     def countPrimes(self, n):
         a = [0,0]+[1]*(n-2)
         for i in range(2,int(n**0.5)+1):

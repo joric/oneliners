@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def earliestFullBloom(self, p: List[int], g: List[int]) -> int:
         return reduce(lambda l,r:(l[0]+r[0],max(l[1],l[0]+sum(r))),sorted(zip(p,g), key=lambda v:(-v[1],v[0])),(0,0))[1]
 

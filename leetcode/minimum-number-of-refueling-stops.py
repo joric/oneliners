@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def minRefuelStops(self, target: int, startFuel: int, s: List[List[int]]) -> int:
         dp = [startFuel] + [0] * len(s)
         for i in range(len(s)):
@@ -11,7 +11,7 @@ class Solution1:
             if d >= target: return t
         return -1
 
-class Solution2:
+class Solution:
     def minRefuelStops(self, target: int, startFuel: int, stations: List[List[int]]) -> int:
         def refuel(r, f, h):
             return (-1, 0) if r < 0 else refuel(r + 1, f - heappop(h), h) if f < 0 and h else (r, f) if f >= 0 else (-1, 0)
@@ -25,7 +25,7 @@ class Solution2:
         deltas = [(b[0] - a[0], b[1]) for a, b in zip(stations, stations[1:])]
         return reduce(f, deltas, (0, startFuel))[0]
 
-class Solution3:
+class Solution:
     def minRefuelStops(self, target: int, startFuel: int, stations: List[List[int]]) -> int:
         return (
             heap := [],
@@ -35,13 +35,13 @@ class Solution3:
             reduce(lambda a, x: ((t:=refuel(a[0], a[1] - x[0]))[0], t[1]*(not heappush(heap, -x[1]))), deltas, (0, startFuel))[0]
         )[-1]
 
-class Solution4:
+class Solution:
     def minRefuelStops(self, target: int, startFuel: int, stations: List[List[int]]) -> int:
         return (heap:=[],s:=[[0,startFuel]]+stations+[[target,0]],deltas:=[(b[0]-a[0],b[1]) for a,b in zip(s,s[1:])],
             refuel:=lambda r,f:(-1,0) if r<0 else refuel(r+1,f-heappop(heap)) if f<0 and heap else (r,f) if f>=0 else(-1,0),
             reduce(lambda a,x:((t:=refuel(a[0],a[1]-x[0]))[0],t[1]*(not heappush(heap,-x[1]))),deltas,(0,startFuel))[0])[-1]
 
-class Solution5:
+class Solution:
     def minRefuelStops(self, target: int, startFuel: int, stations: List[List[int]]) -> int:
         q,t,s,g,c = [],target,stations+[[target,0]],startFuel,0
         while s:

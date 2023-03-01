@@ -1,7 +1,7 @@
 from lc import *
 
 # inorder/prev
-class Solution1:
+class Solution:
     def isValidBST(self, root: TreeNode) -> bool:
         p = None
         def f(r):
@@ -17,7 +17,7 @@ class Solution1:
         return f(root)
 
 # left/right
-class Solution2:
+class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         def f(r,a,b):
             if not r:
@@ -27,12 +27,12 @@ class Solution2:
             return f(r.left,a,r) and f(r.right,r,b)
         return f(root,None,None)
 
-class Solution3:
+class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         return (f:=lambda r,a,b:not r or (not ((a and a.val>=r.val) or (b and b.val<=r.val))) and f(r.left,a,r) and f(r.right,r,b))(root,None,None)
 
 # min/max
-class Solution4:
+class Solution:
     def isValidBST(self, p: Optional[TreeNode], min=-inf, max=inf) -> bool:
         return (not p or (p.val>min and p.val<max) and self.isValidBST(p.left, min, p.val) and self.isValidBST(p.right, p.val, max))
 

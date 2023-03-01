@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def minPathSum(self, grid: List[List[int]]) -> int:
         row,col = len(grid), len(grid[0])        
         dp = [[0]*col for _ in range(row)]        
@@ -12,7 +12,7 @@ class Solution1:
                 dp[r][c] = min(dp[r-1][c], dp[r][c-1]) + grid[r][c]
         return dp[row-1][col-1]
 
-class Solution2:
+class Solution:
     def minPathSum(self, grid):
         cost = [inf]*len(grid[0])
         for i in range(len(grid)):
@@ -21,7 +21,7 @@ class Solution2:
                 cost[j] = min(cost[j-1], cost[j]) + grid[i][j]
         return cost[-1]
 
-class Solution3:
+class Solution:
     def minPathSum(self, grid: List[List[int]]) -> int:
         m, n = len(grid), len(grid[0])
         @functools.lru_cache(None)
@@ -34,14 +34,14 @@ class Solution3:
         return recurse(0, 0)
 
 
-class Solution4:
+class Solution:
     def minPathSum(self, grid: List[List[int]]) -> int:
         for i in range(len(grid)):
             for j in range(len(grid[0])):
                 grid[i][j] += 0 if i==0 and j==0 else min(grid[i-1][j] if i>0 else inf, grid[i][j-1] if j>0 else inf);
         return grid[-1][-1]
 
-class Solution5:
+class Solution:
     def minPathSum(self, grid: List[List[int]]) -> int:
         r = 0
         for i in range(len(grid)):
@@ -50,7 +50,7 @@ class Solution5:
                 r = grid[i][j]
         return r
 
-class Solution6:
+class Solution:
     def minPathSum(self, grid: List[List[int]]) -> int:
         def fn(a,b):
             print(a,b)

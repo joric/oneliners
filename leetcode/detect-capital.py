@@ -4,7 +4,7 @@ class Solution:
     def detectCapitalUse(self, word: str) -> bool:
         return fullmatch(r"[A-Z]*|.[a-z]*", word)
 
-class Solution(object):
+class Solution:
     def detectCapitalUse(self, word):
         return word.istitle() or word==word.upper() or word==word.lower()
 

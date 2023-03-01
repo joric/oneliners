@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def countTime(self, time: str) -> int:
         f = lambda x,y: (x[0] == '?' or x[0] == y[0]) and (x[1] == '?' or x[1] == y[1])
         zeros = {'0'+str(digit) for digit in range(10)}

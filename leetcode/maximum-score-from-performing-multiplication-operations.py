@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def maximumScore(self, n: List[int], m: List[int]) -> int:
         a = [0] * (len(m) + 1)
         for i in range(len(m) - 1, -1, -1):
@@ -9,7 +9,7 @@ class Solution1:
                 a[j] = max(m[i] * n[j] + r[j + 1], m[i] * n[len(n)- 1 - i + j] + r[j])
         return a[0]
 
-class Solution2:
+class Solution:
     def maximumScore(self, n: List[int], m: List[int]) -> int:
         @cache
         def f(i,l):

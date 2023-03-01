@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def maximumUnits(self, boxTypes: List[List[int]], truckSize: int) -> int:
         boxTypes.sort(key=lambda x: -x[1])
         ans = 0
@@ -15,7 +15,7 @@ class Solution1:
 
 # https://leetcode.com/problems/maximum-units-on-a-truck/discuss/999325/Python-oneliner-(greedy)/807296/
 
-class Solution2:
+class Solution:
     def maximumUnits(self, boxTypes: List[List[int]], truckSize: int) -> int:
         def fn(a,b):
             truckSize, acc = a
@@ -23,11 +23,11 @@ class Solution2:
             return truckSize - min(truckSize, boxes), acc + min(truckSize, boxes)*units
         return reduce(fn, sorted(boxTypes,key=lambda x:x[1], reverse=True), [truckSize, 0])[1]
 
-class Solution3:
+class Solution:
     def maximumUnits(self, b: List[List[int]], t: int) -> int:
         return reduce(lambda a,b:(a[0]-min(a[0],b[0]),a[1]+min(a[0],b[0])*b[1]),sorted(b,key=lambda x:x[1])[::-1],[t,0])[1]
 
-class Solution4:
+class Solution:
     def maximumUnits(self, boxTypes: List[List[int]], truckSize: int) -> int:
         heap = [[-u, -b] for b, u in boxTypes]
         heapify(heap)

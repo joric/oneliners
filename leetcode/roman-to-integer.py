@@ -1,10 +1,10 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def romanToInt(self, s: str) -> int:
         return sum(s.count(c)*d for c,d in zip(('M','D','C','L','X','V','I','IV','IX','XL','XC','CD','CM'),(1000,500,100,50,10,5,1,-2,-2,-20,-20,-200,-200)))
 
-class Solution2:
+class Solution:
     def romanToInt(self, s: str) -> int:
         d = {'M':1000, 'D':500, 'C':100, 'L':50, 'X':10, 'V':5, 'I':1}
         r, p = 0, 'I'

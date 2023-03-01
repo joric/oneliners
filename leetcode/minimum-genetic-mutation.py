@@ -2,7 +2,7 @@ from lc import *
 
 # https://leetcode.com/problems/minimum-genetic-mutation/discuss/2097023/Python-3.10%3A-DFS-BFS.-VERY-SHORT.
 
-class Solution1:
+class Solution:
     def minMutation(self, start: str, end: str, bank: list[str]) -> int:
         bank = set(bank) | {start}
         def dfs(v, n):

@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
         v = set()
         q = []

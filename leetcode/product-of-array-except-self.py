@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         n = len(nums)
         res = [1] + [0]*(n-1)
@@ -12,7 +12,7 @@ class Solution1:
             t *= nums[i]
         return res
 
-class Solution2:
+class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         return [l*r for l, r in zip(chain([1], accumulate(nums,mul)),islice(chain(reversed(list(accumulate(reversed(nums),mul))), [1]), 1, None))]
 

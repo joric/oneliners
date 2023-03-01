@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def reverseVowels(self, s: str) -> str:
         return re.sub('(?i)[aeiou]', lambda m, v=re.findall('(?i)[aeiou]', s): v.pop(), s)
 

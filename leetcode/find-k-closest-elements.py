@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
         n = len(arr)
         if x <= arr[0]: return arr[:k]
@@ -18,7 +18,7 @@ class Solution1:
 
             return arr[low:high + 1]
 
-class Solution2:
+class Solution:
     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
         return sorted(sorted(arr, key = lambda e: abs(x-e))[:k])
 

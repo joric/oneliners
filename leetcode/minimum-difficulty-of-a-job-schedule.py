@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def minDifficulty(self, j:List[int], d: int) -> int:
         n = len(j)
         @cache

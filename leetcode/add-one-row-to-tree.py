@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def addOneRow(self, root: TreeNode, v: int, d: int, isLeft: bool = True) -> TreeNode:
         if d == 1:
             return TreeNode(v, root if isLeft else None, root if not isLeft else None)

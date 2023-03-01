@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1(object):
+class Solution:
     def lengthOfLongestSubstring(self, s):
         start, res, h = 0, 0, {}
         for i, c in enumerate(s):
@@ -11,7 +11,7 @@ class Solution1(object):
 
 # https://leetcode.com/problems/longest-substring-without-repeating-characters/discuss/1006208/Python-oneliner
 
-class Solution2:
+class Solution:
     def lengthOfLongestSubstring(self, s):
         def fn(a,b):
             start, res, h = a
@@ -22,17 +22,17 @@ class Solution2:
             return start,res,h
         return reduce(fn,enumerate(s),[0,0,{}])[1]
 
-class Solution3:
+class Solution:
     def lengthOfLongestSubstring(self, s):
         return reduce(lambda a,b:(s:=max(a[0],a[2].get(b[1],0)),max(a[1],b[0]-s+1),{**a[2],b[1]:b[0]+1}),enumerate(s),(0,0,{}))[1]
 
-class Solution31:
+class Solution1:
     def lengthOfLongestSubstring(self, s):
         return reduce(lambda a,b:(lambda t,r,h,i,c:(s:=max(t,h.get(c,0)),max(r,i-s+1),{**h,c:i+1}))(*a,*b),enumerate(s),(0,0,{}))[1]
 
 # https://leetcode.com/problems/longest-substring-without-repeating-characters/discuss/2021476/Python3-1-Line-Sliding-Window
 
-class Solution4:
+class Solution:
     def lengthOfLongestSubstring(self, s):
         d = {}
         i = -1
@@ -44,7 +44,7 @@ class Solution4:
             res = max(res, j-i)
         return res
 
-class Solution5:
+class Solution:
     def lengthOfLongestSubstring(self, s):
         return ((d:={}),(i:=-1)) and max(j-(i:=max(i,(d.pop(c,-1),d.setdefault(c,j))[0])) for j,c in enumerate(s)) if s else 0
 

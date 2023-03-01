@@ -24,7 +24,7 @@ class Solution:
         return count == 0
 
 # doesn't work, because codecs support 140k+ chars, leetcode wants 1M+
-class Solution(object):
+class Solution:
     def validUtf8(self, data):
         try:
             bytes(data).decode('utf-8')

@@ -1,14 +1,14 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
         return os.path.commonprefix(strs)
 
-class Solution2:
+class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
         return strs[0][:len([*takewhile(lambda c:len(set(c))==1,zip(*strs))])]
 
-class Solution3:
+class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
         a,b = min(strs), max(strs)
         for i, c in enumerate(a):

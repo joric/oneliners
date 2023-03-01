@@ -8,7 +8,7 @@ def guess(n):
     global p
     return (p>n)-(p<n)
 
-class Solution1(object):
+class Solution:
     def guessNumber(self, n: int) -> int:
         l,r = 1, n
         while l <= r:
@@ -22,15 +22,15 @@ class Solution1(object):
                 r = m - 1
         return 0
 
-class Solution2:
+class Solution:
     def guessNumber(self, h: int, l=0) -> int:
         return h if l+1==h else self.guessNumber(h,m) if guess(m:=(l+h)//2)>0 else self.guessNumber(m,l)
 
-class Solution3:
+class Solution:
     def guessNumber(self, n: int) -> int:
         return (f:=lambda l,h:h if l+1==h else f(m,h) if guess(m:=(l+h)//2)>0 else f(l,m))(0,n)
 
-class Solution4:
+class Solution:
     def guessNumber(self, n: int) -> int:
         return bisect_left(type('',(),{'__getitem__':lambda _,i: -guess(i)})(), 0, 1, n)
 

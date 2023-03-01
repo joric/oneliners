@@ -1,6 +1,6 @@
 from lc import *
 
-class Solution1:
+class Solution:
     def deepestLeavesSum(self, root: TreeNode) -> int:
         res = 0
         q = deque()
@@ -19,14 +19,14 @@ class Solution1:
                     q.append(root.right)
         return res
 
-class Solution2:
+class Solution:
     def deepestLeavesSum(self, root: TreeNode) -> int:
         q = [root]
         while q:
             pre, q = q, [child for p in q for child in [p.left, p.right] if child]
         return sum(node.val for node in pre)
 
-class Solution3:
+class Solution:
     def deepestLeavesSum(self, root: TreeNode) -> int:
         def level(node):
             if not node:
@@ -40,7 +40,7 @@ class Solution3:
             return dfs(node.left, i-1) + dfs(node.right, i-1)
         return dfs(root, level(root))
 
-class Solution4:
+class Solution:
     def deepestLeavesSum(self, root: TreeNode) -> int:
         return (dfs:=lambda node,i:0 if not node else dfs(node.left,i-1) +
             dfs(node.right,i-1) if i else node.val)(root,(level:=lambda node:

@@ -14,7 +14,7 @@ class Solution:
 
 class Solution:
     def minJumps(self, arr: List[int]) -> int:
-        return next((c for c in count() if (d.update(w) or len(arr)-1 in d or not(w:={j for i in w for j in [i-1,i+1]+v.pop(arr[i],[])}-d))),(v:=defaultdict(list),any(v[a].append(i) for i, a in enumerate(arr)),w:={0},d:={-1}))
+        return next((c for c in count() if (d.update(w) or len(arr)-1 in d or not(w:={j for i in w for j in [i-1,i+1]+v.pop(arr[i],[])}-d))),(v:=defaultdict(list),any(v[a].append(i) for i,a in enumerate(arr)),w:={0},d:={-1}))
 
 test('''
 1345. Jump Game IV

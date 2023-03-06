@@ -25,7 +25,7 @@ class Solution:
         return comb(n+k-1, k*2) % (10**9+7)
 ```
 
-You can also use `__import__('modulename')` to import missing modules.
+You can also use `__import__('modulename').varname` to import from missing modules.
 
 Example:
 

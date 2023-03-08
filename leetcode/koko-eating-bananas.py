@@ -1,5 +1,24 @@
 from lc import *
 
+# https://leetcode.com/problems/koko-eating-bananas/discuss/2397759/Python3-or-99.92-or-NOT-binary-search-or-Need-help-for-time-complexity-analysis
+
+class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        g = lambda k:sum(ceil(p/k) for p in piles)
+        a = lambda k:min(ceil(p/(ceil(p/k)-1))-k for p in piles if p>k)
+        k = ceil(sum(piles)/h)
+        t = g(k)
+        while t>h:
+            k += a(k)
+            t = g(k)
+        return k
+
+class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        return next((k for _ in count() if not(t>h and (k:=k+(lambda k:min(ceil(p/(ceil(p/k)-1))-k for p in piles if p>k))(k),t:=g(k)))),(k:=ceil(sum(piles)/h),t:=(g:=lambda k:sum(ceil(p/k) for p in piles))(k)))
+
+# binary search
+
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
         l, r = 1, max(piles)
@@ -52,6 +71,7 @@ class Solution:
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
         return bisect_left(range(1,max(piles)),-h,key=lambda m:-sum(ceil(p/m) for p in piles))+1
+
 
 test('''
 875. Koko Eating Bananas

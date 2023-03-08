@@ -24,19 +24,19 @@ class Solution:
 
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
-        return bisect_left(type('',(),{'__getitem__':lambda _,i:sum(ceil(p/i) for p in piles)<=h})(),True,1,max(piles))
+        return bisect_left(type('',(),{'__getitem__':lambda _,m:sum(ceil(p/m) for p in piles)<=h})(),True,1,max(piles))
 
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
-        return bisect_left(range(1,max(piles)),-h,key=lambda i:-sum((p+i-1)//i for p in piles))+1
+        return bisect_left(range(1,max(piles)),-h,key=lambda m:-sum((p+m-1)//m for p in piles))+1
 
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
-        return bisect_left(range(1,max(piles)),1,key=lambda i:sum(ceil(p/i) for p in piles)<=h)+1
+        return bisect_left(range(1,max(piles)),1,key=lambda m:sum(ceil(p/m) for p in piles)<=h)+1
 
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
-        return bisect_left(range(1,max(piles)),-h,key=lambda i:-sum(ceil(p/i) for p in piles))+1
+        return bisect_left(range(1,max(piles)),-h,key=lambda m:-sum(ceil(p/m) for p in piles))+1
 
 test('''
 875. Koko Eating Bananas

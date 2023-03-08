@@ -12,9 +12,7 @@ class Solution:
 
 class Solution:
     def addOneRow(self, root: TreeNode, v: int, d: int, isLeft: bool = True) -> TreeNode:
-        return TreeNode(v, root if isLeft else None, root if not isLeft else None) if d==1 else \
-        setattr(root,'left', self.addOneRow(root.left, v, d - 1, True)) or \
-        setattr(root,'right', self.addOneRow(root.right, v, d - 1, False)) or root if root else None
+        return TreeNode(v, root if isLeft else None, root if not isLeft else None) if d==1 else setattr(root,'left', self.addOneRow(root.left, v, d - 1, True)) or setattr(root,'right', self.addOneRow(root.right, v, d - 1, False)) or root if root else None
 
 test('''
 

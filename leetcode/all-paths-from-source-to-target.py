@@ -14,7 +14,6 @@ class Solution:
                     paths.append(path + [n])
         return ans
 
-
 class Solution:
     def allPathsSourceTarget(self, graph: List[List[int]], s=0) -> List[List[int]]:
         return [[len(graph)-1]] if s==len(graph)-1 else [[s]+p for i in graph[s] for p in self.allPathsSourceTarget(graph, s=i)]

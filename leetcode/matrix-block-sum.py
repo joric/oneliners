@@ -26,7 +26,7 @@ class Solution:
 
 class Solution:
     def matrixBlockSum(self, mat: List[List[int]], k: int) -> List[List[int]]:
-        return (m:=len(mat),n:=len(mat[0])) and [[sum([*map(sum,(zip(*mat[max(i-k,0):min(i+k+1,m)])))][max(j-k, 0):min(j+k+1,n)]) for j in range(n)] for i in range(m)]
+        return (m:=len(mat),n:=len(mat[0])) and [[sum([*map(sum,(zip(*mat[max(i-k,0):min(i+k+1,m)])))][max(j-k,0):min(j+k+1,n)]) for j in range(n)] for i in range(m)]
 
 test('''
 

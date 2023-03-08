@@ -44,9 +44,7 @@ class Solution:
 
 class Solution:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
-        return (c:=Counter(nums),d:=reduce(lambda d,t: d[sum(t)].add(t) or d, combinations(nums, 2), defaultdict(set))) and \
-            reduce(lambda r,p: (all(p.count(n)<=c[n] for n in p)) and r.add(p) or r, (tuple(sorted(a+b)) for v in d for a in d[v] for b in d.get(target-v,{})), set())
-
+        return (c:=Counter(nums),d:=reduce(lambda d,t: d[sum(t)].add(t) or d, combinations(nums, 2), defaultdict(set))) and reduce(lambda r,p: (all(p.count(n)<=c[n] for n in p)) and r.add(p) or r, (tuple(sorted(a+b)) for v in d for a in d[v] for b in d.get(target-v,{})), set())
 
 test('''
 

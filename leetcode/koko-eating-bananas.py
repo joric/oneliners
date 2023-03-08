@@ -5,10 +5,10 @@ class Solution:
         l, r = 1, max(piles)
         while l < r:
             m = (l + r)//2
-            if sum((p+m-1)//m for p in piles)>h:
-                l = m + 1
-            else:
+            if sum((p+m-1)//m for p in piles)<=h:
                 r = m
+            else:
+                l = m + 1
         return l
 
 class Solution:
@@ -16,15 +16,30 @@ class Solution:
         l, r = 1, max(piles)
         while l < r:
             m = (l + r)//2
-            if sum(ceil(p/m) for p in piles)>h:
-                l = m + 1
-            else:
+            if sum((p-1)//m+1 for p in piles)<=h:
                 r = m
+            else:
+                l = m + 1
+        return l
+
+class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        l, r = 1, max(piles)
+        while l < r:
+            m = (l + r)//2
+            if sum(ceil(p/m) for p in piles)<=h:
+                r = m
+            else:
+                l = m + 1
         return l
 
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
         return bisect_left(type('',(),{'__getitem__':lambda _,m:sum(ceil(p/m) for p in piles)<=h})(),True,1,max(piles))
+
+class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        return bisect_left(range(max(piles)),1,lo=1,key=lambda m:sum(ceil(p/m) for p in piles)<=h)
 
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:

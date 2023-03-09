@@ -234,6 +234,8 @@ def test(text=None, classname=None, check=None, init=None):
 
             res = vc(func, 'return', func(*args))
             ok = check(res, expected, *args)
+            if type(ok) is tuple:
+                ok, res = ok[:2]
             print_res(ok, res, expected, *orig)
             passed += int(ok)
 

@@ -8,7 +8,7 @@ def init(head: ListNode, pos: int):
 def check(res,exp,head):
     global p
     i = head.getIndex(head.detectCycle())
-    return p==i
+    return p==i, 'no cycle' if i==-1 else 'tail connects to node index %d' % i
 
 class Solution:
     def detectCycle(self, head: ListNode) -> ListNode:

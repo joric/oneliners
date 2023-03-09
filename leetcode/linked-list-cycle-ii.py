@@ -1,5 +1,15 @@
 from lc import *
 
+def init(head: ListNode, pos: int):
+    global p
+    p = pos
+    head.getTail().next = head.getNode(p)
+
+def check(res,exp,head):
+    global p
+    i = head.getIndex(head.detectCycle())
+    return p==i
+
 class Solution:
     def detectCycle(self, head: ListNode) -> ListNode:
         slow = fast = head
@@ -81,6 +91,6 @@ Accepted
 955,481
 Submissions
 2,012,559
-''', check=lambda res,exp,head:True # TODO
+''', init=init, check=check,
 )
 

@@ -46,8 +46,8 @@ class TreeNode(object):
     def __repr__(self):
         return str(self.serialize())
 
-    #def __eq__(a, b):
-    #    return str(a)==str(b)
+    def __eq__(a, b):
+        return a is b
 
     def parse(arr):
         if not arr:
@@ -68,15 +68,19 @@ class ListNode:
         self.val = val
         self.next = next
 
-    def __repr__(self):
+    def serialize(self):
+        if self.detectCycle():
+            return 'Error - Found cycle in the ListNode'
         out = []
         while self:
             out.append(self.val)
             self = self.next
-        return str(out)
+
+    def __repr__(self):
+        return str(self.serialize())
 
     def __eq__(a, b):
-        return str(a)==str(b)
+        return a is b
 
     def parse(val):
         if not val:
@@ -84,6 +88,46 @@ class ListNode:
         sub_nodes = ListNode.parse(val[1:])
         list_node = ListNode(val[0], sub_nodes)
         return list_node
+
+    def detectCycle(head):
+        slow = fast = head
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+            if slow == fast:
+                break
+        if not fast or not fast.next:
+            return None
+        slow = head
+        while slow != fast:
+            slow = slow.next
+            fast = fast.next
+        return slow
+
+    def getTail(head):
+        tail = head
+        while head:
+            tail = head
+            head = head.next
+        return tail
+
+    def getNode(head, index):
+        i = 0
+        while head:
+            if i == index:
+                return head
+            head = head.next
+            i += 1
+        return None
+
+    def getIndex(head, node):
+        i = 0
+        while head:
+            if head == node:
+                return i
+            head = head.next
+            i += 1
+        return -1
 
 cnames = []
 
@@ -122,9 +166,10 @@ def test(text=None, classname=None, check=None, init=None):
     def vcast(func, args, init=None):
         func = func.__wrapped__ if hasattr (func, '__wrapped__') else func
         if not hasattr(func,'__code__'):
-            return args,args
+            return args, args
         d = 1 if 'self' in func.__code__.co_varnames else 0
         argc = func.__code__.co_argcount - d
+        orig = args
 
         if init:
             # init function (if exists) supposed to have all input vars, annotated
@@ -132,7 +177,7 @@ def test(text=None, classname=None, check=None, init=None):
         else:
             args = [vc(func, func.__code__.co_varnames[i+d], x) for i,x in enumerate(args[:argc])]
 
-        return args[:argc], args
+        return args[:argc], args, orig[:argc]
 
     def print_res(passed, res, expected, *args):
         c = lambda c,t,w=60: '\x1b[{1}m{2}\x1b[0m'.format(s:=str(t), 30+c, s[:w]+'...' if e==2 and len(s)>=w else s)
@@ -160,7 +205,6 @@ def test(text=None, classname=None, check=None, init=None):
                     out.append(m[i])
         return out
 
-
     for s in text.splitlines():
         if s.startswith('Input:'):
             t = 1
@@ -182,14 +226,14 @@ def test(text=None, classname=None, check=None, init=None):
                 expected = expected[0]
 
             func = getattr(cname(), dir(cname)[-1])
-            args, iargs = vcast(func, args, init)
+            args, iargs, orig = vcast(func, args, init)
 
             if init:
                 init(*iargs)
 
             res = vc(func, 'return', func(*args))
             ok = check(res, expected, *args)
-            print_res(ok, res, expected, *args)
+            print_res(ok, res, expected, *orig)
             passed += int(ok)
 
         #if total: print('Passed %d/%d tests.' % (passed, total))
@@ -224,7 +268,7 @@ def test(text=None, classname=None, check=None, init=None):
                 results.append(None)
             else:
                 func = getattr(instance, name)
-                args, _ = vcast(func, args)
+                args, iargs, orig = vcast(func, args)
                 res = vc(func, 'return', func(*args))
                 results.append(res)
 

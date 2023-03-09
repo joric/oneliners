@@ -126,11 +126,11 @@ def test(text=None, classname=None, check=None, init=None):
         d = 1 if 'self' in func.__code__.co_varnames else 0
         argc = func.__code__.co_argcount - d
 
-        # init function (if exists) supposed to have all input vars, annotated
         if init:
+            # init function (if exists) supposed to have all input vars, annotated
             args = [vc(init, init.__code__.co_varnames[i], x) for i,x in enumerate(args)]
         else:
-            args = [vc(func, func.__code__.co_varnames[i+d], x) for i,x in enumerate(args)]
+            args = [vc(func, func.__code__.co_varnames[i+d], x) for i,x in enumerate(args[:argc])]
 
         return args[:argc], args
 

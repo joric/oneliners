@@ -104,13 +104,6 @@ class ListNode:
             fast = fast.next
         return slow
 
-    def getTail(head):
-        tail = head
-        while head:
-            tail = head
-            head = head.next
-        return tail
-
     def getNode(head, index):
         i = 0
         while head:
@@ -128,6 +121,13 @@ class ListNode:
             head = head.next
             i += 1
         return -1
+
+    def getTail(head):
+        tail = head
+        while head:
+            tail = head
+            head = head.next
+        return tail
 
 cnames = []
 

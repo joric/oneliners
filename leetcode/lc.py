@@ -75,6 +75,7 @@ class ListNode:
         while self:
             out.append(self.val)
             self = self.next
+        return out
 
     def __repr__(self):
         return str(self.serialize())
@@ -186,7 +187,7 @@ def test(text=None, classname=None, check=None, init=None):
 
     if not check:
         def check(res, expected, *args):
-            return res==expected
+            return str(res)==str(expected)
 
     if not classname:
         classname = importlib.import_module('__main__').Solution

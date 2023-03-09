@@ -1,8 +1,8 @@
 from lc import *
 
-def init(n):
+def init(n:int, pick:int):
     global p
-    p = n
+    p = pick
 
 def guess(n):
     global p

@@ -46,8 +46,8 @@ class TreeNode(object):
     def __repr__(self):
         return str(self.serialize())
 
-    def __eq__(a, b):
-        return str(a)==str(b)
+    #def __eq__(a, b):
+    #    return str(a)==str(b)
 
     def parse(arr):
         if not arr:
@@ -125,11 +125,14 @@ def test(text=None, classname=None, check=None, init=None):
             return args,args
         d = 1 if 'self' in func.__code__.co_varnames else 0
         argc = func.__code__.co_argcount - d
-        args, iargs = args[:argc], args[argc:]
-        args = [vc(func, func.__code__.co_varnames[i+d], x) for i,x in enumerate(args)]
+
+        # init function (if exists) supposed to have all input vars, annotated
         if init:
-            iargs = [vc(init, init.__code__.co_varnames[i], x) for i,x in enumerate(iargs)]
-        return args, iargs
+            args = [vc(init, init.__code__.co_varnames[i], x) for i,x in enumerate(args)]
+        else:
+            args = [vc(func, func.__code__.co_varnames[i+d], x) for i,x in enumerate(args)]
+
+        return args[:argc], args
 
     def print_res(passed, res, expected, *args):
         c = lambda c,t,w=60: '\x1b[{1}m{2}\x1b[0m'.format(s:=str(t), 30+c, s[:w]+'...' if e==2 and len(s)>=w else s)
@@ -183,7 +186,6 @@ def test(text=None, classname=None, check=None, init=None):
 
             if init:
                 init(*iargs)
-
 
             res = vc(func, 'return', func(*args))
             ok = check(res, expected, *args)

@@ -264,7 +264,7 @@ def test(text=None, classname=None, check=None, init=None):
         for name,args in zip(methods,arglist):
             if name not in dir(classname):
                 func = getattr(classname, '__init__')
-                args, _ = vcast(func, args)
+                args, iargs, orig = vcast(func, args)
                 instance = classname(*args)
                 results.append(None)
             else:

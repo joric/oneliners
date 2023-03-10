@@ -1,10 +1,10 @@
 from lc import *
 
-# args type conversion
+# type conversion for lambdas
 def init(head: ListNode):
     pass
 
-# TODO
+# TODO (write sampler)
 def check(res, exp):
     return True
 

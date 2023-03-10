@@ -33,6 +33,8 @@ class Solution:
             r,c,n = c.val if random.randint(1, n+1)==1 else r,c.next,n+1
         return r
 
+# expand list
+
 class Solution:
     def __init__(self, head: ListNode):
         self.v = (f:=lambda x:x and [x.val]+f(x.next) or [])(head)

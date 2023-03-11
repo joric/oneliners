@@ -51,7 +51,7 @@ class TreeNode:
 
     def parse(arr):
         if not arr:
-            return []
+            return None
         nodes = [None if x is None else TreeNode(x) for x in arr]
         kids = nodes[::-1]
         root = kids and kids.pop()

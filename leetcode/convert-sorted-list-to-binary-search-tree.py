@@ -2,7 +2,7 @@ from lc import *
 
 def check(res,exp,head: ListNode):
     def isBalanced(root: TreeNode) -> bool:
-        return not root or (f:=lambda x:not ((l:=f(x.left))==None or (r:=f(x.right))==None or abs(l-r)>1) and 1 + max(l,r) if x else 0)(root)
+        return (f:=lambda x:(((l:=f(x.left))<0 or (r:=f(x.right))<0 or abs(l-r)>1) and -1) or 1+max(l,r) if x else 0)(root)>=0
     return (f:=lambda v:sorted([x for x in v if x is not None]))(res and res.dump() or [])==f(exp) and isBalanced(res)
 
 class Solution:

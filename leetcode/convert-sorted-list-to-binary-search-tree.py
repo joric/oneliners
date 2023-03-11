@@ -17,6 +17,19 @@ class Solution:
 
 class Solution:
     def sortedListToBST(self, head: ListNode) -> TreeNode:
+        v = []
+        while head:
+            v.append(head.val)
+            head = head.next
+        def f(i,j):
+            if i>j:
+                return None
+            m = (i+j)//2
+            return TreeNode(v[m],f(i,m-1),f(m+1,j))
+        return f(0,len(v)-1)
+
+class Solution:
+    def sortedListToBST(self, head: ListNode) -> TreeNode:
         return (f:=lambda i,j:i<=j and TreeNode(v[(m:=(i+j)//2)],f(i,m-1),f(m+1,j)) or None)(0,len(v:=(g:=lambda x:x and [x.val]+g(x.next) or [])(head))-1)
 
 test('''

@@ -21,13 +21,13 @@ import random
 import re
 import os
 
-class TreeNode(object):
+class TreeNode:
     def __init__(self, x=0, left=None, right=None):
         self.val = x
         self.left = left
         self.right = right
 
-    def serialize(root):
+    def dump(root):
         q = []
         res = []
         q.append(root)
@@ -44,7 +44,7 @@ class TreeNode(object):
         return res
 
     def __repr__(self):
-        return str(self.serialize())
+        return str(self.dump())
 
     def __eq__(a, b):
         return a is b
@@ -68,7 +68,7 @@ class ListNode:
         self.val = val
         self.next = next
 
-    def serialize(self):
+    def dump(self):
         if self.detectCycle():
             return 'Error - Found cycle in the ListNode'
         out = []
@@ -78,7 +78,7 @@ class ListNode:
         return out
 
     def __repr__(self):
-        return str(self.serialize())
+        return str(self.dump())
 
     def __eq__(a, b):
         return a is b

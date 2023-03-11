@@ -22,8 +22,7 @@ class Solution:
     def sortedListToBST(self, head: ListNode) -> TreeNode:
         def list_to_vine(head):
             size = 0
-            root = TreeNode()
-            curr = root
+            curr = root = TreeNode()
             while head:
                 curr.right = TreeNode(head.val)
                 curr = curr.right

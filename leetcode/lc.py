@@ -152,7 +152,7 @@ def test(text=None, classname=None, check=None, init=None):
         is_iter = lambda v: type(v) in (tuple, set) or is_gen(v)
         to_list = lambda v: v if not is_iter(v) else [to_list(x) for x in v]
         hint = str(get_type_hints(func).get(name, None))
-        if 'ListNode]' in hint:
+        if 'List[lc.ListNode]' in hint or 'List[typing.Optional[lc.ListNode]]' in hint:
             return [ListNode.parse(x) for x in v]
         elif 'ListNode' in hint and type(v)!=ListNode:
             return ListNode.parse(v)

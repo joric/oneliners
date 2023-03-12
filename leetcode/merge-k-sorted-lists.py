@@ -21,7 +21,7 @@ class Solution:
 # https://leetcode.com/problems/merge-k-sorted-lists/discuss/279704/Python-4-lines-O(NlogN)-68ms-beat-97.27
 
 class Solution:
-    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
         r, n, p = [], lists and lists.pop(), None
         while lists or n:
             r[len(r):], n = ([n], n.next or lists and lists.pop()) if n else ([], lists.pop())
@@ -30,7 +30,7 @@ class Solution:
         return n if r else None
 
 class Solution:
-    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
         return (g:=lambda x:ListNode(x[0],g(x[1:]))if x else None)(sorted(*[itertools.chain(*[(f:=lambda x:x and [x.val]+f(x.next) or [])(h) for h in lists])]))
 
 test('''

@@ -2,17 +2,36 @@ from lc import *
 
 class Solution:
     def getSkyline(self, buildings: List[List[int]]) -> List[List[int]]:
-        events = sorted([(L, -H, R) for L, R, H in buildings] + list({(R, 0, None) for _, R, _ in buildings}))
-        res, hp = [[0, 0]], [(0, inf)]
-        for x, negH, R in events:
-            while x >= hp[0][1]: 
-                heapq.heappop(hp)
-            if negH: 
-                heapq.heappush(hp, (negH, R))
-            if res[-1][1] + hp[0][0]: 
-                res += [x, -hp[0][0]],
-        return res[1:]
+        e = sorted([(a,-x,b) for a,b,x in buildings]+[*{(b,0,None) for _,b,_ in buildings}])
+        r = [[0, 0]]
+        h = [(0, inf)]
+        for x,n,b in e:
+            while x>=h[0][1]:
+                heappop(h)
+            if n: 
+                heappush(h,(n,b))
+            if r[-1][1] + h[0][0]:
+                r.append([x,-h[0][0]])
+        return r[1:]
 
+from sortedcontainers import SortedList
+
+class Solution:
+    def getSkyline(self, buildings: list[list[int]]) -> list[list[int]]:
+        h = SortedList([0])
+        s = []
+        for x,y in sorted((x,y) for a,b,x in buildings for x, y in ((a,-x), (b,x))):
+            if y<=0:
+                h.add(y)
+            else:
+                h.remove(-y)
+            if not s or -h[0] != s[-1][1]:
+                s.append([x, -h[0]])
+        return s
+
+class Solution:
+    def getSkyline(self, buildings: list[list[int]]) -> list[list[int]]:
+        return (h:=__import__('sortedcontainers').SortedList([0]),s:=[],[(h.add(y) if y<=0 else h.remove(-y),(not s or -h[0]!=s[-1][1]) and s.append([x,-h[0]])) for x,y in sorted((x,y) for a,b,x in buildings for x, y in ((a,-x),(b,x)))],s)[-1]
 
 test('''
 

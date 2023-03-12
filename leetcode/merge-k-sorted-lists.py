@@ -11,7 +11,6 @@ class Solution:
                 heappush(h,(e.val,i))
         while h:
             x,i = heappop(h)
-            print(x,i,c)
             c.next = ListNode(x)
             c = c.next
             if lists[i].next:

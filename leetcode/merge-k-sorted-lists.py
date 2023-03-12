@@ -20,10 +20,10 @@ class Solution:
         return d.next
 
 class Solution:
-    def mergeKLists(self, l: List[Optional[ListNode]]) -> Optional[ListNode]:
-        return next((d.next for _ in count() if not(h and (c:=(f:=lambda x,i,c:(setattr(c,'next',ListNode(x)),
-            c:=c.next,l[i].next and (setitem(l,i,l[i].next),heappush(h,(l[i].val,i))),c)[-1])(*heappop(h),c)))),
-            (h:=[],d:=(c:=ListNode()),[heappush(h,(e.val,i)) for i,e in enumerate(l) if e]))
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        return next((d.next for _ in count() if not(h and (c:=(f:=lambda x,i,c:(setattr(c,'next',ListNode(x)),c:=c.next,
+            lists[i].next and (setitem(lists,i,lists[i].next),heappush(h,(lists[i].val,i))),c)[-1])(*heappop(h),c)))),
+            (h:=[],d:=(c:=ListNode()),[heappush(h,(e.val,i)) for i,e in enumerate(lists) if e]))
 
 # list expansion
 

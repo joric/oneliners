@@ -152,7 +152,9 @@ def test(text=None, classname=None, check=None, init=None):
         is_iter = lambda v: type(v) in (tuple, set) or is_gen(v)
         to_list = lambda v: v if not is_iter(v) else [to_list(x) for x in v]
         hint = str(get_type_hints(func).get(name, None))
-        if 'ListNode' in hint and type(v)!=ListNode:
+        if 'ListNode]' in hint:
+            return [ListNode.parse(x) for x in v]
+        elif 'ListNode' in hint and type(v)!=ListNode:
             return ListNode.parse(v)
         elif 'TreeNode' in hint and type(v)!=TreeNode:
             return TreeNode.parse(v)
@@ -187,6 +189,8 @@ def test(text=None, classname=None, check=None, init=None):
 
     if not check:
         def check(res, expected, *args):
+            if expected==[] and res is None:
+                return True
             return str(res)==str(expected)
 
     if not classname:

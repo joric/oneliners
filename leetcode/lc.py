@@ -189,8 +189,6 @@ def test(text=None, classname=None, check=None, init=None):
 
     if not check:
         def check(res, expected, *args):
-            if expected==[] and res is None:
-                return True
             return str(res)==str(expected)
 
     if not classname:
@@ -227,9 +225,6 @@ def test(text=None, classname=None, check=None, init=None):
         for t in tests:
             args = tuple(map(vp, t['input']))
             expected = tuple(map(vp, t['output']))
-            if len(expected)==1:
-                expected = expected[0]
-
             func = getattr(cname(), dir(cname)[-1])
             args, iargs, orig = vcast(func, args, init)
 
@@ -237,6 +232,11 @@ def test(text=None, classname=None, check=None, init=None):
                 init(*iargs)
 
             res = vc(func, 'return', func(*args))
+
+            if len(expected)==1:
+                expected = expected[0]
+            expected = vc(func, 'return', expected)
+
             ok = check(res, expected, *args)
             if type(ok) is tuple:
                 ok, res = ok[:2]

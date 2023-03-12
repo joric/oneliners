@@ -29,6 +29,8 @@ class Solution:
             n.next, p = p, n
         return n if r else None
 
+# list expansion
+
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
         return (g:=lambda x:ListNode(x[0],g(x[1:]))if x else None)(sorted(itertools.chain(*[(f:=lambda x:x and [x.val]+f(x.next)or[])(h) for h in lists])))

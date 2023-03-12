@@ -1,5 +1,8 @@
 from lc import *
 
+def check(res,exp,param):
+    return all(a==b if (not a or not b or a[0]==1 or b[0]==1) else True for a,b in zip(res.serialize(),exp))
+
 class Node:
     def __init__(self, val=0, isLeaf=0, topLeft=None, topRight=None, bottomLeft=None, bottomRight=None):
         self.val = val
@@ -8,9 +11,6 @@ class Node:
         self.topRight = topRight
         self.bottomLeft = bottomLeft
         self.bottomRight = bottomRight
-
-    def __eq__(self, other):
-        return all(a==b if (not a or not b or a[0]==1 or b[0]==1) else True for a,b in zip(self.serialize(),other))
 
     def serialize(self):
         res = []
@@ -182,6 +182,7 @@ Constraints:
 n == grid.length == grid[i].length
 n == 2x where 0 <= x <= 6
 
-''')
+''', check=check
+)
 
 

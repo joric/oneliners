@@ -544,6 +544,6 @@ class Solution:
 
 ## References
 
-* https://github.com/Allwin12/python-one-liner
+* https://github.com/Allwin12/python-one-liners
 
 

@@ -281,4 +281,3 @@ def test(text=None, classname=None, check=None, init=None):
 
         ok = check(results,expected)
         print_res(ok, results, expected, methods, arglist)
-

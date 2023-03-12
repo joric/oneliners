@@ -40,7 +40,7 @@ class Solution:
 
 class Solution:
     def trap(self, v: List[int]) -> int:
-        return sum([max(0,min([*accumulate(v, max)][i],[*accumulate(v[::-1], max)][::-1][i])-v[i]) for i in range(len(v))])
+        return sum([max(0,min([*accumulate(v, max)][i],[*accumulate(v[::-1],max)][::-1][i])-v[i]) for i in range(len(v))])
 
 
 test('''

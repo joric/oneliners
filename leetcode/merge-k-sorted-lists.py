@@ -1,39 +1,36 @@
 from lc import *
 
-class Solution:
-    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        dummy = ListNode(None)
-        curr = dummy
-        i = 0
-        q = []
-        for node in lists:
-            if node:
-                heappush(q, (node.val, i, node) )
-                i += 1
-        while q:
-            curr.next = heappop(q)[2]
-            curr = curr.next
-            if curr.next:
-                heappush(q, (curr.next.val, i, curr.next))
-                i+=1
-        return dummy.next
-
-# https://leetcode.com/problems/merge-k-sorted-lists/discuss/279704/Python-4-lines-O(NlogN)-68ms-beat-97.27
+# heap-based
 
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        r, n, p = [], lists and lists.pop(), None
-        while lists or n:
-            r[len(r):], n = ([n], n.next or lists and lists.pop()) if n else ([], lists.pop())
-        for n in sorted(r, key=lambda x: x.val, reverse=True):
-            n.next, p = p, n
-        return n if r else None
+        d = c = ListNode()
+        h = []
+        for i,e in enumerate(lists):
+            if e:
+                heappush(h,(e.val,i))
+        while h:
+            x,i = heappop(h)
+            print(x,i,c)
+            c.next = ListNode(x)
+            c = c.next
+            if lists[i].next:
+                lists[i] = lists[i].next
+                heappush(h,(lists[i].val,i))
+        return d.next
+
+class Solution:
+    def mergeKLists(self, l: List[Optional[ListNode]]) -> Optional[ListNode]:
+        return next((d.next for _ in count() if not(h and (c:=(f:=lambda x,i,c:(setattr(c,'next',ListNode(x)),
+            c:=c.next,l[i].next and (setitem(l,i,l[i].next),heappush(h,(l[i].val,i))),c)[-1])(*heappop(h),c)))),
+            (h:=[],d:=(c:=ListNode()),[heappush(h,(e.val,i)) for i,e in enumerate(l) if e]))
 
 # list expansion
 
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
         return (g:=lambda x:ListNode(x[0],g(x[1:]))if x else None)(sorted(itertools.chain(*[(f:=lambda x:x and [x.val]+f(x.next)or[])(h) for h in lists])))
+
 
 test('''
 

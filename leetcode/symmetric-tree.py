@@ -2,7 +2,7 @@ from lc import *
 
 class Solution:
     def isSymmetric(self, root: TreeNode) -> bool:
-        def mirror(a, b):
+        def mirror(a,b):
             if a and b:
                 return a.val==b.val and mirror(a.left,b.right) and mirror(a.right,b.left)
             return not a and not b

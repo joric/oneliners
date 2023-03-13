@@ -2,6 +2,17 @@ from lc import *
 
 class Solution:
     def isSymmetric(self, root: TreeNode) -> bool:
+        s = [(root.left, root.right)]
+        while s:
+            a,b = s.pop()
+            if a and b and a.val==b.val:
+                s += [(a.left,b.right),(a.right,b.left)]
+            else:
+                return not (a or b)
+        return True
+
+class Solution:
+    def isSymmetric(self, root: TreeNode) -> bool:
         def mirror(a,b):
             if a and b:
                 return a.val==b.val and mirror(a.left,b.right) and mirror(a.right,b.left)
@@ -43,7 +54,7 @@ Output: false
 Example 2:
 Input: root = [1,2,3]
 Output: false
- 
+
 
 Constraints:
 

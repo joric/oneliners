@@ -3,9 +3,9 @@ from lc import *
 class Solution:
     def isSymmetric(self, root: TreeNode) -> bool:
         def mirror(a, b):
-            if not a or not b:
-                return not a and not b
-            return a.val==b.val and mirror(a.left,b.right) and mirror(a.right,b.left)
+            if a and b:
+                return a.val==b.val and mirror(a.left,b.right) and mirror(a.right,b.left)
+            return not a and not b
         return mirror(root.left, root.right) if root else True
 
 class Solution:

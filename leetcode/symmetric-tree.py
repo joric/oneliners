@@ -6,11 +6,11 @@ class Solution:
             if a and b:
                 return a.val==b.val and mirror(a.left,b.right) and mirror(a.right,b.left)
             return not a and not b
-        return mirror(root.left, root.right) if root else True
+        return mirror(root.left,root.right) if root else True
 
 class Solution:
     def isSymmetric(self, root: TreeNode) -> bool:
-        return (f:=lambda a,b:a.val==b.val and f(a.left,b.right) and f(a.right,b.left) if a and b else not(a or b))(root.left, root.right) if root else True
+        return (f:=lambda a,b:a.val==b.val and f(a.left,b.right) and f(a.right,b.left) if a and b else not(a or b))(root.left,root.right) if root else True
 
 test('''
 

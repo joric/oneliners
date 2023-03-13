@@ -10,7 +10,7 @@ class Solution:
 
 class Solution:
     def isSymmetric(self, root: TreeNode) -> bool:
-        return (f:=lambda a,b:a.val==b.val and f(a.left,b.right) and f(a.right,b.left) if a and b else not(a or b))(root.left,root.right) if root else True
+        return root and (f:=lambda a,b:a.val==b.val and f(a.left,b.right) and f(a.right,b.left) if a and b else not(a or b))(root.left,root.right)
 
 test('''
 

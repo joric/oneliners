@@ -4,6 +4,13 @@ class Solution:
     def isSymmetric(self, root: TreeNode) -> bool:
         return not root or (lambda a:lambda p,q:a(a,p,q))(lambda f,l,r:(not l and not r) or (l and r and l.val==r.val and f(f,l.left,r.right) and f(f,l.right,r.left)))(root.left,root.right)
 
+class Solution:
+    def isSymmetric(self, root: TreeNode) -> bool:
+        def mirror(a, b):
+            if not a or not b:
+                return not a and not b
+            return a.val==b.val and mirror(a.left,b.right) and mirror(a.right,b.left)
+        return mirror(root.left, root.right) if root else True
 
 class Solution:
     def isSymmetric(self, root: TreeNode) -> bool:

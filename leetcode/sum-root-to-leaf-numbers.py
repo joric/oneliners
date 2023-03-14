@@ -72,6 +72,10 @@ Example 2:
 Input: root = [4,9,0,5,1]
 Output: 1026
 
+Example 3:
+Input: root = [0,1]
+Output: 1
+
 Explanation:
 
 The root-to-leaf path 4->9->5 represents the number 495.

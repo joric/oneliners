@@ -33,11 +33,11 @@ class Solution:
 
 class Solution:
     def sumNumbers(self, root: TreeNode) -> int:
-        return (f:=lambda t,x:t and (x:=t.val+10*x,f(t.left,x)+f(t.right,x) if (t.left or t.right) else x)[1] or 0)(root,0)
+        return (f:=lambda t,v:t and (v:=t.val+10*v,f(t.left,v)+f(t.right,v) if (t.left or t.right) else v)[1] or 0)(root,0)
 
 class Solution:
     def sumNumbers(self, root: TreeNode) -> int:
-        return (f:=lambda t,x:t and (lambda l,r,x:(l or r) and f(l,x)+f(r,x) or x)(t.left,t.right,t.val+10*x) or 0)(root,0)
+        return (f:=lambda t,v:t and (lambda l,r,v:(l or r) and f(l,v)+f(r,v) or v)(t.left,t.right,t.val+10*v) or 0)(root,0)
 
 test('''
 

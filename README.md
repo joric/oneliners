@@ -68,6 +68,7 @@ To delete a key you can use the `.pop` method (same as `del`), it's shorter than
 
 While loops are not very oneliner-friendly. You can use  `count()` generator with `next()` or `takewhile()`
 (the latter is also a generator, so you need to run it, i.e. with `any()` and `repeat(0)`).
+You could also try `any()` as a while loop instead of `next()`, it might be shorter.
 
 Note that `next` default parameter gets initialized first so you can use it for the startup code.
 

@@ -25,11 +25,6 @@ class Solution:
 
 class Solution:
     def isCompleteTree(self, root: Optional[TreeNode]) -> bool:
-        return next((not any(q[i:]) for _ in count() if not(q[i] and (q:=q+[q[i].left,q[i].right],i:=i+1))),(q:=[root],i:=0))
-
-
-class Solution:
-    def isCompleteTree(self, root: Optional[TreeNode]) -> bool:
         return next((not any(q[i:]) for i in count() if not(q[i] and (q:=q+[q[i].left,q[i].right]))),q:=[root])
 
 test('''

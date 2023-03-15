@@ -86,7 +86,7 @@ class Solution:
 
 class Solution:
     def twoSum(self, nums: List[int], t: int) -> List[int]:
-        return next((((m[t-x],i) for i,x in enumerate(nums) if t-x in m or setitem(m,x,i))),m:={})
+        return next(((m[t-x],i) for i,x in enumerate(nums) if t-x in m or setitem(m,x,i)),m:={})
 ```
 
 * https://leetcode.com/problems/break-a-palindrome/discuss/1481905/Python-3-one-line

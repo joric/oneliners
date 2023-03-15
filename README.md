@@ -85,7 +85,7 @@ class Solution:
         return False
 
 class Solution:
-    def twoSum(self, nums: List[int], t: int) -> List[int]:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
         return next(((m[target-x],i) for i,x in enumerate(nums) if target-x in m or setitem(m,x,i)),m:={})
 ```
 

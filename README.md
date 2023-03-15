@@ -72,37 +72,6 @@ You could also try `any()` as a while loop instead of `next()`, it might be shor
 
 Note that `next` default parameter gets initialized first so you can use it for the startup code.
 
-* https://leetcode.com/problems/sliding-window-maximum
-
-```python
-class Solution:
-    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        r, d = [], deque()
-        for i, n in enumerate(nums):
-            while d and n>=nums[d[-1]]:
-                d.pop()
-            d.append(i)
-            if d[0] == i-k:
-                d.popleft()
-            r.append(nums[d[0]])
-        return r[k-1:]
-
-class Solution:
-    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        return (d:=deque()) or reduce(lambda r,p:(
-            next(_ for _ in count() if not(d and p[1]>=nums[d[-1]] and d.pop())),
-            d.append(p[0]), d[0]==p[0]-k and d.popleft(), r.append(nums[d[0]])) and r,
-            enumerate(nums), [])[k-1:]
-
-class Solution:
-    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        return (d:=deque()) or reduce(lambda r,p:(
-            any(takewhile(lambda _:d and p[1]>=nums[d[-1]] and d.pop(), repeat(0))),
-            d.append(p[0]), d[0]==p[0]-k and d.popleft(), r.append(nums[d[0]])) and r,
-            enumerate(nums), [])[k-1:]
-
-```
-
 * https://leetcode.com/problems/two-sum
 
 ```python
@@ -141,6 +110,37 @@ class Solution:
     def isPossible(self, target: List[int]) -> bool:
         return (s:=sum(target),q:=[-a for a in target],heapify(q)) and next((x==1 for _ in count()
             if (x:=-heappop(q))==1 or s==x or (d:=1+(x-1)%(s-x))==x or not (s:=s-x+d,heappush(q,-d))),1)
+```
+
+* https://leetcode.com/problems/sliding-window-maximum
+
+```python
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        r, d = [], deque()
+        for i, n in enumerate(nums):
+            while d and n>=nums[d[-1]]:
+                d.pop()
+            d.append(i)
+            if d[0] == i-k:
+                d.popleft()
+            r.append(nums[d[0]])
+        return r[k-1:]
+
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        return (d:=deque()) or reduce(lambda r,p:(
+            next(_ for _ in count() if not(d and p[1]>=nums[d[-1]] and d.pop())),
+            d.append(p[0]), d[0]==p[0]-k and d.popleft(), r.append(nums[d[0]])) and r,
+            enumerate(nums), [])[k-1:]
+
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        return (d:=deque()) or reduce(lambda r,p:(
+            any(takewhile(lambda _:d and p[1]>=nums[d[-1]] and d.pop(), repeat(0))),
+            d.append(p[0]), d[0]==p[0]-k and d.popleft(), r.append(nums[d[0]])) and r,
+            enumerate(nums), [])[k-1:]
+
 ```
 
 Use `next`, element index, default value and conjunction to update the first element that matches a predicate.

@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/check-completeness-of-a-binary-tree/discuss/205682/JavaC%2B%2BPython-BFS-Solution-and-DFS-Soluiton
+
 class Solution:
     def isCompleteTree(self, root: Optional[TreeNode]) -> bool:
         def f(t):

@@ -108,6 +108,23 @@ class Solution:
 ```python
 class Solution:
     def isPossible(self, target: List[int]) -> bool:
+        s = sum(target)
+        q = [-a for a in target]
+        heapify(q)
+        while True:
+            x = -heappop(q)
+            if x==1:
+                return True
+            if s==x:
+                return False
+            d = 1 + (x-1) % (s-x)
+            if x==d:
+                return False
+            s = s - x + d
+            heappush(q, -d)
+
+class Solution:
+    def isPossible(self, target: List[int]) -> bool:
         return (s:=sum(target),q:=[-a for a in target],heapify(q)) and next((x==1 for _ in count()
             if (x:=-heappop(q))==1 or s==x or (d:=1+(x-1)%(s-x))==x or not (s:=s-x+d,heappush(q,-d))),1)
 ```

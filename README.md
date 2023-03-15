@@ -245,7 +245,7 @@ class Solution:
 #### Walrus operator
 
 The controversial walrus operator (:=) from [PEP-572](https://peps.python.org/pep-0572/)
-that forced Guido to [resign](https://www.infoworld.com/article/3292936/guido-van-rossum-resigns-whats-next-for-python.html)
+(that [forced Guido to resign](https://www.infoworld.com/article/3292936/guido-van-rossum-resigns-whats-next-for-python.html)),
 can be used to define or update a variable or a function that's used repeatedly.
 It seems to be the most useful operator here, most oneliners would be impossible to do without it.
 

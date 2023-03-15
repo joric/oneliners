@@ -19,7 +19,7 @@ class Solution:
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        return next((((m[target-x],i) for i,x in enumerate(nums) if target-x in m or setitem(m,x,i))),m:={})
+        return next(((m[target-x],i) for i,x in enumerate(nums) if target-x in m or setitem(m,x,i)),m:={})
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:

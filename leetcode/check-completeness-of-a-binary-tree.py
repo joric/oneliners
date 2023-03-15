@@ -22,7 +22,6 @@ class Solution:
             i += 1
         return not any(q[i:])
 
-
 class Solution:
     def isCompleteTree(self, root: Optional[TreeNode]) -> bool:
         return next((not any(q[i:]) for i in count() if not(q[i] and (q:=q+[q[i].left,q[i].right]))),q:=[root])

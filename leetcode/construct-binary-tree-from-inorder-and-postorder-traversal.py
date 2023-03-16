@@ -10,7 +10,7 @@ class Solution:
 
 class Solution:
     def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
-        return (f:=lambda i,p:(TreeNode(p[-1],f(i[:(k:=i.index(p[-1]))],p[:k]),f(i[k+1:],p[k:-1])) if i else None))(inorder,postorder)
+        return (f:=lambda i,p:TreeNode(p[-1],f(i[:(k:=i.index(p[-1]))],p[:k]),f(i[k+1:],p[k:-1])) if i else None)(inorder,postorder)
 
 test('''
 

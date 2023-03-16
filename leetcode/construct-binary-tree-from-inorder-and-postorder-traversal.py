@@ -8,6 +8,10 @@ class Solution:
     def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
         return (f:=lambda i,p:None if (k:=i.index(p[-1]) if i else -1)<0 else TreeNode(p[-1],f(i[:k],p[:k]),f(i[k+1:],p[k:-1])))(inorder,postorder)
 
+class Solution:
+    def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
+        return (f:=lambda i,p:(TreeNode(p[-1],f(i[:(k:=i.index(p[-1]))],p[:k]),f(i[k+1:],p[k:-1])) if i else None))(inorder,postorder)
+
 test('''
 
 106. Construct Binary Tree from Inorder and Postorder Traversal

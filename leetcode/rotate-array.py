@@ -33,6 +33,13 @@ class Solution:
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
         k = k % len(nums)
+        nums[:] = nums[::-1]
+        nums[:r] = nums[:k][::-1] 
+        nums[r:] = nums[k:][::-1]
+
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        k = k % len(nums)
         nums.reverse()
         nums[:k]=(a:=nums[:k]).reverse() or a
         nums[k:]=(b:=nums[k:]).reverse() or b

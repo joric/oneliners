@@ -16,7 +16,7 @@ class Solution:
         reverse(k, n-1)
         return nums
 
-# GCD solution, https://stackoverflow.com/questions/876293/fastest-algorithm-for-circle-shift-n-sized-array-for-m-position
+# GCD solution, true O(n) https://stackoverflow.com/questions/876293/fastest-algorithm-for-circle-shift-n-sized-array-for-m-position
 
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:

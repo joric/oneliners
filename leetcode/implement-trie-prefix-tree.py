@@ -1,10 +1,14 @@
 from lc import *
 
 class Trie:
-    def __init__(self): self.root = {}
-    def insert(self, word): reduce(lambda node, c: node.setdefault(c, {}), list(word) + [''], self.root)
-    def search(self, word): return '' in reduce(lambda node, c: node.get(c, {}), word, self.root)
-    def startsWith(self, prefix): return bool(reduce(lambda node, c: node.get(c, {}), prefix, self.root))
+    def __init__(self):
+        self.root = {}
+    def insert(self, word):
+        reduce(lambda node, c: node.setdefault(c, {}), list(word) + [''], self.root)
+    def search(self, word):
+        return '' in reduce(lambda node, c: node.get(c, {}), word, self.root)
+    def startsWith(self, prefix):
+        return bool(reduce(lambda node, c: node.get(c, {}), prefix, self.root))
 
 Trie = type('',(),{
     '__init__':lambda s:setattr(s,'r',{}),

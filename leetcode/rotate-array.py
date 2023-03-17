@@ -41,8 +41,8 @@ class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
         k = k % len(nums)
         nums.reverse()
-        nums[:k]=(a:=nums[:k]).reverse() or a
-        nums[k:]=(b:=nums[k:]).reverse() or b
+        nums[:k] = reversed(nums[:k])
+        nums[k:] = reversed(nums[k:])
 
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:

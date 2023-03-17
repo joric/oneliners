@@ -16,6 +16,19 @@ class Solution:
         nums[:k] = reverse(nums[:k])
         nums[k:] = reverse(nums[k:])
 
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        def reverse(i, j):
+            while i < j:
+                nums[i], nums[j] = nums[j], nums[i]
+                i, j = i+1, j-1
+        n = len(nums)
+        k = k % n
+        reverse(0, n-1)
+        reverse(0, k-1)
+        reverse(k, n-1)
+        return nums
+
 # GCD solution, https://stackoverflow.com/questions/876293/fastest-algorithm-for-circle-shift-n-sized-array-for-m-position
 
 class Solution:

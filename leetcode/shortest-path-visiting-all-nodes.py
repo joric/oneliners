@@ -10,17 +10,6 @@ class Solution:
                 else: queue, lvl = [(v, nodeVisited | (1 << v)) for u, nodeVisited in queue for v in graph[u] if (v,nodeVisited | (1 << v))  not in seen and not seen.add((v, nodeVisited | (1 << v)))], lvl + 1
         return shortestPath
 
-class Solution:
-    def shortestPathLength(self, graph: List[List[int]]) -> int:
-        p,a = inf,(1<<len(graph))-1
-        for u in range(len(graph)):
-            q,s,l = [(u,(1<<u))],set([(u,(1<<u))]),0
-            while q:
-                if any(n==a for _,n in q):
-                    p,q = min(p,l), []
-                else:
-                    q,l = [(v,n|(1<<v)) for u,n in q for v in graph[u] if (v,n|(1<<v)) not in s and not s.add((v,n|(1<<v)))],l+1
-        return p
 
 class Solution:
     def shortestPathLength(self, graph: List[List[int]]) -> int:

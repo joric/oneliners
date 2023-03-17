@@ -5,7 +5,7 @@ from lc import *
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
         def reverse(a):
-            i,j = 0, len(arr)-1
+            i,j = 0, len(a)-1
             while i < j:
                 a[i], a[j] = a[j], a[i]
                 i += 1
@@ -15,7 +15,6 @@ class Solution:
         nums = reverse(nums)
         nums[:k] = reverse(nums[:k])
         nums[k:] = reverse(nums[k:])
-        return nums
 
 # GCD solution, https://stackoverflow.com/questions/876293/fastest-algorithm-for-circle-shift-n-sized-array-for-m-position
 
@@ -30,6 +29,13 @@ class Solution:
                 j = k
 
 # misc
+
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        k = k % len(nums)
+        nums.reverse()
+        nums[:k]=(a:=nums[:k]).reverse() or a
+        nums[k:]=(b:=nums[k:]).reverse() or b
 
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:

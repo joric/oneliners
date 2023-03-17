@@ -1,20 +1,7 @@
 from lc import *
 
-# Doug Mcelroy, programming pearls, page 33
-
-class Solution:
-    def rotate(self, nums: List[int], k: int) -> None:
-        def reverse(a):
-            i,j = 0, len(a)-1
-            while i < j:
-                a[i], a[j] = a[j], a[i]
-                i += 1
-                j -= 1
-            return a
-        k = k % len(nums)
-        nums = reverse(nums)
-        nums[:k] = reverse(nums[:k])
-        nums[k:] = reverse(nums[k:])
+# https://leetcode.com/problems/rotate-array/discuss/895412/Python-O(n)-inplace-solution-explained
+# AKA Doug Mcelroy, programming pearls, page 33
 
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:

@@ -21,11 +21,6 @@ class BrowserHistory:
             steps -= 1
         return self.b[-1]
 
-class BrowserHistory:
-    __init__=lambda s,h:setattr(s,'b',[h]) or setattr(s,'f',[])
-    visit=lambda s,u:s.f.clear() or s.b.append(u)
-    back=lambda s,p:next(s.b[-1] for _ in count() if not(p and len(s.b)>=2 and (s.f.append(s.b.pop()),p:=p-1)))
-    forward=lambda s,p:next(s.b[-1] for _ in count() if not(p and len(s.f) and (s.b.append(s.f.pop()),p:=p-1)))
 
 BrowserHistory = type('',(),{'__init__':lambda s,h:setattr(s,'b',[h]) or setattr(s,'f',[]),'visit':lambda s,u:s.f.clear() or s.b.append(u),'back':lambda s,p:next(s.b[-1] for _ in count() if not(p and len(s.b)>=2 and (s.f.append(s.b.pop()),p:=p-1))),'forward':lambda s,p:next(s.b[-1] for _ in count() if not(p and len(s.f) and (s.b.append(s.f.pop()),p:=p-1)))})
 

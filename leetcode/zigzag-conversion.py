@@ -5,6 +5,17 @@ class Solution:
         return ''.join([i[1] for i in sorted({((n-1)-abs((n-1)-i%(2*(n-1))),i):c for i,c in enumerate(s)}.items())]) if n>1 else s
 
 test('''
+6. Zigzag Conversion
+Medium
+
+5903
+
+11906
+
+Add to List
+
+Share
+
 The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
 
 P   A   H   N

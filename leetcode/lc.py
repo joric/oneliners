@@ -191,6 +191,8 @@ def test(text=None, classname=None, check=None, init=None):
         def check(res, expected, *args):
             return str(res)==str(expected)
 
+    custom_class_tests = classname is not None
+
     if not classname:
         classname = importlib.import_module('__main__').Solution
 
@@ -208,17 +210,18 @@ def test(text=None, classname=None, check=None, init=None):
                     out.append(m[i])
         return out
 
-    for s in text.splitlines():
-        if s.startswith('Input:'):
-            t = 1
-            tests.append({'input':[],'output':[]})
-            p += s[7:]
-        elif s.startswith('Output:'):
-            tests[-1]['input'] = split_vars(p)
-            tests[-1]['output'] = split_vars(s[8:])
-            p,t = '',0
-        elif t == 1:
-            p += s
+    if not custom_class_tests:
+        for s in text.splitlines():
+            if s.startswith('Input:'):
+                t = 1
+                tests.append({'input':[],'output':[]})
+                p += s[7:]
+            elif s.startswith('Output:'):
+                tests[-1]['input'] = split_vars(p)
+                tests[-1]['output'] = split_vars(s[8:])
+                p,t = '',0
+            elif t == 1:
+                p += s
 
     for cname in cnames:
         passed, total = 0, len(tests)
@@ -247,23 +250,29 @@ def test(text=None, classname=None, check=None, init=None):
 
     # Custom class tests
 
+    # NB! new test system seems incompatible,
+    # i.e. "Input" has semicolon now.
+    # so I detect by classname
+
     param = []
     t = 0
-    for s in text.splitlines():
-        if s=='Input':
-            t = 1
-        elif t == 1:
-            param.append([[],[],[]])
-            param[-1][0] = vp(s)
-            t = 2
-        elif t == 2:
-            param[-1][1] = vp(s)
-            t = 0
-        elif s=='Output':
-            t = 3
-        elif t == 3:
-            param[-1][2] = vp(s)
-            t = 0
+
+    if custom_class_tests:
+        for s in text.splitlines():
+            if s.startswith('Input'):
+                t = 1
+            elif t == 1:
+                param.append([[],[],[]])
+                param[-1][0] = vp(s)
+                t = 2
+            elif t == 2:
+                param[-1][1] = vp(s)
+                t = 0
+            elif s.startswith('Output'):
+                t = 3
+            elif t == 3:
+                param[-1][2] = vp(s)
+                t = 0
 
     for methods, arglist, expected in param:
         results = []

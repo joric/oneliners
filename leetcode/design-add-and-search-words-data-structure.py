@@ -75,6 +75,22 @@ class WordDictionary:
 
 WordDictionary = type('',(),{'__init__':lambda s:setattr(s,'t',{}) or setattr(s,'m',0),'addWord':lambda s,w:setattr(s,'m',max(s.m,len(w))) or reduce(lambda n,c:n.setdefault(c,{}),list(w)+[''],s.t) or None,'search':lambda s,w:len(w)<=s.m and (f:=lambda n,i:'' in n if i>=len(w) else any(f(x,i+1) for x in n.values())if w[i]=='.' else w[i] in n and f(n[w[i]],i+1))(s.t,0)})
 
+# bfs, shortest but slow
+
+class WordDictionary:
+    def __init__(self):
+        self.t = {}
+    def addWord(self, word: str) -> None:
+        reduce(lambda n,c:n.setdefault(c,{}),list(word)+[''],self.t)
+    def search(self, word: str) -> bool:
+        return any('' in x for x in reduce(lambda q,c:[v for n in q for k,v in n.items() if c in (k,'.') and k],word,[self.t]))
+
+WordDictionary = type('',(),{'__init__':lambda s:setattr(s,'t',{}),'addWord':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),list(w)+[''],s.t) or None,'search':lambda s,w:any('' in x for x in reduce(lambda q,c:[v for n in q for k,v in n.items() if c in (k,'.') and k],w,[s.t]))})
+
+'''
+[v for n in q for v in ([n[c]] if c in n else filter('', n.values()) if c=='.' else [])]
+'''
+
 test('''
 211. Design Add and Search Words Data Structure
 Medium

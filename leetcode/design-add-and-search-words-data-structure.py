@@ -1,6 +1,6 @@
 from lc import *
 
-# dfs + simple cutoff by word length (fastest)
+# dfs + simple cutoff by word length (1.5s)
 class WordDictionary:
     def __init__(self):
         self.t = {}
@@ -23,21 +23,21 @@ WordDictionary = type('',(),{
     'search':lambda s,w:len(w)<=s.m and (f:=lambda n,i:0 in n if i==len(w) else any(f(x,i+1) for x in n.values())if w[i]=='.' else w[i] in n and f(n[w[i]],i+1))(s.t,0)
 })
 
-# short dfs + cutoff, a bit slower
+# short dfs + cutoff, a bit slower (2s)
 WordDictionary = type('',(),{
     '__init__':lambda s:setattr(s,'t',{}) or setattr(s,'m',0),
     'addWord':lambda s,w:setattr(s,'m',max(s.m,len(w))) or reduce(lambda n,c:n.setdefault(c,{}),list(w)+[0],s.t) or None,
     'search':lambda s,w:len(w)<=s.m and (f:=lambda n,w:any(f(n[x],w[1:]) for x in (n if w[0]=='.' else [w[0]]) if x in n) if w else 0 in n)(s.t,w)
 })
 
-# short dfs but slow
+# short dfs, slow (15s)
 WordDictionary = type('',(),{
     '__init__':lambda s:setattr(s,'t',{}),
     'addWord':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),list(w)+[0],s.t) or None,
     'search':lambda s,w:(f:=lambda n,w:any(f(n[x],w[1:]) for x in (n if w[0]=='.' else [w[0]]) if x in n) if w else 0 in n)(s.t,w)
 })
 
-# bfs, slowest
+# bfs, slow (12s)
 WordDictionary = type('',(),{
     '__init__':lambda s:setattr(s,'t',{}),
     'addWord':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),list(w)+[0],s.t) or None,

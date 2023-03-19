@@ -55,7 +55,7 @@ class WordDictionary:
 WordDictionary = type('',(),{'__init__':lambda s:setattr(s,'t',{}),'addWord':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),list(w)+[''],s.t) or None,'search':lambda s,w:any('' in x for x in reduce(lambda d,c:sum(([*n.values()] if c=='.' else [n[c]] if c in n else [] for n in d),[]),w,[s.t]))})
 
 
-# bfs + simple cutoff by word length (fastest)
+# dfs + simple cutoff by word length (fastest)
 
 class WordDictionary:
     def __init__(self):

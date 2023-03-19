@@ -1,22 +1,28 @@
 from lc import *
 
-# dfs
+# dfs + simple cutoff by word length (fastest)
 
 class WordDictionary:
     def __init__(self):
         self.t = {}
+        self.m = 0
     def addWord(self, word: str) -> None:
-        reduce(lambda n,c:n.setdefault(c,{}),list(word)+[''],self.t)
+        self.m = max(self.m, len(word))
+        reduce(lambda n,c:n.setdefault(c,{}),list(word)+[0],self.t)
     def search(self, word: str) -> bool:
         def f(n,i):
-            if i >= len(word):
-                return '' in n
-            if word[i] == '.':
+            if i==len(word):
+                return 0 in n
+            if word[i]=='.':
                 return any(f(x,i+1) for x in n.values())
             return word[i] in n and f(n[word[i]],i+1)
-        return f(self.t, 0)
+        return len(word)<=self.m and f(self.t, 0)
 
-WordDictionary = type('',(),{'__init__':lambda s:setattr(s,'t',{}),'addWord':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),list(w)+[''],s.t) or None,'search':lambda s,w:(f:=lambda n,i:'' in n if i>=len(w) else any(f(x,i+1) for x in n.values()) if w[i]=='.' else w[i] in n and f(n[w[i]],i+1))(s.t,0)})
+WordDictionary = type('',(),{
+    '__init__':lambda s:setattr(s,'t',{}) or setattr(s,'m',0),
+    'addWord':lambda s,w:setattr(s,'m',max(s.m,len(w))) or reduce(lambda n,c:n.setdefault(c,{}),list(w)+[0],s.t) or None,
+    'search':lambda s,w:len(w)<=s.m and (f:=lambda n,i:0 in n if i>=len(w) else any(f(x,i+1) for x in n.values())if w[i]=='.' else w[i] in n and f(n[w[i]],i+1))(s.t,0)
+})
 
 # bfs
 
@@ -24,7 +30,7 @@ class WordDictionary:
     def __init__(self):
         self.t = {}
     def addWord(self, word: str) -> None:
-        reduce(lambda n,c:n.setdefault(c,{}),list(word)+[''],self.t)
+        reduce(lambda n,c:n.setdefault(c,{}),list(word)+[0],self.t)
     def search(self, word: str) -> bool:
         q = deque([self.t])
         for c in word:
@@ -34,58 +40,29 @@ class WordDictionary:
                     q += n.values()
                 elif c in n:
                     q += [n[c]]
-        return any('' in n for n in q)
+        return any(0 in n for n in q)
 
-class WordDictionary:
-    def __init__(self):
-        self.t = {}
-    def addWord(self, word: str) -> None:
-        reduce(lambda n,c:n.setdefault(c,{}),list(word)+[''],self.t)
-    def search(self, word: str) -> bool:
-        def f(d,c):
-            q = []
-            for n in d:
-                if c=='.':
-                    q += n.values()
-                elif c in n:
-                    q += [n[c]]
-            return q
-        return any('' in n for n in reduce(f,word,[self.t]))
+WordDictionary = type('',(),{
+    '__init__':lambda s:setattr(s,'t',{}),
+    'addWord':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),list(w)+[0],s.t) or None,
+    'search':lambda s,w:any(0 in n for n in reduce(lambda d,c:sum(([*n.values()] if c=='.' else [n[c]] if c in n else [] for n in d),[]),w,[s.t]))
+})
 
-WordDictionary = type('',(),{'__init__':lambda s:setattr(s,'t',{}),'addWord':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),list(w)+[''],s.t) or None,'search':lambda s,w:any('' in n for n in reduce(lambda d,c:sum(([*n.values()] if c=='.' else [n[c]] if c in n else [] for n in d),[]),w,[s.t]))})
+# short dfs
 
-
-# dfs + simple cutoff by word length (fastest)
-
-class WordDictionary:
-    def __init__(self):
-        self.t = {}
-        self.m = 0
-    def addWord(self, word: str) -> None:
-        self.m = max(self.m, len(word))
-        reduce(lambda n,c:n.setdefault(c,{}),list(word)+[''],self.t)
-    def search(self, word: str) -> bool:
-        def f(n,i):
-            if i>=len(word):
-                return '' in n
-            if word[i]=='.':
-                return any(f(x,i+1) for x in n.values())
-            return word[i] in n and f(n[word[i]],i+1)
-        return len(word)<=self.m and f(self.t, 0)
-
-WordDictionary = type('',(),{'__init__':lambda s:setattr(s,'t',{}) or setattr(s,'m',0),'addWord':lambda s,w:setattr(s,'m',max(s.m,len(w))) or reduce(lambda n,c:n.setdefault(c,{}),list(w)+[''],s.t) or None,'search':lambda s,w:len(w)<=s.m and (f:=lambda n,i:'' in n if i>=len(w) else any(f(x,i+1) for x in n.values())if w[i]=='.' else w[i] in n and f(n[w[i]],i+1))(s.t,0)})
+WordDictionary = type('',(),{
+    '__init__':lambda s:setattr(s,'t',{}),
+    'addWord':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),list(w)+[0],s.t) or None,
+    'search':lambda s,w:(f:=lambda n,w:any(f(n[x],w[1:]) for x in (n if w[0]=='.' else [w[0]]) if x and x in n) if w else 0 in n)(s.t,w)
+})
 
 # bfs, shortest but slow
 
-class WordDictionary:
-    def __init__(self):
-        self.t = {}
-    def addWord(self, word: str) -> None:
-        reduce(lambda n,c:n.setdefault(c,{}),list(word)+[''],self.t)
-    def search(self, word: str) -> bool:
-        return any('' in n for n in reduce(lambda q,c:[v for n in q for k,v in n.items() if c in (k,'.') and k],word,[self.t]))
-
-WordDictionary = type('',(),{'__init__':lambda s:setattr(s,'t',{}),'addWord':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),list(w)+[''],s.t) or None,'search':lambda s,w:any('' in n for n in reduce(lambda q,c:[v for n in q for k,v in n.items() if c in (k,'.') and k],w,[s.t]))})
+WordDictionary = type('',(),{
+    '__init__':lambda s:setattr(s,'t',{}),
+    'addWord':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),list(w)+[0],s.t) or None,
+    'search':lambda s,w:any(0 in n for n in reduce(lambda q,c:[v for n in q for k,v in n.items() if c in (k,'.') and k],w,[s.t]))
+})
 
 test('''
 211. Design Add and Search Words Data Structure

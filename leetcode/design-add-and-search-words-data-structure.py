@@ -30,14 +30,14 @@ WordDictionary = type('',(),{
     'search':lambda s,w:len(w)<=s.m and (f:=lambda n,w:any(f(n[x],w[1:]) for x in (n if w[0]=='.' else [w[0]]) if x in n) if w else 0 in n)(s.t,w)
 })
 
-# short dfs
+# short dfs, slow
 WordDictionary = type('',(),{
     '__init__':lambda s:setattr(s,'t',{}),
     'addWord':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),list(w)+[0],s.t) or None,
     'search':lambda s,w:(f:=lambda n,w:any(f(n[x],w[1:]) for x in (n if w[0]=='.' else [w[0]]) if x and x in n) if w else 0 in n)(s.t,w)
 })
 
-# bfs, shortest but slow
+# bfs, shortest and slowest
 WordDictionary = type('',(),{
     '__init__':lambda s:setattr(s,'t',{}),
     'addWord':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),list(w)+[0],s.t) or None,

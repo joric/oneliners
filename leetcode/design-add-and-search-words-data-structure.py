@@ -87,10 +87,6 @@ class WordDictionary:
 
 WordDictionary = type('',(),{'__init__':lambda s:setattr(s,'t',{}),'addWord':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),list(w)+[''],s.t) or None,'search':lambda s,w:any('' in n for n in reduce(lambda q,c:[v for n in q for k,v in n.items() if c in (k,'.') and k],w,[s.t]))})
 
-'''
-[v for n in q for v in ([n[c]] if c in n else filter('', n.values()) if c=='.' else [])]
-'''
-
 test('''
 211. Design Add and Search Words Data Structure
 Medium

@@ -50,9 +50,9 @@ class WordDictionary:
                 elif c in n:
                     q += [n[c]]
             return q
-        return any('' in x for x in reduce(f,word,[self.t]))
+        return any('' in n for n in reduce(f,word,[self.t]))
 
-WordDictionary = type('',(),{'__init__':lambda s:setattr(s,'t',{}),'addWord':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),list(w)+[''],s.t) or None,'search':lambda s,w:any('' in x for x in reduce(lambda d,c:sum(([*n.values()] if c=='.' else [n[c]] if c in n else [] for n in d),[]),w,[s.t]))})
+WordDictionary = type('',(),{'__init__':lambda s:setattr(s,'t',{}),'addWord':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),list(w)+[''],s.t) or None,'search':lambda s,w:any('' in n for n in reduce(lambda d,c:sum(([*n.values()] if c=='.' else [n[c]] if c in n else [] for n in d),[]),w,[s.t]))})
 
 
 # dfs + simple cutoff by word length (fastest)
@@ -83,9 +83,9 @@ class WordDictionary:
     def addWord(self, word: str) -> None:
         reduce(lambda n,c:n.setdefault(c,{}),list(word)+[''],self.t)
     def search(self, word: str) -> bool:
-        return any('' in x for x in reduce(lambda q,c:[v for n in q for k,v in n.items() if c in (k,'.') and k],word,[self.t]))
+        return any('' in n for n in reduce(lambda q,c:[v for n in q for k,v in n.items() if c in (k,'.') and k],word,[self.t]))
 
-WordDictionary = type('',(),{'__init__':lambda s:setattr(s,'t',{}),'addWord':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),list(w)+[''],s.t) or None,'search':lambda s,w:any('' in x for x in reduce(lambda q,c:[v for n in q for k,v in n.items() if c in (k,'.') and k],w,[s.t]))})
+WordDictionary = type('',(),{'__init__':lambda s:setattr(s,'t',{}),'addWord':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),list(w)+[''],s.t) or None,'search':lambda s,w:any('' in n for n in reduce(lambda q,c:[v for n in q for k,v in n.items() if c in (k,'.') and k],w,[s.t]))})
 
 '''
 [v for n in q for v in ([n[c]] if c in n else filter('', n.values()) if c=='.' else [])]

@@ -1,22 +1,6 @@
 from lc import *
 
-class WordDictionary:
-    def __init__(self):
-        self.t = {}
-    def addWord(self, word: str) -> None:
-        reduce(lambda n,c:n.setdefault(c,{}),list(word)+[''],self.t)
-    def search(self, word: str) -> bool:
-        def f(d,c):
-            a = []
-            for n in d:
-                if c=='.':
-                    a += n.values()
-                elif c in n:
-                    a += [n[c]]
-            return a
-        return any('' in x for x in reduce(f,word,[self.t]))
-
-WordDictionary = type('',(),{'__init__':lambda s:setattr(s,'t',{}),'addWord':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),list(w)+[''],s.t) or None,'search':lambda s,w:any('' in x for x in reduce(lambda d,c:sum(([*n.values()] if c=='.' else [n[c]] if c in n else [] for n in d),[]),w,[s.t]))})
+# dfs
 
 class WordDictionary:
     def __init__(self):
@@ -35,6 +19,42 @@ class WordDictionary:
         return f(self.t, 0)
 
 WordDictionary = type('',(),{'__init__':lambda s:setattr(s,'t',{}),'addWord':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),list(w)+[''],s.t) or None,'search':lambda s,w:(f:=lambda n,i:'' in n if i>=len(w) else any(f(x,i+1) for x in n.values()) if w[i]=='.' else w[i] in n and f(n[w[i]],i+1))(s.t,0)})
+
+# bfs
+
+class WordDictionary:
+    def __init__(self):
+        self.t = {}
+    def addWord(self, word: str) -> None:
+        reduce(lambda n,c:n.setdefault(c,{}),list(word)+[''],self.t)
+    def search(self, word: str) -> bool:
+        q = deque([self.t])
+        for c in word:
+            for _ in range(len(q)):
+                n = q.popleft()
+                if c=='.':
+                    q += n.values()
+                elif c in n:
+                    q += [n[c]]
+        return any('' in n for n in q)
+
+class WordDictionary:
+    def __init__(self):
+        self.t = {}
+    def addWord(self, word: str) -> None:
+        reduce(lambda n,c:n.setdefault(c,{}),list(word)+[''],self.t)
+    def search(self, word: str) -> bool:
+        def f(d,c):
+            q = []
+            for n in d:
+                if c=='.':
+                    q += n.values()
+                elif c in n:
+                    q += [n[c]]
+            return q
+        return any('' in x for x in reduce(f,word,[self.t]))
+
+WordDictionary = type('',(),{'__init__':lambda s:setattr(s,'t',{}),'addWord':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),list(w)+[''],s.t) or None,'search':lambda s,w:any('' in x for x in reduce(lambda d,c:sum(([*n.values()] if c=='.' else [n[c]] if c in n else [] for n in d),[]),w,[s.t]))})
 
 test('''
 211. Design Add and Search Words Data Structure

@@ -65,17 +65,15 @@ class WordDictionary:
         self.m = max(self.m, len(word))
         reduce(lambda n,c:n.setdefault(c,{}),list(word)+[''],self.t)
     def search(self, word: str) -> bool:
-        if len(word)>self.m:
-            return False
         def f(n,i):
-            if i >= len(word):
+            if i>=len(word):
                 return '' in n
-            if word[i] == '.':
+            if word[i]=='.':
                 return any(f(x,i+1) for x in n.values())
             return word[i] in n and f(n[word[i]],i+1)
-        return f(self.t, 0)
+        return len(word)<=self.m and f(self.t, 0)
 
-WordDictionary = type('',(),{'__init__':lambda s:setattr(s,'t',{}) or setattr(s,'m',0),'addWord':lambda s,w:setattr(s,'m',max(s.m,len(w))) or reduce(lambda n,c:n.setdefault(c,{}),list(w)+[''],s.t) or None,'search':lambda s,w:False if len(w)>s.m else (f:=lambda n,i:'' in n if i>=len(w) else any(f(x,i+1) for x in n.values())if w[i]=='.' else w[i] in n and f(n[w[i]],i+1))(s.t,0)})
+WordDictionary = type('',(),{'__init__':lambda s:setattr(s,'t',{}) or setattr(s,'m',0),'addWord':lambda s,w:setattr(s,'m',max(s.m,len(w))) or reduce(lambda n,c:n.setdefault(c,{}),list(w)+[''],s.t) or None,'search':lambda s,w:len(w)<=s.m and (f:=lambda n,i:'' in n if i>=len(w) else any(f(x,i+1) for x in n.values())if w[i]=='.' else w[i] in n and f(n[w[i]],i+1))(s.t,0)})
 
 test('''
 211. Design Add and Search Words Data Structure

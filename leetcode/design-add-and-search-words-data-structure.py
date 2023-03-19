@@ -13,9 +13,7 @@ class WordDictionary:
                 return '' in n
             if word[i] == '.':
                 return any(f(x,i+1) for x in n.values())
-            if word[i] not in n:
-                return False
-            return f(n[word[i]],i+1)
+            return word[i] in n and f(n[word[i]],i+1)
         return f(self.t, 0)
 
 WordDictionary = type('',(),{'__init__':lambda s:setattr(s,'t',{}),'addWord':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),list(w)+[''],s.t) or None,'search':lambda s,w:(f:=lambda n,i:'' in n if i>=len(w) else any(f(x,i+1) for x in n.values()) if w[i]=='.' else w[i] in n and f(n[w[i]],i+1))(s.t,0)})

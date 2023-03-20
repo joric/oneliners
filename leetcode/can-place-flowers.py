@@ -12,7 +12,7 @@ class Solution:
 
 class Solution:
     def canPlaceFlowers(self, d: List[int], n: int) -> bool:
-        return n<=sum((len(list(g))-1)//2 for t,g in groupby([0]+d+[0]) if t==0)
+        return n<=sum((len([*g])-1)//2 for t,g in groupby([0]+d+[0]) if t==0)
 
 test('''
 

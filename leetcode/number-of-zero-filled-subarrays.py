@@ -13,7 +13,7 @@ class Solution:
 
 class Solution:
     def zeroFilledSubarray(self, nums: List[int]) -> int:
-        return sum(accumulate(nums,lambda x,y:0 if y else x+1,initial=0))
+        return sum(accumulate(nums,lambda c,x:0 if x else c+1,initial=0))
 
 test('''
 2348. Number of Zero-Filled Subarrays

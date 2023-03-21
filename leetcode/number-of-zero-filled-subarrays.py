@@ -2,7 +2,7 @@ from lc import *
 
 class Solution:
     def zeroFilledSubarray(self, nums: List[int]) -> int:
-        r,c = 0,0
+        r=c=0
         for x in nums:
             if x:
                 c = 0

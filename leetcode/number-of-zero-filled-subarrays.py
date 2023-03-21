@@ -15,6 +15,10 @@ class Solution:
     def zeroFilledSubarray(self, nums: List[int]) -> int:
         return sum(accumulate(nums,lambda c,x:0 if x else c+1,initial=0))
 
+class Solution:
+    def zeroFilledSubarray(self, nums: List[int]) -> int:
+        return (c:=0) or sum(c:=0 if x else c+1 for x in nums)
+
 test('''
 2348. Number of Zero-Filled Subarrays
 Medium

@@ -2,30 +2,16 @@ from lc import *
 
 class Solution:
     def minScore(self, n: int, roads: List[List[int]]) -> int:
-        r,s,g,d=set(),{1},defaultdict(list),defaultdict(set)
-        all((g[a].append(b),g[b].append(a),d[a].add(t),d[b].add(t)) for a,b,t in roads)
-        def f(r,s,x):
-            s.add(x)
-            r.update(set(d[x]))
-            all(f(r,s,y) for y in g[x] if y not in s)
-        f(r,s,1)
-        return min(r)
-
-class Solution:
-    def minScore(self, n: int, roads: List[List[int]]) -> int:
-        return (r:=set(),s:={1},g:=defaultdict(list),d:=defaultdict(set),all((g[a].append(b),g[b].append(a),d[a].add(t),d[b].add(t)) for a,b,t in roads),(f:=lambda r,s,x:(s.add(x),r.update(set(d[x])),all(f(r,s,y) for y in g[x] if y not in s)))(r,s,1),min(r))[-1]
-
-class Solution:
-    def minScore(self, n: int, roads: List[List[int]]) -> int:
         r = inf
         v = set()
-        q = deque([1])
-        g = defaultdict(dict)
+        q = [1]
+        g = defaultdict(list)
         for a,b,d in roads:
-            g[a][b]=g[b][a]=d
+            g[a].append((b,d))
+            g[b].append((a,d))
         while q:
-            x = q.popleft()
-            for a,s in g[x].items():
+            x = q.pop()
+            for a,s in g[x]:
                 if a not in v:
                     q.append(a)
                     v.add(a)
@@ -34,7 +20,7 @@ class Solution:
 
 class Solution:
     def minScore(self, n: int, roads: List[List[int]]) -> int:
-        return next((r for _ in count() if not(q and (x:=q.popleft(),[(r:=min(r,s),a not in v and (q.append(a),v.add(a))) for a,s in g[x].items()]))),(g:=defaultdict(dict),r:=inf,v:=set(),q:=deque([1]),all((setitem(g[a],b,d),setitem(g[b],a,d)) for a,b,d in roads)))
+        return next((r for _ in count() if not(q and (x:=q.pop(),[(r:=min(r,s),a not in v and (q.append(a),v.add(a))) for a,s in g[x]]))),(g:=defaultdict(list),r:=inf,v:=set(),q:=[1],all((g[a].append((b,d)),g[b].append((a,d))) for a,b,d in roads)))
 
 test('''
 

@@ -1,5 +1,6 @@
 from lc import *
 
+# bfs
 class Solution:
     def minScore(self, n: int, roads: List[List[int]]) -> int:
         g,v,q,r = defaultdict(list),set(),[1],inf
@@ -8,8 +9,8 @@ class Solution:
             g[b].append((a,d))
         while q:
             x = q.pop()
-            for a,s in g[x]:
-                r = min(r,s)
+            for a,d in g[x]:
+                r = min(r,d)
                 if a not in v:
                     q.append(a)
                     v.add(a)
@@ -18,6 +19,25 @@ class Solution:
 class Solution:
     def minScore(self, n: int, roads: List[List[int]]) -> int:
         return next((r for _ in count() if not(q and (x:=q.pop(),[(r:=min(r,s),a not in v and (q.append(a),v.add(a))) for a,s in g[x]]))),(g:=defaultdict(list),r:=inf,v:=set(),q:=[1],all((g[a].append((b,d)),g[b].append((a,d))) for a,b,d in roads)))
+
+# dfs
+class Solution:
+    def minScore(self, n: int, roads: List[List[int]]) -> int:
+        g,v=defaultdict(list),set()
+        for a,b,d in roads:
+            g[a].append((b,d))
+            g[b].append((a,d))
+        def f(a,v):
+            if a not in v:
+                v.add(a)
+                for b,d in g[a]:
+                    f(b,v)
+        f(1,v)
+        return min(d for a,b,d in roads if a in v and b in v)
+
+class Solution:
+    def minScore(self, n: int, roads: List[List[int]]) -> int:
+        return (g:=defaultdict(list),v:=set(),all((g[a].append((b,d)),g[b].append((a,d))) for a,b,d in roads),(f:=lambda a,v: a not in v and (v.add(a),[f(b,v) for b,d in g[a]]))(1,v)) and min(d for a,b,d in roads if a in v and b in v)
 
 test('''
 

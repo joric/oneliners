@@ -31,7 +31,8 @@ class Solution:
         def f(u):
             if u not in s:
                 s.add(u)
-                any(map(f,g[u]))
+                for v in g[u]:
+                    f(v)
         f(1)
         return min(w for u,v,w in roads if s>={u,v})
 

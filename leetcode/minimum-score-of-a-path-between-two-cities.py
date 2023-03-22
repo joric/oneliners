@@ -31,15 +31,14 @@ class Solution:
         def f(u):
             if u not in s:
                 s.add(u)
-                for v in g[u]:
-                    f(v)
+                all(map(f,g[u]))
         f(1)
         return min(w for u,v,w in roads if s>={u,v})
 
 class Solution:
     def minScore(self, n: int, roads: List[List[int]]) -> int:
         return (g:=defaultdict(list),s:=set(),all((g[u].append(v),g[v].append(u)) for u,v,_ in roads),
-            (f:=lambda u:u not in s and (s.add(u),[f(v) for v in g[u]]))(1)) and min(w for u,v,w in roads if s>={u,v})
+            (f:=lambda u:u not in s and (s.add(u),all(map(f,g[u]))))(1)) and min(w for u,v,w in roads if s>={u,v})
 
 test('''
 

@@ -1,7 +1,7 @@
 from lc import *
 
 class Solution:
-    def generate(self, numRows):
+    def generate(self, numRows) -> List[List[int]]:
         pascal = [[1]*(i+1) for i in range(numRows)]
         for i in range(numRows):
             for j in range(1,i):
@@ -9,14 +9,14 @@ class Solution:
         return pascal
 
 class Solution:
-    def generate(self, numRows):
+    def generate(self, numRows) -> List[List[int]]:
             res = [[1]]
             for i in range(1, numRows):
                 res += [list(map(lambda x, y: x+y, res[-1] + [0], [0] + res[-1]))]
             return res[:numRows]
 
 class Solution:
-    def generate(self, numRows):
+    def generate(self, numRows) -> List[List[int]]:
         return reduce(lambda a,_:a+[list(map(lambda x,y:x+y,a[-1]+[0],[0]+a[-1]))],range(1,numRows),[[1]])[:numRows]
 
 class Solution:

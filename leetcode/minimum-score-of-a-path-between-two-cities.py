@@ -15,6 +15,27 @@ class Solution:
     def minScore(self, n: int, roads: List[List[int]]) -> int:
         return (r:=set(),s:={1},g:=defaultdict(list),d:=defaultdict(set),all((g[a].append(b),g[b].append(a),d[a].add(t),d[b].add(t)) for a,b,t in roads),(f:=lambda r,s,x:(s.add(x),r.update(set(d[x])),all(f(r,s,y) for y in g[x] if y not in s)))(r,s,1),min(r))[-1]
 
+class Solution:
+    def minScore(self, n: int, roads: List[List[int]]) -> int:
+        r = inf
+        v = set()
+        q = deque([1])
+        g = defaultdict(dict)
+        for a,b,d in roads:
+            g[a][b]=g[b][a]=d
+        while q:
+            x = q.popleft()
+            for a,s in g[x].items():
+                if a not in v:
+                    q.append(a)
+                    v.add(a)
+                r = min(r,s)
+        return r
+
+class Solution:
+    def minScore(self, n: int, roads: List[List[int]]) -> int:
+        return next((r for _ in count() if not(q and (x:=q.popleft(),[(r:=min(r,s),a not in v and (q.append(a),v.add(a))) for a,s in g[x].items()]))),(g:=defaultdict(dict),r:=inf,v:=set(),q:=deque([1]),all((setitem(g[a],b,d),setitem(g[b],a,d)) for a,b,d in roads)))
+
 test('''
 
 2492. Minimum Score of a Path Between Two Cities

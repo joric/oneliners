@@ -8,17 +8,17 @@ class Solution:
             g[u].append((v,w))
             g[v].append((u,w))
         while q:
-            x = q.pop()
-            for u,w in g[x]:
+            u = q.pop()
+            for v,w in g[u]:
                 r = min(r,w)
-                if u not in s:
-                    q.append(u)
-                    s.add(u)
+                if v not in s:
+                    q.append(v)
+                    s.add(v)
         return r
 
 class Solution:
     def minScore(self, n: int, roads: List[List[int]]) -> int:
-        return next((r for _ in count() if not(q and (x:=q.pop(),[(r:=min(r,w),u not in s and (q.append(u),s.add(u))) for u,w in g[x]]))),
+        return next((r for _ in count() if not(q and (u:=q.pop(),[(r:=min(r,w),v not in s and (q.append(v),s.add(v))) for v,w in g[u]]))),
             (g:=defaultdict(list),s:=set(),q:=[1],r:=inf,all((g[u].append((v,w)),g[v].append((u,w))) for u,v,w in roads)))
 
 # dfs

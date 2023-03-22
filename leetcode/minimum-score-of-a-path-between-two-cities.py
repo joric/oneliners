@@ -25,21 +25,21 @@ class Solution:
 class Solution:
     def minScore(self, n: int, roads: List[List[int]]) -> int:
         g,s=defaultdict(list),set()
-        for u,v,w in roads:
-            g[u].append((v,w))
-            g[v].append((u,w))
+        for u,v,_ in roads:
+            g[u].append(v)
+            g[v].append(u)
         def f(u):
             if u not in s:
                 s.add(u)
-                for v,w in g[u]:
+                for v in g[u]:
                     f(v)
         f(1)
         return min(w for u,v,w in roads if u in s and v in s)
 
 class Solution:
     def minScore(self, n: int, roads: List[List[int]]) -> int:
-        return (g:=defaultdict(list),s:=set(),all((g[u].append((v,w)),g[v].append((u,w))) for u,v,w in roads),
-            (f:=lambda u:u not in s and (s.add(u),[f(v) for v,w in g[u]]))(1)) and min(w for u,v,w in roads if u in s and v in s)
+        return (g:=defaultdict(list),s:=set(),all((g[u].append(v),g[v].append(u)) for u,v,_ in roads),
+            (f:=lambda u:u not in s and (s.add(u),[f(v) for v in g[u]]))(1)) and min(w for u,v,w in roads if u in s and v in s)
 
 test('''
 

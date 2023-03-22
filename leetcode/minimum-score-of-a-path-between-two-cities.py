@@ -20,7 +20,7 @@ class Solution:
 
 class Solution:
     def minScore(self, n: int, roads: List[List[int]]) -> int:
-        return (r:=set(),s:={1},g:=defaultdict(list),d:=defaultdict(set),all((g[a].append(b),g[b].append(a),d[a].add(t),d[b].add(t)) for a,b,t in roads),(f:=lambda r,s,x: (s.add(x),r.update(set(d[x])),all(f(r,s,y) for y in g[x] if y not in s)))(r,s,1),min(r))[-1]
+        return (r:=set(),s:={1},g:=defaultdict(list),d:=defaultdict(set),all((g[a].append(b),g[b].append(a),d[a].add(t),d[b].add(t)) for a,b,t in roads),(f:=lambda r,s,x:(s.add(x),r.update(set(d[x])),all(f(r,s,y) for y in g[x] if y not in s)))(r,s,1),min(r))[-1]
 
 test('''
 

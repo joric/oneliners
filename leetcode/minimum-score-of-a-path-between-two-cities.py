@@ -2,20 +2,17 @@ from lc import *
 
 class Solution:
     def minScore(self, n: int, roads: List[List[int]]) -> int:
-        r = inf
-        v = set()
-        q = [1]
-        g = defaultdict(list)
+        g,v,q,r = defaultdict(list),set(),[1],inf
         for a,b,d in roads:
             g[a].append((b,d))
             g[b].append((a,d))
         while q:
             x = q.pop()
             for a,s in g[x]:
+                r = min(r,s)
                 if a not in v:
                     q.append(a)
                     v.add(a)
-                r = min(r,s)
         return r
 
 class Solution:

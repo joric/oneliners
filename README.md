@@ -51,7 +51,7 @@ Also it's possible to unpack values in a list comprehension i.e. `[f(a,b) a,b fo
 
 #### Generators
 
-Comprehension generators `(x for y in z)` are memory efficient since they only require memory for
+Generator expressions `(x for y in z)` are memory efficient since they only require memory for
 the one value they yield. If you don't care about memory you can use square brackets to run the loop.
 You can also exhaust a generator using `all()` or `any()` depending on the return values.
 You can also save a few chars using `[*g]` syntax instead of `list(g)` where g is a generator function.

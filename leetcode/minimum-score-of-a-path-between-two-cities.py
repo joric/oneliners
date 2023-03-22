@@ -38,7 +38,7 @@ class Solution:
 class Solution:
     def minScore(self, n: int, roads: List[List[int]]) -> int:
         return (g:=defaultdict(list),s:=set(),all((g[u].append(v),g[v].append(u)) for u,v,_ in roads),
-            (f:=lambda u:u not in s and (s.add(u),all(map(f,g[u]))))(1)) and min(w for u,v,w in roads if s>={u,v})
+            (f:=lambda u:u not in s and (s.add(u),[*map(f,g[u])]))(1)) and min(w for u,v,w in roads if s>={u,v})
 
 test('''
 

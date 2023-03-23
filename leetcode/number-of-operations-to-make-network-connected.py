@@ -17,6 +17,27 @@ class Solution:
             return 1
         return sum(map(f,range(n))) - 1
 
+# fastest (99.9%)
+
+class Solution:
+    def makeConnected(self, n: int, connections: List[List[int]]) -> int:
+        if len(connections) < n - 1:
+            return -1
+        r = [*range(n)]
+        def f(r,i):
+            while r[i] is not i:
+                r[i] = r[r[i]]
+                i = r[i]
+            return i
+        for x,y in connections:
+            a,b = f(r,x),f(r,y)
+            if a is not b:
+                r[a] = b
+                n-=1
+        return n-1
+
+# shortest
+
 class Solution:
     def makeConnected(self, n: int, connections: List[List[int]]) -> int:
         if len(connections)<n-1:

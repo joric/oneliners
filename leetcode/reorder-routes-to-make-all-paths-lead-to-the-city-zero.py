@@ -2,25 +2,19 @@ from lc import *
 
 class Solution:
     def minReorder(self, n: int, connections: List[List[int]]) -> int:
-        a = defaultdict(list)
-        v = [0]*n
-        c = [0]
-        for i, j in connections:
-            a[i].append([j,1])
-            a[j].append([i,-1])
-        def f(i):
-            v[i] = 1
-            for x in a[i]:
-                if v[x[0]]==0:
-                    f(x[0])
-                    if x[1]==1:
-                        c[0] += 1
-        f(0)
-        return c[0]
+        d = defaultdict(dict)
+        s = set()
+        for a,b in connections:
+            d[a][b] = 1
+            d[b][a] = 0
+        def f(a):
+            s.add(a)
+            return sum(d[a][b]+f(b) for b in d[a] if b not in s)
+        return f(0)
 
 class Solution:
     def minReorder(self, n: int, connections: List[List[int]]) -> int:
-        return (a:=defaultdict(list),v:=[0]*n,c:=[0],all((a[i].append([j,1]),a[j].append([i,-1])) for i, j in connections),(f:=lambda i:setitem(v,i,1) or [v[x[0]]==0 and f(x[0]) and x[1]==1 and setitem(c,0,c[0]+1) for x in a[i]])(0)) and c[0]
+        return (d:=defaultdict(dict),s:=set(),any(setitem(d[a],b,1) or setitem(d[b],a,0) for a,b in connections)) and (f:=lambda a:s.add(a) or sum(d[a][b]+f(b) for b in d[a] if b not in s))(0)
 
 test('''
 

@@ -41,7 +41,7 @@ class Solution:
 
 class Solution:
     def countPairs(self, n: int, edges: list[list[int]]) -> int:
-        return (g:=defaultdict(set),s:=set(),r:=0,[g[a].add(b) or g[b].add(a) for a,b in edges],f:=lambda i:0 if i in s else s.add(i) or 1+sum(f(j) for j in g[i] if j not in s),[(c:=f(i),n:=n-c,r:=r+c*n) for i in range(n)]) and r
+        return (g:=defaultdict(set),s:=set(),any(g[a].add(b) or g[b].add(a) for a,b in edges)) and sum((c:=(f:=lambda i:i not in s and (s.add(i) or 1+sum(f(j) for j in g[i] if j not in s)))(i))*(n:=n-c) for i in range(n))
 
 test('''
 2316. Count Unreachable Pairs of Nodes in an Undirected Graph

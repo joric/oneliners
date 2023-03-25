@@ -2,7 +2,7 @@ from lc import *
 
 class Solution:
     def countPairs(self, n: int, edges: List[List[int]]) -> int:
-        p = [i for i in range(n)]
+        p = [*range(n)]
         r = [1] * n
         def f(i):
             while i!=p[i]:

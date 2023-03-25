@@ -20,7 +20,7 @@ class Solution:
                 p[i]=j
                 r[j]+=r[i]
             return c
-        return comb(n,2)-sum(u(i,j) for i,j in edges)
+        return n*(n-1)//2 - sum(u(i,j) for i,j in edges)
 
 class Solution:
     def countPairs(self, n: int, edges: list[list[int]]) -> int:
@@ -29,10 +29,10 @@ class Solution:
             g[a].add(b)
             g[b].add(a)
         def f(i):
-            if i in s:
-                return 0
-            s.add(i)
-            return 1+sum(f(j) for j in g[i] if j not in s)
+            if i not in s:
+                s.add(i)
+                return 1+sum(f(j) for j in g[i] if j not in s)
+            return 0
         for i in range(n):
             if i not in s:
                 c = f(i)

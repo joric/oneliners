@@ -1,29 +1,26 @@
 from lc import *
 
 class Solution:
-    def countPairs(self, n: int, edges: List[List[int]]) -> int:
-        g,s,v,r = defaultdict(set),set(),set(),0
+    def countPairs(self, n: int, edges: list[list[int]]) -> int:
+        g,s,r = defaultdict(set),set(),0
         for a,b in edges:
             g[a].add(b)
             g[b].add(a)
         def f(i):
+            if i in s:
+                return 0
             s.add(i)
-            v.add(i)
-            for j in g[i]:
-                if j not in v:
-                    f(j)
+            return 1+sum(f(j) for j in g[i] if j not in s)
         for i in range(n):
             if i not in s:
-                v = set()
-                f(i)
-                t = len(v)
-                r += t*(n-t)
-                n -= t
+                c = f(i)
+                n -= c
+                r += c * n
         return r
 
 class Solution:
-    def countPairs(self, n: int, edges: List[List[int]]) -> int:
-        return (g:=defaultdict(set),s:=set(),v:=set(),r:=0,[g[a].add(b) or g[b].add(a) for a,b in edges],f:=lambda i:(s.add(i),v.add(i),[f(j) for j in g[i] if j not in v]),[(v:=set(),f(i),t:=len(v),r:=r+t*(n-t),n:=n-t) for i in range(n) if i not in s]) and r
+    def countPairs(self, n: int, edges: list[list[int]]) -> int:
+        return (g:=defaultdict(set),s:=set(),r:=0,[g[a].add(b) or g[b].add(a) for a,b in edges],f:=lambda i:0 if i in s else s.add(i) or 1+sum(f(j) for j in g[i] if j not in s),[(c:=f(i),n:=n-c,r:=r+c*n) for i in range(n) if i not in s]) and r
 
 test('''
 2316. Count Unreachable Pairs of Nodes in an Undirected Graph

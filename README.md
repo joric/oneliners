@@ -553,7 +553,7 @@ class Solution:
             or (k not in v and (v.update({k:v[i]+1}) or q.append(k)))),-1)
 ```
 
-* You can check if any of the numbers is negative as `x|y<0`, if both numbers are non-zero as `x|y`.
+* You can check if any of the numbers is negative as `x|y<0` or if both numbers are non-zero as `x|y`.
 
 Example:
 

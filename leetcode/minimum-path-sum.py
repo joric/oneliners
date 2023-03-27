@@ -6,7 +6,7 @@ class Solution:
 
 class Solution:
     def minPathSum(self, grid: List[List[int]]) -> int:
-        return (n:=len(grid[0]),f:=[0]+[inf]*(n-1),any(setitem(f,m,r[m]+min(f[m-1] if m else f[m],f[m])) for r in grid for m in range(n))) and f[-1]
+        return (n:=len(grid[0]),f:=[0]+[inf]*(n-1),[setitem(f,m,r[m]+min(f[m-1] if m else f[m],f[m])) for r in grid for m in range(n)]) and f[-1]
 
 test('''
 64. Minimum Path Sum

@@ -47,7 +47,6 @@ You can't unpack lambda tuples in Python 3 since [PEP 3113](https://peps.python.
 * `lambda (x, y): x + y` in Python 2 becomes `lambda xy:(lambda x,y: x+y)(*xy)` in Python 3.
 
 You can also unpack multiple tuples as `lambda xy,ab:(lambda x,y,a,b: x+y+a+b)(*(xy+ab))`.
-Also it's possible to unpack values in a list comprehension i.e. `[f(a,b) a,b for [ab]]` (sadly, walrus operator can't unpack tuples).
 
 #### Generators
 

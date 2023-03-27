@@ -553,6 +553,19 @@ class Solution:
             or (k not in v and (v.update({k:v[i]+1}) or q.append(k)))),-1)
 ```
 
+* You can check if both numbers are negative as `x|y<0`, you can check if both numbers are 0 as `x|y`.
+
+Example:
+
+* https://leetcode.com/problems/minimum-path-sum
+
+```python
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        return (f:=cache(lambda i,j:i|j<0 and inf or grid[i][j]+(i|j and min(f(i,j-1),f(i-1,j)))))
+            (len(grid)-1,len(grid[0])-1)
+```
+
 ## References
 
 * https://github.com/Allwin12/python-one-liners

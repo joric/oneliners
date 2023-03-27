@@ -8,6 +8,10 @@ class Solution:
     def minPathSum(self, grid: List[List[int]]) -> int:
         return (n:=len(grid[0]),s:=[0]+[inf]*(n-1),[setitem(s,i,r[i]+min(s[i-1] if i else s[i],s[i])) for r in grid for i in range(n)]) and s[-1]
 
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        return (f:=cache(lambda i,j:inf if i<0 or j<0 else grid[i][j]+(min(f(i,j-1),f(i-1,j)) if i or j else 0)))(len(grid)-1,len(grid[0])-1)
+
 test('''
 64. Minimum Path Sum
 Medium

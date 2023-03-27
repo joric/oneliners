@@ -14,7 +14,7 @@ class Solution:
 
 class Solution:
     def minPathSum(self, grid: List[List[int]]) -> int:
-        return (f:=cache(lambda i,j:inf if (i|j)<0 else grid[i][j]+(min(f(i,j-1),f(i-1,j)) if i|j else 0)))(len(grid)-1,len(grid[0])-1)
+        return (f:=cache(lambda i,j:i|j<0 and inf or grid[i][j]+(i|j and min(f(i,j-1),f(i-1,j)))))(len(grid)-1,len(grid[0])-1)
 
 test('''
 64. Minimum Path Sum

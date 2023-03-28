@@ -12,6 +12,10 @@ class Solution:
 
 class Solution:
     def mincostTickets(self, days: List[int], costs: List[int]) -> int:
+        return (f:=cache(lambda i:0 if i<1 else f(i-1) if i not in s else min(f(i-1)+costs[0],f(i-7)+costs[1],f(i-30)+costs[2])))(max(s:=set(days)))
+
+class Solution:
+    def mincostTickets(self, days: List[int], costs: List[int]) -> int:
         return (f:=cache(lambda i:0 if i<1 else f(i-1) if i not in s else min(f(i-d)+c for d,c in list(zip([1,7,30],costs)))))(max(s:=set(days)))
 
 class Solution:

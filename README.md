@@ -571,7 +571,3 @@ class Solution:
 * https://pythononeliners.com
 * https://github.com/Allwin12/python-one-liners
 * https://github.com/finxter/PythonOneLiners
-* https://www.reddit.com/r/PythonOneLiners
-
-
-

@@ -4,6 +4,10 @@ class Solution:
     def maxSatisfaction(self, satisfaction: List[int]) -> int:
         return max(accumulate(accumulate([0]+sorted(satisfaction,reverse=True))))
 
+class Solution:
+    def maxSatisfaction(self, satisfaction: List[int]) -> int:
+        return max(0,*accumulate(accumulate(sorted(satisfaction)[::-1])))
+
 test('''
 1402. Reducing Dishes
 Hard

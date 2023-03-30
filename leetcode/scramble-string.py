@@ -3,7 +3,11 @@ from lc import *
 class Solution:
     @cache
     def isScramble(self, s1: str, s2: str) -> bool:
-        return s1==s2 or (sorted(s1)==sorted(s2) and any(self.isScramble(s1[:i],s2[:i]) and self.isScramble(s1[i:],s2[i:]) or self.isScramble(s1[:i],s2[-i:]) and self.isScramble(s1[i:],s2[:-i]) for i in range(1, len(s1))))
+        return s1==s2 or any(self.isScramble(s1[:i],s2[:i]) and self.isScramble(s1[i:],s2[i:]) or self.isScramble(s1[:i],s2[-i:]) and self.isScramble(s1[i:],s2[:-i]) for i in range(1, len(s1)))
+
+class Solution:
+    def isScramble(self, s1: str, s2: str) -> bool:
+        return (f:=cache(lambda a,b:a==b or any((f(a[:i],b[:i]) and f(a[i:],b[i:])) or (f(a[i:],b[:-i]) and f(a[:i],b[-i:])) for i in range(1,len(a)))))(s1,s2)
 
 class Solution:
     def isScramble(self, s1: str, s2: str) -> bool:

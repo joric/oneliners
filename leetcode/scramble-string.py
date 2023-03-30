@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/scramble-string/discuss/682394/Fast-one-line-recursive-python3
+
 class Solution:
     @cache
     def isScramble(self, s1: str, s2: str) -> bool:
@@ -11,7 +13,7 @@ class Solution:
 
 class Solution:
     def isScramble(self, s1: str, s2: str) -> bool:
-        return (f:=cache(lambda a,b:a==b or any((f(a[:i],b[:i])& f(a[i:],b[i:]))|(f(a[i:],b[:-i])& f(a[:i],b[-i:]))for i in range(1,len(a)))))(s1,s2)
+        return (f:=cache(lambda a,b:a==b or any((f(a[:i],b[:i])&f(a[i:],b[i:]))|(f(a[i:],b[:-i])&f(a[:i],b[-i:]))for i in range(1,len(a)))))(s1,s2)
 
 test('''
 

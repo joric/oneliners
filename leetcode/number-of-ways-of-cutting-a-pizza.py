@@ -24,7 +24,10 @@ class Solution:
 
 class Solution:
     def ways(self, pizza: List[str], k: int) -> int:
-        return (m:=len(pizza),n:=len(pizza[0]),s:=[[int(c!='.') for c in r] for r in pizza],a:=lambda i,j: s[i][j] if 0<=i<m and 0<=j<n else 0,any(setitem(s[i],j,s[i][j]+(a(i+1,j) + a(i,j+1) - a(i+1,j+1))) for i in range(m-1,-1,-1) for j in range(n-1,-1,-1))) and (f:=cache(lambda i,j,c:sum(a(i,j)-a(h,j)>0 and f(h,j,c-1) for h in range(i+1,m))+sum(a(i,j)-a(i,v)>0 and f(i,v,c-1) for v in range(j+1,n)) if c else int(a(i,j)>0)))(0,0,k-1)%(10**9+7)
+        return (m:=len(pizza),n:=len(pizza[0]),s:=[[int(c!='.') for c in r] for r in pizza],a:=lambda i,j:0<=i<m and 0<=j<n and s[i][j],
+        any(setitem(s[i],j,s[i][j]+(a(i+1,j)+a(i,j+1)-a(i+1,j+1))) for i in range(m)[::-1] for j in range(n)[::-1]),
+        (f:=cache(lambda i,j,c:sum(a(i,j)-a(h,j)>0 and f(h,j,c-1) for h in range(i+1,m))+sum(a(i,j)-a(i,v)>0 and f(i,v,c-1)
+        for v in range(j+1,n)) if c else int(a(i,j)>0)))(0,0,k-1)%(10**9+7))[-1]
 
 test('''
 

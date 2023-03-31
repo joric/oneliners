@@ -24,10 +24,20 @@ class Solution:
 
 class Solution:
     def ways(self, pizza: List[str], k: int) -> int:
-        return (m:=len(pizza),n:=len(pizza[0]),s:=[[int(c!='.') for c in r] for r in pizza],a:=lambda i,j:0<=i<m and 0<=j<n and s[i][j],
-        any(setitem(s[i],j,s[i][j]+(a(i+1,j)+a(i,j+1)-a(i+1,j+1))) for i in range(m)[::-1] for j in range(n)[::-1]),
-        (f:=cache(lambda i,j,c:sum(a(i,j)-a(h,j)>0 and f(h,j,c-1) for h in range(i+1,m))+sum(a(i,j)-a(i,v)>0 and f(i,v,c-1)
-        for v in range(j+1,n)) if c else int(a(i,j)>0)))(0,0,k-1)%(10**9+7))[-1]
+        return (m:=len(pizza),n:=len(pizza[0]),s:=[[int(c!='.') for c in r] for r in pizza],a:=lambda i,j:0<=i<m and 0<=j<n and s[i][j], any(setitem(s[i],j,s[i][j]+(a(i+1,j)+a(i,j+1)-a(i+1,j+1))) for i in range(m)[::-1] for j in range(n)[::-1]), (f:=cache(lambda i,j,c:sum(a(i,j)-a(h,j)>0 and f(h,j,c-1) for h in range(i+1,m))+sum(a(i,j)-a(i,v)>0 and f(i,v,c-1) for v in range(j+1,n)) if c else int(a(i,j)>0)))(0,0,k-1)%(10**9+7))[-1]
+
+class Solution:
+    def ways(self, pizza: List[str], k: int) -> int:
+        m,n = len(pizza),len(pizza[0])
+        s = [[0]*(n+1) for _ in range(m+1)]
+        any(setitem(s[r],c,s[r][c]+s[r][c+1]+s[r+1][c]-s[r+1][c+1]+(pizza[r][c]=='A')) for r in range(m)[::-1] for c in range(n)[::-1])
+        f = cache(lambda t,r,c:0 if s[r][c]==0 else 1 if t==0 else sum(s[r][c]-s[i][c]>0 and f(t-1,i,c) for i in range(r+1,m))+sum(s[r][c]-s[r][j]>0 and f(t-1,r,j) for j in range(c+1,n)))
+        return f(k-1,0,0)%(10**9+7)
+
+class Solution:
+    def ways(self, pizza: List[str], k: int) -> int:
+        return (m:=len(pizza),n:=len(pizza[0]),s:=[[0]*(n+1) for _ in range(m+1)],any(setitem(s[r],c,s[r][c]+s[r][c+1]+s[r+1][c]-s[r+1][c+1]+(pizza[r][c]=='A')) for r in range(m)[::-1] for c in range(n)[::-1]),(f:=cache(lambda t,r,c:0 if s[r][c]==0 else 1 if t==0 else sum(s[r][c]-s[i][c]>0 and f(t-1,i,c) for i in range(r+1,m))+sum(s[r][c]-s[r][j]>0 and f(t-1,r,j) for j in range(c+1,n))))(k-1,0,0)%(10**9+7))[-1]
+
 
 test('''
 

@@ -28,7 +28,7 @@ class Solution:
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        return (target in nums and nums.index(target)+1)-1
+        return (target in nums and 1+nums.index(target))-1
 
 test('''
 704. Binary Search

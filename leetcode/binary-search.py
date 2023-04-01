@@ -16,7 +16,7 @@ class Solution:
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        return i if (i:=bisect_left(nums, target))<len(nums) and nums[i]==target else -1
+        return i if (i:=bisect_left(nums,target))<len(nums) and nums[i]==target else -1
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:

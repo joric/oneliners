@@ -16,6 +16,10 @@ class Solution:
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
+        return (f:=lambda a,b:-1 if a>b else i if (m:=nums[i:=(a+b)//2])==target else f(a,i-1) if target<m else f(i+1,b))(0,len(nums)-1)
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
         return i if (i:=bisect_left(nums,target))<len(nums) and nums[i]==target else -1
 
 class Solution:

@@ -573,6 +573,12 @@ Example:
 * https://leetcode.com/problems/scramble-string
 
 ```python
+
+class Solution:
+    def isScramble(self, s1: str, s2: str) -> bool:
+        return (f:=cache(lambda a,b:a==b or any((f(a[:i],b[:i]) and f(a[i:],b[i:]))
+        or (f(a[i:],b[:-i]) and f(a[:i],b[-i:])) for i in range(1,len(a)))))(s1,s2)
+
 class Solution:
     def isScramble(self, s1: str, s2: str) -> bool:
         return (f:=cache(lambda a,b:a==b or any((f(a[:i],b[:i])&f(a[i:],b[i:]))

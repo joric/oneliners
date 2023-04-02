@@ -4,7 +4,6 @@ class Solution:
     def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:
         return (lambda p:[len(p)-bisect_left(p,(success+a-1)//a) for a in spells])(sorted(potions))
 
-
 test('''
 2300. Successful Pairs of Spells and Potions
 Medium

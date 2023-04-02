@@ -566,7 +566,7 @@ class Solution:
             (len(grid)-1,len(grid[0])-1)
 ```
 
-* You can use bitwise operators `|` instead of logical operators `or` where possible, it's shorter.
+* You can use bitwise operators `&`,`|` instead of logical operators `and`,`or` where possible, it's shorter.
 
 Example:
 

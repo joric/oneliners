@@ -18,7 +18,6 @@ class Solution:
     def numRescueBoats(self, people: List[int], limit: int) -> int:
         return reduce(lambda j,i:j-1 if i<j and p[i]+p[j]<=limit else j,range(j:=len(p:=sorted(people)[::-1])),j-1)+1
 
-
 test('''
 881. Boats to Save People
 Medium
@@ -52,6 +51,10 @@ Input: people = [3,5,3,4], limit = 5
 Output: 4
 Explanation: 4 boats (3), (3), (4), (5)
  
+Example 4:
+
+Input: people = [3,1,7], limit = 7
+Output: 2
 
 Constraints:
 

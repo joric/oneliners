@@ -5,7 +5,8 @@ class Solution:
         people.sort(reverse=True)
         i, j = 0, len(people) - 1
         while i <= j:
-            if people[i] + people[j] <= limit: j -= 1
+            if people[i]+people[j]<=limit:
+                j -= 1
             i += 1
         return i
 
@@ -16,6 +17,7 @@ class Solution:
 class Solution:
     def numRescueBoats(self, people: List[int], limit: int) -> int:
         return reduce(lambda j,i:j-1 if i<j and p[i]+p[j]<=limit else j,range(j:=len(p:=sorted(people)[::-1])),j-1)+1
+
 
 test('''
 881. Boats to Save People

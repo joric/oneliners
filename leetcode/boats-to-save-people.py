@@ -18,6 +18,10 @@ class Solution:
     def numRescueBoats(self, people: List[int], limit: int) -> int:
         return reduce(lambda j,i:j-1 if i<j and p[i]+p[j]<=limit else j,range(j:=len(p:=sorted(people)[::-1])),j-1)+1
 
+class Solution:
+    def numRescueBoats(self, people: List[int], limit: int) -> int:
+        return reduce(lambda j,i:j-(i<j and p[i]+p[j]<=limit),range(j:=len(p:=sorted(people)[::-1])),j-1)+1
+
 test('''
 881. Boats to Save People
 Medium

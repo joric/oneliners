@@ -41,6 +41,10 @@ class Solution:
     def partitionString(self, s: str) -> int:
         return (d:='') or 1+sum(c in d and (d:=c)==c or not(d:=d+c) for c in s)
 
+class Solution:
+    def partitionString(self, s: str) -> int:
+        return (d:='') or 1+sum((d:=c+(d,'')[t:=(c in d)],t)[1] for c in s)
+
 test('''
 
 2405. Optimal Partition of String

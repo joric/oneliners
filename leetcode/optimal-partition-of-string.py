@@ -19,6 +19,24 @@ class Solution:
     def partitionString(self, s: str) -> int:
         return (d:=set(),r:=1,all((c in d and (d:=set(),r:=r+1),d.add(c)) for c in s),r)[3]
 
+# this is actually faster
+
+class Solution:
+    def partitionString(self, s: str) -> int:
+        d = ''
+        r = 1
+        for c in s:
+            if c in d:
+                d = c
+                r += 1
+            else:
+                d += c
+        return r
+
+class Solution:
+    def partitionString(self, s: str) -> int:
+        return (d:='',r:=1,all((c in d and (d:=c,r:=r+1) or (d:=d+c)) for c in s),r)[3]
+
 test('''
 
 2405. Optimal Partition of String

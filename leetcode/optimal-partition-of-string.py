@@ -39,7 +39,7 @@ class Solution:
 
 class Solution:
     def partitionString(self, s: str) -> int:
-        return (d:='') or 1+sum(c in d and (d:=c)!=1 or (d:=d+c)==1 for c in s)
+        return (d:='') or 1+sum(c in d and (d:=c)==c or not(d:=d+c) for c in s)
 
 test('''
 

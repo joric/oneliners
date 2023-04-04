@@ -13,7 +13,7 @@ class Solution:
 
 class Solution:
     def partitionString(self, s: str) -> int:
-        return reduce(lambda p,c:c in p[1]and(p[0]+1,{c})or(p[0],p[1]|{c}),s,[1,set()])[0]
+        return reduce(lambda p,c:c in p[1] and (p[0]+1,{c}) or (p[0],p[1]|{c}),s,[1,set()])[0]
 
 test('''
 

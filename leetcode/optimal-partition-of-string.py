@@ -2,18 +2,22 @@ from lc import *
 
 class Solution:
     def partitionString(self, s: str) -> int:
-        cur = set()
-        res = 1
+        d = set()
+        r = 1
         for c in s:
-            if c in cur:
-                cur = set()
-                res += 1
-            cur.add(c)
-        return res
+            if c in d:
+                d = set()
+                r += 1
+            d.add(c)
+        return r
 
 class Solution:
     def partitionString(self, s: str) -> int:
         return reduce(lambda p,c:c in p[1] and (p[0]+1,{c}) or (p[0],p[1]|{c}),s,[1,set()])[0]
+
+class Solution:
+    def partitionString(self, s: str) -> int:
+        return (d:=set(),r:=1,all((c in d and (d:=set(),r:=r+1),d.add(c)) for c in s),r)[3]
 
 test('''
 

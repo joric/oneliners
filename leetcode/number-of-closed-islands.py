@@ -32,8 +32,17 @@ class Solution:
         return sum(grid[y][x]==0 and not f(y,x) for y in range(h) for x in range(w))
 
 class Solution:
-    def closedIsland(self, grid: List[List[int]]) -> int:
-        return (h:=len(grid),w:=len(grid[0]),f:=lambda y,x:0<=y<h and 0<=x<w and grid[y][x]==0 and not(setitem(grid[y],x,1),any(map(f,(y-1,y,y+1,y),(x,x-1,x,x+1)))),any(any(map(f,(0,h-1),(x,x))) for x in range(w)),any(any(map(f,(y,y),(0,w-1))) for y in range(h))) and sum(grid[y][x]==0 and not f(y,x) for y in range(h) for x in range(w))
+    def closedIsland(self, grid: List[List[str]]) -> int:
+        h,w = len(grid),len(grid[0])
+        g = {i+j*1j:1-x for i,r in enumerate(grid) for j,x in enumerate(r)}
+        f = lambda z:g.pop(z,0) and bool([f(z+1j**k) for k in range(4)])
+        [[*map(f,(0+x*1j,(h-1)+x*1j))] for x in range(w)]
+        [[*map(f,(y+0*1j,y+(w-1)*1j))] for y in range(h)]
+        return sum(map(f,set(g)))
+
+class Solution:
+    def closedIsland(self, grid: List[List[str]]) -> int:
+        return (h:=len(grid),w:=len(grid[0]),g:={i+j*1j:1-x for i,r in enumerate(grid) for j,x in enumerate(r)},f:=lambda z:g.pop(z,0) and bool([f(z+1j**k) for k in range(4)]),[[*map(f,(0+x*1j,(h-1)+x*1j))] for x in range(w)],[[*map(f,(y+0*1j,y+(w-1)*1j))] for y in range(h)]) and sum(map(f,set(g)))
 
 test('''
 1254. Number of Closed Islands

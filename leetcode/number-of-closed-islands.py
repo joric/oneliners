@@ -78,6 +78,11 @@ Input: grid = [[1,1,1,1,1,1,1],
 Output: 2
  
 
+Example 4:
+
+Input: grid = [[1]]
+Output: 0
+
 Constraints:
 
 1 <= grid.length, grid[0].length <= 100

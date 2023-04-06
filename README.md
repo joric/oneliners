@@ -242,6 +242,18 @@ class Solution:
 
 ```
 
+You can convert lists to bool with `!=0` instead of `bool()` (3 chars shorter):
+
+* https://leetcode.com/problems/number-of-closed-islands
+
+```python
+class Solution:
+    def closedIsland(self, grid: List[List[str]]) -> int:
+        return (g:={i+j*1j:1-x for i,r in enumerate(grid) for j,x in enumerate(r)},
+        f:=lambda z:g.pop(z,0) and [f(z+1j**k) for k in range(4)]!=0,[f(z) for z in set(g)
+        if not(0<z.real<len(grid)-1 and 0<z.imag<len(grid[0])-1)]) and sum(map(f,set(g)))
+```
+
 #### Walrus operator
 
 The controversial walrus operator (:=) from [PEP-572](https://peps.python.org/pep-0572/)
@@ -584,7 +596,6 @@ class Solution:
         return (f:=cache(lambda a,b:a==b or any((f(a[:i],b[:i])&f(a[i:],b[i:]))
             |(f(a[i:],b[:-i])&f(a[:i],b[-i:])) for i in range(1,len(a)))))(s1,s2)
 ```
-
 
 ## References
 

@@ -33,16 +33,14 @@ class Solution:
 
 class Solution:
     def closedIsland(self, grid: List[List[str]]) -> int:
-        h,w = len(grid),len(grid[0])
         g = {i+j*1j:1-x for i,r in enumerate(grid) for j,x in enumerate(r)}
         f = lambda z:g.pop(z,0) and bool([f(z+1j**k) for k in range(4)])
-        [f(x*1j)|f((h-1)+x*1j) for x in range(w)]
-        [f(y)|f(y+(w-1)*1j) for y in range(h)]
+        [f(z) for z in set(g) if not(0<z.real<len(grid)-1 and 0<z.imag<len(grid[0])-1)]
         return sum(map(f,set(g)))
 
 class Solution:
     def closedIsland(self, grid: List[List[str]]) -> int:
-        return (h:=len(grid),w:=len(grid[0]),g:={i+j*1j:1-x for i,r in enumerate(grid) for j,x in enumerate(r)},f:=lambda z:g.pop(z,0) and bool([f(z+1j**k) for k in range(4)]),[f(x*1j)|f((h-1)+x*1j) for x in range(w)],[f(y)|f(y+(w-1)*1j) for y in range(h)]) and sum(map(f,set(g)))
+        return (g:={i+j*1j:1-x for i,r in enumerate(grid) for j,x in enumerate(r)},f:=lambda z:g.pop(z,0) and bool([f(z+1j**k) for k in range(4)]),[f(z) for z in set(g) if not(0<z.real<len(grid)-1 and 0<z.imag<len(grid[0])-1)]) and sum(map(f,set(g)))
 
 test('''
 1254. Number of Closed Islands
@@ -91,6 +89,11 @@ Example 4:
 
 Input: grid = [[1]]
 Output: 0
+
+Example 5:
+
+Input: grid = [[0,1,1,1,1,1,1,1],[1,0,1,0,0,0,0,1],[1,0,0,0,0,1,0,1],[0,1,0,0,0,1,0,1],[1,0,0,1,0,1,0,1],[1,1,1,1,0,0,1,1],[1,0,0,0,0,0,1,1],[0,1,1,1,1,1,1,1]]
+Output: 1
 
 Constraints:
 

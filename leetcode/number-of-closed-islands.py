@@ -35,7 +35,7 @@ class Solution:
     def closedIsland(self, grid: List[List[str]]) -> int:
         g = {i+j*1j:1-x for i,r in enumerate(grid) for j,x in enumerate(r)}
         f = lambda z:g.pop(z,0) and bool([f(z+1j**k) for k in range(4)])
-        [f(z) for z in set(g) if not(0<z.real<len(grid)-1 and 0<z.imag<len(grid[0])-1)]
+        sum(f(z) for z in set(g) if not(0<z.real<len(grid)-1 and 0<z.imag<len(grid[0])-1))
         return sum(map(f,set(g)))
 
 class Solution:

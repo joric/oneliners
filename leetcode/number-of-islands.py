@@ -17,7 +17,7 @@ class Solution:
 
 class Solution:
     def numIslands(self, grid):
-        return sum(map(f:=lambda z:g.pop(z,0) and bool([f(z+1j**k) for k in range(4)]),set(g:={i+j*1j:int(x) for i,r in enumerate(grid) for j,x in enumerate(r)})))
+        return sum(map(f:=lambda z:g.pop(z,0) and [f(z+1j**k) for k in range(4)]!=0,set(g:={i+j*1j:int(x) for i,r in enumerate(grid) for j,x in enumerate(r)})))
 
 test('''
 200. Number of Islands

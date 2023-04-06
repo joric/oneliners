@@ -201,6 +201,9 @@ class Solution:
             set(g:= {i + j*1j: val for i, row in enumerate(grid) for j, val in enumerate(row)})))
 ```
 
+
+You can convert lists to bool with `!=0` instead of `bool()` (3 chars shorter):
+
 * https://leetcode.com/problems/number-of-islands
 
 ```python
@@ -213,8 +216,18 @@ class Solution:
 
 class Solution:
     def numIslands(self, grid):
-        return sum(map(f:=lambda z:g.pop(z,0) and bool([f(z + 1j**k) for k in range(4)]),
+        return sum(map(f:=lambda z:g.pop(z,0) and [f(z + 1j**k) for k in range(4)]!=0,
             set(g:={i + j*1j:int(x) for i,row in enumerate(grid) for j,x in enumerate(row)})))
+```
+
+* https://leetcode.com/problems/number-of-closed-islands
+
+```python
+class Solution:
+    def closedIsland(self, grid: List[List[str]]) -> int:
+        return (g:={i+j*1j:1-x for i,r in enumerate(grid) for j,x in enumerate(r)},
+        f:=lambda z:g.pop(z,0) and [f(z+1j**k) for k in range(4)]!=0,[f(z) for z in set(g)
+        if not(0<z.real<len(grid)-1 and 0<z.imag<len(grid[0])-1)]) and sum(map(f,set(g)))
 ```
 
 * https://leetcode.com/problems/unique-paths-iii
@@ -240,18 +253,6 @@ class Solution:
         [r:=f(z + 1j**k,r) for k in range(4)],g.update({z:x}))] and r)
         (next(z for z,x in g.items() if x==2), 0)
 
-```
-
-You can convert lists to bool with `!=0` instead of `bool()` (3 chars shorter):
-
-* https://leetcode.com/problems/number-of-closed-islands
-
-```python
-class Solution:
-    def closedIsland(self, grid: List[List[str]]) -> int:
-        return (g:={i+j*1j:1-x for i,r in enumerate(grid) for j,x in enumerate(r)},
-        f:=lambda z:g.pop(z,0) and [f(z+1j**k) for k in range(4)]!=0,[f(z) for z in set(g)
-        if not(0<z.real<len(grid)-1 and 0<z.imag<len(grid[0])-1)]) and sum(map(f,set(g)))
 ```
 
 #### Walrus operator

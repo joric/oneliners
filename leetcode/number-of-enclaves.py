@@ -20,7 +20,7 @@ class Solution:
 
 class Solution:
     def numEnclaves(self, grid: List[List[int]]) -> int:
-        return (g:={i+j*1j:x for i,r in enumerate(grid) for j,x in enumerate(r)},f:=lambda z:g.pop(z,0) and [f(z+1j**k) for k in range(4)]!=0,sum(f(z) for z in set(g) if not(0<z.real<len(grid)-1 and 0<z.imag<len(grid[0])-1))) and sum(g.values())
+        return (g:={i+j*1j:x for i,r in enumerate(grid) for j,x in enumerate(r)},f:=lambda z:g.pop(z,0) and [f(z+1j**k) for k in range(4)],[f(z) for z in set(g) if not(0<z.real<len(grid)-1 and 0<z.imag<len(grid[0])-1)]) and sum(g.values())
 
 test('''
 1020. Number of Enclaves

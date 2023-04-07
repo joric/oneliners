@@ -27,8 +27,8 @@ class Solution:
             if 0<=y<h and 0<=x<w and grid[y][x]==0:
                 grid[y][x] = 1
                 any(map(f,(y-1,y,y+1,y),(x,x-1,x,x+1)))
-        any(any(map(f,(0,h-1),(x,x))) for x in range(w))
-        any(any(map(f,(y,y),(0,w-1))) for y in range(h))
+        all((f(0,x),f(h-1,x)) for x in range(w))
+        all((f(y,0),f(y,w-1)) for y in range(h))
         return sum(grid[y][x]==0 and not f(y,x) for y in range(h) for x in range(w))
 
 class Solution:
@@ -40,8 +40,7 @@ class Solution:
 
 class Solution:
     def closedIsland(self, grid: List[List[str]]) -> int:
-        return (g:={i+j*1j:1-x for i,r in enumerate(grid) for j,x in enumerate(r)},f:=lambda z:g.pop(z,0) and [f(z+1j**k) for k
-        in range(4)]!=0,[f(z) for z in set(g) if not(0<z.real<len(grid)-1 and 0<z.imag<len(grid[0])-1)]) and sum(map(f,set(g)))
+        return (g:={i+j*1j:1-x for i,r in enumerate(grid) for j,x in enumerate(r)},f:=lambda z:g.pop(z,0) and [f(z+1j**k) for k in range(4)]!=0,[f(z) for z in set(g) if not(0<z.real<len(grid)-1 and 0<z.imag<len(grid[0])-1)]) and sum(map(f,set(g)))
 
 test('''
 1254. Number of Closed Islands

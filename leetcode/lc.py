@@ -135,7 +135,7 @@ cnames = []
 # use test(```leetcode description```) to run latest Solution
 # use test() between solutions to add them to queue (optional)
 
-def test(text=None, classname=None, check=None, init=None):
+def test(text=None, classname=None, check=None, init=None, parser=None):
     if not text:
         cname = importlib.import_module('__main__').Solution
         cnames.append(cname)
@@ -164,6 +164,8 @@ def test(text=None, classname=None, check=None, init=None):
             return round(v, 5)
         if t:=next((t for t in (str,int,bool) if hint==str(t)), None):
             return t(v) if v is not None else None if t is not bool else False
+        if parser:
+            return parser(hint,v)
         return v
 
     def vcast(func, args, init=None):

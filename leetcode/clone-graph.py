@@ -54,7 +54,7 @@ class Solution:
             for n in x.neighbors:
                 if n not in v:
                     f(n)
-                v[x].neighbors += [v[n]]
+                v[x].neighbors.append(v[n])
             return v[x]
         return f(node) if node else None
 

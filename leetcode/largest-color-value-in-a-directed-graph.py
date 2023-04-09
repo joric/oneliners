@@ -1,27 +1,28 @@
 from lc import *
 
-class Solution:
-    def largestPathValue(self, colors: str, edges: List[List[int]]) -> int:
-        n = len(colors)
-        d = [0]*n
-        g = [[] for _ in range(n)]
-        for u, v in edges:
-            g[u].append(v)
-            d[v] += 1
-        q = [u for u in range(n) if d[u]==0]
-        c = [[0]*26 for _ in range(n)]
-        for u in q:
-            c[u][ord(colors[u])-ord('a')] += 1
-            for v in g[u]:
-                c[v] = list(map(max,c[v],c[u]))
-                d[v] -= 1
-                if d[v]==0:
-                    q.append(v)
-        return -1 if len(q)<n else max(max(x) for x in c)
+# https://leetcode.com/problems/largest-color-value-in-a-directed-graph/discuss/1198908/Python-shortest-code-and-fast
 
 class Solution:
     def largestPathValue(self, colors: str, edges: List[List[int]]) -> int:
-        return (n:=len(colors),d:=[0]*n,g:=[[] for _ in range(n)],[(g[u].append(v),setitem(d,v,d[v]+1)) for u, v in edges],q:=[u for u in range(n) if d[u]==0],c:=[[0]*26 for _ in range(n)],[(t:=ord(colors[u])-ord('a'),setitem(c[u],t,c[u][t]+1),[(setitem(c,v,[*map(max,c[v],c[u])]),setitem(d,v,d[v]-1),d[v]==0 and q.append(v)) for v in g[u]]) for u in q],-1 if len(q)<n else max(max(x) for x in c))[-1]
+        d = Counter()
+        g = defaultdict(list)
+        c = defaultdict(Counter)
+        for u, v in edges:
+            g[u].append(v)
+            d[v] += 1
+        q = [u for u in range(len(colors)) if d[u]==0]
+        for u in q:
+            c[u][colors[u]] += 1
+            for v in g[u]:
+                c[v] |= c[u]
+                d[v] -= 1
+                if d[v]==0:
+                    q.append(v)
+        return sum(d.values()) and -1 or max(max(c[u].values()) for u in c)
+
+class Solution:
+    def largestPathValue(self, colors: str, edges: List[List[int]]) -> int:
+        return (d:=Counter(),g:=defaultdict(list),c:=defaultdict(Counter),[(g[u].append(v),d.update({v:1})) for u, v in edges],q:=[u for u in range(len(colors)) if d[u]==0],[(c[u].update({colors[u]:1}),[(setitem(c,v,c[v]|c[u]),d.update({v:-1}),d[v]==0 and q.append(v)) for v in g[u]]) for u in q],sum(d.values()) and -1 or max(max(c[u].values()) for u in c))[-1]
 
 test('''
 1857. Largest Color Value in a Directed Graph
@@ -59,6 +60,10 @@ Input: colors = "a", edges = [[0,0]]
 Output: -1
 Explanation: There is a cycle from 0 to 0.
  
+
+Example 3:
+Input: colors = "hhqhuqhqff", edges = [[0,1],[0,2],[2,3],[3,4],[3,5],[5,6],[2,7],[6,7],[7,8],[3,8],[5,8],[8,9],[3,9],[6,9]]
+Output: 3
 
 Constraints:
 

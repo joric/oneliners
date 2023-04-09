@@ -4,9 +4,7 @@ from lc import *
 
 class Solution:
     def largestPathValue(self, colors: str, edges: List[List[int]]) -> int:
-        d = Counter()
-        g = defaultdict(list)
-        c = defaultdict(Counter)
+        d,g,c = Counter(), defaultdict(list), defaultdict(Counter)
         for u, v in edges:
             g[u].append(v)
             d[v] += 1

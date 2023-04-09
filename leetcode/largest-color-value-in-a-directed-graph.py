@@ -65,6 +65,14 @@ Example 3:
 Input: colors = "hhqhuqhqff", edges = [[0,1],[0,2],[2,3],[3,4],[3,5],[5,6],[2,7],[6,7],[7,8],[3,8],[5,8],[8,9],[3,9],[6,9]]
 Output: 3
 
+Example 4:
+Input: colors = "ab", edges = [[0,1],[1,1]]
+Output: -1
+
+Example 5:
+Input: colors = "g", edges = []
+Output: 1
+
 Constraints:
 
 n == colors.length

@@ -3,7 +3,7 @@ from lc import *
 class Solution:
     def largestPathValue(self, colors: str, edges: List[List[int]]) -> int:
         n = len(colors)
-        d = [0]*(n:=len(colors))
+        d = [0]*n
         g = [[] for _ in range(n)]
         for u, v in edges:
             g[u].append(v)

@@ -531,7 +531,6 @@ class Solution:
             return j==len(w)
         return sum(f(s,w) for w in words)
 
-
 class Solution:
     def expressiveWords(self, s: str, words: List[str]) -> int:
         return sum((f:=lambda v,w,j=0:next((0 for i in range(len(v)) if not(j<len(w) and v[i]==w[j]

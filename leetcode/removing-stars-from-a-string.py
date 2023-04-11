@@ -9,7 +9,7 @@ class Solution:
             elif i>0:
                 i -= 1
             elif i==0:
-                r = c+r
+                r = c + r
         return r
 
 class Solution:
@@ -21,6 +21,10 @@ class Solution:
             else:
                 r.append(c)
         return ''.join(r)
+
+class Solution:
+    def removeStars(self, s: str) -> str:
+        return ''.join(reduce(lambda r,c:(c=='*' and r.pop() or not r.append(c)) and r,s,[]))
 
 class Solution:
     def removeStars(self, s: str) -> str:

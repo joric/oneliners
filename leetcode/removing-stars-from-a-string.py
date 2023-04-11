@@ -70,7 +70,11 @@ class Solution:
 
 class Solution:
     def removeStars(self, s: str) -> str:
-        return reduce(lambda r,c:c!='*'and r+c or r[:-1],s,'')
+        return reduce(lambda r,c:c!='*' and r+c or r[:-1],s,'')
+
+class Solution:
+    def removeStars(self, s: str) -> str:
+        return reduce(lambda r,c:(r+c,r[:-1])[c=='*'],s,'')
 
 test('''
 2390. Removing Stars From a String

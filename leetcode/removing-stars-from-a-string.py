@@ -11,6 +11,20 @@ class Solution:
                 push(c)
         return ''.join(stk)
 
+# "inplace"
+class Solution:
+    def removeStars(self, s: str) -> str:
+        i = 0
+        s = list(s)
+        for c in s:
+            if c=='*':
+                i -= 1
+            else:
+                s[i] = c
+                i += 1
+        return ''.join(s)[:i]
+
+# backwards
 class Solution:
     def removeStars(self, s: str) -> str:
         i,r = 0,''
@@ -23,6 +37,7 @@ class Solution:
                 r += c
         return r[::-1]
 
+# stack
 class Solution:
     def removeStars(self, s: str) -> str:
         r = []
@@ -55,7 +70,7 @@ class Solution:
 
 class Solution:
     def removeStars(self, s: str) -> str:
-        return reduce(lambda r,c:c!='*' and r+c or r[:-1],s,'')
+        return reduce(lambda r,c:c!='*'and r+c or r[:-1],s,'')
 
 test('''
 2390. Removing Stars From a String

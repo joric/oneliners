@@ -34,6 +34,18 @@ class Solution:
     def removeStars(self, s: str) -> str:
         return (r:=[]) or [(c=='*' and r.pop() or r.append(c)) for c in s] and ''.join(r)
 
+class Solution:
+    def removeStars(self, s: str) -> str:
+        return (r:=[],[(c=='*' and r.pop() or (r:=r+[c])) for c in s],''.join(r))[2]
+
+class Solution:
+    def removeStars(self, s: str) -> str:
+        return (r:='',[(r:=(r[:-1] if c=='*' else r+c)) for c in s],r)[2]
+
+class Solution:
+    def removeStars(self, s: str) -> str:
+        return reduce(lambda r,c:c!='*' and r+c or r[:-1],s,'')
+
 test('''
 2390. Removing Stars From a String
 Medium

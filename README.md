@@ -609,5 +609,5 @@ class Solution:
 * https://pythononeliners.com
 * https://github.com/Allwin12/python-one-liners
 * https://github.com/finxter/PythonOneLiners
-* https://youtu.be/8k2AbqTBxao?t=252 (Stephen Fry)
+* https://youtu.be/8k2AbqTBxao?t=251 (Stephen Fry)
 

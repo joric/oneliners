@@ -2,6 +2,18 @@ from lc import *
 
 class Solution:
     def removeStars(self, s: str) -> str:
+        i,r = 0,''
+        for c in s[::-1]:
+            if c=='*':
+                i += 1
+            elif i>0:
+                i -= 1
+            elif i==0:
+                r = c+r
+        return r
+
+class Solution:
+    def removeStars(self, s: str) -> str:
         r = []
         for c in s:
             if c == '*':

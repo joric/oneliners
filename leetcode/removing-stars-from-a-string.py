@@ -1,5 +1,16 @@
 from lc import *
 
+# top 99.9%
+class Solution:
+    def removeStars(self, s: str) -> str:
+        push, pop = (stk := deque()).append, stk.pop
+        for c in s:
+            if c == '*':
+                pop()
+            else:
+                push(c)
+        return ''.join(stk)
+
 class Solution:
     def removeStars(self, s: str) -> str:
         i,r = 0,''

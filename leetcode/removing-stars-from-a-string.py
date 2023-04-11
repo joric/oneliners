@@ -9,8 +9,8 @@ class Solution:
             elif i>0:
                 i -= 1
             elif i==0:
-                r = c + r
-        return r
+                r += c
+        return r[::-1]
 
 class Solution:
     def removeStars(self, s: str) -> str:
@@ -21,6 +21,10 @@ class Solution:
             else:
                 r.append(c)
         return ''.join(r)
+
+class Solution:
+    def removeStars(self, s: str) -> str:
+        return ''.join(next((r for c in s if (not r.pop() if c=='*' else r.append(c))),r:=[]))
 
 class Solution:
     def removeStars(self, s: str) -> str:

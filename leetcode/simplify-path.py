@@ -19,7 +19,15 @@ class Solution:
 
 class Solution:
     def simplifyPath(self, path: str) -> str:
+        return '/'+'/'.join(reduce(lambda r,p:(r+[p]*(p!='' and p!='.'),r[:-1])[p=='..'],path.split('/'),[]))
+
+class Solution:
+    def simplifyPath(self, path: str) -> str:
         return '/'+'/'.join(reduce(lambda r,p:(r+[p]*(p!='')*(p!='.'),r[:-1])[p=='..'],path.split('/'),[]))
+
+class Solution:
+    def simplifyPath(self, path: str) -> str:
+        return '/'+'/'.join(reduce(lambda r,p:(r+[p]*('.'!=p!=''),r[:-1])[p=='..'],path.split('/'),[]))
 
 test('''
 71. Simplify Path
@@ -61,7 +69,10 @@ Example 3:
 Input: path = "/home//foo/"
 Output: "/home/foo"
 Explanation: In the canonical path, multiple consecutive slashes are replaced by a single one.
- 
+
+Example 4:
+Input: path = "/a/./b/../../c/"
+Output: "/c"
 
 Constraints:
 

@@ -621,7 +621,7 @@ class Solution:
 ```python
 class Solution:
     def simplifyPath(self, s: str) -> str:
-        return '/'+'/'.join(reduce(lambda r,p:((r+[p],r)[p in{'.',''}],r[:-1])[p=='..'],s.split('/'),[]))
+        return '/'+'/'.join(reduce(lambda r,p:((r+[p],r)[p in {'.',''}],r[:-1])[p=='..'],s.split('/'),[]))
 ```
 
 ## References

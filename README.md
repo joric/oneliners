@@ -513,7 +513,7 @@ class Solution:
 ```
 
 
-* You can can use `a!=b!=c` in a single boolean condition, similar to `a<=b<=c`.
+* You can can use `a!=b!=c` in a single boolean condition, similar to `a<=b<=c` and `a>=b>=0<=c<=d`.
 
 Example:
 

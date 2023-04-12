@@ -604,7 +604,7 @@ class Solution:
             |(f(a[i:],b[:-i])&f(a[:i],b[-i:])) for i in range(1,len(a)))))(s1,s2)
 ```
 
-* You can use boolean as an index, i.e. `(a,b)[x==y]`, it also can be nested: `(a,(b,c)[u==w])[x==y]`.
+* You can use booleans as indexes, even in nested lists: `(a,(b,c)[u==w])[x==y]`, or you can multiply by a boolean.
 
 Example:
 
@@ -620,8 +620,8 @@ class Solution:
 
 ```python
 class Solution:
-    def simplifyPath(self, s: str) -> str:
-        return '/'+'/'.join(reduce(lambda r,p:((r+[p],r)[p in {'.',''}],r[:-1])[p=='..'],s.split('/'),[]))
+    def simplifyPath(self, path: str) -> str:
+        return '/'+'/'.join(reduce(lambda r,p:(r+[p]*(p!='')*(p!='.'),r[:-1])[p=='..'],s.split('/'),[])
 ```
 
 ## References

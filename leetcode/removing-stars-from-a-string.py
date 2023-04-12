@@ -1,43 +1,5 @@
 from lc import *
 
-# top 99.9%
-class Solution:
-    def removeStars(self, s: str) -> str:
-        push, pop = (stk := deque()).append, stk.pop
-        for c in s:
-            if c == '*':
-                pop()
-            else:
-                push(c)
-        return ''.join(stk)
-
-# "inplace"
-class Solution:
-    def removeStars(self, s: str) -> str:
-        i = 0
-        s = list(s)
-        for c in s:
-            if c=='*':
-                i -= 1
-            else:
-                s[i] = c
-                i += 1
-        return ''.join(s)[:i]
-
-# backwards
-class Solution:
-    def removeStars(self, s: str) -> str:
-        i,r = 0,''
-        for c in s[::-1]:
-            if c=='*':
-                i += 1
-            elif i>0:
-                i -= 1
-            elif i==0:
-                r += c
-        return r[::-1]
-
-# stack
 class Solution:
     def removeStars(self, s: str) -> str:
         r = []
@@ -47,30 +9,6 @@ class Solution:
             else:
                 r.append(c)
         return ''.join(r)
-
-class Solution:
-    def removeStars(self, s: str) -> str:
-        return ''.join(next((r for c in s if (not r.pop() if c=='*' else r.append(c))),r:=[]))
-
-class Solution:
-    def removeStars(self, s: str) -> str:
-        return ''.join(reduce(lambda r,c:(c=='*' and r.pop() or not r.append(c)) and r,s,[]))
-
-class Solution:
-    def removeStars(self, s: str) -> str:
-        return (r:=[]) or [(c=='*' and r.pop() or r.append(c)) for c in s] and ''.join(r)
-
-class Solution:
-    def removeStars(self, s: str) -> str:
-        return (r:=[],[(c=='*' and r.pop() or (r:=r+[c])) for c in s],''.join(r))[2]
-
-class Solution:
-    def removeStars(self, s: str) -> str:
-        return (r:='',[(r:=(r[:-1] if c=='*' else r+c)) for c in s],r)[2]
-
-class Solution:
-    def removeStars(self, s: str) -> str:
-        return reduce(lambda r,c:c!='*' and r+c or r[:-1],s,'')
 
 class Solution:
     def removeStars(self, s: str) -> str:

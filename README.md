@@ -604,7 +604,7 @@ class Solution:
             |(f(a[i:],b[:-i])&f(a[:i],b[-i:])) for i in range(1,len(a)))))(s1,s2)
 ```
 
-* You can use boolean as an index, i.e. `(a,b)[x==y]`, it also can be nested: `(a,(b,c)[z==w])[x==y]`.
+* You can use boolean as an index, i.e. `(a,b)[x==y]`, it also can be nested: `(a,(b,c)[u==w])[x==y]`.
 
 Example:
 

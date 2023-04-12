@@ -604,6 +604,26 @@ class Solution:
             |(f(a[i:],b[:-i])&f(a[:i],b[-i:])) for i in range(1,len(a)))))(s1,s2)
 ```
 
+* You can use boolean as an index, i.e. `(a,b)[x==y]`, it also can be nested: `(a,(b,c)[z==w])[x==y]`.
+
+Example:
+
+* https://leetcode.com/problems/removing-stars-from-a-string
+
+```python
+class Solution:
+    def removeStars(self, s: str) -> str:
+        return reduce(lambda r,c:(r+c,r[:-1])[c=='*'],s,'')
+```
+
+* https://leetcode.com/problems/simplify-path
+
+```python
+class Solution:
+    def simplifyPath(self, path: str) -> str:
+        return '/'+'/'.join(reduce(lambda r,p:((r+[p],r)[p in{'.',''}],r[:-1])[p=='..'],path.split('/'),[]))
+```
+
 ## References
 
 * https://pythononeliners.com

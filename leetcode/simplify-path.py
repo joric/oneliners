@@ -21,6 +21,8 @@ class Solution:
     def simplifyPath(self, path: str) -> str:
         return '/'+'/'.join(reduce(lambda r,p:(r+[p]*('.'!=p!=''),r[:-1])[p=='..'],path.split('/'),[]))
 
+# assuming '' in '.' is True
+
 class Solution:
     def simplifyPath(self, path: str) -> str:
         return '/'+'/'.join(reduce(lambda r,p:(r+[p][p in'.':],r[:-1])[p=='..'],path.split('/'),[]))

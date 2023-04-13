@@ -25,6 +25,26 @@ class Solution:
     def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
         return not reduce(lambda q,x:q.append(x) or next(q for _ in count() if not(q and q[-1]==popped[0] and (q.pop(),popped.pop(0)))),pushed,[])
 
+class Solution:
+    def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
+        return reduce(lambda a,x:setitem(pushed,a[0],x) or (f:=(lambda i,j:f(i-1,j+1) if i>=0 and pushed[i]==popped[j] else (i+1,j)))(*a),pushed,(0,0))[0]==0
+
+# recursive
+
+class Solution:
+    def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
+        def f(a,b,x=0):
+            if not b:
+                return 1
+            if (i:=a.index(b[0]))==-1 or i<x:
+                return 0
+            return f(a[:i]+a[i+1:],b[1:],i-1)
+        return f(pushed,popped)
+
+class Solution:
+    def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
+        return (f:=lambda a,b,x=0:1 if not b else 0 if (i:=a.index(b[0]))==-1 or i<x else f(a[:i]+a[i+1:],b[1:],i-1))(pushed,popped)
+
 test('''
 946. Validate Stack Sequences
 Medium

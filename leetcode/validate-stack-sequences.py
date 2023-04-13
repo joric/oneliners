@@ -2,14 +2,14 @@ from lc import *
 
 class Solution:
     def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
-        j = 0
-        q = [] 
+        q = []
+        i = 0
         for x in pushed:
             q.append(x)
-            while q and j<len(popped) and q[-1]==popped[j]:
+            while q and q[-1]==popped[i]:
+                i += 1
                 q.pop()
-                j += 1
-        return j==len(popped)
+        return not q
 
 class Solution:
     def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:

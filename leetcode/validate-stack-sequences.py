@@ -33,17 +33,17 @@ class Solution:
 
 class Solution:
     def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
-        def f(a,b,x=0):
+        def f(a,b,x):
             if not b:
                 return 1
             if (i:=a.index(b[0]))==-1 or i<x:
                 return 0
             return f(a[:i]+a[i+1:],b[1:],i-1)
-        return f(pushed,popped)
+        return f(pushed,popped,0)
 
 class Solution:
     def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
-        return (f:=lambda a,b,x=0:1 if not b else 0 if (i:=a.index(b[0]))==-1 or i<x else f(a[:i]+a[i+1:],b[1:],i-1))(pushed,popped)
+        return (f:=lambda a,b,x:1 if not b else 0 if (i:=a.index(b[0]))==-1 or i<x else f(a[:i]+a[i+1:],b[1:],i-1))(pushed,popped,0)
 
 test('''
 946. Validate Stack Sequences

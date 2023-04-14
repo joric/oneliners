@@ -57,6 +57,26 @@ class Solution:
     def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
         return (f:=lambda a,b,x:not b or(i:=a.index(b[0]))>=x and f(a[:i]+a[i+1:],b[1:],i-1))(pushed,popped,0)
 
+
+class Solution:
+    def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
+        index = 0
+        stack = []
+        for x in popped:
+            if stack and stack[-1]==x:
+                stack.pop()
+            else:
+                while index<len(pushed):
+                    if pushed[index] == x:
+                        index += 1
+                        break
+                    else:
+                        stack.append(pushed[index])
+                        index += 1
+                else:
+                    return False
+        return True
+
 test('''
 946. Validate Stack Sequences
 Medium

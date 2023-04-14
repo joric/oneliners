@@ -4,6 +4,10 @@ class Solution:
     def longestPalindromeSubseq(self, s: str) -> int:
         return (f:=cache(lambda s:len(s) if len(s)<=1 else f(s[1:-1])+2 if s[0]==s[-1] else max(f(s[1:]),f(s[:-1]))))(s)
 
+class Solution:
+    def longestPalindromeSubseq(self, s: str) -> int:
+        return (f:=cache(lambda s:s[0]==s[-1] and 2+f(s[1:-1]) or max(f(s[1:]),f(s[:-1])) if s[1:] else len(s)))(s)
+
 test('''
 
 516. Longest Palindromic Subsequence

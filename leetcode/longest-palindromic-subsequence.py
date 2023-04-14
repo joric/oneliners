@@ -2,6 +2,32 @@ from lc import *
 
 class Solution:
     def longestPalindromeSubseq(self, s: str) -> int:
+        @cache
+        def f(i,j):
+            if i>=len(s) or j<0:
+                return 0
+            return s[i]==s[j] and 1+f(i+1,j-1) or max(f(i+1,j),f(i,j-1))
+        return f(0,len(s)-1)
+
+class Solution:
+    def longestPalindromeSubseq(self, s: str) -> int:
+        return (f:=cache(lambda i,j:s[i]==s[j] and 1+f(i+1,j-1) or max(f(i+1,j),f(i,j-1)) if not(i>=len(s) or j<0) else 0))(0,len(s)-1)
+
+class Solution:
+    def longestPalindromeSubseq(self, s: str) -> int:
+        return (f:=cache(lambda i,j:s[i]==s[j] and 1+f(i+1,j-1) or max(f(i+1,j),f(i,j-1)) if max(i,~j)<len(s) else 0))(0,-1)
+
+class Solution:
+    def longestPalindromeSubseq(self, s: str) -> int:
+        @cache
+        def f(s):
+            if len(s)<2:
+                return len(s)
+            return s[0]==s[-1] and 2+f(s[1:-1]) or max(f(s[1:]),f(s[:-1]))
+        return f(s)
+
+class Solution:
+    def longestPalindromeSubseq(self, s: str) -> int:
         return (f:=cache(lambda s:len(s) if len(s)<=1 else f(s[1:-1])+2 if s[0]==s[-1] else max(f(s[1:]),f(s[:-1]))))(s)
 
 class Solution:

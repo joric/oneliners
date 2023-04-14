@@ -34,6 +34,11 @@ Output: 2
 Explanation: One possible longest palindromic subsequence is "bb".
  
 
+Example 3:
+
+Input: s = "a"
+Output: 1
+
 Constraints:
 
 1 <= s.length <= 1000

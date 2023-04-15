@@ -25,7 +25,7 @@ class Solution:
     def maxValueOfCoins(self, piles: List[List[int]], k: int) -> int:
         return (f:=cache(lambda i,k:max(f(i+1,k),max(x+f(i+1,k-j-1) for x,j in zip(accumulate(t[i]),range(min(len(t[i]),k))))) if k*(i-len(t:=piles)) else 0))(0,k)
 
-# slow, may TLE sometimes (~7k ms)
+# slow, may TLE sometimes (7084 ms)
 class Solution:
     def maxValueOfCoins(self, piles: List[List[int]], k: int) -> int:
         return (f:=cache(lambda i,k:max(f(i+1,k),max(x+f(i+1,k-j-1) for x,j in zip(accumulate(t[i]),range(k)))) if k*(i-len(t:=piles)) else 0))(0,k)

@@ -17,6 +17,10 @@ class Solution:
     def maxValueOfCoins(self, piles: List[List[int]], k: int) -> int:
         return (f:=cache(lambda i,k:(r:=f(i-1,k),c:=piles[i-1],s:=0,[(s:=s+c[j],r:=max(r,s+f(i-1,k-j-1))) for j in range(min(len(c),k))],r)[-1] if k and i else 0))(len(piles),k)
 
+class Solution:
+    def maxValueOfCoins(self, piles: List[List[int]], k: int) -> int:
+        return (f:=cache(lambda i,k:max(f(i+1,k),max(x+f(i+1,k-j-1) for x,j in zip(accumulate(piles[i]),range(min(len(piles[i]),k))))) if k*(i-len(piles)) else 0))(0,k)
+
 test('''
 2218. Maximum Value of K Coins From Piles
 Hard

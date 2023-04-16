@@ -4,6 +4,10 @@ class Solution:
     def numWays(self, words: List[str], target: str) -> int:
         return (c:=[*map(Counter,zip(*words))]) and (f:=cache(lambda i,j:i==len(target) or j<len(words[0]) and f(i,j+1)+c[j][target[i]]*f(i+1,j+1)))(0,0)%(10**9+7)
 
+class Solution:
+    def numWays(self, w: List[str], t: str) -> int:
+        return (c:=[*map(Counter,zip(*w))]) and (f:=cache(lambda i,j:i==len(t) or j<len(w[0]) and f(i,j+1)+c[j][t[i]]*f(i+1,j+1)))(0,0)%(10**9+7)
+
 test('''
 
 1639. Number of Ways to Form a Target String Given a Dictionary

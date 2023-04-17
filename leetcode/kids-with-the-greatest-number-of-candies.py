@@ -2,25 +2,15 @@ from lc import *
 
 class Solution:
     def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
-        r = []
-        n = len(candies)
-        for i in range(n):
-            a = True
-            for j in range(n):
-                if i!=j:
-                    if candies[i]+extraCandies < candies[j]:
-                        a = False
-            res.append(a)
-        return res
-
+        return (g:=max(candies)-extraCandles,[x>=g for x in candies])[1]
 
 class Solution:
     def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
-        return (m:=max(candies),[c+extraCandies>=m for c in candies])[1]
+        return [x+extraCandies>=max(candies) for x in candies]
 
 class Solution:
-    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
-        return [c+extraCandies>=max(candies) for c in candies]
+    def kidsWithCandies(self, c: List[int], e: int) -> List[bool]:
+        return [x>=max(c)-e for x in c]
 
 test('''
 1431. Kids With the Greatest Number of Candies

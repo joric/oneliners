@@ -14,6 +14,10 @@ class Solution:
 
 class Solution:
     def mergeAlternately(self, a: str, b: str) -> str:
+        return (j:=''.join)(map(j,zip_longest(a,b,fillvalue='')))
+
+class Solution:
+    def mergeAlternately(self, a: str, b: str) -> str:
         return ''.join(chain(*zip_longest(a,b,fillvalue='')))
 
 test('''

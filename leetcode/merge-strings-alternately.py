@@ -12,6 +12,10 @@ class Solution:
     def mergeAlternately(self, a: str, b: str) -> str:
         return ''.join(map(''.join,zip_longest(a,b,fillvalue='')))
 
+class Solution:
+    def mergeAlternately(self, a: str, b: str) -> str:
+        return ''.join(chain(*zip_longest(a,b,fillvalue='')))
+
 test('''
 1768. Merge Strings Alternately
 Easy

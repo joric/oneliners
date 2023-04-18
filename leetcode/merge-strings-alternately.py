@@ -20,6 +20,10 @@ class Solution:
     def mergeAlternately(self, a: str, b: str) -> str:
         return ''.join(chain(*zip_longest(a,b,fillvalue='')))
 
+class Solution:
+    def mergeAlternately(self, a, b):
+        return ''.join(map(add,a,b))+b[len(a):]+a[len(b):]
+
 test('''
 1768. Merge Strings Alternately
 Easy

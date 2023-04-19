@@ -14,6 +14,10 @@ class Solution:
     def longestZigZag(self, root: TreeNode) -> int:
         return max((f:=lambda x:x and((l:=f(x.left))[1]+1,(r:=f(x.right))[0]+1,max(max(l),max(r)))or[0]*3)(root))-1
 
+class Solution:
+    def longestZigZag(self, root: TreeNode) -> int:
+        return (f:=lambda n,l,r:max(f(n.left,0,l+1),f(n.right,r+1,0)) if n else max(l,r)-1)(root,0,0)
+
 test('''
 1372. Longest ZigZag Path in a Binary Tree
 Medium

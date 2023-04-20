@@ -540,7 +540,7 @@ class Solution:
 
 * `~` reverts every bit. Therefore, `~x` means `-x-1`. Use it as reversed index, i.e. for `i=0`, `a[~i]` means `a[-1]`, etc.
 * You can replace `0 if x==y else z` with `x-y and z`, it's a little bit counterintuitive, but shorter.
-* Condition `x if c else y` can be written as `c and x or y`, it's shorter but depends on x value.
+* Condition `x if c else y` can be written as `c and x or y`, it's shorter but depends on x value (x should not be 0).
 
 Example:
 

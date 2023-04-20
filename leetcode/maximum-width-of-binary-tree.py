@@ -2,17 +2,29 @@ from lc import *
 
 class Solution:
     def widthOfBinaryTree(self, root: TreeNode) -> int:
-            w,l = 0, [(1, root)]
-            while l:
-                w = max(w, l[-1][0] - l[0][0] + 1)
-                l = [v for x, node in l for v in enumerate((node.left, node.right), 2 * x) if v[1]]
-            return w
-
+        r = 0
+        q = [(root,0)]
+        while q:
+            for _ in range(len(q)):
+                r = max(r,q[-1][1]-q[0][1]+1)
+                n,i = q.pop()
+                if n.left:
+                    q.append((n.left,2*i))
+                if n.right:
+                    q.append((n.right,2*i+1))
+        return r
 
 class Solution:
     def widthOfBinaryTree(self, root: TreeNode) -> int:
-        return next((w for _ in count() if not(l and (w:=max(w,l[-1][0]-l[0][0]+1),l:=[v for x,n in l for v in enumerate((n.left,n.right),2*x) if v[1]]))),(w:=0,l:=[(1, root)]))
+            r,q = 0, [(1,root)]
+            while q:
+                r = max(r,q[-1][0]-q[0][0]+1)
+                q = [v for x,n in q for v in enumerate((n.left,n.right),2*x) if v[1]]
+            return r
 
+class Solution:
+    def widthOfBinaryTree(self, root: TreeNode) -> int:
+        return next((r for _ in count() if not(q and (r:=max(r,q[-1][0]-q[0][0]+1),q:=[v for x,n in q for v in enumerate((n.left,n.right),2*x) if v[1]]))),(r:=0,q:=[(1, root)]))
 
 class Solution:
     def widthOfBinaryTree(self, root: TreeNode) -> int:
@@ -22,7 +34,7 @@ class Solution:
                 d[l].append(p)
                 f(l+1,2*p,r.left)
                 f(l+1,2*p+1,r.right)
-        f(0, 0, root)
+        f(0,0,root)
         return max(max(v)-min(v)+1 for v in d.values())
 
 class Solution:

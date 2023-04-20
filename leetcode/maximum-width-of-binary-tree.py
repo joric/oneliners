@@ -3,15 +3,16 @@ from lc import *
 class Solution:
     def widthOfBinaryTree(self, root: TreeNode) -> int:
         r = 0
-        q = [(root,0)]
+        q = deque([(root,0)])
         while q:
+            j = q[0][1]
             for _ in range(len(q)):
-                r = max(r,q[-1][1]-q[0][1]+1)
-                n,i = q.pop()
+                n,i = q.popleft()
                 if n.left:
                     q.append((n.left,2*i))
                 if n.right:
                     q.append((n.right,2*i+1))
+                r = max(r, i-j+1)
         return r
 
 class Solution:
@@ -81,6 +82,10 @@ Input: root = [1,3,2,5]
 Output: 2
 Explanation: The maximum width exists in the second level with length 2 (3,2).
  
+
+Example 4:
+Input: root = [1,1,1,1,1,1,1,null,null,null,1,null,null,null,null,2,2,2,2,2,2,2,null,2,null,null,2,null,2]
+Output: 8
 
 Constraints:
 

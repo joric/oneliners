@@ -28,6 +28,33 @@ class Solution:
 
 class Solution:
     def widthOfBinaryTree(self, root: TreeNode) -> int:
+        c = {}
+        self.r = 0
+        def f(n,h,w):
+            if n:
+                if h not in c:
+                    c[h] = w
+                self.r = max(self.r, w-c[h]+1)
+                f(n.left,h+1,w*2)
+                f(n.right,h+1,w*2+1)
+        f(root,0,0)
+        return self.r
+
+class Solution:
+    def widthOfBinaryTree(self, root: TreeNode) -> int:
+        d = [(0,0,root)]
+        for a,l,b in d:
+            b.left and d.append((2*a,l+1,b.left))
+            b.right and d.append((2*a+1,l+1, b.right))
+        return max((x-y)*(a==b) for x,a,_ in d for y,b,_ in d) + 1
+
+class Solution:
+    def widthOfBinaryTree(self, root: TreeNode) -> int:
+        return (d:=[(0,0,root)],[(b.left and d.append((2*a,l+1,b.left)),b.right and d.append((2*a+1,l+1, b.right))) for a,l,b in d],max((x-y)*(a==b) for x,a,_ in d for y,b,_ in d)+1)[2]
+
+
+class Solution:
+    def widthOfBinaryTree(self, root: TreeNode) -> int:
         d = defaultdict(list)
         def f(l,p,r):
             if r:
@@ -55,29 +82,7 @@ class Solution:
 
 class Solution:
     def widthOfBinaryTree(self, root: TreeNode) -> int:
-        c = {}
-        self.r = 0
-        def f(n,h,w):
-            if n:
-                if h not in c:
-                    c[h] = w
-                self.r = max(self.r, w-c[h]+1)
-                f(n.left,h+1,w*2)
-                f(n.right,h+1,w*2+1)
-        f(root,0,0)
-        return self.r
-
-class Solution:
-    def widthOfBinaryTree(self, root: TreeNode) -> int:
-        d = [(0,0,root)]
-        for a,l,b in d:
-            b.left and d.append((2*a,l+1,b.left))
-            b.right and d.append((2*a+1,l+1, b.right))
-        return max((x-y)*(a==b) for x,a,_ in d for y,b,_ in d) + 1
-
-class Solution:
-    def widthOfBinaryTree(self, root: TreeNode) -> int:
-        return (d:=[(0,0,root)],[(b.left and d.append((2*a,l+1,b.left)),b.right and d.append((2*a+1,l+1, b.right))) for a,l,b in d],max((x-y)*(a==b) for x,a,_ in d for y,b,_ in d)+1)[2]
+        return (d:={},(f:=lambda l,p,r:r and (setitem(d,l,d.get(l,[])+[p]),f(l+1,2*p,r.left),f(l+1,2*p+1,r.right)))(0,0,root),max((x:=d[v])[-1]-x[0]+1 for v in d))[2]
 
 test('''
 662. Maximum Width of Binary Tree

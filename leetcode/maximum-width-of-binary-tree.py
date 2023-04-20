@@ -24,7 +24,7 @@ class Solution:
 
 class Solution:
     def widthOfBinaryTree(self, root: TreeNode) -> int:
-        return next((r for _ in count() if not(q and (r:=max(r,q[-1][0]-q[0][0]+1),q:=[v for x,n in q for v in enumerate((n.left,n.right),2*x) if v[1]]))),(r:=0,q:=[(1, root)]))
+        return next((r for _ in count() if not(q and (r:=max(r,q[-1][0]-q[0][0]+1),q:=[v for x,n in q for v in enumerate((n.left,n.right),2*x) if v[1]]))),(r:=0,q:=[(1,root)]))
 
 class Solution:
     def widthOfBinaryTree(self, root: TreeNode) -> int:

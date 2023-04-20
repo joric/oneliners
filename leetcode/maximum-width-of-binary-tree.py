@@ -1,18 +1,17 @@
 from lc import *
 
 class Solution:
-    def widthOfBinaryTree(self, root: TreeNode) -> int:
+    def widthOfBinaryTree(self, root: Optional[TreeNode]) -> int:
         r = 0
-        q = deque([(root,0)])
-        while q:
-            j = q[0][1]
+        q = deque([(root, 0)])
+        while len(q) > 0:
+            r = max(r,q[-1][1]-q[0][1]+1)
             for _ in range(len(q)):
                 n,i = q.popleft()
                 if n.left:
                     q.append((n.left,2*i))
                 if n.right:
                     q.append((n.right,2*i+1))
-                r = max(r, i-j+1)
         return r
 
 class Solution:

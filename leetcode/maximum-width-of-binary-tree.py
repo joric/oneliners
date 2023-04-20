@@ -51,6 +51,10 @@ class Solution:
 
 class Solution:
     def widthOfBinaryTree(self, root: TreeNode) -> int:
+        return (d:={},(f:=lambda l,p,r:r and (setitem(d,l,d.get(l,[])+[p]),f(l+1,2*p,r.left),f(l+1,2*p+1,r.right)))(0,0,root),max(max(x:=d[v])-min(x)+1 for v in d))[2]
+
+class Solution:
+    def widthOfBinaryTree(self, root: TreeNode) -> int:
         c = {}
         self.r = 0
         def f(n,h,w):

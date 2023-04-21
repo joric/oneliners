@@ -23,8 +23,15 @@ class Solution:
 
 class Solution:
     def profitableSchemes(self, n: int, minProfit: int, group: List[int], profit: List[int]) -> int:
-        return (f:=cache(lambda i,g,p:((f(i-1,g,p)+(f(i-1,g-group[i],max(0,p-profit[i])) if g>=group[i] else 0)) % (10**9+7)) if i>=0 and g>0 else int(p<=0)))(len(group)-1,n,minProfit) 
+        return (f:=cache(lambda i,g,p:((f(i-1,g,p)+(f(i-1,g-group[i],max(0,p-profit[i])) if g>=group[i] else 0))%(10**9+7)) if i>=0 and g>0 else int(p<=0)))(len(group)-1,n,minProfit)
 
+class Solution:
+    def profitableSchemes(self, n: int, m: int, r: List[int], t: List[int]) -> int:
+        return (f:=cache(lambda i,g,p:((f(i-1,g,p)+(f(i-1,g-r[i],max(0,p-t[i])) if g>=r[i] else 0))%(10**9+7)) if i>=0 and g>0 else int(p<=0)))(len(r)-1,n,m)
+
+class Solution:
+    def profitableSchemes(self, n: int, m: int, r: List[int], t: List[int]) -> int:
+        return (f:=cache(lambda i,g,p:i>=0 and g>0 and (f(i-1,g,p)+(g>=r[i] and f(i-1,g-r[i],max(0,p-t[i])))) or p<=0))(len(r)-1,n,m)%(10**9+7)
 
 test('''
 879. Profitable Schemes
@@ -58,6 +65,14 @@ Output: 7
 Explanation: To make a profit of at least 5, the group could commit any crimes, as long as they commit one.
 There are 7 possible schemes: (0), (1), (2), (0,1), (0,2), (1,2), and (0,1,2).
  
+
+Example 3:
+Input: n = 1, minProfit = 1, group = [1,1,1,1,2,2,1,2,1,1], profit = [0,1,0,0,1,1,1,0,2,2]
+Output: 4
+
+Example 4:
+Input: n = 1, minProfit = 1, group = [2,2,2,2,2], profit = [1,2,1,1,0]
+Output: 0
 
 Constraints:
 

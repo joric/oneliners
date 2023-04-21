@@ -31,7 +31,7 @@ class Solution:
 
 class Solution:
     def profitableSchemes(self, n: int, m: int, r: List[int], t: List[int]) -> int:
-        return (f:=cache(lambda i,g,p:i+1 and g and (f(i-1,g,p)+(g>=r[i] and f(i-1,g-r[i],max(0,p-t[i])))) or p<=0))(len(r)-1,n,m)%(10**9+7)
+        return (f:=cache(lambda i,g,p:i+1 and f(i-1,g,p)+(g>=r[i] and f(i-1,g-r[i],max(0,p-t[i]))) or p<=0))(len(r)-1,n,m)%(10**9+7)
 
 test('''
 879. Profitable Schemes

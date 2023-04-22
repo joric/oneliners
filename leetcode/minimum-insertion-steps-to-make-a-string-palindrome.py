@@ -24,7 +24,7 @@ class Solution:
 
 class Solution:
     def minInsertions(self, s: str) -> int:
-        return (f:=cache(lambda s:(f(s[1:-1]) if s[0]==s[-1] else 1+min(f(s[1:]),f(s[:-1]))) if s else 0))(s)
+        return (f:=cache(lambda s:s and (f(s[1:-1]) if s[0]==s[-1] else 1+min(f(s[1:]),f(s[:-1]))) or 0))(s)
 
 test('''
 1312. Minimum Insertion Steps to Make a String Palindrome

@@ -22,7 +22,7 @@ class Solution:
             return self.minInsertions(s[1:-1])
         return 1 + min(self.minInsertions(s[1:]), self.minInsertions(s[:-1]))
 
-# looks very similar to https://leetcode.com/problems/longest-palindromic-subsequence/
+# very similar to https://leetcode.com/problems/longest-palindromic-subsequence
 
 class Solution:
     def minInsertions(self, s: str) -> int:

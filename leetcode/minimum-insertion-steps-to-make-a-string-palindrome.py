@@ -1,19 +1,6 @@
 from lc import *
 
 class Solution:
-    @cache
-    def minInsertions(self, s: str) -> int:
-        if not s:
-            return 0
-        if s[0] == s[-1]:
-            return self.minInsertions(s[1:-1])
-        return 1 + min(self.minInsertions(s[1:]), self.minInsertions(s[:-1]))
-
-class Solution:
-    def minInsertions(self, s: str) -> int:
-        return (f:=cache(lambda s:0 if not s else f(s[1:-1]) if s[0]==s[-1] else 1+min(f(s[1:]),f(s[:-1]))))(s)
-
-class Solution:
     def minInsertions(self, s: str) -> int:
         @cache
         def f(l,r):
@@ -25,6 +12,19 @@ class Solution:
 class Solution:
     def minInsertions(self, s: str) -> int:
         return (f:=cache(lambda l,r:int(l<r) and f(l+1,r-1) if s[l]==s[r] else 1+min(f(l+1,r),f(l,r-1))))(0,len(s)-1)
+
+class Solution:
+    @cache
+    def minInsertions(self, s: str) -> int:
+        if not s:
+            return 0
+        if s[0] == s[-1]:
+            return self.minInsertions(s[1:-1])
+        return 1 + min(self.minInsertions(s[1:]), self.minInsertions(s[:-1]))
+
+class Solution:
+    def minInsertions(self, s: str) -> int:
+        return (f:=cache(lambda s:0 if not s else f(s[1:-1]) if s[0]==s[-1] else 1+min(f(s[1:]),f(s[:-1]))))(s)
 
 test('''
 1312. Minimum Insertion Steps to Make a String Palindrome

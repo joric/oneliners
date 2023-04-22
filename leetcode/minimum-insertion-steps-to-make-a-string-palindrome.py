@@ -1,5 +1,7 @@
 from lc import *
 
+# very similar to https://leetcode.com/problems/longest-palindromic-subsequence
+
 class Solution:
     def minInsertions(self, s: str) -> int:
         @cache
@@ -21,8 +23,6 @@ class Solution:
         if s[0] == s[-1]:
             return self.minInsertions(s[1:-1])
         return 1 + min(self.minInsertions(s[1:]), self.minInsertions(s[:-1]))
-
-# very similar to https://leetcode.com/problems/longest-palindromic-subsequence
 
 class Solution:
     def minInsertions(self, s: str) -> int:

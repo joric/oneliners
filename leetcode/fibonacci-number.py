@@ -29,6 +29,10 @@ class Solution:
     def fib(self, n: int) -> int:
         return n and np.dot((f:=lambda m,p:m if p==1 else (r:=np.dot(h:=f(m,p//2),h),1) and (np.dot(r,m) if p&1 else r))(np.matrix([[0,1],[1,1]]),n),np.matrix([[0],[1]])).item((0,0)) or 0
 
+class Solution:
+    def fib(self, n: int) -> int:
+        return (np:=__import__('numpy')) and n and np.dot((f:=lambda m,p:m if p==1 else (r:=np.dot(h:=f(m,p//2),h),1) and (np.dot(r,m) if p&1 else r))(np.matrix([[0,1],[1,1]]),n),np.matrix([[0],[1]])).item((0,0)) or 0
+
 test('''
 
 509. Fibonacci Number

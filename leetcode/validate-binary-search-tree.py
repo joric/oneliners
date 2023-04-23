@@ -29,7 +29,7 @@ class Solution:
 
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        return (f:=lambda r,a=0,b=0:not r or (not ((a and a.val>=r.val) or (b and b.val<=r.val))) and f(r.left,a,r) and f(r.right,r,b))(root)
+        return (f:=lambda r,a,b:not r or (not ((a and a.val>=r.val) or (b and b.val<=r.val))) and f(r.left,a,r) and f(r.right,r,b))(root,0,0)
 
 # min/max
 class Solution:

@@ -1,24 +1,5 @@
 from lc import *
 
-# TLE
-class Solution:
-    def numberOfArrays(self, s: str, k: int) -> int:
-        @cache
-        def f(i):
-            if i == len(s):
-                return 1
-            if s[i] == '0':
-                return 0
-            c = 0
-            r = 0
-            for j in range(i, len(s)):
-                c = c * 10 + int(s[j])
-                if c > k:
-                    break
-                r += f(j+1)
-            return r
-        return f(0)%(10**9+7)
-
 class Solution:
     def numberOfArrays(self, s: str, k: int) -> int:
         n = len(s)
@@ -33,23 +14,28 @@ class Solution:
                     dp[i]+=dp[i-j-1] if i-j-1>=0 else 1
         return dp[n-1] % (10**9+7)
 
-# https://leetcode.com/problems/restore-the-array/discuss/644657/Standard-9-lines-O(n)-python-dp-solution
-
-class Solution:
-    def numberOfArrays(self, s: str, k: int) -> int:
-        N, L = len(s), len(str(k))
-        mod = 10**9+7
-        dp = [0]*N
-        for j in range(N):
-            for i in range(j,max(-1,j-L-1),-1):
-                num = s[i:j+1]
-                if num[0]!='0' and int(num)<=k:
-                    dp[j]=(dp[j]+(dp[i-1] if i>0 else 1))%mod
-        return dp[-1]%mod
-
 class Solution:
     def numberOfArrays(self, s: str, k: int) -> int:
         return (c:=Counter(),[(x:=s[i:j+1],x[0]!='0' and int(x)<=k and c.update({j:i>0 and c[i-1] or 1})) for j in range(len(s)) for i in range(j,max(-1,j-len(str(k))-1),-1)],c[len(s)-1]%(10**9+7))[2]
+
+class Solution:
+    def numberOfArrays(self, s: str, k: int) -> int:
+        @cache
+        def f(i):
+            r = 0
+            n = len(s)
+            if i==n:
+                return 1
+            if s[i]!='0':
+                for j in range(i,min(i+10,n)):
+                    if int(s[i:j+1])<=k:
+                        r += f(j+1)
+            return r%(10**9+7)
+        return f(0)
+
+class Solution:
+    def numberOfArrays(self, s: str, k: int) -> int:
+        return (f:=cache(lambda i:(i==(n:=len(s)) or s[i]!='0' and sum(f(j+1)*(int(s[i:j+1])<=k) for j in range(i,min(i+10,n))) or 0)%(10**9+7)))(0)
 
 test('''
 1416. Restore The Array

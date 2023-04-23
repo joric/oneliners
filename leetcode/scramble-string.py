@@ -15,10 +15,6 @@ class Solution:
     def isScramble(self, s1: str, s2: str) -> bool:
         return (f:=cache(lambda a,b:a==b or any((f(a[:i],b[:i])&f(a[i:],b[i:]))|(f(a[i:],b[:-i])&f(a[:i],b[-i:])) for i in range(1,len(a)))))(s1,s2)
 
-class Solution:
-    def isScramble(self, a: str, b: str) -> bool:
-        return a==b or any((f:=cache(self.isScramble))(a[:i],b[:i])&f(a[i:],b[i:])|f(a[:i],b[-i:])&f(a[i:],b[:-i]) for i in range(1,len(a)))
-
 test('''
 
 87. Scramble String

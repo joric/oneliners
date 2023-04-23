@@ -33,6 +33,20 @@ class Solution:
                     dp[i]+=dp[i-j-1] if i-j-1>=0 else 1
         return dp[n-1] % (10**9+7)
 
+# https://leetcode.com/problems/restore-the-array/discuss/644657/Standard-9-lines-O(n)-python-dp-solution
+
+class Solution:
+    def numberOfArrays(self, s: str, k: int) -> int:
+        N, L = len(s), len(str(k))
+        mod = 10**9+7
+        dp = [0]*N
+        for j in range(N):
+            for i in range(j,max(-1,j-L-1),-1):
+                num = s[i:j+1]
+                if num[0]!='0' and int(num)<=k:
+                    dp[j]=(dp[j]+(dp[i-1] if i>0 else 1))%mod
+        return dp[-1]%mod
+
 class Solution:
     def numberOfArrays(self, s: str, k: int) -> int:
         return (c:=Counter(),[(x:=s[i:j+1],x[0]!='0' and int(x)<=k and c.update({j:i>0 and c[i-1] or 1})) for j in range(len(s)) for i in range(j,max(-1,j-len(str(k))-1),-1)],c[len(s)-1]%(10**9+7))[2]

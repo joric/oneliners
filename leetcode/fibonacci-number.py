@@ -14,7 +14,6 @@ class Solution:
 # matrix exponential
 
 import numpy as np
-
 class Solution:
     def fib(self, n: int) -> int:
         def f(m,p):
@@ -24,10 +23,6 @@ class Solution:
             r = np.dot(h,h)
             return np.dot(r,m) if p&1 else r
         return n and np.dot(f(np.matrix([[0,1],[1,1]]),n),np.matrix([[0],[1]])).item((0,0)) or 0
-
-class Solution:
-    def fib(self, n: int) -> int:
-        return n and np.dot((f:=lambda m,p:m if p==1 else (r:=np.dot(h:=f(m,p//2),h),1) and (np.dot(r,m) if p&1 else r))(np.matrix([[0,1],[1,1]]),n),np.matrix([[0],[1]])).item((0,0)) or 0
 
 class Solution:
     def fib(self, n: int) -> int:

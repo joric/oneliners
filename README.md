@@ -18,7 +18,6 @@ E.g. Leetcode header has `import * from itertools`, so we use `comb()` instead o
 
 * https://leetcode.com/problems/number-of-sets-of-k-non-overlapping-line-segments
 
-
 ```python
 class Solution:
     def numberOfSets(self, n: int, k: int) -> int:
@@ -585,7 +584,7 @@ class Solution:
             (len(grid)-1,len(grid[0])-1)
 ```
 
-* You can use bitwise operators `&`,`|` instead of logical operators `and`,`or` where possible, it's shorter.
+* You can use bitwise `&`,`|` instead of `and`,`or` where possible. Comparisons like `x==1` can be written as `x&1`.
 
 Example:
 

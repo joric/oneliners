@@ -37,6 +37,10 @@ class Solution:
     def numberOfArrays(self, s: str, k: int) -> int:
         return (f:=cache(lambda i:(i==(n:=len(s)) or s[i]!='0' and sum(f(j+1)*(int(s[i:j+1])<=k) for j in range(i,min(i+10,n))) or 0)%(10**9+7)))(0)
 
+class Solution:
+    def numberOfArrays(self, s, k):
+        return (f:=cache(lambda i:(not s[i:] or (s[i]!="0")*sum(f(j+1)*(int(s[i:j+1])<=k) for j in range(i,min(i+9,len(s)))))%(10**9+7)))(0)
+
 test('''
 1416. Restore The Array
 Hard

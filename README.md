@@ -219,7 +219,7 @@ class Solution:
             set(g:={i + j*1j:int(x) for i,row in enumerate(grid) for j,x in enumerate(row)})))
 ```
 
-You can assure that expression never returns `None` with `[]`, it's just 2 chars (`None` is not `[None]`).
+You can assure that expression never returns `None` with `[]`, it's just 2 chars (`[None]` evaluates to `True`).
 
 * https://leetcode.com/problems/last-stone-weight
 

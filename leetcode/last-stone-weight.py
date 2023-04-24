@@ -19,7 +19,14 @@ class Solution:
         while len(stones) >= 2:
             stones.sort()
             stones.append(stones.pop() - stones.pop())
-        return stones.pop()
+        return stones[0]
+
+class Solution:
+    def lastStoneWeight(self, stones: List[int]) -> int:
+        stones.sort()
+        while len(stones) > 1:
+            insort(stones,stones.pop() - stones.pop())
+        return stones[0]
 
 class Solution:
     def lastStoneWeight(self, stones: List[int]) -> int:
@@ -31,11 +38,11 @@ class Solution:
 
 class Solution:
     def lastStoneWeight(self, s: List[int]) -> int:
-        return next((s[0] for _ in count() if not(s[1:] and [insort(s,s.pop()-s.pop())])),s.sort())
+        return next(s[0] for _ in count() if not(s[1:] and (s.sort(),s.append(s.pop()-s.pop()))))
 
 class Solution:
     def lastStoneWeight(self, s: List[int]) -> int:
-        return next(s[0] for _ in count() if not(s[1:] and (s.sort(),s.append(s.pop()-s.pop()))))
+        return next((s[0] for _ in count() if not s[1:] or insort(s,s.pop()-s.pop())),s.sort())
 
 test('''
 1046. Last Stone Weight

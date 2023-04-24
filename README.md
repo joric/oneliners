@@ -65,8 +65,7 @@ To delete a key you can use the `.pop` method (same as `del`), it's shorter than
 
 #### While loops
 
-While loops are not very oneliner-friendly. You can use  `count()` generator with `next()` or `takewhile()`
-(the latter is also a generator, so you need to expand it).
+While loops are not very oneliner-friendly. You can use  `count()` generator with `next()`.
 Note that `next` default parameter gets initialized first so you can use it for the startup code.
 
 * https://leetcode.com/problems/two-sum
@@ -125,6 +124,8 @@ class Solution:
         return (s:=sum(target),q:=[-a for a in target],heapify(q)) and next((x==1 for _ in count()
             if (x:=-heappop(q))==1 or s==x or (d:=1+(x-1)%(s-x))==x or not (s:=s-x+d,heappush(q,-d))),1)
 ```
+
+You can also use `takewhile()`, it's also a generator, so you need to expand it.
 
 * https://leetcode.com/problems/sliding-window-maximum
 

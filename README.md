@@ -201,7 +201,7 @@ class Solution:
 ```
 
 
-You can convert lists to `True` with `!=0` instead of `bool()` (3 chars shorter).
+You can convert lists or tuples to `True` with `!=0` instead of `bool()` (3 chars shorter).
 
 * https://leetcode.com/problems/number-of-islands
 

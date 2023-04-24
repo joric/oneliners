@@ -125,7 +125,7 @@ class Solution:
             if (x:=-heappop(q))==1 or s==x or (d:=1+(x-1)%(s-x))==x or not (s:=s-x+d,heappush(q,-d))),1)
 ```
 
-You can also use `takewhile()`, it's also a generator, so you need to expand it.
+You can also use `takewhile()`, it's also a generator, so you need to expand it (e.g. with `repeat(0)`).
 
 * https://leetcode.com/problems/sliding-window-maximum
 

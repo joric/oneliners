@@ -173,6 +173,10 @@ class Solution:
 
 class Solution:
     def lastStoneWeight(self, s: List[int]) -> int:
+        return next((s[0] for _ in count() if not s[1:] or insort(s,s.pop()-s.pop())),s.sort())
+
+class Solution:
+    def lastStoneWeight(self, s: List[int]) -> int:
         return (s.sort(),all(s[1:] and [insort(s,s.pop()-s.pop())] for _ in count()),s[0])[2]
 ```
 

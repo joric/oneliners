@@ -50,7 +50,7 @@ class Solution:
 
 class Solution:
     def lastStoneWeight(self, s: List[int]) -> int:
-        return (f:=lambda a:a[1:]and (a.sort()or f(a[:-2]+[a[-1]-a[-2]]))or a[0])(s)
+        return (f:=lambda a:a[1:] and (a.sort() or f(a[:-2]+[a[-1]-a[-2]])) or a[0])(s)
 
 test('''
 1046. Last Stone Weight

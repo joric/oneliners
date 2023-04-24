@@ -48,6 +48,10 @@ class Solution:
     def lastStoneWeight(self, s: List[int]) -> int:
         return (s.sort(),all(s[1:] and [insort(s,s.pop()-s.pop())] for _ in count()),s[0])[2]
 
+class Solution:
+    def lastStoneWeight(self, s: List[int]) -> int:
+        return (f:=lambda a:a.sort() or f(a[:-2]+[a[-1]-a[-2]]) if a[1:] else a[0])(s)
+
 test('''
 1046. Last Stone Weight
 Easy

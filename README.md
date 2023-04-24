@@ -68,7 +68,6 @@ To delete a key you can use the `.pop` method (same as `del`), it's shorter than
 While loops are not very oneliner-friendly. You can use  `count()` generator with `next()` or `takewhile()`
 (the latter is also a generator, so you need to run it, i.e. with `any()` and `repeat(0)`).
 You could also try `any()` as a while loop instead of `next()`, it might be shorter.
-
 Note that `next` default parameter gets initialized first so you can use it for the startup code.
 
 * https://leetcode.com/problems/two-sum
@@ -224,12 +223,18 @@ You can assure that expression never returns `None` with `[]`, it's just 2 chars
 * https://leetcode.com/problems/last-stone-weight
 
 ```python
+
+class Solution:
+    def lastStoneWeight(self, stones: List[int]) -> int:
+        stones.sort()
+        while len(stones) > 1:
+            insort(stones,stones.pop() - stones.pop())
+        return stones[0]
+
 class Solution:
     def lastStoneWeight(self, s: List[int]) -> int:
-        return next((s[0] for _ in count() if not(s[1:] and [insort(s,s.pop()-s.pop())])),s.sort())
-
+        return (s.sort(),all(s[1:] and [insort(s,s.pop()-s.pop())] for _ in count()),s[0])[2]
 ```
-
 
 * https://leetcode.com/problems/number-of-closed-islands
 

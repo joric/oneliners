@@ -93,6 +93,10 @@ Example 4:
 Input: stones = [3,7,8]
 Output: 2
 
+Example 5:
+Input: stones = [2,2]
+Output: 0
+
 Constraints:
 
 1 <= stones.length <= 30

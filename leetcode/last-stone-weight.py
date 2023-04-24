@@ -23,7 +23,7 @@ class Solution:
 
 class Solution:
     def lastStoneWeight(self, stones: List[int]) -> int:
-        return next((-h[0] for _ in count() if not(len(h)>1 and h[0] and not heappush(h,heappop(h)-heappop(h)))),(h:=[*map(neg,stones)],heapify(h)))
+        return next((-h[0] for _ in count() if not(h[1:] and h[0] and not heappush(h,heappop(h)-heappop(h)))),(h:=[*map(neg,stones)],heapify(h)))
 
 class Solution:
     def lastStoneWeight(self, s: List[int]) -> int:
@@ -31,7 +31,11 @@ class Solution:
 
 class Solution:
     def lastStoneWeight(self, s: List[int]) -> int:
-        return next(s.pop() for _ in count() if not(s[1:] and (s.sort(),s.append(s.pop()-s.pop()))))
+        return next((s[0] for _ in count() if not(s[1:] and [insort(s,s.pop()-s.pop())])),s.sort())
+
+class Solution:
+    def lastStoneWeight(self, s: List[int]) -> int:
+        return next(s[0] for _ in count() if not(s[1:] and (s.sort(),s.append(s.pop()-s.pop()))))
 
 test('''
 1046. Last Stone Weight
@@ -74,6 +78,9 @@ Example 3:
 Input: stones = [1,3]
 Output: 2
  
+Example 4:
+Input: stones = [3,7,8]
+Output: 2
 
 Constraints:
 

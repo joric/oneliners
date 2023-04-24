@@ -201,7 +201,7 @@ class Solution:
 ```
 
 
-You can convert tuples and lists to `True` with `!=0` instead of `bool()` (3 chars shorter):
+You can convert lists to `True` with `!=0` instead of `bool()` (3 chars shorter).
 
 * https://leetcode.com/problems/number-of-islands
 
@@ -214,10 +214,22 @@ class Solution:
         return sum(map(f, set(grid)))
 
 class Solution:
-    def numIslands(self, grid):
+    def numIslands(self, grid: List[List[str]]) -> int:
         return sum(map(f:=lambda z:g.pop(z,0) and [f(z + 1j**k) for k in range(4)]!=0,
             set(g:={i + j*1j:int(x) for i,row in enumerate(grid) for j,x in enumerate(row)})))
 ```
+
+You can assure that expression never returns `None` with `[]` (`[None]` != `None`), just 2 chars.
+
+* https://leetcode.com/problems/last-stone-weight
+
+```python
+class Solution:
+    def lastStoneWeight(self, s: List[int]) -> int:
+        return next((s[0] for _ in count() if not(s[1:] and [insort(s,s.pop()-s.pop())])),s.sort())
+
+```
+
 
 * https://leetcode.com/problems/number-of-closed-islands
 

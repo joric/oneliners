@@ -67,7 +67,6 @@ To delete a key you can use the `.pop` method (same as `del`), it's shorter than
 
 While loops are not very oneliner-friendly. You can use  `count()` generator with `next()` or `takewhile()`
 (the latter is also a generator, so you need to run it, i.e. with `any()` and `repeat(0)`).
-You could also try `any()` as a while loop instead of `next()`, it might be shorter.
 Note that `next` default parameter gets initialized first so you can use it for the startup code.
 
 * https://leetcode.com/problems/two-sum
@@ -158,6 +157,25 @@ Use `next`, element index, default value and conjunction to update the first ele
 
 ```
 
+You could also try `any()` as a while loop instead of `next()`, it might be shorter.
+You can assure that expression never returns `None` with `[]`, it's just 2 chars (`[None]` evaluates to `True`).
+
+* https://leetcode.com/problems/last-stone-weight
+
+```python
+
+class Solution:
+    def lastStoneWeight(self, stones: List[int]) -> int:
+        stones.sort()
+        while len(stones) > 1:
+            insort(stones,stones.pop() - stones.pop())
+        return stones[0]
+
+class Solution:
+    def lastStoneWeight(self, s: List[int]) -> int:
+        return (s.sort(),all(s[1:] and [insort(s,s.pop()-s.pop())] for _ in count()),s[0])[2]
+```
+
 #### map
 
 You can use `map` to traverse through adjacent cells.
@@ -216,24 +234,6 @@ class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         return sum(map(f:=lambda z:g.pop(z,0) and [f(z + 1j**k) for k in range(4)]!=0,
             set(g:={i + j*1j:int(x) for i,row in enumerate(grid) for j,x in enumerate(row)})))
-```
-
-You can assure that expression never returns `None` with `[]`, it's just 2 chars (`[None]` evaluates to `True`).
-
-* https://leetcode.com/problems/last-stone-weight
-
-```python
-
-class Solution:
-    def lastStoneWeight(self, stones: List[int]) -> int:
-        stones.sort()
-        while len(stones) > 1:
-            insort(stones,stones.pop() - stones.pop())
-        return stones[0]
-
-class Solution:
-    def lastStoneWeight(self, s: List[int]) -> int:
-        return (s.sort(),all(s[1:] and [insort(s,s.pop()-s.pop())] for _ in count()),s[0])[2]
 ```
 
 * https://leetcode.com/problems/number-of-closed-islands

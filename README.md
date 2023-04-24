@@ -63,7 +63,7 @@ To set a key, you can use a global `setitem` function, e.g. `c[x]=1` is the same
 To delete a key you can use the `.pop` method (same as `del`), it's shorter than `popitem()`.
 
 
-#### While
+#### While loops
 
 While loops are not very oneliner-friendly. You can use  `count()` generator with `next()` or `takewhile()`
 (the latter is also a generator, so you need to run it, i.e. with `any()` and `repeat(0)`).

@@ -152,7 +152,7 @@ class Solution:
 ```
 
 You could also try `any()` or `all()` as a while loop instead of `next()`, it may be shorter.
-You can assure that expression never returns `None` with `[]` (`[None]` evaluates to `True`).
+You can assure that expression never returns `None`, using `[]` (`[None]` evaluates to `True`).
 
 * https://leetcode.com/problems/last-stone-weight
 

@@ -12,6 +12,10 @@ class Solution:
     def lastStoneWeight(self, stones: List[int]) -> int:
         return next((-h[0] for _ in count() if not(len(h)>1 and h[0] and not heappush(h,heappop(h)-heappop(h)))),(h:=[*map(neg,stones)],heapify(h)))
 
+class Solution:
+    def lastStoneWeight(self, s: List[int]) -> int:
+        return next(s[0] for _ in count() if not(s[1:] and not s.append(s.pop(s.index(max(s)))-s.pop(s.index(max(s))))))
+
 test('''
 1046. Last Stone Weight
 Easy

@@ -13,11 +13,6 @@ class SmallestInfiniteSet:
         if num in self.deleted:
             self.deleted.remove(num)
 
-class SmallestInfiniteSet:
-    __init__ = lambda s:setattr(s,'d',set())
-    popSmallest = lambda s:next((s.d.add(i) or i for _ in count() if not(i in s.d and (i:=i+1))),i:=1)
-    addBack = lambda s,n:n in s.d and s.d.remove(n) or None
-
 SmallestInfiniteSet = type('',(),{'__init__':lambda s:setattr(s,'d',set()),'popSmallest':lambda s:next((s.d.add(i) or i for _ in count() if not(i in s.d and (i:=i+1))),i:=1),'addBack':lambda s,n:n in s.d and s.d.remove(n) or None})
 
 class SmallestInfiniteSet:

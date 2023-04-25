@@ -1,5 +1,22 @@
 from lc import *
 
+from sortedcontainers import SortedSet
+
+class SmallestInfiniteSet:
+    def __init__(self):
+        self.min = 1
+        self.addBackSet = SortedSet()
+    def popSmallest(self) -> int:
+        if len(self.addBackSet) == 0:
+            self.min += 1
+            return self.min - 1
+        return self.addBackSet.pop(0)
+    def addBack(self, num: int) -> None:
+        if num < self.min:
+            self.addBackSet.add(num)
+
+SmallestInfiniteSet = type('',(),{'__init__':lambda s:setattr(s,'m',1) or setattr(s,'s',__import__('sortedcontainers').SortedSet()),'popSmallest':lambda s:s.s.pop(0) if s.s else setattr(s,'m',s.m+1) or s.m-1,'addBack':lambda s,n:n<s.m and s.s.add(n) or None})
+
 class SmallestInfiniteSet:
     def __init__(self):
         self.deleted = set()

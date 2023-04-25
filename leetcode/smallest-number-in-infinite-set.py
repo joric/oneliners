@@ -20,6 +20,17 @@ class SmallestInfiniteSet:
 
 SmallestInfiniteSet = type('',(),{'__init__':lambda s:setattr(s,'d',set()),'popSmallest':lambda s:next((s.d.add(i) or i for _ in count() if not(i in s.d and (i:=i+1))),i:=1),'addBack':lambda s,n:n in s.d and s.d.remove(n) or None})
 
+class SmallestInfiniteSet:
+    def __init__(self):
+        self.r = [*range(1,1001)]
+    def popSmallest(self):
+        return heappop(self.r)
+    def addBack(self, num):
+        if num not in self.r:
+            heappush(self.r, num)
+
+SmallestInfiniteSet = type('',(),{'__init__':lambda s:setattr(s,'r',[*range(1,1001)]),'popSmallest':lambda s:heappop(s.r),'addBack':lambda s,n:n not in s.r and heappush(s.r,n) or None})
+
 test('''
 2336. Smallest Number in Infinite Set
 Medium

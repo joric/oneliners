@@ -16,7 +16,7 @@ class Solution:
 
 class Solution:
     def addDigits(self, x):
-        return x&(x-1)%9+1
+        return x and(x-1)%9+1
 
 test('''
 258. Add Digits

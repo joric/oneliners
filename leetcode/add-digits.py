@@ -20,7 +20,7 @@ class Solution:
 
 class Solution:
     def addDigits(self, num):
-        return num - int((num-1)/9) * 9
+        return num - int((num - 1) / 9) * 9
 
 class Solution:
     def addDigits(self, num):

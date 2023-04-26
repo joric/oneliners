@@ -15,8 +15,16 @@ class Solution:
         return 0 if num == 0 else (num - 1) % 9 + 1
 
 class Solution:
-    def addDigits(self, x):
-        return x and(x-1)%9+1
+    def addDigits(self, num):
+        return (num - 1) - int((num-1)/9) * 9 + 1
+
+class Solution:
+    def addDigits(self, num):
+        return num - int((num-1)/9) * 9
+
+class Solution:
+    def addDigits(self, num):
+        return num and (num - 1) % 9 + 1
 
 test('''
 258. Add Digits
@@ -46,6 +54,11 @@ Example 2:
 Input: num = 0
 Output: 0
  
+
+Example 3:
+Input: num = 9
+Output: 9
+
 
 Constraints:
 

@@ -12,11 +12,16 @@ class Solution:
 
 class Solution:
     def addDigits(self, num):
-        return 0 if num==0 else (num-1)%9 + 1
+        return 0 if num==0 else (num-1) % 9 + 1
 
 class Solution:
     def addDigits(self, num):
-        return (num-1) - int((num-1)/9)*9 + 1
+        neg_mod = lambda n,base:n - int(n/base) * base
+        return neg_mod(num-1, 9) + 1
+
+class Solution:
+    def addDigits(self, num):
+        return (num-1) - int((num-1)/9) * 9 + 1
 
 class Solution:
     def addDigits(self, num):

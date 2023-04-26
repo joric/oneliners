@@ -31,6 +31,9 @@ class Solution:
     def addDigits(self, num):
         return num and (num-1) % 9 + 1
 
+class Solution:
+    def addDigits(self, num):
+        return num and~-num%9+1
 test('''
 258. Add Digits
 Easy

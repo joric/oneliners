@@ -1,5 +1,13 @@
 from lc import *
 
+class Solution(object):
+    def bulbSwitch(self, n: int) -> int:
+        b = [0]*n
+        for s in range(1, n+1):
+            for s in range(s-1, n, s):
+                b[s] ^= 1
+        return sum(b)
+
 class Solution:
     def bulbSwitch(self, n: int) -> int:
         z = 1

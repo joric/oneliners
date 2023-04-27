@@ -1,5 +1,17 @@
 from lc import *
 
+class Solution:
+    def bulbSwitch(self, n: int) -> int:
+        z = 1
+        e = 0.0001
+        while abs(z**2 - n)>= e:
+            z -= (z*z - n) / (2*z)
+        return int(z)
+
+class Solution:
+    def bulbSwitch(self, n: int) -> int:
+        return isqrt(n)
+
 class Solution:bulbSwitch=isqrt
 
 test('''

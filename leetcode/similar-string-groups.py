@@ -22,6 +22,10 @@ class Solution:
     def numSimilarGroups(self, s: List[str]) -> int:
         return (e:=[],n:=[*range(len(s))],p:=lambda a,b:sum([c!=b[i] for i,c in enumerate(a)])<=2,f:=lambda v:(n[v]!=v and setitem(n,v,f(n[v])),n[v])[1],[p(s[i],s[j]) and e.append([i,j]) for i in range(len(s)-1) for j in range(i+1,len(s))],[setitem(n,f(i),f(j)) for i,j in e]) and len(set(map(f,n)))
 
+class Solution:
+    def numSimilarGroups(self, s: List[str]) -> int:
+        return (n:=[*range(m:=len(s))],f:=lambda v:(n[v]!=v and setitem(n,v,f(n[v])),n[v])[1],[setitem(n,f(i),f(j)) for i in range(m) for j in range(i+1,m) if sum(x!=y for x,y in zip(s[i],s[j]))<3]) and len(set(map(f,n)))
+
 import numpy as np
 class Solution:
     def numSimilarGroups(self, s: List[str]) -> int:

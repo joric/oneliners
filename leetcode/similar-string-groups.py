@@ -29,7 +29,7 @@ class Solution:
 
 class Solution:
     def numSimilarGroups(self, s: List[str]) -> int:
-        return len(set(map(tuple,((__import__('numpy')).matrix([[sum([x!=y for x,y in zip(a,b)])<=2 for a in s] for b in s],'bool')**99).A)))
+        return len(set(map(tuple,(__import__('numpy').matrix([[sum([x!=y for x,y in zip(a,b)])<=2 for a in s] for b in s],'bool')**99).A)))
 
 test('''
 839. Similar String Groups

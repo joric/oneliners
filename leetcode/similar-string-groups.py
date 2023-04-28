@@ -32,6 +32,18 @@ class Solution:
 import numpy as np
 
 class Solution:
+    def numSimilarGroups(self, s):
+        m = 999
+        T = ''.join(map(chr, range(m)))
+        n = len(s)
+        for i in range(n):
+            for j in range(n):
+                if sum(starmap(ne,zip(s[i],s[j])))<3:
+                    T = T.replace(T[i],T[j])
+
+        return n-m+len(set(T))
+
+class Solution:
     def numSimilarGroups(self, s: List[str]) -> int:
         return len(set(map(tuple,(np.matrix([[sum([x!=y for x,y in zip(a,b)])<=2 for a in s] for b in s],'bool')**99).A)))
 

@@ -40,7 +40,6 @@ class Solution:
             for j in range(n):
                 if sum(starmap(ne,zip(s[i],s[j])))<3:
                     T = T.replace(T[i],T[j])
-
         return n-m+len(set(T))
 
 class Solution:

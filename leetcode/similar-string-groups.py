@@ -51,6 +51,10 @@ class Solution:
 
 class Solution:
     def numSimilarGroups(self, s: List[str]) -> int:
+        return len(np.unique(np.matrix([[sum(starmap(ne,zip(a,b)))<3 for a in s] for b in s])**99,axis=0))
+
+class Solution:
+    def numSimilarGroups(self, s: List[str]) -> int:
         return len(set(map(tuple,(__import__('numpy').matrix([[sum([x!=y for x,y in zip(a,b)])<=2 for a in s] for b in s],'bool')**99).A)))
 
 class Solution:

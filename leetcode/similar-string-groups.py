@@ -35,6 +35,10 @@ class Solution:
     def numSimilarGroups(self, s: List[str]) -> int:
         return len(set(map(tuple,(__import__('numpy').matrix([[sum(starmap(ne,zip(a,b)))<=2 for a in s] for b in s],'bool')**99).A)))
 
+class Solution:
+    def numSimilarGroups(self, s: List[str]) -> int:
+        return len(set(map(tuple,(__import__('numpy').matrix([[sum(starmap(ne,zip(a,b)))<3 for a in s] for b in s])**99).A)))
+
 test('''
 839. Similar String Groups
 Hard

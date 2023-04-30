@@ -107,7 +107,8 @@ class Solution:
         c = 0
         for i in (3,2,1):
             for x,y,z in e:
-                if i != x: continue
+                if i!=x:
+                    continue
                 a = []
                 for p in (0,1):
                     a += [((t:=u[p])[z]==t[y])|3-x-p]

@@ -89,7 +89,7 @@ class Solution:
         def y(i):
             return sum((f(0,y,z) if x!=2 else 1)&(f(1,y,z) if x!=1 else 1) for x,y,z in e if i==x)
         c = y(3)+y(1)+y(2)
-        return c if sum(len(set(x)) for x in u) == 4 else -1
+        return c if sum(len(set(x)) for x in u)==4 else -1
 
 class Solution:
     def maxNumEdgesToRemove(self, n: int, e: List[List[int]]) -> int:
@@ -108,11 +108,11 @@ class Solution:
                     if x+p-2:
                         u[p]=t.replace(t[y],t[z])
                 c += a[0]&a[1]
-        return c if sum(len(set(x)) for x in u) == 4 else -1
+        return c if sum(len(set(x)) for x in u)==4 else -1
 
 class Solution:
     def maxNumEdgesToRemove(self, n: int, e: List[List[int]]) -> int:
-        return (u:=[''.join(map(chr,range(n+1)))]*2,c:=0,[(a:=[],[(a:=a+[((t:=u[p])[z]==t[y])|3-x-p],x+p-2 and setitem(u,p,t.replace(t[y],t[z]))) for p in (0,1)],c:=c+(a[0]&a[1])) for i in (3,2,1) for x,y,z in e if i==x],c if sum(len(set(x)) for x in u) == 4 else -1)[-1]
+        return (u:=[''.join(map(chr,range(n+1)))]*2,c:=0,[(a:=[],[(a:=a+[((t:=u[p])[z]==t[y])|3-x-p],x+p-2 and setitem(u,p,t.replace(t[y],t[z]))) for p in (0,1)],c:=c+(a[0]&a[1])) for i in (3,2,1) for x,y,z in e if i==x],c if sum(len(set(x)) for x in u)==4 else -1)[-1]
 
 test('''
 1579. Remove Max Number of Edges to Keep Graph Fully Traversable

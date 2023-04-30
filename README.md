@@ -62,6 +62,138 @@ the method returns `None`. E.g. `c[i]+=1` is equivalent to `c.update({i:1})`, `c
 To set a key, you can use a global `setitem` function, e.g. `c[x]=1` is the same as `setitem(c,x,1)`.
 To delete a key you can use the `.pop` method (same as `del`), it's shorter than `popitem()`.
 
+#### Walrus operator
+
+The controversial walrus operator (:=) from [PEP-572](https://peps.python.org/pep-0572/)
+(that [forced Guido to resign](https://www.infoworld.com/article/3292936/guido-van-rossum-resigns-whats-next-for-python.html)),
+can be used to define or update a variable or a function that's used repeatedly.
+It seems to be the most useful operator here, many oneliners would be impossible to do without it (or rather, very hard, with nested lambdas/y-combinator).
+
+* https://leetcode.com/problems/guess-number-higher-or-lower
+
+```python
+class Solution(object):
+    def guessNumber(self, n: int) -> int:
+        l,r = 1, n
+        while l <= r:
+            m = (l + r) // 2
+            res = guess(m)
+            if res == 0:
+                return m
+            elif res > 0:
+                l = m + 1
+            else:
+                r = m - 1
+        return 0
+
+class Solution:
+    def guessNumber(self, n: int) -> int:
+        return (f:=lambda l,h:h if l+1==h else f(m,h) if guess(m:=(l+h)//2)>0 else f(l,m))(0,n)
+```
+
+* https://leetcode.com/problems/reverse-integer
+
+```python
+class Solution:
+    def reverse(self, x: int) -> int:
+        r, x = 0, abs(x)
+        while x:
+            r = r*10 + x%10
+            x //= 10
+        return ((x>0)-(x<0))*min(2**31, r)
+
+class Solution:
+    def reverse(self, x: int) -> int:
+        return ((x>0)-(x<0))*min(2**31,(f:=lambda r,x:f(r*10 + x%10, x//10) if x else r)(0,abs(x)))
+```
+
+* https://leetcode.com/problems/top-k-frequent-words/discuss/573662/Python-2-lines-heap/1650650
+
+```python
+class Solution:
+    def topKFrequent(self, words: List[str], k: int) -> List[str]:
+        return nsmallest(k, (f:=Counter(words)).keys(), key=lambda x:(-f[x],x))
+```
+
+#### Setting list values
+
+You can't use walrus operator for structures, however, wou can use `__setattr__` for dictionaries or `__setitem__` for lists if you need an assignment
+(functions return `None`). There are also global functions that are shorter, `setattr(dict, ...)` and `setitem(list, ...)`.
+
+* https://leetcode.com/problems/add-one-row-to-tree/discuss/764593/Python-7-lines
+
+```python
+class Solution:
+    def addOneRow(self, root: TreeNode, v: int, d: int, isLeft: bool = True) -> TreeNode:
+        if d == 1:
+            return TreeNode(v, root if isLeft else None, root if not isLeft else None)
+        if not root:
+            return None
+        root.left = self.addOneRow(root.left, v, d - 1, True)
+        root.right = self.addOneRow(root.right, v, d - 1, False)
+        return root
+
+class Solution:
+    def addOneRow(self, root: TreeNode, v: int, d: int, isLeft: bool = True) -> TreeNode:
+        return TreeNode(v, root if isLeft else None, root if not isLeft else None) if d==1 else \
+        setattr(root,'left', self.addOneRow(root.left, v, d - 1, True)) or \
+        setattr(root,'right', self.addOneRow(root.right, v, d - 1, False)) or root if root else None
+```
+
+* https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/discuss/1685130/Python-Recursive-with-comments
+
+```python
+class Solution(object):
+    def deleteMiddle(self, head):
+        def f(a, b):
+            if not b:
+                return a.next
+            a.next = f(a.next, b.next.next) if b.next else f(a.next, b.next)
+            return a
+        return f(head, head.next)
+
+class Solution(object):
+    def deleteMiddle(self, head):
+        return (f:=lambda a,b:setattr(a,'next',f(a.next, b.next.next) if b.next
+            else f(a.next, b.next)) or a if b else a.next)(head, head.next)
+```
+
+Note that `setitem` also supports slices:
+
+* https://leetcode.com/problems/count-primes/discuss/111420/Python3-solution-using-Sieve-of-Eratosthenes-time-is-O(n)
+
+```python
+class Solution:
+    def countPrimes(self, n):
+        a = [0,0]+[1]*(n-2)
+        for i in range(2,int(n**0.5)+1):
+            if a[i]:
+                a[i*i:n:i] = [0]*len(a[i*i:n:i])
+        return sum(a)
+
+class Solution:
+    def countPrimes(self, n):
+        return sum(reduce(lambda a,i:a[i] and setitem(a,slice(i*i,n,i),[0]*len(a[i*i:n:i])) or a,
+            range(2,int(n**0.5)+1), [0,0]+[1]*(n-2)))
+```
+
+#### Getting list values
+
+Getitem used to construct a bisect comparator object, now we have the key parameter (since Python 3.10).
+
+* https://leetcode.com/problems/guess-number-higher-or-lower
+
+```python
+class Solution:
+    def guessNumber(self, n: int) -> int:        
+        return bisect_left(type('',(),{'__getitem__':lambda _,i: -guess(i)})(), 0, 1, n)
+
+class Solution:
+    def guessNumber(self, n: int) -> int:
+        return bisect_left(range(n), 0, key=lambda num: -guess(num))
+```
+
+You don't need a special function to get list/dict value, just use `[]` or `dict.get(key,default)` (for dictionaries).
 
 #### While loops
 
@@ -174,7 +306,7 @@ class Solution:
         return (s.sort(),all(s[1:] and [insort(s,s.pop()-s.pop())] for _ in count()),s[0])[2]
 ```
 
-#### map
+#### Maps
 
 You can use `map` to traverse through adjacent cells.
 
@@ -276,76 +408,7 @@ class Solution:
 
 ```
 
-#### Walrus operator
-
-The controversial walrus operator (:=) from [PEP-572](https://peps.python.org/pep-0572/)
-(that [forced Guido to resign](https://www.infoworld.com/article/3292936/guido-van-rossum-resigns-whats-next-for-python.html)),
-can be used to define or update a variable or a function that's used repeatedly.
-It seems to be the most useful operator here, many oneliners would be impossible to do without it (or rather, very hard, with nested lambdas/y-combinator).
-
-* https://leetcode.com/problems/guess-number-higher-or-lower
-
-```python
-class Solution(object):
-    def guessNumber(self, n: int) -> int:
-        l,r = 1, n
-        while l <= r:
-            m = (l + r) // 2
-            res = guess(m)
-            if res == 0:
-                return m
-            elif res > 0:
-                l = m + 1
-            else:
-                r = m - 1
-        return 0
-
-class Solution:
-    def guessNumber(self, n: int) -> int:
-        return (f:=lambda l,h:h if l+1==h else f(m,h) if guess(m:=(l+h)//2)>0 else f(l,m))(0,n)
-```
-
-* https://leetcode.com/problems/reverse-integer
-
-```python
-class Solution:
-    def reverse(self, x: int) -> int:
-        r, x = 0, abs(x)
-        while x:
-            r = r*10 + x%10
-            x //= 10
-        return ((x>0)-(x<0))*min(2**31, r)
-
-class Solution:
-    def reverse(self, x: int) -> int:
-        return ((x>0)-(x<0))*min(2**31,(f:=lambda r,x:f(r*10 + x%10, x//10) if x else r)(0,abs(x)))
-```
-
-* https://leetcode.com/problems/top-k-frequent-words/discuss/573662/Python-2-lines-heap/1650650
-
-```python
-class Solution:
-    def topKFrequent(self, words: List[str], k: int) -> List[str]:
-        return nsmallest(k, (f:=Counter(words)).keys(), key=lambda x:(-f[x],x))
-```
-
-#### getitem
-
-Used to construct a bisect comparator object, now we have the key parameter (since Python 3.10).
-
-* https://leetcode.com/problems/guess-number-higher-or-lower
-
-```python
-class Solution:
-    def guessNumber(self, n: int) -> int:        
-        return bisect_left(type('',(),{'__getitem__':lambda _,i: -guess(i)})(), 0, 1, n)
-
-class Solution:
-    def guessNumber(self, n: int) -> int:
-        return bisect_left(range(n), 0, key=lambda num: -guess(num))
-```
-
-#### cache
+#### Cache
 
 Cache decorator may be used as an inline function `cache(lambda ...)` in oneliners.
 
@@ -384,7 +447,7 @@ class Solution:
             min([1+f(n-c) for c in coins]) if n>0 else 0 if n==0 else inf))(amount))
 ```
 
-#### reduce
+#### Reduce
 
 Use it to flatten a loop.
 
@@ -440,68 +503,6 @@ class Solution:
     def longestValidParentheses(self, s: str) -> int:
         return reduce(lambda a,b:(max(a[0],b[0]-a[1][-2][0]),a[1][:-1]) if b[1]==')'
             and a[1][-1][1]=='(' else (a[0],a[1]+[b]),enumerate(s),(0,[(-1,')')]))[0]
-```
-
-#### setattr
-
-You can use `__setattr__` for dictionaries or `__setitem__` for lists if you need an assignment (functions return `None`).
-There are also global functions that are shorter, `setattr(dict, ...)` and `setitem(list, ...)`.
-
-* https://leetcode.com/problems/add-one-row-to-tree/discuss/764593/Python-7-lines
-
-```python
-class Solution:
-    def addOneRow(self, root: TreeNode, v: int, d: int, isLeft: bool = True) -> TreeNode:
-        if d == 1:
-            return TreeNode(v, root if isLeft else None, root if not isLeft else None)
-        if not root:
-            return None
-        root.left = self.addOneRow(root.left, v, d - 1, True)
-        root.right = self.addOneRow(root.right, v, d - 1, False)
-        return root
-
-class Solution:
-    def addOneRow(self, root: TreeNode, v: int, d: int, isLeft: bool = True) -> TreeNode:
-        return TreeNode(v, root if isLeft else None, root if not isLeft else None) if d==1 else \
-        setattr(root,'left', self.addOneRow(root.left, v, d - 1, True)) or \
-        setattr(root,'right', self.addOneRow(root.right, v, d - 1, False)) or root if root else None
-```
-
-* https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/discuss/1685130/Python-Recursive-with-comments
-
-```python
-class Solution(object):
-    def deleteMiddle(self, head):
-        def f(a, b):
-            if not b:
-                return a.next
-            a.next = f(a.next, b.next.next) if b.next else f(a.next, b.next)
-            return a
-        return f(head, head.next)
-
-class Solution(object):
-    def deleteMiddle(self, head):
-        return (f:=lambda a,b:setattr(a,'next',f(a.next, b.next.next) if b.next
-            else f(a.next, b.next)) or a if b else a.next)(head, head.next)
-```
-
-Note that `setitem` also supports slices:
-
-* https://leetcode.com/problems/count-primes/discuss/111420/Python3-solution-using-Sieve-of-Eratosthenes-time-is-O(n)
-
-```python
-class Solution:
-    def countPrimes(self, n):
-        a = [0,0]+[1]*(n-2)
-        for i in range(2,int(n**0.5)+1):
-            if a[i]:
-                a[i*i:n:i] = [0]*len(a[i*i:n:i])
-        return sum(a)
-
-class Solution:
-    def countPrimes(self, n):
-        return sum(reduce(lambda a,i:a[i] and setitem(a,slice(i*i,n,i),[0]*len(a[i*i:n:i])) or a,
-            range(2,int(n**0.5)+1), [0,0]+[1]*(n-2)))
 ```
 
 #### Misc

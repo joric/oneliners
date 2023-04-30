@@ -57,7 +57,7 @@ class Solution:
 
 class Solution:
     def maxNumEdgesToRemove(self, n: int, e: List[List[int]]) -> int:
-        return (r:=(a:=(b:=0)),p:=[*range(n+1)],f:=lambda x:p[x]!=x and setitem(p,x,f(p[x])) or p[x], u:=lambda i,j:(x:=f(i))!=(y:=f(j)) and not setitem(p,y,x),[t==3 and ((a:=a+1,b:=b+1) if u(i,j) else (r:=r+1)) for t,i,j in e],q:=p[:],[t==1 and ((a:=a+1) if u(i,j) else (r:=r+1)) for t,i,j in e],p:=q[:],[t==2 and ((b:=b+1) if u(i,j) else (r:=r+1)) for t,i,j in e],r if a==b==n-1 else -1)[-1]
+        return (r:=(a:=(b:=0)),p:=[*range(n+1)],f:=lambda x:p[x]!=x and setitem(p,x,f(p[x])) or p[x],u:=lambda i,j:(x:=f(i))!=(y:=f(j)) and not setitem(p,y,x),[t==3 and ((a:=a+1,b:=b+1) if u(i,j) else (r:=r+1)) for t,i,j in e],q:=p[:],[t==1 and ((a:=a+1) if u(i,j) else (r:=r+1)) for t,i,j in e],p:=q[:],[t==2 and ((b:=b+1) if u(i,j) else (r:=r+1)) for t,i,j in e],r if a==b==n-1 else -1)[-1]
 
 test('''
 1579. Remove Max Number of Edges to Keep Graph Fully Traversable

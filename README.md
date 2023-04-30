@@ -306,7 +306,7 @@ class Solution:
         return (s.sort(),all(s[1:] and [insort(s,s.pop()-s.pop())] for _ in count()),s[0])[2]
 ```
 
-#### Maps
+#### Mapping
 
 You can use `map` to traverse through adjacent cells.
 

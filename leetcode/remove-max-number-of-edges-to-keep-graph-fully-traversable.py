@@ -103,8 +103,8 @@ class Solution:
 
 class Solution:
     def maxNumEdgesToRemove(self, n: int, e: List[List[int]]) -> int:
-        u = [''.join(map(chr, range(n+1)))]*2
         c = 0
+        u = [''.join(map(chr,range(n+1)))]*2
         for i in (3,2,1):
             for x,y,z in e:
                 if i!=x:
@@ -119,7 +119,7 @@ class Solution:
 
 class Solution:
     def maxNumEdgesToRemove(self, n: int, e: List[List[int]]) -> int:
-        return (u:=[''.join(map(chr,range(n+1)))]*2,c:=0,[(a:=[],[(a:=a+[((t:=u[p])[z]==t[y])|3-x-p],x+p-2 and setitem(u,p,t.replace(t[y],
+        return (c:=0,u:=[''.join(map(chr,range(n+1)))]*2,[(a:=[],[(a:=a+[((t:=u[p])[z]==t[y])|3-x-p],x+p-2 and setitem(u,p,t.replace(t[y],
         t[z]))) for p in (0,1)],c:=c+(a[0]&a[1])) for i in (3,2,1) for x,y,z in e if i==x],c if sum(len(set(x)) for x in u)==4 else -1)[-1]
 
 test('''

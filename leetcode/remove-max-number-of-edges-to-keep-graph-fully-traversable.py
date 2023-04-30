@@ -24,7 +24,7 @@ class Solution:
                 else:
                     r += 1
 
-        tmp = p.copy()
+        q = p[:]
         for t,i,j in e:
             if t == 1:
                 if u(i,j):
@@ -32,7 +32,7 @@ class Solution:
                 else:
                     r += 1
 
-        p = tmp.copy()
+        p = q[:]
         for t,i,j in e:
             if t == 2:
                 if u(i,j):

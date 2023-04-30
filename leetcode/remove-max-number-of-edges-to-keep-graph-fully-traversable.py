@@ -79,6 +79,41 @@ class Solution:
         return (v:=[0,0,0],p:=[*range(n+1)],f:=lambda x:p[x]!=x and setitem(p,x,f(p[x])) or p[x],u:=lambda i,j:(x:=f(i))!=(y:=f(j)) and not setitem(p,y,x),w:=lambda x:((int(x!=2),int(x!=1),0) if u(i,j) else (0,0,1) for t,i,j in e if t==x),s:=lambda *x:[*map(sum,zip(*x))],v:=s(v,*w(3)),q:=p[:],v:=s(v,*w(1)),p:=q[:],v:=s(v,*w(2)),v[2] if v[0]==v[1]==n-1 else -1)[-1]
 
 
+class Solution:
+    def maxNumEdgesToRemove(self, n: int, e: List[List[int]]) -> int:
+        u = [''.join(map(chr, range(n+1)))]*2
+        def f(s,i,j):
+            r = (t:=u[s])[i] == t[j]
+            u[s] = t.replace(t[i],t[j])
+            return r
+        def y(i):
+            return sum((f(0,y,z) if x!=2 else 1)&(f(1,y,z) if x!=1 else 1) for x,y,z in e if i==x)
+        c = y(3)+y(1)+y(2)
+        return c if sum(len(set(x)) for x in u) == 4 else -1
+
+class Solution:
+    def maxNumEdgesToRemove(self, n: int, e: List[List[int]]) -> int:
+        return (u:=[''.join(map(chr,range(n+1)))]*2,f:=lambda s,i,j:(r:=(t:=u[s])[i]==t[j],setitem(u,s,t.replace(t[i],t[j])),r)[2],y:=lambda i:sum((f(0,y,z) if x!=2 else 1)&(f(1,y,z) if x!=1 else 1) for x,y,z in e if i==x),c:=y(3)+y(1)+y(2),c if sum(len(set(x)) for x in u)==4 else -1)[-1]
+
+class Solution:
+    def maxNumEdgesToRemove(self, n: int, e: List[List[int]]) -> int:
+        u = [''.join(map(chr, range(n+1)))]*2
+        c = 0
+        for i in (3,2,1):
+            for x,y,z in e:
+                if i != x: continue
+                a = []
+                for p in (0,1):
+                    a += [((t:=u[p])[z]==t[y])|3-x-p]
+                    if x+p-2:
+                        u[p]=t.replace(t[y],t[z])
+                c += a[0]&a[1]
+        return c if sum(len(set(x)) for x in u) == 4 else -1
+
+class Solution:
+    def maxNumEdgesToRemove(self, n: int, e: List[List[int]]) -> int:
+        return (u:=[''.join(map(chr,range(n+1)))]*2,c:=0,[(a:=[],[(a:=a+[((t:=u[p])[z]==t[y])|3-x-p],x+p-2 and setitem(u,p,t.replace(t[y],t[z]))) for p in (0,1)],c:=c+(a[0]&a[1])) for i in (3,2,1) for x,y,z in e if i==x],c if sum(len(set(x)) for x in u) == 4 else -1)[-1]
+
 test('''
 1579. Remove Max Number of Edges to Keep Graph Fully Traversable
 Hard

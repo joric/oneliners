@@ -179,6 +179,8 @@ class Solution:
 
 #### Getting list values
 
+You don't need a special function to get list/dict value, just use `[]` or `dict.get(key,default)` (for dictionaries).
+
 Getitem used to construct a bisect comparator object, now we have the key parameter (since Python 3.10).
 
 * https://leetcode.com/problems/guess-number-higher-or-lower
@@ -192,8 +194,6 @@ class Solution:
     def guessNumber(self, n: int) -> int:
         return bisect_left(range(n), 0, key=lambda num: -guess(num))
 ```
-
-You don't need a special function to get list/dict value, just use `[]` or `dict.get(key,default)` (for dictionaries).
 
 #### While loops
 

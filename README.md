@@ -308,7 +308,7 @@ class Solution:
 
 #### Mapping
 
-You can use `map` to traverse through adjacent cells.
+You can use `map` for a lot of purposes, for example to traverse through adjacent cells.
 
 * https://leetcode.com/problems/max-area-of-island
 

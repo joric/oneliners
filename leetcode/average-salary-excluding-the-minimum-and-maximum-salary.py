@@ -8,6 +8,12 @@ class Solution:
     def average(self, s: List[int]) -> float:
         return sum(sorted(s)[1:-1])/(len(s)-2)
 
+# statistics.mean (imported by leetcode)
+
+class Solution:
+    def average(self, s: List[int]) -> float:
+        return mean(sorted(s)[1:-1])
+
 test('''
 1491. Average Salary Excluding the Minimum and Maximum Salary
 Easy

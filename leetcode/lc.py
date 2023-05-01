@@ -10,6 +10,7 @@ from bisect import *
 from random import *
 from re import *
 from operator import *
+from statistics import *
 from string import *
 import bisect
 import collections
@@ -19,6 +20,7 @@ import importlib
 import json
 import random
 import re
+import statistics
 import os
 
 class TreeNode:
@@ -191,7 +193,10 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
 
     if not check:
         def check(res, expected, *args):
-            return str(res)==str(expected)
+            t = str(type(res))
+            if 'TreeNode' in t or 'ListNode' in t:
+                return str(res)==str(expected)
+            return res==expected
 
     custom_class_tests = classname is not None
 

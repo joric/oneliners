@@ -1,8 +1,19 @@
 from lc import *
 
+# ValueError: Exceeds the limit (4300) for integer string conversion: value has 10000 digits; use sys.set_int_max_str_digits() to increase the limit
 class Solution:
     def addToArrayForm(self, num: List[int], k: int) -> List[int]:
-        return map(int,list(str(int(''.join(map(str,num)))+k)))
+        return map(int,str(int(''.join(map(str,num)))+k))
+
+class Solution:
+    def addToArrayForm(self, num: List[int], k: int) -> List[int]:
+        for i in range(len(num) - 1, -1, -1):
+            k, num[i] = divmod(num[i] + k, 10)
+        return [int(i) for i in str(k)] + num if k else num
+
+class Solution:
+    def addToArrayForm(self, num: List[int], k: int) -> List[int]:
+        return (all((d:=divmod(num[i]+k,10),k:=d[0],setitem(num,i,d[1])) for i in reversed(range(len(num)))),[int(i) for i in str(k)]+num if k else num)[1]
 
 test('''
 

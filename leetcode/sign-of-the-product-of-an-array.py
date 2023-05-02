@@ -18,6 +18,14 @@ class Solution:
 
 class Solution:
     def arraySign(self, nums: List[int]) -> int:
+        return reduce(lambda x,y:x*(y and copysign(1,y)), nums, 1)
+
+class Solution:
+    def arraySign(self, nums: List[int]) -> int:
+        return reduce(lambda x,y:x*(y and y/abs(y)), nums, 1)
+
+class Solution:
+    def arraySign(self, nums: List[int]) -> int:
         return reduce(lambda x,y:(x*y>0)-(x*y<0), nums, 1)
 
 test('''

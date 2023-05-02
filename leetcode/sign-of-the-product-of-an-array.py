@@ -2,7 +2,20 @@ from lc import *
 
 class Solution:
     def arraySign(self, nums: List[int]) -> int:
-        return reduce(lambda x,y:(x*y>0)-(x*y<0),nums,1)
+        return 0 if 0 in nums else -1 if sum(filter(lambda x:x<0, nums))%2 else 1
+
+class Solution:
+    def arraySign(self, nums: List[int]) -> int:
+        return 0 if 0 in nums else -1 if len([x for x in nums if x<0])%2 else 1
+
+class Solution:
+    def arraySign(self, nums: List[int]) -> int:
+        return 0 if 0 in nums else -1 if reduce(lambda _,x:x<0, nums)%2 else 1
+
+class Solution1:
+    def arraySign(self, nums: List[int]) -> int:
+        return reduce(lambda x,y:(x*y>0)-(x*y<0), nums, 1)
+
 
 test('''
 1822. Sign of the Product of an Array

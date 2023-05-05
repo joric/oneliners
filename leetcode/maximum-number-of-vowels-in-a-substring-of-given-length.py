@@ -10,7 +10,7 @@ class Solution:
 
 class Solution:
     def maxVowels(self, s: str, k: int) -> int:
-        return max(map(sub,(t:=[*accumulate([c in 'aeiou' for c in '!'+s])])[k:],t))
+        return max(map(sub,(t:=[*accumulate([c in 'aeiou' for c in ' '+s])])[k:],t))
 
 test('''
 1456. Maximum Number of Vowels in a Substring of Given Length

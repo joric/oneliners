@@ -42,11 +42,11 @@ class Solution:
 
 class Solution:
     def longestObstacleCourseAtEachPosition(self, o: List[int]) -> List[int]:
-        return (d:=[])or[setitem(d,slice(i:=bisect_right(d,e),i+1),[e])or i+1 for e in o]
+        return (d:=[]) or [setitem(d,slice(i:=bisect_right(d,e),i+1),[e]) or i+1 for e in o]
 
 class Solution:
     def longestObstacleCourseAtEachPosition(self, o: List[int]) -> List[int]:
-        d=[];return [setitem(d,slice(i:=bisect_right(d,e),i+1),[e])or i+1 for e in o]
+        d=[];return[setitem(d,slice(i:=bisect_right(d,e),i+1),[e])or i+1for e in o]
 
 test('''
 1964. Find the Longest Valid Obstacle Course at Each Position

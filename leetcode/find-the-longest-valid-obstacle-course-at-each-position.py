@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/find-the-longest-valid-obstacle-course-at-each-position/discuss/1390162/JavaC%2B%2BPython-Mono-Increasing-Stack
+
 class Solution:
     def longestObstacleCourseAtEachPosition(self, o: List[int]) -> List[int]:
         d, r = [], []
@@ -15,6 +17,8 @@ class Solution:
     def longestObstacleCourseAtEachPosition(self, o: List[int]) -> List[int]:
         return (d:=[],r:=[],[(i:=bisect_right(d,e),r.append(i+1),i==len(d) and d.append(0),setitem(d,i,e)) for e in o],r)[3]
 
+# https://leetcode.com/problems/find-the-longest-valid-obstacle-course-at-each-position/discuss/1390172/Python-6-lines-Use-Longest-Increasing-Subsequence-explained
+
 class Solution:
     def longestObstacleCourseAtEachPosition(self, o: List[int]) -> List[int]:
         d, r = [10**10] * (len(o)+1), []
@@ -27,6 +31,18 @@ class Solution:
 class Solution:
     def longestObstacleCourseAtEachPosition(self, o: List[int]) -> List[int]:
         return (d:=[inf]*(len(o)+1),r:=[],[(i:=bisect_right(d,e),r.append(i+1),setitem(d,i,e)) for e in o],r)[3]
+
+class Solution:
+    def longestObstacleCourseAtEachPosition(self, o: List[int]) -> List[int]:
+        d = []
+        for e in o:
+            i = bisect_right(d,e)
+            d[i:i+1] = [e]
+            yield i + 1
+
+class Solution:
+    def longestObstacleCourseAtEachPosition(self, o: List[int]) -> List[int]:
+        return (d:=[])or[setitem(d,slice((i:=bisect_right(d,e)),i+1),[e])or i+1 for e in o]
 
 test('''
 1964. Find the Longest Valid Obstacle Course at Each Position

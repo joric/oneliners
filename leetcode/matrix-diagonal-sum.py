@@ -4,6 +4,8 @@ class Solution:
     def diagonalSum(self, m: List[List[int]]) -> int:
         n=len(m);return sum(m[i][i]+m[i][~i]for i in range(n))-(n%2and m[n//2][n//2])
 
+# https://leetcode.com/problems/matrix-diagonal-sum/discuss/2468138/Python-3-one-line-simple-solution
+
 class Solution:
     def diagonalSum(self, m: List[List[int]]) -> int:
         n=len(m);return sum(m[i][i]*(i!=~i+n)+m[i][~i]for i in range(n))

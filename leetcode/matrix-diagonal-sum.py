@@ -2,7 +2,7 @@ from lc import *
 
 class Solution:
     def diagonalSum(self, m: List[List[int]]) -> int:
-        n=len(m);return sum(m[i][i]+m[i][n-i-1] for i in range(n))-(n%2 and m[n//2][n//2])
+        n=len(m);return sum(m[i][i]+m[i][n-i-1]for i in range(n))-(n%2and m[n//2][n//2])
 
 test('''
 1572. Matrix Diagonal Sum

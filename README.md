@@ -184,13 +184,21 @@ Slices can extend the list implicitly:
 ```python
 class Solution:
     def longestObstacleCourseAtEachPosition(self, o: List[int]) -> List[int]:
+        d = []
+        for e in o:
+            i = bisect_right(d,e)
+            if i==len(d):
+                d.append(0)
+            d[i] = e
+            yield i+1
+
+class Solution:
+    def longestObstacleCourseAtEachPosition(self, o: List[int]) -> List[int]:
         d = [inf]*(len(o)+1)
-        r = []
         for e in o:
             i = bisect_right(d,e)
             d[i] = e
-            r.append(i+1)
-        return r
+            yield i+1
 
 class Solution:
     def longestObstacleCourseAtEachPosition(self, o: List[int]) -> List[int]:

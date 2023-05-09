@@ -44,7 +44,7 @@ class Solution:
         return m
 
 class Solution:
-    def generateMatrix(self, n):
+    def generateMatrix(self, n: int) -> List[List[int]]:
         return (f:=lambda l,w,b:l*[[]]and[list(range(b,b+l))]+list(map(list,zip(*f(w-1,l,b+l)[::-1]))))(n,n,1)
 
 test('''

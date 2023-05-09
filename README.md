@@ -194,14 +194,6 @@ class Solution:
 
 class Solution:
     def longestObstacleCourseAtEachPosition(self, o: List[int]) -> List[int]:
-        d = [inf]*(len(o)+1)
-        for e in o:
-            i = bisect_right(d,e)
-            d[i] = e
-            yield i+1
-
-class Solution:
-    def longestObstacleCourseAtEachPosition(self, o: List[int]) -> List[int]:
         d = []
         for e in o:
             i = bisect_right(d,e)

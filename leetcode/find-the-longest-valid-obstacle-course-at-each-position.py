@@ -4,11 +4,12 @@ from lc import *
 
 class Solution:
     def longestObstacleCourseAtEachPosition(self, o: List[int]) -> List[int]:
-        d, r = [], []
+        d = []
+        r = []
         for e in o:
             i = bisect_right(d,e)
             r.append(i + 1)
-            if i == len(d):
+            if i==len(d):
                 d.append(0)
             d[i] = e
         return r
@@ -21,11 +22,12 @@ class Solution:
 
 class Solution:
     def longestObstacleCourseAtEachPosition(self, o: List[int]) -> List[int]:
-        d, r = [10**10] * (len(o)+1), []
+        d = [inf]*(len(o)+1)
+        r = []
         for e in o:
             i = bisect_right(d,e)
-            r += [i + 1]
             d[i] = e
+            r.append(i+1)
         return r
 
 class Solution:
@@ -38,7 +40,7 @@ class Solution:
         for e in o:
             i = bisect_right(d,e)
             d[i:i+1] = [e]
-            yield i + 1
+            yield i+1
 
 class Solution:
     def longestObstacleCourseAtEachPosition(self, o: List[int]) -> List[int]:

@@ -177,6 +177,34 @@ class Solution:
             range(2,int(n**0.5)+1), [0,0]+[1]*(n-2)))
 ```
 
+Using slices also helps extending the list automatically:
+
+* https://leetcode.com/problems/find-the-longest-valid-obstacle-course-at-each-position
+
+```python
+class Solution:
+    def longestObstacleCourseAtEachPosition(self, o: List[int]) -> List[int]:
+        d = [inf]*(len(o)+1)
+        r = []
+        for e in o:
+            i = bisect_right(d,e)
+            d[i] = e
+            r.append(i+1)
+        return r
+
+class Solution:
+    def longestObstacleCourseAtEachPosition(self, o: List[int]) -> List[int]:
+        d = []
+        for e in o:
+            i = bisect_right(d,e)
+            d[i:i+1] = [e]
+            yield i+1
+
+class Solution:
+    def longestObstacleCourseAtEachPosition(self, o: List[int]) -> List[int]:
+        d=[];return[setitem(d,slice(i:=bisect_right(d,e),i+1),[e])or i+1for e in o]
+```
+
 #### Getting list values
 
 You don't need a special function to get list/dict value, just use `[]` or `dict.get(key,default)` (for dictionaries).

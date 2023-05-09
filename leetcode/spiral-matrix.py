@@ -4,6 +4,10 @@ class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
         return matrix and [*matrix.pop(0)] + self.spiralOrder([*zip(*matrix)][::-1])
 
+class Solution:
+    def spiralOrder(self, m: List[List[int]]) -> List[int]:
+        return m and[*m.pop(0)]+self.spiralOrder([*zip(*m)][::-1])
+
 test('''
 54. Spiral Matrix
 Medium

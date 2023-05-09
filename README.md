@@ -207,7 +207,7 @@ class Solution:
 
 #### Getting list values
 
-You don't need a special function to get list/dict value, just use `[]` or `dict.get(key,default)` (for dictionaries).
+Use the usual bracket notation `[]` or `dict.get(key,default)` (where needed).
 
 Getitem used to construct a bisect comparator object, now we have the key parameter (since Python 3.10).
 

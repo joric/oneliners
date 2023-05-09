@@ -177,7 +177,7 @@ class Solution:
             range(2,int(n**0.5)+1), [0,0]+[1]*(n-2)))
 ```
 
-Using slices also helps extending the list automatically:
+Slices can extend the list implicitly:
 
 * https://leetcode.com/problems/find-the-longest-valid-obstacle-course-at-each-position
 

@@ -1,11 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/spiral-matrix-ii/discuss/22391/Python-Recursive-Solution.3-lines./1348411
-
-class Solution:
-    def generateMatrix(self, n: int) -> List[List[int]]:
-        return (f:=lambda l,w,b:l*[[]]and[[*range(b,b+l)]]+[*zip(*f(w-1,l,b+l)[::-1])])(n,n,1)
-
 # https://leetcode.com/problems/spiral-matrix-ii/discuss/1941546/Python3-1-line-solution
 
 class Solution:
@@ -19,6 +13,12 @@ class Solution:
 class Solution:
     def generateMatrix(self, n: int) -> List[List[int]]:
         r=range(n);return[[4*(n-(a:=min(i,j,~i+n,~j+n)))*a+(i+j-2*a+1,4*n-6*a-i-j-3)[i>j]for j in r]for i in r]
+
+# https://leetcode.com/problems/spiral-matrix-ii/discuss/22391/Python-Recursive-Solution.3-lines./1348411
+
+class Solution:
+    def generateMatrix(self, n: int) -> List[List[int]]:
+        return (f:=lambda l,w,b:l*[[]]and[[*range(b,b+l)]]+[*zip(*f(w-1,l,b+l)[::-1])])(n,n,1)
 
 test('''
 59. Spiral Matrix II

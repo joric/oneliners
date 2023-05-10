@@ -43,6 +43,24 @@ class Solution:
             m = [list(range(l, r))] + list(map(list,zip(*m[::-1])))
         return m
 
+# https://leetcode.com/problems/spiral-matrix-ii/discuss/1941546/Python3-1-line-solution
+
+class Solution:
+    def generateMatrix(self, n: int) -> List[List[int]]:
+        return [[4*(n-min(min(i,n-i-1),min(j,n-j-1)))*min(min(i,n-i-1),min(j,n-j-1)) + ((i+j-2*min(min(i,n-i-1),min(j,n-j-1))+1) if (i <= j) else (4*(n-2*min(min(i,n-i-1),min(j,n-j-1))-1)-(i+j-2*min(min(i,n-i-1),min(j,n-j-1)))+1)) for j in range(n)] for i in range(n)]
+
+class Solution:
+    def generateMatrix(self, n: int) -> List[List[int]]:
+        return [[4*(n-(a:=min(min(i,n-i-1),min(j,n-j-1))))*a + ((i+j-2*a+1) if i<=j else (4*(n-2*a-1)-(i+j-2*a)+1)) for j in range(n)] for i in range(n)]
+
+class Solution:
+    def generateMatrix(self, n: int) -> List[List[int]]:
+        return [[4*(n-(a:=min(min(i,n-i-1),min(j,n-j-1))))*a + (i>j and (4*(n-2*a-1)-(i+j-2*a)+1) or (i+j-2*a+1)) for j in range(n)] for i in range(n)]
+
+class Solution:
+    def generateMatrix(self, n: int) -> List[List[int]]:
+        return [[(a:=min(min(i,n-i-1),min(j,n-j-1)))*a*4*(n-a)+(i>j and 4*n-6*a-i-j-3 or i+j-2*a+1) for j in range(n)] for i in range(n)]
+
 # https://leetcode.com/problems/spiral-matrix-ii/discuss/22391/Python-Recursive-Solution.3-lines./1348411
 
 class Solution:

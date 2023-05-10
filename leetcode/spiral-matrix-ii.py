@@ -47,7 +47,7 @@ class Solution:
 
 class Solution:
     def generateMatrix(self, n: int) -> List[List[int]]:
-        return (f:=lambda l,w,b:l*[[]]and[[*range(b,b+l)]]+[*map(list,zip(*f(w-1,l,b+l)[::-1]))])(n,n,1)
+        return (f:=lambda l,w,b:l*[[]]and[[*range(b,b+l)]]+[*zip(*f(w-1,l,b+l)[::-1])])(n,n,1)
 
 test('''
 59. Spiral Matrix II

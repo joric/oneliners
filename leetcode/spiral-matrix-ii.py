@@ -1,5 +1,15 @@
 from lc import *
 
+# https://leetcode.com/problems/spiral-matrix-ii/discuss/22282/4-9-lines-Python-solutions
+
+class Solution:
+    def generateMatrix(self, n: int) -> List[List[int]]:
+        m,a = [],n*n+1
+        while a>1:
+            a,b = a-len(m),a
+            m = [[*range(a,b)]]+[*zip(*m[::-1])]
+        return m
+
 # https://leetcode.com/problems/spiral-matrix-ii/discuss/1941546/Python3-1-line-solution
 
 class Solution:
@@ -18,7 +28,7 @@ class Solution:
 
 class Solution:
     def generateMatrix(self, n: int) -> List[List[int]]:
-        return (f:=lambda l,w,b:l*[[]]and[[*range(b,b+l)]]+[*zip(*f(w-1,l,b+l)[::-1])])(n,n,1)
+        return (f:=lambda a,b,c:a*[[]]and[[*range(c,c+a)]]+[*zip(*f(b-1,a,c+a)[::-1])])(n,n,1)
 
 test('''
 59. Spiral Matrix II

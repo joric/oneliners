@@ -43,6 +43,8 @@ class Solution:
             m = [list(range(l, r))] + list(map(list,zip(*m[::-1])))
         return m
 
+# https://leetcode.com/problems/spiral-matrix-ii/discuss/22391/Python-Recursive-Solution.3-lines./1348411
+
 class Solution:
     def generateMatrix(self, n: int) -> List[List[int]]:
         return (f:=lambda l,w,b:l*[[]]and[[*range(b,b+l)]]+[*map(list,zip(*f(w-1,l,b+l)[::-1]))])(n,n,1)

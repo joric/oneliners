@@ -24,7 +24,7 @@ class Solution:
         return (f:=cache(lambda i,j:i<len(a) and j<len(b) and max((a[i]==b[j])+f(i+1,j+1),f(i,j+1),f(i+1,j))))(0,0)
 
 class Solution:
-    def maxUncrossedLines(self, a, b):
+    def maxUncrossedLines(self, a: List[int], b: List[int]) -> int:
         return (f:=cache(lambda i,j:i*j and max((a[i-1]==b[j-1])+f(i-1,j-1),f(i,j-1),f(i-1,j))))(len(a),len(b))
 
 test('''

@@ -1,5 +1,14 @@
 from lc import *
 
+# https://leetcode.com/problems/count-ways-to-build-good-strings/discuss/2807169/JavaC%2B%2BPython-DP-Solution
+
+class Solution:
+    def countGoodStrings(self, low: int, high: int, zero: int, one: int) -> int:
+        dp, mod = Counter({0: 1}), 10**9+7
+        for i in range(1, high + 1):
+            dp[i] = (dp[i - zero] + dp[i - one]) % mod
+        return sum(dp[i] for i in range(low, high + 1)) % mod
+
 # https://leetcode.com/problems/count-ways-to-build-good-strings/discuss/3518020/2-line-python-for-fun
 
 class Solution:

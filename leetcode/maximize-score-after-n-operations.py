@@ -1,8 +1,12 @@
 from lc import *
 
+# https://leetcode.com/problems/maximize-score-after-n-operations/discuss/1118747/Python-Short-dp-on-subsets-explained.
+
 class Solution:
     def maxScore(self, a: List[int]) -> int:
         n=len(a);return(f:=cache(lambda m,k:max([k*gcd(a[i],a[j])+f(m^1<<i^1<<j,k+1) for i,j in combinations(range(n),2) if (m&1<<i)*(m&1<<j)]+[0])))((1<<n)-1,1)
+
+# https://leetcode.com/problems/maximize-score-after-n-operations/discuss/3521613/Python-or-(NO-BIT-MANIPULATION)-DFS-or-Beats-90-or-11-Lines
 
 class Solution:
     def maxScore(self, a: List[int]) -> int:

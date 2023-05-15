@@ -685,6 +685,31 @@ class Solution:
         return '/'+'/'.join(reduce(lambda r,p:(r+[p]*('.'!=p!=''),r[:-1])[p=='..'],path.split('/'),[]))
 ```
 
+### Swapping values
+
+To swap values you can use either `exec` or a temporary variable.
+
+Example:
+
+* https://leetcode.com/problems/sort-colors
+
+```python
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        def fn(t,b):
+            red, white, blue = t
+            return (swap:=lambda a,x,y:exec('a[x],a[y]=a[y],a[x]'),(swap(nums,red,white),
+            (red+1,white+1,blue))[1] if nums[white]==0 else ((red,white+1,blue) if nums[white]==1
+            else (swap(nums,white,blue),(red,white,blue-1))[1]))[1]
+        reduce(fn, nums, [0,0,len(nums)-1])
+
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        (s:=lambda a,x,y:(t:=a[x],setitem(a,x,a[y]),setitem(a,y,t),a)[3],
+        f:=lambda a,i,j,k:(f(s(a,i,j),i+1,j+1,k) if a[j]==0 else f(a,i,j+1,k) if a[j]==1
+        else f(s(a,j,k),i,j,k-1)) if i<=j<=k else None)[1](nums,0,0,len(nums)-1)
+```
+
 ## References
 
 * https://pythononeliners.com

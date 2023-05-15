@@ -36,7 +36,6 @@ class Solution:
     def swapNodes(self, h: Optional[ListNode], k: int) -> Optional[ListNode]:
         return(n:=h,[(n:=n.next)for _ in range(k-1)],a:=n,b:=h,all(n.next and(b:=b.next,n:=n.next)for _ in count()),exec('a.val,b.val=b.val,a.val'),h)[6]
 
-
 class Solution:
     def swapNodes(self, h: Optional[ListNode], k: int) -> Optional[ListNode]:
         q = h

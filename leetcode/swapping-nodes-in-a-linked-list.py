@@ -56,6 +56,14 @@ class Solution:
     def swapNodes(self, h: Optional[ListNode], k: int) -> Optional[ListNode]:
         q=h;i=1;d={};all(q and(setitem(d,i,q),q:=q.next,i:=i+1)for _ in count());d[k].val,d[i-k].val=d[i-k].val,d[k].val;return h
 
+class Solution:
+    def swapNodes(self, h: Optional[ListNode], k: int) -> Optional[ListNode]:
+        l=[h]+[h:=h.next for _ in range(10**5) if h];l[k-1].val,l[~k].val = l[~k].val,l[k-1].val;return l[0]
+
+class Solution:
+    def swapNodes(self, h: Optional[ListNode], k: int) -> Optional[ListNode]:
+        l=[h]+[h:=h.next for _ in range(9**6) if h];a,b=l[k-1],l[~k];a.val,b.val=b.val,a.val;return l[0]
+
 test('''
 1721. Swapping Nodes in a Linked List
 Medium

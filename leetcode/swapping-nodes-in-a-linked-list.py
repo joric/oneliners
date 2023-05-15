@@ -55,7 +55,7 @@ class Solution:
 
 class Solution:
     def swapNodes(self, h: Optional[ListNode], k: int) -> Optional[ListNode]:
-        q=h;i=1;d={};all(q and(setitem(d,i,q),q:=q.next,i:=i+1)for _ in count());exec('d[k].val,d[i-k].val=d[i-k].val,d[k].val');return h
+        q=h;i=1;d={};all(q and(setitem(d,i,q),q:=q.next,i:=i+1)for _ in count());d[k].val,d[i-k].val=d[i-k].val,d[k].val;return h
 
 test('''
 1721. Swapping Nodes in a Linked List

@@ -716,6 +716,34 @@ Also see swap function here:
 
 `swap = lambda a,x,y:(lambda f=a.__setitem__:(f(x,(a[x],a[y])),f(y,a[x][0]),f(x,a[x][1])))()`
 
+
+### Semicolons
+
+Nobody will stop you from using semicolons, but you'd still have to convert while and for loops.
+
+Example:
+
+* https://leetcode.com/problems/swapping-nodes-in-a-linked-list
+
+```python
+class Solution:
+    def swapNodes(self, h: Optional[ListNode], k: int) -> Optional[ListNode]:
+        q = h
+        i = 1
+        d = {}
+        while q:
+            d[i] = q
+            q = q.next
+            i = i + 1
+        d[k].val, d[i-k].val = d[i-k].val, d[k].val
+        return h
+
+class Solution:
+    def swapNodes(self, h: Optional[ListNode], k: int) -> Optional[ListNode]:
+        q=h;i=1;d={};all(q and(setitem(d,i,q),q:=q.next,i:=i+1) for _
+        in count());d[k].val,d[i-k].val=d[i-k].val,d[k].val;return h
+```
+
 ## References
 
 * https://pythononeliners.com

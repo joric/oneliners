@@ -710,6 +710,10 @@ class Solution:
         else f(s(a,j,k),i,j,k-1)) if i<=j<=k else None)[1](nums,0,0,len(nums)-1)
 ```
 
+Also see swap function here:
+
+* https://stackoverflow.com/questions/4362153/lambda-returns-lambda-in-python
+
 ## References
 
 * https://pythononeliners.com

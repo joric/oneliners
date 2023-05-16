@@ -33,8 +33,8 @@ class Solution:
         return h
 
 class Solution:
-    def swapPairs(self, h: Optional[ListNode]) -> Optional[ListNode]:
-        return (h and h.next and (t:=h.next.val,setattr(h.next,'val',h.val),setattr(h,'val',t)) and self.swapPairs(h.next.next),h)[1]
+    def swapPairs(s, h: Optional[ListNode]) -> Optional[ListNode]:
+        return(h and h.next and(t:=h.next.val,setattr(h.next,'val',h.val),setattr(h,'val',t))and s.swapPairs(h.next.next),h)[1]
 
 test('''
 24. Swap Nodes in Pairs

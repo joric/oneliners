@@ -174,7 +174,13 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
         func = func.__wrapped__ if hasattr (func, '__wrapped__') else func
         if not hasattr(func,'__code__'):
             return args, args, args
-        d = 1 if 'self' in func.__code__.co_varnames else 0
+
+        # determine 'self', need for "minustwoliners" (unreliable)
+        d = 0
+        v = func.__code__.co_varnames
+        if len(v)>0 and (v[0]=='self' or v[0]=='s'):
+            d = 1
+
         argc = func.__code__.co_argcount - d
         orig = args
 

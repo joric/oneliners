@@ -16,6 +16,10 @@ class Solution:
             return f(r.right)
         return f(root)
 
+class Solution:
+    def isValidBST(self, root: TreeNode) -> bool:
+        p=[0];return(f:=lambda r:not r or (0 if (not f(r.left) or (p[0] and p[0].val >= r.val)) else setitem(p,0,r) or f(r.right)))(root)
+
 # left/right
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
@@ -28,18 +32,21 @@ class Solution:
         return f(root,None,None)
 
 class Solution:
+    def isValidBST(self, r: Optional[TreeNode], a=0, b=0) -> bool:
+        return not r or (not ((a and a.val>=r.val) or (b and b.val<=r.val))) and self.isValidBST(r.left,a,r) and self.isValidBST(r.right,r,b)
+
+class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         return (f:=lambda r,a,b:not r or (not ((a and a.val>=r.val) or (b and b.val<=r.val))) and f(r.left,a,r) and f(r.right,r,b))(root,0,0)
 
 # min/max
 class Solution:
     def isValidBST(self, p: Optional[TreeNode], min=-inf, max=inf) -> bool:
-        return (not p or (p.val>min and p.val<max) and self.isValidBST(p.left, min, p.val) and self.isValidBST(p.right, p.val, max))
+        return not p or (p.val>min and p.val<max) and self.isValidBST(p.left, min, p.val) and self.isValidBST(p.right, p.val, max)
 
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        return (f:=lambda p,a,b: not p or p.val>a and p.val<b and f(p.left,a,p.val) and f(p.right,p.val,b))(root,-inf,inf)
-
+        return (f:=lambda p,a,b:not p or p.val>a and p.val<b and f(p.left,a,p.val) and f(p.right,p.val,b))(root,-inf,inf)
 
 test('''
 98. Validate Binary Search Tree

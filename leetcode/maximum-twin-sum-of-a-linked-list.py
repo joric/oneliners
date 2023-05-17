@@ -12,7 +12,11 @@ class Solution:
 
 class Solution:
     def pairSum(self, h: Optional[ListNode]) -> int:
-        r=[(h.val,h:=h.next)[0]for _ in[1]*10**5 if h];return max(r[i]+r[~i]for i in range(len(r)//2))
+        r=[(h.val,h:=h.next)[0]for _ in[1]*10**5 if h];return max(map(sum,zip(r,r[::-1])))
+
+class Solution:
+    def pairSum(self, h: Optional[ListNode]) -> int:
+        return max(map(sum,zip(r:=[(h.val,h:=h.next)[0]for _ in[1]*10**5 if h],r[::-1])))
 
 test('''
 2130. Maximum Twin Sum of a Linked List

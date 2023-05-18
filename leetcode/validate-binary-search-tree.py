@@ -49,6 +49,9 @@ class Solution:
         return (f:=lambda p,a,b:not p or p.val>a and p.val<b and f(p.left,a,p.val) and f(p.right,p.val,b))(root,-inf,inf)
 
 # collect inorder and compare
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        r=(f:=lambda n:n and[*f(n.left)]+[n.val]+[*f(n.right)]or[])(root);return all(i>0 for i in accumulate(r,lambda a,x:x-a))
 
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:

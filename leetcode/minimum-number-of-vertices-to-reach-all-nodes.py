@@ -4,7 +4,23 @@ from lc import *
 
 class Solution:
     def findSmallestSetOfVertices(self, n: int, edges: List[List[int]]) -> List[int]:
-        return set(range(n))-set(j for i, j in edges)
+        return set(range(n))-set(map(itemgetter(1),edges))
+
+class Solution:
+    def findSmallestSetOfVertices(self, n: int, edges: List[List[int]]) -> List[int]:
+        return set(range(n))-set(map(lambda x:x[1],edges))
+
+class Solution:
+    def findSmallestSetOfVertices(self, n: int, edges: List[List[int]]) -> List[int]:
+        return set(range(n))-set(t[1] for t in edges)
+
+class Solution:
+    def findSmallestSetOfVertices(self, n: int, edges: List[List[int]]) -> List[int]:
+        return set(range(n))-set(j for i,j in edges)
+
+class Solution:
+    def findSmallestSetOfVertices(self, n: int, edges: List[List[int]]) -> List[int]:
+        return set(range(n))-set([*zip(*edges)][1])
 
 test('''
 1557. Minimum Number of Vertices to Reach All Nodes

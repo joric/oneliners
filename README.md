@@ -768,7 +768,7 @@ class Solution:
 class Solution:
     def swapNodes(self, h: Optional[ListNode], k: int) -> Optional[ListNode]:
         q=h;i=1;d={};all(q and(setitem(d,i,q),q:=q.next,i:=i+1) for _
-        in count());d[k].val,d[i-k].val=d[i-k].val,d[k].val;return h
+            in count());d[k].val,d[i-k].val=d[i-k].val,d[k].val;return h
 
 class Solution:
     def swapNodes(self, h: Optional[ListNode], k: int) -> Optional[ListNode]:

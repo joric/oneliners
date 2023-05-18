@@ -620,7 +620,8 @@ class Solution:
 
 class Solution:
     def generateMatrix(self, n: int) -> List[List[int]]:
-        r=range(n);return[[4*(n-(a:=min(i,j,~i+n,~j+n)))*a+(i+j-2*a+1,4*n-6*a-i-j-3)[i>j]for j in r]for i in r]
+        r=range(n);return[[4*(n-(a:=min(i,j,~i+n,~j+n)))*a+(i+j-2*a+1,4*n-6*a-i-j-3)[i>j]for j in r]
+        for i in r]
 
 ```
 

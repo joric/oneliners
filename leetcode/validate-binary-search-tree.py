@@ -51,27 +51,27 @@ class Solution:
 # collect inorder and compare
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        t=(f:=lambda n:n and[*f(n.left)]+[n.val]+[*f(n.right)]or[])(root);return all(i>0 for i in accumulate(t,lambda a,x:x-a))
+        t=(f:=lambda n:n and f(n.left)+[n.val]+f(n.right)or[])(root);return all(i>0 for i in accumulate(t,lambda a,x:x-a))
 
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        return (lambda t:all(b>a for a,b in zip(t,t[1:])))((f:=lambda n:n and[*f(n.left)]+[n.val]+[*f(n.right)]or[])(root))
+        return (lambda t:all(b>a for a,b in zip(t,t[1:])))((f:=lambda n:n and f(n.left)+[n.val]+f(n.right)or[])(root))
 
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        return inf!=reduce(lambda i,j:i<j and j or inf,(f:=lambda n:n and[*f(n.left)]+[n.val]+[*f(n.right)]or[])(root))
+        return inf!=reduce(lambda i,j:i<j and j or inf,(f:=lambda n:n and f(n.left)+[n.val]+f(n.right)or[])(root))
 
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        t=(f:=lambda n:n and[*f(n.left)]+[n.val]+[*f(n.right)]or[])(root);return all(b>a for a,b in zip(t,t[1:]))
+        t=(f:=lambda n:n and f(n.left)+[n.val]+f(n.right)or[])(root);return all(b>a for a,b in zip(t,t[1:]))
 
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        t=(f:=lambda n:n and[*f(n.left)]+[n.val]+[*f(n.right)]or[])(root);return all(b>a for a,b in pairwise(t))
+        t=(f:=lambda n:n and f(n.left)+[n.val]+f(n.right)or[])(root);return all(b>a for a,b in pairwise(t))
 
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        return all(__import__('numpy').diff((f:=lambda n:n and[*f(n.left)]+[n.val]+[*f(n.right)]or[])(root))>0)
+        return all(__import__('numpy').diff((f:=lambda n:n and f(n.left)+[n.val]+f(n.right)or[])(root))>0)
 
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:

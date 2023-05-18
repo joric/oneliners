@@ -623,6 +623,9 @@ class Solution:
         r=range(n);return[[4*(n-(a:=min(i,j,~i+n,~j+n)))*a+(i+j-2*a+1,4*n-6*a-i-j-3)[i>j]for j in r]for i
             in r]
 
+class Solution:
+    def generateMatrix(self, n: int) -> List[List[int]]:
+        return (f:=lambda a,b,c:a*[[]]and[[*range(c,c+a)]]+[*zip(*f(b-1,a,c+a)[::-1])])(n,n,1)
 ```
 
 * You can replace `0 if x==y else z` with `x-y and z`, it's a little bit counterintuitive, but shorter.

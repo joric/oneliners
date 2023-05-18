@@ -739,7 +739,9 @@ Also see swap function here:
 
 * https://stackoverflow.com/questions/4362153/lambda-returns-lambda-in-python
 
-`swap = lambda a,x,y:(lambda f=a.__setitem__:(f(x,(a[x],a[y])),f(y,a[x][0]),f(x,a[x][1])))()`
+```python
+swap = lambda a,x,y:(lambda f=a.__setitem__:(f(x,(a[x],a[y])),f(y,a[x][0]),f(x,a[x][1])))()
+```
 
 
 ### Semicolons

@@ -48,6 +48,25 @@ class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         return (f:=lambda p,a,b:not p or p.val>a and p.val<b and f(p.left,a,p.val) and f(p.right,p.val,b))(root,-inf,inf)
 
+# collect inorder and compare
+
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        l=(f:=lambda n:n and[*f(n.left)]+[n.val]+[*f(n.right)]or[])(root);return all(b>a for a,b in zip(l,l[1:]))
+
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        return (lambda l:all(b>a for a,b in zip(l,l[1:])))((f:=lambda n:n and[*f(n.left)]+[n.val]+[*f(n.right)]or[])(root))
+
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        return inf!=reduce(lambda i,j:i<j and j or inf,(f:=lambda n:n and[*f(n.left)]+[n.val]+[*f(n.right)]or[])(root))
+
+import numpy as np
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        return np.all(np.diff((f:=lambda n:n and[*f(n.left)]+[n.val]+[*f(n.right)]or[])(root))>0)
+
 test('''
 98. Validate Binary Search Tree
 Medium

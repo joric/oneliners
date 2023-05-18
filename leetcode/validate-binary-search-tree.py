@@ -55,19 +55,19 @@ class Solution:
 
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        l=(f:=lambda n:n and[*f(n.left)]+[n.val]+[*f(n.right)]or[])(root);return all(b>a for a,b in zip(l,l[1:]))
-
-class Solution:
-    def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        l=(f:=lambda n:n and[*f(n.left)]+[n.val]+[*f(n.right)]or[])(root);return all(b>a for a,b in pairwise(l))
-
-class Solution:
-    def isValidBST(self, root: Optional[TreeNode]) -> bool:
         return (lambda l:all(b>a for a,b in zip(l,l[1:])))((f:=lambda n:n and[*f(n.left)]+[n.val]+[*f(n.right)]or[])(root))
 
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         return inf!=reduce(lambda i,j:i<j and j or inf,(f:=lambda n:n and[*f(n.left)]+[n.val]+[*f(n.right)]or[])(root))
+
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        l=(f:=lambda n:n and[*f(n.left)]+[n.val]+[*f(n.right)]or[])(root);return all(b>a for a,b in zip(l,l[1:]))
+
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        l=(f:=lambda n:n and[*f(n.left)]+[n.val]+[*f(n.right)]or[])(root);return all(b>a for a,b in pairwise(l))
 
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:

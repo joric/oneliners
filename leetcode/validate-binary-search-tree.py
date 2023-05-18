@@ -65,10 +65,9 @@ class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         return inf!=reduce(lambda i,j:i<j and j or inf,(f:=lambda n:n and[*f(n.left)]+[n.val]+[*f(n.right)]or[])(root))
 
-import numpy as np
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        return np.all(np.diff((f:=lambda n:n and[*f(n.left)]+[n.val]+[*f(n.right)]or[])(root))>0)
+        return all(__import__('numpy').diff((f:=lambda n:n and[*f(n.left)]+[n.val]+[*f(n.right)]or[])(root))>0)
 
 test('''
 98. Validate Binary Search Tree

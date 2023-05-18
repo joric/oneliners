@@ -75,7 +75,7 @@ class Solution:
 
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        return all(starmap(lt,pairwise((f:=lambda n:n and[*f(n.left)]+[n.val]+[*f(n.right)]or[])(root))))
+        return all(starmap(lt,pairwise((f:=lambda n:n and f(n.left)+[n.val]+f(n.right)or[])(root))))
 
 test('''
 98. Validate Binary Search Tree

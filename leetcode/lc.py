@@ -135,7 +135,7 @@ class ListNode:
 cnames = []
 
 # use test(```leetcode description```) to run latest Solution
-# use test() between solutions to add them to queue (optional)
+# note only the last solution is tested (classname override), but you can use empty test() between solutions
 
 def test(text=None, classname=None, check=None, init=None, parser=None):
     if not text:

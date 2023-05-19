@@ -31,12 +31,12 @@ class Solution:
         return True
 
 class Solution:
-    def isBipartite(self, g):
-        u=''.join(map(chr,range(999)));return all(u[i]!=u[j]and(u:=u.replace(u[j],u[x[0]]))for i,x in enumerate(g)for j in x)
-
-class Solution:
     def isBipartite(self, g: List[List[int]]) -> bool:
         t=len(g);u=''.join(map(chr,range(t+1)));return all(u[i]!=u[j]and(u:=u.replace(u[j],u[g[i][0]]))for i in range(t)for j in g[i])
+
+class Solution:
+    def isBipartite(self, g):
+        u=''.join(map(chr,range(999)));return all(u[i]!=u[j]and(u:=u.replace(u[j],u[x[0]]))for i,x in enumerate(g)for j in x)
 
 test('''
 

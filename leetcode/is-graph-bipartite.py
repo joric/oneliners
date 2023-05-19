@@ -2,18 +2,22 @@ from lc import *
 
 class Solution:
     def isBipartite(self, graph: List[List[int]]) -> bool:
-        color = {}
+        p = {}
         def dfs(x, c):
-            if x in color: return color[x] == c
-            color[x] = c
-            return all(dfs(y, -c) for y in graph[x])
-        return all(i in color or dfs(i, 1) for i in range(len(graph)))
+            if x in p:
+                return p[x] == c
+            p[x] = c
+            return all(dfs(y,-c) for y in graph[x])
+        return all(i in p or dfs(i, 1) for i in range(len(graph)))
 
 class Solution:
     def isBipartite(self, graph: List[List[int]]) -> bool:
         return (p:={}) or all(i in p or (f:=lambda x,c:p[x]==c if x in p else setitem(p,x,c)
             or all(f(y,-c) for y in graph[x]))(i, 1) for i in range(len(graph)))
 
+class Solution:
+    def isBipartite(self, g: List[List[int]]) -> bool:
+        p={};return all(i in p or (f:=lambda x,c:p[x]==c if x in p else setitem(p,x,c) or all(f(y,-c) for y in g[x]))(i,1) for i in range(len(g)))
 
 test('''
 

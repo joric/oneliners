@@ -15,9 +15,11 @@ class Solution:
 
 class Solution:
     def calcEquation(self, e: List[List[str]], v: List[float], q: List[List[str]]) -> List[float]:
-        r=defaultdict(dict);[setitem(r[a],b,v) or setitem(r[b],a,1.0/v) for (a,b),v in zip(e,v)];
-        [setitem(r[i],j,r[i][k]*r[k][j]) for k in r for i in r[k] for j in r[k]];return [r[a].get(b,-1.0) for a,b in q]
+        r=defaultdict(dict);[setitem(r[a],b,v) or setitem(r[b],a,1/v) for (a,b),v in zip(e,v)];[setitem(r[i],j,r[i][k]*r[k][j]) for k in r for i in r[k] for j in r[k]];return [r[a].get(b,-1.0) for a,b in q]
 
+class Solution:
+    def calcEquation(self, e: List[List[str]], v: List[float], q: List[List[str]]) -> List[float]:
+        r=defaultdict(dict);[r[a].update({b:v})or r[b].update({a:1/v})for (a,b),v in zip(e,v)];[r[i].update({j:r[i][k]*r[k][j]})for k in r for i in r[k]for j in r[k]];return[r[a].get(b,-1.0)for a,b in q]
 
 test('''
 399. Evaluate Division

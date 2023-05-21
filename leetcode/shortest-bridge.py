@@ -34,6 +34,9 @@ class Solution:
         next(f(i,j) for i in range(n) for j in range(n) if g[i][j]==1)
         return next(t-2 for _ in count() if next((1 for i in range(n) for j in range(n) if g[i][j]==t and any(map(e,(i-1,i+1,i,i),(j,j,j+1,j-1),[t]*4))),0) or not (t:=t+1))
 
+class Solution:
+    def shortestBridge(self, g: List[List[int]]) -> int:
+        g,t={i+j*1j:x for i,r in enumerate(g) for j,x in enumerate(r)},2;f,e=lambda z:g.get(z,0)==1 and (setitem(g,z,2),[f(z+1j**k) for k in range(4)]),lambda z,t:z in g and (g[z]==0 and setitem(g,z,t+1) or g[z]==1);next(f(z) for z in g if g[z]==1);return next(t-2 for _ in count() if next((1 for z in g if g[z]==t and any(e(z+1j**k,t) for k in range(4))),0) or not (t:=t+1))
 
 test('''
 934. Shortest Bridge

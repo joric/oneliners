@@ -1,6 +1,7 @@
 from lc import *
 
 # https://leetcode.com/problems/shortest-bridge/discuss/1251709/BFS-python-with-explanation-amazing-solution
+# paint a single island as 2, then start incrementing value and expanding from last value until we meet 1, difference would be the shortest bridge
 
 class Solution:
     def shortestBridge(self, g: List[List[int]]) -> int:

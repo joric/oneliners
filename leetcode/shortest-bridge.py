@@ -28,9 +28,10 @@ class Solution:
 
 class Solution:
     def shortestBridge(self, g: List[List[int]]) -> int:
-        n,t,f=len(g),2,lambda i,j:0<=i<n and 0<=j<n and g[i][j]==1 and (setitem(g[i],j,2),[*map(f,(i-1,i+1,i,i),(j,j,j-1,j+1))]);
-        e = lambda i,j,t:0<=i<n and 0<=j<n and (g[i][j]==0 and setitem(g[i],j,t+1) or g[i][j]==1);
-        next(f(i,j) for i in range(n) for j in range(n) if g[i][j]==1);
+        n,t=len(g),2
+        f = lambda i,j:0<=i<n and 0<=j<n and g[i][j]==1 and (setitem(g[i],j,2),[*map(f,(i-1,i+1,i,i),(j,j,j-1,j+1))])
+        e = lambda i,j,t:0<=i<n and 0<=j<n and (g[i][j]==0 and setitem(g[i],j,t+1) or g[i][j]==1)
+        next(f(i,j) for i in range(n) for j in range(n) if g[i][j]==1)
         return next(t-2 for _ in count() if next((1 for i in range(n) for j in range(n) if g[i][j]==t and any(map(e,(i-1,i+1,i,i),(j,j,j+1,j-1),[t]*4))),0) or not (t:=t+1))
 
 

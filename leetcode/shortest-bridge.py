@@ -77,7 +77,7 @@ class Solution:
 # one-liner, borderline TLE (8037 ms)
 class Solution:
     def shortestBridge(self, g: List[List[int]]) -> int:
-        n,a,b,f=len(g),[],[],lambda i,j:n>i>=0<=j<n and g[i][j]==1 and(setitem(g[i],j,0),p.append((i,j)),[*map(f,(i-1,i+1,i,i),(j,j,j-1,j+1))]);r=range(n);[(p:=(a,b)[not b],f(i,j))for i in r for j in r];return min(abs(u[0]-v[0])+abs(u[1]-v[1])-1 for u in a for v in b)
+        n,a,b,f=len(g),[],[],lambda i,j:n>i>=0<=j<n and g[i][j]and(setitem(g[i],j,0),p.append((i,j)),[*map(f,(i-1,i+1,i,i),(j,j,j-1,j+1))]);r=range(n);[(p:=(a,b)[not b],f(i,j))for i in r for j in r];return min(abs(u[0]-v[0])+abs(u[1]-v[1])-1 for u in a for v in b)
 
 test('''
 934. Shortest Bridge

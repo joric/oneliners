@@ -49,6 +49,33 @@ class Solution:
     def shortestBridge(self, g: List[List[int]]) -> int:
         g,t,f,e={i+j*1j:x for i,r in enumerate(g)for j,x in enumerate(r)},2,lambda z:g.get(z,0)==1 and(setitem(g,z,2),[f(z+1j**k)for k in range(4)]),lambda z,t:z in g and(g[z]==0 and setitem(g,z,t+1)or g[z]==1);next(f(z)for z in g if g[z]==1);return next(t-2 for _ in count()if next((1 for z in g if g[z]==t and any(e(z+1j**k,t)for k in range(4))),0)or not(t:=t+1))
 
+
+# https://leetcode.com/problems/shortest-bridge/discuss/189489/concise-C%2B%2B-dfs-solution.
+# groups approach, gives TLE
+
+# borderline TLE (9222 ms)
+class Solution:
+    def shortestBridge(self, g: List[List[int]]) -> int:
+        n,a,b = len(g),set(),set()
+        def f(i,j):
+            if 0<=i<n and 0<=j<n and g[i][j]==1:
+                g[i][j] = 0
+                p.add((i,j))
+                [*map(f,(i-1,i+1,i,i),(j,j,j-1,j+1))]
+        for i in range(n):
+            for j in range(n):
+                p = b if a else a
+                f(i,j)
+        return min(abs(u[0]-v[0])+abs(u[1]-v[1])-1 for u in a for v in b)
+
+# TLE
+class Solution:
+    def shortestBridge(self, g: List[List[int]]) -> int:
+        g,a,b={i+j*1j:x for i,r in enumerate(g) for j,x in enumerate(r)},set(),set()
+        f=lambda z:g.get(z,0)==1 and z not in p and (setitem(g,z,0),p.add(z),[f(z+1j**k) for k in range(4)])
+        [(p:=b if a else a,f(z)) for z in g]
+        return int(min(abs(u.real-v.real)+abs(u.imag-v.imag)-1 for u in a for v in b))
+
 test('''
 934. Shortest Bridge
 Medium

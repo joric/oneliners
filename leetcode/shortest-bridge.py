@@ -36,7 +36,16 @@ class Solution:
 
 class Solution:
     def shortestBridge(self, g: List[List[int]]) -> int:
-        g,t={i+j*1j:x for i,r in enumerate(g) for j,x in enumerate(r)},2;f,e=lambda z:g.get(z,0)==1 and (setitem(g,z,2),[f(z+1j**k) for k in range(4)]),lambda z,t:z in g and (g[z]==0 and setitem(g,z,t+1) or g[z]==1);next(f(z) for z in g if g[z]==1);return next(t-2 for _ in count() if next((1 for z in g if g[z]==t and any(e(z+1j**k,t) for k in range(4))),0) or not (t:=t+1))
+        g = {i+j*1j:x for i,r in enumerate(g) for j,x in enumerate(r)}
+        t = 2
+        f = lambda z:g.get(z,0)==1 and (setitem(g,z,2),[f(z+1j**k) for k in range(4)])
+        e = lambda z,t:z in g and(g[z]==0 and setitem(g,z,t+1) or g[z]==1)
+        next(f(z)for z in g if g[z]==1)
+        return next(t-2 for _ in count() if next((1 for z in g if g[z]==t and any(e(z+1j**k,t)for k in range(4))),0) or not (t:=t+1))
+
+class Solution1:
+    def shortestBridge(self, g: List[List[int]]) -> int:
+        g,t,f,e={i+j*1j:x for i,r in enumerate(g)for j,x in enumerate(r)},2,lambda z:g.get(z,0)==1 and(setitem(g,z,2),[f(z+1j**k)for k in range(4)]),lambda z,t:z in g and(g[z]==0 and setitem(g,z,t+1)or g[z]==1);next(f(z)for z in g if g[z]==1);return next(t-2 for _ in count()if next((1 for z in g if g[z]==t and any(e(z+1j**k,t)for k in range(4))),0)or not(t:=t+1))
 
 test('''
 934. Shortest Bridge

@@ -64,7 +64,7 @@ class Solution:
         for i in range(n):
             for j in range(n):
                 f(i,j,b if a else a)
-        return min(abs(u[0]-v[0])+abs(u[1]-v[1])-1 for u in a for v in b)
+        return min(abs(x-i)+abs(y-j)-1 for x,y in a for i,j in b)
 
 # same for complex numbers (TLE)
 class Solution:

@@ -59,11 +59,8 @@ class Solution:
             if 0<=i<n and 0<=j<n and g[i][j]:
                 g[i][j] = 0
                 p.append((i,j))
-                for x,y in ((i-1,j),(i+1,j),(i,j-1),(i,j+1)):
-                    f(x,y,p)
-        for i in range(n):
-            for j in range(n):
-                f(i,j,b if a else a)
+                any(f(x,y,p) for x,y in ((i-1,j),(i+1,j),(i,j-1),(i,j+1)))
+        any(f(i,j,b if a else a) for i in range(n) for j in range(n))
         return min(abs(x-i)+abs(y-j)-1 for x,y in a for i,j in b)
 
 # same for complex numbers (TLE)

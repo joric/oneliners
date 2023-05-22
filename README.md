@@ -575,10 +575,6 @@ Using `zip` to get individual elements from the list of tuples is usually shorte
 ```python
 class Solution:
     def findSmallestSetOfVertices(self, n: int, edges: List[List[int]]) -> List[int]:
-        return set(range(n))-set(map(itemgetter(1),edges))
-
-class Solution:
-    def findSmallestSetOfVertices(self, n: int, edges: List[List[int]]) -> List[int]:
         return set(range(n))-set(j for _,j in edges)
 
 class Solution:
@@ -587,12 +583,11 @@ class Solution:
 
 class Solution:
     def findSmallestSetOfVertices(self, n: int, edges: List[List[int]]) -> List[int]:
-        return {*range(n)}-{*[*zip(*edges)][1]}
+        return {*range(n)}-{j for _,j in edges}
 
 class Solution:
     def findSmallestSetOfVertices(self, n: int, edges: List[List[int]]) -> List[int]:
-        return {*range(n)}-{j for _,j in edges}
-
+        return {*range(n)}-{*[*zip(*edges)][1]}
 ```
 
 * You can can use `a!=b!=c` in a single boolean condition, similar to `0<=i<n` and `n>j>=0<=i<n`.

@@ -35,7 +35,7 @@ class Solution:
         s.pop()//2)))),(s:=__import__('sortedcontainers').SortedList(i%2 and i*2 or i for i in n),r:=inf))
 ```
 
-Sometimes you can save on casting the return type, e.g. Leetcode autoconverts tuples and keys to lists.
+Sometimes you can save on casting the return type, e.g. Leetcode autoconverts keys and mixed types to lists.
 
 * https://leetcode.com/problems/top-k-frequent-elements
 

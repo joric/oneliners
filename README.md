@@ -760,7 +760,6 @@ Also see swap function here:
 swap = lambda a,x,y:(lambda f=a.__setitem__:(f(x,(a[x],a[y])),f(y,a[x][0]),f(x,a[x][1])))()
 ```
 
-
 ### Semicolons
 
 Nobody will stop you from using semicolons, but you'd still have to convert while and for loops.

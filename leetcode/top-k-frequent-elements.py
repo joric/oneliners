@@ -13,8 +13,12 @@ class Solution:
         return next(zip(*Counter(nums).most_common(k)))
 
 class Solution:
-    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        return dict(Counter(nums).most_common(k))
+    def topKFrequent(self, n: List[int], k: int) -> List[int]:
+        return dict(Counter(n).most_common(k))
+
+class Solution:
+    def topKFrequent(self, n: List[int], k: int) -> List[int]:
+        return sorted({*n},key=n.count)[-k:]
 
 test('''
 347. Top K Frequent Elements
@@ -50,5 +54,5 @@ It is guaranteed that the answer is unique.
  
 
 Follow up: Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
-''')
+''', check=lambda res,exp,n,k:sorted(res)==sorted(exp))
 

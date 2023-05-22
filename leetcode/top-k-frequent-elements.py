@@ -4,6 +4,10 @@ class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         return [*zip(*Counter(nums).most_common(k))][0]
 
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        return next(zip(*Counter(nums).most_common(k)))
+
 test('''
 347. Top K Frequent Elements
 Medium

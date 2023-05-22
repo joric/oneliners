@@ -568,7 +568,7 @@ class Solution:
 
 ```
 
-Though using `zip` to get individual elements from the list of tuples is usually shorter.
+Using `zip` to get individual elements from the list of tuples is usually shorter, but not always:
 
 * https://leetcode.com/problems/minimum-number-of-vertices-to-reach-all-nodes
 
@@ -576,14 +576,6 @@ Though using `zip` to get individual elements from the list of tuples is usually
 class Solution:
     def findSmallestSetOfVertices(self, n: int, edges: List[List[int]]) -> List[int]:
         return set(range(n))-set(map(itemgetter(1),edges))
-
-class Solution:
-    def findSmallestSetOfVertices(self, n: int, edges: List[List[int]]) -> List[int]:
-        return set(range(n))-set(map(lambda x:x[1],edges))
-
-class Solution:
-    def findSmallestSetOfVertices(self, n: int, edges: List[List[int]]) -> List[int]:
-        return set(range(n))-set(t[1] for t in edges)
 
 class Solution:
     def findSmallestSetOfVertices(self, n: int, edges: List[List[int]]) -> List[int]:

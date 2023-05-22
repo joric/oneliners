@@ -151,7 +151,7 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
 
     def vc(func, name, v):
         is_gen = lambda v: hasattr(v,'__iter__') and not hasattr(v,'__len__')
-        is_iter = lambda v: type(v) in (tuple, set, list) or is_gen(v)
+        is_iter = lambda v: type(v) in (tuple, set, list, dict) or is_gen(v)
         to_list = lambda v: v if not is_iter(v) else [to_list(x) for x in v]
         hint = str(get_type_hints(func).get(name, None))
         if 'List[lc.ListNode]' in hint or 'List[typing.Optional[lc.ListNode]]' in hint:

@@ -2,6 +2,10 @@ from lc import *
 
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        return [i for i,_ in Counter(nums).most_common(k)]
+
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         return [*zip(*Counter(nums).most_common(k))][0]
 
 class Solution:

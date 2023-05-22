@@ -9,7 +9,7 @@ There is a paper book about Python one-liners, search it online, it's an interes
 
 ### Tricks
 
-#### Imported modules
+#### Leetcode specific
 
 Leetcode imports modules as wildcards, so you don't have to specify module names.
 The only exception is `bisect.bisect()` because bisect is also a module name (just `bisect()` triggers `'module' object is not callable`).
@@ -33,6 +33,20 @@ class Solution:
     def minimumDeviation(self, n: List[int]) -> int:
         return next((min(r,s[-1]-s[0]) for _ in count() if not(s[-1]%2==0 and (r:=min(r,s[-1]-s[0]),s.add(
         s.pop()//2)))),(s:=__import__('sortedcontainers').SortedList(i%2 and i*2 or i for i in n),r:=inf))
+```
+
+Sometimes you can save on conversions, e.g. Leetcode converts dictionaries to lists and vice-versa.
+
+* https://leetcode.com/problems/top-k-frequent-elements
+
+```python
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        return next(zip(*Counter(nums).most_common(k)))
+
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        return dict(Counter(nums).most_common(k))
 ```
 
 #### Lambdas

@@ -43,6 +43,8 @@ class KthLargest:
 
 KthLargest=type('',(),{'__init__':lambda s,k,n:setattr(s,'k',k)or setattr(s,'n',sorted(n)),'add':lambda s,v:insort(s.n,v)or s.n[-s.k]})
 
+KthLargest=type('',(),{'__init__':lambda s,k,n:setattr(s,'t',[k,sorted(n)]),'add':lambda s,v:insort(s.t[1],v)or s.t[1][-s.t[0]]})
+
 test('''
 703. Kth Largest Element in a Stream
 Easy

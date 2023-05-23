@@ -691,7 +691,7 @@ class Solution:
             (len(grid)-1,len(grid[0])-1)
 ```
 
-* You can use bitwise `&`,`|` instead of `and`,`or` where possible.
+* You can use bitwise `&`,`|` instead of `and`,`or` where possible. If x is `0..2`, using `x&1` is shorter than `x==1`.
 
 Example:
 

@@ -29,6 +29,20 @@ class KthLargest:
 
 KthLargest=type('',(),{'__init__':lambda s,k,n:setattr(s,'k',k) or setattr(s,'p',sorted(n)[-k:]) or heapify(s.p),'add':lambda s,v:(v>s.p[0] and heappushpop(s.p,v) if len(s.p)>=s.k else heappush(s.p,v),s.p[0])[1]})
 
+class KthLargest:
+    def __init__(s, k, n):
+        s.k,s.n=k,sorted(n)
+    def add(s, v):
+        bisect.insort(s.n,v);return s.n[-s.k]
+
+class KthLargest:
+    def __init__(s, k, n):
+        s.k,s.n=k,sorted(n)
+    def add(s, v):
+        insort(s.n,v);return s.n[-s.k]
+
+KthLargest=type('',(),{'__init__':lambda s,k,n:setattr(s,'k',k)or setattr(s,'n',sorted(n)),'add':lambda s,v:insort(s.n,v)or s.n[-s.k]})
+
 test('''
 703. Kth Largest Element in a Stream
 Easy

@@ -780,7 +780,7 @@ class Solution:
         while q:
             d[i] = q
             q = q.next
-            i = i + 1
+            i += 1
         d[k].val, d[i-k].val = d[i-k].val, d[k].val
         return h
 

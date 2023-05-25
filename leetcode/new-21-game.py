@@ -3,7 +3,7 @@ from lc import *
 # TLE
 class Solution:
     def new21Game(self, n: int, k: int, w: int) -> float:
-        return(f:=cache(lambda n,k,w,s:s<=n if s>=k else sum(f(n,k,w,s+i) for i in range(1,w+1))/w))(n,k,w,0)
+        return(f:=cache(lambda x:x<=n if x>=k else sum(f(x+i) for i in range(1,w+1))/w))(0)
 
 class Solution:
     def new21Game(self, n: int, k: int, w: int) -> float:
@@ -20,6 +20,10 @@ class Solution:
 class Solution:
     def new21Game(self, n: int, k: int, w: int) -> float:
         return(f:=cache(lambda x:min(n-k+1,w)/w if x==k-1 else 0 if x>n else 1 if x>=k else ((w+1)*f(x+1)-f(x+1+w))/w))(0)
+
+class Solution:
+    def new21Game(self, n: int, k: int, w: int) -> float:
+        return(f:=cache(lambda x:x<=n if x>=k else min(n-k+1,w)/w if x==k-1 else ((w+1)*f(x+1)-f(x+1+w))/w))(0)
 
 test('''
 837. New 21 Game

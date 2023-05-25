@@ -17,6 +17,10 @@ class Solution:
     def new21Game(self, n: int, k: int, w: int) -> float:
         m,u,v=[0]*(k+w-n)+[1]*(n-k+1)+[(n-k+1)/w],1/w,1+1/w;[m.append(v*m[-1]-u*m[~w])for i in range(k-1)];return(k==0 or n>=k+w-1)and 1.or m[-1]
 
+class Solution:
+    def new21Game(self, n: int, k: int, w: int) -> float:
+        return(f:=cache(lambda x:min(n-k+1,w)/w if x==k-1 else 0 if x>n else 1 if x>=k else ((w+1)*f(x+1)-f(x+1+w))/w))(0)
+
 test('''
 837. New 21 Game
 Medium

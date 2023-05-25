@@ -1,5 +1,14 @@
 from lc import *
 
+# TLE
+class Solution:
+    def new21Game(self, n: int, k: int, w: int) -> float:
+        return(f:=cache(lambda n,k,w,s:s<=n if s>=k else sum(f(n,k,w,s+i) for i in range(1,w+1))/w))(n,k,w,0)
+
+class Solution:
+    def new21Game(self, n: int, k: int, w: int) -> float:
+        p,q,s=1,deque([1]*(n-k+1)),n-k+1;[(p:=s/w,q.append(p),s:=s+p,len(q)>w and(s:=s-q.popleft()))for i in range(k-1,-1,-1)];return n>=k+w and 1 or p
+
 class Solution:
     def new21Game(self, n: int, k: int, w: int) -> float:
         d=[0]*(k+max(w,n)+10);[setitem(d,i,1)for i in range(k,n+1)];m=n-k+1;[(setitem(d,i,m/w),m:=m+d[i]-d[i+w])for i in range(k-1,-1,-1)];return d[0]

@@ -23,11 +23,7 @@ class Solution:
 
 class Solution:
     def new21Game(self, n: int, k: int, w: int) -> float:
-        return(f:=cache(lambda x:x<=n if x>=k else min(n-k+1,w)/w if x==k-1 else ((w+1)*f(x+1)-f(x+1+w))/w))(0)
-
-class Solution:
-    def new21Game(self, n, k, w):
-        return(f:=cache(lambda x:x<=n if x>=k else (min(n-x,w),(w+1)*f(x+1)-f(x+1+w))[x!=k-1]/w))(0)
+        return(f:=cache(lambda x:(min(n-x,w),(w+1)*f(x+1)-f(x+1+w))[x!=k-1]/w if x<k else x<=n))(0)
 
 test('''
 837. New 21 Game

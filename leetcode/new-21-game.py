@@ -2,6 +2,10 @@ from lc import *
 
 class Solution:
     def new21Game(self, n: int, k: int, w: int) -> float:
+        d=[0]*(k+max(w,n)+10);[setitem(d,i,1)for i in range(k,n+1)];m=n-k+1;[(setitem(d,i,m/w),m:=m+d[i]-d[i+w])for i in range(k-1,-1,-1)];return d[0]
+
+class Solution:
+    def new21Game(self, n: int, k: int, w: int) -> float:
         m,u,v=[0]*(k+w-n)+[1]*(n-k+1)+[(n-k+1)/w],1/w,1+1/w;[m.append(v*m[-1]-u*m[~w])for i in range(k-1)];return(k==0 or n>=k+w-1)and 1.or m[-1]
 
 test('''

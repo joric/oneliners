@@ -4,6 +4,10 @@ from lc import *
 
 class Solution:
     def stoneGameIII(self, v: List[int]) -> str:
+        n=len(v);o=[0,0,0];[setitem(o,i%3,max(sum(v[i:i+k])-o[(i+k)%3]for k in range(1,4)))for i in range(n-1,-1,-1)];return(('Bob','Alice')[2*o[0]>0],'Tie')[o[0]==0]
+
+class Solution:
+    def stoneGameIII(self, v: List[int]) -> str:
         r=(f:=cache(lambda i:i<len(v)and max(sum(v[i:i+k])-f(i+k)for k in range(1,4))))(0);return(('Bob','Tie')[r==0],'Alice')[r>0]
 
 test('''

@@ -18,6 +18,10 @@ class Solution:
     def stoneGameIII(self, v: List[int]) -> str:
         f=cache(lambda i:i<len(v)and max(sum(v[i:i+k])-f(i+k)for k in(1,2,3)));r=f(0);return(('Bob','Tie')[r==0],'Alice')[r>0]
 
+class Solution:
+    def stoneGameIII(self, v: List[int]) -> str:
+        f=cache(lambda i:i<len(v)and max(sum(v[i:i+k])-f(i+k)for k in(1,2,3)));return(('Bob','Tie')[f(0)==0],'Alice')[f(0)>0]
+
 test('''
 1406. Stone Game III
 Hard

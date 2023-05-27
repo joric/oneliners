@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def stoneGameIII(self, v: List[int]) -> str:
-        o=[0,0,0];any(setitem(o,i%3,max(sum(v[i:i+k])-o[(i+k)%3]for k in range(1,4)))for i in range(len(v)-1,-1,-1));return(('Bob','Alice')[o[0]>0],'Tie')[o[0]==0]
+        o=[0,0,0];any(setitem(o,i%3,max(sum(v[i:i+k])-o[(i+k)%3]for k in range(1,4)))for i in range(len(v)-1,-1,-1));return(('Bob','Tie')[o[0]==0],'Alice')[o[0]>0]
 
 class Solution:
     def stoneGameIII(self, v: List[int]) -> str:

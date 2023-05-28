@@ -5,9 +5,10 @@ class Solution:
     def minCost(self, n: int, c: List[int]) -> int:
         c.sort();f=cache(lambda i,j:min((f(i,c[k])+f(c[k],j)+(j-i)for k in range(bisect_right(c,i),bisect_right(c,j-1))),default=0));return f(0,n)
 
+# https://leetcode.com/problems/minimum-cost-to-cut-a-stick/discuss/2030962/4-lines-Python-Recursion-with-thought-process-when-being-asked-during-interviews
 class Solution:
-    def minCost(self, n, c):
-        t=[0]+sorted(c)+[n];return(f:=cache(lambda i,j:i!=j and min(f(i,l)+f(l+1,j) for l in range(i,j))+t[j+1]-t[i]))(0,len(c))
+    def minCost(self, n: int, c: List[int]) -> int:
+        t=[0]+sorted(c)+[n];return(f:=cache(lambda i,j:i!=j and min(f(i,k)+f(k+1,j) for k in range(i,j))+t[j+1]-t[i]))(0,len(c))
 
 test('''
 1547. Minimum Cost to Cut a Stick

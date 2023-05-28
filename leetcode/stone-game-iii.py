@@ -8,7 +8,7 @@ class Solution:
 
 class Solution:
     def stoneGameIII(self, v: List[int]) -> str:
-        f=cache(lambda i:i<len(v)and max(sum(v[i:i+k])-f(i+k)for k in range(1,4)));r=f(0);return('Bob','Tie','Alice')[(r>0)-(r<0)+1]
+        f=cache(lambda i:i<len(v)and max(sum(v[i:i+k])-f(i+k)for k in(1,2,3)));return('Tie','Alice','Bob')[(f(0)>0)-(f(0)<0)]
 
 class Solution:
     def stoneGameIII(self, v: List[int]) -> str:

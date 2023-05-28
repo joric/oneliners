@@ -5,7 +5,6 @@ class Solution:
     def minCost(self, n: int, c: List[int]) -> int:
         c.sort();f=cache(lambda i,j:min((f(i,c[k])+f(c[k],j)+(j-i)for k in range(bisect_right(c,i),bisect_right(c,j-1))),default=0));return f(0,n)
 
-# db
 class Solution:
     def minCost(self, n, c):
         t=[0]+sorted(c)+[n];return(f:=cache(lambda i,j:i!=j and min(f(i,l)+f(l+1,j) for l in range(i,j))+t[j+1]-t[i]))(0,len(c))

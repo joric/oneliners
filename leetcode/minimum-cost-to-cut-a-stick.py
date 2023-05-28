@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/minimum-cost-to-cut-a-stick/discuss/3571094/Easy-2-line-explanation-for-2-liner-code-or-Top-down
+
 class Solution:
     def minCost(self, n: int, c: List[int]) -> int:
         return c.sort()or(f:=cache(lambda i,j:(x:=bisect_right(c,i))!=(y:=bisect_right(c,j-1))and min(f(i,c[k])+f(c[k],j)+(j-i)for k in range(x,y))))(0,n)
@@ -7,6 +9,20 @@ class Solution:
 class Solution:
     def minCost(self, n: int, c: List[int]) -> int:
         return c.sort()or(f:=cache(lambda i,j:min((f(i,c[k])+f(c[k],j)+(j-i)for k in range(bisect_right(c,i),bisect_right(c,j-1))),default=0)))(0,n)
+
+class Solution:
+    def minCost(self, n: int, c: List[int]) -> int:
+        c.sort();f=cache(lambda i,j:min((f(i,c[k])+f(c[k],j)+(j-i)for k in range(bisect_right(c,i),bisect_right(c,j-1))),default=0));return f(0,n)
+
+# db
+
+class Solution:
+    def minCost(self, n, c):
+        t=[0]+sorted(c)+[n];return(f:=cache(lambda i,j:0 if i==j else min(f(i,l)+f(l+1,j) for l in range(i,j))+t[j+1]-t[i]))(0,len(c))
+
+class Solution:
+    def minCost(self, n, c):
+        t=[0]+sorted(c)+[n];return(f:=cache(lambda i,j:i!=j and min(f(i,l)+f(l+1,j) for l in range(i,j))+t[j+1]-t[i]))(0,len(c))
 
 test('''
 1547. Minimum Cost to Cut a Stick

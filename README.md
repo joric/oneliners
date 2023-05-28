@@ -547,6 +547,70 @@ class Solution:
             and a[1][-1][1]=='(' else (a[0],a[1]+[b]),enumerate(s),(0,[(-1,')')]))[0]
 ```
 
+### Swapping values
+
+To swap values you can use either `exec` or a temporary variable.
+
+Example:
+
+* https://leetcode.com/problems/sort-colors
+
+```python
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        def fn(t,b):
+            red, white, blue = t
+            return (swap:=lambda a,x,y:exec('a[x],a[y]=a[y],a[x]'),(swap(nums,red,white),
+            (red+1,white+1,blue))[1] if nums[white]==0 else ((red,white+1,blue) if nums[white]==1
+            else (swap(nums,white,blue),(red,white,blue-1))[1]))[1]
+        reduce(fn, nums, [0,0,len(nums)-1])
+
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        (s:=lambda a,x,y:(t:=a[x],setitem(a,x,a[y]),setitem(a,y,t),a)[3],
+        f:=lambda a,i,j,k:(f(s(a,i,j),i+1,j+1,k) if a[j]==0 else f(a,i,j+1,k) if a[j]==1
+        else f(s(a,j,k),i,j,k-1)) if i<=j<=k else None)[1](nums,0,0,len(nums)-1)
+```
+
+Also see swap function here:
+
+* https://stackoverflow.com/questions/4362153/lambda-returns-lambda-in-python
+
+```python
+swap = lambda a,x,y:(lambda f=a.__setitem__:(f(x,(a[x],a[y])),f(y,a[x][0]),f(x,a[x][1])))()
+```
+
+### Semicolons
+
+Nobody will stop you from using semicolons, but you'd still have to convert while and for loops.
+
+Example:
+
+* https://leetcode.com/problems/swapping-nodes-in-a-linked-list
+
+```python
+class Solution:
+    def swapNodes(self, h: Optional[ListNode], k: int) -> Optional[ListNode]:
+        q = h
+        i = 1
+        d = {}
+        while q:
+            d[i] = q
+            q = q.next
+            i += 1
+        d[k].val, d[i-k].val = d[i-k].val, d[k].val
+        return h
+
+class Solution:
+    def swapNodes(self, h: Optional[ListNode], k: int) -> Optional[ListNode]:
+        q=h;i=1;d={};all(q and(setitem(d,i,q),q:=q.next,i:=i+1) for _
+            in count());d[k].val,d[i-k].val=d[i-k].val,d[k].val;return h
+
+class Solution:
+    def swapNodes(self, h: Optional[ListNode], k: int) -> Optional[ListNode]:
+        l=[h]+[h:=h.next for _ in[1]*10**5 if h];a,b=l[k-1],l[~k];a.val,b.val=b.val,a.val;return l[0]
+```
+
 #### Misc
 
 * `key=itemgetter(n)` is the same length as `key=lambda x:x[n]` but a little bit clearer to read.
@@ -730,68 +794,20 @@ class Solution:
         return '/'+'/'.join(reduce(lambda r,p:(r+[p]*('.'!=p!=''),r[:-1])[p=='..'],path.split('/'),[]))
 ```
 
-### Swapping values
-
-To swap values you can use either `exec` or a temporary variable.
+* Python 3 lacks `sign`, `cmp` (3-way compare) and `copysign(bool(x),x)` is too long, but you can use `(x>0)-(x<0)` instead.
 
 Example:
 
-* https://leetcode.com/problems/sort-colors
+* https://leetcode.com/problems/stone-game-iii
 
 ```python
 class Solution:
-    def sortColors(self, nums: List[int]) -> None:
-        def fn(t,b):
-            red, white, blue = t
-            return (swap:=lambda a,x,y:exec('a[x],a[y]=a[y],a[x]'),(swap(nums,red,white),
-            (red+1,white+1,blue))[1] if nums[white]==0 else ((red,white+1,blue) if nums[white]==1
-            else (swap(nums,white,blue),(red,white,blue-1))[1]))[1]
-        reduce(fn, nums, [0,0,len(nums)-1])
+    def stoneGameIII(self, v: List[int]) -> str:
+        f=cache(lambda i:i<len(v)and max(sum(v[i:i+k])-f(i+k)for k in(1,2,3)));return('Tie','Alice','Bob')[(f(0)>0)-(f(0)<0)]
 
 class Solution:
-    def sortColors(self, nums: List[int]) -> None:
-        (s:=lambda a,x,y:(t:=a[x],setitem(a,x,a[y]),setitem(a,y,t),a)[3],
-        f:=lambda a,i,j,k:(f(s(a,i,j),i+1,j+1,k) if a[j]==0 else f(a,i,j+1,k) if a[j]==1
-        else f(s(a,j,k),i,j,k-1)) if i<=j<=k else None)[1](nums,0,0,len(nums)-1)
-```
-
-Also see swap function here:
-
-* https://stackoverflow.com/questions/4362153/lambda-returns-lambda-in-python
-
-```python
-swap = lambda a,x,y:(lambda f=a.__setitem__:(f(x,(a[x],a[y])),f(y,a[x][0]),f(x,a[x][1])))()
-```
-
-### Semicolons
-
-Nobody will stop you from using semicolons, but you'd still have to convert while and for loops.
-
-Example:
-
-* https://leetcode.com/problems/swapping-nodes-in-a-linked-list
-
-```python
-class Solution:
-    def swapNodes(self, h: Optional[ListNode], k: int) -> Optional[ListNode]:
-        q = h
-        i = 1
-        d = {}
-        while q:
-            d[i] = q
-            q = q.next
-            i += 1
-        d[k].val, d[i-k].val = d[i-k].val, d[k].val
-        return h
-
-class Solution:
-    def swapNodes(self, h: Optional[ListNode], k: int) -> Optional[ListNode]:
-        q=h;i=1;d={};all(q and(setitem(d,i,q),q:=q.next,i:=i+1) for _
-            in count());d[k].val,d[i-k].val=d[i-k].val,d[k].val;return h
-
-class Solution:
-    def swapNodes(self, h: Optional[ListNode], k: int) -> Optional[ListNode]:
-        l=[h]+[h:=h.next for _ in[1]*10**5 if h];a,b=l[k-1],l[~k];a.val,b.val=b.val,a.val;return l[0]
+    def stoneGameIII(self, v: List[int]) -> str:
+        f=cache(lambda i:i<len(v)and max(sum(v[i:i+k])-f(i+k)for k in(1,2,3)));return(('Tie','Bob')[f(0)<0],'Alice')[f(0)>0]
 ```
 
 ## References

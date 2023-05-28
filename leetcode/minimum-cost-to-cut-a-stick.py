@@ -2,7 +2,7 @@ from lc import *
 
 class Solution:
     def minCost(self, n: int, c: List[int]) -> int:
-        return c.sort()or(f:=cache(lambda i,j:(x:=bisect_right(c,i))!=(y:=bisect_right(c,j-1))and min(f(i,c[k])+f(c[k], j)+(j-i)for k in range(x,y))))(0,n)
+        return c.sort()or(f:=cache(lambda i,j:(x:=bisect_right(c,i))!=(y:=bisect_right(c,j-1))and min(f(i,c[k])+f(c[k],j)+(j-i)for k in range(x,y))))(0,n)
 
 test('''
 1547. Minimum Cost to Cut a Stick

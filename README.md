@@ -794,7 +794,7 @@ class Solution:
         return '/'+'/'.join(reduce(lambda r,p:(r+[p]*('.'!=p!=''),r[:-1])[p=='..'],path.split('/'),[]))
 ```
 
-* Python 3 lacks `sign`, `cmp` (3-way compare) and `copysign(bool(x),x)` is too long, but you can use `(x>0)-(x<0)` instead.
+* Python 3 lacks `cmp` (3-way compare) and sign function (`copysign(bool(x),x)` is too long), but you can use `(x>0)-(x<0)` as `sign(x)`.
 
 Example:
 
@@ -803,11 +803,9 @@ Example:
 ```python
 class Solution:
     def stoneGameIII(self, v: List[int]) -> str:
-        f=cache(lambda i:i<len(v)and max(sum(v[i:i+k])-f(i+k)for k in(1,2,3)));return('Tie','Alice','Bob')[(f(0)>0)-(f(0)<0)]
-
-class Solution:
-    def stoneGameIII(self, v: List[int]) -> str:
-        f=cache(lambda i:i<len(v)and max(sum(v[i:i+k])-f(i+k)for k in(1,2,3)));return(('Tie','Bob')[f(0)<0],'Alice')[f(0)>0]
+        f=cache(lambda i:i<len(v)and max(sum(v[i:i+k])-f(i+k)for k in(1,2,3)));x=f(0);
+        return('Tie','Alice','Bob')[(x>0)-(x<0)]
+        # return(('Tie','Bob')[x<0],'Alice')[x>0] # or like this (1 char shorter)
 ```
 
 ## References

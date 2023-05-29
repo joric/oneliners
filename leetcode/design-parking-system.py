@@ -2,21 +2,22 @@ from lc import *
 
 class ParkingSystem:
     def __init__(self, big: int, medium: int, small: int):
-        self.t = [big, medium, small]
+        self.p = [big, medium, small]
     def addCar(self, carType: int) -> bool:
-        if self.t[carType-1]>0:
-            self.t[carType-1]-=1
+        if self.p[carType-1]>0:
+            self.p[carType-1]-=1
             return True
         else:
             return False
 
 class ParkingSystem:
     def __init__(s, a: int, b: int, c: int):
-        s.t = [a,b,c]
+        s.p = [a,b,c]
     def addCar(s, t: int) -> bool:
-        return s.t[t-1]>0 and not setitem(s.t,t-1,s.t[t-1]-1)
+        return s.p[t-1]>0 and not setitem(s.p,t-1,s.p[t-1]-1)
 
-ParkingSystem=type('',(),{'__init__':lambda s,a,b,c:setattr(s,'t',[a,b,c]),'addCar':lambda s,t:s.t[t-1]>0 and not setitem(s.t,t-1,s.t[t-1]-1)})
+
+ParkingSystem=type('',(),{'__init__':lambda s,a,b,c:setattr(s,'p',[a,b,c]),'addCar':lambda s,t:s.p[t-1]>0 and not setitem(s.p,t-1,s.p[t-1]-1)})
 
 test('''
 1603. Design Parking System

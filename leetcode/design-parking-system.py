@@ -20,6 +20,8 @@ class ParkingSystem:
 
 ParkingSystem=type('',(),{'__init__':lambda s,a,b,c:setattr(s,'p',[0,a,b,c]),'addCar':lambda s,t:setitem(s.p,t,s.p[t]-1)or s.p[t]>=0})
 
+ParkingSystem=type('',(),{'__init__':lambda s,a,b,c:setattr(s,'p',[0,a,b,c]),'addCar':lambda s,t:exec('s.p[t]-=1')or s.p[t]>=0})
+
 test('''
 1603. Design Parking System
 Easy

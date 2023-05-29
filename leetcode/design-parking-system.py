@@ -1,11 +1,13 @@
 from lc import *
 
+# https://leetcode.com/problems/design-parking-system/discuss/3573371/PythonJavaC%2B%2BSimple-SolutionEasy-to-Understand
+
 class ParkingSystem:
     def __init__(self, big: int, medium: int, small: int):
-        self.p = [big, medium, small]
+        self.sports = [big, medium, small]
     def addCar(self, carType: int) -> bool:
-        if self.p[carType-1]>0:
-            self.p[carType-1]-=1
+        if self.sports[carType-1]>0:
+            self.sports[carType-1]-=1
             return True
         else:
             return False
@@ -15,7 +17,6 @@ class ParkingSystem:
         s.p = [a,b,c]
     def addCar(s, t: int) -> bool:
         return s.p[t-1]>0 and not setitem(s.p,t-1,s.p[t-1]-1)
-
 
 ParkingSystem=type('',(),{'__init__':lambda s,a,b,c:setattr(s,'p',[a,b,c]),'addCar':lambda s,t:s.p[t-1]>0 and not setitem(s.p,t-1,s.p[t-1]-1)})
 

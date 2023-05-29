@@ -16,7 +16,7 @@ class ParkingSystem:
     def __init__(s, a: int, b: int, c: int):
         s.p = [0,a,b,c]
     def addCar(s, t: int) -> bool:
-        return s.p[t]>0 and not setitem(s.p,t,s.p[t]-1)
+        s.p[t]-=1;return s.p[t]>=0
 
 ParkingSystem=type('',(),{'__init__':lambda s,a,b,c:setattr(s,'p',[0,a,b,c]),'addCar':lambda s,t:setitem(s.p,t,s.p[t]-1)or s.p[t]>=0})
 

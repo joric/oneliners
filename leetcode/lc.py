@@ -139,7 +139,7 @@ cnames = []
 
 def test(text=None, classname=None, check=None, init=None, parser=None):
     if not text:
-        cname = classname if classname else importlib.import_module('__main__').Solution
+        cname = classname or importlib.import_module('__main__').Solution
         cnames.append(cname)
         return
 

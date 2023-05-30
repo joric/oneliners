@@ -23,6 +23,7 @@ class MyHashSet:
         t = self.eval_hash(key)
         return key in self.arr[t]
 
+
 class MyHashSet: 
     def __init__(s):
         s.a=[0]*2**20
@@ -36,6 +37,7 @@ class MyHashSet:
     def contains(s, k):
         return s.a[k]
 
+
 class MyHashSet: 
     def __init__(s):
         s.a = set()
@@ -48,6 +50,7 @@ class MyHashSet:
 
     def contains(s, k):
         return k in s.a
+
 
 MyHashSet=type('',(),{'__init__':lambda s:setattr(s,'a',set()),'add':lambda s,k:s.a.add(k),'remove':lambda s,k:s.a.discard(k),'contains':lambda s,k:k in s.a})
 

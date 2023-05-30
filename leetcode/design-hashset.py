@@ -38,16 +38,16 @@ class MyHashSet:
 
 class MyHashSet: 
     def __init__(s):
-        self.a = set()
+        s.a = set()
 
-    def add(self, key):
-        self.a.add(key)
+    def add(s, k):
+        s.a.add(key)
 
-    def remove(self, key):
-        self.a.discard(key)
+    def remove(s, k):
+        s.a.discard(key)
 
-    def contains(self, key):
-        return key in self.a
+    def contains(s, k):
+        return k in s.a
 
 MyHashSet=type('',(),{'__init__':lambda s:setattr(s,'a',set()),'add':lambda s,k:s.a.add(k),'remove':lambda s,k:s.a.discard(k),'contains':lambda s,k:k in s.a})
 

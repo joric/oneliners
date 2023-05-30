@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/design-hashset/discuss/768659/Python-Easy-Multiplicative-Hash-explained
+
 class MyHashSet: 
     def eval_hash(self, key):
         return ((key*1031237) & (1<<20) - 1)>>5

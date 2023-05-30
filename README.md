@@ -237,6 +237,16 @@ class Solution:
         return bisect_left(range(n), 0, key=lambda num: -guess(num))
 ```
 
+Note you can also write a subclass in one line, if needed.
+
+Example:
+
+* https://leetcode.com/problems/design-hashset
+
+```python
+MyHashSet=type('',(set,),{'remove':set.discard,'contains':set.__contains__})
+```
+
 #### While loops
 
 While loops are not very oneliner-friendly. You can use  `count()` generator with `next()`.

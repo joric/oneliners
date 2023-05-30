@@ -43,16 +43,26 @@ class MyHashSet:
         s.a = set()
 
     def add(s, k):
-        s.a.add(key)
+        s.a.add(k)
 
     def remove(s, k):
-        s.a.discard(key)
+        s.a.discard(k)
 
     def contains(s, k):
         return k in s.a
 
 
 MyHashSet=type('',(),{'__init__':lambda s:setattr(s,'a',set()),'add':lambda s,k:s.a.add(k),'remove':lambda s,k:s.a.discard(k),'contains':lambda s,k:k in s.a})
+
+class MyHasSet(set):
+    def remove(s, k):
+        s.discard(k)
+    def contains(s, k):
+        return k in s
+
+MyHashSet=type('',(set,),{'remove':lambda s,k:s.discard(k),'contains':lambda s,k:k in s})
+
+MyHashSet=type('',(set,),{'remove':set.discard,'contains':set.__contains__})
 
 test('''
 705. Design HashSet

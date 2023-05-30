@@ -24,12 +24,28 @@ class MyHashSet:
         return key in self.arr[t]
 
 class MyHashSet: 
-    def __init__(self):
+    def __init__(s):
+        s.a=[0]*2**20
+
+    def add(s, k):
+        s.a[k]=1
+
+    def remove(s, k):
+        s.a[k]=0
+
+    def contains(s, k):
+        return s.a[k]
+
+class MyHashSet: 
+    def __init__(s):
         self.a = set()
+
     def add(self, key):
         self.a.add(key)
+
     def remove(self, key):
         self.a.discard(key)
+
     def contains(self, key):
         return key in self.a
 

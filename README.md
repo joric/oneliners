@@ -789,7 +789,7 @@ class Solution:
 ```
 
 * Python 3 lacks `cmp` (3-way compare) and sign function (`copysign(bool(x),x)` is too long), but you can use `(x>0)-(x<0)` as `sign(x)`.
-Note you can use `-1` index for Python lists as is.
+Note you can use `-1,0,1` indexes for Python lists natively.
 
 Example:
 

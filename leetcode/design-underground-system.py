@@ -111,6 +111,8 @@ class UndergroundSystem:
 
 UndergroundSystem=type('',(),{'__init__':lambda s:setattr(s,'h',({},{})),'checkIn':lambda s,i,v,t:setitem(s.h[1],i,(v,t)),'checkOut':lambda s,i,d,w:(v:=s.h[1][i][0])and setitem(s.h[0],(v,d),[*map(sum,zip(s.h[0].pop((v,d),(0,0)),(w-s.h[1][i][1],1)))]),'getAverageTime':lambda s,v,d:truediv(*s.h[0][v,d])})
 
+UndergroundSystem=type('',(),{'h':{},'m':{},'checkIn':lambda s,i,v,t:setitem(s.m,i,(v,t)),'checkOut':lambda s,i,d,w:(v:=s.m[i][0])and setitem(s.h,(v,d),[*map(sum,zip(s.h.pop((v,d),(0,0)),(w-s.m[i][1],1)))]),'getAverageTime':lambda s,v,d:truediv(*s.h[v,d])})
+
 test('''
 1396. Design Underground System
 Medium

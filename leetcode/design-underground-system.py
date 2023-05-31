@@ -83,6 +83,34 @@ class UndergroundSystem:
 UndergroundSystem=type('',(),{'__init__':lambda s:setattr(s,'i',{}) or setattr(s,'p',Counter()) or setattr(s,'f',Counter()),'checkIn':lambda s,i,n,t:s.i.update({i:(n,t)}),'checkOut':lambda s,i,n,t:(lambda m,q:s.p.update({(m,n):t-q}) or s.f.update({(m,n):1}))(*s.i.pop(i)),'getAverageTime':lambda s,a,b:s.p[a,b]/s.f[a,b]})
 
 
+class UndergroundSystem:
+    e={};c={}
+
+    def checkIn(s, i, v, t):
+        s.c[i]=v,t
+
+    def checkOut(s, i, d, w):
+        v,t=s.c[i];z=v,d;x,y=s.e.pop(z,(0,0));s.e[z]=x+w-t,y+1
+
+    def getAverageTime(s, v, d):
+        return truediv(*s.e[v,d])
+
+
+class UndergroundSystem:
+    def __init__(s):
+        setattr(s,'h',({},{}))
+
+    def checkIn(s, i, v, t):
+        setitem(s.h[1],i,(v,t))
+
+    def checkOut(s, i, d, w):
+        (v:=s.h[1][i][0])and setitem(s.h[0],(v,d),[*map(sum,zip(s.h[0].pop((v,d),(0,0)),(w-s.h[1][i][1],1)))])
+
+    def getAverageTime(s, v, d):
+        return truediv(*s.h[0][v,d])
+
+UndergroundSystem=type('',(),{'__init__':lambda s:setattr(s,'h',({},{})),'checkIn':lambda s,i,v,t:setitem(s.h[1],i,(v,t)),'checkOut':lambda s,i,d,w:(v:=s.h[1][i][0])and setitem(s.h[0],(v,d),[*map(sum,zip(s.h[0].pop((v,d),(0,0)),(w-s.h[1][i][1],1)))]),'getAverageTime':lambda s,v,d:truediv(*s.h[0][v,d])})
+
 test('''
 1396. Design Underground System
 Medium

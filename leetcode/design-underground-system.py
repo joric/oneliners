@@ -1,6 +1,6 @@
 from lc import *
 
-# this is originally my entry for the weekly contest 182
+# this is originally my entry for the weekly contest 182 (29 March 2020)
 # https://leetcode.com/contest/weekly-contest-182/problems/design-underground-system/
 
 class UndergroundSystem:

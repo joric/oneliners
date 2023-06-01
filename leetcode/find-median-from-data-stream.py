@@ -17,7 +17,25 @@ class MedianFinder:
 
 class MedianFinder:
     def __init__(self):
-        h,self.addNum,self.findMedian=[[],1,-1,i:=[]],lambda n:heapq.heappush(h[-1], -heapq.heappushpop(h[0], n*h[1])) or h.reverse(),lambda:(h[0][0]*h[1]-i[0])/2
+        self.h = None, [], []
+        self.i = 1
+
+    def addNum(self, num):
+        heappush(self.h[-self.i], -heappushpop(self.h[self.i], num * self.i))
+        self.i *= -1
+
+    def findMedian(self):
+        return (self.h[self.i][0] * self.i - self.h[-1][0]) / 2.0
+
+class MedianFinder:
+    def __init__(s):
+        h = [[],1,-1,i:=[]]
+        s.addNum=lambda n:heappush(h[-1],-heappushpop(h[0],n*h[1]))or h.reverse()
+        s.findMedian=lambda:(h[0][0]*h[1]-i[0])/2
+
+class MedianFinder:
+    def __init__(s):
+        h,s.addNum,s.findMedian=[[],1,-1,i:=[]],lambda n:heappush(h[-1],-heappushpop(h[0],n*h[1]))or h.reverse(),lambda:(h[0][0]*h[1]-i[0])/2
 
 test('''
 295. Find Median from Data Stream

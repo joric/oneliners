@@ -13,6 +13,10 @@ class Solution:
     def maximumDetonation(self, b: List[List[int]]) -> int:
         g=lambda x,y:abs(x[0]-y[0])**2+abs(x[1]-y[1])**2<=x[2]**2;f=lambda i,v:v.add(i) or 1+sum(f(j,v) for j in g[i] if j not in v);g={i:[j for j in range(len(b)) if g(b[i],b[j])] for i in range(len(b))};return max(f(i,set()) for i in range(len(b)))
 
+class Solution:
+    def maximumDetonation(self, b):
+        u=range(len(b));g=lambda x,y:(x[0]-y[0])**2+(x[1]-y[1])**2<=x[2]**2;f=lambda i,v:v.add(i) or 1+sum(f(j,v) for j in g[i] if j not in v);g={i:[j for j in u if g(b[i],b[j])] for i in u};return max(f(i,set()) for i in u)
+
 test('''
 2101. Detonate the Maximum Bombs
 Medium

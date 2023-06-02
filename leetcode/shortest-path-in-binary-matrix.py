@@ -57,7 +57,7 @@ class Solution:
 
 class Solution:
     def shortestPathBinaryMatrix(self, g):
-        n=len(g);d,a,b=[999]*n*n,range(n),range(-1,2);e=[(i*n+j,(i+k)*n+j+l) for i,j,k,l in product(a,a,b,b) if 0<=i+k<n and 0<=j+l<n and g[i][j]+g[i+k][j+l]==0];d[0]=1;[setitem(d,v,min(d[v],d[u]+1)) for _ in range(int(2*n**0.5)+2) for u,v in e];return g[-1][-1]!=1 and d[-1]!=999 and d[-1] or -1
+        n=len(g);d,a,b=[999]*n*n,range(n),range(-1,2);e=[(i*n+j,(i+k)*n+j+l)for i,j,k,l in product(a,a,b,b)if n>j+l>=0<=i+k<n and g[i][j]+g[i+k][j+l]==0];d[0]=1;[setitem(d,v,min(d[v],d[u]+1))for _ in range(int(2*n**0.5)+2)for u,v in e];return g[-1][-1]!=1 and d[-1]!=999 and d[-1]or-1
 
 test('''
 1091. Shortest Path in Binary Matrix

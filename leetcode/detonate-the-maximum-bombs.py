@@ -21,7 +21,6 @@ class Solution:
     def maximumDetonation(self, b: List[List[int]]) -> int:
         return max(map(sum,__import__('numpy').linalg.matrix_power([[(x[0]-y[0])**2+(x[1]-y[1])**2<=x[2]**2 for y in b]for x in b],99)))
 
-
 test('''
 2101. Detonate the Maximum Bombs
 Medium

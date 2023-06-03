@@ -237,15 +237,26 @@ class Solution:
         return bisect_left(range(n), 0, key=lambda num: -guess(num))
 ```
 
-Note you can also write a subclass in one line, if needed.
-
-Example:
+You can also write a subclass in one line, if needed.
 
 * https://leetcode.com/problems/design-hashset
 
 ```python
 MyHashSet=type('',(set,),{'remove':set.discard,'contains':set.__contains__})
 ```
+
+Note you can skip `__init__` and `setitem` in this notation and just use attribute names.
+
+* https://leetcode.com/problems/design-underground-system
+
+```python
+UndergroundSystem=type('',(),{'h':{},'m':{},
+	'checkIn':lambda s,i,v,t:setitem(s.m,i,(v,t)),
+	'checkOut':lambda s,i,d,w:(v:=s.m[i][0])and setitem(s.h,(v,d),
+	[*map(sum,zip(s.h.pop((v,d),(0,0)),(w-s.m[i][1],1)))]),
+	'getAverageTime':lambda s,v,d:truediv(*s.h[v,d])})
+```
+
 
 #### While loops
 

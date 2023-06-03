@@ -82,7 +82,15 @@ The controversial walrus operator (:=) from [PEP-572](https://peps.python.org/pe
 (that [forced Guido to resign](https://www.infoworld.com/article/3292936/guido-van-rossum-resigns-whats-next-for-python.html)),
 can be used to define or update a variable or a function that's used repeatedly.
 It seems to be the most useful operator here, many oneliners would be impossible to do without it (or rather, very hard, with nested lambdas/y-combinator).
-Sometimes you don't even need to wrap walrus operator in brackets, e.g. in `map(f:=x,y)` or `next(g,f:=x)` so it may be shorter than using semicolons.
+Sometimes you don't even need extra brackets, e.g. in `map(f:=x,y)` or `next(g,f:=x)` so it may be shorter than operators separated by semicolons.
+
+* https://leetcode.com/problems/time-needed-to-inform-all-employees
+
+```python
+class Solution:
+    def numOfMinutes(self, n: int, h: int, m: List[int], t: List[int]) -> int:
+        return max(map(f:=cache(lambda i:i>=0 and t[i]+f(m[i])),range(len(m))))
+```
 
 * https://leetcode.com/problems/guess-number-higher-or-lower
 

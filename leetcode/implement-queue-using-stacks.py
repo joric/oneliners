@@ -22,7 +22,13 @@ class MyQueue:
 
 # https://leetcode.com/problems/implement-queue-using-stacks/discuss/2917115/Python-3-one-line
 
-MyQueue = type('MyQueue',(),{'__init__':lambda s:setattr(s,'i',[]) or setattr(s,'o',[]),'push':lambda s,x:s.i.append(x),'pop':lambda s:s.peek() and s.o.pop(),'peek':lambda s:(not s.o and next(0 for _ in count() if not (s.i and not s.o.append(s.i.pop())))) or s.o[-1],'empty':lambda s:not s.i and not s.o})
+MyQueue = type('MyQueue',(),{
+    '__init__':lambda s:setattr(s,'i',[]) or setattr(s,'o',[]),
+    'push':lambda s,x:s.i.append(x),
+    'pop':lambda s:s.peek() and s.o.pop(),
+    'peek':lambda s:(not s.o and next(0 for _ in count() if not (s.i and not s.o.append(s.i.pop())))) or s.o[-1],
+    'empty':lambda s:not s.i and not s.o
+})
 
 test('''
 

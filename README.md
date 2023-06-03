@@ -245,7 +245,7 @@ You can also write a subclass in one line, if needed.
 MyHashSet=type('',(set,),{'remove':set.discard,'contains':set.__contains__})
 ```
 
-Note you can skip `__init__` and `setitem` in this notation and just use attribute names.
+Sometimes you can skip `__init__` and `setitem` and just use attribute names.
 
 * https://leetcode.com/problems/design-underground-system
 

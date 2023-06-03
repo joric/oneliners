@@ -4,11 +4,7 @@ from lc import *
 
 class Solution:
     def numOfMinutes(self, n: int, h: int, m: List[int], t: List[int]) -> int:
-        return max(map((f:=cache(lambda i:t[i]+(m[i]!=-1 and f(m[i])))),range(len(m))))
-
-class Solution:
-    def numOfMinutes(self, n: int, h: int, m: List[int], t: List[int]) -> int:
-        f=cache(lambda i:t[i]+(m[i]!=-1 and f(m[i])));return max(map(f,range(len(m))))
+        return max(map(f:=cache(lambda i:i!=-1 and t[i]+f(m[i])),range(len(m))))
 
 test('''
 1376. Time Needed to Inform All Employees

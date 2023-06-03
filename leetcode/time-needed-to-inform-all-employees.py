@@ -1,10 +1,10 @@
 from lc import *
 
-# https://leetcode.com/problems/time-needed-to-inform-all-employees/discuss/2346669/Python-2-line-DP
+# https://leetcode.com/problems/time-needed-to-inform-all-employees/discuss/3470560/Python-one-line-DFS
 
 class Solution:
     def numOfMinutes(self, n: int, h: int, m: List[int], t: List[int]) -> int:
-        return max(map(f:=cache(lambda i:~i and t[i]+f(m[i])),range(len(m))))
+        return max(map(f:=cache(lambda i:~i and t[i]+f(m[i])),range(n)))
 
 test('''
 1376. Time Needed to Inform All Employees

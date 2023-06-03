@@ -8,11 +8,7 @@ class Solution:
 
 class Solution:
     def findMaxAverage(self, n: List[int], k: int) -> float:
-        return max(map(sub,(s:=[0]+[*accumulate(n)])[k:],s))/k
-
-class Solution:
-    def findMaxAverage(self, n: List[int], k: int) -> float:
-        s=[0]+[*accumulate(n)];return max(map(sub,s[k:],s))/k
+        s=[0,*accumulate(n)];return max(map(sub,s[k:],s))/k
 
 test('''
 643. Maximum Average Subarray I

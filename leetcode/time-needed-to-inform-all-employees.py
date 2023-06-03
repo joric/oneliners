@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/time-needed-to-inform-all-employees/discuss/2346669/Python-2-line-DP
+
 class Solution:
     def numOfMinutes(self, n: int, h: int, m: List[int], t: List[int]) -> int:
         f=cache(lambda i:m[i]!=-1 and t[i]+f(m[i])or t[i]);return max(f(i)for i in range(len(m)))

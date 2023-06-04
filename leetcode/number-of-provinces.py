@@ -6,6 +6,10 @@ class Solution:
     def findCircleNum(self, m: List[List[int]]) -> int:
         np=__import__('numpy');return len(m)-np.linalg.matrix_rank(np.diag(np.sum(m,axis=1))-m)
 
+class Solution:
+    def findCircleNum(self, m: List[List[int]]) -> int:
+        p=''.join(map(chr,range(s:=len(m))));[p:= p.replace(p[k],p[n])for n in range(s)for k in range(n)if m[n][k]];return len(set(p))
+
 test('''
 547. Number of Provinces
 Medium

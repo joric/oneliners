@@ -5,14 +5,14 @@ from lc import *
 class Solution:
     def findCircleNum(self, m: List[List[int]]) -> int:
         g,n,v,f=defaultdict(list),len(m),set(),lambda g,s,v:v.add(s)or[f(g,n,v) for n in g[s] if n not in v]
-        [(g[i].append(j),g[j].append(i))for i in range(n) for j in range(i+1,n) if m[i][j]==1]
+        [(g[i].append(j),g[j].append(i)) for i in range(n) for j in range(i+1,n) if m[i][j]==1]
         return len([f(g,s,v) for s in range(n) if s not in v])
 
 # https://leetcode.com/problems/number-of-provinces/discuss/129360/Python-8-lines-easy-and-clear-DFS-solution-64-ms-beats-68
 
 class Solution:
     def findCircleNum(self, m: List[List[int]]) -> int:
-        p=''.join(map(chr,range(s:=len(m))));[p:= p.replace(p[k],p[n])for n in range(s)for k in range(n)if m[n][k]];return len(set(p))
+        p=''.join(map(chr,range(s:=len(m))));[p:=p.replace(p[k],p[n]) for n in range(s) for k in range(n) if m[n][k]];return len(set(p))
 
 # https://leetcode.com/problems/number-of-provinces/discuss/772762/One-Line-Linear-Algebraic-Solution
 

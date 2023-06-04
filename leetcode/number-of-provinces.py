@@ -1,5 +1,13 @@
 from lc import *
 
+# https://leetcode.com/problems/number-of-provinces/discuss/1231384/8-lines-Python-with-explanation
+
+class Solution:
+    def findCircleNum(self, m: List[List[int]]) -> int:
+        g,n,v,f=defaultdict(list),len(m),set(),lambda g,s,v:v.add(s)or[f(g,n,v) for n in g[s] if n not in v]
+        [(g[i].append(j),g[j].append(i))for i in range(n) for j in range(i+1,n) if m[i][j]==1]
+        return len([f(g,s,v) for s in range(n) if s not in v])
+
 # https://leetcode.com/problems/number-of-provinces/discuss/129360/Python-8-lines-easy-and-clear-DFS-solution-64-ms-beats-68
 
 class Solution:
@@ -11,6 +19,7 @@ class Solution:
 class Solution:
     def findCircleNum(self, m: List[List[int]]) -> int:
         np=__import__('numpy');return len(m)-np.linalg.matrix_rank(np.diag(np.sum(m,axis=1))-m)
+
 
 test('''
 547. Number of Provinces

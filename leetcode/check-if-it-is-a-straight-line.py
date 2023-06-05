@@ -14,7 +14,7 @@ class Solution:
 
 class Solution:
     def checkStraightLine(self, c: List[List[int]]) -> bool:
-        u=(np:=__import__('numpy')).subtract(c[0],c[1]);return all(np.cross(np.subtract(c[0],x),u)==0 for x in c[2:])
+        np=__import__('numpy');return all(np.cross(np.subtract(c[0],x),np.subtract(c[0],c[1]))==0 for x in c[2:])
 
 class Solution:
     def checkStraightLine(self, c: List[List[int]]) -> bool:

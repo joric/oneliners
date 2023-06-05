@@ -823,7 +823,7 @@ class Solution:
         # return(('Tie','Bob')[x<0],'Alice')[x>0] # or like this (1 char shorter)
 ```
 
-* You can save a few characters if you use asterisk operator `*` properly.
+* You can save a few characters using asterisk operator `*`.
   One `*` means "expand this as a list", two `**` means "expand this as a dictionary".
 
 Example

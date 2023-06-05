@@ -6,11 +6,11 @@ class Solution:
 
 class Solution(object):
     def checkStraightLine(self, c: List[List[int]]) -> bool:
-        return all((c[1][1]-c[0][1])*(x-c[0][0]) == (y-c[0][1])*(c[1][0]-c[0][0]) for x, y in c[2:])
+        return all((c[1][1]-c[0][1])*(x-c[0][0])==(y-c[0][1])*(c[1][0]-c[0][0]) for x, y in c[2:])
 
 class Solution:
     def checkStraightLine(self, c: List[List[int]]) -> bool:
-        v=(np:=__import__('numpy')).sort(np.linalg.eigvals(np.cov(c,rowvar=False)))[::-1];return np.allclose(v[1:], 0)
+        v=(np:=__import__('numpy')).sort(np.linalg.eigvals(np.cov(c,rowvar=False)))[::-1];return np.allclose(v[1:],0)
 
 class Solution:
     def checkStraightLine(self, c: List[List[int]]) -> bool:

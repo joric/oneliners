@@ -1,13 +1,5 @@
 from lc import *
 
-class Solution(object):
-    def checkStraightLine(self, p: List[List[int]]) -> bool:
-        return all((p[1][1]-p[0][1])*(x-p[0][0])==(y-p[0][1])*(p[1][0]-p[0][0]) for x, y in p[2:])
-
-class Solution:
-    def checkStraightLine(self, p: List[List[int]]) -> bool:
-        (x1,y1),(x2,y2)=p[:2];return all((x-x1)*(y2-y1)==(x2-x1)*(y-y1)for x,y in p[2:])
-
 class Solution:
     def checkStraightLine(self, p: List[List[int]]) -> bool:
         np=__import__('numpy');v=np.sort(np.linalg.eigvals(np.cov(p,rowvar=0)))[::-1];return np.allclose(v[1:],0)
@@ -23,6 +15,14 @@ class Solution:
 class Solution:
     def checkStraightLine(self, p):
         return 3>__import__('numpy').linalg.matrix_rank([[1]+x for x in p])
+
+class Solution(object):
+    def checkStraightLine(self, p: List[List[int]]) -> bool:
+        return all((p[1][1]-p[0][1])*(x-p[0][0])==(y-p[0][1])*(p[1][0]-p[0][0]) for x, y in p[2:])
+
+class Solution:
+    def checkStraightLine(self, p: List[List[int]]) -> bool:
+        (x1,y1),(x2,y2)=p[:2];return all((x-x1)*(y2-y1)==(x2-x1)*(y-y1)for x,y in p[2:])
 
 class Solution:
     def checkStraightLine(self, p):

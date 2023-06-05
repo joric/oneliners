@@ -1,24 +1,24 @@
 from lc import *
 
 class Solution:
-    def checkStraightLine(self, c: List[List[int]]) -> bool:
-        (x1,y1),(x2,y2)=c[:2];return all((x-x1)*(y2-y1)==(x2-x1)*(y-y1)for x,y in c[2:])
+    def checkStraightLine(self, p: List[List[int]]) -> bool:
+        (x1,y1),(x2,y2)=p[:2];return all((x-x1)*(y2-y1)==(x2-x1)*(y-y1)for x,y in p[2:])
 
 class Solution(object):
-    def checkStraightLine(self, c: List[List[int]]) -> bool:
-        return all((c[1][1]-c[0][1])*(x-c[0][0])==(y-c[0][1])*(c[1][0]-c[0][0]) for x, y in c[2:])
+    def checkStraightLine(self, p: List[List[int]]) -> bool:
+        return all((p[1][1]-p[0][1])*(x-p[0][0])==(y-p[0][1])*(p[1][0]-p[0][0]) for x, y in p[2:])
 
 class Solution:
-    def checkStraightLine(self, c: List[List[int]]) -> bool:
-        v=(np:=__import__('numpy')).sort(np.linalg.eigvals(np.cov(c,rowvar=False)))[::-1];return np.allclose(v[1:],0)
+    def checkStraightLine(self, p: List[List[int]]) -> bool:
+        np=__import__('numpy');v=np.sort(np.linalg.eigvals(np.cov(c,rowvar=0)))[::-1];return np.allclose(v[1:],0)
 
 class Solution:
-    def checkStraightLine(self, c: List[List[int]]) -> bool:
-        np=__import__('numpy');return all(np.cross(np.subtract(c[0],x),np.subtract(c[0],c[1]))==0 for x in c[2:])
+    def checkStraightLine(self, p: List[List[int]]) -> bool:
+        np=__import__('numpy');return all(np.cross(np.subtract(p[0],x),np.subtract(p[0],p[1]))==0 for x in p[2:])
 
 class Solution:
-    def checkStraightLine(self, c: List[List[int]]) -> bool:
-        (i,j),(u,v)=c[:2];return all((x-i)*(v-j)==(u-i)*(y-j)for x,y in c[2:])
+    def checkStraightLine(self, p: List[List[int]]) -> bool:
+        (a,b),(c,d)=p[:2];return all((x-a)*(d-b)==(c-a)*(y-c)for x,y in p[2:])
 
 test('''
 1232. Check If It Is a Straight Line

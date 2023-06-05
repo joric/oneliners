@@ -22,11 +22,15 @@ class Solution:
 
 class Solution:
     def checkStraightLine(self, p):
+        return 3>__import__('numpy').linalg.matrix_rank([[1]+x for x in p])
+
+class Solution:
+    def checkStraightLine(self, p):
         (a,b),(c,d)=p[:2];return all((x-a)*(d-b)==(c-a)*(y-b)for x,y in p)
 
 class Solution:
     def checkStraightLine(self, p):
-        return 3>__import__('numpy').linalg.matrix_rank([[1]+x for x in p])
+        (a,b),(c,d),*_=p;return all((x-a)*(d-b)==(c-a)*(y-b)for x,y in p)
 
 test('''
 1232. Check If It Is a Straight Line

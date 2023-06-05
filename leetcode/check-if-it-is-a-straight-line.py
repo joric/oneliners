@@ -9,10 +9,6 @@ class Solution:
         np=__import__('numpy');return all(np.cross(np.subtract(p[0],x),np.subtract(p[0],p[1]))==0 for x in p[2:])
 
 class Solution:
-    def checkStraightLine(self, p: List[List[int]]) -> bool:
-        (a,b),(c,d)=p[:2];return all((x-a)*(d-b)==(c-a)*(y-b)for x,y in p[2:])
-
-class Solution:
     def checkStraightLine(self, p):
         return 3>__import__('numpy').linalg.matrix_rank([[1]+x for x in p])
 
@@ -23,6 +19,10 @@ class Solution(object):
 class Solution:
     def checkStraightLine(self, p: List[List[int]]) -> bool:
         (x1,y1),(x2,y2)=p[:2];return all((x-x1)*(y2-y1)==(x2-x1)*(y-y1)for x,y in p[2:])
+
+class Solution:
+    def checkStraightLine(self, p: List[List[int]]) -> bool:
+        (a,b),(c,d)=p[:2];return all((x-a)*(d-b)==(c-a)*(y-b)for x,y in p[2:])
 
 class Solution:
     def checkStraightLine(self, p):

@@ -823,6 +823,39 @@ class Solution:
         # return(('Tie','Bob')[x<0],'Alice')[x>0] # or like this (1 char shorter)
 ```
 
+* You can save a few characters if you use asterisk operator `*` properly.
+  One `*` means "expand this as a list", two `**` means "expand this as a dictionary".
+
+Example
+
+* https://leetcode.com/problems/check-if-it-is-a-straight-line
+
+
+```python
+class Solution:
+    def checkStraightLine(self, p):
+        (a,b),(c,d)=p[:2];return all((x-a)*(d-b)==(c-a)*(y-b)for x,y in p)
+
+class Solution:
+    def checkStraightLine(self, p):
+        (a,b),(c,d),*_=p;return all((x-a)*(d-b)==(c-a)*(y-b)for x,y in p)
+```
+
+* https://leetcode.com/problems/maximum-average-subarray-i
+
+
+```python
+
+class Solution:
+    def findMaxAverage(self, n: List[int], k: int) -> float:
+        s=[0]+[*accumulate(n)];return max(map(sub,s[k:],s))/k
+
+class Solution:
+    def findMaxAverage(self, n: List[int], k: int) -> float:
+        s=[0,*accumulate(n)];return max(map(sub,s[k:],s))/k
+```
+
+
 ## References
 
 * https://pythononeliners.com

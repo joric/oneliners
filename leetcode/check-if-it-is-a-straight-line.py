@@ -13,12 +13,12 @@ class Solution:
         np=__import__('numpy');v=np.sort(np.linalg.eigvals(np.cov(p,rowvar=0)))[::-1];return np.allclose(v[1:],0)
 
 class Solution:
-    def checkStraightLine(self, p: List[List[int]]) -> bool:
-        np=__import__('numpy');return all(np.cross(np.subtract(p[0],x),np.subtract(p[0],p[1]))==0 for x in p[2:])
+    def checkStraightLine(self, p):
+        return __import__('numpy').linalg.matrix_rank([[1]+x for x in p])<3
 
 class Solution:
-    def checkStraightLine(self, p: List[List[int]]) -> bool:
-        (a,b),(c,d)=p[:2];return all((x-a)*(d-b)==(c-a)*(y-b)for x,y in p[2:])
+    def checkStraightLine(self, p):
+        (a,b),(c,d)=p[:2];return all((x-a)*(d-b)==(c-a)*(y-b)for x,y in p)
 
 test('''
 1232. Check If It Is a Straight Line

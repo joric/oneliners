@@ -12,6 +12,10 @@ class Solution:
     def canMakeArithmeticProgression(self, a: List[int]) -> bool:
         a.sort();return len({j-i for i,j in zip(a,a[1:])})<2
 
+class Solution:
+    def canMakeArithmeticProgression(self, a: List[int]) -> bool:
+        a.sort();return a[1:]==[x+a[1]-a[0]for x in a[:-1]]
+
 test('''
 1502. Can Make Arithmetic Progression From Sequence
 Easy

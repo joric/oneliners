@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/minimum-flips-to-make-a-or-b-equal-to-c/discuss/2425968/Python-3-One-line-of-code
+
 class Solution:
     def minFlips(self, a: int, b: int, c: int) -> int:
         return (c^(a|b)).bit_count()+(a&b&~c).bit_count()

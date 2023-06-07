@@ -1,10 +1,24 @@
 from lc import *
 
-# https://leetcode.com/problems/minimum-flips-to-make-a-or-b-equal-to-c/discuss/2425968/Python-3-One-line-of-code
+class Solution:
+    def minFlips(self, a: int, b: int, c: int) -> int:
+        return (bin(~(c|(~a)))+bin(~(c|(~b)))+bin(c&(~(a|b)))).count('1')
+
+class Solution:
+    def minFlips(self, a: int, b: int, c: int) -> int:
+        return bin((a|b)^c).count('1')+bin((a&b)&~c).count('1')
+
+class Solution:
+    def minFlips(self, a: int, b: int, c: int) -> int:
+        return (bin((a|b)^c)+bin(a&b&((a|b)^c))).count("1")
 
 class Solution:
     def minFlips(self, a: int, b: int, c: int) -> int:
         return (c^(a|b)).bit_count()+(a&b&~c).bit_count()
+
+class Solution:
+    def minFlips(self, a: int, b: int, c: int) -> int:
+        return (bin(c^(a|b))+bin(a&b&~c)).count("1")
 
 test('''
 1318. Minimum Flips to Make a OR b Equal to c

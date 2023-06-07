@@ -18,7 +18,19 @@ class Solution:
 
 class Solution:
     def minFlips(self, a: int, b: int, c: int) -> int:
+        return sum(map(int.bit_count,(a&b&~c,c^(a|b))))
+
+class Solution:
+    def minFlips(self, a: int, b: int, c: int) -> int:
+        return ((c^(a|b))|((a&b&~c)<<32)).bit_count()
+
+class Solution:
+    def minFlips(self, a: int, b: int, c: int) -> int:
         return (bin(c^(a|b))+bin(a&b&~c)).count("1")
+
+class Solution:
+    def minFlips(self, a: int, b: int, c: int) -> int:
+        return (c^(a|b)|(a&b&~c)<<32).bit_count()
 
 test('''
 1318. Minimum Flips to Make a OR b Equal to c

@@ -19,16 +19,16 @@ class Solution:
 # https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/discuss/510418/Bisect-in-Python/1920552
 
 class Solution:
-    def countNegatives(self, grid: List[List[int]]) -> int:
-        return sum(bisect_right(r[::-1],-1) for r in grid)
+    def countNegatives(self, g: List[List[int]]) -> int:
+        return sum(len(r)-bisect_left(r,1,key=neg) for r in g)
 
 class Solution:
-    def countNegatives(self, grid: List[List[int]]) -> int:
-        return sum(len(r)-bisect_left(r,1,key=neg) for r in grid)
+    def countNegatives(self, g: List[List[int]]) -> int:
+        return sum(bisect_right(r[::-1],-1) for r in g)
 
 class Solution:
-    def countNegatives(self, grid: List[List[int]]) -> int:
-        return str(grid).count('-')
+    def countNegatives(self, g: List[List[int]]) -> int:
+        return str(g).count('-')
 
 test('''
 1351. Count Negative Numbers in a Sorted Matrix

@@ -702,6 +702,8 @@ class Solution:
 ```
 
 * `~` reverts every bit. Therefore, `~x` means `-x-1`. You can use it as reversed index, i.e. for `i=0`, `a[~i]` means `a[-1]`, etc. or just replace `-x-1` with `~x`.
+    For integer n, you can write `n+1` as `-~n`, `n-1` as `~-n`. This uses the same number of characters, but can indirectly cut spaces or parens for operator precedence.
+
 
 Example:
 

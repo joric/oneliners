@@ -14,7 +14,17 @@ class Solution:
 
 class Solution:
     def countNegatives(self, g: List[List[int]]) -> int:
-        m,n=len(g),len(g[0]);i,j,c = 0,n-1,0;return next(c for _ in count() if not(i<m and j>=0 and (g[i][j]<0 and(c:=c+m-i,j:=j-1)or(i:=i+1))))
+        m,n=len(g),len(g[0]);i,j,c=0,n-1,0;return next(c for _ in count()if not(i<m and j>=0 and(g[i][j]<0 and(c:=c+m-i,j:=j-1)or(i:=i+1))))
+
+# https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/discuss/510418/Bisect-in-Python/1920552
+
+class Solution:
+    def countNegatives(self, grid: List[List[int]]) -> int:
+        return sum(bisect_right(r[::-1],-1) for r in grid)
+
+class Solution:
+    def countNegatives(self, grid: List[List[int]]) -> int:
+        return sum(len(r)-bisect_left(r,1,key=neg) for r in grid)
 
 class Solution:
     def countNegatives(self, grid: List[List[int]]) -> int:

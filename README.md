@@ -866,4 +866,4 @@ A nice way to convert an iterable to list on
 * https://github.com/Allwin12/python-one-liners
 * https://github.com/finxter/PythonOneLiners
 * https://youtu.be/8k2AbqTBxao?t=251 (Stephen Fry)
-
+* https://codegolf.stackexchange.com/questions/54/tips-for-golfing-in-python

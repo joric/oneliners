@@ -8,6 +8,10 @@ class Solution:
     def nextGreatestLetter(self, l: List[str], t: str) -> str:
         return l[bisect_right(l,t[0])%len(l)]
 
+class Solution:
+    def nextGreatestLetter(self, l: List[str], t: str) -> str:
+        return (l+l)[bisect_right(l,t)]
+
 test('''
 744. Find Smallest Letter Greater Than Target
 Easy

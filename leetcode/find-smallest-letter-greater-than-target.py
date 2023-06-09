@@ -16,6 +16,10 @@ class Solution:
 
 class Solution:
     def nextGreatestLetter(self, l: List[str], t: str) -> str:
+        return l[bisect_right(l,t)%len(l)]
+
+class Solution:
+    def nextGreatestLetter(self, l: List[str], t: str) -> str:
         return (l+l)[bisect_right(l,t)]
 
 

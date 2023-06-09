@@ -8,6 +8,8 @@ class Solution:
     def nextGreatestLetter(self, l: List[str], t: str) -> str:
         return l[bisect_right(l,t[0])%len(l)]
 
+# https://leetcode.com/problems/find-smallest-letter-greater-than-target/discuss/566915/Python-3-one-line-with-bisect_right-and-with-min
+
 class Solution:
     def nextGreatestLetter(self, l: List[str], t: str) -> str:
         return (l+l)[bisect_right(l,t)]

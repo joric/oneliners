@@ -33,37 +33,6 @@ class Solution:
             right = min(n - 1, right + 1)
         return base + (maxSum - curr) // n
 
-# https://leetcode.com/problems/maximum-value-at-a-given-index-in-a-bounded-array/discuss/3204026/Python-oror-bisect-oror-short-clean
-
-class Solution:
-    def maxValue(self, n: int, index: int, maxSum: int) -> int:
-        def value(l, best):
-            if best >= l:
-                return (best - l + 1 + best) * l // 2
-            else:
-                return (1 + best) * best // 2 + (l - best)
-        def check(v):
-            return value(index, v - 1) + value(n - index, v)
-        return bisect_right(range(1, maxSum + 1), False, key=lambda a: check(a) > maxSum)
-
-class Solution:
-    def maxValue(self, n: int, i: int, m: int) -> int:
-        f=lambda l,b:(b+b-l+1)*l//2 if b>=l else (1+b)*b//2+(l-b)
-        c=lambda v:f(i,v-1)+f(n-i,v)
-        return bisect_right(range(1,m+1),0,key=lambda a:c(a)>m)
-
-class Solution:
-    def maxValue(self, n: int, i: int, m: int) -> int:
-        f=lambda l,b:((b+b-l+1)*l//2,(1+b)*b//2+(l-b))[b<l];return bisect_right(range(1,m+1),0,key=lambda x:f(i,x-1)+f(n-i,x)>m)
-
-class Solution:
-    def maxValue(self, n: int, i: int, m: int) -> int:
-        f=lambda l,b:(2*b*l-l*l+l,2*l+b*b-b)[b<l]//2;return bisect_right(range(1,m+1),0,key=lambda x:f(i,x-1)+f(n-i,x)>m)
-
-class Solution:
-    def maxValue(self, n: int, i: int, m: int) -> int:
-        f=lambda l,b:((b+b-l)*l,b*b-b+l)[b<l]+l;return bisect_right(range(1,m+1),0,key=lambda x:f(i,x-1)+f(n-i,x)>m*2)
-
 # https://leetcode.com/problems/maximum-value-at-a-given-index-in-a-bounded-array/discuss/3620084/Math-Solution.-O(1)-time-complexity-O(1)-memory
 
 class Solution:
@@ -101,6 +70,37 @@ class Solution:
     def maxValue(self, n: int, i: int, m: int) -> int:
         m-=n;r=n-i-1;a,b=i<r and(i,r)or(r,i);
         ((r:=sqrt(m))<a or a<=(r:=(sqrt((2*a+1)**2+4*((a+1)*a+2*m))-(2*a+1))/2)<b or(r:=(2*m+a*(a+1)+b*(b+1))/(a+b+1)/2)>=b);return int(r)+1
+
+# https://leetcode.com/problems/maximum-value-at-a-given-index-in-a-bounded-array/discuss/3204026/Python-oror-bisect-oror-short-clean
+
+class Solution:
+    def maxValue(self, n: int, index: int, maxSum: int) -> int:
+        def value(l, best):
+            if best >= l:
+                return (best - l + 1 + best) * l // 2
+            else:
+                return (1 + best) * best // 2 + (l - best)
+        def check(v):
+            return value(index, v - 1) + value(n - index, v)
+        return bisect_right(range(1, maxSum + 1), False, key=lambda a: check(a) > maxSum)
+
+class Solution:
+    def maxValue(self, n: int, i: int, m: int) -> int:
+        f=lambda l,b:(b+b-l+1)*l//2 if b>=l else (1+b)*b//2+(l-b)
+        c=lambda v:f(i,v-1)+f(n-i,v)
+        return bisect_right(range(1,m+1),0,key=lambda a:c(a)>m)
+
+class Solution:
+    def maxValue(self, n: int, i: int, m: int) -> int:
+        f=lambda l,b:((b+b-l+1)*l//2,(1+b)*b//2+(l-b))[b<l];return bisect_right(range(1,m+1),0,key=lambda x:f(i,x-1)+f(n-i,x)>m)
+
+class Solution:
+    def maxValue(self, n: int, i: int, m: int) -> int:
+        f=lambda l,b:(2*b*l-l*l+l,2*l+b*b-b)[b<l]//2;return bisect_right(range(1,m+1),0,key=lambda x:f(i,x-1)+f(n-i,x)>m)
+
+class Solution:
+    def maxValue(self, n: int, i: int, m: int) -> int:
+        f=lambda l,b:((b+b-l)*l,b*b-b+l)[b<l]+l;return bisect_right(range(1,m+1),0,key=lambda x:f(i,x-1)+f(n-i,x)>m*2)
 
 test('''
 1802. Maximum Value at a Given Index in a Bounded Array

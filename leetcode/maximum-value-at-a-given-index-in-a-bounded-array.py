@@ -33,6 +33,19 @@ class Solution:
             right = min(n - 1, right + 1)
         return base + (maxSum - curr) // n
 
+# https://leetcode.com/problems/maximum-value-at-a-given-index-in-a-bounded-array/discuss/1120350/Clean-Python-3-O(n)-with-two-pointers
+
+class Solution:
+    def maxValue(self, n: int, index: int, maxSum: int) -> int:
+        curr, base = n, 1
+        left = right = index
+        while (left > 0 or right < n - 1) and curr + (right - left + 1) <= maxSum:
+            curr += (right - left + 1)
+            base += 1
+            left = max(0, left - 1)
+            right = min(n - 1, right + 1)
+        return base + (maxSum - curr) // n
+
 # https://leetcode.com/problems/maximum-value-at-a-given-index-in-a-bounded-array/discuss/3204026/Python-oror-bisect-oror-short-clean
 
 class Solution:

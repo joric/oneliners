@@ -69,6 +69,11 @@ class Solution:
     def maxValue(self, n: int, i: int, m: int) -> int:
         f=lambda l,b:((b+b-l+1)*l//2,(1+b)*b//2+(l-b))[b<l];return bisect_right(range(1,m+1),0,key=lambda x:f(i,x-1)+f(n-i,x)>m)
 
+class Solution:
+    def maxValue(self, n: int, i: int, m: int) -> int:
+        f=lambda l,b:(2*b*l-l*l+l,2*l+b*b-b)[b<l]//2;return bisect_right(range(1,m+1),0,key=lambda x:f(i,x-1)+f(n-i,x)>m)
+
+
 test('''
 1802. Maximum Value at a Given Index in a Bounded Array
 Medium

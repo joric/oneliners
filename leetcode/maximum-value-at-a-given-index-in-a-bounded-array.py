@@ -1,22 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/maximum-value-at-a-given-index-in-a-bounded-array/discuss/3620084/Math-Solution.-O(1)-time-complexity-O(1)-memory
-
-class Solution:
-    def maxValue(self, n: int, index: int, maxSum: int) -> int:
-        maxSum -= n
-        r = n - index - 1
-        (x1, x2) = (index, r) if index < r else (r, index)
-        res = sqrt(maxSum)
-        if res < x1:
-            return int(res) + 1
-        res = (sqrt((2 * x1 + 1) ** 2 + 4 * ((x1 + 1) * x1 + 2 * maxSum)) - (2 * x1 + 1)) / 2
-        if x1 <= res < x2:
-            return int(res) + 1
-        res = (2 * maxSum + x1 * (x1 + 1) + x2 * (x2 + 1)) / (x1 + x2 + 1) / 2
-        if res >= x2:
-            return int(res) + 1
-
 #https://leetcode.com/problems/maximum-value-at-a-given-index-in-a-bounded-array/discuss/1119801/JavaC%2B%2BPython-Binary-Search
 
 class Solution:
@@ -36,19 +19,6 @@ class Solution:
             else:
                 right = mid - 1
         return left + 1
-
-# https://leetcode.com/problems/maximum-value-at-a-given-index-in-a-bounded-array/discuss/1120350/Clean-Python-3-O(n)-with-two-pointers
-
-class Solution:
-    def maxValue(self, n: int, index: int, maxSum: int) -> int:
-        curr, base = n, 1
-        left = right = index
-        while (left > 0 or right < n - 1) and curr + (right - left + 1) <= maxSum:
-            curr += (right - left + 1)
-            base += 1
-            left = max(0, left - 1)
-            right = min(n - 1, right + 1)
-        return base + (maxSum - curr) // n
 
 # https://leetcode.com/problems/maximum-value-at-a-given-index-in-a-bounded-array/discuss/1120350/Clean-Python-3-O(n)-with-two-pointers
 
@@ -93,6 +63,44 @@ class Solution:
 class Solution:
     def maxValue(self, n: int, i: int, m: int) -> int:
         f=lambda l,b:((b+b-l)*l,b*b-b+l)[b<l]+l;return bisect_right(range(1,m+1),0,key=lambda x:f(i,x-1)+f(n-i,x)>m*2)
+
+# https://leetcode.com/problems/maximum-value-at-a-given-index-in-a-bounded-array/discuss/3620084/Math-Solution.-O(1)-time-complexity-O(1)-memory
+
+class Solution:
+    def maxValue(self, n: int, index: int, maxSum: int) -> int:
+        maxSum -= n
+        r = n - index - 1
+        (x1, x2) = (index, r) if index < r else (r, index)
+        res = sqrt(maxSum)
+        if res < x1:
+            return int(res) + 1
+        res = (sqrt((2 * x1 + 1) ** 2 + 4 * ((x1 + 1) * x1 + 2 * maxSum)) - (2 * x1 + 1)) / 2
+        if x1 <= res < x2:
+            return int(res) + 1
+        res = (2 * maxSum + x1 * (x1 + 1) + x2 * (x2 + 1)) / (x1 + x2 + 1) / 2
+        if res >= x2:
+            return int(res) + 1
+
+class Solution:
+    def maxValue(self, n: int, i: int, m: int) -> int:
+        m-=n
+        r=n-i-1
+        a,b=i<r and (i,r) or (r,i)
+        r=sqrt(m)
+        if r<a:
+            return int(r)+1
+        r=(sqrt((2*a+1)**2+4*((a+1)*a+2*m))-(2*a+1))/2
+        if a<=r<b:
+            return int(r)+1
+        r=(2*m+a*(a+1)+b*(b+1))/(a+b+1)/2
+        if r>=b:
+            return int(r) + 1
+
+# O(1) solution
+class Solution:
+    def maxValue(self, n: int, i: int, m: int) -> int:
+        m-=n;r=n-i-1;a,b=i<r and(i,r)or(r,i);
+        ((r:=sqrt(m))<a or a<=(r:=(sqrt((2*a+1)**2+4*((a+1)*a+2*m))-(2*a+1))/2)<b or(r:=(2*m+a*(a+1)+b*(b+1))/(a+b+1)/2)>=b);return int(r)+1
 
 test('''
 1802. Maximum Value at a Given Index in a Bounded Array

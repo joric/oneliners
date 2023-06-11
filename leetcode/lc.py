@@ -266,6 +266,7 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
     # NB! new test system seems incompatible,
     # i.e. "Input" has semicolon now.
     # so I detect by classname
+    # make sure Input and Output end with new line
 
     param = []
     t = 0

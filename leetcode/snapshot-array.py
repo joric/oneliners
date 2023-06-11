@@ -55,9 +55,9 @@ Constraints:
 
 1 <= length <= 5 * 10^4
 0 <= index < length
-0 <= val <= 109
+0 <= val <= 10^9
 0 <= snap_id < (the total number of times we call snap())
-At most 5 * 104 calls will be made to set, snap, and get.
+At most 5 * 10^4 calls will be made to set, snap, and get.
 Accepted
 144,052
 Submissions

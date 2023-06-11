@@ -274,9 +274,12 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
     if custom_class_tests:
         for s in text.splitlines():
             if s.startswith('Input'):
-                t = 1
-            elif t == 1:
                 param.append([[],[],[]])
+                t = 1
+                if len(s.replace(':',''))>5:
+                    param[-1][0] = vp(s[6:])
+                    t = 2
+            elif t == 1:
                 param[-1][0] = vp(s)
                 t = 2
             elif t == 2:
@@ -284,6 +287,9 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
                 t = 0
             elif s.startswith('Output'):
                 t = 3
+                if len(s.replace(':',''))>6:
+                    param[-1][2] = vp(s[7:])
+                    t = 0
             elif t == 3:
                 param[-1][2] = vp(s)
                 t = 0

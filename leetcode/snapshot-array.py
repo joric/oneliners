@@ -39,11 +39,9 @@ int get(index, snap_id) returns the value at the given index, at the time we too
 
 Example 1:
 
-Input:
-["SnapshotArray","set","snap","set","get"]
+Input: ["SnapshotArray","set","snap","set","get"]
 [[3],[0,5],[],[0,6],[0,0]]
-Output:
-[null,null,0,null,5]
+Output: [null,null,0,null,5]
 
 Explanation: 
 SnapshotArray snapshotArr = new SnapshotArray(3); // set the length to be 3

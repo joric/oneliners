@@ -276,7 +276,7 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
             if s.startswith('Input'):
                 param.append([[],[],[]])
                 t = 1
-                if len(s.replace(':',''))>5:
+                if len(s.rstrip(': '))>5:
                     param[-1][0] = vp(s[6:])
                     t = 2
             elif t == 1:
@@ -287,7 +287,7 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
                 t = 0
             elif s.startswith('Output'):
                 t = 3
-                if len(s.replace(':',''))>6:
+                if len(s.rstrip(': '))>6:
                     param[-1][2] = vp(s[7:])
                     t = 0
             elif t == 3:

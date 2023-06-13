@@ -4,11 +4,11 @@ from lc import *
 
 class Solution:
     def equalPairs(self, g: List[List[int]]) -> int:
-        return sum(r==c for c in map(list,zip(*g))for r in g)
+        return sum(map(Counter(map(tuple,g)).__getitem__,zip(*g)))
 
 class Solution:
     def equalPairs(self, g: List[List[int]]) -> int:
-        return sum(map(Counter(map(tuple,g)).__getitem__,zip(*g)))
+        return sum(r==c for c in map(list,zip(*g))for r in g)
 
 test('''
 2352. Equal Row and Column Pairs

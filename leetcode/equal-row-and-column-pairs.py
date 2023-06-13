@@ -10,6 +10,9 @@ class Solution:
     def equalPairs(self, g: List[List[int]]) -> int:
         return sum(r==c for c in map(list,zip(*g))for r in g)
 
+class Solution:
+    def equalPairs(self, g: List[List[int]]) -> int:
+        return sum(r==[*c]for r in g for c in zip(*g))
 test('''
 2352. Equal Row and Column Pairs
 Medium

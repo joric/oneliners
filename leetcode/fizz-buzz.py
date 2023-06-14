@@ -6,7 +6,7 @@ class Solution:
 
 class Solution:
     def fizzBuzz(self, n: int) -> List[str]:
-        return['FizzBuzz'[i%-3&-4:i%-5&8^12] or str(i) for i in range(1,n+1)]
+        return['FizzBuzz'[i%-3&-4:i%-5&8^12]or str(i)for i in range(1,n+1)]
 
 test('''
 412. Fizz Buzz

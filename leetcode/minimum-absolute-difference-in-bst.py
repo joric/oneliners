@@ -5,7 +5,7 @@ class Solution:
         f=lambda n:n and f(n.left)+[n.val]+f(n.right)or[];return min(b-a for a,b in pairwise(f(root)))
 
 class Solution:
-    def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
+    def getMinimumDifference(self, r: Optional[TreeNode]) -> int:
         f=lambda n:n and f(n.left)+[n.val]+f(n.right)or[];return min({*map(sub,f(r)[1:],f(r))})
 
 test('''

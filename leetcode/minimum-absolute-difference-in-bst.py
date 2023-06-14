@@ -6,7 +6,7 @@ class Solution:
 
 class Solution:
     def getMinimumDifference(self, r: Optional[TreeNode]) -> int:
-        f=lambda n:n and f(n.left)+[n.val]+f(n.right)or[];return min(*map(sub,f(r)[1:],f(r)))
+        f=lambda n:n and f(n.left)+[n.val]+f(n.right)or[];return min(map(sub,f(r)[1:],f(r)))
 
 test('''
 530. Minimum Absolute Difference in BST

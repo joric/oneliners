@@ -579,7 +579,7 @@ class Solution:
 
 ### Swapping values
 
-To swap values you can use either `exec` or a temporary variable.
+To swap values you can use either `exec` or a temporary variable. The usual `a,b=b,a` works only if you use semicolons.
 
 Example:
 

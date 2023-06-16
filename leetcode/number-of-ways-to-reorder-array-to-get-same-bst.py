@@ -12,6 +12,10 @@ class Solution:
     def numOfWays(self, n: List[int]) -> int:
         f=lambda a:len(a)>2and comb(len(l:=[v for v in a if v<a[0]])+len(r:=[v for v in a if v>a[0]]),len(r))*f(l)*f(r)or 1;return(f(n)-1)%(10**9+7)
 
+class Solution:
+    def numOfWays(self, n):
+        f=lambda a:a and comb(len(a)-1,len(l:=[v for v in a if v<a[0]]))*f(l)*f([v for v in a if v>a[0]])or 1;return(f(n)-1)%(10**9+7)
+
 test('''
 1569. Number of Ways to Reorder Array to Get Same BST
 Hard

@@ -2,7 +2,7 @@ from lc import *
 
 class Solution:
     def makeArrayIncreasing(self, a: List[int], b: List[int]) -> int:
-        b.sort();f=cache(lambda i,p:i<len(a)and min((j:=bisect_right(b,p))<len(b)and 1+f(i+1,b[j])or inf,f(i+1,a[i])if p<a[i]else inf));r=f(0,-inf);return(-1,r)[r<inf]
+        b.sort();f=cache(lambda i,x:i<len(a)and min((j:=bisect_right(b,x))<len(b)and 1+f(i+1,b[j])or inf,f(i+1,a[i])if x<a[i]else inf));r=f(0,-inf);return(-1,r)[r<inf]
 
 test('''
 1187. Make Array Strictly Increasing

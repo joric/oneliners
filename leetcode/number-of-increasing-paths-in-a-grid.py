@@ -1,6 +1,6 @@
 from lc import *
 
-# https://leetcode.com/problems/number-of-increasing-paths-in-a-grid/discuss/2229819/C++Python-Top-Down-DP/1933696
+# https://leetcode.com/problems/number-of-increasing-paths-in-a-grid/discuss/3650340/python-3-one-line
 
 class Solution:
     def countPaths(self, g: List[List[int]]) -> int:

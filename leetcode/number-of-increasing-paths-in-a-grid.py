@@ -19,16 +19,8 @@ class Solution:
         return sum(f(z) for z in g)%(10**9+7)
 
 class Solution:
-    def countPaths(self, g):
-        e=enumerate;g={i+j*1j:x for i,r in e(g)for j,x in e(r)};f=cache(lambda z:1+sum(f(t)for k in range(4)if g[z]>g.get(t:=z+1j**k,inf)));return sum(f(z)for z in g)%(10**9+7)
-
-class Solution:
     def countPaths(self, g: List[List[int]]) -> int:
-        e=enumerate;g={i+j*1j:x for i,r in e(g)for j,x in e(r)};f=cache(lambda z:1+sum(f(t)for k in range(4)if g[z]>g.get(t:=z+1j**k,inf)));return sum(map(f,g))%(10**9+7)
-
-class Solution:
-    def countPaths(self, g: List[List[int]]) -> int:
-        e=enumerate;g={i+j*1j:x for i,r in e(g)for j,x in e(r)};return sum(map(f:=cache(lambda z:1+sum(f(t)for k in range(4)if g[z]>g.get(t:=z+1j**k,inf))),g))%(10**9+7)
+        e=enumerate;return sum(map(f:=cache(lambda z:1+sum(f(t)for k in range(4)if g[z]>g.get(t:=z+1j**k,inf))),g:={i+j*1j:x for i,r in e(g)for j,x in e(r)}))%(10**9+7)
 
 test('''
 2328. Number of Increasing Paths in a Grid

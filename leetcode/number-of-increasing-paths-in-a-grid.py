@@ -4,8 +4,8 @@ from lc import *
 
 class Solution:
     def countPaths(self, g: List[List[int]]) -> int:
-        m,n=len(g),len(g[0])
-        f=cache(lambda i,j:1+sum(f(i+x,j+y) for x,y in[(0,1),(1,0),(-1,0),(0,-1)] if n>j+y>=0<=i+x<m and g[i+x][j+y]>g[i][j]))
+        m,n = len(g),len(g[0])
+        f = cache(lambda i,j:1+sum(f(i+x,j+y) for x,y in[(0,1),(1,0),(-1,0),(0,-1)] if n>j+y>=0<=i+x<m and g[i+x][j+y]>g[i][j]))
         return sum(f(i,j) for i in range(m) for j in range(n))%(10**9+7)
 
 class Solution:
@@ -20,7 +20,11 @@ class Solution:
 
 class Solution:
     def countPaths(self, g: List[List[int]]) -> int:
-        g={i+j*1j:x for i,r in enumerate(g) for j,x in enumerate(r)};f=cache(lambda z:1+sum(f(t)for k in range(4)if(t:=z+1j**k)in g and g[z]>g[t]));return sum(f(z)for z in g)%(10**9+7)
+        g={i+j*1j:x for i,r in enumerate(g)for j,x in enumerate(r)};f=cache(lambda z:1+sum(f(t)for k in range(4)if(t:=z+1j**k)in g and g[z]>g[t]));return sum(f(z)for z in g)%(10**9+7)
+
+class Solution:
+    def countPaths(self, g: List[List[int]]) -> int:
+        e=enumerate;g={i+j*1j:x for i,r in e(g)for j,x in e(r)};f=cache(lambda z:1+sum(f(t)for k in range(4)if(t:=z+1j**k)in g and g[z]>g[t]));return sum(f(z)for z in g)%(10**9+7)
 
 test('''
 2328. Number of Increasing Paths in a Grid

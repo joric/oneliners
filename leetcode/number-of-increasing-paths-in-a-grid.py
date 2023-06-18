@@ -20,14 +20,6 @@ class Solution:
 
 class Solution:
     def countPaths(self, g: List[List[int]]) -> int:
-        g={i+j*1j:x for i,r in enumerate(g)for j,x in enumerate(r)};f=cache(lambda z:1+sum(f(t)for k in range(4)if(t:=z+1j**k)in g and g[z]>g[t]));return sum(f(z)for z in g)%(10**9+7)
-
-class Solution:
-    def countPaths(self, g: List[List[int]]) -> int:
-        e=enumerate;g={i+j*1j:x for i,r in e(g)for j,x in e(r)};f=cache(lambda z:1+sum(f(t)for k in range(4)if(t:=z+1j**k)in g and g[z]>g[t]));return sum(f(z)for z in g)%(10**9+7)
-
-class Solution:
-    def countPaths(self, g: List[List[int]]) -> int:
         e=enumerate;g={i+j*1j:x for i,r in e(g)for j,x in e(r)};f=cache(lambda z:1+sum(f(t)for k in range(4)if g[z]>g.get(t:=z+1j**k,inf)));return sum(f(z)for z in g)%(10**9+7)
 
 test('''

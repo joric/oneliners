@@ -2,7 +2,7 @@ from lc import *
 
 class Solution:
     def largestAltitude(self, g: List[int]) -> int:
-        return max(0,max(accumulate(g)))
+        return max(0,*accumulate(g))
 
 test('''
 1732. Find the Highest Altitude

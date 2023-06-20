@@ -25,6 +25,10 @@ class Solution:
     def getAverages(self, n: List[int], k: int) -> List[int]:
         p=[0,*accumulate(n)];return[(k<=i<len(n)-k and(p[i+k+1]-p[i-k])//(2*k+1)+1)-1for i,x in enumerate(n)]
 
+class Solution:
+    def getAverages(self, n: List[int], k: int) -> List[int]:
+        t=len(n);p=[0,*accumulate(n)];return[(k<=i<t-k and(p[i+k+1]-p[i-k])//(2*k+1)+1)-1for i in range(t)]
+
 test('''
 2090. K Radius Subarray Averages
 Medium

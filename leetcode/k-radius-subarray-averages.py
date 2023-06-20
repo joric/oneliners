@@ -27,7 +27,7 @@ class Solution:
 
 class Solution:
     def getAverages(self, n: List[int], k: int) -> List[int]:
-        p=[0,*accumulate(n)];t=len(n);return[(k<=i<t-k and(p[i+k+1]-p[i-k])//(2*k+1)+1)-1for i in range(t)]
+        p=[0,*accumulate(n)];t=len(n);return[(p[i+k+1]-p[i-k])//(2*k+1)if k<=i<t-k else-1for i in range(t)]
 
 test('''
 2090. K Radius Subarray Averages

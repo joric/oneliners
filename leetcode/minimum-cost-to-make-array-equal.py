@@ -5,20 +5,15 @@ from lc import *
 class Solution:
     def minCost(self, nums: List[int], cost: List[int]) -> int:
         a = sorted(zip(nums, cost))
-        m = sum(cost)/2
-        c = 0
-        for t,x in a:
-            c += x
-            if c >= m:
-                return sum(abs(t-n)*c for n,c in a)
+        t = -sum(cost)
+        for x,c in a:
+            t += 2*c
+            if t>0:
+                return sum(abs(x-y)*c for y,c in a)
 
 class Solution:
     def minCost(self, v: List[int], p: List[int]) -> int:
-        a,m,c=sorted(zip(v,p)),sum(p)/2,0;return next(sum(abs(t-n)*c for n,c in a)for t,x in a if(c:=c+x)>=m)
-
-class Solution:
-    def minCost(self, v: List[int], p: List[int]) -> int:
-        a,c=sorted(zip(v,p)),-sum(p);return next(sum(abs(t-n)*c for n,c in a)for t,x in a if(c:=c+2*x)>0)
+        a,t=sorted(zip(v,p)),-sum(p);return next(sum(abs(x-y)*c for y,c in a)for x,c in a if(t:=t+2*c)>0)
 
 test('''
 2448. Minimum Cost to Make Array Equal

@@ -17,7 +17,7 @@ class Solution:
         a,m,c=sorted(zip(v,p)),sum(p)/2,0;return next(sum(abs(t-n)*c for n,c in a)for t,x in a if(c:=c+x)>=m)
 
 class Solution:
-    def minCost(self, v, p):
+    def minCost(self, v: List[int], p: List[int]) -> int:
         a,c=sorted(zip(v,p)),-sum(p);return next(sum(abs(t-n)*c for n,c in a)for t,x in a if(c:=c+2*x)>0)
 
 test('''

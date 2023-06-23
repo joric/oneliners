@@ -12,6 +12,10 @@ class Solution:
     def longestArithSeqLength(self, a: List[int]) -> int:
         d={};n=len(a);[setitem(d,(j,a[j]-a[i]),d.get((i,a[j]-a[i]),1)+1)for i in range(n)for j in range(i+1,n)];return max(d.values())
 
+class Solution:
+    def longestArithSeqLength(self, a: List[int]) -> int:
+        d={};r=range;[setitem(d,(i,t:=a[j]-a[i]),d.get((j,t),1)+1)for i in r(len(a))for j in r(i)];return max(d.values())
+
 test('''
 1027. Longest Arithmetic Subsequence
 Medium

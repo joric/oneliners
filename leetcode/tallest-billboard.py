@@ -17,7 +17,11 @@ class Solution:
 
 class Solution:
     def tallestBillboard(self, r):
-        f=cache(lambda i,s:r[i:]and max(f(i+1,s),f(i+1,s-r[i]),f(i+1,s+r[i])+r[i])or-9**9*(s!=0));return f(0,0)
+        return(f:=cache(lambda i,s:r[i:]and max(f(i+1,s),f(i+1,s-r[i]),f(i+1,s+r[i])+r[i])or -9**9*(s!=0)))(0,0)
+
+class Solution:
+    def tallestBillboard(self, r):
+        f=cache(lambda i,s:r[i:]and max((t:=r[i])+f(i+1,s+t),f(i+1,s-t),f(i+1,s))or-9**9*(s!=0));return f(0,0)
 
 
 test('''

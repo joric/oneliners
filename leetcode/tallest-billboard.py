@@ -11,6 +11,15 @@ class Solution:
     def tallestBillboard(self, r: List[int]) -> int:
         f=cache(lambda i,s:i<len(r)and max(f(i+1,s),f(i+1,s-r[i]),f(i+1,s+r[i])+r[i])or(s and-inf or 0));return f(0,0)
 
+class Solution:
+    def tallestBillboard(self, r: List[int]) -> int:
+        f=cache(lambda i,s:i<len(r)and max((t:=r[i])+f(i+1,s+t),f(i+1,s-t),f(i+1,s))or(s and-inf or 0));return f(0,0)
+
+class Solution:
+    def tallestBillboard(self, r):
+        f=cache(lambda i,s:r[i:]and max(f(i+1,s),f(i+1,s-r[i]),f(i+1,s+r[i])+r[i])or-9**9*(s!=0));return f(0,0)
+
+
 test('''
 956. Tallest Billboard
 Hard

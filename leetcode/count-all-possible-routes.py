@@ -6,6 +6,10 @@ class Solution:
     def countRoutes(self, l: List[int], s: int, e: int, f: int) -> int:
         c=lambda i,j:abs(l[i]-l[j]);g=cache(lambda i,f:f>=0 and sum([g(j,f-c(i,j))for j in range(len(l))if j!=i])+(i==e)or 0);return g(s,f)%(10**9+7)
 
+class Solution:
+    def countRoutes(self, l: List[int], s: int, e: int, f: int) -> int:
+        g=cache(lambda i,f:f>=0 and sum([g(j,f-abs(l[i]-l[j]))for j in range(len(l))if j!=i])+(i==e)or 0);return g(s,f)%(10**9+7)
+
 test('''
 1575. Count All Possible Routes
 Hard

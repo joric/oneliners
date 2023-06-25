@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def countRoutes(self, l: List[int], s: int, e: int, f: int) -> int:
-        g=cache(lambda i,f:f>=0and sum([g(j,f-abs(l[i]-l[j]))for j in range(len(l))if j!=i])+(i==e));return g(s,f)%(10**9+7)
+        return(g:=cache(lambda i,f:f>=0and sum([g(j,f-abs(l[i]-l[j]))for j in range(len(l))if j!=i])+(i==e)))(s,f)%(10**9+7)
 
 test('''
 1575. Count All Possible Routes

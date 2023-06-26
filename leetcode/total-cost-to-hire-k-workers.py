@@ -12,12 +12,12 @@ class Solution:
                 r += heappop(a)
                 if i<=j: 
                     heappush(a,c[i])
-                    i += 1
+                    i+=1
             else: 
                 r += heappop(b)
-                if i <= j: 
+                if i<=j:
                     heappush(b,c[j])
-                    j -= 1
+                    j-=1
         return r 
 
 class Solution:
@@ -27,7 +27,6 @@ class Solution:
 class Solution:
     def totalCost(self, c: List[int], k: int, t: int) -> int:
         h,p,u=heapify,heappop,heappush;h(a:=c[:t]);h(b:=c[max(t,len(c)-t):]);r,i,j=0,t,len(c)-t-1;[(not b or a and a[0]<=b[0])and(r:=r+p(a),i<=j and(u(a,c[i]),i:=i+1))or(r:=r+p(b),i<=j and(u(b,c[j]),j:=j-1))for _ in range(k)];return r
-
 
 test('''
 2462. Total Cost to Hire K Workers

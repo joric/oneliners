@@ -1,5 +1,14 @@
 from lc import *
 
+class Solution:
+    def totalCost(self, c: List[int], k: int, t: int) -> int:
+        s,l,r,a,b=0,0,len(c)-1,[inf],[inf]
+        for _ in range(k):
+            [heappush(a, c[(l:=l+1)-1]) for _ in range(min(r-l+1,t-len(a)+1))]
+            [heappush(b, c[(r:=r-1)+1]) for _ in range(min(r-l+1,t-len(b)+1))]
+            s += heappop(b if a[0]>b[0] else a)
+        return s
+
 # https://leetcode.com/problems/total-cost-to-hire-k-workers/discuss/2783147/Python3-priority-queues
 
 class Solution:

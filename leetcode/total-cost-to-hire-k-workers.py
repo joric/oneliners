@@ -45,7 +45,7 @@ class Solution:
 
 class Solution:
     def totalCost(self, c: List[int], k: int, t: int) -> int:
-        h=heapify;h(a:=c[:t]);h(b:=c[max(t,len(c)-t):]);r,i,j=0,t,len(c)-t-1;[(x:=(b,a)[d:=bool(not b or a and a[0]<=b[0])],r:=r+heappop(x),i<=j and(heappush(x,c[(j,i)[d]]),i:=i+d,j:=j-1+d))for _ in range(k)];return r
+        h=heapify;h(a:=c[:t]);h(b:=c[max(t,len(c)-t):]);r,i,j=0,t,len(c)+~t;[(x:=(b,a)[d:=bool(not b or a and a[0]<=b[0])],r:=r+heappop(x),i<=j and(heappush(x,c[(j,i)[d]]),i:=i+d,j:=j-1+d))for _ in range(k)];return r
 
 test('''
 2462. Total Cost to Hire K Workers

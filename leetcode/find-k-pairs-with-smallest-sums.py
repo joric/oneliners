@@ -18,19 +18,25 @@ class Solution:
                 push(i + 1, 0)
         return pairs
 
-class Solution:
-    def kSmallestPairs(self, a: List[int], b: List[int], k: int) -> List[List[int]]:
-        return [suv[1:]for suv in islice(heapq.merge(*map(lambda u:([u+v, u, v]for v in b),a)),k)]
-
 # TLE
 class Solution:
     def kSmallestPairs(self, a: List[int], b: List[int], k: int) -> List[List[int]]:
-        return heapq.nsmallest(k,product(a,b),key=sum)
+        return nsmallest(k,product(a,b),key=sum)
 
-# TLE
+# MLE
 class Solution:
     def kSmallestPairs(self, a: List[int], b: List[int], k: int) -> List[List[int]]:
         return sorted(product(a,b),key=sum)[:k]
+
+class Solution:
+    def kSmallestPairs(self, a: List[int], b: List[int], k: int) -> List[List[int]]:
+        streams = map(lambda u:((u+v,u,v)for v in b),a)
+        stream = merge(*streams)
+        return [x[1:] for x in islice(stream, k)]
+
+class Solution:
+    def kSmallestPairs(self, a: List[int], b: List[int], k: int) -> List[List[int]]:
+        return [s[1:]for s in islice(merge(*map(lambda u:((u+v,u,v)for v in b),a)),k)]
 
 test('''
 373. Find K Pairs with Smallest Sums

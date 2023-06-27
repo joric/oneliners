@@ -36,7 +36,7 @@ class Solution:
 
 class Solution:
     def kSmallestPairs(self, a: List[int], b: List[int], k: int) -> List[List[int]]:
-        return [s[1:]for s in islice(merge(*map(lambda u:((u+v,u,v)for v in b),a)),k)]
+        return [x[1:]for x in islice(merge(*map(lambda u:((u+v,u,v)for v in b),a)),k)]
 
 test('''
 373. Find K Pairs with Smallest Sums

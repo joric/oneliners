@@ -20,12 +20,14 @@ class Solution:
 
 class Solution:
     def kSmallestPairs(self, a: List[int], b: List[int], k: int) -> List[List[int]]:
-        return [suv[1:] for suv in islice(heapq.merge(*map(lambda u: ([u+v, u, v] for v in b),a)), k)]
+        return [suv[1:]for suv in islice(heapq.merge(*map(lambda u:([u+v, u, v]for v in b),a)),k)]
 
+# TLE
 class Solution:
     def kSmallestPairs(self, a: List[int], b: List[int], k: int) -> List[List[int]]:
-        return heapq.nsmallest(k,product(a,b), key=sum)
+        return heapq.nsmallest(k,product(a,b),key=sum)
 
+# TLE
 class Solution:
     def kSmallestPairs(self, a: List[int], b: List[int], k: int) -> List[List[int]]:
         return sorted(product(a,b),key=sum)[:k]

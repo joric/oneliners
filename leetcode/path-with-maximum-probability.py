@@ -43,18 +43,26 @@ class Solution:
 # https://leetcode.com/problems/path-with-maximum-probability/discuss/1011001/Python-Simple-Djikstra's-and-Bellman-Ford-algorithm
 
 class Solution:
-    def maxProbability(self, n: int, m: List[List[int]], c: List[float], s: int, e: int) -> float:
+    def maxProbability(self, n: int, m: List[List[int]], c: List[float], u: int, v: int) -> float:
         d = [0] * n
-        d[s] = 1
+        d[u] = 1
         for i in range(n-1):
-            for (u,v),p in zip(m,c):
-                if d[u] != 0 and d[u] * p > d[v]:
-                    d[v] = d[u] * p
-                if d[v] != 0 and d[v] * p > d[u]:
-                    d[u] = d[v] * p
-        return d[e]
+            for (s,e),p in zip(m,c):
+                if d[s] != 0 and d[s] * p > d[e]:
+                    d[e] = d[s] * p
+                if d[e] != 0 and d[e] * p > d[s]:
+                    d[s] = d[e] * p
+        return d[v]
 
-# bellman-ford
+class Solution:
+    def maxProbability(self, n: int, m: List[List[int]], c: List[float], u: int, v: int) -> float:
+        d = [0] * n
+        d[u] = 1
+        for i in range(int(sqrt(n))):
+            for(s,e),p in zip(m,c):
+                for q,r in([s,e],[e,s]):
+                    d[q] = max(d[q],d[r]*p)
+        return d[v]
 
 class Solution:
     def maxProbability(self, n: int, m: List[List[int]], c: List[float], u: int, v: int) -> float:

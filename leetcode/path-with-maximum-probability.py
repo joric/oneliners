@@ -40,11 +40,26 @@ class Solution:
     def maxProbability(self, n: int, m: List[List[int]], c: List[float], s: int, e: int) -> float:
         g,v,h=defaultdict(dict),set(),[(-1,s)];[setitem(g[a],b,p)or setitem(g[b],a,p)for(a,b),p in zip(m,c)];return next(-p for _ in count()if not((p:=len(h)and h[0][0])and(o:=heappop(h)[1])!=e and(v.add(o),[heappush(h,(p*g[o][i],i))for i in g[o]if i not in v])))
 
+# https://leetcode.com/problems/path-with-maximum-probability/discuss/1011001/Python-Simple-Djikstra's-and-Bellman-Ford-algorithm
+
+class Solution:
+    def maxProbability(self, n: int, m: List[List[int]], c: List[float], s: int, e: int) -> float:
+        d = [0] * n
+        d[s] = 1
+        for i in range(n-1):
+            for (u,v),p in zip(m,c):
+                if d[u] != 0 and d[u] * p > d[v]:
+                    d[v] = d[u] * p
+                if d[v] != 0 and d[v] * p > d[u]:
+                    d[u] = d[v] * p
+        return d[e]
+
 # bellman-ford
 
 class Solution:
     def maxProbability(self, n: int, m: List[List[int]], c: List[float], u: int, v: int) -> float:
         d=[0]*n;d[u]=1;[setitem(d,q,max(d[q],d[r]*p))for i in range(int(sqrt(n))) for(s,e),p in zip(m,c)for q,r in([s,e],[e,s])];return d[v]
+
 
 test('''
 1514. Path with Maximum Probability

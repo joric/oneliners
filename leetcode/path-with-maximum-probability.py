@@ -40,6 +40,12 @@ class Solution:
     def maxProbability(self, n: int, m: List[List[int]], c: List[float], s: int, e: int) -> float:
         g,v,h=defaultdict(dict),set(),[(-1,s)];[setitem(g[a],b,p)or setitem(g[b],a,p)for(a,b),p in zip(m,c)];return next(-p for _ in count()if not((p:=len(h)and h[0][0])and(o:=heappop(h)[1])!=e and(v.add(o),[heappush(h,(p*g[o][i],i))for i in g[o]if i not in v])))
 
+# bellman-ford
+
+class Solution:
+    def maxProbability(self, n: int, m: List[List[int]], c: List[float], u: int, v: int) -> float:
+        d=[0]*n;d[u]=1;[setitem(d,q,max(d[q],d[r]*p))for i in range(int(sqrt(n))) for(s,e),p in zip(m,c)for q,r in([s,e],[e,s])];return d[v]
+
 test('''
 1514. Path with Maximum Probability
 Medium

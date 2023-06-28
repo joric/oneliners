@@ -38,7 +38,7 @@ class Solution:
 
 class Solution:
     def maxProbability(self, n: int, m: List[List[int]], c: List[float], s: int, e: int) -> float:
-        g,v,h=defaultdict(dict),set(),[(-1,s)];[setitem(g[a],b,p)or setitem(g[b],a,p)for (a,b),p in zip(m,c)];return next(-t[0] for _ in count() if not((t:=[0])and h and(t:=heappop(h))and t[1]!=e and(v.add(t[1]),[heappush(h,(t[0]*g[t[1]][i],i))for i in g[t[1]]if i not in v])))
+        g,v,h=defaultdict(dict),set(),[(-1,s)];[setitem(g[a],b,p)or setitem(g[b],a,p)for (a,b),p in zip(m,c)];return next(-t[0]for _ in count()if not((t:=[0])and h and(t:=heappop(h))and t[1]!=e and(v.add(t[1]),[heappush(h,(t[0]*g[t[1]][i],i))for i in g[t[1]]if i not in v])))
 
 test('''
 1514. Path with Maximum Probability

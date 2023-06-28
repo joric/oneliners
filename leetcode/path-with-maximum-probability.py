@@ -1,24 +1,5 @@
 from lc import *
 
-class Solution:
-    def maxProbability(self, n: int, m: List[List[int]], c: List[float], s: int, e: int) -> float:
-        a = [set() for _ in range(n)]
-        d = [inf for _ in range(n)]
-        for (u,v),p in zip(m,c):
-            a[u].add((v,log2(1/p)))
-            a[v].add((u,log2(1/p)))
-        d[s] = 0
-        h = [(0,s)]
-        while h:
-            r,u = heappop(h)
-            if r == d[u]:
-                for (v,p) in a[u]:
-                    if d[u] + p<d[v]:
-                        d[v] = d[u]+p
-                        heappush(h,(d[v],v))
-        return 1/(2**d[e])
-
-
 # https://leetcode.com/problems/path-with-maximum-probability/discuss/731760/Python-Short-Dijkstra
 
 class Solution:

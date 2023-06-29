@@ -22,11 +22,11 @@ class Solution:
                 if k == (1 << t) - 1:
                     return r 
                 for x, y in (i-1,j), (i,j-1), (i,j+1), (i+1,j):
-                    if m>x>=0<=y<n and g[x][y] != "#": 
+                    if m>x>=0<=y<n and g[x][y]!="#": 
                         z = k 
                         if g[x][y].islower():
                             z |= 1<<ord(g[x][y])-ord('a')
-                        if (x,y,z) in v or g[x][y].isupper() and not z & (1<<ord(g[x][y])-ord('A')):
+                        if (x,y,z) in v or g[x][y].isupper() and not z&(1<<ord(g[x][y])-ord('A')):
                             continue 
                         q.append((x,y,z))
                         v.add((x,y,z))

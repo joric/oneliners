@@ -1,8 +1,5 @@
 from lc import *
 
-# TODO maybe similar to 847 https://leetcode.com/problems/shortest-path-visiting-all-nodes
-# https://github.com/joric/oneliners/blob/main/leetcode/shortest-path-visiting-all-nodes.py
-
 # https://leetcode.com/problems/shortest-path-to-get-all-keys/discuss/1516812/Python3-bfs
 
 class Solution:
@@ -35,6 +32,9 @@ class Solution:
                         v.add((x,y,z))
             r += 1
         return -1
+
+# TODO maybe similar to 847 https://leetcode.com/problems/shortest-path-visiting-all-nodes
+# https://github.com/joric/oneliners/blob/main/leetcode/shortest-path-visiting-all-nodes.py
 
 test('''
 864. Shortest Path to Get All Keys

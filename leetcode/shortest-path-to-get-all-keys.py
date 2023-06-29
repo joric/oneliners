@@ -69,17 +69,14 @@ class Solution:
 
 class Solution:
     def shortestPathAllKeys(self, g: List[str]) -> int:
-        m,n=len(g),len(g[0]);x=y=t=0;r=0;v = {(x,y,0)};q=[(x,y,0)]
-        [g[i][j]=='@' and(x:=i,y:=j)or g[i][j].islower()and(t:=t+1)for i in range(m)for j in range(n)]
-        while q:
-            w = []
-            for i,j,k in q:
-                if k == (1 << t) - 1:
-                    return r
-                [(z:=k,g[x][y].islower()and(z:=z|1<<ord(g[x][y])-ord('a')),((x,y,z) not in v and(not g[x][y].isupper() or z & (1<<ord(g[x][y])-ord('A'))))and(w.append((x,y,z)),v.add((x,y,z))))for x,y in ((i-1,j),(i,j-1),(i,j+1),(i+1,j)) if m>x>=0<=y<n and g[x][y]!='#']
-            r += 1
-            q = w
-        return -1
+        c,m,n=1,len(g),len(g[0]);x=y=t=r=0;
+        [a=='@' and(x:=i,y:=j)or a.islower()and(t:=t+1) for i,w in enumerate(g) for j,a in enumerate(w)]
+        q,v=[(x,y,0)],{(x,y,0)}
+        return next(c and -1 or r for _ in count() if not(q and c and(w:=[],[c and (c:=k!=(1<<t)-1)and[(z:=k,g[x][y].islower()and(z:=z|1<<ord(g[x][y])-ord('a')),((x,y,z) not in v and(not g[x][y].isupper() or z & (1<<ord(g[x][y])-ord('A'))))and(w.append((x,y,z)),v.add((x,y,z))))for x,y in ((i-1,j),(i,j-1),(i,j+1),(i+1,j)) if m>x>=0<=y<n and g[x][y]!='#']for i,j,k in q],r:=r+c*1,q:=w)))
+
+class Solution:
+    def shortestPathAllKeys(self, g: List[str]) -> int:
+        c,m,n=1,len(g),len(g[0]);x=y=t=r=0;[a=='@' and(x:=i,y:=j)or a.islower()and(t:=t+1) for i,w in enumerate(g) for j,a in enumerate(w)];q,v=[(x,y,0)],{(x,y,0)};return next(c and -1 or r for _ in count() if not(q and c and(w:=[],[c and (c:=k!=(1<<t)-1)and[(z:=k,g[x][y].islower()and(z:=z|1<<ord(g[x][y])-ord('a')),((x,y,z) not in v and(not g[x][y].isupper() or z & (1<<ord(g[x][y])-ord('A'))))and(w.append((x,y,z)),v.add((x,y,z))))for x,y in ((i-1,j),(i,j-1),(i,j+1),(i+1,j)) if m>x>=0<=y<n and g[x][y]!='#']for i,j,k in q],r:=r+c*1,q:=w)))
 
 test('''
 864. Shortest Path to Get All Keys
@@ -126,6 +123,11 @@ Example 3:
 Input: grid = ["@Aa"]
 Output: -1
  
+
+Example 4:
+
+Input: grid=[".@aA"]
+Output: 1
 
 Constraints:
 

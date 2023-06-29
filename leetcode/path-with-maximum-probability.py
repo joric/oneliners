@@ -27,7 +27,7 @@ class Solution:
     def maxProbability(self, n: int, m: List[List[int]], c: List[float], u: int, v: int) -> float:
         d = [0] * n
         d[u] = 1
-        for i in range(n-1):
+        for i in range(int(sqrt(n))):
             for (s,e),p in zip(m,c):
                 if d[s] != 0 and d[s] * p > d[e]:
                     d[e] = d[s] * p

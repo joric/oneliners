@@ -1,5 +1,8 @@
 from lc import *
 
+# TODO maybe similar to 847 https://leetcode.com/problems/shortest-path-visiting-all-nodes
+# https://github.com/joric/oneliners/blob/main/leetcode/shortest-path-visiting-all-nodes.py
+
 # https://leetcode.com/problems/shortest-path-to-get-all-keys/discuss/1516812/Python3-bfs
 
 class Solution:
@@ -32,20 +35,6 @@ class Solution:
                         v.add((x,y,z))
             r += 1
         return -1
-
-'''
-# TODO maybe similar to https://leetcode.com/problems/shortest-path-visiting-all-nodes
-# https://github.com/joric/oneliners/blob/main/leetcode/shortest-path-visiting-all-nodes.py
-
-class Solution:
-    def shortestPathLength(self, graph: List[List[int]]) -> int:
-        (m:=set(),f:=(1<<len(graph))-1,q:=[(0,i,1<<i) for i in range(len(graph))])
-        g=lambda s,x,t:s if t==f else any(heappush(q,(s+1,v,t|1<<v)) or m.add((t|1<<v,v)) for v in graph[x] if (t|1<<v,v) not in m)
-        while q:
-            if (s:=g(*heappop(q))):
-                break
-        return s
-'''
 
 test('''
 864. Shortest Path to Get All Keys

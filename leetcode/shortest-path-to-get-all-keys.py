@@ -35,6 +35,7 @@ class Solution:
 
 '''
 # TODO maybe similar to https://leetcode.com/problems/shortest-path-visiting-all-nodes
+# https://github.com/joric/oneliners/blob/main/leetcode/shortest-path-visiting-all-nodes.py
 class Solution:
     def shortestPathAllKeys(self, graph: List[List[int]]) -> int:
         (m:=set(),f:=(1<<len(graph))-1,q:=[(0,i,1<<i) for i in range(len(graph))])

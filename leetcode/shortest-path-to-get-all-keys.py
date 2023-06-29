@@ -48,27 +48,37 @@ class Solution:
                     t += 1
         r = 0
         v = {(x,y,0)}
-        q = deque([(x,y,0)])
-
-        def f(i,j,k):
-            if k == (1 << t) - 1:
-                return r
-            for x,y in (i-1,j),(i,j-1),(i,j+1),(i+1,j):
-                if m>x>=0<=y<n and g[x][y]!='#': 
-                    z = k 
-                    if g[x][y].islower():
-                        z |= 1<<ord(g[x][y])-ord('a')
-                    if (x,y,z) in v or g[x][y].isupper() and not z & (1<<ord(g[x][y])-ord('A')):
-                        continue 
-                    q.append((x,y,z))
-                    v.add((x,y,z))
+        q = [(x,y,0)]
 
         while q: 
-            l = len(q)
-            for _ in range(l):
-                if (s:=f(*q.popleft())):
-                    return s
+            w = []
+            for i,j,k in q:
+                if k == (1 << t) - 1:
+                    return r
+                for x,y in (i-1,j),(i,j-1),(i,j+1),(i+1,j):
+                    if m>x>=0<=y<n and g[x][y]!='#': 
+                        z = k 
+                        if g[x][y].islower():
+                            z |= 1<<ord(g[x][y])-ord('a')
+                        if (x,y,z) not in v and (not g[x][y].isupper() or z & (1<<ord(g[x][y])-ord('A'))):
+                            w.append((x,y,z))
+                            v.add((x,y,z))
             r += 1
+            q = w
+        return -1
+
+class Solution:
+    def shortestPathAllKeys(self, g: List[str]) -> int:
+        m,n=len(g),len(g[0]);x=y=t=0;r=0;v = {(x,y,0)};q=[(x,y,0)]
+        [g[i][j]=='@' and(x:=i,y:=j)or g[i][j].islower()and(t:=t+1)for i in range(m)for j in range(n)]
+        while q:
+            w = []
+            for i,j,k in q:
+                if k == (1 << t) - 1:
+                    return r
+                [(z:=k,g[x][y].islower()and(z:=z|1<<ord(g[x][y])-ord('a')),((x,y,z) not in v and(not g[x][y].isupper() or z & (1<<ord(g[x][y])-ord('A'))))and(w.append((x,y,z)),v.add((x,y,z))))for x,y in ((i-1,j),(i,j-1),(i,j+1),(i+1,j)) if m>x>=0<=y<n and g[x][y]!='#']
+            r += 1
+            q = w
         return -1
 
 test('''

@@ -29,7 +29,7 @@ class Solution:
                         z = k 
                         if g[x][y].islower():
                             z |= 1<<ord(g[x][y])-ord('a')
-                        if (x,y,z) in v or g[x][y].isupper() and not z&(1<<ord(g[x][y])-ord('A')):
+                        if (x,y,z) in v or g[x][y].isupper() and not z & (1<<ord(g[x][y])-ord('A')):
                             continue 
                         q.append((x,y,z))
                         v.add((x,y,z))

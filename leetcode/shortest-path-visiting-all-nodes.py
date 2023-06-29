@@ -25,13 +25,14 @@ class Solution:
 
 class Solution:
     def shortestPathLength(self, graph: List[List[int]]) -> int:
-        (m:=set(),f:=(1<<len(graph))-1,q:=[(0,i,1<<i) for i in range(len(graph))])
+        m=set()
+        f=(1<<len(graph))-1
+        q=[(0,i,1<<i) for i in range(len(graph))]
         g=lambda s,x,t:s if t==f else any(heappush(q,(s+1,v,t|1<<v)) or m.add((t|1<<v,v)) for v in graph[x] if (t|1<<v,v) not in m)
         while q:
             if (s:=g(*heappop(q))):
                 break
         return s
-
 
 class Solution:
     def shortestPathLength(self, graph: List[List[int]]) -> int:
@@ -41,8 +42,18 @@ class Solution:
 
 class Solution:
     def shortestPathLength(self, graph: List[List[int]]) -> int:
-        return next((s for _ in count() if not q or (s:=(lambda s,x,t:s if t==f else any(q.append((s+1,v,t|1<<v)) or m.add((t|1<<v,v)) for v in graph[x] if (t|1<<v,v) not in m))(*q.popleft()))),(m:=set(),f:=(1<<len(graph))-1,q:=deque([(0,i,1<<i) for i in range(len(graph))])))
+        m=set()
+        f=(1<<len(graph))-1
+        q=deque([(0,i,1<<i) for i in range(len(graph))])
+        g=lambda s,x,t:s if t==f else any(q.append((s+1,v,t|1<<v)) or m.add((t|1<<v,v)) for v in graph[x] if (t|1<<v,v) not in m)
+        while q:
+            if (s:=g(*q.popleft())):
+                break
+        return s
 
+class Solution:
+    def shortestPathLength(self, graph: List[List[int]]) -> int:
+        return next((s for _ in count() if not q or (s:=(lambda s,x,t:s if t==f else any(q.append((s+1,v,t|1<<v)) or m.add((t|1<<v,v)) for v in graph[x] if (t|1<<v,v) not in m))(*q.popleft()))),(m:=set(),f:=(1<<len(graph))-1,q:=deque([(0,i,1<<i) for i in range(len(graph))])))
 
 test('''
 

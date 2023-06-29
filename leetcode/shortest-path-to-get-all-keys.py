@@ -8,7 +8,7 @@ class Solution:
         x = y = t = 0
         for i in range(m):
             for j in range(n):
-                if g[i][j]=="@":
+                if g[i][j]=='@':
                     x,y = i,j
                 elif g[i][j].islower():
                     t += 1
@@ -21,8 +21,8 @@ class Solution:
                 i,j,k = q.popleft()
                 if k == (1 << t) - 1:
                     return r 
-                for x, y in (i-1,j), (i,j-1), (i,j+1), (i+1,j):
-                    if m>x>=0<=y<n and g[x][y]!="#": 
+                for x,y in (i-1,j),(i,j-1),(i,j+1),(i+1,j):
+                    if m>x>=0<=y<n and g[x][y]!='#': 
                         z = k 
                         if g[x][y].islower():
                             z |= 1<<ord(g[x][y])-ord('a')
@@ -35,6 +35,41 @@ class Solution:
 
 # TODO maybe similar to 847 https://leetcode.com/problems/shortest-path-visiting-all-nodes
 # https://github.com/joric/oneliners/blob/main/leetcode/shortest-path-visiting-all-nodes.py
+
+class Solution:
+    def shortestPathAllKeys(self, g: List[str]) -> int:
+        m, n = len(g), len(g[0])
+        x = y = t = 0
+        for i in range(m):
+            for j in range(n):
+                if g[i][j]=='@':
+                    x,y = i,j
+                elif g[i][j].islower():
+                    t += 1
+        r = 0
+        v = {(x,y,0)}
+        q = deque([(x,y,0)])
+
+        def f(i,j,k):
+            if k == (1 << t) - 1:
+                return r
+            for x,y in (i-1,j),(i,j-1),(i,j+1),(i+1,j):
+                if m>x>=0<=y<n and g[x][y]!='#': 
+                    z = k 
+                    if g[x][y].islower():
+                        z |= 1<<ord(g[x][y])-ord('a')
+                    if (x,y,z) in v or g[x][y].isupper() and not z & (1<<ord(g[x][y])-ord('A')):
+                        continue 
+                    q.append((x,y,z))
+                    v.add((x,y,z))
+
+        while q: 
+            l = len(q)
+            for _ in range(l):
+                if (s:=f(*q.popleft())):
+                    return s
+            r += 1
+        return -1
 
 test('''
 864. Shortest Path to Get All Keys

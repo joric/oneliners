@@ -34,7 +34,7 @@ class Solution:
         return -1
 
 '''
-# maybe similar to https://leetcode.com/problems/shortest-path-visiting-all-nodes
+# TODO maybe similar to https://leetcode.com/problems/shortest-path-visiting-all-nodes
 class Solution:
     def shortestPathAllKeys(self, graph: List[List[int]]) -> int:
         (m:=set(),f:=(1<<len(graph))-1,q:=[(0,i,1<<i) for i in range(len(graph))])

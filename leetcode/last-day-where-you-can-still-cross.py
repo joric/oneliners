@@ -72,6 +72,29 @@ class Solution:
     def latestDayToCross(self, m: int, n: int, c: List[List[int]]) -> int:
         f=lambda k:(r:=1,a:=[[0]*n for _ in range(m)],v:=set(),q:=deque(),[setitem(a[c[i][0]-1],c[i][1]-1,1) for i in range(k)],[a[0][j]==0 and(q.append((0,j)),v.add((0,j)))for j in range(n)])and next(not r for _ in count() if not(q and r and(w:=[],[[(x,y)not in v and m>x>=0<=y<n and a[x][y]==0 and(w.append((x,y)),v.add((x,y)))for x,y in((i,j+1),(i,j-1),(i+1,j),(i-1,j))if r and(r:=i!=m-1)]for i,j in q],q:=w)));l,h=0,m*n;return next(l for _ in count()if not(l<h and(d:=l+(h-l+1)//2,(l:=d)if f(d)else(h:=d-1))))
 
+# unicode find
+
+class Solution:
+    def latestDayToCross(self, s: int, t: int, m: List[List[int]]) -> int:
+        u=''.join(map(chr,range(s*t+2)))
+        for i in range(s): 
+            u=u.replace(u[0],u[i*t+1])
+            u=u.replace(u[-1],u[i*t+t])
+        w = set()
+        for d, (r,c) in enumerate(m):
+            w.add((r-1,c-1))
+            for dy, dx in product([-1,0,1],[-1,0,1]):
+                y,x = dy+r-1,dx+c-1
+                if s>y>=0<=x<t and (y,x) in w:
+                    u = u.replace(u[(r-1)*t+c], u[y*t+x+1])
+            if u[0]==u[-1]:
+                return d
+        return len(m)
+
+class Solution:
+    def latestDayToCross(self, s: int, t: int, m: List[List[int]]) -> int:
+        u,w=''.join(map(chr,range(s*t+2))),set();[(u:=u.replace(u[0],u[i*t+1]).replace(u[-1],u[i*t+t]))for i in range(s)];return next(d for d,(r,c)in enumerate(m)if not((w.add((r-1,c-1)),[(x:=j+c-1,y:=i+r-1,s>y>=0<=x<t and(y,x)in w and(u:=u.replace(u[(r-1)*t+c],u[y*t+x+1])))for i,j in product([-1,0,1],[-1,0,1])])and u[0]!=u[-1]))
+
 test('''
 1970. Last Day Where You Can Still Cross
 Hard

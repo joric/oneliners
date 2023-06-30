@@ -94,6 +94,10 @@ class Solution:
     def latestDayToCross(self, s: int, t: int, m: List[List[int]]) -> int:
         u,w=''.join(map(chr,range(s*t+2))),set();[(u:=u.replace(u[0],u[i*t+1]).replace(u[-1],u[i*t+t]))for i in range(s)];return next(d for d,(r,c)in enumerate(m)if not((w.add((r-1,c-1)),[(x:=j+c-1,y:=i+r-1,s>y>=0<=x<t and(y,x)in w and(u:=u.replace(u[(r-1)*t+c],u[y*t+x+1])))for i,j in product([-1,0,1],[-1,0,1])])and u[0]!=u[-1]))
 
+class Solution:
+    def latestDayToCross(self, s: int, t: int, m: List[List[int]]) -> int:
+        f=lambda u,x,y:u.replace(u[x],u[y]);u,w=''.join(map(chr,range(s*t+2))),set();[(u:=f(f(u,0,i*t+1),-1,i*t+t))for i in range(s)];return next(d for d,(r,c)in enumerate(m)if not((w.add((r-1,c-1)),[(x:=j+c-1,y:=i+r-1,s>y>=0<=x<t and(y,x)in w and(u:=f(u,(r-1)*t+c,y*t+x+1)))for i,j in product([-1,0,1],[-1,0,1])])and u[0]!=u[-1]))
+
 test('''
 1970. Last Day Where You Can Still Cross
 Hard

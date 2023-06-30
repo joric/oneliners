@@ -83,8 +83,8 @@ class Solution:
         w = set()
         for d, (r,c) in enumerate(m):
             w.add((r-1,c-1))
-            for dy, dx in product([-1,0,1],[-1,0,1]):
-                y,x = dy+r-1,dx+c-1
+            for i,j in product([-1,0,1],[-1,0,1]):
+                x,y = i+r-1,j+c-1
                 if s>y>=0<=x<t and (y,x) in w:
                     u = u.replace(u[(r-1)*t+c], u[y*t+x+1])
             if u[0]==u[-1]:

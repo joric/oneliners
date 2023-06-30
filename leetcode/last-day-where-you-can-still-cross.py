@@ -78,7 +78,7 @@ class Solution:
     def latestDayToCross(self, s: int, t: int, m: List[List[int]]) -> int:
         u=''.join(map(chr,range(s*t+2)))
         for i in range(s): 
-            u=u.replace(u[0],u[i*t+1]).replace(u[-1],u[i*t+t])
+            u = u.replace(u[0],u[i*t+1]).replace(u[-1],u[i*t+t])
         w = set()
         for d, (r,c) in enumerate(m):
             w.add((r-1,c-1))

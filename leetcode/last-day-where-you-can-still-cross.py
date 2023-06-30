@@ -50,7 +50,6 @@ class Solution:
                 if a[0][j]==0:
                     q.append((0,j))
                     v.add((0,j))
-
             while q:
                 i,j=q.popleft()
                 if i==m-1:
@@ -71,7 +70,7 @@ class Solution:
 
 class Solution:
     def latestDayToCross(self, m: int, n: int, c: List[List[int]]) -> int:
-        f=lambda k:(r:=1,a:=[[0]*n for _ in range(m)],v:=set(),q:=deque(),[setitem(a[c[i][0]-1],c[i][1]-1,1) for i in range(k)],[a[0][j]==0 and(q.append((0,j)),v.add((0,j)))for j in range(n)])and next(not r for _ in count() if not(q and r and(w:=[],[[(x,y)not in v and m>x>=0<=y<n and a[x][y]==0 and(w.append((x,y)),v.add((x,y)))for x,y in((i,j+1),(i,j-1),(i+1,j),(i-1,j))if r and (r:=i!=m-1)]for i,j in q],q:=w)));l,h=0,m*n;return next(l for _ in count()if not(l<h and (d:=l+(h-l+1)//2,(l:=d)if f(d)else(h:=d-1))))
+        f=lambda k:(r:=1,a:=[[0]*n for _ in range(m)],v:=set(),q:=deque(),[setitem(a[c[i][0]-1],c[i][1]-1,1) for i in range(k)],[a[0][j]==0 and(q.append((0,j)),v.add((0,j)))for j in range(n)])and next(not r for _ in count() if not(q and r and(w:=[],[[(x,y)not in v and m>x>=0<=y<n and a[x][y]==0 and(w.append((x,y)),v.add((x,y)))for x,y in((i,j+1),(i,j-1),(i+1,j),(i-1,j))if r and(r:=i!=m-1)]for i,j in q],q:=w)));l,h=0,m*n;return next(l for _ in count()if not(l<h and(d:=l+(h-l+1)//2,(l:=d)if f(d)else(h:=d-1))))
 
 test('''
 1970. Last Day Where You Can Still Cross

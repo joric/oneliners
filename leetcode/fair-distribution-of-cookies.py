@@ -41,7 +41,7 @@ class Solution:
 
 class Solution:
     def distributeCookies(self, c: List[int], k: int) -> int:
-        d,n,f=Counter(),len(c),lambda i,m,r=inf:(i==n or k==n) and m or [(d.update({j:c[i]}),r:=min(r,f(i+1,max(m,d[j]))),d.update({j:-c[i]})) for j in range(k)]and r;return f(0,max(c))
+        d,n,f=Counter(),len(c),lambda i,m,r=inf:(i==n or k==n)and m or[(d.update({j:c[i]}),r:=min(r,f(i+1,max(m,d[j]))),d.update({j:-c[i]}))for j in range(k)]and r;return f(0,max(c))
 
 test('''
 2305. Fair Distribution of Cookies

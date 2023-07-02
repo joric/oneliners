@@ -14,6 +14,10 @@ class Solution:
     def maximumRequests(self, n: int, r: List[List[int]]) -> int:
         return next((k for k in range(len(r), 0, -1) for c in combinations(r,k) if Counter(a for a, b in c)==Counter(b for a, b in c)),0)
 
+class Solution:
+    def maximumRequests(self, n: int, r: List[List[int]]) -> int:
+        return next((k for k in range(len(r),0,-1)for c in combinations(r,k)if Counter((t:=[*zip(*c)])[0])==Counter(t[1])),0)
+
 test('''
 1601. Maximum Number of Achievable Transfer Requests
 Hard

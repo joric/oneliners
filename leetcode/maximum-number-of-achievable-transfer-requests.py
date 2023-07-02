@@ -12,7 +12,7 @@ class Solution:
 
 class Solution:
     def maximumRequests(self, n: int, r: List[List[int]]) -> int:
-        return next((k for k in range(len(r), 0, -1) for c in combinations(r,k) if Counter(a for a, b in c)==Counter(b for a, b in c)),0)
+        return next((k for k in range(len(r), 0, -1)for c in combinations(r,k)if Counter(a for a,b in c)==Counter(b for a,b in c)),0)
 
 class Solution:
     def maximumRequests(self, n: int, r: List[List[int]]) -> int:

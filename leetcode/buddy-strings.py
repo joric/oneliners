@@ -19,6 +19,10 @@ class Solution:
     def buddyStrings(self, a: str, b: str) -> bool:
         return sum(x!=y for x,y in zip(a,b))<3 and sorted(a)==sorted(b)if a!=b else len(set(a))<len(a)
 
+class Solution:
+    def buddyStrings(self, a, b):
+        s=sorted;return sum(map(ne,a,b))<3 and s(a)==s(b)if a!=b else len(set(a))<len(a)
+
 test('''
 859. Buddy Strings
 Easy

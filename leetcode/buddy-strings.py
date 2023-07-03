@@ -15,6 +15,10 @@ class Solution:
     def buddyStrings(self, a: str, b: str) -> bool:
         return sum(x!=y for x,y in zip(a,b))<=2 and Counter(a)==Counter(b) if a!=b else len(set(a))<len(a)
 
+class Solution:
+    def buddyStrings(self, a: str, b: str) -> bool:
+        return sum(x!=y for x,y in zip(a,b))<=2 and sorted(a)==sorted(b) if a!=b else len(set(a))<len(a)
+
 test('''
 859. Buddy Strings
 Easy

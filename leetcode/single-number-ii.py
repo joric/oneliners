@@ -10,6 +10,10 @@ class Solution:
 
 class Solution:
     def singleNumber(self, n: List[int]) -> int:
+        o,t=0,0;return all((o:=o^x&~t,t:=t^x&~o) for x in n)*o
+
+class Solution:
+    def singleNumber(self, n: List[int]) -> int:
         return [i for i in set(n) if n.count(i)<2][0]
 
 class Solution:
@@ -22,7 +26,7 @@ class Solution:
 
 class Solution:
     def singleNumber(self, n: List[int]) -> int:
-        return(sum({*n})*3-sum(n))//2
+        return(sum({*n})*3-sum(n))/2
 
 test('''
 137. Single Number II

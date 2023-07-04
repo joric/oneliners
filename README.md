@@ -857,6 +857,7 @@ class Solution:
   You can also use this syntax to unpack iterables, e.g. `a,*b,c=range(5)` means `a=1;b=[2,3,4];c=5`.
 * Instead of range(x), you can use the * operator on a list of anything, e.g. `range(8)` equals `[1]*8` (unless you really need that counter value).
 * Conditions like `if i<len(r)` may be replaced with `if r[i:]`, it's 3 characters shorter.
+* You can replace `set(n)` with `{*n}` (2 characters shorter).
 
 ## References
 

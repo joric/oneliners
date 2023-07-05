@@ -14,6 +14,10 @@ class Solution:
 
 class Solution:
     def singleNumber(self, n: List[int]) -> int:
+        return [i for i,j in Counter(n).items()if j==1][0]
+
+class Solution:
+    def singleNumber(self, n: List[int]) -> int:
         return [i for i in set(n) if n.count(i)<2][0]
 
 class Solution:

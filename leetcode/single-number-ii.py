@@ -22,7 +22,7 @@ class Solution:
 
 class Solution:
     def singleNumber(self, n: List[int]) -> int:
-        return (Counter(n).most_common()[-1])[0]
+        return Counter(n).most_common()[-1][0]
 
 class Solution:
     def singleNumber(self, n: List[int]) -> int:

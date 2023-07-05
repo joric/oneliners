@@ -21,6 +21,20 @@ class Solution:
             r = max(r,len(v[i-1]+v[i]))
         return r
 
+# https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/discuss/3120754/5-lines-in-python.-Easy-to-understand
+
+class Solution:
+    def longestSubarray(self, n: List[int]) -> int:
+        c=p=b=0;r=len(n)
+        for i in range(r):
+            c,p = (c+1,p+1) if n[i] else (p,0)
+            b = max(p,c,b)
+        return b-1 if b==r else b
+
+class Solution:
+    def longestSubarray(self, n: List[int]) -> int:
+        c=p=b=0;r=len(n);[(n[i]and(c:=c+1,p:=p+1)or(c:=p,p:=0),b:=max(p,c,b))for i in range(r)];return b-(b==r)
+
 # https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/discuss/708112/JavaC%2B%2BPython-Sliding-Window-at-most-one-0
 
 class Solution:

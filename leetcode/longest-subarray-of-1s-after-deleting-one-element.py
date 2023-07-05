@@ -53,10 +53,6 @@ class Solution:
 
 class Solution:
     def longestSubarray(self, n: List[int]) -> int:
-        k,i,r=1,0,len(n);[(k:=k+n[j]-1,k<0 and(k:=k-n[i]+1,i:=i+1))for j in range(r)];return r-i-1
-
-class Solution:
-    def longestSubarray(self, n: List[int]) -> int:
         k,i,r=1,0,len(n);[(k:=k+n[j]-1)<0and(k:=k-n[i]+1,i:=i+1)for j in range(r)];return r-i-1
 
 test('''

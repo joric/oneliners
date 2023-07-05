@@ -71,7 +71,7 @@ class Solution:
 
 class Solution:
     def longestSubarray(self, n):
-        s, a, u = 0, 0, 0
+        s=a=u=0
         for x in n:
             u = max(u*x,s)+1
             a = max(a,u)

@@ -4,8 +4,8 @@ from lc import *
 
 class Solution:
     def longestSubarray(self, n: List[int]) -> int:
-        o,l,r=0,n[0],0
-        for i in range(1,len(a)):
+        r,o,l=0,0,n[0]
+        for i in range(1,len(n)):
             r,o,l=n[i]*max(r+1,o+1),n[i-1]*(o+1),max(l,n[i]*max(r+1,o+1))
         return l
 

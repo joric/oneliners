@@ -68,6 +68,16 @@ class Solution:
     def longestSubarray(self, n: List[int]) -> int:
         s=a=0;t=-1;[(a:=max(a,t:=max((t+1)*x,s)),s:=(s+1)*x)for x in n];return a
 
+
+class Solution:
+    def longestSubarray(self, n):
+        s, a, u = 0, 0, 0
+        for x in n:
+            u = max(u*x,s)+1
+            a = max(a,u)
+            s = s*x+x
+        return a-1
+
 class Solution:
     def longestSubarray(self, n):
         s=a=u=0;[(a:=max(a,u:=max(u*x,s)+1),s:=s*x+x)for x in n];return a-1

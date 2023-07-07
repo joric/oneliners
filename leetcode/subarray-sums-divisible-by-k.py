@@ -20,7 +20,7 @@ class Solution:
 
 class Solution:
     def subarraysDivByK(self, nums: List[int], k: int) -> int:
-        return reduce(lambda r,i:c.update({i%k:1})or r+c[i%k]-1,accumulate(nums),not(c:=Counter([0])))
+        return reduce(lambda r,i:c.update({i%k})or r+c[i%k]-1,accumulate(nums),not(c:=Counter([0])))
 
 class Solution:
     def subarraysDivByK(self, nums: List[int], k: int) -> int:

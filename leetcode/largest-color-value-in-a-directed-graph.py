@@ -20,7 +20,7 @@ class Solution:
 
 class Solution:
     def largestPathValue(self, colors: str, edges: List[List[int]]) -> int:
-        return (d:=Counter(),g:=defaultdict(list),c:=defaultdict(Counter),[(g[u].append(v),d.update({v:1})) for u,v in edges],q:=[u for u in range(len(colors)) if d[u]==0],[(c[u].update({colors[u]:1}),[(setitem(c,v,c[v]|c[u]),d.update({v:-1}),d[v]==0 and q.append(v)) for v in g[u]]) for u in q],sum(d.values()) and -1 or max(max(c[u].values()) for u in c))[-1]
+        return (d:=Counter(),g:=defaultdict(list),c:=defaultdict(Counter),[(g[u].append(v),d.update({v})) for u,v in edges],q:=[u for u in range(len(colors)) if d[u]==0],[(c[u].update({colors[u]:1}),[(setitem(c,v,c[v]|c[u]),d.update({v:-1}),d[v]==0 and q.append(v)) for v in g[u]]) for u in q],sum(d.values()) and -1 or max(max(c[u].values()) for u in c))[-1]
 
 test('''
 1857. Largest Color Value in a Directed Graph

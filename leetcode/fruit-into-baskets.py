@@ -50,7 +50,7 @@ class Solution:
 
 class Solution:
     def totalFruit(self, f: List[int]) -> int:
-        return (c:=Counter(),i:=0,[(c.update({x:1}),len(c)>2 and (k:=f[i],i:=i+1,c.update({k:-1}),c[k]==0 and c.pop(k))) for x in f]) and len(f)-i
+        return (c:=Counter(),i:=0,[(c.update({x}),len(c)>2 and (k:=f[i],i:=i+1,c.update({k:-1}),c[k]==0 and c.pop(k))) for x in f]) and len(f)-i
 
 test('''
 904. Fruit Into Baskets

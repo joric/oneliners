@@ -15,7 +15,7 @@ class Solution:
 
 class Solution:
     def maxConsecutiveAnswers(self, s: str, k: int) -> int:
-        m=r=0;c=Counter();[(c.update({s[i]:1}),m:=max(m,c[s[i]]),r-m<k and(r:=r+1)or c.update({s[i-r]:-1}))for i in range(len(s))];return r
+        m=r=0;c=Counter();[(c.update({s[i]}),m:=max(m,c[s[i]]),r-m<k and(r:=r+1)or c.update({s[i-r]:-1}))for i in range(len(s))];return r
 
 # https://leetcode.com/problems/maximize-the-confusion-of-an-exam/discuss/2804613/Python-3-oror-7-lines-sliding-window-w-example-oror-TM%3A-9585
 
@@ -31,7 +31,7 @@ class Solution:
 
 class Solution:
     def maxConsecutiveAnswers(self, s: str, k: int) -> int:
-        m,c,n=0,Counter(),len(s);[(c.update({s[i]:1}),max(c.values())<=i-m-k and(c.update({s[m]:-1}),m:=m+1))for i in range(n)];return n-m
+        m,c,n=0,Counter(),len(s);[(c.update({s[i]}),max(c.values())<=i-m-k and(c.update({s[m]:-1}),m:=m+1))for i in range(n)];return n-m
 
 class Solution:
     def maxConsecutiveAnswers(self, s: str, k: int) -> int:

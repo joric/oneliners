@@ -76,12 +76,26 @@ the method returns `None`. E.g. `c[i]+=1` is equivalent to `c.update(i)`, `c[i]-
 To set a key, you can use a global `setitem` function, e.g. `c[x]=1` is the same as `setitem(c,x,1)`.
 To delete a key you can use the `.pop` method (same as `del`), it's shorter than `popitem()`.
 
+#### Y-Combinator
+
+You can define and call a recursive function in a single line with Y-combinator, e.g.:
+
+```python
+return (lambda y:lambda x:y(y,x))(lambda f,x:1 if x==0 else x*f(f,x-1))(5)
+```
+
+But the new Python syntax with walrus operator (`:=`) is shorter and more readable:
+
+```python
+return (f:=lambda x:1 if x==0 else x*f(x-1))(5)
+```
+
 #### Walrus operator
 
 The controversial walrus operator (:=) from [PEP-572](https://peps.python.org/pep-0572/)
 (that [forced Guido to resign](https://www.infoworld.com/article/3292936/guido-van-rossum-resigns-whats-next-for-python.html)),
 can be used to define or update a variable or a function that's used repeatedly.
-It seems to be the most useful operator here, many oneliners would be impossible to do without it (or rather, very hard, with nested lambdas/y-combinator).
+It seems to be the most useful operator here, many oneliners would be impossible to do without it (or rather, very hard, with nested lambdas/Y-combinator).
 Sometimes you don't even need extra brackets, e.g. in `map(f:=x,y)` or `next(g,f:=x)` so it may be shorter than operators separated by semicolons.
 
 * https://leetcode.com/problems/time-needed-to-inform-all-employees

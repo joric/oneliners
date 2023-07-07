@@ -23,6 +23,20 @@ class Solution:
     def maxConsecutiveAnswers(self, s: str, k: int) -> int:
         r,c=0,Counter();[(c.update(s[i]),r-k<max(c.values())and(r:=r+1)or c.update({s[i-r]:-1}))for i in range(len(s))];return r
 
+# bonus Y-combinator: no semicolons, no walrus
+class Solution:
+    def maxConsecutiveAnswers(self, s: str, k: int) -> int:
+        f = lambda i,r,c:i<len(s) and f(c.update(s[i]) or i+1,r+(not(r-k>=max(c.values())and[c.update({s[i-r]:-1})])),c) or r
+        return f(0,0,Counter())
+
+class Solution:
+    def maxConsecutiveAnswers(self, s: str, k: int) -> int:
+
+        return (lambda y:lambda x:y(y,x))(lambda f,x:1 if x==0 else x*f(f,x-1))(10)
+
+        #return (lambda a:lambda i,r,c:a(a,i,r,c))(lambda f,i,r,c:i<len(s) and f(f,c.update(s[i]) or i+1,r+(not(r-k>=max(c.values())and[c.update({s[i-r]:-1})])),c) or r)(0,0,Counter())
+
+
 test('''
 2024. Maximize the Confusion of an Exam
 Medium

@@ -1,22 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/maximize-the-confusion-of-an-exam/discuss/1928657/6-Lines-Python-Solution-oror-90-Faster-oror-Memory-less-than-88
-
-class Solution:
-    def maxConsecutiveAnswers(self, s: str, k: int) -> int:
-        w=i=0
-        c=Counter()
-        for j in range(len(s)):
-            c[s[j]]+=1
-            if c['T']>k and c['F']>k:
-                c[s[i]]-=1
-                i+=1
-            else:
-                w=max(w,j-i+1)
-        return w
-
-# https://leetcode.com/problems/maximize-the-confusion-of-an-exam/discuss/1499049/JavaC%2B%2BPython-Sliding-Window-strict-O(n)
-
 class Solution:
     def maxConsecutiveAnswers(self, s: str, k: int) -> int:
         m = r = 0

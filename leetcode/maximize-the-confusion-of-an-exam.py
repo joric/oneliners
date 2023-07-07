@@ -31,11 +31,7 @@ class Solution:
 
 class Solution:
     def maxConsecutiveAnswers(self, s: str, k: int) -> int:
-
-        return (lambda y:lambda x:y(y,x))(lambda f,x:1 if x==0 else x*f(f,x-1))(10)
-
-        #return (lambda a:lambda i,r,c:a(a,i,r,c))(lambda f,i,r,c:i<len(s) and f(f,c.update(s[i]) or i+1,r+(not(r-k>=max(c.values())and[c.update({s[i-r]:-1})])),c) or r)(0,0,Counter())
-
+        return (lambda a:lambda i,r,c:a(a,i,r,c))(lambda f,i,r,c:i<len(s) and f(f,c.update(s[i]) or i+1,r+(not(r-k>=max(c.values())and[c.update({s[i-r]:-1})])),c) or r)(0,0,Counter())
 
 test('''
 2024. Maximize the Confusion of an Exam

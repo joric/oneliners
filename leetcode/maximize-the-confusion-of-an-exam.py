@@ -33,6 +33,11 @@ class Solution:
     def maxConsecutiveAnswers(self, s: str, k: int) -> int:
         return (lambda y:lambda i,r,c:y(y,i,r,c))(lambda f,i,r,c:i<len(s)and f(f,c.update(s[i])or i+1,r+(not(r-k>=max(c.values())and[c.update({s[i-r]:-1})])),c)or r)(0,0,Counter())
 
+# another solution
+class Solution:
+    def maxConsecutiveAnswers(self, s: str, k: int) -> int:
+        f=lambda q:max(map(sub,(z:=[i for i,x in enumerate(q+s+q)if x==q])[k+1:],z),default=len(s)+1)-1;return max(f('T'),f('F'))
+
 test('''
 2024. Maximize the Confusion of an Exam
 Medium

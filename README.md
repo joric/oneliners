@@ -81,12 +81,6 @@ To delete a key you can use the `.pop` method (same as `del`), it's shorter than
 You can define and call a recursive function in a single line with Y-combinator, e.g.:
 
 ```python
-return (lambda y:lambda x:y(y,x))(lambda f,x:1 if x==0 else x*f(f,x-1))(5)
-```
-
-Or like so:
-
-```python
 return (lambda y,x:y(y,x))(lambda f,x:1 if x==0 else x*f(f,x-1),5)
 ```
 

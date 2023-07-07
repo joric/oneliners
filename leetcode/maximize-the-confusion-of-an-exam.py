@@ -36,7 +36,7 @@ class Solution:
 # another solution
 class Solution:
     def maxConsecutiveAnswers(self, s: str, k: int) -> int:
-        f=lambda q:max(map(sub,(z:=[i for i,x in enumerate(q+s+q)if x==q])[k+1:],z),default=len(s)+1)-1;return max(f('T'),f('F'))
+        f=lambda q:max(map(sub,(z:=[i for i,x in enumerate(q+s+q)if x==q])[k+1:],z),default=len(s)+1)-1;return max(map(f,'TF'))
 
 test('''
 2024. Maximize the Confusion of an Exam

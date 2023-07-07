@@ -46,7 +46,7 @@ class Solution:
 
 class Solution:
     def maxConsecutiveAnswers(self, s: str, k: int) -> int:
-        r,c=0,Counter();[(c.update({s[i]}),r-k<max(c.values())and(r:=r+1)or c.update({s[i-r]:-1}))for i in range(len(s))];return r
+        r,c=0,Counter();[(c.update(s[i]),r-k<max(c.values())and(r:=r+1)or c.update({s[i-r]:-1}))for i in range(len(s))];return r
 
 test('''
 2024. Maximize the Confusion of an Exam

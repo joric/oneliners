@@ -14,6 +14,10 @@ class Solution:
 
 class Solution:
     def putMarbles(self, w: List[int], k: int) -> int:
+        a=sorted(map(sum,pairwise(w)));return sum(a[len(a)-k+1:])-sum(a[:k-1])
+
+class Solution:
+    def putMarbles(self, w: List[int], k: int) -> int:
         a=sorted(map(add,w,w[1:]));return sum(a[len(a)-k+1:])-sum(a[:k-1])
 
 test('''

@@ -1,8 +1,16 @@
 from lc import *
 
+# https://leetcode.com/problems/put-marbles-in-bags/discuss/3111736/JavaC%2B%2BPython-3-Approachs-Best-O(n)
+
 class Solution:
     def putMarbles(self, w: List[int], k: int) -> int:
-        return sum(nlargest(k-1,b:=[*map(sum,pairwise(w))]))-sum(nsmallest(k-1,b))
+        return sum(nlargest(k-1,a:=[*map(sum,pairwise(w))]))-sum(nsmallest(k-1,a))
+
+# https://leetcode.com/problems/put-marbles-in-bags/discuss/3734241/Python-3-oror-2-lines-w-explanation-oror-TM%3A-97-56
+
+class Solution:
+    def putMarbles(self, w: List[int], k: int) -> int:
+        return sum((a:=sorted(map(sum,(pairwise(w)))))[-k+1:])-sum(a[:k-1])
 
 test('''
 2551. Put Marbles in Bags

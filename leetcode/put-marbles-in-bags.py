@@ -10,7 +10,7 @@ class Solution:
 
 class Solution:
     def putMarbles(self, w: List[int], k: int) -> int:
-        return sum((a:=sorted(map(sum,(pairwise(w)))))[-k+1:])-sum(a[:k-1])
+        return sum((a:=sorted(map(sum,(pairwise(w)))))[len(a)-k+1:])-sum(a[:k-1])
 
 test('''
 2551. Put Marbles in Bags
@@ -51,6 +51,10 @@ Output: 0
 Explanation: The only distribution possible is [1],[3]. 
 Since both the maximal and minimal score are the same, we return 0.
  
+
+Example 3:
+Input: weights = [25,74,16,51,12,48,15,5], k = 1
+Output: 0
 
 Constraints:
 

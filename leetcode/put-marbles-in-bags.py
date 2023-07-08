@@ -10,11 +10,12 @@ class Solution:
 
 class Solution:
     def putMarbles(self, w: List[int], k: int) -> int:
-        return sum((a:=sorted(map(sum,zip(w,w[1:]))))[len(a)-k+1:])-sum(a[:k-1])
+        return sum((a:=sorted(map(sum,pairwise(w))))[len(a)-k+1:])-sum(a[:k-1])
 
 class Solution:
     def putMarbles(self, w: List[int], k: int) -> int:
-        return sum((a:=sorted(map(sum,pairwise(w))))[len(a)-k+1:])-sum(a[:k-1])
+        return sum((a:=sorted(starmap(sum,w,w[1:])))[len(a)-k+1:])-sum(a[:k-1])
+
 
 test('''
 2551. Put Marbles in Bags

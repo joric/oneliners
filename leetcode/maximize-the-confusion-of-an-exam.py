@@ -38,6 +38,10 @@ class Solution:
     def maxConsecutiveAnswers(self, s: str, k: int) -> int:
         return max(map(lambda q:max(map(sub,(z:=[i for i,x in enumerate(q+s+q)if x==q])[k+1:],z),default=len(s)+1)-1,'TF'))
 
+class Solution:
+    def maxConsecutiveAnswers(self, s: str, k: int) -> int:
+        return max(max(map(sub,(z:=[i for i,x in enumerate(q+s+q)if x==q])[k+1:],z),default=len(s)+1)-1for q in'TF')
+
 test('''
 2024. Maximize the Confusion of an Exam
 Medium
@@ -79,6 +83,14 @@ Explanation: We can replace the first 'F' to make answerKey = "TTTTTFTT"
 Alternatively, we can replace the second 'F' to make answerKey = "TTFTTTTT". 
 In both cases, there are five consecutive 'T's.
  
+
+Example 4:
+Input: answerKey = "F", k = 1
+Output: 1
+
+Example 5:
+Input: answerKey = "TF", k = 2
+Output: 2
 
 Constraints:
 

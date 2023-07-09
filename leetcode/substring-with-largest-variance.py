@@ -1,34 +1,6 @@
 from lc import *
 
-# https://leetcode.com/problems/substring-with-largest-variance/discuss/2551276/Python-super-clean-solution
-
-class Solution:
-    def largestVariance(self, s: str) -> int:
-        r = 0
-        q = Counter(s)
-        for x,y in permutations(set(s), 2):
-            if q[x]==1:
-                continue
-            p = 0
-            d = -len(s)
-            for c in s:
-                if c==x:
-                    p += 1
-                    d += 1
-                elif c==y:
-                    p -= 1
-                    d = p 
-                    if p<0:
-                        p = 0
-                if r<d:
-                    r = d
-        return r
-
-class Solution:
-    def largestVariance(self, s: str) -> int:
-        r,q=0,Counter(s);[(p:=0,d:=-len(s),[(c==x and(p:=p+1,d:=d+1)or c==y and(p:=p-1,d:=p,p<0 and(p:=0)),r<d and(r:=d))for c in s])for x,y in permutations(set(s),2)if q[x]!=1];return r
-
-# faster but 182 chars longer
+# fast but very long
 class Solution:
     def largestVariance(self, s: str) -> int:
         q = defaultdict(lambda:[])
@@ -56,6 +28,35 @@ class Solution:
 class Solution:
     def largestVariance(self, s: str) -> int:
         r,q=0,defaultdict(lambda:[]);[q[c].append(i)for i,c in enumerate(s)];[(x:=--1,y:=-1,m:=Counter(),g:=Counter(),c:=0,[(s[j]==a and(x:=i,c:=c+1)or(s[j]==b and(y:=i,c:=c-1)),(k:=min(x,y))>=0 and(r:=max(r,c-m[k-1],g[k-1]-c)),setitem(m,i,min(m[i-1],c)),setitem(g,i,max(g[i-1],c)))for i,j in enumerate(sorted(q[a]+q[b]))])for a,b in itertools.combinations(q,2)];return r
+
+
+# https://leetcode.com/problems/substring-with-largest-variance/discuss/2551276/Python-super-clean-solution
+
+class Solution:
+    def largestVariance(self, s: str) -> int:
+        r = 0
+        q = Counter(s)
+        for x,y in permutations(set(s), 2):
+            if q[x]==1:
+                continue
+            p = 0
+            d = -len(s)
+            for c in s:
+                if c==x:
+                    p += 1
+                    d += 1
+                elif c==y:
+                    p -= 1
+                    d = p 
+                    if p<0:
+                        p = 0
+                if r<d:
+                    r = d
+        return r
+
+class Solution:
+    def largestVariance(self, s: str) -> int:
+        r,q=0,Counter(s);[(p:=0,d:=-len(s),[(c==x and(p:=p+1,d:=d+1)or c==y and(p:=p-1,d:=p,p<0 and(p:=0)),r<d and(r:=d))for c in s])for x,y in permutations(set(s),2)if q[x]!=1];return r
 
 test('''
 2272. Substring With Largest Variance

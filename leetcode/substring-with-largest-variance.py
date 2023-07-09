@@ -64,7 +64,11 @@ Input: s = "abcde"
 Output: 0
 Explanation:
 No letter occurs more than once in s, so the variance of every substring is 0.
- 
+
+Example 3:
+
+Input: s = "icexiahccknibwuwgi"
+Output: 3
 
 Constraints:
 

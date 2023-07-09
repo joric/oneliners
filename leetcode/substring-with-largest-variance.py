@@ -28,6 +28,35 @@ class Solution:
     def largestVariance(self, s: str) -> int:
         r,q=0,Counter(s);[(p:=0,d:=-len(s),[(c==x and(p:=p+1,d:=d+1)or c==y and(p:=p-1,d:=p,p<0 and(p:=0)),r<d and(r:=d))for c in s])for x,y in permutations(set(s),2)if q[x]!=1];return r
 
+# faster but 182 chars longer
+class Solution:
+    def largestVariance(self, s: str) -> int:
+        q = defaultdict(lambda:[])
+        for i,c in enumerate(s):
+            q[c].append(i)
+        r = 0
+        for a,b in itertools.combinations(q,2):
+            x,y = -1,-1
+            m,g = Counter(),Counter()
+            c = 0
+            for i,j in enumerate(sorted(q[a]+q[b])):
+                if s[j]==a:
+                    x=i
+                    c+=1
+                elif s[j]==b:
+                    y=i
+                    c-=1
+                k = min(x,y)
+                if k>=0:
+                    r = max(r, c-m[k-1], g[k-1]-c)
+                m[i]=min(m[i-1],c)
+                g[i]=max(g[i-1],c)
+        return r
+
+class Solution:
+    def largestVariance(self, s: str) -> int:
+        r,q=0,defaultdict(lambda:[]);[q[c].append(i)for i,c in enumerate(s)];[(x:=--1,y:=-1,m:=Counter(),g:=Counter(),c:=0,[(s[j]==a and(x:=i,c:=c+1)or(s[j]==b and(y:=i,c:=c-1)),(k:=min(x,y))>=0 and(r:=max(r,c-m[k-1],g[k-1]-c)),setitem(m,i,min(m[i-1],c)),setitem(g,i,max(g[i-1],c)))for i,j in enumerate(sorted(q[a]+q[b]))])for a,b in itertools.combinations(q,2)];return r
+
 test('''
 2272. Substring With Largest Variance
 Hard
@@ -69,6 +98,10 @@ Example 3:
 
 Input: s = "icexiahccknibwuwgi"
 Output: 3
+
+Example 4:
+Input: s = "lripaa"
+Output: 1
 
 Constraints:
 

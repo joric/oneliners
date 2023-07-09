@@ -42,6 +42,10 @@ class Solution:
     def maxConsecutiveAnswers(self, s: str, k: int) -> int:
         return max(max(map(sub,(z:=[i for i,x in enumerate(q+s+q)if x==q])[k+1:],z),default=len(s)+1)-1for q in'TF')
 
+class Solution:
+    def maxConsecutiveAnswers(self, s: str, k: int) -> int:
+        return max(max(map(sub,(z:=[i.start()for i in finditer(q,q+s+q)])[k+1:],z),default=len(s)+1)-1for q in'TF')
+
 test('''
 2024. Maximize the Confusion of an Exam
 Medium

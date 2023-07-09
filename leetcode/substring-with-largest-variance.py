@@ -79,6 +79,10 @@ class Solution:
 # barely passes time limit
 class Solution:
     def largestVariance(self, s: str) -> int:
+        r=0;all((p:=0,b:=0,m:=inf,all((c==x and(p:=p+1)or c==y and(m:=min(m,b),p:=p-1,b:=p),r:=max(r,p-m))for c in s))for x,y in permutations(set(s),2));return r
+
+class Solution:
+    def largestVariance(self, s: str) -> int:
         r=0;[(a:=(b:=0),m:=inf,all((c==x and(a:=a+1),c==y and(m:=min(m,b),a:=a-1,b:=a),r:=max(r,a-m))for c in s))for x,y in permutations(set(s),2)];return r
 
 test('''

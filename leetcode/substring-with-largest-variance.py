@@ -81,6 +81,10 @@ class Solution:
     def largestVariance(self, s: str) -> int:
         r=0;all((p:=0,b:=0,m:=inf,all((c==x and(p:=p+1)or c==y and(m:=min(m,b),p:=p-1,b:=p),r:=max(r,p-m))for c in s))for x,y in permutations(set(s),2));return r
 
+class Solution:
+    def largestVariance(self, s: str) -> int:
+        r=0;[(p:=0,b:=0,m:=inf,all((c==x and(p:=p+1)or c==y and(m:=min(m,b),p:=p-1,b:=p),r:=max(r,p-m))for c in s))for x,y in permutations(set(s),2)];return r
+
 test('''
 2272. Substring With Largest Variance
 Hard

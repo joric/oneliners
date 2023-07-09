@@ -63,27 +63,23 @@ class Solution:
     def largestVariance(self, s: str) -> int:
         r = 0
         for x,y in permutations(set(s), 2):
-            p = 0
+            a = 0
             b = 0
             m = inf
             for c in s:
                 if c==x:
-                    p += 1
+                    a += 1
                 elif c==y:
                     m = min(m,b)
-                    p -= 1
-                    b = p
-                r = max(r,p-m)
+                    a -= 1
+                    b = a
+                r = max(r,a-m)
         return r
 
 # barely passes time limit
 class Solution:
     def largestVariance(self, s: str) -> int:
-        r=0;all((p:=0,b:=0,m:=inf,all((c==x and(p:=p+1)or c==y and(m:=min(m,b),p:=p-1,b:=p),r:=max(r,p-m))for c in s))for x,y in permutations(set(s),2));return r
-
-class Solution:
-    def largestVariance(self, s: str) -> int:
-        r=0;[(p:=0,b:=0,m:=inf,all((c==x and(p:=p+1)or c==y and(m:=min(m,b),p:=p-1,b:=p),r:=max(r,p-m))for c in s))for x,y in permutations(set(s),2)];return r
+        r=0;[(a:=(b:=0),m:=inf,all((c==x and(a:=a+1),c==y and(m:=min(m,b),a:=a-1,b:=a),r:=max(r,a-m))for c in s))for x,y in permutations(set(s),2)];return r
 
 test('''
 2272. Substring With Largest Variance

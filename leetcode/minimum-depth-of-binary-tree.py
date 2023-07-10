@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def minDepth(self, r: Optional[TreeNode]) -> int:
-        return r and 1+(min(d:=[*map(self.minDepth,(r.left,r.right))]) or max(d))or 0
+        return r and 1+(min(d:=[*map(self.minDepth,(r.left,r.right))])or max(d))or 0
 
 test('''
 111. Minimum Depth of Binary Tree

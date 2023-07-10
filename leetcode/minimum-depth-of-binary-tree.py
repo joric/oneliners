@@ -3,8 +3,8 @@ from lc import *
 # https://leetcode.com/problems/minimum-depth-of-binary-tree/discuss/36060/3-lines-in-Every-Language
 
 class Solution:
-    def minDepth(self, r: Optional[TreeNode]) -> int:
-        return r and 1+(min(d:=[*map(self.minDepth,(r.left,r.right))])or max(d))or 0
+    def minDepth(s, r: Optional[TreeNode]) -> int:
+        return r and 1+(min(d:=[*map(s.minDepth,(r.left,r.right))])or max(d))or 0
 
 test('''
 111. Minimum Depth of Binary Tree

@@ -31,17 +31,16 @@ class Solution:
     def distanceK(self, r: TreeNode, t: TreeNode, k: int) -> List[int]:
         g,q = defaultdict(list),[t.val]
         v = set(q)
-        f=lambda p,n:(p and n and (g[p.val].append(n.val),g[n.val].append(p.val)),n.left and f(n,n.left),n.right and f(n,n.right))
+        f = lambda p,n:(p and n and (g[p.val].append(n.val),g[n.val].append(p.val)),n.left and f(n,n.left),n.right and f(n,n.right))
         f(None,r)
         for i in range(k):
-            p = [j for i in q for j in g[i] if j not in v]
-            q = p
+            q = [j for i in q for j in g[i] if j not in v]
             v |= set(q)
         return q
 
 class Solution:
     def distanceK(self, r: TreeNode, t: TreeNode, k: int) -> List[int]:
-        g,q=defaultdict(list),[t.val];v=set(q);(f:=lambda p,n:(p and n and (g[p.val].append(n.val),g[n.val].append(p.val)),n.left and f(n,n.left),n.right and f(n,n.right)))(None,r);[(p:=[j for i in q for j in g[i] if j not in v],q:=p,v:=v|set(q))for i in range(k)];return q
+        g,q=defaultdict(list),[t.val];v=set(q);(f:=lambda p,n:(p and n and (g[p.val].append(n.val),g[n.val].append(p.val)),n.left and f(n,n.left),n.right and f(n,n.right)))(None,r);[(q:=[j for i in q for j in g[i] if j not in v],v:=v|set(q))for i in range(k)];return q
 
 test('''
 863. All Nodes Distance K in Binary Tree

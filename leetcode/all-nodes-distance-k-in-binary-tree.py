@@ -1,7 +1,6 @@
 from lc import *
 
 # https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/discuss/143729/Python-DFS-and-BFS
-# TODO: fix the TreeNode class to pass the tests
 
 class Solution:
     def distanceK(self, root: TreeNode, target: TreeNode, k: int) -> List[int]:
@@ -82,5 +81,5 @@ The number of nodes in the tree is in the range [1, 500].
 All the values Node.val are unique.
 target is the value of one of the nodes in the tree.
 0 <= k <= 1000
-''')
+''',check=lambda res, expected, root, target, k: sorted(res)==sorted(expected))
 

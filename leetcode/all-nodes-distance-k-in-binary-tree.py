@@ -39,7 +39,7 @@ class Solution:
 
 class Solution:
     def distanceK(self, r: TreeNode, t: TreeNode, k: int) -> List[int]:
-        g,q=defaultdict(list),[t.val];v=set(q);(f:=lambda p,n:(p and[g[x.val].append(y.val)for x,y in((p,n),(n,p))],[f(n,x)for x in(n.left,n.right)if x]))(None,r);[v:=v|set(q:=[j for i in q for j in g[i] if j not in v]) for i in range(k)];return q
+        g,q=defaultdict(list),[t.val];v=set(q);(f:=lambda p,n:(p and[g[x.val].append(y.val)for x,y in((p,n),(n,p))],[f(n,x)for x in(n.left,n.right)if x]))(None,r);[v:=v|set(q:=[j for i in q for j in g[i]if j not in v])for i in range(k)];return q
 
 test('''
 863. All Nodes Distance K in Binary Tree

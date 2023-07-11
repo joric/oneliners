@@ -48,12 +48,17 @@ class TreeNode:
     def __repr__(self):
         return str(self.dump())
 
-    def __eq__(a, b):
-        return a is b
+    def __eq__(self, other):
+        return self is other
+
+    def __hash__(self):
+        return hash(str(self))
 
     def parse(arr):
         if not arr:
             return None
+        if type(arr) is int:
+            return TreeNode(arr)
         nodes = [None if x is None else TreeNode(x) for x in arr]
         kids = nodes[::-1]
         root = kids and kids.pop()

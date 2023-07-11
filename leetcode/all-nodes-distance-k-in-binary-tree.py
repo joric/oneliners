@@ -81,5 +81,5 @@ The number of nodes in the tree is in the range [1, 500].
 All the values Node.val are unique.
 target is the value of one of the nodes in the tree.
 0 <= k <= 1000
-''',check=lambda res, expected, root, target, k: set(res)==set(expected))
+''',check=lambda res, expected, *args: set(res)==set(expected))
 

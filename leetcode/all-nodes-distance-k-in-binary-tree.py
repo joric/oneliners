@@ -39,13 +39,6 @@ class Solution:
 
 class Solution:
     def distanceK(self, r: TreeNode, t: TreeNode, k: int) -> List[int]:
-        g,q=defaultdict(list),[t.val];v=set(q)
-        (f:=lambda p,n:(p and(g[p.val].append(n.val),g[n.val].append(p.val)),n.left and f(n,n.left),n.right and f(n,n.right)))(None,r)
-        [(v:=v|set(q:=[j for i in q for j in g[i]if j not in v]))for i in range(k)]
-        return q
-
-class Solution:
-    def distanceK(self, r: TreeNode, t: TreeNode, k: int) -> List[int]:
         g,q=defaultdict(list),[t.val];v=set(q);(f:=lambda p,n:(p and(g[p.val].append(n.val),g[n.val].append(p.val)),n.left and f(n,n.left),n.right and f(n,n.right)))(None,r);[(v:=v|set(q:=[j for i in q for j in g[i]if j not in v]))for i in range(k)];return q
 
 test('''

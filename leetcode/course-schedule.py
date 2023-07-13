@@ -20,15 +20,15 @@ class Solution:
 
 class Solution:
     def canFinish(self, n: int, p: List[List[int]]) -> bool:
-        g,i=defaultdict(list),Counter({k:0 for k in range(n)})
-        [(i.update({b:1}),g[a].append(b))for a,b in p]
-        t=[k for k, v in i.items()if v<=0]
-        [i.update({k:-1})or i[k]==0 and t.append(k)for o in t for k in g[o]]
+        g,c=defaultdict(list),Counter({k:0 for k in range(n)})
+        [(c.update({b:1}),g[a].append(b))for a,b in p]
+        t=[k for k,v in c.items()if v<=0]
+        [c.update({k:-1})or c[k]==0 and t.append(k)for o in t for k in g[o]]
         return len(t)==n
 
 class Solution:
     def canFinish(self, n: int, p: List[List[int]]) -> bool:
-        g,i=defaultdict(list),Counter({k:0 for k in range(n)});[(i.update({b:1}),g[a].append(b))for a,b in p];t=[k for k, v in i.items()if v<=0];[i.update({k:-1})or i[k]==0 and t.append(k)for o in t for k in g[o]];return len(t)==n
+        g,c=defaultdict(list),Counter({k:0 for k in range(n)});[(c.update({b:1}),g[a].append(b))for a,b in p];t=[k for k,v in c.items()if v<=0];[c.update({k:-1})or c[k]==0 and t.append(k)for o in t for k in g[o]];return len(t)==n
 
 test('''
 207. Course Schedule

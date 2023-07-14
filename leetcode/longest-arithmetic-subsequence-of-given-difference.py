@@ -16,10 +16,6 @@ class Solution:
     def longestSubsequence(self, a: List[int], d: int) -> int:
         m={};[setitem(m,x,m.get(x-d,0)+1)for x in a];return max(m.values())
 
-class Solution:
-    def longestSubsequence(self, a: List[int], d: int) -> int:
-        m,r={},0;[setitem(m,x,r:=max(r,m.get(x-d,0)+1))for x in a];return r
-
 test('''
 1218. Longest Arithmetic Subsequence of Given Difference
 Medium

@@ -2,7 +2,7 @@ from lc import *
 
 class Solution:
     def longestSubsequence(self, a: List[int], d: int) -> int:
-        m=Counter();[setitem(m,x,max(m[x], m[x-d]+1))for x in a];return max(m.values())
+        m=Counter();[setitem(m,x,max(m[x],m[x-d]+1))for x in a];return max(m.values())
 
 test('''
 1218. Longest Arithmetic Subsequence of Given Difference

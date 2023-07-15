@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def maxValue(self, e: List[List[int]], k: int) -> int:
-        e.sort();return(f:=cache(lambda i,k:i<len(e)and k and max(f(i+1,k),e[i][2]+f(bisect_left(e,[e[i][1]+1,-inf]),k-1))))(0,k)
+        e.sort();return(f:=cache(lambda i,k:i<len(e)and k and max(f(i+1,k),e[i][2]+f(bisect_left(e,[e[i][1]+1]),k-1))))(0,k)
 
 test('''
 1751. Maximum Number of Events That Can Be Attended II

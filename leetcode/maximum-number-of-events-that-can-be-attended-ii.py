@@ -49,6 +49,10 @@ Output: 9
 Explanation: Although the events do not overlap, you can only attend 3 events. Pick the highest valued three.
  
 
+Example 4:
+Input: events = [[1,3,4],[2,4,1],[1,1,4],[3,5,1],[2,5,5]], k = 3
+Output: 9
+
 Constraints:
 
 1 <= k <= events.length

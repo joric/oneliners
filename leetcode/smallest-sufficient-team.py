@@ -50,6 +50,10 @@ Example 2:
 Input: req_skills = ["algorithms","math","java","reactjs","csharp","aws"], people = [["algorithms","math","java"],["algorithms","math","reactjs"],["java","csharp","aws"],["reactjs","csharp"],["csharp","math"],["aws","java"]]
 Output: [1,2]
  
+Example 3:
+
+Input: req_skills = ["mmcmnwacnhhdd","vza","mrxyc"], people = [["mmcmnwacnhhdd"],[],[],["vza","mrxyc"]]
+Output: [0,3]
 
 Constraints:
 

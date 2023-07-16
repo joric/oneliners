@@ -17,7 +17,7 @@ class Solution:
 
 class Solution:
     def smallestSufficientTeam(self, r: List[str], p: List[List[str]]) -> List[int]:
-        d,m={0:[]},{r[i]:i for i in range(len(r))};[(c:=reduce(lambda c,s:c|1<<m[s],p[i],0),[(k:=j|c,(k not in d or len(d[k])>len(v)+1)and setitem(d,k,v+[i]))for j,v in dict(d).items()])for i in range(len(p))];return d[(1<<len(m))-1]
+        d,m={0:[]},{r[i]:i for i in range(len(r))};[(c:=0,[(c:=c|1<<m[s])for s in p[i]],[(k:=j|c,(k not in d or len(d[k])>len(v)+1)and setitem(d,k,v+[i]))for j,v in dict(d).items()])for i in range(len(p))];return d[(1<<len(m))-1]
 
 test('''
 1125. Smallest Sufficient Team

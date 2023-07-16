@@ -8,7 +8,7 @@ class Solution:
         for i in range(len(p)):
             c=0
             for s in p[i]:
-                c |= 1<<(m[s])
+                c |= 1<<m[s]
             for j,v in dict(d).items():
                 k = j | c
                 if k not in d or len(d[k])>len(v)+1:

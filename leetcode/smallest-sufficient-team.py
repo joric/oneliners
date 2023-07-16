@@ -1,56 +1,23 @@
 from lc import *
 
-# https://leetcode.com/problems/smallest-sufficient-team/discuss/334572/JavaC%2B%2BPython-DP-Solution
-
-class Solution:
-    def smallestSufficientTeam(self, req_skills: List[str], people: List[List[str]]) -> List[int]:
-        n, m = len(req_skills), len(people)
-        skill_index = {v: i for i, v in enumerate(req_skills)}
-        dp = {0: []}
-        for i, p in enumerate(people):
-            cur_skill = 0
-            for skill in p:
-                if skill in skill_index:
-                    cur_skill |= 1 << skill_index[skill]
-            for prev, need in dict(dp).items():
-                comb = prev | cur_skill
-                if comb == prev: continue
-                if comb not in dp or len(dp[comb]) > len(need) + 1:
-                    dp[comb] = need + [i]
-        return dp[(1 << n) - 1]
+# https://leetcode.com/problems/smallest-sufficient-team/discuss/691327/Bit-masking-solution-in-python-explained-line-by-line-in-greatest-depth-possible
 
 class Solution:
     def smallestSufficientTeam(self, r: List[str], p: List[List[str]]) -> List[int]:
-        n,m = len(r),len(p)
-        b = {v:i for i,v in enumerate(r)}
-        d = {0:[]}
-        for i,v in enumerate(p):
+        d,m={0:[]},{r[i]:i for i in range(len(r))}
+        for i in range(len(p)):
             c=0
-            for s in v:
-                if s in b:
-                    c |= 1<<b[s]
-            for j,w in dict(d).items():
-                k = j|c
-                if k==j:
-                    continue
-                if k not in d or len(d[k])>len(w)+1:
-                    d[k] = w + [i]
-        return d[(1<<n)-1]
+            for s in p[i]:
+                c |= 1<<(m[s])
+            for j,v in dict(d).items():
+                k = j | c
+                if k not in d or len(d[k])>len(v)+1:
+                   d[k]=v+[i]
+        return d[(1<<len(m))-1]
 
 class Solution:
     def smallestSufficientTeam(self, r: List[str], p: List[List[str]]) -> List[int]:
-        n,m,b,d=len(r),len(p),{v:i for i,v in enumerate(r)},{0:[]}
-        for i,v in enumerate(p):
-            c = 0
-            for s in v:
-                if s in b:
-                    c |= 1 << b[s]
-            [(k:=j|c,(k!=j and k not in d or len(d[k])>len(w)+1)and setitem(d,k,w+[i]))for j,w in dict(d).items()]
-        return d[(1<<n)-1]
-
-class Solution:
-    def smallestSufficientTeam(self, r: List[str], p: List[List[str]]) -> List[int]:
-        n,m,b,d=len(r),len(p),{v:i for i,v in enumerate(r)},{0:[]};[(c:=0,[(c:=c|1<<b[s])for s in v if s in b],[(k:=j|c,(k!=j and k not in d or len(d[k])>len(w)+1)and setitem(d,k,w+[i]))for j,w in dict(d).items()])for i,v in enumerate(p)];return d[(1<<n)-1]
+        d,m={0:[]},{r[i]:i for i in range(len(r))};[(c:=reduce(lambda c,s:c|1<<m[s],p[i],0),[(k:=j|c,(k not in d or len(d[k])>len(v)+1)and setitem(d,k,v+[i]))for j,v in dict(d).items()])for i in range(len(p))];return d[(1<<len(m))-1]
 
 test('''
 1125. Smallest Sufficient Team

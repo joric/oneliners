@@ -26,9 +26,9 @@ class Solution:
 
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
-        i=lambda n,p=0:n and i(n.next,p*10+n.val) or p
+        f=lambda n,p=0:n and f(n.next,p*10+n.val) or p
         l=lambda n,p=None:(x:=ListNode(n<9 and n or n%10,p))and n>9 and l(n//10,x)or x
-        return l(i(l1)+i(l2))
+        return l(f(l1)+f(l2))
 
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:

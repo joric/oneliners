@@ -38,7 +38,7 @@ class Solution:
 
 class Solution:
     def addTwoNumbers(self, a: ListNode, b: ListNode) -> ListNode:
-        i=lambda n,p=0:n and i(n.next,p*10+n.val)or p;return ListNode(','.join([*str(i(a)+i(b))]))
+        f=lambda n,p=0:n and f(n.next,p*10+n.val)or p;return ListNode(','.join([*str(f(a)+f(b))]))
 
 test('''
 445. Add Two Numbers II

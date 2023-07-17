@@ -16,14 +16,14 @@ class Solution:
         return root.next
 
 class Solution:
-    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        return (l:=lambda n: ListNode(n%10, l(n//10) if n>9 else None))((i:=lambda x: x.val + i(x.next)*10 if x else 0)(l1)+i(l2))
+    def addTwoNumbers(self, a: Optional[ListNode], b: Optional[ListNode]) -> Optional[ListNode]:
+        f = lambda n:n and n.val+10*f(n.next) or 0
+        l = lambda n: ListNode(n%10, l(n//10) if n>9 else None)
+        return l(f(a)+f(b))
 
 class Solution:
-    def addTwoNumbers(self, a: Optional[ListNode], b: Optional[ListNode]) -> Optional[ListNode]:
-        f=lambda n:n and n.val+10*f(n.next)or 0
-        l=lambda n: ListNode(n%10, l(n//10) if n>9 else None)
-        return l(f(a)+f(b))
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        return (l:=lambda n:ListNode(n%10,n>9 and l(n//10)))((f:=lambda n:n and n.val+10*f(n.next) or 0)(l1)+f(l2))
 
 class Solution:
     def addTwoNumbers(self, a: Optional[ListNode], b: Optional[ListNode]) -> Optional[ListNode]:

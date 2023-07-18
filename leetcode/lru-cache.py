@@ -1,11 +1,11 @@
 from lc import *
 
-class LRUCache1:
-    def __init__(self, capacity):
+class LRUCache:
+    def __init__(self, capacity: int):
         self.capacity = capacity
         self.items = dict()
 
-    def get(self, key):
+    def get(self, key: int) -> int:
         if key in self.items:
             item = self.items[key]
             del self.items[key]
@@ -14,7 +14,7 @@ class LRUCache1:
         else:
             return -1
 
-    def put(self, key, value):
+    def put(self, key: int, value: int) -> None:
         if key in self.items:
             del self.items[key]
         if len(self.items) == self.capacity:
@@ -22,19 +22,20 @@ class LRUCache1:
             del self.items[k]
         self.items[key] = value
 
+
 class LRUCache:
-    def __init__(self, capacity):
+    def __init__(self, capacity: int):
         self.capacity = capacity
         self.dic = OrderedDict()
-                
-    def get(self, key):
+
+    def get(self, key: int) -> int:
         if key not in self.dic:
             return -1
         val = self.dic[key]
         self.dic.move_to_end(key)
         return val
-                
-    def put(self, key, value):
+
+    def put(self, key: int, value: int) -> None:
         self.dic[key] = value
         self.dic.move_to_end(key)
         if len(self.dic) > self.capacity:
@@ -44,11 +45,11 @@ class LRUCache:
 LRUCache=type('',(),{
     '__init__':lambda s,c:setattr(s,'c',c)or setattr(s,'d',OrderedDict()),
     'get':lambda s,k:s.d.move_to_end(k)or s.d[k]if k in s.d else-1,
-    'put':lambda s,k,v:(setitem(s.d,k,v),s.d.move_to_end(k),len(s.d)>s.c and s.d.popitem(last=0))and None
+    'put':lambda s,k,v:(setitem(s.d,k,v),s.d.move_to_end(k),len(s.d)>s.c and s.d.popitem(last=0))
 })
 
 
-LRUCache=type('',(),{'__init__':lambda s,c:setattr(s,'c',c)or setattr(s,'d',OrderedDict()),'get':lambda s,k:s.d.move_to_end(k)or s.d[k]if k in s.d else-1,'put':lambda s,k,v:(setitem(s.d,k,v),s.d.move_to_end(k),len(s.d)>s.c and s.d.popitem(last=0))and None})
+LRUCache=type('',(),{'__init__':lambda s,c:setattr(s,'c',c)or setattr(s,'d',OrderedDict()),'get':lambda s,k:s.d.move_to_end(k)or s.d[k]if k in s.d else-1,'put':lambda s,k,v:(setitem(s.d,k,v),s.d.move_to_end(k),len(s.d)>s.c and s.d.popitem(last=0))})
 
 test('''
 146. LRU Cache
@@ -100,4 +101,4 @@ Constraints:
 0 <= value <= 10^5
 At most 2 * 10^5 calls will be made to get and put.
 
-''', LRUCache)
+''', LRUCache, check=lambda res,exp,*met:all(1 if m=='put' else r==e for r,e,m in zip(res,exp,met)))

@@ -316,5 +316,5 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
                 res = vc(func, 'return', func(*args))
                 results.append(res)
 
-        ok = check(results,expected)
+        ok = check(results,expected,*methods)
         print_res(ok, results, expected, methods, arglist)

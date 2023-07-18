@@ -43,12 +43,12 @@ class LRUCache:
 
 LRUCache=type('',(),{
     '__init__':lambda s,c:setattr(s,'c',c)or setattr(s,'d',OrderedDict()),
-    'get':lambda s,k:-1if k not in s.d else s.d.move_to_end(k)or s.d[k],
+    'get':lambda s,k:s.d.move_to_end(k)or s.d[k]if k in s.d else-1,
     'put':lambda s,k,v:(setitem(s.d,k,v),s.d.move_to_end(k),len(s.d)>s.c and s.d.popitem(last=False))and None
 })
 
 
-LRUCache=type('',(),{'__init__':lambda s,c:setattr(s,'c',c)or setattr(s,'d',OrderedDict()),'get':lambda s,k:-1if k not in s.d else s.d.move_to_end(k)or s.d[k],'put':lambda s,k,v:(setitem(s.d,k,v),s.d.move_to_end(k),len(s.d)>s.c and s.d.popitem(last=False))and None})
+LRUCache=type('',(),{'__init__':lambda s,c:setattr(s,'c',c)or setattr(s,'d',OrderedDict()),'get':lambda s,k:s.d.move_to_end(k)or s.d[k]if k in s.d else-1,'put':lambda s,k,v:(setitem(s.d,k,v),s.d.move_to_end(k),len(s.d)>s.c and s.d.popitem(last=False))and None})
 
 test('''
 146. LRU Cache

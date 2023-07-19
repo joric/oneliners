@@ -21,6 +21,10 @@ class Solution:
     def eraseOverlapIntervals(self, v: List[List[int]]) -> int:
         e,r=-inf,0;[i[0]<e and(r:=r+1)or(e:=i[1])for i in sorted(v,key=itemgetter(1))];return r
 
+class Solution:
+    def eraseOverlapIntervals(self, v: List[List[int]]) -> int:
+        e,r=-inf,0;[a<e and(r:=r+1)or(e:=b)for a,b in sorted(v,key=itemgetter(1))];return r
+
 test('''
 435. Non-overlapping Intervals
 Medium

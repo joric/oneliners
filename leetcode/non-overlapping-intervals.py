@@ -1,10 +1,25 @@
 from lc import *
 
-# https://leetcode.com/problems/non-overlapping-intervals/discuss/91721/Short-Ruby-and-Python/96286
+# https://leetcode.com/problems/non-overlapping-intervals/discuss/91721/Short-Ruby-and-Python
+
+class Solution:
+    def eraseOverlapIntervals(self, v: List[List[int]]) -> int:
+        e = -inf
+        r = 0
+        for i in sorted(v,key=itemgetter(1)):
+            if i[0] >= e:
+                e = i[1]
+            else:
+                r += 1
+        return r
 
 class Solution:
     def eraseOverlapIntervals(self, v: List[List[int]]) -> int:
         return len(v)-reduce(lambda r,i:i[0]<r[1]and r or(r[0]+1,i[1]),sorted(v,key=itemgetter(1)),(0,-inf))[0]
+
+class Solution:
+    def eraseOverlapIntervals(self, v: List[List[int]]) -> int:
+        e,r=-inf,0;[i[0]<e and(r:=r+1)or(e:=i[1])for i in sorted(v,key=itemgetter(1))];return r
 
 test('''
 435. Non-overlapping Intervals

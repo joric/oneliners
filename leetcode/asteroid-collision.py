@@ -34,7 +34,11 @@ class Solution:
 
 class Solution:
     def asteroidCollision(self, a: List[int]) -> List[int]:
-        s=[];[any(-i<s[-1]or-i==s.pop()if s and i<0<s[-1]else[s.append(i)]for _ in count())for i in a];return s
+        s=[];[any(-i<s[-1]or-i==s.pop()if s and i<0<s[-1]else[s.append(i)]for _ in a)for i in a];return s
+
+class Solution:
+    def asteroidCollision(self, a):
+        s=[];[any(-i<s[-1]or-i==s.pop()if s and i<0<s[-1]else(s:=s+[i])for _ in a)for i in a];return s
 
 test('''
 735. Asteroid Collision

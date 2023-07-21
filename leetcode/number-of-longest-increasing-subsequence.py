@@ -46,6 +46,10 @@ class Solution:
     def findNumberOfLIS(self, a: List[int]) -> int:
         n,s=len(a),setitem;x,y=[1]*n,[1]*n;[a[j]<a[i]and x[i]<=x[j]+1and(s(y,i,y[j]+y[i]*(x[i]==x[j]+1)),s(x,i,x[j]+1))for i in range(n)for j in range(i)];return sum(c for l,c in zip(x,y)if l==max(x))
 
+class Solution:
+    def findNumberOfLIS(self, a):
+        n,s=len(a),setitem;x,y=[1]*n,[1]*n;[a[j]<a[i]and x[i]<=(t:=x[j]+1)and(s(y,i,y[j]+y[i]*(x[i]==t)),s(x,i,t))for i in range(n)for j in range(i)];return sum(c for l,c in zip(x,y)if l==max(x))
+
 test('''
 673. Number of Longest Increasing Subsequence
 Medium

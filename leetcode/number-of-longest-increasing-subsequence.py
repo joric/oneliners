@@ -28,8 +28,8 @@ class Solution:
         return sum(d[max(0, len(t)-1)].values()) 
 
 class Solution:
-    def findNumberOfLIS(self, nums: List[int]) -> int:
-        d,t=defaultdict(Counter),[];setitem(d[-1],-inf,1);[((k:=bisect_left(t,i))==len(t)and t.append(i)or setitem(t,k,i),d[k].update({i:sum(d[k-1][j]for j in d[k-1]if j<i)}))for i in nums];return sum(d[max(0,len(t)-1)].values())
+    def findNumberOfLIS(self, n: List[int]) -> int:
+        d,t=defaultdict(Counter),[];setitem(d[-1],-inf,1);[((k:=bisect_left(t,i))==len(t)and t.append(i)or setitem(t,k,i),d[k].update({i:sum(d[k-1][j]for j in d[k-1]if j<i)}))for i in n];return sum(d[max(0,len(t)-1)].values())
 
 test('''
 673. Number of Longest Increasing Subsequence

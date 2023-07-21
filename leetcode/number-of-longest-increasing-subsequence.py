@@ -11,6 +11,7 @@ class Solution:
         dp.sort()
         return dp and sum(d[1] for d in dp if d[0] == dp[-1][0]) or 0
 
+# https://leetcode.com/problems/number-of-longest-increasing-subsequence/discuss/199093/short-python-50ms-beats-100-with-binary-search
 
 class Solution:
     def findNumberOfLIS(self, nums: List[int]) -> int:

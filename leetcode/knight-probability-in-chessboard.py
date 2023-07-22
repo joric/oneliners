@@ -18,7 +18,7 @@ class Solution:
 
 class Solution:
     def knightProbability(self, n: int, k: int, r: int, c: int) -> float:
-        f=cache(lambda x,y,t:n>x>=0<=y<n and (sum(f(x+i,y+j,t-1)for i,j in((1,2),(-1,2),(1,-2),(-1,-2),(2,1),(-2,1),(2,-1),(-2,-1)))if t else 1));return f(r,c,k)/8**k
+        f=cache(lambda x,y,t:n>x>=0<=y<n and(sum(f(x+i,y+j,t-1)for i,j in((1,2),(-1,2),(1,-2),(-1,-2),(2,1),(-2,1),(2,-1),(-2,-1)))if t else 1));return f(r,c,k)/8**k
 
 test('''
 688. Knight Probability in Chessboard

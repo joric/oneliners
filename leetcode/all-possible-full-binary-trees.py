@@ -30,6 +30,10 @@ class Solution:
 
 class Solution:
     def allPossibleFBT(s, n: int) -> List[Optional[TreeNode]]:
+        o,f,t,n=TreeNode,s.allPossibleFBT,[],n-1;return[(t:=t+[o(0,l,r)])for i in range(1,min(20,n),2)for l in f(i)for r in f(n-i)]and t if n else[o(0)]
+
+class Solution:
+    def allPossibleFBT(s, n: int) -> List[Optional[TreeNode]]:
         o,f,t,n=TreeNode,s.allPossibleFBT,[],n-1;return[(t:=t+[o(0,l,r)])for i in range(n)for l in f(i)for r in f(n-i)]and t if n else[o(0)]
 
 test('''

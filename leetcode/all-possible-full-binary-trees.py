@@ -1,5 +1,20 @@
 from lc import *
 
+class Solution:
+    def allPossibleFBT(s, n: int) -> List[Optional[TreeNode]]:
+        t = [[]for _ in range(n+1)]
+        t[1] = [TreeNode()]
+        for k in range(n+1):
+            for i in range(1,k-1,2):
+                for l in t[i]:
+                    for r in t[k-i-1]:
+                        t[k].append(TreeNode(0,l,r))
+        return t[-1]
+
+class Solution:
+    def allPossibleFBT(s, n: int) -> List[Optional[TreeNode]]:
+        t = [[]for _ in range(n+1)];t[1]=[TreeNode()];[t[k].append(TreeNode(0,l,r))for k in range(n+1)for i in range(1,k-1,2)for l in t[i]for r in t[k-i-1]];return t[-1]
+
 # https://leetcode.com/problems/all-possible-full-binary-trees/discuss/163429/Simple-Python-recursive-solution.
 
 class Solution:

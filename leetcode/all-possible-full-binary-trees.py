@@ -4,38 +4,18 @@ from lc import *
 
 class Solution:
     def allPossibleFBT(s, n: int) -> List[Optional[TreeNode]]:
-        n-=1
+        t,n=[],n-1
         if n==0:
             return [TreeNode(0)]
-        t = []
         for i in range(1,min(20,n),2):
             for l in s.allPossibleFBT(i):
                 for r in s.allPossibleFBT(n-i):
-                    x = TreeNode(0)
-                    x.left = l
-                    x.right = r
-                    t += [x]
+                    t += [TreeNode(0,l,r)]
         return t
 
 class Solution:
     def allPossibleFBT(s, n: int) -> List[Optional[TreeNode]]:
-        a,o,f,t,n=setattr,TreeNode,s.allPossibleFBT,[],n-1;return[(x:=o(0),a(x,'left',l),a(x,'right',r),t:=t+[x])for i in range(1,min(20,n),2)for l in f(i)for r in f(n-i)]and t if n else[o(0)]
-
-
-class Solution:
-    def allPossibleFBT(s, n: int) -> List[Optional[TreeNode]]:
-        t = [[]for _ in range(n+1)]
-        t[1] = [TreeNode()];
-        for k in range(n+1):
-            for i in range(1,k-1,2):
-                for l in t[i]:
-                    for r in t[k-i-1]:
-                        t[k].append(TreeNode(0,l,r))
-        return t[-1]
-
-class Solution:
-    def allPossibleFBT(s, n: int) -> List[Optional[TreeNode]]:
-        t=[[]for _ in range(n+1)];t[1]=[TreeNode()];[t[k].append(TreeNode(0,l,r))for k in range(n+1)for i in range(1,k-1,2)for l in t[i]for r in t[k-i-1]];return t[-1]
+        o,f,t,n=TreeNode,s.allPossibleFBT,[],n-1;return[(t:=t+[o(0,l,r)])for i in range(1,min(20,n),2)for l in f(i)for r in f(n-i)]and t if n else[o(0)]
 
 test('''
 894. All Possible Full Binary Trees

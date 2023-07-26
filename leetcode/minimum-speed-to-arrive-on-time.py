@@ -51,7 +51,11 @@ Example 3:
 Input: dist = [1,3,2], hour = 1.9
 Output: -1
 Explanation: It is impossible because the earliest the third train can depart is at the 2 hour mark.
- 
+
+
+Example 4:
+Input: [1,1,100000], hour= 2.01
+Output: 10000000
 
 Constraints:
 

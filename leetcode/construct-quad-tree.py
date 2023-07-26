@@ -1,7 +1,5 @@
 from lc import *
 
-check=lambda r,e,_: all(a==b if (not a or not b or a[0]==1 or b[0]==1) else True for a,b in zip(r.serialize(),e))
-
 class Node:
     def __init__(self, val=0, isLeaf=0, topLeft=None, topRight=None, bottomLeft=None, bottomRight=None):
         self.val = val
@@ -181,7 +179,7 @@ Constraints:
 n == grid.length == grid[i].length
 n == 2x where 0 <= x <= 6
 
-''', check=check
+''', check=lambda r,e,_: all(a==b if (not a or not b or a[0]==1 or b[0]==1) else True for a,b in zip(r.serialize(),e))
 )
 
 

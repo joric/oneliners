@@ -72,11 +72,14 @@ class TreeNode:
 
 class ListNode:
     def __init__(self, val=0, next=None):
-        if type(val) is str:
-            self.__dict__ = ListNode.parse(json.loads('['+val+']')).__dict__
-        else:
-            self.val = val
-            self.next = next
+        if type(val) is str: # see add-two-numbers, linked-list-cycle-ii
+            try:
+                self.__dict__ = ListNode.parse(json.loads('['+val+']')).__dict__
+                return
+            except:
+                pass
+        self.val = val
+        self.next = next
 
     def dump(self):
         if self.detectCycle():

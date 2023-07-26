@@ -4,10 +4,6 @@ from lc import *
 
 class Solution:
     def minSpeedOnTime(self, d: List[int], h: float) -> int:
-        return 1+bisect_left(range(1,10**7+1),-h,key=lambda x:-sum(ceil(i/x)for i in d[:-1])-d[-1]/x)if len(d)<h+1else-1
-
-class Solution:
-    def minSpeedOnTime(self, d: List[int], h: float) -> int:
         return h+1>len(d)and bisect_left(range(1,10**7+1),-h,key=lambda x:-sum(ceil(i/x)for i in d[:-1])-d[-1]/x)+1or-1
 
 test('''

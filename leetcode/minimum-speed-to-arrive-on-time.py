@@ -8,7 +8,7 @@ class Solution:
 
 class Solution:
     def minSpeedOnTime(self, d: List[int], h: float) -> int:
-        return(1+bisect_left(range(1,10**7+1),-h,key=lambda x:-sum(ceil(i/x)for i in d[:-1])-d[-1]/x),-1)[h+1<len(d)]
+        return(-1,1+bisect_left(range(1,10**7+1),-h,key=lambda x:-sum(ceil(i/x)for i in d[:-1])-d[-1]/x))[h+1>len(d)]
 
 test('''
 1870. Minimum Speed to Arrive on Time
@@ -60,6 +60,11 @@ Explanation: It is impossible because the earliest the third train can depart is
 Example 4:
 Input: [1,1,100000], hour= 2.01
 Output: 10000000
+
+Example 5:
+
+Input: [1,1], hour = 1.0
+Output: -1
 
 Constraints:
 

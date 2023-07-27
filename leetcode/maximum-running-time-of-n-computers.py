@@ -13,7 +13,7 @@ class Solution:
 
 class Solution:
     def maxRunTime(self, n: int, b: List[int]) -> int:
-        b.sort();s=sum(b);return next(s//n for _ in count()if not(b[-1]>s//n and(n:=n-1,s:=s-b.pop())))
+        b.sort();s=sum(b);return next(s//n for _ in count()if not(b[-1]>s/n and(n:=n-1,s:=s-b.pop())))
 
 test('''
 2141. Maximum Running Time of N Computers

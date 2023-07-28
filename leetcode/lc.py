@@ -252,7 +252,7 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
         for t in tests:
             args = tuple(map(vp, t['input']))
             expected = tuple(map(vp, t['output']))
-            func = getattr(cname(), dir(cname)[-1])
+            func = getattr(cname(), [*filter(lambda s:not s.startswith('__'),dir(cname))][-1])
             args, iargs, orig = vcast(func, args, init)
 
             if init:

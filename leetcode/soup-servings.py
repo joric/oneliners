@@ -4,14 +4,6 @@ from lc import *
 
 class Solution:
     def soupServings(self, n: int) -> float:
-        f=cache(lambda a,b:0.5 if a<=0 and b<=0 else 1 if a<=0 else 0 if b<=0 else (f(a-4,b)+f(a-3,b-1)+f(a-2,b-2)+f(a-1,b-3))/4);return n>4800 or f(n:=ceil(n/25.0),n)
-
-class Solution:
-    def soupServings(self, n: int) -> float:
-        f=cache(lambda a,b:(f(a-4,b)+f(a-3,b-1)+f(a-2,b-2)+f(a-1,b-3))/4if a>0<b else(0,(1,0.5)[b<=0])[a<=0]);return n>4800or f(n:=ceil(n/25),n)
-
-class Solution:
-    def soupServings(self, n: int) -> float:
         f=cache(lambda a,b:mean(f(a-4+x,b-x)for x in range(4))if a>0<b else((1,2)[b>0],0)[a>0]/2);return n>1e4or f(n:=ceil(n/25),n)
 
 test('''

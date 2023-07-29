@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def PredictTheWinner(self, n: List[int]) -> bool:
-        f=cache(lambda i,j:i<=j and max(n[i]-f(i+1,j),n[j]-f(i,j-1)));return f(0,len(n)-1)>=0
+        return(f:=cache(lambda i,j:i<=j and max(n[i]-f(i+1,j),n[j]-f(i,j-1))))(0,len(n)-1)>=0
 
 test('''
 486. Predict the Winner

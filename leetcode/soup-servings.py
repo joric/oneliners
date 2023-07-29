@@ -12,10 +12,6 @@ class Solution:
 
 class Solution:
     def soupServings(self, n: int) -> float:
-        f=cache(lambda a,b:(f(a-4,b)+f(a-3,b-1)+f(a-2,b-2)+f(a-1,b-3))/4if a>0<b else((0.5,1)[b>0],0)[a>0]);return n>4800or f(n:=ceil(n/25),n)
-
-class Solution:
-    def soupServings(self, n: int) -> float:
         f=cache(lambda a,b:mean(f(a-4+x,b-x)for x in range(4))if a>0<b else((1,2)[b>0],0)[a>0]/2);return n>1e4or f(n:=ceil(n/25),n)
 
 test('''

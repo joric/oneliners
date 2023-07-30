@@ -44,6 +44,22 @@ class Solution:
     def strangePrinter(self, s: str) -> int:
         return(f:=cache(lambda i,j:i<j and min([f(i,j-1)+1]+[f(i,k)+f(k,j-1)for k in range(i+1,j)if s[k-1]==s[j-1]])))(0,len(s))
 
+class Solution:
+    def strangePrinter(self, s: str) -> int:
+        def f(i,j):
+            if i>j:
+                return 0
+            r = f(i,j-1)+1
+            for k in range(i,j):
+                if s[k]==s[j]:
+                    r = min(r,f(i,k)+f(k+1,j-1))
+            return r
+        return f(0,len(s)-1)
+
+class Solution:
+    def strangePrinter(self, s: str) -> int:
+        return (f:=cache(lambda i,j:i<=j and min([f(i,j-1)+1]+[f(i,k)+f(k+1,j-1)for k in range(i,j)if s[k]==s[j]])))(0,len(s)-1)
+
 test('''
 664. Strange Printer
 Hard
@@ -74,6 +90,10 @@ Input: s = "aba"
 Output: 2
 Explanation: Print "aaa" first and then print "b" from the second place of the string, which will cover the existing character 'a'.
  
+
+Example 3:
+Input: s = "abc"
+Output: 3
 
 Constraints:
 

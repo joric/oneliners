@@ -34,15 +34,15 @@ class Solution:
             if i==j:
                 return 0
             r = f(i,j-1)+1
-            for k in range(i,j-1):
-                if s[k] == s[j-1]:
-                    r = min(r,f(i,k+1)+f(k+1,j-1))
+            for k in range(i+1,j):
+                if s[k-1] == s[j-1]:
+                    r = min(r,f(i,k)+f(k,j-1))
             return r
         return f(0, len(s))
 
 class Solution:
     def strangePrinter(self, s: str) -> int:
-        return(f:=cache(lambda i,j:i<j and min([f(i,j-1)+1]+[f(i,k+1)+f(k+1,j-1)for k in range(i,j-1)if s[k]==s[j-1]])))(0,len(s))
+        return(f:=cache(lambda i,j:i<j and min([f(i,j-1)+1]+[f(i,k)+f(k,j-1)for k in range(i+1,j)if s[k-1]==s[j-1]])))(0,len(s))
 
 test('''
 664. Strange Printer

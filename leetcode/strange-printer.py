@@ -22,7 +22,7 @@ class Solution:
 
 class Solution:
     def strangePrinter(self, s: str) -> int:
-        return(f:=cache(lambda s:s and(r:=f(s[:-1])+1,[r:=min(r,f(s[:i+1])+f(s[i+1:-1]))for i,c in enumerate(s[:-1])if c==s[-1]],r)[2]or 0))(s)
+        return(f:=cache(lambda s:s and(r:=f(s[:-1])+1,[r:=min(r,f(s[:i+1])+f(s[i+1:-1]))for i in range(len(s)-1)if s[i]==s[-1]],r)[2]or 0))(s)
 
 test('''
 664. Strange Printer

@@ -33,7 +33,7 @@ class Solution:
 
 class Solution:
     def strangePrinter(self, s: str) -> int:
-        return (f:=cache(lambda i,j:i<=j and min([f(i,j-1)+1]+[f(i,k)+f(k+1,j-1)for k in range(i,j)if s[k]==s[j]])))(0,len(s)-1)
+        return(f:=cache(lambda i,j:i<=j and min([f(i,j-1)+1]+[f(i,k)+f(k+1,j-1)for k in range(i,j)if s[k]==s[j]])))(0,len(s)-1)
 
 test('''
 664. Strange Printer

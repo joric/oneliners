@@ -17,14 +17,6 @@ class Solution:
 
 class Solution:
     def strangePrinter(self, s: str) -> int:
-        return(f:=cache(lambda s:s and reduce(lambda r,i:min(r,s[i]==s[-1]and f(s[:i+1])+f(s[i+1:-1])or r),range(len(s)-1),f(s[0:-1])+1)or 0))(s)
-
-class Solution:
-    def strangePrinter(self, s: str) -> int:
-        return(f:=cache(lambda s:s and(r:=f(s[:-1])+1,[r:=min(r,f(s[:i+1])+f(s[i+1:-1]))for i in range(len(s)-1)if s[i]==s[-1]],r)[2]or 0))(s)
-
-class Solution:
-    def strangePrinter(self, s: str) -> int:
         return(f:=cache(lambda s:s and min([f(s[:-1])+1]+[f(s[:i+1])+f(s[i+1:-1])for i in range(len(s)-1)if s[i]==s[-1]])or 0))(s)
 
 class Solution:

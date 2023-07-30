@@ -29,6 +29,7 @@ class Solution:
 
 class Solution:
     def strangePrinter(self, s: str) -> int:
+        @cache
         def f(i,j):
             if i==j:
                 return 0

@@ -8,11 +8,10 @@ class Solution:
         def f(s):
             if not s:
                 return 0
-            r = f(s[0:-1])+1
-            t = s[-1]
-            for i, c in enumerate(s[:-1]):
-                if c == t:
-                    r = min(r,f(s[0:i+1])+f(s[i+1:-1]))
+            r = f(s[:-1])+1
+            for i in range(len(s)-1):
+                if s[i]==s[-1]:
+                    r = min(r,f(s[:i+1])+f(s[i+1:-1]))
             return r
         return f(s)
 
@@ -27,6 +26,22 @@ class Solution:
 class Solution:
     def strangePrinter(self, s: str) -> int:
         return(f:=cache(lambda s:s and min([f(s[:-1])+1]+[f(s[:i+1])+f(s[i+1:-1])for i in range(len(s)-1)if s[i]==s[-1]])or 0))(s)
+
+class Solution:
+    def strangePrinter(self, s: str) -> int:
+        def f(i,j):
+            if i==j:
+                return 0
+            r = f(i,j-1)+1
+            for k in range(i,j-1):
+                if s[k] == s[j-1]:
+                    r = min(r,f(i,k+1)+f(k+1,j-1))
+            return r
+        return f(0, len(s))
+
+class Solution:
+    def strangePrinter(self, s: str) -> int:
+        return(f:=cache(lambda i,j:i<j and min([f(i,j-1)+1]+[f(i,k+1)+f(k+1,j-1)for k in range(i,j-1)if s[k]==s[j-1]])))(0,len(s))
 
 test('''
 664. Strange Printer

@@ -15,6 +15,22 @@ class Solution:
     def minimumDeleteSum(self, a: str, b: str) -> int:
         a,b=[*map(ord,a)],[*map(ord,b)];m,n=len(a),len(b);d=[[0 for _ in range(m)]for _ in range(n)];[setitem(d[i],j,max((j>0)*d[i][j-1],(i>0)*d[i-1][j],(a[j]==b[i])*((i>0<j)*d[i-1][j-1]+a[j])))for j,i in product(range(m),range(n))];return sum(a)+sum(b)-2*d[-1][-1]
 
+# another solution
+class Solution:
+    def minimumDeleteSum(self, a: str, b: str) -> int:
+        @cache
+        def f(i,j):
+            if i<len(a) and j<len(b) and a[i]==b[j]:
+                return f(i+1,j+1)
+            p = i<len(a) and f(i+1,j)+ord(a[i])
+            q = j<len(b) and f(i,j+1)+ord(b[j])
+            return min(p,q) if i<len(a) and j<len(b) else max(p,q)
+        return f(0,0)
+
+class Solution:
+    def minimumDeleteSum(self, a: str, b: str) -> int:
+        return(f:=cache(lambda i,j:f(i+1,j+1)if(t:=i<len(a)and j<len(b))and a[i]==b[j]else([max,min][t])(i<len(a)and f(i+1,j)+ord(a[i]),j<len(b)and f(i,j+1)+ord(b[j]))))(0,0)
+
 # https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/discuss/2312674/Python-recursive-solution
 
 class Solution:
@@ -45,21 +61,13 @@ class Solution:
     def minimumDeleteSum(self, a: str, b: str) -> int:
         t=ord;return(f:=cache(lambda i,j:min(f(i+1,j)+t(a[i]),f(i,j+1)+t(b[j]),f(i+1,j+1)+999*(a[i]!=b[j]))if(a[i:]and b[j:])else sum(map(t,b[j:]+a[i:]))))(0,0)
 
-# another solution
 class Solution:
     def minimumDeleteSum(self, a: str, b: str) -> int:
-        @cache
-        def f(i,j):
-            if i<len(a) and j<len(b) and a[i]==b[j]:
-                return f(i+1,j+1)
-            p = i<len(a) and f(i+1,j)+ord(a[i])
-            q = j<len(b) and f(i,j+1)+ord(b[j])
-            return min(p,q) if i<len(a) and j<len(b) else max(p,q)
-        return f(0,0)
+        return(f:=cache(lambda i,j:min(f(i+1,j)+ord(a[i]),f(i,j+1)+ord(b[j]),f(i+1,j+1)+999*(a[i]!=b[j]))if(a[i:]and b[j:])else sum(map(ord,b[j:]+a[i:]))))(0,0)
 
 class Solution:
     def minimumDeleteSum(self, a: str, b: str) -> int:
-        return(f:=cache(lambda i,j:f(i+1,j+1)if(t:=i<len(a)and j<len(b))and a[i]==b[j]else([max,min][t])(i<len(a)and f(i+1,j)+ord(a[i]),j<len(b)and f(i,j+1)+ord(b[j]))))(0,0)
+        return(f:=cache(lambda i,j:min(f(i+1,j+1)+999*(a[i]!=b[j]),f(i+1,j)+ord(a[i]),f(i,j+1)+ord(b[j]))if a[i:]and b[j:]else sum(map(ord,b[j:]+a[i:]))))(0,0)
 
 test('''
 712. Minimum ASCII Delete Sum for Two Strings

@@ -65,9 +65,9 @@ class Solution:
     def minimumDeleteSum(self, a: str, b: str) -> int:
         @cache
         def f(a,b):
-            if not(a and b):
-                return sum(map(ord,a+b))
-            return f(a[1:],b[1:]) if a[0]==b[0] else min(ord(a[0])+f(a[1:],b),ord(b[0])+f(a,b[1:]))
+            if a and b:
+                return f(a[1:],b[1:]) if a[0]==b[0] else min(ord(a[0])+f(a[1:],b),ord(b[0])+f(a,b[1:]))
+            return sum(map(ord,a+b))
         return f(a,b)
 
 class Solution:

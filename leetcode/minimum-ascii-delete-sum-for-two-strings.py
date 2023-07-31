@@ -45,6 +45,22 @@ class Solution:
     def minimumDeleteSum(self, a: str, b: str) -> int:
         t=ord;return(f:=cache(lambda i,j:min(f(i+1,j)+t(a[i]),f(i,j+1)+t(b[j]),f(i+1,j+1)+999*(a[i]!=b[j]))if(a[i:]and b[j:])else sum(map(t,b[j:]+a[i:]))))(0,0)
 
+# another solution
+class Solution:
+    def minimumDeleteSum(self, a: str, b: str) -> int:
+        @cache
+        def f(i,j):
+            if i<len(a) and j<len(b) and a[i]==b[j]:
+                return f(i+1,j+1)
+            p = i<len(a) and f(i+1,j)+ord(a[i])
+            q = j<len(b) and f(i,j+1)+ord(b[j])
+            return min(p,q) if i<len(a) and j<len(b) else max(p,q)
+        return f(0,0)
+
+class Solution:
+    def minimumDeleteSum(self, a: str, b: str) -> int:
+        return(f:=cache(lambda i,j:f(i+1,j+1)if(t:=i<len(a)and j<len(b))and a[i]==b[j]else([max,min][t])(i<len(a)and f(i+1,j)+ord(a[i]),j<len(b)and f(i,j+1)+ord(b[j]))))(0,0)
+
 test('''
 712. Minimum ASCII Delete Sum for Two Strings
 Medium

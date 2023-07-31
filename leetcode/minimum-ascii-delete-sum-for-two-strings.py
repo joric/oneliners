@@ -21,6 +21,17 @@ class Solution:
     def minimumDeleteSum(self, a: str, b: str) -> int:
         @cache
         def f(i,j):
+            if i<len(a) and j<len(b) and a[i]==b[j]:
+                return f(i+1,j+1)
+            p = i<len(a) and f(i+1,j)+ord(a[i])
+            q = j<len(b) and f(i,j+1)+ord(b[j])
+            return min(p,q) if i<len(a) and j<len(b) else max(p,q)
+        return f(0,0)
+
+class Solution:
+    def minimumDeleteSum(self, a: str, b: str) -> int:
+        @cache
+        def f(i,j):
             if i<len(a) and j<len(b):
                 return f(i+1,j+1) if a[i]==b[j] else min(f(i+1,j)+ord(a[i]),f(i,j+1)+ord(b[j]))
             return sum(map(ord,(b[j:],a[i:])[i<len(a)]))

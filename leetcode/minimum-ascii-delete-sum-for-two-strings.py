@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/discuss/3840746/Python-Simple-6-lines
+
 class Solution:
     def minimumDeleteSum(self, a: str, b: str) -> int:
         a,b = [*map(ord,a)],[*map(ord, b)]

@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def minimumDeleteSum(self, a: str, b: str) -> int:
-        a,b = [*map(ord,a)],[*map(ord, b)]
+        a,b = [*map(ord,a)],[*map(ord,b)]
         m,n = len(a),len(b)
         d = [[0 for _ in range(m)]for _ in range(n)]
         for j,i in product(range(m),range(n)):
@@ -14,6 +14,23 @@ class Solution:
 class Solution:
     def minimumDeleteSum(self, a: str, b: str) -> int:
         a,b=[*map(ord,a)],[*map(ord,b)];m,n=len(a),len(b);d=[[0 for _ in range(m)]for _ in range(n)];[setitem(d[i],j,max((j>0)*d[i][j-1],(i>0)*d[i-1][j],(a[j]==b[i])*((i>0<j)*d[i-1][j-1]+a[j])))for j,i in product(range(m),range(n))];return sum(a)+sum(b)-2*d[-1][-1]
+
+# https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/discuss/2312674/Python-recursive-solution
+
+class Solution:
+    def minimumDeleteSum(self, a: str, b: str) -> int:
+        @cache
+        def f(i,j):
+            if i>=len(a):
+                return sum(map(ord,b[j:]))
+            if j>=len(b):
+                return sum(map(ord,a[i:]))
+            return f(i+1,j+1) if a[i]==b[j] else min(f(i+1,j)+ord(a[i]),f(i,j+1)+ord(b[j]))
+        return f(0,0)
+
+class Solution:
+    def minimumDeleteSum(self, a: str, b: str) -> int:
+        return(f:=cache(lambda i,j:sum(map(ord,b[j:]))if i>=len(a)else sum(map(ord,a[i:]))if j>=len(b)else f(i+1,j+1)if a[i]==b[j]else min(f(i+1,j)+ord(a[i]),f(i,j+1)+ord(b[j]))))(0,0)
 
 test('''
 712. Minimum ASCII Delete Sum for Two Strings

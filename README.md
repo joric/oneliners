@@ -154,7 +154,7 @@ class Solution:
 
 #### Setting list values
 
-You can't use walrus operator for structures, however, wou can use `__setattr__` for dictionaries or `__setitem__` for lists if you need an assignment
+You can't use walrus operator for structures, however, you can use `__setattr__` for dictionaries or `__setitem__` for lists if you need an assignment
 (functions return `None`). There are also global functions that are shorter, `setattr(dict, ...)` and `setitem(list, ...)`.
 
 * https://leetcode.com/problems/add-one-row-to-tree/discuss/764593/Python-7-lines

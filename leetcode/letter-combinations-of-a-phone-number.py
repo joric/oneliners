@@ -14,7 +14,7 @@ class Solution:
 
 class Solution:
     def letterCombinations(self, d: str) -> List[str]:
-        return d and(map(''.join,product(*('abc def ghi jkl mno pqrs tuv wxyz'.split()[int(c)-2]for c in d))))
+        return d and map(''.join,product(*('abc def ghi jkl mno pqrs tuv wxyz'.split()[int(c)-2]for c in d)))
 
 test('''
 17. Letter Combinations of a Phone Number

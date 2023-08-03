@@ -8,6 +8,10 @@ class Solution:
     def letterCombinations(self, d: str) -> List[str]:
         return d and reduce(lambda a,c:[x+y for x in a for y in('abc def ghi jkl mno pqrs tuv wxyz'.split())[int(c)-2]],d,[''])
 
+class Solution:
+    def letterCombinations(self, d: str) -> List[str]:
+        return d and(''.join(p)for p in product(*('abc def ghi jkl mno pqrs tuv wxyz'.split()[int(c)-2]for c in d)))
+
 test('''
 17. Letter Combinations of a Phone Number
 Medium

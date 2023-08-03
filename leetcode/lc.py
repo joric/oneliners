@@ -172,7 +172,7 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
         elif 'TreeNode' in hint and type(v)!=TreeNode:
             return TreeNode.parse(v)
         elif 'List' in hint or is_iter(v):
-            return to_list(v)
+            return list(v) if type(v) is str else to_list(v)
         elif type(v) is float:
             return round(v, 5)
         if t:=next((t for t in (str,int,bool) if hint==str(t)), None):

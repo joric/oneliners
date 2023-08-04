@@ -12,6 +12,10 @@ class Solution:
     def wordBreak(self, s: str, d: List[str]) -> bool:
         return(f:=cache(lambda s:not s or any(f(s[len(w):])for w in d if s.find(w)==0)))(s)
 
+class Solution:
+    def wordBreak(self, s, d):
+        return(f:=cache(lambda s:not s or any(f(s[len(w):])*(s.find(w)==0)for w in d)))(s)
+
 test('''
 139. Word Break
 Medium

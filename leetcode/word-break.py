@@ -1,16 +1,16 @@
 from lc import *
 
-# https://leetcode.com/problems/word-break/discuss/2700603/4-line-pythonic
-
-class Solution:
-    def wordBreak(self, s: str, d: List[str]) -> bool:
-        return(f:=cache(lambda s:not s or any((f(s[len(w):])for w in d if s.find(w)==0))))(s)
-
 # https://leetcode.com/problems/word-break/discuss/716911/One-line-memoization
 
 class Solution:
     def wordBreak(self, s: str, d: List[str]) -> bool:
-        return(f:=cache(lambda s:not s or any(s[:len(w)]==w and f(s[len(w):])for w in d)))(s)
+        return(f:=cache(lambda s:not s or any(f(s[len(w):])and s[:len(w)]==w for w in d)))(s)
+
+# https://leetcode.com/problems/word-break/discuss/2700603/4-line-pythonic
+
+class Solution:
+    def wordBreak(self, s: str, d: List[str]) -> bool:
+        return(f:=cache(lambda s:not s or any(f(s[len(w):])for w in d if s.find(w)==0)))(s)
 
 test('''
 139. Word Break

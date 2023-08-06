@@ -17,7 +17,7 @@ class Solution:
 
 class Solution:
     def numMusicPlaylists(self, n: int, g: int, k: int) -> int:
-        return(f:=cache(lambda t,p,n,k:t and t>=p and(max(0,(n-p-k))*f(t-1,p,n,k)+p*f(t-1,p-1,n,k))%(10**9+7)or not p))(g,n,n,k)
+        return(f:=cache(lambda t,p,n,k:t and t>=p and(max(0,n-p-k)*f(t-1,p,n,k)+p*f(t-1,p-1,n,k))%(10**9+7)or not p))(g,n,n,k)
 
 test('''
 920. Number of Music Playlists

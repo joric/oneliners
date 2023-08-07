@@ -14,11 +14,9 @@ class Solution:
                 r = m
         return a[l//w][l%w]==t
 
-
 class Solution:
     def searchMatrix(self, a: List[List[int]], t: int) -> bool:
         l,r=0,(w:=len(a[0]))*len(a)-1;return next(a[l//w][l%w]==t for _ in count() if not(l<r and (m:=(l+r)//2,a[m//w][m%w]<t and (l:=m+1)or(r:=m))))
-
 
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:

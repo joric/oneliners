@@ -37,6 +37,10 @@ class Solution:
 
 class Solution:
     def searchMatrix(self, m: List[List[int]], t: int) -> bool:
+        return t in (x for r in m for x in r)
+
+class Solution:
+    def searchMatrix(self, m: List[List[int]], t: int) -> bool:
         return t in chain(*m)
 
 test('''

@@ -7,8 +7,9 @@ class Solution:
         l, r = 0, len(n)-1
         while l <= r:
             m = (l + r) // 2
-            if t == n[m]: return m
-            if n[l] <= n[m]:
+            if t == n[m]:
+                return m
+            elif n[l] <= n[m]:
                 if n[l] <= t <= n[m]:
                     r = m - 1
                 else:

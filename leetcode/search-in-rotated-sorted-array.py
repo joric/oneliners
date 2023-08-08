@@ -23,6 +23,10 @@ class Solution:
 
 class Solution:
     def search(self, n: List[int], t: int) -> int:
+        return dict(map(reversed,enumerate(n))).get(t,-1)
+
+class Solution:
+    def search(self, n: List[int], t: int) -> int:
         return n.index(t)if t in n else-1
 
 test('''

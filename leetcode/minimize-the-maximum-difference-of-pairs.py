@@ -21,6 +21,10 @@ class Solution:
     def minimizeMax(self, a: List[int], p: int) -> int:
         n=len(a);a.sort();b=sorted({a[i]-a[i-1]for i in range(1,n)});f=lambda x:next((c for _ in[0]*n if not(i<n and(a[i]-a[i-1]<=x and(c:=c+1,i:=i+1),i:=i+1))),(c:=0,i:=1));return p and b[bisect_left(b,p,key=f)]
 
+class Solution:
+    def minimizeMax(self, a: List[int], p: int) -> int:
+        n=len(a);a.sort();f=lambda x:next((c for _ in[0]*n if not(i<n and(a[i]-a[i-1]<=x and(c:=c+1,i:=i+1),i:=i+1))),(c:=0,i:=1));return p and bisect_left(range(20**7),p,key=f)
+
 test('''
 2616. Minimize the Maximum Difference of Pairs
 Medium

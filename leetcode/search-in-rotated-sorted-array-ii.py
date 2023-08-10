@@ -25,6 +25,8 @@ class Solution:
     def search(self, n: List[int], t: int) -> int:
         return t in n
 
+class Solution:search=contains
+
 test('''
 81. Search in Rotated Sorted Array II
 Medium

@@ -1,28 +1,25 @@
 from lc import *
 
 class Solution:
-    def search(self, nums: List[int], target: int) -> bool:
-        if(not nums):
-            return False 
-        l, r = 0, len(nums) - 1
-        while(l < r):
-            mid = (l + r) >> 1
-            left, middle, right = nums[l], nums[mid], nums[r]
-            if(middle == target):
+    def search(self, n: List[int], t: int) -> bool:
+        l, r = 0, len(n)-1
+        while l < r:
+            m = (l + r) // 2
+            if n[m]==t:
                 return True
-            if(middle > right):
-                if(left <= target < middle):
-                    r = mid
+            elif n[m]>n[r]:
+                if n[l]<=t<n[m]:
+                    r = m
                 else:
-                    l = mid + 1
-            elif(middle < right):
-                if(middle < target <= right):
-                    l = mid + 1
+                    l = m + 1
+            elif n[m]<n[r]:
+                if n[m]<t<=n[r]:
+                    l = m + 1
                 else:
-                    r = mid
+                    r = m
             else:
                 r -= 1
-        return nums[l] == target
+        return n[l]==t
 
 class Solution:
     def search(self, n: List[int], t: int) -> int:

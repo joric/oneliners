@@ -2,8 +2,6 @@ from lc import *
 
 class Solution:
     def search(self, n: List[int], t: int) -> int:
-        if not n:
-            return -1
         l, r = 0, len(n)-1
         while l <= r:
             m = (l + r) // 2

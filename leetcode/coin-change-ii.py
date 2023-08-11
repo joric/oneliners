@@ -68,7 +68,11 @@ Example 3:
 
 Input: amount = 10, coins = [10]
 Output: 1
- 
+
+Example 4:
+Input: amount = 0, coins = [7]
+Output: 1
+
 
 Constraints:
 

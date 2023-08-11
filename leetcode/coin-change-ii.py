@@ -12,6 +12,10 @@ class Solution:
 
 class Solution:
     def change(self, a: int, c: List[int]) -> int:
+        d=[1]+[0]*a;all(setitem(d,j,d[j]+d[j-c[i]])for i in range(len(c))for j in range(c[i],len(d)));return d[a]
+
+class Solution:
+    def change(self, a: int, c: List[int]) -> int:
         d=[1]+[0]*a;[setitem(d,j,d[j]+d[j-c[i]])for i in range(len(c))for j in range(c[i],len(d))];return d[a]
 
 # https://leetcode.com/problems/coin-change-ii/discuss/99209/Python-Recursive-Solution-(Slow)

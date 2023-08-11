@@ -29,6 +29,10 @@ class Solution:
     def change(self, a: int, c: List[int]) -> int:
         return(f:=cache(lambda a,i:not a or 0 if a<0 or i<0 else f(a-c[i],i)+f(a,i-1)))(a,len(c)-1)
 
+class Solution:
+    def change(self, a: int, c: List[int]) -> int:
+        return(f:=cache(lambda a,i:not a if a<0 or i==len(c)else f(a-c[i],i)+f(a,i+1)))(a,0)
+
 test('''
 518. Coin Change II
 Medium

@@ -35,6 +35,10 @@ class Solution:
 
 class Solution:
     def change(self, a: int, c: List[int]) -> int:
+        return(f:=cache(lambda a,i:c[i:]and a>=0and f(a-c[i],i)+f(a,i+1)or int(not a)))(a,0)
+
+class Solution:
+    def change(self, a: int, c: List[int]) -> int:
         return(f:=cache(lambda a,i:not a if not c[i:]or a<0else f(a-c[i],i)+f(a,i+1)))(a,0)
 
 test('''

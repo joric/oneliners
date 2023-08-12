@@ -175,7 +175,6 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
             return list(v) if type(v) is str else to_list(v)
         elif type(v) is float:
             return round(v, 5)
-        # leetcode does not autoconvert bool to int since Aug 2023
         elif type(v) is bool and hint==str(int):
             return v
         if t:=next((t for t in (str,bool,int) if hint==str(t)), None):

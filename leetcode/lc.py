@@ -175,6 +175,9 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
             return list(v) if type(v) is str else to_list(v)
         elif type(v) is float:
             return round(v, 5)
+        # leetcode does not autoconvert bool to int since Aug 2023
+        if type(v) is bool and hint==str(int):
+            return v
         if t:=next((t for t in (str,int,bool) if hint==str(t)), None):
             return t(v) if v is not None else None if t is not bool else False
         if parser:
@@ -258,9 +261,7 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
             if init:
                 init(*iargs)
 
-            # leetcode does not autoconvert output types since Aug 2023
-            #res = vc(func, 'return', func(*args))
-            res = func(*args)
+            res = vc(func, 'return', func(*args))
 
             if len(expected)==1:
                 expected = expected[0]

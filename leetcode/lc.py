@@ -176,7 +176,9 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
         elif type(v) is float:
             return round(v, 5)
         # leetcode does not autoconvert bool to int since Aug 2023
-        if t:=next((t for t in (str,bool) if hint==str(t)), None):
+        elif type(v) is bool and hint==str(int):
+            return v
+        if t:=next((t for t in (str,bool,int) if hint==str(t)), None):
             return t(v) if v is not None else None if t is not bool else False
         if parser:
             return parser(hint,v)
@@ -265,7 +267,9 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
                 expected = expected[0]
             expected = vc(func, 'return', expected)
 
-            ok = check(res, expected, *args)
+            # leetcode does not autoconvert bool to int since Aug 2023
+            ok = False if type(res)==bool and type(expected)==int else check(res, expected, *args)
+
             if type(ok) is tuple:
                 ok, res = ok[:2]
             print_res(ok, res, expected, *orig)

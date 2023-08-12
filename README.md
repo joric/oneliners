@@ -872,6 +872,7 @@ class Solution:
 * Instead of range(x), you can use the * operator on a list of anything, e.g. `range(8)` equals `[1]*8` (unless you really need that counter value).
 * Conditions like `if i<len(r)` may be replaced with `if r[i:]`, it's 3 characters shorter.
 * You can replace `set(n)` with `{*n}` (2 characters shorter).
+* You can use old js trick, `~~()` instead if `int()` (1 char shorter).
 
 ## References
 

@@ -14,6 +14,10 @@ class Solution:
     def uniquePathsWithObstacles(self, g: List[List[int]]) -> int:
         m,n=len(g),len(g[0]);return(f:=cache(lambda i,j:int(n>j>=0<=i<m and 0==g[i][j]and(i+j==m+n-2or f(i,j+1)+f(i+1,j)))))(0,0)
 
+class Solution:
+    def uniquePathsWithObstacles(self, g: List[List[int]]) -> int:
+        m,n=len(g),len(g[0]);return(f:=cache(lambda i,j:~~(n>j>=0<=i<m and 0==g[i][j]and(i+j==m+n-2or f(i,j+1)+f(i+1,j)))))(0,0)
+
 test('''
 63. Unique Paths II
 Medium
@@ -58,6 +62,10 @@ Output: 0
 Example 4:
 Input: obstagleGrid = [[0]]
 Output: 1
+
+Example 5:
+Input: obstagleGrid = [[1]]
+Output: 0
 
 
 Constraints:

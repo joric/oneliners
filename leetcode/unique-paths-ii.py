@@ -7,7 +7,7 @@ class Solution:
         def f(i,j):
             if not (n>j>=0<=i<m and not g[i][j]):
                 return 0
-            return 1 if i==m-1 and j==n-1 else sum(map(f,(i,i+1),(j+1,j)))
+            return 1 if i==m-1 and j==n-1 else f(i+1,j)+f(i,j+1)
         return f(0,0)
 
 class Solution:

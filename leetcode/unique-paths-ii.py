@@ -26,6 +26,10 @@ class Solution:
     def uniquePathsWithObstacles(self, g: List[List[int]]) -> int:
         m,n=len(g),len(g[0]);return(f:=cache(lambda i,j:int(n>j>=0<=i<m and 0==g[i][j]and((i,j)==(m-1,n-1)or sum(map(f,(i,i+1),(j+1,j)))))))(0,0)
 
+class Solution:
+    def uniquePathsWithObstacles(self, g):
+        m,n=len(g),len(g[0]);return(f:=cache(lambda i,j:int(n>j>=0<=i<m and 0==g[i][j]and(i+j==m+n-2or f(i,j+1)+f(i+1,j)))))(0,0)
+
 test('''
 63. Unique Paths II
 Medium

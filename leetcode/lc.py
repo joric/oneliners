@@ -266,7 +266,7 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
                 expected = expected[0]
             expected = vc(func, 'return', expected)
 
-            # leetcode does not autoconvert bool to int since Aug 2023
+            # leetcode does not compare bool with int since Aug 2023
             ok = False if type(res)==bool and type(expected)==int else check(res, expected, *args)
 
             if type(ok) is tuple:

@@ -258,7 +258,9 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
             if init:
                 init(*iargs)
 
-            res = vc(func, 'return', func(*args))
+            # leetcode does not autoconvert output types since Aug 2023
+            #res = vc(func, 'return', func(*args))
+            res = func(*args)
 
             if len(expected)==1:
                 expected = expected[0]

@@ -24,7 +24,7 @@ class Solution:
 
 class Solution:
     def validPartition(self, a: List[int]) -> bool:
-        n=len(a);return(f:=cache(lambda i:i==n or(i<n-1and a[i]==a[i+1]and f(i+2))or(i<n-2and (a[i]==a[i+1]==a[i+2]and f(i+3)or a[i]+1==a[i+1]==a[i+2]-1and f(i+3)))))(0)
+        n=len(a);return(f:=cache(lambda i:i==n or(i<n-1and a[i]==a[i+1]and f(i+2))or(i<n-2and(a[i]==a[i+1]==a[i+2]or a[i]+1==a[i+1]==a[i+2]-1)and f(i+3))))(0)
 
 test('''
 2369. Check if There is a Valid Partition For The Array

@@ -8,13 +8,25 @@ class Solution:
         d = [False]*3+[True]
         for i in range(n):
             d[i%4] = False
-            if i>=1 and a[i]==a[i-1]:
+            if i>0 and a[i]==a[i-1]:
                 d[i%4] |= d[(i-2)%4]
-            if i>=2 and a[i]==a[i-1]==a[i-2]:
+            if i>1 and a[i]==a[i-1]==a[i-2]:
                 d[i%4] |= d[(i-3)%4]
-            if i>=2 and a[i]==a[i-1]+1==a[i-2]+2:
+            if i>1 and a[i]==a[i-1]+1==a[i-2]+2:
                 d[i%4] |= d[(i-3)%4]
         return d[(n-1)%4]
+
+class Solution:
+    def validPartition(self, a: List[int]) -> bool:
+        d = [1]+[0]*len(a)
+        for i in range(len(a)):
+            if i>0 and a[i]==a[i-1]:
+                d[i+1] |= d[i-1]
+            if i>1 and a[i]==a[i-1]==a[i-2]:
+                d[i+1] |= d[i-2]
+            if i>1 and a[i]==a[i-1]+1==a[i-2]+2:
+                d[i+1] |= d[i-2]
+        return d[-1]
 
 # https://leetcode.com/problems/check-if-there-is-a-valid-partition-for-the-array/discuss/2390825/Python-or-Recursion
 
@@ -23,20 +35,14 @@ class Solution:
         n = len(a)
         @cache
         def f(i):
-            if i == n:
+            if i==n:
                 return True
-            if i+1 < n and a[i] == a[i+1] and f(i+2):
+            if i<n-1 and a[i]==a[i+1] and f(i+2):
                 return True
-            if i+2 < n and a[i] == a[i+1] == a[i+2] and f(i+3):
-                return True
-            if i+2 < n and a[i]+1 == a[i+1] == a[i+2]-1 and f(i+3):
+            if i<n-2 and (a[i]==a[i+1]==a[i+2] or a[i]==a[i+1]-1==a[i+2]-2) and f(i+3):
                 return True
             return False
         return f(0)
-
-class Solution:
-    def validPartition(self, a: List[int]) -> bool:
-        n=len(a);return(f:=cache(lambda i:i==n or(i+1<n and a[i]==a[i+1] and f(i+2)) or (i+2<n and a[i]==a[i+1]==a[i+2] and f(i+3)) or (i+2<n and a[i]+1==a[i+1]==a[i+2]-1 and f(i+3))))(0)
 
 class Solution:
     def validPartition(self, a: List[int]) -> bool:

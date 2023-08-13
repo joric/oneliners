@@ -4,18 +4,6 @@ from lc import *
 
 class Solution:
     def validPartition(self, a: List[int]) -> bool:
-        n = len(a)
-        d = [False]*3+[True]
-        for i in range(n):
-            d[i%4] = False
-            if i>0 and a[i]==a[i-1]:
-                d[i%4] |= d[(i-2)%4]
-            if i>1 and (a[i]==a[i-1]==a[i-2] or a[i]==a[i-1]+1==a[i-2]+2):
-                d[i%4] |= d[(i-3)%4]
-        return d[(n-1)%4]
-
-class Solution:
-    def validPartition(self, a: List[int]) -> bool:
         d = [1]+[0]*len(a)
         for i in range(len(a)):
             if i>0 and a[i]==a[i-1]:
@@ -23,6 +11,17 @@ class Solution:
             if i>1 and (a[i]==a[i-1]==a[i-2] or a[i]==a[i-1]+1==a[i-2]+2):
                 d[i+1] |= d[i-2]
         return d[-1]
+
+class Solution:
+    def validPartition(self, a: List[int]) -> bool:
+        d = [False]*3+[True]
+        for i in range(len(a)):
+            d[i%4] = False
+            if i>0 and a[i]==a[i-1]:
+                d[i%4] |= d[(i-2)%4]
+            if i>1 and (a[i]==a[i-1]==a[i-2] or a[i]==a[i-1]+1==a[i-2]+2):
+                d[i%4] |= d[(i-3)%4]
+        return d[(len(a)-1)%4]
 
 # https://leetcode.com/problems/check-if-there-is-a-valid-partition-for-the-array/discuss/2390825/Python-or-Recursion
 

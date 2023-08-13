@@ -6,7 +6,7 @@ class Solution:
     def validPartition(self, a: List[int]) -> bool:
         d = [1]+[0]*len(a)
         for i in range(len(a)):
-            if i>0 and a[i]==a[i-1]:
+            if i>0 and a[i-1]==a[i]:
                 d[i+1] |= d[i-1]
             if i>1 and (a[i-2]==a[i-1]==a[i] or a[i-2]==a[i-1]-1==a[i]-2):
                 d[i+1] |= d[i-2]
@@ -17,7 +17,7 @@ class Solution:
         d = [False]*3+[True]
         for i in range(len(a)):
             d[i%4] = False
-            if i>0 and a[i]==a[i-1]:
+            if i>0 and a[i-1]==a[i]:
                 d[i%4] |= d[(i-2)%4]
             if i>1 and (a[i-2]==a[i-1]==a[i] or a[i-2]==a[i-1]-1==a[i]-2):
                 d[i%4] |= d[(i-3)%4]

@@ -8,7 +8,7 @@ class Solution:
         for i in range(len(a)):
             if i>0 and a[i]==a[i-1]:
                 d[i+1] |= d[i-1]
-            if i>1 and (a[i]==a[i-1]==a[i-2] or a[i]==a[i-1]+1==a[i-2]+2):
+            if i>1 and (a[i-2]==a[i-1]==a[i] or a[i-2]==a[i-1]-1==a[i]-2):
                 d[i+1] |= d[i-2]
         return d[-1]
 
@@ -19,7 +19,7 @@ class Solution:
             d[i%4] = False
             if i>0 and a[i]==a[i-1]:
                 d[i%4] |= d[(i-2)%4]
-            if i>1 and (a[i]==a[i-1]==a[i-2] or a[i]==a[i-1]+1==a[i-2]+2):
+            if i>1 and (a[i-2]==a[i-1]==a[i] or a[i-2]==a[i-1]-1==a[i]-2):
                 d[i%4] |= d[(i-3)%4]
         return d[(len(a)-1)%4]
 

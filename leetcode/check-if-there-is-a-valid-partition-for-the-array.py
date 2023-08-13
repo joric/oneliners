@@ -24,10 +24,6 @@ class Solution:
 
 class Solution:
     def validPartition(self, a: List[int]) -> bool:
-        n=len(a);return(f:=cache(lambda i:i==n or(i<n-1and a[i]==a[i+1]and f(i+2))or(i<n-2and(a[i]==a[i+1]==a[i+2]or a[i]+1==a[i+1]==a[i+2]-1)and f(i+3))))(0)
-
-class Solution:
-    def validPartition(self, a: List[int]) -> bool:
         n=len(a);return(f:=cache(lambda i:(i<n-2and(a[i]==a[i+1]==a[i+2]or a[i]+1==a[i+1]==a[i+2]-1)and f(i+3))or(i<n-1and a[i]==a[i+1]and f(i+2))or i==n))(0)
 
 test('''

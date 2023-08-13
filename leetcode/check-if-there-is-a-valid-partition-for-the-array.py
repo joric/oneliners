@@ -1,5 +1,21 @@
 from lc import *
 
+# https://leetcode.com/problems/check-if-there-is-a-valid-partition-for-the-array/discuss/2390802/JavaC%2B%2BPython-DP-O(1)-Space
+
+class Solution:
+    def validPartition(self, a: List[int]) -> bool:
+        n = len(a)
+        d = [False]*3+[True]
+        for i in range(n):
+            d[i%4] = False
+            if i>=1 and a[i]==a[i-1]:
+                d[i%4] |= d[(i-2)%4]
+            if i>=2 and a[i]==a[i-1]==a[i-2]:
+                d[i%4] |= d[(i-3)%4]
+            if i>=2 and a[i]==a[i-1]+1==a[i-2]+2:
+                d[i%4] |= d[(i-3)%4]
+        return d[(n-1)%4]
+
 # https://leetcode.com/problems/check-if-there-is-a-valid-partition-for-the-array/discuss/2390825/Python-or-Recursion
 
 class Solution:
@@ -24,7 +40,7 @@ class Solution:
 
 class Solution:
     def validPartition(self, a: List[int]) -> bool:
-        n=len(a);return(f:=cache(lambda i:(i<n-2and(a[i]==a[i+1]==a[i+2]or a[i]+1==a[i+1]==a[i+2]-1)and f(i+3))or(i<n-1and a[i]==a[i+1]and f(i+2))or i==n))(0)
+        n=len(a);return(f:=cache(lambda i:(i<n-2and(a[i]==a[i+1]==a[i+2]or a[i]==a[i+1]-1==a[i+2]-2)and f(i+3))or(i<n-1and a[i]==a[i+1]and f(i+2))or i==n))(0)
 
 test('''
 2369. Check if There is a Valid Partition For The Array

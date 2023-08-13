@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def validPartition(self, a: List[int]) -> bool:
-        d = [1]+[0]*len(a)
+        d = [True]+[False]*len(a)
         for i in range(len(a)):
             if i>0 and a[i]==a[i-1]:
                 d[i+1] |= d[i-1]

@@ -53,8 +53,12 @@ class Solution:
         return (f:=lambda a,k:(p:=choice(a),g:=lambda o,p:[x for x in a if o(x,p)],l:=g(lt,p),m:=g(eq,p),r:=g(gt,p)) and (f(r,k) if k<=len(r) else p if k<=len(r)+len(m) else f(a,k)))(a,k)
 
 class Solution:
-    def findKthLargest(self, nums: List[int], k: int) -> int:
-        return nlargest(k, heapify(nums) or nums)[-1]
+    def findKthLargest(self, n: List[int], k: int) -> int:
+        return nlargest(k, heapify(n) or n)[-1]
+
+class Solution:
+    def findKthLargest(self, n: List[int], k: int) -> int:
+        return nlargest(k, n)[-1]
 
 class Solution:
     def findKthLargest(self, n: List[int], k: int) -> int:

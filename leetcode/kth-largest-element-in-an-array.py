@@ -70,6 +70,10 @@ class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         return nlargest(k, heapify(nums) or nums)[-1]
 
+class Solution:
+    def findKthLargest(self, n: List[int], k: int) -> int:
+        return sorted(n)[-k]
+
 test('''
 215. Kth Largest Element in an Array
 Medium

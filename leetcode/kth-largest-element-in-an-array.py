@@ -54,11 +54,11 @@ class Solution:
 
 class Solution:
     def findKthLargest(self, n: List[int], k: int) -> int:
-        return nlargest(k, heapify(n) or n)[-1]
+        return nlargest(k,heapify(n)or n)[-1]
 
 class Solution:
     def findKthLargest(self, n: List[int], k: int) -> int:
-        return nlargest(k, n)[-1]
+        return nlargest(k,n)[-1]
 
 class Solution:
     def findKthLargest(self, n: List[int], k: int) -> int:

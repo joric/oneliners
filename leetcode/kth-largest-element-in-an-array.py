@@ -21,7 +21,6 @@ class Solution:
                 return quickselect(l,i-1)
         return quickselect(0, len(a)-1)
 
-
 class Solution:
     def findKthLargest(self, a: List[int], k: int) -> int:
         p = choice(a)
@@ -36,20 +35,8 @@ class Solution:
 
 class Solution:
     def findKthLargest(self, a: List[int], k: int) -> int:
-        p = random.choice(a)
-        l = [x for x in a if x<p]
-        m = [x for x in a if x==p]
-        r = [x for x in a if x>p]
-        if k <= len(r):
-            return self.findKthLargest(r,k)
-        elif k <= len(r)+len(m):
-            return p
-        return self.findKthLargest(l,k-len(m)-len(r))
-
-class Solution:
-    def findKthLargest(self, a: List[int], k: int) -> int:
         def f(a,k):
-            p = random.choice(a)
+            p = choice(a)
             g = lambda o,p: [x for x in a if o(x,p)]
             l = g(lt,p)
             m = g(eq,p)
@@ -63,8 +50,7 @@ class Solution:
 
 class Solution:
     def findKthLargest(self, a: List[int], k: int) -> int:
-        return (f:=lambda a,k:(p:= random.choice(a),g:=lambda o,p:[x for x in a if o(x,p)],l:=g(lt,p),
-        m:=g(eq,p),r:=g(gt,p)) and (f(r,k) if k<=len(r) else p if k<=len(r)+len(m) else f(a,k)))(a,k)
+        return (f:=lambda a,k:(p:=choice(a),g:=lambda o,p:[x for x in a if o(x,p)],l:=g(lt,p),m:=g(eq,p),r:=g(gt,p)) and (f(r,k) if k<=len(r) else p if k<=len(r)+len(m) else f(a,k)))(a,k)
 
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:

@@ -56,10 +56,6 @@ class Solution:
 
 class Solution:
     def partition(self, h: ListNode, x: int) -> ListNode:
-        f=lambda r,o:r and(o(r.val,x)and[str(r.val)]or[])+f(r.next,o)or[];return ListNode(','.join(f(h,lt)+f(h,ge)))
-
-class Solution:
-    def partition(self, h: ListNode, x: int) -> ListNode:
         f=lambda r,o:r and([],[str(r.val)])[o(r.val,x)]+f(r.next,o)or[];return ListNode(','.join(f(h,lt)+f(h,ge)))
 
 test('''

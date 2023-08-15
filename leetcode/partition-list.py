@@ -52,17 +52,7 @@ class Solution:
 
 class Solution:
     def partition(self, h: ListNode, x: int) -> ListNode:
-        c=[],[];(f:=lambda o:o and(c[o.val<x].append(str(o.val)),f(o.next)))(h);return ListNode(','.join(c[1]+c[0]))
-
-class Solution:
-    def partition(self, h: ListNode, x: int) -> ListNode:
-        def f(r,o):
-            if not r:
-                return []
-            if o(r.val,x):
-                return [str(r.val)] + f(r.next,o)
-            return f(r.next,o)
-        return ListNode(','.join(f(h,lt)+f(h,ge)))
+        c=[],[];(f:=lambda r:r and(c[r.val<x].append(str(r.val)),f(r.next)))(h);return ListNode(','.join(c[1]+c[0]))
 
 class Solution:
     def partition(self, h: ListNode, x: int) -> ListNode:

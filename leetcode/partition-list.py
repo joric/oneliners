@@ -34,15 +34,13 @@ class Solution:
         return a.next
 
 class Solution:
-    def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
-        tail = h,a = [ListNode(),ListNode()]
-        while head:
-            tail[head.val >= x].next = head
-            tail[head.val >= x] = head
-            head = head.next
-        tail[1].next = None
-        tail[0].next = a.next
-        return h.next
+    def partition(self, h: Optional[ListNode], x: int) -> Optional[ListNode]:
+        t=a,b=[ListNode(),ListNode()]
+        while h:
+            t[h.val>=x].next,t[h.val>=x],h=h,h,h.next
+        t[1].next = None
+        t[0].next = b.next
+        return a.next
 
 class Solution:
     def partition(self, h: ListNode, x: int) -> ListNode:

@@ -34,6 +34,17 @@ class Solution:
         return a.next
 
 class Solution:
+    def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
+        tail = h,a = ListNode(), ListNode()
+        while head:
+            tail[head.val >= x].next = head
+            tail[head.val >= x] = head
+            head = head.next
+        tail[1].next = None
+        tail[0].next = a.next
+        return h.next
+
+class Solution:
     def partition(self, h: ListNode, x: int) -> ListNode:
         f=lambda x:x and[x.val]+f(x.next)or[];return ListNode(','.join(map(str,[i for i in f(h)if i<x]+[i for i in f(h)if i>=x])))
 

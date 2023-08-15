@@ -37,6 +37,10 @@ class Solution:
     def partition(self, h: ListNode, x: int) -> ListNode:
         f=lambda x:x and[x.val]+f(x.next)or[];return ListNode(','.join(map(str,[i for i in f(h)if i<x]+[i for i in f(h)if i>=x])))
 
+class Solution:
+    def partition(self, h: ListNode, x: int) -> ListNode:
+        f=lambda x:x and[x.val]+f(x.next)or[];c=[],[];[c[i>=x].append(str(i))for i in f(h)];return ListNode(','.join(chain(*c)))
+
 test('''
 86. Partition List
 Medium

@@ -35,7 +35,7 @@ class Solution:
 
 class Solution:
     def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
-        tail = h,a = ListNode(), ListNode()
+        tail = h,a = [ListNode(),ListNode()]
         while head:
             tail[head.val >= x].next = head
             tail[head.val >= x] = head

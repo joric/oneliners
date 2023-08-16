@@ -19,15 +19,12 @@ class Solution:
 class Solution:
     def maxSlidingWindow(self, a: List[int], k: int) -> List[int]:
         n = len(a)
-
         p = [a[0]]+[0]*(n-1)
         for i in range(1,n):
             p[i] = max(p[i-1],a[i]) if i%k else a[i]
-
         s = [0]*(n-1)+[a[n-1]]
         for i in range(n-2,-1,-1):
             s[i] = max(s[i+1],a[i]) if (i+1)%k else a[i]
-
         return [max(s[i],p[i+k-1]) if i+k-1<n else s[i] for i in range(n-k+1)]
 
 # TLE

@@ -26,6 +26,14 @@ class Solution:
             d.append(p[0]), d[0]==p[0]-k and d.popleft(), r.append(nums[d[0]])) and r,
             enumerate(nums), [])[k-1:]
 
+class Solution:
+    def maxSlidingWindow(self, n: List[int], k: int) -> List[int]:
+        d=deque();return reduce(lambda r,p:(next(_ for _ in count()if not(d and p[1]>=n[d[-1]]and d.pop())),d.append(p[0]),d[0]==p[0]-k and d.popleft(),r.append(n[d[0]]))and r,enumerate(n),[])[k-1:]
+
+# TLE
+class Solution:
+    def maxSlidingWindow(self, n: List[int], k: int) -> List[int]:
+        return[max(n[i:i+k])for i in range(len(n)-k+1)]
 
 test('''
 239. Sliding Window Maximum

@@ -1,5 +1,49 @@
 from lc import *
 
+# https://leetcode.com/problems/sliding-window-maximum/discuss/1425046/C%2B%2B-oror-Prefix-and-Suffix-Sum-of-window-oror-O(n)
+
+class Solution:
+    def maxSlidingWindow(self, a: List[int], k: int) -> List[int]:
+        n = len(a)
+        p = [a[0]]+[0]*(n-1)
+        s = [0]*(n-1)+[a[n-1]]
+        i = 1
+        j = n-2
+        while i<n and j>=0:
+            p[i] = max(p[i-1],a[i]) if i%k else a[i]
+            s[j] = max(s[j+1],a[j]) if (j+1)%k else a[j]
+            i+=1
+            j-=1
+        return [max(s[i],p[i+k-1]) if i+k-1<n else s[i] for i in range(n-k+1)]
+
+class Solution:
+    def maxSlidingWindow(self, a: List[int], k: int) -> List[int]:
+        n = len(a)
+
+        p = [a[0]]+[0]*(n-1)
+        for i in range(1,n):
+            p[i] = max(p[i-1],a[i]) if i%k else a[i]
+
+        s = [0]*(n-1)+[a[n-1]]
+        for i in range(n-2,-1,-1):
+            s[i] = max(s[i+1],a[i]) if (i+1)%k else a[i]
+
+        return [max(s[i],p[i+k-1]) if i+k-1<n else s[i] for i in range(n-k+1)]
+
+# TLE
+class Solution:
+    def maxSlidingWindow(self, a: List[int], k: int) -> List[int]:
+        n = len(a)
+        p = reduce(lambda p,i:p+[max(p[-1],a[i])if i%k else a[i]],range(1,n),[a[0]])
+        s = reduce(lambda s,i:[max(s[0],a[i])if (i+1)%k else a[i]]+s,range(n-2,-1,-1),[a[n-1]])
+        return [max(s[i],p[i+k-1]) if i+k-1<n else s[i] for i in range(n-k+1)]
+
+# TLE
+class Solution:
+    def maxSlidingWindow(self, n: List[int], k: int) -> List[int]:
+        return[max(n[i:i+k])for i in range(len(n)-k+1)]
+
+#  https://leetcode.com/problems/sliding-window-maximum/discuss/65901/9-lines-Ruby-11-lines-Python-O(n)
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
         r, d = [], deque()
@@ -29,11 +73,6 @@ class Solution:
 class Solution:
     def maxSlidingWindow(self, n: List[int], k: int) -> List[int]:
         d=deque();return reduce(lambda r,p:(next(_ for _ in count()if not(d and p[1]>=n[d[-1]]and d.pop())),d.append(p[0]),d[0]==p[0]-k and d.popleft(),r.append(n[d[0]]))and r,enumerate(n),[])[k-1:]
-
-# TLE
-class Solution:
-    def maxSlidingWindow(self, n: List[int], k: int) -> List[int]:
-        return[max(n[i:i+k])for i in range(len(n)-k+1)]
 
 test('''
 239. Sliding Window Maximum

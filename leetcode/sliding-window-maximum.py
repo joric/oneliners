@@ -83,6 +83,25 @@ class Solution:
     def maxSlidingWindow(self, n: List[int], k: int) -> List[int]:
         d=deque();return reduce(lambda r,p:(next(_ for _ in count()if not(d and p[1]>=n[d[-1]]and d.pop())),d.append(p[0]),d[0]==p[0]-k and d.popleft(),r.append(n[d[0]]))and r,enumerate(n),[])[k-1:]
 
+# https://leetcode.com/problems/sliding-window-maximum/discuss/620707/Sliding-window-template
+
+from sortedcontainers import SortedList
+class Solution:
+    def maxSlidingWindow(self, a: List[int], k: int) -> List[int]:
+        p,l,r,w=[],0,0,SortedList()
+        while r<len(a):
+            w.add(a[r])
+            if len(w)>=k:
+                p.append(w[-1])
+                w.remove(a[l])
+                l += 1
+            r += 1
+        return p
+
+class Solution:
+    def maxSlidingWindow(self, a: List[int], k: int) -> List[int]:
+        p,l,r,w=[],0,0,__import__('sortedcontainers').SortedList();return next(p for _ in a*2 if not(r<len(a)and(w.add(a[r]),len(w)>=k and(p.append(w[-1]),w.remove(a[l]),l:=l+1),r:=r+1)))
+
 test('''
 239. Sliding Window Maximum
 Hard

@@ -1,5 +1,10 @@
 from lc import *
 
+# TLE
+class Solution:
+    def maxSlidingWindow(self, n: List[int], k: int) -> List[int]:
+        return[max(n[i:i+k])for i in range(len(n)-k+1)]
+
 # https://leetcode.com/problems/sliding-window-maximum/discuss/1425046/C%2B%2B-oror-Prefix-and-Suffix-Sum-of-window-oror-O(n)
 
 class Solution:
@@ -35,10 +40,18 @@ class Solution:
         s = reduce(lambda s,i:[max(s[0],a[i])if (i+1)%k else a[i]]+s,range(n-2,-1,-1),[a[n-1]])
         return [max(s[i],p[i+k-1]) if i+k-1<n else s[i] for i in range(n-k+1)]
 
-# TLE
 class Solution:
-    def maxSlidingWindow(self, n: List[int], k: int) -> List[int]:
-        return[max(n[i:i+k])for i in range(len(n)-k+1)]
+    def maxSlidingWindow(self, a: List[int], k: int) -> List[int]:
+        n = len(a)
+        p = reduce(lambda p,i:p.append(max(p[-1],a[i])if i%k else a[i])or p,range(1,n),[a[0]])
+        s = reduce(lambda s,i:s.append(max(s[-1],a[i])if (i+1)%k else a[i])or s,range(n-2,-1,-1),[a[n-1]])[::-1]
+        return [max(s[i],p[i+k-1]) if i+k-1<n else s[i] for i in range(n-k+1)]
+
+
+class Solution:
+    def maxSlidingWindow(self, a: List[int], k: int) -> List[int]:
+        n=len(a);p,s=reduce(lambda p,i:p.append(max(p[-1],a[i])if i%k else a[i])or p,range(1,n),[a[0]]),reduce(lambda s,i:s.append(max(s[-1],a[i])if (i+1)%k else a[i])or s,range(n-2,-1,-1),[a[n-1]])[::-1];return [max(s[i],p[i+k-1]) if i+k-1<n else s[i] for i in range(n-k+1)]
+
 
 #  https://leetcode.com/problems/sliding-window-maximum/discuss/65901/9-lines-Ruby-11-lines-Python-O(n)
 class Solution:

@@ -124,6 +124,10 @@ class Solution:
     def maxSlidingWindow(self, a: List[int], k: int) -> List[int]:
         p,w=[],__import__('sortedcontainers').SortedList();f=lambda l,r:r<len(a)and(w.add(a[r]),f(l+bool(len(w)>=k and(p.append(w[-1]),w.remove(a[l]))),r+1));f(0,0);return p
 
+class Solution:
+    def maxSlidingWindow(self, a: List[int], k: int) -> List[int]:
+        np=__import__('numpy');return np.max(np.lib.stride_tricks.sliding_window_view(a,k),1)
+
 test('''
 239. Sliding Window Maximum
 Hard

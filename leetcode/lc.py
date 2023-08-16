@@ -215,6 +215,8 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
             t = str(type(res))
             if 'TreeNode' in t or 'ListNode' in t:
                 return str(res)==str(expected)
+            elif 'numpy.ndarray' in t:
+                return all(x==y for x,y in zip(res,expected))
             return res==expected
 
     custom_class_tests = classname is not None

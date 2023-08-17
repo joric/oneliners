@@ -14,7 +14,7 @@ class Solution:
 
 class Solution:
     def updateMatrix(self, m: List[List[int]]) -> List[List[int]]:
-        a=[[x*10000for x in r]for r in m];[(a:=[*map(list,zip(*a[::-1]))],[setitem(r,j,min(r[j],r[j-1]+1))for r in a for j in range(1,len(r))])for _ in range(4)];return a
+        a=[[x*10000for x in r]for r in m];[(a:=[*map(list,zip(*a[::-1]))],[setitem(r,j,min(r[j],r[j-1]+1))for r in a for j in range(1,len(r))])for _ in[0]*4];return a
 
 test('''
 542. 01 Matrix

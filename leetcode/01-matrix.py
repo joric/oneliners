@@ -18,7 +18,7 @@ class Solution:
 
 class Solution:
     def updateMatrix(self, m: List[List[int]]) -> List[List[int]]:
-        return reduce(lambda a,_:[*map(list,zip(*map(lambda r:accumulate(r,lambda m,x:min(m+1,x)),a[::-1])))],[0]*4,[[x*9999for x in r]for r in m])
+        return reduce(lambda a,_:[*map(list,zip(*map(lambda r:accumulate(r,lambda x,y:min(x+1,y)),a[::-1])))],[0]*4,[[x*9999for x in r]for r in m])
 
 test('''
 542. 01 Matrix

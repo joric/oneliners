@@ -1,5 +1,22 @@
 from lc import *
 
+# numpy
+
+import numpy as np
+
+class Solution:
+    def maximalNetworkRank(self, n: int, r: List[List[int]]) -> int:
+        a=np.zeros((n,n),int)
+        u,v=r and zip(*r)or[[]]*2
+        a[u,v]+=1
+        a+=a.T
+        b=a.sum(0)
+        return(b[:,None]+b[None]-a-A.diag(b)).max()
+
+class Solution:
+    def maximalNetworkRank(self, n: int, r: List[List[int]]) -> int:
+        p=__import__('numpy');a=p.zeros((n,n),int);u,v=r and zip(*r)or[[]]*2;a[u,v]+=1;a+=a.T;b=a.sum(0);return(b[:,None]+b[None]-a-p.diag(b)).max()
+
 # https://leetcode.com/problems/maximal-network-rank/discuss/1026997/Python3-Easy-O(N2)-Solution-4-Lines
 
 class Solution:
@@ -63,6 +80,11 @@ Example 3:
 Input: n = 8, roads = [[0,1],[1,2],[2,3],[2,4],[5,6],[5,7]]
 Output: 5
 Explanation: The network rank of 2 and 5 is 5. Notice that all the cities do not have to be connected.
+
+Example 4:
+
+Input: n = 2, roads = []
+Output: 0
  
 
 Constraints:

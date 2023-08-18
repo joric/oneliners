@@ -1,22 +1,5 @@
 from lc import *
 
-# numpy
-
-import numpy as np
-
-class Solution:
-    def maximalNetworkRank(self, n: int, r: List[List[int]]) -> int:
-        a=np.zeros((n,n),int)
-        u,v=r and zip(*r)or[[]]*2
-        a[u,v]+=1
-        a+=a.T
-        b=a.sum(0)
-        return(b[:,None]+b[None]-a-A.diag(b)).max()
-
-class Solution:
-    def maximalNetworkRank(self, n: int, r: List[List[int]]) -> int:
-        p=__import__('numpy');a=p.zeros((n,n),int);u,v=r and zip(*r)or[[]]*2;a[u,v]+=1;a+=a.T;b=a.sum(0);return(b[:,None]+b[None]-a-p.diag(b)).max()
-
 # https://leetcode.com/problems/maximal-network-rank/discuss/1026997/Python3-Easy-O(N2)-Solution-4-Lines
 
 class Solution:
@@ -39,6 +22,23 @@ class Solution:
 class Solution:
     def maximalNetworkRank(self, n: int, r: List[List[int]]) -> int:
         g=defaultdict(set);[(g[a].add(b),g[b].add(a))for a,b in r];return max(len(g[a])+len(g[b])-(a in g[b])for a,b in combinations(range(n),2))
+
+# numpy
+
+import numpy as np
+
+class Solution:
+    def maximalNetworkRank(self, n: int, r: List[List[int]]) -> int:
+        a=np.zeros((n,n),int)
+        u,v=r and zip(*r)or[[]]*2
+        a[u,v]+=1
+        a+=a.T
+        b=a.sum(0)
+        return(b[:,None]+b-a-np.diag(b)).max()
+
+class Solution:
+    def maximalNetworkRank(self, n: int, r: List[List[int]]) -> int:
+        p=__import__('numpy');a=p.zeros((n,n),int);u,v=r and zip(*r)or[[]]*2;a[u,v]+=1;a+=a.T;b=a.sum(0);return(b[:,None]+b-a-p.diag(b)).max()
 
 test('''
 1615. Maximal Network Rank

@@ -19,7 +19,7 @@ class Solution:
                         d[v] = max(d[u],w)
                         q.append((-d[v],v))
             return d[b]
-        any(r[w==m].append(i) for i,(u,v,w) in enumerate(e) if w<=(m:=f(u,v)))
+        any(r[w==m].append(i) for i,(u,v,w) in enumerate(e) if (m:=f(u,v))>=w)
         return r
 
 class Solution:
@@ -34,7 +34,7 @@ class Solution:
                 p,u = q.popleft()
                 any(setitem(d,v,max(d[u],w)) or q.append((-d[v],v)) for v,w in g[u] if -p<=d[u] and (u!=a or v!=b) and d[v]>max(d[u],w))
             return d[b]
-        any(r[w==m].append(i) for i,(u,v,w) in enumerate(e) if w<=(m:=f(u,v)))
+        any(r[w==m].append(i) for i,(u,v,w) in enumerate(e) if (m:=f(u,v))>=w)
         return r
 
 class Solution:
@@ -42,12 +42,12 @@ class Solution:
         g,r=defaultdict(list),[[],[]]
         any(g[u].append((v,w)) or g[v].append((u,w)) for u,v,w in e)
         f=lambda a,b:next((d[b] for _ in count() if not(q and not(lambda p,u:any(setitem(d,v,max(d[u],w)) or q.append((-d[v],v)) for v,w in g[u] if -p<=d[u] and (u!=a or v!=b) and d[v]>max(d[u],w)))(*q.popleft()))),(d:=[inf]*len(g),q:=deque([(0,a)]),setitem(d,a,0)))
-        any(r[w==m].append(i) for i,(u,v,w) in enumerate(e) if w<=(m:=f(u,v)))
+        any(r[w==m].append(i) for i,(u,v,w) in enumerate(e) if (m:=f(u,v))>=w)
         return r
 
 class Solution:
     def findCriticalAndPseudoCriticalEdges(self, n: int, e: List[List[int]]) -> List[List[int]]:
-        g,r=defaultdict(list),[[],[]];[(g[u].append((v,w)),g[v].append((u,w)))for u,v,w in e];f=lambda a,b:next((d[b]for _ in count()if not(q and(lambda p,u:all((setitem(d,v,max(d[u],w)),q.append((-d[v],v)))for v,w in g[u] if -p<=d[u] and (u!=a or v!=b) and d[v]>max(d[u],w)))(*q.popleft()))),(d:=[inf]*len(g),q:=deque([(0,a)]),setitem(d,a,0)));[r[w==m].append(i)for i,(u,v,w)in enumerate(e)if w<=(m:=f(u,v))];return r
+        g,r=defaultdict(list),[[],[]];[(g[u].append((v,w)),g[v].append((u,w)))for u,v,w in e];f=lambda a,b:next((d[b]for _ in count()if not(q and(lambda p,u:all((setitem(d,v,max(d[u],w)),q.append((-d[v],v)))for v,w in g[u]if -p<=d[u]and(u!=a or v!=b)and d[v]>max(d[u],w)))(*q.popleft()))),(d:=[inf]*len(g),q:=deque([(0,a)]),setitem(d,a,0)));[r[w==m].append(i)for i,(u,v,w)in enumerate(e)if(m:=f(u,v))>=w];return r
 
 test('''
 1489. Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree

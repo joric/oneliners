@@ -28,14 +28,14 @@ class Solution:
         e,r,c=sorted([(w,u,v,i)for i,(u,v,w) in enumerate(e)]),[[],[]],''.join(map(chr,range(100)))
         for w,u,v,i in e:
             p, q = c, c
-            p = p.replace(p[u],p[v])
             a, b = w, 0
+            p = p.replace(p[u],p[v])
             for x,y,z,j in e:
                 if i==j:
                     continue
                 a += x*(p[y]!=p[z])
-                p = p.replace(p[y],p[z])
                 b += x*(q[y]!=q[z])
+                p = p.replace(p[y],p[z])
                 q = q.replace(q[y],q[z])
             (a<=b or q[u]!=q[v]) and r[a==b].append(i)
         return r

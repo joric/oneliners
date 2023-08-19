@@ -27,8 +27,7 @@ class Solution:
     def findCriticalAndPseudoCriticalEdges(self, n: int, e: List[List[int]]) -> List[List[int]]:
         e,r,c=sorted([(w,u,v,i)for i,(u,v,w) in enumerate(e)]),[[],[]],''.join(map(chr,range(100)))
         for w,u,v,i in e:
-            p, q = c, c
-            a, b = w, 0
+            p,q,a,b = c,c,w,0
             p = p.replace(p[u],p[v])
             for x,y,z,j in e:
                 if i==j:

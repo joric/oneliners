@@ -5,7 +5,9 @@ from lc import *
 class Solution:
     def findCriticalAndPseudoCriticalEdges(self, n: int, e: List[List[int]]) -> List[List[int]]:
         g,r=defaultdict(list),[[],[]]
-        any(g[u].append((v,w)) or g[v].append((u,w)) for u,v,w in e)
+        for u,v,w in e:
+            g[u].append((v,w))
+            g[v].append((u,w))
         def f(a,b):
             d = [inf]*len(g)
             q = deque([(0,a)])
@@ -19,7 +21,12 @@ class Solution:
                         d[v] = max(d[u],w)
                         q.append((-d[v],v))
             return d[b]
-        any(r[w==m].append(i) for i,(u,v,w) in enumerate(e) if (m:=f(u,v))>=w)
+        for i,(u,v,w) in enumerate(e):
+            m = f(u,v)
+            if w<m:
+                r[0].append(i)
+            elif w==m:
+                r[1].append(i)
         return r
 
 class Solution:

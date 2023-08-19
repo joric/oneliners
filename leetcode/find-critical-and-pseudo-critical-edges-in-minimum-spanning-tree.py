@@ -23,9 +23,9 @@ class Solution:
             return d[b]
         for i,(u,v,w) in enumerate(e):
             m = f(u,v)
-            if w<m:
+            if m>w:
                 r[0].append(i)
-            elif w==m:
+            elif m==w:
                 r[1].append(i)
         return r
 

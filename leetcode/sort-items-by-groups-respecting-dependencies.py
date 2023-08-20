@@ -27,11 +27,9 @@ class Solution:
 class Solution:
     def sortItems(self, n: int, m: int, g: List[int], b: List[List[int]]) -> List[int]:
         p,u,q,v = {},[0]*(m+n),{},[0]*n
-
         for i in range(n):
             if g[i]==-1:
                 g[i] = i+m
-
         for i, x in enumerate(b):
             for j in x: 
                 if g[j]!=g[i]: 
@@ -39,19 +37,17 @@ class Solution:
                     u[g[i]] += 1
                 q.setdefault(j,[]).append(i)
                 v[i] += 1
-
         def f(g,d):
             r = []
             s = [k for k in range(len(d)) if d[k]==0]
             while s: 
                 n = s.pop()
                 r.append(n)
-                for i in g.get(n, []):
+                for i in g.get(n,[]):
                     d[i] -= 1
-                    if d[i] == 0:
+                    if d[i]==0:
                         s.append(i)
             return r
-
         a = {x:i for i,x in enumerate(f(p,u))}
         b = {x:i for i,x in enumerate(f(q,v))}
         return len(a)==len(u) and len(b)==len(v) and sorted(range(n),key=lambda x:(a[g[x]],b[x])) or []

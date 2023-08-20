@@ -26,7 +26,7 @@ class Solution:
 
 class Solution:
     def sortItems(self, n: int, m: int, g: List[int], b: List[List[int]]) -> List[int]:
-        p,u,q,v = {},[0]*(m+n),{},[0]*n
+        u,v,p,q = [0]*(m+n),[0]*n,{},{}
         for i in range(n):
             if g[i]==-1:
                 g[i] = i+m

@@ -3,26 +3,56 @@ from lc import *
 # https://leetcode.com/problems/sort-items-by-groups-respecting-dependencies/discuss/1149266/Python3-topological-sort/1265574
 
 class Solution:
-    def sortItems(self, n: int, m: int, group: List[int], beforeItems: List[List[int]]) -> List[int]:
-        def topo_sort(nodes, edges):
-            grid, inp = {k: [] for k in nodes}, collections.Counter({k: 0 for k in nodes})
-            [grid[a].append(b) or inp.update({b: 1}) for a, b in edges if a in nodes and b in nodes]
-            topo = [k for k, v in inp.items() if v <= 0]
-            [inp.update({kid: -1}) or inp[kid] == 0 and topo.append(kid) for node in topo for kid in grid[node]]
-            return topo if len(topo) == len(grid) else []
-        group = [m + idx if grp == -1 else grp for idx, grp in enumerate(group)]
-        edges_grp = set((group[before], grp) for grp, befores in zip(group, beforeItems) for before in befores if group[before] != grp)
-        if len(topo1 := topo_sort(set(group), edges_grp)) != len(set(group)):
-            return []
-        edges_node = set((before, idx) for idx, befores in enumerate(beforeItems) for before in befores)
-        if len(topo2 := topo_sort(set(range(n)), edges_node)) != n:
-            return []
-        a, b = {x: i for i, x in enumerate(topo1)}, {x: i for i, x in enumerate(topo2)}
-        return sorted(range(n), key=lambda x: (a[group[x]], b[x]))
+    def sortItems(self, n: int, m: int, g: List[int], b: List[List[int]]) -> List[int]:
+        p,u,q,v = {},[0]*(m+n),{},[0]*n
+
+        for i in range(n):
+            if g[i]==-1:
+                g[i] = i+m
+
+        for i, x in enumerate(b):
+            for j in x: 
+                if g[j]!=g[i]: 
+                    p.setdefault(g[j],[]).append(g[i])
+                    u[g[i]] += 1
+                q.setdefault(j,[]).append(i)
+                v[i] += 1
+
+        def f(g,d):
+            r = []
+            s = [k for k in range(len(d)) if d[k]==0]
+            while s: 
+                n = s.pop()
+                r.append(n)
+                for i in g.get(n, []):
+                    d[i] -= 1
+                    if d[i] == 0:
+                        s.append(i)
+            return r
+
+        a = {x:i for i,x in enumerate(f(p,u))}
+        b = {x:i for i,x in enumerate(f(q,v))}
+        return len(a)==len(u) and len(b)==len(v) and sorted(range(n),key=lambda x:(a[g[x]],b[x])) or []
+
+class Solution:
+    def sortItems(self, n: int, m: int, g: List[int], b: List[List[int]]) -> List[int]:
+        p,u,q,v = {},[0]*(m+n),{},[0]*n
+        [g[i]==-1 and setitem(g,i,i+m)for i in range(n)]
+        [(g[j]!=g[i] and (p.setdefault(g[j],[]).append(g[i]),setitem(u,g[i],u[g[i]]+1)),q.setdefault(j,[]).append(i),setitem(v,i,v[i]+1))for i,x in enumerate(b)for j in x]
+        f=lambda g,d:next((r for _ in count() if not(q and(n:=q.pop(),r.append(n),[(setitem(d,i,d[i]-1),d[i]==0 and q.append(i))for i in g.get(n,[])]))),(r:=[],q:=[k for k in range(len(d)) if d[k]==0]))
+        a={x:i for i,x in enumerate(f(p,u))}
+        b={x:i for i,x in enumerate(f(q,v))}
+        return len(a)==len(u) and len(b)==len(v) and sorted(range(n),key=lambda x:(a[g[x]],b[x])) or []
+
+class Solution:
+    def sortItems(self, n: int, m: int, g: List[int], b: List[List[int]]) -> List[int]:
+        p,u,q,v={},[0]*(m+n),{},[0]*n;[g[i]==-1 and setitem(g,i,i+m)for i in range(n)];[(g[j]!=g[i] and (p.setdefault(g[j],[]).append(g[i]),setitem(u,g[i],u[g[i]]+1)),q.setdefault(j,[]).append(i),setitem(v,i,v[i]+1))for i,x in enumerate(b)for j in x];f=lambda g,d:next((r for _ in count() if not(q and(n:=q.pop(),r.append(n),[(setitem(d,i,d[i]-1),d[i]==0 and q.append(i))for i in g.get(n,[])]))),(r:=[],q:=[k for k in range(len(d)) if d[k]==0]));a={x:i for i,x in enumerate(f(p,u))};b={x:i for i,x in enumerate(f(q,v))};return len(a)==len(u) and len(b)==len(v) and sorted(range(n),key=lambda x:(a[g[x]],b[x]))or[]
+
+# https://leetcode.com/problems/sort-items-by-groups-respecting-dependencies/discuss/1149266/Python3-topological-sort/1265574
 
 class Solution:
     def sortItems(self, n: int, m: int, g: List[int], s: List[List[int]]) -> List[int]:
-        def f(o, e):
+        def f(o,e):
             r = {k:[] for k in o}
             c = Counter({k:0 for k in o})
             [r[a].append(b) or c.update({b:1}) for a,b in e if a in o and b in o]
@@ -30,15 +60,15 @@ class Solution:
             [c.update({k:-1}) or c[k]==0 and t.append(k) for d in t for k in r[d]]
             return t if len(t)==len(r) else []
         g = [m+i if x==-1 else x for i,x in enumerate(g)]
-        u = set((g[x],i) for i,j in zip(g,s) for x in j if g[x] != i)
-        v = set((x,i) for i,j in enumerate(s) for x in j)
-        a = {x:i for i,x in enumerate(f(set(g), u))}
-        b = {x:i for i,x in enumerate(f(set(range(n)), v))}
-        return len(a)==len(set(g)) and len(b)==n and sorted(range(n),key=lambda x:(a[g[x]], b[x])) or []
+        u = {(g[x],i) for i,j in zip(g,s) for x in j if g[x]!=i}
+        v = {(x,i) for i,j in enumerate(s) for x in j}
+        a = {x:i for i,x in enumerate(f({*g}, u))}
+        b = {x:i for i,x in enumerate(f({*range(n)}, v))}
+        return len(a)==len({*g}) and len(b)==n and sorted(range(n),key=lambda x:(a[g[x]], b[x])) or []
 
 class Solution:
     def sortItems(self, n: int, m: int, g: List[int], s: List[List[int]]) -> List[int]:
-        f=lambda o,e:(r:={k:[]for k in o},c:=Counter({k:0 for k in o}),[r[a].append(b)or c.update({b:1})for a,b in e if a in o and b in o],t:=[k for k,v in c.items() if v<=0],[c.update({k:-1})or c[k]==0 and t.append(k) for d in t for k in r[d]],t if len(t)==len(r)else[])[-1];(g:=[m+i if x==-1 else x for i,x in enumerate(g)],u:=set((g[x],i)for i,j in zip(g,s)for x in j if g[x]!=i),v:=set((x,i)for i,j in enumerate(s) for x in j),a:= {x:i for i,x in enumerate(f(set(g), u))},b:= {x:i for i,x in enumerate(f(set(range(n)),v))});return len(a)==len(set(g))and len(b)==n and sorted(range(n),key=lambda x:(a[g[x]], b[x]))or[]
+        w,f=enumerate,lambda o,e:(r:={k:[]for k in o},c:=Counter({k:0 for k in o}),[r[a].append(b)or c.update({b:1})for a,b in e if a in o and b in o],t:=[k for k,v in c.items()if v<=0],[c.update({k:-1})or c[k]==0 and t.append(k)for d in t for k in r[d]],t if len(t)==len(r)else[])[-1];(g:=[m+i if x==-1 else x for i,x in w(g)],u:={(g[x],i)for i,j in zip(g,s)for x in j if g[x]!=i},v:={(x,i)for i,j in w(s)for x in j},a:={x:i for i,x in w(f({*g}, u))},b:={x:i for i,x in w(f({*range(n)},v))});return len(a)==len({*g})and len(b)==n and sorted(range(n),key=lambda x:(a[g[x]], b[x]))or[]
 
 test('''
 1203. Sort Items by Groups Respecting Dependencies

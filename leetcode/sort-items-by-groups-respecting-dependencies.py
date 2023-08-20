@@ -3,7 +3,7 @@ from lc import *
 # https://leetcode.com/problems/sort-items-by-groups-respecting-dependencies/discuss/1149266/Python3-topological-sort/1265574
 
 class Solution:
-    def sortItems(self, n: int, m: int, g: List[int], s: List[List[int]]) -> List[int]:
+    def sortItems(self, n: int, m: int, g: List[int], b: List[List[int]]) -> List[int]:
         def f(o,e):
             r = {k:[] for k in o}
             c = Counter({k:0 for k in o})
@@ -12,8 +12,8 @@ class Solution:
             [c.update({k:-1}) or c[k]==0 and t.append(k) for d in t for k in r[d]]
             return t if len(t)==len(r) else []
         g = [m+i if x==-1 else x for i,x in enumerate(g)]
-        u = {(g[x],i) for i,j in zip(g,s) for x in j if g[x]!=i}
-        v = {(x,i) for i,j in enumerate(s) for x in j}
+        u = {(g[x],i) for i,j in zip(g,b) for x in j if g[x]!=i}
+        v = {(x,i) for i,j in enumerate(b) for x in j}
         a = {x:i for i,x in enumerate(f({*g},u))}
         b = {x:i for i,x in enumerate(f({*range(n)},v))}
         return len(a)==len({*g}) and len(b)==n and sorted(range(n),key=lambda x:(a[g[x]],b[x])) or []
@@ -27,16 +27,6 @@ class Solution:
 class Solution:
     def sortItems(self, n: int, m: int, g: List[int], b: List[List[int]]) -> List[int]:
         u,v,p,q = [0]*(m+n),[0]*n,{},{}
-        for i in range(n):
-            if g[i]==-1:
-                g[i] = i+m
-        for i, x in enumerate(b):
-            for j in x: 
-                if g[j]!=g[i]: 
-                    p.setdefault(g[j],[]).append(g[i])
-                    u[g[i]] += 1
-                q.setdefault(j,[]).append(i)
-                v[i] += 1
         def f(g,d):
             r = []
             s = [k for k in range(len(d)) if d[k]==0]
@@ -48,6 +38,14 @@ class Solution:
                     if d[i]==0:
                         s.append(i)
             return r
+        [g[i]==-1 and setitem(g,i,i+m)for i in range(n)]
+        for i,x in enumerate(b):
+            for j in x: 
+                if g[j]!=g[i]: 
+                    p.setdefault(g[j],[]).append(g[i])
+                    u[g[i]] += 1
+                q.setdefault(j,[]).append(i)
+                v[i] += 1
         a = {x:i for i,x in enumerate(f(p,u))}
         b = {x:i for i,x in enumerate(f(q,v))}
         return len(a)==m+n and len(b)==n and sorted(range(n),key=lambda x:(a[g[x]],b[x])) or []
@@ -55,9 +53,9 @@ class Solution:
 class Solution:
     def sortItems(self, n: int, m: int, g: List[int], b: List[List[int]]) -> List[int]:
         u,v,p,q = [0]*(m+n),[0]*n,{},{}
+        f=lambda g,d:next((r for _ in count() if not(q and(n:=q.pop(),r.append(n),[(setitem(d,i,d[i]-1),d[i]==0 and q.append(i))for i in g.get(n,[])]))),(r:=[],q:=[k for k in range(len(d)) if d[k]==0]))
         [g[i]==-1 and setitem(g,i,i+m)for i in range(n)]
         [(g[j]!=g[i] and (p.setdefault(g[j],[]).append(g[i]),setitem(u,g[i],u[g[i]]+1)),q.setdefault(j,[]).append(i),setitem(v,i,v[i]+1))for i,x in enumerate(b)for j in x]
-        f=lambda g,d:next((r for _ in count() if not(q and(n:=q.pop(),r.append(n),[(setitem(d,i,d[i]-1),d[i]==0 and q.append(i))for i in g.get(n,[])]))),(r:=[],q:=[k for k in range(len(d)) if d[k]==0]))
         a,b={x:i for i,x in enumerate(f(p,u))},{x:i for i,x in enumerate(f(q,v))}
         return len(a)==m+n and len(b)==n and sorted(range(n),key=lambda x:(a[g[x]],b[x])) or []
 

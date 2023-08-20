@@ -14,8 +14,8 @@ class Solution:
         g = [m+i if x==-1 else x for i,x in enumerate(g)]
         u = {(g[x],i) for i,j in zip(g,s) for x in j if g[x]!=i}
         v = {(x,i) for i,j in enumerate(s) for x in j}
-        a = {x:i for i,x in enumerate(f(g,u))}
-        b = {x:i for i,x in enumerate(f(range(n),v))}
+        a = {x:i for i,x in enumerate(f({*g},u))}
+        b = {x:i for i,x in enumerate(f({*range(n)},v))}
         return len(a)==len({*g}) and len(b)==n and sorted(range(n),key=lambda x:(a[g[x]],b[x])) or []
 
 class Solution:

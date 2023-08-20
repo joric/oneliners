@@ -58,8 +58,7 @@ class Solution:
         [g[i]==-1 and setitem(g,i,i+m)for i in range(n)]
         [(g[j]!=g[i] and (p.setdefault(g[j],[]).append(g[i]),setitem(u,g[i],u[g[i]]+1)),q.setdefault(j,[]).append(i),setitem(v,i,v[i]+1))for i,x in enumerate(b)for j in x]
         f=lambda g,d:next((r for _ in count() if not(q and(n:=q.pop(),r.append(n),[(setitem(d,i,d[i]-1),d[i]==0 and q.append(i))for i in g.get(n,[])]))),(r:=[],q:=[k for k in range(len(d)) if d[k]==0]))
-        a={x:i for i,x in enumerate(f(p,u))}
-        b={x:i for i,x in enumerate(f(q,v))}
+        a,b={x:i for i,x in enumerate(f(p,u))},{x:i for i,x in enumerate(f(q,v))}
         return len(a)==m+n and len(b)==n and sorted(range(n),key=lambda x:(a[g[x]],b[x])) or []
 
 class Solution:

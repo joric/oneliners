@@ -50,7 +50,7 @@ class Solution:
             return r
         a = {x:i for i,x in enumerate(f(p,u))}
         b = {x:i for i,x in enumerate(f(q,v))}
-        return len(a)==len(u) and len(b)==len(v) and sorted(range(n),key=lambda x:(a[g[x]],b[x])) or []
+        return len(a)==m+n and len(b)==n and sorted(range(n),key=lambda x:(a[g[x]],b[x])) or []
 
 class Solution:
     def sortItems(self, n: int, m: int, g: List[int], b: List[List[int]]) -> List[int]:

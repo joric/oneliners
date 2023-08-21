@@ -10,7 +10,7 @@ class Solution:
             [r[a].append(b) or c.update({b:1}) for a,b in e if a in o and b in o]
             t = [k for k,v in c.items() if v<=0]
             [c.update({k:-1}) or c[k]==0 and t.append(k) for d in t for k in r[d]]
-            return t if len(t)==len(r) else []
+            return len(t)==len(r) and t or []
         g = [m+i if x==-1 else x for i,x in enumerate(g)]
         u = {(g[x],i) for i,j in zip(g,b) for x in j if g[x]!=i}
         v = {(x,i) for i,j in enumerate(b) for x in j}
@@ -20,7 +20,7 @@ class Solution:
 
 class Solution:
     def sortItems(self, n: int, m: int, g: List[int], s: List[List[int]]) -> List[int]:
-        w,f=enumerate,lambda o,e:(r:={k:[]for k in o},c:=Counter({k:0 for k in o}),[r[a].append(b)or c.update({b:1})for a,b in e if a in o and b in o],t:=[k for k,v in c.items()if v<=0],[c.update({k:-1})or c[k]==0 and t.append(k)for d in t for k in r[d]],t if len(t)==len(r)else[])[-1];(g:=[m+i if x==-1 else x for i,x in w(g)],u:={(g[x],i)for i,j in zip(g,s)for x in j if g[x]!=i},v:={(x,i)for i,j in w(s)for x in j},a:={x:i for i,x in w(f(g,u))},b:={x:i for i,x in w(f(range(n),v))});return len(a)==len({*g})and len(b)==n and sorted(range(n),key=lambda x:(a[g[x]], b[x]))or[]
+        w,f=enumerate,lambda o,e:(r:={k:[]for k in o},c:=Counter({k:0 for k in o}),[r[a].append(b)or c.update({b:1})for a,b in e if a in o and b in o],t:=[k for k,v in c.items()if v<=0],[c.update({k:-1})or c[k]==0 and t.append(k)for d in t for k in r[d]],len(t)==len(r)and t or[])[-1];(g:=[m+i if x==-1 else x for i,x in w(g)],u:={(g[x],i)for i,j in zip(g,s)for x in j if g[x]!=i},v:={(x,i)for i,j in w(s)for x in j},a:={x:i for i,x in w(f(g,u))},b:={x:i for i,x in w(f(range(n),v))});return len(a)==len({*g})and len(b)==n and sorted(range(n),key=lambda x:(a[g[x]], b[x]))or[]
 
 # https://leetcode.com/problems/sort-items-by-groups-respecting-dependencies/discuss/1149266/Python3-topological-sort/1265574
 

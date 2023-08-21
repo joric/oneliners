@@ -1,6 +1,16 @@
 from lc import *
 
-#  https://leetcode.com/problems/repeated-substring-pattern/discuss/826417/rust-oneliner
+class Solution:
+    def repeatedSubstringPattern(self, s: str) -> bool:
+        n = len(s)
+        for i in range (n//2, 0, -1):
+            d = n // i
+            if d*i == n:
+                if s[:i]*d == s:
+                    return True
+        return False
+
+# https://leetcode.com/problems/repeated-substring-pattern/discuss/826417/rust-oneliner
 
 class Solution:
     def repeatedSubstringPattern(self, s: str) -> bool:

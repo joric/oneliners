@@ -37,7 +37,9 @@ class Solution:
                     if d[i]==0:
                         s.append(i)
             return r
-        [g[i]==-1 and setitem(g,i,i+m)for i in range(n)]
+        for i in range(n):
+            if g[i]==-1:
+                g[i] = i+m
         for i,x in enumerate(b):
             for j in x: 
                 if g[j]!=g[i]: 

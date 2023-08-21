@@ -21,6 +21,31 @@ class Solution:
     def findCriticalAndPseudoCriticalEdges(self, n: int, e: List[List[int]]) -> List[List[int]]:
         g,r=defaultdict(list),[[],[]];[(g[u].append((v,w)),g[v].append((u,w)))for u,v,w in e];f=lambda i,j:next((d[j]for _ in count()if not(q and(lambda p,u:all((setitem(d,v,max(d[u],w)),q.append((-d[v],v)))for v,w in g[u]if -p<=d[u]and(u!=i or v!=j)and d[v]>max(d[u],w)))(*q.popleft()))),(d:=[inf]*len(g),q:=deque([(0,i)]),setitem(d,i,0)));[r[w==m].append(i)for i,(u,v,w)in enumerate(e)if(m:=f(u,v))>=w];return r
 
+# https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/discuss/3931429/Python%3A-Simple-and-Elegant-Prim's-(20lines)
+
+class Solution:
+    def findCriticalAndPseudoCriticalEdges(self, n: int, e: List[List[int]]) -> List[List[int]]:
+        e = sorted([x+[i]for i,x in enumerate(e)],key=itemgetter(2))
+        r = [],[]
+        def f(u,v,p):
+            if len(v)==n:
+                return p
+            for a,b,c,i in e:
+                if i not in u and (a in v and b not in v or a not in v and b in v):
+                    return f(u|{i},v|{a,b},p+c)
+            return inf
+        m = f(set(),{0},0)
+        for a,b,c,i in e:
+            if f({i},{0}, 0) > m:
+                r[0].append(i)
+            elif f({i},{a,b},c) == m:
+                r[1].append(i)
+        return r
+
+class Solution:
+    def findCriticalAndPseudoCriticalEdges(self, n: int, e: List[List[int]]) -> List[List[int]]:
+        p,q,e=[],[],sorted([x+[i]for i,x in enumerate(e)],key=itemgetter(2));f=lambda u,v,p:len(v)==n and p or next((f(u|{i},v|{a,b},p+c)for a,b,c,i in e if(i not in u and(a in v and b not in v or a not in v and b in v))),inf);m=f(set(),{0},0);[(m<f({i},{0},0)and not p.append(i))or(m==f({i},{a,b},c)and q.append(i))for a,b,c,i in e];return p,q
+
 # unicode find
 
 class Solution:

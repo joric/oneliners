@@ -5,8 +5,7 @@ from lc import *
 class Solution:
     def sortItems(self, n: int, m: int, g: List[int], b: List[List[int]]) -> List[int]:
         def f(o,e):
-            r = {k:[] for k in o}
-            c = Counter({k:0 for k in o})
+            r,c = {k:[] for k in o},Counter({k:0 for k in o})
             [r[a].append(b) or c.update({b:1}) for a,b in e if a in o and b in o]
             t = [k for k,v in c.items() if v<=0]
             [c.update({k:-1}) or c[k]==0 and t.append(k) for d in t for k in r[d]]

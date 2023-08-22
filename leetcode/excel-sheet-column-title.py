@@ -20,7 +20,7 @@ class Solution:
 
 class Solution:
     def convertToTitle(self, n: int) -> str:
-        return n>0and self.convertToTitle((n-1)//26)+chr(65+(n-1)%26)or''
+        return n and self.convertToTitle((n-1)//26)+chr(65+(n-1)%26)or''
 
 class Solution:
     def convertToTitle(self, n: int) -> str:

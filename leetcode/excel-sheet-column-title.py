@@ -12,6 +12,10 @@ class Solution:
 
 class Solution:
     def convertToTitle(self, n: int) -> str:
+        n,m=divmod(n-1,26);return(n and self.convertToTitle(n)or'')+chr(65+m)
+
+class Solution:
+    def convertToTitle(self, n: int) -> str:
         return self.convertToTitle((n-1)//26)+chr(65+(n-1)%26) if n>0 else ''
 
 class Solution:
@@ -20,7 +24,7 @@ class Solution:
 
 class Solution:
     def convertToTitle(self, n: int) -> str:
-        return(f:=lambda n:n>0and f((n-1)//26)+chr(65+(n-1)%26)or'')(n)
+        return(f:=lambda n:n and f((n-1)//26)+chr(65+(n-1)%26)or'')(n)
 
 test('''
 168. Excel Sheet Column Title

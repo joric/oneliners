@@ -206,7 +206,7 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
         return args[:argc], args, orig[:argc]
 
     def print_res(passed, res, expected, *args):
-        c = lambda c,t,w=60: '\x1b[{1}m{2}\x1b[0m'.format(s:=str(t), 30+c, s[:w]+'...' if e==2 and len(s)>=w else s)
+        c = lambda c,t,w=50: '\x1b[{1}m{2}\x1b[0m'.format(s:=str(t), 30+c, s[:w]+'...' if e==2 and len(s)>=w else s)
         e = 2 if passed else 1
         print('%s args %s result %s expected %s' % (c(e,'PASSED' if passed else 'FAILED'), c(e,args), c(e,res), c(e,expected)))
 

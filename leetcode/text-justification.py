@@ -4,18 +4,18 @@ class Solution:
     def fullJustify(self, d: List[str], m: int) -> List[str]:
         r,c,n = [],[],0
         for w in d:
-            if n + len(w) + len(c) > m:
-                for i in range(m - n):
+            if m<n+len(w)+len(c):
+                for i in range(m-n):
                     c[i%(len(c)-1 or 1)] += ' '
-                r.append(''.join(c))
-                c,n = [], 0
+                r += [''.join(c)]
+                c,n = [],0
             c += [w]
             n += len(w)
-        return r + [' '.join(c).ljust(m)]
+        return r+[' '.join(c).ljust(m)]
 
 class Solution:
     def fullJustify(self, d: List[str], m: int) -> List[str]:
-        r,c,n=[],[],0;[(m<n+len(w)+len(c)and([setitem(c,t:=i%(len(c)-1or 1),c[t]+' ')for i in range(m-n)],r.append(''.join(c)),c:=[],n:=0),c.append(w),n:=n+len(w))for w in d];return r+[' '.join(c).ljust(m)]
+        r,c,n=[],[],0;[(m<n+len(w)+len(c)and([setitem(c,t:=i%(len(c)-1or 1),c[t]+' ')for i in range(m-n)],r:=r+[''.join(c)],c:=[],n:=0),c:=c+[w],n:=n+len(w))for w in d];return r+[' '.join(c).ljust(m)]
 
 test('''
 68. Text Justification

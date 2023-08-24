@@ -219,7 +219,7 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
                 return all(x==y for x,y in zip(res,expected))
             return res==expected
 
-    custom_class_tests = classname is not None
+    custom_class_tests = classname is not None and 'Launcher' not in str(classname)
 
     if not classname:
         classname = importlib.import_module('__main__').Solution
@@ -318,7 +318,7 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
         for name,args in zip(methods,arglist):
             if name not in dir(classname):
                 func = getattr(classname, '__init__')
-                args, iargs, orig = vcast(func, args,init)
+                args, iargs, orig = vcast(func, args, init)
                 instance = classname(*args)
                 results.append(None)
             else:

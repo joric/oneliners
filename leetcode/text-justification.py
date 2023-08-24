@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/text-justification/discuss/24891/Concise-python-solution-10-lines.
+
 class Solution:
     def fullJustify(self, d: List[str], m: int) -> List[str]:
         r,c,n = [],[],0

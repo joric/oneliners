@@ -6,7 +6,7 @@ class Solution:
     def fullJustify(self, d: List[str], m: int) -> List[str]:
         r,c,n = [],[],0
         for w in d:
-            if n+len(w)+len(c) > m:
+            if m<n+len(w)+len(c):
                 for i in range(m-n):
                     c[i%(len(c)-1 or 1)] += ' '
                 r += [''.join(c)]

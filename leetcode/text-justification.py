@@ -17,7 +17,7 @@ class Solution:
 
 class Solution:
     def fullJustify(self, d: List[str], m: int) -> List[str]:
-        r,c,n=[],[],0;[(m<n+len(w)+len(c)and([setitem(c,t:=i%(len(c)-1or 1),c[t]+' ')for i in range(m-n)],r:=r+[''.join(c)],c:=[],n:=0),c:=c+[w],n:=n+len(w))for w in d];return r+[' '.join(c).ljust(m)]
+        l,r,c,n=len,[],[],0;[(m<n+l(w)+l(c)and([setitem(c,t:=i%(l(c)-1or 1),c[t]+' ')for i in range(m-n)],r:=r+[''.join(c)],c:=[],n:=0),c:=c+[w],n:=n+l(w))for w in d];return r+[' '.join(c).ljust(m)]
 
 test('''
 68. Text Justification

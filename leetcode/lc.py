@@ -246,9 +246,11 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
                 p += s[7:]
             elif s.startswith('Output:'):
                 tests[-1]['input'] = split_vars(p)
-                tests[-1]['output'] = split_vars(s[8:])
+                p,t = s[8:],2
+            elif t==2 and (s.startswith('Example') or s.startswith('Explanation') or s==''):
+                tests[-1]['output'] = split_vars(p)
                 p,t = '',0
-            elif t == 1:
+            elif t != 0:
                 p += s
 
     for cname in cnames:

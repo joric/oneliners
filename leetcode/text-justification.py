@@ -4,7 +4,7 @@ class Solution:
     def fullJustify(self, d: List[str], m: int) -> List[str]:
         r,c,n = [],[],0
         for w in d:
-            if m<n+len(w)+len(c):
+            if n+len(w)+len(c) > m:
                 for i in range(m-n):
                     c[i%(len(c)-1 or 1)] += ' '
                 r += [''.join(c)]

@@ -1,11 +1,19 @@
 from lc import *
 
+# https://leetcode.com/problems/interleaving-string/discuss/3957919/python-3-one-line
+
 class Solution:
     @cache
     def isInterleave(self, s1: str, s2: str, s3: str) -> bool:
         if not (s1 and s2):
             return (s1 or s2 or "") == s3    
         return any(s3[:1] == x[:1] and self.isInterleave(x[1:], y, s3[1:]) for x, y in ((s1, s2), (s2, s1)))
+
+# TLE without @cache
+class Solution:
+    @cache
+    def isInterleave(self, a: str, b: str, c: str) -> bool:
+        return any(c[:1]==x[:1]and self.isInterleave(x[1:],y,c[1:])for x,y in((a,b),(b,a)))if(a and b)else(a or b or'')==c
 
 class Solution:
     def isInterleave(self, a: str, b: str, c: str) -> bool:

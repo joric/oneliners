@@ -44,7 +44,7 @@ Example 1:
 
 Input: n = 5, requests = [[0,1],[1,0],[0,1],[1,2],[2,0],[3,4]]
 Output: 5
-Explantion: Let's see the requests:
+Explanation: Let's see the requests:
 From building 0 we have employees x and y and both want to move to building 1.
 From building 1 we have employees a and b and they want to move to buildings 2 and 0 respectively.
 From building 2 we have employee z and they want to move to building 0.
@@ -57,7 +57,7 @@ Example 2:
 
 Input: n = 3, requests = [[0,0],[1,2],[2,1]]
 Output: 3
-Explantion: Let's see the requests:
+Explanation: Let's see the requests:
 From building 0 we have employee x and they want to stay in the same building 0.
 From building 1 we have employee y and they want to move to building 2.
 From building 2 we have employee z and they want to move to building 1.

@@ -13,6 +13,10 @@ class Solution:
 
 class Solution:
     def findLongestChain(self, p: List[List[int]]) -> int:
+        return reduce(lambda t,x:t[0]<x[0]and(x[1],t[1]+1)or t,sorted(p,key=itemgetter(1)),[-inf,0])[1]
+
+class Solution:
+    def findLongestChain(self, p: List[List[int]]) -> int:
         c,r=-inf,0;[c<x[0]and(c:=x[1],r:=r+1)for x in sorted(p,key=itemgetter(1))];return r
 
 test('''

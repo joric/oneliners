@@ -22,6 +22,28 @@ class Solution:
     def canCross(self, s: List[int]) -> bool:
         return(f:=cache(lambda c,k:c in s and c>=0and k>0and(c==s[-1]or f(c+k-1,k-1)or f(c+k,k)or f(c+k+1,k+1))))(1,1)
 
+# https://leetcode.com/problems/frog-jump/discuss/1097146/python-dfs-%2B-cache
+
+class Solution:
+    def canCross(self, s: List[int]) -> bool:
+        @cache
+        def f(i,u):
+            if i == s[-1]:
+                return True
+            if i not in s:
+                return False
+            for v in range(u-1,u+2):
+                if v == 0:
+                    continue
+                if f(i+v,v):
+                    return True
+            return False
+        return f(1,1)
+
+class Solution:
+    def canCross(self, s: List[int]) -> bool:
+        return(f:=cache(lambda i,u:i==s[-1]or i in s and any(v and f(i+v,v)for v in range(u-1,u+2))))(1,1)
+
 test('''
 403. Frog Jump
 Hard

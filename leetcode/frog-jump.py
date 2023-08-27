@@ -1,5 +1,25 @@
 from lc import *
 
+# https://leetcode.com/problems/frog-jump/discuss/583442/The-only-one-true-simply-DP-solution
+
+class Solution:
+    def canCross(self, s: List[int]) -> bool:
+        n = len(s)
+        d = [[False]*n for _ in s]
+        d[0][1] = True
+        for i in range(1,n):
+            for j in range(i):
+                k = s[i] - s[j]
+                if k>0 and k<n and d[j][k]:
+                    if i==n-1:
+                        return True;
+                    d[i][k] = True
+                    if k-1>=0:
+                        d[i][k-1] = True
+                    if k+1<=n:
+                        d[i][k+1] = True
+        return False
+
 # https://leetcode.com/problems/frog-jump/discuss/1097146/python-dfs-%2B-cache
 
 class Solution:

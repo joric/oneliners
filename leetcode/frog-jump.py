@@ -42,6 +42,10 @@ class Solution:
     def canCross(self, s: List[int]) -> bool:
         return(f:=cache(lambda i,u:i==s[-1]or i in s and any(v and f(i+v,v)for v in range(u-1,u+2))))(1,1)
 
+class Solution:
+    def canCross(self, s: List[int]) -> bool:
+        return(f:=cache(lambda i,u:i==s[-1]or any(v and f(i+v,v)for v in range(u-1,u+2)if i in s)))(1,1)
+
 test('''
 403. Frog Jump
 Hard

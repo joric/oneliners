@@ -633,7 +633,7 @@ swap = lambda a,x,y:(lambda f=a.__setitem__:(f(x,(a[x],a[y])),f(y,a[x][0]),f(x,a
 With exec you can evalulate any multiline code. Note exec (unlike eval) is not limited to a single string.
 
 ```python
-exec('i=1\nwhile i<3:\n  i+=1\nprint(i)')
+exec('i=1\nwhile i<3:\n i+=1\nprint(i)')
 ```
 
 is equivalent to:
@@ -641,7 +641,7 @@ is equivalent to:
 ```python
 i=1
 while i<3:
-    i+=1
+ i+=1
 print(i)
 ```
 

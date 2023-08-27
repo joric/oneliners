@@ -655,6 +655,23 @@ class Solution:
         l=[h]+[h:=h.next for _ in[1]*10**5 if h];a,b=l[k-1],l[~k];a.val,b.val=b.val,a.val;return l[0]
 ```
 
+#### Eval
+
+You can evalulate any multiline code as a string, i.e.:
+
+```python
+exec('i=1\nwhile i<3:\n  i+=1\nprint(i)')
+```
+
+is equivalent to:
+
+```python
+i=1
+while i<3:
+    i+=1
+print(i)
+```
+
 #### Misc
 
 * `key=itemgetter(n)` is the same length as `key=lambda x:x[n]` but a little bit clearer to read.

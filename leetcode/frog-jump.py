@@ -18,6 +18,10 @@ class Solution:
     def canCross(self, s: List[int]) -> bool:
         e,p,f=s[-1],set(s),cache(lambda c,k:c in p and c>=0and k>0and(c==e or f(c+k-1,k-1)or f(c+k,k)or f(c+k+1,k+1)));return f(1,1)
 
+class Solution:
+    def canCross(self, s: List[int]) -> bool:
+        return(f:=cache(lambda c,k:c in s and c>=0and k>0and(c==s[-1]or f(c+k-1,k-1)or f(c+k,k)or f(c+k+1,k+1))))(1,1)
+
 test('''
 403. Frog Jump
 Hard

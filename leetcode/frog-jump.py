@@ -1,27 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/frog-jump/discuss/821159/Python-Recursive-Easy
-
-class Solution:
-    def canCross(self, s: List[int]) -> bool:
-        e,p=s[-1],set(s)
-        @cache
-        def f(c,k):
-            if c not in p or c<0 or k<=0:
-                return False
-            if c==e:
-                return True
-            return f(c+k-1,k-1) or f(c+k,k) or f(c+k+1,k+1)
-        return f(1,1)
-
-class Solution:
-    def canCross(self, s: List[int]) -> bool:
-        e,p,f=s[-1],set(s),cache(lambda c,k:c in p and c>=0and k>0and(c==e or f(c+k-1,k-1)or f(c+k,k)or f(c+k+1,k+1)));return f(1,1)
-
-class Solution:
-    def canCross(self, s: List[int]) -> bool:
-        return(f:=cache(lambda c,k:c in s and c>=0and k>0and(c==s[-1]or f(c+k-1,k-1)or f(c+k,k)or f(c+k+1,k+1))))(1,1)
-
 # https://leetcode.com/problems/frog-jump/discuss/1097146/python-dfs-%2B-cache
 
 class Solution:

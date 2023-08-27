@@ -655,9 +655,9 @@ class Solution:
         l=[h]+[h:=h.next for _ in[1]*10**5 if h];a,b=l[k-1],l[~k];a.val,b.val=b.val,a.val;return l[0]
 ```
 
-#### Eval
+#### Exec
 
-You can evalulate any multiline code as a string, i.e.:
+You can evalulate any multiline code. Note exec (unlike eval) is not limited to a single string.
 
 ```python
 exec('i=1\nwhile i<3:\n  i+=1\nprint(i)')

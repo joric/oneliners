@@ -399,9 +399,6 @@ class Solution:
 ```
 
 You can also evalulate any multiline code with `exec`. Unlike `eval`, is not limited to a single string.
-Note that `eval` accepts only a single expression, and returns the value of the given expression,
-whereas `exec` ignores the return value from its code, and always returns `None`, its use has no effect
-on the compiled bytecode of the function where it is used. It does however affect existing variables.
 
 ```python
 exec('i=1\nwhile i<3:\n i+=1\nprint(i)')
@@ -416,7 +413,13 @@ while i<3:
 print(i)
 ```
 
+#### Swapping values
+
 To swap values you can use either `exec` (the usual `a,b=b,a` works inline only with semicolons) or a temporary variable.
+
+Note that `eval` accepts only a single expression, and returns the value of the given expression,
+whereas `exec` ignores the return value from its code, and always returns `None`, its use has no effect
+on the compiled bytecode of the function where it is used. It does however affect existing variables.
 
 Example:
 

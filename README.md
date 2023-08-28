@@ -452,7 +452,7 @@ swap = lambda a,x,y:(lambda f=a.__setitem__:(f(x,(a[x],a[y])),f(y,a[x][0]),f(x,a
 
 #### Mapping
 
-You can use `map` for a lot of purposes, for example to traverse through adjacent cells.
+You can use `map` for a lot of things, for example to traverse through adjacent cells.
 
 * https://leetcode.com/problems/max-area-of-island
 

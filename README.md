@@ -268,6 +268,12 @@ You can also write a subclass in one line, if needed.
 MyHashSet=type('',(set,),{'remove':set.discard,'contains':set.__contains__})
 ```
 
+* https://leetcode.com/problems/implement-stack-using-queues
+
+```python
+MyStack=type('',(list,),{'push':list.append,'top':lambda s:s[-1],'empty':lambda s:not s})
+```
+
 Sometimes (not always) you can skip `__init__` and use static attributes.
 
 * https://leetcode.com/problems/design-underground-system

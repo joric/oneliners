@@ -416,7 +416,7 @@ while i<3:
 print(i)
 ```
 
-To swap values you can use either `exec` (the usual `a,b=b,a` works inline only if you use semicolons) or a temporary variable.
+To swap values you can use either `exec` (the usual `a,b=b,a` works inline only with semicolons) or a temporary variable.
 
 Example:
 

@@ -894,7 +894,7 @@ class Solution:
 * Unless the following token starts with e or E. You can remove the space following a number. E.g. `i==4 and j==4` becomes `i==4and j==4`.
 * There's a nice way to convert an iterable to list using star operator, e.g. `x=[*g]` equals `*x,=g` (1 char shorter).
   You can also use this syntax to unpack iterables, e.g. `a,*b,c=range(5)` means `a=1;b=[2,3,4];c=5`.
-* Instead of range(x), you can use the * operator on a list of anything, e.g. `range(8)` equals `[1]*8` (unless you really need that counter value).
+* Instead of range(x), you can use the * operator on a list of anything, e.g. `range(8)` can replace `[1]*8` (unless you really need that counter value).
 * Conditions like `if i<len(r)` may be replaced with `if r[i:]`, it's 3 characters shorter.
 * You can replace `set(n)` with `{*n}` (2 characters shorter).
 * You can use `~~()` instead of `int()`, akin to js.

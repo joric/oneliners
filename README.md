@@ -897,7 +897,7 @@ class Solution:
 * Instead of range(x), you can use the * operator on a list of anything, e.g. `[1]*8` can replace `range(8)` (unless you really need the counter value).
 * Conditions like `if i<len(r)` may be replaced with `if r[i:]`, it's 3 characters shorter.
 * You can replace `set(n)` with `{*n}` (2 characters shorter).
-* You can use `~~()` instead of `int()` (1 character shorter), akin to js.
+* You can use `~~()` instead of `int()`, akin to js (1 character shorter).
 
 ## References
 

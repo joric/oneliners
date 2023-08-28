@@ -416,6 +416,37 @@ while i<3:
 print(i)
 ```
 
+To swap values you can use either `exec` (the usual `a,b=b,a` works inline only if you use semicolons) or a temporary variable.
+
+Example:
+
+* https://leetcode.com/problems/sort-colors
+
+```python
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        def fn(t,b):
+            red, white, blue = t
+            return (swap:=lambda a,x,y:exec('a[x],a[y]=a[y],a[x]'),(swap(nums,red,white),
+            (red+1,white+1,blue))[1] if nums[white]==0 else ((red,white+1,blue) if nums[white]==1
+            else (swap(nums,white,blue),(red,white,blue-1))[1]))[1]
+        reduce(fn, nums, [0,0,len(nums)-1])
+
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        (s:=lambda a,x,y:(t:=a[x],setitem(a,x,a[y]),setitem(a,y,t),a)[3],
+        f:=lambda a,i,j,k:(f(s(a,i,j),i+1,j+1,k) if a[j]==0 else f(a,i,j+1,k) if a[j]==1
+        else f(s(a,j,k),i,j,k-1)) if i<=j<=k else None)[1](nums,0,0,len(nums)-1)
+```
+
+Also see swap function here (but it's not really that useful):
+
+* https://stackoverflow.com/questions/4362153/lambda-returns-lambda-in-python
+
+```python
+swap = lambda a,x,y:(lambda f=a.__setitem__:(f(x,(a[x],a[y])),f(y,a[x][0]),f(x,a[x][1])))()
+```
+
 #### Mapping
 
 You can use `map` for a lot of purposes, for example to traverse through adjacent cells.
@@ -613,39 +644,6 @@ class Solution:
     def longestValidParentheses(self, s: str) -> int:
         return reduce(lambda a,b:(max(a[0],b[0]-a[1][-2][0]),a[1][:-1]) if b[1]==')'
             and a[1][-1][1]=='(' else (a[0],a[1]+[b]),enumerate(s),(0,[(-1,')')]))[0]
-```
-
-### Swapping variables
-
-To swap values you can use either `exec` (the usual `a,b=b,a` works inline only if you use semicolons) or a temporary variable.
-
-Example:
-
-* https://leetcode.com/problems/sort-colors
-
-```python
-class Solution:
-    def sortColors(self, nums: List[int]) -> None:
-        def fn(t,b):
-            red, white, blue = t
-            return (swap:=lambda a,x,y:exec('a[x],a[y]=a[y],a[x]'),(swap(nums,red,white),
-            (red+1,white+1,blue))[1] if nums[white]==0 else ((red,white+1,blue) if nums[white]==1
-            else (swap(nums,white,blue),(red,white,blue-1))[1]))[1]
-        reduce(fn, nums, [0,0,len(nums)-1])
-
-class Solution:
-    def sortColors(self, nums: List[int]) -> None:
-        (s:=lambda a,x,y:(t:=a[x],setitem(a,x,a[y]),setitem(a,y,t),a)[3],
-        f:=lambda a,i,j,k:(f(s(a,i,j),i+1,j+1,k) if a[j]==0 else f(a,i,j+1,k) if a[j]==1
-        else f(s(a,j,k),i,j,k-1)) if i<=j<=k else None)[1](nums,0,0,len(nums)-1)
-```
-
-Also see swap function here (but it's not really that useful):
-
-* https://stackoverflow.com/questions/4362153/lambda-returns-lambda-in-python
-
-```python
-swap = lambda a,x,y:(lambda f=a.__setitem__:(f(x,(a[x],a[y])),f(y,a[x][0]),f(x,a[x][1])))()
 ```
 
 ### Semicolons

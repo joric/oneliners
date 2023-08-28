@@ -398,6 +398,27 @@ class Solution:
         return (s.sort(),all(s[1:] and [insort(s,s.pop()-s.pop())] for _ in count()),s[0])[2]
 ```
 
+With exec you can evalulate any multiline code. Note exec (unlike eval) is not limited to a single string.
+
+Eval accepts only a single expression, and returns the value of the given expression,
+whereas exec ignores the return value from its code, and always returns None.
+
+Exec is a function; its use has no effect on the compiled bytecode of the function where it is used.
+It DOES however affect existing variables.
+
+```python
+exec('i=1\nwhile i<3:\n i+=1\nprint(i)')
+```
+
+is equivalent to:
+
+```python
+i=1
+while i<3:
+ i+=1
+print(i)
+```
+
 #### Mapping
 
 You can use `map` for a lot of purposes, for example to traverse through adjacent cells.
@@ -597,13 +618,7 @@ class Solution:
             and a[1][-1][1]=='(' else (a[0],a[1]+[b]),enumerate(s),(0,[(-1,')')]))[0]
 ```
 
-### Exec and Eval
-
-Eval accepts only a single expression, and returns the value of the given expression,
-whereas exec ignores the return value from its code, and always returns None.
-
-Exec is a function; its use has no effect on the compiled bytecode of the function where it is used.
-It DOES however affect existing variables.
+### Swapping variables
 
 To swap values you can use either `exec` (the usual `a,b=b,a` works inline only if you use semicolons) or a temporary variable.
 
@@ -634,21 +649,6 @@ Also see swap function here (but it's not really that useful):
 
 ```python
 swap = lambda a,x,y:(lambda f=a.__setitem__:(f(x,(a[x],a[y])),f(y,a[x][0]),f(x,a[x][1])))()
-```
-
-With exec you can evalulate any multiline code. Note exec (unlike eval) is not limited to a single string.
-
-```python
-exec('i=1\nwhile i<3:\n i+=1\nprint(i)')
-```
-
-is equivalent to:
-
-```python
-i=1
-while i<3:
- i+=1
-print(i)
 ```
 
 ### Semicolons

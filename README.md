@@ -398,13 +398,11 @@ class Solution:
         return (s.sort(),all(s[1:] and [insort(s,s.pop()-s.pop())] for _ in count()),s[0])[2]
 ```
 
-With exec you can evalulate any multiline code. Note exec (unlike eval) is not limited to a single string.
-
-Eval accepts only a single expression, and returns the value of the given expression,
-whereas exec ignores the return value from its code, and always returns None.
-
-Exec is a function; its use has no effect on the compiled bytecode of the function where it is used.
-It DOES however affect existing variables.
+You can also evalulate any multiline code with `exec`. Unlike `eval`, is not limited to a single string.
+Note that `eval` accepts only a single expression, and returns the value of the given expression,
+whereas `exec` ignores the return value from its code, and always returns `None`, it is a function,
+its use has no effect on the compiled bytecode of the function where it is used.
+It does however affect existing variables.
 
 ```python
 exec('i=1\nwhile i<3:\n i+=1\nprint(i)')

@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def bestClosingTime(self, c: str) -> int:
-        return(c:=list(accumulate([2*(x=='Y')-1for x in c],initial=0))).index(max(c))
+        return(c:=[*accumulate([2*(x=='Y')-1for x in c],initial=0)]).index(max(c))
 
 test('''
 2483. Minimum Penalty for a Shop

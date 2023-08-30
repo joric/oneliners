@@ -20,6 +20,10 @@ class Solution:
     def minimumReplacement(self, n: List[int]) -> int:
         x=n[-1];return sum((x:=a//(k:=(a+x-1)//x),k-1)[1]for a in n[::-1])
 
+class Solution:
+    def minimumReplacement(self, n: List[int]) -> int:
+        x=n[-1];return sum((k:=(a+x-1)//x,x:=a//k)[0]-1for a in n[::-1])
+
 test('''
 2366. Minimum Replacements to Sort the Array
 Hard

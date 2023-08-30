@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/minimum-replacements-to-sort-the-array/discuss/2388265/JavaC%2B%2BPython-One-Reverse-Pass
+
 class Solution:
     def minimumReplacement(self, n: List[int]) -> int:
         x = n[-1]

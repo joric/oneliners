@@ -12,7 +12,7 @@ class Solution:
 
 class Solution:
     def minimumReplacement(self, n: List[int]) -> int:
-        x,r=n[-1],0;[(k:=(a+x-1)//x,x:=a//k,r:=r+k-1)for a in reversed(n)];return r
+        x,r=n[-1],0;[(k:=(a+x-1)//x,x:=a//k,r:=r+k-1)for a in n[::-1]];return r
 
 test('''
 2366. Minimum Replacements to Sort the Array

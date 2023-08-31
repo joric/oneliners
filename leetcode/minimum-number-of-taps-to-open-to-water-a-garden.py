@@ -53,7 +53,7 @@ class Solution:
 
 class Solution:
     def minTaps(self, n: int, r: List[int]) -> int:
-        return(-1,c:=(f:=cache(lambda i:i>0and min((1+f(j-r[j])for j in range(i,-1,-1)if 0<r[j]>=i-j),default=inf)))(n))[c<inf]
+        return(-1,c:=(f:=cache(lambda i:i>0and min((1+f(j-r[j])for j in range(i+1)if 0<r[j]>=i-j),default=inf)))(n))[c<inf]
 
 test('''
 1326. Minimum Number of Taps to Open to Water a Garden
@@ -93,7 +93,11 @@ Example 2:
 Input: n = 3, ranges = [0,0,0,0]
 Output: -1
 Explanation: Even if you activate all the four taps you cannot water the whole garden.
- 
+
+Example 3:
+
+Input: n = 7, ranges = [1,2,1,0,2,1,0,1]
+Output: 3
 
 Constraints:
 

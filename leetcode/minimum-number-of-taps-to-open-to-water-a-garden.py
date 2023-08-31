@@ -35,6 +35,26 @@ class Solution:
     def minTaps(self, n: int, r: List[int]) -> int:
         d=[0]+[n+2]*n;[setitem(d,j,min(d[j],d[max(0,i-x)]+1))for i,x in enumerate(r)for j in range(max(i-x+1,0),min(i+x,n)+1)];return d[n]<n+2 and d[n]or-1
 
+# https://leetcode.com/problems/minimum-number-of-taps-to-open-to-water-a-garden/discuss/3508593/Minimum-Number-of-Taps-to-Open-to-Water-a-Garden-(C)
+
+class Solution:
+    def minTaps(self, n: int, r: List[int]) -> int:
+        @cache
+        def f(i):
+            if i<=0:
+                return 0
+            c = inf
+            for j in range(i,-1,-1):
+                if r[j]>0 and r[j]+j>=i:
+                    c = min(c,1+f(j-r[j]))
+            return c
+        c = f(n)
+        return -1 if c>=inf else c
+
+class Solution:
+    def minTaps(self, n: int, r: List[int]) -> int:
+        return(c:=(f:=cache(lambda i:i>0and min((1+f(j-r[j])for j in range(i,-1,-1)if r[j]>0 and r[j]+j>=i),default=inf)))(n))<inf and c or-1
+
 test('''
 1326. Minimum Number of Taps to Open to Water a Garden
 Hard

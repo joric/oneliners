@@ -14,6 +14,25 @@ class Solution:
     def minTaps(self, n: int, r: List[int]) -> int:
         d=[0]+[n+2]*n;[setitem(d,j,min(d[j],d[max(0,i-x)]+1))for i,x in enumerate(r)for j in range(max(i-x+1,0),min(i+x,n)+1)];return d[n]<n+2 and d[n]or-1
 
+# https://leetcode.com/problems/minimum-number-of-taps-to-open-to-water-a-garden/discuss/3983011/Simple-6-lines-JavaScript-code-!!!
+
+class Solution:
+    def minTaps(self, n: int, r: List[int]) -> int:
+        a = b = c = 0
+        while b<n:
+            for i,x in enumerate(r):
+                if i-x<=a and i+x>b:
+                    b = i+x
+            if a==b:
+                return -1
+            c += 1
+            a = b
+        return c
+
+class Solution:
+    def minTaps(self, n: int, r: List[int]) -> int:
+        a=b=c=0;return next(c for _ in r if not(b<n and[(b:=i+x)for i,x in enumerate(r)if i-x<=a and i+x>b]!=0and(c:=a==b and-1or c+1,a:=b)and c>0))
+
 # https://leetcode.com/problems/minimum-number-of-taps-to-open-to-water-a-garden/discuss/3508593/Minimum-Number-of-Taps-to-Open-to-Water-a-Garden-(C)
 
 class Solution:

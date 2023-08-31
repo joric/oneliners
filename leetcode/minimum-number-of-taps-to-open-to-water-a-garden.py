@@ -53,7 +53,7 @@ class Solution:
 
 class Solution:
     def minTaps(self, n: int, r: List[int]) -> int:
-        return(c:=(f:=cache(lambda i:i>0and min((1+f(j-r[j])for j in range(i,-1,-1)if r[j]>0 and r[j]+j>=i),default=inf)))(n))<inf and c or-1
+        return(c:=(f:=cache(lambda i:i>0and min((1+f(j-r[j])for j in range(i,-1,-1)if 0<r[j]and r[j]+j>=i),default=inf)))(n))<inf and c or-1
 
 test('''
 1326. Minimum Number of Taps to Open to Water a Garden

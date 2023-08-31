@@ -1,26 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/minimum-number-of-taps-to-open-to-water-a-garden/discuss/1386524/2-solutions-DP-and-Greedy-with-how-you-behave-when-being-asked-during-interviews
-
-class Solution:
-    def minTaps(self, n: int, r: List[int]) -> int:
-        v = sorted((max(0,i-x),min(n,i+x))for i,x in enumerate(r))
-        @cache
-        def f(i,j):
-            if i==len(r) or j==n:
-                return 0
-            c = inf
-            for i in range(i,len(r)):
-                if v[i][0]<=j:
-                    c = min(c,f(i+1,v[i][1])+1)
-                else:
-                    break
-            return c
-        if v[0][0] > 0:
-            return -1
-        c = f(0, 0)
-        return -1 if c==inf else c
-
 # https://leetcode.com/problems/minimum-number-of-taps-to-open-to-water-a-garden/discuss/484235/JavaC%2B%2BPython-Similar-to-LC1024
 
 class Solution:

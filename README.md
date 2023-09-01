@@ -49,6 +49,20 @@ class Solution:
         return dict(Counter(nums).most_common(k))
 ```
 
+It also autoexpands generators:
+
+* https://leetcode.com/problems/counting-bits
+
+```python
+class Solution:
+    def countBits(self, n: int) -> List[int]:
+        return [i.bit_count() for i in range(n+1)]
+
+class Solution:
+    def countBits(self, n: int) -> List[int]:
+        return map(int.bit_count,range(n+1))
+```
+
 #### Lambdas
 
 Fictitious (anonymous) lambdas also may be nested. E.g. you can use lambdas as parameters:

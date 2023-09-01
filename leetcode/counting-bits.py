@@ -12,6 +12,10 @@ class Solution:
     def countBits(self, n: int) -> List[int]:
         return[x.bit_count()for x in range(n+1)]
 
+class Solution:
+    def countBits(self, n: int) -> List[int]:
+        return map(int.bit_count,range(n+1))
+
 test('''
 338. Counting Bits
 Easy

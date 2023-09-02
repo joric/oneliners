@@ -17,7 +17,21 @@ Trie = type('',(),{
     'startsWith':lambda s,p:bool(reduce(lambda n,c:n.get(c,{}),p,s.r))
 })
 
-Trie = type('',(),{'__init__':lambda s:setattr(s,'r',{}),'insert':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),list(w)+[''],s.r) or None,'search':lambda s,w:'' in reduce(lambda n,c:n.get(c,{}),w,s.r),'startsWith':lambda s,p:bool(reduce(lambda n,c:n.get(c,{}),p,s.r))})
+Trie=type('',(),{'__init__':lambda s:setattr(s,'r',{}),'insert':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),list(w)+[''],s.r) or None,'search':lambda s,w:'' in reduce(lambda n,c:n.get(c,{}),w,s.r),'startsWith':lambda s,p:bool(reduce(lambda n,c:n.get(c,{}),p,s.r))})
+
+# without bool type casting
+
+class Trie:
+    def __init__(self):
+        self.root = {}
+    def insert(self, word):
+        reduce(lambda node, c: node.setdefault(c, {}), list(word) + [''], self.root)
+    def search(self, word):
+        return '' in self.startsWith(word)
+    def startsWith(self, prefix):
+        return reduce(lambda node, c: node.get(c, {}), prefix, self.root)   
+
+Trie=type('',(),{'__init__':lambda s:setattr(s,'r',{}),'insert':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),[*w]+[''],s.r) or None,'search':lambda s,w:''in s.startsWith(w),'startsWith':lambda s,w:reduce(lambda n,c:n.get(c,{}),w,s.r)})
 
 test('''
 
@@ -70,5 +84,5 @@ Accepted
 Submissions
 1,211,859
 
-''', classname=Trie)
+''', classname=Trie, check=lambda r,e,*a:all(bool(x)==y if z=='startsWith' else x==y for x,y,z in zip(r,e,a)))
 

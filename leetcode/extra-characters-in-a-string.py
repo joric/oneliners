@@ -19,6 +19,10 @@ class Solution:
     def minExtraChar(self, s: str, d: List[str]) -> int:
         return~~(f:=cache(lambda i:i<len(s)and min([1+f(i+1)]+[f(i+len(w))for w in d if w==s[i:i+len(w)]])))(0)
 
+class Solution:
+    def minExtraChar(self, s: str, d: List[str]) -> int:
+        return(f:=cache(lambda s:len(s)and min([1+f(s[1:])]+[f(s[len(w):])for w in d if w==s[:len(w)]])))(s)
+
 test('''
 2707. Extra Characters in a String
 Medium

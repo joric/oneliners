@@ -57,7 +57,7 @@ class Solution:
         return dict(Counter(nums).most_common(k))
 ```
 
-It also autoexpands generators:
+It also automatically evaluates generators:
 
 * https://leetcode.com/problems/counting-bits
 

@@ -32,7 +32,7 @@ class Solution:
         return comb(n+k-1, k*2) % (10**9+7)
 ```
 
-You can also use `__import__('modulename').varname` to import from unlisted modules (i.e. numpy). Example:
+You can also use `__import__('module').func` to import from unlisted modules (i.e. numpy). Example:
 
 * https://leetcode.com/problems/minimize-deviation-in-array
 

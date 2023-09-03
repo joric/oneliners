@@ -16,20 +16,20 @@ The only exception is `bisect.bisect()` because bisect is also a module name (ju
 
 E.g. Leetcode header has `import * from itertools`, so we use `comb()` instead of `itertools.comb()`:
 
-* https://leetcode.com/problems/number-of-sets-of-k-non-overlapping-line-segments
-
-```python
-class Solution:
-    def numberOfSets(self, n: int, k: int) -> int:
-        return comb(n+k-1,k*2)%(10**9+7)
-```
-
 * https://leetcode.com/problems/unique-paths
 
 ```python
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         return comb(m+n-2,n-1)
+```
+
+* https://leetcode.com/problems/number-of-sets-of-k-non-overlapping-line-segments
+
+```python
+class Solution:
+    def numberOfSets(self, n: int, k: int) -> int:
+        return comb(n+k-1,k*2)%(10**9+7)
 ```
 
 You can also use `__import__('modulename').varname` to import from unlisted modules (i.e. numpy). Example:

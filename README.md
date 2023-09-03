@@ -21,7 +21,7 @@ E.g. Leetcode header has `import * from itertools`, so we use `comb()` instead o
 ```python
 class Solution:
     def numberOfSets(self, n: int, k: int) -> int:
-        return comb(n+k-1, k*2) % (10**9+7)
+        return comb(n+k-1,k*2)%(10**9+7)
 ```
 
 * https://leetcode.com/problems/unique-paths

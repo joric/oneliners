@@ -64,7 +64,7 @@ It also automatically evaluates generators:
 ```python
 class Solution:
     def countBits(self, n: int) -> List[int]:
-        return [i.bit_count() for i in range(n+1)]
+        return[i.bit_count()for i in range(n+1)]
 
 class Solution:
     def countBits(self, n: int) -> List[int]:

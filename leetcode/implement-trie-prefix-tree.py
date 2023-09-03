@@ -3,11 +3,11 @@ from lc import *
 class Trie:
     def __init__(self):
         self.root = {}
-    def insert(self, word):
+    def insert(self, word: str) -> None:
         reduce(lambda node, c: node.setdefault(c, {}), list(word) + [''], self.root)
-    def search(self, word):
+    def search(self, word: str) -> bool:
         return '' in reduce(lambda node, c: node.get(c, {}), word, self.root)
-    def startsWith(self, prefix):
+    def startsWith(self, prefix: str) -> bool:
         return bool(reduce(lambda node, c: node.get(c, {}), prefix, self.root))
 
 Trie = type('',(),{
@@ -24,14 +24,14 @@ Trie=type('',(),{'__init__':lambda s:setattr(s,'r',{}),'insert':lambda s,w:reduc
 class Trie:
     def __init__(self):
         self.root = {}
-    def insert(self, word):
+    def insert(self, word: str) -> None:
         reduce(lambda node, c: node.setdefault(c, {}), list(word) + [''], self.root)
-    def search(self, word):
+    def search(self, word: str) -> bool:
         return '' in self.startsWith(word)
-    def startsWith(self, prefix):
-        return reduce(lambda node, c: node.get(c, {}), prefix, self.root)   
+    def startsWith(self, prefix: str) -> bool:
+        return reduce(lambda node, c: node.get(c, {}), prefix, self.root)
 
-Trie=type('',(),{'__init__':lambda s:setattr(s,'r',{}),'insert':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),[*w]+[''],s.r) or None,'search':lambda s,w:''in s.startsWith(w),'startsWith':lambda s,w:reduce(lambda n,c:n.get(c,{}),w,s.r)})
+Trie=type('',(),{'__init__':lambda s:setattr(s,'r',{}),'insert':lambda s,w:reduce(lambda n,c:n.setdefault(c,{}),[*w]+[''],s.r)or None,'search':lambda s,w:''in s.startsWith(w),'startsWith':lambda s,w:reduce(lambda n,c:n.get(c,{}),w,s.r)})
 
 test('''
 

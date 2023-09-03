@@ -21,7 +21,7 @@ E.g. Leetcode header has `import * from itertools`, so we use `comb()` instead o
 ```python
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        return comb(m+n-2,n-1)
+        return comb(m+n-2, n-1)
 ```
 
 * https://leetcode.com/problems/number-of-sets-of-k-non-overlapping-line-segments
@@ -29,7 +29,7 @@ class Solution:
 ```python
 class Solution:
     def numberOfSets(self, n: int, k: int) -> int:
-        return comb(n+k-1,k*2)%(10**9+7)
+        return comb(n+k-1, k*2) % (10**9+7)
 ```
 
 You can also use `__import__('modulename').varname` to import from unlisted modules (i.e. numpy). Example:

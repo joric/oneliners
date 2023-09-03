@@ -13,6 +13,15 @@ class Solution(object):
         return dp[n-1][m-1]
 
 class Solution:
+    @cache
+    def uniquePaths(self, m, n):
+        return 1 if m==1 or n==1 else self.uniquePaths(m-1, n) + self.uniquePaths(m, n-1)
+
+class Solution:
+    def uniquePaths(self, m, n):
+        return(f:=cache(lambda m,n:1 if m==1 or n==1 else f(m-1, n)+f(m, n-1)))(m,n)
+
+class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         return factorial(m + n - 2) // factorial(m - 1) // factorial(n - 1)
 

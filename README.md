@@ -576,7 +576,7 @@ class Solution:
 
 #### Cache
 
-Cache decorator may be used as an inline function `cache(lambda ...)` in oneliners.
+Cache decorator may be used as an inline function `cache(lambda ...)`.
 
 * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/2555929/python-oneliner-dfs-with-a-cache-decorator
 

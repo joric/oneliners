@@ -1,5 +1,7 @@
 from lc import *
 
+# TODO: fix tests (this is tricky, as pos is not passed as a parameter, see test cases)
+
 # from linked-list-cycle-ii (works)
 
 class Solution:
@@ -32,13 +34,14 @@ class Solution:
     def hasCycle(self, h: Optional[ListNode]) -> bool:
         s,f,r = h,h,False
         while True:
-            if not(f and f.next and (s:=s.next,f:=f.next.next) and not(r:=(s==f))):
+            if not(f and f.next and (s:=s.next,f:=f.next.next) and not(r:=s==f)):
                 return r
         return r
 
 class Solution:
     def hasCycle(self, h: Optional[ListNode]) -> bool:
-        s,f,r = h,h,0;return next(r for _ in count()if not(f and f.next and(s:=s.next,f:=f.next.next)and not(r:=(s==f))))
+        print(h.detectCycle())
+        s,f,r = h,h,0;return next(r for _ in count()if not(f and f.next and(s:=s.next,f:=f.next.next)and not(r:=s==f)))
 
 test('''
 141. Linked List Cycle
@@ -92,5 +95,6 @@ Accepted
 2,293,646
 Submissions
 4,735,707
-''')
-
+'''
+#, check=lambda res,exp,head:head.detectCycle()==None
+)

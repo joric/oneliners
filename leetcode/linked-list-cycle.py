@@ -47,7 +47,6 @@ class Solution:
 
 class Solution:
     def hasCycle(self, h: Optional[ListNode]) -> bool:
-        print(h.detectCycle())
         s,f,r = h,h,0;return next(r for _ in count()if not(f and f.next and(s:=s.next,f:=f.next.next)and not(r:=s==f)))
 
 test('''

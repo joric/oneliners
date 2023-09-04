@@ -166,7 +166,7 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
         to_list = lambda v: v if not is_iter(v) else [to_list(x) for x in v]
         hint = str(get_type_hints(func).get(name, None))
         if type(v) is str:
-            return v
+            return v # see linked-list-cycle-ii
         if 'List[lc.ListNode]' in hint or 'List[typing.Optional[lc.ListNode]]' in hint:
             return [ListNode.parse(x) for x in v]
         elif 'ListNode' in hint and type(v)!=ListNode:

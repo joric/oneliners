@@ -3,14 +3,6 @@ from lc import *
 def init(head: ListNode, pos: int):
     head.getTail().next = head.getNode(pos)
 
-# from linked-list-cycle-ii (works)
-
-class Solution:
-    def hasCycle(self, head: Optional[ListNode]) -> bool:
-        return next(head for _ in count() if not head or head.val==inf or not(setattr(head,'val',inf),head:=head.next))
-
-# floyd
-
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         slow, fast = head, head

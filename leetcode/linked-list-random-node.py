@@ -5,7 +5,7 @@ def init(head: ListNode):
     pass
 
 # TODO (write sampler)
-def check(res, exp):
+def check(res, exp, *arg):
     return True
 
 # reservoir sampling
@@ -98,6 +98,6 @@ Accepted
 Submissions
 276,676
 
-''',init=init,check=check
+''',init=init,check=check,classname=Solution
 )
 

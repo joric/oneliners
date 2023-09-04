@@ -7,6 +7,7 @@ class Solution:
         return next(head for _ in count() if not head or head.val==inf or not(setattr(head,'val',inf),head:=head.next))
 
 # floyd
+
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         slow, fast = head, head

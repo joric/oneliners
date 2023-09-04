@@ -7,7 +7,7 @@ def init(head: ListNode, pos: int):
 
 def check(res,exp,head):
     i = head.getIndex(head.detectCycle())
-    return p==i, 'no cycle' if i<0 else f'tail connects to node index {i}'
+    return p==i, False if i<0 else True
 
 # from linked-list-cycle-ii (works)
 

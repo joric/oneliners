@@ -278,6 +278,7 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
 
             if type(ok) is tuple: # see linked-list-cycle-ii (substitutes res with custom res)
                 ok, res = ok[:2]
+
             print_res(ok, res, expected, *orig)
             passed += int(ok)
 

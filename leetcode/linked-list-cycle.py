@@ -1,5 +1,12 @@
 from lc import *
 
+# from linked-list-cycle-ii (works)
+
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        return next(head for _ in count() if not head or head.val==inf or not(setattr(head,'val',inf),head:=head.next))
+
+# floyd
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         slow, fast = head, head
@@ -10,12 +17,6 @@ class Solution:
                 return True
         return False
 
-# from linked-list-cycle-ii
-
-class Solution:
-    def hasCycle(self, head: Optional[ListNode]) -> bool:
-        return next(head for _ in count() if not head or head.val==inf or not(setattr(head,'val',inf),head:=head.next))
-
 class Solution:
     def hasCycle(self, h: Optional[ListNode]) -> bool:
         s,f = h,h
@@ -25,7 +26,6 @@ class Solution:
             if s==f:
                 return True
         return False
-
 
 class Solution:
     def hasCycle(self, h: Optional[ListNode]) -> bool:

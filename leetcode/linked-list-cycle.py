@@ -1,6 +1,13 @@
 from lc import *
 
-# TODO: fix tests (this is tricky, as pos is not passed as a parameter, see test cases)
+def init(head: ListNode, pos: int):
+    global p
+    p = pos
+    head.getTail().next = head.getNode(p)
+
+def check(res,exp,head):
+    i = head.getIndex(head.detectCycle())
+    return p==i, 'no cycle' if i<0 else f'tail connects to node index {i}'
 
 # from linked-list-cycle-ii (works)
 
@@ -95,6 +102,5 @@ Accepted
 2,293,646
 Submissions
 4,735,707
-'''
-#, check=lambda res,exp,head:head.detectCycle()==None
+''', init=init, check=check
 )

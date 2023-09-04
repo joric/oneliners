@@ -1,13 +1,7 @@
 from lc import *
 
 def init(head: ListNode, pos: int):
-    global p
-    p = pos
-    head.getTail().next = head.getNode(p)
-
-def check(res,exp,head):
-    i = head.getIndex(head.detectCycle())
-    return p==i, False if i<0 else True
+    head.getTail().next = head.getNode(pos)
 
 # from linked-list-cycle-ii (works)
 
@@ -101,5 +95,6 @@ Accepted
 2,293,646
 Submissions
 4,735,707
-''', init=init, check=check
+''', init=init
 )
+

@@ -2,6 +2,7 @@
 
 from typing import *
 from collections import *
+from copy import *
 from functools import *
 from heapq import *
 from itertools import *
@@ -14,6 +15,7 @@ from statistics import *
 from string import *
 import bisect
 import collections
+import copy
 import heapq
 import itertools
 import importlib

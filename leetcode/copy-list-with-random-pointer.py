@@ -20,8 +20,12 @@ class Solution:
         return d.get(head)
 
 class Solution:
-    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        return copy.deepcopy(head)
+    def copyRandomList(self, h: 'Optional[Node]') -> 'Optional[Node]':
+        d={None:None};return(f:=lambda h:d[h]if h in d else(d.setdefault(h,m:=Node(h.val)),setattr(m,'next',f(h.next)),setattr(m,'random',f(h.random)))[0])(head)
+
+class Solution:
+    def copyRandomList(self, h: 'Optional[Node]') -> 'Optional[Node]':
+        return deepcopy(h)
 
 test('''
 138. Copy List with Random Pointer

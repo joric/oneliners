@@ -101,6 +101,8 @@ class ListNode:
     def parse(val):
         if not val:
             return None
+        if type(val)==ListNode:
+            return val
         sub_nodes = ListNode.parse(val[1:])
         list_node = ListNode(val[0], sub_nodes)
         return list_node
@@ -217,7 +219,7 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
     if not check:
         def check(res, expected, *args):
             t = str(type(res))
-            if 'TreeNode' in t or 'ListNode' in t:
+            if 'TreeNode' in t or 'ListNode' in t or type(res)==list:
                 return str(res)==str(expected)
             elif 'numpy.ndarray' in t:
                 return all(x==y for x,y in zip(res,expected))

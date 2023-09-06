@@ -41,7 +41,7 @@ class Solution:
             ans.append(head)
         return ans
 
-# TODO
+# https://leetcode.com/problems/split-linked-list-in-parts/discuss/186563/Python-8-lines-O(n)-time-O(1)-extra-space-with-explanation
 
 class Solution:
     def splitListToParts(self, root: Optional[ListNode], k: int) -> List[Optional[ListNode]]:

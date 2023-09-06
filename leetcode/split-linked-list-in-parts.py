@@ -55,6 +55,8 @@ class Solution:
             p.next, p, i = None, p.next, i + 1
         return result
 
+# TODO
+
 test('''
 725. Split Linked List in Parts
 Medium

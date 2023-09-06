@@ -71,6 +71,16 @@ class Solution:
         return map(int.bit_count,range(n+1))
 ```
 
+You can also return linked list of values as `ListNode('a,b,...')`
+
+* https://leetcode.com/problems/add-two-numbers
+
+```python
+class Solution:
+    def addTwoNumbers(self, a: Optional[ListNode], b: Optional[ListNode]) -> Optional[ListNode]:
+        f=lambda n:n and n.val+10*f(n.next)or 0;return ListNode(','.join([*str(f(a)+f(b))][::-1]))
+```
+
 #### Lambdas
 
 Fictitious (anonymous) lambdas also may be nested. E.g. you can use lambdas as parameters:

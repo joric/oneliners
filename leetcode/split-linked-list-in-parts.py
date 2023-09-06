@@ -19,6 +19,10 @@ class Solution:
     def splitListToParts(self, r: Optional[ListNode], k: int) -> List[Optional[ListNode]]:
         p=r;n=sum(0!=(p:=p.next)for _ in[1]*10**5if p);i,p,(q,r),s=0,r,divmod(n,k),[None]*k;return next(s for _ in count()if not(i<k and p and (setitem(s,i,p),[(p:=p.next)for _ in range(q-(i>=r))],t:=p.next,setattr(p,'next',None),p:=t,i:=i+1)))
 
+class Solution:
+    def splitListToParts(self, r: Optional[ListNode], k: int) -> List[Optional[ListNode]]:
+        c=[(r.val,r:=r.next)[0]for _ in [0]*10**5if r];j,(d,r)=0,divmod(len(c),k);c=[c[j:(j:=j+d-(i>=r)+1)]for i in range(k)];return [v and ListNode(','.join(map(str,v)))or None for v in c]
+
 test('''
 725. Split Linked List in Parts
 Medium

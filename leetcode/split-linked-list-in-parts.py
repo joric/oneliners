@@ -44,18 +44,21 @@ class Solution:
 # https://leetcode.com/problems/split-linked-list-in-parts/discuss/186563/Python-8-lines-O(n)-time-O(1)-extra-space-with-explanation
 
 class Solution:
-    def splitListToParts(self, root: Optional[ListNode], k: int) -> List[Optional[ListNode]]:
-        p, n = root, 0
+    def splitListToParts(self, r: Optional[ListNode], k: int) -> List[Optional[ListNode]]:
+        p,n = r,0
         while p:
-            p, n = p.next, n + 1
-        i, p, (q, r), result = 0, root, divmod(n, k), [None] * k
-        while i < k and p:
-            result[i] = p
-            for _ in range(q - (i >= r)): p = p.next
-            p.next, p, i = None, p.next, i + 1
-        return result
+            p,n = p.next,n+1
+        i,p,(q,r),s = 0,r,divmod(n,k),[None]*k
+        while i<k and p:
+            s[i] = p
+            for _ in range(q-(i>=r)):
+                p = p.next
+            p.next,p,i = None,p.next,i+1
+        return s
 
-# TODO
+class Solution:
+    def splitListToParts(self, r: Optional[ListNode], k: int) -> List[Optional[ListNode]]:
+        p=r;n=sum(0!=(p:=p.next)for _ in[1]*10**5if p);i,p,(q,r),s=0,r,divmod(n,k),[None]*k;return next(s for _ in count()if not(i<k and p and (setitem(s,i,p),[(p:=p.next)for _ in range(q-(i>=r))],t:=p.next,setattr(p,'next',None),p:=t,i:=i+1)))
 
 test('''
 725. Split Linked List in Parts

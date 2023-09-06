@@ -21,7 +21,7 @@ class Solution:
 
 class Solution:
     def splitListToParts(self, r: Optional[ListNode], k: int) -> List[Optional[ListNode]]:
-        c=[(r.val,r:=r.next)[0]for _ in [0]*1000if r];j,(d,r)=0,divmod(len(c),k);c=[c[j:(j:=j+d-(i>=r)+1)]for i in range(k)];return[v and ListNode(','.join(map(str,v)))or None for v in c]
+        c=[(r.val,r:=r.next)[0]for _ in[0]*1000if r];j,(d,r)=0,divmod(len(c),k);c=[c[j:(j:=j+d-(i>=r)+1)]for i in range(k)];return[v and ListNode(','.join(map(str,v)))or None for v in c]
 
 test('''
 725. Split Linked List in Parts

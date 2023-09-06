@@ -1,46 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/split-linked-list-in-parts/discuss/109284/Elegant-Python-with-Explanation
-
-class Solution:
-    def splitListToParts(self, root: Optional[ListNode], k: int) -> List[Optional[ListNode]]:
-        curr, length = root, 0
-        while curr:
-            curr, length = curr.next, length + 1
-        # Determine the length of each chunk
-        chunk_size, longer_chunks = length // k, length % k
-        res = [chunk_size + 1] * longer_chunks + [chunk_size] * (k - longer_chunks)
-        # Split up the list
-        prev, curr = None, root
-        for index, num in enumerate(res):
-            if prev:
-                prev.next = None
-            res[index] = curr
-            for i in range(num):
-                prev, curr = curr, curr.next
-        return res
-
-# https://leetcode.com/problems/split-linked-list-in-parts/discuss/1492867/Python-two-passes-solution-explained
-
-class Solution:
-    def splitListToParts(self, root: Optional[ListNode], k: int) -> List[Optional[ListNode]]:
-        cur = root
-        N = 0
-        while cur:
-            cur = cur.next
-            N += 1
-        d, r = divmod(N, k)
-        ans = []
-        cur = root
-        for i in range(k):
-            head = cur
-            for j in range(d + (i < r) - 1):
-                if cur: cur = cur.next
-            if cur:
-                cur.next, cur = None, cur.next
-            ans.append(head)
-        return ans
-
 # https://leetcode.com/problems/split-linked-list-in-parts/discuss/186563/Python-8-lines-O(n)-time-O(1)-extra-space-with-explanation
 
 class Solution:

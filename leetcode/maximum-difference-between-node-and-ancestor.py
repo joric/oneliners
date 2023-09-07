@@ -1,8 +1,14 @@
 from lc import *
 
+'''
+int maxAncestorDiff(TreeNode* r,  int a = 1000000, int b = -1) {
+        return r?max({maxAncestorDiff(r->left,min(a,r->val),max(b,r->val)),maxAncestorDiff(r->right,min(a, r->val),max(b,r->val))}):b-a;}
+};
+'''
+
 class Solution:
-    def maxAncestorDiff(self, root: TreeNode) -> int:
-        return (f:=lambda r,a,b:max(f(r.left,min(a,r.val),max(b,r.val)),f(r.right,min(a,r.val),max(b,r.val)))if r else b-a)(root,10000,0)
+    def maxAncestorDiff(self, r: TreeNode) -> int:
+        return(f:=lambda r,a,b:max(f(r.left,min(a,r.val),max(b,r.val)),f(r.right,min(a,r.val),max(b,r.val)))if r else b-a)(r,10000,0)
 
 test('''
 

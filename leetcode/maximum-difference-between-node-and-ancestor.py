@@ -2,7 +2,7 @@ from lc import *
 
 class Solution:
     def maxAncestorDiff(self, root: TreeNode) -> int:
-        return (f:=lambda r,a,b:max(f(r.left, min(a, r.val), max(b, r.val)),f(r.right, min(a, r.val), max(b, r.val))) if r else b-a)(root,10000,0)
+        return (f:=lambda r,a,b:max(f(r.left,min(a,r.val),max(b,r.val)),f(r.right,min(a,r.val),max(b,r.val)))if r else b-a)(root,10000,0)
 
 test('''
 

@@ -20,6 +20,20 @@ class Solution:
         return dummy.next
 
 class Solution:
+    def reverseBetween(self, head: Optional[ListNode], m: int, n: int) -> Optional[ListNode]:
+        p = dummy = ListNode(None)
+        dummy.next = head
+        for i in range(m-1):
+            p = p.next
+        t = p.next
+        for i in range(n-m):
+            n = p.next
+            p.next = t.next
+            t.next = t.next.next
+            p.next.next = n
+        return dummy.next
+
+class Solution:
     def reverseBetween(self, r: Optional[ListNode], m: int, n: int) -> Optional[ListNode]:
         c=[(r.val,r:=r.next)[0]for _ in[0]*500if r];return ListNode(','.join(map(str,c[:m-1]+c[m-1:n][::-1]+c[n:])))
 

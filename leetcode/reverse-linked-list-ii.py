@@ -23,6 +23,10 @@ class Solution:
     def reverseBetween(self, r: Optional[ListNode], m: int, n: int) -> Optional[ListNode]:
         c=[(r.val,r:=r.next)[0]for _ in[0]*500if r];return ListNode(','.join(map(str,c[:m-1]+c[m-1:n][::-1]+c[n:])))
 
+class Solution:
+    def reverseBetween(self, r: Optional[ListNode], m: int, n: int) -> Optional[ListNode]:
+        c=[(str(r.val),r:=r.next)[0]for _ in[0]*500if r];return ListNode(','.join(c[:m-1]+c[m-1:n][::-1]+c[n:]))
+
 test('''
 92. Reverse Linked List II
 Medium

@@ -20,12 +20,12 @@ class Solution:
         return reduce(lambda a,_:a+[list(map(lambda x,y:x+y,a[-1]+[0],[0]+a[-1]))],range(1,numRows),[[1]])[:numRows]
 
 class Solution:
-    def generate(self, numRows: int) -> List[List[int]]:
-        return [*map(lambda i,f=factorial:[*map(lambda x:f(i)//f(x)//f(i-x),range(i+1))],range(numRows))]
+    def generate(self, n: int) -> List[List[int]]:
+        return[*map(lambda i,f=factorial:[*map(lambda x:f(i)//f(x)//f(i-x),range(i+1))],range(n))]
 
 class Solution:
     def generate(self, n: int) -> List[List[int]]:
-        return[*map(lambda i,f=factorial:[*map(lambda x:f(i)//f(x)//f(i-x),range(i+1))],range(n))]
+        r,f=range,factorial;return[[f(i)//f(x)//f(i-x)for x in r(i+1)]for i in r(n)]
 
 test('''
 118. Pascal's Triangle

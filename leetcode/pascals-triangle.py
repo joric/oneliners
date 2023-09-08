@@ -23,6 +23,10 @@ class Solution:
     def generate(self, numRows: int) -> List[List[int]]:
         return [*map(lambda i,f=factorial:[*map(lambda x:f(i)//f(x)//f(i-x),range(i+1))],range(numRows))]
 
+class Solution:
+    def generate(self, n: int) -> List[List[int]]:
+        return[*map(lambda i,f=factorial:[*map(lambda x:f(i)//f(x)//f(i-x),range(i+1))],range(n))]
+
 test('''
 118. Pascal's Triangle
 Easy

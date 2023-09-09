@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/combination-sum-iv/discuss/2795192/3-Line-Python
+
 class Solution:
     def combinationSum4(self, nums: List[int], target: int) -> int:
         nums, combs = sorted(nums), [1] + [0] * (target)

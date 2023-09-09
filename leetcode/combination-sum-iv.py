@@ -19,7 +19,7 @@ class Solution:
 
 class Solution:
     def combinationSum4(self, n: List[int], t: int) -> int:
-        return(f:=cache(lambda x:sum(x-y>=0 and f(x-y)or 0 for y in n)if x else 1))(t)
+        return(f:=cache(lambda x:sum(x-y>=0and f(x-y)or 0 for y in n)if x else 1))(t)
 
 test('''
 377. Combination Sum IV

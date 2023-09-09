@@ -23,6 +23,10 @@ class Solution:
     def combinationSum4(self, n: List[int], t: int) -> int:
         return(f:=cache(lambda x:sum(f(x-y)for y in n if x>=y)if x else 1))(t)
 
+class Solution:
+    def combinationSum4(self, n: List[int], t: int) -> int:
+        return(f:=cache(lambda x:sum(f(x-y)for y in n)if x>0else x==0))(t)
+
 test('''
 377. Combination Sum IV
 Medium

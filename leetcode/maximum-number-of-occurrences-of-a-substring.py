@@ -6,7 +6,6 @@ class Solution:
     def maxFreq(self, s: str, m: int, a: int, b: int) -> int:
         c=Counter(s[i:i+a]for i in range(len(s)-a+1));return max([c[w]for w in c if len({*w})<=m]+[0])
 
-
 test('''
 1297. Maximum Number of Occurrences of a Substring
 Medium

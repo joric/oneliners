@@ -2,7 +2,7 @@ from lc import *
 
 class Solution:
     def groupThePeople(self, g: List[int]) -> List[List[int]]:
-        d=defaultdict(list);[d[v].append(i)for i,v in enumerate(g)];return [d[i][j:j+i]for i in d for j in range(0,len(d[i]),i)]
+        d=defaultdict(list);[d[v].append(i)for i,v in enumerate(g)];return[d[i][j:j+i]for i in d for j in range(0,len(d[i]),i)]
 
 test('''
 1282. Group the People Given the Group Size They Belong To

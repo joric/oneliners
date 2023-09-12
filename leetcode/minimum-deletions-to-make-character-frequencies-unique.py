@@ -2,7 +2,7 @@ from lc import *
 
 class Solution:
     def minDeletions(self, s: str) -> int:
-        return sum(c:=Counter(s).values())-sum(accumulate(sorted(c,reverse=1),lambda e,x:max(0,min(e-1,x))))
+        return sum(c:=Counter(s).values())-sum(accumulate(sorted(c)[::-1],lambda e,x:max(0,min(e-1,x))))
 
 test('''
 1647. Minimum Deletions to Make Character Frequencies Unique

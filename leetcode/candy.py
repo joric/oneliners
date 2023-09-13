@@ -8,7 +8,11 @@ class Solution:
 
 class Solution:
     def candy(self, r: List[int]) -> int:
-        return len(r)+sum(map(max,zip([p:=p+1if i>0and r[i]>r[i-1]else 0 for i in range(len(r))][::-1],(p:=p+1if i<len(r)-1and r[i]>r[i+1]else 0 for i in[*range(len(r))][::-1]))))
+        return len(r)+sum(map(max,zip([p:=p+1if i>0and r[i]>r[i-1]else 0for i in range(len(r))][::-1],(p:=p+1if i<len(r)-1and r[i]>r[i+1]else 0 for i in[*range(len(r))][::-1]))))
+
+class Solution:
+    def candy(self, r: List[int]) -> int:
+        return len(r)+sum(map(max,zip([p:=p+1if i>0and r[i]>r[i-1]else 0for i in range(len(r))][::-1],(p:=p+1if i<len(r)and r[i-1]>r[i]else 0for i in range(len(r),0,-1)))))
 
 test('''
 135. Candy

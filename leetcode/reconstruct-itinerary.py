@@ -16,10 +16,6 @@ class Solution:
 
 class Solution:
     def findItinerary(self, t: List[List[str]]) -> List[str]:
-        d,r=defaultdict(list),[];[d[a].append(b)for a,b in sorted(t)[::-1]];return(f:=lambda a:next(r.append(a)for _ in[0]*300if not(d[a]and[f(d[a].pop())])))('JFK')or r[::-1]
-
-class Solution:
-    def findItinerary(self, t: List[List[str]]) -> List[str]:
         d,r=defaultdict(list),[];[d[a].append(b)for a,b in sorted(t)[::-1]];f=lambda a:([f(d[a].pop())for _ in[0]*300if d[a]],r.append(a));f('JFK');return r[::-1]
 
 test('''

@@ -29,6 +29,48 @@ class Solution:
     def minimumEffortPath(self, h: List[List[int]]) -> int:
         q,s,n,m=[[0]*4],set(),len(h),len(h[0]);return(f:=lambda _,x,y,d:(s.add((x,y)),[heappush(q,(t:=abs(h[a][b]-h[x][y]),a,b,max(t,d)))for a,b in((x-1,y),(x+1,y),(x,y-1),(x,y+1))if m>b>=0<=a<n and(a,b)not in s],d if(x,y)==(n-1,m-1)else f(*heappop(q)))[-1])(*heappop(q))
 
+# unicode find
+
+class Solution:
+    def minimumEffortPath(self, h: List[List[int]]) -> int:
+        m = len(h)
+        n = len(h[0])
+        c = ''.join(map(chr,range(m*n)))
+        e = []
+        for i in range(m):
+            for j in range(n):
+                if j < n-1:
+                    e.append((abs(h[i][j]-h[i][j+1]), i*n+j, i*n+j+1))
+                if i < m-1:
+                    e.append((abs(h[i][j]-h[i+1][j]), i*n+j, i*n+j+n))
+        e.sort()
+        for w,u,v in e:
+            c = c.replace(c[u],c[v])
+            if c[0]==c[m*n-1]:
+                return w
+        return 0
+
+class Solution:
+    def minimumEffortPath(self, h: List[List[int]]) -> int:
+        m = len(h)
+        n = len(h[0])
+        c = ''.join(map(chr,range(m*n)))
+        e = []
+        for i in range(m):
+            for j in range(n):
+                for x,y in ((i-1,j),(i+1,j),(i,j-1),(i,j+1)):
+                    if m>x>=0<=y<n:
+                        e.append((abs(h[i][j]-h[x][y]), i*n+j, x*n+y))
+        for w,u,v in sorted(e):
+            c = c.replace(c[u],c[v])
+            if c[0]==c[m*n-1]:
+                return w
+        return 0
+
+class Solution:
+    def minimumEffortPath(self, h: List[List[int]]) -> int:
+        m,n=len(h),len(h[0]);c,e=''.join(map(chr,range(m*n))),[(abs(h[i][j]-h[x][y]),i*n+j,x*n+y)for i in range(m)for j in range(n)for x,y in((i-1,j),(i+1,j),(i,j-1),(i,j+1))if m>x>=0<=y<n];return next((w for w,u,v in sorted(e)if((c:=c.replace(c[u],c[v]))[0]==c[m*n-1])),0)
+
 test('''
 1631. Path With Minimum Effort
 Medium
@@ -69,6 +111,11 @@ Example 3:
 Input: heights = [[1,2,1,1,1],[1,2,1,2,1],[1,2,1,2,1],[1,2,1,2,1],[1,1,1,2,1]]
 Output: 0
 Explanation: This route does not require any effort.
+
+Example 4:
+
+Input: heights = [[3]]
+Output: 0
  
 
 Constraints:

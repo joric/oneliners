@@ -12,7 +12,8 @@ class Solution:
             s.add((x,y))
             for a,b in ((x-1,y),(x+1,y),(x,y-1),(x,y+1)):
                 if 0<=a<n and 0<=b<m and (a,b) not in s:
-                    heappush(q,(abs(h[a][b]-h[x][y]),a,b,max(abs(h[a][b]-h[x][y]),d)))
+                    w = abs(h[a][b]-h[x][y])
+                    heappush(q,(w,a,b,max(w,d)))
 
 class Solution:
     def minimumEffortPath(self, h: List[List[int]]) -> int:
@@ -22,10 +23,8 @@ class Solution:
 
 class Solution:
     def minimumEffortPath(self, h: List[List[int]]) -> int:
-        m = len(h)
-        n = len(h[0])
-        c = ''.join(map(chr,range(m*n)))
-        e = []
+        m,n = len(h),len(h[0])
+        c,e = ''.join(map(chr,range(m*n))),[]
         for i in range(m):
             for j in range(n):
                 for x,y in ((i-1,j),(i+1,j),(i,j-1),(i,j+1)):

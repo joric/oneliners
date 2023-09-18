@@ -32,13 +32,13 @@ class Solution:
                         e.append((abs(h[i][j]-h[x][y]), i*n+j, x*n+y))
         for w,u,v in sorted(e):
             c = c.replace(c[u],c[v])
-            if c[0]==c[m*n-1]:
+            if c[0]==c[-1]:
                 return w
         return 0
 
 class Solution:
     def minimumEffortPath(self, h: List[List[int]]) -> int:
-        m,n=len(h),len(h[0]);c=''.join(map(chr,range(m*n)));return next((w for w,u,v in sorted((abs(h[i][j]-h[x][y]),i*n+j,x*n+y)for i in range(m)for j in range(n)for x,y in((i-1,j),(i+1,j),(i,j-1),(i,j+1))if m>x>=0<=y<n)if((c:=c.replace(c[u],c[v]))[0]==c[m*n-1])),0)
+        m,n=len(h),len(h[0]);c=''.join(map(chr,range(m*n)));return next((w for w,u,v in sorted((abs(h[i][j]-h[x][y]),i*n+j,x*n+y)for i in range(m)for j in range(n)for x,y in((i-1,j),(i+1,j),(i,j-1),(i,j+1))if m>x>=0<=y<n)if((c:=c.replace(c[u],c[v]))[0]==c[-1])),0)
 
 test('''
 1631. Path With Minimum Effort

@@ -4,6 +4,14 @@ class Solution:
     def kWeakestRows(self, m: List[List[int]], k: int) -> List[int]:
         return[*map(lambda x:x[1],nsmallest(k,[(r.count(1),i)for i,r in enumerate(m)]))]
 
+class Solution:
+    def kWeakestRows(self, m: List[List[int]], k: int) -> List[int]:
+        return nsmallest(k,range(len(m)),key=lambda i:sum(m[i]))
+
+class Solution:
+    def kWeakestRows(self, m: List[List[int]], k: int) -> List[int]:
+        return sorted(range(len(m)),key=lambda i:(m[i],i))[:k]
+
 test('''
 1337. The K Weakest Rows in a Matrix
 Easy

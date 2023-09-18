@@ -12,6 +12,10 @@ class Solution:
     def kWeakestRows(self, m: List[List[int]], k: int) -> List[int]:
         return sorted(range(len(m)),key=lambda i:(m[i],i))[:k]
 
+class Solution:
+    def kWeakestRows(self, m: List[List[int]], k: int) -> List[int]:
+        return sorted(range(len(m)),key=m.__getitem__)[:k]
+
 test('''
 1337. The K Weakest Rows in a Matrix
 Easy

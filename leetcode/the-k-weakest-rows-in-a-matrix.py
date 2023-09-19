@@ -14,6 +14,10 @@ class Solution:
 
 class Solution:
     def kWeakestRows(self, m: List[List[int]], k: int) -> List[int]:
+        return nsmallest(k,range(len(m)),key=m.__getitem__)
+
+class Solution:
+    def kWeakestRows(self, m: List[List[int]], k: int) -> List[int]:
         return sorted(range(len(m)),key=m.__getitem__)[:k]
 
 test('''

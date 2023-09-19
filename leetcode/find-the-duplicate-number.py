@@ -1,5 +1,7 @@
 from lc import *
 
+# Joma Tech - If Programming Was An Anime https://youtu.be/pKO9UjSeLew
+
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
         tortoise = hare = nums[0]

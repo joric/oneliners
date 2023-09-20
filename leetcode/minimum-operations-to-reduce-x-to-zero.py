@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def minOperations(self, n: List[int], x: int) -> int:
-        d={s:i for i,s in enumerate(accumulate(n,initial=0))};return min((l for i,b in enumerate(accumulate(n[::-1],initial=0))if x-b in d and(l:=i+d[x-b])<=len(n)),default=-1)
+        e=lambda v:enumerate(accumulate(v,initial=0));d={s:i for i,s in e(n)};return min((l for i,b in e(n[::-1])if x-b in d and(l:=i+d[x-b])<=len(n)),default=-1)
 
 test('''
 1658. Minimum Operations to Reduce X to Zero

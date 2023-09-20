@@ -1,5 +1,7 @@
 from lc import *
 
+# kadane
+
 class Solution:
     def maxScore(self, cardPoints: List[int], k: int) -> int:
         s = sum(cardPoints[:k])
@@ -11,7 +13,7 @@ class Solution:
 
 class Solution:
     def maxScore(self, p: List[int], k: int) -> int:
-        return reduce(lambda s,i:s+p[-i]-p[k-i],range(1,k+1),sum(p[:k]))
+        return max(s:=sum(p[:k]),max((s:=s+p[-i]-p[k-i])for i in range(1,k+1)))
 
 test('''
  1423. Maximum Points You Can Obtain from Cards

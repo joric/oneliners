@@ -2,6 +2,10 @@ from lc import *
 
 class Solution:
     def minimumDifference(self, v: List[int], k: int) -> int:
+        return min((b-a for a,b in pairwise(sorted(v))),default=0)
+
+class Solution:
+    def minimumDifference(self, v: List[int], k: int) -> int:
         v.sort();return min(b-a for a,b in zip(v,v[k-1:]))
 
 test('''

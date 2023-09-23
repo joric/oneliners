@@ -21,15 +21,11 @@ class Solution:
         s=set(s)
         return max(f(w)for w in s)
 
-# 436 ms
-class Solution:
-    def longestStrChain(self, s: List[str]) -> int:
-        s=set(s);return max((f:=cache(lambda w:w in s and max(1+f(w[0:i]+w[i+1:len(w)])for i in range(len(w)))))(w)for w in s)
+# 3234 ms, use s=set(s) for speed
 
-# 3234 ms, 10 chars shorter
 class Solution:
     def longestStrChain(self, s: List[str]) -> int:
-        return max((f:=cache(lambda w:w in s and max(1+f(w[0:i]+w[i+1:len(w)])for i in range(len(w)))))(w)for w in s)
+        return max((f:=cache(lambda w:w in s and max(1+f(w[:i]+w[i+1:])for i in range(len(w)))))(w)for w in s)
 
 test('''
 1048. Longest String Chain

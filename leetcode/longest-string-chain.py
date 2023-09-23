@@ -21,7 +21,7 @@ class Solution:
         s=set(s)
         return max(f(w)for w in s)
 
-# 3234 ms, use s=set(s) for speed
+# use s=set(s) for speed
 
 class Solution:
     def longestStrChain(self, s: List[str]) -> int:

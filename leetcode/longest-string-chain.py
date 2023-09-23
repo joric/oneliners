@@ -25,7 +25,7 @@ class Solution:
 
 class Solution:
     def longestStrChain(self, s: List[str]) -> int:
-        return max((f:=cache(lambda w:w in s and max(1+f(w[:i]+w[i+1:])for i in range(len(w)))))(w)for w in s)
+        return max(map(f:=cache(lambda w:w in s and max(1+f(w[:i]+w[i+1:])for i in range(len(w)))),s))
 
 test('''
 1048. Longest String Chain

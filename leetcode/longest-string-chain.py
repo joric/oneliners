@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def longestStrChain(self, s: List[str]) -> int:
-        d={};[setitem(d,w,max(d.get(w[:i]+w[i+1:],0)+1for i in range(len(w))))for w in sorted(s, key=len)];return max(d.values())
+        d={};[setitem(d,w,max(d.get(w[:i]+w[i+1:],0)+1for i in range(len(w))))for w in sorted(s,key=len)];return max(d.values())
 
 test('''
 1048. Longest String Chain

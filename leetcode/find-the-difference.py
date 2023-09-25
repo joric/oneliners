@@ -11,6 +11,14 @@ class Solution:
     def findTheDifference(self, s: str, t: str) -> str:
         return chr(reduce(lambda x,y:x^y,map(ord,s+t)))
 
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+        return next(iter(Counter(t)-Counter(s)))
+
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+        return ''.join(Counter(t)-Counter(s))
+
 test('''
 389. Find the Difference
 Easy

@@ -2,10 +2,10 @@ from lc import *
 
 class Solution:
     def findTheDifference(self, s: str, t: str) -> str:
-        code = 0
-        for ch in s + t:
-            code ^= ord(ch)
-        return chr(code)
+        r = 0
+        for c in s+t:
+            r ^= ord(c)
+        return chr(r)
 
 class Solution:
     def findTheDifference(self, s: str, t: str) -> str:

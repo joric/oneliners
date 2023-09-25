@@ -19,6 +19,10 @@ class Solution:
     def findTheDifference(self, s: str, t: str) -> str:
         return ''.join(Counter(t)-Counter(s))
 
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+        c=Counter;return''.join(c(t)-c(s))
+
 test('''
 389. Find the Difference
 Easy

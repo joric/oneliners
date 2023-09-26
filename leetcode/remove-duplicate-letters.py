@@ -4,6 +4,16 @@ from lc import *
 
 class Solution:
     def removeDuplicateLetters(self, s: str) -> str:
+        d,r = {c: i for i, c in enumerate(s)},''
+        for i, c in enumerate(s):
+            if c not in r:
+                while c < r[-1:] and i < d[r[-1]]:
+                    r = r[:-1]
+                r += c
+        return r
+
+class Solution:
+    def removeDuplicateLetters(self, s: str) -> str:
         for c in sorted(set(s)):
             x = s[s.index(c):]
             if set(x)==set(s):

@@ -34,6 +34,10 @@ class Solution:
     def removeDuplicateLetters(self, s: str) -> str:
         return(f:=lambda s:next((c+f(x.replace(c,''))for c in sorted(set(s))if set(x:=s[s.index(c):])==set(s)),''))(s)
 
+class Solution:
+    def removeDuplicateLetters(self, s: str) -> str:
+        return(f:=lambda s:next((c+f(x.replace(c,''))for c in sorted({*s})if set(x:=s[s.index(c):])=={*s}),''))(s)
+
 test('''
 316. Remove Duplicate Letters
 Medium

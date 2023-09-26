@@ -681,7 +681,7 @@ class Solution:
             and a[1][-1][1]=='(' else (a[0],a[1]+[b]),enumerate(s),(0,[(-1,')')]))[0]
 ```
 
-### Semicolons
+#### Semicolons
 
 Nobody will stop you from using semicolons, but you'd still have to convert while and for loops.
 

@@ -40,6 +40,10 @@ class Solution:
     def decodeAtIndex(self, s: str, k: int) -> str:
         return(f:=lambda k,i=0:next(t and f(k%i or i)or c for c in s if(t:=(v:=ord(c)-48)<10)and k<=i*v or i==k-1or(i:=t and i*v or i+1)<0))(k)
 
+class Solution:
+    def decodeAtIndex(self, s: str, k: int) -> str:
+        return(f:=lambda k,i=0:next(v<10and f(k%i or i)or c for c in s if(v:=ord(c)-48)<10and k<=i*v or i==k-1or(i:=v<10and i*v or i+1)<0))(k)
+
 test('''
 880. Decoded String at Index
 Medium

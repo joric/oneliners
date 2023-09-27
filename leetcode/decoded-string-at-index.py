@@ -2,14 +2,18 @@ from lc import *
 
 class Solution:
     def decodeAtIndex(self, s: str, k: int) -> str:
-        r = 0
+        i = 0
         for c in s:
-            r = r * int(c) if c.isdigit() else r + 1
-        for c in reversed(s):
-            k %= r
+            i = i * int(c) if c.isdigit() else i + 1
+        for c in s[::-1]:
+            k %= i
             if k == 0 and c.isalpha():
                 return c
-            r = r // int(c) if c.isdigit() else r - 1
+            i = i // int(c) if c.isdigit() else i - 1
+
+class Solution:
+    def decodeAtIndex(self, s: str, k: int) -> str:
+        i=0;[i:=i*int(c)if c.isdigit()else i+1 for c in s];return next(c for c in s[::-1]if(k:=k%i)==0 and c.isalpha()or(i:=i//int(c)if c.isdigit()else i-1)<0)
 
 # https://leetcode.com/problems/decoded-string-at-index/discuss/4094809/JavaScript-5-Lines-Recursive-Time%3A-O(n)-Space%3A-O(n)
 
@@ -30,7 +34,7 @@ class Solution:
 
 class Solution:
     def decodeAtIndex(self, s: str, k: int) -> str:
-        return(f:=lambda k,i=0:next(t and f(k%i or i)or c for c in s if (t:=c.isdigit())and k<=int(c)*i or i+1==k or not(i:=t and i*int(c)or i+1)))(k)
+        return(f:=lambda k,i=0:next(t and f(k%i or i)or c for c in s if(t:=c.isdigit())and k<=i*int(c)or i==k-1or(i:=t and i*int(c)or i+1)<0))(k)
 
 test('''
 880. Decoded String at Index

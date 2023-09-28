@@ -16,6 +16,10 @@ class Solution:
     def sortArrayByParity(self, n: List[int]) -> List[int]:
         return sorted(n,key=lambda x:x%2)
 
+class Solution:
+    def sortArrayByParity(self, n: List[int]) -> List[int]:
+        return sorted(n,key=(1).__and__)
+
 test('''
 905. Sort Array By Parity
 Easy

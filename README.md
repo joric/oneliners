@@ -877,8 +877,8 @@ class Solution:
         return '/'+'/'.join(reduce(lambda r,p:(r+[p]*('.'!=p!=''),r[:-1])[p=='..'],path.split('/'),[]))
 ```
 
-Python 3 lacks `cmp` (3-way compare) and sign function (`copysign(bool(x),x)` is too long), but you can use `(x>0)-(x<0)` as `sign(x)`.
-Note you can use `-1,0,1` indexes for Python lists natively.
+Python 3 lacks `cmp` (3-way compare) and sign function (`copysign(bool(x),x)` is too long), but you can use `(x>0)-(x<0)` for `sign(x)`
+and `(a>b)-(a<b)` for `cmp(a,b)`. Note you can use `-1,0,1` indexes for Python lists natively.
 
 Example:
 

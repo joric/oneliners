@@ -2,7 +2,23 @@ from lc import *
 
 class Solution:
     def isMonotonic(self, n: List[int]) -> bool:
+        increasing = decreasing = True
+        for a,b in pairwise(n):
+            if b>a:
+                decreasing = False
+            elif b<a:
+                increasing = False
+            if not increasing and not decreasing:
+                return False
+        return True
+
+class Solution:
+    def isMonotonic(self, n: List[int]) -> bool:
         return all(a<=b for a,b in pairwise(n))or all(a>=b for a,b in pairwise(n))
+
+class Solution:
+    def isMonotonic(self, n: List[int]) -> bool:
+        return not{(a>b)-(a<b)for a,b in pairwise(n)}>={1,-1}
 
 class Solution:
     def isMonotonic(self, n: List[int]) -> bool:

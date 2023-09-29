@@ -32,6 +32,12 @@ class Solution:
     def isMonotonic(self, n: List[int]) -> bool:
         return n==(t:=sorted(n))or n==t[::-1]
 
+# https://leetcode.com/problems/monotonic-array/discuss/165960/Python-Solution-Easy-to-Understand/216811
+
+class Solution:
+    def isMonotonic(self, n: List[int]) -> bool:
+        return sorted(n)in(n,n[::-1])
+
 test('''
 896. Monotonic Array
 Easy

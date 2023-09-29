@@ -2,6 +2,10 @@ from lc import *
 
 class Solution:
     def isMonotonic(self, n: List[int]) -> bool:
+        return any(n==sorted(n,reverse=r)for r in(0,1))
+
+class Solution:
+    def isMonotonic(self, n: List[int]) -> bool:
         return n==(t:=sorted(n))or n==t[::-1]
 
 test('''

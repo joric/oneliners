@@ -9,7 +9,7 @@ There is a paper book about Python one-liners, search it online, it's an interes
 
 ### Tricks
 
-#### Leetcode specific
+#### Leetcode-specific
 
 Leetcode imports modules as wildcards, so you don't have to specify module names.
 The only exception is `bisect.bisect()` because bisect is also a module name (just `bisect()` triggers `'module' object is not callable`).

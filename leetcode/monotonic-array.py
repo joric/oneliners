@@ -22,7 +22,7 @@ class Solution:
 
 class Solution:
     def isMonotonic(self, n: List[int]) -> bool:
-        return not{(a>b)-(a<b)for a,b in pairwise(n)}>={1,-1}
+        return not{1,-1}<={(a>b)-(a<b)for a,b in pairwise(n)}
 
 class Solution:
     def isMonotonic(self, n: List[int]) -> bool:

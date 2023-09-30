@@ -3,12 +3,12 @@ from lc import *
 # https://leetcode.com/problems/132-pattern/discuss/699425/Python-in-6-short-lines-beats-95
 
 class Solution:
-    def find132pattern(self, nums: List[int]) -> bool:
+    def find132pattern(self, n: List[int]) -> bool:
         a,s = -inf,[]
-        for v in nums[::-1]:
-            if v < a:
+        for v in n[::-1]:
+            if v<a:
                 return True
-            while s and s[-1] < v:
+            while s and v>s[-1]:
                 a = s.pop()
             s.append(v)
 

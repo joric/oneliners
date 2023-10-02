@@ -6,7 +6,13 @@ class Solution:
 
 class Solution:
     def reverseWords(self, s: str) -> str:
+        return' '.join(map(lambda w:w[::-1],s.split()))
+
+class Solution:
+    def reverseWords(self, s: str) -> str:
         return' '.join(w[::-1]for w in s.split())
+
+class Solution:reverseWords=lambda _,s:' '.join(w[::-1]for w in s.split())
 
 test('''
 557. Reverse Words in a String III

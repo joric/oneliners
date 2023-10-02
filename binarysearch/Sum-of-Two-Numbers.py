@@ -1,6 +1,6 @@
 from bs import *
 
-# basically https://leetcode.com/problems/two-sum
+# basically https://leetcode.com/problems/two-sum but returns true/false
 
 class Solution:
     def solve(self, nums: List[int], target: int) -> List[int]:

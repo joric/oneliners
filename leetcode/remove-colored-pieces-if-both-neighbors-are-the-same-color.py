@@ -10,6 +10,10 @@ class Solution:
     def winnerOfGame(self, c: str) -> bool:
         return 0<sum(((0,-1)[3*'B'==c[i:i+3]],1)[3*'A'==c[i:i+3]]for i in range(len(c)-2))
 
+class Solution:
+    def winnerOfGame(self, c: str) -> bool:
+        return 0<sum({3*'A':1,3*'B':-1}.get(c[i:i+3])for i in range(len(c)-2))
+
 test('''
 2038. Remove Colored Pieces if Both Neighbors are the Same Color
 Medium

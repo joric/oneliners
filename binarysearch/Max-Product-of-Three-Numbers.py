@@ -1,4 +1,4 @@
-from lc import *
+from bs import *
 
 class Solution:
     def solve(self, nums):

@@ -16,7 +16,7 @@ class Solution:
 
 class Solution:
     def winnerOfGame(self, c: str) -> bool:
-        r=re.findall;return len(r('(?=AAA)',c))>len(r('(?=BBB)',c))
+        r=findall;return len(r('(?=AAA)',c))>len(r('(?=BBB)',c))
 
 test('''
 2038. Remove Colored Pieces if Both Neighbors are the Same Color
@@ -76,7 +76,11 @@ He has many options for which 'B' piece to remove. He can pick any.
 
 On Alice's second turn, she has no more pieces that she can remove.
 Thus, Bob wins, so return false.
- 
+
+Example 4:
+
+Input: colors = "AAAAABBB"
+Output: true
 
 Constraints:
 

@@ -14,6 +14,10 @@ class Solution:
     def winnerOfGame(self, c: str) -> bool:
         return 0<sum({3*'A':1,3*'B':-1}.get(c[i:i+3],0)for i in range(len(c)))
 
+class Solution:
+    def winnerOfGame(self, c: str) -> bool:
+        r=re.findall;return len(r('(?=AAA)',c))>len(r('(?=BBB)',c))
+
 test('''
 2038. Remove Colored Pieces if Both Neighbors are the Same Color
 Medium

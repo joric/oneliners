@@ -11,7 +11,7 @@ class Solution:
 
 class Solution:
     def solve(self, n: List[int], t: int) -> List[int]:
-        return any(1 for i in range(len(n)) if t-n[i] in n[:i]+n[i+1:])
+        return any(t-n[i] in n[:i]+n[i+1:]for i in range(len(n)))
 
 test('''
 Given a list of numbers nums and a number k, return whether any two elements from the list add up

@@ -2,7 +2,7 @@ from lc import *
 
 class Solution:
     def numIdenticalPairs(self, a: List[int]) -> int:
-        return sum((x-1)*x//2 for x in Counter(a).values())
+        return sum(x*(x-1)//2for x in Counter(a).values())
 
 test('''
 1512. Number of Good Pairs

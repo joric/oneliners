@@ -2,6 +2,10 @@ from lc import *
 
 class Solution:
     def numIdenticalPairs(self, a: List[int]) -> int:
+        r,c=0,Counter();[(r:=r+c[x],c.update({x:1}))for x in a];return r
+
+class Solution:
+    def numIdenticalPairs(self, a: List[int]) -> int:
         return sum(x*(x-1)//2for x in Counter(a).values())
 
 test('''

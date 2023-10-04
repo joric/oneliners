@@ -14,8 +14,6 @@ class MyHashMap(dict):
     def remove(s,k):
         s.pop(k,0)
 
-MyHashMap=type('',(dict,),{'put':dict.__setitem__,'get':lambda s,k:dict.get(s,k,-1),'remove':lambda s,k:s.pop(k,1)and None})
-
 MyHashMap=type('',(dict,),{'put':dict.__setitem__,'get':lambda s,k:dict.get(s,k,-1),'remove':lambda s,k:s.put(k,-1)})
 
 test('''

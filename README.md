@@ -86,7 +86,8 @@ class Solution:
 ```python
 class Solution:
     def partition(self, h: ListNode, x: int) -> ListNode:
-        f=lambda r,o:r and([],[str(r.val)])[o(r.val,x)]+f(r.next,o)or[];return ListNode(','.join(f(h,lt)+f(h,ge)))
+        f=lambda r,o:r and([],[str(r.val)])[o(r.val,x)]+f(r.next,o)or[];\
+        return ListNode(','.join(f(h,lt)+f(h,ge)))
 ```
 
 #### Lambdas

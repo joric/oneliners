@@ -23,7 +23,9 @@ class Solution:
     def oddEvenList(self, h: Optional[ListNode]) -> Optional[ListNode]:
         return h and(o:=h,n:=o.next,e:=n)and next(setattr(o,'next',n)for _ in count()if not(e and e.next and(setattr(o,'next',o.next.next),setattr(e,'next',e.next.next),o:=o.next,e:=e.next)))or h
 
-
+class Solution:
+    def oddEvenList(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        return ListNode(','.join(map(str,(v:=(f:=lambda x:x and[x.val]+f(x.next)or[])(h))[0::2]+v[1::2])))
 
 test('''
 

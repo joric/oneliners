@@ -27,6 +27,10 @@ class Solution:
     def oddEvenList(self, h: Optional[ListNode]) -> Optional[ListNode]:
         return ListNode(','.join(map(str,(v:=(f:=lambda x:x and[x.val]+f(x.next)or[])(h))[0::2]+v[1::2])))
 
+class Solution:
+    def oddEvenList(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        f=lambda x:x and[x.val]+f(x.next)or[];v=f(h);return ListNode(','.join(map(str,v[0::2]+v[1::2])))
+
 test('''
 
 328. Odd Even Linked List

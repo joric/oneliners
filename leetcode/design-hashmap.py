@@ -2,7 +2,7 @@ from lc import *
 
 class MyHashMap:
     def __init__(self):
-        self.map = [None]*10000000
+        self.map = [None]*10**6
     def put(self, key: int, value: int) -> None:
         self.map[key] = value
     def get(self, key: int) -> int:

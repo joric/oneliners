@@ -29,7 +29,7 @@ class Solution:
 
 class Solution:
     def oddEvenList(self, h: Optional[ListNode]) -> Optional[ListNode]:
-        f=lambda x:x and[x.val]+f(x.next)or[];v=f(h);return ListNode(','.join(map(str,v[0::2]+v[1::2])))
+        f=lambda x:x and[x.val]+f(x.next)or[];v=f(h);return ListNode(','.join(map(str,v[::2]+v[1::2])))
 
 test('''
 

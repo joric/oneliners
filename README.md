@@ -81,15 +81,6 @@ class Solution:
         f=lambda n:n and n.val+10*f(n.next)or 0;return ListNode(','.join([*str(f(a)+f(b))][::-1]))
 ```
 
-* https://leetcode.com/problems/partition-list
-
-```python
-class Solution:
-    def partition(self, h: ListNode, x: int) -> ListNode:
-        f=lambda r,o:r and([],[str(r.val)])[o(r.val,x)]+f(r.next,o)or[];\
-        return ListNode(','.join(f(h,lt)+f(h,ge)))
-```
-
 #### Lambdas
 
 Fictitious (anonymous) lambdas also may be nested. E.g. you can use lambdas as parameters:

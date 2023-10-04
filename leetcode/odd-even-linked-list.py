@@ -19,6 +19,12 @@ class Solution:
     def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         return head and (o:=head,n:=o.next,e:=n) and next(setattr(o,'next',n) for _ in count() if not(e and e.next and (setattr(o,'next', o.next.next),e.__setattr__('next',e.next.next),o:=o.next,e:=e.next))) or head
 
+class Solution:
+    def oddEvenList(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        return h and(o:=h,n:=o.next,e:=n)and next(setattr(o,'next',n)for _ in count()if not(e and e.next and(setattr(o,'next',o.next.next),setattr(e,'next',e.next.next),o:=o.next,e:=e.next)))or h
+
+
+
 test('''
 
 328. Odd Even Linked List

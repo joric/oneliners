@@ -39,7 +39,7 @@ class Solution:
     def majorityElement(self, a: List[int]) -> List[int]:
         return[i for i in{*a}if a.count(i)>len(a)/3]
 
-# very slow
+# very slow, borderline TLE (9461ms)
 class Solution:
     def majorityElement(self, a: List[int]) -> List[int]:
         return{i for i in a if a.count(i)>len(a)/3}

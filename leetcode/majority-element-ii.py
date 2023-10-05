@@ -39,6 +39,10 @@ class Solution:
     def majorityElement(self, a: List[int]) -> List[int]:
         return[i for i in{*a}if a.count(i)>len(a)/3]
 
+class Solution:
+    def majorityElement(self, a: List[int]) -> List[int]:
+        return{i for i in a if a.count(i)>len(a)/3}
+
 test('''
 229. Majority Element II
 Medium

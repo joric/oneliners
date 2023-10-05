@@ -25,6 +25,18 @@ class Solution:
     def majorityElement(self, nums: List[int]) -> List[int]:
         c1,c2,v1,v2=0,0,0,1;all((c1:=c1+1)if n==v1 else(c2:=c2+1)if n==v2 else (c1:=1,v1:=n)if c1==0 else(c2:=1,v2:=n)if c2==0 else(c1:=c1-1,c2:=c2-1)for n in nums);return[n for n in(v1,v2)if nums.count(n)>len(nums)//3]
 
+class Solution:
+    def majorityElement(self, nums):
+        count, cand = [0] * 2, [float('NaN')] * 2
+        for n in nums:
+            if n in cand:
+                count[n == cand[1]] += 1
+            elif 0 in count:
+                cand[0 == count[1]], count[0 == count[1]] = n, 1
+            else:
+                count = [i-1 for i in count]
+        return [i for i in cand if nums.count(i) > len(nums)/3]
+
 # fast
 class Solution:
     def majorityElement(self, a: List[int]) -> List[int]:

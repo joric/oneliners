@@ -33,6 +33,10 @@ class Solution:
 
 class Solution:
     def majorityElement(self, a: List[int]) -> List[int]:
+        c=Counter(a);return[i for i in c if c[i]>len(a)/3]
+
+class Solution:
+    def majorityElement(self, a: List[int]) -> List[int]:
         return[i for i in{*a}if Counter(a)[i]>len(a)/3]
 
 class Solution:

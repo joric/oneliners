@@ -26,16 +26,22 @@ class Solution:
         c1,c2,v1,v2=0,0,0,1;all((c1:=c1+1)if n==v1 else(c2:=c2+1)if n==v2 else (c1:=1,v1:=n)if c1==0 else(c2:=1,v2:=n)if c2==0 else(c1:=c1-1,c2:=c2-1)for n in nums);return[n for n in(v1,v2)if nums.count(n)>len(nums)//3]
 
 class Solution:
-    def majorityElement(self, nums):
-        count, cand = [0] * 2, [float('NaN')] * 2
-        for n in nums:
-            if n in cand:
-                count[n == cand[1]] += 1
-            elif 0 in count:
-                cand[0 == count[1]], count[0 == count[1]] = n, 1
+    def majorityElement(self, a: List[int]) -> List[int]:
+        n = 2
+        c,v = [0]*n,[None]*n
+        for i in a:
+            if i in v:
+                c[i==v[1]] += 1
+            elif 0 in c:
+                v[0==c[1]]=i
+                c[0==c[1]]=1
             else:
-                count = [i-1 for i in count]
-        return [i for i in cand if nums.count(i) > len(nums)/3]
+                c=[j-1 for j in c]
+        return[i for i in v if a.count(i)>len(a)/3]
+
+class Solution:
+    def majorityElement(self, a: List[int]) -> List[int]:
+        n=2;c,v=[0]*n,[None]*n;[setitem(c,i==v[1],c[i==v[1]]+1)if i in v else(setitem(v,0==c[1],i),setitem(c,0==c[1],1))if 0 in c else(c:=[j-1 for j in c])for i in a];return[i for i in v if a.count(i)>len(a)/3]
 
 # fast
 class Solution:
@@ -92,6 +98,11 @@ Example 3:
 Input: nums = [1,2]
 Output: [1,2]
  
+
+Example 4:
+
+Input: nums = [1,3,3,4]
+Output: [3]
 
 Constraints:
 

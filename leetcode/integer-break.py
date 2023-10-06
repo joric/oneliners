@@ -33,6 +33,12 @@ Output: 36
 Explanation: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36.
  
 
+Example 3:
+
+Input: n = 5
+Output: 6
+
+
 Constraints:
 
 2 <= n <= 58

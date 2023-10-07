@@ -6,6 +6,10 @@ class Solution:
     def numOfArrays(self, n: int, m: int, k: int) -> int:
         return(f:=cache(lambda a,b,c:c==k if a==n else c<=k and sum(f(a+1,max(b,i),c+(i>b))for i in range(1,m+1))))(0,0,0)%(10**9+7)
 
+class Solution:
+    def numOfArrays(self, n: int, m: int, k: int) -> int:
+        return(f:=cache(lambda a,b,c:a<n and sum(f(a+1,max(b,i),c+(i>b))for i in range(1,m+1))or c==k))(0,0,0)%(10**9+7)
+
 test('''
 1420. Build Array Where You Can Find The Maximum Exactly K Comparisons
 Hard

@@ -2,7 +2,11 @@ from lc import *
 
 class Solution:
     def integerBreak(self, n: int) -> int:
-        return(3**((n-2)//3)*(n-((n-2)//3)*3),n-1)[n<4]
+        return(3**( (n-2)//3 )*(n-( (n-2)//3 )*3),n-1)[n<4]
+
+class Solution:
+    def integerBreak(self, n: int) -> int:
+        t=(n-2)//3;return(3**t*(n-t*3),n-1)[n<4]
 
 test('''
 343. Integer Break

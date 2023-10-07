@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def numOfArrays(self, n: int, m: int, k: int) -> int:
-        return(f:=cache(lambda a,b,c:c==k if a==n else 0 if c>k else sum(f(a+1,max(b,i),c+(i>b))for i in range(1,m+1))or c==k))(0,0,0)%(10**9+7)
+        return(f:=cache(lambda a,b,c:c==k if a==n else 0 if c>k else sum(f(a+1,max(b,i),c+(i>b))for i in range(1,m+1))))(0,0,0)%(10**9+7)
 
 class Solution:
     def numOfArrays(self, n: int, m: int, k: int) -> int:

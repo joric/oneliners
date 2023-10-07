@@ -1,11 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/build-array-where-you-can-find-the-maximum-exactly-k-comparisons/discuss/586553/Python-Top-down-solution
-
-class Solution:
-    def numOfArrays(self, n: int, m: int, k: int) -> int:
-        return(f:=cache(lambda a,b,c:c==k if a==n else c<=k and sum(f(a+1,i,c+1)if i>b else f(a+1,b,c)for i in range(1,m+1))))(0,-1,0)%(10**9+7)
-
 # https://leetcode.com/problems/build-array-where-you-can-find-the-maximum-exactly-k-comparisons/discuss/586693/Clean-Python-3-top-down-DP
 
 class Solution:

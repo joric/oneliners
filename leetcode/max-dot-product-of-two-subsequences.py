@@ -49,6 +49,11 @@ Explanation: Take subsequence [-1] from nums1 and subsequence [1] from nums2.
 Their dot product is -1.
  
 
+Example 4:
+
+Input: nums1 = [-1,0], nums2 = [1,0]
+Output: 0
+
 Constraints:
 
 1 <= nums1.length, nums2.length <= 500

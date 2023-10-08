@@ -6,6 +6,10 @@ class Solution:
     def maxDotProduct(self, a: List[int], b: List[int]) -> int:
         return(f:=cache(lambda i,j,k:max(a[i]*b[j]+f(i+1,j+1,1),f(i+1,j,k),f(i,j+1,k))if i<len(a)and j<len(b)else not k and-inf))(0,0,0)
 
+class Solution:
+    def maxDotProduct(self, a: List[int], b: List[int]) -> int:
+        return(f:=cache(lambda i,j,k:max(a[i]*b[j]+f(i+1,j+1,1),f(i+1,j,k),f(i,j+1,k))if a[i:]and b[j:]else not k and-inf))(0,0,0)
+
 test('''
 1458. Max Dot Product of Two Subsequences
 Hard

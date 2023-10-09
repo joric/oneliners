@@ -12,6 +12,10 @@ class Solution:
     def searchRange(self, v: List[int], t: int) -> List[int]:
         a=v.count(t);return(v.index(t),a+v.index(t)-1)if a else[-1]*2
 
+class Solution:
+    def searchRange(self, v: List[int], t: int) -> List[int]:
+        return(a:=v.count(t))and(b:=v.index(t),a+b-1)or[-1]*2
+
 test('''
 34. Find First and Last Position of Element in Sorted Array
 Medium

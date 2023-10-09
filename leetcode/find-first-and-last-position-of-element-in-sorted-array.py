@@ -8,6 +8,10 @@ class Solution:
     def searchRange(self, v: List[int], t: int) -> List[int]:
         a,b=bisect_left(v,t),bisect_right(v,t);return([-1]*2,(a,b-1))[a<b]
 
+class Solution:
+    def searchRange(self, v: List[int], t: int) -> List[int]:
+        a=v.count(t);return(v.index(t),a+v.index(t)-1)if a else[-1]*2
+
 test('''
 34. Find First and Last Position of Element in Sorted Array
 Medium

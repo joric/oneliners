@@ -2,10 +2,6 @@ from lc import *
 
 class Solution:
     def fullBloomFlowers(self, f: List[List[int]], p: List[int]) -> List[int]:
-        s,e=sorted(a for a,_ in f),sorted(b for _,b in f);return(bisect_right(s,t)-bisect_left(e,t)for t in p)
-
-class Solution:
-    def fullBloomFlowers(self, f: List[List[int]], p: List[int]) -> List[int]:
         s,e=(sorted(x[i]for x in f)for i in(0,1));return(bisect_right(s,t)-bisect_left(e,t)for t in p)
 
 test('''

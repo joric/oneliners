@@ -4,6 +4,10 @@ class Solution:
     def fullBloomFlowers(self, f: List[List[int]], p: List[int]) -> List[int]:
         s,e=(sorted(x[i]for x in f)for i in(0,1));return(bisect_right(s,t)-bisect_left(e,t)for t in p)
 
+class Solution:
+    def fullBloomFlowers(self, f: List[List[int]], p: List[int]) -> List[int]:
+        b=bisect_right;s,e=(sorted(x[i]+i for x in f)for i in(0,1));return(b(s,t)-b(e,t)for t in p)
+
 test('''
 2251. Number of Flowers in Full Bloom
 Hard

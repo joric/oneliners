@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/find-in-mountain-array/discuss/317754/Python-bisect-maniac-solution
+
 class MountainArray:
     def __init__(self, data):
         self.data = data
@@ -8,18 +10,13 @@ class MountainArray:
     def length(self) -> int:
         return len(self.data)
 
-# https://leetcode.com/problems/find-in-mountain-array/discuss/317754/Python-bisect-maniac-solution
-
 class Solution:
     def findInMountainArray(self, t: int, m: 'MountainArray') -> int:
-        n = m.length()
-        r = range(n)
+        r = range(n:=m.length())
         k = bisect_left(r,1,1,n-1,key=lambda i:m.get(i)>m.get(i+1))
-        i = bisect_left(r,t,0,k+1,key=m.get)
-        if i<=k and m.get(i)==t:
+        if (i:=bisect_left(r,t,0,k+1,key=m.get))<=k and m.get(i)==t:
             return i
-        j = bisect_left(r,-t,k+1,n,key=lambda i:-m.get(i))
-        if j<n and m.get(j)==t:
+        if (j:=bisect_left(r,-t,k+1,n,key=lambda i:-m.get(i)))<n and m.get(j)==t:
             return j
         return -1
 

@@ -15,16 +15,17 @@ class Solution:
         n = m.length()
         r = range(n)
         k = bisect_left(r,1,1,n-1,key=lambda i:m.get(i)>m.get(i+1))
-        i = bisect_left(r,t,0,k+1,key=lambda i:m.get(i))
-        if i<k+1 and m.get(i)==t:
+        i = bisect_left(r,t,0,k+1,key=m.get)
+        if i<=k and m.get(i)==t:
             return i
-        i = bisect_left(r,-t,k+1,n,key=lambda i:-m.get(i))
-        return i if i<n and m.get(i)==t else -1
+        j = bisect_left(r,-t,k+1,n,key=lambda i:-m.get(i))
+        if j<n and m.get(j)==t:
+            return j
+        return -1
 
 class Solution:
     def findInMountainArray(self, t: int, m: 'MountainArray') -> int:
-        n=m.length();r,b=range(n),bisect_left;k=b(r,1,1,n-1,key=lambda i:m.get(i)>m.get(i+1));i=b(r,t,0,k+1,key=m.get);return i if k>i-1and m.get(i)==t else i if(i:=b(r,-t,k+1,n,key=lambda i:-m.get(i)))<n and m.get(i)==t else-1
-
+        n=m.length();r,b=range(n),bisect_left;k=b(r,1,1,n-1,key=lambda i:m.get(i)>m.get(i+1));i=b(r,t,0,k+1,key=m.get);return i if i<=k and m.get(i)==t else j if(j:=b(r,-t,k+1,n,key=lambda i:-m.get(i)))<n and m.get(j)==t else-1
 
 test('''
 1095. Find in Mountain Array

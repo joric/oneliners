@@ -24,6 +24,7 @@ import random
 import re
 import statistics
 import os
+import sys
 
 class TreeNode:
     def __init__(self, x=0, left=None, right=None):
@@ -169,6 +170,10 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
         is_iter = lambda v: type(v) in (tuple, set, list, dict) or is_gen(v)
         to_list = lambda v: v if not is_iter(v) else [to_list(x) for x in v]
         hint = str(get_type_hints(func).get(name, None))
+        try:
+            return get_type_hints(func).get(name, None)(v)
+        except Exception as e:
+            pass
         if type(v) is str:
             return v # see linked-list-cycle-ii
         if 'List[lc.ListNode]' in hint or 'List[typing.Optional[lc.ListNode]]' in hint:

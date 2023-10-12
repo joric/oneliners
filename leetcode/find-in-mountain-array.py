@@ -25,7 +25,7 @@ class Solution:
 
 class Solution:
     def findInMountainArray(self, t: int, m: 'MountainArray') -> int:
-        n=m.length();r,b=range(n),bisect_left;k=b(r,1,1,n-1,key=lambda i:m.get(i)>m.get(i+1));return i if(i:=b(r,t,0,k+1,key=m.get))<=k and m.get(i)==t else j if(j:=b(r,-t,k+1,n,key=lambda i:-m.get(i)))<n and m.get(j)==t else-1
+        r,b=range(n:=m.length()),bisect_left;k=b(r,1,1,n-1,key=lambda i:m.get(i)>m.get(i+1));return i if(i:=b(r,t,0,k+1,key=m.get))<=k and m.get(i)==t else j if(j:=b(r,-t,k+1,n,key=lambda i:-m.get(i)))<n and m.get(j)==t else-1
 
 test('''
 1095. Find in Mountain Array

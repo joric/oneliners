@@ -169,11 +169,12 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
         is_gen = lambda v: hasattr(v,'__iter__') and not hasattr(v,'__len__')
         is_iter = lambda v: type(v) in (tuple, set, list, dict) or is_gen(v)
         to_list = lambda v: v if not is_iter(v) else [to_list(x) for x in v]
-        hint = str(get_type_hints(func).get(name, None))
+        typename = get_type_hints(func).get(name, None)
         try:
-            return get_type_hints(func).get(name, None)(v)
+            return typename(v)
         except Exception as e:
             pass
+        hint = str(typename)
         if type(v) is str:
             return v # see linked-list-cycle-ii
         if 'List[lc.ListNode]' in hint or 'List[typing.Optional[lc.ListNode]]' in hint:

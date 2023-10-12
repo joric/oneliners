@@ -23,7 +23,8 @@ class Solution:
 
 class Solution:
     def findInMountainArray(self, t: int, m: 'MountainArray') -> int:
-        n=m.length();r,b=range(n),bisect_left;k=b(r,1,1,n-1,key=lambda i:m.get(i)>m.get(i+1));i=b(r,t,0,k+1,key=lambda i:m.get(i));return i if k>i-1and m.get(i)==t else i if(i:=b(r,-t,k+1,n,key=lambda i:-m.get(i)))<n and m.get(i)==t else-1
+        n=m.length();r,b=range(n),bisect_left;k=b(r,1,1,n-1,key=lambda i:m.get(i)>m.get(i+1));i=b(r,t,0,k+1,key=m.get);return i if k>i-1and m.get(i)==t else i if(i:=b(r,-t,k+1,n,key=lambda i:-m.get(i)))<n and m.get(i)==t else-1
+
 
 test('''
 1095. Find in Mountain Array

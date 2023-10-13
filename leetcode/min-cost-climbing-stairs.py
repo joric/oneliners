@@ -12,6 +12,9 @@ class Solution:
     def minCostClimbingStairs(self, cost: List[int]) -> int:
         return min(reduce(lambda ab,c:(ab[1],c+min(ab)),cost,(0,0)))
 
+class Solution:
+    def minCostClimbingStairs(self, c: List[int]) -> int:
+        return min(reduce(lambda a,c:(a[1],c+min(a)),c,(0,0)))
 
 test('''
 746. Min Cost Climbing Stairs

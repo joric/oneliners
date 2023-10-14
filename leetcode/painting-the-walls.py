@@ -2,7 +2,7 @@ from lc import *
 
 class Solution:
     def paintWalls(self, c: List[int], t: List[int]) -> int:
-        return(f:=cache(lambda i,x:i<len(c)and min(f(i+1,x-1),c[i]+f(i+1,min(x+t[i],len(c))))or(0,inf)[x<0]))(0,0)
+        return(f:=cache(lambda i,x:x<len(t)and(i<len(c)and min(f(i+1,x),c[i]+f(i+1,x+t[i]+1))or inf)))(0,0)
 
 test('''
 2742. Painting the Walls

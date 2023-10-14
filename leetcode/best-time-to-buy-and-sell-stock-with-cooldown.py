@@ -1,5 +1,14 @@
 from lc import *
 
+# https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/discuss/75964/1-line-python-dp-solution
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        return max(reduce(lambda x,y:(lambda r,b,s,v:(max(r,s),max(r-v,b),b+v))(*(*x,y)),prices,(0,-inf,-inf)))
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        return max(reduce(lambda x,y:(max(x[0],x[2]),max(x[0]-y,x[1]),x[1]+y),prices,(0,-inf,-inf)))
+
 # https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/discuss/75940/5-lines-Python-O(n)-time-O(1)-space
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
@@ -9,14 +18,9 @@ class Solution:
             free, have, cool = max(free, cool), max(have, free - p), have + p
         return max(free, cool)
 
-# https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/discuss/75964/1-line-python-dp-solution
 class Solution:
-    def maxProfit(self, prices: List[int]) -> int:
-        return max(reduce(lambda x,y:(lambda r,b,s,v:(max(r,s),max(r-v,b),b+v))(*(*x,y)),prices,(0,-inf,-inf)))
-
-class Solution:
-    def maxProfit(self, prices: List[int]) -> int:
-        return max(reduce(lambda x,y:(max(x[0],x[2]),max(x[0]-y,x[1]),x[1]+y),prices,(0,-inf,-inf)))
+    def maxProfit(self, s: List[int]) -> int:
+        f=0;h=c=-inf;[(h:=max(h,f-p),f:=max(f,c),c:=h+p)for p in s];return max(f,c)
 
 test('''
 

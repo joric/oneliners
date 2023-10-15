@@ -28,7 +28,7 @@ class Solution:
 
 class Solution:
     def numWays(self, s: int, a: int) -> int:
-        return(f:=cache(lambda p,s:0<=p<a and s and sum(f(p+i,s-1)for i in(-1,0,1))or p==0))(0,s)%(10**9+7)
+        return(f:=cache(lambda p,s:s>0<=p<a and sum(f(p+i,s-1)for i in(-1,0,1))or p==0))(0,s)%(10**9+7)
 
 test('''
 1269. Number of Ways to Stay in the Same Place After Some Steps

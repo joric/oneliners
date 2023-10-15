@@ -24,6 +24,12 @@ class Solution:
     def numWays(self, s: int, a: int) -> int:
         return(f:=cache(lambda p,s:0<=p<=s and p<a and sum(f(p+i,s-1)for i in(-1,0,1))or p==0))(0,s)%(10**9+7)
 
+# https://leetcode.com/problems/number-of-ways-to-stay-in-the-same-place-after-some-steps/discuss/2733726/Python-Top-Down-Recursive-DP%3A-26-time-20-space
+
+class Solution:
+    def numWays(self, s: int, a: int) -> int:
+        return(f:=cache(lambda p,s:0<=p<a and s and sum(f(p+i,s-1)for i in(-1,0,1))or p==0))(0,s)%(10**9+7)
+
 test('''
 1269. Number of Ways to Stay in the Same Place After Some Steps
 Hard

@@ -32,6 +32,14 @@ class Solution:
         return comb(n+k-1, k*2) % (10**9+7)
 ```
 
+* https://leetcode.com/problems/pascals-triangle
+
+```python
+class Solution:
+    def generate(self, n: int) -> List[List[int]]:
+        return[[comb(i,x)for x in range(i+1)]for i in range(n)]
+```
+
 You can also use `__import__('module').func` to import from unlisted modules (i.e. numpy). Example:
 
 * https://leetcode.com/problems/minimize-deviation-in-array

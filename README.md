@@ -37,7 +37,7 @@ class Solution:
 ```python
 class Solution:
     def generate(self, n: int) -> List[List[int]]:
-        return[[comb(i,x)for x in range(i+1)]for i in range(n)]
+        return [[comb(i,x) for x in range(i+1)] for i in range(n)]
 ```
 
 You can also use `__import__('module').func` to import from unlisted modules (i.e. numpy). Example:

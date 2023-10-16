@@ -11,6 +11,16 @@ class Solution:
     def getRow(self, i: int) -> List[int]:
         f=factorial;return[f(i)//f(x)//f(i-x)for x in range(i+1)]
 
+# O(n)
+class Solution:
+    def getRow(self, i: int) -> List[int]:
+        return[a:=1]+[a:=a*(i-k)//(k+1)for k in range(i)]
+
+# O(n) 2x faster
+class Solution:
+    def getRow(self, i: int) -> List[int]:
+        r=[a:=1]+[a:=a*(i-k)//(k+1)for k in range(i>>1)];return r+r[::-1][1^i&1:]
+
 # https://leetcode.com/problems/pascals-triangle-ii/discuss/207686/One-Line-Python-using-numpy
 
 from numpy.polynomial.polynomial import polypow

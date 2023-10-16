@@ -29,6 +29,10 @@ class Solution:
 
 class Solution:
     def generate(self, n: int) -> List[List[int]]:
+        r=range;return[[comb(i,x)for x in r(i+1)]for i in r(n)]
+
+class Solution:
+    def generate(self, n: int) -> List[List[int]]:
         return[[comb(i,x)for x in range(i+1)]for i in range(n)]
 
 test('''

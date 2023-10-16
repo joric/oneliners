@@ -11,10 +11,14 @@ class Solution:
     def getRow(self, i: int) -> List[int]:
         f=factorial;return[f(i)//f(x)//f(i-x)for x in range(i+1)]
 
+# https://leetcode.com/problems/pascals-triangle-ii/discuss/207686/One-Line-Python-using-numpy
+
 from numpy.polynomial.polynomial import polypow
 class Solution(object):
     def getRow(self, i: int) -> List[int]:
         return[int(x)for x in polypow((1,1),i)]
+
+# https://leetcode.com/problems/pascals-triangle-ii/discuss/788411/One-Line-Python-Using-Math
 
 class Solution:
     def getRow(self, i: int) -> List[int]:

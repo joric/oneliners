@@ -20,6 +20,7 @@ class Solution:
         q,s,n,m=[[0]*4],set(),len(h),len(h[0]);return(f:=lambda _,x,y,d:(s.add((x,y)),[heappush(q,(t:=abs(h[a][b]-h[x][y]),a,b,max(t,d)))for a,b in((x-1,y),(x+1,y),(x,y-1),(x,y+1))if m>b>=0<=a<n and(a,b)not in s],d if(x,y)==(n-1,m-1)else f(*heappop(q)))[-1])(*heappop(q))
 
 # unicode find, see https://leetcode.com/problems/path-with-minimum-effort/discuss/2117225/Python-3-Union-Find
+# see pochmann's code here https://leetcode.com/problems/redundant-connection/discuss/108002/Unicode-Find-(5-short-lines)/169990
 
 class Solution:
     def minimumEffortPath(self, h: List[List[int]]) -> int:

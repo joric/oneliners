@@ -23,7 +23,7 @@ class Solution:
             else:
                 dsu.union(i-1,j-1)
 
-# https://leetcode.com/problems/redundant-connection/discuss/108002/Unicode-Find-(5-short-lines)
+# unicode find: https://leetcode.com/problems/redundant-connection/discuss/108002/Unicode-Find-(5-short-lines)
 
 class Solution:
     def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:

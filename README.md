@@ -282,6 +282,18 @@ class Solution:
         d=[];return[setitem(d,slice(i:=bisect_right(d,e),i+1),[e])or i+1for e in o]
 ```
 
+Sometimes `exec` is shorter than `setitem`.
+
+* https://leetcode.com/problems/design-parking-system
+
+```python
+ParkingSystem=type('',(),{'__init__':lambda s,a,b,c:setattr(s,'p',[0,a,b,c]),'addCar':lambda s,t:\
+    setitem(s.p,t,s.p[t]-1)or s.p[t]>=0})
+
+ParkingSystem=type('',(),{'__init__':lambda s,a,b,c:setattr(s,'p',[0,a,b,c]),'addCar':lambda s,t:\
+    exec('s.p[t]-=1')or s.p[t]>=0})
+```
+
 #### Getting list values
 
 Use the usual bracket notation `[]` or `dict.get(key,default)` (where needed).
@@ -452,19 +464,6 @@ while i<3:
  i+=1
 print(i)
 ```
-
-Sometimes `exec` is shorter than `setitem`.
-
-* https://leetcode.com/problems/design-parking-system
-
-```python
-ParkingSystem=type('',(),{'__init__':lambda s,a,b,c:setattr(s,'p',[0,a,b,c]),'addCar':lambda s,t:\
-    setitem(s.p,t,s.p[t]-1)or s.p[t]>=0})
-
-ParkingSystem=type('',(),{'__init__':lambda s,a,b,c:setattr(s,'p',[0,a,b,c]),'addCar':lambda s,t:\
-    exec('s.p[t]-=1')or s.p[t]>=0})
-```
-
 
 #### Swapping values
 

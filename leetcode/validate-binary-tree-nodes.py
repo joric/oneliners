@@ -100,7 +100,7 @@ class Solution:
 
 class Solution:
     def validateBinaryTreeNodes(self, n: int, l: List[int], r: List[int]) -> bool:
-        v,p=set([0]),set([0]);return next((-1 for i in range(len(l))if (l[i]!=-1 and l[i]==r[i] or l[i]!=-1 and i in v and l[i] in v or r[i]!=-1 and i in v and r[i] in v or r[i]==i or l[i]==i)or not(i not in v and p.add(i),l[i]in p and p.remove(l[i]),r[i]in p and p.remove(r[i]),l[i]!=-1 and v.add(l[i]),r[i]!=-1 and v.add(r[i]))),1)==len(p)
+        v,p=set([0]),set([0]);return next((0 for i in range(len(l))if (l[i]!=-1 and l[i]==r[i] or l[i]!=-1 and i in v and l[i] in v or r[i]!=-1 and i in v and r[i] in v or r[i]==i or l[i]==i)or not(i not in v and p.add(i),l[i]in p and p.remove(l[i]),r[i]in p and p.remove(r[i]),l[i]!=-1 and v.add(l[i]),r[i]!=-1 and v.add(r[i]))),1)==len(p)
 
 # TODO: try unicode find? https://leetcode.com/problems/redundant-connection/discuss/108002/Unicode-Find-(5-short-lines)
 

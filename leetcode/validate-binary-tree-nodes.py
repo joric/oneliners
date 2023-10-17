@@ -9,7 +9,7 @@ class Solution:
         for u in range(n):
             for v in (l[u], r[u]):
                 if v != -1:
-                    if c in v or t[u]==t[v]:
+                    if v in c or t[u]==t[v]:
                         return False
                     t = t.replace(t[u],t[v])
                     c.add(v)

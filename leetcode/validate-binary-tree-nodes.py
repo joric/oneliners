@@ -17,7 +17,7 @@ class Solution:
 
 class Solution:
     def validateBinaryTreeNodes(self, n: int, l: List[int], r: List[int]) -> bool:
-        t,c=''.join(map(chr,range(n))),set();return sum(v in c or t[u]==t[v]or not(t:=t.replace(t[u],t[v]),c.add(v))for u in range(n)for v in(l[u],r[u])if v!=-1)==1-len({*t})
+        t,c=''.join(map(chr,range(n))),set();return any(v in c or t[u]==t[v]or not(t:=t.replace(t[u],t[v]),c.add(v))for u in range(n)for v in(l[u],r[u])if v!=-1)==1-len({*t})
 
 test('''
 1361. Validate Binary Tree Nodes

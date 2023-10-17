@@ -5,19 +5,19 @@ from lc import *
 
 class Solution:
     def validateBinaryTreeNodes(self, n: int, l: List[int], r: List[int]) -> bool:
-        t,c=''.join(map(chr, range(n))),Counter()
+        t,c=''.join(map(chr, range(n))),set()
         for u in range(n):
             for v in (l[u], r[u]):
                 if v != -1:
-                    c[v] += 1
-                    if c[v]>1 or t[u]==t[v]:
+                    if c in v or t[u]==t[v]:
                         return False
                     t = t.replace(t[u],t[v])
+                    c.add(v)
         return len({*t})==1
 
 class Solution:
     def validateBinaryTreeNodes(self, n: int, l: List[int], r: List[int]) -> bool:
-        t,c=''.join(map(chr,range(n))),Counter();return next((0for u in range(n)for v in(l[u],r[u])if v!=-1and(((c.update({v:1})or c[v]>1)or t[u]==t[v])or not(t:=t.replace(t[u],t[v])))),1)==len({*t})
+        t,c=''.join(map(chr,range(n))),set();return sum(v in c or t[u]==t[v]or not(t:=t.replace(t[u],t[v]),c.add(v))for u in range(n)for v in(l[u],r[u])if v!=-1)==1-len({*t})
 
 test('''
 1361. Validate Binary Tree Nodes

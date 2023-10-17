@@ -453,6 +453,19 @@ while i<3:
 print(i)
 ```
 
+Sometimes `exec` is shorter than `setitem`.
+
+* https://leetcode.com/problems/design-parking-system
+
+```python
+ParkingSystem=type('',(),{'__init__':lambda s,a,b,c:setattr(s,'p',[0,a,b,c]),'addCar':lambda s,t:\
+    setitem(s.p,t,s.p[t]-1)or s.p[t]>=0})
+
+ParkingSystem=type('',(),{'__init__':lambda s,a,b,c:setattr(s,'p',[0,a,b,c]),'addCar':lambda s,t:\
+    exec('s.p[t]-=1')or s.p[t]>=0})
+```
+
+
 #### Swapping values
 
 To swap values you can use either `exec` (inline version of `a,b=b,a`) or a temporary variable (`t:=a,a=b,b=t`).

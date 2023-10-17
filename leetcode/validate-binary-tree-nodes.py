@@ -95,7 +95,25 @@ class Solution:
     def validateBinaryTreeNodes(self, n: int, l: List[int], r: List[int]) -> bool:
         v,p=set([0]),set([0]);return next((0 for i in range(len(l))if (l[i]!=-1 and l[i]==r[i] or l[i]!=-1 and i in v and l[i] in v or r[i]!=-1 and i in v and r[i] in v or r[i]==i or l[i]==i)or not(i not in v and p.add(i),l[i]in p and p.remove(l[i]),r[i]in p and p.remove(r[i]),l[i]!=-1 and v.add(l[i]),r[i]!=-1 and v.add(r[i]))),1)==len(p)
 
-# TODO: try unicode find? https://leetcode.com/problems/redundant-connection/discuss/108002/Unicode-Find-(5-short-lines)
+
+# https://leetcode.com/problems/validate-binary-tree-nodes/discuss/2770216/Python-(Simple-Union-Find)
+# unicode find: https://leetcode.com/problems/redundant-connection/discuss/108002/Unicode-Find-(5-short-lines)
+
+class Solution:
+    def validateBinaryTreeNodes(self, n: int, l: List[int], r: List[int]) -> bool:
+        t,c=''.join(map(chr, range(n))),Counter()
+        for u in range(n):
+            for v in (l[u], r[u]):
+                if v != -1:
+                    c[v] += 1
+                    if c[v]>1 or t[u]==t[v]:
+                        return False
+                    t = t.replace(t[u],t[v])
+        return len({*t})==1
+
+class Solution:
+    def validateBinaryTreeNodes(self, n: int, l: List[int], r: List[int]) -> bool:
+        t,c=''.join(map(chr,range(n))),Counter();return next((0for u in range(n)for v in(l[u],r[u])if v!=-1and(((c.update({v:1})or c[v]>1)or t[u]==t[v])or not(t:=t.replace(t[u],t[v])))),1)==len({*t})
 
 test('''
 1361. Validate Binary Tree Nodes

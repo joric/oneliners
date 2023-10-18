@@ -14,6 +14,10 @@ class Solution:
     def minimumTime(self, n: int, r: List[List[int]], t: List[int]) -> int:
         g=defaultdict(list);[g[y].append(x)for x,y in r];f=cache(lambda x:t[x-1]+max([f(c)for c in g[x]]+[0]));return max(f(i+1)for i in range(n))
 
+class Solution:
+    def minimumTime(self, n: int, r: List[List[int]], t: List[int]) -> int:
+        g=defaultdict(list);[g[y].append(x)for x,y in r];f=cache(lambda x:t[x-1]+max([0,*map(f,g[x])]));return max(map(f,range(1,n+1)))
+
 test('''
 2050. Parallel Courses III
 Hard

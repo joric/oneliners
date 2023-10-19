@@ -10,6 +10,10 @@ class Solution:
     def backspaceCompare(self, s: str, t: str) -> bool:
         return reduce(f:=lambda r,c:(r[:-1],r+c)[c>'#'],s,'')==reduce(f,t,'')
 
+class Solution:
+    def backspaceCompare(self, s: str, t: str) -> bool:
+        return reduce(f:=lambda r,c:(r[:-1],r+c)[c>'#'],s)==reduce(f,t,'')
+
 test('''
 
 844. Backspace String Compare

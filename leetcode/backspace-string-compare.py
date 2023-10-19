@@ -8,7 +8,7 @@ class Solution:
 
 class Solution:
     def backspaceCompare(self, s: str, t: str) -> bool:
-        return reduce(f:=lambda r,c:(r+c,r[:-1])[c=='#'],s,'')==reduce(f,t,'')
+        return reduce(f:=lambda r,c:(r[:-1],r+c)[c>'#'],s,'')==reduce(f,t,'')
 
 test('''
 

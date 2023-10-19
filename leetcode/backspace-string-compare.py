@@ -4,7 +4,11 @@ from lc import *
 
 class Solution:
     def backspaceCompare(self, s: str, t: str) -> bool:
-        return reduce(f:=lambda r,c: r[:-1] if c=='#' else r+c, s, '')==reduce(f, t, '')
+        return reduce(f:=lambda r,c:r[:-1] if c=='#' else r+c,s,'')==reduce(f,t,'')
+
+class Solution:
+    def backspaceCompare(self, s: str, t: str) -> bool:
+        return reduce(f:=lambda r,c:(r+c,r[:-1])[c=='#'],s,'')==reduce(f,t,'')
 
 test('''
 

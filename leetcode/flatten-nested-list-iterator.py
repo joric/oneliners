@@ -1,6 +1,6 @@
 from lc import *
 
-# TODO fix the tests (name 'NestedInteger' is not defined)!
+# TODO fix the setup (name 'NestedInteger' is not defined)!
 
 class NestedInteger:
     def __init__(self, data):
@@ -12,7 +12,7 @@ class NestedInteger:
                     yield from flatten(x.getList())
                     
         self.g = flatten(data)
-        self.buff = None
+        self.buf = None
 
     def isInteger(self) -> bool:
         return type(self.g) is int
@@ -47,13 +47,13 @@ class NestedIterator:
     def __init__(s, d: [NestedInteger]):
         return setattr(s,'s',d[::-1])or s.f()
     def f(s) -> None:
-        return(None,all(s.s and not s.s[-1].isInteger() and (t:=s.s.pop(),setattr(s,'s',s.s+t.getList()[::-1]))for _ in count()))[0]
+        return all(s.s and not s.s[-1].isInteger() and (t:=s.s.pop(),setattr(s,'s',s.s+t.getList()[::-1]))for _ in count())or None
     def next(s) -> int:
         return(s.s.pop().getInteger(),s.f())[0]
     def hasNext(s) -> bool:
         return bool(s.s)
 
-NestedIterator = type('',(),{'__init__':lambda s,d:setattr(s,'s',d[::-1])or s.f(),'f':lambda s:(None,all(s.s and not s.s[-1].isInteger()and(t:=s.s.pop(),setattr(s,'s',s.s+t.getList()[::-1]))for _ in count()))[0],'next':lambda s:(s.s.pop().getInteger(),s.f())[0],'hasNext':lambda s:bool(s.s)})
+NestedIterator = type('',(),{'__init__':lambda s,d:setattr(s,'s',d[::-1])or s.f(),'f':lambda s:all(s.s and not s.s[-1].isInteger()and(t:=s.s.pop(),setattr(s,'s',s.s+t.getList()[::-1]))for _ in count())or None,'next':lambda s:(s.s.pop().getInteger(),s.f())[0],'hasNext':lambda s:bool(s.s)})
 
 test('''
 341. Flatten Nested List Iterator

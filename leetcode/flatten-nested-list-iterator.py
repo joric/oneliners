@@ -32,13 +32,14 @@ class NestedInteger:
 
     #def getList(self) -> [NestedInteger]:
     def getList(self):
-        return [self.g]
+        return self.g
 
 # https://leetcode.com/problems/flatten-nested-list-iterator/discuss/3053584/Python-short-solution(DFS)
 
 class NestedIterator:
     def __init__(s, d: [NestedInteger]):
         s.s=d[::-1]
+        print('s.s->',d)
         s.f()
 
     def f(s) -> None:
@@ -54,6 +55,7 @@ class NestedIterator:
     def hasNext(s) -> bool:
         return bool(s.s)
 
+'''
 class NestedIterator:
     def __init__(s, d: [NestedInteger]):
         return setattr(s,'s',d[::-1])or s.f()
@@ -65,6 +67,7 @@ class NestedIterator:
         return bool(s.s)
 
 NestedIterator = type('',(),{'__init__':lambda s,d:setattr(s,'s',d[::-1])or s.f(),'f':lambda s:all(s.s and not s.s[-1].isInteger()and(t:=s.s.pop(),setattr(s,'s',s.s+t.getList()[::-1]))for _ in count())or None,'next':lambda s:(s.s.pop().getInteger(),s.f())[0],'hasNext':lambda s:bool(s.s)})
+'''
 
 test('''
 341. Flatten Nested List Iterator
@@ -99,7 +102,9 @@ Example 1:
 
 Input: nestedList = [[1,1],2,[1,1]]
 Output: [1,1,2,1,1]
+
 Explanation: By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,1,2,1,1].
+
 Example 2:
 
 Input: nestedList = [1,[4,[6]]]
@@ -111,5 +116,5 @@ Constraints:
 
 1 <= nestedList.length <= 500
 The values of the integers in the nested list is in the range [-10^6, 10^6].
-''',classname=NestedIterator,init=init,check=check)
+''',classname=NestedIterator,init=init,check=check,legacy=True)
 

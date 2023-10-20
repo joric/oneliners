@@ -153,7 +153,7 @@ cnames = []
 # use test(```leetcode description```) to run latest Solution
 # note only the last solution is tested (classname override), but you can use empty test() between solutions
 
-def test(text=None, classname=None, check=None, init=None, parser=None):
+def test(text=None, classname=None, check=None, init=None, parser=None, legacy=None):
     if not text:
         cname = classname or importlib.import_module('__main__').Solution
         cnames.append(cname)
@@ -231,7 +231,7 @@ def test(text=None, classname=None, check=None, init=None, parser=None):
                 return all(x==y for x,y in zip(res,expected))
             return res==expected
 
-    custom_class_tests = classname is not None and 'Launcher' not in str(classname)
+    custom_class_tests = classname is not None and 'Launcher' not in str(classname) and not legacy
 
     if not classname:
         classname = importlib.import_module('__main__').Solution

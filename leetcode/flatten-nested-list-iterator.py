@@ -2,6 +2,16 @@ from lc import *
 
 # TODO fix the setup (name 'NestedInteger' is not defined)!
 
+def init(nestedList):
+    # Your NestedIterator object will be instantiated and called as such:
+    i, v = NestedIterator(nestedList), []
+    while i.hasNext(): v.append(i.next())
+
+def check(*args):
+    return True
+
+# This is the interface that allows for creating nested lists.
+# You should not implement it, or speculate about its implementation
 class NestedInteger:
     def __init__(self, data):
         def flatten(items):
@@ -20,7 +30,8 @@ class NestedInteger:
     def getInteger(self) -> int:
         return self.g
 
-    def getList(self) -> [NestedInteger]:
+    #def getList(self) -> [NestedInteger]:
+    def getList(self):
         return [self.g]
 
 # https://leetcode.com/problems/flatten-nested-list-iterator/discuss/3053584/Python-short-solution(DFS)
@@ -29,12 +40,12 @@ class NestedIterator:
     def __init__(s, d: [NestedInteger]):
         s.s=d[::-1]
         s.f()
-    
+
     def f(s) -> None:
         while s.s and not s.s[-1].isInteger():
             t = s.s.pop()
             s.s += t.getList()[::-1]
-    
+
     def next(s) -> int:
         r = s.s.pop().getInteger()
         s.f()
@@ -100,5 +111,5 @@ Constraints:
 
 1 <= nestedList.length <= 500
 The values of the integers in the nested list is in the range [-10^6, 10^6].
-''')
+''',classname=NestedIterator,init=init,check=check)
 

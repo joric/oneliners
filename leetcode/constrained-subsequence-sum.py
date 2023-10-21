@@ -7,11 +7,11 @@ class Solution:
         d = deque()
         for i in range(len(a)):
             a[i] += d[0] if d else 0
-            while len(d) and a[i]>d[-1]:
+            while d and a[i]>d[-1]:
                 d.pop()
             if a[i]>0:
                 d.append(a[i])
-            if i>=k and d and d[0]==a[i - k]:
+            if i>=k and d and d[0]==a[i-k]:
                 d.popleft()
         return max(a)
 

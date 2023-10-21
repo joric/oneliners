@@ -39,7 +39,6 @@ class NestedInteger:
 class NestedIterator:
     def __init__(s, d: [NestedInteger]):
         s.s=d[::-1]
-        print('s.s->',d)
         s.f()
 
     def f(s) -> None:
@@ -116,5 +115,5 @@ Constraints:
 
 1 <= nestedList.length <= 500
 The values of the integers in the nested list is in the range [-10^6, 10^6].
-''',classname=NestedIterator,init=init,check=check,legacy=True)
+''',classname=NestedIterator,init=init,check=check,custom=False)
 

@@ -17,8 +17,7 @@ class Solution:
 
 class Solution:
     def constrainedSubsetSum(self, a: List[int], k: int) -> int:
-        d=deque();[(setitem(a,i,a[i]+(d and d[0]or 0)),all(len(d)and a[i]>d[-1]and d.pop()for _ in count()),a[i]>0and d.append(a[i]),i>=k and d and d[0]==a[i-k]and d.popleft())for i in range(len(a))];return max(a)
-
+        d=deque();[(setitem(a,i,a[i]+(d and d[0]or 0)),all(len(d)and a[i]>d[-1]and d.pop()for _ in a),a[i]>0and d.append(a[i]),i>=k and d and d[0]==a[i-k]and d.popleft())for i in range(len(a))];return max(a)
 
 # another solution
 

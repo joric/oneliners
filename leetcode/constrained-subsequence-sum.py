@@ -19,6 +19,27 @@ class Solution:
     def constrainedSubsetSum(self, a: List[int], k: int) -> int:
         d=deque();[(setitem(a,i,a[i]+(d and d[0]or 0)),all(len(d)and a[i]>d[-1]and d.pop()for _ in count()),a[i]>0and d.append(a[i]),i>=k and d and d[0]==a[i-k]and d.popleft())for i in range(len(a))];return max(a)
 
+
+# another solution
+
+class Solution:
+    def constrainedSubsetSum(self, nums: List[int], k: int) -> int:
+        # bottom-up dp; time = O(n), space = O(k)
+        # dp[i] is maximum sum of subsequence of nums[0:=i] ending at i
+        ret = nums[0]
+        n = len(nums)
+        stack = deque() # monotonic stack (decreasing) { i, dp[i] }
+        # stack[0][1] is maximum dp[i] within stack
+        stack.append((0, nums[0]))
+        for i in range(1,n):
+            if stack[0][0] + k < i: # stack is always non-empty
+                ret = max(ret, stack.popleft()[1])
+            dp = nums[i] + (stack and max(0, stack[0][1]))
+            while stack and stack[-1][1] <= dp:
+                stack.pop()
+            stack.append((i, dp))
+        return max(ret, stack[0][1])
+
 class Solution:
     def constrainedSubsetSum(self, nums: List[int], k: int) -> int:
         l,n,s=0,len(nums),[(-k-1,0)];return max(((s[l][0]+k>=i or(l:=l+1))and(d:=nums[i]+max(0,l<len(s)and s[l][1])),all(s[-1][1]<=d and s.pop()for _ in range(l,len(s))),s.append((i,d)))[0]for i in range(n))

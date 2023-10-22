@@ -38,6 +38,14 @@ class Solution:
     def maximumScore(self, a: List[int], k: int) -> int:
         r=m=a[k];i,j,n=k,k,len(a);return next(r for _ in a if not((i>0 or j<n-1)and((j:=j+1)if(i and a[i-1])<(j<n-1 and a[j+1])else(i:=i-1),m:=min(m,a[i],a[j]),r:=max(r,m*(j-i+1)))))
 
+class Solution:
+    def maximumScore(self, a: List[int], k: int) -> int:
+        r=m=a[k];i,j,n=k,k,len(a);[((j:=j+1)if(i and a[i-1])<(j<n-1 and a[j+1])else(i:=i-1),m:=min(m,a[i],a[j]),r:=max(r,m*(j-i+1)))for _ in a if i>0 or j<n-1];return r
+
+class Solution:
+    def maximumScore(self, a: List[int], k: int) -> int:
+        m=a[k];i,j,n=k,k,len(a);return max([m]+[((j:=j+1)if(i and a[i-1])<(j<n-1 and a[j+1])else(i:=i-1),m:=min(m,a[i],a[j]))and m*(j-i+1)for _ in a if i>0 or j<n-1])
+
 test('''
 1793. Maximum Score of a Good Subarray
 Hard
@@ -67,7 +75,11 @@ Example 2:
 Input: nums = [5,5,4,5,4,1,1,1], k = 0
 Output: 20
 Explanation: The optimal subarray is (0, 4) with a score of min(5,5,4,5,4) * (4-0+1) = 4 * 5 = 20.
- 
+
+Example 3:
+
+Input: nums = [5], k = 0
+Output: 5
 
 Constraints:
 

@@ -1,5 +1,24 @@
 from lc import *
 
+# https://leetcode.com/problems/maximum-score-of-a-good-subarray/discuss/1108351/Python-Binary-search-O(n-log-n)-explained
+
+class Solution:
+    def maximumScore(self, a: List[int], k: int) -> int:
+        def f(a, k):
+            l = [*accumulate(a[:k+1][::-1],min)][::-1]
+            r = [*accumulate(a[k:],min)]
+            s = 0
+            for j in range(len(r)):
+                i = bisect_left(l,r[j])
+                if i>=0:
+                    s = max(s,(k+j-i+1)*r[j])
+            return s
+        return max(f(a,k),f(a[::-1],len(a)-k-1))
+
+class Solution:
+    def maximumScore(self, a: List[int], k: int) -> int:
+        return max(((f:=lambda a,k:(l:=[*accumulate(a[:k+1][::-1],min)][::-1],r:=[*accumulate(a[k:],min)],s:=0)and max((i:=bisect_left(l,r[j]))>=0 and(k+j-i+1)*r[j]for j in range(len(r)))))(a,k),f(a[::-1],len(a)-k-1))
+
 # https://leetcode.com/problems/maximum-score-of-a-good-subarray/discuss/1108333/JavaC%2B%2BPython-Two-Pointers
 
 class Solution:

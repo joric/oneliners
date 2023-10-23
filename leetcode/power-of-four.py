@@ -30,6 +30,10 @@ class Solution:
     def isPowerOfFour(self, n: int) -> bool:
         t=n-1;return n>0and n&t==0and t%3==0
 
+class Solution:
+    def isPowerOfFour(self, n: int) -> bool:
+        t=n-1;return n>0==n&t==t%3
+
 test('''
 342. Power of Four
 Easy

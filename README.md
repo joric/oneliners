@@ -792,6 +792,21 @@ class Solution:
 
 ```
 
+Note Python handles comparisons in the same order as `and` operator (log throws exception if n==0):
+
+* https://leetcode.com/problems/power-of-four
+
+```python
+class Solution:
+    def isPowerOfFour(self, n: int) -> bool:
+        return n>0 and log(n,4)%1==0
+
+class Solution:
+    def isPowerOfFour(self, n: int) -> bool:
+        return n>0==log(n,4)%1
+```
+
+
 * `~` reverts every bit. Therefore, `~x` means `-x-1`. You can use it as reversed index, i.e. for `i=0`, `a[~i]` means `a[-1]`, etc. or just replace `-x-1` with `~x`.
     For integer n, you can write `n+1` as `-~n`, `n-1` as `~-n`. This uses the same number of characters, but can indirectly cut spaces or parens for operator precedence.
 
@@ -949,7 +964,7 @@ class Solution:
 * Instead of range(x), you can use the * operator on a list of anything, e.g. `[1]*8` can replace `range(8)` (unless you really need the counter value).
 * Conditions like `if i<len(r)` may be replaced with `if r[i:]`, it's 3 characters shorter.
 * You can replace `set(n)` with `{*n}` (2 characters shorter).
-* You can use `~~()` instead of `int()`, akin to js (1 character shorter).
+* You can use `~~()` instead of `int()`, akin to js (1 character shorter) but it only works for booleans.
 
 ## References
 

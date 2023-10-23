@@ -48,6 +48,12 @@ class Solution:
     def isPowerOfFour(self, n: int) -> bool:
         return n and n&(n-1)==0 and 0x55555555&n==n
 
+# https://leetcode.com/problems/power-of-four/discuss/772524/Shortest-one-liner-in-Python-20ms-(beats-99.28-of-python3-submissions)
+
+class Solution:
+    def isPowerOfFour(self, n: int) -> bool:
+        return n>0 and log(n,4).is_integer()
+
 # https://leetcode.com/problems/power-of-four/discuss/80460/1-line-C%2B%2B-solution-without-confusing-bit-manipulations
 
 class Solution:

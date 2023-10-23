@@ -1,5 +1,20 @@
 from lc import *
 
+# https://leetcode.com/problems/power-of-four/discuss/164458/Python-recursive-iterative-math
+
+class Solution:
+    def isPowerOfFour(self, n: int) -> bool:
+        if n==1:
+            return True
+        elif n==0:
+            return False
+        while n!=1:
+            if n%4 != 0:
+                return False
+            else:
+                n = n/4
+        return True
+
 # https://leetcode.com/problems/power-of-four/discuss/384752/Shortest-than-shortest
 
 class Solution:
@@ -46,6 +61,10 @@ class Solution:
 class Solution:
     def isPowerOfFour(self, n: int) -> bool:
         t=n-1;return n>0==n&t==t%3
+
+class Solution:
+    def isPowerOfFour(self, n: int) -> bool:
+        return n>0==n&(n-1)==n%3-1
 
 test('''
 342. Power of Four

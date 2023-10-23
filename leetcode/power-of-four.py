@@ -1,7 +1,20 @@
 from lc import *
 
-# https://leetcode.com/problems/power-of-four/discuss/772269/Python-O(1)-oneliner-solution-explained
+# https://leetcode.com/problems/power-of-four/discuss/384752/Shortest-than-shortest
 
+class Solution:
+    def isPowerOfFour(self, n: int) -> bool:
+        if n==1:
+            return True
+        if n==0:
+            return False
+        return n%4==0 and self.isPowerOfFour(n/4)
+
+class Solution:
+    def isPowerOfFour(self, n: int) -> bool:
+        return n==1 or n!=0 and n%4==0 and self.isPowerOfFour(n/4)
+
+# https://leetcode.com/problems/power-of-four/discuss/772269/Python-O(1)-oneliner-solution-explained
 # Number is positive AND Number is power of 2 AND This power of 2 is even power
 
 class Solution:

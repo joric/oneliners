@@ -76,6 +76,10 @@ class Solution:
     def isPowerOfFour(self, n: int) -> bool:
         return n>0==n&(n-1)==n%3-1
 
+class Solution:
+    def isPowerOfFour(self, n: int) -> bool:
+        return n>0==log(n,4)%1
+
 test('''
 342. Power of Four
 Easy

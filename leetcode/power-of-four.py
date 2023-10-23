@@ -38,6 +38,10 @@ class Solution:
 
 class Solution:
     def isPowerOfFour(self, n: int) -> bool:
+        return n>0==n&(n-1)==n&int.from_bytes(b'\xaa\xaa\xaa\xaa','little')
+
+class Solution:
+    def isPowerOfFour(self, n: int) -> bool:
         return n>0 and n&(n-1)==0 and 1431655765&n==n
 
 class Solution:

@@ -14,6 +14,10 @@ class Solution:
 
 class Solution:
     def isPowerOfFour(self, n: int) -> bool:
+        return n>0 and n&(n-1)==0 and 0x55555555&n==n
+
+class Solution:
+    def isPowerOfFour(self, n: int) -> bool:
         return n>0 and n&(n-1)==0 and 0xAAAAAAAA&n==0
 
 # https://leetcode.com/problems/power-of-four/discuss/80460/1-line-C%2B%2B-solution-without-confusing-bit-manipulations

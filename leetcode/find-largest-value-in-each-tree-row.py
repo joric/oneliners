@@ -14,6 +14,26 @@ class Solution:
     def largestValues(self, r: Optional[TreeNode]) -> List[int]:
         m,q=[],[r];return next(m for _ in count()if not(any(q)and(m.append(max(x.val for x in q)),q:=[c for x in q for c in (x.left,x.right)if c])))
 
+# https://leetcode.com/problems/find-largest-value-in-each-tree-row/discuss/1109531/Easy-Python-Recursive-beats-99
+
+class Solution:
+    def largestValues(self, r: Optional[TreeNode]) -> List[int]:
+        m = []
+        def f(x,l):
+            if not x:
+                return
+            if len(m) <= l:
+                m.append(x.val)
+            m[l] = max(m[l],x.val)
+            f(x.left,l+1)
+            f(x.right,l+1)
+        f(r,0)
+        return m
+
+class Solution:
+    def largestValues(self, r: Optional[TreeNode]) -> List[int]:
+        m=[];(f:=lambda x,l:x and(len(m)<=l and m.append(x.val),setitem(m,l,max(m[l],x.val)),f(x.left,l+1),f(x.right,l+1)))(r,0);return m
+
 test('''
 515. Find Largest Value in Each Tree Row
 Medium

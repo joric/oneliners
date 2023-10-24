@@ -18,6 +18,24 @@ class Solution:
 
 class Solution:
     def largestValues(self, r: Optional[TreeNode]) -> List[int]:
+        m=[]
+        def f(x,i):
+            if not x:
+                return
+            if len(m)<=i:
+                m.append(x.val)
+            m[i] = max(m[i],x.val)
+            f(x.left,i+1)
+            f(x.right,i+1)
+        f(r,0)
+        return m
+
+class Solution:
+    def largestValues(self, r: Optional[TreeNode]) -> List[int]:
+        m,f=[],lambda x,i:x and(len(m)<=i and m.append(x.val),setitem(m,i,max(m[i],x.val)),f(x.left,i+1),f(x.right,i+1));f(r,0);return m
+
+class Solution:
+    def largestValues(self, r: Optional[TreeNode]) -> List[int]:
         m={}
         def f(x,i):
             if not x:

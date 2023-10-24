@@ -18,37 +18,19 @@ class Solution:
 
 class Solution:
     def largestValues(self, r: Optional[TreeNode]) -> List[int]:
-        m = []
-        def f(x,l):
-            if not x:
-                return
-            if len(m) <= l:
-                m.append(x.val)
-            m[l] = max(m[l],x.val)
-            f(x.left,l+1)
-            f(x.right,l+1)
-        f(r,0)
-        return m
-
-class Solution:
-    def largestValues(self, r: Optional[TreeNode]) -> List[int]:
-        m=[];(f:=lambda x,l:x and(len(m)<=l and m.append(x.val),setitem(m,l,max(m[l],x.val)),f(x.left,l+1),f(x.right,l+1)))(r,0);return m
-
-class Solution:
-    def largestValues(self, r: Optional[TreeNode]) -> List[int]:
         m={}
-        def f(x,l):
+        def f(x,i):
             if not x:
                 return
-            m[l] = max(m.get(l,-inf),x.val)
-            f(x.left,l+1)
-            f(x.right,l+1)
+            m[i] = max(m.get(i,-inf),x.val)
+            f(x.left,i+1)
+            f(x.right,i+1)
         f(r,0)
-        return[*m.values()]
+        return m.values()
 
 class Solution:
     def largestValues(self, r: Optional[TreeNode]) -> List[int]:
-        m={};(f:=lambda x,l:x and(setitem(m,l,max(m.get(l,-inf),x.val)),f(x.left,l+1),f(x.right,l+1)))(r,0);return m.values()
+        m={};(f:=lambda x,i:x and(setitem(m,i,max(m.get(i,-inf),x.val)),f(x.left,i+1),f(x.right,i+1)))(r,0);return m.values()
 
 test('''
 515. Find Largest Value in Each Tree Row

@@ -34,6 +34,22 @@ class Solution:
     def largestValues(self, r: Optional[TreeNode]) -> List[int]:
         m=[];(f:=lambda x,l:x and(len(m)<=l and m.append(x.val),setitem(m,l,max(m[l],x.val)),f(x.left,l+1),f(x.right,l+1)))(r,0);return m
 
+class Solution:
+    def largestValues(self, r: Optional[TreeNode]) -> List[int]:
+        m={}
+        def f(x,l):
+            if not x:
+                return
+            m[l] = max(m.get(l,-inf),x.val)
+            f(x.left,l+1)
+            f(x.right,l+1)
+        f(r,0)
+        return[*m.values()]
+
+class Solution:
+    def largestValues(self, r: Optional[TreeNode]) -> List[int]:
+        m={};(f:=lambda x,l:x and(setitem(m,l,max(m.get(l,-inf),x.val)),f(x.left,l+1),f(x.right,l+1)))(r,0);return[*m.values()]
+
 test('''
 515. Find Largest Value in Each Tree Row
 Medium
@@ -58,7 +74,17 @@ Example 2:
 
 Input: root = [1,2,3]
 Output: [1,3]
- 
+
+
+Example 3:
+
+Input: root = [0,-1]
+Output: [0,-1]
+
+
+Example 4:
+Input: root = [34,-6,null,-21]
+Output: [34,-6,-21]
 
 Constraints:
 

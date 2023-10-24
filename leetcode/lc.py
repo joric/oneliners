@@ -183,6 +183,8 @@ def test(text=None, classname=None, check=None, init=None, parser=None, custom=N
             return ListNode.parse(v)
         elif 'TreeNode' in hint and type(v)!=TreeNode:
             return TreeNode.parse(v)
+        elif type(v)==type({}.values()):
+            return list(v)
         elif 'List' in hint or is_iter(v):
             return list(v) if type(v) is str else to_list(v)
         elif type(v) is float:

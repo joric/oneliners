@@ -6,7 +6,7 @@ class Solution:
 
 class Solution:
     def kthGrammar(self, n: int, k: int) -> int:
-        return~~(f:=lambda n,k:n!=1and(1-f(n-1,k-p)if k>(p:=1<<n-2)else f(n-1,k)))(n,k)
+        return(f:=lambda n,k:n-1and(1-f(n-1,k-p)if k>(p:=1<<n-2)else f(n-1,k)))(n,k)
 
 test('''
 779. K-th Symbol in Grammar

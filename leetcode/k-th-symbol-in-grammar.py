@@ -8,6 +8,8 @@ class Solution:
     def kthGrammar(self, n: int, k: int) -> int:
         return(f:=lambda n,k:n-1and(1-f(n-1,k-p)if k>(p:=1<<n-2)else f(n-1,k)))(n,k)
 
+# https://leetcode.com/problems/k-th-symbol-in-grammar/discuss/405670/C%2B%2B-and-x86-assembler-solutions-with-explanation
+
 class Solution:
     def kthGrammar(self, n: int, k: int) -> int:
         return bin(k-1).count('1')&1;

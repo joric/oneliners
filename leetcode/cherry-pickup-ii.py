@@ -15,6 +15,10 @@ class Solution:
     def cherryPickup(self, g: List[List[int]]) -> int:
         return(f:=cache(lambda r,i,j:r<len(g)and 0<=i<j<len(g[0])and g[r][i]+g[r][j]+max(f(r+1,i+x,j+y)for x,y in product((-1,0,1),(-1,0,1)))))(0,0,len(g[0])-1)
 
+class Solution:
+    def cherryPickup(self, g: List[List[int]]) -> int:
+        return(f:=cache(lambda r,i,j:r<len(g)and 0<=i<j<len(g[0])and g[r][i]+g[r][j]+max(f(r+1,i+x,j+y)for x,y in product(*[[-1,0,1]]*2))))(0,0,len(g[0])-1)
+
 test('''
 1463. Cherry Pickup II
 Hard

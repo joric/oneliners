@@ -3,6 +3,14 @@ from lc import *
 # https://leetcode.com/problems/rotate-image/discuss/18884/Seven-Short-Solutions-(1-to-7-lines)
 
 class Solution:
+    def rotate(self, A):
+        n = len(A)
+        for i in range(n//2):
+            for j in range(n-n//2):
+                A[i][j], A[~j][i], A[~i][~j], A[j][~i] = \
+                         A[~j][i], A[~i][~j], A[j][~i], A[i][j]
+
+class Solution:
     def rotate(self, m: List[List[int]]) -> None:
         m[:] = zip(*m[::-1])
 

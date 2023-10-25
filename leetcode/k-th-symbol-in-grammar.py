@@ -8,6 +8,10 @@ class Solution:
     def kthGrammar(self, n: int, k: int) -> int:
         return(f:=lambda n,k:n-1and(1-f(n-1,k-p)if k>(p:=1<<n-2)else f(n-1,k)))(n,k)
 
+class Solution:
+    def kthGrammar(self, n: int, k: int) -> int:
+        return(k-1).bit_count()&1
+
 test('''
 779. K-th Symbol in Grammar
 Medium
@@ -45,7 +49,14 @@ Output: 1
 Explanation: 
 row 1: 0
 row 2: 01
- 
+
+Example 4:
+Input: n = 3, k = 2
+Output: 1
+
+Example 4:
+Input: n = 3, k = 4
+Output: 0
 
 Constraints:
 

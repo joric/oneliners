@@ -17,6 +17,18 @@ class Solution:
 
 class Solution:
     def numFactoredBinaryTrees(self, a: List[int]) -> int:
+        a=set(a)
+        @cache
+        def f(x):
+            t = 1
+            for c in a:
+                if not x%c and x//c in a:
+                    t += f(c) * f(x//c)
+            return t
+        return sum(map(f,a))%(10**9+7)
+
+class Solution:
+    def numFactoredBinaryTrees(self, a: List[int]) -> int:
         return sum(map(f:=cache(lambda x:1+sum(f(c)*f(x//c)for c in a if not x%c and x//c in a)),a))%(10**9+7)
 
 test('''

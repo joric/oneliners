@@ -6,6 +6,19 @@ class Solution:
     def numFactoredBinaryTrees(self, a: List[int]) -> int:
         return sum(map(f:=cache(lambda x:1+sum(f(c)*f(x//c)for c in a if not x%c and x//c in a)),a))%(10**9+7)
 
+# https://leetcode.com/problems/binary-trees-with-factors/discuss/126016/Short-simple-Python
+
+class Solution:
+    def numFactoredBinaryTrees(self, a: List[int]) -> int:
+        t={}
+        for i in sorted(a):
+            t[i] = 1+sum(t[j]*t.get(i/j,0)for j in a if j < i)
+        return sum(t.values())%(10**9 + 7)
+
+class Solution:
+    def numFactoredBinaryTrees(self, a: List[int]) -> int:
+        t={};[setitem(t,i,1+sum(t[j]*t.get(i/j,0)for j in a if j < i))for i in sorted(a)];return sum(t.values())%(10**9 + 7)
+
 test('''
 
 823. Binary Trees With Factors

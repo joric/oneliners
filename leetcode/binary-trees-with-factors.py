@@ -1,11 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/binary-trees-with-factors/discuss/2180513/python-3-or-recursion-%2B-memoization-or-O(n2)O(n)
-
-class Solution:
-    def numFactoredBinaryTrees(self, a: List[int]) -> int:
-        return sum(map(f:=cache(lambda x:1+sum(f(c)*f(x//c)for c in a if not x%c and x//c in a)),a))%(10**9+7)
-
 # https://leetcode.com/problems/binary-trees-with-factors/discuss/126016/Short-simple-Python
 
 class Solution:
@@ -18,6 +12,12 @@ class Solution:
 class Solution:
     def numFactoredBinaryTrees(self, a: List[int]) -> int:
         t={};[setitem(t,i,1+sum(t[j]*t.get(i/j,0)for j in a if j < i))for i in sorted(a)];return sum(t.values())%(10**9 + 7)
+
+# https://leetcode.com/problems/binary-trees-with-factors/discuss/2180513/python-3-or-recursion-%2B-memoization-or-O(n2)O(n)
+
+class Solution:
+    def numFactoredBinaryTrees(self, a: List[int]) -> int:
+        return sum(map(f:=cache(lambda x:1+sum(f(c)*f(x//c)for c in a if not x%c and x//c in a)),a))%(10**9+7)
 
 test('''
 

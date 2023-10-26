@@ -29,7 +29,7 @@ class Solution:
 
 class Solution:
     def numFactoredBinaryTrees(self, a: List[int]) -> int:
-        return sum(map(f:=cache(lambda x:1+sum(f(c)*f(x//c)for c in a if not x%c and x//c in a)),a))%(10**9+7)
+        return sum(map(f:=cache(lambda x:1+sum(f(c)*f(x//c)for c in a if x%c<1and x//c in a)),a))%(10**9+7)
 
 test('''
 

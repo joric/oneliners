@@ -40,10 +40,24 @@ class Solution:
         m,d = max((n,i) for i, n in enumerate(p))
         return s[(d-m)//2:(d+m)//2]
 
-
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         return (t:='#'.join('^{}$'.format(s)),n:=len(t),p:=[0]*n,c:=0,r:=0,[(setitem(p,i,(r>i) and min(r-i,p[2*c-i])),next(0 for _ in count() if not(t[i+1+p[i]]==t[i-1-p[i]] and (setitem(p,i,p[i]+1),i+p[i]>r and (c:=i,r:=i+p[i]))))) for i in range (1,n-1)],v:=max((n,i) for i, n in enumerate(p)),s[(v[1]-v[0])//2:sum(v)//2])[-1]
+
+# https://leetcode.com/problems/longest-palindromic-substring
+
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        if len(s) == 0:
+            return s
+        for l in range(len(s),0,-1):
+            for i in range(0,len(s)-l+1):
+                if s[i:i+l] == s[i:i+l][::-1]:
+                    return(s[i:i+l])
+
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        return next(s[i:i+l]for l in range(len(s),0,-1)for i in range(0,len(s)-l+1)if s[i:i+l]==s[i:i+l][::-1])
 
 test('''
 5. Longest Palindromic Substring

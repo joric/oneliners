@@ -19,7 +19,7 @@ class Solution:
 
 class Solution:
     def countVowelPermutation(self, n: int) -> int:
-        return sum(reduce(lambda x,_:[x[1]+x[2]+x[4],x[0]+x[2],x[1]+x[3],x[2],x[2]+x[3]],range(n-1),[1]*5))%(10**9+7)
+        return sum(reduce(lambda x,_:(x[1]+x[2]+x[4],x[0]+x[2],x[1]+x[3],x[2],x[2]+x[3]),range(n-1),[1]*5))%(10**9+7)
 
 test('''
 1220. Count Vowels Permutation

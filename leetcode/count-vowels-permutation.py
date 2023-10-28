@@ -21,6 +21,11 @@ class Solution:
     def countVowelPermutation(self, n: int) -> int:
         return sum(reduce(lambda x,_:(x[1]+x[2]+x[4],x[0]+x[2],x[1]+x[3],x[2],x[2]+x[3]),range(n-1),[1]*5))%(10**9+7)
 
+#python 2
+#class Solution(object):
+#    def countVowelPermutation(self, n):
+#        return sum(reduce(lambda(a,e,i,o,u),_:(e+i+u,a+i,e+o,i,i+o),range(n-1),[1]*5))%(10**9+7)
+
 class Solution:
     def countVowelPermutation(self, n: int) -> int:
         return sum(reduce(lambda x,_:(lambda a,e,i,o,u:(e+i+u,a+i,e+o,i,i+o))(*x),range(n-1),[1]*5))%(10**9+7)

@@ -2,6 +2,21 @@ from lc import *
 
 # https://leetcode.com/problems/count-vowels-permutation/discuss/1315077/Python-2-solution%3A-dp-and-matrix-power-explained
 
+import numpy as np
+class Solution:
+    def countVowelPermutation(self, n): 
+        def power(mat, n, M):
+            res = np.eye(len(mat), dtype = int)
+            while n > 0:
+                if n%2:
+                    res = np.dot(mat, res) % M
+                mat = np.dot(mat, mat) % M
+                n //= 2
+            return res
+        M = 10**9 + 7
+        mat = np.matrix([[0,1,0,0,0], [1,0,1,0,0], [1,1,0,1,1], [0,0,1,0,1], [1,0,0,0,0]])
+        return np.sum(power(mat, n-1, M)) % M
+
 class Solution:
     def countVowelPermutation(self, n: int) -> int:
         a,e,i,o,u = [1]*5
@@ -73,4 +88,3 @@ Constraints:
 
 1 <= n <= 2 * 10^4
 ''')
-

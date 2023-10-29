@@ -14,12 +14,6 @@ class Solution:
                 r = m
         return l
 
-# shortcut (may fail further tests)
-
-class Solution:
-    def poorPigs(self, b: int, d: int, t: int) -> int:
-        return(ceil(log(b)/log(t/d+1)),3)[b==125]
-
 # https://leetcode.com/problems/poor-pigs/discuss/94266/Another-explanation-and-solution
 
 class Solution:
@@ -32,6 +26,13 @@ class Solution:
 class Solution:
     def poorPigs(self, b: int, d: int, t: int) -> int:
         p=-1;all((t/d+1)**(p:=p+1)<b for _ in[0]*b);return p
+
+
+# https://leetcode.com/problems/poor-pigs/discuss/4220289/C%2B%2B-log2-1-line
+
+class Solution:
+    def poorPigs(self, b: int, d: int, t: int) -> int:
+        return ceil(log2(b)/log2(t/d+1))
 
 test('''
 458. Poor Pigs

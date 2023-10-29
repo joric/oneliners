@@ -78,6 +78,14 @@ Example 3:
 Input: buckets = 125, minutesToDie = 1, minutesToTest = 4
 Output: 3
 
+Example 4:
+Input: buckets = 1, minutesToDie = 1, minutesToTest = 1
+Output: 0
+
+Example 5:
+Input: buckets = 1000, minutesToDie = 12, minutesToTest = 60
+Output: 4
+
 Constraints:
 
 1 <= buckets <= 1000

@@ -27,7 +27,6 @@ class Solution:
     def poorPigs(self, b: int, d: int, t: int) -> int:
         p=-1;all((t/d+1)**(p:=p+1)<b for _ in[0]*b);return p
 
-
 # https://leetcode.com/problems/poor-pigs/discuss/4220289/C%2B%2B-log2-1-line
 
 class Solution:

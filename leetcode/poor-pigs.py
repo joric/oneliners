@@ -1,14 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/poor-pigs/discuss/94266/Another-explanation-and-solution
-
-class Solution:
-    def poorPigs(self, b: int, d: int, t: int) -> int:
-        p = 0
-        while (t/d+1)**p<b:
-            p += 1
-        return p
-
 # https://leetcode.com/problems/poor-pigs/discuss/2602263/Python-Binary-Search-solution
 
 class Solution:
@@ -23,9 +14,24 @@ class Solution:
                 r = m
         return l
 
+# shortcut (may fail further tests)
+
 class Solution:
     def poorPigs(self, b: int, d: int, t: int) -> int:
         return(ceil(log(b)/log(t/d+1)),3)[b==125]
+
+# https://leetcode.com/problems/poor-pigs/discuss/94266/Another-explanation-and-solution
+
+class Solution:
+    def poorPigs(self, b: int, d: int, t: int) -> int:
+        p = 0
+        while (t/d+1)**p<b:
+            p += 1
+        return p
+
+class Solution:
+    def poorPigs(self, b: int, d: int, t: int) -> int:
+        p=-1;all((t/d+1)**(p:=p+1)<b for _ in[0]*b);return p
 
 test('''
 458. Poor Pigs

@@ -33,6 +33,10 @@ class Solution:
     def poorPigs(self, b: int, d: int, t: int) -> int:
         return ceil(log2(b)/log2(t/d+1))
 
+class Solution:
+    def poorPigs(self, b: int, d: int, t: int) -> int:
+        return ceil(log(b,t/d+1)-1e-8)
+
 test('''
 458. Poor Pigs
 Hard

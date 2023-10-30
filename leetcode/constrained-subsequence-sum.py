@@ -1,7 +1,7 @@
 from lc import *
 
 # https://leetcode.com/problems/constrained-subsequence-sum/discuss/736798/Python-Thought-process%3A-Recursion-Memoization-Tabulation-Monoqueue
-# TLE
+# TLE (cache_clear does not help either)
 class Solution:
     def constrainedSubsetSum(self, a: List[int], k: int) -> int:
         return max(map(f:=cache(lambda j:j>=0 and a[j]+max(0,max(f(j-i)for i in range(1,k+1)))),range(len(a))))

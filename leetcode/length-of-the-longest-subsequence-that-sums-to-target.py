@@ -1,17 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/length-of-the-longest-subsequence-that-sums-to-target/discuss/4224434/Python-Dynamic-Programming
-
-class Solution:
-    def lengthOfLongestSubsequence(self, nums: List[int], target: int) -> int:
-        dp = [-1] * 1001
-        dp[0] = 0
-        for n in nums:
-            for i in range(target - n, -1, -1):
-                if dp[i] >= 0:
-                    dp[i + n] = max(dp[i + n], dp[i] + 1)
-        return dp[target]
-
 # https://leetcode.com/submissions/detail/1087598480/
 
 class Solution:
@@ -35,6 +23,22 @@ class Solution:
 class Solution:
     def lengthOfLongestSubsequence(self, a: List[int], t: int) -> int:
         return(a.sort(),r:=(f:=cache(lambda i,b:b and -inf if b<0 or i<0 else max(1+f(i-1,b-a[i]),f(i-1,b))))(len(a)-1,t),f.cache_clear())and(-1,r)[r>0]
+
+# https://leetcode.com/problems/length-of-the-longest-subsequence-that-sums-to-target/discuss/4224434/Python-Dynamic-Programming
+
+class Solution:
+    def lengthOfLongestSubsequence(self, nums: List[int], target: int) -> int:
+        dp = [-1] * 1001
+        dp[0] = 0
+        for n in nums:
+            for i in range(target - n, -1, -1):
+                if dp[i] >= 0:
+                    dp[i + n] = max(dp[i + n], dp[i] + 1)
+        return dp[target]
+
+class Solution:
+    def lengthOfLongestSubsequence(self, a: List[int], t: int) -> int:
+        d=[0]+[-1]*t;[d[i]>=0 and setitem(d,i+n,max(d[i+n],d[i]+1))for n in a for i in range(t-n,-1,-1)];return d[t]
 
 test('''
 2915. Length of the Longest Subsequence That Sums to Target

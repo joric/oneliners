@@ -4,6 +4,10 @@ class Solution:
     def sortByBits(self, a: List[int]) -> List[int]:
         return sorted(a,key=lambda x:(x.bit_count(),x))
 
+class Solution:
+    def sortByBits(self, a: List[int]) -> List[int]:
+        return sorted(sorted(a),key=int.bit_count)
+
 test('''
 1356. Sort Integers by The Number of 1 Bits
 Easy

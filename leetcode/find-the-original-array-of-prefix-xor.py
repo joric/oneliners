@@ -10,6 +10,10 @@ class Solution:
     def findArray(self, p: List[int]) -> List[int]:
         return map(xor,p,[0]+p[:-1])
 
+class Solution:
+    def findArray(self, p: List[int]) -> List[int]:
+        return map(xor,p,[0]+p)
+
 test('''
 2433. Find The Original Array of Prefix Xor
 Medium

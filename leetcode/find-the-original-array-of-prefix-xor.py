@@ -4,6 +4,10 @@ from lc import *
 
 class Solution:
     def findArray(self, p: List[int]) -> List[int]:
+        return starmap(xor,pairwise([0]+p))
+
+class Solution:
+    def findArray(self, p: List[int]) -> List[int]:
         return map(xor,p,[0]+p[:-1])
 
 test('''

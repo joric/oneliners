@@ -73,10 +73,6 @@ class Solution:
 
 class Solution:
     def findMode(self, r: Optional[TreeNode]) -> List[int]:
-        c,f=[],lambda n:n and(c.append(n.val),f(n.left),f(n.right));f(r);return multimode(c)
-
-class Solution:
-    def findMode(self, r: Optional[TreeNode]) -> List[int]:
         return multimode((f:=lambda r:r and[r.val]+f(r.left)+f(r.right)or[])(r))
 
 test('''

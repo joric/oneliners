@@ -67,7 +67,11 @@ class Solution:
 
 class Solution:
     def findMode(self, r: Optional[TreeNode]) -> List[int]:
-        c=Counter();(f:=lambda r:r and(c.update({r.val:1}),f(r.left),f(r.right)))(r);m=max(c.values());return [k for k in c if c[k] == m]
+        c=Counter();
+        f=lambda r:r and(c.update({r.val:1}),f(r.left),f(r.right))
+        f(r)
+        m=max(c.values())
+        return [k for k in c if c[k] == m]
 
 # https://leetcode.com/problems/find-mode-in-binary-search-tree/discuss/471622/Python-3-(five-lines)-(52-ms)
 

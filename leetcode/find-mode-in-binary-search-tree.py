@@ -33,8 +33,7 @@ class Solution:
 
 class Solution:
     def findMode(self, r: Optional[TreeNode]) -> List[int]:
-        return multimode((f:=lambda r:r and [r.val]+f(r.left)+f(r.right) or [])(r))
-
+        return multimode((f:=lambda r:r and[r.val]+f(r.left)+f(r.right)or[])(r))
 
 test('''
 501. Find Mode in Binary Search Tree

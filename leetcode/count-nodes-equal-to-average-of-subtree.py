@@ -43,6 +43,14 @@ class Solution:
     def averageOfSubtree(self, r: Optional[TreeNode]) -> int:
         t=lambda f:(g:=lambda r:r and f(r)+g(r.left)+g(r.right)or 0);s,n=t(lambda r:r.val),t(lambda r:1);return(t(lambda r:r.val==s(r)//n(r)))(r)
 
+class Solution:
+    def averageOfSubtree(self, r: Optional[TreeNode]) -> int:
+        return((t:=lambda f:(g:=lambda r:r and f(r)+g(r.left)+g(r.right)or 0))(lambda r:r.val==(t(lambda r:r.val))(r)//(t(lambda r:1))(r)))(r)
+
+class Solution:
+    def averageOfSubtree(self, r: Optional[TreeNode]) -> int:
+        t=lambda f:(g:=lambda r:r and f(r)+g(r.left)+g(r.right)or 0);return(t(lambda r:r.val==(t(lambda r:r.val))(r)//(t(lambda r:1))(r)))(r)
+
 test('''
 2265. Count Nodes Equal to Average of Subtree
 Medium

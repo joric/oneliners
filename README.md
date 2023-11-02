@@ -650,8 +650,8 @@ It is sometimes necessary to reset cache with `cache_clear` between tests to avo
 ```python
 class Solution:
     def lengthOfLongestSubsequence(self, a: List[int], t: int) -> int:
-        return(a.sort(),r:=(f:=cache(lambda i,b:b and -inf if b<0 or i<0 else \
-        max(1+f(i-1,b-a[i]),f(i-1,b))))(len(a)-1,t),f.cache_clear())and(-1,r)[r>0]
+        return(a.sort(),r:=(f:=cache(lambda i,b:b and -inf if b<0 or i<0 else
+            max(1+f(i-1,b-a[i]),f(i-1,b))))(len(a)-1,t),f.cache_clear())and(-1,r)[r>0]
 ```
 
 #### Reduce

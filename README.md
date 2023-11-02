@@ -643,6 +643,17 @@ class Solution:
             min([1+f(n-c) for c in coins]) if n>0 else 0 if n==0 else inf))(amount))
 ```
 
+It is sometimes necessary to reset cache with `cache_clear` between tests to avoid Memory Limit Exceeded error.
+
+* https://leetcode.com/problems/length-of-the-longest-subsequence-that-sums-to-target
+
+```python
+class Solution:
+    def lengthOfLongestSubsequence(self, a: List[int], t: int) -> int:
+        return(a.sort(),r:=(f:=cache(lambda i,b:b and -inf if b<0 or i<0 else \
+        max(1+f(i-1,b-a[i]),f(i-1,b))))(len(a)-1,t),f.cache_clear())and(-1,r)[r>0]
+```
+
 #### Reduce
 
 Use it to flatten a loop.

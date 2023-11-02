@@ -17,11 +17,11 @@ class Solution:
 
 class Solution:
     def averageOfSubtree(self, r: Optional[TreeNode]) -> int:
-        return (g:=lambda x,v:x and(lambda a,b,c,d,e,f:(s:=a+d+x.val,t:=b+e+1,v:=c+f+(s//t==x.val),(s,t,v))[-1])(*g(x.left,v),*g(x.right,v))or(0,0,0))(r,0)[2]
+        return(f:=lambda x,v:x and(l:=f(x.left,v),r:= f(x.right,v),s:=l[0]+r[0]+x.val,t:=l[1]+r[1]+1,(s,t,l[2]+r[2]+(s//t==x.val)))[-1]or(0,0,0))(r,0)[2]
 
 class Solution:
     def averageOfSubtree(self, r: Optional[TreeNode]) -> int:
-        return (g:=lambda x,v:x and(lambda a,b,c,d,e,f:(a+d+x.val,b+e+1,c+f+((a+d+x.val)//(b+e+1)==x.val)))(*g(x.left,v),*g(x.right,v))or(0,0,0))(r,0)[2]
+        return(g:=lambda x,v:x and(lambda a,b,c,d,e,f:(a+d+x.val,b+e+1,c+f+((a+d+x.val)//(b+e+1)==x.val)))(*g(x.left,v),*g(x.right,v))or(0,0,0))(r,0)[2]
 
 # https://leetcode.com/problems/count-nodes-equal-to-average-of-subtree/discuss/2020880/Decorated-Python
 

@@ -1,40 +1,6 @@
 from lc import *
 
-# https://leetcode.com/problems/count-nodes-equal-to-average-of-subtree/discuss/2024264/Python3-two-detailed-solutions
-
-class Solution:
-    def averageOfSubtree(self, r: Optional[TreeNode]) -> int:
-        def f(x):
-            if not x:
-                return 0,0,0
-            l = f(x.left)
-            r = f(x.right)
-            s = l[0]+r[0]+x.val
-            t = l[1]+r[1]+1
-            e = l[2]+r[2]+(s//t==x.val)
-            return s,t,e
-        return f(r)[2]
-
 # https://leetcode.com/problems/count-nodes-equal-to-average-of-subtree/discuss/3773664/Short-simple-and-easy-to-understand-Python-code.
-
-class Solution:
-    def averageOfSubtree(self, r: Optional[TreeNode]) -> int:
-        self.a = 0
-        def f(x):
-            if not x:
-                return 0,0
-            l = f(x.left)
-            r = f(x.right)
-            s = l[0]+r[0]+x.val
-            t = l[1]+r[1]+1
-            self.a += s//t == x.val
-            return s,t
-        f(r)
-        return self.a
-
-class Solution:
-    def averageOfSubtree(self, r: Optional[TreeNode]) -> int:
-        v=[0];(f:=lambda x:x and(l:=f(x.left),r:=f(x.right),s:=l[0]+r[0]+x.val,t:=l[1]+r[1]+1,setitem(v,0,v[0]+(s//t==x.val)),(s,t))[-1]or(0,0))(r);return v[0]
 
 class Solution:
     def averageOfSubtree(self, r: Optional[TreeNode]) -> int:

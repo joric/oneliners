@@ -23,6 +23,10 @@ class Solution:
     def buildArray(self, t: List[int], n: int) -> List[str]:
         return' '.join('Push'+' Pop'*(i not in t)for i in range(1,t[-1]+1)).split()
 
+class Solution:
+    def buildArray(self, t: List[int], n: int) -> List[str]:
+        return' '.join('Push Pop'[:8-(i in t)*4]for i in range(1,t[-1]+1)).split()
+
 test('''
 1441. Build an Array With Stack Operations
 Medium

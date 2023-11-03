@@ -18,6 +18,8 @@ class Solution:
                 r.append("Pop")
         return r
 
+# use set(t) for speed
+
 class Solution:
     def buildArray(self, t: List[int], n: int) -> List[str]:
         return chain(*(('Push','Pop')[:2-(i in t)]for i in range(1,t[-1]+1)))

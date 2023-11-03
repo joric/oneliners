@@ -6,7 +6,6 @@ class Solution:
     def buildArray(self, t: List[int], n: int) -> List[str]:
         return[x for a,b in zip([0]+t,t)for x in['Push','Pop']*(b-a-1)+['Push']]
 
-
 # https://leetcode.com/problems/build-an-array-with-stack-operations/discuss/626959/Python-Simple.-Faster-than-99
 
 class Solution:

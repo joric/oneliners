@@ -1,8 +1,27 @@
 from lc import *
 
+# https://leetcode.com/problems/build-an-array-with-stack-operations/discuss/1208688/Python-3-one-line
+
 class Solution:
     def buildArray(self, t: List[int], n: int) -> List[str]:
         return[x for a,b in zip([0]+t,t)for x in['Push','Pop']*(b-a-1)+['Push']]
+
+
+# https://leetcode.com/problems/build-an-array-with-stack-operations/discuss/626959/Python-Simple.-Faster-than-99
+
+class Solution:
+    def buildArray(self, t: List[int], n: int) -> List[str]:
+        r = []
+        s = set(t)
+        for i in range(1,t[-1]+1):
+            r.append("Push")
+            if i not in s:
+                r.append("Pop")
+        return r
+
+class Solution:
+    def buildArray(self, t: List[int], n: int) -> List[str]:
+        return' '.join('Push'+' Pop'*(i not in t)for i in range(1,t[-1]+1)).split()
 
 test('''
 1441. Build an Array With Stack Operations

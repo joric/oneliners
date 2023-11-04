@@ -6,6 +6,10 @@ class Solution:
     def getLastMoment(self, n: int, l: List[int], r: List[int]) -> int:
         return max(max([0]+l),n-min([n]+r))
 
+class Solution:
+    def getLastMoment(self, n: int, l: List[int], r: List[int]) -> int:
+        return max(l+[n-x for x in r])
+
 test('''
 1503. Last Moment Before All Ants Fall Out of a Plank
 Medium

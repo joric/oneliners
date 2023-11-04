@@ -1,8 +1,10 @@
 from lc import *
 
+# https://leetcode.com/problems/last-moment-before-all-ants-fall-out-of-a-plank/discuss/720115/Python3-1-line-(brain-teaser)
+
 class Solution:
     def getLastMoment(self, n: int, l: List[int], r: List[int]) -> int:
-        return max(max([0,*l]),n-min([n,*r]))
+        return max(max([0]+l),n-min([n]+r))
 
 test('''
 1503. Last Moment Before All Ants Fall Out of a Plank

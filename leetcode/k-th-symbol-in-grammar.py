@@ -18,6 +18,9 @@ class Solution:
     def kthGrammar(self, n: int, k: int) -> int:
         return int.bit_count(k-1)&1
 
+# cpp version is actually shorter (!)
+# return popcount(k-1u)&1;
+
 class Solution:
     def kthGrammar(self, n: int, k: int) -> int:
         return(k-1).bit_count()&1

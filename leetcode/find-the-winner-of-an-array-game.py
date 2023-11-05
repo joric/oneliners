@@ -1,11 +1,6 @@
 from lc import *
 
 # https://leetcode.com/problems/find-the-winner-of-an-array-game/discuss/767983/Python3-6-line-O(N)
-# akin to boyer moore majority vote
-
-class Solution:
-    def getWinner(self, a: List[int], k: int) -> int:
-        w=c=0;all((w<x and(w:=x,c:=0),c:=c+(i>0))and c!=k for i,x in enumerate(a));return w
 
 class Solution:
     def getWinner(self, a: List[int], k: int) -> int:

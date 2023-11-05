@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def getWinner(self, a: List[int], k: int) -> int:
-        w,c=a[0],0;[(c:=c+1,w<x and(w:=x,c:=1))for x in a[1:]if c<k];return w
+        w,c=a[0],0;[(w<x and(w:=x,c:=0),c:=c+1)for x in a[1:]if c<k];return w
 
 test('''
 1535. Find the Winner of an Array Game

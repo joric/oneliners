@@ -6,6 +6,10 @@ class Solution:
     def getWinner(self, a: List[int], k: int) -> int:
         w=c=0;all((w<x and(w:=x,c:=0),c:=c+(i>0))and c!=k for i,x in enumerate(a));return w
 
+class Solution:
+    def getWinner(self, a: List[int], k: int) -> int:
+        w=c=0;[(w<x and(w:=x,c:=0),c:=c+(i>0))for i,x in enumerate(a)if c<k];return w
+
 test('''
 1535. Find the Winner of an Array Game
 Medium

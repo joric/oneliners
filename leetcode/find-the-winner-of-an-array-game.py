@@ -1,6 +1,7 @@
 from lc import *
 
 # https://leetcode.com/problems/find-the-winner-of-an-array-game/discuss/767983/Python3-6-line-O(N)
+# akin to boyer moore majority vote
 
 class Solution:
     def getWinner(self, a: List[int], k: int) -> int:

@@ -6,6 +6,10 @@ class Solution:
     def eliminateMaximum(self, d: List[int], s: List[int]) -> int:
         return next((i for i,t in enumerate(sorted((x+y-1)//y for x,y in zip(d,s)))if i==t),len(d))
 
+class Solution:
+    def eliminateMaximum(self, d: List[int], s: List[int]) -> int:
+        return next((i for i,t in enumerate(sorted(ceil(x/y)for x,y in zip(d,s)))if i==t),len(d))
+
 test('''
 1921. Eliminate Maximum Number of Monsters
 Medium

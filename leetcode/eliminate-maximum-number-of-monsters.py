@@ -1,5 +1,14 @@
 from lc import *
 
+# https://leetcode.com/problems/eliminate-maximum-number-of-monsters/discuss/1314550/Sort-by-arrival/1113115
+
+class Solution:
+    def eliminateMaximum(self, d: List[int], s: List[int]) -> int:
+        c = 0
+        for _ in takewhile(lambda t:t-c>0, sorted(map(truediv,d,s))):
+            c += 1
+        return c
+
 # https://leetcode.com/problems/eliminate-maximum-number-of-monsters/discuss/1314370/Python3-3-line
 
 class Solution:
@@ -9,6 +18,10 @@ class Solution:
 class Solution:
     def eliminateMaximum(self, d: List[int], s: List[int]) -> int:
         return next((i for i,t in enumerate(sorted(ceil(x/y)for x,y in zip(d,s)))if i==t),len(d))
+
+class Solution:
+    def eliminateMaximum(self, d: List[int], s: List[int]) -> int:
+        return next((i for i,t in enumerate(sorted(map(truediv,d,s)))if i>=t),len(d))
 
 test('''
 1921. Eliminate Maximum Number of Monsters

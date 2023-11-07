@@ -40,9 +40,11 @@ class Solution:
     def eliminateMaximum(self, d: List[int], s: List[int]) -> int:
         return len([*takewhile(lambda t:lt(*t),enumerate(sorted(map(truediv,d,s))))])
 
+# 5 chars shorter
+
 class Solution:
     def eliminateMaximum(self, d: List[int], s: List[int]) -> int:
-        return next(i for i,t in enumerate(sorted(map(truediv,d,s))+[0,0])if i>=t)
+        return next(i for i,t in enumerate(sorted(map(truediv,d,s))+[0])if i>=t)
 
 test('''
 1921. Eliminate Maximum Number of Monsters

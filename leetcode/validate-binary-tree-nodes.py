@@ -16,18 +16,14 @@ class Solution:
         return len({*t})==1
 
 class Solution:
-    def validateBinaryTreeNodes(self, n: int, l: List[int], r: List[int]) -> bool:
-        t,c=''.join(map(chr,range(n))),set();return any(v in c or t[u]==t[v]or not(t:=t.replace(t[u],t[v]),c.add(v))for u in range(n)for v in(l[u],r[u])if v!=-1)==1-len({*t})
-
-
-class Solution:
     def validateBinaryTreeNodes(self, n: int, L: List[int], R: List[int]) -> bool:
         t = 1 + sum(x != -1 for x in L + R)
-
-
         print(t, len(L), len(R))
-
         return len(L)==t
+
+class Solution:
+    def validateBinaryTreeNodes(self, n: int, l: List[int], r: List[int]) -> bool:
+        t,c=''.join(map(chr,range(n))),set();return any(v in c or t[u]==t[v]or not(t:=t.replace(t[u],t[v]),c.add(v))for u in range(n)for v in(l[u],r[u])if v!=-1)==1-len({*t})
 
 test('''
 1361. Validate Binary Tree Nodes

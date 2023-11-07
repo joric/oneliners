@@ -9,6 +9,17 @@ class Solution:
             c += 1
         return c
 
+# https://leetcode.com/problems/eliminate-maximum-number-of-monsters/discuss/4258483/Python-3-or-One-line-or-Beats-99
+
+class Solution:
+    def eliminateMaximum(self, dist: List[int], speed: List[int]) -> int:
+        return next((i for i,t in enumerate(sorted(d/s for d,s in zip(dist, speed))) if i>=t), len(dist))
+
+class Solution:
+    def eliminateMaximum(self, dist: List[int], speed: List[int]) -> int:
+        return next((i for i,t in enumerate(sorted(map(truediv,dist,speed))) if i>=t), len(dist))
+
+
 # https://leetcode.com/problems/eliminate-maximum-number-of-monsters/discuss/1314370/Python3-3-line
 
 class Solution:

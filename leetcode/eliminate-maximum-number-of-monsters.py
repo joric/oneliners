@@ -88,7 +88,10 @@ Explanation:
 In the beginning, the distances of the monsters are [3,2,4]. You eliminate the first monster.
 After a minute, the distances of the monsters are [X,0,2], so you lose.
 You can only eliminate 1 monster.
- 
+
+
+Input: dist = [5,4,3,3,3], speed = [1,1,5,3,1]
+Output: 1
 
 Constraints:
 

@@ -1,5 +1,15 @@
 from lc import *
 
+# https://leetcode.com/problems/determine-if-a-cell-is-reachable-at-a-given-time/discuss/4263761/Csebisev-disance-c
+
+class Solution:
+    def isReachableAtTime(self, sx: int, sy: int, fx: int, fy: int, t: int) -> bool:
+        return t!=1 if sx==fx and sy==fy else max(abs(sx-fx),abs(sy-fy))<=t
+
+class Solution:
+    def isReachableAtTime(self, a: int, b: int, c: int, d: int, t: int) -> bool:
+        return t!=1 if a==c and b==d else max(abs(a-c),abs(b-d))<=t
+
 # https://leetcode.com/problems/determine-if-a-cell-is-reachable-at-a-given-time/discuss/4026074/Python-one-line
 
 class Solution:

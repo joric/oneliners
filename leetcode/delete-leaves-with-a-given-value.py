@@ -22,13 +22,13 @@ class Solution:
             if x:
                 x.left = f(x.left)
                 x.right = f(x.right)
-                if x.left or x.right or x.val!=t:
+                if x.val!=t or x.left or x.right:
                     return x
         return f(r)
 
 class Solution:
     def removeLeafNodes(self, r: Optional[TreeNode], t: int) -> Optional[TreeNode]:
-        return(f:=lambda x:x and(setattr(x,'left',f(x.left)),setattr(x,'right',f(x.right)))and(x.left or x.right or x.val!=t)and x or None)(r)
+        return(f:=lambda x:x and(setattr(x,'left',f(x.left)),setattr(x,'right',f(x.right)))and(x.val!=t or x.left or x.right)and x or None)(r)
 
 test('''
 1325. Delete Leaves With a Given Value

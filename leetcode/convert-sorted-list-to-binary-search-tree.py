@@ -3,7 +3,8 @@ from lc import *
 def check(res,exp,head: ListNode):
     def isBalanced(root: TreeNode) -> bool:
         return (f:=lambda x:(((l:=f(x.left))<0 or (r:=f(x.right))<0 or abs(l-r)>1) and -1) or 1+max(l,r) if x else 0)(root)>=0
-    return (f:=lambda v:sorted([x for x in v if x is not None]))(res and res.dump() or [])==f(exp) and isBalanced(res)
+
+    return (f:=lambda v:sorted([x for x in v if x is not None]))(res and res.dump() or [])==f(exp and exp.dump() or []) and isBalanced(res)
 
 class Solution:
     def sortedListToBST(self, head: ListNode) -> TreeNode:

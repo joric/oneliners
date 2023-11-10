@@ -41,11 +41,6 @@ class Node:
                 nodes[k].neighbors.append(nodes[i])
         return None if 1 not in nodes else nodes[1]
 
-def parser(hint, v):
-    if 'Node' in hint and type(v) is list:
-        return Node.parse(v)
-    return v
-
 class Solution:
     def cloneGraph(self, node: 'Node') -> 'Node':
         v = {}
@@ -140,5 +135,5 @@ Clone Binary Tree With Random Pointer
 Medium
 Clone N-ary Tree
 Medium
-''', parser=parser, check=lambda r,e,*args:str(r)==str(e))
+''', check=lambda r,e,*args:str(r)==str(e))
 

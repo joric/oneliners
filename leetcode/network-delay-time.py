@@ -1,20 +1,6 @@
 from lc import *
 
-class Solution:
-    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
-        d,s,q,r = defaultdict(dict),set(),[(0,k)],0
-        for x,y,t in times:
-            d[x][y] = t
-        while q:
-            t,c = heappop(q)
-            s.add(c)
-            if len(s)==n:
-                return t
-            for o in d[c]:
-                if o not in s:
-                    heappush(q,(t+d[c][o],o))
-        return -1
-
+# https://leetcode.com/problems/network-delay-time
 
 from queue import PriorityQueue
 
@@ -34,7 +20,26 @@ class Solution:
                     q.put((t+d[c][o],o))
         return -1
 
-# TODO
+# heapq
+
+class Solution:
+    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
+        d,s,q,r = defaultdict(dict),set(),[(0,k)],0
+        for x,y,t in times:
+            d[x][y] = t
+        while q:
+            t,c = heappop(q)
+            s.add(c)
+            if len(s)==n:
+                return t
+            for o in d[c]:
+                if o not in s:
+                    heappush(q,(t+d[c][o],o))
+        return -1
+
+class Solution:
+    def networkDelayTime(self, v: List[List[int]], n: int, k: int) -> int:
+        d,s,q,r = defaultdict(dict),set(),[(0,k)],0;[setitem(d[x],y,t)for x,y,t in v];return(f:=lambda t,c:s.add(c)or(t if len(s)==n else[heappush(q,(t+d[c][o],o))for o in d[c]if o not in s]!=0and q and f(*heappop(q))or -1))(*heappop(q))
 
 test('''
 

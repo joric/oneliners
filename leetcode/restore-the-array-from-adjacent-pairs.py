@@ -4,22 +4,22 @@ from lc import *
 
 class Solution:
     def restoreArray(self, p: List[List[int]]) -> List[int]:
-        g,d,r = defaultdict(list),{},[]
+        g,s,r = defaultdict(list),set(),[]
         for u,v in p:
             g[u].append(v)
             g[v].append(u)
         def f(u):
             r.append(u)
-            d[u] = 1
+            s.add(u)
             for v in g[u]:
-                if not d.get(v,0):
+                if not v in s:
                     f(v)
         f(next(x for x in g if len(g[x])==1))
         return r
 
 class Solution:
     def restoreArray(self, p: List[List[int]]) -> List[int]:
-        g,d,r=defaultdict(list),{},[];[(g[u].append(v),g[v].append(u))for u,v in p];(f:=lambda u:(r.append(u),setitem(d,u,1),[f(v)for v in g[u] if not d.get(v,0)]))(next(x for x in g if len(g[x])==1));return r
+        g,s,r=defaultdict(list),set(),[];[(g[u].append(v),g[v].append(u))for u,v in p];(f:=lambda u:(r.append(u),s.add(u),[f(v)for v in g[u]if v not in s]))(next(x for x in g if len(g[x])==1));return r
 
 test('''
 1743. Restore the Array From Adjacent Pairs

@@ -140,5 +140,5 @@ Clone Binary Tree With Random Pointer
 Medium
 Clone N-ary Tree
 Medium
-''', parser=parser)
+''', parser=parser, check=lambda r,e,*args:str(r)==str(e))
 

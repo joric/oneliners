@@ -17,7 +17,7 @@ class Solution:
 
 class Solution:
     def invalidTransactions(self, z: List[str]) -> List[str]:
-        r,v=[],[x.split(',')for x in z];[(int(t[2])>1000 and r.append(','.join(t)),any(t[0]==x[0] and abs(int(t[1])-int(x[1]))<=60 and t[3]!=x[3]and 0!=r.append(','.join(t))for x in v))for t in v];return r
+        r,v=[],[x.split(',')+[x]for x in z];[int(t[2])>1000 and[r.append(t[4])]or any(t[0]==x[0]and abs(int(t[1])-int(x[1]))<=60 and t[3]!=x[3]and[r.append(t[4])]for x in v)for t in v];return r
 
 test('''
 1169. Invalid Transactions
@@ -54,6 +54,10 @@ Example 3:
 Input: transactions = ["alice,20,800,mtv","bob,50,1200,mtv"]
 Output: ["bob,50,1200,mtv"]
  
+
+Example 4:
+Input: transactions = ["alice,20,800,mtv","bob,50,1200,mtv","alice,20,800,mtv","alice,50,1200,mtv","alice,20,800,mtv","alice,50,100,beijing"]
+Output: ["alice,20,800,mtv","bob,50,1200,mtv","alice,20,800,mtv","alice,50,1200,mtv","alice,20,800,mtv","alice,50,100,beijing"]
 
 Constraints:
 

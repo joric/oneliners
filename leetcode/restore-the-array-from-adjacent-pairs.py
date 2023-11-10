@@ -9,17 +9,12 @@ class Solution:
             g[u].append(v)
             g[v].append(u)
         def f(u):
-            r.append(u)
-            s.add(u)
-            for v in g[u]:
-                if not v in s:
-                    f(v)
+            if u not in s:
+                s.add(u)
+                r.append(u)
+                any(map(f,g[u]))
         f(next(x for x in g if len(g[x])==1))
         return r
-
-class Solution:
-    def restoreArray(self, p: List[List[int]]) -> List[int]:
-        g,s,r=defaultdict(list),set(),[];[(g[u].append(v),g[v].append(u))for u,v in p];(f:=lambda u:(r.append(u),s.add(u),[f(v)for v in g[u]if v not in s]))(next(x for x in g if len(g[x])==1));return r
 
 class Solution:
     def restoreArray(self, p: List[List[int]]) -> List[int]:

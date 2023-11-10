@@ -21,6 +21,10 @@ class Solution:
     def restoreArray(self, p: List[List[int]]) -> List[int]:
         g,s,r=defaultdict(list),set(),[];[(g[u].append(v),g[v].append(u))for u,v in p];(f:=lambda u:(r.append(u),s.add(u),[f(v)for v in g[u]if v not in s]))(next(x for x in g if len(g[x])==1));return r
 
+class Solution:
+    def restoreArray(self, p: List[List[int]]) -> List[int]:
+        g,s,r=defaultdict(list),set(),[];[(g[u].append(v),g[v].append(u))for u,v in p];(f:=lambda u:u not in s and(r.append(u),s.add(u),[*map(f,g[u])]))(next(x for x in g if len(g[x])==1));return r
+
 test('''
 1743. Restore the Array From Adjacent Pairs
 Medium

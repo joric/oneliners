@@ -1,17 +1,23 @@
 from lc import *
 
-# https://leetcode.com/problems/invalid-transactions/discuss/366739/A-Brute-Force-Python-Solution-(4-Line)
+class Solution:
+    def invalidTransactions(self, transactions: List[str]) -> List[str]:
+        r, v = [], []
+        for t in transactions:
+            v.append(t.split(','))
+        for t in v:
+            if int(t[2]) > 1000:
+                r.append(','.join(t))
+                continue
+            for x in v:
+                if t[0]==x[0] and abs(int(t[1])-int(x[1])) <= 60 and t[3] != x[3]:
+                    r.append(','.join(t))
+                    break
+        return r
 
 class Solution:
-    def invalidTransactions(self, v: List[str]) -> List[str]:
-        d = lambda x:(x.split(',')[0],int(x.split(',')[1]),int(x.split(',')[2]),x.split(',')[3])
-        c = lambda t,s:sum(abs(t[1]-p[1])>60 or t[0]!=p[0] or t[-1]==p[-1] for p in s)
-        q = [*map(d,v)]
-        return [v[i] for i,t in enumerate(q) if t[2]>1000 or c(t,q) != len(v)]
-
-class Solution:
-    def invalidTransactions(self, v: List[str]) -> List[str]:
-        d=lambda x:((t:=x.split(','))[0],int(t[1]),int(t[2]),t[3]);q=[*map(d,v)];c=lambda t:sum(abs(t[1]-p[1])>60 or t[0]!=p[0] or t[-1]==p[-1]for p in q);return[v[i] for i,t in enumerate(q)if t[2]>1000 or c(t)!=len(v)]
+    def invalidTransactions(self, z: List[str]) -> List[str]:
+        r,v=[],[x.split(',')for x in z];[(int(t[2])>1000 and r.append(','.join(t)),any(t[0]==x[0] and abs(int(t[1])-int(x[1]))<=60 and t[3]!=x[3]and 0!=r.append(','.join(t))for x in v))for t in v];return r
 
 test('''
 1169. Invalid Transactions

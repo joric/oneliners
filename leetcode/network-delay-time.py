@@ -39,7 +39,7 @@ class Solution:
 
 class Solution:
     def networkDelayTime(self, v: List[List[int]], n: int, k: int) -> int:
-        d,s,q,r = defaultdict(dict),set(),[(0,k)],0;[setitem(d[x],y,t)for x,y,t in v];return(f:=lambda t,c:s.add(c)or(t if len(s)==n else[heappush(q,(t+d[c][o],o))for o in d[c]if o not in s]!=0and q and f(*heappop(q))or -1))(*heappop(q))
+        d,s,q,r=defaultdict(dict),set(),[(0,k)],0;[setitem(d[x],y,t)for x,y,t in v];return(f:=lambda t,c:s.add(c)or(t if n==len(s)else[heappush(q,(t+d[c][o],o))for o in d[c]if o not in s]!=0and q and f(*heappop(q))or-1))(*heappop(q))
 
 test('''
 

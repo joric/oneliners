@@ -43,7 +43,7 @@ class Graph:
     def shortestPath(s, a: int, b: int) -> int:
         return(v:=set(),h:=[(0,a)])and(f:=lambda c,x:c if x==b else[x not in v and x in s.g and(v.add(x),[heappush(h,(c+d,y))for y,d in s.g[x].items()])]and h and f(*heappop(h))or-1)(*heappop(h))
 
-Graph=type('',(),{'__init__':lambda s,n,e:(setattr(s,'g',defaultdict(dict)),[*map(s.addEdge,e)])and None,'addEdge':lambda s,e:setitem(s.g[e[0]],e[1],e[2]),'shortestPath':lambda s,a,b:(v:=set(),h:=[(0,a)])and(f:=lambda c,x:c if x==b else[x not in v and x in s.g and(v.add(x),[heappush(h,(c+d,y))for y,d in s.g[x].items()])]and h and f(*heappop(h))or-1)(*heappop(h))})
+Graph=type('',(),{'__init__':lambda s,n,e:(setattr(s,'g',defaultdict(dict)),[*map(s.addEdge,e)])and None,'addEdge':lambda s,e:setitem(s.g[e[0]],e[1],e[2]),'shortestPath':lambda s,a,b:(v:=set(),h:=[])and(f:=lambda c,x:c if x==b else[x not in v and x in s.g and(v.add(x),[heappush(h,(c+d,y))for y,d in s.g[x].items()])]and h and f(*heappop(h))or-1)(0,a)})
 
 test('''
 2642. Design Graph With Shortest Path Calculator

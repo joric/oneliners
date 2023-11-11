@@ -116,6 +116,17 @@ the method returns `None`. E.g. `c[i]+=1` is equivalent to `c.update(i)`, `c[i]-
 To set a key, you can use a global `setitem` function, e.g. `c[x]=1` is the same as `setitem(c,x,1)`.
 To delete a key you can use the `.pop` method (same as `del`), it's shorter than `popitem()`.
 
+There's a hack for dropping zero values, just add empty `Counter()`:
+
+```python
+c = Counter()
+c[1] = 1
+c[0] = 0
+print(c) # {1: 1, 0: 0}
+c += Counter() # drop 0 values
+print(c) # {1: 1}
+```
+
 #### Y-Combinator
 
 You can define and call a recursive function in a single line with Y-combinator, e.g.:

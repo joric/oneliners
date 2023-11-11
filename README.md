@@ -123,10 +123,10 @@ c = Counter()
 c[1] = 1
 c[2] = 0
 c[3] = -1
-print(c) # {1: 1, 0: 0}
+print(c) # {1: 1, 2: 0, 3: -1}
 c += Counter() # drop 0 and negative values
 # c = +c (unary sum, does the same)
-print(c)
+print(c) # {1: 1}
 ```
 
 #### Y-Combinator

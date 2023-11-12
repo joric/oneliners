@@ -8,7 +8,7 @@ class Solution:
             q.append(root)
         while q:
             level = []
-            for i in range(len(q)):
+            for _ in range(len(q)):
                 root = q.popleft()
                 level.append(root.val)
                 if root.left:

@@ -33,7 +33,7 @@ class Solution:
 
 class Solution:
     def numBusesToDestination(self, r: List[List[int]], s: int, t: int) -> int:
-        g,q,v=defaultdict(set),[(s,0)],set([s]);any(g[j].add(i)for i,x in enumerate(r)for j in x);return next((b for x,b in q if x==t or not[([v.add(j)or q.append((j,b+1))for j in r[i]if j not in v],setitem(r,i,[]))for i in g[x]]),-1)
+        g,q,v=defaultdict(set),[(s,0)],set([s]);[g[j].add(i)for i,x in enumerate(r)for j in x];return next((b for x,b in q if x==t or not[([v.add(j)or q.append((j,b+1))for j in r[i]if j not in v],setitem(r,i,[]))for i in g[x]]),-1)
 
 test('''
 815. Bus Routes

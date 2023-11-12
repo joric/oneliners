@@ -21,6 +21,25 @@ class Solution:
 
 class Solution:
     def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        res = []
+        q = []
+        if root:
+            q.append(root)
+        while q:
+            nextq = []
+            level = []
+            for root in q:
+                level.append(root.val)
+                if root.left:
+                    nextq.append(root.left)
+                if root.right:
+                    nextq.append(root.right)
+            res.append(level)
+            q = nextq
+        return res
+
+class Solution:
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
         return [[root.val]] + [a+b for a,b in zip_longest(self.levelOrder(root.left), self.levelOrder(root.right), fillvalue=[])] if root else []
 
 class Solution:

@@ -124,7 +124,7 @@ c[1] = 1
 c[2] = 0
 c[3] = -1
 print(c) # {1: 1, 2: 0, 3: -1}
-c += Counter() # drop 0 and negative values (or use unary sum, c = +c)
+c = +c # drop 0 and negative values (same as c += Counter())
 print(c) # {1: 1}
 ```
 

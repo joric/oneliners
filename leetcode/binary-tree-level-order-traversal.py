@@ -7,9 +7,8 @@ class Solution:
         if root:
             q.append(root)
         while q:
-            n = len(q)
             level = []
-            for i in range(n):
+            for i in range(len(q)):
                 root = q.popleft()
                 level.append(root.val)
                 if root.left:

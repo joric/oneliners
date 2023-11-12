@@ -25,8 +25,8 @@ class Solution:
         if root:
             q.append(root)
         while q:
-            nextq = []
             level = []
+            nextq = []
             for root in q:
                 level.append(root.val)
                 if root.left:

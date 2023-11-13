@@ -119,13 +119,7 @@ To delete a key you can use the `.pop` method (same as `del`), it's shorter than
 There's a hack for dropping zero and negative values:
 
 ```python
-c = Counter()
-c[1] = 1
-c[2] = 0
-c[3] = -1
-print(c) # {1: 1, 2: 0, 3: -1}
-c = +c # drop 0 and negative values (same as c += Counter())
-print(c) # {1: 1}
+c = Counter({1:1,2:0,3:-1});print(c:=+c) # {1: 1} drop 0 and negative values (same as c += Counter())
 ```
 
 #### Y-Combinator

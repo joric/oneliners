@@ -18,7 +18,7 @@ class Solution:
     def sortVowels(self, s: str) -> str:
         return re.sub(t:='(?i)[aeiou]',lambda m,v=sorted(findall(t,s))[::-1]:v.pop(),s)
 
-# slightly shorter but slow (3000 ms vs 150 ms)
+# 5 chars shorter but slow (3000 ms vs 150 ms)
 
 class Solution:
     def sortVowels(self, s: str) -> str:

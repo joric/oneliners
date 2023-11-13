@@ -116,10 +116,10 @@ the method returns `None`. E.g. `c[i]+=1` is equivalent to `c.update(i)`, `c[i]-
 To set a key, you can use a global `setitem` function, e.g. `c[x]=1` is the same as `setitem(c,x,1)`.
 To delete a key you can use the `.pop` method (same as `del`), it's shorter than `popitem()`.
 
-There's a hack for dropping zero and negative values:
+You can easily drop zero and negative values in a counter (it's the official way):
 
 ```python
-c = Counter({1:1,2:0,3:-1});print(c:=+c) # {1: 1} drop 0 and negative values (same as c += Counter())
+c = Counter({1:1,2:0,3:-1}); print(c:=+c) #{1: 1}, same as c += Counter()
 ```
 
 #### Y-Combinator

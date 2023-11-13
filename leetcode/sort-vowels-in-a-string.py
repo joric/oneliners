@@ -14,6 +14,10 @@ class Solution:
     def sortVowels(self, s: str) -> str:
         return re.sub(t:='(?i)[aeiou]',lambda m,v=sorted(re.findall(t,s))[::-1]:v.pop(),s)
 
+class Solution:
+    def sortVowels(self, s: str) -> str:
+        return re.sub(t:='(?i)[aeiou]',lambda m,v=sorted(re.findall(t,s)):v.pop(0),s)
+
 test('''
 2785. Sort Vowels in a String
 Medium

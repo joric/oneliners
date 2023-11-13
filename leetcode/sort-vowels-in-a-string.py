@@ -57,6 +57,9 @@ Output: "lYmpH"
 Explanation: There are no vowels in s (all characters in s are consonants), so we return "lYmpH".
  
 
+Input: s = "LQRamBOHfq"
+Output: "LQROmBaHfq"
+
 Constraints:
 
 1 <= s.length <= 10^5

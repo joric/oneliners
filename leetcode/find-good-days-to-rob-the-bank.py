@@ -1,5 +1,20 @@
 from lc import *
 
+# https://leetcode.com/problems/find-good-days-to-rob-the-bank/discuss/3087204/Python-Straightforward-O(n)-Solution.-Beats-80
+
+class Solution:
+    def goodDaysToRobBank(self, s: List[int], t: int) -> List[int]:
+        n = len(s)
+        a = [0]*n
+        for i in range(1,n):
+            if s[i]<=s[i-1]:
+                a[i] = a[i-1]+1
+        b = [0]*n
+        for i in range(n-2,-1,-1):
+            if s[i]<=s[i+1]:
+                b[i] = b[i+1]+1
+        return[i for i in range(n)if a[i]>=t<=b[i]]
+
 # https://leetcode.com/problems/find-good-days-to-rob-the-bank/discuss/1623321/Python-short-dp-solution-explained
 
 class Solution:

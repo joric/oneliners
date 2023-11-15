@@ -28,6 +28,10 @@ class Solution:
 
 class Solution:
     def maximumElementAfterDecrementingAndRearranging(self, a: List[int]) -> int:
+        r=0;return max(r:=min(r+1,c)for c in sorted(a))
+
+class Solution:
+    def maximumElementAfterDecrementingAndRearranging(self, a: List[int]) -> int:
         r=0;[r:=min(r+1,c)for c in sorted(a)];return r
 
 test('''

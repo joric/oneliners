@@ -2,6 +2,23 @@ from lc import *
 
 class Solution:
     def maxIceCream(self, costs: List[int], coins: int) -> int:
+        r, q = 0, Counter(costs)
+        for c in range(1, max(costs) + 1):
+            if not q[c]:
+                continue
+            if coins < c:
+                break
+            t = min(q[c],coins//c)
+            coins -= c*t
+            r += t
+        return r
+
+class Solution:
+    def maxIceCream(self, costs: List[int], coins: int) -> int:
+        return (r:=0,q:=Counter(costs),all((t:=min(q[c],coins//c),coins:=coins-c*t,r:=r+t) for c in range(1,max(costs)+1) if q[c] and coins>=c)) and r
+
+class Solution:
+    def maxIceCream(self, costs: List[int], coins: int) -> int:
         costs.sort()
         for i, a in enumerate(costs):
             coins -= a
@@ -23,29 +40,19 @@ class Solution:
 
 class Solution:
     def maxIceCream(self, costs: List[int], coins: int) -> int:
-        return sum(1 for c in sorted(costs) if (coins:=coins-c)>=0)
-
-class Solution:
-    def maxIceCream(self, costs: List[int], coins: int) -> int:
         return bisect_right(list(accumulate(sorted(costs))), coins)
 
 class Solution:
-    def maxIceCream(self, costs: List[int], coins: int) -> int:
-        r, q = 0, Counter(costs)
-        for c in range(1, max(costs) + 1):
-            if not q[c]:
-                continue
-            if coins < c:
-                break
-            t = min(q[c],coins//c)
-            coins -= c*t
-            r += t
-        return r
+    def maxIceCream(self, p: List[int], c: int) -> int:
+        return bisect_right([*accumulate(sorted(p))],c)
 
 class Solution:
     def maxIceCream(self, costs: List[int], coins: int) -> int:
-        return (r:=0,q:=Counter(costs),all((t:=min(q[c],coins//c),coins:=coins-c*t,r:=r+t) for c in range(1,max(costs)+1) if q[c] and coins>=c)) and r
+        return sum(1 for c in sorted(costs) if (coins:=coins-c)>=0)
 
+class Solution:
+    def maxIceCream(self, p: List[int], c: int) -> int:
+        return sum(1 for x in sorted(p)if(c:=c-x)>=0)
 
 test('''
 

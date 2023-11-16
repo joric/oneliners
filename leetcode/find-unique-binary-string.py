@@ -12,7 +12,7 @@ class Solution:
 
 class Solution:
     def findDifferentBinaryString(self, n: List[str]) -> str:
-        return''.join('10'[int(x[i])]for i,x in enumerate(n))
+        return''.join('10'[x[i]=='1']for i,x in enumerate(n))
 
 test('''
 1980. Find Unique Binary String

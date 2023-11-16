@@ -14,6 +14,10 @@ class Solution:
     def findDifferentBinaryString(self, n: List[str]) -> str:
         return''.join('10'[x[i]=='1']for i,x in enumerate(n))
 
+class Solution:
+    def findDifferentBinaryString(self, n: List[str]) -> str:
+        return''.join('10'[x[i]>'0']for i,x in enumerate(n))
+
 test('''
 1980. Find Unique Binary String
 Medium

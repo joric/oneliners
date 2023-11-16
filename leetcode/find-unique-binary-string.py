@@ -8,11 +8,11 @@ class Solution:
 
 class Solution:
     def findDifferentBinaryString(self, n: List[str]) -> str:
-        return''.join('01'[1^int(x[i])]for i,x in enumerate(n))
+        return''.join(str(1^int(x[i]))for i,x in enumerate(n))
 
 class Solution:
     def findDifferentBinaryString(self, n: List[str]) -> str:
-        return''.join(str(1^int(x[i]))for i,x in enumerate(n))
+        return''.join('10'[int(x[i])]for i,x in enumerate(n))
 
 test('''
 1980. Find Unique Binary String

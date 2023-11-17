@@ -1,10 +1,30 @@
 from lc import *
 
+# https://leetcode.com/problems/minimize-maximum-pair-sum-in-array/discuss/2452681/Python-or-Full-explanation-and-2-solutions-with-a-linear-and-O(nlogn)-time-complexities
+
+class Solution:
+    def minPairSum(self, nums: List[int]) -> int:
+        m = max(nums)
+        a = [0]*(m+1)
+        for i in nums:
+            a[i] += 1
+        r,i,j = 0, 0, m
+        while i <= j:
+            if a[i]==0:
+                i += 1
+            elif a[j]==0:
+                j -= 1
+            else:
+                r = max(i+j, r)
+                a[i] -= 1
+                a[j] -= 1
+        return r
+
 # https://leetcode.com/problems/minimize-maximum-pair-sum-in-array/discuss/4296645/Python-one-line
 
 class Solution:
     def minPairSum(self, a: List[int]) -> int:
-        a=sorted(a);return max(a[i]+a[~i]for i in range(len(a)//2))
+        a.sort();return max(a[i]+a[~i]for i in range(len(a)//2))
 
 # https://leetcode.com/problems/minimize-maximum-pair-sum-in-array/discuss/1238655/JavaC%2B%2BPython-min-%2B-max
 
@@ -15,6 +35,10 @@ class Solution:
 class Solution:
     def minPairSum(self, a: List[int]) -> int:
         return max(map(sum,zip(t:=sorted(a),t[::-1])))
+
+class Solution:
+    def minPairSum(self, a: List[int]) -> int:
+        a.sort();return max(map(sum,zip(a,a[::-1])))
 
 test('''
 1877. Minimize Maximum Pair Sum in Array

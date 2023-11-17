@@ -1,5 +1,11 @@
 from lc import *
 
+# https://leetcode.com/problems/minimize-maximum-pair-sum-in-array/discuss/4296645/Python-one-line
+
+class Solution:
+    def minPairSum(self, a: List[int]) -> int:
+        a=sorted(a);return max(a[i]+a[~i]for i in range(len(a)//2))
+
 # https://leetcode.com/problems/minimize-maximum-pair-sum-in-array/discuss/1238655/JavaC%2B%2BPython-min-%2B-max
 
 class Solution:

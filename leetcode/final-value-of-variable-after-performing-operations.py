@@ -4,15 +4,15 @@ from lc import *
 
 class Solution:
     def finalValueAfterOperations(self, o: List[str]) -> int:
-        return reduce(lambda x,y:x+(-1,1)['+'in y],o,0)
+        return reduce(lambda r,s:r+(-1,1)['+'in s],o,0)
 
 class Solution:
     def finalValueAfterOperations(self, o: List[str]) -> int:
-        x=0;[x:=x+(-1,1)['+'in y]for y in o];return x
+        r=0;[r:=r+(-1,1)['+'in s]for s in o];return r
 
 class Solution:
     def finalValueAfterOperations(self, o: List[str]) -> int:
-        return sum((-1,1)['+'in y]for y in o)
+        return sum((-1,1)['+'in s]for s in o)
 
 class Solution:
     def finalValueAfterOperations(self, o: List[str]) -> int:

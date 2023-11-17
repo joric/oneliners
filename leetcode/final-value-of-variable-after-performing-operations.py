@@ -10,6 +10,10 @@ class Solution:
     def finalValueAfterOperations(self, o: List[str]) -> int:
         x=0;[x:=x+(-1,1)['+'in y]for y in o];return x
 
+class Solution:
+    def finalValueAfterOperations(self, o: List[str]) -> int:
+        return sum((-1,1)['+'in y]for y in o)
+
 test('''
 2011. Final Value of Variable After Performing Operations
 Easy

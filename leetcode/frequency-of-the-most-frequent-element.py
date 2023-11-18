@@ -22,7 +22,18 @@ class Solution:
 
 class Solution:
     def maxFrequency(self, a: List[int], k: int) -> int:
-        i=0;a.sort();[(k:=k+x,k<x*(j-i+1)and(k:=k-a[i],i:=i+1))for j,x in enumerate(a)];return len(a)-i
+        a.sort()
+        i = 0
+        for j in range(len(a)):
+            k += a[j]
+            if k < a[j] * (j - i + 1):
+                k -= a[i]
+                i += 1
+        return j - i + 1
+
+class Solution:
+    def maxFrequency(self, a: List[int], k: int) -> int:
+        a.sort();i=0;[(k:=k+x,k<x*(j-i+1)and(k:=k-a[i],i:=i+1))for j,x in enumerate(a)];return len(a)-i
 
 test('''
 1838. Frequency of the Most Frequent Element

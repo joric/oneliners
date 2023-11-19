@@ -4,6 +4,10 @@ class Solution:
     def reductionOperations(self, n: List[int]) -> int:
         return sum(i*v for i,(_,v)in enumerate(sorted(Counter(n).items())))
 
+class Solution:
+    def reductionOperations(self, n: List[int]) -> int:
+        return sum(i*v for i,v in enumerate(Counter(sorted(n)).values()))
+
 test('''
 1887. Reduction Operations to Make the Array Elements Equal
 Medium

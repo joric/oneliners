@@ -122,6 +122,22 @@ You can easily drop zero and negative values in a counter (it's the official way
 c = Counter({1:1,2:0,3:-1}); print(c:=+c) #{1: 1}, same as c += Counter()
 ```
 
+Since python 3.7, as a dict subclass, Counter inherited the capability to remember insertion order.
+
+* https://leetcode.com/problems/reduction-operations-to-make-the-array-elements-equal
+
+```python
+
+class Solution:
+    def reductionOperations(self, n: List[int]) -> int:
+        return sum(i*v for i,(_,v)in enumerate(sorted(Counter(n).items())))
+
+class Solution:
+    def reductionOperations(self, n: List[int]) -> int:
+        return sum(i*v for i,v in enumerate(Counter(sorted(n)).values()))
+
+```
+
 #### Y-Combinator
 
 You can define and call a recursive function in a single line with Y-combinator, e.g.:

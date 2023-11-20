@@ -16,6 +16,16 @@ class Solution:
     def garbageCollection(self, g: List[str], t: List[int]) -> int:
         return sum(map(len,g))+sum(sum(t[:max(i*(c in s)for i,s in enumerate(g))])for c in'PGM')
 
+# another solution
+
+class Solution:
+    def garbageCollection(self, g: List[str], t: List[int]) -> int:
+        return len(''.join(g))+sum({c:d for s,d in zip(g[1:],accumulate(t))for c in s}.values())
+
+class Solution:
+    def garbageCollection(self, g: List[str], t: List[int]) -> int:
+        return len(''.join(g))+sum(reduce(ior,map({}.fromkeys,g[1:],accumulate(t))).values())
+
 test('''
 2391. Minimum Amount of Time to Collect Garbage
 Medium

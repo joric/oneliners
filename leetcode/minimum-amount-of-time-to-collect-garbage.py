@@ -14,7 +14,7 @@ class Solution:
 
 class Solution:
     def garbageCollection(self, g: List[str], t: List[int]) -> int:
-        return sum(len(s)for s in g)+sum(sum(t[:max([0]+[i for i,s in enumerate(g)if s.count(c)])])for c in 'PGM')
+        return sum(map(len,g))+sum(sum(t[:max([0]+[i for i,s in enumerate(g)if s.count(c)])])for c in'PGM')
 
 test('''
 2391. Minimum Amount of Time to Collect Garbage

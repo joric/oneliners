@@ -6,6 +6,10 @@ class Solution:
     def countNicePairs(self, n: List[int]) -> int:
         return sum(comb(x,2)for x in Counter(x-int(str(x)[::-1])for x in n).values())%(10**9+7)
 
+class Solution:
+    def countNicePairs(self, n: List[int]) -> int:
+        c=Counter(x-int(str(x)[::-1])for x in n);return sum(comb(c[x],2)for x in c)%(10**9+7)
+
 test('''
 1814. Count Nice Pairs in an Array
 Medium

@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def countNicePairs(self, n: List[int]) -> int:
-        return sum(comb(y,2)for y in Counter(x-int(str(x)[::-1])for x in n).values())%(10**9+7)
+        return sum(comb(x,2)for x in Counter(x-int(str(x)[::-1])for x in n).values())%(10**9+7)
 
 test('''
 1814. Count Nice Pairs in an Array

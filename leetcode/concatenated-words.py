@@ -6,6 +6,10 @@ class Solution:
     def findAllConcatenatedWordsInADict(self, words: List[str]) -> List[str]:
         return filter(f:=lambda w:any(w[:i] in d and (w[i:] in d or f(w[i:])) for i in range(1,len(w))), (d:=set(words)) and words)
 
+class Solution:
+    def findAllConcatenatedWordsInADict(self, words: List[str]) -> List[str]:
+        return filter(f:=cache(lambda w:any(w[:i]in d and(w[i:]in d or f(w[i:]))for i in range(1,len(w)))),d:=set(words))
+
 test('''
 
 472. Concatenated Words
@@ -45,5 +49,5 @@ words[i] consists of only lowercase English letters.
 All the strings of words are unique.
 1 <= sum(words[i].length) <= 10^5
 
-''')
+''', check=lambda r,e,w:set(r)==set(e))
 

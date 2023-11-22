@@ -20,7 +20,11 @@ class Solution:
 
 class Solution:
     def findDiagonalOrder(self, n: List[List[int]]) -> List[int]:
-        return[x[2]for x in sorted((i+j,j,t)for i in range(len(n))for j,t in enumerate(n[i]))]
+        return[x[2]for x in sorted((i+j,j,t)for i,r in enumerate(n)for j,t in enumerate(r))]
+
+class Solution:
+    def findDiagonalOrder(self, n: List[List[int]]) -> List[int]:
+        return map(list.pop,sorted([i+j,j,t]for i,r in enumerate(n)for j,t in enumerate(r)))
 
 test('''
 1424. Diagonal Traverse II

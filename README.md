@@ -786,7 +786,7 @@ class Solution:
 
 ```
 
-You could also use `map(list.pop, v)` instead of `[x[-1] for x in v]` to collect the last element.
+You could also use `map(list.pop, v)` instead of `[x[-1] for x in v]` to collect the last elements.
 
 * https://leetcode.com/problems/diagonal-traverse-ii
 

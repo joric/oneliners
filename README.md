@@ -786,6 +786,8 @@ class Solution:
 
 ```
 
+You could also use `list.pop` instead of `lambda x:x[-1]` to get the last element.
+
 Using `zip` to get individual elements from the list of tuples is usually shorter, but not always:
 
 * https://leetcode.com/problems/minimum-number-of-vertices-to-reach-all-nodes

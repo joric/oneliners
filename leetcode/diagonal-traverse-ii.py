@@ -24,6 +24,16 @@ class Solution:
     def findDiagonalOrder(self, n: List[List[int]]) -> List[int]:
         d=defaultdict(list);[d[i+j].append(a)for i,r in enumerate(n)for j,a in enumerate(r)];return chain(*map(reversed,d.values()))
 
+# https://leetcode.com/problems/diagonal-traverse-ii/discuss/647533/One-line-Python
+
+class Solution:
+    def findDiagonalOrder(self, n: List[List[int]]) -> List[int]:
+        return[p[2] for p in sorted([(i+j,j,n[i][j])for i in range(len(n))for j in range(len(n[i]))])]
+
+class Solution:
+    def findDiagonalOrder(self, n: List[List[int]]) -> List[int]:
+        return[x[-1]for x in sorted((i+j,j,t)for i in range(len(n))for j,t in enumerate(n[i]))]
+
 test('''
 1424. Diagonal Traverse II
 Medium

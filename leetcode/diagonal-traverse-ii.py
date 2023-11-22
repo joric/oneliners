@@ -26,6 +26,10 @@ class Solution:
     def findDiagonalOrder(self, n: List[List[int]]) -> List[int]:
         return map(list.pop,sorted([i+j,j,t]for i,r in enumerate(n)for j,t in enumerate(r)))
 
+class Solution:
+    def findDiagonalOrder(self, n: List[List[int]]) -> List[int]:
+        e=enumerate;return map(list.pop,sorted([i+j,j,t]for i,r in e(n)for j,t in e(r)))
+
 test('''
 1424. Diagonal Traverse II
 Medium

@@ -786,7 +786,15 @@ class Solution:
 
 ```
 
-You could also use `list.pop` instead of `lambda x:x[-1]` to get the last element.
+You could also use `map(list.pop, v)` instead of `[x[-1] for x in v]` to get the last element.
+
+* https://leetcode.com/problems/diagonal-traverse-ii
+
+```python
+class Solution:
+    def findDiagonalOrder(self, n: List[List[int]]) -> List[int]:
+        return map(list.pop,sorted([i+j,j,t]for i,r in enumerate(n)for j,t in enumerate(r)))
+```
 
 Using `zip` to get individual elements from the list of tuples is usually shorter, but not always:
 

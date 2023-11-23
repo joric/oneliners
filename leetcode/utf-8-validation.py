@@ -23,7 +23,7 @@ class Solution:
                     return False
         return count == 0
 
-# doesn't work, because codecs support 140k+ chars, leetcode wants 1M+
+# doesn't work, because there are about 140k valid chars, but leetcode wants 1M+
 class Solution:
     def validUtf8(self, data):
         try:

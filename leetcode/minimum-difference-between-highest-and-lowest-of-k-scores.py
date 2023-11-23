@@ -8,6 +8,10 @@ class Solution:
     def minimumDifference(self, v: List[int], k: int) -> int:
         v.sort();return min(b-a for a,b in zip(v,v[k-1:]))
 
+class Solution:
+    def minimumDifference(self, v: List[int], k: int) -> int:
+        v.sort();return min(map(sub,v[k-1:],v))
+
 test('''
 1984. Minimum Difference Between Highest and Lowest of K Scores
 Easy

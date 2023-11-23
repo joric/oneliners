@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def checkArithmeticSubarrays(self, n: List[int], l: List[int], r: List[int]) -> List[bool]:
-        return(1==len({*map(sub,c:=sorted(n[i:j+1]),c[1:])})for i,j in zip(l,r))
+        return(2>len({*map(sub,c:=sorted(n[i:j+1]),c[1:])})for i,j in zip(l,r))
 
 test('''
 1630. Arithmetic Subarrays

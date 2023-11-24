@@ -18,6 +18,10 @@ class Solution:
     def allPathsSourceTarget(self, graph: List[List[int]], s=0) -> List[List[int]]:
         return [[len(graph)-1]] if s==len(graph)-1 else [[s]+p for i in graph[s] for p in self.allPathsSourceTarget(graph, s=i)]
 
+class Solution:
+    def allPathsSourceTarget(self, g: List[List[int]]) -> List[List[int]]:
+        return(f:=lambda s:len(g)-1==s and[[s]]or[[s]+p for i in g[s] for p in f(s=i)])(0)
+
 test('''
 
 797. All Paths From Source to Target

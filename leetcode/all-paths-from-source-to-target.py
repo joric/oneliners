@@ -14,13 +14,15 @@ class Solution:
                     paths.append(path + [n])
         return ans
 
+# https://leetcode.com/problems/all-paths-from-source-to-target/discuss/118691/C%2B%2BPython-Backtracking
+
 class Solution:
     def allPathsSourceTarget(self, graph: List[List[int]], s=0) -> List[List[int]]:
-        return [[len(graph)-1]] if s==len(graph)-1 else [[s]+p for i in graph[s] for p in self.allPathsSourceTarget(graph, s=i)]
+        return [[s]] if s==len(graph)-1 else [[s]+p for i in graph[s] for p in self.allPathsSourceTarget(graph,i)]
 
 class Solution:
     def allPathsSourceTarget(self, g: List[List[int]]) -> List[List[int]]:
-        return(f:=lambda s:len(g)-1==s and[[s]]or[[s]+p for i in g[s] for p in f(s=i)])(0)
+        return(f:=lambda s:[[s]+p for i in g[s] for p in f(i)]if g[s+1:]else[[s]])(0)
 
 test('''
 
@@ -41,6 +43,11 @@ Example 2:
 
 Input: graph = [[4,3,1],[3,2,4],[3],[4],[]]
 Output: [[0,4],[0,3,4],[0,1,3,4],[0,1,2,3,4],[0,1,4]]
+
+Example 3:
+
+Input: graph = [[4,3,1],[3,2,4],[],[4],[]]
+Output: [[0,4],[0,3,4],[0,1,3,4],[0,1,4]]
 
 Constraints:
 

@@ -14,6 +14,11 @@ class Solution:
             sum -= nums[i]
         return res
 
+# https://leetcode.com/problems/sum-of-absolute-differences-in-a-sorted-array/discuss/2135231/Python3-2-Lines
+
+class Solution:
+    def getSumAbsoluteDifferences(self, n: List[int]) -> List[int]:
+        a=[0,*accumulate(n)];return[a[-1]-2*a[i]-x*len(n)+2*x*i for i,x in enumerate(n)]
 
 # https://leetcode.com/problems/sum-of-absolute-differences-in-a-sorted-array/discuss/1240128/Python-3-one-line-blazing-fast
 

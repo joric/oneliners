@@ -30,7 +30,7 @@ class Solution:
 
 class Solution:
     def getSumAbsoluteDifferences(self, n: List[int]) -> List[int]:
-        r=sum(n);return[(r:=r+d*(2*i-len(n)))for i,d in enumerate(map(sub,n,[0]+n))]
+        r=sum(n);return[r:=r+d*(2*i-len(n))for i,d in enumerate(map(sub,n,[0]+n))]
 
 test('''
 1685. Sum of Absolute Differences in a Sorted Array

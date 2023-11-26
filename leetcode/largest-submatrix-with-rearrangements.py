@@ -1,6 +1,7 @@
 from lc import *
 
 # https://leetcode.com/problems/largest-submatrix-with-rearrangements/discuss/1021893/Python3-Concise-Solution-8-Lines
+
 class Solution:
     def largestSubmatrix(self, m: List[List[int]]) -> int:
         t = 0
@@ -8,7 +9,7 @@ class Solution:
             for j,c in enumerate(r):
                 if i and c:
                     m[i][j]+=m[i-1][j]
-            for k, v in enumerate(sorted(r)[::-1], 1):
+            for k,v in enumerate(sorted(r)[::-1], 1):
                 t = max(t, k*v)
         return t
 

@@ -28,7 +28,7 @@ class Solution:
 
 class Solution:
     def largestSubmatrix(self, m: List[List[int]]) -> int:
-        e,t=enumerate,0;[([i and c and setitem(m[i],j,m[i][j]+m[i-1][j])for j,c in e(r)],[t:=max(t,k*v)for k,v in e(sorted(r)[::-1],1)])for i,r in e(m)];return t
+        e,t=enumerate,0;[([setitem(m[i],j,m[i][j]+m[i-1][j]*(i and c))for j,c in e(r)],[t:=max(t,k*v)for k,v in e(sorted(r)[::-1],1)])for i,r in e(m)];return t
 
 test('''
 1727. Largest Submatrix With Rearrangements

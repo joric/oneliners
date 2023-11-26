@@ -1,5 +1,18 @@
 from lc import *
 
+# https://leetcode.com/problems/largest-submatrix-with-rearrangements/discuss/3969542/Fully-vectorize-Python-(Numpy)-code-that-beats-100
+
+import numpy as np
+
+class Solution:
+    def largestSubmatrix(self, m: List[List[int]]) -> int:
+        m = np.array(m)
+        t = np.cumsum(m,axis = 0)
+        m = t - np.maximum.accumulate(t * (m == 0), axis = 0)
+        m = np.fliplr(np.sort(m, axis = 1))
+        r = np.arange(1, m.shape[1] + 1)
+        return np.max(m * np.repeat(r[np.newaxis, :], m.shape[0], 0))
+
 # https://leetcode.com/problems/largest-submatrix-with-rearrangements/discuss/1021893/Python3-Concise-Solution-8-Lines
 
 class Solution:

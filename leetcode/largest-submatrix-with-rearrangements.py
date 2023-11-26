@@ -22,8 +22,8 @@ class Solution:
             for j,c in enumerate(r):
                 if i and c:
                     m[i][j]+=m[i-1][j]
-            for k,v in enumerate(sorted(r)[::-1], 1):
-                t = max(t, k*v)
+            for k,v in enumerate(sorted(r)[::-1],1):
+                t = max(t,k*v)
         return t
 
 class Solution:

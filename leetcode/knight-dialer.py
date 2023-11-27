@@ -27,10 +27,6 @@ class Solution:
 
 class Solution:
     def knightDialer(self, n: int) -> int:
-        return(n<2)+sum(reduce(lambda p,_:(p[1],2*(p[0]+p[2]),p[1]+2*p[3],p[2]),[0]*(n-1),[2,4,2,1]))%(10**9+7)
-
-class Solution:
-    def knightDialer(self, n: int) -> int:
         return(n<2)+sum(reduce(lambda p,_:(p[1],2*(p[0]+p[2]),p[1]+2*p[3],p[2]),[0]*n,[1,2,1,0]))%(10**9+7)
 
 test('''

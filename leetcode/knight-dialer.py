@@ -23,7 +23,7 @@ class Solution:
 
 class Solution:
     def knightDialer(self, n: int) -> int:
-        return(10,sum(reduce(lambda x,_:(lambda a,b,c,d:(b,2*(a+c),b+2*d,c))(*x),range(n-1),[2,4,2,1]))%(10**9+7))[n>1]
+        return(n<2)+sum(reduce(lambda x,_:(lambda a,b,c,d:(b,2*(a+c),b+2*d,c))(*x),range(n-1),[2,4,2,1]))%(10**9+7)
 
 test('''
 935. Knight Dialer

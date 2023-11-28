@@ -12,7 +12,13 @@ class Solution:
 
 class Solution:
     def numberOfWays(self, s: str) -> int:
-        a=[i for i,c in enumerate(s)if c>'P'];n=len(a);return(n>1,0)[n&1]*reduce(mul,(a[i+1]-a[i]for i in range(1,n-1,2)),1)%(10**9+7)
+        n=len(a:=[i for i,c in enumerate(s)if c>'P']);return(n>1,0)[n&1]*reduce(mul,(a[i+1]-a[i]for i in range(1,n-1,2)),1)%(10**9+7)
+
+# another solution
+
+class Solution:
+    def numberOfWays(self, s: str) -> int:
+        return reduce(lambda p,i:(p[2]|p[1]*(i-p[3])%(10**9+7),p[0]&p[2]-1,0,i),(i for i,c in enumerate(s)if c>'P'),(1,0)*2)[1]
 
 test('''
 2147. Number of Ways to Divide a Long Corridor

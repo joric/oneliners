@@ -33,6 +33,14 @@ class Solution:
 
 class Solution:
     def numberOfWays(self, s: str) -> int:
+        a,b,c,d=(1,0)*2
+        for i,x in enumerate(s):
+            if x>'P':
+                a,b,c,d=c|b*(i-d)%(10**9+7),a&c-1,0,i
+        return b
+
+class Solution:
+    def numberOfWays(self, s: str) -> int:
         p=(1,0)*2;[p:=(p[2]|p[1]*(i-p[3])%(10**9+7),p[0]&p[2]-1,0,i)for i,c in enumerate(s)if c>'P'];return p[1]
 
 test('''

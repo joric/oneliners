@@ -18,6 +18,17 @@ class Solution:
 
 class Solution:
     def numberOfWays(self, s: str) -> int:
+        def f(p,i):
+            a,b,c,d = p
+            return c|b*(i-d),a&c-1,0,i
+        return reduce(f,(i for i,c in enumerate(s)if c>'P'),(1,0)*2)[1]%(10**9+7)
+
+class Solution:
+    def numberOfWays(self, s: str) -> int:
+        return reduce(lambda p,i:(lambda a,b,c,d,i:(c|b*(i-d),a&c-1,0,i))(*p,i),(i for i,c in enumerate(s)if c>'P'),(1,0)*2)[1]%(10**9+7)
+
+class Solution:
+    def numberOfWays(self, s: str) -> int:
         return reduce(lambda p,i:(p[2]|p[1]*(i-p[3])%(10**9+7),p[0]&p[2]-1,0,i),(i for i,c in enumerate(s)if c>'P'),(1,0)*2)[1]
 
 test('''

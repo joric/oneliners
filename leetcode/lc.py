@@ -155,7 +155,7 @@ cnames = []
 # use test(```leetcode description```) to run latest Solution
 # note only the last solution is tested (classname override), but you can use empty test() between solutions
 
-def test(text=None, classname=None, check=None, init=None, custom=None):
+def test(text=None, classname=None, check=None, init=None, custom=None, cast=None):
     if not text:
         cname = classname or importlib.import_module('__main__').Solution
         cnames.append(cname)
@@ -172,6 +172,9 @@ def test(text=None, classname=None, check=None, init=None, custom=None):
         is_iter = lambda v: type(v) in (tuple, set, list, dict) or is_gen(v)
         to_list = lambda v: v if not is_iter(v) else [to_list(x) for x in v]
         tname = get_type_hints(func).get(name, None)
+
+        if cast:
+            v = cast(name, v)
 
         try:
             func = getattr(tname, 'parse')

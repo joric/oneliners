@@ -28,7 +28,7 @@ class Solution:
 
 class Solution:
     def minimumOneBitOperations(self, n: int) -> int:
-        return(f:=lambda n:n and n^f(n>>1)or 0)(n)
+        return(f:=lambda n:n and n^f(n//2))(n)
 
 test('''
 1611. Minimum One Bit Operations to Make Integers Zero

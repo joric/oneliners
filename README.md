@@ -487,7 +487,7 @@ class Solution:
 
 class Solution:
     def minimumOneBitOperations(self, n: int) -> int:
-        return(f:=lambda r,n:n and f(r^n,n//2)or r)(0,n)
+        return(f:=lambda n:n and n^f(n//2))(n)
 ```
 
 #### Swapping values

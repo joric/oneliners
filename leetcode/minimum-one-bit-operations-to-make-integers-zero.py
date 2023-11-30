@@ -37,7 +37,7 @@ public:
         int r=0;for(;n;n/=2)r^=n;return r;
     }
 };
-```
+'''
 
 test('''
 1611. Minimum One Bit Operations to Make Integers Zero

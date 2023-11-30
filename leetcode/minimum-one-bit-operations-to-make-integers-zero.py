@@ -30,6 +30,15 @@ class Solution:
     def minimumOneBitOperations(self, n: int) -> int:
         return(f:=lambda n:n and n^f(n//2))(n)
 
+''' bonus cpp version (4 chars shorter)
+class Solution {
+public:
+    int minimumOneBitOperations(int n) {
+        int r=0;for(;n;n/=2)r^=n;return r;
+    }
+};
+```
+
 test('''
 1611. Minimum One Bit Operations to Make Integers Zero
 Hard

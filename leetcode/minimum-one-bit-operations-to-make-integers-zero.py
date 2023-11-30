@@ -18,6 +18,10 @@ class Solution:
     def minimumOneBitOperations(self, n: int) -> int:
         r=[0];exec('while n:\n r[0]^=n\n n//=2');return r[0]
 
+class Solution:
+    def minimumOneBitOperations(self, n: int) -> int:
+        return(f:=lambda r,n:n and f(r^n,n//2)or r)(0,n)
+
 test('''
 1611. Minimum One Bit Operations to Make Integers Zero
 Hard

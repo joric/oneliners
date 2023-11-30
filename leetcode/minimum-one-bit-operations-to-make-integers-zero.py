@@ -1,11 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/minimum-one-bit-operations-to-make-integers-zero/discuss/1582821/Python-28ms-crazy-formula-2-Lines
-
-class Solution:
-    def minimumOneBitOperations(self, n: int) -> int:
-        return sum(s*(1,-1)[i&1]for i,s in enumerate((1<<b+1)-1 for b in range(30,-1,-1)if(1<<b)&n))
-
 # https://leetcode.com/problems/minimum-one-bit-operations-to-make-integers-zero/discuss/877738/5-Line-Python-or-Simple-or-O(logn)
 
 class Solution:

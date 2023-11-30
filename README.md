@@ -472,19 +472,18 @@ class Solution:
         return (s.sort(),all(s[1:] and [insort(s,s.pop()-s.pop())] for _ in count()),s[0])[2]
 ```
 
-You can also evalulate any multiline code with `exec`. Unlike `eval`, is not limited to a single string.
+You can also evalulate multiline code with `exec`. Unlike `eval`, is not limited to a single string.
+
+* https://leetcode.com/problems/minimum-one-bit-operations-to-make-integers-zero
 
 ```python
-exec('i=1\nwhile i<3:\n i+=1\nprint(i)')
-```
+class Solution:
+    def minimumOneBitOperations(self, n: int) -> int:
+        return next((r for _ in count()if not(n and(r:=r^n,n:=n//2))),r:=0)
 
-is equivalent to:
-
-```python
-i=1
-while i<3:
- i+=1
-print(i)
+class Solution:
+    def minimumOneBitOperations(self, n: int) -> int:
+        r=[0];exec('while n:\n r[0]^=n\n n//=2');return r[0]
 ```
 
 #### Swapping values

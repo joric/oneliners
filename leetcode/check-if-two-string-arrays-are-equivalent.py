@@ -4,6 +4,10 @@ class Solution:
     def arrayStringsAreEqual(self, word1: List[str], word2: List[str]) -> bool:
         return all(a==b for a,b in zip_longest(chain(*word1), chain(*word2)))
 
+class Solution:
+    def arrayStringsAreEqual(self, a: List[str], b: List[str]) -> bool:
+        return''.join(a)==''.join(b)
+
 test('''
 1662. Check If Two String Arrays are Equivalent
 Easy

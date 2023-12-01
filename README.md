@@ -101,6 +101,15 @@ You can't unpack lambda tuples in Python 3 since [PEP 3113](https://peps.python.
 
 You can also unpack multiple tuples as `lambda xy,ab:(lambda x,y,a,b: x+y+a+b)(*(xy+ab))`.
 
+* https://leetcode.com/problems/count-vowels-permutation
+
+```python
+class Solution:
+    def countVowelPermutation(self, n: int) -> int:
+        return sum(reduce(lambda x,_:(lambda a,e,i,o,u:\
+        (e+i+u,a+i,e+o,i,i+o))(*x),[0]*(n-1),[1]*5))%(10**9+7)
+```
+
 #### Generators
 
 Generator expressions `(x for y in z)` are memory efficient since they only require memory for

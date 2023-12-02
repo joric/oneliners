@@ -22,7 +22,7 @@ class Solution:
     def countCharacters(self, w: List[str], c: str) -> int:
         f=Counter;return sum(len(s)*(f(s)<=f(c))for s in w)
 
-# still passes tests with <
+# still passes tests with < missing test ["a"] "a"
 
 class Solution:
     def countCharacters(self, w: List[str], c: str) -> int:

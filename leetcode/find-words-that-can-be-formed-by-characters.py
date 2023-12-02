@@ -20,7 +20,7 @@ class Solution:
 
 class Solution:
     def countCharacters(self, w: List[str], c: str) -> int:
-        return sum(len(s)*(Counter(s)<=Counter(c))for s in w)
+        return sum(len(s)*(Counter(s)<Counter(c))for s in w)
 
 test('''
 1160. Find Words That Can Be Formed by Characters

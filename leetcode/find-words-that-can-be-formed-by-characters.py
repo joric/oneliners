@@ -16,7 +16,7 @@ class Solution:
 
 class Solution:
     def countCharacters(self, w: List[str], c: str) -> int:
-        return sum(len(s) for s in w if not Counter(s)-Counter(c))
+        return sum(len(s) for s in w if Counter(s)<Counter(c))
 
 class Solution:
     def countCharacters(self, w: List[str], c: str) -> int:

@@ -1,10 +1,23 @@
 from lc import *
 
+# https://leetcode.com/problems/find-words-that-can-be-formed-by-characters/discuss/427565/Python-one-line-solution-using-Counter
+
+class Solution:
+    def countCharacters(self, w: List[str], c: str) -> int:
+        return sum(map(len,filter(lambda s:not Counter(s)-Counter(c),w)))
+
 # https://leetcode.com/problems/find-words-that-can-be-formed-by-characters/discuss/896268/Python-slow-one-liner
 
 class Solution:
     def countCharacters(self, w: List[str], c: str) -> int:
         return sum(len(s)for s in w if not Counter(s)-Counter(c))
+
+# https://leetcode.com/problems/find-words-that-can-be-formed-by-characters/discuss/361377/Python-concise-1-liner
+
+class Solution:
+    def countCharacters(self, w: List[str], c: str) -> int:
+        return sum(len(s)*(not Counter(s)-Counter(c))for s in w)
+
 
 test('''
 1160. Find Words That Can Be Formed by Characters

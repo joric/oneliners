@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def minTimeToVisitAllPoints(self, p: List[List[int]]) -> int:
-        return sum(max(abs(c-d)for c,d in zip(a,b))for a,b in pairwise(p))
+        return sum(max(abs(c-d)for c,d in zip(a,b))for a,b in zip(p,p[1:]))
 
 # https://leetcode.com/problems/minimum-time-visiting-all-points/discuss/530044/One-line-Python-solution.
 

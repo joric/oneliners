@@ -46,7 +46,7 @@ class Solution:
     def minPatches(self, c: List[int], t: int) -> int:
         r,s,i = 0,1,0
         while s <= t:
-            if c[i:] and s>=c[i]:
+            if i<len(c) and c[i]<=s:
                 s += c[i]
                 i += 1
             else:

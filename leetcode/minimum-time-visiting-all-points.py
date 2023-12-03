@@ -1,10 +1,12 @@
 from lc import *
 
-# https://leetcode.com/problems/minimum-time-visiting-all-points/discuss/530044/One-line-Python-solution.
+# https://leetcode.com/problems/minimum-time-visiting-all-points/discuss/436250/JavaPython-3-6-liner-and-1-liner-w-brief-explanation-and-analysis.
 
 class Solution:
     def minTimeToVisitAllPoints(self, p: List[List[int]]) -> int:
-        return sum(max(abs(a[0]-b[0]),abs(a[1]-b[1]))for a,b in zip(p,p[1:]))
+        return sum(max(abs(c-d)for c,d in zip(a,b))for a,b in pairwise(p))
+
+# https://leetcode.com/problems/minimum-time-visiting-all-points/discuss/530044/One-line-Python-solution.
 
 class Solution:
     def minTimeToVisitAllPoints(self, p: List[List[int]]) -> int:

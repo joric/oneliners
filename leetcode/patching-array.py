@@ -24,7 +24,7 @@ class Solution:
     def minPatches(self, c: List[int], t: int) -> int:
         return(f:=lambda r,s,c:f(r,s+c[0],c[1:])if c and s+1>=c[0]else f(r+1,s+s+1,c)if s<t else r)(0,0,c)
 
-# indexes only
+# using indexes
 
 class Solution:
     def minPatches(self, c: List[int], t: int) -> int:
@@ -38,7 +38,7 @@ class Solution:
 
 class Solution:
     def minPatches(self, c: List[int], t: int) -> int:
-        return(f:=lambda r,s,i:f(r,s+c[i],i+1)if c[i:]and s+1>=c[i] else s<t and f(r+1,s+s+1,i)or r)(0,0,0)
+        return(f:=lambda r,s,i:f(r,s+c[i],i+1)if c[i:]and s+1>=c[i]else s<t and f(r+1,s+s+1,i)or r)(0,0,0)
 
 # https://leetcode.com/problems/patching-array/discuss/78488/Solution-%2B-explanation
 

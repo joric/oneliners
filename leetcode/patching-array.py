@@ -19,8 +19,6 @@ class Solution:
         def f(r,s,c):
             if s>=t:
                 return r
-            if not c:
-                return f(r+1,s+s+1,c)
             if c[0]<=s+1:
                 return f(r,s+c[0],c[1:])
             return f(r+1, s+s+1,c)

@@ -56,11 +56,11 @@ class Solution:
 
 class Solution:
     def minPatches(self, c: List[int], t: int) -> int:
-        return(f:=lambda r,s,i:r if s>t else f(r,s+c[i],i+1)if c[i:]and s>=c[i]else f(r+1,s+s+1,i))(0,1,0)
+        return(f:=lambda r,s,i:r if s>t else f(r,s+c[i],i+1)if c[i:]and s>=c[i]else f(r+1,s+s,i))(0,1,0)
 
 class Solution:
     def minPatches(self, c: List[int], t: int) -> int:
-        return(f:=lambda r,s,i:f(r,s+c[i],i+1)if c[i:]and s>=c[i]else s<=t and f(r+1,s+s+1,i)or r)(0,1,0)
+        return(f:=lambda r,s,i:f(r,s+c[i],i+1)if c[i:]and s>=c[i]else s<=t and f(r+1,s+s,i)or r)(0,1,0)
 
 test('''
 330. Patching Array

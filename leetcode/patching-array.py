@@ -12,6 +12,20 @@ class Solution:
             b += v
         return r
 
+# https://leetcode.com/problems/patching-array/discuss/78488/Solution-%2B-explanation
+
+class Solution:
+    def minPatches(self, c: List[int], t: int) -> int:
+        s,r,i = 1,0,0
+        while s <= t:
+            if c[i:] and c[i]<=s:
+                s += c[i]
+                i += 1
+            else:
+                s += s
+                r += 1
+        return r
+
 # https://leetcode.com/problems/patching-array/discuss/351975/Complete-Insightful-Explanation-or-Recursive-and-Iterative-Solutions
 
 class Solution:
@@ -24,9 +38,21 @@ class Solution:
     def minPatches(self, c: List[int], t: int) -> int:
         return(f:=lambda r,s,c:f(r,s+c[0],c[1:])if c and s+1>=c[0]else f(r+1,s+s+1,c)if s<t else r)(0,0,c)
 
+# indexes only
+
 class Solution:
     def minPatches(self, c: List[int], t: int) -> int:
-        return(f:=lambda r,s,i:f(r,s+c[i],i+1)if c[i:]and s+1>=c[i]else s<t and f(r+1,s+s+1,i)or r)(0,0,0)
+        def f(r,s,i):
+            if s>=t:
+                return r
+            if c[i:] and s+1>=c[i]:
+                return f(r,s+c[i],i+1)
+            return f(r+1,s+s+1,i)
+        return f(0,0,0)
+
+class Solution:
+    def minPatches(self, c: List[int], t: int) -> int:
+        return(f:=lambda r,s,i:f(r,s+c[i],i+1)if c[i:]and s+1>=c[i] else s<t and f(r+1,s+s+1,i)or r)(0,0,0)
 
 test('''
 330. Patching Array

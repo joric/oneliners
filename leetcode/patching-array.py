@@ -17,11 +17,7 @@ class Solution:
 class Solution:
     def minPatches(self, c: List[int], t: int) -> int:
         def f(r,s,c):
-            if s>=t:
-                return r
-            if c[0]<=s+1:
-                return f(r,s+c[0],c[1:])
-            return f(r+1, s+s+1,c)
+            return f(r,s+c[0],c[1:]) if c and c[0]<=s+1 else f(r+1,s+s+1,c) if s<t else r
         return f(0,0,c)
 
 class Solution:

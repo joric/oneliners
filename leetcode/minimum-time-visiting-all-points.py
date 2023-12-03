@@ -1,5 +1,9 @@
 from lc import *
 
+class Solution: 
+    def minTimeToVisitAllp(self, p: List[List[int]]) -> int: 
+        return sum([max(abs(p[i+1][0]-p[i][0]),abs(p[i+1][1]-p[i][1]))for i in range(len(p)-1)])
+
 # https://leetcode.com/problems/minimum-time-visiting-all-points/discuss/436250/JavaPython-3-6-liner-and-1-liner-w-brief-explanation-and-analysis.
 
 class Solution:

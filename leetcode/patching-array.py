@@ -12,20 +12,6 @@ class Solution:
             b += v
         return r
 
-# https://leetcode.com/problems/patching-array/discuss/78488/Solution-%2B-explanation
-
-class Solution:
-    def minPatches(self, c: List[int], t: int) -> int:
-        s,r,i = 1,0,0
-        while s <= t:
-            if c[i:] and c[i]<=s:
-                s += c[i]
-                i += 1
-            else:
-                s += s
-                r += 1
-        return r
-
 # https://leetcode.com/problems/patching-array/discuss/351975/Complete-Insightful-Explanation-or-Recursive-and-Iterative-Solutions
 
 class Solution:

@@ -30,6 +30,10 @@ class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         return max(x-y for x,y in zip(prices,list(accumulate(prices,min))))
 
+class Solution:
+    def maxProfit(self, p: List[int]) -> int:
+        return max(map(sub,p,accumulate(p,min)))
+
 test('''
 121. Best Time to Buy and Sell Stock
 Easy

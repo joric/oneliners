@@ -20,6 +20,12 @@ class Solution:
     def largestGoodInteger(self, n: str) -> str:
         return next((s for i in range(9,-1,-1)if(s:=3*str(i))in n),'')
 
+# https://leetcode.com/problems/largest-3-same-digit-number-in-string/discuss/4359217/WeSimple-One-Liner!-(Regex)-Shorter-than-thought
+
+class Solution:
+    def largestGoodInteger(self, n: str) -> str:
+        return max(re.findall(r'(\d)\1\1',n)+[''])*3
+
 test('''
 2264. Largest 3-Same-Digit Number in String
 Easy

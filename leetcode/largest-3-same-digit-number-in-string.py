@@ -71,6 +71,10 @@ Input: num = "101010"
 Output: ""
  
 
+Example 5:
+Input: nume = "3200014888"
+Output: "888"
+
 Constraints:
 
 3 <= num.length <= 1000

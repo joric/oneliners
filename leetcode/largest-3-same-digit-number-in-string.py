@@ -14,10 +14,6 @@ class Solution:
 
 class Solution:
     def largestGoodInteger(self, n: str) -> str:
-        return next((s for s in[str(i)*3 for i in range(9,-1,-1)]if s in n),'')
-
-class Solution:
-    def largestGoodInteger(self, n: str) -> str:
         return next(filter(n.count,(str(i)*3 for i in range(9,-1,-1))),'')
 
 test('''

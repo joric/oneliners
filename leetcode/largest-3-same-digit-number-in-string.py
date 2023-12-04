@@ -1,5 +1,11 @@
 from lc import *
 
+# https://leetcode.com/problems/largest-3-same-digit-number-in-string/discuss/2017786/Compare-with-2-previous
+
+class Solution:
+    def largestGoodInteger(self, n: str) -> str:
+        return max((t:=n[i]*3)==n[i-2:i+1]and t or'' for i in range(2,len(n)))
+
 # https://leetcode.com/problems/largest-3-same-digit-number-in-string/discuss/2760074/Easy-solution-using-groupby-(Python)
 
 class Solution:

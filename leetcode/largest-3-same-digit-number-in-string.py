@@ -24,7 +24,7 @@ class Solution:
 
 class Solution:
     def largestGoodInteger(self, n: str) -> str:
-        return max(re.findall(r'(\d)\1\1',n)+[''])*3
+        return max(findall(r'(\d)\1\1',n)+[''])*3
 
 test('''
 2264. Largest 3-Same-Digit Number in String

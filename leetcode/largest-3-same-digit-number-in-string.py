@@ -14,7 +14,11 @@ class Solution:
 
 class Solution:
     def largestGoodInteger(self, n: str) -> str:
-        return next(filter(n.count,(str(i)*3 for i in range(9,-1,-1))),'')
+        return next(filter(n.count,(3*str(i)for i in range(9,-1,-1))),'')
+
+class Solution:
+    def largestGoodInteger(self, n: str) -> str:
+        return next((s for i in range(9,-1,-1)if(s:=3*str(i))in n),'')
 
 test('''
 2264. Largest 3-Same-Digit Number in String

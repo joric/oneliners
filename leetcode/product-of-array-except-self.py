@@ -6,7 +6,7 @@ class Solution:
         res = [1] + [0]*(n-1)
         for i in range(1, n):
             res[i] = res[i-1] * nums[i-1]
-        t = 1;
+        t = 1
         for i in reversed(range(n)):
             res[i] *= t
             t *= nums[i]
@@ -19,6 +19,14 @@ class Solution:
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         return list(starmap(mul, zip([1]+list(accumulate(nums[:-1], mul)),list(accumulate(nums[::-1][:-1],mul))[::-1]+[1])))
+
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        return map(mul,[1]+[*accumulate(nums[:-1],mul)],[*accumulate(nums[::-1][:-1],mul)][::-1]+[1])
+
+class Solution:
+    def productExceptSelf(self, n: List[int]) -> List[int]:
+        a=accumulate;return map(mul,[1]+[*a(n[:-1],mul)],[*a(n[::-1][:-1],mul)][::-1]+[1])
 
 test('''
 238. Product of Array Except Self

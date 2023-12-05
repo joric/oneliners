@@ -14,6 +14,10 @@ class Solution:
     def removeStars(self, s: str) -> str:
         return reduce(lambda r,c:(r+c,r[:-1])[c=='*'],s,'')
 
+class Solution:
+    def removeStars(self, s: str) -> str:
+        return reduce(lambda r,c:(r[:-1],r+c)[c>'*'],s)
+
 test('''
 2390. Removing Stars From a String
 Medium

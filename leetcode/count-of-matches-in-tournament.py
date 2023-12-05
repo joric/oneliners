@@ -1,5 +1,45 @@
 from lc import *
 
+sys.setrecursionlimit(10**6) 
+
+class Solution:
+    def numberOfMatches(self, n: int) -> int:
+        self.ans = 0
+        def helper(n):
+            if n<=1:
+                return
+            if n%2==0:
+                self.ans+=(n//2)
+                helper(n//2)
+            else:
+                self.ans+=n//2
+                helper(1+n//2)
+        helper(n)
+        return self.ans
+
+class Solution:
+    def numberOfMatches(self, n: int) -> int:
+        def helper(n, r):
+            if n<=1:
+                return r
+            if n%2==0:
+                return helper(n//2, r+n//2)
+            else:
+                return helper(1+n//2, r+n//2)
+        return helper(n, 0)
+
+class Solution:
+    def numberOfMatches(self, n: int) -> int:
+        r = 0
+        while n!=1:
+            if n%2==0:
+                r += n//2
+                n = n//2
+            else:
+                r += (n-1)//2
+                n = (n-1)//2 + 1
+        return r
+
 class Solution:
     def numberOfMatches(self, n: int) -> int:
         return n-1

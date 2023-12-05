@@ -21,6 +21,7 @@ class Solution:
                 return helper(1+n//2, r+n//2)
             return helper(n//2, r+n//2)
         return helper(n, 0)
+
 # math
 
 class Solution:

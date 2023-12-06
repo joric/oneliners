@@ -31,7 +31,11 @@ class Solution:
 
 class Solution:
     def totalMoney(self, n: int) -> int:
-        return n+sum(sum(divmod(i,7))for i in range(n))
+        return sum(chain(*[divmod(i,7)for i in range(n)]))+n
+
+class Solution:
+    def totalMoney(self, n: int) -> int:
+        return sum(sum(divmod(i,7))for i in range(n))+n
 
 class Solution:
     def totalMoney(self, n: int) -> int:

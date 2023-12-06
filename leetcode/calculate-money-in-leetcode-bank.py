@@ -15,6 +15,16 @@ class Solution:
             prev = x
         return res
 
+# https://leetcode.com/problems/calculate-money-in-leetcode-bank/submissions/1113654527
+
+class Solution:
+    def totalMoney(self, n: int) -> int:
+        def sum(x):
+            return x*(x+1)//2
+        w = n//7
+        d = n%7
+        return sum(7)*w + sum(w-1)*7 + sum(d)+w*d
+
 # https://leetcode.com/problems/calculate-money-in-leetcode-bank/discuss/4368090/One-Liner-Python-Math
 
 class Solution:
@@ -36,6 +46,7 @@ class Solution:
 class Solution:
     def totalMoney(self, n: int) -> int:
         return sum(i//7+i%7+1for i in range(n))
+
 
 test('''
 1716. Calculate Money in Leetcode Bank

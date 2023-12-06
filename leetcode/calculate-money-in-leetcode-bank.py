@@ -19,6 +19,10 @@ class Solution:
     def totalMoney(self, n: int) -> int:
         f,l=n//7,n%7;return(7*f*(7+f)+l*(2*f+l+1))//2
 
+class Solution:
+    def totalMoney(self, n: int) -> int:
+        return sum([i//7+i%7+1 for i in range(n)])
+
 test('''
 1716. Calculate Money in Leetcode Bank
 Easy

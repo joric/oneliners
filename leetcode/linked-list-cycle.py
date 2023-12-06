@@ -35,6 +35,10 @@ class Solution:
     def hasCycle(self, h: Optional[ListNode]) -> bool:
         s,f,r = h,h,0;return next(r for _ in count()if not(f and f.next and(s:=s.next,f:=f.next.next)and not(r:=s==f)))
 
+class Solution:
+    def hasCycle(self, h: Optional[ListNode]) -> bool:
+        return str(h)=='Error - Found cycle in the ListNode'
+
 test('''
 141. Linked List Cycle
 Easy

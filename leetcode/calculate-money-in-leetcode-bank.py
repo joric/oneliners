@@ -19,11 +19,11 @@ class Solution:
 
 class Solution:
     def totalMoney(self, n: int) -> int:
-        def sum(x):
+        def s(x):
             return x*(x+1)//2
         w = n//7
         d = n%7
-        return sum(7)*w + sum(w-1)*7 + sum(d)+w*d
+        return s(7)*w + s(w-1)*7 + s(d) + w*d
 
 # https://leetcode.com/problems/calculate-money-in-leetcode-bank/discuss/4368090/One-Liner-Python-Math
 

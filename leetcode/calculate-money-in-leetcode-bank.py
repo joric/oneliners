@@ -19,8 +19,7 @@ class Solution:
 
 class Solution:
     def totalMoney(self, n: int) -> int:
-        def s(x):
-            return x*(x+1)//2
+        s = lambda x: x*(x+1)//2
         w = n//7
         d = n%7
         return s(7)*w + s(w-1)*7 + s(d) + w*d

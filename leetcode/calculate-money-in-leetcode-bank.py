@@ -31,6 +31,10 @@ class Solution:
 
 class Solution:
     def totalMoney(self, n: int) -> int:
+        return n+sum(sum(divmod(i,7))for i in range(n))
+
+class Solution:
+    def totalMoney(self, n: int) -> int:
         return sum(i//7+i%7+1for i in range(n))
 
 test('''

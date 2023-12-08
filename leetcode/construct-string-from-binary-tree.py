@@ -10,12 +10,6 @@ class Solution:
     def tree2str(self, r: Optional[TreeNode]) -> str:
         return(f:=lambda r:r and str(r.val)+((r.left or r.right)and'('+f(r.left)+')'or'')+(r.right and'('+f(r.right)+')'or'')or'')(r)
 
-# https://leetcode.com/problems/construct-string-from-binary-tree/discuss/2543705/Python-Elegant-and-Short-or-DFS
-
-class Solution:
-    def tree2str(self, r: TreeNode) -> str:
-        return(f:=lambda r:r and'{}{}{}'.format(r.val,f'({f(r.left)})'*(r.left is not None or r.right is not None),f'({f(r.right)})' * (r.right is not None),)or'')(r)
-
 # https://leetcode.com/problems/construct-string-from-binary-tree/discuss/104056/Short-PythonJava-with-post-processing
 
 class Solution:

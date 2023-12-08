@@ -1,8 +1,14 @@
 from lc import *
 
+# simple solution
+
 class Solution:
     def tree2str(self, r: Optional[TreeNode]) -> str:
-        return(str(r.val)if r else'')+(''if not r or not r.left and not r.right else'('+self.tree2str(r.left)+')')+('('+self.tree2str(r.right)+')'if r and r.right else '')
+        return r and str(r.val)+((r.left or r.right)and'('+self.tree2str(r.left)+')'or'')+(r.right and'('+self.tree2str(r.right)+')'or'')or''
+
+class Solution:
+    def tree2str(self, r: Optional[TreeNode]) -> str:
+        return(f:=lambda r:r and str(r.val)+((r.left or r.right)and'('+f(r.left)+')'or'')+(r.right and'('+f(r.right)+')'or'')or'')(r)
 
 # https://leetcode.com/problems/construct-string-from-binary-tree/discuss/2543705/Python-Elegant-and-Short-or-DFS
 

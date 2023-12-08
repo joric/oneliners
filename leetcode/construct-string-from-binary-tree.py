@@ -18,11 +18,7 @@ class Solution:
 
 class Solution:
     def tree2str(self, r: Optional[TreeNode]) -> str:
-        return(f:=lambda r:re.sub('(\(\))+$','',('%d(%s)(%s)'%(r.val,f(r.left),f(r.right))))if r else'')(r)
-
-class Solution:
-    def tree2str(self, r: Optional[TreeNode]) -> str:
-        return(f:=lambda r:re.sub('(\(\))+$','',   '%d(%s)(%s)' % (r.val,f(r.left),f(r.right))     )if r else'')(r)
+        return(f:=lambda r:r and re.sub('(\(\))+$','','%d(%s)(%s)'%(r.val,f(r.left),f(r.right)))or'')(r)
 
 class Solution:
     def tree2str(self, r: Optional[TreeNode]) -> str:

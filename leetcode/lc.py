@@ -1,32 +1,25 @@
 #!/usr/bin/env python3
 
-from typing import *
-from collections import *
-from copy import *
-from functools import *
-from heapq import *
-from itertools import *
-from math import *
-from bisect import *
-from random import *
-from re import *
-from operator import *
-from statistics import *
-from string import *
-import bisect
-import collections
-import copy
-import heapq
-import itertools
 import importlib
 import json
-import math
-import random
-import re
-import statistics
-import string
 import os
 import sys
+from typing import *
+
+import bisect; from bisect import *
+import collections; from collections import *
+import copy; from copy import *
+import functools; from functools import *
+import heapq; from heapq import *
+import itertools; from itertools import *
+import math; from math import *
+import operator; from operator import *
+import random; from random import *
+import re; from re import *
+import statistics; from statistics import *
+import string; from string import *
+
+pow = __builtins__['pow']
 
 class TreeNode:
     def __init__(self, x=0, left=None, right=None):

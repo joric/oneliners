@@ -3,16 +3,8 @@ from lc import *
 # editorial (log n)
 
 class Solution:
-    def findSpecialInteger(self, arr: List[int]) -> int:
-        n = len(arr)
-        candidates = [arr[n // 4], arr[n // 2], arr[3 * n // 4]]
-        target = n / 4
-        for candidate in candidates:
-            left = bisect_left(arr, candidate)
-            right = bisect_right(arr, candidate) - 1
-            if right - left + 1 > target:
-                return candidate
-        return -1
+    def findSpecialInteger(self, a: List[int]) -> int:
+        n=len(a);return next((x for x in(a[n//4],a[n//2],a[3*n//4])if bisect_right(a,x)-bisect_left(a,x)>n/4),-1)
 
 # https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array/discuss/930267/One-line-solution
 

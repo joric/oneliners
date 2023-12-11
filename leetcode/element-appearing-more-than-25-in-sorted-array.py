@@ -17,6 +17,10 @@ class Solution:
     def findSpecialInteger(self, a: List[int]) -> int:
         n=len(a);return next(x for x in(a[n//4],a[n//2],a[3*n//4])if bisect_right(a,x)-bisect_left(a,x)>n/4)
 
+class Solution:
+    def findSpecialInteger(self, a: List[int]) -> int:
+        n=len(a);return next(u for i in(1,2,3)if a[t:=bisect_left(a,u:=a[i*n//4])]==a[t+n//4])
+
 # https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array/discuss/930267/One-line-solution
 
 class Solution:

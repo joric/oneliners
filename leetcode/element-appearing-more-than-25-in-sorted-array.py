@@ -1,5 +1,16 @@
 from lc import *
 
+# boyer-moore https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array/discuss/521862/JavaScript-Boyer-Moore-Voting-Algorithm
+
+class Solution:
+    def findSpecialInteger(self, a: List[int]) -> int:
+        r = c = 0
+        for x in a:
+            if c==0 or c==1:
+                r = x
+            c += (-1,3)[r==x]
+        return r
+
 # editorial (log n)
 
 class Solution:

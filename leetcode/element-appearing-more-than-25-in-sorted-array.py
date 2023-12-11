@@ -8,7 +8,7 @@ class Solution:
         for x in a:
             if c==0 or c==1:
                 r = x
-            c += (-1,3)[r==x]
+            c += 3 if r==x else -1
         return r
 
 # editorial (log n)

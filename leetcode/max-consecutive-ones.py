@@ -1,8 +1,8 @@
 from lc import *
 
 class Solution:
-    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
-        return max(len(list(g))*c for c,g in groupby(nums))
+    def findMaxConsecutiveOnes(self, n: List[int]) -> int:
+        return max(len([*g])for _,g in groupby(n))
 
 test('''
 

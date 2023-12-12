@@ -1,5 +1,7 @@
 from lc import *
 
+# same as https://binarysearch.com/problems/Max-Product-of-Three-Numbers
+
 class Solution:
     def maximumProduct(self, nums: List[int]) -> int:
         l1 = l2 = l3 = -inf

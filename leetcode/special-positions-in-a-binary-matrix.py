@@ -18,6 +18,14 @@ class Solution:
                 res += check(i,j)
         return res
 
+# O(m*n) https://leetcode.com/problems/special-positions-in-a-binary-matrix/discuss/4397469/Linear-Time-Python-Solution
+
+class Solution:
+    def numSpecial(self, mat: List[List[int]]) -> int:
+        r = [sum(i) for i in mat]
+        c = [sum(j) for j in zip(*mat)]
+        return sum((r[i]==c[j]==mat[i][j]==1)for i,j in product(range(len(mat)),range(len(mat[0]))))
+
 # https://leetcode.com/problems/special-positions-in-a-binary-matrix/discuss/3281490/Python3-oror-zip-oror-4-Line
 
 class Solution:

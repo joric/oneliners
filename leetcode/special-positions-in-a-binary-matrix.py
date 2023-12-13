@@ -21,13 +21,6 @@ class Solution:
 # https://leetcode.com/problems/special-positions-in-a-binary-matrix/discuss/3281490/Python3-oror-zip-oror-4-Line
 
 class Solution:
-    def numSpecial(self, mat: List[List[int]]) -> int:
-        res=0
-        for  i in zip(*mat):
-            if sum(i)==1 and sum(mat[i.index(1)])==1:res+=1
-        return res
-
-class Solution:
     def numSpecial(self, m: List[List[int]]) -> int:
         return sum(sum(i)==1 and sum(m[i.index(1)])==1for i in zip(*m))
 

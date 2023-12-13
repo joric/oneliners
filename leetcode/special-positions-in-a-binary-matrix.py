@@ -22,7 +22,7 @@ class Solution:
 
 class Solution:
     def numSpecial(self, m: List[List[int]]) -> int:
-        return sum(sum(i)==1 and sum(m[i.index(1)])==1for i in zip(*m))
+        return sum(sum(i)==1and sum(m[i.index(1)])==1for i in zip(*m))
 
 test('''
 1582. Special Positions in a Binary Matrix

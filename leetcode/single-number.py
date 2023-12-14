@@ -6,7 +6,7 @@ class Solution:
 
 class Solution:
     def singleNumber(self, n: List[int]) -> int:
-        return 2*sum({*n}))-sum(n)
+        return 2*sum({*n})-sum(n)
 
 class Solution:
     def singleNumber(self, n: List[int]) -> int:

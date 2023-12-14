@@ -5,8 +5,12 @@ class Solution:
         return 2*sum(set(nums))-sum(nums)
 
 class Solution:
-    def singleNumber(self, nums: List[int]) -> int:
-        return reduce(xor, nums)
+    def singleNumber(self, n: List[int]) -> int:
+        return 2*sum({*n}))-sum(n)
+
+class Solution:
+    def singleNumber(self, n: List[int]) -> int:
+        return reduce(xor,n)
 
 test('''
 136. Single Number

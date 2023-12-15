@@ -26,7 +26,7 @@ class Solution:
 
 class Solution:
     def destCity(self, p: List[List[str]]) -> str:
-        a,b=map(set,zip(*p));return (b-a).pop()
+        a,b=map(set,zip(*p));return(b-a).pop()
 
 class Solution:
     def destCity(self, p: List[List[str]]) -> str:

@@ -20,6 +20,18 @@ class Solution:
     def destCity(self, p: List[List[str]]) -> str:
         return({b for a,b in p}-{a for a,b in p}).pop()
 
+class Solution:
+    def destCity(self, p: List[List[str]]) -> str:
+        return sub(*[*map(set,zip(*p))][::-1]).pop()
+
+class Solution:
+    def destCity(self, p: List[List[str]]) -> str:
+        a,b=map(set,zip(*p));return (b-a).pop()
+
+class Solution:
+    def destCity(self, p: List[List[str]]) -> str:
+        a,b=zip(*p);return({*b}-{*a}).pop()
+
 test('''
 1436. Destination City
 Easy

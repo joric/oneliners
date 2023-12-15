@@ -12,6 +12,10 @@ class Solution:
     def onesMinusZeros(self, g: List[List[int]]) -> List[List[int]]:
         s=lambda g:[2*sum(i)-len(i)for i in g];t=s(zip(*g));return[[r+c for c in t]for r in s(g)]
 
+class Solution:
+    def onesMinusZeros(self, g: List[List[int]]) -> List[List[int]]:
+        a,b=[[2*sum(i)-len(i)for i in p]for p in(zip(*g),g)];return[[r+c for c in a]for r in b]
+
 test('''
 2482. Difference Between Ones and Zeros in Row and Column
 Medium

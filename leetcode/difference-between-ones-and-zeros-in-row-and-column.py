@@ -14,7 +14,7 @@ class Solution:
 
 class Solution:
     def onesMinusZeros(self, g: List[List[int]]) -> List[List[int]]:
-        a,b=[[2*sum(i)-len(i)for i in p]for p in(zip(*g),g)];return[[r+c for c in a]for r in b]
+        a,b=[[2*sum(r)-len(r)for r in p]for p in(zip(*g),g)];return[[r+c for c in a]for r in b]
 
 test('''
 2482. Difference Between Ones and Zeros in Row and Column

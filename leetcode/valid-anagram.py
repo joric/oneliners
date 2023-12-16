@@ -10,7 +10,7 @@ class Solution:
 
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        c=Counter;return c(s)==c(t)
+        f=Counter;return f(s)==f(t)
 
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
@@ -18,7 +18,7 @@ class Solution:
 
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        c=sorted;return c(s)==c(t)
+        f=sorted;return f(s)==f(t)
 
 test('''
 242. Valid Anagram

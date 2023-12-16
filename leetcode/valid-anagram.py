@@ -12,6 +12,14 @@ class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         c=Counter;return c(s)==c(t)
 
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        return sorted(s)==sorted(t)
+
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        c=sorted;return c(s)==c(t)
+
 test('''
 242. Valid Anagram
 Easy

@@ -126,7 +126,7 @@ class Solution:
 
 class Solution:
     def maxSlidingWindow(self, a: List[int], k: int) -> List[int]:
-        np=__import__('numpy');return np.max(np.lib.stride_tricks.sliding_window_view(a,k),1)
+        p=__import__('numpy');return p.max(p.lib.stride_tricks.sliding_window_view(a,k),1)
 
 test('''
 239. Sliding Window Maximum

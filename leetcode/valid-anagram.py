@@ -4,6 +4,14 @@ class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         return reduce(eq,map(Counter,(s,t)))
 
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        return Counter(s)==Counter(t)
+
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        c=Counter;return c(s)==c(t)
+
 test('''
 242. Valid Anagram
 Easy

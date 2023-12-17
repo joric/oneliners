@@ -6,21 +6,18 @@ import os
 import sys
 from typing import *
 
-import bisect; from bisect import *
-import collections; from collections import *
-import copy; from copy import *
-import functools; from functools import *
-import heapq; from heapq import *
-import itertools; from itertools import *
-import math; from math import *
-import operator; from operator import *
-import random; from random import *
-import re; from re import *
-import statistics; from statistics import *
-import string; from string import *
-
-pow = __builtins__['pow']
-sub = operator.sub
+from bisect import *; import bisect
+from collections import *; import collections
+from copy import *; import copy
+from functools import *; import functools
+from heapq import *; import heapq
+from itertools import *; import itertools
+from math import *; import math
+from operator import *; import operator
+from random import *; import random
+from re import *; import re
+from statistics import *; import statistics
+from string import *; import string
 
 class TreeNode:
     def __init__(self, x=0, left=None, right=None):

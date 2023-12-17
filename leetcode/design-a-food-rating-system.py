@@ -25,11 +25,11 @@ class FoodRatings:
     def __init__(s, f: List[str], c: List[str], r: List[int]):
         (setattr(s,'p',{}),setattr(s,'d',defaultdict(__import__('sortedcontainers').SortedList)),[(s.p.update({f:(c,r)}),s.d[c].add((-r,f)))for f,c,r in zip(f,c,r)])
     def changeRating(s, f: str, n: int) -> None:
-        (lambda n,c,r:(s.p.update({f:(c,n)}), s.d[c].remove((-r,f)),s.d[c].add((-n,f))))(n,*s.p[f])
+        (lambda n,c,r:(s.p.update({f:(c,n)}),s.d[c].remove((-r,f)),s.d[c].add((-n,f))))(n,*s.p[f])
     def highestRated(s, c: str) -> str:
         return s.d[c][0][1]
 
-FoodRatings=type('',(),{'__init__':lambda s,f,c,r:(setattr(s,'p',{}),setattr(s,'d',defaultdict(__import__('sortedcontainers').SortedList)),[(s.p.update({f:(c,r)}),s.d[c].add((-r,f)))for f,c,r in zip(f,c,r)])and None,'changeRating':lambda s,f,n:(lambda n,c,r:(s.p.update({f:(c,n)}), s.d[c].remove((-r,f)),s.d[c].add((-n,f)))and None)(n,*s.p[f]),'highestRated':lambda s,c:s.d[c][0][1]})
+FoodRatings=type('',(),{'__init__':lambda s,f,c,r:(setattr(s,'p',{}),setattr(s,'d',defaultdict(__import__('sortedcontainers').SortedList)),[(s.p.update({f:(c,r)}),s.d[c].add((-r,f)))for f,c,r in zip(f,c,r)])and None,'changeRating':lambda s,f,n:(lambda n,c,r:(s.p.update({f:(c,n)}),s.d[c].remove((-r,f)),s.d[c].add((-n,f)))and None)(n,*s.p[f]),'highestRated':lambda s,c:s.d[c][0][1]})
 
 test('''
 2353. Design a Food Rating System

@@ -19,6 +19,7 @@ from re import *; import re
 from statistics import *; import statistics
 from string import *; import string
 
+pow = __builtins__['pow']
 sub = operator.sub
 
 class TreeNode:

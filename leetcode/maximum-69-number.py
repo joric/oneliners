@@ -1,8 +1,16 @@
 from lc import *
 
+# https://leetcode.com/problems/maximum-69-number
+
+# did not need result cast before 11/07/2022
+
 class Solution:
-    def maximum69Number (self, num: int) -> int:
-        return str(num).replace('6', '9', 1)
+    def maximum69Number (self, n: int) -> int:
+        return int(str(n).replace('6','9',1))
+
+class Solution:
+    def maximum69Number (self, n: int) -> int:
+        return int(re.sub('6','9',str(n),1))
 
 test('''
 1323. Maximum 69 Number

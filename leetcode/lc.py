@@ -20,7 +20,7 @@ from statistics import *; import statistics
 from string import *; import string
 
 pow = __builtins__['pow']
-sub = operator.sub
+sub = operator.sub # overloads (re.)sub
 
 class TreeNode:
     def __init__(self, x=0, left=None, right=None):

@@ -19,6 +19,8 @@ from re import *; import re
 from statistics import *; import statistics
 from string import *; import string
 
+sub = operator.sub
+
 class TreeNode:
     def __init__(self, x=0, left=None, right=None):
         self.val = x

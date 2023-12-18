@@ -2,6 +2,15 @@ from lc import *
 
 class Solution:
     def maxProductDifference(self, n: List[int]) -> int:
+        l1 = l2 = -inf
+        s1 = s2 = inf
+        for x in n:
+            l1, l2 = max(l1, x), max(l2, min(x, l1))
+            s1, s2 = min(s1, x), min(s2, max(x, s1))
+        return l1*l2-s1*s2
+
+class Solution:
+    def maxProductDifference(self, n: List[int]) -> int:
         n.sort();return n[-1]*n[-2]-n[0]*n[1]
 
 test('''

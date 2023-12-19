@@ -16,11 +16,7 @@ class Solution:
 
 class Solution:
     def imageSmoother(self, m: List[List[int]]) -> List[List[int]]:
-        h,w=len(m),len(m[0]);return[[int(mean(m[i][j]for i in range(y-1,y+2)for j in range(x-1,x+2)if w>j>=0<=i<h))for x in range(w)]for y in range(h)]
-
-class Solution:
-    def imageSmoother(self, m: List[List[int]]) -> List[List[int]]:
-        h,w=len(m),len(m[0]);return[[int(mean(m[y+i][x+j]for i,j in product(*[(-1,0,1)]*2)if w>x+j>=0<=y+i<h))for x in range(w)]for y in range(h)]
+        h,w=len(m),len(m[0]);return[[int(mean(m[i][j]for i in(y-1,y,y+1)for j in(x-1,x,x+1)if w>j>=0<=i<h))for x in range(w)]for y in range(h)]
 
 test('''
 661. Image Smoother

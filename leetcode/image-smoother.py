@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def imageSmoother(self, m: List[List[int]]) -> List[List[int]]:
-        p=__import__('numpy');m=p.array(m,dtype=float);a=p.pad(m,((1,1),(1, 1)),mode='constant',constant_values=(p.nan,));return[[int(p.nansum(a[i-1:i+2,j-1:j+2])/p.count_nonzero(~p.isnan(a[i-1:i+2,j-1:j+2])))for j in range(1,m.shape[1]+1)]for i in range(1,m.shape[0]+1)]
+        p=__import__('numpy');m=p.array(m,dtype=float);a=p.pad(m,((1,1),(1,1)),mode='constant',constant_values=(p.nan,));return[[int(p.nansum(a[i-1:i+2,j-1:j+2])/p.count_nonzero(~p.isnan(a[i-1:i+2,j-1:j+2])))for j in range(1,m.shape[1]+1)]for i in range(1,m.shape[0]+1)]
 
 # https://leetcode.com/problems/image-smoother/discuss/625175/Python3-One-line-for-fun-(beats-49.81)
 

@@ -1,5 +1,11 @@
 from lc import *
 
+# https://leetcode.com/problems/image-smoother/discuss/2489901/Python%2B-Numpy
+
+class Solution:
+    def imageSmoother(self, m: List[List[int]]) -> List[List[int]]:
+        p=__import__('numpy');m=p.array(m,dtype=float);a=p.pad(m,((1,1),(1, 1)),mode='constant',constant_values=(p.nan,));return[[int(p.nansum(a[i-1:i+2,j-1:j+2])/p.count_nonzero(~p.isnan(a[i-1:i+2,j-1:j+2])))for j in range(1,m.shape[1]+1)]for i in range(1,m.shape[0]+1)]
+
 # https://leetcode.com/problems/image-smoother/discuss/625175/Python3-One-line-for-fun-(beats-49.81)
 
 class Solution:
@@ -10,11 +16,11 @@ class Solution:
 
 class Solution:
     def imageSmoother(self, m: List[List[int]]) -> List[List[int]]:
-        h,w=len(m),len(m[0]);return[[int(mean(m[y+i][x+j]for j in range(-1,2)for i in range(-1,2)if 0<=y+i<h and 0<=x+j<w))for x in range(w)]for y in range(h)]
+        h,w=len(m),len(m[0]);return[[int(mean(m[i][j]for i in range(y-1,y+2)for j in range(x-1,x+2)if w>j>=0<=i<h))for x in range(w)]for y in range(h)]
 
 class Solution:
     def imageSmoother(self, m: List[List[int]]) -> List[List[int]]:
-        h,w=len(m),len(m[0]);return[[int(mean(m[i][j]for i in range(y-1,y+2)for j in range(x-1,x+2)if w>j>=0<=i<h))for x in range(w)]for y in range(h)]
+        h,w=len(m),len(m[0]);return[[int(mean(m[y+i][x+j]for i,j in product(*[(-1,0,1)]*2)if w>x+j>=0<=y+i<h))for x in range(w)]for y in range(h)]
 
 test('''
 661. Image Smoother

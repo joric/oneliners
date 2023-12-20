@@ -6,6 +6,10 @@ class Solution:
     def buyChoco(self, p: List[int], m: int) -> int:
         return(x:=m-sum(nsmallest(2,p)),m)[x<0]
 
+class Solution:
+    def buyChoco(self, p: List[int], m: int) -> int:
+        return(x:=m-sum(sorted(p)[:2]),m)[x<0]
+
 test('''
 2706. Buy Two Chocolates
 Easy

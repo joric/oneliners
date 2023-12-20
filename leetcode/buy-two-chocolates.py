@@ -1,5 +1,15 @@
 from lc import *
 
+# single pass
+
+class Solution:
+    def buyChoco(self, p: List[int], m: int) -> int:
+        s1 = s2 = inf
+        for x in p:
+            s1,s2 = min(s1,x), min(s2,max(x,s1))
+        r = s1 + s2
+        return m-r if m>=r else m
+
 # https://leetcode.com/problems/buy-two-chocolates/discuss/3606095/Python-3-one-line-O(1)-space-and-time
 
 class Solution:

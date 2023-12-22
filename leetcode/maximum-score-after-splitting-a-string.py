@@ -6,6 +6,10 @@ class Solution:
     def maxScore(self, s: str) -> int:
         return max(islice(accumulate(s,lambda i,c:i-int(c)*2+1,initial=s.count('1')),1,None))
 
+class Solution:
+    def maxScore(self, s: str) -> int:
+        c,t=s.count('1'),0;return max(c-i+(t:=t+2*(s[i-1]<'1'))for i in range(1,len(s)))
+
 # https://leetcode.com/problems/maximum-score-after-splitting-a-string/discuss/3297911/Python-one-line
 
 class Solution:

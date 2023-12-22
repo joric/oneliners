@@ -1,5 +1,11 @@
 from lc import *
 
+# https://leetcode.com/problems/maximum-score-after-splitting-a-string/discuss/4438486/One-line-solution
+
+class Solution:
+    def maxScore(self, s: str) -> int:
+        return max(islice(accumulate(s,lambda i,c:i-int(c)*2+1,initial=s.count('1')),1,None))
+
 # https://leetcode.com/problems/maximum-score-after-splitting-a-string/discuss/3297911/Python-one-line
 
 class Solution:

@@ -12,6 +12,16 @@ class Solution:
             v.add(c)
         return False
 
+# https://leetcode.com/problems/path-crossing/discuss/4443771/WeSimple-Shorter-than-thought
+
+class Solution:
+    def isPathCrossing(self, path: str) -> bool:
+        track = list(zip(
+            accumulate(path, lambda acc, r: acc + {'E':1, 'W': -1}.get(r, 0), initial=0),
+            accumulate(path, lambda acc, r: acc + {'N':1, 'S': -1}.get(r, 0), initial=0)
+        ))
+        return len(track) != len(set(track))
+
 # https://leetcode.com/problems/path-crossing/discuss/2819934/Simple-Python-oror-Understandable-and-Clean
 
 class Solution:
@@ -37,7 +47,19 @@ class Solution:
 
 class Solution:
     def isPathCrossing(self, p: str) -> bool:
+        return len(p)>=len({*accumulate(p,lambda a,x:a+dict(zip('NESW',(1j,1,-1j,-1))).get(x),initial=0)})
+
+class Solution:
+    def isPathCrossing(self, p: str) -> bool:
+        return len(p)>=len({*accumulate(p,lambda a,x:a+{'N':1j,'E':1,'S':-1j,'W':-1}.get(x),initial=0)})
+
+class Solution:
+    def isPathCrossing(self, p: str) -> bool:
         z,t=0,dict(zip('NESW',(1j,1,-1j,-1)));return len(p)>=len({0,*{z:=z+t[c]for c in p}})
+
+class Solution:
+    def isPathCrossing(self, p: str) -> bool:
+        z=0;return len(p)>=len({0,*{z:=z+{'N':1j,'E':1,'S':-1j,'W':-1}[c]for c in p}})
 
 test('''
 1496. Path Crossing

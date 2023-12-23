@@ -55,6 +55,14 @@ class Solution:
 
 class Solution:
     def isPathCrossing(self, p: str) -> bool:
+        z=0;return len(p)>=len({0,*{z:=z+t for t in map({'N':1j,'E':1,'S':-1j,'W':-1}.get,p)}})
+
+class Solution:
+    def isPathCrossing(self, p: str) -> bool:
+        return len(p)>=len({*accumulate(map({'N':1j,'E':1,'S':-1j,'W':-1}.get,p),initial=0)})
+
+class Solution:
+    def isPathCrossing(self, p: str) -> bool:
         z,t=0,dict(zip('NESW',(1j,1,-1j,-1)));return len(p)>=len({0,*{z:=z+t[c]for c in p}})
 
 class Solution:

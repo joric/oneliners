@@ -1,17 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/path-crossing/discuss/3960790/Easy-readable-solution-8-lines
-
-class Solution:
-    def isPathCrossing(self, p: str) -> bool:
-        c,v=(0,0),{(0,0)}
-        for d in p:
-            c = (c[0],c[1]+1)if d=='N'else(c[0],c[1]-1)if d=='S'else(c[0]+1,c[1])if d=='E'else(c[0]-1,c[1])
-            if c in v:
-                return True
-            v.add(c)
-        return False
-
 # https://leetcode.com/problems/path-crossing/discuss/2819934/Simple-Python-oror-Understandable-and-Clean
 
 class Solution:

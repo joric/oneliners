@@ -47,6 +47,10 @@ class Solution:
 
 class Solution:
     def isPathCrossing(self, p: str) -> bool:
+        return len(p)>=len({0,*accumulate(map(lambda c:1j**'NESW'.find(c),p))})
+
+class Solution:
+    def isPathCrossing(self, p: str) -> bool:
         z=0;return len(p)>=len({0,*{z:=z+1j**'NESW'.find(c)for c in p}})
 
 class Solution:

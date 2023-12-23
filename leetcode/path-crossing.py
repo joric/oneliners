@@ -41,6 +41,10 @@ class Solution:
     def isPathCrossing(self, p: str) -> bool:
         return len(p)>=len({0,*accumulate(map({'N':1j,'E':1,'S':-1j,'W':-1}.get,p))})
 
+class Solution:
+    def isPathCrossing(self, p: str) -> bool:
+        z=0;return len(p)>=len({0,*[z:=z+1j**'NESW'.find(c)for c in p]})
+
 test('''
 1496. Path Crossing
 Easy

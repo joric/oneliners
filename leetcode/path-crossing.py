@@ -45,6 +45,10 @@ class Solution:
     def isPathCrossing(self, p: str) -> bool:
         z=0;return len(p)>=len({0,*{z:=z+1j**(4*ord(c)%11)for c in p}})
 
+class Solution:
+    def isPathCrossing(self, p: str) -> bool:
+        z=0;return len(p)>=len({0,*{z:=z+1j**(3819%ord(c))for c in p}})
+
 test('''
 1496. Path Crossing
 Easy

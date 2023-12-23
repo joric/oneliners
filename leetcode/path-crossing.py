@@ -39,35 +39,7 @@ class Solution:
 
 class Solution:
     def isPathCrossing(self, p: str) -> bool:
-        z,v,t=0,{0},dict(zip('NESW',(1j,1,-1j,-1)));return next((1 for c in p if(z:=z+t[c])in v or v.add(z)),0)
-
-class Solution:
-    def isPathCrossing(self, p: str) -> bool:
-        t=dict(zip('NESW',(1j,1,-1j,-1)));return len(p)>=len({*accumulate(p,lambda a,b:a+t[b],initial=0)})
-
-class Solution:
-    def isPathCrossing(self, p: str) -> bool:
-        return len(p)>=len({*accumulate(p,lambda a,x:a+dict(zip('NESW',(1j,1,-1j,-1))).get(x),initial=0)})
-
-class Solution:
-    def isPathCrossing(self, p: str) -> bool:
-        return len(p)>=len({*accumulate(p,lambda a,x:a+{'N':1j,'E':1,'S':-1j,'W':-1}.get(x),initial=0)})
-
-class Solution:
-    def isPathCrossing(self, p: str) -> bool:
-        z=0;return len(p)>=len({0,*{z:=z+t for t in map({'N':1j,'E':1,'S':-1j,'W':-1}.get,p)}})
-
-class Solution:
-    def isPathCrossing(self, p: str) -> bool:
-        return len(p)>=len({*accumulate(map({'N':1j,'E':1,'S':-1j,'W':-1}.get,p),initial=0)})
-
-class Solution:
-    def isPathCrossing(self, p: str) -> bool:
-        z,t=0,dict(zip('NESW',(1j,1,-1j,-1)));return len(p)>=len({0,*{z:=z+t[c]for c in p}})
-
-class Solution:
-    def isPathCrossing(self, p: str) -> bool:
-        z=0;return len(p)>=len({0,*{z:=z+{'N':1j,'E':1,'S':-1j,'W':-1}[c]for c in p}})
+        return len(p)>=len({0,*accumulate(map({'N':1j,'E':1,'S':-1j,'W':-1}.get,p))})
 
 test('''
 1496. Path Crossing

@@ -29,7 +29,7 @@ class Solution:
 
 class Solution:
     def maximizeSquareArea(self, m: int, n: int, a: List[int], b: List[int]) -> int:
-        a,b=starmap(lambda v,t:{abs(x-y)for x,y in combinations(sorted(v+[1,t]),2)},((a,m),(b,n)));return max(b&a)**2%(10**9+7)if b&a else -1
+        a,b=starmap(lambda v,t:{abs(x-y)for x,y in combinations(sorted(v+[1,t]),2)},((a,m),(b,n)));return b&a and max(b&a)**2%(10**9+7)or -1
 
 test('''
 2975. Maximum Square Area by Removing Fences From a Field

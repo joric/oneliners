@@ -6,6 +6,12 @@ class Solution:
     def minOperations(self, s: str) -> int:
         return min(n:=sum(i%2==int(c)for i,c in enumerate(s)),len(s)-n)
 
+# https://leetcode.com/problems/minimum-changes-to-make-alternating-binary-string/discuss/1064511/JavaC++Python-Easy-and-Concise/2152604
+
+class Solution:
+    def minOperations(self, s: str) -> int:
+        return min(n:=sum(map(eq,s,cycle('01'))),len(s)-n)
+
 test('''
 1758. Minimum Changes To Make Alternating Binary String
 Easy

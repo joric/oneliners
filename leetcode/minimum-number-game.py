@@ -22,6 +22,11 @@ class Solution:
     def numberGame(self, n: List[int]) -> List[int]:
         return [z for x in zip(sorted(n)[1::2],sorted(n)[::2])for z in x]
 
+# Python 3.12 only
+class Solution:
+    def numberGame(self, n: List[int]) -> List[int]:
+        return chain(*map(reversed,batched(sorted(n),2)))
+
 class Solution:
     def numberGame(self, n: List[int]) -> List[int]:
         n.sort();return chain(*zip(n[1::2],n[::2]))

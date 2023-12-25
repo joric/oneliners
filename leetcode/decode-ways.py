@@ -6,6 +6,10 @@ class Solution:
     def numDecodings(self, s: str) -> int:
         return~~(f:=cache(lambda s:(1==f(s[0])and f(s[1:]))+(9<int(s[:2])<27 and f(s[2:]))if s[1:]else s!='0'))(s)
 
+class Solution:
+    def numDecodings(self, s: str) -> int:
+        return(f:=cache(lambda s:not s or(s[:1]!='0'and f(s[1:]))+(9<int(s[:2])<27 and f(s[2:]))))(s)
+
 test('''
 91. Decode Ways
 Medium

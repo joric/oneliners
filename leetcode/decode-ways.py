@@ -50,7 +50,10 @@ Example 3:
 Input: s = "06"
 Output: 0
 Explanation: "06" cannot be mapped to "F" because of the leading zero ("6" is different from "06").
- 
+
+Example 4:
+Input: s = "0"
+Output: 0
 
 Constraints:
 

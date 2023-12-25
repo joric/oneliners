@@ -1,8 +1,6 @@
 from lc import *
 
-class Solution:
-    def numDecodings(self, s: str) -> int:
-        return(f:=cache(lambda s:int(s!='0')if len(s)<=1 else (f(s[0])==1 and f(s[1:]))+(10<=int(s[:2])<=26 and f(s[2:]))))(s)
+# https://leetcode.com/problems/decode-ways/discuss/657987/python-4-lines-recursive-most-readable
 
 class Solution:
     def numDecodings(self, s: str) -> int:

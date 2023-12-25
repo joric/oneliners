@@ -286,8 +286,6 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
 
             expected = vc(func, 'return', expected)
 
-            print(type(res), type(expected))
-
             # leetcode does not convert bool result to int result since Aug 2023
             ok = False if type(res)==bool and type(expected)==int else check(res, expected, *args)
 

@@ -6,15 +6,15 @@ There are paper book on one-liners, search them online, it's an interesting read
 
 #### Python One-Liners: Write Concise, Eloquent Python Like a Professional
 
-* https://www.amazon.com/Python-One-Liners-Concise-Eloquent-Professional/dp/1718500505
-
 By Christian Mayer (June 2, 2020, No Starch Press, Inc. ISBN-10: 1-7185-0050-5, ISBN-13: 978-1-7185-0050)
+
+* https://www.amazon.com/Python-One-Liners-Concise-Eloquent-Professional/dp/1718500505
 
 #### Don't Piss down my back and tell me it's raining: Notebook for Sarcastic, Witty, and Sharp Tongued One Liners
 
-* https://www.amazon.com/Dont-Piss-down-back-raining/dp/B08ZQGV1XH
-
 By Joric McLean (March 18, 2021, Independently published, ASIN: B08ZQGV1XH, ISBN-13: 979-8724248327)
+
+* https://www.amazon.com/Dont-Piss-down-back-raining/dp/B08ZQGV1XH
 
 ### Tricks
 

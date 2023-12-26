@@ -1,5 +1,10 @@
 from lc import *
 
+class Solution:
+    @cache
+    def numRollsToTarget(self, n: int, k: int, t: int) -> int:
+        return(sum(self.numRollsToTarget(n-1,k,t-i-1)for i in range(min(t,k)))if n else t<1)%(10**9+7)
+
 # https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/discuss/2652744/Python-Terrible-One-Line-That-Works*-(assuming-you-are-using-a-super-computer)-TLE
 
 class Solution:

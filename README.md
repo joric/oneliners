@@ -1039,4 +1039,4 @@ class Solution:
 * https://github.com/finxter/PythonOneLiners
 * https://youtu.be/8k2AbqTBxao?t=251 (Stephen Fry)
 * https://codegolf.stackexchange.com/questions/54/tips-for-golfing-in-python
-
+* https://redd.it/15wz7n7 (one-line coder makes me depressed)

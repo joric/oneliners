@@ -2,7 +2,7 @@ from lc import *
 
 class Solution:
     def numRollsToTarget(self, n: int, k: int, t: int) -> int:
-        return(f:=cache(lambda n,t:sum(f(n-1,t-i-1)for i in range(min(t,k)))if n else t==0))(n,t)%(10**9+7)
+        return(f:=cache(lambda n,t:sum(f(n-1,t-i-1)for i in range(min(t,k)))if n else t<1))(n,t)%(10**9+7)
 
 test('''
 1155. Number of Dice Rolls With Target Sum

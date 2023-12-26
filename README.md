@@ -58,8 +58,9 @@ You can also use `__import__('module').func` to import from unlisted modules (i.
 ```python
 class Solution:
     def minimumDeviation(self, n: List[int]) -> int:
-        return next((min(r,s[-1]-s[0]) for _ in count() if not(s[-1]%2==0 and (r:=min(r,s[-1]-s[0]),s.add(
-        s.pop()//2)))),(s:=__import__('sortedcontainers').SortedList(i%2 and i*2 or i for i in n),r:=inf))
+        return next((min(r,s[-1]-s[0]) for _ in count() if not(s[-1]%2==0 and (r:=min(r,
+        s[-1]-s[0]),s.add(s.pop()//2)))),(s:=__import__('sortedcontainers').SortedList(
+        i%2 and i*2 or i for i in n),r:=inf))
 ```
 
 Sometimes you can save on casting the return type, e.g. Leetcode autoconverts keys and mixed types to lists.
@@ -399,8 +400,8 @@ class Solution:
         return False
 
 class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-        return next(((m[target-x],i) for i,x in enumerate(nums) if target-x in m or setitem(m,x,i)),m:={})
+    def twoSum(self, n: List[int], t: int) -> List[int]:
+        return next(((m[t-x],i)for i,x in enumerate(n)if t-x in m or setitem(m,x,i)),m:={})
 ```
 
 * https://leetcode.com/problems/break-a-palindrome/discuss/1481905/Python-3-one-line
@@ -415,7 +416,7 @@ class Solution:
 
 class Solution:
     def breakPalindrome(self, s: str) -> str:
-        return next((s[:i]+'a'+s[i+1:] for i in range(len(s)//2) if s[i]!='a'), s[:-1] and s[:-1]+'b')
+        return next((s[:i]+'a'+s[i+1:]for i in range(len(s)//2)if s[i]!='a'),s[:-1]and s[:-1]+'b')
 ```
 * https://leetcode.com/problems/construct-target-array-with-multiple-sums
 
@@ -440,7 +441,7 @@ class Solution:
 class Solution:
     def isPossible(self, target: List[int]) -> bool:
         return (s:=sum(target),q:=[-a for a in target],heapify(q)) and next((x==1 for _ in count()
-            if (x:=-heappop(q))==1 or s==x or (d:=1+(x-1)%(s-x))==x or not (s:=s-x+d,heappush(q,-d))),1)
+        if (x:=-heappop(q))==1 or s==x or (d:=1+(x-1)%(s-x))==x or not (s:=s-x+d,heappush(q,-d))),1)
 ```
 
 You can also use `takewhile()`, it's also a generator, so you need to expand it (e.g. with `repeat(0)`).
@@ -785,7 +786,7 @@ class Solution:
 
 class Solution:
     def swapNodes(self, h: Optional[ListNode], k: int) -> Optional[ListNode]:
-        l=[h]+[h:=h.next for _ in[1]*10**5 if h];a,b=l[k-1],l[~k];a.val,b.val=b.val,a.val;return l[0]
+        l=[h]+[h:=h.next for _ in[1]*10**5if h];a,b=l[k-1],l[~k];a.val,b.val=b.val,a.val;return l[0]
 ```
 
 #### Misc
@@ -884,13 +885,13 @@ Example:
 ```python
 class Solution:
     def generateMatrix(self, n: int) -> List[List[int]]:
-        return [[4*(n-(a:=min(min(i,n-i-1),min(j,n-j-1))))*a+(i+j-2*a+1,4*(n-2*a-1)-(i+j-2*a)+1)[i>j]
-            for j in range(n)] for i in range(n)]
+        return [[4*(n-(a:=min(min(i,n-i-1),min(j,n-j-1))))*a+(i+j-2*a+1,4*(n-2*a-1)-(
+        i+j-2*a)+1)[i>j] for j in range(n)] for i in range(n)]
 
 class Solution:
     def generateMatrix(self, n: int) -> List[List[int]]:
-        r=range(n);return[[4*(n-(a:=min(i,j,~i+n,~j+n)))*a+(i+j-2*a+1,4*n-6*a-i-j-3)[i>j]
-            for j in r]for i in r]
+        r=range(n);return[[4*(n-(a:=min(i,j,~i+n,~j+n)))*a+(i+j-2*a+1,4*n-6*a-i-j-3)
+        [i>j]for j in r]for i in r]
 ```
 
 * You can replace `0 if x==y else z` with `x-y and z`, it's a little bit counterintuitive, but shorter.
@@ -975,7 +976,7 @@ class Solution:
 ```python
 class Solution:
     def simplifyPath(self, path: str) -> str:
-        return '/'+'/'.join(reduce(lambda r,p:(r+[p]*('.'!=p!=''),r[:-1])[p=='..'],path.split('/'),[]))
+        return'/'+'/'.join(reduce(lambda r,p:(r+[p]*('.'!=p!=''),r[:-1])[p=='..'],path.split('/'),[]))
 ```
 
 Python 3 lacks `cmp` (3-way compare) and sign function (`copysign(bool(x),x)` is too long), but you can use `(x>0)-(x<0)` for `sign(x)`

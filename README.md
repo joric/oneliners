@@ -2,10 +2,21 @@
 
 ### Books
 
-There is a paper book about Python one-liners, search it online, it's an interesting read.
+There are paper book on one-liners, search them online, it's an interesting read.
 
-* Python One-Liners: Write Concise, Eloquent Python Like a Professional by Christian Mayer
-  (June 2, 2020, No Starch Press, Inc. ISBN-10: 1-7185-0050-5, ISBN-13: 978-1-7185-0050)
+#### Python One-Liners: Write Concise, Eloquent Python Like a Professional
+
+* https://www.amazon.com/Python-One-Liners-Concise-Eloquent-Professional/dp/1718500505
+
+Python One-Liners: Write Concise, Eloquent Python Like a Professional by Christian Mayer
+(June 2, 2020, No Starch Press, Inc. ISBN-10: 1-7185-0050-5, ISBN-13: 978-1-7185-0050)
+
+#### Don't Piss down my back and tell me it's raining: Notebook for Sarcastic, Witty, and Sharp Tongued One Liners
+
+* https://www.amazon.com/Dont-Piss-down-back-raining/dp/B08ZQGV1XH
+
+Don't Piss down my back and tell me it's raining: Notebook for Sarcastic, Witty, and Sharp Tongued One Liners by Joric McLean
+(March 18, 2021, Independently published, ASIN: B08ZQGV1XH, ISBN-13: 979-8724248327)
 
 ### Tricks
 
@@ -1029,3 +1040,4 @@ class Solution:
 * https://github.com/finxter/PythonOneLiners
 * https://youtu.be/8k2AbqTBxao?t=251 (Stephen Fry)
 * https://codegolf.stackexchange.com/questions/54/tips-for-golfing-in-python
+

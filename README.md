@@ -230,7 +230,7 @@ class Solution:
 ```python
 class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
-        return nsmallest(k, (f:=Counter(words)).keys(), key=lambda x:(-f[x],x))
+        return nsmallest(k,(f:=Counter(words)).keys(),lambda x:(-f[x],x))
 ```
 
 #### Setting list values

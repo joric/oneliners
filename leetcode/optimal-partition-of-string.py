@@ -51,7 +51,7 @@ class Solution:
 
 class Solution:
     def partitionString(self, s: str) -> int:
-        return (d:='') or sum(c==(d:=(d+c,c)[c in d]) for c in s)
+        return(d:='')or sum(c==(d:=(d+c,c)[c in d])for c in s)
 
 test('''
 

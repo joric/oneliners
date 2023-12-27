@@ -1,5 +1,11 @@
 from lc import *
 
+# https://leetcode.com/problems/minimum-changes-to-make-alternating-binary-string/discuss/4449328/wesimple-one-liner
+
+class Solution:
+    def minOperations(self, s: str) -> int:
+        return min(sum(c==str((i+j)%2)for j,c in enumerate(s))for i in(0,1))
+
 # https://leetcode.com/problems/minimum-changes-to-make-alternating-binary-string/discuss/4081867/Easy-solution-1-line
 
 class Solution:

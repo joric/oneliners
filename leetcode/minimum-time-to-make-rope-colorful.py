@@ -3,8 +3,14 @@ from lc import *
 # https://leetcode.com/problems/minimum-time-to-make-rope-colorful/discuss/1259943/Python-3-one-line
 
 class Solution:
-    def minCost(self, s: str, c: List[int]) -> int:
-        return sum(c)-sum(max(x for _,x in v)for _,v in groupby(zip(s,c),key=itemgetter(0)))
+    def minCost(self, c: str, t: List[int]) -> int:
+        return sum(t)-sum(max(x for _,x in g)for _,g in groupby(zip(c,t),key=itemgetter(0)))
+
+# https://leetcode.com/problems/minimum-time-to-make-rope-colorful/discuss/4463238/WeSimple-One-Liner!
+
+class Solution:
+    def minCost(self, c: str, t: List[int]) -> int:
+        return sum(t)-sum(max(g)[1]for _,g in groupby(zip(c,t),itemgetter(0)))
 
 test('''
 1578. Minimum Time to Make Rope Colorful

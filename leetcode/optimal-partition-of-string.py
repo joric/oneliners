@@ -19,7 +19,7 @@ class Solution:
     def partitionString(self, s: str) -> int:
         return (d:=set(),r:=1,all((c in d and (d:=set(),r:=r+1),d.add(c)) for c in s),r)[3]
 
-# this is actually faster
+# https://leetcode.com/problems/optimal-partition-of-string/discuss/3377422/Python-3-one-line
 
 class Solution:
     def partitionString(self, s: str) -> int:

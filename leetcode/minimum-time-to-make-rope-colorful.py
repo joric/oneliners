@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/minimum-time-to-make-rope-colorful/discuss/1259943/Python-3-one-line
+
 class Solution:
     def minCost(self, s: str, c: List[int]) -> int:
         return sum(c)-sum(max(x for _,x in v)for _,v in groupby(zip(s,c),key=itemgetter(0)))

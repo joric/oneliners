@@ -45,6 +45,8 @@ class Solution:
 
         return dp(0, d)
 
+# https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule/discuss/3828046/Python-Elegant-recursion-or-3-lines-97-.-Faster-than-your-worst-nightmare
+
 class Solution:
     def minDifficulty(self, j: List[int], d: int) -> int:
         @cache
@@ -55,8 +57,6 @@ class Solution:
             if i == len(j): return inf
             return min(f(i+1,j[i],d-1)+p,f(i+1,max(p,j[i]),d))
         return f(0,0,d)
-
-# https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule/discuss/3828046/Python-Elegant-recursion-or-3-lines-97-.-Faster-than-your-worst-nightmare
 
 # 162 ms
 class Solution:

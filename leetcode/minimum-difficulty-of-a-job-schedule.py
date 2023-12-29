@@ -65,11 +65,6 @@ class Solution:
     def minDifficulty(self, j: List[int], d: int) -> int:
         return(f:=cache(lambda i,p,d:max([*j[i:],p])if d<1else min(f(i+1,j[i],d-1)+p,f(i+1,max(p,j[i]),d))if j[i:]else inf))(0,0,d)if j[d-1:]else-1
 
-# 2270 ms
-class Solution:
-    def minDifficulty(self, j: List[int], d: int) -> int:
-        return(f:=cache(lambda i,p,d:min(f(i+1,j[i],d-1)+p,f(i+1,max(p,j[i]),d))if j[i:]else d and inf or max([*j[i:],p])))(0,0,d)if j[d-1:]else-1
-
 # 1445 ms
 class Solution:
     def minDifficulty(self, j: List[int], d: int) -> int:

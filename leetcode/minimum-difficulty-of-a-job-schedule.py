@@ -58,9 +58,20 @@ class Solution:
 
 # https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule/discuss/3828046/Python-Elegant-recursion-or-3-lines-97-.-Faster-than-your-worst-nightmare
 
+# 162 ms
+class Solution:
+    def minDifficulty(self, j: List[int], d: int) -> int:
+        return(f:=cache(lambda i,p,d:max([*j[i:],p])if d<1else min(f(i+1,j[i],d-1)+p,f(i+1,max(p,j[i]),d))if j[i:]else inf))(0,0,d)if j[d-1:]else-1
+
+# 2270 ms
 class Solution:
     def minDifficulty(self, j: List[int], d: int) -> int:
         return(f:=cache(lambda i,p,d:min(f(i+1,j[i],d-1)+p,f(i+1,max(p,j[i]),d))if j[i:]else d and inf or max([*j[i:],p])))(0,0,d)if j[d-1:]else-1
+
+# 2708 ms
+class Solution:
+    def minDifficulty(self, j: List[int], d: int) -> int:
+        return(f:=cache(lambda i,p,d:min(f(i+1,j[i],d-1)+p,f(i+1,max(p,j[i]),d))if j[i:]else(max([*j[i:],p]),inf)[d>0]))(0,0,d)if j[d-1:]else-1
 
 test('''
 You want to schedule a list of jobs in d days. Jobs are dependent (i.e To work on the ith job, you have to finish all the jobs j where 0 <= j < i).

@@ -53,8 +53,10 @@ class Solution:
         def f(i,p,d):
             if len(j) < d:
                 return -1
-            if d == 0:         return max([*j[i:],p])
-            if i == len(j): return inf
+            if d == 0:
+                return max([*j[i:],p])
+            if i == len(j):
+                return inf
             return min(f(i+1,j[i],d-1)+p,f(i+1,max(p,j[i]),d))
         return f(0,0,d)
 

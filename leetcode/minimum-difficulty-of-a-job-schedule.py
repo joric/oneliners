@@ -1,50 +1,5 @@
 from lc import *
 
-class Solution:
-    def minDifficulty(self, j:List[int], d: int) -> int:
-        n = len(j)
-        @cache
-        def dp(i, r):
-            if i == n:
-                return -1
-            m = inf
-            o = 0
-            if r == 1:
-                for i in range(i, n):
-                    o = max(o, j[i])
-                return o
-            for i in range(i, n):
-                o = max(o, j[i])
-                q = dp(i + 1, r - 1)
-                if q > -1:
-                    m = min(m, o + q)
-            return -1 if m == inf else m
-        return dp(0, d)
-
-class Solution:
-    def minDifficulty(self, j:List[int], d: int) -> int:
-        @cache
-        def dp(i, d):
-            m, o = inf, 0
-
-            if i == len(j):
-                return -1
-
-            if d == 1:
-                for i in range(i, len(j)):
-                    o = max(o, j[i])
-                return o
-
-            for i in range(i, len(j)):
-                o = max(o, j[i])
-                r = dp(i + 1, d - 1)
-                if r > -1:
-                    m = min(m, o + r)
-
-            return -1 if m == inf else m
-
-        return dp(0, d)
-
 # https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule/discuss/3828046/Python-Elegant-recursion-or-3-lines-97-.-Faster-than-your-worst-nightmare
 
 class Solution:
@@ -69,6 +24,12 @@ class Solution:
 class Solution:
     def minDifficulty(self, j: List[int], d: int) -> int:
         return(f:=cache(lambda i,p,d:min(f(i+1,j[i],d-1)+p,f(i+1,max(p,j[i]),d))if j[i:]else(max([*j[i:],p]),inf)[d>0]if j[d-1:]else-1))(0,0,d)
+
+# https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule/discuss/993055/python-3-recursion-+-memoization/2187240
+# 155 ms
+class Solution:
+    def minDifficulty(self, b: List[int], d: int) -> int:
+        return-1 if(n:=len(b))<d else(f:=cache(lambda i,k,h:min(f(i+1,k,h:=max(h,b[i])),h+f(i+1,k-1,0))if(n-i)*k else(n-i+k)*10**5))(0,d,0)
 
 test('''
 You want to schedule a list of jobs in d days. Jobs are dependent (i.e To work on the ith job, you have to finish all the jobs j where 0 <= j < i).
@@ -104,6 +65,10 @@ Example 4:
 
 Input: jobDifficulty=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], d = 10
 Output: 0 
+
+Example 5:
+Input: jobDifficulty = [11,111,22,222,33,333,44,444], d = 6
+Output: 843
 
 Constraints:
 

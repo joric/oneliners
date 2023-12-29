@@ -26,6 +26,7 @@ class Solution:
         return(f:=cache(lambda i,p,d:min(f(i+1,j[i],d-1)+p,f(i+1,max(p,j[i]),d))if j[i:]else(max([*j[i:],p]),inf)[d>0]if j[d-1:]else-1))(0,0,d)
 
 # https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule/discuss/993055/python-3-recursion-+-memoization/2187240
+
 # 155 ms
 class Solution:
     def minDifficulty(self, b: List[int], d: int) -> int:

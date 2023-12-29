@@ -45,6 +45,23 @@ class Solution:
 
         return dp(0, d)
 
+class Solution:
+    def minDifficulty(self, j: List[int], d: int) -> int:
+        @cache
+        def f(i,p,d):
+            if len(j) < d:
+                return -1
+            if d == 0:         return max([*j[i:],p])
+            if i == len(j): return inf
+            return min(f(i+1,j[i],d-1)+p,f(i+1,max(p,j[i]),d))
+        return f(0,0,d)
+
+# https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule/discuss/3828046/Python-Elegant-recursion-or-3-lines-97-.-Faster-than-your-worst-nightmare
+
+class Solution:
+    def minDifficulty(self, j: List[int], d: int) -> int:
+        return-1 if d>len(j)else(f:=cache(lambda i,p,d:max([*j[i:],p])if d<1else inf if i==len(j)else min(f(i+1,j[i],d-1)+p,f(i+1,max(p,j[i]),d))))(0,0,d)
+
 test('''
 You want to schedule a list of jobs in d days. Jobs are dependent (i.e To work on the ith job, you have to finish all the jobs j where 0 <= j < i).
 
@@ -74,7 +91,11 @@ Example 3:
 Input: jobDifficulty = [1,1,1], d = 3
 Output: 3
 Explanation: The schedule is one job per day. total difficulty will be 3.
- 
+
+Example 4:
+
+Input: jobDifficulty=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], d = 10
+Output: 0 
 
 Constraints:
 

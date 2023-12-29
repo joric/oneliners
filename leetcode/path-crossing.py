@@ -27,6 +27,10 @@ class Solution:
 
 class Solution:
     def isPathCrossing(self, p: str) -> bool:
+        return len(p)>=len(set(accumulate(map({'N':1j,'E':1,'S':-1j,'W':-1}.get,p),initial=0)))
+
+class Solution:
+    def isPathCrossing(self, p: str) -> bool:
         return len(p)>=len({0,*accumulate(map({'N':1j,'E':1,'S':-1j,'W':-1}.get,p))})
 
 class Solution:

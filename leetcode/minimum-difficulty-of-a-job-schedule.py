@@ -30,7 +30,7 @@ class Solution:
 # 155 ms
 class Solution:
     def minDifficulty(self, b: List[int], d: int) -> int:
-        return d>(n:=len(b))and-1or(f:=cache(lambda i,k,h:min(f(i+1,k,h:=max(h,b[i])),h+f(i+1,k-1,0))if k*(n-i)else(n-i+k)*10**5))(0,d,0)
+        return d>(n:=len(b))and-1or(f:=cache(lambda i,j,k:min(f(i+1,j,k:=max(k,b[i])),k+f(i+1,j-1,0))if j*(n-i)else(n-i+j)*10**5))(0,d,0)
 
 test('''
 You want to schedule a list of jobs in d days. Jobs are dependent (i.e To work on the ith job, you have to finish all the jobs j where 0 <= j < i).

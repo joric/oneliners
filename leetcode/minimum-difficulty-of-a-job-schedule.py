@@ -30,10 +30,6 @@ class Solution:
 # 155 ms
 class Solution:
     def minDifficulty(self, b: List[int], d: int) -> int:
-        return-1 if(n:=len(b))<d else(f:=cache(lambda i,k,h:min(f(i+1,k,h:=max(h,b[i])),h+f(i+1,k-1,0))if(n-i)*k else(n-i+k)*10**5))(0,d,0)
-
-class Solution:
-    def minDifficulty(self, b: List[int], d: int) -> int:
         return d>(n:=len(b))and-1or(f:=cache(lambda i,k,h:min(f(i+1,k,h:=max(h,b[i])),h+f(i+1,k-1,0))if(n-i)*k else(n-i+k)*10**5))(0,d,0)
 
 test('''

@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def makeEqual(self, w: List[str]) -> bool:
-        return not any(c%len(w)for c in Counter(''.join(w)).values())
+        return all(1>c%len(w)for c in Counter(''.join(w)).values())
 
 test('''
 1897. Redistribute Characters to Make All Strings Equal

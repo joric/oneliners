@@ -6,6 +6,10 @@ class Solution:
     def makeEqual(self, w: List[str]) -> bool:
         return all(1>c%len(w)for c in Counter(''.join(w)).values())
 
+class Solution:
+    def makeEqual(self, w: List[str]) -> bool:
+        c=Counter(''.join(w));return all(1>c[k]%len(w)for k in c)
+
 test('''
 1897. Redistribute Characters to Make All Strings Equal
 Easy

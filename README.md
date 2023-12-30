@@ -587,6 +587,8 @@ class Solution:
             set(g:= {i + j*1j: val for i, row in enumerate(grid) for j, val in enumerate(row)})))
 ```
 
+Complex numbers in general are very useful as 2d coordinates:
+
 * https://leetcode.com/problems/path-crossing
 
 ```python

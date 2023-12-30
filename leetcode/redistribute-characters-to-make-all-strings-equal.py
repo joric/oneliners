@@ -1,6 +1,6 @@
 from lc import *
 
-# https://leetcode.com/problems/redistribute-characters-to-make-all-strings-equal
+# https://leetcode.com/problems/redistribute-characters-to-make-all-strings-equal/discuss/1268442/Python-Two-Lines-Or-One-Line/2188272
 
 class Solution:
     def makeEqual(self, w: List[str]) -> bool:

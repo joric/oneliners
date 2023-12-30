@@ -1,5 +1,11 @@
 from lc import *
 
+# https://leetcode.com/problems/redistribute-characters-to-make-all-strings-equal/discuss/2492035/Python-very-short-and-easy-without-Counter
+
+class Solution:
+    def makeEqual(self, w: List[str]) -> bool:
+        j=''.join(w);return all(1>j.count(c)%len(w)for c in set(j))
+
 # https://leetcode.com/problems/redistribute-characters-to-make-all-strings-equal/discuss/1268442/Python-Two-Lines-Or-One-Line/2188272
 
 class Solution:

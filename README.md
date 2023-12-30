@@ -587,6 +587,14 @@ class Solution:
             set(g:= {i + j*1j: val for i, row in enumerate(grid) for j, val in enumerate(row)})))
 ```
 
+* https://leetcode.com/problems/path-crossing
+
+```python
+class Solution:
+    def isPathCrossing(self, p: str) -> bool:
+        z=0;return len(p)>=len({0,*{z:=z+1j**'NESW'.find(c)for c in p}})
+```
+
 
 You can convert lists or tuples to `True` with `!=0` instead of `bool()` (3 chars shorter).
 

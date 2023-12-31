@@ -6,6 +6,10 @@ class Solution:
     def maxLengthBetweenEqualCharacters(self, s: str) -> int:
         return max(s.rfind(c)-s.find(c)for c in s)-1
 
+class Solution:
+    def maxLengthBetweenEqualCharacters(self, s: str) -> int:
+        return~-max(s.rfind(c)-s.find(c)for c in s)
+
 test('''
 1624. Largest Substring Between Two Equal Characters
 Easy

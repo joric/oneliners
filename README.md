@@ -1040,7 +1040,7 @@ class Solution:
 * Conditions like `if i<len(r)` may be replaced with `if r[i:]`, it's 3 characters shorter.
 * You can replace `set(n)` with `{*n}` (2 characters shorter).
 * You can use `~~()` instead of `int()`, akin to js (1 character shorter) but it only works for booleans.
-* You can replace `-1` and `not` with bitwise negation `~-` to save on space (1-5 characters shorter).
+* You can replace `-1` or `not` with bitwise negation `~-` to save on space (1-5 characters shorter).
 * In most cases `x==0` can be replaced with `x<1` (1 character shorter)
 
 ## References

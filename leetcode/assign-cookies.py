@@ -6,6 +6,10 @@ class Solution:
     def findContentChildren(self, g: List[int], s: List[int]) -> int:
         s.sort();return len([s.pop()for x in sorted(g)[::-1]if s and s[-1]>=x])
 
+class Solution:
+    def findContentChildren(self, g: List[int], s: List[int]) -> int:
+        s.sort();return sum(0<s.pop()for x in sorted(g)[::-1]if s and s[-1]>=x)
+
 test('''
 455. Assign Cookies
 Easy

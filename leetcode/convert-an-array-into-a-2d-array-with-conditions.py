@@ -14,6 +14,12 @@ class Solution:
     def findMatrix(self, n: List[int]) -> List[List[int]]:
         c=Counter(n);return[[x for x,v in c.items()if i<v]for i in range(max(c.values()))]
 
+# https://leetcode.com/problems/convert-an-array-into-a-2d-array-with-conditions/discuss/3368523/JavaC%2B%2BPython-Maximum-Frequence
+
+class Solution:
+    def findMatrix(self, n: List[int]) -> List[List[int]]:
+        c=Counter(n);k=max(c.values());return[[*c.elements()][i::k]for i in range(k)]
+
 test('''
 2610. Convert an Array Into a 2D Array With Conditions
 Medium

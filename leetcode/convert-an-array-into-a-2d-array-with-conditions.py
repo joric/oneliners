@@ -67,6 +67,6 @@ Accepted
 36,356
 Submissions
 43,547
-''', check=lambda res, exp, nums:[*map(sorted,res)]==[*map(sorted,exp)]
+''', check=lambda res, exp, nums:sorted(chain(*res))==sorted(chain(*exp)) and all(len(set(r))==len(r) for r in res)
 )
 

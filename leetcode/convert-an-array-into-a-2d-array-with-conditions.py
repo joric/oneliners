@@ -6,6 +6,14 @@ class Solution:
     def findMatrix(self, n: List[int]) -> List[List[int]]:
         return[[x for x in r if x]for r in zip_longest(*[[v]*c for v,c in Counter(n).items()])]
 
+class Solution:
+    def findMatrix(self, n: List[int]) -> List[List[int]]:
+        c=Counter(n);return[[x for x in r if x]for r in zip_longest(*[[k]*c[k] for k in c])]
+
+class Solution:
+    def findMatrix(self, n: List[int]) -> List[List[int]]:
+        c=Counter(n);return[[x for x,v in c.items()if i<v]for i in range(max(c.values()))]
+
 test('''
 2610. Convert an Array Into a 2D Array With Conditions
 Medium

@@ -32,7 +32,7 @@ class Solution:
 
 class Solution:
     def numberOfBeams(self, b: List[str]) -> int:
-        y=0;return sum(y*(y:=t)for x in b if(t:=x.count('1')))
+        r=0;return sum(r*(r:=c)for x in b if(c:=x.count('1')))
 
 test('''
 2125. Number of Laser Beams in a Bank

@@ -31,31 +31,7 @@ class Solution:
 
 class Solution:
     def minTaps(self, n: int, r: List[int]) -> int:
-        a=b=c=0;return next(c for _ in r if not(b<n and[(b:=i+x)for i,x in enumerate(r)if i-x<=a and i+x>b]!=0and(c:=a==b and-1or c+1,a:=b)and c>0))
-
-class Solution:
-    def minTaps(self, n: int, r: List[int]) -> int:
         a=b=c=0;return next(c for _ in r if not(b<n and[(b:=i+x)for i,x in enumerate(r)if i-x<=a and i+x>b]!=0and(c:=(c+1,-1)[a==b],a:=b)and c>0))
-
-# https://leetcode.com/problems/minimum-number-of-taps-to-open-to-water-a-garden/discuss/3508593/Minimum-Number-of-Taps-to-Open-to-Water-a-Garden-(C)
-
-class Solution:
-    def minTaps(self, n: int, r: List[int]) -> int:
-        @cache
-        def f(i):
-            if i<=0:
-                return 0
-            c = inf
-            for j in range(i,-1,-1):
-                if r[j]>0 and r[j]+j>=i:
-                    c = min(c,1+f(j-r[j]))
-            return c
-        c = f(n)
-        return -1 if c>=inf else c
-
-class Solution:
-    def minTaps(self, n: int, r: List[int]) -> int:
-        return(-1,c:=(f:=cache(lambda i:i>0and min([1+f(j-r[j])for j in range(i+1)if 0<r[j]>=i-j]+[inf])))(n))[c<inf]
 
 test('''
 1326. Minimum Number of Taps to Open to Water a Garden
@@ -100,6 +76,12 @@ Example 3:
 
 Input: n = 7, ranges = [1,2,1,0,2,1,0,1]
 Output: 3
+
+
+Example 4:
+
+Input: n = 202, ranges = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0, 1, 1, 1, 1]
+Output: 2
 
 Constraints:
 

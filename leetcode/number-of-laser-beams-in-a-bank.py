@@ -1,5 +1,11 @@
 from lc import *
 
+# https://leetcode.com/problems/number-of-laser-beams-in-a-bank/discuss/2272999/PYTHON-3-99.13-LESS-MEMORY-or-94.93-FASTER-or-EXPLANATION
+
+class Solution:
+    def numberOfBeams(self, b: List[str]) -> int:
+        b=[c for s in b if(c:=s.count('1'))];return sum(map(mul,b[1:],b))
+
 # https://leetcode.com/problems/number-of-laser-beams-in-a-bank/discuss/1660943/Python3-Java-C%2B%2B-Simple-O(mn)
 
 class Solution:

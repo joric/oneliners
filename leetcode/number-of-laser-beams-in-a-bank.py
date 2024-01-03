@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def numberOfBeams(self, b: List[str]) -> int:
-        return sum(starmap(mul,pairwise([t for x in b if (t:=x.count('1'))])))
+        return sum(starmap(mul,pairwise(t for x in b if (t:=x.count('1')))))
 
 class Solution:
     def numberOfBeams(self, b: List[str]) -> int:

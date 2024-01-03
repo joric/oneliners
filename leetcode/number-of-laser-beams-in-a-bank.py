@@ -4,6 +4,10 @@ from lc import *
 
 class Solution:
     def numberOfBeams(self, b: List[str]) -> int:
+        return sum(starmap(mul,pairwise([t for x in b if (t:=x.count('1'))])))
+
+class Solution:
+    def numberOfBeams(self, b: List[str]) -> int:
         b=[c for s in b if(c:=s.count('1'))];return sum(map(mul,b[1:],b))
 
 # https://leetcode.com/problems/number-of-laser-beams-in-a-bank/discuss/1660943/Python3-Java-C%2B%2B-Simple-O(mn)
@@ -25,6 +29,10 @@ class Solution:
 class Solution:
     def numberOfBeams(self, b: List[str]) -> int:
         r=p=0;[(c:=s.count('1'))and(r:=r+p*c,p:=c)for s in b];return r
+
+class Solution:
+    def numberOfBeams(self, b: List[str]) -> int:
+        y=0;return sum(y*(y:=t)for x in b if(t:=x.count('1')))
 
 test('''
 2125. Number of Laser Beams in a Bank

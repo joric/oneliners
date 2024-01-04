@@ -6,7 +6,6 @@ class Solution:
     def minOperations(self, n: List[int]) -> int:
         v=Counter(n).values();return(sum((x+2)//3for x in v),-1)[1 in v]
 
-
 test('''
 2870. Minimum Number of Operations to Make Array Empty
 Medium

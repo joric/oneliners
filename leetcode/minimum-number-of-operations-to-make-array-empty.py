@@ -1,15 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/minimum-number-of-operations-to-make-array-empty/discuss/4110907/Python-one-line
-
-class Solution:
-    def minOperations(self, n: List[int]) -> int:
-        v=Counter(n).values();return 1<min(v)and sum(x//3+(x%3>0)for x in v)or-1
-
-class Solution:
-    def minOperations(self, n: List[int]) -> int:
-        v=Counter(n).values();return(-1,sum(x//3+(x%3>0)for x in v))[1<min(v)]
-
 # https://leetcode.com/problems/minimum-number-of-operations-to-make-array-empty/discuss/4130880/RustPython-linear-solution-with-detailed-explanation
 
 class Solution:

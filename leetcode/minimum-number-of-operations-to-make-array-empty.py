@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def minOperations(self, n: List[int]) -> int:
-        v=Counter(n).values();return(-1,sum((x+2)//3for x in v))[1<min(v)]
+        v=Counter(n).values();return(-1,sum((x+2)//3for x in v))[min(v)>1]
 
 test('''
 2870. Minimum Number of Operations to Make Array Empty

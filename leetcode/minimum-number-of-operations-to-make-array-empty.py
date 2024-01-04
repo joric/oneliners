@@ -1,10 +1,11 @@
 from lc import *
 
-# https://leetcode.com/problems/minimum-number-of-operations-to-make-array-empty/discuss/4130880/RustPython-linear-solution-with-detailed-explanation
+# https://leetcode.com/problems/minimum-number-of-operations-to-make-array-empty/discuss/4109985/JavaC%2B%2BPython-(frequency-%2B-2)-3
 
 class Solution:
     def minOperations(self, n: List[int]) -> int:
-        v=Counter(n).values();return(-1,sum((x+2)//3for x in v))[min(v)>1]
+        v=Counter(n).values();return(sum((x+2)//3for x in v),-1)[1 in v]
+
 
 test('''
 2870. Minimum Number of Operations to Make Array Empty

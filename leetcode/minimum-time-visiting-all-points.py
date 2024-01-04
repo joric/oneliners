@@ -14,6 +14,10 @@ class Solution:
 
 class Solution:
     def minTimeToVisitAllPoints(self, p: List[List[int]]) -> int:
+        return sum(max(abs(a-c),abs(b-d))for(a,b),(c,d)in zip(p,p[1:]))
+
+class Solution:
+    def minTimeToVisitAllPoints(self, p: List[List[int]]) -> int:
         return sum(max(abs(a-c),abs(b-d))for(a,b),(c,d)in pairwise(p))
 
 test('''

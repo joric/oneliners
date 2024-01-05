@@ -1,5 +1,27 @@
 from lc import *
 
+# recursion (gives TLE)
+# https://leetcode.com/problems/longest-increasing-subsequence/discuss/1396475/Recursive-and-Dp-code
+
+class Solution:
+    def lengthOfLIS(self, n: List[int]) -> int:
+        @cache
+        def f(i,j):
+            if i==len(n):
+                return 0
+            a = 0
+            if j==-1 or n[j]<n[i]:
+                a = 1+f(i+1,i)
+            b = f(i+1,j)
+            return max(a,b)
+        return f(0,-1)
+
+class Solution:
+    def lengthOfLIS(self, n: List[int]) -> int:
+        return(f:=cache(lambda i,j:n[i:]and max((j==-1or n[j]<n[i])and 1+f(i+1,i),f(i+1,j))or 0))(0,-1)
+
+# dp solution
+
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         if not nums or len(nums) == 0:

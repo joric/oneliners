@@ -19,6 +19,10 @@ class Solution:
 
 class Solution:
     def lengthOfLIS(self, n: List[int]) -> int:
+        d=[];[setitem(d,slice(i:=bisect_left(d,x),i+1),[x])for x in n];return len(d)
+
+class Solution:
+    def lengthOfLIS(self, n: List[int]) -> int:
         d=[inf]*2501;[setitem(d,bisect_left(d,x),x)for x in n];return d.index(inf)
 
 test('''

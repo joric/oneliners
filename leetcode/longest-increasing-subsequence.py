@@ -41,6 +41,10 @@ class Solution:
     def lengthOfLIS(self, n: List[int]) -> int:
         return max(map((f:=cache(lambda i:1+max([0]+[f(j)for j in range(i)if n[j]<n[i]]))),range(len(n))))
 
+class Solution:
+    def lengthOfLIS(self, n: List[int]) -> int:
+        return max(map((f:=cache(lambda i:1+max(n[j]<n[i]and f(j)for j in range(i+1)))),range(len(n))))
+
 # dp solution
 
 class Solution:

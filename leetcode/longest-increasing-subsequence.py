@@ -20,6 +20,27 @@ class Solution:
     def lengthOfLIS(self, n: List[int]) -> int:
         return(f:=cache(lambda i,j:n[i:]and max((j==-1or n[j]<n[i])and 1+f(i+1,i),f(i+1,j))or 0))(0,-1)
 
+# https://leetcode.com/problems/longest-increasing-subsequence/submissions
+
+class Solution:
+    def lengthOfLIS(self, n: List[int]) -> int:
+        @cache
+        def f(i):
+            r = 1
+            for j in range(i):
+                if n[j] < n[i]:
+                    r = max(r, f(j) + 1)
+            return r
+        return max(f(i)for i in range(len(n)))
+
+class Solution:
+    def lengthOfLIS(self, n: List[int]) -> int:
+        return max(map((f:=cache(lambda i:max((1+f(j)for j in range(i)if n[j]<n[i]),default=1))),range(len(n))))
+
+class Solution:
+    def lengthOfLIS(self, n: List[int]) -> int:
+        return max(map((f:=cache(lambda i:max([1]+[1+f(j)for j in range(i)if n[j]<n[i]]))),range(len(n))))
+
 # dp solution
 
 class Solution:

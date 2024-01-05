@@ -55,6 +55,10 @@ Input: nums = [7,7,7,7,7,7,7]
 Output: 1
  
 
+Example 4:
+Input: nums = [-1,-2,-3,-4,-5,-6]
+Output: 1
+
 Constraints:
 
 1 <= nums.length <= 2500

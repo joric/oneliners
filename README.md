@@ -800,7 +800,7 @@ class Solution:
 #### Misc
 
 * `key=itemgetter(n)` is the same length as `key=lambda x:x[n]` but a little bit clearer to read.
-Sometimes you can skip `itemgetter(0)` by converting an argument to a tuple (15 characters shorter):
+Sometimes you can even skip `itemgetter(0)` by converting an argument to a tuple (15 characters shorter).
 
 Example:
 

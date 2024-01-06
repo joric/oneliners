@@ -818,6 +818,24 @@ class Solution:
 
 ```
 
+Sometimes you can skip `itemgetter(0)` by converting an argument to a tuple (15 characters shorter):
+
+* https://leetcode.com/problems/maximum-profit-in-job-scheduling
+
+```python
+
+class Solution:
+    def jobScheduling(self, s: List[int], e: List[int], p: List[int]) -> int:
+        a=sorted(zip(s,e,p));return(f:=cache(lambda i:i-len(a)and max(f(
+            bisect_left(a,a[i][1],key=itemgetter(0)))+a[i][2],f(i+1))))(0)
+
+class Solution:
+    def jobScheduling(self, s: List[int], e: List[int], p: List[int]) -> int:
+        a=sorted(zip(s,e,p));return(f:=cache(lambda i:i-len(a)and max(f(
+            bisect_left(a,(a[i][1],)))+a[i][2],f(i+1))))(0)
+
+```
+
 You could also use `map(list.pop, v)` instead of `[x[-1] for x in v]` to collect the last elements.
 
 * https://leetcode.com/problems/diagonal-traverse-ii

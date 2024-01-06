@@ -800,29 +800,18 @@ class Solution:
 #### Misc
 
 * `key=itemgetter(n)` is the same length as `key=lambda x:x[n]` but a little bit clearer to read.
+Sometimes you can skip `itemgetter(0)` by converting an argument to a tuple (15 characters shorter):
 
 Example:
-
-* https://leetcode.com/problems/maximum-profit-in-job-scheduling/discuss/616818/Python-4-liner-DFS%2BMemoization
-
-```python
-class Solution:
-    def jobScheduling(self, s: List[int], endTime: List[int], profit: List[int]) -> int:
-        return (a:=sorted(zip(startTime,endTime,profit))) and (f:=cache(lambda i:0 if i==len(a) else
-            max(f(bisect_left(a,a[i][1],key=lambda x:x[0]))+a[i][2],f(i+1))))(0)
-
-class Solution:
-    def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
-        return (a:=sorted(zip(startTime,endTime,profit))) and (f:=cache(lambda i:i-len(a) and
-            max(f(bisect_left(a,a[i][1],key=itemgetter(0)))+a[i][2],f(i+1))))(0)
-
-```
-
-Sometimes you can skip `itemgetter(0)` by converting an argument to a tuple (15 characters shorter):
 
 * https://leetcode.com/problems/maximum-profit-in-job-scheduling
 
 ```python
+
+class Solution:
+    def jobScheduling(self, s: List[int], e: List[int], p: List[int]) -> int:
+        a=sorted(zip(s,e,p));return(f:=cache(lambda i:i-len(a)and max(f(
+            bisect_left(a,a[i][1],key=lambda x:x[0]))+a[i][2],f(i+1))))(0)
 
 class Solution:
     def jobScheduling(self, s: List[int], e: List[int], p: List[int]) -> int:

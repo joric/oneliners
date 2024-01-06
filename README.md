@@ -901,7 +901,7 @@ Example:
 ```python
 class Solution:
     def generateMatrix(self, n: int) -> List[List[int]]:
-        r=range(n);return [[4*(n-(a:=min(min(i,n-i-1),min(j,n-j-1))))
+        r=range(n);return[[4*(n-(a:=min(min(i,n-i-1),min(j,n-j-1))))
             *a+(i+j-2*a+1,4*(n-2*a-1)-(i+j-2*a)+1)[i>j] for j in r] for i in r]
 
 class Solution:

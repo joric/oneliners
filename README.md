@@ -984,7 +984,7 @@ Example:
 ```python
 class Solution:
     def removeStars(self, s: str) -> str:
-        return reduce(lambda r,c:(r+c,r[:-1])[c=='*'],s,'')
+        return reduce(lambda r,c:(r[:-1],r+c)[c>'*'],s)
 ```
 
 * https://leetcode.com/problems/simplify-path

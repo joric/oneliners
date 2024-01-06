@@ -836,7 +836,7 @@ class Solution:
         return map(list.pop,sorted([i+j,j,t]for i,r in enumerate(n)for j,t in enumerate(r)))
 ```
 
-Using `zip` to get individual elements from the list of tuples is usually shorter, but not always:
+Using `zip` to get elements from the list of tuples is usually shorter, but not always:
 
 * https://leetcode.com/problems/minimum-number-of-vertices-to-reach-all-nodes
 

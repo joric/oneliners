@@ -901,13 +901,13 @@ Example:
 ```python
 class Solution:
     def generateMatrix(self, n: int) -> List[List[int]]:
-        return [[4*(n-(a:=min(min(i,n-i-1),min(j,n-j-1))))*a+(i+j-2*a+1,4*(n-2*a-1)-(
-        i+j-2*a)+1)[i>j] for j in range(n)] for i in range(n)]
+        r=range(n);return [[4*(n-(a:=min(min(i,n-i-1),min(j,n-j-1))))
+            *a+(i+j-2*a+1,4*(n-2*a-1)-(i+j-2*a)+1)[i>j] for j in r] for i in r]
 
 class Solution:
     def generateMatrix(self, n: int) -> List[List[int]]:
-        r=range(n);return[[4*(n-(a:=min(i,j,~i+n,~j+n)))*a+(i+j-2*a+1,4*n-6*a-i-j-3)
-        [i>j]for j in r]for i in r]
+        r=range(n);return[[4*(n-(a:=min(i,j,~i+n,~j+n)))
+            *a+(i+j-2*a+1,4*n-6*a-i-j-3)[i>j]for j in r]for i in r]
 ```
 
 * You can replace `0 if x==y else z` with `x-y and z`, it's a little bit counterintuitive, but shorter.

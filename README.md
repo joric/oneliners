@@ -22,6 +22,12 @@ By Joric McLean (March 18, 2021, Independently published, ASIN: B08ZQGV1XH, ISBN
 
 Leetcode imports modules as wildcards, so you don't have to specify module names.
 
+There are some exceptions:
+
+* Single `bisect()` triggers `'module' object is not callable`, use `bisect.bisect()` or `bisect_left()`.
+* You have to specify `re.sub` because just `sub` is `operator.sub`.
+* Default `pow` is `__builtins__['pow']` (supports up to 3 arguments), not `math.pow`.
+
 E.g. Leetcode header has `import * from itertools`, so we use `comb()` instead of `itertools.comb()`:
 
 * https://leetcode.com/problems/unique-paths
@@ -47,12 +53,6 @@ class Solution:
     def generate(self, n: int) -> List[List[int]]:
         return [[comb(i,x) for x in range(i+1)] for i in range(n)]
 ```
-
-There are some exceptions:
-
-* Single `bisect()` triggers `'module' object is not callable`, use `bisect.bisect()` or `bisect_left()`.
-* You have to specify `re.sub` because just `sub` is `operator.sub`.
-* Default `pow` is `__builtins__['pow']` (supports up to 3 arguments), not `math.pow`.
 
 You can also use `__import__('module').func` to import from unlisted modules (i.e. numpy). Example:
 

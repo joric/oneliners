@@ -49,6 +49,11 @@ class Solution:
         return [[comb(i,x) for x in range(i+1)] for i in range(n)]
 ```
 
+There are some issues with overloaded function names.
+
+* You have to specify `re.sub` because just `sub` is `operator.sub`.
+* Default `pow` is `__builtins__['pow']` (supports up to 3 arguments), not `math.pow`.
+
 You can also use `__import__('module').func` to import from unlisted modules (i.e. numpy). Example:
 
 * https://leetcode.com/problems/minimize-deviation-in-array

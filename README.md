@@ -21,7 +21,6 @@ By Joric McLean (March 18, 2021, Independently published, ASIN: B08ZQGV1XH, ISBN
 #### Leetcode-specific
 
 Leetcode imports modules as wildcards, so you don't have to specify module names.
-The only exception is `bisect.bisect()` because bisect is also a module name (just `bisect()` triggers `'module' object is not callable`).
 
 E.g. Leetcode header has `import * from itertools`, so we use `comb()` instead of `itertools.comb()`:
 
@@ -49,8 +48,9 @@ class Solution:
         return [[comb(i,x) for x in range(i+1)] for i in range(n)]
 ```
 
-There are some issues with overloaded function names.
+There are some issues:
 
+* `bisect()` triggers `'module' object is not callable`, use `bisect.bisect()` or `bisect_left()`.
 * You have to specify `re.sub` because just `sub` is `operator.sub`.
 * Default `pow` is `__builtins__['pow']` (supports up to 3 arguments), not `math.pow`.
 

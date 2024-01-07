@@ -21,7 +21,6 @@ class Solution:
                 d = x - nums[j]
                 r += c[j][d]
                 c[i][d] += 1 + c[j][d]
-                print(c,d,r)
         return r 
 
 class Solution:

@@ -30,7 +30,7 @@ class Solution:
 
 class Solution:
     def numberOfArithmeticSlices(self, n: List[int]) -> int:
-        r,c=0,[Counter()for _ in n];return all((d:=x-n[j],r:=r+c[j][d],c[i].update({d:c[j][d]+1}))for i,x in enumerate(n)for j in range(i))and r
+        r,c=0,[Counter()for _ in n];return all((k:=x-n[j],r:=r+c[j][k],c[i].update({k:c[j][k]+1}))for i,x in enumerate(n)for j in range(i))and r
 
 test('''
 446. Arithmetic Slices II - Subsequence

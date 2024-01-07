@@ -28,6 +28,10 @@ class Solution:
     def numberOfArithmeticSlices(self, nums: List[int]) -> int:
         return (r:=0,c:=[Counter() for _ in nums]) and all((d:=x-nums[j],r:=r+c[j][d],setitem(c[i],d,1+c[i][d]+c[j][d])) for i,x in enumerate(nums) for j in range(i)) and r
 
+class Solution:
+    def numberOfArithmeticSlices(self, n: List[int]) -> int:
+        r,c=0,[Counter()for _ in n];return all((d:=x-n[j],r:=r+c[j][d],c[i].update({d:c[j][d]+1}))for i,x in enumerate(n)for j in range(i))and r
+
 test('''
 446. Arithmetic Slices II - Subsequence
 Hard

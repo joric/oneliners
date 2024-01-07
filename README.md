@@ -20,9 +20,7 @@ By Joric McLean (March 18, 2021, Independently published, ASIN: B08ZQGV1XH, ISBN
 
 #### Leetcode-specific
 
-Leetcode imports modules as wildcards, so you don't have to specify module names.
-
-There are some exceptions:
+Leetcode imports modules as wildcards, so you don't have to specify module names. There are some exceptions:
 
 * Single `bisect()` triggers `'module' object is not callable`, use `bisect.bisect()` or `bisect_left()`.
 * You have to specify `re.sub` because just `sub` is `operator.sub`.

@@ -50,7 +50,7 @@ class Solution:
 
 There are some exceptions:
 
-* `bisect()` triggers `'module' object is not callable`, use `bisect.bisect()` or `bisect_left()`.
+* Single `bisect()` triggers `'module' object is not callable`, use `bisect.bisect()` or `bisect_left()`.
 * You have to specify `re.sub` because just `sub` is `operator.sub`.
 * Default `pow` is `__builtins__['pow']` (supports up to 3 arguments), not `math.pow`.
 

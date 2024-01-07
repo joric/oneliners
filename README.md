@@ -48,7 +48,7 @@ class Solution:
         return [[comb(i,x) for x in range(i+1)] for i in range(n)]
 ```
 
-There are some issues:
+There are some exceptions:
 
 * `bisect()` triggers `'module' object is not callable`, use `bisect.bisect()` or `bisect_left()`.
 * You have to specify `re.sub` because just `sub` is `operator.sub`.

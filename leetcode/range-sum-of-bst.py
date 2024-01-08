@@ -22,6 +22,10 @@ class Solution:
     def rangeSumBST(s, r: TreeNode, a: int, b: int) -> int:
         return r and r.val*(a<=r.val<=b)+sum(map(s.rangeSumBST,(r.left,r.right),[a]*2,[b]*2))or 0
 
+class Solution:
+    def rangeSumBST(s, r: TreeNode, a: int, b: int) -> int:
+        return(f:=lambda r:r and r.val*(a<=r.val<=b)+f(r.left)+f(r.right)or 0)(r)
+
 test('''
 
 938. Range Sum of BST

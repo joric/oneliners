@@ -19,12 +19,8 @@ class Solution:
         return root and self.rangeSumBST(root.left, low, high) + self.rangeSumBST(root.right, low, high) + (low <= root.val <= high) * root.val or 0
 
 class Solution:
-    def rangeSumBST(self, root: TreeNode, low: int, high: int) -> int:
-        return bool(root) and root.val*(low<=root.val<=high)+self.rangeSumBST(root.left,low,high)+self.rangeSumBST(root.right,low,high)
-
-class Solution:
-    def rangeSumBST(self, root: TreeNode, low: int, high: int) -> int:
-        return bool(root) and root.val*(low<=root.val<=high)+sum(map(self.rangeSumBST,(root.left,root.right),[low]*2,[high]*2))
+    def rangeSumBST(s, r: TreeNode, a: int, b: int) -> int:
+        return r and r.val*(a<=r.val<=b)+sum(map(s.rangeSumBST,(r.left,r.right),[a]*2,[b]*2))or 0
 
 test('''
 

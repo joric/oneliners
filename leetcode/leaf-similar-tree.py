@@ -1,18 +1,5 @@
 from lc import *
 
-class Solution:
-    def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
-        return(f:=lambda l,r:l if not r else l+[r.val] if not r.left and not r.right else f(f(l,r.left),r.right))([],root1)==f([],root2)
-
-class Solution:
-    def leafSimilar(self, a: Optional[TreeNode], b: Optional[TreeNode]) -> bool:
-        return(f:=lambda l,r:l if not r else l+[r.val] if not (r.left or r.right) else f(f(l,r.left),r.right))([],a)==f([],b)
-
-
-class Solution:
-    def leafSimilar(self, a: Optional[TreeNode], b: Optional[TreeNode]) -> bool:
-        return(f:=lambda l,r:l if not r else l+[r.val] if not (r.left or r.right) else f(f(l,r.left),r.right))([],a)==f([],b)
-
 # https://leetcode.com/problems/leaf-similar-trees/discuss/152873/4-line-Python-Solution
 
 class Solution:
@@ -23,12 +10,6 @@ class Solution:
             if not (r.left or r.right):
                 return [r.val]
             return f(r.left)+f(r.right)
-        return f(a)==f(b)
-
-class Solution:
-    def leafSimilar(self, a: Optional[TreeNode], b: Optional[TreeNode]) -> bool:
-        def f(r):
-            return []if not r else f(r.left)+f(r.right)if(r.left or r.right)else[r.val]
         return f(a)==f(b)
 
 class Solution:

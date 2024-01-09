@@ -20,6 +20,10 @@ class Solution:
     def leafSimilar(self, a: Optional[TreeNode], b: Optional[TreeNode]) -> bool:
         return(f:=lambda r:r and(f(r.left)+f(r.right)or[r.val])or[])(a)==f(b)
 
+class Solution:
+    def leafSimilar(self, a: Optional[TreeNode], b: Optional[TreeNode]) -> bool:
+        return(f:=lambda r:f(r.left)+f(r.right)or[r.val]if r else[])(a)==f(b)
+
 test('''
 
 872. Leaf-Similar Trees

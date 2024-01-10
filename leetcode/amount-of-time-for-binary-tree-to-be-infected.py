@@ -31,11 +31,11 @@ class Solution:
     def amountOfTime(self, r: Optional[TreeNode], s: int) -> int:
         e,v=defaultdict(list),set()
         (g:=lambda r:r and[(e[r.val].append(p.val),e[p.val].append(r.val),g(p))for p in(r.left,r.right)if p])(r)
-        return (f:=lambda i,d:v.add(i)or max([d]+[f(j,d+1)for j in e[i]if j not in v]))(s,0)
+        return(f:=lambda i,d:v.add(i)or max([d]+[f(j,d+1)for j in e[i]if j not in v]))(s,0)
 
 class Solution:
     def amountOfTime(self, r: Optional[TreeNode], s: int) -> int:
-        e,v=defaultdict(list),set();(g:=lambda r:r and[(e[r.val].append(p.val),e[p.val].append(r.val),g(p))for p in(r.left,r.right)if p])(r);return (f:=lambda i,d:v.add(i)or max([d]+[f(j,d+1)for j in e[i]if j not in v]))(s,0)
+        e,v=defaultdict(list),set();(g:=lambda r:r and[(e[r.val].append(p.val),e[p.val].append(r.val),g(p))for p in(r.left,r.right)if p])(r);return(f:=lambda i,d:v.add(i)or max([d]+[f(j,d+1)for j in e[i]if j not in v]))(s,0)
 
 # https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/discuss/2467516/Python3-DFS-Efficient-Solution
 

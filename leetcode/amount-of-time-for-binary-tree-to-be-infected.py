@@ -2,22 +2,25 @@ from lc import *
 
 # https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/discuss/2467516/Python3-DFS-Efficient-Solution
 
-# TODO
 class Solution:
-    def amountOfTime(self, root: Optional[TreeNode], start: int) -> int:
-        def f(root):
-            if root is None:
-                return None, 0
-            node_l, l = f(root.left)
-            node_r, r = f(root.right)
-            if root.val == start:
-                return 0, max(l, r)
-            if node_l is not None:
-                return node_l + 1, max(node_l + 1, l, node_l + 1 + r)
-            if node_r is not None:
-                return node_r + 1, max(node_r + 1, r, node_r + 1 + l)
-            return None, max(l, r) + 1
-        return f(root)[1]
+    def amountOfTime(self, r: Optional[TreeNode], s: int) -> int:
+        def f(n):
+            if not n:
+                return -1, 0
+            p,l = f(n.left)
+            q,r = f(n.right)
+            if n.val == s:
+                return 0,max(l,r)
+            if p>=0:
+                return p+1,max(p+1,l,p+r+1)
+            if q>=0:
+                return q+1,max(q+1,r,q+l+1)
+            return -1,max(l,r)+1
+        return f(r)[1]
+
+class Solution:
+    def amountOfTime(self, r: Optional[TreeNode], s: int) -> int:
+        return(f:=lambda n:n and(lambda p,l,q,r:(0,max(l,r))if n.val==s else(p+1,max(p+1,l,p+r+1))if p>=0 else(q+1,max(q+1,r,q+l+1))if q>=0 else(-1,max(l,r)+1))(*f(n.left),*f(n.right))or(-1,0))(r)[1]
 
 test('''
 2385. Amount of Time for Binary Tree to Be Infected
@@ -59,6 +62,11 @@ Input: root = [1], start = 1
 Output: 0
 Explanation: At minute 0, the only node in the tree is infected so we return 0.
  
+
+Example 3:
+
+Input: root = [1,2,null,3,null,4,null,5], start = 2
+Output: 3
 
 Constraints:
 

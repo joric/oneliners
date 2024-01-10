@@ -67,7 +67,7 @@ class Solution:
 
 class Solution:
     def amountOfTime(self, n: Optional[TreeNode], s: int) -> int:
-        return(f:=lambda n:n and(lambda a,b,c,d,e,f:(n.val==s)*(1,1,max(a,d))or(b+e)*(1+b*a+e*d,1,max(a+d,c,f))or(1+max(a,d),0,0))(*f(n.left),*f(n.right))or[0]*3)(n)[2]
+        return(f:=lambda n:n and(lambda a,b,c,d,e,f:(n.val==s)*(1,1,m:=max(a,d))or(b+e)*(1+b*a+e*d,1,max(a+d,c,f))or(1+m,0,0))(*f(n.left),*f(n.right))or[0]*3)(n)[2]
 
 test('''
 2385. Amount of Time for Binary Tree to Be Infected

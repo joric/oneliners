@@ -1,10 +1,6 @@
 from lc import *
 
-'''
-int maxAncestorDiff(TreeNode* r,  int a = 1000000, int b = -1) {
-        return r?max({maxAncestorDiff(r->left,min(a,r->val),max(b,r->val)),maxAncestorDiff(r->right,min(a, r->val),max(b,r->val))}):b-a;}
-};
-'''
+# https://leetcode.com/problems/maximum-difference-between-node-and-ancestor
 
 class Solution:
     def maxAncestorDiff(s, r,a=inf,b=-1):
@@ -12,7 +8,7 @@ class Solution:
 
 class Solution:
     def maxAncestorDiff(self, r: TreeNode) -> int:
-        return(f:=lambda r,a,b:max(f(r.left,min(a,r.val),max(b,r.val)),f(r.right,min(a,r.val),max(b,r.val)))if r else b-a)(r,inf,0)
+        return(f:=lambda r,a,b:r and max(f(r.left,min(a,r.val),max(b,r.val)),f(r.right,min(a,r.val),max(b,r.val)))or b-a)(r,inf,0)
 
 test('''
 

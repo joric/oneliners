@@ -22,6 +22,10 @@ class Solution:
     def maxAncestorDiff(self, r: TreeNode) -> int:
         return(f:=lambda r,a,b:r and max(f(r.left,x:=min(a,r.val),y:=max(b,r.val)),f(r.right,x,y))or b-a)(r,inf,0)
 
+class Solution:
+    def maxAncestorDiff(self, r: Optional[TreeNode]) -> int:
+        return(f:=lambda r,a,b:r and max(f(n,min(a,v:=r.val),max(b,v))for n in[r.left,r.right])or b-a)(r,inf,0)
+
 test('''
 
 1026. Maximum Difference Between Node and Ancestor

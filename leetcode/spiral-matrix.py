@@ -1,5 +1,21 @@
 from lc import *
 
+# https://leetcode.com/problems/spiral-matrix/discuss/264242/5-line-Python-Iterative-solution-with-explanation
+
+class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        res = []
+        while matrix:
+            res.extend(matrix.pop(0))
+            matrix = list(zip(*matrix))[::-1]
+        return res
+
+class Solution:
+    def spiralOrder(self, m: List[List[int]]) -> List[int]:
+        return next((r for _ in count() if not(m and(r.extend(m.pop(0)),m:=[*zip(*m)][::-1]))),r:=[])
+
+# https://leetcode.com/problems/spiral-matrix/discuss/20571/1-liner-in-Python-%2B-Ruby
+
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
         return matrix and [*matrix.pop(0)] + self.spiralOrder([*zip(*matrix)][::-1])

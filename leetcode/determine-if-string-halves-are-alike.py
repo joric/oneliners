@@ -74,6 +74,7 @@ Example 1:
 Input: s = "book"
 Output: true
 Explanation: a = "bo" and b = "ok". a has 1 vowel and b has 1 vowel. Therefore, they are alike.
+
 Example 2:
 
 Input: s = "textbook"

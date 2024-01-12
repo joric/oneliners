@@ -43,7 +43,7 @@ class Solution:
 
 class Solution:
     def halvesAreAlike(self, s: str) -> bool:
-        return sum((i<len(s)//2)*2-1for i,c in enumerate(s.lower())if c in'aeiou')==0
+        return sum((i<len(s)//2)*2-1for i,c in enumerate(s)if c.lower()in'aeiou')==0
 
 test('''
 

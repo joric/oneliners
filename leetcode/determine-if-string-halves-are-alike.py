@@ -4,7 +4,11 @@ from lc import *
 
 class Solution:
     def halvesAreAlike(self, s: str) -> bool:
-        return (v:=set('aeiouAEIOU')) and sum((s[i] in v)-(s[~i] in v) for i in range(len(s)//2))==0
+        return(v:=set('aeiouAEIOU'))and sum((s[i] in v)-(s[~i] in v) for i in range(len(s)//2))==0
+
+class Solution:
+    def halvesAreAlike(self, s: str) -> bool:
+        v=set('aeiouAEIOU');return sum((s[i]in v)-(s[~i]in v)for i in range(len(s)//2))==0
 
 test('''
 
@@ -37,7 +41,11 @@ Input: s = "textbook"
 Output: false
 Explanation: a = "text" and b = "book". a has 1 vowel whereas b has 2. Therefore, they are not alike.
 Notice that the vowel o is counted twice.
- 
+
+Example 3:
+
+Input: s = "AbCdEfGh"
+Output: true
 
 Constraints:
 

@@ -86,6 +86,11 @@ Example 3:
 Input: s = "AbCdEfGh"
 Output: true
 
+Example 4:
+
+Input: s = "Uaec"
+Output: false
+
 Constraints:
 
 2 <= s.length <= 1000

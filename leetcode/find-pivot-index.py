@@ -1,16 +1,16 @@
 from lc import *
 
-# https://leetcode.com/problems/find-pivot-index/discuss/2406148/Python-or-One-Liner-or-Easy-to-Understand
-
-class Solution:
-    def pivotIndex(self, n: List[int]) -> int:
-        return next((i for i in range(len(n))if sum(n[:i])==sum(n[i+1:])),-1)
-
 # https://leetcode.com/problems/find-pivot-index/discuss/4064483/Using-two-accumulate-calls-in-Python
 
 class Solution:
     def pivotIndex(self, n: List[int]) -> int:
         a=accumulate;l,r=[*a(n)],[*a(n[::-1])][::-1];return next((i for i in range(len(n))if l[i]==r[i]),-1)
+
+# https://leetcode.com/problems/find-pivot-index/discuss/2406148/Python-or-One-Liner-or-Easy-to-Understand
+
+class Solution:
+    def pivotIndex(self, n: List[int]) -> int:
+        return next((i for i in range(len(n))if sum(n[:i])==sum(n[i+1:])),-1)
 
 test('''
 724. Find Pivot Index

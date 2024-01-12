@@ -1,18 +1,28 @@
 from lc import *
 
-# https://leetcode.com/problems/find-pivot-index/discuss/4064483/Using-two-accumulate-calls-in-Python
+# https://leetcode.com/problems/find-pivot-index/discuss/2406148/Python-or-One-Liner-or-Easy-to-Understand
+
+class Solution:
+    def pivotIndex(self, n: List[int]) -> int:
+        l, r = 0, sum(n)
+        for i,x in enumerate(n):
+            r -= x
+            if l==r:
+                return i
+            l += x
+        return -1
 
 class Solution:
     def pivotIndex(self, n: List[int]) -> int:
         a=accumulate;return next((i for i,(a,b)in enumerate(zip(a(n),[*a(n[::-1])][::-1]))if a==b),-1)
 
-# https://leetcode.com/problems/find-pivot-index/discuss/2406148/Python-or-One-Liner-or-Easy-to-Understand
+class Solution:
+    def pivotIndex(self, n: List[int]) -> int:
+        l,r=0,sum(n);return next((i for i,x in enumerate(n)if(l:=l+x)-x==(r:=r-x)),-1)
 
 class Solution:
     def pivotIndex(self, n: List[int]) -> int:
         return next((i for i in range(len(n))if sum(n[:i])==sum(n[i+1:])),-1)
-
-
 
 test('''
 724. Find Pivot Index
@@ -43,12 +53,14 @@ Explanation:
 The pivot index is 3.
 Left sum = nums[0] + nums[1] + nums[2] = 1 + 7 + 3 = 11
 Right sum = nums[4] + nums[5] = 5 + 6 = 11
+
 Example 2:
 
 Input: nums = [1,2,3]
 Output: -1
 Explanation:
 There is no index that satisfies the conditions in the problem statement.
+
 Example 3:
 
 Input: nums = [2,1,-1]
@@ -57,7 +69,11 @@ Explanation:
 The pivot index is 0.
 Left sum = 0 (no elements to the left of index 0)
 Right sum = nums[1] + nums[2] = 1 + -1 = 0
- 
+
+Example 4:
+
+Input: nums = [-1,-1,-1,1,1,1]
+Output: -1
 
 Constraints:
 

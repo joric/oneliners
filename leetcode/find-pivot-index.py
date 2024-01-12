@@ -4,13 +4,15 @@ from lc import *
 
 class Solution:
     def pivotIndex(self, n: List[int]) -> int:
-        a=accumulate;l,r=[*a(n)],[*a(n[::-1])][::-1];return next((i for i in range(len(n))if l[i]==r[i]),-1)
+        a=accumulate;return next((i for i,(a,b)in enumerate(zip(a(n),[*a(n[::-1])][::-1]))if a==b),-1)
 
 # https://leetcode.com/problems/find-pivot-index/discuss/2406148/Python-or-One-Liner-or-Easy-to-Understand
 
 class Solution:
     def pivotIndex(self, n: List[int]) -> int:
         return next((i for i in range(len(n))if sum(n[:i])==sum(n[i+1:])),-1)
+
+
 
 test('''
 724. Find Pivot Index

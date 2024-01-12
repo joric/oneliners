@@ -45,6 +45,10 @@ class Solution:
     def halvesAreAlike(self, s: str) -> bool:
         return sum((i<len(s)//2)*2-1for i,c in enumerate(s)if c.lower()in'aeiou')==0
 
+class Solution:
+    def halvesAreAlike(self, s: str) -> bool:
+        return sum((i*2<len(s))*2-1for i,c in enumerate(s)if c in'aeiouAEIOU')==0
+
 test('''
 
 1704. Determine if String Halves Are Alike

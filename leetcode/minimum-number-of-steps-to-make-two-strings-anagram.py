@@ -10,6 +10,10 @@ class Solution:
     def minSteps(self, s: str, t: str) -> int:
         a,b=map(Counter,(s,t));return sum(max(a[c]-b[c],0)for c in a)
 
+class Solution:
+    def minSteps(self, s: str, t: str) -> int:
+        return sum((Counter(s)-Counter(t)).values())
+
 test('''
 1347. Minimum Number of Steps to Make Two Strings Anagram
 Medium

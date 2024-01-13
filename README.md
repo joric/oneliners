@@ -861,7 +861,7 @@ class Solution:
         return {*range(n)}-{j for _,j in edges}
 ```
 
-* You can can use `a!=b!=c` in a single boolean condition, similar to `0<=i<n` and `n>j>=0<=i<n`.
+* You can can use `a!=b!=c` in a single boolean condition, similar to `0<=i<n` and `n>j>=0<=i<m`.
 
 Example:
 

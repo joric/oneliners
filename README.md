@@ -160,6 +160,20 @@ class Solution:
 
 ```
 
+Since Python 3.10 you can use `total()` to compute sum of the counts.
+
+* https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram
+
+```python
+class Solution:
+    def minSteps(self, s: str, t: str) -> int:
+        return sum((Counter(s)-Counter(t)).values())
+
+class Solution:
+    def minSteps(self, s: str, t: str) -> int:
+        return(Counter(s)-Counter(t)).total()
+```
+
 #### Y-Combinator
 
 You can define and call a recursive function in a single line with Y-combinator, e.g.:

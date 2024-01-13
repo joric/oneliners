@@ -886,7 +886,7 @@ class Solution:
 
 ```
 
-Note Python handles comparisons in the same order as `and` operator (log throws exception if n==0):
+Note Python handles comparisons in the same order as `and` operator (e.g. `log` throws exception if n==0):
 
 * https://leetcode.com/problems/power-of-four
 

@@ -192,7 +192,7 @@ Walrus operator syntax is much more concise:
 return (f:=lambda x:1 if x==0 else x*f(x-1))(5)
 ```
 
-It seems to be the most useful operator here, many oneliners would be impossible to do without it (or rather, very hard, with nested lambdas/Y-combinator).
+Many oneliners would be impossible to do without it (or rather, very hard, with nested lambdas).
 Sometimes you don't even need extra brackets, e.g. in `map(f:=x,y)` or `next(g,f:=x)` so it may be shorter than operators separated by semicolons.
 
 * https://leetcode.com/problems/time-needed-to-inform-all-employees

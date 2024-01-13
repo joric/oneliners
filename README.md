@@ -828,11 +828,6 @@ Example:
 class Solution:
     def jobScheduling(self, s: List[int], e: List[int], p: List[int]) -> int:
         a=sorted(zip(s,e,p));return(f:=cache(lambda i:i-len(a)and max(f(
-            bisect_left(a,a[i][1],key=lambda x:x[0]))+a[i][2],f(i+1))))(0)
-
-class Solution:
-    def jobScheduling(self, s: List[int], e: List[int], p: List[int]) -> int:
-        a=sorted(zip(s,e,p));return(f:=cache(lambda i:i-len(a)and max(f(
             bisect_left(a,a[i][1],key=itemgetter(0)))+a[i][2],f(i+1))))(0)
 
 class Solution:

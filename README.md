@@ -176,17 +176,17 @@ class Solution:
 
 #### Walrus operator
 
+The controversial walrus operator (`:=`) from [PEP-572](https://peps.python.org/pep-0572/)
+(that [made Guido resign](https://www.infoworld.com/article/3292936/guido-van-rossum-resigns-whats-next-for-python.html)),
+can be used to define or update a variable or a function that's used repeatedly.
+
 You can define and call a recursive function in a single line with Y-combinator, e.g.:
 
 ```python
 return (lambda y,x:y(y,x))(lambda f,x:1 if x==0 else x*f(f,x-1),5)
 ```
 
-The controversial walrus operator (`:=`) from [PEP-572](https://peps.python.org/pep-0572/)
-(that [made Guido resign](https://www.infoworld.com/article/3292936/guido-van-rossum-resigns-whats-next-for-python.html)),
-can be used to define or update a variable or a function that's used repeatedly.
-
-Walrus operator syntax is much more concise than Y-combinator:
+Walrus operator syntax is much more concise:
 
 ```python
 return (f:=lambda x:1 if x==0 else x*f(x-1))(5)

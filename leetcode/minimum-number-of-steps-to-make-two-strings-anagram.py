@@ -14,6 +14,18 @@ class Solution:
     def minSteps(self, s: str, t: str) -> int:
         return sum((Counter(s)-Counter(t)).values())
 
+class Solution:
+    def minSteps(self, s: str, t: str) -> int:
+        return(Counter(s)-Counter(t)).total()
+
+class Solution:
+    def minSteps(self, s: str, t: str) -> int:
+        c=Counter;return(c(s)-c(t)).total()
+
+class Solution:
+    def minSteps(self, s: str, t: str) -> int:
+        c=Counter;return(c(s)-c(t)).total()
+
 test('''
 1347. Minimum Number of Steps to Make Two Strings Anagram
 Medium

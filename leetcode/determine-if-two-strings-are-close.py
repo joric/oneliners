@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/determine-if-two-strings-are-close/discuss/1029064/Python-Oneliner-with-Counter-explained
+
 class Solution:
     def closeStrings(self, w1: str, w2: str) -> bool:
         return set(w1)==set(w2) and sorted(Counter(w1).values())==sorted(Counter(w2).values())
@@ -7,6 +9,10 @@ class Solution:
 class Solution:
     def closeStrings(self, a: str, b: str) -> bool:
         c=Counter;return{*a}=={*b}and sorted(c(a).values())==sorted(c(b).values())
+
+class Solution:
+    def closeStrings(self, a: str, b: str) -> bool:
+        c=Counter;return{*a}=={*b}and reduce(eq,(c(c(p).values())for p in(a,b)))
 
 class Solution:
     def closeStrings(self, a: str, b: str) -> bool:

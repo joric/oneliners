@@ -37,7 +37,8 @@ class Solution:
 
 class Solution:
     def findMaximumNumber(self, k: int, x: int) -> int:
-        return bisect_right(range(1<<50),k,key=lambda v:sum((v>>c<<c-1)+max(v%(t:=1<<c)-t/2,0)for c in range(x,50,x)))-2
+        return bisect_right(range(1<<50),k,key=lambda v:sum(v/(t:=1<<c)//2*t+v%t*(v&t>0)for c in range(x-1,50,x)))-2
+
 
 test('''
 3007. Maximum Number That Sum of the Prices Is Less Than or Equal to K

@@ -83,11 +83,11 @@ class Solution:
     def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
         f=lambda s:((p:=[0]*len(s),[setitem(p,i,next((c+(s[i]==s[c])for _ in s if not(c and s[i]!=s[c]and(c:=p[c-1]))),c:=p[i-1]))for i in range(1,len(s))])and p)
         v,w=[[i-len(w)*2for i,x in enumerate(f(w+'#'+s))if x>=len(w)]for w in(a,b)]
-        return[x for x in v if(lambda i,x:any(0<=i<len(w)and abs(w[i]-x)<=k for i in(i,i-1)))(bisect_left(w,x),x)]
+        return[x for x in v if(lambda i:any(0<=i<len(w)and abs(w[i]-x)<=k for i in(i,i-1)))(bisect_left(w,x))]
 
 class Solution:
     def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
-        f=lambda s:((p:=[0]*len(s),[setitem(p,i,next((c+(s[i]==s[c])for _ in s if not(c and s[i]!=s[c]and(c:=p[c-1]))),c:=p[i-1]))for i in range(1,len(s))])and p);v,w=[[i-len(w)*2for i,x in enumerate(f(w+'#'+s))if x>=len(w)]for w in(a,b)];return[x for x in v if(lambda i,x:any(0<=i<len(w)and abs(w[i]-x)<=k for i in(i,i-1)))(bisect_left(w,x),x)]
+        f=lambda s:((p:=[0]*len(s),[setitem(p,i,next((c+(s[i]==s[c])for _ in s if not(c and s[i]!=s[c]and(c:=p[c-1]))),c:=p[i-1]))for i in range(1,len(s))])and p);v,w=[[i-len(w)*2for i,x in enumerate(f(w+'#'+s))if x>=len(w)]for w in(a,b)];return[x for x in v if(lambda i:any(0<=i<len(w)and abs(w[i]-x)<=k for i in(i,i-1)))(bisect_left(w,x))]
 
 test('''
 3006. Find Beautiful Indices in the Given Array I

@@ -2,7 +2,7 @@ from lc import *
 
 # https://leetcode.com/problems/find-beautiful-indices-in-the-given-array-ii/discuss/4561875/Python-Kmp-%2B-Two-Pointers-O(n)
 
-# v,w=[[m.start(1)for m in finditer('(?=('+w+'))',s)]for w in(a,b)] # find overlaps but too slow
+# v,w=[[m.start(1)for m in finditer('(?=('+w+'))',s)]for w in(a,b)] # finds overlaps but too slow
 
 class Solution:
     def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
@@ -42,18 +42,22 @@ class Solution:
 
 class Solution:
     def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
-        d={w:[m.start()for m in finditer(w,s)]for w in(a,b)}
+        v,w=[[m.start()for m in finditer(w,s)]for w in(a,b)]
         r = set()
-        for x in d[a]:
-            i = bisect_left(d[b],x)
+        for x in v:
+            i = bisect_left(w,x)
             for j in(i-1,i):
-                if 0<=j<len(d[b]) and abs(d[b][j]-x)<=k:
+                if 0<=j<len(w) and abs(w[j]-x)<=k:
                     r.add(x)
         return sorted(r)
 
 class Solution:
     def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
-        d={w:[m.start()for m in finditer(w,s)]for w in(a,b)};p={x:bisect_left(d[b],x)for x in d[a]};return sorted({x for x in d[a]for j in(p[x],p[x]-1)if 0<=j<len(d[b])and abs(d[b][j]-x)<=k})
+        v,w=[[m.start(1)for m in finditer('(?=('+w+'))',s)]for w in(a,b)];p={x:bisect_left(w,x)for x in v};return sorted({x for x in v for j in(p[x],p[x]-1)if 0<=j<len(w)and abs(w[j]-x)<=k})
+
+class Solution:
+    def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
+        v,w=[[m.start()for m in finditer(w,s)]for w in(a,b)];p={x:bisect_left(w,x)for x in v};return sorted({x for x in v for j in(p[x],p[x]-1)if 0<=j<len(w)and abs(w[j]-x)<=k})
 
 test('''
 3006. Find Beautiful Indices in the Given Array I
@@ -101,6 +105,11 @@ Example 3:
 
 Input: s = "bavgoc", a = "ba", b = "c", k = 6
 Output: [0]
+
+Example 4:
+
+#Input: s = "ababababazzabababb", a = "aba", b = "bb", k = 10
+#Output: [6,11,13]
 
 Constraints:
 

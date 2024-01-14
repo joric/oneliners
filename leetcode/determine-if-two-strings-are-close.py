@@ -18,6 +18,10 @@ class Solution:
     def closeStrings(self, a: str, b: str) -> bool:
         c=Counter;return{*a}=={*b}and c(c(a).values())==c(c(b).values())
 
+class Solution:
+    def closeStrings(self, a: str, b: str) -> bool:
+        c=Counter;v=c.values;return{*a}=={*b}and c(v(c(a)))==c(v(c(b)))
+
 test('''
 
 1657. Determine if Two Strings Are Close

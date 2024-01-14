@@ -4,6 +4,14 @@ class Solution:
     def closeStrings(self, w1: str, w2: str) -> bool:
         return set(w1)==set(w2) and sorted(Counter(w1).values())==sorted(Counter(w2).values())
 
+class Solution:
+    def closeStrings(self, a: str, b: str) -> bool:
+        c=Counter;return{*a}=={*b}and sorted(c(a).values())==sorted(c(b).values())
+
+class Solution:
+    def closeStrings(self, a: str, b: str) -> bool:
+        c=Counter;return{*a}=={*b}and c(c(a).values())==c(c(b).values())
+
 test('''
 
 1657. Determine if Two Strings Are Close

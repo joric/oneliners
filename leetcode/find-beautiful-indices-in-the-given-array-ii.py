@@ -38,8 +38,6 @@ class Solution:
         p = {x:bisect_left(w,x)for x in v}
         return sorted({x for x in v for j in(p[x],p[x]-1)if 0<=j<len(w)and abs(w[j]-x)<=k})
 
-# https://leetcode.com/problems/find-beautiful-indices-in-the-given-array-i/
-
 class Solution:
     def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
         v,w=[[m.start()for m in finditer(w,s)]for w in(a,b)]
@@ -77,22 +75,62 @@ class Solution:
                 p[i] = c + (s[i] == s[c])
             return p
         v,w = [[i-len(w)*2 for i,x in enumerate(kmp(w+'#'+s))if x>=len(w)]for w in(a,b)]
-        return[x for x in v if(lambda i,x:any(0<=i<len(w)and abs(w[i]-x)<=k for i in(i,i-1)))(bisect_left(w,x),x)]
+        return[x for x in v if bisect_left(w,x-k)!=bisect_right(w,x+k)]
 
 class Solution:
     def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
         f=lambda s:((p:=[0]*len(s),[setitem(p,i,next((c+(s[i]==s[c])for _ in s if not(c and s[i]!=s[c]and(c:=p[c-1]))),c:=p[i-1]))for i in range(1,len(s))])and p)
-        v,w=[[i-len(w)*2for i,x in enumerate(f(w+'#'+s))if x>=len(w)]for w in(a,b)]
-        return[x for x in v if(lambda i:any(0<=i<len(w)and abs(w[i]-x)<=k for i in(i,i-1)))(bisect_left(w,x))]
+        v,w=[[i-len(w)*2 for i,x in enumerate(f(w+'#'+s))if x>=len(w)]for w in(a,b)]
+        return[x for x in v if bisect_left(w,x-k)<bisect_right(w,x+k)]
 
 class Solution:
     def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
-        f=lambda s:((p:=[0]*len(s),[setitem(p,i,next((c+(s[i]==s[c])for _ in s if not(c and s[i]!=s[c]and(c:=p[c-1]))),c:=p[i-1]))for i in range(1,len(s))])and p);v,w=[[i-len(w)*2for i,x in enumerate(f(w+'#'+s))if x>=len(w)]for w in(a,b)];return[x for x in v if(lambda i:any(0<=i<len(w)and abs(w[i]-x)<=k for i in(i,i-1)))(bisect_left(w,x))]
+        f=lambda s:((p:=[0]*len(s),[setitem(p,i,next((c+(s[i]==s[c])for _ in s if not(c and s[i]!=s[c]and(c:=p[c-1]))),c:=p[i-1]))for i in range(1,len(s))])and p);v,w=[[i-len(w)*2 for i,x in enumerate(f(w+'#'+s))if x>=len(w)]for w in(a,b)];w+=[inf];return[x for x in v if w[bisect_left(w,x-k)]<=x+k]
 
 class Solution:
     def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
-        f=lambda s:((p:=[0]*len(s),[setitem(p,i,next((c+(s[i]==s[c])for _ in s if not(c and s[i]!=s[c]and(c:=p[c-1]))),c:=p[i-1]))for i in range(1,len(s))])and p);v,w=[[i-len(w)*2for i,x in enumerate(f(w+'#'+s))if x>=len(w)]for w in(a,b)];w+=[inf];return[x for x in v if w[bisect_left(w,x-k)]<=x+k]
+        def rk(s,a):
+            MOD = 998244353
+            BASE = 6752341
+            n = len(s)
+            ai = []
+            bi = [-1e8]
+            out = []
+            ha = 0
+            for c in a:
+                ha *= BASE
+                ha += ord(c)
+                ha %= MOD
+            aa = len(a)
+            ch = 0
+            sub = pow(BASE, aa, MOD)
+            for i in range(n):
+                ch *= BASE
+                ch += ord(s[i])
+                if i >= aa:
+                    ch -= ord(s[i - aa]) * sub
+                ch %= MOD
+                if ch == ha:
+                    ai.append(i - aa + 1)
+            return ai
+        v,w = [rk(s,w) for w in(a,b)]
+        return[x for x in v if bisect_left(w,x-k)<bisect_right(w,x+k)]
 
+class Solution:
+    def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
+        def rk(s,w):
+            m = 6752341
+            b = 998244353
+            c = 0
+            n = len(w)
+            h = reduce(lambda h,c:(h*b+ord(c))%m,w,0)
+            return[i-n+1 for i in range(len(s))if h==(c:=((c*b+ord(s[i]))-(i>=n and ord(s[i-n])*pow(b,n,m)or 0))%m)]
+        v,w = map(rk,(s,s),(a,b))
+        return[x for x in v if bisect_left(w,x-k)<bisect_right(w,x+k)]
+
+class Solution:
+    def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
+        v,w=map(lambda s,w:(m:=6752341,b:=998244353,c:=0,n:=len(w),h:=reduce(lambda h,c:(h*b+ord(c))%m,w,0))and[i-n+1for i in range(len(s))if h==(c:=((c*b+ord(s[i]))-(i>=n and ord(s[i-n])*pow(b,n,m)or 0))%m)],(s,s),(a,b));w+=[inf];return[x for x in v if w[bisect_left(w,x-k)]<=x+k]
 
 test('''
 3006. Find Beautiful Indices in the Given Array I
@@ -145,6 +183,21 @@ Example 4:
 
 Input: s = "ababababazzabababb", a = "aba", b = "bb", k = 10
 Output: [6,11,13]
+
+Example 5:
+Input: s = "uefac", a = "aaasa", b = "a", k = 5
+Output: []
+
+Example 6:
+
+Input: s = "dc", a = "dreec", b = "dc", k = 2
+Output: []
+
+
+Example 6:
+
+Input: s = "snwj", a = "snwj", b = "ry", k = 1
+Output: []
 
 Constraints:
 

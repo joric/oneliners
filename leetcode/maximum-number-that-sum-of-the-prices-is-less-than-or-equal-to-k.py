@@ -23,6 +23,16 @@ class Solution:
 
 class Solution:
     def findMaximumNumber(self, k: int, x: int) -> int:
+        def f(n):
+            r = 0
+            for i in range(x - 1, 64, x):
+                m = n % (1 << (i + 1))
+                r += ((n - m) >> 1) + max(m - (1 << i), 0)
+            return r
+        return bisect_right(range((1<<63)-1),k,key=f)-2
+
+class Solution:
+    def findMaximumNumber(self, k: int, x: int) -> int:
         return bisect_right(range((1<<63)-1),k,key=lambda n:sum(((n-(m:=n%(1<<(i+1))))>>1)+max(m-(1<<i),0)for i in range(x-1,64,x)))-2
 
 test('''

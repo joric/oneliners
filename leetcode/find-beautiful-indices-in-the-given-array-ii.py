@@ -38,10 +38,6 @@ class Solution:
         p = {x:bisect_left(w,x)for x in v}
         return sorted({x for x in v for j in(p[x],p[x]-1)if 0<=j<len(w)and abs(w[j]-x)<=k})
 
-class Solution:
-    def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
-        f=lambda s:((p:=[0]*len(s),[setitem(p,i,next((c+(s[i]==s[c])for _ in count() if not(c and s[i]!=s[c]and(c:=p[c-1]))),c:=p[i-1]))for i in range(1,len(s))])and p);v,w=[[i-len(w)*2 for i,x in enumerate(f(w+'#'+s))if x>=len(w)]for w in (a,b)];p={x:bisect_left(w,x)for x in v};return sorted({x for x in v for j in(p[x],p[x]-1)if 0<=j<len(w)and abs(w[j]-x)<=k})
-
 # https://leetcode.com/problems/find-beautiful-indices-in-the-given-array-i/
 
 class Solution:
@@ -58,6 +54,17 @@ class Solution:
 class Solution:
     def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
         v,w=[[m.start()for m in finditer(w,s)]for w in(a,b)];p={x:bisect_left(w,x)for x in v};return sorted({x for x in v for j in(p[x],p[x]-1)if 0<=j<len(w)and abs(w[j]-x)<=k})
+
+class Solution:
+    def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
+        f=lambda s:((p:=[0]*len(s),[setitem(p,i,next((c+(s[i]==s[c])for _ in count() if not(c and s[i]!=s[c]and(c:=p[c-1]))),c:=p[i-1]))for i in range(1,len(s))])and p)
+        v,w=[[i-len(w)*2 for i,x in enumerate(f(w+'#'+s))if x>=len(w)]for w in (a,b)]
+        p={x:bisect_left(w,x)for x in v}
+        return sorted({x for x in v for j in(p[x],p[x]-1)if 0<=j<len(w)and abs(w[j]-x)<=k})
+
+class Solution:
+    def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
+        f=lambda s:((p:=[0]*len(s),[setitem(p,i,next((c+(s[i]==s[c])for _ in count() if not(c and s[i]!=s[c]and(c:=p[c-1]))),c:=p[i-1]))for i in range(1,len(s))])and p);v,w=[[i-len(w)*2 for i,x in enumerate(f(w+'#'+s))if x>=len(w)]for w in (a,b)];p={x:bisect_left(w,x)for x in v};return sorted({x for x in v for j in(p[x],p[x]-1)if 0<=j<len(w)and abs(w[j]-x)<=k})
 
 test('''
 3006. Find Beautiful Indices in the Given Array I
@@ -108,8 +115,8 @@ Output: [0]
 
 Example 4:
 
-#Input: s = "ababababazzabababb", a = "aba", b = "bb", k = 10
-#Output: [6,11,13]
+Input: s = "ababababazzabababb", a = "aba", b = "bb", k = 10
+Output: [6,11,13]
 
 Constraints:
 

@@ -1,34 +1,44 @@
 from lc import *
 
-# https://leetcode.com/problems/find-beautiful-indices-in-the-given-array-i/
+# https://leetcode.com/problems/find-beautiful-indices-in-the-given-array-ii/discuss/4561875/Python-Kmp-%2B-Two-Pointers-O(n)
 
-# LarryNY
+# v,w=[[m.start(1)for m in finditer('(?=('+w+'))',s)]for w in(a,b)] # find overlaps but too slow
 
 class Solution:
     def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
-        N = len(s)
-        NA = len(a)
-        NB = len(b)
-        ar = []
-        br = []
-        for i in range(N):
-            if s[i:i+NA] == a:
-                ar.append(i)
-            if s[i:i+NB] == b:
-                br.append(i)
-        ans = []
-        for x in ar:
-            index = bisect_left(br, x)
-            good = False
-            if 0 <= index < len(br):
-                if abs(br[index] - x) <= k:
-                    good = True
-            if not good and 0 <= index - 1 < len(br):
-                if abs(br[index - 1] - x) <= k:
-                    good = True
-            if good:
-                ans.append(x)
-        return ans
+        def kmp(s):
+            p = [0] * len(s)
+            for i in range(1, len(s)):
+                c = p[i - 1]
+                while c and s[i] != s[c]:
+                    c = p[c - 1]
+                p[i] = c + (s[i] == s[c])
+            return p
+        v,w = [[i-len(w)*2 for i,x in enumerate(kmp(w+'#'+s))if x>=len(w)]for w in (a,b)]
+        r = []
+        j = 0
+        for i in v:
+            while j < len(w) and w[j] < i - k:
+                j += 1
+            if j < len(w) and w[j] <= i + k:
+                r.append(i)
+        return r
+
+class Solution:
+    def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
+        def kmp(s):
+            p = [0] * len(s)
+            for i in range(1, len(s)):
+                c = p[i - 1]
+                while c and s[i] != s[c]:
+                    c = p[c - 1]
+                p[i] = c + (s[i] == s[c])
+            return p
+        v,w = [[i-len(w)*2 for i,x in enumerate(kmp(w+'#'+s))if x>=len(w)]for w in (a,b)]
+        p = {x:bisect_left(w,x)for x in v}
+        return sorted({x for x in v for j in(p[x],p[x]-1)if 0<=j<len(w)and abs(w[j]-x)<=k})
+
+# https://leetcode.com/problems/find-beautiful-indices-in-the-given-array-i/
 
 class Solution:
     def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:

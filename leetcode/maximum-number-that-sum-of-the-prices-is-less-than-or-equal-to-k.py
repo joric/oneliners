@@ -35,6 +35,10 @@ class Solution:
     def findMaximumNumber(self, k: int, x: int) -> int:
         return bisect_right(range((1<<63)-1),k,key=lambda n:sum(((n-(m:=n%(1<<(i+1))))>>1)+max(m-(1<<i),0)for i in range(x-1,64,x)))-2
 
+class Solution:
+    def findMaximumNumber(self, k: int, x: int) -> int:
+        return bisect_right(range(1<<50),k,key=lambda v:sum((v>>c<<c-1)+max(v%(t:=1<<c)-t/2,0)for c in range(x,50,x)))-2
+
 test('''
 3007. Maximum Number That Sum of the Prices Is Less Than or Equal to K
 Medium

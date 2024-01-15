@@ -14,6 +14,10 @@ class Solution:
     def findWinners(self, m: List[List[int]]) -> List[List[int]]:
         a,b=zip(*m);s,c=sorted,Counter(b);return s({*a}-{*b}),s(k for k in c if c[k]<2)
 
+class Solution:
+    def findWinners(self, m: List[List[int]]) -> List[List[int]]:
+        a,b=zip(*m);s,c,d=sorted,Counter,{*b};return s({*a}-d),s(d-{*(c(b)-c(d))})
+
 test('''
 2225. Find Players With Zero or One Losses
 Medium

@@ -2,7 +2,10 @@ from lc import *
 
 # https://leetcode.com/problems/find-beautiful-indices-in-the-given-array-ii/discuss/4561875/Python-Kmp-%2B-Two-Pointers-O(n)
 
-# v,w=[[m.start(1)for m in finditer('(?='+w+')',s)]for w in(a,b)] # finds overlaps but too slow
+class Solution:
+    def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
+        v,w=[[m.start(0)for m in finditer('(?='+w+')',s)]for w in(a,b)] # finds overlaps but too slow
+        return[x for x in v if bisect_left(w,x-k)<bisect_right(w,x+k)]
 
 class Solution:
     def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
@@ -89,35 +92,6 @@ class Solution:
 
 class Solution:
     def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
-        def rk(s,a):
-            MOD = 998244353
-            BASE = 6752341
-            n = len(s)
-            ai = []
-            bi = [-1e8]
-            out = []
-            ha = 0
-            for c in a:
-                ha *= BASE
-                ha += ord(c)
-                ha %= MOD
-            aa = len(a)
-            ch = 0
-            sub = pow(BASE, aa, MOD)
-            for i in range(n):
-                ch *= BASE
-                ch += ord(s[i])
-                if i >= aa:
-                    ch -= ord(s[i - aa]) * sub
-                ch %= MOD
-                if ch == ha:
-                    ai.append(i - aa + 1)
-            return ai
-        v,w = [rk(s,w) for w in(a,b)]
-        return[x for x in v if bisect_left(w,x-k)<bisect_right(w,x+k)]
-
-class Solution:
-    def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
         def rk(s,w):
             m = 6752341
             b = 998244353
@@ -131,6 +105,7 @@ class Solution:
 class Solution:
     def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
         v,w=map(lambda s,w:(m:=6752341,b:=998244353,c:=0,n:=len(w),h:=reduce(lambda h,c:(h*b+ord(c))%m,w,0))and[i-n+1for i in range(len(s))if h==(c:=((c*b+ord(s[i]))-(i>=n and ord(s[i-n])*pow(b,n,m)or 0))%m)],(s,s),(a,b));w+=[inf];return[x for x in v if w[bisect_left(w,x-k)]<=x+k]
+
 
 test('''
 3006. Find Beautiful Indices in the Given Array I
@@ -198,6 +173,11 @@ Example 6:
 
 Input: s = "snwj", a = "snwj", b = "ry", k = 1
 Output: []
+
+Example 7:
+
+Input: s = "onwawarwar", a = "wa", b = "r", k = 2
+Output: [4,7]
 
 Constraints:
 

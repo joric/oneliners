@@ -106,7 +106,6 @@ class Solution:
     def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
         v,w=map(lambda s,w:(m:=6752341,b:=998244353,c:=0,n:=len(w),h:=reduce(lambda h,c:(h*b+ord(c))%m,w,0))and[i-n+1for i in range(len(s))if h==(c:=((c*b+ord(s[i]))-(i>=n and ord(s[i-n])*pow(b,n,m)or 0))%m)],(s,s),(a,b));w+=[inf];return[x for x in v if w[bisect_left(w,x-k)]<=x+k]
 
-
 test('''
 3006. Find Beautiful Indices in the Given Array I
 Medium

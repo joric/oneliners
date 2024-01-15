@@ -7,16 +7,8 @@ class Solution:
         return(lambda win,lose:[sorted(set(win)-set(lose)),sorted(k for k,v in Counter(lose).items() if v==1)])(*zip(*matches))
 
 class Solution:
-    def findWinners(self, m: List[List[int]]) -> List[List[int]]:        
-        return(lambda w,l:[sorted({*w}-{*l}),sorted(k for k,v in Counter(l).items()if v<2)])(*zip(*m))
-
-class Solution:
-    def findWinners(self, m: List[List[int]]) -> List[List[int]]:        
-        return(lambda w,l:[sorted({*w}-{*l}),sorted(k for k,v in Counter(l).items()if v<2)])(*zip(*m))
-
-class Solution:
     def findWinners(self, m: List[List[int]]) -> List[List[int]]:
-        w,l=zip(*m);return sorted({*w}-{*l}),sorted(k for k,v in Counter(l).items()if v<2)
+        a,b=zip(*m);return sorted({*a}-{*b}),sorted(k for k,v in Counter(b).items()if v<2)
 
 test('''
 2225. Find Players With Zero or One Losses

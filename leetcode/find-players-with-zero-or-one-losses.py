@@ -8,7 +8,15 @@ class Solution:
 
 class Solution:
     def findWinners(self, m: List[List[int]]) -> List[List[int]]:
+        a,b=zip(*m);return sorted({*a}-{*b}),sorted(k for k,v in Counter(b).items()if v<2)
+
+class Solution:
+    def findWinners(self, m: List[List[int]]) -> List[List[int]]:
         a,b=zip(*m);return map(sorted,({*a}-{*b},(k for k,v in Counter(b).items()if v<2)))
+
+class Solution:
+    def findWinners(self, m: List[List[int]]) -> List[List[int]]:
+        a,b=zip(*m);return(s:=sorted)({*a}-{*b}),s(k for k,v in Counter(b).items()if v<2)
 
 test('''
 2225. Find Players With Zero or One Losses

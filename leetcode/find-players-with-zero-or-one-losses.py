@@ -10,6 +10,14 @@ class Solution:
     def findWinners(self, m: List[List[int]]) -> List[List[int]]:        
         return(lambda w,l:[sorted({*w}-{*l}),sorted(k for k,v in Counter(l).items()if v<2)])(*zip(*m))
 
+class Solution:
+    def findWinners(self, m: List[List[int]]) -> List[List[int]]:        
+        return(lambda w,l:[sorted({*w}-{*l}),sorted(k for k,v in Counter(l).items()if v<2)])(*zip(*m))
+
+class Solution:
+    def findWinners(self, m: List[List[int]]) -> List[List[int]]:
+        w,l=zip(*m);return sorted({*w}-{*l}),sorted(k for k,v in Counter(l).items()if v<2)
+
 test('''
 2225. Find Players With Zero or One Losses
 Medium

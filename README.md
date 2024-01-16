@@ -138,6 +138,12 @@ the method returns `None`. E.g. `c[i]+=1` is equivalent to `c.update(i)`, `c[i]-
 To set a key, you can use `operator.setitem` function, e.g. `c[x]=1` is the same as `setitem(c,x,1)`.
 To delete a key you can use the `.pop` method (same as `del`), it's shorter than `popitem()`.
 
+* https://leetcode.com/problems/insert-delete-getrandom-o1
+
+```python
+с=Counter;с.getRandom=lambda s:choice([*s]);с.insert=lambda s,a:s.update([a])or s[a]<2;с.remove=lambda s,a:s.pop(a,0);RandomizedSet=с
+```
+
 You can easily drop zero and negative values in a counter (it's the official way, see [documentation](https://docs.python.org/3/library/collections.html#collections.Counter)):
 
 ```python

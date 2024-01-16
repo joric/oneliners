@@ -37,6 +37,10 @@ RandomizedSet=type('',(),{
 
 RandomizedSet=type('',(),{'__init__':lambda s:setattr(s,'h',set()),'insert':lambda s,x:not(x in s.h or s.h.add(x)),'remove':lambda s,x:x in s.h and not s.h.remove(x),'getRandom':lambda s:choice([*s.h])})
 
+RandomizedSet=type('',(set,),{'insert':lambda s,x:not(x in s or s.add(x)),'remove':lambda s,x:x in s and not s.discard(x),'getRandom':lambda s:choice([*s])})
+
+с=Counter;с.getRandom=lambda s:choice([*s]);с.insert=lambda s,a:s.update([a])or s[a]<2;с.remove=lambda s,a:s.pop(a,0);RandomizedSet=с
+
 test('''
 380. Insert Delete GetRandom O(1)
 Medium

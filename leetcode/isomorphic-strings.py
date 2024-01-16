@@ -4,6 +4,14 @@ class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
         return len(set(zip(s,t)))==len(set(s))==len(set(t))
 
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        return len({*map(len,({*zip(s,t)},{*s},{*t}))})<2
+
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        return len({*zip(s,t)})==len({*s})==len({*t})
+
 test('''
 
 205. Isomorphic Strings

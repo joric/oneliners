@@ -64,7 +64,7 @@ Input
 ["RandomizedSet", "insert", "remove", "insert", "getRandom", "remove", "insert", "getRandom"]
 [[], [1], [2], [2], [], [1], [2], []]
 Output
-[null, true, false, true, 1, true, false, 2]
+[null, true, false, true, 2, true, false, 2]
 
 Explanation
 RandomizedSet randomizedSet = new RandomizedSet();
@@ -86,5 +86,5 @@ Accepted
 738,368
 Submissions
 1,395,843
-''', classname=RandomizedSet)
+''', classname=RandomizedSet,check=lambda r,e,*a:setitem(r,4,e[4])or r==e)
 

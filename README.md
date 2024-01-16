@@ -141,8 +141,8 @@ To delete a key you can use the `.pop` method (same as `del`), it's shorter than
 * https://leetcode.com/problems/insert-delete-getrandom-o1
 
 ```python
-с=Counter;с.insert=lambda s,x:s.update({x})or s[x]<2;с.remove=lambda s,x:s.pop(x,0);с.getRandom=lambda s:choice([*s]);RandomizedSet=с
-
+с=Counter;с.insert=lambda s,x:s.update({x})or s[x]<2;с.remove=lambda s,x:s.pop(x,0);
+с.getRandom=lambda s:choice([*s]);RandomizedSet=с
 ```
 
 You can easily drop zero and negative values in a counter (it's the official way, see [documentation](https://docs.python.org/3/library/collections.html#collections.Counter)):

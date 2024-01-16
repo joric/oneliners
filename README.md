@@ -134,14 +134,14 @@ Generator length `len(list(g))` can be calculated in constant memory as `sum(1 f
 #### Counters
 
 Counters (`collections.Counter()`) can be updated, similar to `dict.update()`, it's much faster than a sum of counters,
-the method returns `None`. E.g. `c[i]+=1` is equivalent to `c.update(i)`, `c[i]-=1` is `c.update({i:-1})`.
+the method returns `None`. E.g. `c[i]+=1` is equivalent to `c.update([i])`, `c[i]-=1` is `c.update({i:-1})`.
 To set a key, you can use `operator.setitem` function, e.g. `c[x]=1` is the same as `setitem(c,x,1)`.
 To delete a key you can use the `.pop` method (same as `del`), it's shorter than `popitem()`.
 
 * https://leetcode.com/problems/insert-delete-getrandom-o1
 
 ```python
-с=Counter;с.getRandom=lambda s:choice([*s]);с.insert=lambda s,a:s.update([a])or s[a]<2;с.remove=lambda s,a:s.pop(a,0);RandomizedSet=с
+с=Counter;с.getRandom=lambda s:choice([*s]);с.insert=lambda s,a:s.update(a)or s[a]<2;с.remove=lambda s,a:s.pop(a,0);RandomizedSet=с
 ```
 
 You can easily drop zero and negative values in a counter (it's the official way, see [documentation](https://docs.python.org/3/library/collections.html#collections.Counter)):

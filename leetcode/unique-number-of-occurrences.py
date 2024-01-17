@@ -7,6 +7,10 @@ class Solution:
         return len(Counter(arr))==len(set(Counter(arr).values()))
 
 class Solution:
+    def uniqueOccurrences(self, a: List[int]) -> bool:
+        return eq(*map(len,map(set,(a,Counter(a).values()))))
+
+class Solution:
     def uniqueOccurrences(self, arr: List[int]) -> bool:
         return len(set(arr))==len(set(Counter(arr).values()))
 

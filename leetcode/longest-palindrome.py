@@ -8,7 +8,7 @@ class Solution:
 
 class Solution:
     def longestPalindrome(self, s: str) -> int:
-        c=Counter(s);o=sum(c[v]&1 for v in c);return len(s)-o+bool(o)
+        c=Counter(s);o=sum(c[v]&1 for v in c);return len(s)-o+(o>0)
 
 test('''
 409. Longest Palindrome

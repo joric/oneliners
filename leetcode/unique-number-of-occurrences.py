@@ -7,16 +7,16 @@ class Solution:
         return len(Counter(arr))==len(set(Counter(arr).values()))
 
 class Solution:
-   def uniqueOccurrences(self, arr: List[int]) -> bool:
-       return (lambda x:len(set(x))==len(x))(Counter(arr).values())
-
-class Solution:
     def uniqueOccurrences(self, arr: List[int]) -> bool:
         return len(set(arr))==len(set(Counter(arr).values()))
 
 class Solution:
-    def uniqueOccurrences(self, arr: List[int]) -> bool:
-        return len(c:=Counter(arr))==len(set(c.values()))
+    def uniqueOccurrences(self, a: List[int]) -> bool:
+        return len(c:=Counter(a))==len({*c.values()})
+
+class Solution:
+    def uniqueOccurrences(self, a: List[int]) -> bool:
+        return len({*a})==len({*Counter(a).values()})
 
 test('''
 

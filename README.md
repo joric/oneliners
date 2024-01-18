@@ -534,7 +534,7 @@ class Solution:
 
 #### Swapping values
 
-To swap values you can use either `exec` (inline version of `a,b=b,a`) or a temporary variable (`t:=a,a=b,b=t`).
+To swap values you can use either `exec` (inline version of `a,b=b,a`) or a temporary variable (`t:=a,a:=b,b:=t`).
 
 Note that `eval` accepts only a single expression, and returns the value of the given expression,
 whereas `exec` ignores the return value from its code, and always returns `None`, its use has no effect

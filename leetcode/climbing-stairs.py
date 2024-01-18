@@ -19,6 +19,10 @@ class Solution:
     def climbStairs(self, n: int) -> int:
         return reduce(lambda x,_:(x[1],sum(x)),range(n),(1,1))[0]
 
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        a=b=1;[(t:=a,a:=b,b:=a+t)for _ in[0]*n];return a
+
 test('''
 
 70. Climbing Stairs

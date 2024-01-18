@@ -42,9 +42,11 @@ class Solution:
     def climbStairs(self, n: int) -> int:
         r=5**.5;return round(((1+r)/2)**-~n/r)
 
+# 3 chars shorter
+
 class Solution:
-    def climbStairs(self, n: int) -> int:
-        p=[1,1];[(p:=(p[1],sum(p)))for _ p*n];return p[0]
+    def climbStairs(self, n):
+        x=1<<32;return x**n*x*x//(x*x+~x)%x
 
 test('''
 
@@ -75,14 +77,18 @@ Explanation: There are three ways to climb to the top.
 1. 1 step + 1 step + 1 step
 2. 1 step + 2 steps
 3. 2 steps + 1 step
- 
 
 Example 3:
 
-Input: n = 69
-Output: 190392490709135
+Input: n = 45
+Output: 1836311903
 
 Example 4:
+
+#Input: n = 69
+#Output: 190392490709135
+
+Example 5:
 
 #Input: n = 70
 #Output: 308061521170129

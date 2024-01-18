@@ -45,7 +45,7 @@ class Solution:
 # 3 chars shorter
 
 class Solution:
-    def climbStairs(self, n):
+    def climbStairs(self, n: int) -> int:
         x=1<<32;return x**n*x*x//(x*x+~x)%x
 
 test('''

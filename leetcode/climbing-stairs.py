@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/climbing-stairs
+
 class Solution:
     def climbStairs(self, n: int) -> int:
         a = b = 1
@@ -27,9 +29,7 @@ class Solution:
     def climbStairs(self, n: int) -> int:
         a=b=1;[(t:=a,a:=b,b:=a+t)for _ in[0]*n];return a
 
-class Solution:
-    def climbStairs(self, n: int) -> int:
-        r=sqrt(5);return round(((1+r)/2)**-~n/r)
+# https://r-knott.surrey.ac.uk/Fibonacci/fibFormula.html
 
 class Solution:
     def climbStairs(self, n: int) -> int:

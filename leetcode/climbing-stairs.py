@@ -21,6 +21,10 @@ class Solution:
 
 class Solution:
     def climbStairs(self, n: int) -> int:
+        p=(1,1);[(p:=(p[1],sum(p)))for _ in[0]*n];return p[0]
+
+class Solution:
+    def climbStairs(self, n: int) -> int:
         a=b=1;[(t:=a,a:=b,b:=a+t)for _ in[0]*n];return a
 
 test('''

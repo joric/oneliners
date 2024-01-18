@@ -39,6 +39,12 @@ class Solution:
     def climbStairs(self, n: int) -> int:
         return(__import__('numpy').matrix('1 1;1 0')**n).item(0)
 
+# numpy with bigint
+
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        return(__import__('numpy').matrix('1 1;1 0','object')**n).item(0)
+
 # inline loop
 
 class Solution:

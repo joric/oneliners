@@ -29,8 +29,14 @@ class Solution:
     def climbStairs(self, n: int) -> int:
         a=b=1;[(t:=a,a:=b,b:=a+t)for _ in[0]*n];return a
 
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        a=b=1;[b:=a+(a:=b)for _ in' '*n];return a
+
 # https://r-knott.surrey.ac.uk/Fibonacci/fibFormula.html
-# works up to n = 70
+
+# works up to n = 69 => 190392490709135
+# breaks at n = 70 => 308061521170129
 
 class Solution:
     def climbStairs(self, n: int) -> int:

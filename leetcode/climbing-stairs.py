@@ -41,6 +41,12 @@ class Solution:
     def climbStairs(self, n: int) -> int:
         a=b=1;[b:=a+(a:=b)for _ in' '*n];return a
 
+# https://leetcode.com/problems/climbing-stairs/solutions/3412081/one-line-solution/
+
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        return sum(comb(n-d,d)for d in range(n//2+1))
+
 # https://r-knott.surrey.ac.uk/Fibonacci/fibFormula.html
 
 # works up to n = 69 => 190392490709135

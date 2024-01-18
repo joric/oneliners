@@ -27,6 +27,10 @@ class Solution:
     def climbStairs(self, n: int) -> int:
         a=b=1;[(t:=a,a:=b,b:=a+t)for _ in[0]*n];return a
 
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        return round(((1+sqrt(5))/2)**-~n/sqrt(5))
+
 test('''
 
 70. Climbing Stairs

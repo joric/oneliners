@@ -10,6 +10,14 @@ class Solution:
         return a
 
 class Solution:
+    def climbStairs(self, n: int) -> int:
+        a, b = 1, 1+n%2
+        for _ in range(n//2):
+            a += b
+            b += a
+        return a
+
+class Solution:
     def climbStairs(self, n: int, a=1, b=1) -> int:
         return self.climbStairs(n-1, b, a+b) if n>1 else b
 

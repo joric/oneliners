@@ -17,6 +17,8 @@ class Solution:
             b += a
         return a
 
+# recursion
+
 class Solution:
     def climbStairs(self, n: int, a=1, b=1) -> int:
         return self.climbStairs(n-1, b, a+b) if n>1 else b
@@ -25,9 +27,19 @@ class Solution:
     def climbStairs(self, n: int) -> int:
         return (f:=lambda n,a,b:n>1 and f(n-1,b,a+b) or b)(n,1,1)
 
+# reduce
+
 class Solution:
     def climbStairs(self, n: int) -> int:
         return reduce(lambda x,_:(x[1],sum(x)),range(n),(1,1))[0]
+
+# numpy
+
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        return(__import__('numpy').matrix('1 1;1 0')**n).item(0)
+
+# inline loop
 
 class Solution:
     def climbStairs(self, n: int) -> int:
@@ -41,7 +53,7 @@ class Solution:
     def climbStairs(self, n: int) -> int:
         a=b=1;[b:=a+(a:=b)for _ in' '*n];return a
 
-# https://leetcode.com/problems/climbing-stairs/solutions/3412081/one-line-solution/
+# combinations https://leetcode.com/problems/climbing-stairs/solutions/3412081/one-line-solution/
 
 class Solution:
     def climbStairs(self, n: int) -> int:

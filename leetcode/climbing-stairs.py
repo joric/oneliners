@@ -30,6 +30,7 @@ class Solution:
         a=b=1;[(t:=a,a:=b,b:=a+t)for _ in[0]*n];return a
 
 # https://r-knott.surrey.ac.uk/Fibonacci/fibFormula.html
+# works up to n = 70
 
 class Solution:
     def climbStairs(self, n: int) -> int:

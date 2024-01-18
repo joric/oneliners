@@ -42,6 +42,10 @@ class Solution:
     def climbStairs(self, n: int) -> int:
         r=5**.5;return round(((1+r)/2)**-~n/r)
 
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        p=[1,1];[(p:=(p[1],sum(p)))for _ p*n];return p[0]
+
 test('''
 
 70. Climbing Stairs

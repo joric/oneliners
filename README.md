@@ -1067,7 +1067,8 @@ class Solution:
 * You can replace `set(n)` with `{*n}` (2 characters shorter).
 * You can use `~~()` instead of `int()`, akin to js (1 character shorter) but it only works for booleans.
 * You can subtract 1 or replace `not` operator with bitwise negation `~-` to save on space (1-5 characters shorter).
-* In most cases `x==0` can be replaced with `x<1` (1 character shorter)
+* In most cases `x==0` can be replaced with `x<1` (1 character shorter).
+* You can check for set membership with `{x}&s` instead of `x in s` (1 character shorter).
 
 ## References
 

@@ -19,6 +19,10 @@ class Solution:
     def minFallingPathSum(self, m: List[List[int]]) -> int:
         return min(reduce(lambda a,b:[min(a[max(i-1,0):i+2])+b[i]for i in range(len(m))],m))
 
+class Solution:
+    def minFallingPathSum(self, m: List[List[int]]) -> int:
+        return min(reduce(lambda a,b:(a:=a[:2]+a)*0+[min((a:=a[1:])[:3])+c for c in b],m))
+
 test('''
 
 931. Minimum Falling Path Sum

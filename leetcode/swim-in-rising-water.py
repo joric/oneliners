@@ -33,26 +33,6 @@ class Solution:
             if find(0,0) == find(m-1, n-1):
                 return val
 
-
-class Solution:
-    def minimumEffortPath(self, h: List[List[int]]) -> int:
-        m,n = len(h),len(h[0])
-        c,e = ''.join(map(chr,range(m*n))),[]
-
-
-        for i in range(m):
-            for j in range(n):
-                for x,y in ((i-1,j),(i+1,j),(i,j-1),(i,j+1)):
-                    if m>x>=0<=y<n:
-                        e.append( (abs(h[i][j]-h[x][y]), i*n+j, x*n+y) )
-
-
-        for w,u,v in sorted(e):
-            c = c.replace(c[u],c[v])
-            if c[0]==c[-1]:
-                return w
-        return 0
-
 # https://leetcode.com/problems/swim-in-rising-water/solutions/1284843/python-2-solutions-union-find-heap-explained/
 
 class DSU(object):
@@ -98,26 +78,20 @@ class Solution:
 # unicode find
 
 class Solution:
-    def swimInWater(self, grid):
-        d, n = {}, len(grid)
-        for i,j in product(range(n), range(n)):
-            d[grid[i][j]] = (i, j)
-        grid = [[0] * n for _ in range(n)] 
-        neib_list = [[0,1],[0,-1],[1,0],[-1,0]]
-        c,e = ''.join(map(chr,range(n*n))),[]
-        for i in range(n*n):
-            x, y = d[i]
-            grid[x][y] = 1
-            for dx, dy in neib_list:
-                if n>x+dx>=0 and n>y+dy>=0 and grid[x+dx][y+dy] == 1:
-                    e.append( (i, (x+dx)*n + y + dy, x*n + y ) )
-        for w,u,v in sorted(e):
-            c = c.replace(c[u],c[v])
-            if c[0]==c[-1]:
+    def swimInWater(self, g: List[List[int]]) -> int:
+        n = len(g)
+        t,r = ''.join(map(chr,range(n*n))),range(n)
+        for w,i,j in sorted((g[i][j],i,j)for i,j in product(r,r)):
+            for x,y in ((i+1,j),(i-1,j),(i,j+1),(i,j-1)):
+                if n>y>=0<=x<n and g[x][y]<=w:
+                    t = t.replace(t[i*n+j],t[x*n+y])
+            if t[0]==t[-1]:
                 return w
         return 0
 
-# TODO! make it nicer
+class Solution:
+    def swimInWater(self, g: List[List[int]]) -> int:
+        n=len(g);t,r=''.join(map(chr,range(n*n))),range(n);return next((w for w,i,j in sorted((g[i][j],i,j)for i,j in product(r,r))if[t:=t.replace(t[i*n+j],t[x*n+y])for x,y in((i+1,j),(i-1,j),(i,j+1),(i,j-1))if n>y>=0<=x<n and g[x][y]<=w]and t[0]==t[-1]),0)
 
 test('''
 778. Swim in Rising Water
@@ -148,6 +122,7 @@ At time 0, you are in grid location (0, 0).
 You cannot go anywhere else because 4-directionally adjacent neighbors have a higher elevation than t = 0.
 You cannot reach point (1, 1) until time 3.
 When the depth of water is 3, we can swim anywhere inside the grid.
+
 Example 2:
 
 
@@ -155,14 +130,18 @@ Input: grid = [[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10
 Output: 16
 Explanation: The final route is shown.
 We need to wait until time 16 so that (0, 0) and (4, 4) are connected.
- 
+
+Example 3:
+
+Input: grid = [[0]]
+Output: 0
 
 Constraints:
 
 n == grid.length
 n == grid[i].length
 1 <= n <= 50
-0 <= grid[i][j] < n2
+0 <= grid[i][j] < n^2
 Each value grid[i][j] is unique.
 Accepted
 145,018

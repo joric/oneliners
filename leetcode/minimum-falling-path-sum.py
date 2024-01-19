@@ -44,6 +44,11 @@ Input: matrix = [[-19,57],[-40,-5]]
 Output: -59
 Explanation: The falling path with a minimum sum is shown.
 
+Example 3:
+
+Input: matrix = [[100,-42,-46,-41],[31,97,10,-10],[-58,-51,82,89],[51,81,69,-51]]
+Output: -36
+
 Constraints:
 
 n == matrix.length == matrix[i].length

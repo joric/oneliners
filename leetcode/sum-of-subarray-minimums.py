@@ -1,35 +1,30 @@
 from lc import *
 
 class Solution:
-    def sumSubarrayMins(self, arr: List[int]) -> int:
-        arr,n = [0]+arr, len(arr)+1
-        ans, queue  = [0]*n, deque([0])
+    def sumSubarrayMins(self, a: List[int]) -> int:
+        a,n = [0]+a, len(a)+1
+        r,q = [0]*n, deque([0])
         for i in range(n):
-            while arr[queue[0]] > arr[i]:
-                queue.popleft()
-            ans[i] = ans[queue[0]] + (i-queue[0])*arr[i]
-            queue.appendleft(i)
-        return sum(ans) % (10**9+7)
-
-class Solution:
-    def sumSubarrayMins(self, arr: List[int]) -> int:
-        s, dp, ret = [], [0], 0
-        for i, e in enumerate(arr):
-            while s and arr[s[-1]] >= e:
-                s.pop()
-            dp.append((i - (p := s[-1] if s else -1)) * e + dp[p + 1])
-            ret = (ret + dp[-1]) % (10**9+7)
-            s.append(i)
-        return ret
-
-
-class Solution:
-    def sumSubarrayMins(self, arr: List[int]) -> int:
-        return (s:=[],dp:=[0],r:=0) and all((next(_ for _ in count() if not(s and arr[s[-1]]>=e and s.pop())),dp.append((i-(p:=s[-1] if s else -1))*e+dp[p+1]),(r:=(r+dp[-1])%(10**9+7)),s.append(i)) for i,e in enumerate(arr)) and r
+            while a[q[0]] > a[i]:
+                q.popleft()
+            r[i] = r[q[0]] + (i-q[0])*a[i]
+            q.appendleft(i)
+        return sum(r) % (10**9+7)
 
 class Solution:
     def sumSubarrayMins(self, a: List[int]) -> int:
-        s,d,r=[],[0],0;return all((next(_ for _ in count()if not(s and a[s[-1]]>=e and s.pop())),d.append((i-(p:=s[-1] if s else -1))*e+d[p+1]),(r:=(r+d[-1])%(10**9+7)),s.append(i))for i,e in enumerate(a))and r
+        s, d, r = [], [0], 0
+        for i,e in enumerate(a):
+            while s and a[s[-1]] >= e:
+                s.pop()
+            d.append((i-(p:=s[-1]if s else-1))*e+d[p+1])
+            r += d[-1]
+            s.append(i)
+        return r%(10**9+7)
+
+class Solution:
+    def sumSubarrayMins(self, a: List[int]) -> int:
+        s,d,r=[],[0],0;[(next(_ for _ in count()if not(s and a[s[-1]]>=e and s.pop())),d.append((i-(p:=s[-1] if s else -1))*e+d[p+1]),(r:=(r+d[-1])%(10**9+7)),s.append(i))for i,e in enumerate(a)];return r
 
 test('''
 

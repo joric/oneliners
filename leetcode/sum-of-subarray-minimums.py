@@ -27,6 +27,9 @@ class Solution:
     def sumSubarrayMins(self, arr: List[int]) -> int:
         return (s:=[],dp:=[0],r:=0) and all((next(_ for _ in count() if not(s and arr[s[-1]]>=e and s.pop())),dp.append((i-(p:=s[-1] if s else -1))*e+dp[p+1]),(r:=(r+dp[-1])%(10**9+7)),s.append(i)) for i,e in enumerate(arr)) and r
 
+class Solution:
+    def sumSubarrayMins(self, a: List[int]) -> int:
+        s,d,r=[],[0],0;return all((next(_ for _ in count()if not(s and a[s[-1]]>=e and s.pop())),d.append((i-(p:=s[-1] if s else -1))*e+d[p+1]),(r:=(r+d[-1])%(10**9+7)),s.append(i))for i,e in enumerate(a))and r
 
 test('''
 

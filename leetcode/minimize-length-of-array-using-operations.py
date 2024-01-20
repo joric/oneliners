@@ -7,6 +7,10 @@ class Solution:
     def minimumArrayLength(self, n: List[int]) -> int:
         return max(ceil(Counter(n)[reduce(gcd,n)]/2),1)
 
+class Solution:
+    def minimumArrayLength(self, n: List[int]) -> int:
+        return(a.count(reduce(gcd,a))+1)//2or 1
+
 test('''
 3012. Minimize Length of Array Using Operations
 Medium

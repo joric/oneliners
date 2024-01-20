@@ -30,6 +30,10 @@ class Solution:
     def sumSubarrayMins(self, a: List[int]) -> int:
         s,d,r=[],[0],0;[(next(_ for _ in count()if not(s and a[s[-1]]>=e and s.pop())),d.append((i-(p:=s[-1]if s else-1))*e+d[p+1]),(r:=(r+d[-1])%(10**9+7)),s.append(i))for i,e in enumerate(a)];return r
 
+class Solution:
+    def sumSubarrayMins(self, a: List[int]) -> int:
+        a+=[0];s,r=[[0]*2],0;[((c:=1),next(_ for _ in a for u,v in s[-1:]if u<=x or not((r:=r+u*v*c),(c:=c+v),s.pop())),s.append((x,c)))for x in a];return r%(10**9+7)
+
 # https://leetcode.com/problems/sum-of-subarray-minimums/solutions/170937/python-binary-search-solution/
 
 class Solution:
@@ -43,7 +47,7 @@ class Solution:
 
 class Solution:
     def sumSubarrayMins(self, a: List[int]) -> int:
-        u,m=[-1,len(a)],0;return sum((j:=bisect_right(u,i),(i-u[j-1])*(u[j]-i)*a[i],insort(u,i))[1]for _,i in sorted((x,i)for i,x in enumerate(a)))%(10**9+7)
+        u=[-1,len(a)];return sum(((u[j:=bisect_right(u,i)]-i)*(i-u[j-1])*a[i],insort(u,i))[0]for _,i in sorted((x,i)for i,x in enumerate(a)))%(10**9+7)
 
 test('''
 

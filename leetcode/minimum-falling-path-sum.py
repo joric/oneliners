@@ -1,5 +1,15 @@
 from lc import *
 
+# https://leetcode.com/problems/minimum-falling-path-sum/solutions/1847589/python-recursion-with-memoization/
+
+class Solution:
+    def minFallingPathSum(self, m: List[List[int]]) -> int:
+        h,w=len(m),len(m[0])
+        @cache
+        def f(x,y):
+            return m[x][y]+(0 if x==h-1 else min(f(x+1,y+d)for d in(-1,0,1)))if w>y>=0<=x<h else inf
+        return min(f(0,i)for i in range(w))
+
 # https://leetcode.com/problems/minimum-falling-path-sum/solutions/1113047/python-simple-4-line-dp-solution/
 
 class Solution:

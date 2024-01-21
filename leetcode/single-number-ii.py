@@ -2,7 +2,7 @@ from lc import *
 
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
-        ones, twos = 0, 0
+        ones = twos = 0
         for x in nums:
             ones = (ones ^ x) & ~twos # if occured twice, removed from ones
             twos = (twos ^ x) & ~ones # if occured thrice, removed from ones and twos

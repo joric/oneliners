@@ -1,5 +1,11 @@
 from lc import *
 
+# https://leetcode.com/problems/house-robber/solutions/3229996/simplest-one-liner-python-dp
+
+class Solution:
+    def rob(self, n: List[int]) -> int:
+        return(f:=cache(lambda i:i<len(n)and max(f(i+2)+n[i],f(i+1))))(0)
+
 # https://leetcode.com/problems/house-robber/solutions/4510083/easy-dp-solution
 
 class Solution:
@@ -13,7 +19,7 @@ class Solution:
 
 class Solution:
     def rob(self, n: List[int]) -> int:
-        return reduce(lambda x,y:[x[1],max(x[0]+y,x[1])],n,[0, 0])[1]
+        return reduce(lambda x,y:(x[1],max(x[0]+y,x[1])),n,(0,0))[1]
 
 class Solution:
     def rob(self, n: List[int]) -> int:

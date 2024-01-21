@@ -1,5 +1,11 @@
 from lc import *
 
+# https://leetcode.com/problems/house-robber/solutions/2910723/c-python-one-liner-dp
+
+class Solution:
+    def rob(self, nums: List[int], a = 0, b = 0, i=0) -> int:  
+        return b if i==len(nums)else self.rob(nums,b,max(a+nums[i],b),i+1)
+
 # https://leetcode.com/problems/house-robber/solutions/3229996/simplest-one-liner-python-dp
 
 class Solution:

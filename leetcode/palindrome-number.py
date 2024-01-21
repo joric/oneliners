@@ -2,11 +2,24 @@ from lc import *
 
 class Solution:
     def isPalindrome(self, x: int) -> bool:
+        if x < 0 or (x % 10 == 0 and x != 0): return False
+        y = 0        
+        while x > y:
+            y = y * 10 + x % 10
+            x //= 10
+        return x == y or x == y//10
+
+class Solution:
+    def isPalindrome(self, x):
+        return 0 if x<0 else(f:=lambda n,p=0:p if n==0 else f(n//10,p*10+n%10))(x)==x
+
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
         return str(x) == str(x)[::-1]
 
 class Solution:
     def isPalindrome(self, x: int) -> bool:
-        return (s:=str(x))[::-1]==s
+        return(s:=str(x))[::-1]==s
 
 test('''
 9. Palindrome Number

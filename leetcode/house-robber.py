@@ -6,6 +6,14 @@ class Solution:
     def rob(self, nums: List[int], a = 0, b = 0, i=0) -> int:  
         return b if i==len(nums)else self.rob(nums,b,max(a+nums[i],b),i+1)
 
+class Solution:
+    def rob(self, n: List[int]) -> int:
+        return(f:=lambda a,b,i:i<len(n)and f(b,max(a+n[i],b),i+1)or b)(0,0,0)
+
+class Solution:
+    def rob(self, nums: List[int], a = 0, b = 0, i=0) -> int:  
+        return nums[i:]and self.rob(nums,b,max(a+nums[i],b),i+1)or b
+
 # https://leetcode.com/problems/house-robber/solutions/3229996/simplest-one-liner-python-dp
 
 class Solution:

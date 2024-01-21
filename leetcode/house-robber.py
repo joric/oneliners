@@ -1,8 +1,23 @@
 from lc import *
 
+# https://leetcode.com/problems/house-robber/solutions/4510083/easy-dp-solution
+
 class Solution:
-    def rob(self, nums: List[int]) -> int:
-        return reduce(lambda x,y:[x[1],max(x[0]+y,x[1])],nums,[0, 0])[1]
+    def rob(self, n: List[int]) -> int:
+        a,b = 0,0
+        for i in n:
+            t = max(i+a,b)
+            a = b
+            b = t
+        return b
+
+class Solution:
+    def rob(self, n: List[int]) -> int:
+        return reduce(lambda x,y:[x[1],max(x[0]+y,x[1])],n,[0, 0])[1]
+
+class Solution:
+    def rob(self, n: List[int]) -> int:
+        a,b=0,0;[b:=max(x+a,(a:=b))for x in n];return b
 
 test('''
 

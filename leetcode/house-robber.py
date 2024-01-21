@@ -35,7 +35,7 @@ class Solution:
 
 class Solution:
     def rob(self, n: List[int]) -> int:
-        a,b=0,0;[b:=max(x+a,(a:=b))for x in n];return b
+        a,b=0,0;[b:=max(x+a,a:=b)for x in n];return b
 
 test('''
 

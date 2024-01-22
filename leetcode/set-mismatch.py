@@ -1,11 +1,16 @@
 from lc import *
 
+# https://leetcode.com/problems/set-mismatch/discuss/105558/Oneliner-Python
+
 class Solution:
     def findErrorNums(self, nums: List[int]) -> List[int]:
         return sum(nums) - sum(set(nums)), sum(range(1, len(nums)+1)) - sum(set(nums))
 
-test('''
+class Solution:
+    def findErrorNums(self, n: List[int]) -> List[int]:
+        t=sum({*n});return[sum(n)-t,sum(range(1,len(n)+1))-t]
 
+test('''
 645. Set Mismatch
 Easy
 
@@ -27,8 +32,6 @@ Output: [1,2]
 
 Constraints:
 
-2 <= nums.length <= 10**4
-1 <= nums[i] <= 10**4
-
+2 <= nums.length <= 10^4
+1 <= nums[i] <= 10^4
 ''')
-

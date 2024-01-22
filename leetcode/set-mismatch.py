@@ -8,6 +8,10 @@ class Solution:
 
 class Solution:
     def findErrorNums(self, n: List[int]) -> List[int]:
+        return(lambda a,b,c:(a-c,b-c))(*map(sum,(n,range(1,len(n)+1),{*n})))
+
+class Solution:
+    def findErrorNums(self, n: List[int]) -> List[int]:
         t=sum({*n});return[sum(n)-t,sum(range(1,len(n)+1))-t]
 
 test('''

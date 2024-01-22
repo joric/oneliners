@@ -1,24 +1,6 @@
 ## Oneliners
 
-### Books
-
-There are paper book on one-liners, search them online, it's an interesting read.
-
-#### Python One-Liners: Write Concise, Eloquent Python Like a Professional
-
-By Christian Mayer (June 2, 2020, No Starch Press, Inc. ISBN-10: 1-7185-0050-5, ISBN-13: 978-1-7185-0050)
-
-* https://www.amazon.com/Python-One-Liners-Concise-Eloquent-Professional/dp/1718500505
-
-#### Don't Piss down my back and tell me it's raining: Notebook for Sarcastic, Witty, and Sharp Tongued One Liners
-
-By Joric McLean (March 18, 2021, Independently published, ASIN: B08ZQGV1XH, ISBN-13: 979-8724248327)
-
-* https://www.amazon.com/Dont-Piss-down-back-raining/dp/B08ZQGV1XH
-
-### Tricks
-
-#### Leetcode-specific
+### Leetcode-specific
 
 Leetcode imports modules as wildcards, so you don't have to specify module names. There are some exceptions:
 
@@ -102,7 +84,7 @@ class Solution:
         f=lambda n:n and n.val+10*f(n.next)or 0;return ListNode(','.join([*str(f(a)+f(b))][::-1]))
 ```
 
-#### Lambdas
+### Lambdas
 
 Fictitious (anonymous) lambdas also may be nested. E.g. you can use lambdas as parameters:
 
@@ -123,7 +105,7 @@ class Solution:
             %(10**9+7)
 ```
 
-#### Generators
+### Generators
 
 Generator expressions `(x for y in z)` are memory efficient since they only require memory for
 the one value they yield. If you don't care about memory you can use square brackets to make it a list comprehension that automatically runs the loop.
@@ -131,7 +113,7 @@ You can also exhaust a generator using `all()` or `any()` depending on the retur
 You can also save a few chars using `[*g]` syntax instead of `list(g)` where g is a generator function.
 Generator length `len(list(g))` can be calculated in constant memory as `sum(1 for _ in g)`.
 
-#### Counters
+### Counters
 
 Counters (`collections.Counter()`) can be updated, similar to `dict.update()`, it's much faster than a sum of counters,
 the method returns `None`. E.g. `c[i]+=1` is equivalent to `c.update([i])`, `c[i]-=1` is `c.update({i:-1})`.
@@ -181,7 +163,7 @@ class Solution:
         return(Counter(s)-Counter(t)).total()
 ```
 
-#### Walrus operator
+### Walrus operator
 
 The controversial walrus operator (`:=`) from [PEP-572](https://peps.python.org/pep-0572/)
 (that [made Guido resign](https://www.infoworld.com/article/3292936/guido-van-rossum-resigns-whats-next-for-python.html)),
@@ -256,7 +238,7 @@ class Solution:
         return nsmallest(k,(f:=Counter(words)).keys(),lambda x:(-f[x],x))
 ```
 
-#### Setting list values
+### Setting list values
 
 You can't use walrus operator for structures, however, you can use `__setattr__` for dictionaries or `__setitem__` for lists if you need an assignment
 (functions return `None`). There are also global functions that are shorter, `setattr(dict, ...)` and `setitem(list, ...)`.
@@ -358,7 +340,7 @@ ParkingSystem=type('',(),{'__init__':lambda s,a,b,c:setattr(s,'p',[0,a,b,c]),'ad
     exec('s.p[t]-=1')or s.p[t]>=0})
 ```
 
-#### Getting list values
+### Getting list values
 
 Use the usual bracket notation `[]` or `dict.get(key,default)` (where needed).
 
@@ -403,7 +385,7 @@ UndergroundSystem=type('',(),{'h':{},'m':{},
 ```
 
 
-#### While loops
+### While loops
 
 While loops are not very oneliner-friendly. You can use  `count()` generator with `next()`.
 Note that `next` default parameter gets initialized first so you can use it for the startup code.
@@ -532,7 +514,7 @@ class Solution:
         return(f:=lambda n:n and n^f(n//2))(n)
 ```
 
-#### Swapping values
+### Swapping values
 
 To swap values you can use either `exec` (inline version of `a,b=b,a`) or a temporary variable (`t:=a,a:=b,b:=t`).
 
@@ -569,7 +551,7 @@ Also see swap function here (but it's pretty long):
 swap = lambda a,x,y:(lambda f=a.__setitem__:(f(x,(a[x],a[y])),f(y,a[x][0]),f(x,a[x][1])))()
 ```
 
-#### Mapping
+### Mapping
 
 You can use `map` for a lot of things, for example to traverse through adjacent cells.
 
@@ -681,7 +663,7 @@ class Solution:
 
 ```
 
-#### Cache
+### Cache
 
 Cache decorator may be used as an inline function `cache(lambda ...)`.
 
@@ -731,7 +713,7 @@ class Solution:
             max(1+f(i-1,b-a[i]),f(i-1,b))))(len(a)-1,t),f.cache_clear())and(-1,r)[r>0]
 ```
 
-#### Reduce
+### Reduce
 
 Use it to flatten a loop.
 
@@ -789,7 +771,7 @@ class Solution:
             and a[1][-1][1]=='(' else (a[0],a[1]+[b]),enumerate(s),(0,[(-1,')')]))[0]
 ```
 
-#### Semicolons
+### Semicolons
 
 Nobody will stop you from using semicolons, but you'd still have to convert while and for loops.
 
@@ -820,7 +802,7 @@ class Solution:
         l=[h]+[h:=h.next for _ in[1]*10**5if h];a,b=l[k-1],l[~k];a.val,b.val=b.val,a.val;return l[0]
 ```
 
-#### Misc
+### Misc
 
 * `key=itemgetter(n)` is the same length as `key=lambda x:x[n]` but a little bit clearer to read.
 
@@ -1072,6 +1054,8 @@ class Solution:
 
 ## References
 
+* [Python One-Liners: Write Concise, Eloquent Python Like a Professional](https://www.amazon.com/Python-One-Liners-Concise-Eloquent-Professional/dp/1718500505)
+* [Don't Piss down my back and tell me it's raining: Notebook for Sarcastic, Witty, and Sharp Tongued One Liners](https://www.amazon.com/Dont-Piss-down-back-raining/dp/B08ZQGV1XH)
 * https://pythononeliners.com
 * https://github.com/Allwin12/python-one-liners
 * https://github.com/finxter/PythonOneLiners

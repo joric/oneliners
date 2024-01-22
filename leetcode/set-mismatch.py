@@ -1,5 +1,14 @@
 from lc import *
 
+# https://leetcode.com/problems/set-mismatch/discuss/1089475/python-o-n-time-o-1-space-math-solution-explained
+
+class Solution:
+    def findErrorNums(self, nums):
+        n = len(nums)
+        a = -sum(nums) + n*(n+1)//2
+        b = -sum(i*i for i in nums) + n*(n+1)*(2*n+1)//6
+        return [(b-a*a)//2//a, (b+a*a)//2//a]
+
 # https://leetcode.com/problems/set-mismatch/discuss/105558/Oneliner-Python
 
 class Solution:

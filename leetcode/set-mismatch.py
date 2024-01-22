@@ -18,6 +18,10 @@ class Solution:
     def findErrorNums(self, n: List[int]) -> List[int]:
         t,c=sum({*n}),len(n);return[sum(n)-t,c*-~c//2-t]
 
+class Solution:
+    def findErrorNums(self, n: List[int]) -> List[int]:
+        t=sum({*n});return sum(n)-t,comb(len(n)+1,2)-t
+
 test('''
 645. Set Mismatch
 Easy

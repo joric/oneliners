@@ -27,6 +27,12 @@ class Solution:
     def findErrorNums(self, n: List[int]) -> List[int]:
         t=sum({*n});return sum(n)-t,comb(len(n)+1,2)-t
 
+# https://leetcode.com/problems/set-mismatch/discuss/4608368/one-line-solution
+
+class Solution:
+    def findErrorNums(self, n: List[int]) -> List[int]:
+        return mode(n),comb(len(n)+1,2)-sum({*n})
+
 test('''
 645. Set Mismatch
 Easy

@@ -45,10 +45,6 @@ class Solution:
 
 class Solution:
     def maxLength(self, a: List[str]) -> int:
-        return(f:=lambda i,s:len(s)==len({*s})and max(len(s),*[f(j,s+a[j])for j in range(i,len(a))]))(0,'')
-
-class Solution:
-    def maxLength(self, a: List[str]) -> int:
         return(f:=lambda i,s,l=len:l(s)==l({*s})and max(l(s),*[f(j,s+a[j])for j in range(i,l(a))]))(0,'')
 
 class Solution:

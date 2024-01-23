@@ -12,23 +12,6 @@ class Solution:
                 dp.append(a | c)
         return max(len(a) for a in dp)
 
-# https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters/discuss/4611439/DFS-Python
-
-class Solution:
-    def maxLength(self, a: List[str]) -> int:
-        def f(i,s):
-            r = len(s)
-            if len(s) != len({*s}):
-                return 0
-            for j in range(i, len(a)):
-                r = max(f(j,s+a[j]),r)
-            return r
-        return f(0,'')
-
-class Solution:
-    def maxLength(self, a: List[str]) -> int:
-        return(f:=lambda i,s:(r:=len(s))==len({*s})and[r:=max(r,f(j,s+a[j]))for j in range(i,len(a))][-1])(0,'')
-
 # https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters/discuss/1479802/Python-3-one-line
 
 class Solution:
@@ -46,6 +29,27 @@ class Solution:
 class Solution:
     def maxLength(self, a: List[str]) -> int:
         p={''};[p:=p|{s+x for x in p if not(len({*s})<len(s)or{*s}&{*x})}for s in a];return max(map(len,p))
+
+# https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters/discuss/4611439/DFS-Python
+
+class Solution:
+    def maxLength(self, a: List[str]) -> int:
+        def f(i,s):
+            r = len(s)
+            if len(s) != len({*s}):
+                return 0
+            for j in range(i, len(a)):
+                r = max(f(j,s+a[j]),r)
+            return r
+        return f(0,'')
+
+class Solution:
+    def maxLength(self, a: List[str]) -> int:
+        return(f:=lambda i,s:len(s)==len({*s})and max(len(s),*[f(j,s+a[j])for j in range(i,len(a))]))(0,'')
+
+class Solution:
+    def maxLength(self, a: List[str]) -> int:
+        return(f:=lambda i,s,l=len:l(s)==l({*s})and max(l(s),*[f(j,s+a[j])for j in range(i,l(a))]))(0,'')
 
 test('''
 1239. Maximum Length of a Concatenated String with Unique Characters

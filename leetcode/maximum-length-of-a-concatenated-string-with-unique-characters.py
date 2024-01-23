@@ -51,6 +51,10 @@ class Solution:
     def maxLength(self, a: List[str]) -> int:
         return(f:=lambda i,s,l=len:l(s)==l({*s})and max(l(s),*[f(j,s+a[j])for j in range(i,l(a))]))(0,'')
 
+class Solution:
+    def maxLength(self, a: List[str]) -> int:
+        return max(len(s)for i in range(17)for c in combinations(a,i)if len(s:='%s'*i%c)==len({*s}))
+
 test('''
 1239. Maximum Length of a Concatenated String with Unique Characters
 Medium

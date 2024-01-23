@@ -165,7 +165,7 @@ class Solution:
 
 ### Walrus operator
 
-The controversial walrus operator (`:=`) since Python 3.8, originated from [PEP-572](https://peps.python.org/pep-0572/)
+The controversial walrus operator (`:=`) since Python 3.8, is originated from [PEP-572](https://peps.python.org/pep-0572/)
 that [made Guido resign](https://www.infoworld.com/article/3292936/guido-van-rossum-resigns-whats-next-for-python.html).
 It can be used to define or update a variable or a function that's used repeatedly.
 

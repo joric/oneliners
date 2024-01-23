@@ -20,27 +20,15 @@ class Solution:
         for s in arr:
             if len(set(s)) == len(s):
                 p |= {s + x for x in p if not (set(s) & set(y))}
-        return max(map(len, p))         
-
-class Solution:
-    def maxLength(self, arr: List[str]) -> int:
-        return max(map(len,reduce(lambda p,s:p|{s+x for x in p if not (set(s)&set(x))},filter(lambda s:len(set(s))==len(s),arr),{''})))
+        return max(map(len, p))
 
 class Solution:
     def maxLength(self, a: List[str]) -> int:
-        return max(map(len,reduce(lambda p,s:p|{s+x for x in p if not({*s}&{*x})},filter(lambda s:len(set(s))==len(s),a),{''})))
+        return max(map(len,reduce(lambda p,s:p|{s+x for x in p if not(len({*s})<len(s)or{*s}&{*x})},a,{''})))
 
 class Solution:
     def maxLength(self, a: List[str]) -> int:
-        return max(map(len,reduce(lambda p,s:p|{s+x for x in p if not({*s}&{*x})},(s for s in a if len({*s})==len(s)),{''})))
-
-class Solution:
-    def maxLength(self, a: List[str]) -> int:
-        return max(map(len,reduce(lambda p,s:p|{s+x for x in p if len({*s})==len(s)and not{*s}&{*x}},a,{''})))
-
-class Solution:
-    def maxLength(self, a: List[str]) -> int:
-        p={''};[p:=p|{s+x for x in p if not{*s}&{*x}}for s in a if len({*s})==len(s)];return max(map(len,p))
+        p={''};[p:=p|{s+x for x in p if not(len({*s})<len(s)or{*s}&{*x})}for s in a];return max(map(len,p))
 
 test('''
 1239. Maximum Length of a Concatenated String with Unique Characters

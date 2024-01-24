@@ -28,6 +28,8 @@ class Solution:
     def numberOfMatches(self, n: int) -> int:
         return n-1
 
+# shortest oneliner ever
+
 class Solution:
     def numberOfMatches(self, n: int) -> int:
         return~-n

@@ -6,7 +6,11 @@ class Solution:
     def pseudoPalindromicPaths (self, t: Optional[TreeNode]) -> int:
         return(f:=lambda t,c:t and f(l:=t.left,c:=c^1<<t.val)+f(r:=t.right,c)+(l==r and c&~-c<1)or 0)(t,0)
 
-# borderline TLE
+class Solution:
+    def pseudoPalindromicPaths (self, t: Optional[TreeNode]) -> int:
+        return(f:=lambda t,c:t and[sum(f(t.left,c:=c^1<<t.val)+f(t.right,c)or[c&~-c<1])]or[])(t,0)[0]
+
+# borderline TLE (9s)
 
 class Solution:
     def pseudoPalindromicPaths (self, t: Optional[TreeNode]) -> int:

@@ -4,6 +4,10 @@ from lc import *
 
 class Solution:
     def pseudoPalindromicPaths (self, t: Optional[TreeNode]) -> int:
+        return(f:=lambda t,c:t and f(l:=t.left,c:=c^1<<(t.val-1))+f(r:=t.right,c)+(l==r and c&(c-1)<1)or 0)(t,0)
+
+class Solution:
+    def pseudoPalindromicPaths (self, t: Optional[TreeNode]) -> int:
         return(f:=lambda t,c:t and f(l:=t.left,c:=c^1<<t.val)+f(r:=t.right,c)+(l==r and c&~-c<1)or 0)(t,0)
 
 class Solution:
@@ -51,7 +55,11 @@ Example 3:
 
 Input: root = [9]
 Output: 1
- 
+
+Example 4:
+
+Input: root = [1,9,1,null,1,null,1,null,null,7,null,null,4]
+Output: 1
 
 Constraints:
 

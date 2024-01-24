@@ -49,6 +49,10 @@ class Solution:
     def levelOrder(self, t: TreeNode) -> List[List[int]]:
         return(f:=lambda x:x and[[x.val],*starmap(add,zip_longest(f(x.left),f(x.right),fillvalue=[]))]or[])(t)
 
+#class Solution:
+#    def levelOrder(self, t: TreeNode) -> List[List[int]]:
+#        s,p=json.loads(TreeNode.serialize(t)),lambda x:x;return[*takewhile(p,([*filter(p,s[(j:=2**i)-1:2*j-1])]for i in count()))]
+
 test('''
 102. Binary Tree Level Order Traversal
 Medium

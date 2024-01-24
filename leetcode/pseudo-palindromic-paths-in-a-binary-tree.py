@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def pseudoPalindromicPaths (self, t: Optional[TreeNode]) -> int:
-        return(f:=lambda t,c:t and f(l:=t.left,c:=c^1<<~-t.val)+f(r:=t.right,c)+(l==r and c&~-c<1)or 0)(t,0)
+        return(f:=lambda t,c:t and f(l:=t.left,c:=c^1<<t.val)+f(r:=t.right,c)+(l==r and c&~-c<1)or 0)(t,0)
 
 # borderline TLE
 

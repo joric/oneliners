@@ -1051,7 +1051,7 @@ class Solution:
 * You can subtract 1 or replace `not` operator with bitwise negation `~-` to save on space (1-5 characters shorter).
 * In most cases `x==0` can be replaced with `x<1` (1 character shorter).
 * You can check for set membership with `{x}&s` instead of `x in s` (1 character shorter).
-* A check like `x&(x-1)==1` determines if unsigned `x` is power of 2 or 0 (turns off the rightmost bit).
+* A check like `x&(x-1)==1` determines if unsigned `x` is power of 2 (turns off the rightmost bit).
 
 ## References
 

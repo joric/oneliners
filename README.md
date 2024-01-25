@@ -1047,7 +1047,7 @@ class Solution:
 * Instead of range(x), you can use the * operator on a list of anything, e.g. `[1]*8` can replace `range(8)` (unless you really need the counter value).
 * Conditions like `if i<len(r)` may be replaced with `if r[i:]`, it's 3 characters shorter.
 * You can replace `set(n)` with `{*n}` (2 characters shorter).
-* You can convert bool with `~~()` instead of `int()`, as in js (1 character shorter), or just prepend with a single `+`.
+* You can convert bool with `~~()` instead of `int()`, as in js, or just prepend with a single `+` (5 characters shorter).
 * You can subtract 1 or replace `not` operator with bitwise negation `~-` to save on space (1-5 characters shorter).
 * In most cases `x==0` can be replaced with `x<1` (1 character shorter).
 * You can check for set membership with `{x}&s` instead of `x in s` (1 character shorter).

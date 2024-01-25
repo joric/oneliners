@@ -17,7 +17,7 @@ class Solution:
             if len(a)==0 or len(b)==0:
                 return 0
             if a[0]==b[0]:
-                return 1 + f(a[1:], text2[1:])
+                return 1 + f(a[1:], b[1:])
             else:
                 return max(f(a, b[1:]), f(a[1:], b))
         return f(text1, text2)
@@ -39,6 +39,10 @@ class Solution:
 class Solution:
     def longestCommonSubsequence(self, a: str, b: str) -> int:
         return(f:=cache(lambda i,j:a[i:]and b[j:]and(a[i]==b[j]and 1+f(i+1,j+1)or max(f(i+1,j),f(i,j+1)))or 0))(0,0)
+
+class Solution:
+    def longestCommonSubsequence(self, a: str, b: str) -> int:
+        return+reduce(lambda D,B:(p:=0,d:=0,[p:=max(A==B and d+1,d:=u,p)for A,u in zip(a,D)])[2],b,[0]*len(a))[-1]
 
 test('''
 

@@ -42,7 +42,7 @@ class Solution:
 
 class Solution:
     def longestCommonSubsequence(self, a: str, b: str) -> int:
-        return+reduce(lambda D,B:(p:=0,d:=0,[p:=max(A==B and d+1,d:=u,p)for A,u in zip(a,D)])[2],b,[0]*len(a))[-1]
+        return+reduce(lambda c,i:(p:=0,d:=0,[p:=max(u==i and d+1,d:=v,p)for u,v in zip(a,c)])[2],b,[0]*len(a))[-1]
 
 test('''
 

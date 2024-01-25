@@ -60,7 +60,19 @@ class Solution:
 
 class Solution:
     def longestCommonSubsequence(self, a: str, b: str) -> int:
+        s=[0]*len(a)
+        for c in b:
+            d=p=0
+            s=[p:=max(u==c and d+1,d:=v,p)for u,v in zip(a,s)]
+        return +s[-1]
+
+class Solution:
+    def longestCommonSubsequence(self, a: str, b: str) -> int:
         return+reduce(lambda s,c:(p:=0,d:=0,[p:=max(u==c and d+1,d:=v,p)for u,v in zip(a,s)])[2],b,[0]*len(a))[-1]
+
+class Solution:
+    def longestCommonSubsequence(self, a: str, b: str) -> int:
+        s=[0]*len(a);[(d:=0,p:=0,s:=[p:=max(u==c and d+1,d:=v,p)for u,v in zip(a,s)])for c in b];return+s[-1]
 
 test('''
 

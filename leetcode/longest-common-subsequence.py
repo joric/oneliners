@@ -32,10 +32,17 @@ class Solution:
         return (f:=cache(lambda a,b,i,j:0 if i==len(a) or j==len(b) else 1+f(a,b,i+1,j+1) if a[i]==b[j] else max(f(a,b,i+1,j),f(a,b,i,j+1))))(text1,text2,0,0)
 
 # https://leetcode.com/problems/longest-common-subsequence/solutions/2912811/python-3-one-line/
+# memory limit exceeded
 
 class Solution:
-    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
-        return (f:=cache(lambda a,b:a and b and (a[0]==b[0] and 1+f(a[1:],b[1:]) or max(f(a,b[1:]),f(a[1:],b))) or 0))(text1,text2)
+    def longestCommonSubsequence(self, a: str, b: str) -> int:
+        return (f:=cache(lambda a,b:a and b and (a[0]==b[0] and 1+f(a[1:],b[1:]) or max(f(a,b[1:]),f(a[1:],b))) or 0))(a,b)
+
+# working
+
+class Solution:
+    def longestCommonSubsequence(self, a: str, b: str) -> int:
+        return(f:=cache(lambda i,j:a[i:]and b[j:]and(a[i]==b[j]and 1+f(i+1,j+1)or max(f(i+1,j),f(i,j+1)))or 0))(0,0)
 
 test('''
 

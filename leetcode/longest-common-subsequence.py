@@ -36,7 +36,7 @@ class Solution:
 
 class Solution:
     def longestCommonSubsequence(self, a: str, b: str) -> int:
-        return (f:=cache(lambda a,b:a and b and (a[0]==b[0] and 1+f(a[1:],b[1:]) or max(f(a,b[1:]),f(a[1:],b))) or 0))(a,b)
+        return(f:=cache(lambda a,b:a and b and(a[0]==b[0]and 1+f(a[1:],b[1:])or max(f(a,b[1:]),f(a[1:],b)))or 0))(a,b)
 
 # working
 

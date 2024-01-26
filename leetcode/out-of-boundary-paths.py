@@ -41,6 +41,14 @@ class Solution:
     def findPaths(self, m: int, n: int, v: int, r: int, c: int) -> int:
         g={i//n+i%n*1j:0for i in range(m*n)};return(f:=cache(lambda t,z:g.get(z,1)or t and sum(f(t-1,z+1j**k)for k in range(4))))(v,r+c*1j)%(10**9+7)
 
+class Solution:
+    def findPaths(self, m: int, n: int, v: int, r: int, c: int) -> int:
+        g=set(i//n+i%n*1j for i in range(m*n));return(f:=cache(lambda t,z:g.get(z,1)or t and sum(f(t-1,z+1j**k)for k in range(4))))(v,r+c*1j)%(10**9+7)
+
+class Solution:
+    def findPaths(self, m: int, n: int, v: int, r: int, c: int) -> int:
+        return(f:=cache(lambda t,z:not(m>z.real>-1<z.imag<n)or t and sum(f(t-1,z+1j**k)for k in range(4))))(v,r+c*1j)%(10**9+7)
+
 test('''
 
 576. Out of Boundary Paths

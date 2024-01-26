@@ -27,6 +27,16 @@ class Solution:
     def minStickers(self, s: List[str], t: str) -> int:
         d,f=[*map(Counter,s)],cache(lambda s:(c:=Counter(s))and min(s!=(r:=''.join((c-w).elements()))and 1+f(r)or inf for w in d)or 0);return(-1,r:=f(t))[r<inf]
 
+class Solution:
+    def minStickers(self, s: List[str], t: str) -> int:
+        return(-1,r:=(f:=cache(lambda x:x and min(x!=(r:=''.join((Counter(x)-Counter(w)).elements()))and 1+f(r)or inf for w in s)or 0))(t))[r<inf]
+
+# borderline TLE (8s)
+
+class Solution:
+    def minStickers(self, s: List[str], t: str) -> int:
+        c=Counter;return(-1,r:=(f:=cache(lambda x:x and min(x!=(r:=''.join((c(x)-c(w)).elements()))and 1+f(r)or inf for w in s)or 0))(t))[r<inf]
+
 test('''
 691. Stickers to Spell Word
 Hard

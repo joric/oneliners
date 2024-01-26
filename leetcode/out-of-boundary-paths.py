@@ -1,5 +1,22 @@
 from lc import *
 
+# https://leetcode.com/problems/out-of-boundary-paths/discuss/4628884/one-line-solution
+
+class Solution:
+    def findPaths(self, m: int, n: int, c: int, i: int, j: int) -> int:
+        return (f:=cache(lambda i,j,c:not(m>i>-1<j<n) or c and sum(f(i+q,j,c-1)+f(i,j+q,c-1) for q in (-1,1))%(10**9+7)))(i,j,c)
+
+class Solution:
+    @cache
+    def findPaths(self, m: int, n: int, c: int, i: int, j: int) -> int:
+        return not(m>i>-1<j<n) or c and sum(self.findPaths(m,n,c-1,i+o,j+p) for o,p in ((-1,0),(0,1),(1,0),(0,-1)))%(10**9+7)
+
+class Solution:
+    def findPaths(self, m: int, n: int, c: int, i: int, j: int) -> int:
+        return(f:=cache(lambda c,i,j:not(m>i>-1<j<n)or c and sum(f(c-1,i+o,j+p)for o,p in((-1,0),(0,1),(1,0),(0,-1)))))(c,i,j)%(10**9+7)
+
+# my solutions
+
 class Solution:
     def findPaths(self, m: int, n: int, maxMove: int, startRow: int, startColumn: int) -> int:
         dp = [[[0] * n for j in range(m)] for k in range(maxMove+1)]

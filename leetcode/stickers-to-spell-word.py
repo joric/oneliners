@@ -15,6 +15,24 @@ class Solution:
     def minStickers(self, s: List[str], t: str) -> int:
         d,f=[*map(Counter,s)],cache(lambda s:s and(k:=(c:=Counter(s)).keys())and min(s!=(r:=reduce(lambda a,j:a+j*max(0,c[j]-w[j]),k,''))and 1+f(r)or inf for w in d)or 0);return(r:=f(t),-1)[r==inf]
 
+# https://leetcode.com/problems/stickers-to-spell-word/discuss/108337/9-lines-Python
+
+
+class Solution:
+    def minStickers(self, s: List[str], t: str) -> int:
+        if set(t).difference(*s):
+            return -1
+
+        def f(t, memo={(): 0}):
+            key = tuple(sorted(t.elements()))
+            if key not in memo:
+                c = min(t, key=lambda c: sum(c in x for x in s))
+                memo[key] = 1 + min(ms(t-x) for x in s if c in s)
+            return memo[key]
+        s = map(Counter, s)
+        return f(Counter(t))
+
+
 test('''
 691. Stickers to Spell Word
 Hard

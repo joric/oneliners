@@ -43,14 +43,6 @@ class Solution:
 # bottom-up
 
 class Solution:
-    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
-        dp=[0]*len(text1)
-        for c2 in text2:
-            dpi1j1=dpij1=0
-            dp=[(dpij1:=dpi1j1+1 if c1==c2 else max(dpi1j,dpij1),dpi1j1:=dpi1j)[0] for c1,dpi1j in zip(text1,dp)]
-        return dp[-1]
-
-class Solution:
     def longestCommonSubsequence(self, a: str, b: str) -> int:
         s=[0]*len(a)
         for c in b:

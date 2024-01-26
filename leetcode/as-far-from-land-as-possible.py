@@ -28,6 +28,10 @@ class Solution:
     def maxDistance(self, grid: List[List[int]]) -> int:
         return next((d or -1 for _ in count() if not(a and b and (b:=b-(a:={t for z in a for t in (z+1j**k for k in range(4)) if t in b}),d:=d+1))),(d:=0,a:=(c:=lambda t:{i+j*1j for i,r in enumerate(grid) for j,x in enumerate(r) if x==t})(1),b:=c(0)))
 
+class Solution:
+    def maxDistance(self, g: List[List[int]]) -> int:
+        e=enumerate;return next((d or -1 for _ in count()if not(a and b and(b:=b-(a:={t for z in a for t in(z+1j**k for k in range(4))if t in b}),d:=d+1))),(d:=0,a:=(c:=lambda t:{i+j*1j for i,r in e(g)for j,x in e(r)if x==t})(1),b:=c(0)))
+
 test('''
 
 1162. As Far from Land as Possible

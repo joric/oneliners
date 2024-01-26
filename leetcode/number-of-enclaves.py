@@ -26,7 +26,7 @@ class Solution:
 
 class Solution:
     def numEnclaves(self, g: List[List[int]]) -> int:
-        e,n,m=enumerate,len(g),len(g[0])
+        e,m,n=enumerate,len(g),len(g[0])
         g={i+j*1j:x for i,r in e(g) for j,x in e(r)}
         f=lambda z:g.pop(z,0)and[f(z+1j**k)for k in range(4)]
         [f(z)for z in set(g)if not n-1>z.imag>0<z.real<m-1]
@@ -34,7 +34,7 @@ class Solution:
 
 class Solution:
     def numEnclaves(self, g: List[List[int]]) -> int:
-        e,n,m=enumerate,len(g),len(g[0]);g={i+j*1j:x for i,r in e(g) for j,x in e(r)};f=lambda z:g.pop(z,0)and[f(z+1j**k)for k in range(4)];[f(z)for z in set(g)if not n-1>z.imag>0<z.real<m-1];return sum(g.values())
+        e,m,n=enumerate,len(g),len(g[0]);g={i+j*1j:x for i,r in e(g) for j,x in e(r)};f=lambda z:g.pop(z,0)and[f(z+1j**k)for k in range(4)];[f(z)for z in set(g)if not n-1>z.imag>0<z.real<m-1];return sum(g.values())
 
 test('''
 1020. Number of Enclaves

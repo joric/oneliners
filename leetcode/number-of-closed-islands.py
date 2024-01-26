@@ -42,6 +42,10 @@ class Solution:
     def closedIsland(self, grid: List[List[str]]) -> int:
         return (g:={i+j*1j:1-x for i,r in enumerate(grid) for j,x in enumerate(r)},f:=lambda z:g.pop(z,0) and [f(z+1j**k) for k in range(4)]!=0,[f(z) for z in set(g) if not(0<z.real<len(grid)-1 and 0<z.imag<len(grid[0])-1)]) and sum(map(f,set(g)))
 
+class Solution:
+    def closedIsland(self, g: List[List[str]]) -> int:
+        e=enumerate;d={i+j*1j:1-x for i,r in e(g)for j,x in e(r)};f=lambda z:d.pop(z,0)and[f(z+1j**k)for k in range(4)]!=0;[f(z)for z in set(d)if not(0<z.real<len(g)-1 and 0<z.imag<len(g[0])-1)];return sum(map(f,set(d)))
+
 test('''
 1254. Number of Closed Islands
 Medium

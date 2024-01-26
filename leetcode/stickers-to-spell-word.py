@@ -8,7 +8,7 @@ class Solution:
         @cache
         def f(s):
             c=Counter(s)
-            return s and min(s!=(r:=''.join(i*max(0,c[k]-w[k])for k in c))and 1+f(r)or inf for w in d)or 0
+            return s and min(s!=(r:=''.join(k*max(0,c[k]-w[k])for k in c))and 1+f(r)or inf for w in d)or 0
         return(r:=f(t),-1)[r==inf]
 
 class Solution:

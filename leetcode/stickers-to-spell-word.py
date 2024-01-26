@@ -7,12 +7,13 @@ class Solution:
         d=[*map(Counter,s)]
         @cache
         def f(s):
-           return s and(k:=sorted((c:=Counter(s)).keys()))and min(s!=(r:=reduce(lambda a,j:a+j*max(0,c[j]-w[j]),k,''))and 1+f(r)or inf for w in d)or 0
+            k=(c:=Counter(s)).keys()
+            return s and min(s!=(r:=reduce(lambda a,j:a+j*max(0,c[j]-w[j]),k,''))and 1+f(r)or inf for w in d)or 0
         return(r:=f(t),-1)[r==inf]
 
 class Solution:
     def minStickers(self, s: List[str], t: str) -> int:
-        d,f=[*map(Counter,s)],cache(lambda s:s and(k:=sorted((c:=Counter(s)).keys()))and min(s!=(r:=reduce(lambda a,j:a+j*max(0,c[j]-w[j]),k,''))and 1+f(r)or inf for w in d)or 0);return(r:=f(t),-1)[r==inf]
+        d,f=[*map(Counter,s)],cache(lambda s:s and(k:=(c:=Counter(s)).keys())and min(s!=(r:=reduce(lambda a,j:a+j*max(0,c[j]-w[j]),k,''))and 1+f(r)or inf for w in d)or 0);return(r:=f(t),-1)[r==inf]
 
 test('''
 691. Stickers to Spell Word

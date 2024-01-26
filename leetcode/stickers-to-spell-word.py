@@ -15,6 +15,26 @@ class Solution:
     def minStickers(self, s: List[str], t: str) -> int:
         d,f=[*map(Counter,s)],cache(lambda s:s and(c:=Counter(s))and min(s!=(r:=''.join(k*max(0,c[k]-w[k])for k in c))and 1+f(r)or inf for w in d)or 0);return(r:=f(t),-1)[r==inf]
 
+# counter diff (2x slower)
+
+class Solution:
+    def minStickers(self, s: List[str], t: str) -> int:
+        d=[*map(Counter,s)]
+        @cache
+        def f(s):
+            c=Counter(s)
+            return s and min(s!=(r:=''.join((c-w).elements()))and 1+f(r)or inf for w in d)or 0
+        return(r:=f(t),-1)[r==inf]
+
+class Solution:
+    def minStickers(self, s: List[str], t: str) -> int:
+        d,f=[*map(Counter,s)],cache(lambda s:s and(c:=Counter(s))and min(s!=(r:=''.join((c-w).elements()))and 1+f(r)or inf for w in d)or 0);return(r:=f(t),-1)[r==inf]
+
+# 4x slower
+class Solution:
+    def minStickers(self, s: List[str], t: str) -> int:
+        d,f=[*map(Counter,s)],cache(lambda s:s and min(s!=(r:=''.join((Counter(s)-w).elements()))and 1+f(r)or inf for w in d)or 0);return(r:=f(t),-1)[r==inf]
+
 test('''
 691. Stickers to Spell Word
 Hard

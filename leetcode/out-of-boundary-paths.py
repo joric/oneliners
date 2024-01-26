@@ -47,12 +47,6 @@ class Solution:
     def findPaths(self, m: int, n: int, v: int, r: int, c: int) -> int:
         g=set(i//n+i%n*1j for i in range(m*n));return(f:=cache(lambda t,z:g.get(z,1)or t and sum(f(t-1,z+1j**k)for k in range(4))))(v,r+c*1j)%(10**9+7)
 
-# (shortest with the inline cache)
-
-class Solution:
-    def findPaths(self, m: int, n: int, v: int, r: int, c: int) -> int:
-        return(f:=cache(lambda t,z:not(m>z.real>-1<z.imag<n)or t and sum(f(t-1,z+1j**k)for k in range(4))))(v,r+c*1j)%(10**9+7)
-
 # https://leetcode.com/problems/out-of-boundary-paths/discuss/4628884/one-line-solution
 
 class Solution:
@@ -67,6 +61,12 @@ class Solution:
     @cache
     def findPaths(self, m: int, n: int, c: int, i: int, j: int) -> int:
         return not(m>i>-1<j<n) or c and sum(self.findPaths(m,n,c-1,i+o,j+p) for o,p in ((-1,0),(0,1),(1,0),(0,-1)))%(10**9+7)
+
+# (shortest with the inline cache)
+
+class Solution:
+    def findPaths(self, m: int, n: int, v: int, r: int, c: int) -> int:
+        return(f:=cache(lambda t,z:not(m>z.real>-1<z.imag<n)or t and sum(f(t-1,z+1j**k)for k in range(4))))(v,r+c*1j)%(10**9+7)
 
 test('''
 

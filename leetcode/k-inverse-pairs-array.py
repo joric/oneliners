@@ -40,7 +40,7 @@ class Solution:
 
 class Solution:
     def kInversePairs(self, n: int, k: int) -> int:
-        return(f:=cache(lambda n,k:k<1or(t:=~-n)and(f(n,k-1)+f(t,k)-(k>=n and f(t,k-n)))))(n,k)%(10**9+7)
+        return(f:=cache(lambda n,k:k<1or(t:=n-1)and(f(n,k-1)+f(t,k)-(k>=n and f(t,k-n)))))(n,k)%(10**9+7)
 
 test('''
 629. K Inverse Pairs Array

@@ -35,8 +35,13 @@ class Solution:
         return+(not k or n!=1 and(self.kInversePairs(n,k-1)+self.kInversePairs(n-1,k)-(k>=n and self.kInversePairs(n-1,k-n)))%(10**9+7))
 
 class Solution:
+    @cache
     def kInversePairs(self, n: int, k: int) -> int:
-        return(f:=cache(lambda n,k:k<1or~-n and(f(n,k-1)+f(n-1,k)-(k>=n and f(n-1,k-n)))))(n,k)%(10**9+7)
+        return(k==0 or n>1 and k>0 and self.kInversePairs(n,k-1)+self.kInversePairs(n-1,k)-self.kInversePairs(n-1,k-n))%(10**9+7)
+
+class Solution:
+    def kInversePairs(self, n: int, k: int) -> int:
+        return(f:=cache(lambda n,k:k==0 or~-n and k>0and f(n,k-1)+f(n-1,k)-f(n-1,k-n)))(n,k)%(10**9+7)
 
 test('''
 629. K Inverse Pairs Array

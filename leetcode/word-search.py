@@ -38,7 +38,7 @@ class Solution:
                 b[z]=w[k]
                 return r
         return any(map(f,b))
-test()
+
 # borderline TLE (8s)
 
 class Solution:

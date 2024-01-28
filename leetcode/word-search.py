@@ -22,7 +22,7 @@ class Solution:
 
 class Solution:
     def exist(self, b: List[List[str]], w: str) -> bool:
-        # optional precalc (makes the code 100x faster)
+        # optional precalc (see https://leetcode.com/problems/word-search/discuss/4087946/These-tricks-can-make-your-code-128x-times-faster)
         c = Counter(sum(b,[]))
         for k,v in Counter(w).items():
             if c[k]<v:

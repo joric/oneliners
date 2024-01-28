@@ -22,6 +22,14 @@ class Solution:
 
 class Solution:
     def exist(self, b: List[List[str]], w: str) -> bool:
+        # optional precalc (makes the code 100x faster)
+        c = Counter(sum(b,[]))
+        for k,v in Counter(w).items():
+            if c[k]<v:
+                return False
+        if c[w[0]]>c[w[-1]]:
+             w = w[::-1]
+
         e=enumerate;b={i+j*1j:c for i,r in e(b)for j,c in e(r)}
         def f(z,k=0):
             if k==len(w):

@@ -72,6 +72,11 @@ Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "
 Output: false
  
 
+Example 4:
+
+Input: board = [["C","A","A"],["A","A","A"],["B","C","D"]], word = "AAB"
+Output: true
+
 Constraints:
 
 m == board.length

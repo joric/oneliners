@@ -7,7 +7,8 @@ class Solution:
         m, w, r = [[*accumulate(a)]for a in m],len(m[0]),0
         for j in range(w):
             for k in range(j,w):
-                c, s = Counter([0]), 0
+                c = Counter([0])
+                s = 0
                 for x in m:
                     s += x[k] - (j and x[j-1])
                     r += c[s-t]
@@ -20,8 +21,22 @@ class Solution:
 
 class Solution:
     def numSubmatrixSumTarget(self, m: List[List[int]], t: int) -> int:
-        a=0;[(u:=[0]*len(m[0]),[(u:=[*starmap(add,zip(u,r))],c:=Counter([0]),s:=0,[(a:=a+c[(s:=s+x)-t],c.update([s]))for x in u])for r in m[i:]])for i in range(len(m))];return a
+        a=0
+        for i in range(len(m)):
+            u = [0]*len(m[0])
+            for r in m[i:]:
+                u = [*starmap(add,zip(u,r))]
+                c = Counter([0])
+                s = 0
+                for x in u:
+                    s += x
+                    a += c[s-t]
+                    c[s] += 1
+        return a
 
+class Solution:
+    def numSubmatrixSumTarget(self, m: List[List[int]], t: int) -> int:
+        a=0;[(u:=[0]*len(m[0]),[(u:=[*starmap(add,zip(u,r))],c:=Counter([0]),s:=0,[(a:=a+c[(s:=s+x)-t],c.update([s]))for x in u])for r in m[i:]])for i in range(len(m))];return a
 
 test('''
 1074. Number of Submatrices That Sum to Target

@@ -18,7 +18,7 @@ class Solution:
 
 class Solution:
     def exist(self, b: List[List[str]], w: str) -> bool:
-        m,n=len(b),len(b[0]);f=lambda i,j,w:not w or m>i>=0<=j<n and w[0]==b[i][j] and(t:=b[i][j],setitem(b[i],j,'$'),r:=any(map(f,(i+1,i-1,i,i),(j,j,j+1,j-1),[w[1:]]*4)),setitem(b[i],j,t))and r;return any(f(i,j,w)for i in range(m)for j in range(n))
+        m,n=len(b),len(b[0]);f=lambda i,j,w:not w or m>i>=0<=j<n and w[0]==b[i][j]and(t:=b[i][j],setitem(b[i],j,'$'),r:=any(map(f,(i+1,i-1,i,i),(j,j,j+1,j-1),[w[1:]]*4)),setitem(b[i],j,t))and r;return any(f(i,j,w)for i in range(m)for j in range(n))
 
 test('''
 79. Word Search

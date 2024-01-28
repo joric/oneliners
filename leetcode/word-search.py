@@ -23,11 +23,9 @@ class Solution:
 class Solution:
     def exist(self, b: List[List[str]], w: str) -> bool:
         # optional precalc (see https://leetcode.com/problems/word-search/discuss/4087946/These-tricks-can-make-your-code-128x-times-faster)
-        c = Counter(sum(b,[]))
-        for k,v in Counter(w).items():
-            if c[k]<v:
-                return False
-        if c[w[0]]>c[w[-1]]:
+        if not Counter(sum(b,[]))>=Counter(w):
+            return False
+        if Counter(w)[w[0]]>Counter(w)[w[-1]]:
              w = w[::-1]
 
         e=enumerate;b={i+j*1j:c for i,r in e(b)for j,c in e(r)}
@@ -40,7 +38,7 @@ class Solution:
                 b[z]=w[k]
                 return r
         return any(map(f,b))
-
+test()
 # borderline TLE (8s)
 
 class Solution:

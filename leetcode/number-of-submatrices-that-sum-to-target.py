@@ -25,7 +25,7 @@ class Solution:
         for i in range(len(m)):
             u = [0]*len(m[0])
             for r in m[i:]:
-                u = [*starmap(add,zip(u,r))]
+                u = [*map(add,u,r)]
                 c = Counter([0])
                 s = 0
                 for x in u:
@@ -36,7 +36,7 @@ class Solution:
 
 class Solution:
     def numSubmatrixSumTarget(self, m: List[List[int]], t: int) -> int:
-        a=0;[(u:=[0]*len(m[0]),[(u:=[*starmap(add,zip(u,r))],c:=Counter([0]),s:=0,[(a:=a+c[(s:=s+x)-t],c.update([s]))for x in u])for r in m[i:]])for i in range(len(m))];return a
+        a=0;[(u:=[0]*len(m[0]),[(u:=[*map(add,u,r)],c:=Counter([0]),s:=0,[(a:=a+c[(s:=s+x)-t],c.update([s]))for x in u])for r in m[i:]])for i in range(len(m))];return a
 
 test('''
 1074. Number of Submatrices That Sum to Target

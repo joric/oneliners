@@ -9,7 +9,7 @@ class Solution:
             for k in range(j,w):
                 c, s = Counter([0]), 0
                 for x in m:
-                    s += x[k] - (x[j-1] if j else 0)
+                    s += x[k] - (j and x[j-1])
                     r += c[s-t]
                     c[s] += 1
         return r
@@ -65,4 +65,3 @@ Accepted
 Submissions
 131,343
 ''')
-

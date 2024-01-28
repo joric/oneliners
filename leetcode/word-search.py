@@ -20,6 +20,25 @@ class Solution:
     def exist(self, b: List[List[str]], w: str) -> bool:
         m,n=len(b),len(b[0]);return any((f:=lambda i,j,k:k==len(w)or m>i>-1<j<n and w[k]==b[i][j]and(t:=b[i][j],setitem(b[i],j,'$'),r:=any(f(i+q,j,k+1)or f(i,j+q,k+1)for q in(-1,1)),setitem(b[i],j,t))and r)(i//n,i%n,0)for i in range(m*n))
 
+class Solution:
+    def exist(self, b: List[List[str]], w: str) -> bool:
+        e=enumerate;b={i+j*1j:c for i,r in e(b)for j,c in e(r)}
+        def f(z,k=0):
+            if k==len(w):
+                return True
+            if b.get(z)==w[k]:
+                b[z]=0
+                r=any(f(z+1j**i,k+1)for i in range(4))
+                b[z]=w[k]
+                return r
+        return any(map(f,b))
+
+# borderline TLE (8s)
+
+class Solution:
+    def exist(self, b: List[List[str]], w: str) -> bool:
+        e=enumerate;b={i+j*1j:c for i,r in e(b)for j,c in e(r)};return any(map((f:=lambda z,k=0:k==len(w)or b.get(z)==w[k]and(setitem(b,z,0),any(f(z+1j**i,k+1)for i in range(4)),setitem(b,z,w[k]))[1]),b))
+
 test('''
 79. Word Search
 Medium

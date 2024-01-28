@@ -10,9 +10,9 @@ class Solution:
                 return True
             if  m>i>=0<=j<n and w[0]==b[i][j]:
                 t = b[i][j]
-                setitem(b[i],j,'$')
+                b[i][j]='$'
                 r = any(map(f,(i+1,i-1,i,i),(j,j,j+1,j-1),[w[1:]]*4))
-                setitem(b[i],j,t)
+                b[i][j]=t
                 return r
         return any(f(i,j,w)for i in range(m)for j in range(n))
 

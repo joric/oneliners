@@ -30,6 +30,8 @@ MyQueue = type('MyQueue',(),{
     'empty':lambda s:not s.i and not s.o
 })
 
+MyQueue=type('MyQueue',(),{'__init__':lambda s:setattr(s,'i',[])or setattr(s,'o',[]),'push':lambda s,x:s.i.append(x),'pop':lambda s:s.peek()and s.o.pop(),'peek':lambda s:(not s.o and next(0 for _ in count()if not(s.i and not s.o.append(s.i.pop()))))or s.o[-1],'empty':lambda s:not s.i and not s.o})
+
 test('''
 
 232. Implement Queue using Stacks

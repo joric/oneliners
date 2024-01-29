@@ -26,13 +26,19 @@ class Solution:
         return [i for i in range(len(nums)) if target-nums[i] in nums[:i]+nums[i+1:]]
 
 # payload thingy https://leetcode.com/discuss/feedback/4643730/a-python-solution-that-contain-malicious-payload-in-your-website
-# how to find: go to python 2 sumbissions, try clicking the beginning of the chart (I got it at 4 ms, 7 ms, 16 ms, etc.)
+# pulled from beginning of the python 2 submissions at 4ms https://leetcode.com/submissions/api/detail/1/python/4/
+# doesn't pass all tests, there are more tests now
 
 class Solution(object):
     def twoSum(self, nums, target):
         from zlib import decompress
         from base64 import b64decode
         open('user.out', 'wb').write(decompress(b64decode("eJyLNtRRMIjlijbSUTAEUggekqAxiqCJjoIRhgZjFEGESgMMJVDtphDKGK7SGKFy2FKwAAFyTRGilkCgowAkLIAcMx0IaQmSN9IxAqsz0zE0B9IGOsDABQCpFVmV"))),exit(0)
+
+# shortest
+class Solution:
+    def twoSum(self, a: List[int], t: int) -> List[int]:
+        return[i for i in range(len(a))if t-a[i]in a[:i]+a[i+1:]]
 
 test('''
 1. Two Sum

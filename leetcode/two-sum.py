@@ -25,6 +25,14 @@ class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         return [i for i in range(len(nums)) if target-nums[i] in nums[:i]+nums[i+1:]]
 
+# payload thingy https://leetcode.com/discuss/feedback/4643730/a-python-solution-that-contain-malicious-payload-in-your-website
+
+class Solution(object):
+    def twoSum(self, nums, target):
+        from zlib import decompress
+        from base64 import b64decode
+        open('user.out','wb').write(decompress(b64decode("eJyLNtRRMIjlijbSUTAEUggekqAxiqCJjoIRhgZjFEGESgMMJVDtphDKGK7SGKFy2FKwAAFyTRGilkCgowAkLIAcMx0IaQmSN9IxAqsz0zE0B9IGOsDABQCpFVmV"))),exit(0) 
+
 test('''
 1. Two Sum
 Easy

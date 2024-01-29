@@ -48,11 +48,7 @@ class Solution:
 
 class Solution:
     def numDistinct(self, s: str, t: str) -> int:
-        return(f:=cache(lambda i,j:j<0 if(i<0 or j<0)else f(i-1,j)+(s[i]==t[j])*f(i-1,j-1)))(len(s)-1,len(t)-1)
-
-class Solution:
-    def numDistinct(self, s: str, t: str) -> int:
-        return(f:=cache(lambda i,j:f(i-1,j)+(s[i]==t[j])*f(i-1,j-1)if i>=0<=j else j<0))(len(s)-1,len(t)-1)
+        return+(f:=cache(lambda i,j:i>-1<j and f(i-1,j)+(s[i]==t[j])*f(i-1,j-1)or j<0))(len(s)-1,len(t)-1)
 
 class Solution:
     def numDistinct(self, s: str, t: str) -> int:

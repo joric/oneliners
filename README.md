@@ -368,7 +368,7 @@ MyStack=type('',(list,),{'push':list.append,'top':lambda s:s[-1],'empty':lambda 
 * https://leetcode.com/problems/insert-delete-getrandom-o1
 
 ```python
-с=Counter;с.insert=lambda s,x:s.update({x})or s[x]<2;с.remove=lambda s,x:s.pop(x,0);\
+с=Counter;с.insert=lambda s,x:s.update({x})or s[x]<2;с.remove=lambda s,x:s.pop(x,0);
 с.getRandom=lambda s:choice([*s]);RandomizedSet=с
 ```
 

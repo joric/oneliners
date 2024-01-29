@@ -120,13 +120,6 @@ the method returns `None`. E.g. `c[i]+=1` is equivalent to `c.update([i])`, `c[i
 To set a key, you can use `operator.setitem` function, e.g. `c[x]=1` is the same as `setitem(c,x,1)`.
 To delete a key you can use the `.pop` method (same as `del`), it's shorter than `popitem()`.
 
-* https://leetcode.com/problems/insert-delete-getrandom-o1
-
-```python
-с=Counter;с.insert=lambda s,x:s.update({x})or s[x]<2;с.remove=lambda s,x:s.pop(x,0);
-с.getRandom=lambda s:choice([*s]);RandomizedSet=с
-```
-
 You can easily drop zero and negative values in a counter (it's the official way, see [documentation](https://docs.python.org/3/library/collections.html#collections.Counter)):
 
 ```python
@@ -370,6 +363,13 @@ MyHashSet=type('',(set,),{'remove':set.discard,'contains':set.__contains__})
 
 ```python
 MyStack=type('',(list,),{'push':list.append,'top':lambda s:s[-1],'empty':lambda s:not s})
+```
+
+* https://leetcode.com/problems/insert-delete-getrandom-o1
+
+```python
+с=Counter;с.insert=lambda s,x:s.update({x})or s[x]<2;с.remove=lambda s,x:s.pop(x,0);\
+с.getRandom=lambda s:choice([*s]);RandomizedSet=с
 ```
 
 Sometimes (not always) you can skip `__init__` and use static attributes.

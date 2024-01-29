@@ -41,6 +41,8 @@ MyQueue=type('',(deque,),{
 
 MyQueue=type('',(deque,),{'push':deque.append,'peek':lambda s:s[0],'pop':deque.popleft,'empty':lambda s:not s})
 
+c=type('',(deque,),{});c.push=c.append;c.peek=lambda s:s[0];c.pop=c.popleft;c.empty=lambda s:not s;MyQueue=c
+
 test('''
 
 232. Implement Queue using Stacks

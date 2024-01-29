@@ -1,5 +1,17 @@
 from lc import *
 
+# https://leetcode.com/problems/distinct-subsequences/discuss/319994/short-and-sweet-python-76ms
+
+class Solution:
+    def numDistinct(self, s: str, t: str) -> int:
+        p = [0]*(len(t)+1)
+        p[0] = 1
+        for i in range(0, len(s)):
+            for j in range(len(t),0,-1):
+                if s[i]==t[j-1]:
+                    p[j] += p[j-1]
+        return p[-1]
+
 class Solution:
     def numDistinct(self, s: str, t: str) -> int:
         p=[0]*len(t)
@@ -11,6 +23,29 @@ class Solution:
 class Solution:
     def numDistinct(self, s: str, t: str) -> int:
         p=[0]*len(t);all((d:=1,p:=[((c==j)*d)+(d:=i)for i,j in zip(p,t)])for c in s);return p[-1]
+
+# https://leetcode.com/problems/distinct-subsequences/discuss/1472589/Python-short-dp-solution-explained
+
+class Solution:
+    def numDistinct(self, s: str, t: str) -> int:
+        @cache
+        def f(i,j):
+            if i == -1: return j == -1
+            if j == -1: return j == -1
+            return f(i-1,j)+(s[i]==t[j])*f(i-1,j-1)
+        return f(len(s)-1,len(t)-1)
+
+class Solution:
+    def numDistinct(self, s: str, t: str) -> int:
+        return(f:=cache(lambda i,j:j<0 if(i<0 or j<0)else f(i-1,j)+(s[i]==t[j])*f(i-1,j-1)))(len(s)-1,len(t)-1)
+
+class Solution:
+    def numDistinct(self, s: str, t: str) -> int:
+        return(f:=cache(lambda i,j:f(i-1,j)+(s[i]==t[j])*f(i-1,j-1)if i>=0<=j else j<0))(len(s)-1,len(t)-1)
+
+class Solution:
+    def numDistinct(self, s: str, t: str) -> int:
+        return+(f:=cache(lambda i,j:s[i:]and t[j:]and f(i+1,j)+(s[i]==t[j])*f(i+1,j+1)or not t[j:]))(0,0)
 
 test('''
 115. Distinct Subsequences
@@ -50,6 +85,10 @@ babgbag
 babgbag
 babgbag
  
+Example 3:
+
+Input: s = "b", t = "a"
+Output: 0
 
 Constraints:
 

@@ -2,6 +2,14 @@ from lc import *
 
 class Solution:
     def numDistinct(self, s: str, t: str) -> int:
+        p=[0]*len(t)
+        for c in s:
+            d = 1
+            p = [((c==j)*d)+(d:=i) for i,j in zip(p,t)]
+        return p[-1]
+
+class Solution:
+    def numDistinct(self, s: str, t: str) -> int:
         p=[0]*len(t);all((d:=1,p:=[((c==j)*d)+(d:=i)for i,j in zip(p,t)])for c in s);return p[-1]
 
 test('''

@@ -35,6 +35,17 @@ class Solution:
             return f(i-1,j)+(s[i]==t[j])*f(i-1,j-1)
         return f(len(s)-1,len(t)-1)
 
+# Memory Limit Exceeded
+class Solution:
+    @cache
+    def numDistinct(self, s: str, t: str) -> int:
+        return s and t and self.numDistinct(s[1:],t)+(s[0]==t[0])*self.numDistinct(s[1:],t[1:])or+(''==t)
+
+# Memory Limit Exceeded
+class Solution:
+    def numDistinct(self, s: str, t: str) -> int:
+        return+(f:=cache(lambda s,t:s and t and f(s[1:],t)+(s[0]==t[0])*f(s[1:],t[1:])or''==t))(s,t)
+
 class Solution:
     def numDistinct(self, s: str, t: str) -> int:
         return(f:=cache(lambda i,j:j<0 if(i<0 or j<0)else f(i-1,j)+(s[i]==t[j])*f(i-1,j-1)))(len(s)-1,len(t)-1)
@@ -46,17 +57,6 @@ class Solution:
 class Solution:
     def numDistinct(self, s: str, t: str) -> int:
         return+(f:=cache(lambda i,j:s[i:]and t[j:]and f(i+1,j)+(s[i]==t[j])*f(i+1,j+1)or not t[j:]))(0,0)
-
-# Memory Limit Exceeded
-class Solution:
-    @cache
-    def numDistinct(self, s: str, t: str) -> int:
-        return s and t and self.numDistinct(s[1:],t)+(s[0]==t[0])*self.numDistinct(s[1:],t[1:])or+(''==t)
-
-# Memory Limit Exceeded
-class Solution:
-    def numDistinct(self, s: str, t: str) -> int:
-        return+(f:=cache(lambda s,t:s and t and f(s[1:],t)+(s[0]==t[0])*f(s[1:],t[1:])or''==t))(s,t)
 
 test('''
 115. Distinct Subsequences

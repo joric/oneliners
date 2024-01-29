@@ -43,6 +43,11 @@ class Solution:
     def numDistinct(self, s: str, t: str) -> int:
         return(f:=cache(lambda i,j:f(i-1,j)+(s[i]==t[j])*f(i-1,j-1)if i>=0<=j else j<0))(len(s)-1,len(t)-1)
 
+# Memory Limit Exceeded
+class Solution:
+    def numDistinct(self, s: str, t: str) -> int:
+        return(f:=cache(lambda s,t:f(s[1:],t)+(s[0]==t[0])*f(s[1:],t[1:])if s and t else not t))(s,t)
+
 class Solution:
     def numDistinct(self, s: str, t: str) -> int:
         return+(f:=cache(lambda i,j:s[i:]and t[j:]and f(i+1,j)+(s[i]==t[j])*f(i+1,j+1)or not t[j:]))(0,0)

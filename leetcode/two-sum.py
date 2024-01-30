@@ -36,9 +36,10 @@ class Solution(object):
         open('user.out', 'wb').write(decompress(b64decode("eJyLNtRRMIjlijbSUTAEUggekqAxiqCJjoIRhgZjFEGESgMMJVDtphDKGK7SGKFy2FKwAAFyTRGilkCgowAkLIAcMx0IaQmSN9IxAqsz0zE0B9IGOsDABQCpFVmV"))),exit(0)
 
 # shortest
+
 class Solution:
     def twoSum(self, a: List[int], t: int) -> List[int]:
-        return[i for i in range(len(a))if t-a[i]in a[:i]+a[i+1:]]
+        return[i for i,x in enumerate(a)if t-x in a[:i]+a[i+1:]]
 
 test('''
 1. Two Sum

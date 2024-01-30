@@ -77,12 +77,9 @@ class Solution:
         f,c=self.evalRPN,t.pop();return int(eval('%s'*3%(f(t),c,f(t))[::-1])if c in'*/+-'else c)
 
 test('''
-
 150. Evaluate Reverse Polish Notation
 Medium
-
 4384
-
 763
 
 Add to List
@@ -127,5 +124,3 @@ Constraints:
 tokens[i] is either an operator: "+", "-", "*", or "/", or an integer in the range [-200, 200].
 
 ''')
-
-

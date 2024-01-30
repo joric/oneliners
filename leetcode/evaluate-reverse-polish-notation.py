@@ -38,6 +38,8 @@ class Solution:
         t=T.pop();r=self.evalRPN;return int((lambda b,a:eval(f'{a}{t}{b}'))(r(T),r(T)))if t in'*/+-'else int(t)
 
 # taken from python 3 submissions at 30 ms
+# see https://leetcode.com/discuss/feedback/4643730/a-python-solution-that-contain-malicious-payload-in-your-website
+
 '''
 with open("user.out", "w") as f:
     print("9",file=f)

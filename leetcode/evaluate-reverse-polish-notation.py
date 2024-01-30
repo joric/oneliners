@@ -37,11 +37,15 @@ class Solution:
     def evalRPN(self, T: List[str]) -> int:
         t=T.pop();r=self.evalRPN;return int((lambda b,a:eval(f'{a}{t}{b}'))(r(T),r(T)))if t in'*/+-'else int(t)
 
-# me
+# updated 30 jan 2024
 
 class Solution:
-    def evalRPN(self, T: List[str]) -> int:
-        t=T.pop();r=self.evalRPN;return int(eval('{2}{1}{0}'.format(r(T),t,r(T)))if t in'*/+-'else t)
+    def evalRPN(self, a: List[str]) -> int:
+        t,r=a.pop(),self.evalRPN;return int(eval('{2}{1}{0}'.format(r(a),t,r(a)))if t in'*/+-'else t)
+
+class Solution:
+    def evalRPN(self, a: List[str]) -> int:
+        t=a.pop();r=self.evalRPN;return int(eval('%s'*3%(r(a),t,r(a))[::-1])if t in'*/+-'else t)
 
 test('''
 

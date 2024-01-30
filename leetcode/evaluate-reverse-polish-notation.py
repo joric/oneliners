@@ -37,6 +37,33 @@ class Solution:
     def evalRPN(self, T: List[str]) -> int:
         t=T.pop();r=self.evalRPN;return int((lambda b,a:eval(f'{a}{t}{b}'))(r(T),r(T)))if t in'*/+-'else int(t)
 
+# taken from python 3 submissions at 30 ms
+'''
+with open("user.out", "w") as f:
+    print("9",file=f)
+    print("6",file=f)
+    print("22",file=f)
+    print("18",file=f)
+    print("0",file=f)
+    print("-1",file=f)
+    print("1",file=f)
+    print("-27",file=f)
+    print("-13",file=f)
+    print("9",file=f)
+    print("-2",file=f)
+    print("-7",file=f)
+    print("165",file=f)
+    print("11",file=f)
+    print("7143937",file=f)
+    print("-6876750",file=f)
+    print("1250216",file=f)
+    print("-231",file=f)
+    print("0",file=f)
+    print("0",file=f)
+    print("-2147483648",file=f)
+exit(0)
+'''
+
 # updated 30 jan 2024
 
 class Solution:

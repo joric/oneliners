@@ -73,8 +73,8 @@ class Solution:
 # updated 30 jan 2024
 
 class Solution:
-    def evalRPN(self, t: List[str]) -> int:
-        f,c=self.evalRPN,t.pop();return int(eval('%s'*3%(f(t),c,f(t))[::-1])if c in'*/+-'else c)
+    def evalRPN(s, t: List[str]) -> int:
+        f,c=s.evalRPN,t.pop();return int(eval('%s'*3%(f(t),c,f(t))[::-1])if c in'*/+-'else c)
 
 test('''
 150. Evaluate Reverse Polish Notation

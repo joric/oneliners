@@ -64,12 +64,13 @@ with open("user.out", "w") as f:
 exit(0)
 '''
 
-# updated 30 jan 2024
 # https://leetcode.com/problems/evaluate-reverse-polish-notation/discuss/1230266/Python-3-today's-one-liner
 
 class Solution:
     def evalRPN(self, t: List[str]) -> int:
         o,f=t.pop(),self.evalRPN;return int(eval('{2}{1}{0}'.format(f(t),o,f(t)))if o in'*/+-'else o)
+
+# updated 30 jan 2024
 
 class Solution:
     def evalRPN(self, t: List[str]) -> int:

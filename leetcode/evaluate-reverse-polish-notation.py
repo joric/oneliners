@@ -65,14 +65,15 @@ exit(0)
 '''
 
 # updated 30 jan 2024
+# https://leetcode.com/problems/evaluate-reverse-polish-notation/discuss/1230266/Python-3-today's-one-liner
 
 class Solution:
-    def evalRPN(self, a: List[str]) -> int:
-        t,r=a.pop(),self.evalRPN;return int(eval('{2}{1}{0}'.format(r(a),t,r(a)))if t in'*/+-'else t)
+    def evalRPN(self, t: List[str]) -> int:
+        o,f=t.pop(),self.evalRPN;return int(eval('{2}{1}{0}'.format(f(t),o,f(t)))if o in'*/+-'else o)
 
 class Solution:
-    def evalRPN(self, a: List[str]) -> int:
-        t,r=a.pop(),self.evalRPN;return int(eval('%s'*3%(r(a),t,r(a))[::-1])if t in'*/+-'else t)
+    def evalRPN(self, t: List[str]) -> int:
+        o,f=t.pop(),self.evalRPN;return int(eval('%s'*3%(f(t),o,f(t))[::-1])if o in'*/+-'else o)
 
 test('''
 

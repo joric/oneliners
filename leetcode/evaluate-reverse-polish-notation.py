@@ -45,7 +45,7 @@ class Solution:
 
 class Solution:
     def evalRPN(self, a: List[str]) -> int:
-        t=a.pop();r=self.evalRPN;return int(eval('%s'*3%(r(a),t,r(a))[::-1])if t in'*/+-'else t)
+        t,r=a.pop(),self.evalRPN;return int(eval('%s'*3%(r(a),t,r(a))[::-1])if t in'*/+-'else t)
 
 test('''
 

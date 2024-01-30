@@ -68,13 +68,13 @@ exit(0)
 
 class Solution:
     def evalRPN(self, t: List[str]) -> int:
-        f,o=self.evalRPN,t.pop();return int(eval('{2}{1}{0}'.format(f(t),o,f(t)))if o in'*/+-'else o)
+        f,c=self.evalRPN,t.pop();return int(eval('{2}{1}{0}'.format(f(t),c,f(t)))if c in'*/+-'else c)
 
 # updated 30 jan 2024
 
 class Solution:
     def evalRPN(self, t: List[str]) -> int:
-        f,o=self.evalRPN,t.pop();return int(eval('%s'*3%(f(t),o,f(t))[::-1])if o in'*/+-'else o)
+        f,c=self.evalRPN,t.pop();return int(eval('%s'*3%(f(t),c,f(t))[::-1])if c in'*/+-'else c)
 
 test('''
 

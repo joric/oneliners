@@ -28,6 +28,31 @@ class Solution:
     def fib(self, n: int) -> int:
         return (np:=__import__('numpy')) and n and np.dot((f:=lambda m,p:m if p==1 else (r:=np.dot(h:=f(m,p//2),h),1) and (np.dot(r,m) if p&1 else r))(np.matrix([[0,1],[1,1]]),n),np.matrix([[0],[1]])).item((0,0)) or 0
 
+# https://leetcode.com/problems/fibonacci-number/discuss/3439417/MATH-solution
+# generating function
+
+class Solution:
+    def fib(self, n: int) -> int:
+        x=9**~-n;return n if n<2 else x**-~n//(x*x+~x)%x
+
+class Solution:
+    def fib(self, n: int) -> int:
+        n-=1;x=1<<32;return x**n*x*x//(x*x+~x)%x
+
+class Solution:
+    def fib(self, n: int) -> int:
+        x=1<<32;return x**~-n*x*x//(x*x+~x)%x
+
+# same as climbing-stars but subtract 1 from n
+
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        n-=1;r=5**.5;return round(((1+r)/2)**-~n/r)
+
+class Solution:
+    def fib(self, n: int) -> int:
+        r=5**.5;return round(((1+r)/2)**n/r)
+
 test('''
 
 509. Fibonacci Number

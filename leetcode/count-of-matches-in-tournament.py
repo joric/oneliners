@@ -30,7 +30,7 @@ class Solution:
     def numberOfMatches(self, n: int) -> int:
         return n-1
 
-# shortest oneliner ever
+# it's not the shortest oneliner ever, see stone-game
 
 class Solution:
     def numberOfMatches(self, n: int) -> int:

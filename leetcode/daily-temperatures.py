@@ -24,9 +24,10 @@ class Solution:
             r.append(np.argmax(t[i:]>x))
         return r
 
+# TLE
 class Solution:
     def dailyTemperatures(self, t: List[int]) -> List[int]:
-        p,r=__import__('numpy'),[];t = p.array(t);[r.append(p.argmax(t[i:]>x))for i, x in enumerate(t)];return r
+        p,r=__import__('numpy'),[];t=p.array(t);return[p.argmax(t[i:]>x)for i,x in enumerate(t)]
 
 # updated 31 jan 2024
 

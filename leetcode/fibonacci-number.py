@@ -52,7 +52,8 @@ class Solution:
 
 class Solution:
     def fib(self, n: int) -> int:
-        if n<2: return n
+        if n<2:
+            return n
         n = n-1
         x=9**n;return x**-~-~n//(x*x+~x)%x
 

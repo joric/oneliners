@@ -1,5 +1,7 @@
 from lc import *
 
+#  https://leetcode.com/problems/count-of-matches-in-tournament
+
 # iterative
 
 class Solution:

@@ -10,6 +10,12 @@ class Solution:
             s.append(i)
         return r
 
+class Solution:
+    def dailyTemperatures(self, t: List[int]) -> List[int]:
+        return (r:=[0]*len(t),s:=[]) and any(next(1 for _ in count() if not(s and x>t[s[-1]] and not setitem(r,j:=s.pop(),i-j))) and s.append(i) for i,x in enumerate(t)) or r
+
+# # https://leetcode.com/problems/daily-temperatures/discuss/436705/5-line-Python-numpy-solution
+
 import numpy as np
 class Solution:
     def dailyTemperatures(self, t: List[int]) -> List[int]:
@@ -20,7 +26,13 @@ class Solution:
 
 class Solution:
     def dailyTemperatures(self, t: List[int]) -> List[int]:
-        return (r:=[0]*len(t),s:=[]) and any(next(1 for _ in count() if not(s and x>t[s[-1]] and not setitem(r,j:=s.pop(),i-j))) and s.append(i) for i,x in enumerate(t)) or r
+        p,r=__import__('numpy'),[];t = p.array(t);[r.append(p.argmax(t[i:]>x))for i, x in enumerate(t)];return r
+
+# updated 31 jan 2024
+
+class Solution:
+    def dailyTemperatures(self, t: List[int]) -> List[int]:
+        l,x=len(t),[0]*102;return[setitem(x,c:=t[l-i],i)or(i-max(x[c+1:]))%i for i in range(1,l+1)][::-1]
 
 test('''
 

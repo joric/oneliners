@@ -33,6 +33,19 @@ class Solution:
 
 class Solution:
     def dailyTemperatures(self, t: List[int]) -> List[int]:
+        l=len(t)
+        r=[0]*l
+        s=[]
+        for i in range(l-1,-1,-1):
+            c=t[i]
+            while s and t[s[-1]]<=c:
+                s.pop()
+            r[i]=s[-1]-i if s else 0
+            s.append(i)
+        return r
+
+class Solution:
+    def dailyTemperatures(self, t: List[int]) -> List[int]:
         l,x=len(t),[0]*102;return[setitem(x,c:=t[l-i],i)or(i-max(x[c+1:]))%i for i in range(1,l+1)][::-1]
 
 test('''

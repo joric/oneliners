@@ -40,7 +40,7 @@ class Solution:
     def fib(self, n: int) -> int:
         r=5**.5;return round(((1+r)/2)**n/r)
 
-# generating function
+# generating function (see climbing-stars)
 
 class Solution:
     def fib(self, n: int) -> int:

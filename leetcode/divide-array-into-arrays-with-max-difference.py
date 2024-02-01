@@ -33,7 +33,7 @@ class Solution:
 # batched is unavaialble until 3.12
 class Solution:
     def divideArray(self, n: List[int], k: int) -> List[List[int]]:
-        n.sort();r=*batched(n,3),;return all(a[2]<=a[0]+k for a in r)and r or[]
+        r=*batched(sorted(n),3),;return all(a[2]<=a[0]+k for a in r)and r or[]
 
 class Solution:
     def divideArray(self, n: List[int], k: int) -> List[List[int]]:

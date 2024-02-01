@@ -44,22 +44,11 @@ class Solution:
 
 class Solution:
     def fib(self, n: int) -> int:
-        n-=1;x=1<<32;return x**n*x*x//(x*x+~x)%x
-
-class Solution:
-    def fib(self, n: int) -> int:
         x=1<<32;return x**~-n*x*x//(x*x+~x)%x
 
 class Solution:
     def fib(self, n: int) -> int:
-        if n<2:
-            return n
-        n = n-1
-        x=9**n;return x**-~-~n//(x*x+~x)%x
-
-class Solution:
-    def fib(self, n: int) -> int:
-        x=9**~-n;return n if n<2 else x**-~n//(x*x+~x)%x
+        x=9**n;return x**-~n//(x*x+~x)%x
 
 test('''
 

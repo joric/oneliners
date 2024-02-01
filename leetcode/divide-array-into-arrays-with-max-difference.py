@@ -30,14 +30,14 @@ class Solution:
     def divideArray(self, n: List[int], k: int) -> List[List[int]]:
         return(r:=[*takewhile(lambda n:n[2]-n[0]<=k,zip(*[iter(sorted(n))]*3))])*(len(r)*3==len(n))
 
-# batched is unavaialble until 3.12
+# python 3.12 for the better leetcode in the future
 class Solution:
     def divideArray(self, n: List[int], k: int) -> List[List[int]]:
-        r=*batched(sorted(n),3),;return all(a[2]<=a[0]+k for a in r)and r or[]
+        r=*batched(sorted(n),3),;return all(w<=k+u for u,v,w in r)and r or[]
 
 class Solution:
     def divideArray(self, n: List[int], k: int) -> List[List[int]]:
-        r=[*zip(*[iter(sorted(n))]*3)];return all(a[2]<=k+a[0]for a in r)and r or[]
+        r=*zip(*[iter(sorted(n))]*3),;return all(w<=k+u for u,v,w in r)and r or[]
 
 test(''''
 2966. Divide Array Into Arrays With Max Difference

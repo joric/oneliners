@@ -40,7 +40,6 @@ class Solution:
     def divideArray(self, n: List[int], k: int) -> List[List[int]]:
         return([],r:=[*zip(*[iter(sorted(n))]*3)])[all(k>=b-a for a,_,b in r)]
 
-
 class Solution: # python 3.12 ftw
     def divideArray(self, n: List[int], k: int) -> List[List[int]]:
         return([],r:=[*batched(sorted(n),3)])[all(k>=b-a for a,_,b in r)]

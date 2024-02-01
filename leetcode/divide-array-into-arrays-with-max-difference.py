@@ -36,6 +36,10 @@ class Solution:
     def divideArray(self, n: List[int], k: int) -> List[List[int]]:
         r=*zip(*[iter(sorted(n))]*3),;return([],r)[all(u<=k+w for w,v,u in r)]
 
+class Solution:
+    def divideArray(self, n: List[int], k: int) -> List[List[int]]:
+        return([],r:=[*zip(*[iter(sorted(n))]*3)])[all(u<=k+w for w,v,u in r)]
+
 # python 3.12 for the better leetcode in the future (-5 chars)
 class Solution:
     def divideArray(self, n: List[int], k: int) -> List[List[int]]:

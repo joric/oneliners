@@ -34,7 +34,7 @@ class Solution:
 
 class Solution:
     def divideArray(self, n: List[int], k: int) -> List[List[int]]:
-        r=*zip(*[iter(sorted(n))]*3),;return all(k>=b-a for a,_,b in r)and r or[]
+        r=*zip(*[iter(sorted(n))]*3),;return([],r)[all(u<=k+w for w,v,u in r)]
 
 # python 3.12 for the better leetcode in the future (-5 chars)
 class Solution:

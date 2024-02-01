@@ -1052,6 +1052,7 @@ class Solution:
 * You can check for set membership with `{x}&s` instead of `x in s` (1 character shorter).
 * An expression like `x&(x-1)==0` determines if unsigned `x` is power of 2 or 0 (turns off the rightmost bit).
 * Very often `x==0` can be replaced with `x<1` (1 character shorter).
+* You can replace `[*g]` and similar lists with a tuple, using a traling comma `*g,` (1 character shorter).
 
 ## References
 

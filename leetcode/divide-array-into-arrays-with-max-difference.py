@@ -37,7 +37,7 @@ class Solution:
 
 class Solution:
     def divideArray(self, n: List[int], k: int) -> List[List[int]]:
-        r=[*zip(*[iter(sorted(n))]*3)];return all(a[2]<=a[0]+k for a in r)and r or[]
+        r=[*zip(*[iter(sorted(n))]*3)];return all(a[2]<=k+a[0]for a in r)and r or[]
 
 test(''''
 2966. Divide Array Into Arrays With Max Difference

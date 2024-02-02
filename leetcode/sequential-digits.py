@@ -42,6 +42,10 @@ class Solution:
 
 class Solution:
     def sequentialDigits(self, l: int, h: int) -> List[int]:
+        return sorted(x for i,j in product(*[range(10)]*2)if l<=(x:=int('0'+digits[1:][i:j]))<=h)
+
+class Solution:
+    def sequentialDigits(self, l: int, h: int) -> List[int]:
         return sorted(x for i in range(90)if l<=(x:=int('0'+digits[1:][i//10:i%10]))<=h)
 
 test('''

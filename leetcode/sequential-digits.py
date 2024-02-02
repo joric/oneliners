@@ -20,6 +20,10 @@ class Solution:
 
 class Solution:
     def sequentialDigits(self, l: int, h: int) -> List[int]:
+        t='123456789';return[x for d in range(len(str(l)),len(str(h))+1)for i in range(10-d)if l<=(x:=int(t[i:i+d]))<=h]
+
+class Solution:
+    def sequentialDigits(self, l: int, h: int) -> List[int]:
         return[x for d in range(len(str(l)),len(str(h))+1)for i in range(10-d)if l<=(x:=int('123456789'[i:i+d]))<=h]
 
 # https://leetcode.com/problems/sequential-digits/discuss/627692/Python3-One-line-golf-solution

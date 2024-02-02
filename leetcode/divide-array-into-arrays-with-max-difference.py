@@ -14,8 +14,6 @@ class Solution:
     def divideArray(self, n: List[int], k: int) -> List[List[int]]:
         n.sort();r=[];return next(([]for i in range(0,len(n),3)if k<n[i+2]-n[i]or r.append(n[i:i+3])),r)
 
-# https://leetcode.com/problems/divide-array-into-arrays-with-max-difference/discuss/4656961/One-line-solution.-Runtime-greater-99
-
 class Solution:
     def divideArray(self, n: List[int], k: int) -> List[List[int]]:
         r = []
@@ -30,6 +28,7 @@ class Solution:
     def divideArray(self, n: List[int], k: int) -> List[List[int]]:
         return(r:=[*takewhile(lambda n:n[2]-n[0]<=k,zip(*[iter(sorted(n))]*3))])*(len(r)*3==len(n))
 
+# https://leetcode.com/problems/divide-array-into-arrays-with-max-difference/discuss/4656961/One-line-solution.-Runtime-greater-99
 # updated 1 Feb 2024
 
 class Solution:

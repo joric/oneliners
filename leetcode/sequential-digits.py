@@ -6,12 +6,6 @@ class Solution:
     def sequentialDigits(self, l: int, h: int) -> List[int]:
         return[i for i in(12,23,34,45,56,67,78,89,123,234,345,456,567,678,789,1234,2345,3456,4567,5678,6789,12345,23456,34567,45678,56789,123456,234567,345678,456789,1234567,2345678,3456789,12345678,23456789,123456789)if l<=i<=h]
 
-# https://leetcode.com/problems/sequential-digits/discuss/627692/Python3-One-line-golf-solution
-
-class Solution:
-    def sequentialDigits(self, l: int, h: int) -> List[int]:
-        return[s for i in range(len(str(l)),len(str(h))+1)for s in[int(''.join(str(x)for x in range(j,j+i)))for j in range(1,11-i)]if l<=s<= h]
-
 # https://leetcode.com/problems/sequential-digits/discuss/1277345/Python-3-one-line-smart-binary-search
 
 class Solution:
@@ -27,6 +21,16 @@ class Solution:
 class Solution:
     def sequentialDigits(self, l: int, h: int) -> List[int]:
         t='123456789';return[x for d in range(len(str(l)),len(str(h))+1)for i in range(10-d)if l<=(x:=int(t[i:i+d]))<=h]
+
+# https://leetcode.com/problems/sequential-digits/discuss/627692/Python3-One-line-golf-solution
+
+class Solution:
+    def sequentialDigits(self, l: int, h: int) -> List[int]:
+        return[s for i in range(len(str(l)),len(str(h))+1)for s in[int(''.join(str(x)for x in range(j,j+i)))for j in range(1,11-i)]if l<=s<= h]
+
+class Solution:
+    def sequentialDigits(self, l: int, h: int) -> List[int]:
+        return sorted(x for i in range(9)for j in range(i+1,10)if l<=(x:=int(digits[1:][i:j]))<=h)
 
 test('''
 1291. Sequential Digits

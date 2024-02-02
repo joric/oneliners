@@ -36,6 +36,14 @@ class Solution:
     def sequentialDigits(self, l: int, h: int) -> List[int]:
         return sorted(x for i in range(9)for j in range(i+1,10)if l<=(x:=int(digits[1:][i:j]))<=h)
 
+class Solution:
+    def sequentialDigits(self, l: int, h: int) -> List[int]:
+        return sorted(x for i in range(90)if l<=(x:=int('0'+digits[1:][slice(*divmod(i,10))]))<=h)
+
+class Solution:
+    def sequentialDigits(self, l: int, h: int) -> List[int]:
+        return sorted(x for i in range(90)if l<=(x:=int('0'+digits[1:][i//10:i%10]))<=h)
+
 test('''
 1291. Sequential Digits
 Medium
@@ -62,6 +70,11 @@ Example 2:
 Input: low = 1000, high = 13000
 Output: [1234,2345,3456,4567,5678,6789,12345]
  
+Example 3:
+
+Input: low = 10, high = 1000000000
+Output: [12,23,34,45,56,67,78,89,123,234,345,456,567,678,789,1234,2345,3456,4567,5678,6789,12345,23456,34567,45678,56789,123456,234567,345678,456789,1234567,2345678,3456789,12345678,23456789,123456789]
+
 
 Constraints:
 

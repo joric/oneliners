@@ -14,7 +14,7 @@ class Solution:
 
 class Solution:
     def maxSumAfterPartitioning(self, a: List[int], k: int) -> int:
-        return(f:=cache(lambda i,m=-inf:a[i:]and max((m:=max(m,a[j]))*(j-i+1)+f(j+1)for j in range(i,min(i+k,len(a))))or 0))(0)
+        return(f:=cache(lambda i,m=0:a[i:]and max((m:=max(m,a[j]))*(j-i+1)+f(j+1)for j in range(i,min(i+k,len(a))))or 0))(0)
 
 # https://leetcode.com/problems/partition-array-for-maximum-sum/discuss/1474132/Python-recursion-intuitive-code
 

@@ -1,16 +1,14 @@
 from lc import *
 
-# https://leetcode.com/problems/partition-array-for-maximum-sum/discuss/729771/Python-Recursive-to-Tabulated
+# https://leetcode.com/problems/partition-array-for-maximum-sum/discuss/290954/python3-5-lines-beat-100
 
 class Solution:
     def maxSumAfterPartitioning(self, a: List[int], k: int) -> int:
-        @cache
-        def f(i):
-            if i>=len(a):
-                return 0
-            m = -inf
-            return max((m:=max(m,a[j]))*(j-i+1)+f(j+1)for j in range(i,min(i+k,len(a))))
-        return f(0)
+        d = [max(a[:i+1])*(i+1) for i in range(k)]
+        for i in range(k,len(a)):
+            m = max(d[j] + max(a[i-k+j+1:i+1])*(k-j)for j in range(k))
+            d = d[1:]+[m]
+        return max(d)
 
 # https://leetcode.com/problems/partition-array-for-maximum-sum/discuss/1474132/Python-recursion-intuitive-code
 

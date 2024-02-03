@@ -17,7 +17,7 @@ class Solution:
 
 class Solution:
     def triangleType(self, n: List[int]) -> str:
-        return'none equilateral isosceles scalene'.split()[2*max(n)<sum(n) and len({*n})]
+        return'none equilateral isosceles scalene'.split()[2*max(n)<sum(n)and len({*n})]
 
 test('''
 3024. Type of Triangle II

@@ -10,11 +10,17 @@ class Solution:
             d = d[1:]+[m]
         return max(d)
 
+# https://leetcode.com/problems/partition-array-for-maximum-sum/discuss/729771/Python-Recursive-to-Tabulated
+
+class Solution:
+    def maxSumAfterPartitioning(self, a: List[int], k: int) -> int:
+        return(f:=cache(lambda i,m=-inf:a[i:]and max((m:=max(m,a[j]))*(j-i+1)+f(j+1)for j in range(i,min(i+k,len(a))))or 0))(0)
+
 # https://leetcode.com/problems/partition-array-for-maximum-sum/discuss/1474132/Python-recursion-intuitive-code
 
 class Solution:
     def maxSumAfterPartitioning(self, a: List[int], k: int) -> int:
-        return(f:=cache(lambda i:a[i:]and max((m:=max(a[i:j])*(j-i))+f(j)for j in range(i+1,min(i+k,len(a))+1))or 0))(0)
+        return(f:=cache(lambda i:a[i:]and max(f(j)+max(a[i:j])*(j-i)for j in range(i+1,min(i+k,len(a))+1))or 0))(0)
 
 test('''
 1043. Partition Array for Maximum Sum

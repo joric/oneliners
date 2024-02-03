@@ -1,5 +1,18 @@
 from lc import *
 
+# https://leetcode.com/problems/partition-array-for-maximum-sum/discuss/290863/JavaC++Python-DP-O(K)-Space/832770
+
+class Solution:
+    def maxSumAfterPartitioning(self, a: List[int], k: int) -> int:
+        n,d = len(a),[0]*k
+        for i in range(n-1,-1,-1):
+            m = b = 0
+            for j in range(i,min(n,i+k)):
+                m = max(m,a[j])
+                b = max(b,(j-i+1)*m + d[(j+1)%k])
+            d[i%k] = b
+        return d[0]
+
 # https://leetcode.com/problems/partition-array-for-maximum-sum/discuss/290954/python3-5-lines-beat-100
 
 class Solution:

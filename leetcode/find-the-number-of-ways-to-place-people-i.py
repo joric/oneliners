@@ -3,22 +3,17 @@ from lc import *
 # biweekly-contest-123 Q2
 # https://leetcode.com/problems/find-the-number-of-ways-to-place-people-i
 
-# hellraiser666
 class Solution:
-    def numberOfPairs(self, points: List[List[int]]) -> int:
-        points.sort(key = lambda p: (p[0], -p[1]))
-        res = 0
-        for i in range(len(points)):
-            x = points[i][0]
-            y = points[i][1]
+    def numberOfPairs(self, p: List[List[int]]) -> int:
+        r = 0
+        p.sort(key=lambda p:(p[0],-p[1]))
+        for i in range(len(p)):
             m = -inf
-            for j in range(i + 1, len(points)):
-                xx = points[j][0]
-                yy = points[j][1]
-                if yy > m and yy <= y:
-                    m = yy
-                    res += 1
-        return res
+            for j in range(i+1,len(p)):
+                if m<p[j][1]<=p[i][1]:
+                    m = p[j][1]
+                    r += 1
+        return r
 
 class Solution:
     def numberOfPairs(self, p: List[List[int]]) -> int:

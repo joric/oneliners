@@ -13,6 +13,12 @@ class Solution:
         dfs(candidates, target, [], ret)
         return ret
 
+# https://leetcode.com/problems/combination-sum/discuss/1920478/Easy-Python-Itertools
+# TLE
+class Solution:
+    def combinationSum(self, c: List[int], t: int) -> List[List[int]]:
+        return(p for i in range(t//min(c)+1)for p in combinations_with_replacement(c,i)if sum(p)==t)
+
 # https://leetcode.com/problems/combination-sum/discuss/458821/One-line-in-Python
 
 class Solution:
@@ -30,14 +36,14 @@ Medium
 Add to List
 
 Share
-Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.
+Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates
+where the chosen numbers sum to target. You may return the combinations in any order.
 
-The same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the frequency of at least one of the chosen numbers is different.
+The same number may be chosen from candidates an unlimited number of times.
+Two combinations are unique if the frequency of at least one of the chosen numbers is different.
 
 The test cases are generated such that the number of unique combinations that sum up to target is less than 150 combinations for the given input.
-
  
-
 Example 1:
 
 Input: candidates = [2,3,6,7], target = 7
@@ -62,5 +68,5 @@ Constraints:
 2 <= candidates[i] <= 40
 All elements of candidates are distinct.
 1 <= target <= 40
-''')
+''', check=lambda a,b,*arg:sorted(a)==sorted(b))
 

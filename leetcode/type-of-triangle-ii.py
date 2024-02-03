@@ -9,15 +9,15 @@ class Solution:
 
 class Solution:
     def triangleType(self, n: List[int]) -> str:
+        t=[0,4,15,24,31];return'noneequilateralisoscelesscalene'[t[i:=2*max(n)<sum(n)and len({*n})]:t[i+1]]
+
+class Solution:
+    def triangleType(self, n: List[int]) -> str:
         a,b,c=sorted(n);return('none',('equilateral','isosceles','scalene')[len({*n})-1])[c<a+b]
 
 class Solution:
     def triangleType(self, n: List[int]) -> str:
         a,b,c=sorted(n);return'none equilateral isosceles scalene'.split()[c<a+b and len({*n})]
-
-class Solution:
-    def triangleType(self, n: List[int]) -> str:
-        return'none equilateral isosceles scalene'.split()[2*max(n)<sum(n)and len({*n})]
 
 test('''
 3024. Type of Triangle II
@@ -60,6 +60,10 @@ Example 3:
 
 Input: nums = [9,4,9]
 Output: "isosceles"
+
+Example 4:
+Input: nums = [8,4,2]
+Output: "none"
 
 Constraints:
 

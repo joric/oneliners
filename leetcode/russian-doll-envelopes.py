@@ -24,7 +24,7 @@ class Solution:
         d = []
         for i,_ in sorted(e,key=lambda x:(x[1],-x[0])):
             j=bisect_left(d,i)
-            d[j:j+1] = i,
+            d[j:j+1] = [i]
         return len(d)
 
 class Solution:

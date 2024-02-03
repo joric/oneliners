@@ -1,5 +1,8 @@
 from lc import *
 
+# biweekly-contest-123 Q3
+# https://leetcode.com/problems/maximum-good-subarray-sum
+
 class Solution:
     def maximumSubarraySum(self, n: List[int], k: int) -> int:
         m,p,v = -inf,0,defaultdict(lambda:inf)
@@ -12,7 +15,7 @@ class Solution:
 
 class Solution:
     def maximumSubarraySum(self, n: List[int], k: int) -> int:
-        m,p,v=-inf,0,defaultdict(lambda:inf);[(v[x]>p and setitem(v,x,p),p:=p+x,m:=max(m, p-v[x+k], p-v[x-k]))for i,x in enumerate(n)];return(0,m)[m>-inf]
+        m,p,v=-inf,0,defaultdict(lambda:inf);[(p<v[x]and setitem(v,x,p),p:=p+x,m:=max(m, p-v[x+k], p-v[x-k]))for i,x in enumerate(n)];return(0,m)[m>-inf]
 
 test('''
 3026. Maximum Good Subarray Sum

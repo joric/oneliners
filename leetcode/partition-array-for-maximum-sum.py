@@ -14,7 +14,7 @@ class Solution:
 
 class Solution:
     def maxSumAfterPartitioning(self, a: List[int], k: int) -> int:
-        return(f:=cache(lambda i:a[i:]and max((m:=max(a[i:j])*(j-i))+f(j)for j in range(i+1,min(i+1+k,len(a)+1)))or 0))(0)
+        return(f:=cache(lambda i:a[i:]and max((m:=max(a[i:j])*(j-i))+f(j)for j in range(i+1,min(i+k,len(a))+1))or 0))(0)
 
 test('''
 1043. Partition Array for Maximum Sum

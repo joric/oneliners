@@ -9,20 +9,38 @@ class Solution:
         r = [[[0,0]]*w for _ in range(h)]
         for y in range(h-2):
             for x in range(w-2):
+                b = True
                 c = 0
-                f = True
                 for i in range(y,y+3):
                     for j in range(x,x+3):
                         if (i-1 >= y and abs(p[i-1][j] - p[i][j]) > t) or (j-1 >= x and abs(p[i][j-1] - p[i][j]) > t):
-                            f = False
+                            b = False
                             break
                         c += p[i][j]
-                    if not f:
+                    if not b:
                         break
-                f and [setitem(r[i],j,[r[i][j][0]+c//9,r[i][j][1]+1])for j in range(x,x+3)for i in range(y,y+3)]
+                b and [setitem(r[i],j,[r[i][j][0]+c//9,r[i][j][1]+1])for j in range(x,x+3)for i in range(y,y+3)]
         return[[r[y][x][1]and r[y][x][0]//r[y][x][1]or p[y][x] for x in range(w)]for y in range(h)]
 
 # TODO
+
+class Solution:
+    def resultGrid(self, p: List[List[int]], t: int) -> List[List[int]]:
+        h,w,e = len(p), len(p[0]), enumerate
+        r = [[[0,0]]*w for _ in range(h)]
+        for y in range(h-2):
+            for x in range(w-2):
+                def f(y,x,c=0):
+                    for i in range(y,y+3):
+                        for j in range(x,x+3):
+                            if (i-1>=y and abs(p[i-1][j]-p[i][j])>t)or(j-1>=x and abs(p[i][j-1]-p[i][j])>t):
+                                return 0,c
+                            c += p[i][j]
+                    return 1,c
+                b,c = f(y,x)
+                b and[setitem(r[i],j,[r[i][j][0]+c//9,r[i][j][1]+1])for j in range(x,x+3)for i in range(y,y+3)]
+        return[[v[1]and v[0]//v[1]or p[i][j] for j,v in e(t)]for i,t in e(r)]
+
 
 test('''
 3030. Find the Grid of Region Average

@@ -82,19 +82,6 @@ class Solution:
 
 class Solution:
     def resultGrid(self, p: List[List[int]], t: int) -> List[List[int]]:
-        m,n,e = len(p), len(p[0]), enumerate
-        r = [[0]*n for _ in range(m)]
-        c = [[0]*n for _ in range(m)]
-        f = lambda x,y:not any(x-1<=i+v<=x+1 and y-1<=j+w<=y+1 and abs(p[i][j]-p[i+v][j+w])>t for v,w in[[0,1],[1,0],[0,-1],[-1,0]]for j in range(y-1,y+2)for i in range(x-1,x+2))
-        [f(i,j)and(s:=sum(p[x][y] for x in range(i-1,i+2) for y in range(j-1,j+2))//9,[(setitem(r[x],y,r[x][y]+s),setitem(c[x],y,c[x][y]+1))for x in range(i-1,i+2)for y in range(j-1,j+2)])for i in range(1,m-1)for j in range(1,n-1)]
-        return[[c[i][j]and v//c[i][j]or p[i][j] for j,v in e(t)]for i,t in e(r)]
-
-class Solution:
-    def resultGrid(self, p: List[List[int]], t: int) -> List[List[int]]:
-        m,n,e=len(p),len(p[0]),enumerate;r,c=[[0]*n for _ in range(m)],[[0]*n for _ in range(m)];f=lambda x,y:not any(x-1<=i+v<=x+1 and y-1<=j+w<=y+1 and abs(p[i][j]-p[i+v][j+w])>t for v,w in[[0,1],[1,0],[0,-1],[-1,0]]for j in range(y-1,y+2)for i in range(x-1,x+2));[f(i,j)and(s:=sum(p[x][y] for x in range(i-1,i+2) for y in range(j-1,j+2))//9,[(setitem(r[x],y,r[x][y]+s),setitem(c[x],y,c[x][y]+1))for x in range(i-1,i+2)for y in range(j-1,j+2)])for i in range(1,m-1)for j in range(1,n-1)];return[[c[i][j]and v//c[i][j]or p[i][j] for j,v in e(t)]for i,t in e(r)]
-
-class Solution:
-    def resultGrid(self, p: List[List[int]], t: int) -> List[List[int]]:
         m,n,e=len(p),len(p[0]),enumerate
         r=[[[0,0]]*n for _ in range(m)]
         f=lambda x,y:not any(x-1<=i+v<=x+1 and y-1<=j+w<=y+1 and abs(p[i][j]-p[i+v][j+w])>t for v,w in[[0,1],[1,0],[0,-1],[-1,0]]for j in range(y-1,y+2)for i in range(x-1,x+2))

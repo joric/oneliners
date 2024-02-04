@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/minimum-window-substring/discuss/26804/12-lines-Python
+
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         need, missing = Counter(t), len(t)
@@ -15,16 +17,34 @@ class Solution:
                     I, J = i, j
         return s[I:J] 
 
+# https://leetcode.com/problems/minimum-window-substring/discuss/918309/Python-8-lines-straightforward
+
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        f, a, b, q, r = lambda x, y: all(x[c]>=y[c] for c in y), Counter(), Counter(t), deque(), ''
-        for i, c in enumerate(s):
+        f,a,b,q,r = lambda x,y:all(x[c]>=y[c]for c in y),Counter(),Counter(t),deque(),''
+        for i,c in enumerate(s):
             a[c] += 1
             q.append(i)
-            while f(a, b):
-                r = s[q[0]:q[-1]+1] if not r or len(r) > q[-1]-q[0]+1 else r
+            while f(a,b):
+                if not r or len(r)>q[-1]-q[0]+1:
+                    r=s[q[0]:q[-1]+1]
                 a[s[q.popleft()]] -= 1
         return r
+
+class Solution:
+    def minWindow(self, s: str, t: str) -> str:
+        a,b,q,r = Counter(),Counter(t),deque(),''
+        for i,c in enumerate(s):
+            a.update([c])
+            q.append(i)
+            while all(a[i]>=b[i]for i in b):
+                (not r or len(r)>q[-1]-q[0]+1)and(r:=s[q[0]:q[-1]+1])
+                a.update({s[q.popleft()]:-1})
+        return r
+
+class Solution:
+    def minWindow(self, s: str, t: str) -> str:
+        a,b,q,r = Counter(),Counter(t),deque(),'';[(a.update([c]),q.append(i),next(_ for _ in count() if not(all(a[i]>=b[i]for i in b)and((not r or len(r)>q[-1]-q[0]+1)and(r:=s[q[0]:q[-1]+1]),a.update({s[q.popleft()]:-1})))))for i,c in enumerate(s)];return r
 
 test('''
 76. Minimum Window Substring

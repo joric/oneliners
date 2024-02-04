@@ -1,6 +1,6 @@
 from lc import *
 
-# biweekly-contest-123 Q2
+# biweekly-contest-123 Q3
 # https://leetcode.com/problems/find-the-number-of-ways-to-place-people-i
 
 class Solution:

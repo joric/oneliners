@@ -1,6 +1,6 @@
 from lc import *
 
-# biweekly-contest-123 Q3
+# biweekly-contest-123 Q2/Q4
 # https://leetcode.com/problems/maximum-good-subarray-sum
 
 class Solution:

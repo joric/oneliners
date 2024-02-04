@@ -22,8 +22,6 @@ class Solution:
                 b and [setitem(r[i],j,[r[i][j][0]+c//9,r[i][j][1]+1])for j in range(x,x+3)for i in range(y,y+3)]
         return[[r[y][x][1]and r[y][x][0]//r[y][x][1]or p[y][x] for x in range(w)]for y in range(h)]
 
-# TODO
-
 class Solution:
     def resultGrid(self, p: List[List[int]], t: int) -> List[List[int]]:
         h,w,e = len(p), len(p[0]), enumerate
@@ -41,6 +39,59 @@ class Solution:
                 b and[setitem(r[i],j,[r[i][j][0]+c//9,r[i][j][1]+1])for j in range(x,x+3)for i in range(y,y+3)]
         return[[v[1]and v[0]//v[1]or p[i][j] for j,v in e(t)]for i,t in e(r)]
 
+# czjnbb
+
+class Solution:
+    def resultGrid(self, image: List[List[int]], threshold: int) -> List[List[int]]:
+        def isreg(x, y):
+            for i in range(x - 1, x + 2):
+                for j in range(y - 1, y + 2):
+                    cur = image[i][j]
+                    for di,dj in dirs:
+                        ni, nj = i + di, j + dj
+                        if x-1 <= ni <= x+1 and y - 1 <= nj <= y + 1:
+                            if abs(cur - image[ni][nj]) > threshold:
+                                return False
+            return True
+
+        m, n = len(image), len(image[0])
+        dirs = [[0,1],[1,0],[0,-1],[-1,0]]
+        res = [[0 for _ in range(n)] for _ in range(m)]
+        cnt = [[0 for _ in range(n)] for _ in range(m)]
+        
+        for i in range(1, m - 1):
+            for j in range(1, n - 1):
+
+                if isreg(i,j):
+                    csum = 0
+                    for x in range(i - 1, i + 2):
+                        for y in range(j - 1, j + 2):
+                            csum += image[x][y]
+                    csum //= 9
+                    for x in range(i - 1, i + 2):
+                        for y in range(j - 1, j + 2):
+                            res[x][y] += csum
+                            cnt[x][y] += 1
+        for i in range(m):
+            for j in range(n):
+                if cnt[i][j] == 0:
+                    res[i][j] = image[i][j]
+                else:
+                    res[i][j] //= cnt[i][j]
+        return res
+
+class Solution:
+    def resultGrid(self, p: List[List[int]], t: int) -> List[List[int]]:
+        m,n,e = len(p), len(p[0]), enumerate
+        r = [[0]*n for _ in range(m)]
+        c = [[0]*n for _ in range(m)]
+        f = lambda x,y:not any(x-1<=i+v<=x+1 and y-1<=j+w<=y+1 and abs(p[i][j]-p[i+v][j+w])>t for v,w in[[0,1],[1,0],[0,-1],[-1,0]]for j in range(y-1,y+2)for i in range(x-1,x+2))
+        [f(i,j)and(s:=sum(p[x][y] for x in range(i-1,i+2) for y in range(j-1,j+2))//9,[(setitem(r[x],y,r[x][y]+s),setitem(c[x],y,c[x][y]+1))for x in range(i-1,i+2)for y in range(j-1,j+2)])for i in range(1,m-1)for j in range(1,n-1)]
+        return[[c[i][j]and v//c[i][j]or p[i][j] for j,v in e(t)]for i,t in e(r)]
+
+class Solution:
+    def resultGrid(self, p: List[List[int]], t: int) -> List[List[int]]:
+        m,n,e=len(p),len(p[0]),enumerate;r,c=[[0]*n for _ in range(m)],[[0]*n for _ in range(m)];f=lambda x,y:not any(x-1<=i+v<=x+1 and y-1<=j+w<=y+1 and abs(p[i][j]-p[i+v][j+w])>t for v,w in[[0,1],[1,0],[0,-1],[-1,0]]for j in range(y-1,y+2)for i in range(x-1,x+2));[f(i,j)and(s:=sum(p[x][y] for x in range(i-1,i+2) for y in range(j-1,j+2))//9,[(setitem(r[x],y,r[x][y]+s),setitem(c[x],y,c[x][y]+1))for x in range(i-1,i+2)for y in range(j-1,j+2)])for i in range(1,m-1)for j in range(1,n-1)];return[[c[i][j]and v//c[i][j]or p[i][j] for j,v in e(t)]for i,t in e(r)]
 
 test('''
 3030. Find the Grid of Region Average

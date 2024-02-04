@@ -37,14 +37,14 @@ class Solution:
         for i,c in enumerate(s):
             a.update([c])
             q.append(i)
-            while all(a[i]>=b[i]for i in b):
+            while a>=b:
                 (not r or len(r)>q[-1]-q[0]+1)and(r:=s[q[0]:q[-1]+1])
                 a.update({s[q.popleft()]:-1})
         return r
 
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        a,b,q,r=Counter(),Counter(t),deque(),'';[(a.update([c]),q.append(i),next(_ for _ in count()if not(all(a[i]>=b[i]for i in b)and((not r or len(r)>q[-1]-q[0]+1)and(r:=s[q[0]:q[-1]+1]),a.update({s[q.popleft()]:-1})))))for i,c in enumerate(s)];return r
+        a,b,q,r=Counter(),Counter(t),deque(),'';[(a.update([c]),q.append(i),next(_ for _ in count()if not(a>=b and((not r or len(r)>q[-1]-q[0]+1)and(r:=s[q[0]:q[-1]+1]),a.update({s[q.popleft()]:-1})))))for i,c in enumerate(s)];return r
 
 test('''
 76. Minimum Window Substring

@@ -5,8 +5,7 @@ from lc import *
 
 class Solution:
     def resultGrid(self, p: List[List[int]], t: int) -> List[List[int]]:
-        h = len(p)
-        w = len(p[0])
+        h,w = len(p), len(p[0])
         r = [[[0,0]]*w for _ in range(h)]
         for y in range(h-2):
             for x in range(w-2):
@@ -18,20 +17,10 @@ class Solution:
                             f = False
                             break
                         c += p[i][j]
-                    if f==False:
+                    if not f:
                         break
-                if f:
-                    c = c // 9
-                    for i in range(y,y+3):
-                        for j in range(x,x+3):
-                            r[i][j] = [r[i][j][0]+c,r[i][j][1]+1]
-        for y in range(h):
-            for x in range(w):
-                if r[y][x][1] == 0:
-                    r[y][x] = p[y][x]
-                else:
-                    r[y][x] = r[y][x][0] // r[y][x][1]
-        return r
+                f and [setitem(r[i],j,[r[i][j][0]+c//9,r[i][j][1]+1])for j in range(x,x+3)for i in range(y,y+3)]
+        return[[r[y][x][1]and r[y][x][0]//r[y][x][1]or p[y][x] for x in range(w)]for y in range(h)]
 
 # TODO
 

@@ -7,6 +7,11 @@ class Solution:
     def firstUniqChar(self, s: str) -> int:
         t=Counter(s);return next((i for i,c in enumerate(s)if t[c]<2),-1)
 
+# 63 ms
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        return s.find(next((k for k,v in Counter(s).items()if v<2),'$'))
+
 # even faster (50 ms)
 class Solution:
     def firstUniqChar(self, s: str) -> int:

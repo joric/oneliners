@@ -32,7 +32,7 @@ class Solution:
     def firstUniqChar(self, s: str) -> int:
         return(*(s.find(с)for с in s if s.count(с)<2),-1)[0]
 
-# 4490 ms https://leetcode.com/problems/first-unique-character-in-a-string/discuss/4682915/Python-3-one-line
+# 4490 ms https://leetcode.com/problems/first-unique-character-in-a-string/discuss/4680879/One-Line-Solution
 class Solution:
     def firstUniqChar(self, s: str) -> int:
         return next(s.find(с)for с in s+'$'if s.count(с)<2)

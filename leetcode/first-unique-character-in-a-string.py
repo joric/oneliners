@@ -20,7 +20,7 @@ class Solution:
 # borderline TLE (9765 ms)
 class Solution:
     def firstUniqChar(self, s: str) -> int:
-        return([s.find(с)for с in s if s.count(с)==1]+[-1])[0]
+        return([s.find(с)for с in s if s.count(с)<2]+[-1])[0]
 
 # shortest (4383 ms)
 class Solution:

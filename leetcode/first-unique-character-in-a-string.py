@@ -25,7 +25,7 @@ class Solution:
 # borderline TLE (9869 ms)
 class Solution:
     def firstUniqChar(self, s: str) -> int:
-        return[*[s.find(с)for с in s if s.count(с)<2],-1][0]
+        return(*(s.find(с)for с in s if s.count(с)<2),-1)[0]
 
 test('''
 387. First Unique Character in a String

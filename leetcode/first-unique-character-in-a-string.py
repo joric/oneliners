@@ -17,15 +17,15 @@ class Solution:
     def firstUniqChar(self, s: str) -> int:
         return min([s.find(c)for c in{*s}if s.count(c)<2]or[-1])
 
-# wrong answer (randomized set)
-class Solution:
-    def firstUniqChar(self, s: str) -> int:
-        return next((s.find(с)for с in{*s}if s.count(с)<2),-1)
-
 # borderline TLE (9765 ms)
 class Solution:
     def firstUniqChar(self, s: str) -> int:
         return([s.find(с)for с in s if s.count(с)==1]+[-1])[0]
+
+# wrong answer (randomized set)
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        return next((s.find(с)for с in{*s}if s.count(с)<2),-1)
 
 # shortest (4383 ms)
 class Solution:

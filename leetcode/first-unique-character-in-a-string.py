@@ -17,15 +17,15 @@ class Solution:
     def firstUniqChar(self, s: str) -> int:
         return min([s.find(c)for c in{*s}if s.count(c)<2]or[-1])
 
-# borderline TLE (9765 ms)
-class Solution:
-    def firstUniqChar(self, s: str) -> int:
-        return([s.find(с)for с in s if s.count(с)<2]+[-1])[0]
-
 # okay (4383 ms)
 class Solution:
     def firstUniqChar(self, s: str) -> int:
         return next((s.find(с)for с in s if s.count(с)<2),-1)
+
+# borderline TLE (9869 ms)
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        return[*[s.find(с)for с in s if s.count(с)<2],-1][0]
 
 test('''
 387. First Unique Character in a String

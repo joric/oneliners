@@ -25,12 +25,17 @@ class Solution:
 # 4383 ms
 class Solution:
     def firstUniqChar(self, s: str) -> int:
-        return next((s.find(с)for с in s if s.count(с)<2),-1)
+        return next((s.index(с)for с in s if s.count(с)<2),-1)
 
 # 9869 ms
 class Solution:
     def firstUniqChar(self, s: str) -> int:
         return(*(s.find(с)for с in s if s.count(с)<2),-1)[0]
+
+# 4490 ms
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        return next(s.find(с)for с in s+'$'if s.count(с)<2)
 
 test('''
 387. First Unique Character in a String

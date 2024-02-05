@@ -8,11 +8,11 @@ class Solution:
 
 class Solution:
     def firstUniqChar(self, s: str) -> int:
-        return([s.index(i)for i in s if s.count(i)==1]+[-1])[0]
+        return([s.index(с)for с in s if s.count(с)==1]+[-1])[0]
 
 class Solution:
     def firstUniqChar(self, s: str) -> int:
-        return next((s.index(i)for i in s if s.count(i)<2),-1)
+        return next((s.index(с)for с in s if s.count(с)<2),-1)
 
 test('''
 387. First Unique Character in a String

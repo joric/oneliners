@@ -11,7 +11,7 @@ class Solution:
 
 class Solution:
     def numFriendRequests(self, c: List[int]) -> int:
-        c=Counter(c);return sum((x>=y>x/2+7)*c[x]*(c[y]-(x==y))for x in c for y in c)
+        c=Counter(c);return sum(c[x]*(c[y]-(x==y))*(x>=y>x/2+7)for x in c for y in c)
 
 test('''
 825. Friends Of Appropriate Ages

@@ -17,12 +17,17 @@ class Solution:
     def firstUniqChar(self, s: str) -> int:
         return min([s.find(c)for c in{*s}if s.count(c)<2]or[-1])
 
-# okay (4383 ms)
+# 9836 ms
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        return s.find((*(c for c in s if s.count(c)<2),'$')[0])
+
+# 4383 ms
 class Solution:
     def firstUniqChar(self, s: str) -> int:
         return next((s.find(с)for с in s if s.count(с)<2),-1)
 
-# borderline TLE (9869 ms)
+# 9869 ms
 class Solution:
     def firstUniqChar(self, s: str) -> int:
         return(*(s.find(с)for с in s if s.count(с)<2),-1)[0]

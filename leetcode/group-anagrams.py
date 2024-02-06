@@ -2,7 +2,7 @@ from lc import *
 
 class Solution:
     def groupAnagrams(self, s: List[str]) -> List[List[str]]:
-        f=sorted;return([*v]for _,v in groupby(f(s,key=f),f))
+        f=sorted;return(v for _,v in groupby(f(s,key=f),f))
 
 test('''
 49. Group Anagrams

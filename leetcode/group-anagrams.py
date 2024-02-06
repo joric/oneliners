@@ -4,6 +4,8 @@ class Solution:
     def groupAnagrams(self, s: List[str]) -> List[List[str]]:
         f=sorted;return(v for _,v in groupby(f(s,key=f),f))
 
+# return[*zip(*groupby(f(s,key=f),f))][1] does not work
+
 test('''
 49. Group Anagrams
 Medium

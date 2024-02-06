@@ -18,10 +18,9 @@ class Solution:
     def searchBST(self, r: Optional[TreeNode], v: int) -> Optional[TreeNode]:
         return(f:=lambda r,v:r and(f((r.left,r.right)[v>r.val],v)if r.val!=v else r))(r,v)
 
-# linear search
 class Solution:
     def searchBST(self, r: Optional[TreeNode], v: int) -> Optional[TreeNode]:
-        return(f:=lambda r:r and(r.val==v and r or(f(r.left)or f(r.right))))(r)
+        return(f:=lambda r:r and(r.val==v and r or f(r.left)or f(r.right)))(r)
 
 test('''
 700. Search in a Binary Search Tree

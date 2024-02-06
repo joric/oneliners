@@ -1,8 +1,8 @@
 from lc import *
 
 class Solution:
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        return [list(v) for k,v in groupby(sorted(strs,key=sorted),sorted)]
+    def groupAnagrams(self, s: List[str]) -> List[List[str]]:
+        f=sorted;return([*v]for _,v in groupby(f(s,key=f),f))
 
 test('''
 49. Group Anagrams

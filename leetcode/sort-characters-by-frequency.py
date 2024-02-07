@@ -13,25 +13,24 @@ class Solution:
 # testcase issue for sorting?
 # https://github.com/LeetCode-Feedback/LeetCode-Feedback/issues/20113
 
+# The following tests do not pass leetcode solver
+
 # loveleetcode
 # 221424411214
 
 # eeeelolovtcd
 # 444422221111
 
-# Does not pass leetcode solver
+# eeeeoollvtdc
+# 444422221111
+
 class Solution:
     def frequencySort(self, s: str) -> str:
         return ''.join(sorted(s,key=lambda c:-s.count(c)))
 
-# eeeeoollvtdc
-# 444422221111
-
-# Does not pass leetcode solver
 class Solution:
     def frequencySort(self, s: str) -> str:
         return''.join(sorted(s,key=Counter(s).get)[::-1])
-
 
 test('''
 

@@ -8,7 +8,7 @@ def init(head: ListNode, node: int):
 
 class Launcher:
     def deleteNode(self, node: Optional[ListNode]) -> Optional[ListNode]:
-        node = next((x for _ in count()if not(x.val!=g_node and[x:=x.next])),x:=g_head)
+        node = next((x for _ in count()if not(x.val!=g_node and(x:=x.next))),x:=g_head)
         Solution().deleteNode(node)
         return g_head
 

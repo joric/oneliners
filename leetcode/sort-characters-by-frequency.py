@@ -19,6 +19,7 @@ class Solution:
 # eeeelolovtcd
 # 444422221111
 
+# Does not pass leetcode solver
 class Solution:
     def frequencySort(self, s: str) -> str:
         return ''.join(sorted(s,key=lambda c:-s.count(c)))
@@ -26,6 +27,7 @@ class Solution:
 # eeeeoollvtdc
 # 444422221111
 
+# Does not pass leetcode solver
 class Solution:
     def frequencySort(self, s: str) -> str:
         return''.join(sorted(s,key=Counter(s).get)[::-1])

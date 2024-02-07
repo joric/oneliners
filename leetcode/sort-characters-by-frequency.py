@@ -1,5 +1,15 @@
 from lc import *
 
+# https://leetcode.com/problems/sort-characters-by-frequency
+
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        return''.join(v*k for k,v in Counter(s).most_common())
+
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        return''.join(starmap(mul,Counter(s).most_common()))
+
 # testcase issue for sorting?
 # https://github.com/LeetCode-Feedback/LeetCode-Feedback/issues/20113
 
@@ -20,15 +30,6 @@ class Solution:
     def frequencySort(self, s: str) -> str:
         return''.join(sorted(s,key=Counter(s).get)[::-1])
 
-# https://leetcode.com/problems/sort-characters-by-frequency
-
-class Solution:
-    def frequencySort(self, s: str) -> str:
-        return''.join(v*k for k,v in Counter(s).most_common())
-
-class Solution:
-    def frequencySort(self, s: str) -> str:
-        return''.join(starmap(mul,Counter(s).most_common()))
 
 test('''
 
@@ -79,5 +80,6 @@ Constraints:
 s consists of uppercase and lowercase English letters and digits.
 
 ''',
-check=lambda res,exp,s:(g:=set(),c:=Counter(res),f:=inf) and next((0 for a,_ in groupby(res) if a in g or c[a]>f or not (f:=c[a],g.add(a))),c==Counter(s))
+    #check=lambda res,exp,s:(g:=set(),c:=Counter(res),f:=inf) and next((0 for a,_ in groupby(res) if a in g or c[a]>f or not (f:=c[a],g.add(a))),c==Counter(s))
+    check = lambda r,e,s: Counter(r)==Counter(s) and [*Counter(r).values()]==sorted(Counter(s).values())[::-1]
 )

@@ -19,7 +19,11 @@ from re import *; import re
 from statistics import *; import statistics
 from string import *; import string
 
-pow = __builtins__['pow']
+try:
+    pow = __builtins__['pow']
+except:
+    pass
+
 sub = operator.sub # overloads (re.)sub
 
 class TreeNode:
@@ -230,6 +234,11 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
         e = 2 if passed else 1
         print('%s args %s result %s expected %s' % (c(e,'PASSED' if passed else 'FAILED'), c(e,args), c(e,res), c(e,expected)))
 
+    main = importlib.import_module('__main__')
+
+    if not check and 'check' in dir(main):
+        check  = main.check
+
     if not check:
         def check(res, expected, *args):
             t = str(type(res))
@@ -241,8 +250,14 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
 
     custom_class_tests = classname is not None and 'Launcher' not in str(classname) and custom!=False
 
-    if not classname:
-        classname = importlib.import_module('__main__').Solution
+    if not classname and 'Solution' in dir(main):
+        classname = main.Solution
+
+    if not init and 'init' in dir(main):
+        init = main.init
+
+    if 'Launcher' in dir(main):
+        classname = main.Launcher
 
     cnames.append(classname)
 

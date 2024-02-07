@@ -70,4 +70,4 @@ Accepted
 1,213,477
 Submissions
 1,556,776
-''',classname=Launcher,init=init)
+''')

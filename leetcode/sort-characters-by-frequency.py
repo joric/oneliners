@@ -1,8 +1,34 @@
 from lc import *
 
+# testcase issue for sorting?
+# https://github.com/LeetCode-Feedback/LeetCode-Feedback/issues/20113
+
+# loveleetcode
+# 221424411214
+
+# eeeelolovtcd
+# 444422221111
+
 class Solution:
     def frequencySort(self, s: str) -> str:
-        return ''.join(v*k for k,v in Counter(s).most_common())
+        return ''.join(sorted(s,key=lambda c:-s.count(c)))
+
+# eeeeoollvtdc
+# 444422221111
+
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        return''.join(sorted(s,key=Counter(s).get)[::-1])
+
+# https://leetcode.com/problems/sort-characters-by-frequency
+
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        return''.join(v*k for k,v in Counter(s).most_common())
+
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        return''.join(starmap(mul,Counter(s).most_common()))
 
 test('''
 
@@ -42,6 +68,10 @@ Input: s = "Aabb"
 Output: "bbAa"
 Explanation: "bbaA" is also a valid answer, but "Aabb" is incorrect.
 Note that 'A' and 'a' are treated as two different characters.
+
+Example 4:
+Input: s = "loveleetcode"
+Output: "eeeeoollvtdc"
 
 Constraints:
 

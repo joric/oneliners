@@ -14,8 +14,7 @@ class Launcher:
 
 class Solution:
     def deleteNode(self, n: Optional[ListNode]) -> Optional[ListNode]:
-        n.val = n.next.val
-        n.next = n.next.next
+        n.val,n.next=n.next.val,n.next.next
 
 test('''
 237. Delete Node in a Linked List

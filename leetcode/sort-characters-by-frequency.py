@@ -82,5 +82,5 @@ s consists of uppercase and lowercase English letters and digits.
 
 ''',
     #check=lambda res,exp,s:(g:=set(),c:=Counter(res),f:=inf) and next((0 for a,_ in groupby(res) if a in g or c[a]>f or not (f:=c[a],g.add(a))),c==Counter(s))
-    check = lambda r,e,s:sorted(r)==sorted(e)and[*Counter(r).values()]==sorted(Counter(s).values())[::-1]
+    check = lambda r,e,s:sorted(r)==sorted(s)and[*Counter(r).values()]==sorted(Counter(s).values())[::-1]
 )

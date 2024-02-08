@@ -34,11 +34,7 @@ class Solution:
 
 class Solution:
     def numSquares(self, n: int) -> int:
-        return(f:=cache(lambda n:n and(1+min(f(n-i*i)for i in range(int(n**.5),0,-1)))))(n)
-
-class Solution:
-    def numSquares(self, n: int) -> int:
-        return(f:=cache(lambda n:n and(1+min(f(n-i*i)for i in range(1,int(n**.5)+1)))))(n)
+        return(f:=cache(lambda n:n and 1+min(f(n-i*i)for i in range(1,int(n**.5)+1))))(n)
 
 test('''
 279. Perfect Squares

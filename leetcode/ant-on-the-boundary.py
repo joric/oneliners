@@ -1,6 +1,7 @@
 from lc import *
 
 # weekly-contest-383 Q1
+# https://leetcode.com/contest/weekly-contest-383
 # https://leetcode.com/problems/ant-on-the-boundary
 
 class Solution:

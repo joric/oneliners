@@ -1,6 +1,7 @@
 from lc import *
 
 # weekly-contest-383 Q3
+# https://leetcode.com/contest/weekly-contest-383
 # https://leetcode.com/problems/find-the-grid-of-region-average/discuss/4674240/Simple-Explained-oror-Python3
 
 class Solution:

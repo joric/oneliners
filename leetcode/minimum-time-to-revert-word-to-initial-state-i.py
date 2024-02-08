@@ -1,6 +1,7 @@
 from lc import *
 
 # weekly-contest-383 Q2/Q4
+# https://leetcode.com/contest/weekly-contest-383
 # also works for Q4 with 10^5 words
 # https://leetcode.com/problems/minimum-time-to-revert-word-to-initial-state-i
 

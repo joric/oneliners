@@ -1,7 +1,8 @@
 from lc import *
 
 # weekly-contest-383 Q2/Q4
-# https://leetcode.com/problems/minimum-time-to-revert-word-to-initial-state-i
+# https://leetcode.com/problems/minimum-time-to-revert-word-to-initial-state-ii
+# numb3r5 rant: https://leetcode.com/discuss/interview-question/4695081/A-rant-on-contest-rejudging-and-constraints
 
 class Solution:
     def minimumTimeToInitialState(self, word: str, k: int) -> int:

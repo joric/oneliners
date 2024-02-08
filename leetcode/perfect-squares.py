@@ -23,6 +23,11 @@ class Solution:
 # https://leetcode.com/problems/perfect-squares/discuss/3844078/Python-one-liner-Top-Down-DP
 
 class Solution:
+    @cache
+    def numSquares(s, n: int) -> int:
+        return n and min(s.numSquares(n-i*i)for i in range(1,isqrt(n)+1))+1
+
+class Solution:
     def numSquares(self, n: int) -> int:
         return(f:=cache(lambda n:n and min(f(n-i*i)for i in range(1,isqrt(n)+1))+1))(n)
 

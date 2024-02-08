@@ -15,26 +15,11 @@ class Solution:
     def numSquares(self, n):
         return next(r for r in range(1,n+1)for c in combinations_with_replacement([x**2 for x in range(1,n+1)if x**2<=n],r) if sum(c)==n)
 
-# https://leetcode.com/problems/perfect-squares/discuss/708537/Python-recursive-solution-with-memoization-(lru_cache)
+# https://leetcode.com/problems/perfect-squares/discuss/3844078/Python-one-liner-Top-Down-DP
 
 class Solution:
     def numSquares(self, n: int) -> int:
-        @cache
-        def f(n):
-            if n==0:
-                return 0
-            if n**0.5%2==0:
-                return 1
-            return min(f(n-i*i)+1 for i in range(int(n**0.5),0,-1))
-        return f(n)
-
-class Solution:
-    def numSquares(self, n: int) -> int:
-        return+(f:=cache(lambda n:n and((t:=n**0.5)%2==0 or min(f(n-i*i)+1 for i in range(int(t),0,-1)))))(n)
-
-class Solution:
-    def numSquares(self, n: int) -> int:
-        return(f:=cache(lambda n:n and 1+min(f(n-i*i)for i in range(1,int(n**.5)+1))))(n)
+        return(f:=cache(lambda n:n and 1+min(f(n-i*i)for i in range(1,isqrt(n)+1))))(n)
 
 test('''
 279. Perfect Squares

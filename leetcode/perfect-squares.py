@@ -19,7 +19,7 @@ class Solution:
 
 class Solution:
     def numSquares(self, n: int) -> int:
-        return(f:=cache(lambda n:n and 1+min(f(n-i*i)for i in range(1,isqrt(n)+1))))(n)
+        return(f:=cache(lambda n:n and min(f(n-i*i)for i in range(1,isqrt(n)+1))+1))(n)
 
 test('''
 279. Perfect Squares

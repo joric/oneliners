@@ -15,6 +15,11 @@ class Solution:
     def numSquares(self, n):
         return next(r for r in range(1,n+1)for c in combinations_with_replacement([x**2 for x in range(1,n+1)if x**2<=n],r) if sum(c)==n)
 
+# bottom-up
+class Solution:
+    def numSquares(self, n: int) -> int:
+        d=[0]+[n]*n;any(n<(q:=i*i)or any(setitem(d,j,min(d[j],n if j<q else 1+d[j-q]))for j in range(n+1))for i in range(n));return d[-1]
+
 # https://leetcode.com/problems/perfect-squares/discuss/3844078/Python-one-liner-Top-Down-DP
 
 class Solution:

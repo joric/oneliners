@@ -1,5 +1,20 @@
 from lc import *
 
+# https://leetcode.com/problems/perfect-squares/discuss/707526/Python-Fastest-O(sqrt(n))-solution-with-math-explanied.
+
+class Solution:
+    def numSquares(self, n: int) -> int:
+        if isqrt(n)**2 == n:
+            return 1
+        for j in range(isqrt(n)+1):
+            if isqrt(n-j*j)**2==n-j*j:
+                return 2
+        while n%4== 0: 
+            n //= 4
+        if n%8==7:
+            return 4
+        return 3
+
 # https://leetcode.com/problems/perfect-squares/discuss/71512/Static-DP-C%2B%2B-12-ms-Python-172-ms-Ruby-384-ms
 
 class Solution:

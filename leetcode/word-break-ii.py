@@ -9,6 +9,19 @@ class Solution:
             return m[i]
         return f(0)
 
+# https://leetcode.com/submissions/detail/1170088569/
+
+class Solution:
+    def wordBreak(self, s: str, d: List[str]) -> List[str]:
+        def f(s,t=()):
+            if not s:
+                yield' '.join(t)
+                return
+            for w in d:
+                if s.startswith(w):
+                    yield from f(s[len(w):],t+(w,))
+        return f(s)
+
 # https://leetcode.com/problems/word-break-ii/discuss/764188/Python-4-lines-using-lru_cache
 
 class Solution:

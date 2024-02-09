@@ -105,4 +105,3 @@ Accepted
 Submissions
 1,185,897
 ''', check=lambda r,e,*args:sorted(r)==sorted(e))
-

@@ -74,5 +74,5 @@ Accepted
 220,330
 Submissions
 512,530
-''', check=lambda r,e,n:(s:={-1:[]},[setitem(s,x,max((s[d]for d in s if x%d<1),key=len)+[x])for x in sorted(n)],l:=len(max(s.values(),key=len)))and r in s.values()and len(r)==l
+''', check=lambda r,e,n:(s:={-1:[]},[setitem(s,x,max((s[d]for d in s if x%d<1),key=len)+[x])for x in sorted(n)],l:=len(max(s.values(),key=len)))and len(r)==l and r in s.values()
 )

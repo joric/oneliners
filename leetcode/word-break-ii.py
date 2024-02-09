@@ -13,6 +13,10 @@ class Solution:
 
 class Solution:
     def wordBreak(self, s: str, d: List[str]) -> List[str]:
+        return(f:=cache(lambda i:[s[i:j]+(e and' '+e)for j in range(i+1,len(s)+1)if s[i:j]in d for e in f(j)]if s[i:]else['']))(0)
+
+class Solution:
+    def wordBreak(self, s: str, d: List[str]) -> List[str]:
         return(f:=cache(lambda s:[s[:j]+(e and' '+e)for j in range(len(s)+1)if s[:j]in d for e in f(s[j:])]if s else['']))(s)
 
 test('''

@@ -9,6 +9,12 @@ class Solution:
             return m[i]
         return f(0)
 
+# https://leetcode.com/problems/word-break-ii/discuss/44169/9-lines-Python-10-lines-C++/43453
+
+class Solution:
+    def wordBreak(self, s: str, d: List[str]) -> List[str]:
+        return map(' '.join,(f:=lambda i,d,q={len(s):[[]]}:q[i]if i in q else[[s[i:j]]+r for j in range(i+1,len(s)+1)if s[i:j]in d for r in q.setdefault(j,f(j,d))])(0,set(d)))
+
 # https://leetcode.com/submissions/detail/1170088569/
 
 class Solution:

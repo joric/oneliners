@@ -16,7 +16,6 @@ class Solution:
             return -1
         return dfs(start, 0)
 
-
 class Solution:
     def minMutation(self, start: str, end: str, bank: list[str]) -> int:
         return (bank:=set(bank)|{start}) and (f:=lambda v,n:n if v==end else bank.remove(v) or next((r for i,a in

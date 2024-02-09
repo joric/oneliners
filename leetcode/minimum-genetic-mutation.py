@@ -22,6 +22,9 @@ class Solution:
         return (bank:=set(bank)|{start}) and (f:=lambda v,n:n if v==end else bank.remove(v) or next((r for i,a in
             enumerate(v) for c in 'ACGT' if (a!=c and (t:=v[:i]+c+v[i+1:]) in bank and (r:=f(t,n+1))!=-1)), -1))(start, 0)
 
+class Solution:
+    def minMutation(self, s: str, e: str, b: list[str]) -> int:
+         b={*b}|{s};return(f:=lambda v,n:v==e and n or b.remove(v)or next((r for i,a in enumerate(v)for c in'ACGT'if(a!=c and(t:=v[:i]+c+v[i+1:])in b and(r:=f(t,n+1))!=-1)),-1))(s,0)
 
 test('''
 

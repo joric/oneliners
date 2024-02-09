@@ -24,6 +24,10 @@ class Solution:
         return max(s.values(),key=len)
 
 class Solution:
+    def largestDivisibleSubset(self, n):
+        return max(reduce(lambda s,x:setitem(s,x,max((s[d]for d in s if x%d<1),key=len)+[x])or s,sorted(n),{-1:[]}).values(),key=len)
+
+class Solution:
     def largestDivisibleSubset(self, n: List[int]) -> List[int]:
         s={-1:set()};[setitem(s,x,max((s[d]for d in s if x%d<1),key=len)|{x})for x in sorted(n)];return max(s.values(),key=len)
 

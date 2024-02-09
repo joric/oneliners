@@ -2,6 +2,38 @@ from lc import *
 
 # Q1, https://leetcode.com/contest/weekly-contest-142
 
+class Solution:
+    def sampleStats(self, count: List[int]) -> List[float]:
+
+        def countkth (count, k):
+            yet = 0
+            for i in range (len (count)):
+                if yet <= k < yet + count[i]:
+                    return i
+                yet += count[i]
+
+        for a in range (256):
+            if count[a]>0:
+                break
+        Min = a
+
+        for b in range (255, -1, -1):
+            if count[b]>0:
+                break
+        Max = b
+
+        Mean = sum (i*count[i] for i in range (256)) / sum (count)
+        Mode = max (range (256), key = lambda x: count[x])
+
+        total = sum (count)
+
+        if total % 2 == 1:
+            Median = countkth (count, total // 2)
+        else:
+            Median = (countkth (count, total // 2 - 1) + countkth (count, total // 2)) / 2
+
+        return [float (x) for x in [Min, Max, Mean, Median, Mode]]
+
 # numpy, out of memory
 class Solution:
     def sampleStats(self, c: List[int]) -> List[float]:
@@ -114,5 +146,5 @@ count.length == 256
 0 <= count[i] <= 10^9
 1 <= sum(count) <= 10^9
 The mode of the sample that count represents is unique.
-''',check=lambda r,e,*args:[*map(lambda x:round(x,5),r)]==e
+''', check=lambda res,expected,*_:[*map(lambda x:round(x,5),res)]==expected
 )

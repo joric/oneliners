@@ -32,6 +32,10 @@ class Solution:
     def wordBreak(self, s: str, d: List[str]) -> List[str]:
         return(f:=cache(lambda s:[s[:j]+(e and' '+e)for j in range(len(s)+1)if s[:j]in d for e in f(s[j:])]if s else['']))(s)
 
+class Solution:
+    def wordBreak(self, s: str, d: List[str]) -> List[str]:
+        q=[(s,[])];return{*[' '.join(r)for s,r in q for w in d if s[:(l:=len(w))]==w and q.append((s[l:],r+[w]))or''==s]}
+
 test('''
 140. Word Break II
 Hard

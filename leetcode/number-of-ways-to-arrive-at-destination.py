@@ -108,6 +108,18 @@ class Solution:
 
 class Solution:
     def countPaths(self, n: int, r: List[List[int]]) -> int:
+        g=defaultdict(list);[(g[u].append([v,t]),g[v].append([u,t]))for u,v,t in r]
+        p,c,q=[0]+[inf]*(n-1),[1]+[0]*(n-1),[];
+        def f(d,u):
+            p[u]>=d
+            for v,t in g[u]:
+                p[v]>d+t and(setitem(p,v,d+t),setitem(c,v,c[u]),heappush(q,(p[v],v)))or p[v]==d+t and setitem(c,v,(c[v]+c[u])%(10**9+7))
+            q and f(*heappop(q))
+        f(0,0)
+        return c[n-1]
+
+class Solution:
+    def countPaths(self, n: int, r: List[List[int]]) -> int:
         g=defaultdict(list);[(g[u].append([v,t]),g[v].append([u,t]))for u,v,t in r];p,c,q=[0]+[inf]*(n-1),[1]+[0]*(n-1),[];(f:=lambda d,u:(p[u]>=d and[p[v]>d+t and(setitem(p,v,d+t),setitem(c,v,c[u]),heappush(q,(p[v],v)))or p[v]==d+t and setitem(c,v,(c[v]+c[u])%(10**9+7))for v,t in g[u]])and q and f(*heappop(q)))(0,0);return c[n-1]
 
 test('''

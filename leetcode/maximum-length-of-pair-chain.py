@@ -19,6 +19,16 @@ class Solution:
     def findLongestChain(self, p: List[List[int]]) -> int:
         c,r=-inf,0;[c<x[0]and(c:=x[1],r:=r+1)for x in sorted(p,key=itemgetter(1))];return r
 
+# https://leetcode.com/problems/maximum-length-of-pair-chain/discuss/3960653/Recursive-Solution
+
+class Solution:
+    def findLongestChain(self, p: List[List[int]]) -> int:
+        v=sorted(p,key=itemgetter(1));return(f:=lambda i,j,k:k if j==len(v) else f(j,j+1,k+1) if v[i][1]<v[j][0] else f(i,j+1,k))(0,1,1)
+
+class Solution:
+    def findLongestChain(self, p: List[List[int]]) -> int:
+        v=sorted(p,key=itemgetter(1));return(f:=lambda i,j,k:v[j:]and(v[i][1]<v[j][0]and f(j,j+1,k+1)or f(i,j+1,k))or k)(0,1,1)
+
 test('''
 646. Maximum Length of Pair Chain
 Medium

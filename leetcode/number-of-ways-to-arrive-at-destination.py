@@ -109,25 +109,17 @@ class Solution:
 class Solution:
     def countPaths(self, n: int, r: List[List[int]]) -> int:
         g=defaultdict(list);[(g[u].append([v,t]),g[v].append([u,t]))for u,v,t in r]
-        p,c,q,s=[0]+[inf]*(n-1),[1]+[0]*(n-1),[],setitem
+        p,c,q,s=[inf]*n,[1]+[0]*n,[],setitem
         def f(d,u):
-            p[u]>=d
             for v,t in g[u]:
-                p[v]>d+t and(s(p,v,d+t),s(c,v,c[u]),heappush(q,(p[v],v)))or p[v]==d+t and s(c,v,(c[v]+c[u])%(10**9+7))
+                d+t<p[v]and(s(p,v,d+t),s(c,v,c[u]),heappush(q,(p[v],v)))or d+t==p[v]and s(c,v,(c[v]+c[u])%(10**9+7))
             q and f(*heappop(q))
         f(0,0)
         return c[n-1]
 
 class Solution:
     def countPaths(self, n: int, r: List[List[int]]) -> int:
-        g=defaultdict(list);[(g[u].append([v,t]),g[v].append([u,t]))for u,v,t in r]
-        p,c,q,s=[0]+[inf]*(n-1),[1]+[0]*(n-1),[],setitem
-        (f:=lambda d,u:(p[u]>=d,[p[v]>d+t and(s(p,v,d+t),s(c,v,c[u]),heappush(q,(p[v],v)))or p[v]==d+t and s(c,v,(c[v]+c[u])%(10**9+7))for v,t in g[u]],q and f(*heappop(q))))(0,0)
-        return c[n-1]
-
-class Solution:
-    def countPaths(self, n: int, r: List[List[int]]) -> int:
-        g=defaultdict(list);[(g[u].append([v,t]),g[v].append([u,t]))for u,v,t in r];p,c,q,s=[0]+[inf]*(n-1),[1]+[0]*(n-1),[],setitem;(f:=lambda d,u:(p[u]>=d,[p[v]>d+t and(s(p,v,d+t),s(c,v,c[u]),heappush(q,(p[v],v)))or p[v]==d+t and s(c,v,(c[v]+c[u])%(10**9+7))for v,t in g[u]],q and f(*heappop(q))))(0,0);return c[n-1]
+        g=defaultdict(list);[(g[u].append([v,t]),g[v].append([u,t]))for u,v,t in r];p,c,q,s=[inf]*n,[1]+[0]*n,[],setitem;(f:=lambda d,u:([d+t<p[v]and(s(p,v,d+t),s(c,v,c[u]),heappush(q,(p[v],v)))or d+t==p[v]and s(c,v,(c[v]+c[u])%(10**9+7))for v,t in g[u]],q and f(*heappop(q))))(0,0);return c[n-1]
 
 test('''
 1976. Number of Ways to Arrive at Destination

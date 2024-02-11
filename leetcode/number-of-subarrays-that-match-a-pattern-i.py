@@ -38,7 +38,7 @@ class Solution:
         return(f:=lambda s:((p:=[0]*len(s),[setitem(p,i,next((c+(s[i]==s[c])for _ in s if not(c and s[i]!=s[c]and(c:=p[c-1]))),c:=p[i-1]))for i in range(1,len(s))])and p))(p+[99]+[*map(lambda a,b:(a>b)-(a<b),n[1:],n[:-1])]).count(len(p))
 
 test('''
-3035. Number of Subarrays That Match a Pattern I
+3034. Number of Subarrays That Match a Pattern I
 Hard
 
 33

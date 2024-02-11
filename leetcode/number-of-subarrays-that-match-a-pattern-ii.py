@@ -66,8 +66,8 @@ Hence, there are 2 subarrays in nums that match the pattern.
 
 Constraints:
 
-2 <= n == nums.length <= 106
-1 <= nums[i] <= 109
+2 <= n == nums.length <= 10^6
+1 <= nums[i] <= 10^9
 1 <= m == pattern.length < n
 -1 <= pattern[i] <= 1
 Accepted

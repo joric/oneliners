@@ -18,8 +18,8 @@ class Solution:
         return r
 
 class Solution:
-    def subsets(self, n: List[int]) -> List[List[int]]:
-        return[c for i in range(len(n)+1)for c in combinations(n,i)]
+    def subsets(self, r: List[int]) -> List[List[int]]:
+        return[c for k in range(len(r)+1)for c in combinations(r,k)]
 
 test('''
 78. Subsets

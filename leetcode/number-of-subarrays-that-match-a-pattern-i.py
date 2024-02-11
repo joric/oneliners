@@ -1,6 +1,6 @@
 from lc import *
 
-# Q2/Q4 https://leetcode.com/contest/weekly-contest-384/
+# Q2/Q4 https://leetcode.com/contest/weekly-contest-384/problems/number-of-subarrays-that-match-a-pattern-i/
 # https://leetcode.com/problems/number-of-subarrays-that-match-a-pattern-ii/discuss/4708937/Python-KMP-Solution
 
 class Solution:

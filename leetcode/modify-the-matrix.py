@@ -1,6 +1,6 @@
 from lc import *
 
-# Q1 https://leetcode.com/contest/weekly-contest-384/
+# Q1 https://leetcode.com/contest/weekly-contest-384/problems/modify-the-matrix/
 # https://leetcode.com/problems/modify-the-matrix/
 
 class Solution:

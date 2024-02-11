@@ -1,6 +1,6 @@
 from lc import *
 
-# Q2 https://leetcode.com/contest/weekly-contest-384/
+# Q3 https://leetcode.com/contest/weekly-contest-384/problems/maximum-palindromes-after-operations/
 # https://leetcode.com/problems/maximum-palindromes-after-operations/discuss/4709612/Python-3-oror-6-lines-Counter-and-sort
 
 class Solution:

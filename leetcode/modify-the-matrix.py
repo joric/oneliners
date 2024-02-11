@@ -5,6 +5,16 @@ from lc import *
 
 class Solution:
     def modifiedMatrix(self, m: List[List[int]]) -> List[List[int]]:
+        import numpy as p
+        m = p.array(m)
+        x = p.max(m,axis = 0)
+        for i in range(len(m[0])):
+            t = p.max(m[m[:,i]!=-1,i])
+            m[m[:,i]==-1,i]=t
+        return m.tolist()
+
+class Solution:
+    def modifiedMatrix(self, m: List[List[int]]) -> List[List[int]]:
         t=[*zip(*m)];return[[(v,max(t[j]))[v<0]for j,v in enumerate(r)]for i,r in enumerate(m)]
 
 test('''

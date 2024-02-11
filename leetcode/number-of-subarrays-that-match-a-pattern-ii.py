@@ -1,6 +1,8 @@
 from lc import *
 
-# Q2/Q4 https://leetcode.com/contest/weekly-contest-384/problems/number-of-subarrays-that-match-a-pattern-ii/
+# Q2/Q4
+# https://leetcode.com/contest/weekly-contest-384/problems/number-of-subarrays-that-match-a-pattern-i/
+# https://leetcode.com/contest/weekly-contest-384/problems/number-of-subarrays-that-match-a-pattern-ii/
 # https://leetcode.com/problems/number-of-subarrays-that-match-a-pattern-ii/discuss/4708937/Python-KMP-Solution
 
 class Solution:
@@ -21,7 +23,14 @@ class Solution:
          
 class Solution:
     def countMatchingSubarrays(self, nums: List[int], pattern: List[int]) -> int:
-        kmp=lambda s:((p:=[0]*len(s),[setitem(p,i,next((c+(s[i]==s[c])for _ in s if not(c and s[i]!=s[c]and(c:=p[c-1]))),c:=p[i-1]))for i in range(1,len(s))])and p)
+        def kmp(s):
+            p = [0] * len(s)
+            for i in range(1, len(s)):
+                c = p[i - 1]
+                while c and s[i] != s[c]:
+                    c = p[c - 1]
+                p[i] = c + (s[i] == s[c])
+            return p
         return kmp(pattern+[99]+[*map(lambda a,b:(a>b)-(a<b),nums[1:],nums[:-1])]).count(len(pattern))
 
 class Solution:

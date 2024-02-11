@@ -22,11 +22,11 @@ class Solution:
 class Solution:
     def countMatchingSubarrays(self, nums: List[int], pattern: List[int]) -> int:
         kmp=lambda s:((p:=[0]*len(s),[setitem(p,i,next((c+(s[i]==s[c])for _ in s if not(c and s[i]!=s[c]and(c:=p[c-1]))),c:=p[i-1]))for i in range(1,len(s))])and p)
-        return kmp(pattern+[215]+  [  *map(lambda a,b:(a>b)-(a<b), nums[1:], nums[:-1])   ]).count(len(pattern))
+        return kmp(pattern+[99]+[*map(lambda a,b:(a>b)-(a<b),nums[1:],nums[:-1])]).count(len(pattern))
 
 class Solution:
     def countMatchingSubarrays(self, n: List[int], p: List[int]) -> int:
-        return(f:=lambda s:((p:=[0]*len(s),[setitem(p,i,next((c+(s[i]==s[c])for _ in s if not(c and s[i]!=s[c]and(c:=p[c-1]))),c:=p[i-1]))for i in range(1,len(s))])and p))(p+[215]+[*map(lambda a,b:(a>b)-(a<b),n[1:],n[:-1])]).count(len(p))
+        return(f:=lambda s:((p:=[0]*len(s),[setitem(p,i,next((c+(s[i]==s[c])for _ in s if not(c and s[i]!=s[c]and(c:=p[c-1]))),c:=p[i-1]))for i in range(1,len(s))])and p))(p+[99]+[*map(lambda a,b:(a>b)-(a<b),n[1:],n[:-1])]).count(len(p))
 
 test('''
 3036. Number of Subarrays That Match a Pattern II

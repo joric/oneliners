@@ -1,5 +1,11 @@
 from lc import *
 
+# collect values, python 3.12 because of batched()
+
+class Solution:
+    def swapPairs(s, h: Optional[ListNode]) -> Optional[ListNode]:
+        n=(f:=lambda x:x and[x.val]+f(x.next)or[])(h);return n and ListNode(','.join(map(str,chain(*map(reversed,batched(sorted(n),2))))))or None
+
 # https://leetcode.com/problems/swap-nodes-in-pairs/discuss/11095/Python-5-line-solution
 
 class Solution:

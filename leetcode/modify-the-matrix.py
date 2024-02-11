@@ -23,10 +23,6 @@ class Solution:
 
 class Solution:
     def modifiedMatrix(self, m: List[List[int]]) -> List[List[int]]:
-        t=[*map(max,zip(*m))];return[[(v,t[c])[v<0]for c,v in enumerate(r)]for r in m]
-
-class Solution:
-    def modifiedMatrix(self, m: List[List[int]]) -> List[List[int]]:
         t=[*zip(*m)];return[[(v,max(t[j]))[v<0]for j,v in enumerate(r)]for r in m]
 
 test('''

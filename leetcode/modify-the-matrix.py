@@ -3,6 +3,8 @@ from lc import *
 # Q1 https://leetcode.com/contest/weekly-contest-384/problems/modify-the-matrix/
 # https://leetcode.com/problems/modify-the-matrix/
 
+# numpy
+
 class Solution:
     def modifiedMatrix(self, m: List[List[int]]) -> List[List[int]]:
         import numpy as p
@@ -13,9 +15,15 @@ class Solution:
             m[m[:,i]==-1,i]=t
         return m.tolist()
 
+# https://leetcode.com/problems/modify-the-matrix/discuss/4710648/python-one-line/2251960
+
 class Solution:
     def modifiedMatrix(self, m: List[List[int]]) -> List[List[int]]:
         t=[*zip(*m)];return[[(v,max(t[j]))[v<0]for j,v in enumerate(r)]for i,r in enumerate(m)]
+
+class Solution:
+    def modifiedMatrix(self, m: List[List[int]]) -> List[List[int]]:
+        t=[*map(max,zip(*m))];return[[(v,t[c])[v<0]for c,v in enumerate(r)]for r in m]
 
 test('''
 3033. Modify the Matrix

@@ -2,97 +2,87 @@ from lc import *
 
 # weekly-contest-383 Q3
 # https://leetcode.com/contest/weekly-contest-383
+# https://leetcode.com/problems/find-the-grid-of-region-average
+
+# numpy version
+
+class Solution:
+    def resultGrid(self, image: List[List[int]], threshold: int) -> List[List[int]]:
+        import numpy as np
+        import scipy
+        img = np.array(image)
+        m, n = img.shape
+        dx = np.abs(img[1:] - img[:-1])
+        dy = np.abs(img[:, 1:] - img[:, :-1])
+        dall = []
+        for i in range(3):
+            dall += [dx[1:, i:n - 2 + i], dx[:-1, i:n - 2 + i], dy[i:m - 2 + i, 1:], dy[i:m - 2 + i, :-1]]
+        mask = np.max(dall, axis=0) <= threshold
+        avg = (scipy.signal.convolve2d(img, np.ones((3, 3)) / 9, 'valid') + 1e-8).astype(int)
+        eff = mask * avg
+        ans =  np.zeros_like(img)
+        mans = np.zeros_like(img)
+        for i in range(3):
+            for j in range(3):
+                ans[i:m - 2 + i, j:n - 2 + j] += eff
+                mans[i:m - 2 + i, j:n - 2 + j] += mask
+        result = ans / mans
+        na = np.isnan(result)
+        result[na] = img[na]
+        return (result + 1e-8).astype(int)
+
 # https://leetcode.com/problems/find-the-grid-of-region-average/discuss/4674240/Simple-Explained-oror-Python3
 
 class Solution:
     def resultGrid(self, p: List[List[int]], t: int) -> List[List[int]]:
-        h,w = len(p), len(p[0])
+        h = len(p)
+        w = len(p[0])
         r = [[[0,0]]*w for _ in range(h)]
         for y in range(h-2):
             for x in range(w-2):
-                b = True
                 c = 0
+                b = True
                 for i in range(y,y+3):
                     for j in range(x,x+3):
                         if (i-1 >= y and abs(p[i-1][j] - p[i][j]) > t) or (j-1 >= x and abs(p[i][j-1] - p[i][j]) > t):
                             b = False
                             break
                         c += p[i][j]
-                    if not b:
+                    if b==False:
                         break
-                b and [setitem(r[i],j,[r[i][j][0]+c//9,r[i][j][1]+1])for j in range(x,x+3)for i in range(y,y+3)]
-        return[[r[y][x][1]and r[y][x][0]//r[y][x][1]or p[y][x] for x in range(w)]for y in range(h)]
+                if b:
+                    c = c // 9
+                    for i in range(y,y+3):
+                        for j in range(x,x+3):
+                            r[i][j] = [r[i][j][0]+c,r[i][j][1]+1]
+        for y in range(h):
+            for x in range(w):
+                if r[y][x][1] == 0:
+                    r[y][x] = p[y][x]
+                else:
+                    r[y][x] = r[y][x][0] // r[y][x][1]
+        return r
 
 class Solution:
     def resultGrid(self, p: List[List[int]], t: int) -> List[List[int]]:
         h,w,e = len(p), len(p[0]), enumerate
         r = [[[0,0]]*w for _ in range(h)]
+        def f(y,x,c=0):
+            for i in range(y,y+3):
+                for j in range(x,x+3):
+                    if (i-1>=y and abs(p[i-1][j]-p[i][j])>t)or(j-1>=x and abs(p[i][j-1]-p[i][j])>t):
+                        return 0,c
+                    c += p[i][j]
+            return 1,c
         for y in range(h-2):
             for x in range(w-2):
-                def f(y,x,c=0):
-                    for i in range(y,y+3):
-                        for j in range(x,x+3):
-                            if (i-1>=y and abs(p[i-1][j]-p[i][j])>t)or(j-1>=x and abs(p[i][j-1]-p[i][j])>t):
-                                return 0,c
-                            c += p[i][j]
-                    return 1,c
                 b,c = f(y,x)
                 b and[setitem(r[i],j,[r[i][j][0]+c//9,r[i][j][1]+1])for j in range(x,x+3)for i in range(y,y+3)]
-        return[[v[1]and v[0]//v[1]or p[i][j] for j,v in e(t)]for i,t in e(r)]
-
-# czjnbb
-
-class Solution:
-    def resultGrid(self, image: List[List[int]], threshold: int) -> List[List[int]]:
-        def isreg(x, y):
-            for i in range(x - 1, x + 2):
-                for j in range(y - 1, y + 2):
-                    cur = image[i][j]
-                    for di,dj in dirs:
-                        ni, nj = i + di, j + dj
-                        if x-1 <= ni <= x+1 and y - 1 <= nj <= y + 1:
-                            if abs(cur - image[ni][nj]) > threshold:
-                                return False
-            return True
-
-        m, n = len(image), len(image[0])
-        dirs = [[0,1],[1,0],[0,-1],[-1,0]]
-        res = [[0 for _ in range(n)] for _ in range(m)]
-        cnt = [[0 for _ in range(n)] for _ in range(m)]
-        
-        for i in range(1, m - 1):
-            for j in range(1, n - 1):
-
-                if isreg(i,j):
-                    csum = 0
-                    for x in range(i - 1, i + 2):
-                        for y in range(j - 1, j + 2):
-                            csum += image[x][y]
-                    csum //= 9
-                    for x in range(i - 1, i + 2):
-                        for y in range(j - 1, j + 2):
-                            res[x][y] += csum
-                            cnt[x][y] += 1
-        for i in range(m):
-            for j in range(n):
-                if cnt[i][j] == 0:
-                    res[i][j] = image[i][j]
-                else:
-                    res[i][j] //= cnt[i][j]
-        return res
+        return[[p[i][j]if 1>v[1]else v[0]//v[1] for j,v in e(t)]for i,t in e(r)]
 
 class Solution:
     def resultGrid(self, p: List[List[int]], t: int) -> List[List[int]]:
-        m,n,e=len(p),len(p[0]),enumerate
-        r=[[[0,0]]*n for _ in range(m)]
-        f=lambda x,y:not any(x-1<=i+v<=x+1 and y-1<=j+w<=y+1 and t<abs(p[i][j]-p[i+v][j+w])for v,w in[[0,1],[1,0],[0,-1],[-1,0]]for j in range(y-1,y+2)for i in range(x-1,x+2))
-        [f(i,j)and(s:=sum(p[x][y]for x in range(i-1,i+2)for y in range(j-1,j+2))//9,[setitem(r[x],y,(r[x][y][0]+s,r[x][y][1]+1))for x in range(i-1,i+2)for y in range(j-1,j+2)])for i in range(1,m-1)for j in range(1,n-1)]
-        return[[v[1]and v[0]//v[1]or p[i][j]for j,v in e(t)]for i,t in e(r)]
-
-class Solution:
-    def resultGrid(self, p: List[List[int]], t: int) -> List[List[int]]:
-        m,n,e=len(p),len(p[0]),enumerate;r=[[[0,0]]*n for _ in range(m)];f=lambda x,y:not any(x-1<=i+v<=x+1and y-1<=j+w<=y+1and t<abs(p[i][j]-p[i+v][j+w])for v,w in[[0,1],[1,0],[0,-1],[-1,0]]for j in range(y-1,y+2)for i in range(x-1,x+2));[f(i,j)and(s:=sum(p[x][y]for x in range(i-1,i+2)for y in range(j-1,j+2))//9,[setitem(r[x],y,(r[x][y][0]+s,r[x][y][1]+1))for x in range(i-1,i+2)for y in range(j-1,j+2)])for i in range(1,m-1)for j in range(1,n-1)];return[[v[1]and v[0]//v[1]or p[i][j]for j,v in e(t)]for i,t in e(r)]
-
+        h,w,e,g=len(p),len(p[0]),enumerate,range;r=[[[0,0]]*w for _ in g(h)];f=lambda y,x,c=0:(not any((i-1>=y and abs(p[i-1][j]-p[i][j])>t)or(j-1>=x and abs(p[i][j-1]-p[i][j])>t)or not[c:=c+p[i][j]]for i in g(y,y+3)for j in g(x,x+3)),c);[(k:=f(y,x))[0] and[setitem(r[i],j,[r[i][j][0]+k[1]//9,r[i][j][1]+1])for j in g(x,x+3)for i in g(y,y+3)]for y in g(h-2)for x in g(w-2)];return[[p[i][j]if 1>v[1]else v[0]//v[1]for j,v in e(t)]for i,t in e(r)]
 
 test('''
 3030. Find the Grid of Region Average
@@ -105,7 +95,7 @@ Medium
 Add to List
 
 Share
-You are given a 0-indexed m x n grid image which represents a grayscale image, where image[i][j] represents a pixel with intensity in the range[0..255]. You are also given a non-negative integer threshold.
+You are given a 0-indexed m x n grid image which represents a grayscale image, where image[i][j] represents a pixel with intensity in the range[0..255]. You are also given a non-negative integer t.
 
 Two pixels image[a][b] and image[c][d] are said to be adjacent if |a - c| + |b - d| == 1.
 
@@ -137,7 +127,12 @@ Example 3:
 Input: image = [[5,6,7],[8,9,10],[11,12,13]], threshold = 1
 Output: [[5,6,7],[8,9,10],[11,12,13]]
 Explanation: There does not exist any region in image, hence result[i][j] == image[i][j] for all the pixels.
- 
+
+
+Example 4:
+
+Input: image = [[0,0,0,0,0,0,1,0,0,0,0,7,0,4,0,0,0,7,0,0,0,0,0,0,0],[0,0,0,0,0,0,1,0,0,0,0,7,0,4,0,0,0,7,0,0,0,0,0,0,0],[4,4,4,4,4,4,5,4,4,4,4,11,4,8,4,4,4,11,4,4,4,4,4,4,4],[0,0,0,0,0,0,1,0,0,0,0,7,0,4,0,0,0,7,0,0,0,0,0,0,0],[0,0,0,0,0,0,1,0,0,0,0,7,0,4,0,0,0,7,0,0,0,0,0,0,0],[0,0,0,0,0,0,1,0,0,0,0,7,0,4,0,0,0,7,0,0,0,0,0,0,0],[0,0,0,0,0,0,1,0,0,0,0,7,0,4,0,0,0,7,0,0,0,0,0,0,0],[4,4,4,4,4,4,5,4,4,4,4,11,4,8,4,4,4,11,4,4,4,4,4,4,4],[9,9,9,9,9,9,10,9,9,9,9,16,9,13,9,9,9,16,9,9,9,9,9,9,9],[0,0,0,0,0,0,1,0,0,0,0,7,0,4,0,0,0,7,0,0,0,0,0,0,0],[5,5,5,5,5,5,6,5,5,5,5,12,5,9,5,5,5,12,5,5,5,5,5,5,5],[16,16,16,16,16,16,17,16,16,16,16,23,16,20,16,16,16,23,16,16,16,16,16,16,16],[0,0,0,0,0,0,1,0,0,0,0,7,0,4,0,0,0,7,0,0,0,0,0,0,0],[0,0,0,0,0,0,1,0,0,0,0,7,0,4,0,0,0,7,0,0,0,0,0,0,0],[0,0,0,0,0,0,1,0,0,0,0,7,0,4,0,0,0,7,0,0,0,0,0,0,0],[0,0,0,0,0,0,1,0,0,0,0,7,0,4,0,0,0,7,0,0,0,0,0,0,0],[0,0,0,0,0,0,1,0,0,0,0,7,0,4,0,0,0,7,0,0,0,0,0,0,0],[0,0,0,0,0,0,1,0,0,0,0,7,0,4,0,0,0,7,0,0,0,0,0,0,0],[0,0,0,0,0,0,1,0,0,0,0,7,0,4,0,0,0,7,0,0,0,0,0,0,0],[0,0,0,0,0,0,1,0,0,0,0,7,0,4,0,0,0,7,0,0,0,0,0,0,0],[8,8,8,8,8,8,9,8,8,8,8,15,8,12,8,8,8,15,8,8,8,8,8,8,8],[0,0,0,0,0,0,1,0,0,0,0,7,0,4,0,0,0,7,0,0,0,0,0,0,0],[1,1,1,1,1,1,2,1,1,1,1,8,1,5,1,1,1,8,1,1,1,1,1,1,1],[0,0,0,0,0,0,1,0,0,0,0,7,0,4,0,0,0,7,0,0,0,0,0,0,0],[0,0,0,0,0,0,1,0,0,0,0,7,0,4,0,0,0,7,0,0,0,0,0,0,0]], threshold = 41
+Output: [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 3, 3, 1, 2, 2, 3, 2, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 3, 3, 1, 2, 2, 3, 2, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 3, 3, 1, 2, 2, 3, 2, 1, 1, 1, 1, 1, 1], [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 2, 2, 1, 1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 2, 1, 1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 2, 1, 1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 3, 3, 2, 2, 3, 3, 3, 2, 1, 1, 1, 1, 1], [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 5, 5, 5, 3, 4, 4, 5, 4, 3, 3, 3, 3, 3, 3], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 6, 6, 6, 4, 5, 5, 6, 5, 4, 4, 4, 4, 4, 4], [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 7, 7, 7, 5, 6, 6, 7, 6, 5, 5, 5, 5, 5, 5], [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 8, 8, 8, 6, 7, 7, 8, 7, 6, 6, 6, 6, 6, 6], [6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 8, 8, 8, 7, 7, 7, 8, 7, 7, 6, 6, 6, 6, 6], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 6, 6, 5, 4, 5, 5, 6, 5, 4, 4, 4, 4, 4, 4], [1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 3, 3, 2, 2, 3, 3, 3, 2, 1, 1, 1, 1, 1], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 1, 0, 1, 1, 2, 1, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 1, 0, 1, 1, 2, 1, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 1, 0, 1, 1, 2, 1, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 1, 0, 1, 1, 2, 1, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 2, 3, 3, 2, 1, 1, 2, 3, 2, 1, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 3, 4, 4, 3, 2, 2, 3, 4, 3, 2, 1, 1, 1, 1, 1], [2, 2, 2, 2, 2, 2, 3, 2, 2, 3, 4, 5, 5, 4, 3, 3, 4, 5, 4, 3, 2, 2, 2, 2, 2], [1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 3, 4, 4, 3, 2, 2, 3, 4, 3, 2, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 3, 2, 1, 2, 2, 3, 2, 1, 1, 1, 1, 1, 1], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 0, 1, 1, 2, 1, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 0, 1, 1, 2, 1, 0, 0, 0, 0, 0, 0]]
 
 Constraints:
 

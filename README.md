@@ -1050,7 +1050,7 @@ class Solution:
 ```
 
 * https://leetcode.com/problems/find-the-duplicate-number
-* Also see https://youtu.be/pKO9UjSeLew (Joma Tech: If Programming Was An Anime)
+* https://youtu.be/pKO9UjSeLew (Joma Tech: If Programming Was An Anime)
 
 ```python
 class Solution:

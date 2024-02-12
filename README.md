@@ -74,7 +74,7 @@ class Solution:
         return map(int.bit_count,range(n+1))
 ```
 
-You can also return linked list of values as `ListNode('a,b,...')`. This one is really hacky, but useful.
+You can also return linked list of values as `ListNode('a,b,...')`. This one is really tricky, but sometimes useful.
 
 * https://leetcode.com/problems/add-two-numbers
 

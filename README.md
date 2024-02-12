@@ -1072,7 +1072,7 @@ class Solution:
         s=[0,*accumulate(n)];return max(map(sub,s[k:],s))/k
 ```
 
-Quite a few things are shorter with `statistics.mode` (most common value of discrete or nominal data).
+Quite a few things become shorter with `statistics.mode` (most common value of discrete or nominal data).
 
 * https://leetcode.com/problems/set-mismatch
 

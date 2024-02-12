@@ -46,7 +46,7 @@ class Solution:
         i%2 and i*2 or i for i in n),r:=inf))
 ```
 
-Sometimes you can save on casting the return type, e.g. Leetcode autoconverts keys and mixed types to lists.
+Sometimes you can save on casting of the return type, e.g. Leetcode autoconverts keys and mixed types to lists.
 
 * https://leetcode.com/problems/top-k-frequent-elements
 

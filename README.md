@@ -8,7 +8,7 @@ Leetcode imports modules as wildcards, so you don't have to specify module names
 * You have to specify `re.sub` because `sub` without a prefix is `operator.sub`.
 * Default `pow` is `__builtins__['pow']` (supports up to 3 arguments), not `math.pow`.
 
-E.g. Leetcode header has `import * from itertools`, so we use `comb()` instead of `itertools.comb()`:
+Leetcode header has `import * from itertools`, so we use `comb()` instead of `itertools.comb()`:
 
 * https://leetcode.com/problems/unique-paths
 

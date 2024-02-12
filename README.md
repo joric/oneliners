@@ -666,7 +666,7 @@ class Solution:
 ### Unicode Find
 
 Unicode find (NOT Union Find) is the greatest trick of all time to solve graph problems.
-Introduced by Stephan Pochmann here:
+Introduced by Stephan Pochmann:
 
 * https://leetcode.com/problems/redundant-connection/discuss/108002/Unicode-Find-(5-short-lines)
 
@@ -681,7 +681,8 @@ class Solution:
 
 class Solution:
     def findRedundantConnection(self, e: List[List[int]]) -> List[int]:
-        t=''.join(map(chr,range(1001)));return next((u,v)for u,v in e if t[u]==t[v]or[t:=t.replace(t[u],t[v])])
+        t=''.join(map(chr,range(1001)));return next((u,v)for u,v in e if t[u]==t[v]
+        or[t:=t.replace(t[u],t[v])])
 ```
 
 The idea is to replace the whole Union Find thing with string replace in a Unicode space.

@@ -804,11 +804,9 @@ class Solution:
 
 ### Misc
 
-* `key=itemgetter(n)` is the same length as `key=lambda x:x[n]` but a little bit clearer to read.
+Note that `key=itemgetter(n)` is the same length as `key=lambda x:x[n]` but a little bit clearer to read.
 
 Sometimes you can skip `key=itemgetter(0)` by converting an argument to a tuple (15 characters shorter).
-
-Example:
 
 * https://leetcode.com/problems/maximum-profit-in-job-scheduling
 
@@ -850,9 +848,7 @@ class Solution:
         return {*range(n)}-{j for _,j in edges}
 ```
 
-* You can can use `a!=b!=c` in a single boolean condition, similar to `0<=i<n` and `m>j>=0<=i<n`.
-
-Example:
+You can can use `a!=b!=c` in a single boolean condition, similar to `0<=i<n` and `m>j>=0<=i<n`.
 
 * https://leetcode.com/problems/expressive-words/discuss/122660/C%2B%2BJavaPython-2-Pointers-and-4-pointers
 
@@ -889,12 +885,10 @@ class Solution:
         return n>0==log(n,4)%1
 ```
 
+Note `~` reverts every bit. Therefore, `~x` means `-x-1`. You can use it as reversed index, i.e. for `i=0`, `a[~i]` means `a[-1]`, etc. or just replace `-x-1` with `~x`.
 
-* `~` reverts every bit. Therefore, `~x` means `-x-1`. You can use it as reversed index, i.e. for `i=0`, `a[~i]` means `a[-1]`, etc. or just replace `-x-1` with `~x`.
-    For integer n, you can write `n+1` as `-~n`, `n-1` as `~-n`. This uses the same number of characters, but can indirectly cut spaces or parens for operator precedence.
+For integer n, you can write `n+1` as `-~n`, `n-1` as `~-n`. This uses the same number of characters, but can indirectly cut spaces or parens for operator precedence.
 
-
-Example:
 
 * https://leetcode.com/problems/spiral-matrix-ii/
 
@@ -910,10 +904,9 @@ class Solution:
             *a+(i+j-2*a+1,4*n-6*a-i-j-3)[i>j]for j in r]for i in r]
 ```
 
-* You can replace `0 if x==y else z` with `x-y and z`, it's a little bit counterintuitive, but shorter.
-* Condition `x if c else y` can be written as `c and x or y`, it's shorter but depends on x (x should not be 0).
+You can replace `0 if x==y else z` with `x-y and z`, it's a little bit counterintuitive, but shorter.
 
-Example:
+Condition `x if c else y` can be written as `c and x or y`, it's shorter but depends on x (x should not be 0).
 
 * https://leetcode.com/problems/snakes-and-ladders/discuss/173378/Diagram-and-BFS
 
@@ -943,9 +936,7 @@ class Solution:
             or (k not in v and (v.update({k:v[i]+1}) or q.append(k)))),-1)
 ```
 
-* You can check if any of the numbers is negative as `x|y<0` or if both numbers are non-zero as `x|y`.
-
-Example:
+You can check if any of the numbers is negative as `x|y<0` or if both numbers are non-zero as `x|y`.
 
 * https://leetcode.com/problems/minimum-path-sum
 
@@ -956,9 +947,7 @@ class Solution:
             (len(grid)-1,len(grid[0])-1)
 ```
 
-* You can use bitwise `&`,`|` instead of `and`,`or` where possible. If x is `0..2`, using `x&1` is shorter than `x==1`.
-
-Example:
+You can use bitwise `&`,`|` instead of `and`,`or` where possible. If x is `0..2`, using `x&1` is shorter than `x==1`.
 
 * https://leetcode.com/problems/scramble-string
 
@@ -975,9 +964,7 @@ class Solution:
             |(f(a[i:],b[:-i])&f(a[:i],b[-i:])) for i in range(1,len(a)))))(s1,s2)
 ```
 
-* You can use booleans as indexes in lists, even nested: `(a,(b,c)[u==w])[x==y]`, or you can multiply by a boolean.
-
-Example:
+You can use booleans as indexes in lists, even nested: `(a,(b,c)[u==w])[x==y]`, or you can multiply by a boolean.
 
 * https://leetcode.com/problems/removing-stars-from-a-string
 
@@ -998,8 +985,6 @@ class Solution:
 Python 3 lacks `cmp` (3-way compare) and sign function (`copysign(bool(x),x)` is too long), but you can use `(x>0)-(x<0)` for `sign(x)`
 and `(a>b)-(a<b)` for `cmp(a,b)`. Note you can use `-1,0,1` indexes for Python lists natively.
 
-Example:
-
 * https://leetcode.com/problems/stone-game-iii
 
 ```python
@@ -1010,10 +995,8 @@ class Solution:
         # return(('Tie','Bob')[x<0],'Alice')[x>0] # or like this (1 char shorter)
 ```
 
-* You can save a few characters using asterisk operator `*`.
-  One `*` means "expand this as a list", two `**` means "expand this as a dictionary".
-
-Example
+You can save a few characters using asterisk operator `*`.
+One `*` means "expand this as a list", two `**` means "expand this as a dictionary".
 
 * https://leetcode.com/problems/check-if-it-is-a-straight-line
 
@@ -1041,9 +1024,7 @@ class Solution:
         s=[0,*accumulate(n)];return max(map(sub,s[k:],s))/k
 ```
 
-* Quite a few things are shorter with `statistics.mode`.
-
-Example
+Quite a few things are shorter with `statistics.mode`.
 
 * https://leetcode.com/problems/set-mismatch
 

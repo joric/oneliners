@@ -31,8 +31,6 @@ class Solution:
         result[na] = img[na]
         return (result + 1e-8).astype(int)
 
-# TODO
-
 class Solution:
     def resultGrid(self, a: List[List[int]], t: int) -> List[List[int]]:
         p,s=map(__import__,('numpy','scipy'))
@@ -54,7 +52,7 @@ class Solution:
         r[b]=g[b]
         return(r+1e-8).astype(int)
 
-# https://leetcode.com/problems/find-the-grid-of-region-average/discuss/4674240/Simple-Explained-oror-Python3
+# https://leetcode.com/problems/find-the-grid-of-region-average/discuss/4674240/Simple-Explained-oror-Python
 
 class Solution:
     def resultGrid(self, p: List[List[int]], t: int) -> List[List[int]]:

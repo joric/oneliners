@@ -36,8 +36,7 @@ class Solution:
 
 class Solution:
     def majorityElement(self, n: List[int]) -> int:
-        r=c=0
-        [(c==0 and(r:=x),c:=c+(-1,1)[x==r])for x in n];return r
+        r=c=0;[(c==0 and(r:=x),c:=c+(-1,1)[x==r])for x in n];return r
 
 # https://leetcode.com/problems/majority-element/discuss/2100014/Python-Shortest-Code-of-all-time-guaranteed
 

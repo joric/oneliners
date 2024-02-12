@@ -1026,29 +1026,6 @@ class Solution:
 
 Quite a few things are shorter with `statistics.mode` (most common value of discrete or nominal data).
 
-* https://leetcode.com/problems/find-the-duplicate-number
-* Also see https://youtu.be/pKO9UjSeLew (Joma Tech: If Programming Was An Anime)
-
-```python
-class Solution:
-    def findDuplicate(self, nums: List[int]) -> int:
-        tortoise = hare = nums[0]
-        while True:
-            tortoise = nums[tortoise]
-            hare = nums[nums[hare]]
-            if tortoise == hare:
-                break
-        tortoise = nums[0]
-        while tortoise != hare:
-            tortoise = nums[tortoise]
-            hare = nums[hare]
-        return hare
-
-class Solution:
-    def findDuplicate(self, nums: List[int]) -> int:
-        return mode(nums)
-```
-
 * https://leetcode.com/problems/set-mismatch
 
 ```python
@@ -1070,6 +1047,29 @@ class Solution:
 
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
+        return mode(nums)
+```
+
+* https://leetcode.com/problems/find-the-duplicate-number
+* Also see https://youtu.be/pKO9UjSeLew (Joma Tech: If Programming Was An Anime)
+
+```python
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        tortoise = hare = nums[0]
+        while True:
+            tortoise = nums[tortoise]
+            hare = nums[nums[hare]]
+            if tortoise == hare:
+                break
+        tortoise = nums[0]
+        while tortoise != hare:
+            tortoise = nums[tortoise]
+            hare = nums[hare]
+        return hare
+
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
         return mode(nums)
 ```
 

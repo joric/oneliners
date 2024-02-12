@@ -1041,7 +1041,9 @@ class Solution:
         s=[0,*accumulate(n)];return max(map(sub,s[k:],s))/k
 ```
 
-Quite a few things are shorter with `statistics.mode`:
+Quite a few things are shorter with `statistics.mode`.
+
+Example:
 
 * https://leetcode.com/problems/set-mismatch
 

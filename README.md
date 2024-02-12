@@ -1099,9 +1099,9 @@ class Solution:
 ```
 
 * https://leetcode.com/problems/find-the-duplicate-number
-* https://youtu.be/pKO9UjSeLew (Joma Tech: If Programming Was An Anime)
 
 ```python
+# https://youtu.be/pKO9UjSeLew (Joma Tech: If Programming Was An Anime)
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
         tortoise = hare = nums[0]

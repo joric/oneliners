@@ -105,7 +105,7 @@ class Solution:
 
 class Solution:
     def resultGrid(self, p: List[List[int]], t: int) -> List[List[int]]:
-        h,w,e,g=len(p),len(p[0]),enumerate,range;r=[[[0,0]]*w for _ in g(h)];f=lambda y,x,c=0:(not any((i-1>=y and abs(p[i-1][j]-p[i][j])>t)or(j-1>=x and abs(p[i][j-1]-p[i][j])>t)or not[c:=c+p[i][j]]for i in g(y,y+3)for j in g(x,x+3)),c);[(k:=f(y,x))[0] and[setitem(r[i],j,[r[i][j][0]+k[1]//9,r[i][j][1]+1])for j in g(x,x+3)for i in g(y,y+3)]for y in g(h-2)for x in g(w-2)];return[[p[i][j]if 1>v[1]else v[0]//v[1]for j,v in e(t)]for i,t in e(r)]
+        h,w,e,g=len(p),len(p[0]),enumerate,range;r=[[[0,0]]*w for _ in g(h)];f=lambda y,x,c=0:(not any((i-1>=y and abs(p[i-1][j]-p[i][j])>t)or(j-1>=x and abs(p[i][j-1]-p[i][j])>t)or not[c:=c+p[i][j]]for i in g(y,y+3)for j in g(x,x+3)),c);[(k:=f(y,x))[0]and[setitem(r[i],j,[r[i][j][0]+k[1]//9,r[i][j][1]+1])for j in g(x,x+3)for i in g(y,y+3)]for y in g(h-2)for x in g(w-2)];return[[p[i][j]if 1>v[1]else v[0]//v[1]for j,v in e(t)]for i,t in e(r)]
 
 test('''
 3030. Find the Grid of Region Average

@@ -39,7 +39,7 @@ class Solution:
         x,y=p.abs(g[1:]-g[:-1]),p.abs(g[:,1:]-g[:,:-1])
         d=sum(([x[1:,i:n-2+i],x[:-1,i:n-2+i],y[i:m-2+i,1:],y[i:m-2+i,:-1]]for i in(0,1,2)),start=[])
         k=p.max(d,axis=0)<=t
-        v=(s.signal.convolve2d(g, p.ones((3, 3)) / 9, 'valid') + 1e-8).astype(int)
+        v=(s.signal.convolve2d(g,p.ones((3,3))/9,'valid')+1e-8).astype(int)
         f=k*v
         w=p.zeros_like(g)
         z=p.zeros_like(g)
@@ -47,8 +47,8 @@ class Solution:
             for j in range(3):
                 w[i:m-2+i,j:n-2+j]+=f
                 z[i:m-2+i,j:n-2+j]+=k
-        r = w/z
-        b = p.isnan(r)
+        r=w/z
+        b=p.isnan(r)
         r[b]=g[b]
         return(r+1e-8).astype(int)
 

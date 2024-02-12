@@ -871,7 +871,7 @@ class Solution:
 
 ```
 
-Note Python handles comparisons in the same order as `and` operator (e.g. `log` throws exception if n==0):
+Python handles comparisons in the same order as `and` operator (e.g. `log` throws exception if n==0):
 
 * https://leetcode.com/problems/power-of-four
 
@@ -885,7 +885,7 @@ class Solution:
         return n>0==log(n,4)%1
 ```
 
-Note `~` reverts every bit. Therefore, `~x` means `-x-1`. You can use it as reversed index, i.e. for `i=0`, `a[~i]` means `a[-1]`, etc. or just replace `-x-1` with `~x`.
+`~` reverts every bit. Therefore, `~x` means `-x-1`. You can use it as reversed index, i.e. for `i=0`, `a[~i]` means `a[-1]`, etc. or just replace `-x-1` with `~x`.
 
 For integer n, you can write `n+1` as `-~n`, `n-1` as `~-n`. This uses the same number of characters, but can indirectly cut spaces or parens for operator precedence.
 

@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/find-the-duplicate-number
+
 # Joma Tech - If Programming Was An Anime https://youtu.be/pKO9UjSeLew
 
 class Solution:

@@ -1051,19 +1051,19 @@ class Solution:
         return mode(nums),comb(len(nums)+1,2)-sum({*nums})
 ```
 
-* https://leetcode.com/problems/majority-element
-
-```python
-class Solution:
-    def majorityElement(self, nums: List[int]) -> int:
-        return mode(nums)
-```
-
 * https://leetcode.com/problems/find-the-duplicate-number
 
 ```python
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
+        return mode(nums)
+```
+
+* https://leetcode.com/problems/majority-element
+
+```python
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
         return mode(nums)
 ```
 

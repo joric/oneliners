@@ -667,7 +667,7 @@ class Solution:
 
 Unicode find (NOT Union Find) is the greatest trick of all time to solve graph problems.
 The idea is to replace the whole Union Find thing with string replace in a Unicode space.
-Introduced by Stephan Pochmann:
+It reduces the code size SEVEREY (2-5x). Introduced by Stephan Pochmann:
 
 * https://leetcode.com/problems/redundant-connection/discuss/108002/Unicode-Find-(5-short-lines)
 
@@ -707,7 +707,7 @@ class Solution:
 class Solution:
     def swimInWater(self, g: List[List[int]]) -> int:
         n=len(g);t,r=''.join(map(chr,range(n*n))),range(n);return next((w for w,i,j in
-        sorted((g[i][j],i,j) for i,j in product(r,r))if[t:=t.replace(t[i*n+j],t[x*n+y]) for x,y
+        sorted((g[i][j],i,j)for i,j in product(r,r))if[t:=t.replace(t[i*n+j],t[x*n+y]) for x,y
         in((i+1,j),(i-1,j),(i,j+1),(i,j-1)) if n>y>=0<=x<n and g[x][y]<=w]and t[0]==t[-1]),0)
 
 ```

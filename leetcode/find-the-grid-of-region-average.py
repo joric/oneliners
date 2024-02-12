@@ -31,6 +31,29 @@ class Solution:
         result[na] = img[na]
         return (result + 1e-8).astype(int)
 
+# TODO
+
+class Solution:
+    def resultGrid(self, a: List[List[int]], t: int) -> List[List[int]]:
+        p,s=map(__import__,('numpy','scipy'))
+        g=p.array(a)
+        m,n=g.shape
+        x,y=p.abs(g[1:] - g[:-1]),p.abs(g[:, 1:] - g[:, :-1])
+        d=sum(([x[1:,i:n-2+i],x[:-1,i:n-2+i],y[i:m-2+i,1:],y[i:m-2+i,:-1]]for i in(0,1,2)),start=[])
+        k=p.max(d,axis=0)<=t
+        v=(s.signal.convolve2d(g, p.ones((3, 3)) / 9, 'valid') + 1e-8).astype(int)
+        f=k*v
+        w=p.zeros_like(g)
+        z=p.zeros_like(g)
+        for i in range(3):
+            for j in range(3):
+                w[i:m-2+i,j:n-2+j]+=f
+                z[i:m-2+i,j:n-2+j]+=k
+        r = w/z
+        b = p.isnan(r)
+        r[b]=g[b]
+        return(r+1e-8).astype(int)
+
 # https://leetcode.com/problems/find-the-grid-of-region-average/discuss/4674240/Simple-Explained-oror-Python3
 
 class Solution:
@@ -144,5 +167,3 @@ Accepted
 Submissions
 12,206
 ''')
-
-

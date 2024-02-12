@@ -245,7 +245,7 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
             if 'TreeNode' in t or 'ListNode' in t or type(res)==list:
                 return str(res)==str(expected)
             elif 'numpy.ndarray' in t:
-                return all(x==y for x,y in zip(res,expected))
+                return all([*x]==[*y] for x,y in zip(res,expected))
             return res==expected
 
     custom_class_tests = classname is not None and 'Launcher' not in str(classname) and custom!=False

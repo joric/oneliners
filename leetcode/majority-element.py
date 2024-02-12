@@ -48,6 +48,12 @@ class Solution:
     def majorityElement(self, n: List[int]) -> int:
         return sorted(n)[len(n)//2]
 
+# statistics.mode
+
+class Solution:
+    def majorityElement(self, n: List[int]) -> int:
+        return mode(n)
+
 test('''
 169. Majority Element
 Easy

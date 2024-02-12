@@ -663,6 +663,55 @@ class Solution:
 
 ```
 
+### Unicode Find
+
+Unicode find (NOT Union Find) is the greatest trick of all time to solve graph problems.
+Introduced by Stephan Pochmann here:
+
+* https://leetcode.com/problems/redundant-connection/discuss/108002/Unicode-Find-(5-short-lines)
+
+```python
+class Solution:
+    def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
+        t = ''.join(map(chr, range(1001)))
+        for u,v in edges:
+            if t[u]==t[v]:
+                return [u,v]
+            t = t.replace(t[u],t[v])
+
+class Solution:
+    def findRedundantConnection(self, e: List[List[int]]) -> List[int]:
+        t=''.join(map(chr,range(1001)));return next((u,v)for u,v in e if t[u]==t[v]or[t:=t.replace(t[u],t[v])])
+```
+
+The idea is to replace the whole Union Find thing with string replace in a Unicode space.
+
+Another example:
+
+* https://leetcode.com/problems/swim-in-rising-water
+
+```python
+
+class Solution:
+    def swimInWater(self, g: List[List[int]]) -> int:
+        n = len(g)
+        t,r = ''.join(map(chr,range(n*n))),range(n)
+        for w,i,j in sorted((g[i][j],i,j)for i,j in product(r,r)):
+            for x,y in ((i+1,j),(i-1,j),(i,j+1),(i,j-1)):
+                if n>y>=0<=x<n and g[x][y]<=w:
+                    t = t.replace(t[i*n+j],t[x*n+y])
+            if t[0]==t[-1]:
+                return w
+        return 0
+
+class Solution:
+    def swimInWater(self, g: List[List[int]]) -> int:
+        n=len(g);t,r=''.join(map(chr,range(n*n))),range(n);return next((w for w,i,j in
+        sorted((g[i][j],i,j) for i,j in product(r,r))if[t:=t.replace(t[i*n+j],t[x*n+y]) for x,y
+        in((i+1,j),(i-1,j),(i,j+1),(i,j-1)) if n>y>=0<=x<n and g[x][y]<=w]and t[0]==t[-1]),0)
+
+```
+
 ### Cache
 
 Cache decorator may be used as an inline function `cache(lambda ...)`.

@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/swim-in-rising-water
+
 class Solution:
     def swimInWater(self, grid: List[List[int]]) -> int:
         n, heap, visited, res = len(grid), [(grid[0][0], 0, 0)], set([(0, 0)]), 0

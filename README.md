@@ -1014,7 +1014,6 @@ class Solution:
 
 
 ```python
-
 class Solution:
     def findMaxAverage(self, n: List[int], k: int) -> float:
         s=[0]+[*accumulate(n)];return max(map(sub,s[k:],s))/k

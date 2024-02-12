@@ -1041,6 +1041,32 @@ class Solution:
         s=[0,*accumulate(n)];return max(map(sub,s[k:],s))/k
 ```
 
+Quite a few things are shorter with `statistics.mode`:
+
+* https://leetcode.com/problems/set-mismatch
+
+```python
+class Solution:
+    def findErrorNums(self, nums: List[int]) -> List[int]:
+        return mode(nums),comb(len(nums)+1,2)-sum({*nums})
+```
+
+* https://leetcode.com/problems/majority-element
+
+```python
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        return mode(nums)
+```
+
+* https://leetcode.com/problems/find-the-duplicate-number
+
+```python
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        return mode(nums)
+```
+
 * Unless the following token starts with e or E. You can remove the space following a number. E.g. `i==4 and j==4` becomes `i==4and j==4`.
 * There's a nice way to convert an iterable to list using star operator, e.g. `x=[*g]` equals `*x,=g` (1 char shorter).
   You can also use this syntax to unpack iterables, e.g. `a,*b,c=range(5)` means `a=1;b=[2,3,4];c=5`.

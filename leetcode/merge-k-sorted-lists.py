@@ -30,6 +30,11 @@ class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
         return (g:=lambda x:ListNode(x[0],g(x[1:]))if x else None)(sorted(itertools.chain(*[(f:=lambda x:x and [x.val]+f(x.next)or[])(h) for h in lists])))
 
+# updated 13 Feb 2024
+
+class Solution:
+    def mergeKLists(self, v: List[Optional[ListNode]]) -> Optional[ListNode]:
+        return(g:=lambda x:x and ListNode(x[0],g(x[1:]))or None)(sorted(chain(*[(f:=lambda x:x and[x.val]+f(x.next)or[])(h)for h in v])))
 
 test('''
 

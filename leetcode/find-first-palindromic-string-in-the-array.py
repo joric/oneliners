@@ -3,16 +3,16 @@ from lc import *
 # https://leetcode.com/problems/find-first-palindromic-string-in-the-array/discuss/1676121/Python-simple-solution-andand-one-line
 
 class Solution:
-    def firstPalindrome(self, w: List[str]) -> str:
-        return next(filter(lambda s:s==s[::-1],w),'')
+    def firstPalindrome(self, d: List[str]) -> str:
+        return next(filter(lambda w:w==w[::-1],d),'')
 
 class Solution:
-    def firstPalindrome(self, w: List[str]) -> str:
-        return next((s for s in w if s==s[::-1]),'')
+    def firstPalindrome(self, d: List[str]) -> str:
+        return next((w for w in d if w==w[::-1]),'')
 
 class Solution:
-    def firstPalindrome(self, w: List[str]) -> str:
-        return[s for s in w+['']if s==s[::-1]][0]
+    def firstPalindrome(self, d: List[str]) -> str:
+        return[w for w in d+['']if w==w[::-1]][0]
 
 test('''
 2108. Find First Palindromic String in the Array

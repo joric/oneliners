@@ -2,6 +2,8 @@ from lc import *
 
 # https://leetcode.com/problems/find-first-palindromic-string-in-the-array/discuss/1676121/Python-simple-solution-andand-one-line
 
+# ruby version is shorter: words.find{|i|i==i.reverse}||''
+
 class Solution:
     def firstPalindrome(self, d: List[str]) -> str:
         return next(filter(lambda w:w==w[::-1],d),'')

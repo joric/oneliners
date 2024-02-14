@@ -46,6 +46,10 @@ class Solution:
     def wordBreak(self, s: str, d: List[str]) -> List[str]:
         return(f:=lambda s,t=():sum((f(s[len(w):],t+(w,))for w in d if s.find(w)==0),start=[])if s else[' '.join(t)])(s)
 
+class Solution:
+    def wordBreak(self, s: str, d: List[str]) -> List[str]:
+        return(f:=lambda s,t=():chain(*[f(s[len(w):],t+(w,))for w in d if s.find(w)==0])if s else[' '.join(t)])(s)
+
 # https://leetcode.com/problems/word-break-ii/discuss/764188/Python-4-lines-using-lru_cache
 
 class Solution:

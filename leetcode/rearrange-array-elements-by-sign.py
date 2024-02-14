@@ -26,9 +26,9 @@ class Solution:
 # https://leetcode.com/problems/rearrange-array-elements-by-sign/discuss/4723541/Two-solutions.-O(n).-One-pass
 
 class Solution:
-    def rearrangeArray(self, n: List[int]) -> List[int]:
-        r,i,j=[0]*len(n),0,1
-        for x in n:
+    def rearrangeArray(self, a: List[int]) -> List[int]:
+        r,i,j=[0]*len(a),0,1
+        for x in a:
             if x < 0:
                 r[j] = x
                 j += 2
@@ -38,30 +38,30 @@ class Solution:
         return r
 
 class Solution:
-    def rearrangeArray(self, n: List[int]) -> List[int]:
-        r,i,j=[0]*len(n),-2,-1;[setitem(r,(i:=i+2*(1-(t:=int(x<0))),j:=j+2*t)[t],x)for x in n];return r
+    def rearrangeArray(self, a: List[int]) -> List[int]:
+        r,i,j=[0]*len(a),-2,-1;[setitem(r,(i:=i+2*(1-(t:=int(x<0))),j:=j+2*t)[t],x)for x in a];return r
 
 # chain
 
 class Solution:
-    def rearrangeArray(self, n: List[int]) -> List[int]:
-        n.sort(key=lambda x:(x>0)-(x<0));return chain(*zip(n[len(n)//2:],n))
+    def rearrangeArray(self, a: List[int]) -> List[int]:
+        a.sort(key=lambda x:(x>0)-(x<0));return chain(*zip(a[len(a)//2:],a))
 
 class Solution:
-    def rearrangeArray(self, n: List[int]) -> List[int]:
-        return chain(*zip((x for x in n if x>0),(x for x in n if x<0)))
+    def rearrangeArray(self, a: List[int]) -> List[int]:
+        return chain(*zip((x for x in a if x>0),(x for x in a if x<0)))
 
 class Solution:
-    def rearrangeArray(self, n: List[int]) -> List[int]:
-        return chain(*zip(*[[x for x in n if o(x,0)]for o in(ge,le)]))
+    def rearrangeArray(self, a: List[int]) -> List[int]:
+        return chain(*zip(*[[x for x in a if o(x,0)]for o in(ge,le)]))
 
 class Solution:
-    def rearrangeArray(self, n: List[int]) -> List[int]:
-        return chain(*zip(filter(f:=(0).__le__,n),filterfalse(f,n)))
+    def rearrangeArray(self, a: List[int]) -> List[int]:
+        return chain(*zip(filter(f:=(0).__le__,a),filterfalse(f,a)))
 
 class Solution:
-    def rearrangeArray(self, n: List[int]) -> List[int]:
-        n.sort(key=(0).__le__);return chain(*zip(n[len(n)//2:],n))
+    def rearrangeArray(self, a: List[int]) -> List[int]:
+        a.sort(key=(0).__le__);return chain(*zip(a[len(a)//2:],a))
 
 test('''
 2149. Rearrange Array Elements by Sign

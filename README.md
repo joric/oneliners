@@ -1044,6 +1044,21 @@ class Solution:
         # return(('Tie','Bob')[x<0],'Alice')[x>0] # or like this (1 char shorter)
 ```
 
+You can replace `sign(x)` with `lambda x:(x>0)-(x<0)` or `(0).__le__`.
+
+* https://leetcode.com/problems/rearrange-array-elements-by-sign
+
+```python
+class Solution:
+    def rearrangeArray(self, n: List[int]) -> List[int]:
+        n.sort(key=lambda x:(x>0)-(x<0));return chain(*zip(n[len(n)//2:],n))
+
+class Solution:
+    def rearrangeArray(self, n: List[int]) -> List[int]:
+        n.sort(key=(0).__le__);return chain(*zip(n[len(n)//2:],n))
+
+```
+
 You can save a few characters using asterisk operator `*`.
 One `*` means "expand this as a list", two `**` means "expand this as a dictionary".
 

@@ -2,6 +2,26 @@ from lc import *
 
 # https://leetcode.com/problems/rearrange-array-elements-by-sign
 # cannot be done in O(1) space O(n) time with swaps because every swap breaks natural order for the next step
+# can be done in O(1) space and n*2 time
+
+# TLE
+class Solution:
+    def rearrangeArray(self, a: List[int]) -> List[int]:
+        def rr(i,j):
+            t = a[i];
+            while i>j:
+                a[i] = a[i-1]
+                i -= 1
+            a[j] = t
+        j = -1
+        for i,x in enumerate(a):
+            if j>=0:
+                if (x<0 and a[j]>=0) or (x>=0 and a[j]<0):
+                    rr(i,j)
+                    j = j+2 if i-j>=2 else -1
+            elif (x<0 and i%2==0) or (x>=0 and i%2!=0):
+                j = i
+        return a
 
 # https://leetcode.com/problems/rearrange-array-elements-by-sign/discuss/4723541/Two-solutions.-O(n).-One-pass
 
@@ -25,7 +45,7 @@ class Solution:
 
 class Solution:
     def rearrangeArray(self, n: List[int]) -> List[int]:
-        n=sorted(n,key=lambda x:(x>0)-(x<0));i=len(n)//2;return chain(*zip(n[i:],n[:i]))
+        return chain(*zip((n:=sorted(n,key=lambda x:(x>0)-(x<0)))[(i:=len(n)//2):],n[:i]))
 
 class Solution:
     def rearrangeArray(self, n: List[int]) -> List[int]:

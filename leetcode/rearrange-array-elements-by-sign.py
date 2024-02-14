@@ -45,7 +45,7 @@ class Solution:
 
 class Solution:
     def rearrangeArray(self, n: List[int]) -> List[int]:
-        return chain(*zip((n:=sorted(n,key=lambda x:(x>0)-(x<0)))[(i:=len(n)//2):],n[:i]))
+        n.sort(key=lambda x:(x>0)-(x<0));return chain(*zip(n[len(n)//2:],n))
 
 class Solution:
     def rearrangeArray(self, n: List[int]) -> List[int]:

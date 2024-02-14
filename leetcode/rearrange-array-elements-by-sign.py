@@ -2,7 +2,7 @@ from lc import *
 
 # https://leetcode.com/problems/rearrange-array-elements-by-sign
 # cannot be done in O(1) space O(n) time with swaps because every swap breaks natural order for the next step
-# can be done in O(1) space and n*2 time
+# can be done in O(1) space and n^2 time
 
 # O(n^2), TLE
 class Solution:

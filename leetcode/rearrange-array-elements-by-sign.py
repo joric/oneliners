@@ -1,5 +1,8 @@
 from lc import *
 
+# https://leetcode.com/problems/rearrange-array-elements-by-sign
+# cannot be done in O(1) space O(n) time with swaps because every swap breaks natural order for the next step
+
 # https://leetcode.com/problems/rearrange-array-elements-by-sign/discuss/4723541/Two-solutions.-O(n).-One-pass
 
 class Solution:
@@ -18,7 +21,7 @@ class Solution:
     def rearrangeArray(self, n: List[int]) -> List[int]:
         r,i,j=[0]*len(n),-2,-1;[setitem(r,(i:=i+2*(1-(t:=int(x<0))),j:=j+2*t)[t],x)for x in n];return r
 
-# https://leetcode.com/problems/rearrange-array-elements-by-sign
+# chain
 
 class Solution:
     def rearrangeArray(self, n: List[int]) -> List[int]:

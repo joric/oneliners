@@ -1044,7 +1044,7 @@ class Solution:
         # return(('Tie','Bob')[x<0],'Alice')[x>0] # or like this (1 char shorter)
 ```
 
-You can replace `sign(x)` with `lambda x:(x>0)-(x<0)` or `(0).__le__`.
+You can replace `lambda x:(x>0)-(x<0)` with `(0).__le__`.
 
 * https://leetcode.com/problems/rearrange-array-elements-by-sign
 

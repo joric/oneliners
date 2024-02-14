@@ -4,7 +4,7 @@ from lc import *
 # cannot be done in O(1) space O(n) time with swaps because every swap breaks natural order for the next step
 # can be done in O(1) space and n*2 time
 
-# TLE
+# O(n^2), TLE
 class Solution:
     def rearrangeArray(self, a: List[int]) -> List[int]:
         def rr(i,j):

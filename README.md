@@ -293,7 +293,20 @@ class Solution:
             range(2,int(n**0.5)+1), [0,0]+[1]*(n-2)))
 ```
 
-Note slices can extend the list implicitly:
+Note slices can extend the list implicitly, e.g.:
+
+```python
+a = [0,1,2]
+a[3:4] = [3] # [0,1,2,3]
+```
+Be careful though, there's a bug, slicing doesn't extend list beyond the slice size:
+
+```python
+a = [0,1]
+a[3:4] = [3,4] # the result is [0,1,3,4], NOT [0,1,0,3,4] (!)
+```
+
+Examples:
 
 * https://leetcode.com/problems/find-the-longest-valid-obstacle-course-at-each-position
 

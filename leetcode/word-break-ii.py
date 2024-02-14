@@ -28,6 +28,20 @@ class Solution:
                     yield from f(s[len(w):],t+(w,))
         return f(s)
 
+# https://leetcode.com/problems/word-break-ii/discuss/764188/Python-4-lines-using-lru_cache
+
+class Solution:
+    def wordBreak(self, s: str, d: List[str]) -> List[str]:
+        return(f:=lambda i:[s[i:j]+(e and' '+e)for j in range(i+1,len(s)+1)if s[i:j]in d for e in f(j)]if s[i:]else[''])(0)
+
+class Solution:
+    def wordBreak(self, s: str, d: List[str]) -> List[str]:
+        return(f:=lambda s:[s[:j]+(e and' '+e)for j in range(len(s)+1)if s[:j]in d for e in f(s[j:])]if s else[''])(s)
+
+class Solution:
+    def wordBreak(self, s: str, d: List[str]) -> List[str]:
+        q=[(s,'')];return{*[r[1:]for s,r in q for w in d if w==s[:(l:=len(w))]and q.append((s[l:],r+' '+w))or''==s]}
+
 # https://leetcode.com/submissions/detail/1170092705/
 
 class Solution:
@@ -49,20 +63,6 @@ class Solution:
 class Solution:
     def wordBreak(self, s: str, d: List[str]) -> List[str]:
         return(f:=lambda s,t=():chain(*[f(s[len(w):],t+(w,))for w in d if s.find(w)==0])if s else[' '.join(t)])(s)
-
-# https://leetcode.com/problems/word-break-ii/discuss/764188/Python-4-lines-using-lru_cache
-
-class Solution:
-    def wordBreak(self, s: str, d: List[str]) -> List[str]:
-        return(f:=lambda i:[s[i:j]+(e and' '+e)for j in range(i+1,len(s)+1)if s[i:j]in d for e in f(j)]if s[i:]else[''])(0)
-
-class Solution:
-    def wordBreak(self, s: str, d: List[str]) -> List[str]:
-        return(f:=lambda s:[s[:j]+(e and' '+e)for j in range(len(s)+1)if s[:j]in d for e in f(s[j:])]if s else[''])(s)
-
-class Solution:
-    def wordBreak(self, s: str, d: List[str]) -> List[str]:
-        q=[(s,'')];return{*[r[1:]for s,r in q for w in d if w==s[:(l:=len(w))]and q.append((s[l:],r+' '+w))or''==s]}
 
 test('''
 140. Word Break II

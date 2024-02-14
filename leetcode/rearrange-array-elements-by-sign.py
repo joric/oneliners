@@ -65,11 +65,7 @@ class Solution:
 
 class Solution:
     def rearrangeArray(self, a: List[int]) -> List[int]:
-        a.sort(key=0..__le__);return chain(*zip(a[len(a)//2:],a))
-
-class Solution:
-    def rearrangeArray(self, a: List[int]) -> List[int]:
-        a.sort(key=.0.__le__);return chain(*zip(a[len(a)//2:],a))
+        a.sort(key=0..__le__);return chain(*zip(a[len(a)//2:],a)) # also works with key=.0.__le__
 
 test('''
 2149. Rearrange Array Elements by Sign

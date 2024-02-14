@@ -41,7 +41,7 @@ class Solution:
     def rearrangeArray(self, a: List[int]) -> List[int]:
         r,i,j=[0]*len(a),-2,-1;[setitem(r,(i:=i+2*(1-(t:=int(x<0))),j:=j+2*t)[t],x)for x in a];return r
 
-# chain
+# https://leetcode.com/problems/rearrange-array-elements-by-sign/discuss/3523881/One-Line-Solution
 
 class Solution:
     def rearrangeArray(self, a: List[int]) -> List[int]:

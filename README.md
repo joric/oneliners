@@ -299,7 +299,7 @@ Note slices can extend the list implicitly, e.g.:
 a = [0,1,2]
 a[3:4] = [3] # [0,1,2,3]
 ```
-Be careful though, there's a bug, slicing doesn't extend list beyond the slice size:
+Be careful though, slicing doesn't extend list beyond the slice size:
 
 ```python
 a = [0,1]

@@ -3,8 +3,8 @@ from lc import *
 # https://leetcode.com/problems/rearrange-array-elements-by-sign
 
 class Solution:
-    def rearrangeArray(self, a: List[int]) -> List[int]:
-        n=len(a)//2;a=sorted(a,key=lambda x:(x>0)-(x<0));return chain(*zip(a[n:],a[:n]))
+    def rearrangeArray(self, n: List[int]) -> List[int]:
+        n=sorted(n,key=lambda x:(x>0)-(x<0));i=len(n)//2;return chain(*zip(n[i:],n[:i]))
 
 class Solution:
     def rearrangeArray(self, n: List[int]) -> List[int]:

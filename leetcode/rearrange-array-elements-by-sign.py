@@ -14,6 +14,10 @@ class Solution:
     def rearrangeArray(self, n: List[int]) -> List[int]:
         return chain(*zip(*[[x for x in n if o(x,0)]for o in(ge,le)]))
 
+class Solution:
+    def rearrangeArray(self, n: List[int]) -> List[int]:
+        return chain(*zip(filter(f:=(0).__le__,n),filterfalse(f,n)))
+
 test('''
 2149. Rearrange Array Elements by Sign
 Medium

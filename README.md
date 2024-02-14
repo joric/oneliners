@@ -303,7 +303,7 @@ Be careful though, there's a bug, slicing doesn't extend list beyond the slice s
 
 ```python
 a = [0,1]
-a[3:4] = [3,4] # the result is [0,1,3,4], NOT [0,1,0,3,4] (!)
+a[3:4] = [3,4] # the result is [0,1,3,4], NOT [0,1,?,3,4] (!)
 ```
 
 Examples:

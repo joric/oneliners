@@ -1057,7 +1057,7 @@ class Solution:
         # return(('Tie','Bob')[x<0],'Alice')[x>0] # or like this (1 char shorter)
 ```
 
-You can replace `lambda x:(x>0)-(x<0)` with `0..__le__` (11 characters shorter).
+You can replace `lambda x:(x>0)-(x<0)` with `0..__le__` or `.0.__le__` (11 characters shorter).
 
 * https://leetcode.com/problems/rearrange-array-elements-by-sign
 
@@ -1068,7 +1068,7 @@ class Solution:
 
 class Solution:
     def rearrangeArray(self, n: List[int]) -> List[int]:
-        n.sort(key=0..__le__);return chain(*zip(n[len(n)//2:],n))
+        n.sort(key=0..__le__);return chain(*zip(n[len(n)//2:],n)) 
 
 ```
 

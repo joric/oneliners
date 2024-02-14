@@ -59,6 +59,10 @@ class Solution:
     def rearrangeArray(self, n: List[int]) -> List[int]:
         return chain(*zip(filter(f:=(0).__le__,n),filterfalse(f,n)))
 
+class Solution:
+    def rearrangeArray(self, n: List[int]) -> List[int]:
+        n.sort(key=(0).__le__);return chain(*zip(n[len(n)//2:],n))
+
 test('''
 2149. Rearrange Array Elements by Sign
 Medium

@@ -29,7 +29,7 @@ class Solution:
     def dailyTemperatures(self, t: List[int]) -> List[int]:
         p,r=__import__('numpy'),[];t=p.array(t);return[p.argmax(t[i:]>x)for i,x in enumerate(t)]
 
-# updated 31 Jan 2024
+# updated 2024-01-31
 
 class Solution:
     def dailyTemperatures(self, t: List[int]) -> List[int]:

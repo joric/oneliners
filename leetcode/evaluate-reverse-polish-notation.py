@@ -70,7 +70,7 @@ class Solution:
     def evalRPN(self, t: List[str]) -> int:
         f,c=self.evalRPN,t.pop();return int(eval('{2}{1}{0}'.format(f(t),c,f(t)))if c in'*/+-'else c)
 
-# updated 30 jan 2024
+# updated 2024-01-30
 
 class Solution:
     def evalRPN(s, t: List[str]) -> int:

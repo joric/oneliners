@@ -44,6 +44,7 @@ class Solution:
         s=sum(n);return next((s for x in sorted(n)[::-1]if s>2*x or(s:=s-x)<0),-1)
 
 # updated 15 Feb 2024
+# https://leetcode.com/problems/find-polygon-with-the-largest-perimeter/discuss/4730895/One-Line-Solution
 
 class Solution:
     def largestPerimeter(self, n: List[int]) -> int:

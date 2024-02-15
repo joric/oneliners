@@ -1,6 +1,7 @@
 from lc import *
 
 # Q2. biweekly-contest-120 (23 Dec 2024)
+# https://leetcode.com/problems/find-polygon-with-the-largest-perimeter
 
 class Solution:
     def largestPerimeter(self, nums: List[int]) -> int:
@@ -38,11 +39,15 @@ class Solution:
             s -= x
         return -1
 
+class Solution:
+    def largestPerimeter(self, n: List[int]) -> int:
+        s=sum(n);return next((s for x in sorted(n)[::-1]if s>2*x or(s:=s-x)<0),-1)
+
 # updated 16 Feb 2024
 
 class Solution:
     def largestPerimeter(self, n: List[int]) -> int:
-        s=sum(n);return next((s for x in sorted(n)[::-1]if s>2*x or(s:=s-x)<0),-1)
+        s=sum(n);return next((s+x for x in sorted(n)[::-1]if(s:=s-x)>x),-1)
 
 test('''
 100180. Find Polygon With the Largest Perimeter

@@ -53,6 +53,10 @@ class Solution:
     def largestPerimeter(self, n: List[int]) -> int:
         s=0;return max(2*x<(s:=s+x)and s or-1for x in sorted(n))
 
+class Solution:
+    def largestPerimeter(self, n: List[int]) -> int:
+        s=0;return max((-1,s:=s+a)[a+a<s]for a in sorted(n))
+
 test('''
 100180. Find Polygon With the Largest Perimeter
 User Accepted:0

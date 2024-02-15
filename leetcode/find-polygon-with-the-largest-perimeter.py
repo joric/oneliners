@@ -1,6 +1,6 @@
 from lc import *
 
-# Q2. biweekly-contest-120
+# Q2. biweekly-contest-120 (23 Dec 2024)
 
 class Solution:
     def largestPerimeter(self, nums: List[int]) -> int:
@@ -37,6 +37,8 @@ class Solution:
                 return s
             s -= x
         return -1
+
+# updated 16 Feb 2024
 
 class Solution:
     def largestPerimeter(self, n: List[int]) -> int:

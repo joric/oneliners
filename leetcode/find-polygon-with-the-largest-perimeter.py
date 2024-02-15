@@ -43,7 +43,7 @@ class Solution:
     def largestPerimeter(self, n: List[int]) -> int:
         s=sum(n);return next((s for x in sorted(n)[::-1]if s>2*x or(s:=s-x)<0),-1)
 
-# updated 16 Feb 2024
+# updated 15 Feb 2024
 
 class Solution:
     def largestPerimeter(self, n: List[int]) -> int:

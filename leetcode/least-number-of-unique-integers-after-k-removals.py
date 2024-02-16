@@ -3,6 +3,10 @@ from lc import *
 # https://leetcode.com/problems/least-number-of-unique-integers-after-k-removals
 
 class Solution:
+    def findLeastNumOfUniqueInts(self, arr: List[int], k: int) -> int:
+        return len(c:=sorted(Counter(arr).values())) - bisect_right([*accumulate(c)], k)
+
+class Solution:
     def findLeastNumOfUniqueInts(self, a: List[int], k: int) -> int:
         return sum(0>(k:=k-c)for c in sorted(Counter(a).values()))
 

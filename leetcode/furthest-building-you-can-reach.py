@@ -31,10 +31,7 @@ class Solution:
             if i==len(h)-1:
                 return i
             if (d:=h[i+1]-h[i])>0:
-                m = i
-                b>=d and(m:=max(m,f(i+1,b-d,l)))
-                l>0 and(m:=max(m,f(i+1,b,l-1)))
-                return max(i,m)
+                return max(i,b>=d and f(i+1,b-d,l),l and f(i+1,b,l-1))
             return f(i+1,b,l)
         return f(0,b,l)
 
@@ -85,6 +82,8 @@ class Solution:
             def __getitem__(self, i):
                 return sum(sorted(d[:i])[::-1][l:])
         return bisect_right(Wrapper(),b,hi=len(h))-1
+
+# https://leetcode.com/problems/furthest-building-you-can-reach/discuss/4740666/One-Line-Solution
 
 class Solution:
     def furthestBuilding(self, h: List[int], b: int, l: int) -> int:

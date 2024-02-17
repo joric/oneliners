@@ -55,6 +55,10 @@ class Solution:
     def furthestBuilding(self, h: List[int], b: int, l: int) -> int:
         q,t=[],len(h)-1;return next((i for i in range(t)if(0<(d:=h[i+1]-h[i])and heappush(q,d),l<len(q)and(b:=b-heappop(q)))and b<0),t)
 
+class Solution:
+    def furthestBuilding(self, h: List[int], b: int, l: int) -> int:
+        q,t=[],len(h)-1;return next((i for i in range(t)if(d:=h[i+1]-h[i])>0and heappush(q,d)or l<len(q)and(b:=b-heappop(q))<0),t)
+
 test('''
 1642. Furthest Building You Can Reach
 Medium

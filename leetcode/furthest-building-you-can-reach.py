@@ -22,21 +22,19 @@ class Solution:
 
 # https://leetcode.com/problems/furthest-building-you-can-reach/discuss/3031033/Recursive-Python
 # TLE or MLE (with @cache) on newer tests
-# you can't really do DP because you get i<=10^5, b<=10^9, l<=10^5
+# you can't reliably do DP because you get i<=10^5, b<=10^9, l<=10^5
+
 class Solution:
     def furthestBuilding(self, h: List[int], b: int, l: int) -> int:
         @cache
         def f(i,b,l):
             if i==len(h)-1:
                 return i
-            if i+1<len(h):
+            if (d:=h[i+1]-h[i])>0:
                 m = i
-                if (d:=h[i+1]-h[i])>0:
-                    if b>=d:
-                        m = max(m,f(i+1,b-d,l))
-                    if l>0:
-                        m = max(m,f(i+1,b,l-1))
-                    return max(i,m)
+                b>=d and(m:=max(m,f(i+1,b-d,l)))
+                l>0 and(m:=max(m,f(i+1,b,l-1)))
+                return max(i,m)
             return f(i+1,b,l)
         return f(0,b,l)
 

@@ -27,15 +27,15 @@ class Solution:
     def furthestBuilding(self, h: List[int], b: int, l: int) -> int:
         @cache
         def f(i,b,l):
-            if i == len(h) - 1:
+            if i==len(h)-1:
                 return i
-            if i+1 < len(h):
+            if i+1<len(h):
                 m = i
                 if (d:=h[i+1]-h[i])>0:
                     if b>=d:
-                        m = max(m, f(i+1,b-d,l))
+                        m = max(m,f(i+1,b-d,l))
                     if l>0:
-                        m = max(m, f(i+1,b,l-1))
+                        m = max(m,f(i+1,b,l-1))
                     return max(i,m)
             return f(i+1,b,l)
         return f(0,b,l)

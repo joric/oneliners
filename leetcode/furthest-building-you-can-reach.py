@@ -93,6 +93,10 @@ class Solution:
     def furthestBuilding(self, h: List[int], b: int, l: int) -> int:
         d=[max(0,b-a)for a,b in pairwise(h)];return bisect_right(range(len(h)),b,key=lambda i:sum(sorted(d[:i])[::-1][l:]))-1
 
+class Solution:
+    def furthestBuilding(self, h: List[int], b: int, l: int) -> int:
+        return bisect_right(range(len(h)),b,key=lambda i:sum(sorted(max(0,b-a)for a,b in pairwise(h[:i+1]))[::-1][l:]))-1
+
 test('''
 1642. Furthest Building You Can Reach
 Medium

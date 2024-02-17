@@ -57,7 +57,21 @@ class Solution:
 
 class Solution:
     def furthestBuilding(self, h: List[int], b: int, l: int) -> int:
-        q,t=[],len(h)-1;return next((i for i in range(t)if(d:=h[i+1]-h[i])>0and heappush(q,d)or l<len(q)and(b:=b-heappop(q))<0),t)
+        q,t=[],len(h)-1;return next((i for i in range(t)if(d:=h[i+1]-h[i])>0 and heappush(q,d)or l<len(q)and(b:=b-heappop(q))<0),t)
+
+# https://leetcode.com/problems/furthest-building-you-can-reach/discuss/1177219/Python-Solution-using-binary-search-explained/918524
+
+class Solution:
+    def furthestBuilding(self, h: List[int], b: int, l: int) -> int:
+        d = [max(0,b-a)for a,b in pairwise(h)]
+        class Wrapper:            
+            def __getitem__(self, i):
+                return sum(sorted(d[:i])[::-1][l:])
+        return bisect_right(Wrapper(),b,hi=len(h))-1
+
+class Solution:
+    def furthestBuilding(self, h: List[int], b: int, l: int) -> int:
+        d=[max(0,b-a)for a,b in pairwise(h)];return bisect_right(range(len(h)),b,key=lambda i:sum(sorted(d[:i])[::-1][l:]))-1
 
 test('''
 1642. Furthest Building You Can Reach

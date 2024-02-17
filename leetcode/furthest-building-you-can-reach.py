@@ -35,6 +35,10 @@ class Solution:
             return f(i+1,b,l)
         return f(0,b,l)
 
+class Solution:
+    def furthestBuilding(self, h: List[int], b: int, l: int) -> int:
+        return(f:=cache(lambda i,b,l:(max(i,b>=d and f(i+1,b-d,l),l and f(i+1,b,l-1))if(d:=h[i+1]-h[i])>0 else f(i+1,b,l))if i<len(h)-1 else i))(0,b,l)
+
 # https://leetcode.com/problems/furthest-building-you-can-reach/discuss/918515/JavaC%2B%2BPython-Priority-Queue
 
 class Solution:

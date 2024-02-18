@@ -11,13 +11,13 @@ class Solution:
         for s,e in sorted(m):
             while p and p[0][0] <= s:
                 t,r = heappop(p)
-                heappush(q, r)
+                heappush(q,r)
             if q:
                 r = heappop(q)
-                heappush(p, [e, r])
+                heappush(p,[e,r])
             else:
                 t,r = heappop(p)
-                heappush(p, [t + e - s, r])
+                heappush(p,[t+e-s,r])
             d[r] += 1
         return d.index(max(d))
 

@@ -53,13 +53,13 @@ class Solution:
     def mostFrequentPrime(self, t: List[List[int]]) -> int:
         n,m,d=len(t),len(t[0]),[]
         p=lambda n:n>1 and next((0 for i in range(2,int(n**0.5)+1)if n%i<1),1)
-        f=lambda x,y,u,v,k:m>y>-1<x<n and((k:=k*10+t[x][y])>10 and p(k)and d.append(k),f(x+u,y+v,u,v,k))
+        f=lambda x,y,u,v,k:m>y>-1<x<n and(10<(k:=k*10+t[x][y])and p(k)and d.append(k),f(x+u,y+v,u,v,k))
         [not u==v==0 and f(i,j,u,v,0)for i in range(n)for j in range(m)for u,v in product(*[(-1,0,1)]*2)]
         return d and max(d,key=lambda x:(d.count(x),x))or-1
 
 class Solution:
     def mostFrequentPrime(self, t: List[List[int]]) -> int:
-        n,m,d=len(t),len(t[0]),[];p=lambda n:n>1 and next((0 for i in range(2,int(n**0.5)+1)if n%i<1),1);f=lambda x,y,u,v,k:m>y>-1<x<n and((k:=k*10+t[x][y])>10 and p(k)and d.append(k),f(x+u,y+v,u,v,k));[not u==v==0 and f(i,j,u,v,0)for i in range(n)for j in range(m)for u,v in product(*[(-1,0,1)]*2)];return d and max(d,key=lambda x:(d.count(x),x))or-1
+        n,m,d=len(t),len(t[0]),[];p=lambda n:n>1 and next((0 for i in range(2,int(n**0.5)+1)if n%i<1),1);f=lambda x,y,u,v,k:m>y>-1<x<n and(10<(k:=k*10+t[x][y])and p(k)and d.append(k),f(x+u,y+v,u,v,k));[not u==v==0 and f(i,j,u,v,0)for i in range(n)for j in range(m)for u,v in product(*[(-1,0,1)]*2)];return d and max(d,key=lambda x:(d.count(x),x))or-1
 
 test('''
 3044. Most Frequent Prime

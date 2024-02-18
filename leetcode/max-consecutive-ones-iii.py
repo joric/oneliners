@@ -1,5 +1,18 @@
 from lc import *
 
+# https://leetcode.com/problems/max-consecutive-ones-iii/discuss/249270/Java-DFS-solution-using-Recursion
+
+class Solution:
+    def longestOnes(self, a: List[int], k: int) -> int:
+        def f(i,r,k):
+            if i<len(a) and k>=0:
+                if a[i]==1:
+                    return f(i+1,r+1,k)
+                if a[i]==0 and k>0:
+                    return f(i+1,r+1,k-1)
+            return r
+        return max(f(i,0,k)for i in range(len(a)))
+
 # https://leetcode.com/problems/max-consecutive-ones-iii/discuss/1305468/Python-3-1-2-lines
 
 class Solution:

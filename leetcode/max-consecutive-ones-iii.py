@@ -17,6 +17,11 @@ class Solution:
 
 class Solution:
     def longestOnes(self, a: List[int], k: int) -> int:
+        z=[i for i,x in enumerate([0,*a,0])if 1-x]
+        return max(map(sub,z[k+1:],z),default=len(a)+1)-1
+
+class Solution:
+    def longestOnes(self, a: List[int], k: int) -> int:
         return max(map(sub,(z:=[i for i,x in enumerate([0,*a,0])if 1-x])[k+1:],z),default=len(a)+1)-1
 
 class Solution:

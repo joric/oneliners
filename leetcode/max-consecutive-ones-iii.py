@@ -19,6 +19,10 @@ class Solution:
     def longestOnes(self, a: List[int], k: int) -> int:
         return max(map(sub,(z:=[i for i,x in enumerate([0,*a,0])if 1-x])[k+1:],z),default=len(a)+1)-1
 
+class Solution:
+    def longestOnes(self, a: List[int], k: int) -> int:
+        return max([*map(sub,(z:=[i for i,x in enumerate([0,*a,0])if 1-x])[k+1:],z)]or[len(a)+1])-1
+
 # https://leetcode.com/problems/max-consecutive-ones-iii/discuss/247564/JavaC%2B%2BPython-Sliding-Window
 
 class Solution:

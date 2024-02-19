@@ -43,6 +43,11 @@ Input: n = 3
 Output: false
  
 
+More examples:
+
+Input: 0
+Output: false
+
 Constraints:
 
 -2^31 <= n <= 2^31 - 1

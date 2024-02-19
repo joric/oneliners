@@ -29,7 +29,7 @@ class Solution:
 
 class Solution:
     def coinChange(self, c: List[int], a: int) -> int:
-        return(t:=(f:=cache(lambda n:n<0 and inf or n>0 and min(1+f(n-x)for x in c)or 0))(a),-1)[t==inf]
+        return(-1,t:=(f:=cache(lambda n:n<0 and inf or n>0 and min(1+f(n-x)for x in c)or 0))(a))[t<inf]
 
 test('''
 322. Coin Change

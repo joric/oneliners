@@ -41,7 +41,7 @@ class Solution:
 
 class Solution:
     def mostBooked(self, n: int, m: List[List[int]]) -> int:
-        m.sort();r,c,f=[0]*n,[0]*n,setitem;[(j:=-1,any(s>=r[i]and(j:=i,)or(j<0 or r[i]<r[j])and(j:=i)<0 for i in range(n)),f(c,j,c[j]+1),f(r,j,max(r[j],s)+e-s))for s,e in m];return c.index(max(c))
+        r,c,f=[0]*n,[0]*n,setitem;[(j:=-1,any(s>=r[i]and(j:=i,)or(j<0 or r[i]<r[j])and(j:=i)<0for i in range(n)),f(c,j,c[j]+1),f(r,j,max(r[j],s)+e-s))for s,e in sorted(m)];return c.index(max(c))
 
 test('''
 2402. Meeting Rooms III

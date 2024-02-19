@@ -25,6 +25,12 @@ class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         return (lambda x:x if x!=inf else -1)((f:=cache(lambda n: min(1 + f(n-c) for c in coins) if n>0 else 0 if n==0 else inf))(amount))
 
+# updated 2024-02-19
+
+class Solution:
+    def coinChange(self, c: List[int], a: int) -> int:
+        return(t:=(f:=cache(lambda n:n<0 and inf or n>0 and min(1+f(n-x)for x in c)or 0))(a),-1)[t==inf]
+
 test('''
 322. Coin Change
 

@@ -12,6 +12,10 @@ class Solution:
 
 class Solution:
     def missingNumber(self, n: List[int]) -> int:
+        return ({*range(len(n)+1)}-{*n}).pop()
+
+class Solution:
+    def missingNumber(self, n: List[int]) -> int:
         return comb(len(n)+1,2)-sum(n)
 
 test('''

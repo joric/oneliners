@@ -8,6 +8,10 @@ class Solution:
 
 class Solution:
     def missingNumber(self, n: List[int]) -> int:
+        return reduce(xor,n+[*range(len(n)+1)])
+
+class Solution:
+    def missingNumber(self, n: List[int]) -> int:
         return comb(len(n)+1,2)-sum(n)
 
 test('''

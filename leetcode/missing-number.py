@@ -12,7 +12,7 @@ class Solution:
 
 class Solution:
     def missingNumber(self, n: List[int]) -> int:
-        return ({*range(len(n)+1)}-{*n}).pop()
+        return({*range(len(n)+1)}-{*n})[0]
 
 class Solution:
     def missingNumber(self, n: List[int]) -> int:

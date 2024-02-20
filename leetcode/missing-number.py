@@ -2,9 +2,14 @@ from lc import *
 
 # https://leetcode.com/problems/missing-number
 
+
 class Solution:
     def missingNumber(self, n: List[int]) -> int:
         return reduce(xor,n)^reduce(xor,range(len(n)+1))
+
+class Solution:
+    def missingNumber(self, n: List[int]) -> int:
+        return sum(starmap(sub,zip(count(1),n)))
 
 class Solution:
     def missingNumber(self, n: List[int]) -> int:

@@ -2,7 +2,6 @@ from lc import *
 
 # https://leetcode.com/problems/missing-number
 
-
 class Solution:
     def missingNumber(self, n: List[int]) -> int:
         return reduce(xor,n)^reduce(xor,range(len(n)+1))

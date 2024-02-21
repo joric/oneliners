@@ -6,6 +6,10 @@ class Solution:
     def rangeBitwiseAnd(self, l: int, r: int) -> int:
         return-2**(l^r).bit_length()&l
 
+class Solution:
+    def rangeBitwiseAnd(self, l: int, r: int) -> int:
+        return-1<<(l^r).bit_length()&l
+
 test('''
 201. Bitwise AND of Numbers Range
 Medium

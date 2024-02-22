@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/find-the-town-judge
+
 class Solution:
     def findJudge(self, n: int, trust: List[List[int]]) -> int:
         c = [0]*(n+1)
@@ -58,6 +60,9 @@ class Solution:
     def findJudge(self, n: int, t: List[List[int]]) -> int:
         a,b=map(Counter,zip(*t+[[0]*2]));c=b-a;return next((i for i in range(1,n+1)if c[i]>n-2),-1)
 
+class Solution:
+    def findJudge(self, n: int, t: List[List[int]]) -> int:
+        a,b=map(Counter,zip(*t+[[0]*2]));c=b-a;return next((i for i in c if c[i]>n-2),(-1,1)[n<2])
 
 test('''
 

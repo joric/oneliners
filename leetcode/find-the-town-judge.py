@@ -25,8 +25,18 @@ class Solution:
         return -1
 
 class Solution:
-    def findJudge(self, n: int, trust: List[List[int]]) -> int:
-        return (p:=[*zip(*trust)] or [[]]*2) and next((i for i in range(1,n+1) if p[0].count(i)==0 and p[1].count(i)==n-1),-1)
+    def findJudge(self, n: int, t: List[List[int]]) -> int:
+        return next((i for i in range(1,n+1) if p[0].count(i)==0 and p[1].count(i)==n-1),(p:=[*zip(*t)]or[[]]*2)and -1)
+
+# updated 2024-02-22
+
+class Solution:
+    def findJudge(self, n: int, t: List[List[int]]) -> int:
+        p=[*zip(*t)]or[[]]*2;return next((i for i in range(1,n+1)if p[0].count(i)<1and p[1].count(i)==n-1),-1)
+
+class Solution:
+    def findJudge(self, n: int, t: List[List[int]]) -> int:
+        c=Counter();[c.update({a:-1,b:1})for a,b in t];return next((i for i in range(1,n+1)if c[i]>n-2),-1)
 
 test('''
 

@@ -36,6 +36,18 @@ class Solution:
 
 class Solution:
     def findJudge(self, n: int, t: List[List[int]]) -> int:
+        p=[*zip(*t)]or[[]]*2;
+        for i in range(1,n+1):
+            if[t.count(i)for t in p]==[0,n-1]:
+                return i
+        return -1;
+
+class Solution:
+    def findJudge(self, n: int, t: List[List[int]]) -> int:
+        p=[*zip(*t)]or[[]]*2;return next((i for i in range(1,n+1)if[t.count(i)for t in p]==[0,n-1]),-1)
+
+class Solution:
+    def findJudge(self, n: int, t: List[List[int]]) -> int:
         c=Counter();[c.update({a:-1,b:1})for a,b in t];return next((i for i in range(1,n+1)if c[i]>n-2),-1)
 
 class Solution:
@@ -44,11 +56,8 @@ class Solution:
 
 class Solution:
     def findJudge(self, n: int, t: List[List[int]]) -> int:
-        p=[*zip(*t)]or[[]]*2;return next((i for i in range(1,n+1)if[t.count(i)for t in p]==[0,n-1]),-1)
-
-class Solution:
-    def findJudge(self, n: int, t: List[List[int]]) -> int:
         a,b=map(Counter,zip(*t+[[0]*2]));c=b-a;return next((i for i in range(1,n+1)if c[i]>n-2),-1)
+
 
 test('''
 

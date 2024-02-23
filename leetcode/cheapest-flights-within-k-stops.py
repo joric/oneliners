@@ -25,24 +25,6 @@ class Solution:
 # https://leetcode.com/problems/cheapest-flights-within-k-stops/discuss/115596/c%2B%2B-8-line-bellman-ford
 
 class Solution:
-    def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
-        v = [inf]*n
-        v[src] = 0
-        for _ in range(k+1):
-            t = v.copy()
-            for s,d,p in flights:
-                if v[s]!=inf and v[s]+p<t[d]:
-                    t[d] = v[s]+p
-            v = t
-        return -1 if v[dst]==inf else v[dst]
-
-class Solution:
-    def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
-        return (setitem(v:=[inf]*n,src,0),[(t:=v.copy(),[v[s]!=inf and v[s]+p<t[d] and setitem(t,d,v[s]+p) for s,d,p in flights],v:=t) for _ in range(k+1)]) and (v[dst]==inf and -1 or v[dst])
-
-# updated 2024-02-23
-
-class Solution:
     def findCheapestPrice(self, n: int, f: List[List[int]], s: int, d: int, k: int) -> int:
         v = [inf]*n
         v[s] = 0
@@ -52,6 +34,13 @@ class Solution:
                 t[d] = min(t[d], v[s]+p)
             v = t
         return(-1,t:=v[d])[t<inf]
+
+class Solution:
+    def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
+        return (setitem(v:=[inf]*n,src,0),[(t:=v.copy(),[v[s]!=inf and v[s]+p<t[d] and setitem(t,d,v[s]+p) for s,d,p in flights],v:=t) for _ in range(k+1)]) and (v[dst]==inf and -1 or v[dst])
+
+# updated 2024-02-23
+
 
 class Solution:
     def findCheapestPrice(self, n: int, f: List[List[int]], s: int, d: int, k: int) -> int:

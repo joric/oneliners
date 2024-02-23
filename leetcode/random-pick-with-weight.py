@@ -4,17 +4,19 @@ from lc import *
 
 class Solution:
     def __init__(self, w):
-        self.w = list(itertools.accumulate(w))
-    def pickIndex(self):
-        return bisect_left(self.w, random.randint(1, self.w[-1]))
-
-class Solution:
-    def __init__(self, w):
         self.w = w
     def pickIndex(self):
         return choices(range(len(self.w)), weights=self.w)[0]
 
 Solution=type('',(),{'__init__':lambda s,w:setattr(s,'w',w),'pickIndex':lambda s:choices(range(len(s.w)),weights=s.w)[0]})
+
+class Solution:
+    def __init__(self, w):
+        self.w = list(accumulate(w))
+    def pickIndex(self):
+        return bisect_left(s.w,randint(1,s.w[-1]))
+
+Solution=type('',(),{'__init__':lambda s,w:setattr(s,'w',list(accumulate(w))),'pickIndex':lambda s:bisect_left(s.w,randint(1,s.w[-1]))})
 
 test('''
 528. Random Pick with Weight

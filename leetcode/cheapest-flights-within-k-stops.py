@@ -1,5 +1,27 @@
 from lc import *
 
+# https://leetcode.com/problems/cheapest-flights-within-k-stops/discuss/116266/Python-easy-to-understand%3A-stack-and-recursive-(115-ms)
+
+class Solution:
+    def findCheapestPrice(self, n: int, g: List[List[int]], s: int, d: int, k: int) -> int:
+        q,r = defaultdict(list),inf
+        for u,v,p in g:
+            q[u].append((v,p))
+        @cache
+        def f(u,c,i):
+            nonlocal r
+            if i>k:
+                return r
+            for v,p in q[u]:
+                t = c + p
+                if t<r:
+                    if v!=d:
+                        f(v,t,i+1)
+                    else:
+                        r = t
+            return r
+        return(-1,t:=f(s,0,0))[r<inf]
+
 # https://leetcode.com/problems/cheapest-flights-within-k-stops/discuss/115596/c%2B%2B-8-line-bellman-ford
 
 class Solution:

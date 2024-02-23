@@ -16,7 +16,7 @@ class Solution:
     def pickIndex(self):
         return choices(range(len(self.w)), weights=self.w)[0]
 
-Solution=type('',(),{'__init__':lambda s,w:setattr(s,'w',w),'pickIndex':lambda s:choices(range(len(s.w)),weights=s.w)[0]})
+Solution=type('',(),{'__init__':lambda s,w:setattr(s,'w',w),'pickIndex':lambda s:choices(range(len(s.w)),s.w)[0]})
 
 test('''
 528. Random Pick with Weight

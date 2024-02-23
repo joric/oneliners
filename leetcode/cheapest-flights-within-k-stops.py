@@ -35,6 +35,10 @@ class Solution:
     def findCheapestPrice(self, n: int, f: List[List[int]], s: int, d: int, k: int) -> int:
         return(setitem(v:=[inf]*n,s,0),[(t:=v[:],[setitem(t,d,min(t[d],v[s]+p))for s,d,p in f],v:=t)for _ in range(k+1)])and([-1,t:=v[d]][t<inf])
 
+class Solution:
+    def findCheapestPrice(self, n: int, f: List[List[int]], s: int, d: int, k: int) -> int:
+        e=setitem;return(e(v:=[inf]*n,s,0),[(t:=v[:],[e(t,d,min(t[d],v[s]+p))for s,d,p in f],v:=t)for _ in range(k+1)],[-1,t:=v[d]][t<inf])[2]
+
 test('''
 
 787. Cheapest Flights Within K Stops

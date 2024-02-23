@@ -22,7 +22,7 @@ class Solution:
 
 class Solution:
     def findCheapestPrice(self, n: int, f: List[List[int]], s: int, d: int, k: int) -> int:
-        return(setitem(v:=[inf]*n,s,0),[(t:=v.copy(),[v[s]<inf and v[s]+p<t[d]and setitem(t,d,v[s]+p)for s,d,p in f],v:=t)for _ in range(k+1)])and(inf==v[d]and-1or v[d])
+        return(setitem(v:=[inf]*n,s,0),[(t:=v.copy(),[v[s]<inf and v[s]+p<t[d]and setitem(t,d,v[s]+p)for s,d,p in f],v:=t)for _ in range(k+1)])and([-1,t:=v[d]][t<inf])
 
 test('''
 

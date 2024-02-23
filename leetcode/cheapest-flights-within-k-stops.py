@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/cheapest-flights-within-k-stops
+
 class Solution:
     def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
         v = [inf]*n
@@ -15,6 +17,12 @@ class Solution:
 class Solution:
     def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
         return (setitem(v:=[inf]*n,src,0),[(t:=v.copy(),[v[s]!=inf and v[s]+p<t[d] and setitem(t,d,v[s]+p) for s,d,p in flights],v:=t) for _ in range(k+1)]) and (v[dst]==inf and -1 or v[dst])
+
+# updated 2024-02-23
+
+class Solution:
+    def findCheapestPrice(self, n: int, f: List[List[int]], s: int, d: int, k: int) -> int:
+        return(setitem(v:=[inf]*n,s,0),[(t:=v.copy(),[v[s]<inf and v[s]+p<t[d]and setitem(t,d,v[s]+p)for s,d,p in f],v:=t)for _ in range(k+1)])and(inf==v[d]and-1or v[d])
 
 test('''
 

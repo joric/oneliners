@@ -30,10 +30,10 @@ class Solution:
         v[s] = 0
         for _ in range(k+1):
             t = v[:]
-            for s,d,p in f:
-                t[d] = min(t[d], v[s]+p)
+            for i,j,p in f:
+                t[j] = min(t[j], v[i]+p)
             v = t
-        return(-1,t:=v[d])[t<inf]
+        return(-1,x:=v[d])[x<inf]
 
 class Solution:
     def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
@@ -43,7 +43,7 @@ class Solution:
 
 class Solution:
     def findCheapestPrice(self, n: int, f: List[List[int]], s: int, d: int, k: int) -> int:
-        e=setitem;return(e(v:=[inf]*n,s,0),[(t:=v[:],[e(t,d,min(t[d],v[s]+p))for s,d,p in f],v:=t)for _ in range(k+1)],(-1,t:=v[d])[t<inf])[2]
+        e=setitem;return(e(v:=[inf]*n,s,0),[(t:=v[:],[e(t,j,min(t[j],v[i]+p))for i,j,p in f],v:=t)for _ in range(k+1)],(-1,x:=v[d])[x<inf])[2]
 
 test('''
 

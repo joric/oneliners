@@ -12,7 +12,7 @@ class Solution:
 
 class Solution:
     def isPowerOfTwo(self, n: int) -> bool:
-        return n*(n-1&n==0)
+        return(n-1&n==0)*n
 
 test('''
 231. Power of Two

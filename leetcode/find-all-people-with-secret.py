@@ -1,5 +1,11 @@
 from lc import *
 
+# union find
+
+class Solution:
+    def findAllPeople(self, n: int, m: List[List[int]], x: int) -> List[int]:
+        a,r,p,r[x],f,s=[],[*range(n)],0,0,lambda v:r[v]-v and s(r,v,f(r[v]))or r[v],setitem;l=a.append;[[t-p and([f(g)-f(0)and s(r,g,g)for g in a],a.clear()),p:=t,s(r,f(c),f(v)),l(c),l(v)]for c,v,t in sorted(m,key=lambda o:o[2])];return{i*(f(i)==f(0))for i in range(n)}
+
 # https://leetcode.com/problems/find-all-people-with-secret/discuss/1600466/Python3-12-line-solution-(2140ms)
 
 class Solution:
@@ -35,6 +41,7 @@ class Solution:
 class Solution:
     def findAllPeople(self, n: int, m: List[List[int]], p: int) -> List[int]:
         k,r={0,p},itemgetter(2);m.sort(key=r);[(s:=defaultdict(set),[s[x].add(y)or s[y].add(x)for x,y,_ in g],t:=k&s.keys(),all(k.update(t:=reduce(set.union,(s[x]-k for x in t),set()))or t for _ in m))for _,g in groupby(m,r)];return k
+
 
 test('''
 2092. Find All People With Secret

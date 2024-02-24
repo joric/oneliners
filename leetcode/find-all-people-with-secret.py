@@ -34,7 +34,7 @@ class Solution:
 
 class Solution:
     def findAllPeople(self, n: int, m: List[List[int]], p: int) -> List[int]:
-        k,r={0,p},itemgetter(2);m.sort(key=r);[(s:=defaultdict(set),[s[x].add(y)or s[y].add(x)for x,y,_ in g],t:=k&s.keys(),all(t and k.update(t:=reduce(set.union,(s[x]-k for x in t),set()))or t for _ in count()))for _,g in groupby(m,r)];return k
+        k,r={0,p},itemgetter(2);m.sort(key=r);[(s:=defaultdict(set),[s[x].add(y)or s[y].add(x)for x,y,_ in g],t:=k&s.keys(),all(k.update(t:=reduce(set.union,(s[x]-k for x in t),set()))or t for _ in m))for _,g in groupby(m,r)];return k
 
 test('''
 2092. Find All People With Secret

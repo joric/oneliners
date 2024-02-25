@@ -23,9 +23,9 @@ class Solution:
 # https://leetcode.com/problems/find-the-largest-area-of-square-inside-two-rectangles/discuss/4779237/Python-3-oror-8-lines-iteration-oror-TS%3A-3813-ms-17-MB
 
 class Solution:
-    def largestSquareArea(self, p: List[List[int]], q: List[List[int]]) -> int:
+    def largestSquareArea(self, bottomLeft: List[List[int]], topRight: List[List[int]]) -> int:
         r = 0
-        for((a,b),(c,d)),((e,f),(g,h))in combinations(zip(p,q),2):
+        for((a,b),(c,d)),((e,f),(g,h))in combinations(zip(bottomLeft,topRight),2):
             r = max(r, min(min(c,g)-max(a,e),min(d,h)-max(b,f)))
         return r**2
 

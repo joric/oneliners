@@ -28,7 +28,7 @@ class Solution:
             return False
         if (n:=len(g:=sorted(set(g))[::-1]))==1:
             return True
-        return all(next((1 for j in range(i+1,n)if gcd(g[i],g[j])>1 and[setitem(g,j,g[j]*g[i])]),0)for i in range(n-1))
+        return all(next((1 for j in range(i+1,n)if 1<gcd(g[i],g[j])and[setitem(g,j,g[j]*g[i])]),0)for i in range(n-1))
 
 class Solution:
     def canTraverseAllPairs(self, g: List[int]) -> bool:

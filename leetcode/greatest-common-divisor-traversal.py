@@ -45,7 +45,7 @@ class Solution:
 
 class Solution:
     def canTraverseAllPairs(self, g: List[int]) -> bool:
-        return len(g)<2or not(1 in g)and((n:=len(g:=sorted(set(g))[::-1]))<2or all(next((1 for j in range(i+1,n)if 1<gcd(g[i],g[j])and[setitem(g,j,g[j]*g[i])]),0)for i in range(n-1)))
+        return not(g[1:]and 1 in g)and(n:=len(g:=sorted(set(g))[::-1]))and all(next((1 for j in range(i+1,n)if 1<gcd(g[i],g[j])and[setitem(g,j,g[j]*g[i])]),0)for i in range(n-1))
 
 test('''
 2709. Greatest Common Divisor Traversal

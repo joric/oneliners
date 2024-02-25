@@ -42,6 +42,19 @@ class Solution:
     def largestSquareArea(self, a: List[List[int]], b: List[List[int]]) -> int:
         n=len(a);return max(min(max(0,min(b[i][0],b[j][0])-max(a[i][0],a[j][0])),max(0,min(b[i][1],b[j][1])-max(a[i][1],a[j][1])))**2 for i in range(n)for j in range(i+1,n))
 
+# https://leetcode.com/problems/find-the-largest-area-of-square-inside-two-rectangles/discuss/4779237/Python-3-oror-8-lines-iteration-oror-TS%3A-3813-ms-17-MB
+
+class Solution:
+    def largestSquareArea(self, p: List[List[int]], q: List[List[int]]) -> int:
+        r = 0
+        for((a,b),(c,d)),((e,f),(g,h))in combinations(zip(p,q),2):
+            r = max(r, min(min(c,g)-max(a,e),min(d,h)-max(b,f)))
+        return r**2
+
+class Solution:
+    def largestSquareArea(self, p: List[List[int]], q: List[List[int]]) -> int:
+        return max(max(0,min(min(c,g)-max(a,e),min(d,h)-max(b,f)))for((a,b),(c,d)),((e,f),(g,h))in combinations(zip(p,q),2))**2
+
 test('''
 3047. Find the Largest Area of Square Inside Two Rectangles
 User Accepted:8669
@@ -79,6 +92,11 @@ Input: bottomLeft = [[1,1],[3,3],[3,1]], topRight = [[2,2],[4,4],[4,2]]
 Output: 0
 Explanation: No pair of rectangles intersect, hence, we return 0.
  
+
+Other examples:
+
+Input: bottomLeft = [[2,2],[3,1]], topRight = [[5,5],[5,5]]
+Output: 4
 
 Constraints:
 

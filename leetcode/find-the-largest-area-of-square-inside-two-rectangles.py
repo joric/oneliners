@@ -3,28 +3,6 @@ from lc import *
 # Q2. https://leetcode.com/contest/weekly-contest-386/problems/find-the-largest-area-of-square-inside-two-rectangles/
 # https://leetcode.com/problems/find-the-largest-area-of-square-inside-two-rectangles
 
-# DrunkTemplar
-
-class Solution:
-    def largestSquareArea(self, bottomLeft: List[List[int]], topRight: List[List[int]]) -> int:
-        new_arr = []
-        for a,b in zip(bottomLeft,topRight):
-            new_arr.append(a+b)
-        new_arr.sort()
-        ans = 0
-        for i in range(len(new_arr)):
-            for j in range(i+1,len(new_arr)):
-                a,b,c,d = new_arr[i]
-                e,f,g,h = new_arr[j]
-                c = min(c,g)
-                d = min(d,h)
-                e = max(e,a)
-                f = max(f,b)
-                if c >= e and d >= f:
-                    x,y = abs(c-e),abs(d-f)
-                    ans = max(ans, min(x,y)**2)
-        return ans
-
 # https://leetcode.com/problems/find-the-largest-area-of-square-inside-two-rectangles/discuss/4779287/easy-solution-in-python
 
 class Solution:

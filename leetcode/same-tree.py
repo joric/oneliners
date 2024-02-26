@@ -20,6 +20,10 @@ class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         return eq(*map(TreeNode.serialize,(p,q)))
 
+class Solution:
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        return str(p)==str(q)
+
 test('''
 
 100. Same Tree

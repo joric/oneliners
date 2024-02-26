@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/same-tree
+
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         return p.val == q.val and self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right) if p and q else p is q
@@ -8,9 +10,15 @@ class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         return p and q and p.val == q.val and all(map(self.isSameTree, (p.left, p.right), (q.left, q.right))) or p is q
 
+# updated 2024-02-26
+
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-        return (t:=lambda n: n and (n.val, t(n.left), t(n.right)))(p) == t(q)
+        return(t:=lambda n:n and(n.val,t(n.left),t(n.right)))(p)==t(q)
+
+class Solution:
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        return eq(*map(TreeNode.serialize,(p,q)))
 
 test('''
 

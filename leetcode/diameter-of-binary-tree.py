@@ -15,23 +15,41 @@ class Solution:
 
 class Solution:
     def diameterOfBinaryTree(self, r: TreeNode) -> int:
-        return(f:=lambda r:r and max((h:=lambda r:r and 1+max(h(r.left),h(r.right))or 0)(r.left)+h(r.right),f(r.left),f(r.right))or 0)(r)
+        return(f:=lambda x:x and max((h:=lambda x:x and 1+max(h(x.left),h(x.right))or 0)(x.left)+h(x.right),f(x.left),f(x.right))or 0)(r)
 
 # https://leetcode.com/problems/diameter-of-binary-tree/discuss/1127495/8-lines-Python-solution-with-explanation
 
 class Solution:
     def diameterOfBinaryTree(self, r: TreeNode) -> int:
-        def f(r):
-            if not r:
+        def f(x):
+            if not x:
                 return 0,0
-            l,p = f(r.left)
-            r,q = f(r.right)
+            l,p = f(x.left)
+            r,q = f(x.right)
             return max(p+q,l,r),max(p,q)+1
         return f(r)[0]
 
 class Solution:
     def diameterOfBinaryTree(self, r: TreeNode) -> int:
-        return(f:=lambda r:r and(lambda l,p,r,q:(max(p+q,l,r),max(p,q)+1))(*f(r.left),*f(r.right))or(0,0))(r)[0]
+        return(f:=lambda x:x and(lambda l,p,r,q:(max(p+q,l,r),max(p,q)+1))(*f(x.left),*f(x.right))or(0,0))(r)[0]
+
+# another solution
+
+class Solution:
+    def diameterOfBinaryTree(self, r: TreeNode) -> int:
+        d=[]
+        def f(x):
+            if not x:
+                return 0
+            p = f(x.left),f(x.right)
+            d.append(sum(p))
+            return max(p)+1
+        f(r)
+        return max(d)
+
+class Solution:
+    def diameterOfBinaryTree(self, r: TreeNode) -> int:
+        d=[];(f:=lambda x:x and(d.append(sum(p:=(f(x.left),f(x.right))))or-~max(p))or 0)(r);return max(d)
 
 test('''
 543. Diameter of Binary Tree

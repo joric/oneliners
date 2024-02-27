@@ -43,7 +43,7 @@ class Solution:
                 return 0
             p = f(x.left),f(x.right)
             d.append(sum(p))
-            return max(p)+1
+            return 1+max(p)
         f(r)
         return max(d)
 

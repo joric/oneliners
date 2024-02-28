@@ -1057,7 +1057,7 @@ class Solution:
         # return(('Tie','Bob')[x<0],'Alice')[x>0] # or like this (1 char shorter)
 ```
 
-You can replace `lambda x:(x>0)-(x<0)` with `0..__le__` or `.0.__le__` (11 characters shorter).
+You can replace `cmp` written as `lambda x:(x>0)-(x<0)` with `0..__le__` or `.0.__le__` (11 characters shorter).
 
 * https://leetcode.com/problems/rearrange-array-elements-by-sign
 

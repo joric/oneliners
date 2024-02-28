@@ -19,6 +19,10 @@ class Solution:
     def findBottomLeftValue(self, r: Optional[TreeNode]) -> int:
         q=[r];[q.extend(filter(None,(x.right,x.left)))for x in q];return q[-1].val
 
+class Solution:
+    def findBottomLeftValue(self, r: Optional[TreeNode]) -> int:
+        q=[r];return[q.extend((x.right,x.left))or x.val for x in q if x][-1]
+
 test('''
 513. Find Bottom Left Tree Value
 Medium

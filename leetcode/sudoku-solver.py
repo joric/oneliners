@@ -9,7 +9,8 @@ class Solution:
                     if board[i][j]=='.':
                         for s in set('123456789')-set(board[i]+[board[p][j] for p in range(9)]+[board[i//3*3+p//3][j//3*3+p%3] for p in range(9)]):
                             board[i][j]=s
-                            if self.solveSudoku(board): return True
+                            if self.solveSudoku(board):
+                                return True
                         board[i][j]='.'
                         return False
         return True
@@ -21,7 +22,8 @@ class Solution:
                     if b[i][j]=='.':
                         for s in set(digits[1:])-set(b[i]+[b[p][j] for p in range(9)]+[b[i//3*3+p//3][j//3*3+p%3] for p in range(9)]):
                             b[i][j]=s
-                            if self.solveSudoku(b): return True
+                            if self.solveSudoku(b):
+                                return True
                         b[i][j]='.'
                         return False
         return True

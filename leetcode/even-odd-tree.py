@@ -26,6 +26,10 @@ class Solution:
     def isEvenOddTree(self, r: Optional[TreeNode]) -> bool:
         p={};return(f:=lambda r,i:not r or not(i%2==r.val%2 or p.get(i)and(ge,le)[i%2](p[i],r.val))and(setitem(p,i,r.val)or f(r.left,i+1)and f(r.right,i+1)))(r,0)
 
+class Solution:
+    def isEvenOddTree(self, r: Optional[TreeNode]) -> bool:
+        p={};return(f:=lambda r,i:not r or not(i&1==1&(v:=r.val)or i in p and(ge,le)[i&1](p[i],v))and(setitem(p,i,v)or f(r.left,i+1))and f(r.right,i+1))(r,0)
+
 test('''
 1609. Even Odd Tree
 Medium

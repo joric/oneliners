@@ -2,6 +2,26 @@ from lc import *
 
 # https://leetcode.com/problems/even-odd-tree/
 
+class Solution:
+    def isEvenOddTree(self, root: Optional[TreeNode]) -> bool:
+        q = deque()
+        if root:
+            q.append(root)
+        i = 0
+        while q:
+            p = None
+            for _ in range(len(q)):
+                x = q.popleft()
+                if x.val&1==i&1 or p and (ge,le)[i&1](p,x.val):
+                    return False
+                p = x.val
+                if x.left:
+                    q.append(x.left)
+                if x.right:
+                    q.append(x.right)
+            i += 1
+        return True
+
 # TLE, see https://leetcode.com/problems/binary-tree-level-order-traversal
 class Solution:
     def isEvenOddTree(self, t: Optional[TreeNode]) -> bool:

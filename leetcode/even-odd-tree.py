@@ -16,7 +16,7 @@ class Solution:
         def f(r,i):
             if not r:
                 return True
-            if i%2==r.val%2 or p.get(i)and(ge,le)[i%2](p[i],r.val):
+            if i%2==r.val%2 or p.get(i) and (ge,le)[i%2](p[i],r.val):
                 return False
             p[i] = r.val
             return f(r.left,i+1)and f(r.right,i+1)

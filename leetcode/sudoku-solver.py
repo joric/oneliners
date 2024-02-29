@@ -1,6 +1,6 @@
 from lc import *
 
-# https://leetcode.com/problems/sudoku-solver
+# https://leetcode.com/problems/sudoku-solver/discuss/1282864/10-lines-of-Python3
 
 class Solution:
     def solveSudoku(self, board: List[List[str]]) -> None:

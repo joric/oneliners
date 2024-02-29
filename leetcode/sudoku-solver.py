@@ -21,11 +21,11 @@ class Solution:
             if any(setitem(b[i],j,s)or self.solveSudoku(b)for s in set(digits[1:])-set(b[i]+[b[p][j]for p in range(9)]+[b[i//3*3+p//3][j//3*3+p%3]for p in range(9)])):
                 return True
             return setitem(b[i],j,'.')
-        return next((f(i,j)for i in range(len(b))for j in range(len(b[0]))if b[i][j]=='.'),1)
+        return next((f(i,j)for i,r in enumerate(b)for j in range(len(r))if b[i][j]=='.'),1)
 
 class Solution:
     def solveSudoku(self, b: List[List[str]]) -> None:
-        return next((any(setitem(b[i],j,s)or self.solveSudoku(b)for s in set(digits[1:])-set(b[i]+[b[p][j]for p in range(9)]+[b[i//3*3+p//3][j//3*3+p%3]for p in range(9)]))or setitem(b[i],j,'.')for i in range(len(b))for j in range(len(b[0]))if b[i][j]=='.'),1)
+        return next((any(setitem(b[i],j,s)or self.solveSudoku(b)for s in set(digits[1:])-set(b[i]+[b[p][j]for p in range(9)]+[b[i//3*3+p//3][j//3*3+p%3]for p in range(9)]))or setitem(b[i],j,'.')for i,r in enumerate(b)for j in range(len(r))if b[i][j]=='.'),1)
 
 test('''
 37. Sudoku Solver

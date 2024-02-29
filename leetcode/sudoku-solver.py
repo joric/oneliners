@@ -17,20 +17,19 @@ class Solution:
 
 class Solution:
     def solveSudoku(self, b: List[List[str]]) -> None:
+        def f(i,j):
+            if any(setitem(b[i],j,s)or self.solveSudoku(b)for s in set(digits[1:])-set(b[i]+[b[p][j]for p in range(9)]+[b[i//3*3+p//3][j//3*3+p%3]for p in range(9)])):
+                return True
+            return setitem(b[i],j,'.')
         for i in range(len(b)):
                 for j in range(len(b[0])):
                     if b[i][j]=='.':
-                        for s in set(digits[1:])-set(b[i]+[b[p][j] for p in range(9)]+[b[i//3*3+p//3][j//3*3+p%3] for p in range(9)]):
-                            b[i][j]=s
-                            if self.solveSudoku(b):
-                                return True
-                        b[i][j]='.'
-                        return False
+                        return f(i,j)
         return True
 
 class Solution:
     def solveSudoku(self, b: List[List[str]]) -> None:
-        return next(((lambda i,j:next((1 for s in set(digits[1:])-set(b[i]+[b[p][j]for p in range(9)]+[b[i//3*3+p//3][j//3*3+p%3]for p in range(9)])if setitem(b[i],j,s)or self.solveSudoku(b)),0)or setitem(b[i],j,'.'))(i,j)for i in range(len(b))for j in range(len(b[0]))if b[i][j]=='.'),1)
+        return next(((lambda i,j:any(setitem(b[i],j,s)or self.solveSudoku(b)for s in set(digits[1:])-set(b[i]+[b[p][j]for p in range(9)]+[b[i//3*3+p//3][j//3*3+p%3]for p in range(9)]))or setitem(b[i],j,'.'))(i,j)for i in range(len(b))for j in range(len(b[0]))if b[i][j]=='.'),1)
 
 test('''
 37. Sudoku Solver

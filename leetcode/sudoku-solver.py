@@ -29,7 +29,7 @@ class Solution:
 
 class Solution:
     def solveSudoku(self, b: List[List[str]]) -> None:
-        m,e=setitem,enumerate;return next((any(m(b[i],j,s)or self.solveSudoku(b)for s in{*digits[1:]}-{*b[i],*[*zip(*b)][j],*{b[i//3*3+p//3][j//3*3+p%3]for p in range(9)}})or m(b[i],j,'.')for i,r in e(b)for j,v in e(r)if'.'==v),1)
+        m,e=setitem,enumerate;return next((any(m(b[i],j,s)or self.solveSudoku(b)for s in{*digits[1:]}-{*b[i],*[*zip(*b)][j]}-{b[i//3*3+p//3][j//3*3+p%3]for p in range(9)})or m(b[i],j,'.')for i,r in e(b)for j,v in e(r)if'.'==v),1)
 
 test('''
 37. Sudoku Solver

@@ -8,25 +8,23 @@ class Solution:
         t=(f:=lambda x:x and[[x.val],*starmap(add,zip_longest(f(x.left),f(x.right),fillvalue=[]))]or[])(t)
         return all(all(x%2!=i%2 for x in v)and all(starmap((lt,gt)[i%2],zip(v,v[1:])))for i,v in enumerate(t))
 
-# https://leetcode.com/problems/even-odd-tree/discuss/4797359/C%2B%2BPython-dfs-solution-with-explanation
+# https://leetcode.com/problems/even-odd-tree/discuss/3200522/Python-or-DFS-or-BFS
 
 class Solution:
     def isEvenOddTree(self, r: Optional[TreeNode]) -> bool:
-        v = []
-        def f(r,h):
+        p={};
+        def f(r,i):
             if not r:
                 return True
-            if len(v)==h:
-                v.append(h%2 and inf or 0)
-            if (h%2 and(r.val>=v[h]or r.val%2))or(h%2<1 and(r.val<=v[h]or r.val%2<1)):
+            if i%2==r.val%2 or p.get(i)and(ge,le)[i%2](p[i],r.val):
                 return False
-            v[h]=r.val
-            return f(r.left, h+1)and f(r.right,h+1)
-        return f(r, 0)
+            p[i] = r.val
+            return f(r.left,i+1)and f(r.right,i+1)
+        return f(r,0)
 
 class Solution:
     def isEvenOddTree(self, r: Optional[TreeNode]) -> bool:
-        v=[];return(f:=lambda r,h:not r or[len(v)==h and v.append(h%2 and inf or 0)]and not((h%2 and(r.val>=v[h]or r.val%2))or(h%2<1 and(r.val<=v[h]or r.val%2<1)))and[setitem(v,h,r.val)]and f(r.left, h+1)and f(r.right,h+1))(r,0)
+        p={};return(f:=lambda r,i:not r or not(i%2==r.val%2 or p.get(i)and(ge,le)[i%2](p[i],r.val))and[setitem(p,i,r.val)]and f(r.left,i+1)and f(r.right,i+1))(r,0)
 
 test('''
 1609. Even Odd Tree

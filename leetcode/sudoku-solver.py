@@ -3,33 +3,9 @@ from lc import *
 # https://leetcode.com/problems/sudoku-solver/discuss/1282864/10-lines-of-Python3
 
 class Solution:
-    def solveSudoku(self, board: List[List[str]]) -> None:
-        for i in range(len(board)):
-                for j in range(len(board[0])):
-                    if board[i][j]=='.':
-                        for s in set('123456789')-set(board[i]+[board[p][j] for p in range(9)]+[board[i//3*3+p//3][j//3*3+p%3] for p in range(9)]):
-                            board[i][j]=s
-                            if self.solveSudoku(board):
-                                return True
-                        board[i][j]='.'
-                        return False
-        return True
-
-class Solution:
     def solveSudoku(self, b: List[List[str]]) -> None:
-        def f(i,j):
-            if any(setitem(b[i],j,c)or self.solveSudoku(b)for c in set(digits[1:])-set(b[i]+[b[p][j] for p in range(9)]+[b[i//3*3+p//3][j//3*3+p%3]for p in range(9)])):
-                return True
-            return setitem(b[i],j,'.')
-        return next((f(i,j)for i,r in enumerate(b)for j,v in enumerate(r)if'.'==v),1)
-
-class Solution:
-    def solveSudoku(self, b: List[List[str]]) -> None:
-        return next((any(setitem(b[i],j,c)or self.solveSudoku(b)for c in set(digits[1:])-set(b[i]+[b[p][j] for p in range(9)]+[b[i//3*3+p//3][j//3*3+p%3]for p in range(9)]))or setitem(b[i],j,'.')for i,r in enumerate(b)for j,v in enumerate(r)if'.'==v),1)
-
-class Solution:
-    def solveSudoku(self, b: List[List[str]]) -> None:
-        s,e=setitem,enumerate;return next((any(s(b[i],j,c)or self.solveSudoku(b)for c in{*digits[1:]}-{*b[i],*[*zip(*b)][j]}-{b[i//3*3+p//3][j//3*3+p%3]for p in range(9)})or s(b[i],j,'.')for i,r in e(b)for j,v in e(r)if'.'==v),1)
+        s,e=setitem,enumerate;return next((any(s(b[i],j,c)or self.solveSudoku(b)for c in{*digits[1:]}-{*b[i],*[*zip(*b)][j]}
+            -{b[i//3*3+p//3][j//3*3+p%3]for p in range(9)})or s(b[i],j,'.')for i,r in e(b)for j,v in e(r)if'.'==v),1)
 
 test('''
 37. Sudoku Solver

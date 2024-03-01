@@ -48,4 +48,4 @@ Accepted
 555,667
 Submissions
 918,616
-''', check=lambda res,exp,b:res and exp==b)
+''', check=lambda res,exp,b:exp==b)

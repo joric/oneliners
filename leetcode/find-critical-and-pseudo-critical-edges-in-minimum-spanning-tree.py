@@ -64,6 +64,8 @@ class Solution:
             (a<=b or q[u]!=q[v]) and r[a==b].append(i)
         return r
 
+# probably the longest oneliner so far
+
 class Solution:
     def findCriticalAndPseudoCriticalEdges(self, n: int, e: List[List[int]]) -> List[List[int]]:
         e,r,c=sorted([x[::-1]+[i]for i,x in enumerate(e)]),[[],[]],''.join(map(chr,range(n)));[(p:=c,q:=c,p:=p.replace(p[u],p[v]),a:=w,b:=0,[(a:=a+x*(p[y]!=p[z]),p:=p.replace(p[y],p[z]),b:=b+x*(q[y]!=q[z]),q:=q.replace(q[y],q[z]))for x,y,z,j in e if i!=j],(a<=b or q[u]!=q[v])and r[a==b].append(i))for w,u,v,i in e];return r

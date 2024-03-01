@@ -7,7 +7,7 @@ class Solution:
         def f(i,j):
             if any(setitem(b[i],j,c)or self.solveSudoku(b)for c in{*digits[1:]}-{*b[i],*[*zip(*b)][j]}-{b[i//3*3+p//3][j//3*3+p%3]for p in range(9)}):
                 return True
-            return setitem(b[i],j,'.')
+            setitem(b[i],j,'.')
         return next((f(i,j)for i,r in enumerate(b)for j,v in enumerate(r)if'.'==v),1)
 
 class Solution:

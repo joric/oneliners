@@ -7,7 +7,7 @@ class Solution:
         res = deque([])
         l, r = 0, len(nums)-1
         while r >= l:
-            if abs(nums[l]) > abs(nums[r]):
+            if -nums[l] > nums[r]:
                 res.appendleft(nums[l]**2)
                 l += 1
             else:

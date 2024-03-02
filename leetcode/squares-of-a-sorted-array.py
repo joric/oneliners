@@ -4,17 +4,16 @@ from lc import *
 
 class Solution:
     def sortedSquares(self, nums: List[int]) -> List[int]:
-        answer = deque([])
-        l = 0; r = len(nums) - 1
-        while (r >= l):
-            left, right = abs(nums[l]), abs(nums[r])
-            if left > right:
-                answer.appendleft(left * left)
+        res = deque([])
+        l, r = 0, len(nums)-1
+        while r >= l:
+            if abs(nums[l]) > abs(nums[r]):
+                res.appendleft(nums[l]**2)
                 l += 1
             else:
-                answer.appendleft(right * right)
+                res.appendleft(nums[r]**2)
                 r -= 1
-        return list(answer)
+        return res
 
 class Solution:
     def sortedSquares(self, n: List[int]) -> List[int]:

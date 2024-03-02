@@ -13,6 +13,10 @@ class Solution:
     def maximumValueSum(self, n: List[int], k: int, edges: List[List[int]]) -> int:
         return reduce(lambda p,x:(max(p[0]+x,p[1]+(x^k)),max(p[0]+(x^k),p[1]+x)),n,[0,-inf])[0]
 
+class Solution:
+    def maximumValueSum(self, n: List[int], k: int, edges: List[List[int]]) -> int:
+        return sum(n)-sum(min(0,a+b)for a,b in[*pairwise(sorted(x-(x^k)for x in n))][::2])
+
 test('''
 3068. Find the Maximum Sum of Node Values
 User Accepted:1236

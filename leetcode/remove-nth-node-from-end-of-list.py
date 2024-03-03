@@ -19,6 +19,24 @@ class Solution:
     def removeNthFromEnd(self, h: ListNode, n: int) -> ListNode:
         r=[(h.val,h:=h.next)[0]for _ in[1]*30 if h];p=r[:len(r)-n]+r[len(r)-n+1:];return p and ListNode(','.join(map(str,p)))
 
+# https://leetcode.com/problems/remove-nth-node-from-end-of-list/discuss/4440501/Recursive-Solution
+
+class Solution:
+    def removeNthFromEnd(self, h: Optional[ListNode], n: int) -> Optional[ListNode]:
+        def f(p, i):
+            if not p:
+                return None,i-1
+            p.next,i=f(p.next, i)
+            if i==0:
+                return p.next, i - 1
+            else:
+                return p, i - 1
+        return f(h,n)[0]
+
+class Solution:
+    def removeNthFromEnd(self, h: Optional[ListNode], n: int) -> Optional[ListNode]:
+        return(f:=lambda p,i:(p and(t:=f(p.next,i),setattr(p,'next',t[0]),i:=t[1],i and p or p.next)[3]or None, i-1))(h,n)[0]
+
 # https://leetcode.com/problems/remove-nth-node-from-end-of-list/discuss/2989192/3-Line-solution-based-on-one-of-VenomIL's-solutions
 
 class Solution:

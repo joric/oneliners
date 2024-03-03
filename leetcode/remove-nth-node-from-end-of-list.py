@@ -58,6 +58,10 @@ class Solution:
     def removeNthFromEnd(self, h: ListNode, n: int) -> ListNode:
         k=[n];return(f:=lambda h:h and(setattr(h,'next',f(h.next)),setitem(k,0,k[0]-1),k[0]and h or h.next)[2])(h)
 
+class Solution:
+    def removeNthFromEnd(self, h: ListNode, n: int) -> ListNode:
+        return(f:=lambda h:h and(lambda r,n:(n and ListNode(h.val,r)or r,n-1))(*f(h.next))or(h,n-1))(h)[0]
+
 test('''
 19. Remove Nth Node From End of List
 Medium

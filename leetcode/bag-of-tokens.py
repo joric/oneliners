@@ -70,14 +70,6 @@ class Solution:
 
 class Solution:
     def bagOfTokensScore(self, t: List[int], p: int) -> int:
-        c=0;t.sort();return max([0]+[c for _ in[0]*999 if t and((k:=p>=t[0])or c)and(p:=p-t.pop(0)if k else p+t.pop(),c:=c+2*k-1)])
-
-class Solution:
-    def bagOfTokensScore(self, t: List[int], p: int) -> int:
-        c=0;t.sort();return max([0]+[c for _ in t*2 if t and((k:=p>=t[0])or c)and(p:=p-t.pop(0)if k else p+t.pop(),c:=c+2*k-1)])
-
-class Solution:
-    def bagOfTokensScore(self, t: List[int], p: int) -> int:
         c=0;t.sort();return max([0]+[c for _ in t*2 if t and(p>=t[0]and(p:=p-t.pop(0),c:=c+1)or(c and(p:=p+t.pop(),c:=c-1)))])
 
 test('''

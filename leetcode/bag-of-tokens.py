@@ -1,5 +1,26 @@
 from lc import *
 
+# https://leetcode.com/problems/bag-of-tokens/discuss/915025/Simple-2-Pointer-or-Easy-and-Elegant-or-10-Lines-of-Code-or-O(nlogn)-Timeor-O(1)-Space
+
+class Solution:
+    def bagOfTokensScore(self, t: List[int], p: int) -> int:
+        i=c=r=0
+        j=len(t)-1
+        t.sort()
+        while i<=j:
+            if p>=t[i]:
+                p -= t[i]
+                c += 1
+                i += 1
+            elif c>0:
+                p += t[j]
+                c -= 1
+                j -= 1
+            else:
+                break
+            r = max(r,c)
+        return r
+
 # recursive (TLE)
 
 class Solution:
@@ -116,6 +137,9 @@ Output: 0
 
 Input: tokens = [83,67,0], power = 49
 Output: 1
+
+Input: tokens = [71,55,82], power = 54
+Output: 0
 
 Constraints:
 

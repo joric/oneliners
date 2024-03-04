@@ -23,6 +23,17 @@ class Solution:
 
 class Solution:
     def bagOfTokensScore(self, t: List[int], p: int) -> int:
+        t.sort()
+        r=[]
+        def f(p,c,i,j):
+            r.append(c)
+            if i<=j:
+                f(p-t[i],c+1,i+1,j)if p>=t[i]else c and f(p+t[j],c-1,i,j-1)
+        f(p,0,0,len(t)-1)
+        return max(r)
+
+class Solution:
+    def bagOfTokensScore(self, t: List[int], p: int) -> int:
         t.sort();r,f=[],lambda p,c,i,j:r.append(c)or i<=j and(f(p-t[i],c+1,i+1,j)if p>=t[i]else c and f(p+t[j],c-1,i,j-1));f(p,0,0,len(t)-1);return max(r)
 
 # https://leetcode.com/problems/bag-of-tokens/discuss/2566293/Python-short-(6-lines)-faster-than-96-(54-ms)

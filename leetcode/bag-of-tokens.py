@@ -28,6 +28,14 @@ class Solution:
     def bagOfTokensScore(self, t: List[int], p: int) -> int:
         c=r=0;d=deque(sorted(t));return next(r for _ in count()if not(d and(p>=d[0]or c)and(p>=d[0]and(p:=p-d.popleft(),c:=c+1)or(p:=p+d.pop(),c:=c-1),r:=max(r,c))))
 
+class Solution:
+    def bagOfTokensScore(self, t: List[int], p: int) -> int:
+        c=0;d=deque(sorted(t));return max([0]+[c for _ in[0]*999 if d and(p>=d[0]or c)and[p>=d[0]and(p:=p-d.popleft(),c:=c+1)or(p:=p+d.pop(),c:=c-1)]])
+
+class Solution:
+    def bagOfTokensScore(self, t: List[int], p: int) -> int:
+        c=0;d=deque(sorted(t));return max([0]+[c for _ in[0]*999 if d and((t:=p>=d[0])or c)and(p:=p-d.popleft()if t else p+d.pop(),c:=c+2*t-1)])
+
 test('''
 948. Bag of Tokens
 Medium
@@ -81,7 +89,13 @@ Play token1 (200) face-up, reducing power to 300 and increasing score to 1.
 Play token2 (300) face-up, reducing power to 0 and increasing score to 2.
 The maximum score achievable is 2.
 
- 
+Other examples:
+
+Input: tokens = [], power = 85
+Output: 0
+
+Input: tokens = [83,67,0], power = 49
+Output: 1
 
 Constraints:
 

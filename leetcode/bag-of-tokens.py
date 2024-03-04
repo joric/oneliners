@@ -40,13 +40,13 @@ class Solution:
         def f(d,p,c):
             r.append(c)
             if d and((k:=p>=d[0])or c):
-                f(d[1:],p-d[0],c+1)if k else f(d[:-1],p+d[-1],c-1)
+                k and f(d[1:],p-d[0],c+1)or f(d[:-1],p+d[-1],c-1)
         f(sorted(t),p,0)
         return max(r)
 
 class Solution:
     def bagOfTokensScore(self, t: List[int], p: int) -> int:
-        r,f=[],lambda d,p,c:r.append(c)or d and((k:=p>=d[0])or c)and(f(d[1:],p-d[0],c+1)if k else f(d[:-1],p+d[-1],c-1));f(sorted(t),p,0);return max(r)
+        r,f=[],lambda d,p,c:r.append(c)or d and((k:=p>=d[0])or c)and(k and f(d[1:],p-d[0],c+1)or f(d[:-1],p+d[-1],c-1));f(sorted(t),p,0);return max(r)
 
 # shortest
 

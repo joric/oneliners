@@ -17,6 +17,16 @@ class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         nums[:] = sorted(set(nums))
 
+# updated 2024-03-06
+
+class Solution:
+    def removeDuplicates(self, n: List[int]) -> int:
+        n[:]=[*Counter(n).keys()]
+
+class Solution:
+    def removeDuplicates(self, n: List[int]) -> int:
+        n[:]=sorted({*n})
+
 test('''
 
 26. Remove Duplicates from Sorted Array

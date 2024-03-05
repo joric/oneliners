@@ -31,6 +31,18 @@ class Solution:
     def minimumLength(self, s: str) -> int:
         i,j=0,len(s)-1;all(i<j and s[i]==s[j]and(c:=s[i],all(i<=j and c==s[i]and[i:=i+1]for _ in s),all(j>=i and c==s[j]and[j:=j-1]for _ in s))for _ in s);return j-i+1
 
+# https://leetcode.com/problems/minimum-length-of-string-after-deleting-similar-ends/discuss/1052535/Python-Easy-and-Concise
+
+class Solution:
+    def minimumLength(self, s: str) -> int:
+        while len(s)>1 and s[0]==s[-1]:
+            s=s.strip(s[0])
+        return len(s)
+
+class Solution:
+    def minimumLength(self, s: str) -> int:
+        all(s[1:]and s[0]==s[-1]and(s:=s.strip(s[0]))for _ in s);return len(s)
+
 test('''
 1750. Minimum Length of String After Deleting Similar Ends
 Medium

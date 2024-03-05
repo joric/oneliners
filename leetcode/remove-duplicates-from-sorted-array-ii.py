@@ -35,6 +35,20 @@ class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         [[nums.remove(num) for i in range(nums.count(num)-2)] for num in nums]
 
+# updated 2024-03-06 (not a daily problem)
+
+class Solution:
+    def removeDuplicates(self, n: List[int]) -> int:
+        n[:]=[*chain(*[[k]*min(v,2)for k,v in Counter(n).items()])]
+
+class Solution:
+    def removeDuplicates(self, n: List[int]) -> int:
+        c=Counter(n);n[:]=[*chain(*[[k]*min(c[k],2)for k in c])]
+
+class Solution:
+    def removeDuplicates(self, n: List[int]) -> int:
+        [[n.remove(x)for i in range(n.count(x)-2)]for x in n]
+
 test('''
 
 80. Remove Duplicates from Sorted Array II

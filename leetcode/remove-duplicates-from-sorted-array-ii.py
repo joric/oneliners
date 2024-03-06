@@ -57,6 +57,10 @@ class Solution:
     def removeDuplicates(self, n: List[int]) -> int:
         [n.remove(x)for x in n for _ in range(n.count(x)-2)]
 
+class Solution:
+    def removeDuplicates(self, n: List[int]) -> int:
+        [n.remove(x)for x in n for _ in[0]*(n.count(x)-2)]
+
 test('''
 
 80. Remove Duplicates from Sorted Array II

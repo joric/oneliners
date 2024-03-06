@@ -45,7 +45,6 @@ class Solution:
     def hasCycle(self, h: Optional[ListNode]) -> bool:
         return'E'in'%s'%h
 
-
 test('''
 141. Linked List Cycle
 Easy
@@ -100,4 +99,3 @@ Submissions
 4,735,707
 ''', init=init
 )
-

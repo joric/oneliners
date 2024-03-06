@@ -55,7 +55,7 @@ class Solution:
 
 class Solution:
     def removeDuplicates(self, n: List[int]) -> int:
-        [[n.remove(x)for i in range(n.count(x)-2)]for x in n]
+        [n.remove(x)for x in n for _ in range(n.count(x)-2)]
 
 test('''
 

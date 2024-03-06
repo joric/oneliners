@@ -39,6 +39,14 @@ class Solution:
 
 class Solution:
     def removeDuplicates(self, n: List[int]) -> int:
+        n[:]=[k for k,v in Counter(n).items()for _ in range(min(v,2))]
+
+class Solution:
+    def removeDuplicates(self, n: List[int]) -> int:
+        c=Counter(n);n[:]=[k for k in c for i in range(min(c[k],2))]
+
+class Solution:
+    def removeDuplicates(self, n: List[int]) -> int:
         n[:]=[*chain(*[[k]*min(v,2)for k,v in Counter(n).items()])]
 
 class Solution:

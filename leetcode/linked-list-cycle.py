@@ -43,7 +43,7 @@ class Solution:
 
 class Solution:
     def hasCycle(self, h: Optional[ListNode]) -> bool:
-        return'E'in'%s'%h
+        return'c'in'%s'%h
 
 test('''
 141. Linked List Cycle

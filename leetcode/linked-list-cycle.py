@@ -39,6 +39,13 @@ class Solution:
     def hasCycle(self, h: Optional[ListNode]) -> bool:
         return str(h)=='Error - Found cycle in the ListNode'
 
+# updated 2024-03-06
+
+class Solution:
+    def hasCycle(self, h: Optional[ListNode]) -> bool:
+        return'E'in'%s'%h
+
+
 test('''
 141. Linked List Cycle
 Easy

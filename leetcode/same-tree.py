@@ -22,7 +22,7 @@ class Solution:
 
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-        return p.serialize()==q.serialize()
+        return TreeNode.serialize(p)==TreeNode.serialize(q)
 
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:

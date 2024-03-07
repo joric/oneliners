@@ -18,11 +18,11 @@ class Solution:
 
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-        return eq(*map(TreeNode.serialize,(p,q)))
+        return TreeNode.serialize(p)==TreeNode.serialize(q)
 
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-        return TreeNode.serialize(p)==TreeNode.serialize(q)
+        return eq(*map(TreeNode.serialize,(p,q)))
 
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:

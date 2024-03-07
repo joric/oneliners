@@ -24,6 +24,12 @@ class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
         return (g:=lambda f,s: g(f.next.next, s.next) if f and f.next else (f,s))(head,head)[1]
 
+# updated 2024-03-07
+
+class Solution:
+    def middleNode(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        [h:=h.next for _ in eval(h.serialize(h))[1::2]];return h
+
 test('''
 
 876. Middle of the Linked List

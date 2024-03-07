@@ -96,8 +96,8 @@ class ListNode:
             self = self.next
         return out
 
-    def serialize(root):
-        return root.__repr__().replace('None','null')
+    def serialize(self, root=None):
+        return (self or root).__repr__().replace('None','null')
 
     def __repr__(self):
         return str(self.dump())

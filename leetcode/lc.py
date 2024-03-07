@@ -48,7 +48,8 @@ class TreeNode:
             res.pop()
         return res
 
-    def serialize(self,root):
+    @staticmethod
+    def serialize(root):
         return root.__repr__().replace('None','null')
 
     def __repr__(self):
@@ -96,7 +97,8 @@ class ListNode:
             self = self.next
         return out
 
-    def serialize(self, root):
+    @staticmethod
+    def serialize(root):
         return root.__repr__().replace('None','null')
 
     def __repr__(self):

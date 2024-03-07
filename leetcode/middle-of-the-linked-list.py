@@ -28,6 +28,10 @@ class Solution:
 
 class Solution:
     def middleNode(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        return(f:=lambda a,b:a and a.next and f(a.next.next,b.next)or(a,b))(h,h)[1]
+
+class Solution:
+    def middleNode(self, h: Optional[ListNode]) -> Optional[ListNode]:
         [h:=h.next for _ in eval(h.serialize(h))[1::2]];return h
 
 test('''

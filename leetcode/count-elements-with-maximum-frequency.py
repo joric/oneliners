@@ -16,6 +16,12 @@ class Solution:
     def maxFrequencyElements(self, n: List[int]) -> int:
         c=Counter;return prod(max(c(c(n).values()).items()))
 
+# https://leetcode.com/problems/count-elements-with-maximum-frequency/discuss/4840186/3-Line-Python-Solution-using-Built-In-Functions
+
+class Solution:
+    def maxFrequencyElements(self, n: List[int]) -> int:
+        return(m:=max(v:=[*Counter(n).values()]))*v.count(m)
+
 test('''
 3005. Count Elements With Maximum Frequency
 Easy

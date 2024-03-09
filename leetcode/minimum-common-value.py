@@ -33,7 +33,12 @@ Example 2:
 Input: nums1 = [1,2,3,6], nums2 = [2,3,4,5]
 Output: 2
 Explanation: There are two common elements in the array 2 and 3 out of which 2 is the smallest, so 2 is returned.
- 
+
+More examples:
+
+Input: nums1 = [1,2,3], nums2 = [4,5,6]
+Output: -1
+
 
 Constraints:
 

@@ -6,6 +6,10 @@ class Solution:
     def getCommon(self, a: List[int], b: List[int]) -> int:
         return min({*a}&{*b},default=-1)
 
+class Solution:
+    def getCommon(self, a: List[int], b: List[int]) -> int:
+        return min({*a}&{*b}or[-1])
+
 test('''
 2540. Minimum Common Value
 Easy

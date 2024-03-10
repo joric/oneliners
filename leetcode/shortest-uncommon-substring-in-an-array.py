@@ -16,7 +16,7 @@ class Solution:
 
 class Solution:
     def shortestSubstrings(self, a: List[str]) -> List[str]:
-        r=['']*len(a);f=lambda i,s,w:all(i==j or w not in s for j,s in enumerate(a))and[setitem(r,i,w)];[all(not f(i,s,w)for w in sorted(set(s[k:j]for k,j in combinations(range(len(s)+1),2)),key=lambda x:(len(x),x)))for i,s in enumerate(a)];return r
+        r=['']*len(a);f=lambda i,s,w:all(i==j or w not in s for j,s in enumerate(a))and[setitem(r,i,w)];[any(f(i,s,w)for w in sorted(set(s[k:j]for k,j in combinations(range(len(s)+1),2)),key=lambda x:(len(x),x)))for i,s in enumerate(a)];return r
 
 test('''
 3076. Shortest Uncommon Substring in an Array

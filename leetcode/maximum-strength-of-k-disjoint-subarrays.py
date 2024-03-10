@@ -15,7 +15,7 @@ class Solution:
 
 class Solution:
     def maximumStrength(self, n: List[int], k: int) -> int:
-        d=[[0]*(len(n)+1)for _ in range(k+1)];[(m:=(c:=-inf),p:=(-k-1+i,k+1-i)[i%2],[setitem(d[i],j+1,m:=max(m,c:=max(c+n[j]*p, d[i-1][j]+n[j]*p)))for j in range(i-1,len(n))])for i in range(1,k+1)];return d[-1][-1]
+        d=[[0]*(len(n)+1)for _ in range(k+1)];[(m:=(c:=-inf),p:=(-k-1+i,k+1-i)[i%2],[setitem(d[i],j+1,m:=max(m,c:=max(c+n[j]*p,d[i-1][j]+n[j]*p)))for j in range(i-1,len(n))])for i in range(1,k+1)];return d[-1][-1]
 
 test('''
 3077. Maximum Strength of K Disjoint Subarrays

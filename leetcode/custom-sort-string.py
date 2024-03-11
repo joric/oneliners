@@ -3,6 +3,18 @@ from lc import *
 # https://leetcode.com/problems/custom-sort-string
 
 class Solution:
+    def customSortString(self, order: str, s: str) -> str:
+        c = Counter(s)
+        r = []
+        for k in order:
+            if k in c:
+                r.append(c[k]*k)
+                c.pop(k)
+        for k in c:
+            r.append(c[k]*k)
+        return ''.join(r)
+
+class Solution:
     def customSortString(self, o: str, s: str) -> str:
         return''.join(sorted(s,key=o.find))
 

@@ -1,8 +1,10 @@
 from lc import *
 
+# https://leetcode.com/problems/custom-sort-string
+
 class Solution:
-    def customSortString(self, order: str, s: str) -> str:
-        return "".join(sorted(s, key = order.find))
+    def customSortString(self, o: str, s: str) -> str:
+        return''.join(sorted(s,key=o.find))
 
 test('''
 

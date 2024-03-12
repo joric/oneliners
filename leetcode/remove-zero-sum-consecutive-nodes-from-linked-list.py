@@ -74,8 +74,7 @@ After doing so, return the head of the final linked list.  You may return any su
 Example 1:
 
 Input: head = [1,2,-3,3,1]
-Output: [1,2,1]
-# Output: [3,1]
+Output: [[3,1],[1,2,1]]
 Note: The answer [1,2,1] would also be accepted.
 Example 2:
 
@@ -95,4 +94,5 @@ Accepted
 53,303
 Submissions
 122,569
-''')
+''',check=lambda res,exp,*args:any(str(res)==str(t) for t in d) if len(d:=ListNode.dump(exp))>1 and type(d[0]) is list else str(res)==str(exp)
+)

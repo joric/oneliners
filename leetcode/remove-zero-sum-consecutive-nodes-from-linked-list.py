@@ -45,10 +45,15 @@ class Solution:
             for j in range(i,n):
                 s += a[j]
                 if s==0:
-                    for k in range(i,j+1):
-                        a[k] = 0
+                    a[i:j+1]=[0]*(j+1-i)
                     break
-        return ListNode(','.join(map(str,filter(None,a))))
+        return ListNode(str([*filter(None,a)])[1:-1])
+
+# linked list expansion
+
+class Solution:
+    def removeZeroSumSublists(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        a=(f:=lambda x:x and[x.val]+f(x.next)or[])(h);n=len(a);[(s:=0,any(0==(s:=s+a[j])and[setitem(a,slice(i,j+1),[0]*(j+1-i))] for j in range(i,n)))for i in range(n)];return ListNode(str([*filter(None,a)])[1:-1])
 
 # https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/discuss/4735031/JAVA-simple-recursive-function
 

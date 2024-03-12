@@ -1,5 +1,21 @@
 from lc import *
 
+# https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/discuss/366319/JavaC%2B%2BPython-Greedily-Skip-with-HashMap
+
+class Solution:
+    def removeZeroSumSublists(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        p = c = ListNode(0)
+        p.next = h
+        s,d = 0,{}
+        while c:
+            s += c.val
+            t = d.get(s,c)
+            while s in d:
+                d.popitem()
+            d[s] = t
+            t.next = c = c.next
+        return p.next
+
 # https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/discuss/4735031/JAVA-simple-recursive-function
 
 class Solution:

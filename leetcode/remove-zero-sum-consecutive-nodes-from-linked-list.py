@@ -4,17 +4,15 @@ from lc import *
 
 class Solution:
     def removeZeroSumSublists(self, h: Optional[ListNode]) -> Optional[ListNode]:
-        if not h:
-            return
-        h.next = self.removeZeroSumSublists(h.next)
-        s = 0
-        c = h
-        while c:
-            s += c.val
-            if s==0:
-                return c.next
-            c = c.next
-        return h
+        if h:
+            h.next = self.removeZeroSumSublists(h.next)
+            s,c = 0,h
+            while c:
+                s += c.val
+                if s==0:
+                    return c.next
+                c = c.next
+            return h
 
 class Solution:
     def removeZeroSumSublists(self, h: Optional[ListNode]) -> Optional[ListNode]:

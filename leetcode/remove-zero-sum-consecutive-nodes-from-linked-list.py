@@ -41,8 +41,8 @@ Example 1:
 
 Input: head = [1,2,-3,3,1]
 Output: [1,2,1]
-Note: The answer [1,2,1] would also be accepted.
 # Output: [3,1]
+Note: The answer [1,2,1] would also be accepted.
 Example 2:
 
 Input: head = [1,2,3,-3,4]

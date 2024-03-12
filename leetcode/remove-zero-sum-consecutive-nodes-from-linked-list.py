@@ -16,6 +16,24 @@ class Solution:
             t.next = c = c.next
         return p.next
 
+class Solution:
+    def removeZeroSumSublists(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        d = {}
+        d[0] = p = ListNode(0)
+        p.next = h
+        s = 0
+        while h:
+            s += h.val
+            d[s] = h
+            h = h.next
+        h = p
+        s = 0
+        while h:
+            s += h.val
+            h.next = d[s].next
+            h = h.next
+        return p.next
+
 # https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/discuss/4735031/JAVA-simple-recursive-function
 
 class Solution:

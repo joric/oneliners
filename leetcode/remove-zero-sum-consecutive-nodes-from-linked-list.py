@@ -16,7 +16,7 @@ class Solution:
 
 class Solution:
     def removeZeroSumSublists(self, h: Optional[ListNode]) -> Optional[ListNode]:
-        return(f:=lambda h:h and setattr(h,'next',f(h.next))or(g:=lambda s,c:(c.next if(s:=s+c.val)==0 else g(s,c.next))if c else h)(0,h))(h)
+        return(f:=lambda h:h and setattr(h,'next',f(h.next))or(g:=lambda s,c:(g(s,c.next)if(s:=s+c.val)else c.next)if c else h)(0,h))(h)
 
 test('''
 1171. Remove Zero Sum Consecutive Nodes from Linked List

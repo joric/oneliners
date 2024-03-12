@@ -34,6 +34,22 @@ class Solution:
             h = h.next
         return p.next
 
+# https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/discuss/4863159/Use-bruteforce-in-the-Array-No-prefix-sum-!!
+
+class Solution:
+    def removeZeroSumSublists(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        a=(f:=lambda x:x and[x.val]+f(x.next)or[])(h)
+        n = len(a)
+        for i in range(n):
+            s = 0
+            for j in range(i,n):
+                s += a[j]
+                if s==0:
+                    for k in range(i,j+1):
+                        a[k] = 0
+                    break
+        return ListNode(','.join(map(str,filter(None,a))))
+
 # https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/discuss/4735031/JAVA-simple-recursive-function
 
 class Solution:

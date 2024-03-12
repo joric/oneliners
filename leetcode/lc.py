@@ -284,7 +284,7 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
             elif s.startswith('Output:'):
                 tests[-1]['input'] = split_vars(p)
                 p,t = s[8:],2
-            elif t==2 and(s=='' or any(s.startswith(t) for t in ('Exampl','Explan','Operat'))):
+            elif t==2 and(s=='' or any(s.startswith(t) for t in ('Exampl','Explan','Operat','Note'))):
                 tests[-1]['output'] = split_vars(p)
                 p,t = '',0
             elif t != 0:

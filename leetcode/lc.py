@@ -183,7 +183,9 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
             v = cast(name, v)
 
         try:
-            func = getattr(tname, 'parse')
+            func = None
+            if 'parse' in dir(tname):
+                func = getattr(tname, 'parse')
             return func(v) if func else tname(v)
         except Exception as e:
             pass

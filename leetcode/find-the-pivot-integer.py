@@ -18,27 +18,25 @@ class Solution:
     def pivotInteger(self, n: int) -> int:
         return next((x for x in range(1,n+1)if 2*x*x==n*n+n),-1)
 
-# https://leetcode.com/problems/find-the-pivot-integer/discuss/4869071/One-Line-Solution
-
-class Solution:
-    def pivotInteger(self, n: int) -> int:
-        return int([x:=sqrt(n*-~n//2),-1][x%1>0])
-
-# precalc
-
-class Solution:
-    def pivotInteger(self, n: int) -> int:
-        return{1:1,8:6,49:35,288:204}.get(n,-1)
-
 # https://leetcode.com/problems/find-the-pivot-integer/discuss/3874194/Easy-solution-1-line
 
 class Solution:
     def pivotInteger(self, n: int) -> int:
         return x if (x:=int(sqrt(s:=n*(n+1)/2)))*x==s else -1
 
+# https://leetcode.com/problems/find-the-pivot-integer/discuss/4869071/One-Line-Solution
+
+class Solution:
+    def pivotInteger(self, n: int) -> int:
+        return int([x:=sqrt(n*-~n//2),-1][x%1>0])
+
 class Solution:
     def pivotInteger(self, n: int) -> int:
         return(x:=isqrt(s:=n*-~n//2),-1)[x*x<s]
+
+class Solution:
+    def pivotInteger(self, n: int) -> int:
+        return{1:1,8:6,49:35,288:204}.get(n,-1)
 
 test('''
 2485. Find the Pivot Integer

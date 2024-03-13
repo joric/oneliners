@@ -1,5 +1,9 @@
 from lc import *
 
+class Solution:
+    def pivotInteger(self, n: int) -> int:
+        return next((x for x in range(1,n+1)if 2*x*x==n*n+n),-1)
+
 # https://leetcode.com/problems/find-the-pivot-integer/discuss/3874194/Easy-solution-1-line
 
 class Solution:

@@ -9,6 +9,12 @@ class Solution:
     def canSortArray(self, a: List[int]) -> bool:
         return all(max(a)<min(b)for a,b in pairwise([[*v]for _,v in groupby(a,key=int.bit_count)]))
 
+# https://leetcode.com/problems/find-if-array-can-be-sorted/discuss/4859284/one-line-solution
+
+class Solution:
+    def canSortArray(self, a: List[int]) -> bool:
+        return[*chain(*(sorted(i)for _,i in groupby(a,int.bit_count)))]==sorted(a)
+
 test('''
 3011. Find if Array Can Be Sorted
 Medium

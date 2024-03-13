@@ -1,5 +1,17 @@
 from lc import *
 
+# humanoid version
+
+class Solution:
+    def pivotInteger(self, n: int) -> int:
+        # (x * (x + 1)) / 2 = n * (n + 1) / 2 - (x - 1) * x / 2
+        # x^2 / 2 + x / 2 = (n^2 + n)/2 - x^2 / 2 + x / 2
+        # x^2 = n ^ 2 + n / 2
+        x = sqrt(n ** 2 / 2 + n / 2)
+        if x != int(x):
+            return -1
+        return int(x)
+
 class Solution:
     def pivotInteger(self, n: int) -> int:
         return next((x for x in range(1,n+1)if 2*x*x==n*n+n),-1)

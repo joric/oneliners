@@ -10,6 +10,10 @@ class Solution:
     def pivotInteger(self, n: int) -> int:
         return(-1,x:=isqrt(s:=n*(n+1)//2))[x*x==s]
 
+class Solution:
+    def pivotInteger(self, n: int) -> int:
+        return(-1,x:=isqrt(s:=n*-~n//2))[x*x==s]
+
 test('''
 2485. Find the Pivot Integer
 Easy

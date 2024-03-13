@@ -310,7 +310,7 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
             expected = vc(func, 'return', expected)
 
             # leetcode does not convert bool result to int result since Aug 2023
-            ok = False if type(res)==bool and type(expected)==int else check(res, expected, *args)
+            ok = False if type(res) in (float,bool) and type(expected)==int else check(res, expected, *args)
 
             if type(ok) is tuple: # see linked-list-cycle-ii (substitutes res with custom res)
                 ok, res = ok[:2]

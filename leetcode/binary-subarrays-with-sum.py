@@ -30,7 +30,7 @@ class Solution:
 
 class Solution:
     def numSubarraysWithSum(self, n: List[int], g: int) -> int:
-        p,c=0,Counter();return sum(c.update([p+g])or c[(p:=p+x)]for x in n)
+        p,c=0,Counter();return sum(c.update([p+g])or c[p:=p+x]for x in n)
 
 test('''
 930. Binary Subarrays With Sum

@@ -29,10 +29,11 @@ class Solution:
         a=accumulate;return map(mul,[1]+[*a(n[:-1],mul)],[*a(n[::-1][:-1],mul)][::-1]+[1])
 
 # updated 2024-03-15
+# https://leetcode.com/problems/product-of-array-except-self/discuss/3714810/Python-one-liner
 
 class Solution:
     def productExceptSelf(self, n: List[int]) -> List[int]:
-        a=lambda n:[*accumulate(n[:-1],mul)];return map(mul,[1]+a(n),a(n[::-1])[::-1]+[1])
+        a=accumulate;return map(mul,[1]+[*a(n[:-1],mul)],[*a(n[:0:-1],mul)][::-1]+[1])
 
 test('''
 238. Product of Array Except Self

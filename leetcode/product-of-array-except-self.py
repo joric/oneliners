@@ -33,10 +33,6 @@ class Solution:
 
 class Solution:
     def productExceptSelf(self, n: List[int]) -> List[int]:
-        a=accumulate;return map(mul,[1]+[*a(n[:-1],mul)],[*a(n[:0:-1],mul)][::-1]+[1])
-
-class Solution:
-    def productExceptSelf(self, n: List[int]) -> List[int]:
         a=accumulate;return map(mul,a([1]+n[:-1],mul),[*a(n[:0:-1],mul)][::-1]+[1])
 
 test('''

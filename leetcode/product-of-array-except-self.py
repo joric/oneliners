@@ -28,6 +28,8 @@ class Solution:
     def productExceptSelf(self, n: List[int]) -> List[int]:
         a=accumulate;return map(mul,[1]+[*a(n[:-1],mul)],[*a(n[::-1][:-1],mul)][::-1]+[1])
 
+# updated 2024-03-15
+
 class Solution:
     def productExceptSelf(self, n: List[int]) -> List[int]:
         a=lambda n:[*accumulate(n[:-1],mul)];return map(mul,[1]+a(n),a(n[::-1])[::-1]+[1])

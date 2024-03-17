@@ -44,13 +44,33 @@ class Solution:
                 res.append(x)
         return res
 
+# updated 2024-03-17
+
 class Solution:
     def insert(self, v: List[List[int]], w: List[int]) -> List[List[int]]:
-        return (v.append(w),v.sort(),o:=[],[setitem(o[-1],1,max(o[-1][1], x[1])) if o and x[0]<=o[-1][1] else o.append(x) for x in v]) and o
+        return(v.append(w),v.sort(),o:=[],[setitem(o[-1],1,max(o[-1][1], x[1]))if o and x[0]<=o[-1][1]else o.append(x)for x in v])and o
 
+# https://leetcode.com/problems/insert-interval/discuss/3056513/Python-One-Line
+
+class Solution:
+    def insert(self, v: List[List[int]], w: List[int]) -> List[List[int]]:
+        return reduce(lambda r,c:r[:-1]+[[r[-1][0],max(r[-1][1],c[1])]]if r and r[-1][1]>=c[0]else r+[c],sorted(v+[w]),[])
+
+class Solution:
+    def insert(self, v: List[List[int]], w: List[int]) -> List[List[int]]:
+        r = []
+        for s,e in sorted(v+[w]):
+            if r and r[-1][1] >= s:
+                r[-1][1]=max(r[-1][1],e)
+            else:
+                r.append([s,e])
+        return r
+
+class Solution:
+    def insert(self, v: List[List[int]], w: List[int]) -> List[List[int]]:
+        r=[];[setitem(r[-1],1,max(r[-1][1],e))if r and s<=r[-1][1]else r.append([s,e])for s,e in sorted(v+[w])];return r
 
 test('''
-
 57. Insert Interval
 Medium
 

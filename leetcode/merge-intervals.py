@@ -11,11 +11,19 @@ class Solution:
                 res.append(x)
         return res
 
-
 class Solution:
     def merge(self, v: List[List[int]]) -> List[List[int]]:
         return (v.sort(),o:=[],[setitem(o[-1],1,max(o[-1][1], x[1])) if o and x[0]<=o[-1][1] else o.append(x) for x in v]) and o
 
+# updated 2024-03-17
+
+class Solution:
+    def merge(self, v: List[List[int]]) -> List[List[int]]:
+        r=[];[setitem(r[-1],1,max(r[-1][1],x[1]))if r and x[0]<=r[-1][1]else r.append(x)for x in sorted(v)];return r
+
+class Solution:
+    def merge(self, v: List[List[int]]) -> List[List[int]]:
+        r=[];[setitem(r[-1],1,max(r[-1][1],e))if r and s<=r[-1][1]else(r:=r+[[s,e]])for s,e in sorted(v)];return r
 
 test('''
 56. Merge Intervals

@@ -54,7 +54,7 @@ class Solution:
 
 class Solution:
     def insert(self, v: List[List[int]], w: List[int]) -> List[List[int]]:
-        return reduce(lambda r,c:r[:-1]+[[r[-1][0],max(r[-1][1],c[1])]]if r and r[-1][1]>=c[0]else r+[c],sorted(v+[w]),[])
+        return reduce(lambda r,x:r[:-1]+[[r[-1][0],max(r[-1][1],x[1])]]if r and x[0]<=r[-1][1]else r+[x],sorted(v+[w]),[])
 
 class Solution:
     def insert(self, v: List[List[int]], w: List[int]) -> List[List[int]]:
@@ -69,6 +69,14 @@ class Solution:
 class Solution:
     def insert(self, v: List[List[int]], w: List[int]) -> List[List[int]]:
         r=[];[setitem(r[-1],1,max(r[-1][1],e))if r and s<=r[-1][1]else r.append([s,e])for s,e in sorted(v+[w])];return r
+
+class Solution:
+    def insert(self, v: List[List[int]], w: List[int]) -> List[List[int]]:
+        r=[];[setitem(r[-1],1,max(r[-1][1],e))if r and s<=r[-1][1]else r.append([s,e])for s,e in sorted(v+[w])];return r
+
+class Solution:
+    def insert(self, v: List[List[int]], w: List[int]) -> List[List[int]]:
+        r=[];[setitem(r[-1],1,max(r[-1][1],e))if r and s<=r[-1][1]else(r:=r+[[s,e]])for s,e in sorted(v+[w])];return r
 
 test('''
 57. Insert Interval

@@ -29,6 +29,10 @@ class Solution:
     def findMinArrowShots(self, p: List[List[int]]) -> int:
         c=inf;return 1+sum(q>c and(c:=w)*0+1 or(c:=min(w,c))*0 for q,w in sorted(p))
 
+class Solution:
+    def findMinArrowShots(self, p: List[List[int]]) -> int:
+        c=inf;return 1+sum((c:=(min(w,c),w)[t:=q>c])*0+t for q,w in sorted(p))
+
 # updated 2024-03-18
 
 class Solution:
@@ -40,7 +44,6 @@ class Solution:
         b=inf;return sum(b>e and(b:=s)*0+1 for s,e in[*sorted(p)][::-1])
 
 test('''
-
 452. Minimum Number of Arrows to Burst Balloons
 Medium
 

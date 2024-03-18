@@ -10,6 +10,25 @@ class Solution:
     def findMinArrowShots(self, points: List[List[int]]) -> int:
         return (p:=inf) and sum(not s<=p<=e and bool(p:=e) for s,e in sorted(points,key=itemgetter(1)))
 
+# another solution
+
+class Solution:
+    def findMinArrowShots(self, p: List[List[int]]) -> int:
+        p.sort()
+        a = 0
+        c = p[0][1]
+        for q,w in p[1:]:
+            if q>c:
+                a += 1
+                c = w
+            else:
+                c = min(w,c)
+        return a+1
+
+class Solution:
+    def findMinArrowShots(self, p: List[List[int]]) -> int:
+        c=inf;return 1+sum(q>c and(c:=w)*0+1 or(c:=min(w,c))*0 for q,w in sorted(p))
+
 # updated 2024-03-18
 
 class Solution:
@@ -18,7 +37,7 @@ class Solution:
 
 class Solution:
     def findMinArrowShots(self, p: List[List[int]]) -> int:
-        b=inf;return sum(b>e and(b:=s)*0+1for s,e in[*sorted(p)][::-1])
+        b=inf;return sum(b>e and(b:=s)*0+1 for s,e in[*sorted(p)][::-1])
 
 test('''
 

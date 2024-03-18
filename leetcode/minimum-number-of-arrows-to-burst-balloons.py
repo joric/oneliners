@@ -10,6 +10,12 @@ class Solution:
     def findMinArrowShots(self, points: List[List[int]]) -> int:
         return (p:=inf) and sum(not s<=p<=e and bool(p:=e) for s,e in sorted(points,key=itemgetter(1)))
 
+# updated 2024-03-18
+
+class Solution:
+    def findMinArrowShots(self, p: List[List[int]]) -> int:
+        r=inf;return sum(not s<=r<=e and(r:=e)and 1 for s,e in sorted(p,key=itemgetter(1)))
+
 test('''
 
 452. Minimum Number of Arrows to Burst Balloons

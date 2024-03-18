@@ -18,7 +18,7 @@ class Solution:
 
 class Solution:
     def findMinArrowShots(self, p: List[List[int]]) -> int:
-        b=inf;return sum(not(s<=b<=e or(b:=s)*0)for s,e in[*sorted(p)][::-1])
+        b=inf;return sum(b>e and(0*(b:=s)+1)for s,e in[*sorted(p)][::-1])
 
 test('''
 

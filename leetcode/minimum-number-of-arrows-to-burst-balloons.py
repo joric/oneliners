@@ -37,7 +37,7 @@ class Solution:
 
 class Solution:
     def findMinArrowShots(self, p: List[List[int]]) -> int:
-        r=inf;return sum(not(s<=r<=e or(r:=e)==0)for s,e in sorted(p,key=itemgetter(1)))
+        c=inf;return sum(not(s<=c<=e or(c:=e)==0)for s,e in sorted(p,key=itemgetter(1)))
 
 class Solution:
     def findMinArrowShots(self, p: List[List[int]]) -> int:

@@ -16,8 +16,8 @@ class Solution:
     def findMinArrowShots(self, p: List[List[int]]) -> int:
         p.sort()
         a = 0
-        c = p[0][1]
-        for q,w in p[1:]:
+        c = inf
+        for q,w in sorted(p):
             if q>c:
                 a += 1
                 c = w

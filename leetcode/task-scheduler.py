@@ -18,7 +18,7 @@ class Solution:
 
 class Solution:
     def leastInterval(self, t: List[str], n: int) -> int:
-        f=Counter;v=f(t).values();return max(len(t),f(v)[m:=max(v)]+~-m*-~n)
+        return max(len(t),(f:=Counter)(v:=f(t).values())[m:=max(v)]-~-m*~n)
 
 test('''
 621. Task Scheduler

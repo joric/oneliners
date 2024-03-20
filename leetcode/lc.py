@@ -116,6 +116,9 @@ class ListNode:
         list_node = ListNode(val[0], sub_nodes)
         return list_node
 
+    def _list_node_to_array(val):
+        return(f:=lambda x:x and[x.val]+f(x.next)or[])(val)
+
     def detectCycle(head):
         slow = fast = head
         while fast and fast.next:

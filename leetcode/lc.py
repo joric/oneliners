@@ -32,6 +32,7 @@ class TreeNode:
         self.left = left
         self.right = right
 
+    @staticmethod
     def dump(root):
         q = []
         res = []
@@ -47,9 +48,6 @@ class TreeNode:
         while res and res[-1] is None:
             res.pop()
         return res
-
-    def _tree_node_to_array(root):
-        return TreeNode.dump(root)
 
     @staticmethod
     def serialize(root):
@@ -79,6 +77,12 @@ class TreeNode:
                 if kids:
                     node.right = kids.pop()
         return root
+
+    def _tree_node_to_array(root):
+        return TreeNode.dump(root)
+
+    def _array_from_tree_node(root):
+        return TreeNode.parse(root)
 
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -119,9 +123,6 @@ class ListNode:
         list_node = ListNode(val[0], sub_nodes)
         return list_node
 
-    def _list_node_to_array(val):
-        return(f:=lambda x:x and[x.val]+f(x.next)or[])(val)
-
     def detectCycle(head):
         slow = fast = head
         while fast and fast.next:
@@ -161,6 +162,12 @@ class ListNode:
             tail = head
             head = head.next
         return tail
+
+    def _list_node_to_array(val):
+        return ListNode.dump(val)
+
+    def _array_from_list_node(val):
+        return ListNode.parse(val)
 
 cnames = []
 

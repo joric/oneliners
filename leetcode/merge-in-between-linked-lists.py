@@ -26,6 +26,10 @@ class Solution:
     def mergeInBetween(self, p: ListNode, a: int, b: int, q: ListNode) -> ListNode:
         f=type(p)._list_node_to_array;p=f(p);return ListNode(','.join(map(str,p[:a]+f(q)+p[b+1:])))
 
+class Solution:
+    def mergeInBetween(self, p: ListNode, a: int, b: int, q: ListNode) -> ListNode:
+        f=type(p)._list_node_to_array;p=f(p);p[a:b+1]=f(q);return ListNode(','.join(map(str,p)))
+
 test('''
 1669. Merge In Between Linked Lists
 Medium

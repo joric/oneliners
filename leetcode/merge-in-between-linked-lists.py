@@ -18,6 +18,19 @@ class Solution:
 
 # linked list expansion
 
+# MLE
+class Solution:
+    def mergeInBetween(self, p: ListNode, a: int, b: int, q: ListNode) -> ListNode:
+        f=lambda x:x and[x.val]+f(x.next)or[]
+        t=lambda x:x and ListNode(x[0],t(x[1:]or None))
+        p=f(p)
+        p[a:b+1]=f(q)
+        return t(p)
+
+class Solution:
+    def mergeInBetween(self, p: ListNode, a: int, b: int, q: ListNode) -> ListNode:
+        f=lambda x:x and[x.val]+f(x.next)or[];p=f(p);return(g:=lambda a:a and ListNode(a[0],g(a[1:])))(p[:a]+f(q)+p[b+1:])
+
 class Solution:
     def mergeInBetween(self, p: ListNode, a: int, b: int, q: ListNode) -> ListNode:
         f=lambda x:x and[x.val]+f(x.next)or[];p=f(p);return ListNode(','.join(map(str,p[:a]+f(q)+p[b+1:])))

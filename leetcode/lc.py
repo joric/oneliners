@@ -48,6 +48,9 @@ class TreeNode:
             res.pop()
         return res
 
+    def _tree_node_to_array(root):
+        return TreeNode.dump(root)
+
     @staticmethod
     def serialize(root):
         return root.__repr__().replace('None','null')

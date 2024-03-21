@@ -32,6 +32,18 @@ class Solution:
     def reverseList(self, h: Optional[ListNode]) -> Optional[ListNode]:
         t=type(h);return h and t(','.join(map(str,t._list_node_to_array(h)[::-1])))
 
+# https://leetcode.com/problems/reverse-linked-list/discuss/4905803/one-line-solution
+
+class Solution:
+    def reverseList(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        p = None
+        while h:
+            h.next,h,p = p,h.next,h
+        return p
+
+class Solution:
+    def reverseList(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        exec('while h:h.next,h,p=p,h.next,h',g:={'p':None,'h':h});return g['p']
 
 test('''
 206. Reverse Linked List

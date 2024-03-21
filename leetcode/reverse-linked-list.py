@@ -15,7 +15,23 @@ class Solution:
 
 class Solution:
     def reverseList(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        p = None
+        c = h
+        while c:
+            n = c.next
+            c.next = p
+            p = c
+            c = n
+        return p
+
+class Solution:
+    def reverseList(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        p=None;c=h;return next((p for _ in count()if not(c and(n:=c.next,setattr(c,'next',p),p:=c,c:=n))),p)
+
+class Solution:
+    def reverseList(self, h: Optional[ListNode]) -> Optional[ListNode]:
         t=type(h);return h and t(','.join(map(str,t._list_node_to_array(h)[::-1])))
+
 
 test('''
 206. Reverse Linked List

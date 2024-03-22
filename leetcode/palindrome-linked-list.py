@@ -16,6 +16,7 @@ def isPalindrome(self, head):
     return not rev
 
 # use recursion to reverse the list and compare values in a single pass
+# https://leetcode.com/problems/palindrome-linked-list/discuss/4909681/one-line-solution
 
 class Solution:
     def isPalindrome(self, head: ListNode) -> bool:

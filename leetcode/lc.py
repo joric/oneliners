@@ -51,7 +51,7 @@ class TreeNode:
 
     @staticmethod
     def serialize(root):
-        return str(root.dump(root)).replace('None','null')
+        return str(TreeNode.dump(root)).replace('None','null')
 
     def __repr__(self):
         return(f:=lambda x:x and f'TreeNode{{val: {x.val}, left: {f(x.left)}, right: {f(x.right)}}}'or 'None')(self)

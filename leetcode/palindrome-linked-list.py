@@ -31,6 +31,16 @@ class Solution:
             return True
         return helper(head)
 
+class Solution:
+    def isPalindrome(self, h: Optional[ListNode]) -> bool:
+        t = h
+        def f(h):
+            nonlocal t
+            if not h:
+                return True
+            return f(h.next) and t.val==h.val and [t:=t.next] and True
+        return f(h)
+
 # linked list expansion
 
 class Solution:

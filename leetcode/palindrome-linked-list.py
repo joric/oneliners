@@ -46,18 +46,6 @@ class Solution:
 
 class Solution:
     def isPalindrome(self, h: ListNode) -> bool:
-        s=type(h)._list_node_to_array(h);return s==s[::-1]
-
-class Solution:
-    def isPalindrome(self, h: ListNode) -> bool:
-        s=eval(type(h).serialize(h));return s==s[::-1]
-
-class Solution:
-    def isPalindrome(self, h: ListNode) -> bool:
-        return(s:=eval(type(h).serialize(h)))==s[::-1]
-
-class Solution:
-    def isPalindrome(self, h: ListNode) -> bool:
         return(s:=eval(h.serialize(h)))==s[::-1]
 
 test('''

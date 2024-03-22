@@ -45,11 +45,11 @@ class Solution:
 
 class Solution:
     def mergeInBetween(self, p: ListNode, a: int, b: int, q: ListNode) -> ListNode:
-        t=type(p);f=t._list_node_to_array;p=f(p);p[a:b+1]=f(q);return eval(str(t.serialize(p)))
+        t=type(p);f=t._list_node_to_array;p=f(p);p[a:b+1]=f(q);return t(','.join(map(str,p)))
 
 class Solution:
     def mergeInBetween(self, p: ListNode, a: int, b: int, q: ListNode) -> ListNode:
-        t=type(p);f=t._list_node_to_array;p=f(p);p[a:b+1]=f(q);return t(','.join(map(str,p)))
+        v,w=[eval(p.serialize(x))for x in(p,q)];v[a:b+1]=w;return p.deserialize(str(v))
 
 test('''
 1669. Merge In Between Linked Lists

@@ -26,6 +26,10 @@ class Solution:
     def isPalindrome(self, h: ListNode) -> bool:
         return(s:=eval(type(h).serialize(h)))==s[::-1]
 
+class Solution:
+    def isPalindrome(self, h: ListNode) -> bool:
+        return(s:=eval(h.serialize(h)))==s[::-1]
+
 test('''
 234. Palindrome Linked List
 Easy

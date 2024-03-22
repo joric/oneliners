@@ -113,6 +113,8 @@ class ListNode:
         return json.loads(str)
 
     def __repr__(self):
+        # TODO fix this
+        # should be ListNode{val: 10, next: ListNode{val: 1, next: ListNode{val: 13, next: ListNode{val: 6, next: ListNode{val: 9, next: ListNode{val: 5, next: None}}}}}}
         return str(self.dump())
 
     def __eq__(a, b):

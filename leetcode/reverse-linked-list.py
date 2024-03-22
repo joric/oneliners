@@ -1,18 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/reverse-linked-list/discuss/4905803/one-line-solution
-
-class Solution:
-    def reverseList(self, h: Optional[ListNode]) -> Optional[ListNode]:
-        p = None
-        while h:
-            h.next,h,p = p,h.next,h
-        return p
-
-class Solution:
-    def reverseList(self, h: Optional[ListNode]) -> Optional[ListNode]:
-        exec('while h:h.next,h,p=p,h.next,h',g:={'p':None,'h':h});return g['p']
-
 # linked list expansion
 
 class Solution:
@@ -56,6 +43,29 @@ class Solution:
 class Solution:
     def reverseList(self, h: Optional[ListNode]) -> Optional[ListNode]:
         return h and(t:=type(h)).deserialize(str(eval(t.serialize(h))[::-1]))
+
+# https://leetcode.com/problems/reverse-linked-list/discuss/4905803/one-line-solution
+
+class Solution:
+    def reverseList(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        p = None
+        while h:
+            h.next,h,p = p,h.next,h
+        return p
+
+class Solution:
+    def reverseList(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        return exec('while h:h.next,h,p=p,h.next,h',g:={'p':None,'h':h})or g['p']
+
+class Solution:
+    def reverseList(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        exec('while h:h.next,h,p=p,h.next,h',g:={'p':None,'h':h});return g['p']
+
+# even shorter
+
+class Solution:
+    def reverseList(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        return h and h.deserialize(str(eval(h.serialize(h))[::-1]))
 
 test('''
 206. Reverse Linked List

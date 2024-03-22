@@ -15,6 +15,21 @@ def isPalindrome(self, head):
         rev = rev.next
     return not rev
 
+# use recursion to reverse and compare the list
+
+class Solution:
+    def isPalindrome(self, head: ListNode) -> bool:
+        left = head
+        def helper(node):
+            nonlocal left
+            if node.next and not helper(node.next):
+                return False
+            if left.val != node.val:
+                return False
+            left = left.next
+            return True
+        return helper(head)
+
 # linked list expansion
 
 class Solution:

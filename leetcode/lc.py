@@ -54,7 +54,7 @@ class TreeNode:
         return root.__repr__().replace('None','null')
 
     def __repr__(self):
-        return str(self.dump())
+        return str(self.dump(self))
 
     def __eq__(self, other):
         return self is other
@@ -106,16 +106,14 @@ class ListNode:
 
     @staticmethod
     def serialize(root):
-        return root.__repr__().replace('None','null')
+        return str(root.dump()).replace('None','null')
 
     @staticmethod
     def deserialize(str):
         return json.loads(str)
 
     def __repr__(self):
-        # TODO fix this
-        # should be ListNode{val: 10, next: ListNode{val: 1, next: ListNode{val: 13, next: ListNode{val: 6, next: ListNode{val: 9, next: ListNode{val: 5, next: None}}}}}}
-        return str(self.dump())
+        return(f:=lambda x:x and f'ListNode{{val: {x.val}, next: {f(x.next)}}}'or 'None')(self)
 
     def __eq__(a, b):
         return a is b
@@ -250,7 +248,8 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
         return args[:argc], args, orig[:argc]
 
     def print_res(passed, res, expected, *args):
-        c = lambda c,t,w=50: '\x1b[{1}m{2}\x1b[0m'.format(s:=str(t), 30+c, s[:w]+'...' if e==2 and len(s)>=w else s)
+        g = lambda t:str(t.serialize(t) if type(t) is ListNode or type(t) is TreeNode  else t)
+        c = lambda c,t,w=50: '\x1b[{1}m{2}\x1b[0m'.format(s:=g(t), 30+c, s[:w]+'...' if e==2 and len(s)>=w else s)
         e = 2 if passed else 1
         print('%s args %s result %s expected %s' % (c(e,'PASSED' if passed else 'FAILED'), c(e,args), c(e,res), c(e,expected)))
 
@@ -261,10 +260,12 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
 
     if not check:
         def check(res, expected, *args):
-            t = str(type(res))
-            if 'TreeNode' in t or 'ListNode' in t or type(res)==list:
+            t = type(res)
+            if t is ListNode or t is TreeNode:
+                return t.serialize(res)==t.serialize(expected)
+            elif t is list:
                 return str(res)==str(expected)
-            elif 'numpy.ndarray' in t:
+            elif 'numpy.ndarray' in str(t):
                 return all([*x]==[*y] for x,y in zip(res,expected))
             return res==expected
 

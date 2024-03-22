@@ -67,6 +67,10 @@ class Solution:
     def reverseList(self, h: Optional[ListNode]) -> Optional[ListNode]:
         return h and h.deserialize(str(eval(h.serialize(h))[::-1]))
 
+#class Solution:
+#    def reverseList(self, h: Optional[ListNode]) -> Optional[ListNode]:
+#        print(h)
+
 test('''
 206. Reverse Linked List
 Easy

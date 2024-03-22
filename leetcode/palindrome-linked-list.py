@@ -20,7 +20,7 @@ class Solution:
 
 class Solution:
     def isPalindrome(self, h: ListNode) -> bool:
-        s=eval(type(h).serialize(h)));return s==s[::-1]
+        s=eval(type(h).serialize(h));return s==s[::-1]
 
 class Solution:
     def isPalindrome(self, h: ListNode) -> bool:

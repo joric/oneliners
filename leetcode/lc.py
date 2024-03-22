@@ -108,6 +108,10 @@ class ListNode:
     def serialize(root):
         return root.__repr__().replace('None','null')
 
+    @staticmethod
+    def deserialize(str):
+        return json.loads(str)
+
     def __repr__(self):
         return str(self.dump())
 

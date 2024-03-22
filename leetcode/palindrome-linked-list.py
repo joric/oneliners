@@ -15,7 +15,7 @@ def isPalindrome(self, head):
         rev = rev.next
     return not rev
 
-# use recursion to reverse and compare the list
+# use recursion to reverse the list and compare values in a single pass
 
 class Solution:
     def isPalindrome(self, head: ListNode) -> bool:

@@ -244,7 +244,7 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
                 return str(res)==str(expected)
             elif 'numpy.ndarray' in str(t):
                 return all([*x]==[*y] for x,y in zip(res,expected))
-            elif t is str and type(expected) is list: # letter-combinations-of-a-phone-number
+            elif type(expected) is list: # letter-combinations-of-a-phone-number
                 return list(res)==expected
             return res==expected
 

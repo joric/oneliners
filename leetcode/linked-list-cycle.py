@@ -1,7 +1,32 @@
 from lc import *
 
+def getNode(head, index):
+    i = 0
+    while head:
+        if i == index:
+            return head
+        head = head.next
+        i += 1
+    return None
+
+def getTail(head):
+    tail = head
+    while head:
+        tail = head
+        head = head.next
+    return tail
+
+def getIndex(head, node):
+    i = 0
+    while head:
+        if head == node:
+            return i
+        head = head.next
+        i += 1
+    return -1
+
 def init(head: ListNode, pos: int):
-    head.getTail().next = head.getNode(pos)
+        getTail(head).next = getNode(head,pos)
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:

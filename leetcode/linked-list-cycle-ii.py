@@ -1,13 +1,38 @@
 from lc import *
 
+def getNode(head, index):
+    i = 0
+    while head:
+        if i == index:
+            return head
+        head = head.next
+        i += 1
+    return None
+
+def getTail(head):
+    tail = head
+    while head:
+        tail = head
+        head = head.next
+    return tail
+
+def getIndex(head, node):
+    i = 0
+    while head:
+        if head == node:
+            return i
+        head = head.next
+        i += 1
+    return -1
+
 def init(head: ListNode, pos: int):
     global p
     p = pos
-    head.getTail().next = head.getNode(p)
+    getTail(head).next = getNode(head, p)
 
 def check(res,exp,head):
     global p
-    i = head.getIndex(head.detectCycle())
+    i = getIndex(head, head._has_cycle())
     return p==i, ('no cycle' if i<0 else f'tail connects to node index {i}')
 
 class Solution:

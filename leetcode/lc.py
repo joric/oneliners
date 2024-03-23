@@ -96,7 +96,7 @@ class ListNode:
         self.next = next
 
     def dump(self):
-        if self.detectCycle():
+        if self._has_cycle():
             return 'Error - Found cycle in the ListNode'
         out = []
         while self:
@@ -113,6 +113,8 @@ class ListNode:
         return ListNode.parse(json.loads(str))
 
     def __repr__(self):
+        if self._has_cycle():
+            return 'Error - Found cycle in the ListNode'
         return(f:=lambda x:x and f'ListNode{{val: {x.val}, next: {f(x.next)}}}'or 'None')(self)
 
     def __eq__(a, b):
@@ -127,7 +129,7 @@ class ListNode:
         list_node = ListNode(val[0], sub_nodes)
         return list_node
 
-    def detectCycle(head):
+    def _has_cycle(head):
         slow = fast = head
         while fast and fast.next:
             fast = fast.next.next
@@ -141,31 +143,6 @@ class ListNode:
             slow = slow.next
             fast = fast.next
         return slow
-
-    def getNode(head, index):
-        i = 0
-        while head:
-            if i == index:
-                return head
-            head = head.next
-            i += 1
-        return None
-
-    def getIndex(head, node):
-        i = 0
-        while head:
-            if head == node:
-                return i
-            head = head.next
-            i += 1
-        return -1
-
-    def getTail(head):
-        tail = head
-        while head:
-            tail = head
-            head = head.next
-        return tail
 
     def _list_node_to_array(val):
         return ListNode.dump(val)
@@ -267,6 +244,8 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
                 return str(res)==str(expected)
             elif 'numpy.ndarray' in str(t):
                 return all([*x]==[*y] for x,y in zip(res,expected))
+            elif t is str and type(expected) is list:
+                return list(res)==expected
             return res==expected
 
     custom_class_tests = classname is not None and 'Launcher' not in str(classname) and custom!=False

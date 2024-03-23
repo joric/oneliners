@@ -51,11 +51,7 @@ class Solution:
 
 class Solution:
     def reorderList(self, h: Optional[ListNode]) -> None:
-        a=eval(h.serialize(h));next(0 for i in count()if setattr(h,'val',a[(i//2,~i//2)[i%2]])or not(h:=h.next))
-
-class Solution:
-    def reorderList(self, h: Optional[ListNode]) -> None:
-        a=eval(h.serialize(h));[setattr(h,'val',a[(i//2,~i//2)[i%2]])or(h:=h.next)for i in range(len(a))]
+        t=type(h);a=t._list_node_to_array(h);h.next=t._array_to_list_node([a[(i//2,~i//2)[i%2]]for i in range(1,len(a))])
 
 class Solution:
     def reorderList(self, h: Optional[ListNode]) -> None:

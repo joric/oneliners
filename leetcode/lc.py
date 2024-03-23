@@ -81,7 +81,7 @@ class TreeNode:
     def _tree_node_to_array(root):
         return TreeNode.dump(root)
 
-    def _array_from_tree_node(root):
+    def _array_to_tree_node(root):
         return TreeNode.parse(root)
 
 class ListNode:
@@ -170,7 +170,7 @@ class ListNode:
     def _list_node_to_array(val):
         return ListNode.dump(val)
 
-    def _array_from_list_node(val):
+    def _array_to_list_node(val):
         return ListNode.parse(val)
 
 cnames = []

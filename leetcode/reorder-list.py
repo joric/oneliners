@@ -1,5 +1,43 @@
 from lc import *
 
+# https://leetcode.com/problems/reorder-list/discuss/801883/Python-3-steps-to-success-explained
+
+class Solution:
+    def reorderList(self, head: Optional[ListNode]) -> None:
+        #step 1: find middle
+        slow, fast = head, head
+        while fast.next and fast.next.next:
+            slow = slow.next
+            fast = fast.next.next
+        #step 2: reverse second half
+        prev, curr = None, slow.next
+        while curr:
+            nextt = curr.next
+            curr.next = prev
+            prev = curr
+            curr = nextt
+        slow.next = None
+        #step 3: merge lists
+        head1, head2 = head, prev
+        while head2:
+            nextt = head1.next
+            head1.next = head2
+            head1 = head2
+            head2 = nextt
+
+# https://leetcode.com/problems/reorder-list/discuss/129896/One-Short-and-Humorous-Python-Solution
+
+class Solution:
+    def reorderList(self, h: Optional[ListNode]) -> None:
+        q, i = deque([]), 0
+        while h:
+            q.append(h)
+            h = h.next
+        while q:
+            i = (i-1)%-2
+            x = q.popleft() if i==-1 else q.pop()
+            x.next = q[i] if q else None
+
 # https://leetcode.com/problems/reorder-list/discuss/514461/python-a-one-array-solution-with-explanation
 
 class Solution:

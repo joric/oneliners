@@ -110,7 +110,7 @@ class ListNode:
 
     @staticmethod
     def deserialize(str):
-        return json.loads(str)
+        return ListNode.parse(json.loads(str))
 
     def __repr__(self):
         return(f:=lambda x:x and f'ListNode{{val: {x.val}, next: {f(x.next)}}}'or 'None')(self)

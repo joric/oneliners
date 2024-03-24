@@ -57,6 +57,12 @@ class Solution:
     def reorderList(self, h: Optional[ListNode]) -> None:
         a=eval(h.serialize(h));h.next=h.deserialize(str([a[(i//2,~i//2)[i%2]]for i in range(1,len(a))]))
 
+# updated 2024-03-24
+
+class Solution:
+    def reorderList(self, h: Optional[ListNode]) -> None:
+        a=eval(h.serialize(h));h.next=h.deserialize(str([*chain(*zip(a,a[::-1]))][1:len(a)]))
+
 test('''
 143. Reorder List
 Medium

@@ -15,19 +15,19 @@ class Solution:
         d = [-1] * n
         d[p] = 0
         for x in q:
-            a = max(x - k + 1, 0)
-            a = 2 * a + k - 1 - x
-            b = min(x + k - 1, n - 1) - (k - 1)
-            b = 2 * b + k - 1 - x
-            for j in list(r[a % 2].irange(a, b)):
+            a = 2*max(x-k+1,0)+k-1-x
+            b = 2*(min(x+k-1,n-1)-(k-1))+k-1-x
+            for j in [*r[a%2].irange(a,b)]:
                 q.append(j)
                 d[j] = d[x] + 1
-                r[a % 2].remove(j)
+                r[a%2].remove(j)
         return d
+
+test()
 
 class Solution:
     def minReverseOperations(self, n: int, p: int, b: List[int], k: int) -> List[int]:
-        s=__import__('sortedcontainers').SortedList;r,b,q,d=[s(),s()],set(b),[p],[-1]*n;[u!=p and u not in b and r[u&1].add(u)for u in range(n)];d[p]=0;[(a:=2*max(x-k+1,0)+k-1-x,b:=2*(min(x+k-1,n-1)-(k-1))+k-1-x,[(q.append(j),setitem(d,j,d[x]+1),r[a%2].remove(j))for j in [*r[a % 2].irange(a,b)]])for x in q];return d
+        s=__import__('sortedcontainers').SortedList;r,b,q,d=[s(),s()],set(b),[p],[-1]*n;[u!=p and u not in b and r[u&1].add(u)for u in range(n)];d[p]=0;[(a:=2*max(x-k+1,0)+k-1-x,b:=2*(min(x+k-1,n-1)-(k-1))+k-1-x,[(q.append(j),setitem(d,j,d[x]+1),r[a%2].remove(j))for j in [*r[a%2].irange(a,b)]])for x in q];return d
 
 test('''
 2612. Minimum Reverse Operations

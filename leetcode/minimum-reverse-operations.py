@@ -3,17 +3,13 @@ from lc import *
 # https://leetcode.com/problems/minimum-reverse-operations/discuss/3368819/Python3-BFS-%2B-SortedList-keep-track-of-remaining-nodes
 
 from sortedcontainers import SortedList
-
 class Solution:
     def minReverseOperations(self, n: int, p: int, b: List[int], k: int) -> List[int]:
-        r = [SortedList(), SortedList()]
-        b = set(b)
+        r,b,q,d = [SortedList(),SortedList()],set(b),[p],[-1]*n
+        d[p] = 0
         for u in range(n):
             if u != p and u not in b:
                 r[u&1].add(u)
-        q = [p]
-        d = [-1] * n
-        d[p] = 0
         for i in q:
             a = 2*max(i-k+1,0)+k-1-i
             b = 2*(min(i+k-1,n-1)-(k-1))+k-1-i

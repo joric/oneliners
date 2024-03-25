@@ -242,6 +242,8 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
                 return t.serialize(res)==t.serialize(expected)
             elif t is list:
                 return str(res)==str(expected)
+            elif t is Counter:
+                return set(res.keys())==set(expected)
             elif 'numpy.ndarray' in str(t):
                 return all([*x]==[*y] for x,y in zip(res,expected))
             elif type(expected) is list: # letter-combinations-of-a-phone-number

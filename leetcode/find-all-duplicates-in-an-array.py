@@ -17,6 +17,10 @@ class Solution:
     def findDuplicates(self, n: List[int]) -> List[int]:
         c=Counter;return c(n)-c({*n})
 
+class Solution:
+    def findDuplicates(self, n: List[int]) -> List[int]:
+        return(c:=Counter)(n)-c({*n})
+
 test('''
 442. Find All Duplicates in an Array
 Medium

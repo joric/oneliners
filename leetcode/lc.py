@@ -240,6 +240,8 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
             t = type(res)
             if t is ListNode or t is TreeNode:
                 return t.serialize(res)==t.serialize(expected)
+            elif res is None and expected is not None:
+                return False
             elif t is list:
                 return str(res)==str(expected)
             elif t is Counter:

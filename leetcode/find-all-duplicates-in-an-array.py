@@ -3,6 +3,17 @@ from lc import *
 # https://leetcode.com/problems/find-all-duplicates-in-an-array
 
 class Solution:
+    def findDuplicates(self, nums: List[int]) -> List[int]:
+        ans = []
+        for n in nums:
+            i = abs(n) - 1
+            if nums[i] > 0:
+                nums[i] = -nums[i]
+            else:
+                ans.append(i+1)
+        return ans
+
+class Solution:
     def findDuplicates(self, n: List[int]) -> List[int]:
         c=Counter;return c(n)-c({*n})
 

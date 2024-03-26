@@ -28,6 +28,21 @@ class Solution:
         return n + 1
 
 class Solution:
+    def firstMissingPositive(self, nums: List[int]) -> int:
+        # "opportunistic cyclic sort": assuming all 1 <= i <= k are present in
+        # array once, put them to cell they belong to in sorted subarray [1:k]
+        # time = O(n)
+        n=len(nums)
+        all(any((t:=nums[i]) <= 0 or t >= n or t == (v:=nums[t]) or  setitem(nums,i,v) or setitem(nums,t,t) for _ in range(n)) for i in range(n))
+        # here either nums[i] == i, or i != nums[j] for all j in [0:n)
+        # (so i is first missing positive number)
+        r=0
+        return any(nums[i] != i and (r:=i) for i in range(1,n)) and r or (nums[0] + 1 if nums[0] == n else n)
+        # nums[i] = i for all 1 <= i <= n;
+        # nums[0] is either n (then it should be skipped too),
+        # or any other number (then first missing positive number is n)
+
+class Solution:
     def firstMissingPositive(self, n: List[int]) -> int:
         return min({*range(1,len(n)+2)}-{*n})
 

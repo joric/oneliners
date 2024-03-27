@@ -15,7 +15,7 @@ class Solution:
 
 class Solution:
     def numSubarrayProductLessThanK(self, a: List[int], k: int) -> int:
-        l,p,c=0,1,0;return sum((p:=p*x,all(p>=k and l<=r and(p:=p/a[l],l:=l+1)for _ in a))and r-l+1 for r,x in enumerate(a))
+        l,p,c=0,1,0;return sum((p:=p*x,all(p>=k and l<=r and(p:=p/a[l],l:=l+1)for _ in a),r-l+1)[2]for r,x in enumerate(a))
 
 test('''
 713. Subarray Product Less Than K

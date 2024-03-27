@@ -6,20 +6,6 @@ class Solution:
     def numSubarrayProductLessThanK(self, a: List[int], k: int) -> int:
         m,p,c=[*accumulate(a,mul)],1,0
         for i in range(len(a)):
-            s = i
-            e = bisect_left(m,k*p,i,len(a))-1
-            if s<=e:
-                if s < e:
-                    c += e-s+1
-                if s == e and a[s]<k:
-                    c += 1
-            p = p * a[i]
-        return c
-
-class Solution:
-    def numSubarrayProductLessThanK(self, a: List[int], k: int) -> int:
-        m,p,c=[*accumulate(a,mul)],1,0
-        for i in range(len(a)):
             j = bisect_left(m,k*p,i,len(a))-1
             c += j-i+1 if i<j else 1 if i==j and a[i]<k else 0
             p *= a[i]

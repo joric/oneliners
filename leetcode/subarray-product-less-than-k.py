@@ -20,8 +20,8 @@ class Solution:
 class Solution:
     def numSubarrayProductLessThanK(self, a: List[int], k: int) -> int:
         l,p,c=0,1,0
-        for r in range(len(a)):
-            p *= a[r]
+        for r,x in enumerate(a):
+            p *= x
             while p>=k and l<=r:
                 p /= a[l]
                 l += 1

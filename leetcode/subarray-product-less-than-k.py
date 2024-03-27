@@ -13,7 +13,7 @@ class Solution:
 
 class Solution:
     def numSubarrayProductLessThanK(self, a: List[int], k: int) -> int:
-        m,p,c=[*accumulate(a,mul)],1,0;return sum((i<=(j:=bisect_left(m,k*(p:=p*x)//x,i,len(a))-1))*(j-i+1,1)[i==j and a[i]<k]for i,x in enumerate(a))
+        m,p=[*accumulate(a,mul)],1;return sum((i<=(j:=bisect_left(m,k*(p:=p*x)//x,i,len(a))-1))*(j-i+1,1)[i==j and a[i]<k]for i,x in enumerate(a))
 
 # https://leetcode.com/problems/subarray-product-less-than-k/discuss/560093/Python3-two-pointer-O(N)-O(1)-with-breakdown
 
@@ -30,7 +30,7 @@ class Solution:
 
 class Solution:
     def numSubarrayProductLessThanK(self, a: List[int], k: int) -> int:
-        l,p,c=0,1,0;return sum((p:=p*x,all(p>=k and l<=r and(p:=p/a[l],l:=l+1)for _ in a),r-l+1)[2]for r,x in enumerate(a))
+        l,p=0,1;return sum((p:=p*x,all(p>=k and l<=r and(p:=p/a[l],l:=l+1)for _ in a),r-l+1)[2]for r,x in enumerate(a))
 
 test('''
 713. Subarray Product Less Than K

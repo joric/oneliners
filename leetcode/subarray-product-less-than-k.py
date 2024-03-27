@@ -1,22 +1,21 @@
 from lc import *
 
-# https://leetcode.com/problems/subarray-product-less-than-k/discuss/131805/Python-sliding-window-6-lines-simple-solution-304-ms-beats-90
+# https://leetcode.com/problems/subarray-product-less-than-k/discuss/560093/Python3-two-pointer-O(N)-O(1)-with-breakdown
 
 class Solution:
     def numSubarrayProductLessThanK(self, a: List[int], k: int) -> int:
-        l,s,p = 0,0,1
-        for r,x in enumerate(a):
-            p *= x
-            while p>=k and l<r:
-                p //= a[l]
+        l,p,c=0,1,0
+        for r in range(len(a)):
+            p *= a[r]
+            while p>=k and l<=r:
+                p /= a[l]
                 l += 1
-            if p<k:
-                s += r-l+1
-        return s
+            c += r-l+1
+        return c
 
 class Solution:
     def numSubarrayProductLessThanK(self, a: List[int], k: int) -> int:
-        l,s,p=0,0,1;return sum((p:=p*x,all(p>=k and l<r and(p:=p//a[l],l:=l+1)for _ in a))and(r-l+1)*(p<k)for r,x in enumerate(a))
+        l,p,c=0,1,0;return sum((p:=p*x,all(p>=k and l<=r and(p:=p/a[l],l:=l+1)for _ in a))and r-l+1 for r,x in enumerate(a))
 
 test('''
 713. Subarray Product Less Than K

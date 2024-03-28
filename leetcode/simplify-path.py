@@ -4,6 +4,20 @@ from lc import *
 
 class Solution:
     def simplifyPath(self, path: str) -> str:
+        return os.path.abspath(path)
+
+class Solution:
+    def simplifyPath(self, path: str) -> str:
+        return os.path.realpath(path)
+
+class Solution:
+    def simplifyPath(self, path: str) -> str:
+        return os.path.normpath(path)
+
+# https://leetcode.com/problems/simplify-path/discuss/3407682/Python-3-one-line
+
+class Solution:
+    def simplifyPath(self, path: str) -> str:
         r = []
         for p in path.split('/'):
             if p=='..':

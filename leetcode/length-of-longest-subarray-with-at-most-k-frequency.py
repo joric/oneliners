@@ -16,7 +16,7 @@ class Solution:
 
 class Solution:
     def maxSubarrayLength(self, a: List[int], k: int) -> int:
-        r=i=0;c=Counter();return max((c.update([x]),all(k<c[x]and(c.update({a[i]:-1}),i:=i+1)for _ in a),j-i+1)[2]for j,x in enumerate(a))
+        i,c=0,Counter();return max((c.update([x]),all(k<c[x]and(c.update({a[i]:-1}),i:=i+1)for _ in a),j-i+1)[2]for j,x in enumerate(a))
 
 test('''
 2958. Length of Longest Subarray With at Most K Frequency

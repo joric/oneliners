@@ -1,5 +1,6 @@
 from lc import *
 
+# https://leetcode.com/problems/count-subarrays-with-fixed-bounds
 
 class Solution:
     def countSubarrays(self, nums: List[int], minK: int, maxK: int) -> int:
@@ -15,16 +16,13 @@ class Solution:
             r += max(0,min(a,b)-c)
         return r
 
-
 class Solution:
     def countSubarrays(self, nums: List[int], minK: int, maxK: int) -> int:
         return reduce(lambda p,e:(lambda a,b,c,r,i,x:(a:=i if x==minK else a,b:=i if x==maxK else b,c:=c if minK<=x<=maxK else i,r:=r+max(0,min(a,b)-c)))(*p,*e),enumerate(nums),[-1,-1,-1,0])[-1]
 
-
 class Solution:
     def countSubarrays(self, nums: List[int], minK: int, maxK: int) -> int:
         return (r:=0,a:=(b:=(c:=-1)),[(not minK<=x<=maxK and (c:=i),x==minK and (a:=i),x==maxK and (b:=i),r:=r+max(0,min(a,b)-c)) for i,x in enumerate(nums)],r)[3]
-
 
 class Solution:
     def countSubarrays(self, nums: List[int], minK: int, maxK: int) -> int:

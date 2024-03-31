@@ -38,6 +38,10 @@ class Solution:
     def countSubarrays(self, v: List[int], p: int, q: int) -> int:
         a=b=c=-1;return sum((x-p or(a:=i),x-q or(b:=i),p<=x<=q or(c:=i),max(0,min(a,b)-c))[3]for i,x in enumerate(v))
 
+class Solution:
+    def countSubarrays(self, v: List[int], p: int, q: int) -> int:
+        a=b=c=i=-1;return sum(((i:=i+1),x-p or(a:=i),x-q or(b:=i),p<=x<=q or(c:=i),max(0,min(a,b)-c))[4]for x in v)
+
 test('''
 
 2444. Count Subarrays With Fixed Bounds

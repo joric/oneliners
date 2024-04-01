@@ -4,6 +4,14 @@ from lc import *
 
 class Solution:
     def lengthOfLastWord(self, s: str) -> int:
+        l=0;any((l:=l+(c!=' ')) and c==' ' for c in s[::-1]);return l
+
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
+        return len(re.search(r'(\w+)\s*$',s).group(1))
+
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
         return len(s.split()[-1])
 
 test('''

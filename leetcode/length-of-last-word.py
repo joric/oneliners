@@ -50,4 +50,3 @@ Accepted
 Submissions
 3,469,224
 ''')
-

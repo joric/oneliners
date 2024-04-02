@@ -14,6 +14,12 @@ class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
         return len({*zip(s,t)})==len({*s})==len({*t})
 
+# https://leetcode.com/problems/isomorphic-strings/discuss/295802/1-line-python
+
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        return[*map(s.index,s)]==[*map(t.index,t)]
+
 test('''
 
 205. Isomorphic Strings

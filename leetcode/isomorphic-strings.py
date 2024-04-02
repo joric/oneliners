@@ -24,6 +24,10 @@ class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
         return[*map(s.index,s)]==[*map(t.index,t)]
 
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        return[*map(s.find,s)]==[*map(t.find,t)]
+
 test('''
 205. Isomorphic Strings
 Easy

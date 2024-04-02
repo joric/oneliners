@@ -18,6 +18,10 @@ class Solution:
 
 class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
+        return eq(*[[*map(x.index,x)]for x in(s,t)])
+
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
         return[*map(s.index,s)]==[*map(t.index,t)]
 
 test('''

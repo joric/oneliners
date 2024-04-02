@@ -21,7 +21,6 @@ class Solution:
         return[*map(s.index,s)]==[*map(t.index,t)]
 
 test('''
-
 205. Isomorphic Strings
 Easy
 
@@ -64,6 +63,4 @@ Accepted
 835,963
 Submissions
 1,951,241
-
 ''')
-

@@ -66,7 +66,7 @@ class Solution:
 
 class Solution:
     def sampleStats(self, c: List[int]) -> List[float]:
-        a,b,m,f,s,n,v=inf,-inf,0,0,0,0,[]
+        a,b=inf,-inf;m=f=s=n=0;v=[]
         for i,x in enumerate(c):
             if x>0: 
                 a = min(a,i)
@@ -81,7 +81,7 @@ class Solution:
 
 class Solution:
     def sampleStats(self, c: List[int]) -> List[float]:
-        a,b,m,f,s,n,v=float('+inf'),float('-inf'),0,0,0,0,[]
+        a,b=inf,-inf;m=f=s=n=0;v=[]
         for i,x in enumerate(c):
             x>0 and(a:=min(a,i),b:=max(b,i))
             x>f and(m:=i,f:=x)

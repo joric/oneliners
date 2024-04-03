@@ -92,7 +92,7 @@ class Solution:
 
 class Solution:
     def sampleStats(self, c: List[int]) -> List[float]:
-        a,b,r=inf,-inf,bisect_right;m=f=s=n=0;v=[(x>0 and(a:=min(a,i),b:=max(b,i)),x>f and(m:=i,f:=x),s:=s+x*i)and(n:=n+x)for i,x in enumerate(c)];return[a,b,s/n,(r(v,(n-1)//2)+r(v,n//2))/2,m]
+        a,b,r=inf,-inf,bisect_right;m=f=s=n=0;v=[(x>0 and(a:=min(a,i),b:=max(b,i)),x>f and(m:=i,f:=x),s:=s+x*i)and(n:=n+x)for i,x in enumerate(c)];return a,b,s/n,(r(v,(n-1)//2)+r(v,n//2))/2,m
 
 test('''
 1093. Statistics from a Large Sample

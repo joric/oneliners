@@ -6,7 +6,15 @@ class Solution:
     def maxDepth(self, s: str) -> int:
         return max(accumulate(filter(None,map({'(':1,')':-1}.get,s))),default=0)
 
+class Solution:
+    def maxDepth(self, s: str) -> int:
+        return max(accumulate(map(Counter({'(':1,')':-1}).__getitem__,s)))
+
 # https://leetcode.com/problems/maximum-nesting-depth-of-the-parentheses/discuss/4972201/One-Line-Solution
+
+class Solution:
+    def maxDepth(self, s: str) -> int:
+        return max(accumulate({'(':1,')':-1}.get(c,0)for c in s))
 
 class Solution:
     def maxDepth(self, s: str) -> int:

@@ -14,6 +14,10 @@ class Solution:
 
 class Solution:
     def maxDepth(self, s: str) -> int:
+        d=0;return max((d:=d+round(sin(')('.find(c)*2-1)))for c in s)
+
+class Solution:
+    def maxDepth(self, s: str) -> int:
         return max(accumulate({'(':1,')':-1}.get(c,0)for c in s))
 
 class Solution:
@@ -27,6 +31,10 @@ class Solution:
 class Solution:
     def maxDepth(self, s: str) -> int:
         return max(accumulate((c=='(')-(c==')')for c in s))
+
+class Solution:
+    def maxDepth(self, s: str) -> int:
+        d=0;return max((d:=d+(c=='(')-(c==')'))for c in s)
 
 class Solution:
     def maxDepth(self, s: str) -> int:

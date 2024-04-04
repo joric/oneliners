@@ -18,6 +18,14 @@ class Solution:
 
 class Solution:
     def maxDepth(self, s: str) -> int:
+        return max(accumulate((1,-1,0)['()'.find(c)]for c in s))
+
+class Solution:
+    def maxDepth(self, s: str) -> int:
+        return max(accumulate((-1,1,0)[')('.find(c)]for c in s))
+
+class Solution:
+    def maxDepth(self, s: str) -> int:
         return max(accumulate((c=='(')-(c==')')for c in s))
 
 class Solution:

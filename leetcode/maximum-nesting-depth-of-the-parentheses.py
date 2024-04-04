@@ -10,6 +10,16 @@ class Solution:
     def maxDepth(self, s: str) -> int:
         return max(accumulate(map(Counter({'(':1,')':-1}).__getitem__,s)))
 
+# regexp
+
+class Solution:
+    def maxDepth(self, s: str) -> int:
+        d = 0
+        while '(' in s:
+            s = re.sub('\([^()]*\)','',s)
+            d += 1
+        return d
+
 # https://leetcode.com/problems/maximum-nesting-depth-of-the-parentheses/discuss/4972201/One-Line-Solution
 
 class Solution:

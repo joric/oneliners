@@ -34,7 +34,7 @@ class Solution:
 
 class Solution:
     def maxDepth(self, s: str) -> int:
-        d=0;return max((d:=d+(c=='(')-(c==')'))for c in s)
+        d=0;return max(d:=d+('()'.find(c)+2)%3-1for c in s)
 
 class Solution:
     def maxDepth(self, s: str) -> int:

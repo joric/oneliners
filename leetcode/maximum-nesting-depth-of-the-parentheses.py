@@ -1,8 +1,26 @@
 from lc import *
 
+# https://leetcode.com/problems/maximum-nesting-depth-of-the-parentheses/
+
 class Solution:
     def maxDepth(self, s: str) -> int:
-        return max(accumulate(filter(None, map({"(": 1, ")": -1}.get, s))), default=0)
+        return max(accumulate(filter(None,map({'(':1,')':-1}.get,s))),default=0)
+
+# https://leetcode.com/problems/maximum-nesting-depth-of-the-parentheses/discuss/4969603/One-line-solution
+
+class Solution:
+    def maxDepth(self, s: str) -> int:
+        return max(accumulate(s,lambda b,c:b+(c=='(')-(c==')'),initial=0))
+
+# https://leetcode.com/problems/maximum-nesting-depth-of-the-parentheses/discuss/4972201/One-Line-Solution
+
+class Solution:
+    def maxDepth(self, s: str) -> int:
+        return max(accumulate((c=='(')-(c==')')for c in s))
+
+class Solution:
+    def maxDepth(self, s: str) -> int:
+        t=0;return max((t:=t+(c=='(')-(c==')'))for c in s)
 
 test('''
 1614. Maximum Nesting Depth of the Parentheses

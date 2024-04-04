@@ -20,7 +20,7 @@ class Solution:
 
 class Solution:
     def maxDepth(self, s: str) -> int:
-        t=0;return max((t:=t+(c=='(')-(c==')'))for c in s)
+        d=0;return max((d:=d+(c=='(')-(c==')'))for c in s)
 
 test('''
 1614. Maximum Nesting Depth of the Parentheses

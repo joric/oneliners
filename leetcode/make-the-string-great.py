@@ -22,6 +22,10 @@ class Solution:
 
 # updated 2024-04-05
 
+class Solution:
+    def makeGood(self, s: str) -> str:
+        q=[];[q and q[-1].swapcase()==c and q.pop()or q.append(c)for c in s];return''.join(q)
+
 # https://leetcode.com/problems/make-the-string-great/discuss/4978386/Python-3-regex
 # see https://stackoverflow.com/questions/53626566/regex-backreference-to-match-opposite-case
 
@@ -35,15 +39,15 @@ class Solution:
     def makeGood(self, s: str) -> str:
         return self.makeGood(s.replace(m.group(0),''))if(m:=re.search(r'(.)(?!\1)(?i:\1)',s))else s
 
-class Solution:
-    def makeGood(self, s: str) -> str:
-        q=[];[q and q[-1].swapcase()==c and q.pop()or q.append(c)for c in s];return''.join(q)
-
 # https://leetcode.com/problems/make-the-string-great/discuss/4977499/One-Line-Solution
 
 class Solution:
     def makeGood(self, s: str) -> str:
         return reduce(lambda q,c:q[:-1]if q and q[-1]==c.swapcase()else q+c,s)
+
+class Solution:
+    def makeGood(self, s: str) -> str:
+        return reduce(lambda q,c:q[:-1]if q[-1:]==c.swapcase()else q+c,s)
 
 test('''
 1544. Make The String Great

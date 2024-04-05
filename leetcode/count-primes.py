@@ -1,5 +1,21 @@
 from lc import *
 
+# based on this https://stackoverflow.com/questions/10639861/python-prime-generator-in-one-line
+# also see https://blog.finxter.com/10-python-one-liners/
+# does not work (MLE)
+
+class Solution:
+    def countPrimes(self, n):
+        return len(reduce(lambda r,x:r-set(range(x**2,n,x))if x in r else r,range(2,isqrt(n)+1),set(range(2,n))))
+
+class Solution:
+    def countPrimes(self, n):
+        return len(reduce(lambda r,x:r-set(range(x**2,n,x))if x in r else r,range(2,n),set(range(2,n))))
+
+class Solution:
+    def countPrimes(self, n):
+        g=range(2,n);return len(reduce(lambda r,x:r-set(range(x**2,n,x))if x in r else r,g,set(g)))
+
 # https://leetcode.com/problems/count-primes/discuss/111420/Python3-solution-using-Sieve-of-Eratosthenes-time-is-O(n)
 
 class Solution:

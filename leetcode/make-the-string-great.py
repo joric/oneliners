@@ -22,21 +22,18 @@ class Solution:
 
 # updated 2024-04-05
 
-# regex
-class Solution:
-    def makeGood(self, s: str) -> str:
-        g=ascii_lowercase,ascii_uppercase
-        p='|'.join(''.join(t) for k in [g,g[::-1]] for t in zip(*k))
-        return reduce(lambda s,_:re.sub(p,'',s),s,s)
-
 # https://leetcode.com/problems/make-the-string-great/discuss/4978386/Python-3-regex
 # see https://stackoverflow.com/questions/53626566/regex-backreference-to-match-opposite-case
+
 class Solution:
     def makeGood(self, s: str) -> str:
-        while (m:=re.search(r'(?=(.))(?=.(?!\1)(?i:\1))',s)):
-            c = m.group(1)
-            s = s.replace(c+c.swapcase(),'')
+        while (m:=re.search(r'(.)(?!\1)(?i:\1)',s)):
+            s = s.replace(m.group(0),'')
         return s
+
+class Solution:
+    def makeGood(self, s: str) -> str:
+        all((m:=re.search(r'(.)(?!\1)(?i:\1)',s))and(s:=s.replace(m.group(0),''))for _ in s);return s
 
 class Solution:
     def makeGood(self, s: str) -> str:

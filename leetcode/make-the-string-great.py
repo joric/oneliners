@@ -39,6 +39,12 @@ class Solution:
     def makeGood(self, s: str) -> str:
         q=[];[q and q[-1].swapcase()==c and q.pop()or q.append(c)for c in s];return''.join(q)
 
+# https://leetcode.com/problems/make-the-string-great/discuss/4977499/One-Line-Solution
+
+class Solution:
+    def makeGood(self, s: str) -> str:
+        return reduce(lambda q,c:q[:-1] if q and q[-1]==c.swapcase() else q+c,s)
+
 test('''
 1544. Make The String Great
 Easy

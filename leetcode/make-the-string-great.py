@@ -22,6 +22,13 @@ class Solution:
 
 # updated 2024-04-05
 
+# regex
+class Solution:
+    def makeGood(self, s: str) -> str:
+        g=ascii_lowercase,ascii_uppercase
+        p='|'.join(''.join(t) for k in [g,g[::-1]] for t in zip(*k))
+        return reduce(lambda s,_:re.sub(p,'',s),s,s)
+
 class Solution:
     def makeGood(self, s: str) -> str:
         q=[];[q and q[-1].swapcase()==c and q.pop()or q.append(c)for c in s];return''.join(q)

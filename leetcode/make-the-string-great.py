@@ -33,11 +33,12 @@ class Solution:
 
 class Solution:
     def makeGood(self, s: str) -> str:
-        all((m:=re.search(r'(.)(?!\1)(?i:\1)',s))and(s:=s.replace(m.group(0),''))for _ in s);return s
+        return self.makeGood(s.replace(m.group(0),''))if(m:=re.search(r'(.)(?!\1)(?i:\1)',s))else s
 
 class Solution:
     def makeGood(self, s: str) -> str:
         q=[];[q and q[-1].swapcase()==c and q.pop()or q.append(c)for c in s];return''.join(q)
+
 
 test('''
 1544. Make The String Great

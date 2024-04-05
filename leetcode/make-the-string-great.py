@@ -27,7 +27,6 @@ class Solution:
         q=[];[q and q[-1].swapcase()==c and q.pop()or q.append(c)for c in s];return''.join(q)
 
 # https://leetcode.com/problems/make-the-string-great/discuss/4978386/Python-3-regex
-# see https://stackoverflow.com/questions/53626566/regex-backreference-to-match-opposite-case
 
 class Solution:
     def makeGood(self, s: str) -> str:

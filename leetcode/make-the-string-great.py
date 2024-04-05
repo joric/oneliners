@@ -26,18 +26,6 @@ class Solution:
     def makeGood(self, s: str) -> str:
         q=[];[q and q[-1].swapcase()==c and q.pop()or q.append(c)for c in s];return''.join(q)
 
-# https://leetcode.com/problems/make-the-string-great/discuss/4978386/Python-3-regex
-
-class Solution:
-    def makeGood(self, s: str) -> str:
-        while (m:=re.search(r'(.)(?!\1)(?i:\1)',s)):
-            s = s.replace(m.group(0),'')
-        return s
-
-class Solution:
-    def makeGood(self, s: str) -> str:
-        return self.makeGood(s.replace(m.group(0),''))if(m:=re.search(r'(.)(?!\1)(?i:\1)',s))else s
-
 # https://leetcode.com/problems/make-the-string-great/discuss/4977499/One-Line-Solution
 
 class Solution:
@@ -47,6 +35,32 @@ class Solution:
 class Solution:
     def makeGood(self, s: str) -> str:
         return reduce(lambda q,c:q[:-1]if q[-1:]==c.swapcase()else q+c,s)
+
+# https://leetcode.com/problems/make-the-string-great/discuss/4978386/Python-3-regex
+
+class Solution:
+    def makeGood(self, s: str) -> str:
+        g=ascii_lowercase,ascii_uppercase
+        p='|'.join(''.join(t) for k in [g,g[::-1]] for t in zip(*k))
+        return reduce(lambda s,_:re.sub(p,'',s),s,s)
+
+class Solution:
+    def makeGood(self, s: str) -> str:
+        while m:=re.search(r'(.)(?!\1)(?i:\1)',s):
+            s = s.replace(m.group(0),'')
+        return s
+
+class Solution:
+    def makeGood(self, s: str) -> str:
+        return self.makeGood(s.replace(m.group(0),''))if(m:=re.search(r'(.)(?!\1)(?i:\1)',s))else s
+
+class Solution:
+    def makeGood(self, s: str) -> str:
+        return reduce(lambda s,_:re.sub(r'(.)(?!\1)(?i:\1)','',s),s,s)
+
+class Solution:
+    def makeGood(self, s: str) -> str:
+        [s:=re.sub(r'(.)(?!\1)(?i:\1)','',s)for _ in s];return s
 
 test('''
 1544. Make The String Great

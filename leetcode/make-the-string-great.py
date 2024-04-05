@@ -39,7 +39,6 @@ class Solution:
     def makeGood(self, s: str) -> str:
         q=[];[q and q[-1].swapcase()==c and q.pop()or q.append(c)for c in s];return''.join(q)
 
-
 test('''
 1544. Make The String Great
 Easy

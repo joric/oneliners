@@ -43,7 +43,7 @@ class Solution:
 
 class Solution:
     def makeGood(self, s: str) -> str:
-        return reduce(lambda q,c:q[:-1] if q and q[-1]==c.swapcase() else q+c,s)
+        return reduce(lambda q,c:q[:-1]if q and q[-1]==c.swapcase()else q+c,s)
 
 test('''
 1544. Make The String Great

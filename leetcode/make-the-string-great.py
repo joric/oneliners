@@ -29,12 +29,20 @@ class Solution:
         p='|'.join(''.join(t) for k in [g,g[::-1]] for t in zip(*k))
         return reduce(lambda s,_:re.sub(p,'',s),s,s)
 
+# https://leetcode.com/problems/make-the-string-great/discuss/4978386/Python-3-regex
+# see https://stackoverflow.com/questions/53626566/regex-backreference-to-match-opposite-case
+class Solution:
+    def makeGood(self, s: str) -> str:
+        while (m:=re.search(r'(?=(.))(?=.(?!\1)(?i:\1))',s)):
+            c = m.group(1)
+            s = s.replace(c+c.swapcase(),'')
+        return s
+
 class Solution:
     def makeGood(self, s: str) -> str:
         q=[];[q and q[-1].swapcase()==c and q.pop()or q.append(c)for c in s];return''.join(q)
 
 test('''
-
 1544. Make The String Great
 Easy
 
@@ -76,6 +84,11 @@ Example 3:
 Input: s = "s"
 Output: "s"
  
+
+Other examples:
+
+Input: s = "jeSsEJ"
+Output: ""
 
 Constraints:
 

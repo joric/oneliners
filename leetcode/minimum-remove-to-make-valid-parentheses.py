@@ -16,6 +16,28 @@ class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
         p,e=[],enumerate;[p.pop()if c==')'and p and s[p[-1]]=='('else c in'()'and p.append(i)for i,c in e(s)];return''.join(c for i,c in e(s)if i not in p)
 
+# https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/discuss/419466/Constant-Space-Solution
+
+class Solution:
+    def minRemoveToMakeValid(self, s: str) -> str:
+        i,j,k=0,s.count(')'),''
+        for c in s:
+            if c=='(':
+                if i==j:
+                    continue
+                i+=1
+            elif c==')':
+                j-=1
+                if i==0:
+                    continue
+                i-=1
+            k+=c
+        return k
+
+class Solution:
+    def minRemoveToMakeValid(self, s: str) -> str:
+        i,j,k=0,s.count(')'),'';all([i!=j and(i:=i+1,k:=k+c)if c=='('else(j:=j-1,i and(i:=i-1,k:=k+c))if c==')'else(k:=k+c)]for c in s);return k
+
 test('''
 1249. Minimum Remove to Make Valid Parentheses
 Medium

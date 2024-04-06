@@ -36,7 +36,7 @@ class Solution:
 
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
-        i,j,k=0,s.count(')'),'';all([i!=j and(i:=i+1,k:=k+c)if c=='('else(j:=j-1,i and(i:=i-1,k:=k+c))if c==')'else(k:=k+c)]for c in s);return k
+        i,j,k=0,s.count(')'),'';all([i-j and(i:=i+1,k:=k+c)if c=='('else(j:=j-1,i and(i:=i-1,k:=k+c))if c==')'else(k:=k+c)]for c in s);return k
 
 test('''
 1249. Minimum Remove to Make Valid Parentheses

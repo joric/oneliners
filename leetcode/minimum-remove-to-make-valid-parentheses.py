@@ -46,7 +46,7 @@ class Solution:
 
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
-        q=0;return''.join(''.join((q:=q+(c=='(')-(c==')'),c)[1]for c in s if')'!=c or q).rsplit('(',q))
+        q,j=0,''.join;return j(j((q:=q+(c=='(')-(c==')'),c)[1]for c in s if')'!=c or q).rsplit('(',q))
 
 test('''
 1249. Minimum Remove to Make Valid Parentheses

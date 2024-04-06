@@ -62,6 +62,10 @@ class Solution:
     def makeGood(self, s: str) -> str:
         [s:=re.sub(r'(.)(?!\1)(?i:\1)','',s)for _ in s];return s
 
+class Solution:
+    def makeGood(self, s: str) -> str:
+        return reduce(lambda s,_:re.sub(r'(.)(?!\1)(?i:\1)','',s),s,s)
+
 test('''
 1544. Make The String Great
 Easy

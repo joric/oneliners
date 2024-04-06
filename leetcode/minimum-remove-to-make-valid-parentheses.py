@@ -42,6 +42,12 @@ class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
         i,j=0,s.count(')');return''.join((t:=1,c=='('and(t:=i<j)and(i:=i+1),c==')'and(j:=j-1,(t:=i>0)and(i:=i-1)),c*t)[3]for c in s)
 
+# https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/discuss/4982331/one-line-solution
+
+class Solution:
+    def minRemoveToMakeValid(self, s: str) -> str:
+        q=0;return''.join(''.join((q:=q+(c=='(')-(c==')'),c)[1]for c in s if q or c!=')').rsplit('(',q))
+
 test('''
 1249. Minimum Remove to Make Valid Parentheses
 Medium

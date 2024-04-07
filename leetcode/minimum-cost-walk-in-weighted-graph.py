@@ -58,7 +58,7 @@ class Solution:
 
 class Solution:
     def minimumCost(self, n: int, e: List[List[int]], q: List[List[int]]) -> List[int]:
-        d,c,r={},[-1]*n,[];f=lambda u:u!=d[u]and setitem(d,u,f(d[u]))or d[u]if u in d else u;[(setitem(c,y:=f(v),c[y]&w),(x:=f(u))!=y and(setitem(c,y,c[y]&c[x]),setitem(d,x,y)))for u,v,w in e];return[0 if u==v else c[f(u)]if f(u)==f(v) else -1 for u,v in q]
+        d,c,r={},[-1]*n,[];f=lambda u:u!=d[u]and setitem(d,u,f(d[u]))or d[u]if u in d else u;[(setitem(c,y:=f(v),c[y]&w),(x:=f(u))!=y and(setitem(c,y,c[y]&c[x]),setitem(d,x,y)))for u,v,w in e];return[0 if u==v else c[f(u)]if f(u)==f(v)else-1 for u,v in q]
 
 test('''
 3108. Minimum Cost Walk in Weighted Graph

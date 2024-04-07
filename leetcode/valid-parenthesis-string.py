@@ -37,7 +37,7 @@ class Solution:
 
 class Solution:
     def checkValidString(self, s: str) -> bool:
-        return all(min(accumulate(2*(c!=r)-1for c in s))>=0and(s:=s[::-1])for r in')(')
+        return all(0<=min(accumulate(2*(c!=r)-1for c in s))and(s:=s[::-1])for r in')(')
 
 test('''
 678. Valid Parenthesis String

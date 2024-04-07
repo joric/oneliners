@@ -16,7 +16,7 @@ class Solution:
 
 class Solution:
     def minOperationsToMakeMedianK(self, a: List[int], k: int) -> int:
-        a.sort();return sum(max(0, k-a[~i])for i in range((len(a)+1)//2))+sum(max(0, a[i]-k)for i in range((len(a)+2)//2))
+        a.sort();return sum(max(0,k-a[~i])for i in range((len(a)+1)//2))+sum(max(0,a[i]-k)for i in range((len(a)+2)//2))
 
 test('''
 3107. Minimum Operations to Make Median of Array Equal to K

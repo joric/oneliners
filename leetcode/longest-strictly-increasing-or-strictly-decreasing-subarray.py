@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def longestMonotonicSubarray(self, a: List[int]) -> int:
-        i=d=1;return max(max(i:=i*(a[j]<a[j+1])+1,d:=d*(a[j]>a[j+1])+1) for j in range(len(a)-1))
+        i=d=1;return max(max(i:=i*(a[j]<a[j+1])+1,d:=d*(a[j]>a[j+1])+1)for j in range(len(a)-1))
 
 test('''
 3105. Longest Strictly Increasing or Strictly Decreasing Subarray

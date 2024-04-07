@@ -1,5 +1,6 @@
 from lc import *
 
+# Q1. https://leetcode.com/contest/weekly-contest-392
 # https://leetcode.com/problems/longest-strictly-increasing-or-strictly-decreasing-subarray/
 
 class Solution:

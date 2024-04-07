@@ -15,6 +15,10 @@ class Solution:
 
 class Solution:
     def checkValidString(self, s: str) -> bool:
+        i=j=0;all((i:=i+(c=='(')*2-1,j:=j+(c!=')')*2-1)and j>=0 and[i:=max(i,0)]for c in s);return i==0
+
+class Solution:
+    def checkValidString(self, s: str) -> bool:
         i=j=0
         for c in s:
             i=max(0,i+(c=='(')*2-1)
@@ -22,14 +26,14 @@ class Solution:
                 return 0
         return i<1
 
-# can't do next() because the stopiteration value is initialized first (uncoditional)
+# can't do next() because the StopIteration value is initialized first
 #class Solution:
 #    def checkValidString(self, s: str) -> bool:
 #        i=j=0;return next((0 for c in s if(i:=max(0,i+(c=='(')*2-1),(j:=j+(c!=')')*2-1)<0)[1]),i<1)
 
 class Solution:
     def checkValidString(self, s: str) -> bool:
-        i=j=0;all((i:=i+(c=='(')*2-1,j:=j+(c!=')')*2-1)and j>=0 and[i:=max(i,0)]for c in s);return i==0
+        f=lambda s,r,i=1:all((i:=i+(c!=r)*2-1)>0for c in s);return f(s,')')*f(s[::-1],'(')
 
 test('''
 678. Valid Parenthesis String

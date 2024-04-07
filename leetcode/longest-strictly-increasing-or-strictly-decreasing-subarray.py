@@ -5,6 +5,10 @@ from lc import *
 
 class Solution:
     def longestMonotonicSubarray(self, a: List[int]) -> int:
+        n=len(a);return max(j-i+1 for i in range(n)for j in range(i,n)if(c:=a[i:j+1])and len(set(c))==len(c)and(c==sorted(c)or c[::-1]==sorted(c)))
+
+class Solution:
+    def longestMonotonicSubarray(self, a: List[int]) -> int:
         i=d=1;return max(max(i:=i*(a[j]<a[j+1])+1,d:=d*(a[j]>a[j+1])+1)for j in range(len(a)-1))
 
 test('''

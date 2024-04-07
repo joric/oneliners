@@ -9,7 +9,7 @@ class Solution:
 
 class Solution:
     def longestMonotonicSubarray(self, a: List[int]) -> int:
-        i=d=1;return max(max(i:=i*(a[j]<a[j+1])+1,d:=d*(a[j]>a[j+1])+1)for j in range(len(a)-1))
+        i=d=1;return max((max(i:=i*(a[j]<a[j+1])+1,d:=d*(a[j]>a[j+1])+1)for j in range(len(a)-1)),default=1)
 
 test('''
 3105. Longest Strictly Increasing or Strictly Decreasing Subarray
@@ -68,7 +68,10 @@ The strictly decreasing subarrays of nums are [3], [2], [1], [3,2], [2,1], and [
 
 Hence, we return 3.
 
- 
+More examples:
+
+Input: nums = [1]
+Output: 1
 
 Constraints:
 

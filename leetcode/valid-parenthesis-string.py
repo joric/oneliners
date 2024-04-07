@@ -19,7 +19,7 @@ class Solution:
         for c in s:
             i=max(0,i+(c=='(')*2-1)
             if(j:=j+(c!=')')*2-1)<0:
-                return False
+                return 0
         return i<1
 
 # can't do next() because the stopiteration value is initialized first (uncoditional)

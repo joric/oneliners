@@ -25,7 +25,7 @@ class Solution:
     def getSmallestString(self, s: str, k: int) -> str:
         r = ''
         for c in map(ord,s):
-            m = min(c-97,123-c)
+            m = min(c-ord('a'),ord('z')-c+1)
             r += k<m and chr(c-k) or 'a'
             k -= min(k,m)
         return r

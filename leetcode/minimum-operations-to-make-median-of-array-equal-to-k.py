@@ -4,17 +4,6 @@ from lc import *
 # https://leetcode.com/problems/minimum-operations-to-make-median-of-array-equal-to-k/
 
 class Solution:
-    def minOperationsToMakeMedianK(self, nums: List[int], k: int) -> int:
-        nums.sort()
-        amt = (len(nums) + 1)//2
-        out = 0
-        for i in range(amt):
-            out += max(0, k - nums[~i])
-        for i in range((len(nums) + 2) // 2):
-            out += max(0, nums[i] - k)
-        return out
-
-class Solution:
     def minOperationsToMakeMedianK(self, a: List[int], k: int) -> int:
         a.sort();return sum(max(0,k-a[~i])for i in range((len(a)+1)//2))+sum(max(0,a[i]-k)for i in range((len(a)+2)//2))
 

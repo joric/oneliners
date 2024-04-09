@@ -7,54 +7,32 @@ from lc import *
 
 class Solution:
     def minimumCost(self, n: int, e: List[List[int]], q: List[List[int]]) -> List[int]:
-        t=''.join(map(chr,range(n)))
-        c = {}
-        r = []
+        t,c,r=''.join(map(chr,range(n))),{},[]
         for u,v,w in e:
             t = t.replace(t[u],t[v])
-        for u,v,w in e:
             if u not in c:
                 c[u] = w
             c[u] &= w
-        for u,v in q:
-            print(u,v,c.get(u,inf))
-            if u==v:
-                r.append(0)
-            else:
-                if t[u]==t[v]:
-                    r.append(c[u])
-                else:
-                    r.append(-1)
-        return r
+        return [0 if u==v else c[u]if t[u]==t[v]else -1 for u,v in q]
 
 # https://leetcode.com/problems/minimum-cost-walk-in-weighted-graph/discuss/4988824/Python-(Simple-Union-Find)
 
 class Solution:
     def minimumCost(self, n: int, e: List[List[int]], q: List[List[int]]) -> List[int]:
         d,c,r = {},[-1]*n,[]
-        def find(u):
-            if u not in d:
-                return u
-            else:
-                if d[u] != u:
-                    d[u] = find(d[u])
+        def f(u):
+            if u in d:
+                if d[u]!=u:
+                    d[u] = f(d[u])
                 return d[u]
+            return u
         for u,v,w in e:
-            x,y = find(u),find(v)
+            x,y = f(u),f(v)
             c[y] = c[y]&w
             if x != y:
                 c[y] = c[y]&c[x]
                 d[x] = y
-        for u,v in q:
-            if u==v:
-                r.append(0)
-            else:
-                u,v = find(u), find(v)
-                if u!=v:
-                    r.append(-1)
-                else:
-                    r.append(c[find(u)])
-        return r 
+        return [0 if u==v else c[f(u)]if f(u)==f(v)else-1 for u,v in q]
 
 class Solution:
     def minimumCost(self, n: int, e: List[List[int]], q: List[List[int]]) -> List[int]:

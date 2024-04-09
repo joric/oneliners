@@ -1,20 +1,6 @@
 from lc import *
 
 # Q4. https://leetcode.com/contest/weekly-contest-392
-# https://leetcode.com/problems/minimum-cost-walk-in-weighted-graph
-
-# unicode find (doesn't work)
-
-class Solution:
-    def minimumCost(self, n: int, e: List[List[int]], q: List[List[int]]) -> List[int]:
-        t,c,r=''.join(map(chr,range(n))),{},[]
-        for u,v,w in e:
-            t = t.replace(t[u],t[v])
-            if u not in c:
-                c[u] = w
-            c[u] &= w
-        return [0 if u==v else c[u]if t[u]==t[v]else -1 for u,v in q]
-
 # https://leetcode.com/problems/minimum-cost-walk-in-weighted-graph/discuss/4988824/Python-(Simple-Union-Find)
 
 class Solution:
@@ -36,7 +22,23 @@ class Solution:
 
 class Solution:
     def minimumCost(self, n: int, e: List[List[int]], q: List[List[int]]) -> List[int]:
-        d,c,r={},[-1]*n,[];f=lambda u:u!=d[u]and setitem(d,u,f(d[u]))or d[u]if u in d else u;[(setitem(c,y:=f(v),c[y]&w),(x:=f(u))!=y and(setitem(c,y,c[y]&c[x]),setitem(d,x,y)))for u,v,w in e];return[0 if u==v else c[f(u)]if f(u)==f(v)else-1 for u,v in q]
+        d,c={},[-1]*n;f=lambda u:u!=d[u]and setitem(d,u,f(d[u]))or d[u]if u in d else u;[(setitem(c,y:=f(v),c[y]&w),(x:=f(u))!=y and(setitem(c,y,c[y]&c[x]),setitem(d,x,y)))for u,v,w in e];return[0 if u==v else c[f(u)]if f(u)==f(v)else-1 for u,v in q]
+
+# unicode find
+# https://leetcode.com/problems/minimum-cost-walk-in-weighted-graph/discuss/5001007/python-3-one-line-unicode-find
+
+class Solution:
+    def minimumCost(self, n: int, e: List[List[int]], q: List[List[int]]) -> List[int]:
+        t,c=''.join(map(chr,range(n))),{}
+        for u,v,w in e:
+            t = t.replace(t[u],t[v])
+        for u,v,w in e:
+            c[t[u]] = c[t[u]]&w if t[u] in c else w
+        return [0 if u==v else c[t[u]]if t[u]==t[v]else -1 for u,v in q]
+
+class Solution:
+    def minimumCost(self, n: int, e: List[List[int]], q: List[List[int]]) -> List[int]:
+        t,c=''.join(map(chr,range(n))),{};all(t:=t.replace(t[u],t[v])for u,v,w in e);any(setitem(c,t[u],c[t[u]]&w if t[u]in c else w)for u,v,w in e);return[(t[u]!=t[v]and-1or c[t[u]],0)[u==v]for u,v in q]
 
 test('''
 3108. Minimum Cost Walk in Weighted Graph
@@ -87,7 +89,14 @@ Explanation:
 
 To achieve the cost of 0 in the first query, we need to move on the following edges: 1->2 (weight 1), 2->1 (weight 6), 1->2 (weight 1).
 
- 
+Other examples:
+
+Input: n = 4, edges = [[2,3,1],[1,3,5],[1,2,6],[3,0,7],[1,3,7],[0,2,5],[0,1,7]], query = [[2,1],[1,2],[0,1],[2,0],[0,2],[1,2],[3,2],[0,3],[2,1],[1,2]]
+Output: [0,0,0,0,0,0,0,0,0,0]
+
+
+Input: n = 8, edges = [[3,6,6],[6,1,0],[1,3,1]], query = [[5,4],[7,3]]
+Output: [-1,-1]
 
 Constraints:
 

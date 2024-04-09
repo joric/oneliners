@@ -1,29 +1,6 @@
 from lc import *
 
 # Q4. https://leetcode.com/contest/weekly-contest-392
-# https://leetcode.com/problems/minimum-cost-walk-in-weighted-graph/discuss/4988824/Python-(Simple-Union-Find)
-
-class Solution:
-    def minimumCost(self, n: int, e: List[List[int]], q: List[List[int]]) -> List[int]:
-        d,c,r = {},[-1]*n,[]
-        def f(u):
-            if u in d:
-                if d[u]!=u:
-                    d[u] = f(d[u])
-                return d[u]
-            return u
-        for u,v,w in e:
-            x,y = f(u),f(v)
-            c[y] = c[y]&w
-            if x != y:
-                c[y] = c[y]&c[x]
-                d[x] = y
-        return [0 if u==v else c[f(u)]if f(u)==f(v)else-1 for u,v in q]
-
-class Solution:
-    def minimumCost(self, n: int, e: List[List[int]], q: List[List[int]]) -> List[int]:
-        d,c={},[-1]*n;f=lambda u:u!=d[u]and setitem(d,u,f(d[u]))or d[u]if u in d else u;[(setitem(c,y:=f(v),c[y]&w),(x:=f(u))!=y and(setitem(c,y,c[y]&c[x]),setitem(d,x,y)))for u,v,w in e];return[0 if u==v else c[f(u)]if f(u)==f(v)else-1 for u,v in q]
-
 # unicode find
 # https://leetcode.com/problems/minimum-cost-walk-in-weighted-graph/discuss/5001007/python-3-one-line-unicode-find
 

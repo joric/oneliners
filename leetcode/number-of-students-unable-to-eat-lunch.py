@@ -1,6 +1,10 @@
 from lc import *
 
-# https://leetcode.com/problems/number-of-students-unable-to-eat-lunch
+# https://leetcode.com/problems/number-of-students-unable-to-eat-lunch/discuss/4992469/one-line-solution
+
+class Solution:
+    def countStudents(self, s: List[int], t: List[int]) -> int:
+        return next((len(s) for q in t if q not in s or s.remove(q)),0)
 
 class Solution:
     def countStudents(self, s: List[int], t: List[int]) -> int:

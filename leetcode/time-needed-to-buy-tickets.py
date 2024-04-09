@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def timeRequiredToBuy(self, t: List[int], k: int) -> int:
-            return sum(min(t[k]-(i>k),x)for i,x in enumerate(t))
+        return sum(min(t[k]-(i>k),x)for i,x in enumerate(t))
 
 class Solution:
     def timeRequiredToBuy(self, t: List[int], k: int) -> int:

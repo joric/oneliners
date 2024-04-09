@@ -33,12 +33,12 @@ class Solution:
         for u,v,w in e:
             t = t.replace(t[u],t[v])
         for u,v,w in e:
-            c[t[u]] = c[t[u]]&w if t[u] in c else w
+            c[t[u]] = c.get(t[u],w)&w
         return [0 if u==v else c[t[u]] if t[u]==t[v] else -1 for u,v in q]
 
 class Solution:
     def minimumCost(self, n: int, e: List[List[int]], q: List[List[int]]) -> List[int]:
-        t,c=''.join(map(chr,range(n))),{};all(t:=t.replace(t[u],t[v])for u,v,w in e);any(setitem(c,t[u],c[t[u]]&w if t[u]in c else w)for u,v,w in e);return[(t[u]!=t[v]and-1or c[t[u]],0)[u==v]for u,v in q]
+        t,c=''.join(map(chr,range(n))),{};all(t:=t.replace(t[u],t[v])for u,v,w in e);any(setitem(c,t[u],c.get(t[u],w)&w)for u,v,w in e);return[(t[u]!=t[v]and-1or c[t[u]],0)[u==v]for u,v in q]
 
 test('''
 3108. Minimum Cost Walk in Weighted Graph

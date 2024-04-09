@@ -1,7 +1,7 @@
 from lc import *
 
 # Q4. https://leetcode.com/contest/weekly-contest-392
-# unicode find
+# unicode find, see https://leetcode.com/problems/redundant-connection/discuss/108002/Unicode-Find-(5-short-lines)
 # https://leetcode.com/problems/minimum-cost-walk-in-weighted-graph/discuss/5001007/python-3-one-line-unicode-find
 
 class Solution:

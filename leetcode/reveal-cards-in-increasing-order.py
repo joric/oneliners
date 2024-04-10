@@ -4,7 +4,19 @@ from lc import *
 
 class Solution:
     def deckRevealedIncreasing(self, d: List[int]) -> List[int]:
-        q=deque();[(q.rotate(),q.appendleft(x))for x in sorted(d)[::-1]];return q
+        q=deque()
+        for x in sorted(d)[::-1]:
+            q.rotate()
+            q.appendleft(x)
+        return q
+
+class Solution:
+    def deckRevealedIncreasing(self, d: List[int]) -> List[int]:
+        return reduce(lambda q,x:q.rotate()or q.appendleft(x)or q,sorted(d)[::-1],deque())
+
+class Solution:
+    def deckRevealedIncreasing(self, d: List[int]) -> List[int]:
+        q=deque();[q.rotate()or q.appendleft(x)for x in sorted(d)[::-1]];return q
 
 test('''
 950. Reveal Cards In Increasing Order

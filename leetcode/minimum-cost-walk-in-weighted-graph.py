@@ -1,7 +1,7 @@
 from lc import *
 
 # Q4. https://leetcode.com/contest/weekly-contest-392
-# https://leetcode.com/problems/minimum-cost-walk-in-weighted-graph/discuss/5001007/python-3-one-line-unicode-find
+# https://leetcode.com/problems/minimum-cost-walk-in-weighted-graph/discuss/5001007/python-3-unicode-find
 # unicode find
 
 class Solution:

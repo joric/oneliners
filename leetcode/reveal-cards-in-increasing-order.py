@@ -1,5 +1,16 @@
 from lc import *
 
+# https://leetcode.com/problems/reveal-cards-in-increasing-order/discuss/4795084/Python-(Simple-Maths)
+
+class Solution:
+    def deckRevealedIncreasing(self, d: List[int]) -> List[int]:
+        d.sort()
+        q = deque([d.pop()])
+        while d:
+            q.appendleft(q.pop())
+            q.appendleft(d.pop())
+        return q
+
 # https://leetcode.com/problems/reveal-cards-in-increasing-order/discuss/200515/JavaC%2B%2BPython-Simulate-the-Reversed-Process
 
 class Solution:

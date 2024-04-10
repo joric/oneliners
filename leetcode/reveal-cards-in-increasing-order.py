@@ -29,6 +29,10 @@ class Solution:
     def deckRevealedIncreasing(self, d: List[int]) -> List[int]:
         q=deque();[q.rotate()or q.appendleft(x)for x in sorted(d)[::-1]];return q
 
+class Solution:
+    def deckRevealedIncreasing(self, d: List[int]) -> List[int]:
+        q=deque();[q.rotate()or q.insert(0,x)for x in sorted(d)[::-1]];return q
+
 test('''
 950. Reveal Cards In Increasing Order
 Medium

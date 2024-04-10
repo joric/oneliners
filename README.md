@@ -1181,7 +1181,7 @@ Notes:
 * You can check for set membership with `{x}&s` instead of `x in s` (1 character shorter).
 * An expression like `x&(x-1)==0` determines if unsigned `x` is power of 2 or 0 (Kernighan, resets rightmost bit).
 * Very often `x==0` can be replaced with `x<1` (1 character shorter).
-* Generator expansion `[*g]` can use a traling comma `*g,` in an initialization section (1 character shorter).
+* Generator expansion `[*g]` can use a traling comma `*g,` in the initialization section (1 character shorter).
 
 ## References
 

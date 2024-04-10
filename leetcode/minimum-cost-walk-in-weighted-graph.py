@@ -8,7 +8,7 @@ class Solution:
     def minimumCost(self, n: int, edges: List[List[int]], query: List[List[int]]) -> List[int]:
         t,c = ''.join(map(chr,range(n))),{}
         for u,v,_ in edges:
-            t = t.replace(t[u], t[v])
+            t = t.replace(t[u],t[v])
         for u,v,w in edges:
             c[t[u]] = c.get(t[u],w) & w
         return [0 if u==v else c[t[u]] if t[u]==t[v] else -1 for u,v in query]

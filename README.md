@@ -401,7 +401,7 @@ UndergroundSystem=type('',(),{'h':{},'m':{},
 ### While loops
 
 While loops are not very oneliner-friendly. You can use  `count()` generator with `next()`.
-Note that `next` default parameter gets initialized first so you can use it for the startup code.
+Note that `next` default parameter gets initialized first so you can use it for the startup code (but can't use to calculate result).
 
 * https://leetcode.com/problems/two-sum
 

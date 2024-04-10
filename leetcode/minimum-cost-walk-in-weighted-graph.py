@@ -5,13 +5,13 @@ from lc import *
 # https://leetcode.com/problems/minimum-cost-walk-in-weighted-graph/discuss/5001007/python-3-one-line-unicode-find
 
 class Solution:
-    def minimumCost(self, n: int, e: List[List[int]], q: List[List[int]]) -> List[int]:
-        t,c=''.join(map(chr,range(n))),{}
-        for u,v,w in e:
-            t = t.replace(t[u],t[v])
-        for u,v,w in e:
-            c[t[u]] = c.get(t[u],w)&w
-        return [0 if u==v else c[t[u]] if t[u]==t[v] else -1 for u,v in q]
+    def minimumCost(self, n: int, edges: List[List[int]], query: List[List[int]]) -> List[int]:
+        t,c = ''.join(map(chr,range(n))),{}
+        for u,v,_ in edges:
+            t = t.replace(t[u], t[v])
+        for u,v,w in edges:
+            c[t[u]] = c.get(t[u],w) & w
+        return [0 if u==v else c[t[u]] if t[u]==t[v] else -1 for u,v in query]
 
 class Solution:
     def minimumCost(self, n: int, e: List[List[int]], q: List[List[int]]) -> List[int]:

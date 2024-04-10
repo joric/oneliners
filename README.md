@@ -725,6 +725,19 @@ class Solution:
 
 ```
 
+Another example (Q4 at at https://leetcode.com/contest/weekly-contest-392):
+
+```python
+class Solution:
+    def minimumCost(self, n: int, edges: List[List[int]], query: List[List[int]]) -> List[int]:
+        t,c = ''.join(map(chr,range(n))),{}
+        for u,v,w in edges:
+            t = t.replace(t[u],t[v])
+        for u,v,w in edges:
+            c[t[u]] = c.get(t[u],w)&w
+        return [0 if u==v else c[t[u]] if t[u]==t[v] else -1 for u,v in query]
+```
+
 ### Cache
 
 Cache decorator, `@lru_cache` or `@cache` (since Python 3.9) may be used as an inline function `cache(lambda ...)`.

@@ -740,8 +740,7 @@ class Solution:
 class Solution:
     def minimumCost(self, n: int, e: List[List[int]], q: List[List[int]]) -> List[int]:
         t,c=''.join(map(chr,range(n))),{};all(t:=t.replace(t[u],t[v])for u,v,_ in e);
-        [setitem(c,t[u],c.get(t[u],w)&w)for u,v,w in e];
-        return[u!=v and t[u]!=t[v]and-1or c[t[u]]for u,v in q]
+        [setitem(c,t[u],c.get(t[u],w)&w)for u,v,w in e];return[u!=v and t[u]!=t[v]and-1or c[t[u]]for u,v in q]
 ```
 
 ### Cache

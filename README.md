@@ -1179,7 +1179,7 @@ Notes:
 * You can convert bool with `~~()` instead of `int()` (as in js) or prepend with a single `+` (5 characters shorter).
 * You can subtract 1 or replace `not` operator with bitwise negation `~-` to save on space (1-5 characters shorter).
 * You can check for set membership with `{x}&s` instead of `x in s` (1 character shorter).
-* An expression like `x&(x-1)==0` determines if unsigned `x` is power of 2 or 0 (Kernighan's trick).
+* An expression like `x&(x-1)==0` determines if unsigned `x` is power of 2 or 0 (Kernighan, resets rightmost bit).
 * Very often `x==0` can be replaced with `x<1` (1 character shorter).
 * You can replace generator expansion `[*g]` with a tuple, using a traling comma `*g,` (1 character shorter).
 

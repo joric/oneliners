@@ -18,22 +18,6 @@ class Solution:
         return comb(m+n-2, n-1)
 ```
 
-* https://leetcode.com/problems/number-of-sets-of-k-non-overlapping-line-segments
-
-```python
-class Solution:
-    def numberOfSets(self, n: int, k: int) -> int:
-        return comb(n+k-1, k*2) % (10**9+7)
-```
-
-* https://leetcode.com/problems/pascals-triangle
-
-```python
-class Solution:
-    def generate(self, n: int) -> List[List[int]]:
-        return [[comb(i,x) for x in range(i+1)] for i in range(n)]
-```
-
 You can also use `__import__('module').func` to import from unlisted modules (i.e. numpy). Example:
 
 * https://leetcode.com/problems/minimize-deviation-in-array

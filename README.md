@@ -83,7 +83,7 @@ More undocumented functions:
 * ListNode: `_has_cycle`, `_list_node_to_array`, `_array_to_list_node`.
 * TreeNode: `_has_cycle`, `_tree_node_to_array`, `_array_to_tree_node`.
 
-Also Leetcode stores results in the `user.out` file:
+Also Leetcode stores results in the `user.out` file, see https://leetcode.com/discuss/feedback/4643730/a-python-solution-that-contain-malicious-payload-in-your-website
 
 * https://leetcode.com/problems/two-sum 
 
@@ -95,9 +95,6 @@ class Solution(object):
         open('user.out', 'wb').write(decompress(b64decode('eJyLNtRRMIjlijbSUTAEUggekqAxiqCJjoIRhg\
 ZjFEGESgMMJVDtphDKGK7SGKFy2FKwAAFyTRGilkCgowAkLIAcMx0IaQmSN9IxAqsz0zE0B9IGOsDABQCpFVmV'))),exit(0)
 ```
-
-Taken from https://leetcode.com/discuss/feedback/4643730/a-python-solution-that-contain-malicious-payload-in-your-website
-(tests were updated since then, so this solution is not accepted anymore).
 
 ### Lambdas
 

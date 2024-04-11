@@ -113,7 +113,7 @@ ZjFEGESgMMJVDtphDKGK7SGKFy2FKwAAFyTRGilkCgowAkLIAcMx0IaQmSN9IxAqsz0zE0B9IGOsDABQ
 ```
 
 Taken from https://leetcode.com/discuss/feedback/4643730/a-python-solution-that-contain-malicious-payload-in-your-website
-(Tests were updated since then, so this solution is not accepted anymore.)
+(tests were updated since then, so this solution is not accepted anymore).
 
 ### Lambdas
 

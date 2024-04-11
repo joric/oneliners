@@ -234,7 +234,7 @@ class Solution:
         return nsmallest(k,(f:=Counter(words)).keys(),lambda x:(-f[x],x))
 ```
 
-### Setting list values
+### Setting values
 
 You can't use walrus operator for structures, however, you can use `__setattr__` for dictionaries or `__setitem__` for lists if you need an assignment
 (functions return `None`). There are also global functions that are shorter, `setattr(dict, ...)` and `setitem(list, ...)`.
@@ -350,7 +350,7 @@ ParkingSystem=type('',(),{'__init__':lambda s,a,b,c:setattr(s,'p',[0,a,b,c]),'ad
     exec('s.p[t]-=1')or s.p[t]>=0})
 ```
 
-### Getting list values
+### Getting values
 
 Use the usual bracket notation `[]` or `dict.get(key,default)` (where needed).
 

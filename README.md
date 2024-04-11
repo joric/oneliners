@@ -37,10 +37,6 @@ Sometimes you can save on casting of the return type, e.g. Leetcode autoconverts
 ```python
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        return next(zip(*Counter(nums).most_common(k)))
-
-class Solution:
-    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         return dict(Counter(nums).most_common(k))
 ```
 
@@ -49,10 +45,6 @@ It also automatically evaluates generators:
 * https://leetcode.com/problems/counting-bits
 
 ```python
-class Solution:
-    def countBits(self, n: int) -> List[int]:
-        return[i.bit_count()for i in range(n+1)]
-
 class Solution:
     def countBits(self, n: int) -> List[int]:
         return map(int.bit_count,range(n+1))

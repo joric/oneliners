@@ -83,7 +83,7 @@ More undocumented functions:
 * ListNode: `_has_cycle`, `_list_node_to_array`, `_array_to_list_node`.
 * TreeNode: `_has_cycle`, `_tree_node_to_array`, `_array_to_tree_node`.
 
-Also Leetcode stores results in the `user.out` file, see https://leetcode.com/discuss/feedback/4643730/a-python-solution-that-contain-malicious-payload-in-your-website
+Also Leetcode apparently stores intermediate results in the `user.out` file, see https://leetcode.com/discuss/feedback/4643730/a-python-solution-that-contain-malicious-payload-in-your-website
 
 * https://leetcode.com/problems/two-sum 
 

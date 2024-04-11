@@ -77,7 +77,7 @@ More undocumented functions (but `serialize` and `deserialize` are usually short
 
 Also Leetcode apparently stores final results in the `user.out` file and allows writing to it, see https://leetcode.com/discuss/feedback/4643730/a-python-solution-that-contain-malicious-payload-in-your-website
 
-* https://leetcode.com/problems/two-sum 
+* https://leetcode.com/problems/two-sum
 
 ```python
 class Solution(object):
@@ -729,7 +729,7 @@ class Solution:
 
 ```
 
-Another example (Q4 at at https://leetcode.com/contest/weekly-contest-392):
+Another example (Q4 at https://leetcode.com/contest/weekly-contest-392):
 
 ```python
 class Solution:

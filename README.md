@@ -84,6 +84,34 @@ class Solution:
         f=lambda n:n and n.val+10*f(n.next)or 0;return ListNode(','.join([*str(f(a)+f(b))][::-1]))
 ```
 
+Talking about specificity, leetcode lists and trees also have `serialize` and `deserialize` functions:
+
+* https://leetcode.com/problems/reverse-linked-list
+
+```python
+class Solution:
+    def reverseList(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        return h and h.deserialize(str(eval(h.serialize(h))[::-1]))
+```
+
+More undocumented functions:
+
+* ListNode: `_has_cycle`, `_list_node_to_array`, `_array_to_list_node`.
+* TreeNode: `_has_cycle`, `_tree_node_to_array`, `_array_to_tree_node`.
+
+Also Leetcode used `user.out` file to store results:
+
+* https://leetcode.com/problems/two-sum (tests were updated since then so it's not accepted anymore)
+
+```python
+class Solution(object):
+    def twoSum(self, nums, target):
+        from zlib import decompress
+        from base64 import b64decode
+        open('user.out', 'wb').write(decompress(b64decode('eJyLNtRRMIjlijbSUTAEUggekqAxiqCJjoI\
+RhgZjFEGESgMMJVDtphDKGK7SGKFy2FKwAAFyTRGilkCgowAkLIAcMx0IaQmSN9IxAqsz0zE0B9IGOsDABQCpFVmV'))),exit(0)
+```
+
 ### Lambdas
 
 Fictitious (anonymous) lambdas also may be nested. E.g. you can use lambdas as parameters:

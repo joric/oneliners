@@ -75,7 +75,7 @@ More undocumented functions (but `serialize` and `deserialize` are usually short
 * ListNode: `_has_cycle`, `_list_node_to_array`, `_array_to_list_node`.
 * TreeNode: `_has_cycle`, `_tree_node_to_array`, `_array_to_tree_node`.
 
-Also Leetcode apparently stores final results in the `user.out` file, see https://leetcode.com/discuss/feedback/4643730/a-python-solution-that-contain-malicious-payload-in-your-website
+Also Leetcode apparently stores final results in the `user.out` file and allows writing to it, see https://leetcode.com/discuss/feedback/4643730/a-python-solution-that-contain-malicious-payload-in-your-website
 
 * https://leetcode.com/problems/two-sum 
 

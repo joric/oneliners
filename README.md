@@ -121,7 +121,6 @@ Generator length `len(list(g))` can be calculated in constant memory as `sum(1 f
 
 Counters (`collections.Counter()`) can be updated, similar to `dict.update()`, it's much faster than a sum of counters.
 E.g. `c[i]+=1` is equivalent to `c.update([i])`, `c[i]-=1` is `c.update({i:-1})`.
-To set a key, you can use `operator.setitem` function, e.g. `c[x]=1` is the same as `setitem(c,x,1)`.
 To delete a key you can use the `.pop` method (same as `del`), it's shorter than `popitem()`.
 
 You can easily drop zero and negative values in a counter (it's the official way, see [documentation](https://docs.python.org/3/library/collections.html#collections.Counter)):
@@ -239,6 +238,7 @@ class Solution:
 
 You can't use walrus operator for structures, however, you can use `__setattr__` for dictionaries or `__setitem__` for lists if you need an assignment
 (functions return `None`). There are also global functions that are shorter, `setattr(dict, ...)` and `setitem(list, ...)`.
+To set a key for the dictionary, you can use `operator.setitem` function, e.g. `c[x]=1` is the same as `setitem(c,x,1)`.
 
 * https://leetcode.com/problems/add-one-row-to-tree/discuss/764593/Python-7-lines
 

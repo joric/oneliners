@@ -112,8 +112,6 @@ class Solution(object):
 ZjFEGESgMMJVDtphDKGK7SGKFy2FKwAAFyTRGilkCgowAkLIAcMx0IaQmSN9IxAqsz0zE0B9IGOsDABQCpFVmV'))),exit(0)
 ```
 
-See https://leetcode.com/discuss/feedback/4643730/a-python-solution-that-contain-malicious-payload-in-your-website
-
 ### Lambdas
 
 Fictitious (anonymous) lambdas also may be nested. E.g. you can use lambdas as parameters:

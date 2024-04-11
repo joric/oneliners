@@ -99,7 +99,7 @@ More undocumented functions:
 * ListNode: `_has_cycle`, `_list_node_to_array`, `_array_to_list_node`.
 * TreeNode: `_has_cycle`, `_tree_node_to_array`, `_array_to_tree_node`.
 
-Also Leetcode used `user.out` file to store results (tests were updated since then so it's not accepted anymore):
+Also Leetcode stores results in the `user.out` file (tests were updated since then so it's not accepted anymore):
 
 * https://leetcode.com/problems/two-sum 
 

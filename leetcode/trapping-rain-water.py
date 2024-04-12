@@ -1,47 +1,44 @@
 from lc import *
 
+# https://leetcode.com/problems/trapping-rain-water
 # https://www.hackerrank.com/contests/knitopencontest/challenges/rain-harvester/problem
 
-class Solution0:
-    def trap(self, v: List[int]) -> int:
-        lm,rm,l,r,res = 0,0,0,len(v)-1,0
-        while l < r:
-            lm = max(lm, v[l])
-            rm = max(rm, v[r])
-            if lm > rm:
-                res += rm - v[r]
-                r -= 1
+class Solution:
+    def trap(self, h: List[int]) -> int:
+        v=w=l=0;r=len(h)-1
+        while l<r:
+            if h[l]<h[r]:
+                m = h[l]
+                l +=1
             else:
-                res += lm - v[l]
-                l += 1
-        return res
-
-#TLE
-class Solution:
-    def trap(self, v: List[int]) -> int:
-        return sum(max(0, (min(max(v[:i]), max(v[i+1:]))-v[i])) for i in range(1, len(v)-1))
-
+                m = h[r]
+                r -= 1
+            v = max(v,m)
+            w += v - m
+        return w
 
 class Solution:
-    def trap(self, v: List[int]) -> int:
-        return sum(min((a:=[c:=h if i==0 else max(c,h) for i,h in enumerate(v)] if i==0 else a)[len(v)-1-i],c:=h if i==0 else max(c,h))-h for i,h in enumerate(reversed(v)))
+    def trap(self, h: List[int]) -> int:
+        v=w=l=0;r=len(h)-1
+        while l<r:
+            m = h[(l:=l+1)-1 if h[l]<h[r]else(r:=r-1)+1]
+            v = max(v,m)
+            w = w+v-m
+        return w
 
 class Solution:
-    def trap(self, v: List[int]) -> int:
-        l = list(accumulate(v, max))
-        r = list(accumulate(v[::-1], max))[::-1]
-        return sum([max(0,min(l[i],r[i])-v[i]) for i in range(len(v))])
+    def trap(self, h: List[int]) -> int:
+        v=w=l=0;r=len(h)-1;return next(w for _ in h if not(l<r and(m:=h[(l:=l+1)-1 if h[l]<h[r]else(r:=r-1)+1],v:=max(v,m),w:=w+v-m)))
 
 class Solution:
-    def trap(self, v: List[int]) -> int:
-        l = list(accumulate(v, max))
-        r = list(accumulate(v[::-1], max))[::-1]
-        return sum([max(0,min(l[i],r[i])-v[i]) for i in range(len(v))])
+    def trap(self, h: List[int]) -> int:
+        l=[*accumulate(h,max)]
+        r=[*accumulate(h[::-1],max)][::-1]
+        return sum([max(0,min(l[i],r[i])-x)for i,x in enumerate(h)])
 
 class Solution:
-    def trap(self, v: List[int]) -> int:
-        return sum([max(0,min([*accumulate(v,max)][i],[*accumulate(v[::-1],max)][::-1][i])-v[i]) for i in range(len(v))])
-
+    def trap(self, h: List[int]) -> int:
+        a=accumulate;l,r=[*a(h,max)],[*a(h[::-1],max)][::-1];return sum([max(0,min(l[i],r[i])-x)for i,x in enumerate(h)])
 
 test('''
 42. Trapping Rain Water

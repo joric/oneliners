@@ -37,17 +37,17 @@ class Solution:
         return sum([max(0,min(l[i],r[i])-x)for i,x in enumerate(h)])
 
 # updated 2024-04-12
-
-class Solution:
-    def trap(self, h: List[int]) -> int:
-        a=accumulate;l,r=[*a(h,max)],[*a(h[::-1],max)][::-1];return sum(max(0,min(l[i],r[i])-x)for i,x in enumerate(h))
-
 # https://leetcode.com/problems/trapping-rain-water/discuss/3848508/One-Line-Simple-Pyhton-Code
 
 class Solution:
     def trap(self, h: List[int]) -> int:
-        a=accumulate;return sum(min(v[0],v[1])-h[i]for i,v in enumerate(zip(a(h,max),[*a(h[::-1],max)][::-1])))
+        a=accumulate;return sum(min(x)-h[i]for i,x in enumerate(zip(a(h,max),[*a(h[::-1],max)][::-1])))
 
+class Solution:
+    def trap(self, h: List[int]) -> int:
+        a=accumulate;return sum(map(min,zip(a(h,max),[*a(h[::-1],max)][::-1])))-sum(h)
+
+# borderline TLE, 9678 ms
 # https://leetcode.com/problems/trapping-rain-water/discuss/3848508/One-Line-Simple-Pyhton-Code
 
 class Solution:

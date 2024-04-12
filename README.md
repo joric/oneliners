@@ -683,8 +683,7 @@ class Solution:
 ### Unicode Find
 
 Unicode find (NOT Union Find) is the greatest trick of all time to solve graph problems.
-The idea is to replace the whole Union Find thing with string replace in a Unicode space.
-Introduced by Stephan Pochmann:
+The idea is to use string replace in a Unicode space. Introduced by Stephan Pochmann.
 
 * https://leetcode.com/problems/redundant-connection/discuss/108002/Unicode-Find-(5-short-lines)
 

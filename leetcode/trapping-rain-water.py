@@ -42,6 +42,18 @@ class Solution:
     def trap(self, h: List[int]) -> int:
         a=accumulate;l,r=[*a(h,max)],[*a(h[::-1],max)][::-1];return sum(max(0,min(l[i],r[i])-x)for i,x in enumerate(h))
 
+# https://leetcode.com/problems/trapping-rain-water/discuss/3848508/One-Line-Simple-Pyhton-Code
+
+class Solution:
+    def trap(self, h: List[int]) -> int:
+        a=accumulate;return sum(min(v[0],v[1])-h[i]for i,v in enumerate(zip(a(h,max),[*a(h[::-1],max)][::-1])))
+
+# https://leetcode.com/problems/trapping-rain-water/discuss/3848508/One-Line-Simple-Pyhton-Code
+
+class Solution:
+    def trap(self, h: List[int]) -> int:
+        return sum(min(max(h[:i+1]),max(h[i:]))-x for i,x in enumerate(h))
+
 test('''
 42. Trapping Rain Water
 

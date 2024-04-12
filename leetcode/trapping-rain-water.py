@@ -47,6 +47,10 @@ class Solution:
     def trap(self, h: List[int]) -> int:
         a=accumulate;return sum(map(min,zip(a(h,max),[*a(h[::-1],max)][::-1])))-sum(h)
 
+class Solution:
+    def trap(self, h: List[int]) -> int:
+        a=accumulate;return sum(map(min,a(h,max),[*a(h[::-1],max)][::-1]))-sum(h)
+
 # borderline TLE, 9678 ms
 # https://leetcode.com/problems/trapping-rain-water/discuss/3848508/One-Line-Simple-Pyhton-Code
 

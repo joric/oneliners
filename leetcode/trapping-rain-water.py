@@ -19,15 +19,6 @@ class Solution:
 
 class Solution:
     def trap(self, h: List[int]) -> int:
-        v=w=l=0;r=len(h)-1
-        while l<r:
-            m = h[(l:=l+1)-1 if h[l]<h[r]else(r:=r-1)+1]
-            v = max(v,m)
-            w = w+v-m
-        return w
-
-class Solution:
-    def trap(self, h: List[int]) -> int:
         v=w=l=0;r=len(h)-1;return next(w for _ in h if not(l<r and(m:=h[(l:=l+1)-1 if h[l]<h[r]else(r:=r-1)+1],v:=max(v,m),w:=w+v-m)))
 
 # borderline TLE, 9678 ms

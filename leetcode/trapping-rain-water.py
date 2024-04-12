@@ -40,7 +40,7 @@ class Solution:
 
 class Solution:
     def trap(self, h: List[int]) -> int:
-        a=accumulate;l,r=[*a(h,max)],[*a(h[::-1],max)][::-1];return sum([max(0,min(l[i],r[i])-x)for i,x in enumerate(h)])
+        a=accumulate;l,r=[*a(h,max)],[*a(h[::-1],max)][::-1];return sum(max(0,min(l[i],r[i])-x)for i,x in enumerate(h))
 
 test('''
 42. Trapping Rain Water

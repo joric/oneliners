@@ -36,6 +36,8 @@ class Solution:
         r=[*accumulate(h[::-1],max)][::-1]
         return sum([max(0,min(l[i],r[i])-x)for i,x in enumerate(h)])
 
+# updated 2024-04-12
+
 class Solution:
     def trap(self, h: List[int]) -> int:
         a=accumulate;l,r=[*a(h,max)],[*a(h[::-1],max)][::-1];return sum([max(0,min(l[i],r[i])-x)for i,x in enumerate(h)])

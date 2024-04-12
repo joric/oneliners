@@ -47,14 +47,6 @@ class Solution:
 
 class Solution:
     def trap(self, h: List[int]) -> int:
-        a=accumulate;return sum(min(x)-h[i]for i,x in enumerate(zip(a(h,max),[*a(h[::-1],max)][::-1])))
-
-class Solution:
-    def trap(self, h: List[int]) -> int:
-        a=accumulate;return sum(map(min,zip(a(h,max),[*a(h[::-1],max)][::-1])))-sum(h)
-
-class Solution:
-    def trap(self, h: List[int]) -> int:
         a=accumulate;return sum(map(min,a(h,max),[*a(h[::-1],max)][::-1]))-sum(h)
 
 test('''

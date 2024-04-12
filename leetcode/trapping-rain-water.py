@@ -30,14 +30,13 @@ class Solution:
     def trap(self, h: List[int]) -> int:
         v=w=l=0;r=len(h)-1;return next(w for _ in h if not(l<r and(m:=h[(l:=l+1)-1 if h[l]<h[r]else(r:=r-1)+1],v:=max(v,m),w:=w+v-m)))
 
-class Solution:
-    def trap(self, h: List[int]) -> int:
-        l=[*accumulate(h,max)]
-        r=[*accumulate(h[::-1],max)][::-1]
-        return sum([max(0,min(l[i],r[i])-x)for i,x in enumerate(h)])
-
 # updated 2024-04-12
 # https://leetcode.com/problems/trapping-rain-water/discuss/3848508/One-Line-Simple-Pyhton-Code
+
+class Solution:
+    def trap(self, h: List[int]) -> int:
+        l,r=[*accumulate(h,max)],[*accumulate(h[::-1],max)][::-1]
+        return sum([max(0,min(l[i],r[i])-x)for i,x in enumerate(h)])
 
 class Solution:
     def trap(self, h: List[int]) -> int:

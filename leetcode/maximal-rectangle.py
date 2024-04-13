@@ -1,6 +1,7 @@
 from lc import *
 
 # https://leetcode.com/problems/maximal-rectangle/discuss/5014380/Python-3-oror-10-lines-histogram-oror-TS%3A-98-76
+# also see https://leetcode.com/problems/largest-rectangle-in-histogram
 
 class Solution:
     def maximalRectangle(self, a: list[list[str]]) -> int:

@@ -22,6 +22,15 @@ class Solution:
 
 class Solution:
     def minimumTime(self, n: int, e: List[List[int]], d: List[int]) -> List[int]:
+        g,h,r=defaultdict(list),[(0,0)],[-1]*n
+        [g[v].append((u,w))or g[u].append((v,w))for u,v,w in e]
+        def f(t,i):
+            -1==r[i]and t<d[i]and(setitem(r,i,t),[heappush(h,(t+w,j))for j,w in g[i]])
+            h and f(*heappop(h))
+        return f(*heappop(h))or r
+
+class Solution:
+    def minimumTime(self, n: int, e: List[List[int]], d: List[int]) -> List[int]:
         g,h,r,p=defaultdict(list),[(0,0)],[-1]*n,heappop;[g[v].append((u,w))or g[u].append((v,w))for u,v,w in e];f=lambda t,i:(-1==r[i]and t<d[i]and(setitem(r,i,t),[heappush(h,(t+w,j))for j,w in g[i]]),h and f(*p(h)));return f(*p(h))and r
 
 test('''

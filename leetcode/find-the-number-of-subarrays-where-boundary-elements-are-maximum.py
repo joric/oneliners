@@ -21,6 +21,23 @@ class Solution:
     def numberOfSubarrays(self, a: List[int]) -> int:
         s,r=[],0;[(all(s and s[-1][0]<x and[s.pop()]for _ in a),s and(t:=s[-1])[0]==x and(setitem(t,1,t[1]+1),r:=r+t[1])or(s.append([x,1]),r:=r+1))for x in a];return r
 
+# https://leetcode.com/problems/find-the-number-of-subarrays-where-boundary-elements-are-maximum/discuss/5017752/Simple-5-line-python-code.
+
+class Solution:
+    def numberOfSubarrays(self, a: List[int]) -> int:
+        s,c,r=[],Counter(),0
+        for i,x in enumerate(a):
+            while s and s[-1]<x:
+                c[s.pop()] -= 1
+            s.append(x)
+            c[x] += 1
+            r += c[x]
+        return r
+
+class Solution:
+    def numberOfSubarrays(self, a: List[int]) -> int:
+        s,c=[],Counter();return sum((all(s and x>s[-1]and[c.update({s.pop():-1})]for _ in a),s.append(x),c.update([x]),c[x])[3]for i,x in enumerate(a))
+
 test('''
 3113. Find the Number of Subarrays Where Boundary Elements Are Maximum
 Hard

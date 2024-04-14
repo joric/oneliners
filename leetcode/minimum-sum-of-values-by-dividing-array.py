@@ -26,9 +26,7 @@ class Solution:
         def f(i,j,b=(1<<32)-1): 
             if i==len(a) and j==len(v):
                 return 0
-            if i==len(a) or j==len(v):
-                return inf
-            return inf if(b:=b&a[i])<v[j]else f(i+1,j,b)if b>v[j]else min(f(i+1,j,b),a[i]+f(i+1,j+1))
+            return inf if i==len(a)or j==len(v)or (b:=b&a[i])<v[j]else f(i+1,j,b)if b>v[j]else min(f(i+1,j,b),a[i]+f(i+1,j+1))
         return(-1,r:=f(0,0))[r<inf]
 
 class Solution:

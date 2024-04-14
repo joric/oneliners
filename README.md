@@ -20,12 +20,12 @@ class Solution:
 
 You can also use `__import__('module').func` to import from unlisted modules (i.e. numpy). Example:
 
-* https://leetcode.com/problems/sliding-window-maximum
+* https://leetcode.com/problems/number-of-provinces
 
 ```python
-class Solution:
-    def maxSlidingWindow(self, a: List[int], k: int) -> List[int]:
-        p=__import__('numpy');return p.max(p.lib.stride_tricks.sliding_window_view(a,k),1)
+class Solution(object):
+    def findCircleNum(self, m: List[List[int]]) -> int:
+        return len(set(map(tuple,(__import__('numpy').matrix(m,dtype='bool')**len(m)).A)))
 ```
 
 Sometimes you can save on casting of the return type, e.g. Leetcode autoconverts keys and mixed types to lists.

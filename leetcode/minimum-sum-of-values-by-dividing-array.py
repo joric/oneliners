@@ -4,26 +4,6 @@ from lc import *
 # https://leetcode.com/problems/minimum-sum-of-values-by-dividing-array/
 
 class Solution:
-    def minimumValueSum(self, nums: List[int], andValues: List[int]) -> int:
-        n = len(nums)
-        m = len(andValues)
-        @cache
-        def calculate_min_sum(mask, j, k): 
-            if k == m and j == n:
-                return 0
-            if k == m or j == n:
-                return float('inf')
-            mask &= nums[j]
-            if mask < andValues[k]:
-                return float('inf')
-            if mask == andValues[k]:
-                return min(calculate_min_sum(mask, j+1, k), nums[j] + calculate_min_sum((1<<32)-1, j+1, k+1))
-            if mask > andValues[k]:
-                return calculate_min_sum(mask, j+1, k)
-        ans = calculate_min_sum((1<<32)-1, 0, 0)
-        return ans if ans < float('inf') else -1
-
-class Solution:
     def minimumValueSum(self, a: List[int], v: List[int]) -> int:
         n,m=len(a),len(v)
         @cache

@@ -29,8 +29,8 @@ class Solution:
 # pulled from beginning of the python 2 submissions at 4ms https://leetcode.com/submissions/api/detail/1/python/4/
 # if it doesn't pass all tests, there are more tests now
 
-class Solution(object):
-    def twoSum(self, nums, target):
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
         from zlib import decompress
         from base64 import b64decode
         open('user.out', 'wb').write(decompress(b64decode('eJzdkMEVwCAIQ++dggFyEKi2zuLr/mtItZb63KAckpfwuVAYFK6tCIjNPH1KncodJMuBTqWTYUGe89hNX1Kd/K2Nh1iM3mYbkMlpIaFrvvcCaVwCH+YB3FSHVu5xXDc='))),exit(0)

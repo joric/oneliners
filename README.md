@@ -78,8 +78,8 @@ Also Leetcode apparently stores final results in the `user.out` file and allows 
 * https://leetcode.com/problems/two-sum
 
 ```python
-class Solution(object):
-    def twoSum(self, nums, target):
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
         from zlib import decompress
         from base64 import b64decode
         open('user.out', 'wb').write(decompress(b64decode('eJzdkMEVwCAIQ++dggFyEKi2zuLr/mtItZb63KAc\

@@ -73,7 +73,7 @@ More undocumented functions:
 * ListNode: `_has_cycle`, `_list_node_to_array`, `_array_to_list_node`.
 * TreeNode: `_has_cycle`, `_tree_node_to_array`, `_array_to_tree_node`.
 
-Also Leetcode apparently stores final results in the `user.out` file and allows writing to it, see https://leetcode.com/discuss/feedback/4643730/a-python-solution-that-contain-malicious-payload-in-your-website
+Also Leetcode apparently stores final results in the `user.out` file and allows writing to it:
 
 * https://leetcode.com/problems/two-sum
 
@@ -87,6 +87,7 @@ ZjFEGESgMMJVDtphDKGK7SGKFy2FKwAAFyTRGilkCgowAkLIAcMx0IaQmSN9IxAqsz0zE0B9IGOsDABQ
 ```
 
 It's not a very reliable solution because tests may change but it's usually the fastest.
+See https://leetcode.com/discuss/feedback/4643730/a-python-solution-that-contain-malicious-payload-in-your-website
 
 ### Lambdas
 

@@ -5,12 +5,11 @@ from lc import *
 
 class Solution:
     def minimumValueSum(self, a: List[int], v: List[int]) -> int:
-        n,m=len(a),len(v)
         @cache
         def f(b,j,k): 
-            if k==m and j==n:
+            if k==len(v) and j==len(a):
                 return 0
-            if k==m or j==n:
+            if k==len(v) or j==len(a):
                 return inf
             b &= a[j]
             if b < v[k]:

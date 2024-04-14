@@ -22,7 +22,7 @@ class Solution:
 
 class Solution:
     def minimumValueSum(self, a: List[int], v: List[int]) -> int:
-        return(-1,r:=(f:=cache(lambda b,j,k:0 if k==len(v)and j==len(a)else inf if k==len(v)or j==len(a)or(b:=b&a[j])<v[k]else f(b,j+1,k)if b>v[k]else min(f(b,j+1,k),a[j]+f((1<<32)-1,j+1,k+1))))((1<<32)-1,0,0))[r<inf]
+        return(-1,r:=(f:=cache(lambda j,k,b=(1<<32)-1:0 if k==len(v)and j==len(a)else inf if k==len(v)or j==len(a)or(b:=b&a[j])<v[k]else f(j+1,k,b)if b>v[k]else min(f(j+1,k,b),a[j]+f(j+1,k+1))))(0,0))[r<inf]
 
 test('''
 3117. Minimum Sum of Values by Dividing Array

@@ -20,14 +20,12 @@ class Solution:
 
 You can also use `__import__('module').func` to import from unlisted modules (i.e. numpy). Example:
 
-* https://leetcode.com/problems/minimize-deviation-in-array
+* https://leetcode.com/problems/sliding-window-maximum
 
 ```python
 class Solution:
-    def minimumDeviation(self, n: List[int]) -> int:
-        return next((min(r,s[-1]-s[0]) for _ in count() if not(s[-1]%2==0 and (r:=min(r,
-        s[-1]-s[0]),s.add(s.pop()//2)))),(s:=__import__('sortedcontainers').SortedList(
-        i%2 and i*2 or i for i in n),r:=inf))
+    def maxSlidingWindow(self, a: List[int], k: int) -> List[int]:
+        p=__import__('numpy');return p.max(p.lib.stride_tricks.sliding_window_view(a,k),1)
 ```
 
 Sometimes you can save on casting of the return type, e.g. Leetcode autoconverts keys and mixed types to lists.

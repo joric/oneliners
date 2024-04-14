@@ -15,6 +15,13 @@ class Solution:
 
 class Solution:
     def findLatestTime(self, s: str) -> str:
+        for i in range(12*60-1,-1,-1):
+            t = '%02d:%02d'%divmod(i,60)
+            if all(x=='?'or x==y for x,y in zip(s,t)):
+                return t
+
+class Solution:
+    def findLatestTime(self, s: str) -> str:
         return next(t for i in range(12*60-1,-1,-1)if(t:='%02d:%02d'%divmod(i,60))and all(x=='?'or x==y for x,y in zip(s,t))and t)
 
 class Solution:

@@ -6,6 +6,10 @@ class Solution:
     def sumOfLeftLeaves(self, r: Optional[TreeNode]) -> int:
         return(f:=lambda r,l=0:r and(f(r.left,1)+f(r.right)if r.left or r.right else r.val*l)or 0)(r)
 
+class Solution:
+    def sumOfLeftLeaves(self, r: Optional[TreeNode]) -> int:
+        return(f:=lambda r,t=0:r and(f(u:=r.left,1)+f(v:=r.right)+(not(u or v))*r.val*t)or 0)(r)
+
 test('''
 404. Sum of Left Leaves
 Easy

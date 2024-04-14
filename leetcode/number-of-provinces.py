@@ -29,6 +29,10 @@ class Solution(object):
     def findCircleNum(self, m: List[List[int]]) -> int:
         return len(set(map(tuple,(__import__('numpy').matrix(m,dtype='bool')**len(m)).A)))
 
+class Solution(object):
+    def findCircleNum(self, m: List[List[int]]) -> int:
+        return len({*map(tuple,(__import__('numpy').matrix(m,dtype='bool')**len(m)).A)})
+
 test('''
 547. Number of Provinces
 Medium

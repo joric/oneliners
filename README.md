@@ -25,7 +25,7 @@ You can also use `__import__('module').func` to import from unlisted modules (i.
 ```python
 class Solution(object):
     def findCircleNum(self, m: List[List[int]]) -> int:
-        return len(set(map(tuple,(__import__('numpy').matrix(m,dtype='bool')**len(m)).A)))
+        return len({*map(tuple,(__import__('numpy').matrix(m,dtype='bool')**len(m)).A)})
 ```
 
 Sometimes you can save on casting of the return type, e.g. Leetcode autoconverts keys and mixed types to lists.

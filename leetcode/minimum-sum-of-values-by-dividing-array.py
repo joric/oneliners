@@ -7,22 +7,22 @@ class Solution:
     def minimumValueSum(self, a: List[int], v: List[int]) -> int:
         @cache
         def f(i,j,b=(1<<32)-1): 
-            if i==len(v) and j==len(a):
+            if i==len(a) and j==len(v):
                 return 0
-            if i==len(v) or j==len(a):
+            if i==len(a) or j==len(v):
                 return inf
-            b &= a[j]
-            if b < v[i]:
+            b &= a[i]
+            if b < v[j]:
                 return inf
-            elif b > v[i]:
-                return f(i,j+1,b)
+            elif b > v[j]:
+                return f(i+1,j,b)
             else:
-                return min(f(i,j+1,b),a[j]+f(i+1,j+1))
+                return min(f(i+1,j,b),a[i]+f(i+1,j+1))
         return(-1,r:=f(0,0))[r<inf]
 
 class Solution:
     def minimumValueSum(self, a: List[int], v: List[int]) -> int:
-        return(-1,r:=(f:=cache(lambda i,j,b=(1<<32)-1:0 if i==len(v)and j==len(a)else inf if i==len(v)or j==len(a)or(b:=b&a[j])<v[i]else f(i,j+1,b)if b>v[i]else min(f(i,j+1,b),a[j]+f(i+1,j+1))))(0,0))[r<inf]
+        return(-1,r:=(f:=cache(lambda i,j,b=(1<<32)-1:0 if i==len(a)and j==len(v)else inf if i==len(a)or j==len(v)or(b:=b&a[i])<v[j]else f(i+1,j,b)if b>v[j]else min(f(i+1,j,b),a[i]+f(i+1,j+1))))(0,0))[r<inf]
 
 test('''
 3117. Minimum Sum of Values by Dividing Array

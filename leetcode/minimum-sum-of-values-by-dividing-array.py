@@ -11,23 +11,6 @@ class Solution:
                 return 0
             if i==len(a) or j==len(v):
                 return inf
-            b &= a[i]
-            if b < v[j]:
-                return inf
-            elif b > v[j]:
-                return f(i+1,j,b)
-            else:
-                return min(f(i+1,j,b),a[i]+f(i+1,j+1))
-        return(-1,r:=f(0,0))[r<inf]
-
-class Solution:
-    def minimumValueSum(self, a: List[int], v: List[int]) -> int:
-        @cache
-        def f(i,j,b=(1<<32)-1): 
-            if i==len(a) and j==len(v):
-                return 0
-            if i==len(a) or j==len(v):
-                return inf
             return inf if(b:=b&a[i])<v[j]else f(i+1,j,b)if b>v[j]else min(f(i+1,j,b),a[i]+f(i+1,j+1))
         return(-1,r:=f(0,0))[r<inf]
 

@@ -86,7 +86,7 @@ class Solution:
 kpfwuVAYFK6tCIjNPH1KncodJMuBTqWTYUGe89hNX1Kd/K2Nh1iM3mYbkMlpIaFrvvcCaVwCH+YB3FSHVu5xXDc='))),exit(0)
 ```
 
-The solution above is not very reliable, because tests and environment may change, but it's really fast:
+The solution above is not very reliable, because tests and environment may change, but it's among the fastests:
 
 * https://leetcode.com/discuss/feedback/4643730/a-python-solution-that-contain-malicious-payload-in-your-website
 

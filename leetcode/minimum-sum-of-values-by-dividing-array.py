@@ -22,6 +22,17 @@ class Solution:
 
 class Solution:
     def minimumValueSum(self, a: List[int], v: List[int]) -> int:
+        @cache
+        def f(i,j,b=(1<<32)-1): 
+            if i==len(a) and j==len(v):
+                return 0
+            if i==len(a) or j==len(v):
+                return inf
+            return inf if(b:=b&a[i])<v[j]else f(i+1,j,b)if b>v[j]else min(f(i+1,j,b),a[i]+f(i+1,j+1))
+        return(-1,r:=f(0,0))[r<inf]
+
+class Solution:
+    def minimumValueSum(self, a: List[int], v: List[int]) -> int:
         return(-1,r:=(f:=cache(lambda i,j,b=(1<<32)-1:0 if i==len(a)and j==len(v)else inf if i==len(a)or j==len(v)or(b:=b&a[i])<v[j]else f(i+1,j,b)if b>v[j]else min(f(i+1,j,b),a[i]+f(i+1,j+1))))(0,0))[r<inf]
 
 test('''
@@ -85,6 +96,12 @@ Output: -1
 Explanation:
 
 The bitwise AND of the entire array nums is 0. As there is no possible way to divide nums into a single subarray to have the bitwise AND of elements 2, return -1.
+
+Other examples:
+
+
+Input: nums = [4,4], andValues = [4]
+Output: 4
 
  
 

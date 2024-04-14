@@ -23,7 +23,7 @@ class Solution:
 
 class Solution:
     def maximumPrimeDifference(self, a: List[int]) -> int:
-        r,g=range(len(a)),{2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97};return next(j-i for i in r for j in r[::-1]if a[i]in g and a[j]in g)
+        r=range(len(a));return next(j-i for i in r for j in r[::-1]if{a[i],a[j]}<={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97})
 
 test('''
 3115. Maximum Prime Difference

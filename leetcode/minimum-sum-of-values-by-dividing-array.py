@@ -6,7 +6,7 @@ from lc import *
 class Solution:
     def minimumValueSum(self, a: List[int], v: List[int]) -> int:
         @cache
-        def f(b,j,k): 
+        def f(j,k,b=(1<<32)-1): 
             if k==len(v) and j==len(a):
                 return 0
             if k==len(v) or j==len(a):
@@ -15,10 +15,10 @@ class Solution:
             if b < v[k]:
                 return inf
             elif b > v[k]:
-                return f(b,j+1,k)
+                return f(j+1,k,b)
             else:
-                return min(f(b,j+1,k),a[j]+f((1<<32)-1,j+1,k+1))
-        return(-1,r:=f((1<<32)-1,0,0))[r<inf]
+                return min(f(j+1,k,b),a[j]+f(j+1,k+1))
+        return(-1,r:=f(0,0))[r<inf]
 
 class Solution:
     def minimumValueSum(self, a: List[int], v: List[int]) -> int:

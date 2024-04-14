@@ -20,12 +20,12 @@ class Solution:
 
 You can also use `__import__('module').func` to import from unlisted modules (i.e. numpy). Example:
 
-* https://leetcode.com/problems/number-of-provinces
+* https://leetcode.com/problems/check-if-it-is-a-straight-line
 
 ```python
-class Solution(object):
-    def findCircleNum(self, m: List[List[int]]) -> int:
-        return len({*map(tuple,(__import__('numpy').matrix(m,dtype='bool')**len(m)).A)})
+class Solution:
+    def checkStraightLine(self, p):
+        return __import__('numpy').linalg.matrix_rank([[1]+x for x in p])<3
 ```
 
 Sometimes you can save on casting of the return type, e.g. Leetcode autoconverts keys and mixed types to lists.

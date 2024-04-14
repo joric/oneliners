@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/check-if-it-is-a-straight-line
+
 class Solution:
     def checkStraightLine(self, p: List[List[int]]) -> bool:
         np=__import__('numpy');v=np.sort(np.linalg.eigvals(np.cov(p,rowvar=0)))[::-1];return np.allclose(v[1:],0)

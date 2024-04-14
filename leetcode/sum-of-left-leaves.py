@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def sumOfLeftLeaves(self, r: Optional[TreeNode]) -> int:
-        return(f:=lambda r,i=0:r and(f(r.left,1)+f(r.right)if r.left or r.right else r.val*i)or 0)(r)
+        return(f:=lambda r,l=0:r and(f(r.left,1)+f(r.right)if r.left or r.right else r.val*l)or 0)(r)
 
 test('''
 404. Sum of Left Leaves

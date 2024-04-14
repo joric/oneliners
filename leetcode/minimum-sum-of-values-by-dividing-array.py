@@ -28,9 +28,9 @@ class Solution:
         n,m=len(a),len(v)
         @cache
         def f(b,j,k): 
-            if k == m and j == n:
+            if k==m and j==n:
                 return 0
-            if k == m or j == n:
+            if k==m or j==n:
                 return inf
             b &= a[j]
             if b < v[k]:

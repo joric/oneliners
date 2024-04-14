@@ -86,6 +86,8 @@ class Solution(object):
 ZjFEGESgMMJVDtphDKGK7SGKFy2FKwAAFyTRGilkCgowAkLIAcMx0IaQmSN9IxAqsz0zE0B9IGOsDABQCpFVmV'))),exit(0)
 ```
 
+It's not a very reliable solution because tests may change but it's usually the fastest.
+
 ### Lambdas
 
 Fictitious (anonymous) lambdas also may be nested. E.g. you can use lambdas as parameters:

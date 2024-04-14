@@ -86,7 +86,7 @@ class Solution(object):
 ZjFEGESgMMJVDtphDKGK7SGKFy2FKwAAFyTRGilkCgowAkLIAcMx0IaQmSN9IxAqsz0zE0B9IGOsDABQCpFVmV'))),exit(0)
 ```
 
-It's not a very reliable solution because tests may change but it's usually the fastest.
+This is not a very reliable solution, because tests may change in the future, but it's usually the fastest.
 See https://leetcode.com/discuss/feedback/4643730/a-python-solution-that-contain-malicious-payload-in-your-website
 
 ### Lambdas

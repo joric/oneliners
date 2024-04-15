@@ -47,10 +47,6 @@ class Solution:
 
 class Solution:
     def sumNumbers(self, r: TreeNode) -> int:
-        return(f:=lambda t,v:t and(f(l:=t.left,v:=t.val+10*v)+f(r:=t.right,v)or v)or 0)(r,0)
-
-class Solution:
-    def sumNumbers(self, r: TreeNode) -> int:
         return(f:=lambda t,v:t and(f(t.left,v:=t.val+10*v)+f(t.right,v)or v)or 0)(r,0)
 
 test('''

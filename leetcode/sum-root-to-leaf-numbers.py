@@ -45,6 +45,10 @@ class Solution:
     def sumNumbers(self, r: TreeNode) -> int:
         return(f:=lambda t,v:t and(lambda l,r,v:(l or r)and f(l,v)+f(r,v)or v)(t.left,t.right,t.val+10*v)or 0)(r,0)
 
+class Solution:
+    def sumNumbers(self, r: TreeNode) -> int:
+        return(f:=lambda t,v:t and(f(l:=t.left,v:=t.val+10*v)+f(r:=t.right,v)or v)or 0)(r,0)
+
 test('''
 
 129. Sum Root to Leaf Numbers

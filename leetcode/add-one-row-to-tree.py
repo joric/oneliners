@@ -29,8 +29,8 @@ class Solution:
 # https://leetcode.com/problems/add-one-row-to-tree/discuss/2666027/Python-3-one-line
 
 class Solution:
-  def addOneRow(self, r, v, d, s=1):
-    return r and TreeNode(r.val, *(self.addOneRow(x, v, d-1, s) for x,s in ((r.left, 1), (r.right, -1)))) if d > 1 else TreeNode(v, *(r, None)[::s])
+    def addOneRow(self, r, v, d, s=1):
+        return r and TreeNode(r.val, *(self.addOneRow(x, v, d-1, s) for x,s in ((r.left, 1), (r.right, -1)))) if d > 1 else TreeNode(v, *(r, None)[::s])
 
 class Solution:
     def addOneRow(self, r: TreeNode, v: int, d: int) -> TreeNode:

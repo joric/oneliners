@@ -10,6 +10,23 @@ class Solution:
     def sumOfLeftLeaves(self, r: Optional[TreeNode]) -> int:
         return(f:=lambda r,t=0:r and(f(u:=r.left,1)+f(v:=r.right)+(not(u or v))*r.val*t)or 0)(r)
 
+# https://leetcode.com/problems/sum-of-left-leaves/discuss/5021812/one-line-solution
+
+class Solution:
+    def sumOfLeftLeaves(self, n: Optional[TreeNode]) -> int:
+        def f(n, q=0):
+            if n:
+                s = f(n.left, 1) + f(n.right)
+                if n.left == n.right == None and q:
+                    s += n.val
+                return s
+            return 0
+        return f(n)
+
+class Solution:
+    def sumOfLeftLeaves(self, n: Optional[TreeNode]) -> int:
+        return(f:=lambda n,q=0:n and f(l:=n.left,1)+f(r:=n.right)+n.val*(l==r==None)*q or 0)(n)
+
 test('''
 404. Sum of Left Leaves
 Easy

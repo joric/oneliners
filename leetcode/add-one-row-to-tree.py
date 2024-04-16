@@ -36,6 +36,10 @@ class Solution:
     def addOneRow(self, r: TreeNode, v: int, d: int) -> TreeNode:
         t=TreeNode;return(f:=lambda r,d,s:r and t(r.val,*(f(x,d-1,s)for x,s in((r.left,1),(r.right,-1))))if d>1 else t(v,*(r,None)[::s]))(r,d,1)
 
+class Solution:
+    def addOneRow(self, r: TreeNode, v: int, d: int) -> TreeNode:
+        c=type(r);return(f:=lambda r,d,s=1:r and c(r.val,f(r.left,d-1),f(r.right,d-1,-1))if d>1 else c(v,*(r,None)[::s]))(r,d)
+
 test('''
 
 623. Add One Row to Tree
@@ -69,6 +73,9 @@ Output: [1,4,null,2,6,3,1,5]
 
 Input: root = [1,2,3,4], val = 5, depth = 1
 Output: [5,1,null,2,3,4]
+
+Input: root = [1,2,3,4], val = 5, depth = 4
+Output: [1,2,3,4,null,null,null,5,5]
 
 Constraints:
 

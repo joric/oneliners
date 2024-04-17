@@ -27,6 +27,12 @@ class Solution:
     def smallestFromLeaf(self, r: Optional[TreeNode]) -> str:
         return(f:=lambda r,s='':s if(s:=chr(97+r.val)+s)and r.left==r.right else min(x and f(x,s)or'|'for x in(r.left,r.right)))(r)
 
+# https://leetcode.com/problems/smallest-string-starting-from-leaf/discuss/5036440/one-line-solution
+
+class Solution:
+    def smallestFromLeaf(self, n: Optional[TreeNode]) -> str:
+        return(f:=lambda n,q:n and (min(f(l:=n.left,q:=chr(97+n.val)+q),f(r:=n.right,q)),q)[l==r==None] or '~')(n,'')
+
 # https://leetcode.com/problems/smallest-string-starting-from-leaf/discuss/231102/Bottom-up-vs.-Top-down/488319
 
 class Solution:

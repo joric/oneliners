@@ -46,7 +46,11 @@ class Solution:
 
 class Solution:
     def smallestFromLeaf(self, r: TreeNode) -> str:
-        t=[];(f:=lambda r,s:r and((f(r.left,s:=chr(r.val+97)+s)+f(r.right,s))or[t.append(s)])or[])(r,'');return min(t)
+        t=[];(f:=lambda r,s:r and((f(r.left,s:=chr(r.val+97)+s)+f(r.right,s))or t.append(s)or 1)or 0)(r,'');return min(t)
+
+class Solution:
+    def smallestFromLeaf(self, r: TreeNode) -> str:
+        return min((f:=lambda r,s:r and(f(r.left,s:=chr(r.val+97)+s)+f(r.right,s)or[s])or[])(r,''))
 
 test('''
 988. Smallest String Starting From Leaf

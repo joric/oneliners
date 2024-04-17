@@ -73,7 +73,7 @@ More undocumented functions:
 * ListNode: `_has_cycle`, `_list_node_to_array`, `_array_to_list_node`.
 * TreeNode: `_has_cycle`, `_tree_node_to_array`, `_array_to_tree_node`.
 
-Also Leetcode apparently stores final results in the `user.out` file and allows writing to it:
+Also Leetcode apparently stores final result in the `user.out` file and allows writing to it:
 
 * https://leetcode.com/problems/two-sum
 

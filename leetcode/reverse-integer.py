@@ -38,11 +38,11 @@ class Solution:
 
 class Solution:
     def reverse(self, x: int) -> int:
-        return ((r:=(f:=lambda r,x:f(r*10+x%10,x//10) if x else r)(0,abs(x)))<2**31)*(r,-r)[x<0]
+        return((r:=(f:=lambda r,x:f(r*10+x%10,x//10) if x else r)(0,abs(x)))<2**31)*(r,-r)[x<0]
 
 class Solution:
     def reverse(self, x: int) -> int:
-        return ((r:=int(str(abs(x))[::-1]))<2**31)*(r,-r)[x<0]
+        return((r:=int(str(abs(x))[::-1]))<2**31)*(r,-r)[x<0]
 
 test('''
 7. Reverse Integer

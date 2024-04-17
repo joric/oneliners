@@ -31,11 +31,13 @@ class Solution:
 
 class Solution:
     def smallestFromLeaf(self, r: TreeNode) -> str:
-        def f(r, s):
+        def f(r,s):
             if not r:
                 return '|'
-            (s:=chr(r.val+97)+s)
-            return min(f(r.left,s),f(r.right,s))if r.left or r.right else s
+            s = chr(r.val+97) + s
+            if not r.left and not r.right:
+                return s
+            return min(f(r.left,s),f(r.right,s))
         return f(r,'')
 
 class Solution:

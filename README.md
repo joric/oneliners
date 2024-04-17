@@ -6,7 +6,7 @@ Leetcode imports modules as wildcards, so you don't have to specify module names
 
 * Single `bisect()` without a prefix triggers `object is not callable`, use `bisect.bisect()` or `bisect_left()`.
 * You have to specify `re.sub` because `sub` without a prefix is `operator.sub`.
-* Default `pow` is `__builtins__['pow']` (supports up to 3 arguments, the 3-rd is a module), not `math.pow`.
+* Default `pow` is `__builtins__['pow']` (supports up to 3 arguments, including a module), not `math.pow`.
 
 For example, Leetcode header has `import * from itertools`, so we use `comb()` instead of `itertools.comb()`:
 

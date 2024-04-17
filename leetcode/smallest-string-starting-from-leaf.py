@@ -50,6 +50,10 @@ class Solution:
 
 class Solution:
     def smallestFromLeaf(self, r: TreeNode) -> str:
+        return min((f:=lambda r,s:r and(f(r.left,s:=chr(r.val+97)+s)+f(r.right,s)or[s])or[])(r,''))
+
+class Solution:
+    def smallestFromLeaf(self, r: TreeNode) -> str:
         f=lambda r,s:r and(f(r.left,s:=chr(r.val+97)+s)+f(r.right,s)or[s])or[];return min(f(r,''))
 
 test('''

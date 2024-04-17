@@ -88,6 +88,9 @@ Other solutions:
 Input: root = [4,0,1,1]
 Output: "bae"
 
+Input: root = [0,null,1]
+Output: "ba"
+
 Constraints:
 
 The number of nodes in the tree is in the range [1, 8500].

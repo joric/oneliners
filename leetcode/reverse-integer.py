@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/reverse-integer/discuss/4055/golfing-in-python/
+
 class Solution:
     def reverse(self, x: int) -> int:
         neg =  False

@@ -108,9 +108,8 @@ You can also unpack multiple tuples as `lambda xy,ab:(lambda x,y,a,b: x+y+a+b)(*
 
 ```python
 class Solution:
-    def countVowelPermutation(self, n: int) -> int:
-        return sum(reduce(lambda x,_:(lambda a,e,i,o,u:(e+i+u,a+i,e+o,i,i+o))(*x),[0]*(n-1),[1]*5))
-            %(10**9+7)
+  def countVowelPermutation(self, n: int) -> int:
+    return sum(reduce(lambda x,_:(lambda a,e,i,o,u:(e+i+u,a+i,e+o,i,i+o))(*x),[0]*(n-1),[1]*5))%(10**9+7)
 ```
 
 ### Generators

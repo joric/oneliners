@@ -1,17 +1,12 @@
 from lc import *
 
-def init(root: 'TreeNode', p: int, q: int):
-    global g_p, g_q
-    f = lambda r,x:r and(r if r.val==x else f(r.left,x)or f(r.right,x))
-    g_p,g_q =[f(root,x) for x in (p,q)]
-
+# p and q are tree nodes identified by values
 class Launcher:
     def lowestCommonAncestor(self, root: 'TreeNode', p: int, q: int) -> 'TreeNode':
-        global g_p, g_q
-        return Solution().lowestCommonAncestor(root, g_p, g_q)
+        p,q = [(f:=lambda r,x:r and(r if r.val==x else f(r.left,x)or f(r.right,x)))(root,x) for x in (p,q)]
+        return Solution().lowestCommonAncestor(root, p, q)
 
-def check(res, exp, *args):
-    return res and exp and res.val==exp.val
+check=lambda r,e,*args:r and e and r.val==e.val
 
 # https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/discuss/5033857/one-line-solution
 

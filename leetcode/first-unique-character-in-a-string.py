@@ -1,21 +1,7 @@
 from lc import *
 
+# Q2. https://leetcode.com/contest/warm-up-contest/
 # https://leetcode.com/problems/first-unique-character-in-a-string
-
-# 70 ms
-class Solution:
-    def firstUniqChar(self, s: str) -> int:
-        t=Counter(s);return next((i for i,c in enumerate(s)if t[c]<2),-1)
-
-# 63 ms
-class Solution:
-    def firstUniqChar(self, s: str) -> int:
-        return s.find(next((k for k,v in Counter(s).items()if v<2),'$'))
-
-# 54 ms
-class Solution:
-    def firstUniqChar(self, s: str) -> int:
-        return min([s.find(c)for c in{*s}if s.count(c)<2]or[-1])
 
 # 9836 ms
 class Solution:
@@ -36,6 +22,25 @@ class Solution:
 class Solution:
     def firstUniqChar(self, s: str) -> int:
         return next(s.find(с)for с in s+'$'if s.count(с)<2)
+
+# updated 2024-04-18
+# all solutions above are TLE now
+
+# 70 ms
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        t=Counter(s);return next((i for i,c in enumerate(s)if t[c]<2),-1)
+
+# 63 ms
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        return s.find(next((k for k,v in Counter(s).items()if v<2),'$'))
+
+# 54 ms
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        return min([s.find(c)for c in{*s}if s.count(c)<2]or[-1])
+
 
 test('''
 387. First Unique Character in a String

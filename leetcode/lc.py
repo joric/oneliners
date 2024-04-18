@@ -163,7 +163,7 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
 
     def vp(s):
         try:
-            return json.loads(s)
+            s = json.loads(s)
         except:
             return s
 

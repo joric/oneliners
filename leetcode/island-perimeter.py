@@ -1,10 +1,22 @@
 from lc import *
 
-# https://leetcode.com/problems/island-perimeter/discuss/95007/Short-Python
+# https://leetcode.com/problems/island-perimeter/discuss/95017/2-lines-in-Python
+
+class Solution(object):
+    def islandPerimeter(self, g: List[List[int]]) -> int:
+        m,n=len(g),len(g[0]);return sum([(r-1<0 or g[r-1][c]==0)+(c-1<0 or g[r][c-1]==0)+(r+1>=m or g[r+1][c]==0)+(c+1>=n or g[r][c+1]==0)for r in range(m)for c in range(n)if g[r][c]==1])
 
 class Solution:
     def islandPerimeter(self, g: List[List[int]]) -> int:
         return 2*sum((2-(i and g[i-1][j])-(j and r[j-1])for i,r in enumerate(g)for j,v in enumerate(r)if v))
+
+# https://leetcode.com/problems/island-perimeter/discuss/1893713/one-line-python-convolution
+
+class Solution:
+    def islandPerimeter(self, grid: List[List[int]]) -> int:
+        return int(abs(__import__('scipy').signal.convolve2d(grid,[[-2,1],[1,0]])).sum())
+
+# https://leetcode.com/problems/island-perimeter/discuss/95007/Short-Python
 
 class Solution:
     def islandPerimeter(self, g: List[List[int]]) -> int:

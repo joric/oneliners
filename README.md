@@ -1190,7 +1190,7 @@ Notes:
 * Very often `x==0` can be replaced with `x<1` (1 character shorter).
 * Generator expansion `[*g]` can use a traling comma `*g,` in the initialization section (1 character shorter).
 * A condition like `h>i>=0<=j<w` can be rewritten a `h>i>-1<j<w` (1 character shorter).
-* You can replace `s and s[-1]` with `s[-1:]` (5 characters shorter).
+* You can replace `q and q[-1]` with `q[-1:]` (5 characters shorter).
 
 ## References
 

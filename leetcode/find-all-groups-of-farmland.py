@@ -20,14 +20,6 @@ class Solution:
 
 class Solution:
     def findFarmland(self, g: List[List[int]]) -> List[List[int]]:
-        h,w=len(g),len(g[0]);return[(i,j,*(f:=lambda i,j:h>i>-1<j<w and g[i][j]and(setitem(g[i],j,0),p:=f(i+1,j)+f(i,j+1),(max(p[0],p[2],i),max(p[1],p[3],j)))[2]or(0,0))(i,j))for i in range(h)for j in range(w)if g[i][j]]
-
-class Solution:
-    def findFarmland(self, g: List[List[int]]) -> List[List[int]]:
-        h,w=len(g),len(g[0]);return[(i,j,*(f:=lambda i,j:h>i>-1<j<w and g[i][j]and(setitem(g[i],j,0),p:=f(i+1,j)+f(i,j+1),max(*p[::2],i),max(*p[1::2],j))[2:]or(0,0))(i,j))for i in range(h)for j in range(w)if g[i][j]]
-
-class Solution:
-    def findFarmland(self, g: List[List[int]]) -> List[List[int]]:
         h,w=len(g),len(g[0]);return[(i,j)+(f:=lambda i,j:h>i>-1<j<w and g[i][j]and(setitem(g[i],j,0),p:=f(i+1,j)+f(i,j+1),max(*p[::2],i),max(*p[1::2],j))[2:]or(0,0))(i,j)for i in range(h)for j in range(w)if g[i][j]]
 
 test('''

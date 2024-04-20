@@ -1189,6 +1189,7 @@ Notes:
 * An expression like `x&(x-1)==0` determines if unsigned `x` is power of 2 or 0 (Kernighan, tests rightmost bit).
 * Very often `x==0` can be replaced with `x<1` (1 character shorter).
 * Generator expansion `[*g]` can use a traling comma `*g,` in the initialization section (1 character shorter).
+* A condition like `m>j>=0<=i<n` can be replaced with `m>j>-1<i<n` (1 character shorter).
 
 ## References
 

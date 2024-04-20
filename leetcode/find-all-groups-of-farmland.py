@@ -22,6 +22,20 @@ class Solution:
     def findFarmland(self, g: List[List[int]]) -> List[List[int]]:
         h,w=len(g),len(g[0]);return[(i,j)+(f:=lambda i,j:h>i>-1<j<w and g[i][j]and(setitem(g[i],j,0),p:=f(i+1,j)+f(i,j+1),max(*p[::2],i),max(*p[1::2],j))[2:]or(0,0))(i,j)for i in range(h)for j in range(w)if g[i][j]]
 
+class Solution:
+    def findFarmland(self, g: List[List[int]]) -> List[List[int]]:
+        h,w=len(g),len(g[0])
+        def f(i,j):
+            if h>i>-1<j<w and g[i][j]:
+                g[i][j] = 0
+                return map(max,zip(f(i+1,j),f(i,j+1),(i,j)))
+            return 0,0
+        return[(i,j,*f(i,j))for i in range(h)for j in range(w)if g[i][j]]
+
+class Solution:
+    def findFarmland(self, g: List[List[int]]) -> List[List[int]]:
+        h,w=len(g),len(g[0]);return[(i,j,*(f:=lambda i,j:h>i>-1<j<w and g[i][j]and(setitem(g[i],j,0)or map(max,zip(f(i+1,j),f(i,j+1),(i,j))))or(0,0))(i,j))for i in range(h)for j in range(w)if g[i][j]]
+
 test('''
 1992. Find All Groups of Farmland
 Medium

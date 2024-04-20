@@ -1,5 +1,21 @@
 from lc import *
 
+# https://leetcode.com/problems/find-all-groups-of-farmland/discuss/3677216/C%2B%2B-Very-short-O(N)-timeO(1)-space%3A-check-lefttop
+
+class Solution:
+    def findFarmland(self, g: List[List[int]]) -> List[List[int]]:
+        h,w,r=len(g),len(g[0]),[]
+        for i in range(h):
+            for j in range(w):
+                if g[i][j]and not(i and g[i-1][j])and not(j and g[i][j-1]):
+                    x,y=i,j
+                    while x+1<h and g[x+1][j]:
+                        x += 1
+                    while y+1<w and g[i][y+1]:
+                        y += 1
+                    r.append((i,j,x,y))
+        return r
+
 # https://leetcode.com/problems/find-all-groups-of-farmland/discuss/1640116/Python3-DFS-(easy-to-understand)
 
 class Solution:

@@ -27,7 +27,6 @@ class Solution:
         p={};f=lambda x:f(p[x])if x-p.get(x,x)else x;[setitem(p,f(u),f(v))for u,v in e];return f(d)==f(s)
 
 test('''
-
 1971. Find if Path Exists in Graph
 Easy
 

@@ -16,6 +16,15 @@ class Solution:
             t = t.replace(t[u],t[v])
         return t[s]==t[d]
 
+# working
+class Solution:
+    def validPath(self, n: int, e: List[List[int]], s: int, d: int) -> bool:
+        m = 2*1488
+        t = ''.join(map(chr, range(m)))
+        for u,v in e:
+            t = t.replace(t[u%m],t[v%m])
+        return t[s%m]==t[d%m]
+
 # https://leetcode.com/problems/find-if-path-exists-in-graph/discuss/2927837/Python-BFS-DFS-(explained)-%2B-BONUS-4-LINES-UNION-FIND
 
 class Solution:

@@ -6,6 +6,22 @@ class Solution:
     def validPath(self, n: int, e: List[List[int]], s: int, d: int) -> bool:
         return (g:=defaultdict(list),[{g[a].append(b), g[b].append(a)} for a,b in e]) and (f:=lambda r,o,v: max((f(g,v.add(k) or k,v) for k in r[o] if k not in v), default=0) if o!=d else 1)(g,s,set({s}))
 
+# updated 2024-04-21
+
+# unicode find (TLE)
+class Solution:
+    def validPath(self, n: int, e: List[List[int]], s: int, d: int) -> bool:
+        t = ''.join(map(chr, range(n)))
+        for u,v in e:
+            t = t.replace(t[u],t[v])
+        return t[s]==t[d]
+
+# https://leetcode.com/problems/find-if-path-exists-in-graph/discuss/2927837/Python-BFS-DFS-(explained)-%2B-BONUS-4-LINES-UNION-FIND
+
+class Solution:
+    def validPath(self, n: int, e: List[List[int]], s: int, d: int) -> bool:
+        p=[*range(n)];f=lambda x:x if x==p[x]else f(p[x]);[setitem(p,f(u),f(v))for u,v in e];return f(d)==f(s)
+
 test('''
 
 1971. Find if Path Exists in Graph

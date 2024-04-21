@@ -61,6 +61,11 @@ Output: false
 Explanation: There is no path from vertex 0 to vertex 5.
  
 
+Other examples:
+
+Input: n = 6, edges = [[0,4]], source = 0, destination = 4
+Output: true
+
 Constraints:
 
 1 <= n <= 2 * 10^5

@@ -25,7 +25,7 @@ class Solution:
 
 class Solution:
     def findAnswer(self, n: int, e: List[List[int]]) -> List[bool]:
-        g=defaultdict(list);[g[u].append((v,w))or g[v].append((u,w))for u,v,w in e];f=lambda y:(d:=[inf]*n,setitem(d,y,0),q:=[(0,y)],(r:=lambda x,u:(x==d[u]and[x+w<d[v]and(setitem(d,v,x+w),heappush(q,(x+w,v)))for v,w in g[u]],q and r(*heappop(q))))(*heappop(q)))and d;a=f(0);b=f(n-1);return[inf>a[u]+w+b[v]==a[n-1]or inf>a[v]+w+b[u]==a[n-1]for u,v,w in e]
+        g=defaultdict(list);[g[u].append((v,w))or g[v].append((u,w))for u,v,w in e];f=lambda y:(d:=[inf]*n,setitem(d,y,0),q:=[],(r:=lambda x,u:(x==d[u]and[x+w<d[v]and(setitem(d,v,x+w),heappush(q,(x+w,v)))for v,w in g[u]],q and r(*heappop(q))))(0,y))and d;a=f(0);b=f(n-1);return[inf>a[u]+w+b[v]==a[n-1]or inf>a[v]+w+b[u]==a[n-1]for u,v,w in e]
 
 test('''
 3123. Find Edges in Shortest Paths

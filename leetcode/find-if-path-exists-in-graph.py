@@ -22,6 +22,10 @@ class Solution:
     def validPath(self, n: int, e: List[List[int]], s: int, d: int) -> bool:
         p=[*range(n)];f=lambda x:x if x==p[x]else f(p[x]);[setitem(p,f(u),f(v))for u,v in e];return f(d)==f(s)
 
+class Solution:
+    def validPath(self, n: int, e: List[List[int]], s: int, d: int) -> bool:
+        p={};f=lambda x:f(p[x])if x-p.get(x,x)else x;[setitem(p,f(u),f(v))for u,v in e];return f(d)==f(s)
+
 test('''
 
 1971. Find if Path Exists in Graph

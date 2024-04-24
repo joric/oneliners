@@ -899,6 +899,13 @@ Many Leetcode problems are related to Fibonacci numbers, i.e.:
 ```python
 class Solution:
     def fib(self, n: int) -> int:
+        a,b = 0,1
+        for _ in range(n):
+            a,b = b,a+b
+        return a 
+
+class Solution:
+    def fib(self, n: int) -> int:
         r=5**.5;return round(((1+r)/2)**n/r)
 
 class Solution:
@@ -912,6 +919,13 @@ class Solution:
 ```python
 class Solution:
     def climbStairs(self, n: int) -> int:
+        a=b=1
+        for _ in range(n):
+            a,b = b,a+b
+        return a
+
+class Solution:
+    def climbStairs(self, n: int) -> int:
         r=5**.5;return round(((1+r)/2)**-~n/r)
 
 class Solution:
@@ -923,6 +937,13 @@ class Solution:
 
 ```python
 class Solution:
+    def tribonacci(self, n):
+        a,b,c = 1,0,0
+        for _ in range(n):
+            a,b,c = b,c,a+b+c
+        return c
+
+class Solution:
     def tribonacci(self, n: int) -> int:
         return round((1.83928675521**n)*0.33622811699)
 
@@ -931,7 +952,7 @@ class Solution:
         return(x:=2**32)**n%~-(x*x*~-x-x)//x%~-x
 ```
 
-You may calculate Fibonacci numbers using various formulas, see:
+You may calculate Fibonacci numbers using various methods, see:
 
 * https://r-knott.surrey.ac.uk/Fibonacci/fibFormula.html
 * https://en.wikipedia.org/wiki/Generating_function

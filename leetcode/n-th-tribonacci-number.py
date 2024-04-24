@@ -49,6 +49,10 @@ class Solution:
 
 class Solution:
     def tribonacci(self, n: int) -> int:
+        return round(((326417001/177469337)**n)*73393146/218283785)
+
+class Solution:
+    def tribonacci(self, n: int) -> int:
         return round((1.83928675521**n)*0.33622811699)
 
 # updated 2024-04-24

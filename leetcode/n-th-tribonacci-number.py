@@ -47,6 +47,8 @@ class Solution:
 
 # https://leetcode.com/problems/n-th-tribonacci-number/discuss/2775508/Python3-One-Line-Solution-with-no-Recursion-that-looks-really-weird
 
+# updated 2024-04-24
+
 class Solution:
     def tribonacci(self, n: int) -> int:
         return round((1.83928675521**n)*0.33622811699)

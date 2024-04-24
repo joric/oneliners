@@ -892,7 +892,14 @@ class Solution:
 
 ### Math tricks
 
-Many Leetcode problems are related to Fibonacci numbers, i.e.:
+Many leetcode problems use Fibonacci sequence that can be calculated using various methods, i.e.
+generating function etc.
+
+* https://r-knott.surrey.ac.uk/Fibonacci/fibFormula.html
+* https://en.wikipedia.org/wiki/Generating_function
+* https://mathworld.wolfram.com/TribonacciNumber.html
+
+Examples:
 
 * https://leetcode.com/problems/fibonacci-number
 
@@ -951,10 +958,6 @@ class Solution:
     def tribonacci(self, n: int) -> int:
         return(x:=2**32)**n%~-(x*x*~-x-x)//x%~-x
 ```
-
-* https://r-knott.surrey.ac.uk/Fibonacci/fibFormula.html
-* https://en.wikipedia.org/wiki/Generating_function
-* https://mathworld.wolfram.com/TribonacciNumber.html
 
 ### Misc
 

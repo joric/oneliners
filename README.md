@@ -19,7 +19,7 @@ class Solution:
 ```
 
 You can also use `__import__('module').func` to import from unlisted modules
-(namely "numpy", "scipy", "sortedcontainers", "zlib" and "base64"). Example:
+(namely "numpy", "scipy", "sortedcontainers", "zlib", "base64" and a bunch of others). Example:
 
 * https://leetcode.com/problems/check-if-it-is-a-straight-line
 

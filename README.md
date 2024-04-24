@@ -956,6 +956,7 @@ References:
 
 * https://r-knott.surrey.ac.uk/Fibonacci/fibFormula.html
 * https://en.wikipedia.org/wiki/Generating_function
+* https://mathworld.wolfram.com/TribonacciNumber.html
 
 ### Misc
 

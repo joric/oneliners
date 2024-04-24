@@ -890,6 +890,52 @@ class Solution:
         l=[h]+[h:=h.next for _ in[1]*10**5if h];a,b=l[k-1],l[~k];a.val,b.val=b.val,a.val;return l[0]
 ```
 
+### Math tricks
+
+You may calculate Fibonacci numbers using various formulas, see:
+
+* https://r-knott.surrey.ac.uk/Fibonacci/fibFormula.html
+* https://en.wikipedia.org/wiki/Generating_function
+
+Many Leetcode problems are related to Fibonacci numbers, i.e.:
+
+* https://leetcode.com/problems/fibonacci-number
+
+```python
+class Solution:
+    def fib(self, n: int) -> int:
+        r=5**.5;return round(((1+r)/2)**n/r)
+
+class Solution:
+    def fib(self, n: int) -> int:
+        x=9**n;return x**-~n//(x*x+~x)%x
+```
+
+* https://leetcode.com/problems/climbing-stairs
+
+
+```python
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        r=5**.5;return round(((1+r)/2)**-~n/r)
+
+class Solution:
+    def climbStairs(self, n):
+        x=9**n;return x**-~-~n//(x*x+~x)%x
+```
+
+* https://leetcode.com/problems/n-th-tribonacci-number
+
+```python
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        return round((1.83928675521**n)*0.33622811699)
+
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        return(x:=2**32)**n%~-(x*x*~-x-x)//x%~-x
+```
+
 ### Misc
 
 Note that `key=itemgetter(n)` is the same length as `key=lambda x:x[n]` but a little bit clearer to read.

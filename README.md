@@ -892,11 +892,6 @@ class Solution:
 
 ### Math tricks
 
-You may calculate Fibonacci numbers using various formulas, see:
-
-* https://r-knott.surrey.ac.uk/Fibonacci/fibFormula.html
-* https://en.wikipedia.org/wiki/Generating_function
-
 Many Leetcode problems are related to Fibonacci numbers, i.e.:
 
 * https://leetcode.com/problems/fibonacci-number
@@ -935,6 +930,11 @@ class Solution:
     def tribonacci(self, n: int) -> int:
         return(x:=2**32)**n%~-(x*x*~-x-x)//x%~-x
 ```
+
+You may calculate Fibonacci numbers using various formulas, see:
+
+* https://r-knott.surrey.ac.uk/Fibonacci/fibFormula.html
+* https://en.wikipedia.org/wiki/Generating_function
 
 ### Misc
 

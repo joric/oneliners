@@ -952,7 +952,7 @@ class Solution:
         return(x:=2**32)**n%~-(x*x*~-x-x)//x%~-x
 ```
 
-You may calculate Fibonacci numbers using various methods, see:
+Reference:
 
 * https://r-knott.surrey.ac.uk/Fibonacci/fibFormula.html
 * https://en.wikipedia.org/wiki/Generating_function

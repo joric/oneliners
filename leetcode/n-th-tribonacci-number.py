@@ -63,6 +63,14 @@ class Solution:
 
 class Solution:
     def tribonacci(self, n: int) -> int:
+        return pow(x:=1<<32,n+2,~-x*x*x-x-1)%x
+
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        return pow(x:=1<<32,n+2,~-x*x*x+~x)%x
+
+class Solution:
+    def tribonacci(self, n: int) -> int:
         return pow(x:=2<<n,n+2,~-x*x*x+~x)%x
 
 test('''

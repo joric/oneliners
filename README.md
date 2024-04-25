@@ -951,11 +951,11 @@ class Solution:
 
 class Solution:
     def tribonacci(self, n: int) -> int:
-        return round((1.83928675521**n)*0.33622811699)
+        return round((599510/325947)**n*39065/116186)
 
 class Solution:
     def tribonacci(self, n: int) -> int:
-        return(x:=2**32)**n%~-(x*x*~-x-x)//x%~-x
+        return pow(x:=2<<n,n+2,~-x*x*x+~x)%x
 ```
 
 ### Misc

@@ -84,6 +84,10 @@ class Solution:
     def climbStairs(self, n):
         x=9**n;return x**-~-~n//(x*x+~x)%x
 
+class Solution:
+    def climbStairs(self, n):
+        return pow(x:=2<<n,n+2,x*x+~x)%x
+
 test('''
 
 70. Climbing Stairs

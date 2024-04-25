@@ -61,6 +61,10 @@ class Solution:
     def tribonacci(self, n: int) -> int:
         return(x:=2**32)**n%~-(x*x*~-x-x)//x%~-x
 
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        return pow(x:=2<<n,n+2,~-x*x*x+~x)%x
+
 test('''
 1137. N-th Tribonacci Number
 Easy

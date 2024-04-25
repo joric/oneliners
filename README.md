@@ -892,7 +892,7 @@ class Solution:
 
 ### Math tricks
 
-Many leetcode problems use Fibonacci sequence that can be calculated using various methods:
+Many leetcode problems use Fibonacci sequence that can be calculated using a variety of different methods:
 
 * https://r-knott.surrey.ac.uk/Fibonacci/fibFormula.html
 * https://en.wikipedia.org/wiki/Generating_function

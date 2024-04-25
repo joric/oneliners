@@ -18,7 +18,7 @@ class Solution:
         return comb(m+n-2, n-1)
 ```
 
-You can also use `__import__('module').func` for unlisted modules (i.e. "numpy", "scipy" and "sortedcontainers").
+You can also use `__import__('module').func` for unlisted modules (i.e. "numpy", "scipy", and "sortedcontainers").
 
 * https://leetcode.com/problems/check-if-it-is-a-straight-line
 

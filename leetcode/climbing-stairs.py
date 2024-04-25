@@ -81,10 +81,6 @@ class Solution:
         x=1<<32;return x**n*x*x//(x*x+~x)%x
 
 class Solution:
-    def climbStairs(self, n: int) -> int:
-        return(x:=1<<32)**n*x*x//(x*x+~x)%x
-
-class Solution:
     def climbStairs(self, n):
         x=9**n;return x**-~-~n//(x*x+~x)%x
 

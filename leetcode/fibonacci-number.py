@@ -50,6 +50,10 @@ class Solution:
     def fib(self, n: int) -> int:
         x=9**n;return x**-~n//(x*x+~x)%x
 
+class Solution:
+    def fib(self, n: int) -> int:
+        return pow(x:=2<<n,n+2,~-x*x*x+~x)%x
+
 test('''
 
 509. Fibonacci Number

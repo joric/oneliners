@@ -88,7 +88,7 @@ kpfwuVAYFK6tCIjNPH1KncodJMuBTqWTYUGe89hNX1Kd/K2Nh1iM3mYbkMlpIaFrvvcCaVwCH+YB3FSH
 
 There is no approved method to obtain all the test cases for problems in LeetCode.
 You can, however, leverage the fact that LeetCode reveals the test case that causes your code to fail.
-The solution above is not very reliable, because tests and environment may change, but it's one of the fastest.
+The solution above is not very reliable, because tests and environment may change, but it's pretty fast.
 
 * https://leetcode.com/discuss/feedback/4643730/a-python-solution-that-contain-malicious-payload-in-your-website
 

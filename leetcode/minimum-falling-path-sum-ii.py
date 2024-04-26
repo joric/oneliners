@@ -1,5 +1,18 @@
 from lc import *
 
+# https://leetcode.com/problems/minimum-falling-path-sum-ii/discuss/451273/Python-DP-O(MN)
+
+class Solution:
+    def minFallingPathSum(self, g: List[List[int]]) -> int:
+        r = [(0, -1)]
+        for t in g:
+            r = nsmallest(2,((a+r[i==r[0][1]][0],i)for i,a in enumerate(t)))
+        return r[0][0]
+
+class Solution:
+    def minFallingPathSum(self, g: List[List[int]]) -> int:
+        return reduce(lambda s,r:sorted(((a+s[i==s[0][1]][0],i)for i,a in enumerate(r)))[:2],g,[(0,-1)])[0][0]
+
 # https://leetcode.com/problems/minimum-falling-path-sum-ii/discuss/2905727/(Python)-simple-3-line-DP
 
 class Solution:

@@ -34,7 +34,7 @@ class Solution:
 
 class Solution:
     def minFallingPathSum(self, g: List[List[int]]) -> int:
-        return(f:=cache(lambda i,j:g[i:]and min(x+f(i+1,k)for k,x in enumerate(g[i])if k!=j)or 0))(0,-1)
+        return(f:=cache(lambda i,j:g[i:]and min(x+f(i+1,k)for k,x in enumerate(g[i])if k-j)or 0))(0,-1)
 
 test('''
 1289. Minimum Falling Path Sum II

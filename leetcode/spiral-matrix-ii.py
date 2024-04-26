@@ -26,9 +26,11 @@ class Solution:
 
 # https://leetcode.com/problems/spiral-matrix-ii/discuss/22391/Python-Recursive-Solution.3-lines./1348411
 
+# updated 2024-04-26
+
 class Solution:
     def generateMatrix(self, n: int) -> List[List[int]]:
-        return (f:=lambda a,b,c:a*[[]]and[[*range(c,c+a)]]+[*zip(*f(b-1,a,c+a)[::-1])])(n,n,1)
+        return(f:=lambda a,b,c:a*[[]]and[[*range(c,c+a)]]+[*zip(*f(b-1,a,c+a)[::-1])])(n,n,1)
 
 test('''
 59. Spiral Matrix II

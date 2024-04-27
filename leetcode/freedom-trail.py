@@ -37,7 +37,11 @@ class Solution:
 
 class Solution:
     def findRotateSteps(self, r: str, k: str) -> int:
-        n=len(r);v,d,p=defaultdict(list),[0]*n,k[0];[v[c].append(i)for i,c in enumerate(r)];[setitem(d,i,min(i,n-i)+1)for i in v[k[0]]];[([setitem(d,i,min(d[j]+min(i-j,j+n-i)if i>=j else d[j]+min(j-i,i+n-j) for j in v[p])+1)for i in v[c]],p:=c)for c in k[1:]];return min(d[i] for i in v[k[-1]])
+        n=len(r);v,d,p=defaultdict(list),[0]*n,k[0]
+        [v[c].append(i)for i,c in enumerate(r)]
+        [setitem(d,i,min(i,n-i)+1)for i in v[k[0]]]
+        [([setitem(d,i,min(d[j]+min(i-j,j+n-i)if i>=j else d[j]+min(j-i,i+n-j)for j in v[p])+1)for i in v[c]],p:=c)for c in k[1:]]
+        return min(d[i] for i in v[k[-1]])
 
 test('''
 514. Freedom Trail

@@ -5,7 +5,7 @@ from lc import *
 
 class Solution:
     def canMakeSquare(self, g: List[List[str]]) -> bool:
-        r=(0,1);return any(2<(t:=sum('W'==g[i+x][j+y]for x in r for y in r))or(t<2)for i in r for j in r)
+        r=(0,1);return any(2<(t:=sum('W'>g[i+x][j+y]for x in r for y in r))or(t<2)for i in r for j in r)
 
 # https://leetcode.com/problems/make-a-square-with-the-same-color/discuss/5080163/Python-3-oror-4-lines-Counter-oror-TS%3A-23-ms-16.7-MB
 

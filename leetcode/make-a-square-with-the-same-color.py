@@ -26,10 +26,6 @@ class Solution:
 
 class Solution:
     def canMakeSquare(self, g: List[List[str]]) -> bool:
-        r=(0,1);return any(2-sum('W'>g[i+x][j+y]for x in r for y in r)for i in r for j in r)
-
-class Solution:
-    def canMakeSquare(self, g: List[List[str]]) -> bool:
         p=[*product(*[[0,1]]*2)];return any(2-sum('W'>g[i+x][j+y]for x,y in p)for i,j in p)
 
 test('''

@@ -16,14 +16,13 @@ class Solution:
         m=__import__('numpy').array(g)
         for i in(0,1):
             for j in(0,1):
-                n = (m[i:i+2,j:j+2]<'W').sum()
-                if n<2 or n>2:
+                if (m[i:i+2,j:j+2]<'W').sum()!=2:
                     return True
         return False
 
 class Solution:
     def canMakeSquare(self, g: List[List[str]]) -> bool:
-        return any(2-(__import__('numpy').array(g)[i:i+2,j:j+2]<'W').sum()for i in(0,1)for j in(0,1))
+        m=__import__('numpy').array(g);return any(2-(m[i:i+2,j:j+2]<'W').sum()for i in(0,1)for j in(0,1))
 
 class Solution:
     def canMakeSquare(self, g: List[List[str]]) -> bool:

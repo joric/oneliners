@@ -1,5 +1,25 @@
 from lc import *
 
+# https://leetcode.com/problems/freedom-trail/discuss/159154/My-7-lines-Python-DP-solution-beats-100-124-ms
+
+class Solution:
+    def findRotateSteps(self, ring: str, key: str) -> int:
+        ind, n, dp, pre = collections.defaultdict(list), len(ring), [0] * len(ring), key[0]
+        for i, c in enumerate(ring): ind[c].append(i)
+        for i in ind[key[0]]: dp[i] = min(i, n - i) + 1
+        for c in key[1:]:
+            for i in ind[c]: dp[i] = min(dp[j] + min(i - j, j + n - i) if i >= j else dp[j] + min(j - i, i + n - j) for j in ind[pre]) + 1
+            pre = c
+        return min(dp[i] for i in ind[key[-1]])
+
+class Solution:
+    def findRotateSteps(self, r: str, k: str) -> int:
+        n=len(r);v,d,p=defaultdict(list),[0]*n,k[0]
+        [v[c].append(i)for i,c in enumerate(r)]
+        [setitem(d,i,min(i,n-i)+1)for i in v[k[0]]]
+        [([setitem(d,i,min(d[j]+min(i-j,j+n-i)if i>=j else d[j]+min(j-i,i+n-j)for j in v[p])+1)for i in v[c]],p:=c)for c in k[1:]]
+        return min(d[i] for i in v[k[-1]])
+
 # https://leetcode.com/problems/freedom-trail/discuss/1821924/Python-naive-recursion-with-%40cache
 
 class Solution:
@@ -23,25 +43,9 @@ class Solution:
             return min(acw + f(i+1, rotate(ring, acw-1), key),cw + f(i+1,rotate(ring, -cw+1), key))
         return f(0, ring, key)
 
-# https://leetcode.com/problems/freedom-trail/discuss/159154/My-7-lines-Python-DP-solution-beats-100-124-ms
-
-class Solution:
-    def findRotateSteps(self, ring: str, key: str) -> int:
-        ind, n, dp, pre = collections.defaultdict(list), len(ring), [0] * len(ring), key[0]
-        for i, c in enumerate(ring): ind[c].append(i)
-        for i in ind[key[0]]: dp[i] = min(i, n - i) + 1
-        for c in key[1:]:
-            for i in ind[c]: dp[i] = min(dp[j] + min(i - j, j + n - i) if i >= j else dp[j] + min(j - i, i + n - j) for j in ind[pre]) + 1
-            pre = c
-        return min(dp[i] for i in ind[key[-1]])
-
 class Solution:
     def findRotateSteps(self, r: str, k: str) -> int:
-        n=len(r);v,d,p=defaultdict(list),[0]*n,k[0]
-        [v[c].append(i)for i,c in enumerate(r)]
-        [setitem(d,i,min(i,n-i)+1)for i in v[k[0]]]
-        [([setitem(d,i,min(d[j]+min(i-j,j+n-i)if i>=j else d[j]+min(j-i,i+n-j)for j in v[p])+1)for i in v[c]],p:=c)for c in k[1:]]
-        return min(d[i] for i in v[k[-1]])
+        t=lambda r,i:r[i:] + r[:i];g=lambda c,r,d:(s:=1,n:=len(r))and next(s for i in range(n)if r[(n+i*d)%n]==c or not(s:=s+1));f=cache(lambda i,r,k:k[i:]and((p:=[g(k[i],r,d)for d in(1,-1)])==(1,1)and 1+f(i+1,r,k)or min(p[0]+f(i+1,t(r,p[0]-1),k),p[1]+f(i+1,t(r,1-p[1]),k)))or 0);return f(0,r,k)
 
 test('''
 514. Freedom Trail

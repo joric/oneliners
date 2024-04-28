@@ -66,10 +66,8 @@ class Solution:
 
 class Solution:
     def sumOfDistancesInTree(self, n: int, e: List[List[int]]) -> List[int]:
-        t = defaultdict(set)
-        r = [0] * n
-        c = [1] * n
-        for i, j in e:
+        t,r,c = defaultdict(set),[0]*n,[1]*n
+        for i,j in e:
             t[i].add(j)
             t[j].add(i)
         def f(x,p):
@@ -81,7 +79,7 @@ class Solution:
         def g(x,p):
             for i in t[x]:
                 if i != p:
-                    r[i] = r[x]-c[i]+n-c[i]
+                    r[i] = n+r[x]-c[i]*2
                     g(i,x)
         f(0,-1)
         g(0,-1)

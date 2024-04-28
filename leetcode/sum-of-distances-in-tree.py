@@ -62,6 +62,35 @@ class Solution:
     def sumOfDistancesInTree(self, n: int, e: List[List[int]]) -> List[int]:
         g,m,h,r,s=defaultdict(set),[0]*n,[0]*n,[0]*n,setitem;[g[i].add(j)or g[j].add(i)for i,j in e];(f:=lambda o,p,d,r=1:([r:=r+f(b,o,d+1)for b in g[o]if b!=p],s(m,o,r),s(h,o,d))and r)(0,-1,0);(e:=lambda o,p,w:(s(r,o,w),[e(b,o,w+n-2*m[b])for b in g[o]if b!=p]))(0,-1,sum(h));return r
 
+# https://leetcode.com/problems/sum-of-distances-in-tree/discuss/130583/C%2B%2BJavaPython-Pre-order-and-Post-order-DFS-O(N)
+
+class Solution:
+    def sumOfDistancesInTree(self, n: int, e: List[List[int]]) -> List[int]:
+        t = defaultdict(set)
+        r = [0] * n
+        c = [1] * n
+        for i, j in e:
+            t[i].add(j)
+            t[j].add(i)
+        def f(x,p):
+            for i in t[x]:
+                if i != p:
+                    f(i,x)
+                    c[x] += c[i]
+                    r[x] += r[i] + c[i]
+        def g(x,p):
+            for i in t[x]:
+                if i != p:
+                    r[i] = r[x]-c[i]+n-c[i]
+                    g(i,x)
+        f(0,-1)
+        g(0,-1)
+        return r
+
+class Solution:
+    def sumOfDistancesInTree(self, n: int, e: List[List[int]]) -> List[int]:
+        t,r,c,s=defaultdict(set),[0]*n,[1]*n,setitem;[t[i].add(j)or t[j].add(i)for i, j in e];(f:=lambda x,p:[(f(i,x),s(c,x,c[x]+c[i]),s(r,x,r[x]+r[i]+c[i]))for i in t[x]if i!=p])(0,-1);(g:=lambda x,p:[(s(r,i,n+r[x]-c[i]*2),g(i,x))for i in t[x]if i!=p])(0,-1);return r
+
 test('''
 834. Sum of Distances in Tree
 Hard

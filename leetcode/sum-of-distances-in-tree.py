@@ -60,9 +60,7 @@ class Solution:
 
 class Solution:
     def sumOfDistancesInTree(self, n: int, e: List[List[int]]) -> List[int]:
-        g,m,h,r,s=defaultdict(set),[0]*n,[0]*n,[0]*n,setitem;[g[i].add(j)or g[j].add(i)for i,j in e];\
-        (f:=lambda o,p,d,r=1:([r:=r+f(b,o,d+1)for b in g[o]if b!=p],s(m,o,r),s(h,o,d))and r)(0,-1,0);\
-        (e:=lambda o,p,w:(s(r,o,w),[e(b,o,w+n-2*m[b])for b in g[o]if b!=p]))(0,-1,sum(h));return r
+        g,m,h,r,s=defaultdict(set),[0]*n,[0]*n,[0]*n,setitem;[g[i].add(j)or g[j].add(i)for i,j in e];(f:=lambda o,p,d,r=1:([r:=r+f(b,o,d+1)for b in g[o]if b!=p],s(m,o,r),s(h,o,d))and r)(0,-1,0);(e:=lambda o,p,w:(s(r,o,w),[e(b,o,w+n-2*m[b])for b in g[o]if b!=p]))(0,-1,sum(h));return r
 
 test('''
 834. Sum of Distances in Tree

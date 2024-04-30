@@ -21,6 +21,10 @@ class Solution:
     def wonderfulSubstrings(self, w: str) -> int:
         c,d=0,[1]+[0]*1024;return sum((c:=c^1<<(ord(i)-97),d[c]+sum(d[c^(1<<i)]for i in range(10)),setitem(d,c,d[c]+1))[1]for i in w)
 
+class Solution:
+    def wonderfulSubstrings(self, w: str) -> int:
+        c,d=0,[1]+[0]*1024;return sum((d[c:=c^1<<(ord(i)-97)]+sum(d[c^(1<<i)]for i in range(10)),setitem(d,c,d[c]+1))[0]for i in w)
+
 test('''
 1915. Number of Wonderful Substrings
 Medium

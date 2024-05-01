@@ -4,7 +4,11 @@ from lc import *
 
 class Solution:
     def reversePrefix(self, w: str, c: str) -> str:
-        t=w.find(c)+1;return w[:t][::-1]+w[t:]
+        i=w.find(c);return i<1 and w or w[i::-1]+w[i+1:]
+
+class Solution:
+    def reversePrefix(self, w: str, c: str) -> str:
+        i=w.find(c)+1;return w[:i][::-1]+w[i:]
 
 test('''
 2000. Reverse Prefix of Word

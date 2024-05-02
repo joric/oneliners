@@ -4,6 +4,10 @@ from lc import *
 
 class Solution:
     def findMaxK(self, n: List[int]) -> int:
+        return max((filter(n.__contains__,map(neg,n))),default=-1)
+
+class Solution:
+    def findMaxK(self, n: List[int]) -> int:
         s=set(n);return max((x for x in s if -x in s),default=-1)
 
 class Solution:

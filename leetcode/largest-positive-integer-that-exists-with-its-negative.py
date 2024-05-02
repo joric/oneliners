@@ -16,7 +16,7 @@ class Solution:
 
 class Solution:
     def findMaxK(self, n: List[int]) -> int:
-        return max([-1]+[x for x in n if -x in n])
+        return max([-1]+[x for x in n if-x in n])
 
 test('''
 2441. Largest Positive Integer That Exists With Its Negative

@@ -8,19 +8,11 @@ class Solution:
 
 class Solution:
     def findMaxK(self, n: List[int]) -> int:
-        s=set(n);return max((x for x in s if -x in s),default=-1)
-
-class Solution:
-    def findMaxK(self, n: List[int]) -> int:
         s=set(n);return max([-1]+[x for x in s if-x in s])
 
 class Solution:
     def findMaxK(self, n: List[int]) -> int:
         return max([-1]+[x for x in n if-x in n])
-
-class Solution:
-    def findMaxK(self, n: List[int]) -> int:
-        return max(set(n)&set(map(neg,n))|{-1})
 
 class Solution:
     def findMaxK(self, n: List[int]) -> int:

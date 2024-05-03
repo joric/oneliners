@@ -1,8 +1,18 @@
 from lc import *
 
+# https://leetcode.com/problems/compare-version-numbers/
+
 class Solution:
     def compareVersion(self, v1: str, v2: str) -> int:
         return (lambda a,b:(a>b)-(a<b))(*zip(*zip_longest(*(map(int, v.split('.')) for v in (v1,v2)), fillvalue=0)))
+
+class Solution:
+    def compareVersion(self, a: str, b: str) -> int:
+        a,b=zip(*zip_longest(*(map(int,x.split('.'))for x in(a,b)),fillvalue=0));return(a>b)-(a<b)
+
+class Solution:
+    def compareVersion(self, a: str, b: str) -> int:
+        a,b=zip(*zip_longest(*(map(int,x.split('.'))for x in(a,b)),fillvalue=0));return(a>b)-(a<b)
 
 test('''
 

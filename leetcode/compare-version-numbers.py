@@ -6,16 +6,13 @@ class Solution:
     def compareVersion(self, v1: str, v2: str) -> int:
         return (lambda a,b:(a>b)-(a<b))(*zip(*zip_longest(*(map(int, v.split('.')) for v in (v1,v2)), fillvalue=0)))
 
-class Solution:
-    def compareVersion(self, a: str, b: str) -> int:
-        a,b=zip(*zip_longest(*(map(int,x.split('.'))for x in(a,b)),fillvalue=0));return(a>b)-(a<b)
+# updated 2024-05-03
 
 class Solution:
     def compareVersion(self, a: str, b: str) -> int:
         a,b=zip(*zip_longest(*(map(int,x.split('.'))for x in(a,b)),fillvalue=0));return(a>b)-(a<b)
 
 test('''
-
 165. Compare Version Numbers
 Medium
 
@@ -62,5 +59,4 @@ Constraints:
 version1 and version2 only contain digits and '.'.
 version1 and version2 are valid version numbers.
 All the given revisions in version1 and version2 can be stored in a 32-bit integer.
-
 ''')

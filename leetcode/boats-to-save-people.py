@@ -53,6 +53,10 @@ class Solution:
     def numRescueBoats(self, p: List[int], l: int) -> int:
         p.sort();n=len(p);return n-reduce(lambda i,j:i+(i<j and p[i]+p[j]<=l),range(n)[::-1],0)
 
+class Solution:
+    def numRescueBoats(self, p: List[int], l: int) -> int:
+        p.sort();n=len(p);return n-reduce(lambda i,j:i+(i<n+~j and p[i]+p[~j]<=l),range(n),0)
+
 test('''
 881. Boats to Save People
 Medium

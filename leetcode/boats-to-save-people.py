@@ -26,6 +26,10 @@ class Solution:
 
 class Solution:
     def numRescueBoats(self, p: List[int], l: int) -> int:
+        return reduce(lambda j,i:j-(i<j and p[i]+p[j]<=l),range(j:=len(p:=sorted(p)[::-1])),j-1)+1
+
+class Solution:
+    def numRescueBoats(self, p: List[int], l: int) -> int:
         p.sort()
         n=len(p)
         i,j=0,n-1
@@ -33,11 +37,21 @@ class Solution:
             if p[i]+p[j]<=l:
                 i+=1
             j-=1
-        return len(p)+~j
+        return n+~j
 
 class Solution:
     def numRescueBoats(self, p: List[int], l: int) -> int:
-        return reduce(lambda j,i:j-(i<j and p[i]+p[j]<=l),range(j:=len(p:=sorted(p)[::-1])),j-1)+1
+        p.sort()
+        n=len(p)
+        i=0
+        for j in range(n)[::-1]:
+            if i<j and p[i]+p[j]<=l:
+                i+=1
+        return n-i
+
+class Solution:
+    def numRescueBoats(self, p: List[int], l: int) -> int:
+        p.sort();n=len(p);return n-reduce(lambda i,j:i+(i<j and p[i]+p[j]<=l),range(n)[::-1],0)
 
 test('''
 881. Boats to Save People
@@ -76,6 +90,13 @@ Example 4:
 
 Input: people = [3,1,7], limit = 7
 Output: 2
+
+Other examples:
+
+Input: people = [2,4], limit = 5
+Output: 2
+
+
 
 Constraints:
 

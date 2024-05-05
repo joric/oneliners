@@ -946,7 +946,7 @@ class Solution:
         return pow(x:=2<<n,n+2,~-x*x*x+~x)%x
 ```
 
-### Regular Expressions
+### Regular expressions
 
 Many problems can be solved with a single regex:
 

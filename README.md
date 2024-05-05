@@ -958,6 +958,14 @@ class Solution:
         [s:=re.sub(r'(.)(?!\1)(?i:\1)','',s)for _ in s];return s
 ```
 
+* https://leetcode.com/problems/sort-vowels-in-a-string
+
+```python
+class Solution:
+    def sortVowels(self, s: str) -> str:
+        return re.sub(t:='(?i)[aeiou]',lambda m,v=sorted(findall(t,s)):heappop(v),s)
+```
+
 * https://leetcode.com/problems/valid-word
 
 ```python

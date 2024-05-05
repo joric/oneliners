@@ -5,6 +5,10 @@ from lc import *
 
 class Solution:
     def minimumOperationsToMakeKPeriodic(self, w: str, k: int) -> int:
+        return sum(v for _,v in Counter(w[i:i+k]for i in range(0,len(w),k)).most_common()[1:])
+
+class Solution:
+    def minimumOperationsToMakeKPeriodic(self, w: str, k: int) -> int:
         return len(w)//k-max(Counter(w[i:i+k]for i in range(0,len(w),k)).values())
 
 test('''

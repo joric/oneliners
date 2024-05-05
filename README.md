@@ -92,6 +92,8 @@ The solution above is not very reliable, because tests and environment may chang
 
 * https://leetcode.com/discuss/feedback/4643730/a-python-solution-that-contain-malicious-payload-in-your-website
 
+You can also try commands in the sandbox, i.e. `import subprocess;print(subprocess.run(["ls", "-la", "/"]))`.
+
 ### Lambdas
 
 Fictitious (anonymous) lambdas also may be nested. E.g. you can use lambdas as parameters:

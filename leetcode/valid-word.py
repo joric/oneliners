@@ -20,7 +20,7 @@ class Solution:
 
 class Solution:
     def isValid(self, w: str) -> bool:
-        return re.match('^(?=.*[aiueo])(?=.*[bcdfghjklmnpqrstvwxyz])[a-z0-9]{3,}$',w.lower())
+        return re.match('^(?=.*[aiueo])(?=.*[bcdfghjklmnpqrstvwxyz])[a-z0-9]{3,}$',w,re.I)
 
 test('''
 3136. Valid Word

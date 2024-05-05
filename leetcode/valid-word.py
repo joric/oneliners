@@ -28,7 +28,7 @@ class Solution:
 
 class Solution:
     def isValid(self, w: str) -> bool:
-        return re.match('^(?=.*[aeiou])(?=.*[^0-9aeiou])[a-z0-9]{3,}$',w,re.I)
+        return match('^(?=.*[aeiou])(?=.*[^0-9aeiou])[a-z0-9]{3,}$',w,I)
 
 test('''
 3136. Valid Word

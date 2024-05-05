@@ -946,6 +946,26 @@ class Solution:
         return pow(x:=2<<n,n+2,~-x*x*x+~x)%x
 ```
 
+### Regex
+
+Many problems can be solved with a single regular expression:
+
+* https://leetcode.com/problems/make-the-string-great
+
+```python
+class Solution:
+    def makeGood(self, s: str) -> str:
+        [s:=re.sub(r'(.)(?!\1)(?i:\1)','',s)for _ in s];return s
+```
+
+* https://leetcode.com/problems/valid-word
+
+```python
+class Solution:
+    def isValid(self, w: str) -> bool:
+        return re.match('^(?=.*[aiueo])(?=.*[bcdfghjklmnpqrstvwxyz])[a-z0-9]{3,}$',w,re.I)
+```
+
 ### Misc
 
 Note that `key=itemgetter(n)` is the same length as `key=lambda x:x[n]` but a little bit clearer to read.

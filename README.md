@@ -948,7 +948,7 @@ class Solution:
 
 ### Regex
 
-Many problems can be solved with a single regular expression:
+Many problems can be solved with a single regular expression with lookahead expressions:
 
 * https://leetcode.com/problems/make-the-string-great
 

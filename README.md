@@ -92,7 +92,7 @@ The solution above is not very reliable, because tests and environment may chang
 
 * https://leetcode.com/discuss/feedback/4643730/a-python-solution-that-contain-malicious-payload-in-your-website
 
-You can also try commands in the sandbox, i.e. `import subprocess;print(subprocess.run(["ls", "-la", "/"]))`.
+You can also try exploring the sandbox, e.g. `import subprocess;print(subprocess.run(["ls", "-la", "/"]))`.
 
 ### Lambdas
 

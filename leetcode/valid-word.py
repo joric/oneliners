@@ -7,6 +7,10 @@ class Solution:
     def isValid(self, w: str) -> bool:
         a,v=ascii_letters,{*'aeiou'};return w[2:]and not{*w}-{*a,*digits}and all(x&{*w.lower()}for x in(v,{*a.lower()}-v))
 
+class Solution:
+    def isValid(self, w: str) -> bool:
+        v={*'aeiou'};return w[2:]and w.isalnum()and all(x&{*w.lower()}for x in(v,{*ascii_lowercase}-v))
+
 # https://leetcode.com/problems/valid-word/discuss/5114540/Python-Solution-oror-Regexp.
 
 class Solution:

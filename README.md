@@ -946,9 +946,9 @@ class Solution:
         return pow(x:=2<<n,n+2,~-x*x*x+~x)%x
 ```
 
-### Regex
+### Regular Expressions
 
-Many problems can be solved with a single regular expression:
+Many problems can be solved with a single regex:
 
 * https://leetcode.com/problems/make-the-string-great
 

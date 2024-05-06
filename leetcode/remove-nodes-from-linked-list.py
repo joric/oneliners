@@ -22,6 +22,10 @@ class Solution:
 # https://leetcode.com/problems/remove-nodes-from-linked-list/discuss/5119727/one-line-solution
 
 class Solution:
+    def removeNodes(self, n: Optional[ListNode]) -> Optional[ListNode]:
+        return(f:=lambda n:n.next and(setattr(n,'next',q:=f(n.next)),q)[n.val<q.val]or n)(n)
+
+class Solution:
     def removeNodes(s, n: Optional[ListNode]) -> Optional[ListNode]:
         return n.next and(setattr(n,'next',q:=s.removeNodes(n.next)),q)[n.val<q.val]or n
 

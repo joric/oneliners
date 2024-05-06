@@ -1,8 +1,27 @@
 from lc import *
 
+# https://leetcode.com/problems/remove-nodes-from-linked-list
+
+class Solution:
+    def removeNodes(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        if not h:
+            return h
+        v = eval(h.serialize(h))
+        s = 0
+        [v.pop(i)if s>v[i]else(s:=v[i])for i in range(len(v))[::-1]]
+        return h.deserialize(str(v))
+
 class Solution:
     def removeNodes(self, h: Optional[ListNode]) -> Optional[ListNode]:
         return h and h.deserialize(str((v:=eval(h.serialize(h)),s:=0,[v.pop(i)if s>v[i]else(s:=v[i])for i in range(len(v))[::-1]],v)[3]))
+
+class Solution:
+    def removeNodes(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        return h and(v:=eval(h.serialize(h)))and h.deserialize(str([x for x,y in zip(v,[*accumulate(v[::-1],max)][::-1])if x>=y]))
+
+class Solution:
+    def removeNodes(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        v=eval(h.serialize(h));return h.deserialize(str([x for x,y in zip(v,[*accumulate(v[::-1],max)][::-1])if x>=y]))
 
 test('''
 2487. Remove Nodes From Linked List

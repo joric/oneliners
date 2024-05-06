@@ -80,7 +80,7 @@ with open(__file__, 'rt') as f:
     print(f.read())
 ```
 
-Apparently the code stores final result in the `user.out` file, so we can write it like this:
+The solution driver code stores final result in the `user.out` file, so we can write it like this:
 
 * https://leetcode.com/problems/two-sum
 

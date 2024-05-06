@@ -23,6 +23,15 @@ class Solution:
 
 class Solution:
     def removeNodes(self, n: Optional[ListNode]) -> Optional[ListNode]:
+        if n.next:
+            q = self.removeNodes(n.next)
+            n.next = q
+            if n.val < q.val:
+                return q
+        return n
+
+class Solution:
+    def removeNodes(self, n: Optional[ListNode]) -> Optional[ListNode]:
         return(f:=lambda n:n.next and(setattr(n,'next',q:=f(n.next)),q)[n.val<q.val]or n)(n)
 
 class Solution:

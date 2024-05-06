@@ -19,6 +19,12 @@ class Solution:
     def removeNodes(self, h: Optional[ListNode]) -> Optional[ListNode]:
         v=eval(h.serialize(h));return h.deserialize(str([x for x,y in zip(v,[*accumulate(v[::-1],max)][::-1])if x>=y]))
 
+# https://leetcode.com/problems/remove-nodes-from-linked-list/discuss/5119727/one-line-solution
+
+class Solution:
+    def removeNodes(s, n: Optional[ListNode]) -> Optional[ListNode]:
+        return n.next and(setattr(n,'next',q:=s.removeNodes(n.next)),q)[n.val<q.val]or n
+
 test('''
 2487. Remove Nodes From Linked List
 Medium

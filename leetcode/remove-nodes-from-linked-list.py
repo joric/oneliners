@@ -17,10 +17,6 @@ class Solution:
 
 class Solution:
     def removeNodes(self, h: Optional[ListNode]) -> Optional[ListNode]:
-        return h and(v:=eval(h.serialize(h)))and h.deserialize(str([x for x,y in zip(v,[*accumulate(v[::-1],max)][::-1])if x>=y]))
-
-class Solution:
-    def removeNodes(self, h: Optional[ListNode]) -> Optional[ListNode]:
         v=eval(h.serialize(h));return h.deserialize(str([x for x,y in zip(v,[*accumulate(v[::-1],max)][::-1])if x>=y]))
 
 test('''

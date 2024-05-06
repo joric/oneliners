@@ -1295,6 +1295,6 @@ Notes:
 * [Don't Piss down my back and tell me it's raining: Notebook for Sarcastic, Witty, and Sharp Tongued One Liners](https://www.amazon.com/Dont-Piss-down-back-raining/dp/B08ZQGV1XH)
 * [Python One-Liners: Write Concise, Eloquent Python Like a Professional](https://www.amazon.com/Python-One-Liners-Concise-Eloquent-Professional/dp/1718500505)
 * [Python One-Liners - Concise Python Code](https://pythononeliners.com)
-* [Brilliant repositories of fantastic, killer one-liners (YouTube)](https://youtu.be/8k2AbqTBxao?t=251)
+* [Brilliant repositories of fantastic, killer one-liners (Stephen Fry on YouTube)](https://youtu.be/8k2AbqTBxao?t=251)
 * [Tips for Golfing in Python (Stack Overflow)](https://codegolf.stackexchange.com/questions/54/tips-for-golfing-in-python)
 * [One-line coder makes me depressed (Reddit)](https://redd.it/15wz7n7)

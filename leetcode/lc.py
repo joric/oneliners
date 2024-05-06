@@ -35,7 +35,6 @@ import sys
 import json
 
 from typing import *
-import importlib
 
 class TreeNode:
     def __init__(self, x=0, left=None, right=None):
@@ -167,6 +166,7 @@ cnames = []
 # note only the last solution is tested (classname override), but you can use empty test() between solutions
 
 def test(text=None, classname=None, check=None, init=None, custom=None, cast=None):
+    import importlib
     if not text:
         cname = classname or importlib.import_module('__main__').Solution
         cnames.append(cname)

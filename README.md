@@ -68,7 +68,7 @@ class Solution:
         return h and h.deserialize(str(eval(h.serialize(h))[::-1]))
 ```
 
-More undocumented functions:
+More undocumented functions (you can get them with `print(dir(ClassName))`):
 
 * ListNode: `_has_cycle`, `_list_node_to_array`, `_array_to_list_node`.
 * TreeNode: `_has_cycle`, `_tree_node_to_array`, `_array_to_tree_node`.

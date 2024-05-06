@@ -73,7 +73,14 @@ More undocumented functions, obtainable with `print(dir(ClassName))`:
 * ListNode: `_has_cycle`, `_list_node_to_array`, `_array_to_list_node`.
 * TreeNode: `_has_cycle`, `_tree_node_to_array`, `_array_to_tree_node`.
 
-Also Leetcode apparently stores final result in the `user.out` file and allows writing to it:
+You can also dump the entire solution file with all the imports like this:
+
+```python
+with open(__file__, 'rt') as f:
+    print(f.read())
+```
+
+Apparently the code stores final result in the `user.out` file, so we can write it like this:
 
 * https://leetcode.com/problems/two-sum
 
@@ -97,13 +104,6 @@ You can also try exploring the sandbox using shell commands, e.g.:
 ```python
 import subprocess
 print(subprocess.run(["ls", "-la", "/"]))
-```
-
-You can also dump the entire solution file with all the imports like this:
-
-```python
-with open(__file__, 'rt') as f:
-    print(f.read())
 ```
 
 ### Lambdas

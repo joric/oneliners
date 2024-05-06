@@ -1,30 +1,42 @@
 #!/usr/bin/env python3
 
-import importlib
-import json
-import os
+from string import *
+from re import *
+from datetime import *
+from collections import *
+from heapq import *
+from bisect import *
+from copy import *
+from math import *
+from random import *
+from statistics import *
+from itertools import *
+from functools import *
+from operator import *
+from io import *
+from sys import *
+from json import *
+from builtins import *
+
+import string
+import re
+import datetime
+import collections
+import heapq
+import bisect
+import copy
+import math
+import random
+import statistics
+import itertools
+import functools
+import operator
+import io
 import sys
+import json
+
 from typing import *
-
-from bisect import *; import bisect
-from collections import *; import collections
-from copy import *; import copy
-from functools import *; import functools
-from heapq import *; import heapq
-from itertools import *; import itertools
-from math import *; import math
-from operator import *; import operator
-from random import *; import random
-from re import *; import re
-from statistics import *; import statistics
-from string import *; import string
-
-try:
-    pow = __builtins__['pow']
-except:
-    pass
-
-sub = operator.sub # overloads (re.)sub
+import importlib
 
 class TreeNode:
     def __init__(self, x=0, left=None, right=None):

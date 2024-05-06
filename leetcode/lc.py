@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-
+# coding: utf-8
 from string import *
 from re import *
 from datetime import *

@@ -1,5 +1,13 @@
 from lc import *
 
+# https://leetcode.com/problems/double-a-number-represented-as-a-linked-list
+
+# serialize (exceeds limit 4300 digits)
+
+class Solution:
+    def doubleIt(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        return type(h)(','.join(str(2*int(''.join(map(str,eval(h.serialize(h))))))))
+
 # https://leetcode.com/problems/double-a-number-represented-as-a-linked-list/discuss/3901745/Python-3-oror-5-lines-in-place-recursion-oror-TM%3A-330-ms-30-MB
 
 class Solution:

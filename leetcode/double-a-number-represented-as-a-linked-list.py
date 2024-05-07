@@ -14,17 +14,17 @@ class Solution:
     def doubleIt(self, h: Optional[ListNode]) -> Optional[ListNode]:
         return type(h)(1,h)if(f:=lambda h:setattr(h,'val',(x:=2*h.val+(f(h.next)if h.next else 0))%10)or x//10)(h)else h
 
-# serialize
-
-class Solution:
-    def doubleIt(self, h: Optional[ListNode]) -> Optional[ListNode]:
-        sys.set_int_max_str_digits(0);return type(h)(','.join(str(2*int(''.join(map(str,eval(h.serialize(h))))))))
-
+# convert list
 class Solution:
     def doubleIt(self, h: Optional[ListNode]) -> Optional[ListNode]:
         f=lambda n,p=0:n and f(n.next,p*10+n.val)or p
         l=lambda n,p=None:(x:=ListNode(n<9 and n or n%10,p))and n>9 and l(n//10,x)or x
         return l(2*f(h))
+
+# serialize
+class Solution:
+    def doubleIt(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        sys.set_int_max_str_digits(0);return type(h)(','.join(str(2*int(''.join(map(str,eval(h.serialize(h))))))))
 
 class Solution:
     def doubleIt(self, h: Optional[ListNode]) -> Optional[ListNode]:

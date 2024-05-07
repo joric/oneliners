@@ -1,13 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/double-a-number-represented-as-a-linked-list
-
-# serialize (exceeds limit 4300 digits)
-
-class Solution:
-    def doubleIt(self, h: Optional[ListNode]) -> Optional[ListNode]:
-        return type(h)(','.join(str(2*int(''.join(map(str,eval(h.serialize(h))))))))
-
 # https://leetcode.com/problems/double-a-number-represented-as-a-linked-list/discuss/3901745/Python-3-oror-5-lines-in-place-recursion-oror-TM%3A-330-ms-30-MB
 
 class Solution:
@@ -21,6 +13,22 @@ class Solution:
 class Solution:
     def doubleIt(self, h: Optional[ListNode]) -> Optional[ListNode]:
         return type(h)(1,h)if(f:=lambda h:setattr(h,'val',(x:=2*h.val+(f(h.next)if h.next else 0))%10)or x//10)(h)else h
+
+# serialize
+
+class Solution:
+    def doubleIt(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        sys.set_int_max_str_digits(0);return type(h)(','.join(str(2*int(''.join(map(str,eval(h.serialize(h))))))))
+
+class Solution:
+    def doubleIt(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        f=lambda n,p=0:n and f(n.next,p*10+n.val)or p
+        l=lambda n,p=None:(x:=ListNode(n<9 and n or n%10,p))and n>9 and l(n//10,x)or x
+        return l(2*f(h))
+
+class Solution:
+    def doubleIt(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        set_int_max_str_digits(0);return type(h)(','.join(str(2*int(re.sub('[^0-9]','',h.serialize(h))))))
 
 test('''
 2816. Double a Number Represented as a Linked List

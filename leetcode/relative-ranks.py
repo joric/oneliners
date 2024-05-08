@@ -10,6 +10,10 @@ class Solution:
 
 class Solution:
     def findRelativeRanks(self, a: List[int]) -> List[str]:
+        return map({v:{1:'Gold Medal',2:'Silver Medal',3:'Bronze Medal'}.get(i,str(i)) for i,v in enumerate(sorted(a)[::-1],1)}.get,a)
+
+class Solution:
+    def findRelativeRanks(self, a: List[int]) -> List[str]:
         return map(dict(zip(sorted(a)[::-1],chain(('Gold Medal','Silver Medal','Bronze Medal'),map(str,count(4))))).get,a)
 
 class Solution:

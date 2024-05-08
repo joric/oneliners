@@ -8,14 +8,6 @@ class Solution:
 
 class Solution:
     def findRelativeRanks(self, s: List[int]) -> List[str]:
-        t=sorted(s)[::-1];return[('Gold','Silver','Bronze')[i]+' Medal'if i<3 else str(i+1)for i in map(t.index,s)]
-
-class Solution:
-    def findRelativeRanks(self, s: List[int]) -> List[str]:
-        t=sorted(s)[::-1];return[i<3 and('Gold','Silver','Bronze')[i]+' Medal'or str(i+1)for i in map(t.index,s)]
-
-class Solution:
-    def findRelativeRanks(self, s: List[int]) -> List[str]:
         return[i<3 and('Gold','Silver','Bronze')[i]+' Medal'or str(i+1)for i in map(sorted(s)[::-1].index,s)]
 
 test('''

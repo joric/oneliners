@@ -6,6 +6,12 @@ class Solution:
     def findRelativeRanks(self, s: List[int]) -> List[str]:
         return map(dict(zip(sorted(s)[::-1],['Gold Medal','Silver Medal','Bronze Medal']+[*map(str,range(4,len(s)+1))])).get,s)
 
+# https://leetcode.com/problems/relative-ranks/discuss/5129610/One-Line-Solution
+
+class Solution:
+    def findRelativeRanks(self, a: List[int]) -> List[str]:
+        return map(dict(zip(sorted(a)[::-1],chain(('Gold Medal','Silver Medal','Bronze Medal'),map(str,count(4))))).get,a)
+
 class Solution:
     def findRelativeRanks(self, s: List[int]) -> List[str]:
         return[i<3and('Gold','Silver','Bronze')[i]+' Medal'or str(i+1)for i in map(sorted(s)[::-1].index,s)]

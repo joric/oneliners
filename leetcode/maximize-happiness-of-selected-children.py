@@ -4,6 +4,10 @@ from lc import *
 
 class Solution:
     def maximumHappinessSum(self, h: List[int], k: int) -> int:
+        return sum(max(0,x-i)for i,x in enumerate(sorted(h)[::-1][:k]))
+
+class Solution:
+    def maximumHappinessSum(self, h: List[int], k: int) -> int:
         h.sort();return sum(max(0,h[~i]-i)for i in range(k))
 
 test('''

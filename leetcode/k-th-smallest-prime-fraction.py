@@ -4,6 +4,10 @@ from lc import *
 
 class Solution:
     def kthSmallestPrimeFraction(self, a: List[int], k: int) -> List[int]:
+        return sorted(product(a,a),key=lambda p:truediv(*p))[k-1]
+
+class Solution:
+    def kthSmallestPrimeFraction(self, a: List[int], k: int) -> List[int]:
         return sorted(product(a,a),key=lambda x:x[0]/x[1])[k-1]
 
 test('''

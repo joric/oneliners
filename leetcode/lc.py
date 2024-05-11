@@ -188,7 +188,12 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
             v = cast(name, v)
 
         try:
-            return (getattr(tname,'parse'))(v) if 'parse' in dir(tname) else tname(v)
+            if 'parse' in dir(tname):
+                return (getattr(tname,'parse'))(v)
+            x = tname(v)
+            if type(x) is float:
+                return round(x,5)
+            return x
         except Exception as e:
             pass
 

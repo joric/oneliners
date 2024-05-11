@@ -33,6 +33,10 @@ class Solution:
     def mincostToHireWorkers(self, q: List[int], w: List[int], k: int) -> float:
         s,h=0,[];return min(s*q for q,w in sorted((w/q,q)for w,q in zip(w,q))if(heappush(h,-w),s:=s+w,k<len(h)and(s:=s+heappop(h)))and len(h)==k)
 
+class Solution:
+    def mincostToHireWorkers(self, q: List[int], w: List[int], k: int) -> float:
+        s,h=0,[];return min(s*q for q,w in sorted((w/q,q)for w,q in zip(w,q))if(heappush(h,-w),s:=s+w+(k<len(h)and heappop(h)))and h[k-1:])
+
 test('''
 857. Minimum Cost to Hire K Workers
 Hard

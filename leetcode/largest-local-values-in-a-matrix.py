@@ -25,7 +25,6 @@ class Solution:
     def largestLocal(self, g: List[List[int]]) -> List[List[int]]:
         t=range(len(g)-2);return[[max(max(r[c:c+3])for r in g[r:r+3])for c in t]for r in t]
 
-
 test('''
 2373. Largest Local Values in a Matrix
 Easy

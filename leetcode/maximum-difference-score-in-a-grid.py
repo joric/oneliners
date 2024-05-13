@@ -9,27 +9,29 @@ class Solution:
     def maxScore(self, g: List[List[int]]) -> int:
         h,w = len(g),len(g[0])
         @cache
-        def f(x,y):
+        def f(i,j):
             r = -inf
-            c = g[x][y]
+            c = g[i][j]
 
-            for i in range(x+1,h):
-                a = g[i][y] - c
-                r = max(r, a)
-                b = f(i,y)
-                if a>0 and b>0:
-                    r = max(r, a+b)
-
-            for j in range(y+1,w):
+            for x in range(i+1,h):
                 a = g[x][j] - c
                 r = max(r, a)
                 b = f(x,j)
                 if a>0 and b>0:
                     r = max(r, a+b)
 
+            for y in range(j+1,w):
+                a = g[i][y] - c
+                r = max(r, a)
+                b = f(i,y)
+                if a>0 and b>0:
+                    r = max(r, a+b)
+
             return r
 
         return max(f(i,j)for i in range(h) for j in range(w))
+
+test()
 
 # https://leetcode.com/problems/maximum-difference-score-in-a-grid/discuss/5145704/JavaC%2B%2BPython-DP-Minimum-on-Top-Left
 

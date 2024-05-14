@@ -17,7 +17,11 @@ class Solution:
 
 class Solution:
     def getMaximumGold(self, g: List[List[int]]) -> int:
-        h,w=len(g),len(g[0]);f=lambda i,j:h>i>-1<j<w and g[i][j]and(x:=g[i][j],setitem(g[i],j,0),c:=max(map(f,(i+1,i-1,i,i),(j,j,j+1,j-1))),setitem(g[i],j,x),c+x)[4]or 0;return max(f(i,j)for i in range(h)for j in range(w))
+        h,w,s=len(g),len(g[0]),setitem;f=lambda i,j:h>i>-1<j<w and g[i][j]and(x:=g[i][j],s(g[i],j,0),c:=max(map(f,(i+1,i-1,i,i),(j,j,j+1,j-1))),s(g[i],j,x),c+x)[4]or 0;return max(f(i,j)for i in range(h)for j in range(w))
+
+class Solution:
+    def getMaximumGold(self, g: List[List[int]]) -> int:
+        e=enumerate;g,s={i+j*1j:x for i,r in e(g)for j,x in e(r)},setitem;f=lambda z:(t:=g.get(z,0))and(x:=t,s(g,z,0),c:=max(f(z+1j**k)for k in range(4)),s(g,z,x),c+x)[4]or 0;return max(map(f,set(g)))
 
 test('''
 1219. Path with Maximum Gold

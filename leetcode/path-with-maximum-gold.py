@@ -21,7 +21,7 @@ class Solution:
 
 class Solution:
     def getMaximumGold(self, g: List[List[int]]) -> int:
-        e=enumerate;g,s={i+j*1j:x for i,r in e(g)for j,x in e(r)},setitem;f=lambda z:(t:=g.get(z,0))and(x:=t,s(g,z,0),c:=max(f(z+1j**k)for k in range(4)),s(g,z,x),c+x)[4];return max(map(f,set(g)))
+        e,s=enumerate,setitem;g,f={i+j*1j:x for i,r in e(g)for j,x in e(r)},lambda z:(t:=g.get(z,0))and(s(g,z,0),c:=max(f(z+1j**k)for k in range(4)),s(g,z,t),c+t)[3];return max(map(f,set(g)))
 
 test('''
 1219. Path with Maximum Gold

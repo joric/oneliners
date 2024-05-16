@@ -30,6 +30,10 @@ class Solution:
     def evaluateTree(self, r: Optional[TreeNode]) -> bool:
         return x if(x:=r.val)<2else(or_,and_)[x-2](*map(self.evaluateTree,(r.left,r.right)))
 
+class Solution:
+    def evaluateTree(self, r: Optional[TreeNode]) -> bool:
+        return(f:=lambda r:x if(x:=r.val)<2else(or_,and_)[x-2](f(r.left),f(r.right)))(r)
+
 test('''
 2331. Evaluate Boolean Binary Tree
 Easy

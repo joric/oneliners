@@ -27,8 +27,8 @@ class Solution:
         return f(*p)
 
 class Solution:
-    def evaluateTree(self, t: Optional[TreeNode]) -> bool:
-        return x if 2>(x:=t.val)else(or_,and_)[x-2](*map(self.evaluateTree,(t.left,t.right)))
+    def evaluateTree(self, r: Optional[TreeNode]) -> bool:
+        return x if(x:=r.val)<2else(or_,and_)[x-2](*map(self.evaluateTree,(r.left,r.right)))
 
 test('''
 2331. Evaluate Boolean Binary Tree

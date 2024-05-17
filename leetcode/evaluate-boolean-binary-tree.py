@@ -38,6 +38,12 @@ class Solution:
     def evaluateTree(self, r: Optional[TreeNode]) -> bool:
         return(f:=lambda r:x if(x:=r.val)<2else(or_,mul)[x-2](f(r.left),f(r.right)))(r)
 
+# https://leetcode.com/problems/evaluate-boolean-binary-tree/discuss/5164810/one-line-solution/2403107
+
+class Solution:
+    def evaluateTree(self, r: Optional[TreeNode]) -> bool:
+        return(f:=lambda r:not r or(xor,eq,or_,mul)[r.val](f(r.left),f(r.right)))(r)
+
 test('''
 2331. Evaluate Boolean Binary Tree
 Easy

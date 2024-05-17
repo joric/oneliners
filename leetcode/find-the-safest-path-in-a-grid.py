@@ -54,6 +54,10 @@ class Solution:
         f=lambda s,x,y:min(-s,v[0][0])if(x,y)==(0,0)else(w.discard((x,y)),[heappush(h,(max(s,-v[i][j]),i,j))or w.discard((i,j))for i,j in e(x,y)])and h and f(*heappop(h))
         return f(*heappop(h))if h else -1
 
+class Solution:
+    def maximumSafenessFactor(self, g: List[List[int]]) -> int:
+        n=len(g);q,v=deque(),[[-1]*n for _ in range(n)];w=set(product(range(n),range(n)));e=lambda x,y:set(((x-1,y),(x,y-1),(x+1,y),(x,y+1)))&w;[setitem(v[i],j,0)or q.append((0,i,j))for i,j in product(range(n),range(n))if g[i][j]==1];q and(f:=lambda s,x,y:([setitem(v[i],j,s+1)or q.append((s+1,i,j))for i,j in e(x,y)if v[i][j]==-1],q and f(*q.popleft())))(*q.popleft());h=[(-v[-1][-1],n-1,n-1)];f=lambda s,x,y:min(-s,v[0][0])if(x,y)==(0,0)else(w.discard((x,y)),[heappush(h,(max(s,-v[i][j]),i,j))or w.discard((i,j))for i,j in e(x,y)])and h and f(*heappop(h));return f(*heappop(h))if h else -1
+
 test('''
 2812. Find the Safest Path in a Grid
 Medium

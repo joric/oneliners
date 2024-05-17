@@ -25,6 +25,12 @@ class Solution:
     def modifiedMatrix(self, m: List[List[int]]) -> List[List[int]]:
         t=[*zip(*m)];return[[(v,max(t[j]))[v<0]for j,v in enumerate(r)]for r in m]
 
+# https://leetcode.com/problems/modify-the-matrix/discuss/4710648/python-one-line/2402946
+
+class Solution:
+    def modifiedMatrix(self, m: List[List[int]]) -> List[List[int]]:
+        return zip(*([(v,max(c))[v<0] for v in c] for c in zip(*m)))
+
 test('''
 3033. Modify the Matrix
 Easy

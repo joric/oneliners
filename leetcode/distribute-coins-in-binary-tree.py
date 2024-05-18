@@ -15,6 +15,12 @@ class Solution:
     def distributeCoins(self, r: Optional[TreeNode]) -> int:
         return(f:=lambda r,p=None:r and(x:=f(r.left,r)+f(r.right,r),t:=r.val-1,p and setattr(p,'val',p.val+t),x+abs(t))[3]or 0)(r)
 
+# https://leetcode.com/problems/distribute-coins-in-binary-tree/discuss/222395/Java-Super-Short-Solution-!!!
+
+class Solution:
+    def distributeCoins(self, r: Optional[TreeNode]) -> int:
+        c=[0];(f:=lambda r:r and(x:=f(r.left)+f(r.right)+r.val-1,setitem(c,0,c[0]+abs(x)))[0]or 0)(r);return c[0]
+
 test('''
 979. Distribute Coins in Binary Tree
 Medium

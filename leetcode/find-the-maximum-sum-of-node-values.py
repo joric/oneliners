@@ -1,6 +1,7 @@
 from lc import *
 
 # Q4. https://leetcode.com/contest/biweekly-contest-125/problems/find-the-maximum-sum-of-node-values/
+# https://leetcode.com/problems/find-the-maximum-sum-of-node-values
 
 class Solution:
     def maximumValueSum(self, n: List[int], k: int, edges: List[List[int]]) -> int:
@@ -60,6 +61,11 @@ Input: nums = [7,7,7,7,7,7], k = 3, edges = [[0,1],[0,2],[0,3],[0,4],[0,5]]
 Output: 42
 Explanation: The maximum achievable sum is 42 which can be achieved by Bogdan performing no operations.
  
+
+Other examples:
+
+Input: nums = [24,78,1,97,44], k = 6, edges = [[0,2],[1,2],[4,2],[3,4]]
+Output: 260
 
 Constraints:
 

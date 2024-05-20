@@ -4,18 +4,6 @@ from lc import *
 
 class Solution:
     def subsetXORSum(self, n: List[int]) -> int:
-        return reduce(lambda x,y:x|y,n)*2**(len(n)-1)
-
-class Solution:
-    def subsetXORSum(self, n: List[int]) -> int:
-        return reduce(lambda x,y:x|y,n)*2**~-len(n)
-
-class Solution:
-    def subsetXORSum(self, n: List[int]) -> int:
-        return reduce(or_,n)*2**~-len(n)
-
-class Solution:
-    def subsetXORSum(self, n: List[int]) -> int:
         return reduce(or_,n)<<~-len(n)
 
 test('''

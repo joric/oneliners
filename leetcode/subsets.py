@@ -21,6 +21,10 @@ class Solution:
     def subsets(self, r: List[int]) -> List[List[int]]:
         return[c for k in range(len(r)+1)for c in combinations(r,k)]
 
+class Solution:
+    def subsets(self, n: List[int]) -> List[List[int]]:
+        r=[[]];[r:=r+[l+[x]for l in r]for x in n];return r
+
 test('''
 78. Subsets
 Medium

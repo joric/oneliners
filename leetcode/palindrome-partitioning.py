@@ -7,14 +7,15 @@ class Solution:
         return[[s[:i]]+p for i in range(1,len(s)+1) if s[:i]==s[i-1::-1] for p in self.partition(s[i:])]or[[]]
 
 # updated 2024-05-22
-
 class Solution:
     def partition(t, s: str) -> List[List[str]]:
         return[[s[:i],*p]for i in range(1,len(s)+1)if s[:i]==s[i-1::-1]for p in t.partition(s[i:])]or[[]]
 
+class Solution:
+    def partition(t, s: str) -> List[List[str]]:
+        return[[s[:i],*p]for i in range(1,len(s)+1)for p in t.partition(s[i:])if s[:i]==s[i-1::-1]]or[[]]
 
 test('''
-
 131. Palindrome Partitioning
 Medium
 
@@ -43,6 +44,4 @@ Constraints:
 
 1 <= s.length <= 16
 s contains only lowercase English letters.
-
 ''')
-

@@ -15,6 +15,10 @@ class Solution:
     def partition(t, s: str) -> List[List[str]]:
         return[[s[:i],*p]for i in range(1,len(s)+1)for p in t.partition(s[i:])if s[:i]==s[i-1::-1]]or[[]]
 
+class Solution:
+    def partition(t, s: str) -> List[List[str]]:
+        return[p+[u]for i in range(len(s))if(u:=s[~i:])==u[::-1]for p in t.partition(s[:~i])]or[[]]
+
 test('''
 131. Palindrome Partitioning
 Medium

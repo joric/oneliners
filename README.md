@@ -73,7 +73,7 @@ More undocumented functions, obtainable with `print(dir(ClassName))`:
 * ListNode: `_has_cycle`, `_list_node_to_array`, `_array_to_list_node`.
 * TreeNode: `_has_cycle`, `_tree_node_to_array`, `_array_to_tree_node`.
 
-You can also dump the entire solution file with all the imports and the driver code:
+You can also dump the entire solution file to check all the imports for yourself:
 
 ```python
 with open(__file__, 'rt') as f:

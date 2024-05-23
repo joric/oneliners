@@ -1275,7 +1275,7 @@ class Solution:
         return mode(nums)
 ```
 
-## Notes
+### Notes
 
 * Unless the following token starts with e or E. You can remove the space following a number. E.g. `i==4 and j==4` becomes `i==4and j==4`.
 * There's a nice way to convert an iterable to list using star operator, e.g. `x=[*g]` equals `*x,=g` (1 char shorter).

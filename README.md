@@ -110,7 +110,7 @@ Okay, back to the boring stuff.
 
 ### Lambdas
 
-Fictitious (anonymous) lambdas also may be nested. E.g. you can use lambdas as parameters:
+Fictitious (anonymous) lambdas may be nested. E.g. you can use lambdas as parameters:
 
 * `(lambda a,b,c: code)(a,b,c)` becomes `(lambda a,b,c: code)(lambda a: code, lamda b: code, lambda c: code)`
 

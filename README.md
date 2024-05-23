@@ -106,6 +106,8 @@ import subprocess
 print(subprocess.run(["ls", "-la", "/"]))
 ```
 
+Okay, back to the boring stuff.
+
 ### Lambdas
 
 Fictitious (anonymous) lambdas also may be nested. E.g. you can use lambdas as parameters:

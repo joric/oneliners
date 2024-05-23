@@ -18,7 +18,7 @@ class Solution:
         return comb(m+n-2, n-1)
 ```
 
-You can also use `__import__('module').func` for unlisted modules (i.e. "numpy", "scipy", and "sortedcontainers").
+You can also use `__import__('module').func` for unlisted modules (namely, `numpy`, `scipy`, and `sortedcontainers`).
 
 * https://leetcode.com/problems/check-if-it-is-a-straight-line
 
@@ -58,7 +58,7 @@ class Solution:
         f=lambda n:n and n.val+10*f(n.next)or 0;return ListNode(','.join([*str(f(a)+f(b))][::-1]))
 ```
 
-Leetcode lists and trees also have `serialize` and `deserialize` functions:
+Leetcode also has `serialize` and `deserialize` functions for lists and trees:
 
 * https://leetcode.com/problems/reverse-linked-list
 

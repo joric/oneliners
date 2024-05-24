@@ -6,6 +6,10 @@ class Solution:
     def subsetXORSum(self, n: List[int]) -> int:
         return reduce(or_,n)<<~-len(n)
 
+class Solution:
+    def subsetXORSum(self, n: List[int]) -> int:
+        return reduce(or_,n)<<len(n)-1
+
 test('''
 1863. Sum of All Subset XOR Totals
 Easy

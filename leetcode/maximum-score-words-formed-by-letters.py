@@ -34,6 +34,10 @@ class Solution:
     def maxScoreWords(self, w: List[str], l: List[str], s: List[int]) -> int:
         c=Counter;return(f:=lambda n,i:max([sum(s[ord(x)-97]for x in w[j])+f(n-c(w[j]),j+1)for j in range(i,len(w))if not c(w[j])-n]+[0]))(c(l),0)
 
+class Solution:
+    def maxScoreWords(self, w: List[str], l: List[str], s: List[int]) -> int:
+        c=Counter;return(f:=lambda n,i:max([sum(s[ord(x)-97]for x in w[j])+f(n-c(w[j]),j+1)for j in range(i,len(w))if c(w[j])<=n]+[0]))(c(l),0)
+
 test('''
 1255. Maximum Score Words Formed by Letters
 Hard

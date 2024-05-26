@@ -15,6 +15,10 @@ class Solution:
 
 class Solution:
     def checkRecord(self, n: int) -> int:
+        p=1,1,0,1,0,0;m=10**9+7;[p:=(sum(p[:3])%m,*p[:2],sum(p)%m,*p[3:5])for _ in[0]*~-n];return sum(p)%m
+
+class Solution:
+    def checkRecord(self, n: int) -> int:
         p=1,1,0,1;m=10**9+7;[p:=(sum(p[:3])%m,*p[:2],sum(p)%m,*p[3:5])for _ in[0]*~-n];return sum(p)%m
 
 class Solution:

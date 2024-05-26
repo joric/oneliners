@@ -17,6 +17,10 @@ class Solution:
     def checkRecord(self, n: int) -> int:
         p=1,1,0,1,0,0;m=10**9+7;[p:=(sum(p[:3])%m,*p[:2],sum(p)%m,*p[3:5])for _ in[0]*~-n];return sum(p)%m
 
+class Solution:
+    def checkRecord(self, n: int) -> int:
+        p=1,1,0,1;m,s=10**9+7,sum;[p:=(s(p[:3])%m,*p[:2],s(p)%m,*p[3:5])for _ in[0]*~-n];return s(p)%m
+
 test('''
 552. Student Attendance Record II
 Hard

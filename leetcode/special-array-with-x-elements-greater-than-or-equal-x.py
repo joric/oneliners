@@ -12,6 +12,10 @@ class Solution:
     def specialArray(self, n: List[int]) -> int:
         return next((i for i in range(max(n)+1)if sum(j>=i for j in n)==i),-1)
 
+class Solution:
+    def specialArray(self, n: List[int]) -> int:
+        return next((i for i in range(101)if sum(j>=i for j in n)==i),-1)
+
 test('''
 1608. Special Array With X Elements Greater Than or Equal X
 Easy

@@ -928,6 +928,10 @@ class Solution:
 
 class Solution:
     def fib(self, n: int) -> int:
+        r=5**.5;return round(((1+r)/2)**n/r)
+
+class Solution:
+    def fib(self, n: int) -> int:
         return pow(x:=2<<n,n+1,x*x+~x)%x
 ```
 
@@ -956,6 +960,10 @@ class Solution:
         for _ in range(n):
             a,b,c = b,c,a+b+c
         return c
+
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        return round((599510/325947)**n*39065/116186)
 
 class Solution:
     def tribonacci(self, n: int) -> int:

@@ -1302,7 +1302,7 @@ class Solution:
 
 ## References
 
-* [They're not charaters at all, they're just brilliant repositories of fantastic, killer one-liners (Stephen Fry interview)](https://youtu.be/8k2AbqTBxao?t=251)
+* [They're not characters at all, they're just brilliant repositories of fantastic, killer one-liners (Stephen Fry interview)](https://youtu.be/8k2AbqTBxao?t=251)
 * [Don't Piss down my back and tell me it's raining: Notebook for Sarcastic, Witty, and Sharp Tongued One Liners](https://www.amazon.com/Dont-Piss-down-back-raining/dp/B08ZQGV1XH)
 * [Python One-Liners: Write Concise, Eloquent Python Like a Professional](https://www.amazon.com/Python-One-Liners-Concise-Eloquent-Professional/dp/1718500505)
 * [Python One-Liners - Concise Python Code](https://pythononeliners.com)

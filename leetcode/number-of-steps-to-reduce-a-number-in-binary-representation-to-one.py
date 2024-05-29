@@ -14,6 +14,14 @@ class Solution:
     def numSteps(self, s: str) -> int:
         return(f:=lambda x:x-1and x%2-~f(-~x//2))(int(s,2))
 
+class Solution:
+    def numSteps(self, s: str) -> int:
+        return(i:=s.rfind('1'))+s.count('0')+2*(i>0)
+
+class Solution:
+    def numSteps(self, s: str) -> int:
+        i=s.rfind('1');return(i>0)*2+s.count('0')+i
+
 test('''
 1404. Number of Steps to Reduce a Number in Binary Representation to One
 Medium

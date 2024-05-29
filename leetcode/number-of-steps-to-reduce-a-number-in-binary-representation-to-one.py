@@ -8,6 +8,10 @@ class Solution:
 
 class Solution:
     def numSteps(self, s: str) -> int:
+        return(f:=lambda x:x-1 and x%2+f((x+1)//2)+1)(int(s,2))
+
+class Solution:
+    def numSteps(self, s: str) -> int:
         return(f:=lambda x:x-1and x%2-~f(-~x//2))(int(s,2))
 
 test('''

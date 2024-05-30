@@ -22,23 +22,11 @@ class Solution:
 
 class Solution:
     def countTriplets(self, a: List[int]) -> int:
-        e,d=enumerate,defaultdict(list);[d[x].append(i)for i,x in e(accumulate([0]+a,xor))];return sum(i*y-(len(p)-i-1)*(y+1)for x,p in d.items()for i,y in e(p))
+        t,e,d=0,enumerate,defaultdict(list);[d[t:=t^x].append(i)for i,x in e([0]+a)];return sum(i*y+~y*(len(d[x])+~i)for x in d for i,y in e(d[x]))
 
 class Solution:
     def countTriplets(self, a: List[int]) -> int:
-        e,d=enumerate,defaultdict(list);[d[x].append(i)for i,x in e(accumulate([0]+a,xor))];return sum(i*y-(len(p)-i-1)*(y+1)for x,p in d.items() for i,y in e(p))
-
-class Solution:
-    def countTriplets(self, a: List[int]) -> int:
-        e,d=enumerate,defaultdict(list);[d[x].append(i)for i,x in e(accumulate([0]+a,xor))];return sum(i*y-(len(d[x])-i-1)*(y+1)for x in d for i,y in e(d[x]))
-
-class Solution:
-    def countTriplets(self, a: List[int]) -> int:
-        e,d=enumerate,defaultdict(list);[d[x].append(i)for i,x in e(accumulate([0]+a,xor))];return sum(i*y+~y*(len(d[x])+~i)for x in d for i,y in e(d[x]))
-
-class Solution:
-    def countTriplets(self, a: List[int]) -> int:
-        t,e,d=0,enumerate,defaultdict(list);[(d[t:=t^x].append(i))for i,x in e([0]+a)];return sum(i*y+~y*(len(d[x])+~i)for x in d for i,y in e(d[x]))
+        c=Counter;u,v,x=c(),c([0]),0;return sum((u[x:=x^i],u:=u+v,v.update([x]))[0]for i in a)
 
 test('''
 1442. Count Triplets That Can Form Two Arrays of Equal XOR

@@ -27,6 +27,10 @@ class Solution:
     def singleNumber(self, n: List[int]) -> List[int]:
         return[x[0]for x in Counter(n).items()if x[1]<2]
 
+class Solution:
+    def singleNumber(self, n: List[int]) -> List[int]:
+        return[u for u,v in Counter(n).items()if v<2]
+
 test('''
 260. Single Number III
 Medium

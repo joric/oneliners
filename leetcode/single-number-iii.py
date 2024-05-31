@@ -17,6 +17,10 @@ class Solution:
 
 class Solution:
     def singleNumber(self, n: List[int]) -> List[int]:
+        return map(itemgetter(0),Counter(n).most_common()[-2:])
+
+class Solution:
+    def singleNumber(self, n: List[int]) -> List[int]:
         return[x[0]for x in Counter(n).most_common()[-2:]]
 
 class Solution:

@@ -64,7 +64,7 @@ Output: [-1,0]
 Example 3:
 
 Input: nums = [0,1]
-Output: [1,0]
+Output: [0,1]
  
 
 Constraints:

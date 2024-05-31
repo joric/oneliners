@@ -15,6 +15,12 @@ class Solution:
                 b ^= x
         return a, b
 
+# https://leetcode.com/problems/single-number-iii/discuss/5235108/one-line-solution
+
+class Solution:
+    def singleNumber(self, a: List[int]) -> List[int]:
+        return (x:=reduce(xor,a))^(y:=reduce(xor,(v for v in a if -x&x&v))),y
+
 class Solution:
     def singleNumber(self, n: List[int]) -> List[int]:
         return map(itemgetter(0),Counter(n).most_common()[-2:])

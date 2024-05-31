@@ -64,7 +64,7 @@ Output: [-1,0]
 Example 3:
 
 Input: nums = [0,1]
-Output: [0,1]
+Output: [1,0]
  
 
 Constraints:
@@ -76,4 +76,4 @@ Accepted
 352,900
 Submissions
 515,737
-''')
+''', check = lambda a,b,_: sorted(a)==sorted(b))

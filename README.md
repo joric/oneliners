@@ -1283,6 +1283,21 @@ class Solution:
         return mode(nums)
 ```
 
+You can use `s=s.encode()` instead of `map(ord,s)`. It may be actually shorter, depending on the context.
+
+* https://leetcode.com/problems/score-of-a-string
+
+```python
+
+class Solution:
+    def scoreOfString(self, s: str) -> int:
+        return sum(abs(x-y)for x,y in pairwise(map(ord,s)))
+
+class Solution:
+    def scoreOfString(self, s: str) -> int:
+        return sum(map(abs,map(sub,s:=s.encode(),s[1:])))
+```
+
 ### Notes
 
 * Unless the following token starts with e or E. You can remove the space following a number. E.g. `i==4 and j==4` becomes `i==4and j==4`.

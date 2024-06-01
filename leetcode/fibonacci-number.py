@@ -30,10 +30,17 @@ class Solution:
 
 # https://leetcode.com/problems/fibonacci-number/discuss/3439417/MATH-solution
 
+# classic Binet
+
+class Solution:
+    def fib(self, n: int) -> int:
+        phi = (1 + sqrt(5)) / 2
+        return round(pow(phi, n) / sqrt(5))
+
 # same as climbing-stars but subtract 1 from n
 
 class Solution:
-    def climbStairs(self, n: int) -> int:
+    def fib(self, n: int) -> int:
         n-=1;r=5**.5;return round(((1+r)/2)**-~n/r)
 
 class Solution:

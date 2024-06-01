@@ -11,6 +11,10 @@ class Solution:
 
 class Solution:
     def scoreOfString(self, s: str) -> int:
+        return sum(map(abs,starmap(sub,pairwise(map(ord,s)))))
+
+class Solution:
+    def scoreOfString(self, s: str) -> int:
         return sum(abs(ord(x)-ord(y))for x,y in pairwise(s))
 
 class Solution:

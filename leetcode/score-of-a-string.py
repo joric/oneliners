@@ -7,6 +7,16 @@ class Solution:
     def scoreOfString(self, s: str) -> int:
         return sum(abs(ord(x)-ord(y))for x,y in zip(s,s[1:]))
 
+# updated 2024-06-01
+
+class Solution:
+    def scoreOfString(self, s: str) -> int:
+        return sum(abs(ord(x)-ord(y))for x,y in pairwise(s))
+
+class Solution:
+    def scoreOfString(self, s: str) -> int:
+        return sum(abs(x-y)for x,y in pairwise(map(ord,s)))
+
 test('''
 3110. Score of a String
 Easy

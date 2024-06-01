@@ -21,6 +21,10 @@ class Solution:
     def scoreOfString(self, s: str) -> int:
         return sum(abs(x-y)for x,y in pairwise(map(ord,s)))
 
+class Solution:
+    def scoreOfString(self, s: str) -> int:
+        return sum(map(abs,map(sub,s:=s.encode(),s[1:])))
+
 test('''
 3110. Score of a String
 Easy

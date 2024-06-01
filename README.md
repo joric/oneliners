@@ -1283,7 +1283,7 @@ class Solution:
         return mode(nums)
 ```
 
-You can use `s.encode()` instead of `map(ord,s)` It's the same length but doesn't need generation expansion.
+You can use `s.encode()` instead of `map(ord,s)` It's the same length but doesn't need generation evaluation.
 
 * https://leetcode.com/problems/score-of-a-string
 

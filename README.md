@@ -140,7 +140,7 @@ https://leetcode.com/problems/powx-n
 class Solution:myPow=pow
 ```
 
-Note that it only works for CPython built-in functions, they can omit `self` parameter.
+Note that it only works for the built-in functions, they can omit `self` parameter.
 It's a built-in CPython feature:
 
 * https://stackoverflow.com/questions/10729909/convert-builtin-function-type-to-method-type-in-python-3

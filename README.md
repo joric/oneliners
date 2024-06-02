@@ -108,7 +108,7 @@ print(subprocess.run(["ls", "-la", "/"]))
 
 ### Minus-two-liners
 
-Some leetcode problems may be solved at the function definition level.
+Some leetcode problems may be solved at the function declaration level.
 
 https://leetcode.com/problems/search-insert-position
 

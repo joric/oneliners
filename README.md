@@ -1298,6 +1298,55 @@ class Solution:
         return sum(map(abs,map(sub,s:=s.encode(),s[1:])))
 ```
 
+### Minus-two-liners
+
+Some leetcode problems may be solved in less than a line, namely:
+
+https://leetcode.com/problems/search-insert-position
+
+```python
+class Solution:searchInsert=bisect_left
+```
+
+* https://leetcode.com/problems/sort-an-array
+
+```python
+class Solution:sortArray=sorted
+```
+
+* https://leetcode.com/problems/bulb-switcher
+
+```python
+class Solution:bulbSwitch=isqrt
+```
+
+https://leetcode.com/problems/search-in-rotated-sorted-array-ii
+
+```python
+class Solution:search=contains
+```
+
+https://leetcode.com/problems/powx-n
+
+```python
+class Solution:myPow=pow
+```
+
+Note that it only works for CPython built-in functions, they can omit `self` parameter.
+It's a built-in CPython feature:
+
+* https://stackoverflow.com/questions/10729909/convert-builtin-function-type-to-method-type-in-python-3
+
+You cannot use a self-written function for that, without a lambda skipping the first argument.
+
+* https://leetcode.com/problems/reverse-words-in-a-string-iii
+
+```python
+class Solution:reverseWords=lambda _,s:' '.join(w[::-1]for w in s.split())
+```
+
+But it doesn't look that great, and, in my opinion, doesn't worth to rewrite everything to lambdas.
+
 ### Notes
 
 * Unless the following token starts with e or E. You can remove the space following a number. E.g. `i==4 and j==4` becomes `i==4and j==4`.

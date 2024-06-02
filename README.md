@@ -153,7 +153,7 @@ You cannot use a self-written function like that, without skipping the first arg
 class Solution:reverseWords=lambda _,s:' '.join(w[::-1]for w in s.split())
 ```
 
-But I don't think it worths rewriting everything to lambdas. Let's consider that function declaration as zero lines.
+But I don't think it worths rewriting everything to lambdas. Let's consider the function declaration as zero lines.
 
 ### Lambdas
 

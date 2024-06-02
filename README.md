@@ -108,7 +108,7 @@ print(subprocess.run(["ls", "-la", "/"]))
 
 ### Minus-two-liners
 
-Some leetcode problems may be solved in less than a line, in the function definition, namely:
+Some leetcode problems may be solved in the function definition.
 
 https://leetcode.com/problems/search-insert-position
 
@@ -153,7 +153,7 @@ You cannot use a self-written function like that, without skipping the first arg
 class Solution:reverseWords=lambda _,s:' '.join(w[::-1]for w in s.split())
 ```
 
-But I don't think it worths rewriting everything to lambdas. Let's consider the function declaration as zero lines.
+But I don't think it worths rewriting everything to lambdas. Further I consider the function declaration to be zero lines.
 
 ### Lambdas
 

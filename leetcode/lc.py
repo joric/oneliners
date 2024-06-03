@@ -106,7 +106,7 @@ class ListNode:
         self.next = next
 
     def dump(self):
-        if self._has_cycle():
+        if self.has_cycle():
             return 'Error - Found cycle in the ListNode'
         out = []
         while self:
@@ -123,7 +123,7 @@ class ListNode:
         return ListNode.parse(json.loads(str))
 
     def __repr__(self):
-        if self._has_cycle():
+        if self.has_cycle():
             return 'Error - Found cycle in the ListNode'
         return(f:=lambda x:x and f'ListNode{{val: {x.val}, next: {f(x.next)}}}'or 'None')(self)
 
@@ -139,7 +139,7 @@ class ListNode:
         list_node = ListNode(val[0], sub_nodes)
         return list_node
 
-    def _has_cycle(head):
+    def has_cycle(head):
         slow = fast = head
         while fast and fast.next:
             fast = fast.next.next

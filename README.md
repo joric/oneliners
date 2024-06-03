@@ -58,7 +58,7 @@ class Solution:
         f=lambda n:n and n.val+10*f(n.next)or 0;return ListNode(','.join([*str(f(a)+f(b))][::-1]))
 ```
 
-Leetcode also has `serialize` and `deserialize` functions for lists and trees:
+Leetcode also has `serialize`, `deserialize` and `has_cycle` functions for lists and trees:
 
 * https://leetcode.com/problems/reverse-linked-list
 
@@ -68,10 +68,24 @@ class Solution:
         return h and h.deserialize(str(eval(h.serialize(h))[::-1]))
 ```
 
-More undocumented functions, obtainable with `print(dir(ClassName))`:
+* https://leetcode.com/problems/linked-list-cycle
 
-* ListNode: `_has_cycle`, `_list_node_to_array`, `_array_to_list_node`.
-* TreeNode: `_has_cycle`, `_tree_node_to_array`, `_array_to_tree_node`.
+```python
+class Solution:
+    def hasCycle (self, h: Optional[ListNode]) -> bool:
+        return ListNode.has_cycle(h)
+```
+
+There are a few other undocumented functions, obtainable with `print(dir(ClassName))`,
+such as `_list_node_to_array`, `_array_to_list_node`, `_tree_node_to_array`, `_array_to_tree_node`:
+
+* https://leetcode.com/problems/palindrome-linked-list
+
+```python
+class Solution:
+    def isPalindrome(self, h: ListNode) -> bool:
+        return(s:=type(h)._list_node_to_array(h))==s[::-1]
+```
 
 You can also dump the entire preprocessed solution file to check all the imports for yourself:
 

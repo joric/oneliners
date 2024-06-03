@@ -186,8 +186,8 @@ Generator length `len(list(g))` can be calculated in constant memory as `sum(1 f
 
 ### Iterators
 
-The `iter()` method returns an iterator for the given argument. Each access iterator advances one step forward.
-May be useful for optimizing string search that otherwise fails with Time Limit Exceeded.
+Every generator is an iterator, but not vice versa. The `iter()` method returns an iterator for the given argument.
+Each access iterator advances one step. May be useful for optimizing string search that otherwise fails with Time Limit Exceeded.
 
 * https://leetcode.com/problems/append-characters-to-string-to-make-subsequence
 

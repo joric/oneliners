@@ -128,13 +128,13 @@ class Solution:sortArray=sorted
 class Solution:bulbSwitch=isqrt
 ```
 
-https://leetcode.com/problems/search-in-rotated-sorted-array-ii
+* https://leetcode.com/problems/search-in-rotated-sorted-array-ii
 
 ```python
 class Solution:search=contains
 ```
 
-https://leetcode.com/problems/powx-n
+* https://leetcode.com/problems/powx-n
 
 ```python
 class Solution:myPow=pow

@@ -184,6 +184,19 @@ You can also exhaust a generator using `all()` or `any()` depending on the retur
 You can also save a few chars using `[*g]` syntax instead of `list(g)` where g is a generator function.
 Generator length `len(list(g))` can be calculated in constant memory as `sum(1 for _ in g)`.
 
+### Iterators
+
+The `iter()` method returns an iterator for the given argument. Each access iterator advances one step forward.
+May be useful for optimizing string search that otherwise fails with Time Limit Exceeded.
+
+* https://leetcode.com/problems/append-characters-to-string-to-make-subsequence
+
+```python
+class Solution:
+    def appendCharacters(self, s: str, t: str) -> int:
+        p=iter(s);return sum(c not in p for c in t)
+```
+
 ### Counters
 
 Counters (`collections.Counter()`) can be updated, similar to `dict.update()`, it's much faster than a sum of counters.

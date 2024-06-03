@@ -199,7 +199,7 @@ class Solution:
         p=iter(s);return sum(c not in p for c in t)
 ```
 
-This solution won't work without converting a string to an iterator.
+This solution simply would not work without converting a string to an iterator.
 
 ### Counters
 

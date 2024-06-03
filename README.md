@@ -76,8 +76,7 @@ class Solution:
         return ListNode.has_cycle(h)
 ```
 
-There are a few other undocumented functions, obtainable with `print(dir(ClassName))`,
-such as `_list_node_to_array`, `_array_to_list_node`, `_tree_node_to_array`, `_array_to_tree_node`:
+There are also a few other functions with longer names, obtainable with `print(dir(Node))`:
 
 * https://leetcode.com/problems/palindrome-linked-list
 

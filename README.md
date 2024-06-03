@@ -190,7 +190,6 @@ Generators provide an easy, built-in way to create instances of Iterators.
 Iterators are objects that have an `__iter__` and a `__next__` method.
 The `iter()` method returns an iterator for the given argument.
 Each access iterator advances one step.
-May be useful for optimizing string search that otherwise fails with Time Limit Exceeded.
 
 * https://leetcode.com/problems/append-characters-to-string-to-make-subsequence
 

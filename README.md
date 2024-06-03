@@ -186,6 +186,8 @@ Generator length `len(list(g))` can be calculated in constant memory as `sum(1 f
 
 ### Iterators
 
+
+Iterators are objects that have an `__iter__` and a `__next__` method.
 Generators provide an easy, built-in way to create instances of Iterators.
 The `iter()` method returns an iterator for the given argument.
 Each access iterator advances one step.

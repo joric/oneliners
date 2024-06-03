@@ -76,7 +76,7 @@ class Solution:
         return ListNode.has_cycle(h)
 ```
 
-List and trees also have `node_to_array` and `array_to_node` functions, you can them all with `dir(Node)`:
+List and trees also have a few `node_to_array` and `array_to_node` functions, you can them all with `dir(Node)`:
 
 * https://leetcode.com/problems/palindrome-linked-list
 

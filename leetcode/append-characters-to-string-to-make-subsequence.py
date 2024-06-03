@@ -10,6 +10,10 @@ class Solution:
     def appendCharacters(self, s: str, t: str) -> int:
         p=iter(s);return len(t)-[+(c not in p)for c in t+'_'].index(1)
 
+class Solution:
+    def appendCharacters(self, s: str, t: str) -> int:
+        p=iter(s);return sum(c not in p for c in t)
+
 test('''
 2486. Append Characters to String to Make Subsequence
 Medium

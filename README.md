@@ -212,7 +212,7 @@ May be useful, e.g. this solution would not work without converting a string to 
 ```python
 class Solution:
     def appendCharacters(self, s: str, t: str) -> int:
-        s=iter(s); return sum(c not in p for c in t)
+        s=iter(s); return sum(c not in s for c in t)
 ```
 
 ### Counters

@@ -58,7 +58,7 @@ class Solution:
         f=lambda n:n and n.val+10*f(n.next)or 0;return ListNode(','.join([*str(f(a)+f(b))][::-1]))
 ```
 
-Leetcode also has `serialize`, `deserialize` and `has_cycle` functions for lists and trees:
+Leetcode also has `serialize`, `deserialize` and `has_cycle` lists and trees:
 
 * https://leetcode.com/problems/reverse-linked-list
 
@@ -68,6 +68,8 @@ class Solution:
         return h and h.deserialize(str(eval(h.serialize(h))[::-1]))
 ```
 
+There is also a `has_sycle` function:
+
 * https://leetcode.com/problems/linked-list-cycle
 
 ```python
@@ -76,7 +78,7 @@ class Solution:
         return ListNode.has_cycle(h)
 ```
 
-There are also `_*_node_to_array` and `_array_to_*_node`, functions, you can peek them with `print(dir(Node))`:
+There are also `_*_node_to_array` and `_array_to_*_node`, functions, as `print(dir(Node))` shows:
 
 * https://leetcode.com/problems/palindrome-linked-list
 

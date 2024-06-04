@@ -58,7 +58,7 @@ class Solution:
         f=lambda n:n and n.val+10*f(n.next)or 0;return ListNode(','.join([*str(f(a)+f(b))][::-1]))
 ```
 
-Leetcode also has `serialize`, `deserialize` and `has_cycle` lists and trees:
+Leetcode also has `serialize` and `deserialize` for lists and trees:
 
 * https://leetcode.com/problems/reverse-linked-list
 

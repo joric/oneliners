@@ -168,7 +168,7 @@ You cannot use a self-written function like that, without skipping the first arg
 class Solution:reverseWords=lambda _,s:' '.join(w[::-1]for w in s.split())
 ```
 
-It's not necessarily shorter, becase lambdas can't use semicolons. Let's consider function declaration is zero lines.
+It's not necessarily shorter, becase lambdas can't use semicolons. Let's consider a function declaration is zero lines.
 
 ### Lambdas
 

@@ -205,6 +205,7 @@ Generators provide an easy, built-in way to create instances of Iterators.
 Iterators are objects that have an `__iter__` and a `__next__` method.
 The `iter()` method returns an iterator for the given argument.
 Each access iterator advances one step.
+E.g. this solution simply would not work without converting a string to an iterator:
 
 * https://leetcode.com/problems/append-characters-to-string-to-make-subsequence
 
@@ -213,8 +214,6 @@ class Solution:
     def appendCharacters(self, s: str, t: str) -> int:
         p=iter(s);return sum(c not in p for c in t)
 ```
-
-This solution simply would not work without converting a string to an iterator.
 
 ### Counters
 

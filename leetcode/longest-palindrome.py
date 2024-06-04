@@ -10,6 +10,12 @@ class Solution:
     def longestPalindrome(self, s: str) -> int:
         c=Counter(s);o=sum(1&c[v]for v in c);return len(s)-o+(o>0)
 
+# updated 2024-06-04
+
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        c=Counter(s);return min(len(s),sum(-2&c[v]for v in c)+1)
+
 test('''
 409. Longest Palindrome
 Easy

@@ -15,27 +15,11 @@ class Solution:
 
 class Solution:
     def isNStraightHand(self, h: List[int], g: int) -> bool:
-        c = Counter(h)
-        for i in sorted(c):
-            if c[i]and any(setitem(c,i+j,t:=c[i+j]-c[i])or t<0 for j in range(g)[::-1]):
-                return False
-        return True
-
-class Solution:
-    def isNStraightHand(self, h: List[int], g: int) -> bool:
-        c=Counter(h);return next((0 for i in sorted(c)if c[i]and any((setitem(c,i+j,t:=c[i+j]-c[i])or t<0for j in range(g)[::-1]))),1)
-
-class Solution:
-    def isNStraightHand(self, h: List[int], g: int) -> bool:
-        c=Counter(h);return not any(c[i]and any(setitem(c,i+j,t:=c[i+j]-c[i])or t<0 for j in range(g)[::-1])for i in sorted(c))
-
-class Solution:
-    def isNStraightHand(self, h: List[int], g: int) -> bool:
-        c=Counter(h);return all(0>=c[i]or all(setitem(c,i+j,t:=c[i+j]-c[i])or t>=0 for j in range(g)[::-1])for i in sorted(c))
-
-class Solution:
-    def isNStraightHand(self, h: List[int], g: int) -> bool:
         c=Counter(h);return all(0>=c[i]or all(c.update({i+j:-c[i]})or 0<=c[i+j]for j in range(g)[::-1])for i in sorted(c))
+
+class Solution:
+    def isNStraightHand(self, h: List[int], g: int) -> bool:
+        c=Counter();[c.update({x:1,x+1:-1,x+g:c[x]>=0})for x in sorted(h)];return+c==c
 
 test('''
 846. Hand of Straights

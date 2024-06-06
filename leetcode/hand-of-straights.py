@@ -33,6 +33,10 @@ class Solution:
     def isNStraightHand(self, h: List[int], g: int) -> bool:
         c=Counter(h);return all(0>=c[i]or all(setitem(c,i+j,t:=c[i+j]-c[i])or t>=0 for j in range(g)[::-1])for i in sorted(c))
 
+class Solution:
+    def isNStraightHand(self, h: List[int], g: int) -> bool:
+        c=Counter(h);return all(0>=c[i]or all(c.update({i+j:-c[i]})or 0<=c[i+j]for j in range(g)[::-1])for i in sorted(c))
+
 test('''
 846. Hand of Straights
 Medium

@@ -29,7 +29,7 @@ class Solution:
 
 class Solution:
     def replaceWords(self, d: List[str], s: str) -> str:
-        return re.sub('\\b('+'|'.join(sorted(d))+')\\w+','\\1',s)
+        return re.sub('\\b('+'|'.join(sorted(d))+')\w+','\\1',s)
 
 test('''
 648. Replace Words

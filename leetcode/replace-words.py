@@ -23,7 +23,7 @@ class Solution:
 
 class Solution:
     def replaceWords(self, d: List[str], s: str) -> str:
-        d.sort();return' '.join(next(filter(w.startswith,d),'')or w for w in s.split())
+        d.sort();return' '.join(next(filter(w.startswith,d),0)or w for w in s.split())
 
 test('''
 648. Replace Words

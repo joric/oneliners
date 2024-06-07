@@ -25,6 +25,12 @@ class Solution:
     def replaceWords(self, d: List[str], s: str) -> str:
         d.sort();return' '.join(next(filter(w.startswith,d),0)or w for w in s.split())
 
+# https://leetcode.com/problems/replace-words/discuss/105763/One-Line-Regex-Solution-Java-and-JavaScript
+
+class Solution:
+    def replaceWords(self, d: List[str], s: str) -> str:
+        return re.sub('\\b('+'|'.join(sorted(d))+')\\w+','\\1',s)
+
 test('''
 648. Replace Words
 Medium

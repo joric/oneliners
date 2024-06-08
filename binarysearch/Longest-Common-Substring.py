@@ -17,6 +17,7 @@ class Solution:
 
 class Solution:
     def solve(self, a: str, b: str) -> int:
+        @cache
         def f(a,b,c):
             if not a or not b:
                 return c
@@ -27,7 +28,7 @@ class Solution:
 
 class Solution:
     def solve(self, a: str, b: str) -> int:
-        return(f:=lambda a,b,c:a and b and(f(a[1:],b[1:],c+1)if a[0]==b[0]else max(c,f(a[1:],b,0),f(a,b[1:],0)))or c)(a,b,0)
+        return(f:=cache(lambda a,b,c:a and b and(f(a[1:],b[1:],c+1)if a[0]==b[0]else max(c,f(a[1:],b,0),f(a,b[1:],0)))or c))(a,b,0)
 
 test('''
 Longest Common Substring

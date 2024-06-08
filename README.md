@@ -1,5 +1,7 @@
 ## Oneliners
 
+Just FYI, for starters, this repository is not only README.md, it's also 700+ solutions [here](../../leetcode).
+
 ### Leetcode-specific
 
 Leetcode imports modules as wildcards, so you don't have to specify module names. There are some exceptions:

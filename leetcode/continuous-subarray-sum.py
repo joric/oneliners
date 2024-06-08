@@ -16,6 +16,25 @@ class Solution:
     def checkSubarraySum(self, nums: List[int], k: int) -> bool:
         return next((1 for i,x in enumerate(nums) if i-m.setdefault(c:=(c+x)%abs(k) if k else c+x or 1,i)>1),(m:={0:-1}) and (c:=0))
 
+# updated 2024-06-08
+
+# https://leetcode.com/problems/continuous-subarray-sum/discuss/99568/3-lines-Python
+
+class Solution:
+    def checkSubarraySum(self, n: List[int], k: int) -> bool:
+        p=__import__('numpy').cumsum([0]+n)%(k or 2**31);return any(x in p[i+2:]for i,x in enumerate(p))
+
+
+class Solution:
+    def checkSubarraySum(self, n: List[int], k: int) -> bool:
+        p=__import__('numpy').cumsum([0]+n)%(k or 2**31);
+
+        d = map(lambda x:x%(k or 2**31),accumulate([0]+n))
+
+        print(n,p,d)
+
+        return any(x in p[i+2:]for i,x in enumerate(p))
+
 test('''
 523. Continuous Subarray Sum
 Medium

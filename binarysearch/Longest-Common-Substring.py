@@ -15,6 +15,20 @@ class Solution:
                     dp[i][j] = 1+dp[i-1][j-1]
         return max(max(r) for r in dp)
 
+class Solution:
+    def solve(self, a: str, b: str) -> int:
+        def f(a,b,c):
+            if not a or not b:
+                return c
+            if a[0]==b[0]:
+                return f(a[1:],b[1:],c+1)
+            return max(c, f(a[1:],b,0), f(a,b[1:],0))
+        return f(a,b,0)
+
+class Solution:
+    def solve(self, a: str, b: str) -> int:
+        return(f:=lambda a,b,c:a and b and(f(a[1:],b[1:],c+1)if a[0]==b[0]else max(c,f(a[1:],b,0),f(a,b[1:],0)))or c)(a,b,0)
+
 test('''
 Longest Common Substring
 

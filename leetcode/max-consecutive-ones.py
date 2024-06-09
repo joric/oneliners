@@ -4,6 +4,10 @@ from lc import *
 
 class Solution:
     def findMaxConsecutiveOnes(self, n: List[int]) -> int:
+        return max(sum(c for _ in g)for c,g in groupby(n))
+
+class Solution:
+    def findMaxConsecutiveOnes(self, n: List[int]) -> int:
         return max(c*len([*g])for c,g in groupby(n))
 
 test('''

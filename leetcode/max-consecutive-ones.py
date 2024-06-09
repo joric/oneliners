@@ -1,8 +1,10 @@
 from lc import *
 
+# https://leetcode.com/problems/max-consecutive-ones
+
 class Solution:
     def findMaxConsecutiveOnes(self, n: List[int]) -> int:
-        return max(len([*g])for _,g in groupby(n))
+        return max(c*len([*g])for c,g in groupby(n))
 
 test('''
 

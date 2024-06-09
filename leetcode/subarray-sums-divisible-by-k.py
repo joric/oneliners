@@ -26,6 +26,12 @@ class Solution:
     def subarraysDivByK(self, nums: List[int], k: int) -> int:
         return sum(n*(n-1)//2 for n in Counter(x%k for x in accumulate([0]+nums)).values())
 
+# updated 2024-06-09
+
+class Solution:
+    def subarraysDivByK(self, n: List[int], k: int) -> int:
+        return sum(comb(x,2)for x in Counter(x%k for x in accumulate([0]+n)).values())
+
 test('''
 
 974. Subarray Sums Divisible by K

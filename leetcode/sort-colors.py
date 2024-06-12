@@ -56,6 +56,12 @@ class Solution:
     def sortColors(self, nums: List[int]) -> None:
         (s:=lambda a,x,y:exec('a[x],a[y]=a[y],a[x]')or a,(f:=lambda a,i,j,k:i<=j<=k and(f(s(a,i,j),i+1,j+1,k)if a[j]==0 else f(a,i,j+1,k)if a[j]==1 else f(s(a,j,k),i,j,k-1)))(nums,0,0,len(nums)-1))
 
+# updated 2024-06-12
+
+class Solution:
+    def sortColors(self, n: List[int]) -> None:
+        n.sort()
+
 test('''
 75. Sort Colors
 Medium

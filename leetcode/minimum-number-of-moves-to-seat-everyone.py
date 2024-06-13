@@ -22,6 +22,10 @@ class Solution:
     def minMovesToSeat(self, s: List[int], t: List[int]) -> int:
         return sum(abs(a-b)for a,b in zip(*map(sorted,(s,t))))
 
+class Solution:
+    def minMovesToSeat(self, s: List[int], t: List[int]) -> int:
+        return sum(map(abs,map(sub,*map(sorted,(s,t)))))
+
 test('''
 2037. Minimum Number of Moves to Seat Everyone
 Easy

@@ -1,24 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/valid-palindrome-ii/discuss/107720/C%2B%2BJavaPython-Easy-and-Concise
-
-class Solution:
-    def validPalindrome(self, s: str) -> bool:
-        i = 0
-        while i < len(s) / 2 and s[i] == s[-(i + 1)]: i += 1
-        # slice the string into a smaller palindrome from i to len(s) - i
-        s = s[i:len(s) - i]
-        # check if both variations of 1) remove first character 2) remove last character    will yeild to a palindrome
-        return s[1:] == s[1:][::-1] or s[:-1] == s[:-1][::-1]
-
-class Solution:
-    def validPalindrome(self, s: str) -> bool:
-        n=len(s);i=next((i for i in range(n)if s[i]!=s[~i]),n);s=s[i:n-i];return s[1:]==s[1:][::-1]or s[:-1]==s[:-1][::-1]
-
-class Solution:
-    def validPalindrome(self, s: str) -> bool:
-        n=len(s);i=next((i for i in range(n)if s[i]!=s[~i]),n);s=s[i:n-i];return any(t==t[::-1]for t in(s[1:],s[:-1]))
-
 # TLE
 class Solution:
     def validPalindrome(self, s: str) -> bool:
@@ -39,6 +20,25 @@ class Solution:
 class Solution:
     def validPalindrome(self, s: str) -> bool:
         return(f:=lambda i,j,k:k<2 and(i+j>=len(s)or s[i]==s[~j]and f(i+1,j+1,k)or f(i+1,j,k+1)or f(i,j+1,k+1)))(0,0,0)
+
+# https://leetcode.com/problems/valid-palindrome-ii/discuss/107720/C%2B%2BJavaPython-Easy-and-Concise
+
+class Solution:
+    def validPalindrome(self, s: str) -> bool:
+        i = 0
+        while i < len(s) / 2 and s[i] == s[-(i + 1)]: i += 1
+        # slice the string into a smaller palindrome from i to len(s) - i
+        s = s[i:len(s) - i]
+        # check if both variations of 1) remove first character 2) remove last character    will yeild to a palindrome
+        return s[1:] == s[1:][::-1] or s[:-1] == s[:-1][::-1]
+
+class Solution:
+    def validPalindrome(self, s: str) -> bool:
+        n=len(s);i=next((i for i in range(n)if s[i]!=s[~i]),n);s=s[i:n-i];return s[1:]==s[1:][::-1]or s[:-1]==s[:-1][::-1]
+
+class Solution:
+    def validPalindrome(self, s: str) -> bool:
+        n=len(s);i=next((i for i in range(n)if s[i]!=s[~i]),n);s=s[i:n-i];return any(t==t[::-1]for t in(s[1:],s[:-1]))
 
 test('''
 680. Valid Palindrome II

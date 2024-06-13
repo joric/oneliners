@@ -4,16 +4,19 @@ from lc import *
 
 class Solution:
     def minMovesToSeat(self, s: List[int], t: List[int]) -> int:
-        return sum(abs(a-b)for a,b in zip(sorted(s),sorted(t)))
-
-class Solution:
-    def minMovesToSeat(self, s: List[int], t: List[int]) -> int:
-        return sum(abs(a-b)for a,b in zip(*map(sorted,(s,t))))
+        p=__import__('numpy');return sum(p.absolute(sub(*map(p.array,map(sorted,(s,t))))))
 
 class Solution:
     def minMovesToSeat(self, s: List[int], t: List[int]) -> int:
         return sum(map(abs,starmap(sub,zip(*map(sorted,(s,t))))))
 
+class Solution:
+    def minMovesToSeat(self, s: List[int], t: List[int]) -> int:
+        return sum(abs(a-b)for a,b in zip(sorted(s),sorted(t)))
+
+class Solution:
+    def minMovesToSeat(self, s: List[int], t: List[int]) -> int:
+        return sum(abs(a-b)for a,b in zip(*map(sorted,(s,t))))
 
 test('''
 2037. Minimum Number of Moves to Seat Everyone

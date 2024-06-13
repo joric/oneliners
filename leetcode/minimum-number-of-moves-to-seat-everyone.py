@@ -12,6 +12,10 @@ class Solution:
 
 class Solution:
     def minMovesToSeat(self, s: List[int], t: List[int]) -> int:
+        s.sort();t.sort();return sum(abs(a-b)for a,b in zip(s,t))
+
+class Solution:
+    def minMovesToSeat(self, s: List[int], t: List[int]) -> int:
         return sum(abs(a-b)for a,b in zip(sorted(s),sorted(t)))
 
 class Solution:

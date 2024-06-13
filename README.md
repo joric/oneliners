@@ -1391,7 +1391,7 @@ class Solution:
         return map(xor,p,[0]+p)
 ```
 
-Very often you can replace `zip` with `map`, it evaluates arguments the same way:
+Very often you can replace `zip` with `map`, it evaluates iterables the same way:
 
 * https://leetcode.com/problems/minimum-number-of-moves-to-seat-everyone[
 

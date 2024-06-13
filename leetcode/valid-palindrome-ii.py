@@ -19,6 +19,27 @@ class Solution:
     def validPalindrome(self, s: str) -> bool:
         n=len(s);i=next((i for i in range(n)if s[i]!=s[~i]),n);s=s[i:n-i];return any(t==t[::-1]for t in(s[1:],s[:-1]))
 
+# TLE
+class Solution:
+    def validPalindrome(self, s: str) -> bool:
+        return any((t:=s[:i]+s[i+1:])==t[::-1]for i in range(len(s)))
+
+class Solution:
+    def validPalindrome(self, s: str) -> bool:
+        def f(i,j,k):
+            if k>1: return False
+            if i>=j: return True
+            return s[i]==s[j]and f(i+1,j-1,k)or f(i+1,j,k+1)or f(i,j-1,k+1)
+        return f(0,len(s)-1,0)
+
+class Solution:
+    def validPalindrome(self, s: str) -> bool:
+        return(f:=lambda i,j,k:k<2 and(i>=j or s[i]==s[j]and f(i+1,j-1,k)or f(i+1,j,k+1)or f(i,j-1,k+1)))(0,len(s)-1,0)
+
+class Solution:
+    def validPalindrome(self, s: str) -> bool:
+        return(f:=lambda i,j,k:k<2 and(i+j>=len(s)or s[i]==s[~j]and f(i+1,j+1,k)or f(i+1,j,k+1)or f(i,j+1,k+1)))(0,0,0)
+
 test('''
 680. Valid Palindrome II
 Easy
@@ -47,7 +68,7 @@ Example 3:
 
 Input: s = "abc"
 Output: false
- 
+
 
 Constraints:
 

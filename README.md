@@ -1368,7 +1368,6 @@ You can use `s.encode()` instead of `map(ord,s)` It's the same length but doesn'
 * https://leetcode.com/problems/score-of-a-string
 
 ```python
-
 class Solution:
     def scoreOfString(self, s: str) -> int:
         return sum(abs(x-y)for x,y in pairwise(map(ord,s)))
@@ -1383,7 +1382,6 @@ Applying a function to an iterable with `starmap` and `pairwise` may be done wit
 * https://leetcode.com/problems/find-the-original-array-of-prefix-xor
 
 ```python
-
 class Solution:
     def findArray(self, p: List[int]) -> List[int]:
         return starmap(xor,pairwise([0]+p))
@@ -1391,6 +1389,20 @@ class Solution:
 class Solution:
     def findArray(self, p: List[int]) -> List[int]:
         return map(xor,p,[0]+p)
+```
+
+You can remove `zip` function altogether in favor of `map`, it evaluates arguments the same way:
+
+* https://leetcode.com/problems/minimum-number-of-moves-to-seat-everyone[
+
+```python
+class Solution:
+    def minMovesToSeat(self, s: List[int], t: List[int]) -> int:
+        return sum(abs(a-b)for a,b in zip(*map(sorted,(s,t))))
+
+class Solution:
+    def minMovesToSeat(self, s: List[int], t: List[int]) -> int:
+        return sum(map(abs,map(sub,*map(sorted,(s,t)))))
 ```
 
 ### Notes

@@ -1378,7 +1378,7 @@ class Solution:
         return sum(map(abs,map(sub,s:=s.encode(),s[1:])))
 ```
 
-Applying a function to iterable with `starmap` and `pairwise` may be implemented with just `map`:
+Applying a function to iterable with `starmap` and `pairwise` may be done with `map`:
 
 * https://leetcode.com/problems/find-the-original-array-of-prefix-xor
 

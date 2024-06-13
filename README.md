@@ -1378,6 +1378,21 @@ class Solution:
         return sum(map(abs,map(sub,s:=s.encode(),s[1:])))
 ```
 
+Applying a function to iterable with `starmap` and `pairwise` may be implemented with just `map`:
+
+* https://leetcode.com/problems/find-the-original-array-of-prefix-xor
+
+```python
+
+class Solution:
+    def findArray(self, p: List[int]) -> List[int]:
+        return starmap(xor,pairwise([0]+p))
+
+class Solution:
+    def findArray(self, p: List[int]) -> List[int]:
+        return map(xor,p,[0]+p)
+```
+
 ### Notes
 
 * Unless the following token starts with e or E. You can remove the space following a number. E.g. `i==4 and j==4` becomes `i==4and j==4`.

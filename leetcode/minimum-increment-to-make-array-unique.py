@@ -14,6 +14,10 @@ class Solution:
     def minIncrementForUnique(self, n: List[int]) -> int:
         p=0;return sum((max(p-x,0),p:=max(p+1,x+1))[0]for x in sorted(n))
 
+class Solution:
+    def minIncrementForUnique(self, n: List[int]) -> int:
+        p=0;return sum(~x+(p:=max(p,x)+1)for x in sorted(n))
+
 test('''
 945. Minimum Increment to Make Array Unique
 Medium

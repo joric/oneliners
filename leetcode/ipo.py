@@ -14,6 +14,22 @@ class Solution:
     def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
         return (c:=[],f:=sorted(zip(capital,profits))[::-1],[next(c and (w:=w-heappop(c)) for _ in count() if not(f and f[-1][0]<=w and not heappush(c,-f.pop()[1]))) for _ in range(k)],w)[-1]
 
+# updated 2024-06-15
+
+class Solution:
+    def findMaximizedCapital(self, k: int, w: int, p: List[int], c: List[int]) -> int:
+        q,t = [],sorted(zip(c,p))[::-1]
+        for _ in range(k):
+            while t and t[-1][0] <= w:
+                heappush(q,-t.pop()[1])
+            if q:
+                w -= heappop(q)
+        return w
+
+class Solution:
+    def findMaximizedCapital(self, k: int, w: int, p: List[int], c: List[int]) -> int:
+        q,t=[],sorted(zip(c,p))[::-1];[(all(t and t[-1][0]<=w and[heappush(q,-t.pop()[1])]for _ in p),q and(w:=w-heappop(q)))for _ in range(k)];return w
+
 test('''
 502. IPO
 Hard

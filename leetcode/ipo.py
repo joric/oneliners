@@ -20,17 +20,17 @@ class Solution:
 
 class Solution:
     def findMaximizedCapital(self, k: int, w: int, p: List[int], c: List[int]) -> int:
-        q,t = [],sorted(zip(c,p))[::-1]
+        h,q = [],sorted(zip(c,p))[::-1]
         for _ in range(k):
-            while t and t[-1][0] <= w:
-                heappush(q,-t.pop()[1])
-            if q:
-                w -= heappop(q)
+            while q and q[-1][0] <= w:
+                heappush(h,-q.pop()[1])
+            if h:
+                w -= heappop(h)
         return w
 
 class Solution:
     def findMaximizedCapital(self, k: int, w: int, p: List[int], c: List[int]) -> int:
-        q,t=[],sorted(zip(c,p))[::-1];[(all(t and t[-1][0]<=w and[heappush(q,-t.pop()[1])]for _ in p),q and(w:=w-heappop(q)))for _ in range(k)];return w
+        h,q=[],sorted(zip(c,p))[::-1];[(all(q and q[-1][0]<=w and[heappush(h,-q.pop()[1])]for _ in p),h and(w:=w-heappop(h)))for _ in range(k)];return w
 
 test('''
 502. IPO

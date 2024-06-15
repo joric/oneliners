@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/ipo/discuss/98223/Python-solution
+
 class Solution:
     def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
         c,f = [],sorted(zip(capital, profits))[::-1]

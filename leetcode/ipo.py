@@ -3,22 +3,6 @@ from lc import *
 # https://leetcode.com/problems/ipo/discuss/98223/Python-solution
 
 class Solution:
-    def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
-        c,f = [],sorted(zip(capital, profits))[::-1]
-        for _ in range(k):
-            while f and f[-1][0] <= w:
-                heappush(c,-f.pop()[1])
-            if c:
-                w -= heappop(c)
-        return w
-
-class Solution:
-    def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
-        return (c:=[],f:=sorted(zip(capital,profits))[::-1],[next(c and (w:=w-heappop(c)) for _ in count() if not(f and f[-1][0]<=w and not heappush(c,-f.pop()[1]))) for _ in range(k)],w)[-1]
-
-# updated 2024-06-15
-
-class Solution:
     def findMaximizedCapital(self, k: int, w: int, p: List[int], c: List[int]) -> int:
         h,q = [],sorted(zip(c,p))[::-1]
         for _ in range(k):

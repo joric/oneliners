@@ -30,7 +30,7 @@ class Solution:
 
 class Solution:
     def findMaximizedCapital(self, k: int, w: int, p: List[int], c: List[int]) -> int:
-        h,q=[],sorted(zip(c,p))[::-1];[(all(q and q[-1][0]<=w and[heappush(h,-q.pop()[1])]for _ in p),h and(w:=w-heappop(h)))for _ in range(k)];return w
+        h,q=[],sorted(zip(c,p))[::-1];[(all(q and w>=q[-1][0]and[heappush(h,-q.pop()[1])]for _ in p),h and(w:=w-heappop(h)))for _ in range(k)];return w
 
 test('''
 502. IPO

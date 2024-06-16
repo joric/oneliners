@@ -99,6 +99,12 @@ Input: nums = [1,2,2], n = 5
 Output: 0
  
 
+More examples:
+
+Input: nums = [1,2,31,33], n = 2147483647
+Output: 28
+
+
 Constraints:
 
 1 <= nums.length <= 1000

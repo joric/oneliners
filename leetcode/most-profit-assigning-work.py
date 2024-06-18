@@ -5,14 +5,6 @@ from lc import *
 # sadly, Python version gives TLE
 
 class Solution:
-    def maxProfitAssignment(self, difficulty: List[int], profit: List[int], worker: List[int]) -> int:
-        return reduce(lambda t,w:t+reduce(lambda v,p:(lambda v,i,d:profit[i] if (d<=w and profit[i]>v) else v)(v,*p),enumerate(difficulty),0),worker,0)
-
-class Solution:
-    def maxProfitAssignment(self, d: List[int], p: List[int], w: List[int]) -> int:
-        return reduce(lambda t,x:t+reduce(lambda v,q:q[1]<=x and v<p[q[0]]and p[q[0]]or v,enumerate(d),0),w,0)
-
-class Solution:
     def maxProfitAssignment(self, d: List[int], p: List[int], w: List[int]) -> int:
         return reduce(lambda t,x:t+reduce(lambda v,q:x>=q[0]and v<q[1]and q[1]or v,zip(d,p),0),w,0)
 

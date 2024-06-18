@@ -1,5 +1,16 @@
 from lc import *
 
+# bidirectional recursion
+
+class Solution:
+    def pairSum(self, h: Optional[ListNode]) -> int:
+        a = h
+        s = 0
+        def f(b):
+            nonlocal a, s
+            return not b or f(b.next) and (s:=max(s,a.val+b.val),a:=a.next)[0]
+        return f(h)
+
 # https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list/discuss/1675645/JavaPython-3-One-pass-5-liner-O(n)-codes-w-brief-analysis.
 
 class Solution:

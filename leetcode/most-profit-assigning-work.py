@@ -6,7 +6,7 @@ from lc import *
 
 class Solution:
     def maxProfitAssignment(self, d: List[int], p: List[int], w: List[int]) -> int:
-        return reduce(lambda t,x:t+reduce(lambda v,q:x>=q[0]and v<q[1]and q[1]or v,zip(d,p),0),w,0)
+        return reduce(lambda t,x:t+reduce(lambda v,q:(t:=q[1],v)[x<q[0]or v>t],zip(d,p),0),w,0)
 
 # https://leetcode.com/problems/most-profit-assigning-work/discuss/127031/C%2B%2BJavaPython-Sort-and-Two-pointer
 

@@ -1,7 +1,7 @@
 from lc import *
 
 # https://leetcode.com/problems/most-profit-assigning-work/discuss/222641/One-line-javascript-solution-%3A)
-# maxProfitAssignment=(d,p,w)=>w.reduce((t,x)=>t+d.reduce((v,y,i)=>y<=x&&p[i]>v?p[i]:v,0),0)
+# JS version: maxProfitAssignment=(d,p,w)=>w.reduce((t,x)=>t+d.reduce((v,y,i)=>y<=x&&p[i]>v?p[i]:v,0),0)
 # sadly, Python version gives TLE
 
 class Solution:

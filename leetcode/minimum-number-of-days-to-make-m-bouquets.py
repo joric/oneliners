@@ -42,10 +42,6 @@ class Solution:
 
 class Solution:
     def minDays(self, b: List[int], m: int, k: int) -> int:
-        return b[m*k-1:]and bisect_left(range(max(b)),1,key=lambda d:''.join(('#',' ')[d<x]for x in b).count('#'*k)>=m)or-1
-
-class Solution:
-    def minDays(self, b: List[int], m: int, k: int) -> int:
         return b[m*k-1:]and bisect_left(range(max(b)),1,key=lambda d:''.join(chr(d<x)for x in b).count('\0'*k)>=m)or-1
 
 test('''

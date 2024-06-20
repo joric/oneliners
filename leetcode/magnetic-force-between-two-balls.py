@@ -13,6 +13,10 @@ class Solution:
             return n < m
         return bisect_left(range(max(p)),1,key=f)
 
+class Solution:
+    def maxDistance(self, p: List[int], m: int) -> int:
+        p.sort();return bisect_left(range(max(p)),1,key=lambda k:(i:=0)or sum(i<len(p)and(i:=bisect_right(p,p[i]+k),1)[1]for _ in p)<m)
+
 # https://leetcode.com/problems/magnetic-force-between-two-balls/discuss/5339506/Python-bisect_left
 
 class Solution:
@@ -30,6 +34,10 @@ class Solution:
 class Solution:
     def maxDistance(self, p: List[int], m: int) -> int:
         p.sort();return bisect_left(range(max(p)),1,key=lambda d:(n:=1,x:=p[0],[y-x>d and(x:=y,n:=n+1)for y in p],n<m)[3])
+
+class Solution:
+    def maxDistance(self, p: List[int], m: int) -> int:
+        p.sort();return bisect_left(range(max(p)),1,key=lambda d:(x:=p[0],sum(y-x>d and(x:=y,1)[1]for y in p)<m-1)[1])
 
 test('''
 1552. Magnetic Force Between Two Balls

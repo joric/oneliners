@@ -33,23 +33,11 @@ class Solution:
 
 class Solution:
     def maxDistance(self, p: List[int], m: int) -> int:
-        p.sort();return bisect_left(range(max(p)),1,key=lambda d:(n:=1,x:=p[0],[y-x>d and(x:=y,n:=n+1)for y in p],n<m)[3])
+        p.sort();return bisect_left(range(max(p)),1,key=lambda d:[x:=p[0]]and-~sum(y-x>d and[x:=y]!=0 for y in p)<m)
 
 class Solution:
     def maxDistance(self, p: List[int], m: int) -> int:
-        p.sort();return bisect_left(range(max(p)),1,key=lambda d:(x:=p[0],1+sum(y-x>d and(x:=y,1)[1]for y in p)<m)[1])
-
-class Solution:
-    def maxDistance(self, p: List[int], m: int) -> int:
-        p.sort();return bisect_left(range(max(p)),1,key=lambda d:(x:=p[0],1+sum(y-x>d and[x:=y]!=0for y in p)<m)[1])
-
-class Solution:
-    def maxDistance(self, p: List[int], m: int) -> int:
-        p.sort();return bisect_left(range(max(p)),1,key=lambda d:[x:=p[0]]and-~sum(y-x>d and[x:=y]!=0for y in p)<m)
-
-class Solution:
-    def maxDistance(self, p: List[int], m: int) -> int:
-        return bisect_left(range(10**9),1,key=lambda d:[x:=-d]and sum(y-x>d and(x:=y)>0for y in sorted(p))<m)
+        return bisect_left(range(10**9),1,key=lambda d:[x:=-d]and sum(y-x>d and(x:=y)>0 for y in sorted(p))<m)
 
 test('''
 1552. Magnetic Force Between Two Balls

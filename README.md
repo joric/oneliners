@@ -1405,6 +1405,21 @@ class Solution:
         return sum(map(abs,map(sub,*map(sorted,(s,t)))))
 ```
 
+You can use numpy for sliding windows, it's usually shorter than a python implementation:
+
+* https://leetcode.com/problems/grumpy-bookstore-owner
+
+```python
+class Solution:
+    def maxSatisfied(self, c: List[int], g: List[int], m: int) -> int:
+        s=[*map(mul,c,g)];return reduce(lambda t,i:(t,w:=sum(s[i:i+m]))[w>t],range(len(c)-m+1),0)\
+        +sum(map(mul,c,map(not_,g)))
+
+class Solution:
+    def maxSatisfied(self, c: List[int], g: List[int], m: int) -> int:
+        return max(__import__('numpy').convolve([*map(mul,c,g)],[1]*m))+sum(map(mul,c,map(not_,g)))
+```
+
 ### Notes
 
 * Unless the following token starts with e or E. You can remove the space following a number. E.g. `i==4 and j==4` becomes `i==4and j==4`.

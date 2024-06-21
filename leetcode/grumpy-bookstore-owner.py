@@ -27,6 +27,17 @@ class Solution:
     def maxSatisfied(self, c: List[int], g: List[int], m: int) -> int:
         a=accumulate;p,q=[0,*a(map(mul,c,map(not_,g)))],[0,*a(c)];return max(p[-1]-p[i+m]+p[i]+q[i+m]-q[i]for i in range(len(q)-m))
 
+# https://leetcode.com/problems/grumpy-bookstore-owner/discuss/5345871/Python-simple-numpy-solution-for-people-who-are-familiar-with-linear-algebra
+
+class Solution:
+    def maxSatisfied(self, c: List[int], g: List[int], m: int) -> int:
+        import numpy as np
+        c,g = map(np.array,(c,g))
+        i = np.argmax(np.convolve(c*g, np.ones(m), 'valid'))
+        h = 1-g
+        h[i:i+m] = 1
+        return np.dot(np.transpose(c),h).item()
+
 # https://leetcode.com/problems/grumpy-bookstore-owner/discuss/3594613/scala-1-line-solution
 # def maxSatisfied(customers: Array[Int], grumpy: Array[Int], minutes: Int): Int =
 # (customers zip grumpy).map(n => n._2 * n._1).sliding(minutes).map(_.sum).max + (customers zip grumpy).filter(_._2 == 0).map(_._1).sum

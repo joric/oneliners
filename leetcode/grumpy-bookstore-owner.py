@@ -25,7 +25,7 @@ class Solution:
 
 class Solution:
     def maxSatisfied(self, c: List[int], g: List[int], m: int) -> int:
-        p=[0,*accumulate(x*(1-y)for x,y in zip(c,g))];a=[0,*accumulate(c)];return max(p[-1]-p[i+m]+p[i]+a[i+m]-a[i]for i in range(len(a)-m))
+        a=accumulate;p,q=[0,*a(map(mul,c,map(not_,g)))],[0,*a(c)];return max(p[-1]-p[i+m]+p[i]+q[i+m]-q[i]for i in range(len(q)-m))
 
 # https://leetcode.com/problems/grumpy-bookstore-owner/discuss/3594613/scala-1-line-solution
 # def maxSatisfied(customers: Array[Int], grumpy: Array[Int], minutes: Int): Int =

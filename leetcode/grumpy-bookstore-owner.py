@@ -54,6 +54,10 @@ class Solution:
     def maxSatisfied(self, c: List[int], g: List[int], m: int) -> int:
         return max(__import__('numpy').convolve([*map(mul,c,g)],[1]*m))+sum(map(mul,c,map(not_,g)))
 
+class Solution:
+    def maxSatisfied(self, c: List[int], g: List[int], m: int) -> int:
+        return max(__import__('numpy').convolve(a:=[*map(mul,c,g)],[1]*m))+sum(c)-sum(a)
+
 test('''
 1052. Grumpy Bookstore Owner
 Medium

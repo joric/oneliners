@@ -1412,12 +1412,12 @@ You can use numpy for sliding windows, it's usually shorter than a python implem
 ```python
 class Solution:
     def maxSatisfied(self, c: List[int], g: List[int], m: int) -> int:
-        s=[*map(mul,c,g)];return sum(map(mul,c,map(not_,g)))\
-            +reduce(lambda t,i:(t,w:=sum(s[i:i+m]))[w>t],range(len(c)-m+1),0)
+        s=[*map(mul,c,g)];return reduce(lambda t,i:(t,w:=sum(s[i:i+m]))[w>t],range(len(c)-m+1),0)\
+            +sum(map(mul,c,map(not_,g)))\
 
 class Solution:
     def maxSatisfied(self, c: List[int], g: List[int], m: int) -> int:
-        return sum(map(mul,c,map(not_,g)))+max(__import__('numpy').convolve([*map(mul,c,g)],[1]*m))
+        return max(__import__('numpy').convolve([*map(mul,c,g)],[1]*m))+sum(map(mul,c,map(not_,g)))
 ```
 
 ### Notes

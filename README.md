@@ -162,7 +162,7 @@ It's a built-in CPython feature:
 
 * https://stackoverflow.com/questions/10729909/convert-builtin-function-type-to-method-type-in-python-3
 
-You cannot use a self-written function like that, without skipping the first argument.
+You cannot use your own function like that, without skipping the first argument.
 
 * https://leetcode.com/problems/reverse-words-in-a-string-iii
 

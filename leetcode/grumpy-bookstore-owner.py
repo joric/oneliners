@@ -44,15 +44,7 @@ class Solution:
 
 class Solution:
     def maxSatisfied(self, c: List[int], g: List[int], m: int) -> int:
-        s=[*map(mul,c,g)];return reduce(lambda t,i:(t,w:=sum(s[i:i+m]))[w>t],range(len(c)-m+1),0)+sum(map(mul,c,map(not_,g)))
-
-class Solution:
-    def maxSatisfied(self, c: List[int], g: List[int], m: int) -> int:
-        s,t=[*map(mul,c,g)],0;[t:=(t,w:=sum(s[i:i+m]))[w>t]for i in range(len(c)-m+1)];return t+sum(map(mul,c,map(not_,g)))
-
-class Solution:
-    def maxSatisfied(self, c: List[int], g: List[int], m: int) -> int:
-        return max(__import__('numpy').convolve([*map(mul,c,g)],[1]*m))+sum(map(mul,c,map(not_,g)))
+        a=[*map(mul,c,g)];return reduce(lambda t,i:(t,w:=sum(a[i:i+m]))[w>t],range(len(c)-m+1),0)+sum(c)-sum(a)
 
 class Solution:
     def maxSatisfied(self, c: List[int], g: List[int], m: int) -> int:

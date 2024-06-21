@@ -32,7 +32,7 @@ class Solution:
 
 class Solution:
     def judgeSquareSum(self, c: int) -> bool:
-        return any(sqrt(c-x**2)%1==0for x in range(isqrt(c)+1))
+        return any(0==sqrt(c-x*x)%1 for x in range(isqrt(c)+1))
 
 test('''
 633. Sum of Square Numbers

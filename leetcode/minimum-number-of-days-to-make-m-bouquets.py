@@ -42,7 +42,7 @@ class Solution:
 
 class Solution:
     def minDays(self, b: List[int], m: int, k: int) -> int:
-        return b[m*k-1:]and bisect_left(range(max(b)),1,key=lambda d:''.join(chr(d<x)for x in b).count('\0'*k)>=m)or-1
+        return b[m*k-1:]and bisect_left(range(10**9),1,key=lambda d:''.join(chr(d<x)for x in b).count('\0'*k)>=m)or-1
 
 test('''
 1482. Minimum Number of Days to Make m Bouquets

@@ -28,7 +28,12 @@ class Solution:
         p=[0,*accumulate(x*(1-y)for x,y in zip(c,g))];a=[0,*accumulate(c)];return max(p[-1]-p[i+m]+p[i]+a[i+m]-a[i]for i in range(len(a)-m))
 
 # https://leetcode.com/problems/grumpy-bookstore-owner/discuss/3594613/scala-1-line-solution
-# def maxSatisfied(customers: Array[Int], grumpy: Array[Int], minutes: Int): Int = (customers zip grumpy).map(n => n._2 * n._1).sliding(minutes).map(_.sum).max + (customers zip grumpy).filter(_._2 == 0).map(_._1).sum
+# def maxSatisfied(customers: Array[Int], grumpy: Array[Int], minutes: Int): Int =
+# (customers zip grumpy).map(n => n._2 * n._1).sliding(minutes).map(_.sum).max + (customers zip grumpy).filter(_._2 == 0).map(_._1).sum
+
+class Solution:
+    def maxSatisfied(self, c: List[int], g: List[int], m: int) -> int:
+        s,t=[*map(mul,c,g)],0;[t:=(t,w:=sum(s[i:i+m]))[w>t]for i in range(len(c)-m+1)];return t+sum(map(mul,c,map(not_,g)))
 
 test('''
 1052. Grumpy Bookstore Owner
@@ -64,6 +69,14 @@ Example 2:
 Input: customers = [1], grumpy = [0], minutes = 1
 Output: 1
  
+
+Other examples:
+
+Input: customers = [3], grumpy = [1], minutes = 1
+Output: 3
+
+Input: customers = [2,6,6,9], grumpy = [0,0,1,1], minutes = 1
+Output: 17
 
 Constraints:
 

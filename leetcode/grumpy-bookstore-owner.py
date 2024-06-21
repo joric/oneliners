@@ -44,8 +44,7 @@ class Solution:
 
 class Solution:
     def maxSatisfied(self, c: List[int], g: List[int], m: int) -> int:
-        a=[*map(mul,c,g)];return reduce(lambda t,i:(t,w:=sum(a[i:i+m]))[w>t],range(len(c)-m+1),0)\
-            +sum(c)-sum(a)
+        t,a=0,[*map(mul,c,g)];[t:=(t,w:=sum(a[i:i+m]))[w>t]for i in range(len(c)-m+1)];return t+sum(c)-sum(a)
 
 class Solution:
     def maxSatisfied(self, c: List[int], g: List[int], m: int) -> int:

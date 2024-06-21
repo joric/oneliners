@@ -1405,7 +1405,7 @@ class Solution:
         return sum(map(abs,map(sub,*map(sorted,(s,t)))))
 ```
 
-You can use numpy for sliding windows, it's usually shorter than a python implementation:
+You can use numpy for sliding windows, it's usually shorter than reduce or cycles:
 
 * https://leetcode.com/problems/grumpy-bookstore-owner
 

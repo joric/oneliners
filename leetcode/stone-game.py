@@ -1,7 +1,7 @@
 from lc import *
 
 # https://leetcode.com/problems/stone-game
-# shortest oneliner
+# shortest solution
 
 class Solution:
     def stoneGame(self, piles: List[int]) -> bool:

@@ -30,7 +30,7 @@ class Solution:
     def numberOfMatches(self, n: int) -> int:
         return n-1
 
-# it's not the shortest oneliner ever, see stone-game
+# it's not the shortest solution ever, see stone-game and strictly-palindromic-number
 
 class Solution:
     def numberOfMatches(self, n: int) -> int:

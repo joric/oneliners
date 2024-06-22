@@ -23,14 +23,20 @@ class Solution:
                 dp[i] = max(p[i] - dp[i + 1], p[i + d] - dp[i])
         return dp[0] > 0
 
-# recursive
+# https://leetcode.com/problems/stone-game/discuss/546437/Python-Recursion-with-Memorization
 
 class Solution:
     def stoneGame(self, p: List[int]) -> bool:
         return(k:=sum(p))<2*(f:=cache(lambda i,j,k:i<j and max(k-f(i+1,j,k-p[i]),k-f(i,j-1,k-p[j]))or p[i]))(0,len(p)-1,k)
 
+# https://leetcode.com/problems/stone-game/discuss/971228/Python-Clean-and-Short-Recursive-Solution
+
+class Solution:
+    def stoneGame(self, p: List[int]) -> bool:
+        return(f:=cache(lambda p:not p or max(p[0]-f(p[1:]),p[-1]-f(p[:-1]))))(tuple(p))>0
+
 # https://leetcode.com/problems/stone-game
-# shortest solution, except strictly-palindromic-number
+# shortest solution, except maybe strictly-palindromic-number
 
 class Solution:
     def stoneGame(self, piles: List[int]) -> bool:

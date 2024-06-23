@@ -3,14 +3,20 @@ from lc import *
 # https://leetcode.com/problems/count-number-of-nice-subarrays/discuss/1659537/Python-two-liner-%3A)
 
 class Solution:
-    def numberOfSubarrays(self, n: List[int], k: int) -> int:
-        c=Counter(accumulate(i%2 for i in n));return sum(y*(c[x-k]+(x-k==0))for x,y in c.items())
+    def numberOfSubarrays(self, a: List[int], k: int) -> int:
+        c=Counter(accumulate(i%2 for i in a));return sum(y*(c[x-k]+(x-k==0))for x,y in c.items())
 
 # https://leetcode.com/problems/count-number-of-nice-subarrays/discuss/625894/Python-2-lines.
 
 class Solution:
-    def numberOfSubarrays(self, n: List[int], k: int) -> int:
-        c=Counter([0,*accumulate(x%2 for x in n)]);return sum(c[t]*c[t-k]for t in c)
+    def numberOfSubarrays(self, a: List[int], k: int) -> int:
+        c=Counter([0,*accumulate(x%2 for x in a)]);return sum(c[t]*c[t-k]for t in c)
+
+# https://leetcode.com/problems/count-number-of-nice-subarrays/discuss/5351230/one-line-solution
+
+class Solution:
+    def numberOfSubarrays(self, a: List[int], k: int) -> int:
+        c=Counter([q:=0]);return sum(c.update([q:=q+v%2])or c[q-k]for v in a)
 
 test('''
 1248. Count Number of Nice Subarrays

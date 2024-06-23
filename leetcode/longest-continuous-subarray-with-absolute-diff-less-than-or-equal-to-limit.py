@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def longestSubarray(self, a: List[int], l: int) -> int:
-        i,n,q=0,len(a),[];[(insort(q,x),l<q[-1]-q[0]and(q.pop(bisect_left(q,a[i])),i:=i+1))for x in a];return n-i
+        i,q=0,[];[(insort(q,x),l<q[-1]-q[0]and(q.pop(bisect_left(q,a[i])),i:=i+1))for x in a];return len(a)-i
 
 test('''
 1438. Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit

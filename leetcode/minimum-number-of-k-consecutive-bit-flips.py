@@ -71,13 +71,15 @@ class Solution:
 
 class Solution:
     def minKBitFlips(self, a: List[int], k: int) -> int:
-        n,m,c=1,(1<<k)-1,0;[n:=n<<1|b for b in a]
-        while 1:
-            if n==0: return -1
-            if n&1:
+        n = reduce(lambda r,b:r<<1|b,a,1)
+        m = (1<<k)-1
+        c = 0
+        while True:
+            if n==0: return c
+            if n%2:
                 n >>= 1
             else:
-                if n<m: return c
+                if n<m: return -1
                 n = (n^m)>>1
                 c += 1
 

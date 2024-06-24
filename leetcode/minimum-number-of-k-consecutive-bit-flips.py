@@ -17,6 +17,20 @@ class Solution:
                 r += 1
         return r
 
+class Solution:
+    def minKBitFlips(self, a: List[int], k: int) -> int:
+        c,r,n=0,0,len(a)
+        for i in range(n):
+            if i>=k and a[i-k]>1:
+                c -= 1
+            if c%2==a[i]:
+                if i+k>n:
+                    return -1
+                a[i]=2
+                c += 1
+                r += 1
+        return r
+
 # https://leetcode.com/problems/minimum-number-of-k-consecutive-bit-flips/discuss/3103263/Python-3-oror-8-lines-accumulate-w-explanation-oror-TS%3A-98-95
 
 class Solution:

@@ -56,8 +56,8 @@ class Solution:
 
 
 # https://leetcode.com/problems/minimum-number-of-k-consecutive-bit-flips/discuss/5359837/Elixir-Greedy-and-Bit-Manipulation
-
 # very cool, but out of memory
+
 class Solution:
     def minKBitFlips(self, a: List[int], k: int) -> int:
         def f(n,m,c):
@@ -68,6 +68,19 @@ class Solution:
         return f(reduce(lambda r,b:(r<<1)|b,a,1),(1<<k)-1,0)
 
 # iterative version
+
+class Solution:
+    def minKBitFlips(self, a: List[int], k: int) -> int:
+        n,m,c=1,(1<<k)-1,0;[n:=n<<1|b for b in a]
+        while 1:
+            if n==0: return -1
+            if n&1:
+                n >>= 1
+            else:
+                if n<m: return c
+                n = (n^m)>>1
+                c += 1
+
 class Solution:
     def minKBitFlips(self, a: List[int], k: int) -> int:
         n,m,c=1,(1<<k)-1,0;[n:=n<<1|b for b in a];return next((c,-1)[n>0]for _ in a*2 if n&1<1 and n<m or[(n:=n>>1)if n&1 else(n:=(n^m)>>1,c:=c+1)]==0)

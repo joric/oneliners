@@ -113,6 +113,23 @@ class Solution:
     def minKBitFlips(self, a: List[int], k: int) -> int:
         n,m,c=1,(1<<k)-1,0;[n:=n<<1|b for b in a];return next((c,-1)[n>0]for _ in a*2 if n&1<1 and n<m or[(n:=n>>1)if n&1 else(n:=(n^m)>>1,c:=c+1)]==0)
 
+
+# https://leetcode.com/problems/minimum-number-of-k-consecutive-bit-flips/discuss/1568109/Short-Python
+
+class Solution:
+    def minKBitFlips(self, a: List[int], k: int) -> int:
+        n, c = len(a), []
+        for i in range(n):
+            if (len(c)-bisect_left(c,i-k+1)+a[i])%2==0:
+                c.append(i)
+                if i>n-k:
+                    return -1
+        return len(c)
+
+class Solution:
+    def minKBitFlips(self, a: List[int], k: int) -> int:
+        n,c=len(a),[];return next((-1 for i in range(n)if(len(c)-bisect_left(c,i-k+1)+a[i])&1<1 and[c.append(i)]and i>n-k),0)or len(c)
+
 test('''
 995. Minimum Number of K Consecutive Bit Flips
 Hard

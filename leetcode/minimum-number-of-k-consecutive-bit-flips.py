@@ -128,7 +128,7 @@ class Solution:
 
 class Solution:
     def minKBitFlips(self, a: List[int], k: int) -> int:
-        n,c=len(a),[];return next((-1 for i in range(n)if(len(c)-bisect_left(c,i-k+1)+a[i])&1<1and[c.append(i)]and i>n-k),0)or len(c)
+        n,c=len(a),[];return next((-1for i in range(n)if(len(c)-bisect_left(c,i-k+1)+a[i])&1<1and(c.append(i)or i>n-k)),0)or len(c)
 
 test('''
 995. Minimum Number of K Consecutive Bit Flips

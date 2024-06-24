@@ -1,17 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/minimum-number-of-k-consecutive-bit-flips/discuss/5359837/Elixir-Greedy-and-Bit-Manipulation
-# very cool, but out of memory
-
-class Solution:
-    def minKBitFlips(self, a: List[int], k: int) -> int:
-        def f(n,m,c):
-            if n==1: return c
-            if n&1: return f(n>>1,m,c)
-            if n<m: return -1
-            return f(n^m,m,c+1)
-        return f(reduce(lambda r,b:(r<<1)|b,a,1),(1<<k)-1,0)
-
 # https://leetcode.com/problems/minimum-number-of-k-consecutive-bit-flips/discuss/238609/JavaC%2B%2BPython-One-Pass-and-O(1)-Space
 
 class Solution:
@@ -65,6 +53,24 @@ class Solution:
 class Solution:
     def minKBitFlips(self, a: List[int], k: int) -> int:
         t,n=0,len(a);c=[0]*n;return next((-1 for i,x in enumerate(a)if(t:=i<k and t or t^c[i-k])==x and(k>n-i or(t:=t^1,setitem(c,i,1))==0)),0)or sum(c)
+
+
+# https://leetcode.com/problems/minimum-number-of-k-consecutive-bit-flips/discuss/5359837/Elixir-Greedy-and-Bit-Manipulation
+
+# very cool, but out of memory
+class Solution:
+    def minKBitFlips(self, a: List[int], k: int) -> int:
+        def f(n,m,c):
+            if n==1: return c
+            if n&1: return f(n>>1,m,c)
+            if n<m: return -1
+            return f(n^m,m,c+1)
+        return f(reduce(lambda r,b:(r<<1)|b,a,1),(1<<k)-1,0)
+
+# iterative version
+class Solution:
+    def minKBitFlips(self, a: List[int], k: int) -> int:
+        n,m,c=1,(1<<k)-1,0;[n:=n<<1|b for b in a];return next((c,-1)[n>0]for _ in a*2 if n&1<1 and n<m or[(n:=n>>1)if n&1 else(n:=(n^m)>>1,c:=c+1)]==0)
 
 test('''
 995. Minimum Number of K Consecutive Bit Flips

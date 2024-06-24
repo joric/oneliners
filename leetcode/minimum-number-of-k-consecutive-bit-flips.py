@@ -1,20 +1,16 @@
 from lc import *
 
 # https://leetcode.com/problems/minimum-number-of-k-consecutive-bit-flips/discuss/5359837/Elixir-Greedy-and-Bit-Manipulation
-# out of memory, but very cool
+# very cool, but out of memory
+
 class Solution:
     def minKBitFlips(self, a: List[int], k: int) -> int:
-        def u(a):
-            r = 1
-            for d in a:
-                r = (r<<1)|d
-            return r
         def f(n,m,c):
             if n==1: return c
-            if n&1: return f(n//2,m,c)
+            if n&1: return f(n>>1,m,c)
             if n<m: return -1
             return f(n^m,m,c+1)
-        return f(u(a),(1<<k)-1,0)
+        return f(reduce(lambda r,b:(r<<1)|b,a,1),(1<<k)-1,0)
 
 # https://leetcode.com/problems/minimum-number-of-k-consecutive-bit-flips/discuss/238609/JavaC%2B%2BPython-One-Pass-and-O(1)-Space
 

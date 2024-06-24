@@ -85,6 +85,18 @@ class Solution:
 
 class Solution:
     def minKBitFlips(self, a: List[int], k: int) -> int:
+        n,m,c=1,(1<<k)-1,0;[n:=n<<1|b for b in a];
+        for _ in a*2:
+            if n&1<1:
+                if n<m: break
+                n = (n^m)>>1
+                c += 1
+            else:
+                n >>= 1
+        return(c,-1)[n>0]
+
+class Solution:
+    def minKBitFlips(self, a: List[int], k: int) -> int:
         n,m,c=1,(1<<k)-1,0;[n:=n<<1|b for b in a];return next((c,-1)[n>0]for _ in a*2 if n&1<1 and n<m or[(n:=n>>1)if n&1 else(n:=(n^m)>>1,c:=c+1)]==0)
 
 test('''

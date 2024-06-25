@@ -14,7 +14,11 @@ class Solution:
 
 class Solution:
     def bstToGst(self, r: TreeNode) -> TreeNode:
-        (f:=lambda r,s:r and(setattr(r,'val',r.val+f(r.right,s))or f(r.left,r.val))or s)(r,0);return r
+        (f:=lambda r,s:r and f(setattr(r,'val',r.val+f(r.right,s))or r.left,r.val)or s)(r,0);return r
+
+class Solution:
+    def bstToGst(self, r: TreeNode) -> TreeNode:
+        (f:=lambda r,s:r and f(exec('r.val+=f(r.right,s)')or r.left,r.val)or s)(r,0);return r
 
 test('''
 1038. Binary Search Tree to Greater Sum Tree

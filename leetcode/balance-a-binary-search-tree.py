@@ -12,6 +12,7 @@ class Solution:
             while size > 1:
                 size //= 2
                 compress(root, size)
+
         def compress(root, count):
             scanner = root
             for _ in range(count):
@@ -20,6 +21,7 @@ class Solution:
                 scanner = scanner.right
                 child.right = scanner.left
                 scanner.left = child
+
         def tree_to_vine(root):
             tail = root
             rest = tail.right

@@ -80,7 +80,7 @@ class Solution:
         return ListNode.has_cycle(h)
 ```
 
-There are also `_*_node_to_array` and `_array_to_*_node`, functions:
+There are also `_*_node_to_array` and `_array_to_*_node` functions:
 
 * https://leetcode.com/problems/palindrome-linked-list
 

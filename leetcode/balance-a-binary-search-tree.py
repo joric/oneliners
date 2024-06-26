@@ -26,7 +26,7 @@ class Solution:
 
 class Solution:
     def balanceBST(self, t: TreeNode) -> TreeNode:
-        return(g:=lambda v:v and type(t)(v[m:=(len(v)-1)//2],g(v[:m]),g(v[m+1:]))or None)(sorted(filter(None,t._tree_node_to_array())))
+        return(g:=lambda v:v and type(t)(v[m:=~-len(v)//2],g(v[:m]),g(v[m+1:]))or None)(sorted(filter(None,t._tree_node_to_array())))
 
 test('''
 1382. Balance a Binary Search Tree

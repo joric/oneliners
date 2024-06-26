@@ -14,6 +14,12 @@ class Solution:
     def longestSubarray(self, a: List[int], l: int) -> int:
         q=[];[(insort(q,x),l<q[-1]-q[0]and q.pop(bisect_left(q,a.pop(0))))for x in a[:]];return len(q)
 
+# https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/discuss/5357053/one-line-solution
+
+class Solution:
+    def longestSubarray(self, a: List[int], l: int) -> int:
+        i,q=-1,[];[(insort(q,x),l<q[-1]-q[0]and q.remove(a[i:=i+1]))for x in a];return len(q)
+
 test('''
 1438. Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit
 Medium

@@ -1,5 +1,48 @@
 from lc import *
 
+# https://leetcode.com/problems/balance-a-binary-search-tree
+# dsw from wiki https://en.wikipedia.org/wiki/Day%E2%80%93Stout%E2%80%93Warren_algorithm
+
+class Solution:
+    def balanceBST(self, root: TreeNode) -> TreeNode:
+        def vine_to_tree(root, size):
+            leaves = size + 1 - int(2**int(log2(size+1)))
+            compress(root, leaves)
+            size -= leaves
+            while size > 1:
+                size //= 2
+                compress(root, size)
+        def compress(root, count):
+            scanner = root
+            for _ in range(count):
+                child = scanner.right
+                scanner.right = child.right
+                scanner = scanner.right
+                child.right = scanner.left
+                scanner.left = child
+        def tree_to_vine(root):
+            tail = root
+            rest = tail.right
+            size = 0
+            while rest:
+                if not rest.left:
+                    tail = rest
+                    rest = rest.right
+                    size += 1
+                else:
+                    temp = rest.left
+                    rest.left = temp.right
+                    temp.right = rest
+                    rest = temp
+                    tail.right = temp
+            return root, size
+
+        root, size = tree_to_vine(TreeNode(0, None, root))
+        vine_to_tree(root, size)
+        return root.right
+
+# https://leetcode.com/problems/balance-a-binary-search-tree/discuss/2192894/Python-DSW-solution
+
 class Solution:
     # Apply Day–Stout–Warren algorithm
     # Procedure:
@@ -125,4 +168,6 @@ Accepted
 188,610
 Submissions
 226,966
-''')
+''',
+check = lambda res,exp,args: (f:=lambda x:(((l:=f(x.left))<0 or (r:=f(x.right))<0 or abs(l-r)>1) and -1) or 1+max(l,r) if x else 0)(res)>=0
+)

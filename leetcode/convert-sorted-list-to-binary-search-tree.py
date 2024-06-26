@@ -16,7 +16,7 @@ class Solution:
             s.next, s = s.next if f and f.next else None, s.next
         return TreeNode(s.val, self.sortedListToBST(head), self.sortedListToBST(s.next))
 
-# Day Stout Warren
+# dsw from wiki https://en.wikipedia.org/wiki/Day%E2%80%93Stout%E2%80%93Warren_algorithm
 # https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/discuss/1214653/Java%3A-DayStoutWarren-algorithm-TC-O(n)-SC-O(1)
 
 class Solution:

@@ -37,12 +37,11 @@ class Solution:
                     temp.right = rest
                     rest = temp
                     tail.right = temp
-            return size
+            return root, size
 
-        dummy = TreeNode(0, None, root)
-        size = tree_to_vine(dummy)
-        vine_to_tree(dummy, size)
-        return dummy.right
+        root, size = tree_to_vine(TreeNode(0, None, root))
+        vine_to_tree(root, size)
+        return root.right
 
 # https://leetcode.com/problems/balance-a-binary-search-tree/discuss/2192894/Python-DSW-solution
 

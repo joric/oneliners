@@ -70,7 +70,7 @@ class Solution:
         return h and h.deserialize(str(eval(h.serialize(h))[::-1]))
 ```
 
-There is also a `has_sycle` function:
+There is also `has_sycle` function:
 
 * https://leetcode.com/problems/linked-list-cycle
 

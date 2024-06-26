@@ -1422,6 +1422,7 @@ class Solution:
 
 ### Notes
 
+* An expression like `x&(x-1)==0` determines if unsigned `x` is power of 2 or 0 (Kernighan, tests rightmost bit).
 * Unless the following token starts with e or E. You can remove the space following a number. E.g. `i==4 and j==4` becomes `i==4and j==4`.
 * There's a nice way to convert an iterable to list using star operator, e.g. `x=[*g]` equals `*x,=g` (1 char shorter).
   You can also use this syntax to unpack iterables, e.g. `a,*b,c=range(5)` means `a=1;b=[2,3,4];c=5`.
@@ -1431,7 +1432,6 @@ class Solution:
 * You can convert bool with `~~()` instead of `int()` (as in js) or prepend with a single `+` (5 characters shorter).
 * You can subtract 1 or replace `not` operator with bitwise negation `~-` to save on space (1-5 characters shorter).
 * You can check for set membership with `{x}&s` instead of `x in s` (1 character shorter).
-* An expression like `x&(x-1)==0` determines if unsigned `x` is power of 2 or 0 (Kernighan, tests rightmost bit).
 * Very often `x==0` can be replaced with `x<1` (1 character shorter).
 * Generator expansion `[*g]` can use a traling comma `*g,` in the initialization section (1 character shorter).
 * A condition like `h>i>=0<=j<w` can be written as `h>i>-1<j<w` (1 character shorter).

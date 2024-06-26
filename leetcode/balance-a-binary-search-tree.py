@@ -37,9 +37,10 @@ class Solution:
                     temp.right = rest
                     rest = temp
                     tail.right = temp
-            return root, size
+            return size
 
-        root, size = tree_to_vine(TreeNode(0, None, root))
+        root = TreeNode(0, None, root)
+        size = tree_to_vine(root)
         vine_to_tree(root, size)
         return root.right
 

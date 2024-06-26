@@ -63,6 +63,10 @@ class TreeNode:
     def serialize(root):
         return str(TreeNode.dump(root)).replace('None','null')
 
+    @staticmethod
+    def deserialize(str):
+        return TreeNode.parse(json.loads(str))
+
     def __repr__(self):
         return(f:=lambda x:x and f'TreeNode{{val: {x.val}, left: {f(x.left)}, right: {f(x.right)}}}'or 'None')(self)
 
@@ -91,8 +95,8 @@ class TreeNode:
     def _tree_node_to_array(root):
         return TreeNode.dump(root)
 
-    def _array_to_tree_node(root):
-        return TreeNode.parse(root)
+    def _array_to_tree_node(arr):
+        return TreeNode.parse(arr)
 
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -154,11 +158,11 @@ class ListNode:
             fast = fast.next
         return slow
 
-    def _list_node_to_array(val):
-        return ListNode.dump(val)
+    def _list_node_to_array(root):
+        return ListNode.dump(root)
 
-    def _array_to_list_node(val):
-        return ListNode.parse(val)
+    def _array_to_list_node(arr):
+        return ListNode.parse(arr)
 
 cnames = []
 

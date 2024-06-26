@@ -1,7 +1,6 @@
 from lc import *
 
-# https://leetcode.com/problems/balance-a-binary-search-tree
-# dsw from wiki https://en.wikipedia.org/wiki/Day%E2%80%93Stout%E2%80%93Warren_algorithm
+# https://leetcode.com/problems/balance-a-binary-search-tree/discuss/5372244/Python-3-one-line-and-DSW
 
 class Solution:
     def balanceBST(self, root: TreeNode) -> TreeNode:
@@ -44,68 +43,6 @@ class Solution:
         vine_to_tree(dummy, size)
         return dummy.right
 
-# https://leetcode.com/problems/balance-a-binary-search-tree/discuss/2192894/Python-DSW-solution
-
-class Solution:
-    # Apply Day–Stout–Warren algorithm
-    # Procedure:
-    # 1. Convert the tree into a vine:
-        # a. dummy node: dummy.right = root
-        # b. if dummy.right.left: rightRotate(dummy.right)
-        # c. else: dummy = dummy.right
-    # 2. left rotate (number of last row nodes) times
-    # 3. for cumulative m = number of nodes in complete rows, go back to dummy and rotate m//2 times. Update m to be m//2
-    def balanceBST(self, root: TreeNode) -> TreeNode:
-        def leftRotate(z):
-            y = z.right
-            T2 = y.left
-            # Perform rotation
-            y.left = z
-            z.right = T2
-            return y
-        def rightRotate(z):
-            y = z.left
-            T3 = y.right
-            # Perform rotation
-            y.right = z
-            z.left = T3
-            # Return the new root
-            return y
-        # Convert to a vine
-        dummy = TreeNode(- float('Inf'), None, root)
-        temp = dummy
-        count = 0
-        while temp.right:
-            if temp.right.left:
-                temp.right = rightRotate(temp.right)
-            else:
-                temp = temp.right
-                count += 1
-        # Decide how many nodes are in the last row
-        last_row = count
-        m = 0
-        row = 0
-        while last_row >= pow(2,row):
-            last_row -= pow(2,row)
-            m += pow(2,row)
-            row += 1
-        # Take care of the last row nodes
-        temp = dummy
-        for i in range(last_row):
-            if temp.right.right:
-                temp.right = leftRotate(temp.right)
-            temp = temp.right
-        # Final balancing
-        j = m // 2
-        while j > 0:
-            temp = dummy
-            for i in range(j):
-                if temp.right.right:
-                    temp.right = leftRotate(temp.right)
-                temp = temp.right
-            j = j // 2
-        return dummy.right
-
 # https://leetcode.com/problems/balance-a-binary-search-tree/discuss/551956/Python-3-DFS-(in-order)-extraction-and-balanced-tree-building
 
 class Solution:
@@ -123,15 +60,15 @@ class Solution:
 
 class Solution:
     def balanceBST(self, t: TreeNode) -> TreeNode:
-        a=(f:=lambda x:x and f(x.left)+[x.val]+f(x.right)or[])(t);return(g:=lambda l,r:l<=r and TreeNode(a[m:=(l+r)//2],g(l,m-1),g(m+1,r))or None)(0,len(a)-1)
+        a=(g:=lambda x:x and g(x.left)+[x.val]+g(x.right)or[])(t);return(f:=lambda l,r:l<=r and TreeNode(a[m:=(l+r)//2],f(l,m-1),f(m+1,r))or None)(0,len(a)-1)
 
 class Solution:
     def balanceBST(self, t: TreeNode) -> TreeNode:
-        a=sorted(filter(None,t._tree_node_to_array()));return(g:=lambda l,r:l<=r and type(t)(a[m:=(l+r)//2],g(l,m-1),g(m+1,r))or None)(0,len(a)-1)
+        a=sorted(filter(None,t._tree_node_to_array()));return(f:=lambda l,r:l<=r and type(t)(a[m:=(l+r)//2],f(l,m-1),f(m+1,r))or None)(0,len(a)-1)
 
 class Solution:
     def balanceBST(self, t: TreeNode) -> TreeNode:
-        return(g:=lambda a:a and type(t)(a[m:=~-len(a)//2],g(a[:m]),g(a[m+1:]))or None)(sorted(filter(None,t._tree_node_to_array())))
+        return(f:=lambda a:a and type(t)(a[m:=~-len(a)//2],f(a[:m]),f(a[m+1:]))or None)(sorted(filter(None,t._tree_node_to_array())))
 
 test('''
 1382. Balance a Binary Search Tree

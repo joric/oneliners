@@ -16,6 +16,10 @@ class Solution:
     def findCenter(self, e: List[List[int]]) -> int:
         return mode(e[0]+e[1])
 
+class Solution:
+    def findCenter(self, e: List[List[int]]) -> int:
+        return mode(chain(*e))
+
 test('''
 1791. Find Center of Star Graph
 Easy

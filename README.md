@@ -1420,6 +1420,20 @@ class Solution:
         return max(__import__('numpy').convolve(a:=[*map(mul,c,g)],[1]*m))+sum(c)-sum(a)
 ```
 
+You can use `count()` and `map` to replace `enumerate` comprehension where needed (a few characters shorter):
+
+* https://leetcode.com/problems/maximum-total-importance-of-roads
+
+```python
+class Solution:
+    def maximumImportance(self, n: int, r: List[List[int]]) -> int:
+        return sum(v*(n-i)for i,(_,v)in enumerate(Counter(chain(*r)).most_common()))
+
+class Solution:
+    def maximumImportance(self, n: int, r: List[List[int]]) -> int:
+        return-sum(map(mul,count(-n),sorted(Counter(chain(*r)).values())[::-1]))
+```
+
 ### Notes
 
 * An expression like `x&(x-1)==0` is useful to check if unsigned `x` is power of 2 or 0 (Kernighan, rightmost bit).

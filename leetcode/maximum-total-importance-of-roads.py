@@ -30,6 +30,10 @@ class Solution:
 
 class Solution:
     def maximumImportance(self, n: int, r: List[List[int]]) -> int:
+        return-sum(f*i for i,(_,f) in enumerate(Counter(chain(*r)).most_common(),-n))
+
+class Solution:
+    def maximumImportance(self, n: int, r: List[List[int]]) -> int:
         return-sum(map(mul,count(-n),sorted(Counter(chain(*r)).values())[::-1]))
 
 test('''

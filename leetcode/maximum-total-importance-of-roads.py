@@ -22,6 +22,10 @@ class Solution:
     def maximumImportance(self, n: int, r: List[List[int]]) -> int:
         return sum(v*(n-i)for i,(_,v)in enumerate(Counter(chain(*r)).most_common()))
 
+class Solution:
+    def maximumImportance(self, n: int, r: List[List[int]]) -> int:
+        i=-1;return sum(v*(n-(i:=i+1))for _,v in Counter(chain(*r)).most_common())
+
 test('''
 2285. Maximum Total Importance of Roads
 Medium

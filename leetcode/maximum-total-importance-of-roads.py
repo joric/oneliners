@@ -26,6 +26,12 @@ class Solution:
     def maximumImportance(self, n: int, r: List[List[int]]) -> int:
         i=-1;return sum(v*(n-(i:=i+1))for _,v in Counter(chain(*r)).most_common())
 
+# https://leetcode.com/problems/maximum-total-importance-of-roads/discuss/5381840/one-line-solution
+
+class Solution:
+    def maximumImportance(self, n: int, r: List[List[int]]) -> int:
+        return-sum(map(mul,count(-n),sorted(Counter(chain(*r)).values())[::-1]))
+
 test('''
 2285. Maximum Total Importance of Roads
 Medium

@@ -1420,7 +1420,7 @@ class Solution:
         return max(__import__('numpy').convolve(a:=[*map(mul,c,g)],[1]*m))+sum(c)-sum(a)
 ```
 
-You can use `count()` and `map` to replace an `enumerate` list comprehension (a few characters shorter):
+You can use `count()` and `map` to replace an `enumerate`-based list comprehension (a few characters shorter):
 
 * https://leetcode.com/problems/maximum-total-importance-of-roads
 

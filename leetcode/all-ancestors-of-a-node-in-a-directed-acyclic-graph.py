@@ -1,5 +1,20 @@
 from lc import *
 
+# https://leetcode.com/problems/all-ancestors-of-a-node-in-a-directed-acyclic-graph/discuss/3402224/Python-DFS
+
+class Solution:
+    def getAncestors(self, n: int, e: List[List[int]]) -> List[List[int]]:
+        g=defaultdict(set)
+        [g[t].add(s)for s,t in e]
+        @cache
+        def f(c):
+            a = set()
+            for p in g[c]:
+                a.add(p)
+                a |= f(p)
+            return a
+        return [sorted(x) for x in [f(i)for i in range(n)]]
+
 # https://leetcode.com/problems/all-ancestors-of-a-node-in-a-directed-acyclic-graph/discuss/2640438/Python3-or-Concise-9-line-DFS-with-cache-or-O(n)
 
 class Solution:

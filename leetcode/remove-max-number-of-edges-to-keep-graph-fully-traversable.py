@@ -122,6 +122,12 @@ class Solution:
         return (c:=0,u:=[''.join(map(chr,range(n+1)))]*2,[(a:=[],[(a:=a+[((t:=u[p])[z]==t[y])|3-x-p],x+p-2 and setitem(u,p,t.replace(t[y],
         t[z]))) for p in (0,1)],c:=c+(a[0]&a[1])) for i in (3,2,1) for x,y,z in e if i==x],c if sum(len(set(x)) for x in u)==4 else -1)[-1]
 
+# updated 2024-06-30
+
+class Solution:
+    def maxNumEdgesToRemove(self, n: int, e: List[List[int]]) -> int:
+        c,u=0,[''.join(map(chr,range(n+1)))]*2;[(a:=[],[(a:=a+[((t:=u[p])[z]==t[y])|3-x-p],x+p-2 and setitem(u,p,t.replace(t[y],t[z])))for p in(0,1)],c:=c+(a[0]&a[1]))for i in (3,2,1)for x,y,z in e if i==x];return(-1,c)[sum(len(set(x))for x in u)==4]
+
 test('''
 1579. Remove Max Number of Edges to Keep Graph Fully Traversable
 Hard

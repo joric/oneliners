@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/remove-max-number-of-edges-to-keep-graph-fully-traversable/discuss/831573/Python-Union-Find
+
 class Solution:
     def maxNumEdgesToRemove(self, n: int, e: List[List[int]]) -> int:
         p,r,a,b = [*range(n+1)],0,0,0
@@ -82,6 +84,7 @@ class Solution:
         and not setitem(p,y,x),w:=lambda x:((int(x!=2),int(x!=1),0) if u(i,j) else (0,0,1) for t,i,j in e if t==x),s:=lambda *x:
         [*map(sum,zip(*x))],v:=s(v,*w(3)),q:=p[:],v:=s(v,*w(1)),p:=q[:],v:=s(v,*w(2)),v[2] if v[0]==v[1]==n-1 else -1)[-1]
 
+# unicode find
 
 class Solution:
     def maxNumEdgesToRemove(self, n: int, e: List[List[int]]) -> int:

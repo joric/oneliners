@@ -1,5 +1,23 @@
 from lc import *
 
+# https://leetcode.com/problems/remove-max-number-of-edges-to-keep-graph-fully-traversable/discuss/832152/Python-3-Count-Tree-Edges-with-DFS-(28-Lines-O(orEor)-Beat-100)
+
+class Solution:
+    def maxNumEdgesToRemove(self, n: int, e: List[List[int]]) -> int:
+        def f(p):
+            g = defaultdict(list)
+            any(g[i].append(j)or g[j].append(i)for t,i,j in e if t in p)
+            v,c = set(),0
+            for s in g.keys():
+                if s in v:
+                    continue
+                v.add(s)
+                q = [s]
+                while q:
+                    all((c:=c+1,v.add(i),q.append(i))for i in g[q.pop()]if i not in v)
+            return c
+        return(-1,len(e)+f((3,))-2*n+2)[f((1,3))==f((2,3))==n-1]
+
 # https://leetcode.com/problems/remove-max-number-of-edges-to-keep-graph-fully-traversable/discuss/831573/Python-Union-Find
 
 class Solution:
@@ -133,6 +151,7 @@ class Solution:
 class Solution:
     def maxNumEdgesToRemove(self, n: int, e: List[List[int]]) -> int:
         c,u=0,[''.join(map(chr,range(n+1)))]*2;[(a:=[],[(a:=a+[((t:=u[p])[z]==t[y])|3-x-p],x+p-2 and setitem(u,p,t.replace(t[y],t[z])))for p in(0,1)],c:=c+(a[0]&a[1]))for i in(3,2,1)for x,y,z in e if i==x];return(-1,c)[sum(len(set(x))for x in u)==4]
+
 
 test('''
 1579. Remove Max Number of Edges to Keep Graph Fully Traversable

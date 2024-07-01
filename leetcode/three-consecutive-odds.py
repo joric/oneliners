@@ -16,6 +16,10 @@ class Solution:
 
 class Solution:
     def threeConsecutiveOdds(self, a: List[int]) -> bool:
+        c=0;return next((1 for x in a if(c:=(0,c+1)[x&1])==3),0)
+
+class Solution:
+    def threeConsecutiveOdds(self, a: List[int]) -> bool:
         return any(1&a&b&c for a,b,c in zip(a,a[1:],a[2:]))
 
 class Solution:

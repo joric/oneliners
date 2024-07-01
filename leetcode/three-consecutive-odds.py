@@ -24,6 +24,10 @@ class Solution:
 
 class Solution:
     def threeConsecutiveOdds(self, a: List[int]) -> bool:
+        return'111'in''.join(map(str,map((1).__and__,a)))
+
+class Solution:
+    def threeConsecutiveOdds(self, a: List[int]) -> bool:
         return'111'in''.join(str(1&x)for x in a)
 
 test('''

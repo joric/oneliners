@@ -4,6 +4,18 @@ from lc import *
 
 class Solution:
     def threeConsecutiveOdds(self, a: List[int]) -> bool:
+        c = 0
+        for x in a:
+            if x&1:
+                c +=1
+            else:
+                c = 0
+            if c == 3:
+                return True
+        return False
+
+class Solution:
+    def threeConsecutiveOdds(self, a: List[int]) -> bool:
         return any(1&a&b&c for a,b,c in zip(a,a[1:],a[2:]))
 
 class Solution:

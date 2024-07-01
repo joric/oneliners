@@ -30,6 +30,10 @@ class Solution:
     def threeConsecutiveOdds(self, a: List[int]) -> bool:
         return'111'in''.join(str(1&x)for x in a)
 
+class Solution:
+    def threeConsecutiveOdds(self, a: List[int]) -> bool:
+        c=0;return max(c:=x%2*-~c for x in a)>2
+
 test('''
 1550. Three Consecutive Odds
 Easy

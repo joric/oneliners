@@ -1286,6 +1286,16 @@ class Solution:
 
 ```
 
+You can replace `x>0` predicate with `0..__lt___`, or just `operator.truth`:
+
+* https://leetcode.com/problems/merge-nodes-in-between-zeros
+
+```python
+class Solution:
+    def mergeNodes(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        return h.deserialize(str([sum(v)for k,v in groupby(eval(h.serialize(h)),truth)if k]))
+```
+
 You can save a few characters using asterisk operator `*`.
 One `*` means "expand this as a list", two `**` means "expand this as a dictionary".
 

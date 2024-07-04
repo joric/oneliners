@@ -15,6 +15,12 @@ class Solution:
         prev.next = None    
         return dummy.next
 
+# https://leetcode.com/problems/merge-nodes-in-between-zeros/discuss/5414183/one-line-solution
+
+class Solution:
+    def mergeNodes(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        return(f:=lambda w,n:n and(n.val and f(w+n.val,n.next)or type(h)(w,f(0,n.next))))(0,h.next)
+
 # https://leetcode.com/problems/merge-nodes-in-between-zeros/discuss/3829208/2-Lines-Only-oror-Simple-Java-Code-oror-Concise
 
 class Solution:

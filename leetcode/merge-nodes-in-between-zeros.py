@@ -15,6 +15,20 @@ class Solution:
         prev.next = None    
         return dummy.next
 
+# https://leetcode.com/problems/merge-nodes-in-between-zeros/discuss/3829208/2-Lines-Only-oror-Simple-Java-Code-oror-Concise
+
+class Solution:
+    def mergeNodes(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        s,h = 0, h.next
+        while h and h.val:
+            s += h.val
+            h = h.next
+        return h and ListNode(s,self.mergeNodes(h))
+
+class Solution:
+    def mergeNodes(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        return(f:=lambda h:(lambda h,s:h and type(h)(s,f(h)))(*(g:=lambda h,s:h and h.val and g(h.next,s+h.val)or(h,s))(h.next,0)))(h)
+
 class Solution:
     def mergeNodes(self, h: Optional[ListNode]) -> Optional[ListNode]:
         a = eval(h.serialize(h))
@@ -36,7 +50,6 @@ class Solution:
 class Solution:
     def mergeNodes(self, h: Optional[ListNode]) -> Optional[ListNode]:
         return h.deserialize(str([sum(v)for k,v in groupby(eval(h.serialize(h)),truth)if k]))
-
 
 test('''
 2181. Merge Nodes in Between Zeros

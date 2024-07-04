@@ -31,7 +31,12 @@ class Solution:
 
 class Solution:
     def mergeNodes(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        return h._array_to_list_node(sum(v)for k,v in groupby(h._list_node_to_array(),truth)if k)
+
+class Solution:
+    def mergeNodes(self, h: Optional[ListNode]) -> Optional[ListNode]:
         return h.deserialize(str([sum(v)for k,v in groupby(eval(h.serialize(h)),truth)if k]))
+
 
 test('''
 2181. Merge Nodes in Between Zeros

@@ -147,6 +147,7 @@ class ListNode:
             return None
         if type(val)==ListNode:
             return val
+        val = [*val]
         sub_nodes = ListNode.parse(val[1:])
         list_node = ListNode(val[0], sub_nodes)
         return list_node

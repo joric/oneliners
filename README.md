@@ -1286,14 +1286,14 @@ class Solution:
 
 ```
 
-You can replace `x>0` predicate with `0..__lt___`, or just `operator.truth`:
+You can replace `x>0` predicate with `0..__lt___`, `operator.truth`, or just `bool`:
 
 * https://leetcode.com/problems/merge-nodes-in-between-zeros
 
 ```python
 class Solution:
     def mergeNodes(self, h: Optional[ListNode]) -> Optional[ListNode]:
-        return h.deserialize(str([sum(v)for k,v in groupby(eval(h.serialize(h)),truth)if k]))
+        return h.deserialize(str([sum(v)for k,v in groupby(eval(h.serialize(h)),bool)if k]))
 ```
 
 You can save a few characters using asterisk operator `*`.

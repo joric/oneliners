@@ -3,6 +3,19 @@ from lc import *
 # https://leetcode.com/problems/valid-perfect-square/discuss/151403/Python-one-liner
 
 class Solution:
+    def isPerfectSquare(self, num: int) -> bool:
+        l,r = 0,num
+        while l<=r:
+            m = (l + r) // 2
+            m2 = m*m
+            if m2 == num: return True
+            elif m2 < num:
+                l = m + 1
+            else:
+                r = m - 1
+        return False
+
+class Solution:
     def isPerfectSquare(self, n: int) -> bool:
         return(t:=n**0.5)==int(t)
 

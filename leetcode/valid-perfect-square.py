@@ -19,6 +19,10 @@ class Solution:
     def isPerfectSquare(self, n: int) -> bool:
         return(t:=n**0.5)==int(t)
 
+class Solution:
+    def isPerfectSquare(self, n: int) -> bool:
+        return isqrt(n)==sqrt(n)
+
 test('''
 367. Valid Perfect Square
 Easy

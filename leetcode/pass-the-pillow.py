@@ -4,6 +4,11 @@ from lc import *
 
 class Solution:
     def passThePillow(self, n: int, t: int) -> int:
+        b,a=divmod(t,n-1)
+        return b&1 and n-a or a+1
+
+class Solution:
+    def passThePillow(self, n: int, t: int) -> int:
         return n-abs(n-1-t%(n*2-2))
 
 test('''

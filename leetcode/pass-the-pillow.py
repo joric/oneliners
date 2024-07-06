@@ -4,8 +4,7 @@ from lc import *
 
 class Solution:
     def passThePillow(self, n: int, t: int) -> int:
-        b,a=divmod(t,n-1)
-        return b&1 and n-a or a+1
+        b,a=divmod(t,n-1);return(a+1,n-a)[b&1]
 
 class Solution:
     def passThePillow(self, n: int, t: int) -> int:

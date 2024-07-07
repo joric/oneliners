@@ -18,6 +18,10 @@ class Solution:
 
 class Solution:
     def isStrictlyPalindromic(self, n: int) -> bool:
+        1
+
+class Solution:
+    def isStrictlyPalindromic(self, n: int) -> bool:
         0
 
 test('''

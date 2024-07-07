@@ -12,6 +12,14 @@ class Solution:
     def isStrictlyPalindromic(self, n: int) -> bool:
         pass
 
+class Solution:
+    def isStrictlyPalindromic(self, n: int) -> bool:
+        n
+
+class Solution:
+    def isStrictlyPalindromic(self, n: int) -> bool:
+        0
+
 test('''
 2396. Strictly Palindromic Number
 Medium

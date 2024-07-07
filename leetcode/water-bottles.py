@@ -1,5 +1,16 @@
 from lc import *
 
+# https://leetcode.com/problems/water-bottles/discuss/3226806/Python3-or-C%2B%2B-Two-beautiful-solutions
+
+class Solution:
+    def numWaterBottles(self, numBottles: int, numExchange: int) -> int:
+        result = numBottles
+        drunk, empty = divmod(numBottles, numExchange)
+        while drunk:
+            result += drunk
+            drunk, empty = divmod(empty + drunk, numExchange)
+        return result
+
 # https://leetcode.com/problems/water-bottles/discuss/745231/Python-1-liner-with-math-explained
 
 class Solution:

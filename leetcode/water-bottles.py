@@ -12,6 +12,10 @@ class Solution:
 
 class Solution:
     def numWaterBottles(self, b: int, e: int) -> int:
+        return~-(b*e)//~-e
+
+class Solution:
+    def numWaterBottles(self, b: int, e: int) -> int:
         return~-b//~-e+b
 
 test('''

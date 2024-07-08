@@ -10,6 +10,10 @@ class Solution:
     def findTheWinner(self, n: int, k: int) -> int:
         a=0;[a:=(a+k)%-~x for x in range(n)];return-~a
 
+class Solution:
+    def findTheWinner(self, n: int, k: int) -> int:
+        return-~reduce(lambda x,i:(x+k)%i,range(n+1))
+
 # https://leetcode.com/problems/find-the-winner-of-the-circular-game/discuss/2510035/One-Line-Python-Solution
 
 class Solution:

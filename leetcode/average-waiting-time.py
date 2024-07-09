@@ -16,6 +16,10 @@ class Solution:
     def averageWaitingTime(self, c: List[List[int]]) -> float:
         k=0;return sum((k:=max(k,x)+y)-x for x,y in c)/len(c)
 
+class Solution:
+    def averageWaitingTime(self, c: List[List[int]]) -> float:
+        k=0;return-sum(x-(k:=max(k,x)+y)for x,y in c)/len(c)
+
 test('''
 1701. Average Waiting Time
 Medium

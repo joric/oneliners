@@ -18,6 +18,12 @@ class Solution:
     def minOperations(self, l: List[str]) -> int:
         d=0;[s[0]!='.'and(d:=d+1)or s[1]=='.'and(d:=max(0,d-1))for s in l];return d
 
+# https://leetcode.com/problems/crawler-log-folder/discuss/986787/3-liner-C%2B%2B
+
+class Solution:
+    def minOperations(self, l: List[str]) -> int:
+        d=0;[d:=((d+1,d)[s=='./'],max(d-1,0))[s=='../']for s in l];return d
+
 # https://leetcode.com/problems/crawler-log-folder/discuss/1208698/Python-3-one-line
 
 class Solution:

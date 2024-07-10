@@ -4,11 +4,11 @@ from lc import *
 
 class Solution:
     def minOperations(self, l: List[str]) -> int:
-        return reduce(lambda d,x:{'../':max(d-1,0),'./':d}.get(x,d+1),l,0)
+        return reduce(lambda d,s:{'../':max(d-1,0),'./':d}.get(s,d+1),l,0)
 
 class Solution:
     def minOperations(self, l: List[str]) -> int:
-        d=0;[d:={'../':max(d-1,0),'./':d}.get(x,d+1)for x in l];return d
+        d=0;[d:={'../':max(d-1,0),'./':d}.get(s,d+1)for s in l];return d
 
 test('''
 1598. Crawler Log Folder

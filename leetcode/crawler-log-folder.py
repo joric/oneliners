@@ -1,5 +1,23 @@
 from lc import *
 
+# https://leetcode.com/problems/crawler-log-folder/discuss/2688322/Python-Super-easy-or-No-stack
+
+class Solution:
+    def minOperations(self, l: List[str]) -> int:
+        d = 0
+        for s in l:
+            if s[0] != '.':
+                d += 1
+            elif s[1]=='.':
+                d -=1
+                if d < 0:
+                    d = 0
+        return d
+
+class Solution:
+    def minOperations(self, l: List[str]) -> int:
+        d=0;[s[0]!='.'and(d:=d+1)or s[1]=='.'and(d:=max(0,d-1))for s in l];return d
+
 # https://leetcode.com/problems/crawler-log-folder/discuss/1208698/Python-3-one-line
 
 class Solution:
@@ -9,6 +27,7 @@ class Solution:
 class Solution:
     def minOperations(self, l: List[str]) -> int:
         d=0;[d:={'../':max(d-1,0),'./':d}.get(s,d+1)for s in l];return d
+
 
 test('''
 1598. Crawler Log Folder

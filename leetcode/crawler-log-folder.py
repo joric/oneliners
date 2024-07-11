@@ -34,6 +34,12 @@ class Solution:
     def minOperations(self, l: List[str]) -> int:
         d=0;[d:={'../':max(d-1,0),'./':d}.get(s,d+1)for s in l];return d
 
+# another solution
+
+class Solution:
+    def minOperations(self, l: List[str]) -> int:
+        d=0;[d:=max(0,d-s.rfind('.'))for s in l];return d
+
 test('''
 1598. Crawler Log Folder
 Easy

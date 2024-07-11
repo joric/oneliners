@@ -38,7 +38,17 @@ class Solution:
 
 class Solution:
     def reverseParentheses(self, s: str) -> str:
-        [s:=re.sub("\(([^()]*)\)",lambda m:m[1][::-1],s)for _ in s];return s
+        return reduce(lambda s,_:re.sub(r'\(([^()]*)\)',lambda m:m[1][::-1],s),s,s)
+
+class Solution:
+    def reverseParentheses(self, s: str) -> str:
+        [s:=re.sub(r'\(([^()]*)\)',lambda m:m[1][::-1],s)for _ in s];return s
+
+# non-raw strings give invalid escape sequence, but still work
+
+class Solution:
+    def reverseParentheses(self, s: str) -> str:
+        [s:=re.sub('\(([^()]*)\)',lambda m:m[1][::-1],s)for _ in s];return s
 
 test('''
 1190. Reverse Substrings Between Each Pair of Parentheses

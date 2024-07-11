@@ -1,12 +1,14 @@
 from lc import *
 
-class Solution:
-    def reverseVowels(self, s: str) -> str:
-        return re.sub('(?i)[aeiou]', lambda m, v=re.findall('(?i)[aeiou]', s): v.pop(), s)
+# https://leetcode.com/problems/reverse-vowels-of-a-string/
 
 class Solution:
     def reverseVowels(self, s: str) -> str:
         return (t:='aeiouAEIOU',v:=[c for c in s if c in t]) and ''.join([v.pop() if c in t else c for c in s])
+
+class Solution:
+    def reverseVowels(self, s: str) -> str:
+        return re.sub(t:='(?i)[aeiou]',lambda m,v=re.findall(t,s):v.pop(),s)
 
 test('''
 

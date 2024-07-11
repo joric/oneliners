@@ -26,6 +26,14 @@ class Solution:
     def reverseParentheses(self, s: str) -> str:
         return(f:=lambda s:~(i:=s.rfind('('))and f(s[:i]+s[i+1:(j:=s.find(')',i))][::-1]+s[j+1:])or s)(s)
 
+class Solution:
+    def reverseParentheses(self, s: str) -> str:
+        return(f:=lambda s:~(i:=s.rfind('('))and f(s[:i]+s[(j:=s.find(')',i))-1:i:-1]+s[j+1:])or s)(s)
+
+class Solution:
+    def reverseParentheses(self, s: str) -> str:
+        return(f:=lambda s:~(j:=s.find(')',i:=s.rfind('(')))and f(s[:i]+s[j-1:i:-1]+s[j+1:])or s)(s)
+
 test('''
 1190. Reverse Substrings Between Each Pair of Parentheses
 Medium

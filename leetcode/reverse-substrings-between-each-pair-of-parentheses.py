@@ -44,7 +44,7 @@ class Solution:
     def reverseParentheses(self, s: str) -> str:
         [s:=re.sub(r'\(([^()]*)\)',lambda m:m[1][::-1],s)for _ in s];return s
 
-# non-raw strings give invalid escape sequence, but still work
+# non-raw strings give invalid escape sequence '\(', but still work
 
 class Solution:
     def reverseParentheses(self, s: str) -> str:

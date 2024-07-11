@@ -34,7 +34,7 @@ class Solution:
     def minOperations(self, l: List[str]) -> int:
         d=0;[d:={'../':max(d-1,0),'./':d}.get(s,d+1)for s in l];return d
 
-# another solution
+# https://leetcode.com/problems/crawler-log-folder/discuss/5455576/one-line-solution
 
 class Solution:
     def minOperations(self, a: List[str]) -> int:

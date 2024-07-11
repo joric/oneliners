@@ -37,8 +37,8 @@ class Solution:
 # https://leetcode.com/problems/crawler-log-folder/discuss/5455576/one-line-solution
 
 class Solution:
-    def minOperations(self, a: List[str]) -> int:
-        return reduce(lambda q,v:max(0,q+1-v.count('.')),a,0)
+    def minOperations(self, l: List[str]) -> int:
+        return reduce(lambda d,s:max(0,d+1-s.count('.')),l,0)
 
 class Solution:
     def minOperations(self, l: List[str]) -> int:

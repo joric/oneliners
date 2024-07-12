@@ -50,11 +50,29 @@ class Solution:
 
 class Solution:
     def maximumGain(self, s: str, x: int, y: int) -> int:
+        a=b=r=0;x,y,s=((x,y,s),(y,x,s[::-1]))[x<y]
+        def f(a,b,r,c):
+            return map(sum,zip((a,b,r),c=='a'and(1,0,0)or c=='b'and(a and(-1,0,x)or(0,1,0))or(-a,-b,min(a,b)*y)))
+        for c in s:
+            a,b,r = f(a,b,r,c)
+        return r + min(a,b)*y
+
+class Solution:
+    def maximumGain(self, s: str, x: int, y: int) -> int:
         x,y,s=((x,y,s),(y,x,s[::-1]))[x<y];return(t:=lambda a,b,r:r+min(a,b)*y)(*reduce(lambda p,c:(lambda a,b,r,c:c=='a'and(a+1,b,r)or c=='b'and(a and(a-1,b,r+x)or(a,b+1,r))or(0,0,r+min(a,b)*y))(*p,c),s,[0]*3))
 
 class Solution:
     def maximumGain(self, s: str, x: int, y: int) -> int:
-        x,y,s=((x,y,s),(y,x,s[::-1]))[x<y];t=lambda p:p[2]+min(p[:2])*y;return t(reduce(lambda p,c:c=='a'and(p[0]+1,*p[1:3])or c=='b'and(p[0] and(p[0]-1,p[1],p[2]+x)or(p[0],p[1]+1,p[2]))or(0,0,t(p)),s,[0]*3))
+        x,y,s=((x,y,s),(y,x,s[::-1]))[x<y];return(t:=lambda p:p[2]+min(p[:2])*y)(reduce(lambda p,c:c=='a'and(p[0]+1,*p[1:3])or c=='b'and(p[0] and(p[0]-1,p[1],p[2]+x)or(p[0],p[1]+1,p[2]))or(0,0,t(p)),s,[0]*3))
+
+class Solution:
+    def maximumGain(self, s: str, x: int, y: int) -> int:
+        z=1-2*(x<y);x,y=(x,y)[::z];return(t:=lambda p:p[2]+y*min(p[:2]))(reduce(lambda p,c:[*map(sum,zip(p,{'b':p[0]and(-1,0,x)or(0,1,0),'a':(1,0,0)}.get(c,(-p[0],-p[1],t(p)-p[2]))))],s[::z],[0]*3))
+
+class Solution:
+    def maximumGain(self, s: str, x: int, y: int) -> int:
+        z=1-2*(x<y);x,y=(x,y)[::z];return(t:=lambda p:p[2]+y*min(p[:2]))(reduce(lambda p,c:{'b':((w:=p[0],p[1]+1,p[2]),(w-1,p[1],p[2]+x))[w>0],'a':(w+1,*p[1:3])}.get(c,(0,0,t(p))),s[::z],[0]*3))
+
 
 test('''
 1717. Maximum Score From Removing Substrings

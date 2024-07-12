@@ -73,7 +73,6 @@ class Solution:
     def maximumGain(self, s: str, x: int, y: int) -> int:
         z=1-2*(x<y);x,y=(x,y)[::z];return(t:=lambda p:p[2]+y*min(p[:2]))(reduce(lambda p,c:{'b':((w:=p[0],p[1]+1,p[2]),(w-1,p[1],p[2]+x))[w>0],'a':(w+1,*p[1:3])}.get(c,(0,0,t(p))),s[::z],[0]*3))
 
-
 test('''
 1717. Maximum Score From Removing Substrings
 Medium

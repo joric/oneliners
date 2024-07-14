@@ -32,7 +32,7 @@ class Solution:
         for c in a[::-1]:
             if c == ')':
                 q.append(t or 1)
-                k = k * (t or 1)
+                k *= t or 1
                 i = t = 0
             elif c == '(':
                 k //= q.pop()

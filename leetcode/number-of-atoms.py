@@ -50,7 +50,7 @@ class Solution:
 
 class Solution:
     def countOfAtoms(self, a: str) -> str:
-        d,q=defaultdict(int),[];p=[1,'',0,0]
+        d,q,p=defaultdict(int),[],[1,'',0,0]
         for c in a[::-1]:
             def f(c,k,e,t,i):
                 if c == ')':      return q.append(t or 1)or(k*(t or 1),e,0,0)
@@ -64,11 +64,7 @@ class Solution:
 
 class Solution:
     def countOfAtoms(self, a: str) -> str:
-        d,q=defaultdict(int),[];p=reduce(lambda p,c:(lambda c,k,e,t,i:q.append(t or 1)or(k*(t or 1),e,0,0)if c==')'else(k//q.pop(),e,0,0)if c=='('else(setitem(d,w:=(e+c)[::-1],d[w]+(t or 1)*k)or(k,'',0,0))if c.isupper()else(k,e,t+int(c)*10**i,i+1)if c.isdigit()else(k,e+c,t,i)if c.islower()else(k,e,t,i))(c,*p),a[::-1],[1,'',0,0]);return ''.join(k+('',str(v))[v>1]for k,v in sorted(d.items()))
-
-class Solution:
-    def countOfAtoms(self, a: str) -> str:
-        d,q=defaultdict(int),[];p=[1,'',0,0];[p:=(lambda c,k,e,t,i:q.append(t or 1)or(k*(t or 1),e,0,0)if c==')'else(k//q.pop(),e,0,0)if c=='('else(setitem(d,w:=(e+c)[::-1],d[w]+(t or 1)*k)or(k,'',0,0))if c.isupper()else(k,e,t+int(c)*10**i,i+1)if c.isdigit()else(k,e+c,t,i)if c.islower()else(k,e,t,i))(c,*p)for c in a[::-1]];return ''.join(k+('',str(v))[v>1]for k,v in sorted(d.items()))
+        d,q,p=defaultdict(int),[],[1,'',0,0];[p:=(lambda c,k,e,t,i:q.append(t or 1)or(k*(t or 1),e,0,0)if c==')'else(k//q.pop(),e,0,0)if c=='('else(setitem(d,w:=(e+c)[::-1],d[w]+(t or 1)*k)or(k,'',0,0))if c.isupper()else(k,e,t+int(c)*10**i,i+1)if c.isdigit()else(k,e+c,t,i)if c.islower()else(k,e,t,i))(c,*p)for c in a[::-1]];return''.join(k+('',str(v))[v>1]for k,v in sorted(d.items()))
 
 test('''
 726. Number of Atoms

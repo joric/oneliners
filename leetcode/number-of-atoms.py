@@ -101,15 +101,15 @@ class Solution:
 class Solution:
     def countOfAtoms(self, s: str) -> str:
         p = r'([A-Z][a-z]*)(\d*)'
-        f = lambda m:re.sub(p,lambda g:g[1]+str(int(g[2]or'1')*int(m[2]or'1')),m[1])
+        f = lambda m:re.sub(p,lambda g:g[1]+str(int(g[2]or 1)*int(m[2]or 1)),m[1])
         while '(' in s:
             s = re.sub('\((\w+)\)(\d*)', f, s)
-        c = sum((Counter({m[1]: int(m[2] or 1)}) for m in finditer(p,s)), Counter())
+        c = sum((Counter({m[1]:int(m[2]or 1)}) for m in finditer(p,s)), Counter())
         return ''.join(e + str(c)*(c>1) for e,c in sorted(c.items()))
 
 class Solution:
     def countOfAtoms(self, s: str) -> str:
-        p='([A-Z][a-z]*)(\d*)';[s:=re.sub('\((\w+)\)(\d*)',lambda m:re.sub(p,lambda g:g[1]+str(int(g[2]or'1')*int(m[2]or'1')),m[1]),s)for _ in s];return''.join(e+str(c)*(c>1)for e,c in sorted(sum((Counter({m[1]:int(m[2]or 1)})for m in finditer(p,s)),Counter()).items()))
+        p='([A-Z][a-z]*)(\d*)';[s:=re.sub('\((\w+)\)(\d*)',lambda m:re.sub(p,lambda g:g[1]+str(int(g[2]or 1)*int(m[2]or 1)),m[1]),s)for _ in s];return''.join(e+str(c)*(c>1)for e,c in sorted(sum((Counter({m[1]:int(m[2]or 1)})for m in finditer(p,s)),Counter()).items()))
 
 test('''
 726. Number of Atoms

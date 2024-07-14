@@ -70,6 +70,32 @@ class Solution:
     def countOfAtoms(self, a: str) -> str:
         d,q,p=Counter(),[],[1,'',0,0];[p:=(lambda c,k,e,t,i:c==')'and(q.append(t or 1)or(k*q[-1],e,0,0))or c=='('and(k//q.pop(),e,0,0)or c.isupper()and(setitem(d,w:=(e+c)[::-1],d[w]+(t or 1)*k)or(k,'',0,0))or c.isdigit()and(k,e,t+int(c)*10**i,i+1)or c.islower()and(k,e+c,t,i)or(k,e,t,i))(c,*p)for c in a[::-1]];return''.join(k+('',str(v))[v>1]for k,v in sorted(d.items()))
 
+# https://leetcode.com/problems/number-of-atoms/discuss/109333/Neat-Python-with-Explanation-35ms
+
+class Solution:
+    def countOfAtoms(self, a: str) -> str:
+        d=[*filter(lambda c:c,split(r'([A-Z]{1}[a-z]?|\(|\)|\d+)',a))]
+        q,i,n= [Counter()],0,len(d)
+        while i<n:
+            t = d[i]
+            if t == '(':
+                q.append(Counter())
+            else:
+                c = 1
+                j = i+1
+                if j<n and d[j].isdigit():
+                    c = int(d[j])
+                    i = j
+                m = q.pop()if t== ')'else{t:1}
+                for k in m:
+                    q[-1][k] += c*m[k]
+            i+=1
+        return''.join(k+('',str(v))[v>1]for k,v in sorted(q[-1].items()))
+
+class Solution:
+    def countOfAtoms(self, a: str) -> str:
+        d,q=[*filter(lambda c:c,split('([A-Z]{1}[a-z]?|\(|\)|\d+)',a))],[Counter()];(f:=lambda i:d[i:]and(t:=d[i],q.append(Counter())if t=='('else(c:=1,d[(j:=i+1):]and d[j].isdigit()and(c:=int(d[j]),i:=j),[setitem(q[-1],k,q[-1][k]+c*v)for k,v in(q.pop()if t== ')'else{t:1}).items()]),f(i+1)))(0);return''.join(k+('',str(v))[v>1]for k,v in sorted(q[-1].items()))
+
 test('''
 726. Number of Atoms
 Hard

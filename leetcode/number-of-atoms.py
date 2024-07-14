@@ -100,14 +100,11 @@ class Solution:
 
 class Solution:
     def countOfAtoms(self, s: str) -> str:
-        pattern = r'([A-Z][a-z]*)(\d*)'
-        def f(m):
-            def ff(mm):
-                return mm[1] + str(int(mm[2] or '1')*int(m[2] or '1'))
-            return re.sub(pattern, ff, m[1])
+        p = r'([A-Z][a-z]*)(\d*)'
+        f = lambda m:re.sub(p,lambda g:g[1]+str(int(g[2]or'1')*int(m[2]or'1')),m[1])
         while '(' in s:
             s = re.sub('\((\w+)\)(\d*)', f, s)
-        c = sum((Counter({m[1]: int(m[2] or 1)}) for m in finditer(pattern, s)), Counter())
+        c = sum((Counter({m[1]: int(m[2] or 1)}) for m in finditer(p,s)), Counter())
         return ''.join(e + str(c)*(c>1) for e,c in sorted(c.items()))
 
 class Solution:

@@ -26,7 +26,7 @@ class Solution:
 
 class Solution:
     def getDirections(self, r: Optional[TreeNode], s: int, d: int) -> str:
-        a,b=[],[];f=lambda t,x,p:t.val==x or(t.left and(f(t.left,x,p)and[p.append('L')])or t.right and f(t.right,x,p)and p.append('R'))or p;f(r,s,a);f(r,d,b);all(a[-1:]==b[-1:]and(a.pop(),b.pop())for _ in a+b);return''.join('U'*len(a))+''.join(b[::-1])
+        a,b=[],[];f=lambda t,x,p:t.val==x or(t.left and(f(t.left,x,p)and[p.append('L')])or t.right and f(t.right,x,p)and p.append('R'))or p;f(r,s,a);f(r,d,b);[a[-1:]==b[-1:]and(a.pop(),b.pop())for _ in a+b];return''.join('U'*len(a))+''.join(b[::-1])
 
 test('''
 2096. Step-By-Step Directions From a Binary Tree Node to Another

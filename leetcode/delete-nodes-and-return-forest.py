@@ -47,7 +47,8 @@ class Solution:
                 not e and i and a.append(t)
                 t.left = f(t.left,e)
                 t.right = f(t.right,e)
-                return None if e else t
+                if not e:
+                    return t
         f(r,1)
         return a
 

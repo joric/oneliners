@@ -104,5 +104,7 @@ Accepted
 253,124
 Submissions
 361,244
-''',check=lambda res,exp,*args: len(res)==len(exp)and all(a==b for a,b in zip(sorted(str(x) for x in res), sorted(str(x) for x in exp)))
+''',
+#check=lambda res,exp,*args: len(res)==len(exp)and all(a==b for a,b in zip(sorted(str(x) for x in res), sorted(str(x) for x in exp)))
+check=lambda res,exp,*args: len(res)==len(exp)and all(a==b for a,b in zip(*map(sorted,map(str,(res,exp)))))
 )

@@ -209,6 +209,8 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
             return v # see linked-list-cycle-ii
         if 'List[lc.ListNode]' in hint or 'List[typing.Optional[lc.ListNode]]' in hint:
             return [ListNode.parse(x) for x in v]
+        if 'List[lc.TreeNode]' in hint or 'List[typing.Optional[lc.TreeNode]]' in hint:
+            return [TreeNode.parse(x) if type(x) is list else x for x in v]
         elif 'ListNode' in hint and type(v)!=ListNode:
             return ListNode.parse(v)
         elif 'TreeNode' in hint and type(v)!=TreeNode:

@@ -45,7 +45,8 @@ class Solution:
             if t:
                 e=t.val in d
                 i and not e and a.append(t)
-                [setattr(t,k,f(getattr(t,k),e))for k in('left','right')]
+                t.left = f(t.left,e)
+                t.right = f(t.right,e)
                 return None if e else t
         f(r,1)
         return a

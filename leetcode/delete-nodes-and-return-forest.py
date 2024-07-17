@@ -105,5 +105,5 @@ Accepted
 Submissions
 361,244
 ''',
-check=lambda res,exp,*args: len(res)==len(exp)and all(a==b for a,b in zip(*map(sorted,map(str,(res,exp)))))
+check=lambda res,exp,*args: len(res)==len(exp)and all(starmap(eq,zip(*map(sorted,map(str,(res,exp))))))
 )

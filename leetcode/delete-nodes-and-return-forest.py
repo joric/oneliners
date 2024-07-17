@@ -30,7 +30,29 @@ class Solution:
 
 class Solution:
     def delNodes(self, r: Optional[TreeNode], d: List[int]) -> List[TreeNode]:
-        a,d,v,g = [],{*d},('left','right'),getattr;f=lambda t:t and([setattr(t,k,f(g(t,k)))for k in v],[[a.append(g(t,k))for k in v]]and None if t.val in d else t)[1];a.append(f(r));return filter(None,a)
+        a,d,v,g=[],{*d},('left','right'),getattr;f=lambda t:t and([setattr(t,k,f(g(t,k)))for k in v],[[a.append(g(t,k))for k in v]]and None if t.val in d else t)[1];a.append(f(r));return filter(None,a)
+
+class Solution:
+    def delNodes(self, r: Optional[TreeNode], d: List[int]) -> List[TreeNode]:
+        a,d,v,g=[],{*d},('left','right'),getattr;f=lambda t:t and([setattr(t,k,f(g(t,k)))for k in v],[a.extend([g(t,k)for k in v])]and None if t.val in d else t)[1];a.append(f(r));return filter(None,a)
+
+# https://leetcode.com/problems/delete-nodes-and-return-forest/discuss/328853/JavaC%2B%2BPython-Recursion-Solution
+
+class Solution:
+    def delNodes(self, r: Optional[TreeNode], d: List[int]) -> List[TreeNode]:
+        a,d = [],{*d}
+        def f(t,i):
+            if t:
+                e=t.val in d
+                i and not e and a.append(t)
+                [setattr(t,k,f(getattr(t,k),e))for k in('left','right')]
+                return None if e else t
+        f(r,1)
+        return a
+
+class Solution:
+    def delNodes(self, r: Optional[TreeNode], d: List[int]) -> List[TreeNode]:
+        a,d=[],{*d};(f:=lambda t,i:t and(not(e:=t.val in d)and i and a.append(t)or[setattr(t,k,f(getattr(t,k),e))for k in('left','right')]and(t,None)[e]))(r,1);return a
 
 test('''
 1110. Delete Nodes And Return Forest

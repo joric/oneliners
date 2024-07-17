@@ -45,8 +45,8 @@ class Solution:
             if t:
                 e = t.val in d
                 not e and i and a.append(t)
-                t.left = f(t.left,e)
-                t.right = f(t.right,e)
+                t.left = f(t.left, e)
+                t.right = f(t.right, e)
                 if not e:
                     return t
         f(r,1)

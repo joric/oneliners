@@ -57,11 +57,7 @@ class Solution:
 
 class Solution:
     def delNodes(self, r: Optional[TreeNode], d: List[int]) -> List[TreeNode]:
-        a,d=[],{*d};(f:=lambda t,i:t and(not(e:=t.val in d)and i and a.append(t)or f and exec('t.left,t.right=f(t.left,e),f(t.right,e)')or(t,None)[e]))(r,1);return a
-
-class Solution:
-    def delNodes(self, r: Optional[TreeNode], d: List[int]) -> List[TreeNode]:
-        a,d=[],{*d};(f:=lambda t,i=1:t and(not(e:=t.val in d)and i and a.append(t)or f(exec('t.left,t.right=f(t.left,e),f(t.right,e)'))or(t,None)[e]))(r);return a
+        a,d=[],{*d};(f:=lambda t,i=1:t and(not(e:=t.val in d)and i and a.append(t)or f==exec('t.left,t.right=f(t.left,e),f(t.right,e)')or(t,None)[e]))(r);return a
 
 test('''
 1110. Delete Nodes And Return Forest

@@ -43,8 +43,8 @@ class Solution:
         a,d = [],{*d}
         def f(t,i):
             if t:
-                e=t.val in d
-                i and not e and a.append(t)
+                e = t.val in d
+                not e and i and a.append(t)
                 t.left = f(t.left,e)
                 t.right = f(t.right,e)
                 return None if e else t

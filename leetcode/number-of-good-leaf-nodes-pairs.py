@@ -9,7 +9,7 @@ class Solution:
             nonlocal c
             if not t:
                 return []
-            if not t.left and not t.right:
+            if t.left==t.right:
                 return [1]
             l,r = f(t.left), f(t.right)
             c += sum(x+y<=d for x in l for y in r)
@@ -19,7 +19,7 @@ class Solution:
 
 class Solution:
     def countPairs(self, r: TreeNode, d: int) -> int:
-        c=[0];(f:=lambda t:t and((l:=f(t.left),r:=f(t.right),setitem(c,0,c[0]+sum(x+y<=d for x in l for y in r)),[x+1 for x in l+r if x+1<d])[-1]if t.left or t.right else[1])or[])(r);return c[0]
+        c=[0];(f:=lambda t:t and([1]if t.left==t.right else(l:=f(t.left),r:=f(t.right),setitem(c,0,c[0]+sum(x+y<=d for x in l for y in r)),[x+1 for x in l+r if x+1<d])[-1])or[])(r);return c[0]
 
 class Solution:
     def countPairs(self, r: TreeNode, d: int) -> int:

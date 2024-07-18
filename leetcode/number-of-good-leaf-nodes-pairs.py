@@ -21,6 +21,10 @@ class Solution:
     def countPairs(self, r: TreeNode, d: int) -> int:
         c=[0];(f:=lambda t:t and((l:=f(t.left),r:=f(t.right),setitem(c,0,c[0]+sum(x+y<=d for x in l for y in r)),[x+1 for x in l+r if x+1<d])[-1]if t.left or t.right else[1])or[])(r);return c[0]
 
+class Solution:
+    def countPairs(self, r: TreeNode, d: int) -> int:
+        c=[0];(f:=lambda t:t and([1]if(l:=t.left)==(r:=t.right)else(l:=f(l),r:=f(r),setitem(c,0,c[0]+sum(x+y<=d for x in l for y in r)))and[x+1 for x in l+r if x+1<d])or[])(r);return c[0]
+
 test('''
 1530. Number of Good Leaf Nodes Pairs
 Medium

@@ -19,6 +19,13 @@ class Solution:
     def createBinaryTree(self, d: List[List[int]]) -> Optional[TreeNode]:
         s,m,t=set(),{},TreeNode;f=m.setdefault;[setattr(f(p,t(p)),('right','left')[e],f(c,t(c)))or s.add(c)for p,c,e in d];return m[({*m}-s).pop()]
 
+
+# https://leetcode.com/problems/create-binary-tree-from-descriptions/discuss/5480210/one-line-solution
+
+class Solution:
+    def createBinaryTree(self, a: List[List[int]]) -> Optional[TreeNode]:
+        d={};q={setattr(d.setdefault(p,TreeNode(p)),('right','left')[l],d.setdefault(c,TreeNode(c)))or c for p,c,l in a};return d[({*d}-q).pop()]
+
 test('''
 2196. Create Binary Tree From Descriptions
 Medium

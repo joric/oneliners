@@ -37,6 +37,52 @@ class Solution:
     def buildMatrix(self, k: int, r: List[List[int]], c: List[List[int]]) -> List[List[int]]:
         e,n=enumerate,range;p=[*map(lambda c:(g:=[[]for _ in n(k)],d:=[0]*k,a:=[],[g[u-1].append(v-1)or setitem(d,v-1,d[v-1]+1)for u,v in c],q:=deque(u for u,x in e(d)if x==0),(t:=lambda:q and(a.append(1+(u:=q.popleft())),[setitem(d,v,d[v]-1)or 0==d[v]and q.append(v)for v in g[u]],t()))())and a,(r,c))];return[]if any(len(x)<k for x in p)else(a:=[[0]*k for _ in n(k)],p:=[{x:i for i,x in e(t)}for t in p],[setitem(a[p[0][x]],p[1][x],x)for x in n(1,k+1)])and a
 
+# https://leetcode.com/problems/build-a-matrix-with-conditions/discuss/2492947/Python-3-Explanation-with-pictures-Topological-Sort
+
+class Solution:
+    def buildMatrix(self, k: int, r: List[List[int]], c: List[List[int]]) -> List[List[int]]:
+        def f(c):
+            g,d,q,a,c = [set()for _ in range(k)],[0]*k,deque(),[],set([tuple(x)for x in c])
+            for i,j in c:
+                g[i-1].add(j - 1)
+                d[j-1] += 1
+            for i in range(k):
+                if d[i] == 0:
+                    q.append(i)
+            while q:
+                i = q.popleft()
+                a.append(i)
+                for j in g[i]:
+                    d[j] -= 1
+                    if d[j] == 0:
+                        q.append(j)
+            return a if len(a) == k else []
+        r, c = f(r), f(c)
+        if not r or not c:
+            return []
+        a = [[0] * k for _ in range(k)]
+        for i in range(k): 
+            a[r.index(i)][c.index(i)] = i+1
+        return a
+
+class Solution:
+    def buildMatrix(self, k: int, r: List[List[int]], c: List[List[int]]) -> List[List[int]]:
+        s,n=setitem,range
+        def f(c):
+            (g:=[set()for _ in range(k)],d:=[0]*k,q:=deque(),a:=[],c:=set([tuple(x)for x in c]),[g[i-1].add(j-1)or s(d,j-1,d[j-1]+1)for i,j in c],[q.append(i)for i in n(k)if d[i]==0],(t:=lambda:q and(a.append(i:=q.popleft()),[s(d,j,d[j]-1)or 0==d[j]and q.append(j)for j in g[i]],t()))())
+            return a if len(a) == k else []
+        return(a:=[k*[0]for _ in n(k)],[s(a[r.index(i)],c.index(i),i+1)for i in n(k)])and a if((r:=f(r))and(c:=f(c)))else[]
+
+class Solution:
+    def buildMatrix(self, k: int, r: List[List[int]], c: List[List[int]]) -> List[List[int]]:
+        s,n=setitem,range;f=lambda c:(g:=[set()for _ in n(k)],d:=[0]*k,q:=deque(),a:=[],c:=set([tuple(x)for x in c]),[g[i-1].add(j-1)or s(d,j-1,d[j-1]+1)for i,j in c],[q.append(i)for i in n(k)if d[i]==0],(t:=lambda:q and(a.append(i:=q.popleft()),[s(d,j,d[j]-1)or 0==d[j]and q.append(j)for j in g[i]],t()))(),a if k==len(a)else[])[8];return(a:=[k*[0]for _ in n(k)],[s(a[r.index(i)],c.index(i),i+1)for i in n(k)])and a if((r:=f(r))and(c:=f(c)))else[]
+
+# further minified by Claude 3.5 Sonnet
+
+class Solution:
+    def buildMatrix(self, k: int, r: List[List[int]], c: List[List[int]]) -> List[List[int]]:
+        s,n=setitem,range;f=lambda c:(g:=[set()for _ in n(k)],d:=[0]*k,q:=deque(),a:=[],c:=set(map(tuple,c)),[g[i-1].add(j-1)or s(d,j-1,d[j-1]+1)for i,j in c],[q.append(i)for i in n(k)if not d[i]],(t:=lambda:q and(a.append(i:=q.popleft()),[s(d,j,d[j]-1)or not d[j]and q.append(j)for j in g[i]],t()))(),a if k==len(a)else[])[8];return(a:=[k*[0]for _ in n(k)],[s(a[r.index(i)],c.index(i),i+1)for i in n(k)])and a if((r:=f(r))and(c:=f(c)))else[]
+
 test('''
 2392. Build a Matrix With Conditions
 Hard

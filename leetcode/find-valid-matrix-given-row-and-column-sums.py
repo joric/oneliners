@@ -27,6 +27,10 @@ class Solution:
     def restoreMatrix(self, r: List[int], c: List[int]) -> List[List[int]]:
         return[[(lambda i,j:(x:=min(r[i],c[j]),setitem(r,i,r[i]-x),setitem(c,j,c[j]-x))[0])(i,j)for j in range(len(c))]for i in range(len(r))]
 
+class Solution:
+    def restoreMatrix(self, r: List[int], c: List[int]) -> List[List[int]]:
+        return[[(x:=min(r[i],c[j]),setitem(r,i,r[i]-x),setitem(c,j,c[j]-x))[0]for j in range(len(c))]for i in range(len(r))]
+
 test('''
 1605. Find Valid Matrix Given Row and Column Sums
 Medium

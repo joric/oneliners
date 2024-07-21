@@ -33,6 +33,10 @@ class Solution:
     def buildMatrix(self, k: int, r: List[List[int]], c: List[List[int]]) -> List[List[int]]:
         e=enumerate;p=[*map(lambda c:(g:=[[]for _ in range(k)],d:=[0]*k,a:=[],[g[u-1].append(v-1)or setitem(d,v-1,d[v-1]+1)for u,v in c],q:=deque(u for u,x in e(d)if x==0),(t:=lambda:q and(a.append(1+(u:=q.popleft())),[setitem(d,v,d[v]-1)or 0==d[v]and q.append(v)for v in g[u]],t()))())and a,(r,c))];return[]if any(len(x)<k for x in p)else(a:=[[0]*k for _ in range(k)],p:=[{x:i for i,x in e(t)}for t in p],[setitem(a[p[0][x]],p[1][x],x)for x in range(1,k+1)])and a
 
+class Solution:
+    def buildMatrix(self, k: int, r: List[List[int]], c: List[List[int]]) -> List[List[int]]:
+        e,n=enumerate,range;p=[*map(lambda c:(g:=[[]for _ in n(k)],d:=[0]*k,a:=[],[g[u-1].append(v-1)or setitem(d,v-1,d[v-1]+1)for u,v in c],q:=deque(u for u,x in e(d)if x==0),(t:=lambda:q and(a.append(1+(u:=q.popleft())),[setitem(d,v,d[v]-1)or 0==d[v]and q.append(v)for v in g[u]],t()))())and a,(r,c))];return[]if any(len(x)<k for x in p)else(a:=[[0]*k for _ in n(k)],p:=[{x:i for i,x in e(t)}for t in p],[setitem(a[p[0][x]],p[1][x],x)for x in n(1,k+1)])and a
+
 test('''
 2392. Build a Matrix With Conditions
 Hard

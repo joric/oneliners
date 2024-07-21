@@ -77,11 +77,17 @@ class Solution:
     def buildMatrix(self, k: int, r: List[List[int]], c: List[List[int]]) -> List[List[int]]:
         s,n=setitem,range;f=lambda c:(g:=[set()for _ in n(k)],d:=[0]*k,q:=deque(),a:=[],c:=set([tuple(x)for x in c]),[g[i-1].add(j-1)or s(d,j-1,d[j-1]+1)for i,j in c],[q.append(i)for i in n(k)if d[i]==0],(t:=lambda:q and(a.append(i:=q.popleft()),[s(d,j,d[j]-1)or 0==d[j]and q.append(j)for j in g[i]],t()))(),a if k==len(a)else[])[8];return(a:=[k*[0]for _ in n(k)],[s(a[r.index(i)],c.index(i),i+1)for i in n(k)])and a if((r:=f(r))and(c:=f(c)))else[]
 
-# further minified by Claude 3.5 Sonnet
+# minified by Claude 3.5 Sonnet
 
 class Solution:
     def buildMatrix(self, k: int, r: List[List[int]], c: List[List[int]]) -> List[List[int]]:
         s,n=setitem,range;f=lambda c:(g:=[set()for _ in n(k)],d:=[0]*k,q:=deque(),a:=[],c:=set(map(tuple,c)),[g[i-1].add(j-1)or s(d,j-1,d[j-1]+1)for i,j in c],[q.append(i)for i in n(k)if not d[i]],(t:=lambda:q and(a.append(i:=q.popleft()),[s(d,j,d[j]-1)or not d[j]and q.append(j)for j in g[i]],t()))(),a if k==len(a)else[])[8];return(a:=[k*[0]for _ in n(k)],[s(a[r.index(i)],c.index(i),i+1)for i in n(k)])and a if((r:=f(r))and(c:=f(c)))else[]
+
+# replace set() with {*}
+
+class Solution:
+    def buildMatrix(self, k: int, r: List[List[int]], c: List[List[int]]) -> List[List[int]]:
+        s,n=setitem,range;f=lambda c:(g:=[set()for _ in n(k)],d:=[0]*k,q:=deque(),a:=[],c:={*map(tuple,c)},[g[i-1].add(j-1)or s(d,j-1,d[j-1]+1)for i,j in c],[q.append(i)for i in n(k)if not d[i]],(t:=lambda:q and(a.append(i:=q.popleft()),[s(d,j,d[j]-1)or not d[j]and q.append(j)for j in g[i]],t()))(),a if k==len(a)else[])[8];return(a:=[k*[0]for _ in n(k)],[s(a[r.index(i)],c.index(i),i+1)for i in n(k)])and a if((r:=f(r))and(c:=f(c)))else[]
 
 test('''
 2392. Build a Matrix With Conditions

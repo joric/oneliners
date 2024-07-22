@@ -1,10 +1,24 @@
 from lc import *
 
+# https://leetcode.com/problems/sort-the-people/discuss/2621126/python-sort-1-liner
+
+class Solution:
+    def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
+        return [names[i] for i in sorted(range(len(names)), key=lambda i: heights[i], reverse=True)]
+
 # https://leetcode.com/problems/sort-the-people
 
 class Solution:
     def sortPeople(self, n: List[str], h: List[int]) -> List[str]:
         return map(itemgetter(1),sorted(zip(h,n))[::-1])
+
+class Solution:
+    def sortPeople(self, n: List[str], h: List[int]) -> List[str]:
+        return[x[1]for x in sorted(zip(h,n))[::-1]]
+
+class Solution:
+    def sortPeople(self, n: List[str], h: List[int]) -> List[str]:
+        return[x for _,x in sorted(zip(h,n))[::-1]]
 
 test('''
 2418. Sort the People

@@ -20,6 +20,10 @@ class Solution:
     def sortPeople(self, n: List[str], h: List[int]) -> List[str]:
         return[x for _,x in sorted(zip(h,n))[::-1]]
 
+class Solution:
+    def sortPeople(self, n: List[str], h: List[int]) -> List[str]:
+        return[*zip(*sorted(zip(h,n))[::-1])][1]
+
 test('''
 2418. Sort the People
 Easy

@@ -1080,7 +1080,7 @@ class Solution:
 
 ### Misc
 
-Note that `key=itemgetter(n)` is the same length as `key=lambda x:x[n]` but a little bit clearer to read.
+Note that `key=itemgetter(n)` is the same length as `key=lambda x:x[n]` but a little bit clearer to read. The performance of itemgetter is also slightly better.
 
 Sometimes you can skip `key=itemgetter(0)` by converting an argument to a tuple (15 characters shorter).
 

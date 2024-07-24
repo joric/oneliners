@@ -21,6 +21,10 @@ class Solution:
         return[x for _,x in sorted(zip(h,n))[::-1]]
 
 class Solution:
+    def sortPeople(self, n: List[str], h: List[int], get=itemgetter) -> List[str]:
+        return map(get(1),sorted(zip(h,n))[::-1])
+
+class Solution:
     def sortPeople(self, n: List[str], h: List[int], f=itemgetter(1)) -> List[str]:
         return map(f,sorted(zip(h,n))[::-1])
 

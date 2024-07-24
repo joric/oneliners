@@ -45,6 +45,37 @@ class Solution:
         f('',n)
         return(self.r,'')[self.c<k]
 
+# https://leetcode.com/problems/the-k-th-lexicographical-string-of-all-happy-strings-of-length-n/discuss/1210921/Python-simple-solution-no-recursion
+
+class Solution:
+    def getHappyString(self, n: int, k: int) -> str:
+        pos, k = 2 ** (n - 1), k -1
+        if k >= pos * 3:
+            return ''
+        letters = {
+            ('' , 0): 'a',
+            ('' , 1): 'b',
+            ('' , 2): 'c',
+            ('a', 0): 'b',
+            ('a', 1): 'c',
+            ('b', 0): 'a',
+            ('b', 1): 'c',
+            ('c', 0): 'a',
+            ('c', 1): 'b'
+        }
+        result = ['']
+        while pos > 0:
+            result.append(letters[(result[-1], k // pos)])
+            k = k % pos
+            pos = pos // 2
+        return ''.join(result)
+
+# https://leetcode.com/problems/the-k-th-lexicographical-string-of-all-happy-strings-of-length-n/discuss/688639/Python-One-Line-O(n)-solution-(97-Faster-70-Less-Mem)
+
+class Solution:
+    def getHappyString(self, n: int, k: int) -> str:
+        return '' if k > [0,3][n>0] * 2**(n-1) else [l + ''.join([l[i+1] for i in range(n-1) if (k:=k-(ns//(2**i)) * (k // (ns//(2**i)))) != None and (l:=l+['bc', 'ac', 'ab'][('b'==l[-1]) + ('c'==l[-1])*2][k//(ns//(2**(i+1)))])]) for _ in [0] if (ns:=([0,3][n>0] * 2**(n-1))//3)!=None and (k:=k-1)!=None and (l:=['a', 'b', 'c'][k//ns])][0]
+
 # https://leetcode.com/problems/the-k-th-lexicographical-string-of-all-happy-strings-of-length-n/discuss/1404881/4-line-Python-no-list
 
 class Solution:

@@ -194,6 +194,11 @@ class Solution:
 
         return bucketsort(N)
 
+# 3-way quicksort with randomized pivot
+
+class Solution:
+    def sortArray(self, a: List[int]) -> List[int]:
+        return(f:=lambda a:a and[p:=choice(a)]and f([x for x in a if x<p])+[x for x in a if x==p]+f([x for x in a if x>p]))(a)
 
 # shortest
 

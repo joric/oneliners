@@ -24,6 +24,8 @@ class Solution:
 
 # https://leetcode.com/problems/sort-an-array/discuss/3273893/Simple-Python-Quicksort
 
+# note randomized pivot fixes maximum recursion depth and check_sorted fixes MLE
+
 class Solution:
     def sortArray(self, nums: List[int]) -> List[int]:
         def partition(pivot):
@@ -44,7 +46,7 @@ class Solution:
             if right == len(nums):
                 return True
             return False
-        if check_sorted() or len(nums)<2: # check_sorted fixes MLE
+        if check_sorted() or len(nums)<2:
             return nums
         pivot = nums.pop(random.randint(0, len(nums) - 1))
         left, right = partition(pivot)

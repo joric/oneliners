@@ -199,17 +199,6 @@ class Solution:
 
 class Solution:sortArray=sorted
 
-
-# in-place quicksort
-
-class Solution:
-    def sortArray(self, a: List[int]) -> List[int]:
-        def f(a):
-            a and f([x for x in a[1:]if x<=a[0]]) + [a[0]] + f([x for x in a if x>a[0]])
-
-        return f(a)
-
-
 test('''
 912. Sort an Array
 Medium

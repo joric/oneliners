@@ -16,6 +16,10 @@ class Solution:
                 g.append(i)
         return self.sortArray(l) + [m] + self.sortArray(g)
 
+class Solution:
+    def sortArray(self, a: List[int]) -> List[int]:
+        return(f:=lambda a:a and f([x for x in a[1:]if x<=a[0]])+[a[0]]+f([x for x in a if x>a[0]]))(a)
+
 # counting sort
 
 class Solution:
@@ -44,7 +48,6 @@ class Solution:
 class Solution:sortArray=sorted
 
 test('''
-
 912. Sort an Array
 Medium
 
@@ -78,4 +81,3 @@ Constraints:
 1 <= nums.length <= 5 * 10^4
 -5 * 104 <= nums[i] <= 5 * 10^4
 ''')
-

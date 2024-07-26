@@ -18,11 +18,11 @@ class Solution:
 
 class Solution:
     def findTheCity(self, n: int, e: List[List[int]], d: int) -> int:
-        r,s=range(n),setitem;g=[[inf]*n for _ in r];[s(g[i],j,w)or s(g[j],i,w)for i,j,w in e];[s(g[i],i,0)for i in r];[s(g[i],j,min(g[i][j],g[i][k]+g[k][j]))for k in r for i in r for j in r];return(t:={sum(x<=d for x in g[i]):i for i in range(n)})[min(t)]
+        r,s=range(n),setitem;g=[[inf]*n for _ in r];[s(g[i],j,w)or s(g[j],i,w)for i,j,w in e];[s(g[i],i,0)for i in r];[s(g[i],j,min(g[i][j],g[i][k]+g[k][j]))for k in r for i in r for j in r];return(t:={sum(x<=d for x in g[i]):i for i in r})[min(t)]
 
 class Solution:
     def findTheCity(self, n: int, e: List[List[int]], d: int) -> int:
-        r,s=range(n),setitem;g=[n*[inf]for _ in r];[s(g[i],j,w)or s(g[j],i,w)for i,j,w in e];[s(g[i],i,0)for i in r];[s(g[i],j,min(g[i][j],g[i][k]+g[k][j]))for k,i,j in product(r,r,r)];return(t:={sum(x<=d for x in g[i]):i for i in range(n)})[min(t)]
+        r,s=range(n),setitem;g=[n*[inf]for _ in r];[s(g[i],j,w)==s(g[j],i,w)for i,j,w in e];[s(g[i],i,0)for i in r];[s(g[i],j,min(g[i][j],g[i][k]+g[k][j]))for k,i,j in product(r,r,r)];return(t:={sum(x<=d for x in g[i]):i for i in r})[min(t)]
 
 test('''
 1334. Find the City With the Smallest Number of Neighbors at a Threshold Distance

@@ -200,6 +200,12 @@ class Solution:
     def sortArray(self, a: List[int]) -> List[int]:
         return(f:=lambda a:a and[p:=choice(a)]and f([x for x in a if x<p])+[x for x in a if x==p]+f([x for x in a if x>p]))(a)
 
+# https://leetcode.com/problems/sort-an-array/discuss/5533017/one-line-solution
+
+class Solution:
+    def sortArray(self, a: List[int]) -> List[int]:
+        return (f:=lambda a:len(a)==1 and a or merge(f(a[:(m:=len(a)//2)]),f(a[m:])))(a)
+
 # shortest
 
 class Solution:sortArray=sorted

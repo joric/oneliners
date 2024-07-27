@@ -16,15 +16,14 @@ class Solution:
                             d[w] = e+p
                             heappush(q,(e+p,w))
             return d
-
         n,m,g = len(o),len(s),defaultdict(list)
         [g[o[i]].append((c[i],p[i]))for i in range(n)]
-        d={(a:=chr(i+ord('a'))):f(g,a)for i in range(0,27)}
+        d={(a:=chr(i+ord('a'))):f(g,a)for i in range(27)}
         return (-1,r:=sum(d[s[i]][t[i]]for i in range(m)))[r<inf]
 
 class Solution:
     def minimumCost(self, s: str, t: str, o: List[str], c: List[str], p: List[int]) -> int:
-        (f:=lambda g,s:(d:=defaultdict(lambda:inf),d.update({s:0}),q:=[],(z:=lambda p,v:(p==d[v]and[e+p<d[w]and setitem(d,w,e+p)==heappush(q,(e+p,w))for w,e in g[v]],q and z(*heappop(q))))(0,s))and d,n:=len(o),m:=len(s),g:=defaultdict(list),[g[o[i]].append((c[i],p[i]))for i in range(n)],d:={(a:=chr(i+ord('a'))):f(g,a)for i in range(0,27)});return(-1,r:=sum(d[s[i]][t[i]]for i in range(m)))[r<inf]
+        (f:=lambda g,s:(d:=defaultdict(lambda:inf),d.update({s:0}),q:=[],(z:=lambda p,v:(p==d[v]and[e+p<d[w]and setitem(d,w,e+p)==heappush(q,(e+p,w))for w,e in g[v]],q and z(*heappop(q))))(0,s))and d,n:=len(o),m:=len(s),g:=defaultdict(list),[g[o[i]].append((c[i],p[i]))for i in range(n)],d:={(a:=chr(i+ord('a'))):f(g,a)for i in range(27)});return(-1,r:=sum(d[s[i]][t[i]]for i in range(m)))[r<inf]
 
 class Solution:
     def minimumCost(self, s: str, t: str, o: List[str], c: List[str], p: List[int]) -> int:

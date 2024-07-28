@@ -40,7 +40,7 @@ class Solution:
             m,u = heappop(q)
             if u==n and len(d[n]) == 2:
                 return max(d[n])
-            w = t+(m,ceil(m/(2*c))*(2*c) ) [(m//c)%2]
+            w = (m,ceil(m/(2*c))*(2*c))[(m//c)%2]+t
             for v in g[u]:
                 if not d[v] or (len(d[v]) == 1 and d[v] != [w]):
                     d[v] += [w]

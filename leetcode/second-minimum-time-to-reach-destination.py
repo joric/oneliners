@@ -40,18 +40,15 @@ class Solution:
             m,u = heappop(q)
             if u==n and len(d[n]) == 2:
                 return max(d[n])
+            w = t+(m,ceil(m/(2*c))*(2*c) ) [(m//c)%2]
             for v in g[u]:
-                if (m//c)%2==0:
-                    w = m + t
-                else:
-                    w = ceil(m/(2*c))*(2*c)+t
                 if not d[v] or (len(d[v]) == 1 and d[v] != [w]):
                     d[v] += [w]
                     heappush(q, (w,v))
 
 class Solution:
     def secondMinimum(self, n: int, e: List[List[int]], t: int, c: int) -> int:
-        g,d=[defaultdict(list)for _ in(0,1)];[g[u].append(v)==g[v].append(u)for u,v in e];d[1].append(0);q=[(0,1)];return next(max(d[n])for _ in count()if(p:=heappop(q),m:=p[0],u:=p[1])and(2==len(d[n])and u==n)or[(w:=t+ceil(m/(2*c))*(2*c)if(m//c)%2 else m+t,(not d[v]or(1==len(d[v])and[w]!=d[v]))and d[v].append(w)==heappush(q, (w,v)))for v in g[u]]==0)
+        g,d=[defaultdict(list)for _ in(0,1)];[g[u].append(v)==g[v].append(u)for u,v in e];d[1].append(0);q=[(0,1)];return next(max(d[n])for _ in count()if(p:=heappop(q),m:=p[0],u:=p[1])and(2==len(d[n])and u==n)or(w:=t+(m,ceil(m/(2*c))*(2*c))[(m//c)%2],[(not d[v]or(1==len(d[v])and[w]!=d[v]))and d[v].append(w)==heappush(q,(w,v))for v in g[u]])==0)
 
 test('''
 2045. Second Minimum Time to Reach Destination

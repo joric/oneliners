@@ -38,7 +38,7 @@ class Solution:
             g[v].append(u)
         while q:
             m,u = heappop(q)
-            if u==n and len(d[n]) == 2:
+            if u==n and len(d[n])==2:
                 return max(d[n])
             w = (m,ceil(m/(2*c))*(2*c))[(m//c)%2]+t
             for v in g[u]:

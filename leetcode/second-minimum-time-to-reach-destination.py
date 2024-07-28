@@ -42,9 +42,9 @@ class Solution:
                 return max(d[n])
             w = (m,ceil(m/(2*c))*(2*c))[(m//c)%2]+t
             for v in g[u]:
-                if not d[v] or (len(d[v]) == 1 and d[v] != [w]):
-                    d[v] += [w]
-                    heappush(q, (w,v))
+                if not d[v]or(1==len(d[v])and[w]!=d[v]):
+                    d[v].append(w)
+                    heappush(q,(w,v))
 
 class Solution:
     def secondMinimum(self, n: int, e: List[List[int]], t: int, c: int) -> int:

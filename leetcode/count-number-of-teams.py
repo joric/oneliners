@@ -8,7 +8,6 @@ class Solution:
     def numTeams(self, r: List[int]) -> int:
         return sum(i<j<k or i>j>k for i,j,k in combinations(r,3))
 
-
 # O(n^2), O(1) space
 
 class Solution:
@@ -19,7 +18,7 @@ class Solution:
 
 class Solution:
     def numTeams(self, r: List[int]) -> int:
-        return sum((lambda c:c[0]*c[3]+c[1]*c[2])(Counter((r[i]>r[j])*2+(i>j) for j in range(len(r))if r[i]!=r[j]))for i in range(1,len(r)-1))
+        return sum((lambda c:c[0]*c[3]+c[1]*c[2])(Counter((r[i]>r[j])*2+(i>j)for j in range(len(r))if r[i]!=r[j]))for i in range(1,len(r)-1))
 
 test('''
 1395. Count Number of Teams

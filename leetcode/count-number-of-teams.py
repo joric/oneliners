@@ -1,5 +1,11 @@
 from lc import *
 
+# TLE https://leetcode.com/problems/count-number-of-teams/discuss/722827/Python3-Easy-Solution-One-Line
+
+class Solution:
+    def numTeams(self, r: List[int]) -> int:
+        e=enumerate;return sum(a<b<c or a>b>c for i,a in e(r[:-2])for j,b in e(r[i+1:-1])for c in r[i+j+1:])
+
 # https://leetcode.com/problems/count-number-of-teams/discuss/569865/Python-3-one-line-O(n3)-and-O(n2)
 
 # O(n^3), TLE
@@ -19,12 +25,6 @@ class Solution:
 class Solution:
     def numTeams(self, r: List[int]) -> int:
         return sum((lambda c:c[0]*c[3]+c[1]*c[2])(Counter((r[i]>r[j])*2+(i>j)for j in range(len(r))if r[i]!=r[j]))for i in range(1,len(r)-1))
-
-# https://leetcode.com/problems/count-number-of-teams/discuss/722827/Python3-Easy-Solution-One-Line
-
-class Solution:
-    def numTeams(self, r: List[int]) -> int:
-        e=enumerate;return sum(a<b<c or a>b>c for i,a in e(r[:-2])for j,b in e(r[i+1:-1])for c in r[i+j+1:])
 
 test('''
 1395. Count Number of Teams

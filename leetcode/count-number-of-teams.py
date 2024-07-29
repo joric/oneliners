@@ -1,5 +1,11 @@
 from lc import *
 
+# https://leetcode.com/problems/count-number-of-teams/discuss/4191569/Python-5-lines.-O(n-log-n)-with-explanation
+
+class Solution:
+    def numTeams(self, r: List[int]) -> int:
+        a,b=[__import__('sortedcontainers').SortedList(x)for x in(r,[])];return sum((a.remove(v),b.bisect_left(v)*(len(a)-a.bisect_right(v))+(len(b)-b.bisect_right(v))*a.bisect_left(v),b.add(v))[1]for v in r)
+
 # TLE https://leetcode.com/problems/count-number-of-teams/discuss/722827/Python3-Easy-Solution-One-Line
 
 class Solution:

@@ -1461,7 +1461,7 @@ class Solution:
         return bisect_left(range(n), 0, key=lambda num: -guess(num))
 ```
 
-Note that built-in methods don't support negative left margin.
+Note that built-in methods don't support a negative left margin.
 
 * https://leetcode.com/problems/kth-smallest-product-of-two-sorted-arrays.py
 

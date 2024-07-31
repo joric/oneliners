@@ -452,23 +452,7 @@ ParkingSystem=type('',(),{'__init__':lambda s,a,b,c:setattr(s,'p',[0,a,b,c]),'ad
 
 ### Getting values
 
-Use the usual bracket notation `[]` or `dict.get(key,default)` (where needed).
-
-Getitem used to construct a bisect comparator object, now we have the key parameter (since Python 3.10).
-
-* https://leetcode.com/problems/guess-number-higher-or-lower
-
-```python
-class Solution:
-    def guessNumber(self, n: int) -> int:        
-        return bisect_left(type('',(),{'__getitem__':lambda _,i: -guess(i)})(), 0, 1, n)
-
-class Solution:
-    def guessNumber(self, n: int) -> int:
-        return bisect_left(range(n), 0, key=lambda num: -guess(num))
-```
-
-You can also write a subclass in one line, if needed.
+Use the usual bracket notation `[]` or `dict.get(key,default)` (where needed). You can also write a subclass in one line.
 
 * https://leetcode.com/problems/design-hashset
 
@@ -1444,6 +1428,68 @@ class Solution:
     def maximumImportance(self, n: int, r: List[List[int]]) -> int:
         return-sum(map(mul,count(-n),sorted(Counter(chain(*r)).values())[::-1]))
 ```
+
+### Bisect
+
+Binary search can be replaced by the built-in `bisect` methods.
+
+We used to construct a bisect comparator object, now we have the key parameter (since Python 3.10).
+
+* https://leetcode.com/problems/guess-number-higher-or-lower
+
+```python
+
+class Solution:
+    def guessNumber(self, n: int) -> int:
+        l,r = 1, n
+        while l <= r:
+            m = (l + r) // 2
+            res = guess(m)
+            if res == 0:
+                return m
+            elif res > 0:
+                l = m + 1
+            else:
+                r = m - 1
+        return 0
+
+class Solution:
+    def guessNumber(self, n: int) -> int:
+        return bisect_left(type('',(),{'__getitem__':lambda _,i: -guess(i)})(), 0, 1, n)
+
+class Solution:
+    def guessNumber(self, n: int) -> int:
+        return bisect_left(range(n), 0, key=lambda num: -guess(num))
+```
+
+Note that built-in methods don't support negative left margin.
+
+* https://leetcode.com/problems/kth-smallest-product-of-two-sorted-arrays.py
+
+```python
+class Solution:
+    def kthSmallestProduct(self, a: List[int], b: List[int], k: int) -> int:
+        f=lambda x:sum(bisect_right(b,x//y)if y>0 else len(b)-bisect_left
+        	(b,ceil(x/y))if y<0 else(x>=0)*len(b)for y in a)
+        l,r=-10**10-1,10**10+1
+        while l + 1 < r:
+            m = (l + r)//2
+            if f(m) >= k:
+                r = m
+            else:
+                l = m
+        return l + 1
+
+class Solution:
+    def kthSmallestProduct(self, a: List[int], b: List[int], k: int) -> int:
+        f=lambda x:sum(bisect_right(b,x//y)if y>0 else len(b)-t(bisect_left,ceil(x/y))if y<0 else
+        (x>=0)*len(b)for y in a);return bisect_left(range(2*(r:=10**10)),k,key=lambda i:f(i-r))-r
+
+```
+
+See bisect implementation here:
+
+* https://github.com/python/cpython/blob/main/Lib/bisect.py
 
 ### Notes
 

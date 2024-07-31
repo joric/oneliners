@@ -1432,7 +1432,7 @@ class Solution:
 ### Bisect
 
 Binary search can be replaced by the built-in `bisect` methods.
-Custom binary search can use either a getter object or a key function (since Python 3.10).
+Custom binary search can use either an item getter object or a key function (since Python 3.10).
 
 * https://leetcode.com/problems/guess-number-higher-or-lower
 

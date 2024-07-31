@@ -1469,7 +1469,7 @@ Note that built-in methods don't support negative left margin.
 class Solution:
     def kthSmallestProduct(self, a: List[int], b: List[int], k: int) -> int:
         f=lambda x:sum(bisect_right(b,x//y)if y>0 else len(b)-bisect_left(b,ceil(x/y))if y<0 else
-            (x>=0)*len(b)for y in a)
+        (x>=0)*len(b)for y in a)
         l,r = -10**10-1, 10**10+1
         while l < r:
             m = (l + r)//2

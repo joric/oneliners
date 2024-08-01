@@ -296,7 +296,7 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
     p,t = '',0
     def split_vars(s):
         out = []
-        if m:=re.split(r'[\, ]*\w+\s*=\s*',s):
+        if m:=re.split(r'\, [a-z]+\d* = ', ', '+s):
             for i in range(len(m)):
                 if m[i]:
                     out.append(m[i])
@@ -312,7 +312,7 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
                 tests[-1]['input'] = split_vars(p)
                 p,t = s[8:],2
             elif t==2 and(s=='' or any(s.startswith(t) for t in ('Exampl','Explan','Operat','Note','#'))):
-                tests[-1]['output'] = split_vars(p)
+                tests[-1]['output'] = [p]
                 p,t = '',0
             elif t != 0:
                 p += s

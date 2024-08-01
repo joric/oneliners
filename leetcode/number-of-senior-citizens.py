@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def countSeniors(self, d: List[str]) -> int:
-        return sum(x[11:13]>'60'for x in d)
+        return sum(s[11:13]>'60'for s in d)
 
 test('''
 2678. Number of Senior Citizens

@@ -450,7 +450,7 @@ ParkingSystem=type('',(),{'__init__':lambda s,a,b,c:setattr(s,'p',[0,a,b,c]),'ad
     exec('s.p[t]-=1')or s.p[t]>=0})
 ```
 
-## Classes
+### Classes
 
 You can write a class or a subclass implementation in one line.
 

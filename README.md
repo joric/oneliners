@@ -401,7 +401,7 @@ Note slices can extend the list implicitly, e.g.:
 
 ```python
 a = [0,1,2]
-a[3:4] = [3] # [0,1,2,3]
+a[3:4] = [3] # the result is [0,1,2,3]
 ```
 Be careful though, slicing doesn't extend list beyond the slice size:
 

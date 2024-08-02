@@ -4,7 +4,11 @@ from lc import *
 
 class Solution:
     def minSwaps(self, a: List[int]) -> int:
-        d,n=[0,*accumulate(a+a)],a.count(1);return min(n-d[i]+d[i-n]for i in range(n,n+len(a)))
+        d,n=[0,*accumulate(a+a)],sum(a);return min(n-d[i]+d[i-n]for i in range(n,n+len(a)))
+
+class Solution:
+    def minSwaps(self, a: List[int]) -> int:
+        n=sum(a);s=sum(a[:n]);return n-max(s:=s+u-v for u,v in zip(a[n:]+a,a))
 
 test('''
 2134. Minimum Swaps to Group All 1's Together II

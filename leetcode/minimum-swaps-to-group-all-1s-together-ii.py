@@ -18,6 +18,10 @@ class Solution:
     def minSwaps(self, a: List[int]) -> int:
         n=sum(a);return n+min(accumulate(map(sub,n*[0]+a,2*a)))
 
+class Solution:
+    def minSwaps(self, a: List[int]) -> int:
+        return(n:=sum(a))+min(accumulate(map(sub,n*[0]+a,2*a)))
+
 test('''
 2134. Minimum Swaps to Group All 1's Together II
 Medium

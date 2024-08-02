@@ -10,6 +10,10 @@ class Solution:
     def minSwaps(self, a: List[int]) -> int:
         n=sum(a);s=sum(a[:n]);return n-max(s:=s+u-v for u,v in zip(a[n:]+a,a))
 
+class Solution:
+    def minSwaps(self, a: List[int]) -> int:
+        n=sum(a);return min(n:=n-u+v for u,v in zip(a+a,n*[0]+a))
+
 test('''
 2134. Minimum Swaps to Group All 1's Together II
 Medium

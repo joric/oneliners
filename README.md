@@ -450,9 +450,9 @@ ParkingSystem=type('',(),{'__init__':lambda s,a,b,c:setattr(s,'p',[0,a,b,c]),'ad
     exec('s.p[t]-=1')or s.p[t]>=0})
 ```
 
-### Getting values
+## Classes
 
-Use the usual bracket notation `[]` or `dict.get(key,default)` (where needed). You can also write a subclass in one line.
+You can write a class or a subclass implementation in one line.
 
 * https://leetcode.com/problems/design-hashset
 
@@ -485,6 +485,66 @@ UndergroundSystem=type('',(),{'h':{},'m':{},
 	'getAverageTime':lambda s,v,d:truediv(*s.h[v,d])})
 ```
 
+### Bisect
+
+Binary search can be replaced by the built-in `bisect` methods.
+Custom binary search can use either an item getter object or a key function (since Python 3.10).
+
+* https://leetcode.com/problems/guess-number-higher-or-lower
+
+```python
+
+class Solution:
+    def guessNumber(self, n: int) -> int:
+        l,r = 1, n
+        while l <= r:
+            m = (l + r) // 2
+            res = guess(m)
+            if res == 0:
+                return m
+            elif res > 0:
+                l = m + 1
+            else:
+                r = m - 1
+        return 0
+
+class Solution:
+    def guessNumber(self, n: int) -> int:
+        return bisect_left(type('',(),{'__getitem__':lambda _,i: -guess(i)})(), 0, 1, n)
+
+class Solution:
+    def guessNumber(self, n: int) -> int:
+        return bisect_left(range(n), 0, key=lambda num: -guess(num))
+```
+
+Note that built-in methods don't support a negative left margin.
+
+* https://leetcode.com/problems/kth-smallest-product-of-two-sorted-arrays.py
+
+```python
+class Solution:
+    def kthSmallestProduct(self, a: List[int], b: List[int], k: int) -> int:
+        f=lambda x:sum(bisect_right(b,x//y)if y>0 else len(b)-bisect_left(b,ceil(x/y))if y<0 else
+        (x>=0)*len(b)for y in a)
+        l,r = -10**10-1, 10**10+1
+        while l < r:
+            m = (l + r)//2
+            if f(m) >= k:
+                r = m
+            else:
+                l = m + 1
+        return l
+
+class Solution:
+    def kthSmallestProduct(self, a: List[int], b: List[int], k: int) -> int:
+        f=lambda x:sum(bisect_right(b,x//y)if y>0 else len(b)-bisect_left(b,ceil(x/y))if y<0 else
+        (x>=0)*len(b)for y in a);return bisect_left(range(2*(r:=10**10)),k,key=lambda i:f(i-r))-r
+
+```
+
+See bisect implementation here:
+
+* https://github.com/python/cpython/blob/main/Lib/bisect.py
 
 ### While loops
 
@@ -1428,67 +1488,6 @@ class Solution:
     def maximumImportance(self, n: int, r: List[List[int]]) -> int:
         return-sum(map(mul,count(-n),sorted(Counter(chain(*r)).values())[::-1]))
 ```
-
-### Bisect
-
-Binary search can be replaced by the built-in `bisect` methods.
-Custom binary search can use either an item getter object or a key function (since Python 3.10).
-
-* https://leetcode.com/problems/guess-number-higher-or-lower
-
-```python
-
-class Solution:
-    def guessNumber(self, n: int) -> int:
-        l,r = 1, n
-        while l <= r:
-            m = (l + r) // 2
-            res = guess(m)
-            if res == 0:
-                return m
-            elif res > 0:
-                l = m + 1
-            else:
-                r = m - 1
-        return 0
-
-class Solution:
-    def guessNumber(self, n: int) -> int:
-        return bisect_left(type('',(),{'__getitem__':lambda _,i: -guess(i)})(), 0, 1, n)
-
-class Solution:
-    def guessNumber(self, n: int) -> int:
-        return bisect_left(range(n), 0, key=lambda num: -guess(num))
-```
-
-Note that built-in methods don't support a negative left margin.
-
-* https://leetcode.com/problems/kth-smallest-product-of-two-sorted-arrays.py
-
-```python
-class Solution:
-    def kthSmallestProduct(self, a: List[int], b: List[int], k: int) -> int:
-        f=lambda x:sum(bisect_right(b,x//y)if y>0 else len(b)-bisect_left(b,ceil(x/y))if y<0 else
-        (x>=0)*len(b)for y in a)
-        l,r = -10**10-1, 10**10+1
-        while l < r:
-            m = (l + r)//2
-            if f(m) >= k:
-                r = m
-            else:
-                l = m + 1
-        return l
-
-class Solution:
-    def kthSmallestProduct(self, a: List[int], b: List[int], k: int) -> int:
-        f=lambda x:sum(bisect_right(b,x//y)if y>0 else len(b)-bisect_left(b,ceil(x/y))if y<0 else
-        (x>=0)*len(b)for y in a);return bisect_left(range(2*(r:=10**10)),k,key=lambda i:f(i-r))-r
-
-```
-
-See bisect implementation here:
-
-* https://github.com/python/cpython/blob/main/Lib/bisect.py
 
 ### Notes
 

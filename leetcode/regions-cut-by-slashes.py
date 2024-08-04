@@ -28,7 +28,7 @@ class Solution:
 
 class Solution:
     def regionsBySlashes(self, g: List[str]) -> int:
-        d,r,f,u={},range(len(g)),lambda x:d.setdefault(x,x)and x!=d[x]and setitem(d,x,f(d[x]))or d[x],lambda x,y:setitem(d,f(x),f(y));[(i and u((i-1,j,2),(i,j,0)),j and u((i,j-1,1),(i,j,3)),g[i][j]!='/' and(u((i,j,0),(i,j,1)),u((i,j,2),(i,j,3))),g[i][j]!='\\'and(u((i,j,3),(i,j,0)),u((i,j,1),(i,j,2))))for i in r for j in r];return len({*map(f,d)})
+        d,r,f,u={},range(len(g)),lambda x:d.setdefault(x,x)and x!=d[x]and setitem(d,x,f(d[x]))or d[x],lambda x,y:setitem(d,f(x),f(y));[(i and u((i-1,j,2),(i,j,0)),j and u((i,j-1,1),(i,j,3)),g[i][j]!='/'and(u((i,j,0),(i,j,1)),u((i,j,2),(i,j,3))),g[i][j]!='\\'and(u((i,j,3),(i,j,0)),u((i,j,1),(i,j,2))))for i in r for j in r];return len({*map(f,d)})
 
 test(r'''''
 959. Regions Cut By Slashes

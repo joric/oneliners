@@ -10,6 +10,16 @@ class Solution:
     def kthDistinct(self, a: List[str], k: int) -> str:
         return next(iter([x for x in a if a.count(x)<2][k-1:]),'')
 
+# https://leetcode.com/problems/kth-distinct-string-in-an-array/discuss/5588041/Python-One-Liner-for-Fun
+
+class Solution:
+    def kthDistinct(self, arr: List[str], k: int) -> str:
+        return([k for k,v in Counter(arr).items()if v<2]+['']*k)[k-1]
+
+class Solution:
+    def kthDistinct(self, a: List[str], k: int) -> str:
+        return([x for x in a if a.count(x)<2]+k*[''])[k-1]
+
 test('''
 2053. Kth Distinct String in an Array
 Easy

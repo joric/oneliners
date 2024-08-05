@@ -1,5 +1,15 @@
 from lc import *
 
+# https://leetcode.com/problems/kth-distinct-string-in-an-array/discuss/5588042/One-line-solution
+
+class Solution:
+    def kthDistinct(self, a: List[str], k: int) -> str:
+        c=Counter(a);return next((s for i,s in enumerate(x for x in a if c[x]<1)if i==k-1),'')
+
+class Solution:
+    def kthDistinct(self, a: List[str], k: int) -> str:
+        return next((s for i,s in enumerate(x for x in a if a.count(x)<2)if i==k-1),'')
+
 # https://leetcode.com/problems/kth-distinct-string-in-an-array/discuss/1550617/Python-simple-2-lines-solution
 
 class Solution:

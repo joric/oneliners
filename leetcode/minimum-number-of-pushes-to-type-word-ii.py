@@ -1,8 +1,8 @@
 from lc import *
 
 class Solution:
-    def minimumPushes(self, word: str) -> int:
-        c,w=sorted([*Counter(word).values()])[::-1],[1]*8+[2]*8+[3]*8+[4]*2;return sum(starmap(mul,zip(c,w)))
+    def minimumPushes(self, w: str) -> int:
+        c,w=sorted(Counter(w).values())[::-1],[1]*8+[2]*8+[3]*8+[4]*2;return sum(map(mul,c,w))
 
 # https://leetcode.com/problems/minimum-number-of-pushes-to-type-word-ii/discuss/4863813/one-line-solution
 

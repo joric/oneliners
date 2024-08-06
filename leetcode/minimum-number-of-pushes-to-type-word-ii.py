@@ -8,7 +8,7 @@ class Solution:
 
 class Solution:
     def minimumPushes(self, w: str) -> int:
-        return sum((i//8+1)*f for i,(c,f) in enumerate(Counter(w).most_common()))
+        return sum(f*(i//8+1)for i,(c,f)in enumerate(Counter(w).most_common()))
 
 test('''
 3016. Minimum Number of Pushes to Type Word II

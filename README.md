@@ -478,11 +478,9 @@ Sometimes (not always) you can skip `__init__` and use static attributes.
 * https://leetcode.com/problems/design-underground-system
 
 ```python
-UndergroundSystem=type('',(),{'h':{},'m':{},
-	'checkIn':lambda s,i,v,t:setitem(s.m,i,(v,t)),
-	'checkOut':lambda s,i,d,w:(v:=s.m[i][0])and setitem(s.h,(v,d),
-	[*map(sum,zip(s.h.pop((v,d),(0,0)),(w-s.m[i][1],1)))]),
-	'getAverageTime':lambda s,v,d:truediv(*s.h[v,d])})
+UndergroundSystem=type('',(),{'h':{},'m':{},'checkIn':lambda s,i,v,t:setitem(s.m,i,(v,t)),
+    'checkOut':lambda s,i,d,w:(v:=s.m[i][0])and setitem(s.h,(v,d),[*map(sum,zip(s.h.pop((v,d),
+    (0,0)),(w-s.m[i][1],1)))]),'getAverageTime':lambda s,v,d:truediv(*s.h[v,d])})
 ```
 
 ### Bisect

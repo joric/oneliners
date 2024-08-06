@@ -711,7 +711,7 @@ Also you can try a swap function here (but it's pretty long, I don't use it):
 swap = lambda a,x,y:(lambda f=a.__setitem__:(f(x,(a[x],a[y])),f(y,a[x][0]),f(x,a[x][1])))()
 ```
 
-### Mapping
+### Map
 
 You can use `map` for a lot of things, for example to traverse through adjacent cells.
 

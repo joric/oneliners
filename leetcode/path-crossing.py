@@ -37,7 +37,7 @@ class Solution:
     def isPathCrossing(self, p: str) -> bool:
         z=0;return len(p)>=len({0,*{z:=z+1j**'NESW'.find(c)for c in p}})
 
-# random hashes (all the same length)
+# bruteforced hashes (all the same length)
 
 class Solution:
     def isPathCrossing(self, p: str) -> bool:

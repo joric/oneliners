@@ -31,26 +31,6 @@ class Solution:
             else t(n//1000**3)+['Billion']+t(n%1000**3))(num)][1]) or 'Zero'
 
 class Solution:
-    def numberToWords(self, num):
-        return' '.join([w:='One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen Twenty Thirty Forty Fifty Sixty Seventy Eighty Ninety'.split(),(t:=lambda n:w[:19][n-1:n] if n<20 else [w[19:][n//10-2]] + t(n%10) if n<100 else [w[:19][n//100-1]] +['Hundred'] + t(n%100) if n<1000 else t(n//1000)+['Thousand']+t(n%1000) if n<1000**2 else t(n//1000**2)+['Million']+t(n%1000**2) if n<1000**3 else t(n//1000**3)+['Billion']+t(n%1000**3))(num)][1]) or 'Zero'
-
-class Solution:
-    def numberToWords(self, n: int) -> str:
-        return' '.join([w:='One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen Twenty Thirty Forty Fifty Sixty Seventy Eighty Ninety'.split(),(f:=lambda n,t=1000:w[:19][n-1:n]if n<20 else[w[19:][n//10-2]]+f(n%10)if n<100 else[w[:19][n//100-1]]+['Hundred']+f(n%100)if n<t else f(n//t)+['Thousand']+f(n%t)if n<t**2 else f(n//t**2)+['Million']+f(n%t**2)if n<t**3 else f(n//t**3)+['Billion']+f(n%t**3))(n)][1])or'Zero'
-
-class Solution:
-    def numberToWords(self, n: int) -> str:
-        return' '.join((f:=lambda n,t=1000,w='One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen Twenty Thirty Forty Fifty Sixty Seventy Eighty Ninety'.split():w[:19][n-1:n]if n<20 else[w[19:][n//10-2]]+f(n%10)if n<100 else[w[:19][n//100-1]]+['Hundred']+f(n%100)if n<t else f(n//t)+['Thousand']+f(n%t)if n<t**2 else f(n//t**2)+['Million']+f(n%t**2)if n<t**3 else f(n//t**3)+['Billion']+f(n%t**3))(n))or'Zero'
-
-class Solution:
-    def numberToWords(self, n: int) -> str:
-        return' '.join((f:=lambda n,t=1000,w='One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen Twenty Thirty Forty Fifty Sixty Seventy Eighty Ninety'.split():w[:19][n-1:n]if n<20 else[w[19:][n//10-2]]+f(n%10)if n<100 else[w[:19][n//100-1]]+['Hundred']+f(n%100)if n<t else next(f(n//t**i)+[s]+f(n%t**i)for i,s in enumerate(('Thousand','Million','Billion'),1)if n<t**-~i))(n))or'Zero'
-
-class Solution:
-    def numberToWords(self, n: int) -> str:
-        return' '.join((f:=lambda n,t=1000,w='One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen Twenty Thirty Forty Fifty Sixty Seventy Eighty Ninety'.split():w[n-1:n]if n<20 else[w[n//10+17]]+f(n%10)if n<100 else[w[n//100-1]]+['Hundred']+f(n%100)if n<t else next(f(n//t**i)+[s]+f(n%t**i)for i,s in enumerate(('Thousand','Million','Billion'),1)if n<t**-~i))(n))or'Zero'
-
-class Solution:
     def numberToWords(self, n: int) -> str:
         return' '.join((f:=lambda n,t=1000,w='One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen Twenty Thirty Forty Fifty Sixty Seventy Eighty Ninety Thousand Million Billion'.split():w[n-1:n]if n<20 else[w[n//10+17]]+f(n%10)if n<100 else[w[n//100-1]]+['Hundred']+f(n%100)if n<t else next(f(n//t**i)+[s]+f(n%t**i)for i,s in enumerate(w[-3:],1)if n<t**-~i))(n))or'Zero'
 

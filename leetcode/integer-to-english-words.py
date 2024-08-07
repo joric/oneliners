@@ -36,7 +36,11 @@ class Solution:
 
 class Solution:
     def numberToWords(self, n: int) -> str:
-        return' '.join([w:='One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen Twenty Thirty Forty Fifty Sixty Seventy Eighty Ninety'.split(),(t:=lambda n,d=1000:w[:19][n-1:n]if n<20 else[w[19:][n//10-2]]+t(n%10)if n<100 else[w[:19][n//100-1]]+['Hundred']+t(n%100)if n<d else t(n//d)+['Thousand']+t(n%d)if n<d**2 else t(n//d**2)+['Million']+t(n%d**2)if n<d**3 else t(n//d**3)+['Billion']+t(n%d**3))(n)][1])or'Zero'
+        return' '.join([w:='One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen Twenty Thirty Forty Fifty Sixty Seventy Eighty Ninety'.split(),(f:=lambda n,t=1000:w[:19][n-1:n]if n<20 else[w[19:][n//10-2]]+f(n%10)if n<100 else[w[:19][n//100-1]]+['Hundred']+f(n%100)if n<t else f(n//t)+['Thousand']+f(n%t)if n<t**2 else f(n//t**2)+['Million']+f(n%t**2)if n<t**3 else f(n//t**3)+['Billion']+f(n%t**3))(n)][1])or'Zero'
+
+class Solution:
+    def numberToWords(self, n: int) -> str:
+        return' '.join((f:=lambda n,t=1000,w='One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen Twenty Thirty Forty Fifty Sixty Seventy Eighty Ninety'.split():w[:19][n-1:n]if n<20 else[w[19:][n//10-2]]+f(n%10)if n<100 else[w[:19][n//100-1]]+['Hundred']+f(n%100)if n<t else f(n//t)+['Thousand']+f(n%t)if n<t**2 else f(n//t**2)+['Million']+f(n%t**2)if n<t**3 else f(n//t**3)+['Billion']+f(n%t**3))(n))or'Zero'
 
 test('''
 273. Integer to English Words

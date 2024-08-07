@@ -42,7 +42,7 @@ class Solution:
 
 class Solution:
     def numberToWords(self, n: int) -> str:
-        return' '.join((f:=lambda n,t=1000,w='One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen Twenty Thirty Forty Fifty Sixty Seventy Eighty Ninety Thousand Million Billion'.split():w[n-1:n]if n<20 else[w[n//10+17]]+f(n%10)if n<100 else[w[n//100-1]]+['Hundred']+f(n%100)if n<t else next(f(n//t**i)+[s]+f(n%t**i)for i,s in enumerate(w[-3:],1)if n<t**-~i))(n))or'Zero'
+        return' '.join((f:=lambda n,t=1000,w='One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen Twenty Thirty Forty Fifty Sixty Seventy Eighty Ninety Hundred Thousand Million Billion'.split():w[n-1:n]if n<20 else[w[n//10+17]]+f(n%10)if n<100 else[w[n//100-1]]+[w[-4]]+f(n%100)if n<t else next(f(n//t**i)+[s]+f(n%t**i)for i,s in enumerate(w[-3:],1)if n<t**-~i))(n))or'Zero'
 
 test('''
 273. Integer to English Words

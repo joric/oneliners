@@ -46,6 +46,10 @@ class Solution:
     def numberToWords(self, n: int) -> str:
         return' '.join((f:=lambda n,t=1000,w='One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen Twenty Thirty Forty Fifty Sixty Seventy Eighty Ninety'.split():w[:19][n-1:n]if n<20 else[w[19:][n//10-2]]+f(n%10)if n<100 else[w[:19][n//100-1]]+['Hundred']+f(n%100)if n<t else next(f(n//t**i)+[s]+f(n%t**i)for i,s in enumerate(('Thousand','Million','Billion'),1)if n<t**-~i))(n))or'Zero'
 
+class Solution:
+    def numberToWords(self, n: int) -> str:
+        return' '.join((f:=lambda n,t=1000,w='One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen Twenty Thirty Forty Fifty Sixty Seventy Eighty Ninety'.split():w[n-1:n]if n<20 else[w[n//10+17]]+f(n%10)if n<100 else[w[:19][n//100-1]]+['Hundred']+f(n%100)if n<t else next(f(n//t**i)+[s]+f(n%t**i)for i,s in enumerate(('Thousand','Million','Billion'),1)if n<t**-~i))(n))or'Zero'
+
 test('''
 273. Integer to English Words
 Hard

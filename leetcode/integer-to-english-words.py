@@ -3,7 +3,7 @@ from lc import *
 # https://leetcode.com/problems/integer-to-english-words/discuss/70632/Recursive-Python
 
 class Solution:
-    def numberToWords(self, num):
+    def numberToWords(self, num: int) -> str:
         to19 = 'One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve ' \
             'Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen'.split()
         tens = 'Twenty Thirty Forty Fifty Sixty Seventy Eighty Ninety'.split()
@@ -20,7 +20,7 @@ class Solution:
         return ' '.join(words(num)) or 'Zero'
 
 class Solution:
-    def numberToWords(self, num):
+    def numberToWords(self, num: int) -> str:
         return ' '.join([w:='One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve Thirteen Fourteen '\
             'Fifteen Sixteen Seventeen Eighteen Nineteen Twenty Thirty Forty Fifty Sixty Seventy Eighty Ninety'.split(),
             (t:=lambda n:w[:19][n-1:n] if n<20
@@ -29,6 +29,14 @@ class Solution:
             else t(n//1000)+['Thousand']+t(n%1000) if n<1000**2
             else t(n//1000**2)+['Million']+t(n%1000**2) if n<1000**3
             else t(n//1000**3)+['Billion']+t(n%1000**3))(num)][1]) or 'Zero'
+
+class Solution:
+    def numberToWords(self, num):
+        return' '.join([w:='One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen Twenty Thirty Forty Fifty Sixty Seventy Eighty Ninety'.split(),(t:=lambda n:w[:19][n-1:n] if n<20 else [w[19:][n//10-2]] + t(n%10) if n<100 else [w[:19][n//100-1]] +['Hundred'] + t(n%100) if n<1000 else t(n//1000)+['Thousand']+t(n%1000) if n<1000**2 else t(n//1000**2)+['Million']+t(n%1000**2) if n<1000**3 else t(n//1000**3)+['Billion']+t(n%1000**3))(num)][1]) or 'Zero'
+
+class Solution:
+    def numberToWords(self, n: int) -> str:
+        return' '.join([w:='One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen Twenty Thirty Forty Fifty Sixty Seventy Eighty Ninety'.split(),(t:=lambda n,d=1000:w[:19][n-1:n]if n<20 else[w[19:][n//10-2]]+t(n%10)if n<100 else[w[:19][n//100-1]]+['Hundred']+t(n%100)if n<d else t(n//d)+['Thousand']+t(n%d)if n<d**2 else t(n//d**2)+['Million']+t(n%d**2)if n<d**3 else t(n//d**3)+['Billion']+t(n%d**3))(n)][1])or'Zero'
 
 test('''
 273. Integer to English Words

@@ -296,7 +296,7 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
     p,t = '',0
     def split_vars(s):
         out = []
-        if m:=re.split(r'\, [a-z]+\d* = ', ', '+s):
+        if m:=re.split(r'\, [a-zA-Z]+\d* = ', ', '+s):
             for i in range(len(m)):
                 if m[i]:
                     out.append(m[i])
@@ -319,6 +319,7 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
 
     for cname in cnames:
         passed, total = 0, len(tests)
+
         for t in tests:
             args = tuple(map(vp, t['input']))
             expected = tuple(map(vp, t['output']))

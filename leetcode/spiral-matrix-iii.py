@@ -1,5 +1,11 @@
 from lc import *
 
+# https://leetcode.com/problems/spiral-matrix-iii/discuss/158971/Python-Sort-All-Coordinates
+
+class Solution:
+    def spiralMatrixIII(self, a: int, b: int, r: int, c: int) -> List[List[int]]:
+        return sorted([(i,j)for i in range(a)for j in range(b)],key=lambda p:(lambda x,y:(max(abs(x-r),abs(y-c)),-((atan2(-1,1)-atan2(x-r,y-c))%(pi*2))))(*p))
+
 # https://leetcode.com/problems/spiral-matrix-iii/discuss/483264/Sort-coordinates-Python
 
 class Solution:

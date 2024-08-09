@@ -21,6 +21,10 @@ class Solution:
     def numMagicSquaresInside(self, g: List[List[int]]) -> int:
         r=range(len(g)-2);return sum(g[i][j]%2==0 and((s:=''.join(str(g[i+x//3][j+x%3])for x in(0,1,2,5,8,7,6,3)))in'43816729'*2 or s in'92761834'*2)for i in r for j in r if g[i+1][j+1]==5)
 
+class Solution:
+    def numMagicSquaresInside(self, g: List[List[int]]) -> int:
+        r=range(len(g)-2);return sum(g[i][j]%2==0 and''.join(str(g[i+x//3][j+x%3])for x in(0,1,2,5,8,7,6,3))in'43816729'*2+2*'92761834'for i in r for j in r if g[i+1][j+1]==5)
+
 test('''
 840. Magic Squares In Grid
 Medium

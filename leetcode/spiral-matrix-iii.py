@@ -9,8 +9,8 @@ class Solution:
 # https://leetcode.com/problems/spiral-matrix-iii/discuss/483264/Sort-coordinates-Python
 
 class Solution:
-    def spiralMatrixIII(self, a: int, b: int, i: int, j: int) -> List[List[int]]:
-        return sorted([[r,c]for r in range(a)for c in range(b)],key=lambda p:(lambda r,c:(max(abs(r-i),abs(c-j)),(0,r,-c)if r+c>i+j else(1,-r,c)))(*p))
+    def spiralMatrixIII(self, m: int, n: int, r: int, c: int) -> List[List[int]]:
+        return sorted([(i,j)for i in range(m)for j in range(n)],key=lambda p:(lambda i,j:(max(abs(i-r),abs(j-c)),((1,-i,j),(0,i,-j))[i+j>r+c]))(*p))
 
 test('''
 885. Spiral Matrix III

@@ -170,7 +170,56 @@ You cannot use your own function like that, without skipping the first argument.
 class Solution:reverseWords=lambda _,s:' '.join(w[::-1]for w in s.split())
 ```
 
-It's not necessarily shorter, because lambdas can't use semicolons. Let's consider function declaration a zero lines.
+It's not necessarily shorter, because lambdas can't use semicolons.
+
+### Shortest
+
+Let's consider function declaration is zero lines. 
+
+* https://leetcode.com/problems/account-balance-after-rounded-purchase
+
+```python
+class Solution:
+    def accountBalanceAfterPurchase(self, x: int) -> int:
+        return(104-x)//10*10
+```
+
+* https://leetcode.com/problems/majority-element
+
+```python
+class Solution:
+    def majorityElement(self, n: List[int]) -> int:
+        return mode(n)
+```
+
+* https://leetcode.com/problems/count-of-matches-in-tournament
+
+```python
+class Solution:
+    def numberOfMatches(self, n: int) -> int:
+        return~-n
+```
+
+* https://leetcode.com/problems/stone-game
+
+```python
+class Solution:
+    def stoneGame(self, piles: List[int]) -> bool:
+        return 1
+```
+
+
+
+
+Notice no return operator, can be any symbol, the function always returns None.
+
+* https://leetcode.com/problems/strictly-palindromic-number
+
+```python
+class Solution:
+    def isStrictlyPalindromic(self, n: int) -> bool:
+        0
+```
 
 ### Lambdas
 

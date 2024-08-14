@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/majority-element
+
 # partition
 class Solution:
     def majorityElement(self, a: List[int]) -> int:

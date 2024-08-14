@@ -41,6 +41,10 @@ class Solution:
     def smallestDistancePair(self, a: List[int], k: int) -> int:
         a.sort();return bisect_right(range(a[-1]-a[0]),0,key=lambda g,l=0:sum(r-(l:=(t:=lambda l:g<x-a[l]and t(l+1)or l)(l))for r,x in enumerate(a))>=k)
 
+class Solution:
+    def smallestDistancePair(self, a: List[int], k: int) -> int:
+        a.sort();b=bisect_left;return b(range(a[-1]),k,key=lambda d:sum(r-b(range(r),-d,key=lambda l:a[l]-x)for r,x in enumerate(a)))
+
 test('''
 719. Find K-th Smallest Pair Distance
 Hard

@@ -74,6 +74,14 @@ class Solution:
     def lemonadeChange(self, b: List[int]) -> bool:
         return(f:=lambda i,x,y:(f(i+1,x+1,y)if(t:=b[i])==5 else f(i+1,x-1,y+1)if t==10 else f(i+1,x-1,y-1)if t==20 and y>0 else f(i+1,x-3,y))if(r:=x>-1<y)and b[i:]else r)(0,0,0)
 
+class Solution:
+    def lemonadeChange(self, b: List[int]) -> bool:
+        return(f:=lambda i,x,y:(f(i+1,*((x+1,y)if(t:=b[i])==5 else(x-1,y+1)if t==10 else(x-1,y-1)if t==20 and y>0 else(x-3,y))))if(r:=x>-1<y)and b[i:]else r)(0,0,0)
+
+class Solution:
+    def lemonadeChange(self, b: List[int]) -> bool:
+        return(f:=lambda i,x,y:(f(i+1,*((((x+1,y),(x-1,y+1))[b[i]>5],((x-3,y),(x-1,y-1))[y>0])[b[i]>10])))if(r:=x>-1<y)and b[i:]else r)(0,0,0)
+
 test('''
 860. Lemonade Change
 Easy

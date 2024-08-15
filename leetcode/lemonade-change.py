@@ -104,7 +104,7 @@ class Solution:
 
 class Solution:
     def lemonadeChange(self, b: List[int]) -> bool:
-        f=t=0;[x==5 and(f:=f+1)or(x==10 and(f:=f-1,t:=t+1))or(t>0 and(f:=f-1,t:=t-1)or(f:=f-3))for x in b];return f>=0
+        f=t=0;[x<10and(f:=f+1)or(x<20and(f:=f-1,t:=t+1))or(t>0and(f:=f-1,t:=t-1)or(f:=f-3))for x in b];return f>=0
 
 test('''
 860. Lemonade Change

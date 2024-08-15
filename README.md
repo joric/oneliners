@@ -216,7 +216,7 @@ class Solution:
         0
 ```
 
-Notice no return operator in the last one, can be any symbol, the function always returns None.
+Notice no return operator in the last one, can be anything (e.g. `pass`), the function always returns None.
 
 ### Lambdas
 

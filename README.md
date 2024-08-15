@@ -208,11 +208,6 @@ class Solution:
         return 1
 ```
 
-
-
-
-Notice no return operator, can be any symbol, the function always returns None.
-
 * https://leetcode.com/problems/strictly-palindromic-number
 
 ```python
@@ -220,6 +215,8 @@ class Solution:
     def isStrictlyPalindromic(self, n: int) -> bool:
         0
 ```
+
+Notice no return operator in the last one, can be any symbol, the function always returns None.
 
 ### Lambdas
 

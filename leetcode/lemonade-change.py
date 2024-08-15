@@ -20,17 +20,19 @@ class Solution:
 
 class Solution:
     def lemonadeChange(self, b: List[int]) -> bool:
-        x = y = 0
-        for i in b:
-            if i == 5:
-                x += 1
-            elif i == 10:
-                x, y = x - 1, y + 1
-            elif y > 0:
-                x, y = x - 1, y - 1
+        f = t = 0
+        for x in b:
+            if x == 5:
+                f += 1
+            elif x == 10:
+                f -= 1
+                t += 1
+            elif t > 0:
+                f -= 1
+                t -= 1
             else:
-                x -= 3
-            if x < 0:
+                f -= 3
+            if f < 0:
                 return False
         return True
 
@@ -82,6 +84,28 @@ class Solution:
     def lemonadeChange(self, b: List[int]) -> bool:
         return(f:=lambda i,x,y:(f(i+1,*((((x+1,y),(x-1,y+1))[b[i]>5],((x-3,y),(x-1,y-1))[y>0])[b[i]>10])))if(r:=x>-1<y)and b[i:]else r)(0,0,0)
 
+class Solution:
+    def lemonadeChange(self, b: List[int]) -> bool:
+        f = t = 0
+        for x in b:
+            if x == 5:
+                f += 1
+            elif x == 10:
+                f -= 1
+                t += 1
+            elif t > 0:
+                f -= 1
+                t -= 1
+            else:
+                f -= 3
+            if f < 0:
+                return False
+        return True
+
+class Solution:
+    def lemonadeChange(self, b: List[int]) -> bool:
+        f=t=0;[x==5 and(f:=f+1)or(x==10 and(f:=f-1,t:=t+1))or(t>0 and(f:=f-1,t:=t-1)or(f:=f-3))for x in b];return f>=0
+
 test('''
 860. Lemonade Change
 Easy
@@ -120,6 +144,11 @@ For the next two customers in order, we collect a $10 bill and give back a $5 bi
 For the last customer, we can not give the change of $15 back because we only have two $10 bills.
 Since not every customer received the correct change, the answer is false.
  
+
+Other examples:
+
+Input: bills = [5,5,5,10,5,5,10,20,20,20]
+Output: false
 
 Constraints:
 

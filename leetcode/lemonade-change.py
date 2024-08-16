@@ -86,25 +86,27 @@ class Solution:
 
 class Solution:
     def lemonadeChange(self, b: List[int]) -> bool:
-        f = t = 0
-        for x in b:
-            if x == 5:
-                f += 1
-            elif x == 10:
-                f -= 1
-                t += 1
-            elif t > 0:
-                f -= 1
-                t -= 1
-            else:
-                f -= 3
-            if f < 0:
-                return False
-        return True
+        f=t=0;[x<10and(f:=f+1)or(x<20and(f:=f-1,t:=t+1))or(t>0and(f:=f-1,t:=t-1)or(f:=f-3))for x in b];return f>=0
 
 class Solution:
     def lemonadeChange(self, b: List[int]) -> bool:
-        f=t=0;[x<10and(f:=f+1)or(x<20and(f:=f-1,t:=t+1))or(t>0and(f:=f-1,t:=t-1)or(f:=f-3))for x in b];return f>=0
+        f=t=0
+        
+        for x in b:
+            
+            if x<10:
+                f += 1
+            elif x<20:
+                f -= 1
+                t += 1
+            elif t>0:
+                f -= 1
+                t += 1
+            else:
+                f -= 3
+
+        return f>=0
+
 
 test('''
 860. Lemonade Change
@@ -148,6 +150,9 @@ Since not every customer received the correct change, the answer is false.
 Other examples:
 
 Input: bills = [5,5,5,10,5,5,10,20,20,20]
+Output: false
+
+Input: bills = [5,5,5,5,20,20,5,5,5,5]
 Output: false
 
 Constraints:

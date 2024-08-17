@@ -13,6 +13,27 @@ class Solution:
                 points[i+1][j] += points[i][j]
         return max(points[-1])
 
+class Solution:
+    def maxPoints(self, p: List[List[int]]) -> int:
+        s,e=setitem,range;[([s(r,j,max(r[j],r[j-1]-1))for j in e(1,len(r))],[s(r,j,max(r[j], r[j+1]-1))for j in e(len(r)-2,-1,-1)],[s(p[i+1],j,p[i+1][j]+p[i][j])for j in e(len(r))])for i,r in enumerate(p[:-1])];return max(p[-1])
+
+# https://leetcode.com/problems/maximum-number-of-points-with-cost/discuss/1345059/Python-DP-like-Solution
+
+class Solution:
+    def maxPoints(self, p: List[List[int]]) -> int:
+        m,n,s,e=len(p),len(p[0]),setitem,range
+        for i in e(m-1):
+            for j in e(n - 2, -1, -1):
+                s(p[i],j,max(p[i][j],p[i][j+1]-1))
+            for j in e(n):
+                s(p[i],j,max(p[i][j],j and p[i][j-1]-1))
+                s(p[i+1],j,p[i+1][j]+p[i][j])
+        return max(p[-1])
+
+class Solution:
+    def maxPoints(self, p: List[List[int]]) -> int:
+        m,n,s,e=len(p),len(p[0]),setitem,range;[[s(p[i],j,max(p[i][j],p[i][j+1]-1))for j in e(n-2,-1,-1)]and[s(p[i],j,max(p[i][j],j and p[i][j-1]-1))or s(p[i+1],j,p[i+1][j]+p[i][j])for j in e(n)]for i in e(m-1)];return max(p[-1])
+
 # https://leetcode.com/problems/maximum-number-of-points-with-cost/discuss/1344898/Python-very-short-dp-solution-explained
 
 class Solution:
@@ -25,19 +46,6 @@ class Solution:
             dp2 = [max(c1[i] - i, c2[n-1-i] + i) for i in range(n)]
             dp = [x+y for x,y in zip(dp2, P[i])]
         return max(dp)
-
-# https://leetcode.com/problems/maximum-number-of-points-with-cost/discuss/1345059/Python-DP-like-Solution
-
-class Solution:
-    def maxPoints(self, A):
-        m, n = len(A), len(A[0])
-        for i in range(m - 1):
-            for j in range(n - 2, -1, -1):
-                A[i][j] = max(A[i][j], A[i][j + 1] - 1)
-            for j in range(n):
-                A[i][j] = max(A[i][j], A[i][j - 1] - 1 if j else 0)
-                A[i + 1][j] += A[i][j]
-        return max(A[-1])
 
 # https://leetcode.com/problems/maximum-number-of-points-with-cost/discuss/1947800/Python-Top-Down-%2B-Memorization-O(mn)-Passes
 

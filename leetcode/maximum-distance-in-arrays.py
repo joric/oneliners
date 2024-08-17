@@ -16,6 +16,26 @@ class Solution:
             curMin, curMax = min(curMin, x[0]), max(curMax, x[-1])
         return res
 
+# https://leetcode.com/problems/maximum-distance-in-arrays/discuss/104658/Short-Python
+
+class Solution:
+    def maxDistance(self, a: List[List[int]]) -> int:
+        r = range(len(a))
+        lo, min_i = min((a[i][0],i) for i in r)
+        hi, max_i = max((a[i][-1],i) for i in r)
+        return max(max(abs(a[i][0]-hi) for i in r if i != max_i), max(abs(a[i][-1]-lo) for i in r if i != min_i))
+
+class Solution:
+    def maxDistance(self, a: List[List[int]]) -> int:
+        r = range(len(a))
+        g = lambda p,j:p((a[i][j],i) for i in r)
+        f = lambda d,j:max(abs(a[i][0]-d) for i in r if i!=j)
+        return max(f(*g(min,0)), f(*g(max,-1)))
+
+class Solution:
+    def maxDistance(self, a: List[List[int]]) -> int:
+        r=range(len(a));f=lambda d,j:max(abs(a[i][0]-d) for i in r if i!=j);g=lambda p,j:f(*p((a[i][j],i) for i in r));return max(g(min,0),g(max,-1))
+
 # https://leetcode.com/problems/maximum-distance-in-arrays/discuss/874566/C%2B%2B-1-liner-and-several-simple-solutions
 
 class Solution:

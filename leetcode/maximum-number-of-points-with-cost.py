@@ -84,6 +84,14 @@ class Solution:
     def maxPoints(self, p: List[List[int]]) -> int:
         m,n=len(p),len(p[0]);f=cache(lambda r,c:p[r][c]if r==m-1 else p[r][c]+max(a(r+1,c,0,-1),a(r+1,c,n-1,1)));a=cache(lambda r,c,l,s:f(r,c)if c==l else max(f(r,c),a(r,c+s,l,s)-1));return max(f(0,c)for c in range(n))
 
+class Solution:
+    def maxPoints(self, p: List[List[int]]) -> int:
+        m,n=len(p),len(p[0]);f=lambda r,c:p[r][c]if r==m-1 else p[r][c]+max(a(r+1,c,0,-1),a(r+1,c,n-1,1));a=cache(lambda r,c,l,s:f(r,c)if c==l else max(f(r,c),a(r,c+s,l,s)-1));return max(f(0,c)for c in range(n))
+
+class Solution:
+    def maxPoints(self, p: List[List[int]]) -> int:
+        m,n=len(p),len(p[0]);f=lambda c,r=0:p[r][c]if r==m-1 else p[r][c]+max(a(r+1,c,0,-1),a(r+1,c,n-1,1));a=cache(lambda r,c,l,s:f(c,r)if c==l else max(f(c,r),a(r,c+s,l,s)-1));return max(map(f,range(n)))
+
 test('''
 1937. Maximum Number of Points with Cost
 Medium

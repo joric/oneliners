@@ -1059,6 +1059,10 @@ class Solution:
 class Solution:
     def nthUglyNumber(self, n: int) -> int:
         return sorted(2**a*3**b*5**c for a,b,c in product(*map(range,(32,20,14))))[n-1]
+
+class Solution:
+    def nthUglyNumber(self, n: int) -> int:
+        return sorted(2**a*3**b*5**c for a,b,c in product(*[range(32)]*3))[n-1]
 ```
 
 ### Semicolons

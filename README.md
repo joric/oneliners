@@ -1051,6 +1051,11 @@ The product function (and all of the itertools) is sometimes handy.
 * https://leetcode.com/problems/ugly-number-ii
 
 ```python
+
+class Solution:
+    def nthUglyNumber(self, n: int) -> int:
+        return sorted(2**a*3**b*5**c for a in range(32)for b in range(20)for c in range(14))[n-1]
+
 class Solution:
     def nthUglyNumber(self, n: int) -> int:
         return sorted(2**a*3**b*5**c for a,b,c in product(*map(range,(32,20,14))))[n-1]

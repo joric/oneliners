@@ -1046,7 +1046,7 @@ class Solution:
 
 ### Product
 
-The product function (and all of the itertools) are very handy when you want to shorten the code.
+The product function (and all of the itertools) is sometimes handy.
 
 * https://leetcode.com/problems/ugly-number-ii
 

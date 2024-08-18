@@ -1044,6 +1044,18 @@ class Solution:
             and a[1][-1][1]=='(' else (a[0],a[1]+[b]),enumerate(s),(0,[(-1,')')]))[0]
 ```
 
+### Product
+
+The product function (and all of the itertools) are very handy when you want to shorten the code.
+
+* https://leetcode.com/problems/ugly-number-ii
+
+```python
+class Solution:
+    def nthUglyNumber(self, n: int) -> int:
+        return sorted(2**a*3**b*5**c for a,b,c in product(*map(range,(32,20,14))))[n-1]
+```
+
 ### Semicolons
 
 Nobody will stop you from using semicolons, but you'd still have to convert while and for loops.

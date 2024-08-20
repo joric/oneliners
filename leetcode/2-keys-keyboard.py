@@ -35,7 +35,7 @@ class Solution:
         return(f:=lambda n:n>1 and next(i+f(n//i)for i in range(2,n+1)if n%i==0)or 0)(n)
 
 class Solution:
-    def minSteps(s, n):
+    def minSteps(s, n: int) -> int:
         return~-n and next(i+s.minSteps(n//i)for i in range(2,n+1)if n%i==0)
 
 test('''

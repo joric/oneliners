@@ -1,8 +1,10 @@
 from lc import *
 
+# https://leetcode.com/problems/stone-game-ii
+
 class Solution:
-    def stoneGameII(self, piles: List[int]) -> int:
-        return(f:=cache(lambda i,m:max([sum(piles[i:])-f(j,max(m,j-i))for j in range(i+1,min(2*m+i+1,len(piles)+1))]+[0])))(0,1)
+    def stoneGameII(self, p: List[int]) -> int:
+        return(f:=cache(lambda i,m:max([sum(p[i:])-f(j,max(m,j-i))for j in range(i+1,min(2*m+i+1,len(p)+1))]+[0])))(0,1)
 
 test('''
 1140. Stone Game II

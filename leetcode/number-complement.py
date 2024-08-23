@@ -1,6 +1,16 @@
 from lc import *
 
+# https://leetcode.com/problems/number-complement/discuss/5671554/One-Line
+
+class Solution:
+    def findComplement(self, n: int) -> int:
+        return n^(2**n.bit_length()-1)
+
 # https://leetcode.com/problems/number-complement/discuss/3896397/Python.-One-line-solution.
+
+class Solution:
+    def findComplement(self, n: int) -> int:
+        return~n+2**n.bit_length()
 
 class Solution:
     def findComplement(self, n: int) -> int:

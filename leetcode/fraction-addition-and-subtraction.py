@@ -29,6 +29,10 @@ class Solution:
     def fractionAddition(self, e: str) -> str:
         f=__import__('fractions').Fraction(eval(e)).limit_denominator();return f'{f.numerator}/{f.denominator}'
 
+class Solution:
+    def fractionAddition(self, e: str) -> str:
+        a,b=__import__('fractions').Fraction(eval(e)).limit_denominator().as_integer_ratio();return f'{a}/{b}'
+
 test('''
 592. Fraction Addition and Subtraction
 Medium

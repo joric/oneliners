@@ -1,22 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/find-the-closest-palindrome/discuss/3416727/Python-3-lines-with-comments-oror-Case-by-Case
-
-class Solution:
-    def nearestPalindromic(self, n: str) -> str:
-        if(len(n)==1):
-            return str(int(n)-1)
-        def build(x): return x[:(len(x)+1)//2] + x[:len(x)//2][::-1]
-        cands = [build(n),
-            str(10**(len(n)-1)-1),
-            str(10**(len(n)-1)+1),
-            str(10**(len(n))-1), 
-            str(10**(len(n))+1),
-            build(str(int(n)-(10**((len(n))//2 )))),
-            build(str(int(n)+(10**((len(n))//2 ))))]
-        vals = [(abs(int(n)-int(x)),int(x)) for x in cands if x!=n]
-        return str(min(vals)[1])
-
 # https://leetcode.com/problems/find-the-closest-palindrome/discuss/102391/Python-Simple-with-Explanation
 
 class Solution:
@@ -50,6 +33,36 @@ class Solution:
 class Solution:
     def nearestPalindromic(self, s: str) -> str:
         n,r,f=len(s),0,lambda x:abs(int(s)-int(x));p=int(s[:-~n//2]);d=[str(10**k+d)for k in(n-1,n)for d in(-1,1)]+[x+(x[:-1]if n%2 else x)[::-1]for x in map(str,(p-1,p,p+1))];[c!=s and not c.startswith('00')and(not r or f(c)<f(r)or f(c)==f(r)and int(c)<int(r))and(r:=c)for c in d];return r
+
+# https://leetcode.com/problems/find-the-closest-palindrome/discuss/3416727/Python-3-lines-with-comments-oror-Case-by-Case
+
+class Solution:
+    def nearestPalindromic(self, s: str) -> str:
+        n = len(s)
+        if(n==1):
+            return str(int(s)-1)
+        def f(x): return x[:(len(x)+1)//2] + x[:len(x)//2][::-1]
+        d = [
+          f(s),
+          f(str(int(s)-(10**(n//2)))),
+          f(str(int(s)+(10**(n//2)))),
+          str(10**(n-1)-1),
+          str(10**(n-1)+1),
+          str(10**n-1), 
+          str(10**n+1),
+        ]
+        return str(min((abs(int(s)-int(x)),int(x))for x in d if x!=s)[1])
+
+class Solution:
+    def nearestPalindromic(self, s: str) -> str:
+        n=len(s)
+        f=lambda x:x[:(len(x)+1)//2]+x[:len(x)//2][::-1]
+        d=[f(s)]+[f(str(int(s)+d*(10**(n//2))))for d in(-1,1)]+[str(10**k+d)for k in(n-1,n)for d in(-1,1)]
+        return str(min((abs(int(s)-int(x)),int(x))for x in d if x!=s)[1])
+
+class Solution:
+    def nearestPalindromic(self, s: str) -> str:
+        n,f=len(s),lambda x:x[:(len(x)+1)//2]+x[:len(x)//2][::-1];return str(min((abs(int(s)-int(x)),int(x))for x in[f(s)]+[str(10**k+d)for k in(n-1,n)for d in(-1,1)]+[f(str(int(s)+d*(10**(n//2))))for d in(-1,1)]if x!=s)[1])
 
 test('''
 564. Find the Closest Palindrome

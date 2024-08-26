@@ -63,10 +63,6 @@ class Solution:
 
 class Solution:
     def postorder(self, t: 'Node') -> List[int]:
-        return(f:=lambda t:t and[*chain(*map(f,t.children))]+[t.val]or[])(t)
-
-class Solution:
-    def postorder(self, t: 'Node') -> List[int]:        
         return(f:=lambda t:t and[*chain(*map(f,t.children)),t.val]or[])(t)
 
 test('''

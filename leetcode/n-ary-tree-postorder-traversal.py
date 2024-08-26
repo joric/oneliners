@@ -1,11 +1,28 @@
 from lc import *
 
-# TODO: implement tests
-
 class Node:
     def __init__(self, val=None, children=None):
         self.val = val
         self.children = children
+
+    @staticmethod
+    def parse(data):
+        if not data:
+            return None
+        root = Node(data[0])
+        queue = deque([root])
+        i = 2
+        while queue:
+            current = queue.popleft()
+            children = []
+            while i < len(data) and data[i] is not None:
+                child = Node(data[i])
+                children.append(child)
+                queue.append(child)
+                i += 1
+            current.children = children
+            i += 1
+        return root
 
 # https://leetcode.com/problems/n-ary-tree-postorder-traversal/discuss/155806/Python-iterative-and-recursive-solution-with-explanation
 

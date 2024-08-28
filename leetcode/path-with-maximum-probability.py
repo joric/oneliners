@@ -49,6 +49,11 @@ class Solution:
     def maxProbability(self, n: int, m: List[List[int]], c: List[float], u: int, v: int) -> float:
         d=[0]*n;d[u]=1;[setitem(d,q,max(d[q],d[r]*p))for i in range(int(sqrt(n))) for(s,e),p in zip(m,c)for q,r in([s,e],[e,s])];return d[v]
 
+# updated 2024-08-27
+
+class Solution:
+    def maxProbability(self, n: int, m: List[List[int]], c: List[float], u: int, v: int) -> float:
+        d=[0]*n;d[u]=1;[setitem(d,q,max(d[q],d[r]*p))for i in range(isqrt(n)+1)for(s,e),p in zip(m,c)for q,r in([s,e],[e,s])];return d[v]
 
 test('''
 1514. Path with Maximum Probability

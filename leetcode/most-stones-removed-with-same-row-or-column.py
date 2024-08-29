@@ -1,5 +1,25 @@
 from lc import *
 
+# https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/discuss/5705728/Python-12-line-answer
+
+class Solution:
+    def removeStones(self, s: List[List[int]]) -> int:
+        w,v=0,set()
+        def f(i,j):
+            for r,c in s:
+                if (r,c) not in v and (i==r or j==c):
+                    v.add((r,c))
+                    f(r,c)
+        for r,c in s:
+            if (r,c) not in v:
+                f(r,c)
+                w += 1
+        return len(s)-w
+
+class Solution:
+    def removeStones(self, s: List[List[int]]) -> int:
+        w,v=0,set();return len(s)-sum((r,c)not in v and(f:=lambda i,j:0!=[(r,c)not in v and(i==r or j==c)and(v.add((r,c))or f(r,c))for r,c in s])(r,c)for r,c in s)
+
 # https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/discuss/197668/Count-the-Number-of-Islands-O(N)
 
 class Solution:

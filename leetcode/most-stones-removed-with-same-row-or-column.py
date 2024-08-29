@@ -43,6 +43,10 @@ class Solution:
     def removeStones(self, s: List[List[int]]) -> int:
         u={};f=lambda x:x!=u.setdefault(x,x)and setitem(u,x,f(u[x]))or u[x];[setitem(u,f(i),f(~j))for i,j in s];return len(s)-len({*map(f,u)})
 
+class Solution:
+    def removeStones(self, s: List[List[int]]) -> int:
+        u,e={},setitem;f=lambda x:x!=u.setdefault(x,x)and e(u,x,f(u[x]))or u[x];[e(u,f(i),f(~j))for i,j in s];return len(s)-len({*map(f,u)})
+
 test('''
 947. Most Stones Removed with Same Row or Column
 Medium

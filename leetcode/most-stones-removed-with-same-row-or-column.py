@@ -3,6 +3,21 @@ from lc import *
 # https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/discuss/197668/Count-the-Number-of-Islands-O(N)
 
 class Solution:
+    def removeStones(self, s: List[List[int]]) -> int:
+        u = {}
+        def find(x):
+            if x != u[x]:
+                u[x] = find(u[x])
+            return u[x]
+        def union(x, y):
+            u.setdefault(x, x)
+            u.setdefault(y, y)
+            u[find(x)] = find(y)
+        for i, j in s:
+            union(i, ~j)
+        return len(s) - len({find(x) for x in u})
+
+class Solution:
     def removeStones(self, stones: List[List[int]]) -> int:
         uf = {}
         def find(x):
@@ -18,8 +33,17 @@ class Solution:
         return (uf:={},f:=lambda x: x!=uf.setdefault(x,x) and setitem(uf,x,f(uf[x])) or uf[x],
             any(setitem(uf,f(i),f(~j)) for i, j in stones)) and len(stones)-len({f(x) for x in uf})
 
-test('''
+# updated 2024-08-29
 
+class Solution:
+    def removeStones(self, s: List[List[int]]) -> int:
+        u={};return(f:=lambda x:x!=u.setdefault(x,x)and setitem(u,x,f(u[x]))or u[x],any(setitem(u,f(i),f(~j)) for i,j in s))and len(s)-len({f(x) for x in u})
+
+class Solution:
+    def removeStones(self, s: List[List[int]]) -> int:
+        u={};f=lambda x:x!=u.setdefault(x,x)and setitem(u,x,f(u[x]))or u[x];[setitem(u,f(i),f(~j))for i,j in s];return len(s)-len({*map(f,u)})
+
+test('''
 947. Most Stones Removed with Same Row or Column
 Medium
 

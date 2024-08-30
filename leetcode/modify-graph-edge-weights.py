@@ -5,7 +5,10 @@ from lc import *
 
 class Solution:
     def modifiedGraphEdges(self, n: int, e: List[List[int]], s: int, d: int, t: int) -> List[List[int]]:
-        def f(g, e, s, d, t, m):
+        g = defaultdict(list)
+        [g[u].append((v,i))or g[v].append((u,i))for i,(u,v,_)in enumerate(e)]
+
+        def f(m):
             q = []
             x = [inf] * len(g)
             y = [inf] * len(g)
@@ -16,24 +19,16 @@ class Solution:
                 c, i = heappop(q)
                 if c != x[i]:
                     continue
-                for j, k in g[i]:
-                    w = e[k][2]
-                    if m or w != -1:
-                        if x[j] > c + max(1, w):
-                            y[j] = k if w == -1 else y[i]
-                            x[j] = c + max(1, w)
-                            heappush(q, (x[j], j))
+                [(w:=e[k][2],(m or w!=-1)and x[j]>c+max(1,w)and(setitem(y,j,k if w==-1 else y[i]),setitem(x,j,c+max(1,w)),heappush(q,(x[j],j))))for j, k in g[i]]
+
             return x[d], y[d]
 
-        g = defaultdict(list)
-        [g[u].append((v,i))or g[v].append((u,i))for i,(u,v,_)in enumerate(e)]
-
-        x, _ = f(g, e, s, d, t, False)
+        x, _ = f(False)
         if x < t:
             return []
 
         while True:
-            x, y = f(g, e, s, d, t, True)
+            x, y = f(True)
             if x > t:
                 return []
             if x == t:
@@ -41,7 +36,6 @@ class Solution:
             e[y][2] = 1 + t - x
 
         [setitem(z,2,z[2]==-1 and 1 or z[2])for z in e]
-
         return e
 
 test('''

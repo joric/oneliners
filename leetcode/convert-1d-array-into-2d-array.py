@@ -10,6 +10,8 @@ class Solution:
     def construct2DArray(self, o: List[int], m: int, n: int) -> List[List[int]]:
         return[o[i:i+n]for i in range(0,len(o),n)if len(o)==m*n]
 
+# https://leetcode.com/problems/convert-1d-array-into-2d-array/discuss/5717569/One-line-solutions
+
 class Solution:
     def construct2DArray(self, o: List[int], m: int, n: int) -> List[List[int]]:
         return m*n==len(o)and[*zip(*[iter(o)]*n)]or[]

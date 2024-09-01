@@ -14,6 +14,10 @@ class Solution:
     def construct2DArray(self, o: List[int], m: int, n: int) -> List[List[int]]:
         return m*n==len(o)and[*zip(*[iter(o)]*n)]or[]
 
+class Solution:
+    def construct2DArray(self, o: List[int], m: int, n: int) -> List[List[int]]:
+        return[*zip(*[iter(o)]*n)]*(m*n==len(o))
+
 test('''
 2022. Convert 1D Array Into 2D Array
 Easy

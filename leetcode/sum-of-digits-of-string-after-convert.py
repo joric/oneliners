@@ -6,6 +6,10 @@ class Solution:
     def getLucky(self, s: str, k: int) -> int:
         return int(s)if k==0 else self.getLucky(str(sum(int(i)for i in s)),k-1)if '0'<=s[0]<='9'else self.getLucky("".join(str(ord(i)-96)for i in s),k) 
 
+class Solution:
+    def getLucky(self, s: str, k: int) -> int:
+        return(f:=lambda s,k:k and f(str(sum(int(i)for i in s)),k-1)or int(s))(''.join(str(ord(i)-96)for i in s),k)
+
 # https://leetcode.com/problems/sum-of-digits-of-string-after-convert/discuss/1364788/Python-3-one-line
 
 class Solution:

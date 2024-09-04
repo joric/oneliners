@@ -19,7 +19,8 @@ class Solution:
 
 class Solution:
     def robotSim(self, c: List[int], o: List[List[int]]) -> int:
-        g,z,w,a = {i+j*1j for i,j in o},0j,1j,0
+        g = {i+j*1j for i,j in o}
+        w,z,a = 1j,0,0
         for d in c:
             if d<0:
                 w *= (1j,-1j)[d+2]

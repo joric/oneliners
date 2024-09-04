@@ -28,7 +28,7 @@ class Solution:
                 for _ in range(d):
                     if z+w not in g:
                       z += w
-            a = max(a, abs(z**2))
+            a = max(a, abs(z*z))
         return int(a)
 
 class Solution:

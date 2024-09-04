@@ -24,17 +24,11 @@ class Solution:
             if d<0:
                 w *= (1j,-1j)[d+2]
             else:
-                [(z:=z+w)for _ in range(d)if(z+w)not in g]
+                for _ in range(d):
+                    if z+w not in g:
+                      z += w
             a = max(a, abs(z**2))
         return int(a)
-
-class Solution:
-    def robotSim(self, c: List[int], o: List[List[int]]) -> int:
-        g,z,w={i+j*1j for i,j in o},0,1j;return int(max((d<0 and(w:=w*(1j,-1j)[d+2])or[(z:=z+w)for _ in range(d)if(z+w)not in g],abs(z**2))[1]for d in c))
-
-class Solution:
-    def robotSim(self, c: List[int], o: List[List[int]]) -> int:
-        g,z,w={i+j*1j for i,j in o},0,1j;return int(max(abs(z**2)for d in c if d<0 and(w:=w*(1j,-1j)[d+2])or[z:=z+w for _ in range(d)if z+w not in g]))
 
 class Solution:
     def robotSim(self, c: List[int], o: List[List[int]]) -> int:

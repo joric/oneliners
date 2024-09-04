@@ -34,7 +34,7 @@ class Solution:
 
 class Solution:
     def robotSim(self, c: List[int], o: List[List[int]]) -> int:
-        g,z,w={i+j*1j for i,j in o},0,1j;return int(max(abs(z**2)for d in c if d<0 and(w:=w*(1j,-1j)[d+2])or[(z:=z+w)for _ in range(d)if(z+w)not in g]))
+        g,z,w={i+j*1j for i,j in o},0,1j;return int(max(abs(z**2)for d in c if d<0 and(w:=w*(1j,-1j)[d+2])or[z:=z+w for _ in range(d)if z+w not in g]))
 
 test('''
 874. Walking Robot Simulation

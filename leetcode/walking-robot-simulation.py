@@ -22,7 +22,7 @@ class Solution:
         g,w,z,a = {i+j*1j for i,j in o},1j,0,0
         for d in c:
             if d<0:
-                w *= (1j,-1j)[d+2]
+                w *= (1j,-1j)[d]
             else:
                 for _ in range(d):
                     if z+w not in g:

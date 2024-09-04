@@ -27,8 +27,8 @@ class Solution:
                 for _ in range(d):
                     if z+w not in g:
                       z += w
-            a = max(a, int(abs(z*z)))
-        return a
+            a = max(a, abs(z*z))
+        return int(a)
 
 class Solution:
     def robotSim(self, c: List[int], o: List[List[int]]) -> int:

@@ -6,6 +6,12 @@ class Solution:
     def countConsistentStrings(self, a: str, w: List[str]) -> int:
         return sum(all(c in a for c in s)for s in w)
 
+# https://leetcode.com/problems/count-the-number-of-consistent-strings/discuss/4035909/One-line-solution
+
+class Solution:
+    def countConsistentStrings(self, a: str, w: List[str]) -> int:
+        return sum(not({*s}-{*a})for s in w)
+
 test('''
 1684. Count the Number of Consistent Strings
 Easy

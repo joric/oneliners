@@ -6,6 +6,10 @@ class Solution:
     def missingRolls(self, r: List[int], m: int, n: int) -> List[int]:
         return n<=(x:=m*(n+len(r))-sum(r))<=n*6 and[x//n+(i<x%n)for i in range(n)]or[]
 
+class Solution:
+    def missingRolls(self, r: List[int], m: int, n: int) -> List[int]:
+        x=m*(n+len(r))-sum(r);return[x//n+(i<x%n)for i in range(n)if n<=x<=n*6]
+
 test('''
 2028. Find Missing Observations
 Medium

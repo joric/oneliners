@@ -61,7 +61,7 @@ class TreeNode:
 
     @staticmethod
     def serialize(root):
-        return str(TreeNode.dump(root)).replace('None','null')
+        return str(TreeNode.dump(root)).replace('None','null') if root else []
 
     @staticmethod
     def deserialize(str):
@@ -121,7 +121,7 @@ class ListNode:
 
     @staticmethod
     def serialize(root):
-        return str(root.dump()).replace('None','null')
+        return str(root.dump()).replace('None','null') if root else '[]';
 
     @staticmethod
     def deserialize(str):

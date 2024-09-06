@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         j=0
@@ -85,5 +87,5 @@ Constraints:
 nums is sorted in non-decreasing order.
 
 ''', 
-check=lambda res,exp,nums:nums[:exp[0]]==json.loads(exp[1].replace(',_',''))
+check=lambda r,e,a:a[:e[0]]==json.loads(e[1].replace(',_',''))
 )

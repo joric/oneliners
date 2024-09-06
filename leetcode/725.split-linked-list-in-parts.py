@@ -31,15 +31,7 @@ class Solution:
 
 class Solution:
     def splitListToParts(self, r: Optional[ListNode], k: int) -> List[Optional[ListNode]]:
-        t=ListNode;c=eval(t.serialize(r));j,(d,x)=0,divmod(len(c),k);e=[c[j:(j:=j+d-(i>=x)+1)]for i in range(k)];return[t.deserialize(str(v))for v in e]
-
-class Solution:
-    def splitListToParts(self, r: Optional[ListNode], k: int) -> List[Optional[ListNode]]:
-        t=ListNode;c=eval(t.serialize(r));j,(d,x)=0,divmod(len(c),k);return[t.deserialize(str(c[j:(j:=j+d-(i>=x)+1)]))for i in range(k)]
-
-class Solution:
-    def splitListToParts(self, r: Optional[ListNode], k: int) -> List[Optional[ListNode]]:
-        j,t=0,ListNode;c=eval(t.serialize(r));d,x=divmod(len(c),k);return[t.deserialize(str(c[j:(j:=j+d-(i>=x)+1)]))for i in range(k)]
+        j,t=0,ListNode;c=eval(t.serialize(r));d,m=divmod(len(c),k);return[t.deserialize(str(c[j:(j:=j+d-(i>=m)+1)]))for i in range(k)]
 
 test('''
 725. Split Linked List in Parts

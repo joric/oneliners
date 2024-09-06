@@ -7,7 +7,7 @@ class Solution:
         res = []
         v.sort()
         for i in range(len(v)):
-            if (i>0) and (v[i]==v[i-1]):
+            if i>0 and v[i]==v[i-1]:
                 continue
             l = i+1
             r = len(v)-1
@@ -48,7 +48,16 @@ class Solution:
 
 class Solution:
     def threeSum(self, v: List[int]) -> List[List[int]]:
-        c=Counter(v);p,r,b=sorted(c),c[0]>=3 and set([(0,0,0)])or set(),bisect_left;[(c[a]>1 and -2*a in c and a and r.add((a,a,-2*a)),a<0 and[r.add((a,b,-a-b)) for b in p[b(p,-p[-1]-a,i+1):b(p,ceil(-a/2),i+1)] if -(a+b) in c])for i,a in enumerate(p)];return r
+        c=Counter(v)
+        p,r,b=sorted(c),c[0]>=3 and set([(0,0,0)])or set(),bisect_left
+        for i,a in enumerate(p):
+            c[a]>1 and -2*a in c and a and r.add((a,a,-2*a))
+            a<0 and[r.add((a,b,-a-b)) for b in p[b(p,-p[-1]-a,i+1):b(p,ceil(-a/2),i+1)]if -(a+b) in c]
+        return r
+
+class Solution:
+    def threeSum(self, v: List[int]) -> List[List[int]]:
+        c=Counter(v);p,r,b=sorted(c),c[0]>=3 and set([(0,0,0)])or set(),bisect_left;[(c[a]>1 and -2*a in c and a and r.add((a,a,-2*a)),a<0 and[r.add((a,b,-a-b)) for b in p[b(p,-p[-1]-a,i+1):b(p,ceil(-a/2),i+1)]if -(a+b) in c])for i,a in enumerate(p)];return r
 
 test('''
 15. 3Sum

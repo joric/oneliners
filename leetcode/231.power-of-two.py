@@ -49,7 +49,7 @@ Output: false
 
 More examples:
 
-Input: 0
+Input: n = 0
 Output: false
 
 Constraints:

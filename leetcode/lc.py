@@ -34,9 +34,6 @@ import io
 import sys
 import json
 
-import warnings
-warnings.filterwarnings('ignore')
-
 from typing import *
 
 class TreeNode:
@@ -400,3 +397,8 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
 
         ok = check(results,expected,*methods)
         print_res(ok, results, expected, methods, arglist)
+
+import sys
+if not sys.warnoptions:
+    import warnings
+    warnings.simplefilter("ignore")

@@ -34,6 +34,9 @@ import io
 import sys
 import json
 
+import warnings
+warnings.filterwarnings('ignore')
+
 from typing import *
 
 class TreeNode:

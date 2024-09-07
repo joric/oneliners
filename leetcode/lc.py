@@ -172,7 +172,7 @@ cnames = []
 # use test(```leetcode description```) to run latest Solution
 # note only the last solution is tested (classname override), but you can use empty test() between solutions
 
-def test(text=None, classname=None, check=None, init=None, custom=None, cast=None):
+def test(text=None, classname=None, check=None, init=None, custom=None, cast=None, sort=None):
     import importlib
     if not text:
         cname = classname or importlib.import_module('__main__').Solution
@@ -263,7 +263,9 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
     if not check:
         def check(res, expected, *args):
             t = type(res)
-            if t is ListNode or t is TreeNode:
+            if sort:
+                return sorted(res)==sorted(expected)
+            elif t is ListNode or t is TreeNode:
                 return t.serialize(res)==t.serialize(expected)
             elif res is None and expected is not None:
                 return False
@@ -275,7 +277,8 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
                 return all([*x]==[*y] for x,y in zip(res,expected))
             elif type(expected) is list: # letter-combinations-of-a-phone-number
                 return list(res)==expected
-            return res==expected
+            else:
+                return res==expected
 
     custom_class_tests = classname is not None and 'Launcher' not in str(classname) and custom!=False
 

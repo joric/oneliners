@@ -20,6 +20,8 @@ class Solution:
     def insertGreatestCommonDivisors(self, h: Optional[ListNode]) -> Optional[ListNode]:
         return(f:=lambda p:p and p.next and setattr(p,'next',type(h)(gcd(p.val,p.next.val),f(p.next)))or p)(h)
 
+# supposedly POTD for 2024-09-08
+
 class Solution:
     def insertGreatestCommonDivisors(self, h: Optional[ListNode]) -> Optional[ListNode]:
         t=eval(h.serialize(h));return h.deserialize(str([*chain(*zip(t,[*map(gcd,t,t[1:]),0]))][:-1]))

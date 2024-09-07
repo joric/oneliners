@@ -6,9 +6,11 @@ class Solution:
     def isSubPath(self, h: Optional[ListNode], r: Optional[TreeNode]) -> bool:
         f=lambda h,r:not h or r and h.val==r.val and (f(h.next,r.left)or f(h.next,r.right));return r and (f(h,r) or self.isSubPath(h,r.left)or self.isSubPath(h,r.right))
 
+# POTD 2024-09-07
+
 class Solution:
     def isSubPath(self, h: Optional[ListNode], r: Optional[TreeNode]) -> bool:
-        f=lambda h,r:not h or r and h.val==r.val and (f(h.next,r.left)or f(h.next,r.right));return(g:=lambda h,r:r and(f(h,r)or g(h,r.left)or g(h,r.right)))(h,r)
+        f=lambda h,r:not h or r and h.val==r.val and(f(h.next,r.left)or f(h.next,r.right));return(g:=lambda h,r:r and(f(h,r)or g(h,r.left)or g(h,r.right)))(h,r)
 
 test('''
 1367. Linked List in Binary Tree

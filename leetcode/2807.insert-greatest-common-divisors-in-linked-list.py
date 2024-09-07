@@ -10,10 +10,6 @@ class Solution:
             p=p.next.next
         return h
 
-class Solution:
-    def insertGreatestCommonDivisors(self, h: Optional[ListNode]) -> Optional[ListNode]:
-        t=eval(h.serialize(h));return h.deserialize(str([*chain(*zip(t,[*map(gcd,t,t[1:]),0]))][:-1]))
-
 # https://leetcode.com/problems/insert-greatest-common-divisors-in-linked-list/discuss/3868069/Python-recursive-short
 
 class Solution:
@@ -23,6 +19,10 @@ class Solution:
 class Solution:
     def insertGreatestCommonDivisors(self, h: Optional[ListNode]) -> Optional[ListNode]:
         return(f:=lambda p:p and p.next and setattr(p,'next',type(h)(gcd(p.val,p.next.val),f(p.next)))or p)(h)
+
+class Solution:
+    def insertGreatestCommonDivisors(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        t=eval(h.serialize(h));return h.deserialize(str([*chain(*zip(t,[*map(gcd,t,t[1:]),0]))][:-1]))
 
 test('''
 2807. Insert Greatest Common Divisors in Linked List

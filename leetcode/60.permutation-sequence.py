@@ -1,5 +1,22 @@
 from lc import *
 
+# https://leetcode.com/problems/permutation-sequence/discuss/696390/Python-Math-solution-%2B-Oneliner-both-O(n2)-expained
+
+class Solution:
+    def getPermutation(self, n: int, k: int) -> str:
+        numbers = list(range(1,n+1))
+        answer = ""
+        for n_it in range(n,0,-1):
+            d = (k-1)//factorial(n_it-1)
+            k -= d*factorial(n_it-1)
+            answer += str(numbers[d])
+            numbers.remove(numbers[d])
+        return answer
+
+class Solution:
+    def getPermutation(self, n: int, k: int) -> str:
+        return reduce(lambda s,n:(s[0]+s[2][(d:=s[1]//(f:=factorial(n)))],s[1]%f,s[2][:d]+s[2][d+1:]),range(n-1,-1,-1),('',k-1,'123456789'))[0]
+
 # https://leetcode.com/problems/permutation-sequence/discuss/832365/python-itertools
 
 class Solution:

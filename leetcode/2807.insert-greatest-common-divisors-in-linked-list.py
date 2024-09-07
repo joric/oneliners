@@ -20,6 +20,10 @@ class Solution:
     def insertGreatestCommonDivisors(self, h: Optional[ListNode]) -> Optional[ListNode]:
         return(f:=lambda p:p and p.next and setattr(p,'next',ListNode(gcd(p.val,p.next.val),f(p.next)))or p)(h)
 
+class Solution:
+    def insertGreatestCommonDivisors(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        return(f:=lambda p:p and p.next and setattr(p,'next',type(h)(gcd(p.val,p.next.val),f(p.next)))or p)(h)
+
 test('''
 2807. Insert Greatest Common Divisors in Linked List
 Medium

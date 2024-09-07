@@ -20,7 +20,7 @@ class Solution:
 
 class Solution:
     def rotateRight(self, h: Optional[ListNode], k: int) -> Optional[ListNode]:
-        t=ListNode;p=(q:=deque(eval(t.serialize(h)))).rotate(k)or q;return t.deserialize(str([*p]))
+        t=ListNode;return t.deserialize(str([*((q:=deque(eval(t.serialize(h)))).rotate(k)or q)]))
 
 test('''
 61. Rotate List

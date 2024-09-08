@@ -127,10 +127,16 @@ print(subprocess.run(["ls", "-la", "/"]))
 
 Some leetcode problems may be solved at the function declaration level.
 
-https://leetcode.com/problems/search-insert-position
+* https://leetcode.com/problems/search-insert-position
 
 ```python
 class Solution:searchInsert=bisect_left
+```
+
+* https://leetcode.com/problems/permutations
+
+```python
+class Solution: permute=permutations
 ```
 
 * https://leetcode.com/problems/sort-an-array

@@ -136,7 +136,7 @@ class Solution:searchInsert=bisect_left
 * https://leetcode.com/problems/permutations
 
 ```python
-class Solution: permute=permutations
+class Solution:permute=permutations
 ```
 
 * https://leetcode.com/problems/sort-an-array

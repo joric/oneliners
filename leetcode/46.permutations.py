@@ -94,5 +94,4 @@ Constraints:
 All the integers of nums are unique.
 
 '''
-, check=lambda res,exp,_:sorted(res)==sorted(exp)
-)
+, sort=True)

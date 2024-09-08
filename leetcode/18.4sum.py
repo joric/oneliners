@@ -79,6 +79,4 @@ Constraints:
 -10^9 <= nums[i] <= 10^9
 -10^9 <= target <= 10^9
 
-''',
-check=lambda res, expected, nums, target: sorted(res)==sorted(expected)
-)
+''', sort=True)

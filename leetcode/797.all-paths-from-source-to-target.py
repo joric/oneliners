@@ -58,5 +58,4 @@ graph[i][j] != i (i.e., there will be no self-loops).
 All the elements of graph[i] are unique.
 The input graph is guaranteed to be a DAG.
 
-''', check=lambda res, exp, graph: sorted(res)==sorted(exp)
-)
+''', sort=True)

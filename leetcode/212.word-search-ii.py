@@ -72,4 +72,4 @@ board[i][j] is a lowercase English letter.
 1 <= words[i].length <= 10
 words[i] consists of lowercase English letters.
 All the strings of words are unique.
-''', check=lambda res, expected, board, words: sorted(res)==sorted(expected))
+''', sort=True)

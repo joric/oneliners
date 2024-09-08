@@ -58,4 +58,4 @@ Accepted
 1,019,623
 Submissions
 1,407,756
-''', check=lambda res,exp,*args: sorted(res)==sorted(exp))
+''', sort=True)

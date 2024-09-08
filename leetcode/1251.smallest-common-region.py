@@ -22,6 +22,8 @@ class Solution:
 
 test('''
 1257. Smallest Common Region
+Medium
+
 You are given some lists of regions where the first region of each list includes all other regions in that list.
 
 Naturally, if a region X contains another region Y then X is bigger than Y. Also by definition a region X contains itself.
@@ -42,10 +44,4 @@ Constraints:
 2 <= regions.length <= 10^4
 region1 != region2
 All strings consist of English letters and spaces with at most 20 letters.
-Difficulty:
-Medium
-Lock:
-Prime
-Company:
-Airbnb
 ''')

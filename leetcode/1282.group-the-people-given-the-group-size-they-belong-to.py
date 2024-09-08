@@ -45,4 +45,4 @@ Constraints:
 groupSizes.length == n
 1 <= n <= 500
 1 <= groupSizes[i] <= n
-''', check=lambda r,e,a:sorted(r)==sorted(e))
+''', sort=True)

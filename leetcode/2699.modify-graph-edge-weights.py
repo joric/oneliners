@@ -98,6 +98,8 @@ class Solution:
         [setitem(z,2,z[2]==-1 and 1 or z[2])for z in e]
         return e
 
+# TODO
+
 test('''
 2699. Modify Graph Edge Weights
 Hard
@@ -162,4 +164,5 @@ Accepted
 7,481
 Submissions
 24,033
-''', check=lambda r,e,*args:sorted(r)==sorted(e))
+''', sort=True
+)

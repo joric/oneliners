@@ -18,7 +18,7 @@ class Solution:
 
 class Solution:
     def findSmallestRegion(self, g: List[List[str]], a: str, b: str) -> str:
-        m,s={r:p[0]for p in g for r in p[1:]},set();all(m.get(a)and(s.add(a),a:=m[a])for _ in count());all(m.get(b)and(b not in s)and(b:=m[b]) for _ in count());return(a,b)[b in s]
+        m,s={r:p[0]for p in g for r in p[1:]},set();all(m.get(a)and(s.add(a),a:=m[a])for _ in count());all(m.get(b)and(b not in s)and(b:=m[b])for _ in count());return(a,b)[b in s]
 
 test('''
 1257. Smallest Common Region

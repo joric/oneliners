@@ -172,7 +172,7 @@ cnames = []
 # use test(```leetcode description```) to run latest Solution
 # note only the last solution is tested (classname override), but you can use empty test() between solutions
 
-def test(text=None, classname=None, check=None, init=None, custom=None, cast=None, sort=None):
+def test(text=None, classname=None, check=None, init=None, custom=None, cast=None, sort=None, inplace=None):
     import importlib
     if not text:
         cname = classname or importlib.import_module('__main__').Solution
@@ -265,6 +265,8 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
             t = type(res)
             if sort:
                 return sorted(res)==sorted(expected)
+            if inplace:
+                return sorted(args[0])==sorted(expected)
             elif t is ListNode or t is TreeNode:
                 return t.serialize(res)==t.serialize(expected)
             elif res is None and expected is not None:

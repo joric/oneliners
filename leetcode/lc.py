@@ -266,7 +266,12 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
             if sort:
                 return sorted(res)==sorted(expected)
             if inplace:
-                return sorted(args[0])==sorted(expected)
+                a = args[0]
+                if type(a) is TreeNode:
+                    return json.loads(TreeNode.serialize(a))==expected
+                elif type(a) is ListNode:
+                    return json.loads(ListNode.serialize(a))==expected
+                return sorted(a)==sorted(expected)
             elif t is ListNode or t is TreeNode:
                 return t.serialize(res)==t.serialize(expected)
             elif res is None and expected is not None:

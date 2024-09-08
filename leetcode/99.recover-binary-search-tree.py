@@ -18,7 +18,7 @@ class Solution:
 
 class Solution:
     def recoverTree(s, r: Optional[TreeNode]) -> None:
-        s.a,s.b,s.c=0,0,TreeNode(-inf);(f:=lambda t:t and (f(t.left),s.c.val>=t.val and exec('s.a=s.a or s.c;s.b=t'),exec('s.c=t'),f(t.right)))(r);exec('s.a.val,s.b.val=s.b.val,s.a.val')
+        s.a,s.b,s.c=0,0,TreeNode(-inf);(f:=lambda t:t and(f(t.left),s.c.val>=t.val and exec('s.a=s.a or s.c;s.b=t'),exec('s.c=t'),f(t.right)))(r);exec('s.a.val,s.b.val=s.b.val,s.a.val')
 
 test('''
 99. Recover Binary Search Tree

@@ -19,6 +19,14 @@ class Solution:
     def spiralMatrix(self, m: int, n: int, h: Optional[ListNode]) -> List[List[int]]:
         a=[n*[-1]for _ in[0]*m];(f:=lambda r,c,i,j,h:h and(0<=r+i<m and 0<=c+j<n and a[r+i][c+j]<0 and(setitem(a[r+i],c+j,h.val),f(r+i,c+j,i,j,h.next))or f(r,c,j,-i,h)))(0,-1,0,1,h);return a
 
+class Solution:
+    def spiralMatrix(self, m: int, n: int, h: Optional[ListNode]) -> List[List[int]]:
+        a=[n*[-1]for _ in[0]*m];(f:=lambda r,c,i,j,h:h and(0<=(x:=r+i)<m and 0<=(y:=c+j)<n and a[x][y]<0 and(setitem(a[x],y,h.val),f(x,y,i,j,h.next))or f(r,c,j,-i,h)))(0,-1,0,1,h);return a
+
+class Solution:
+    def spiralMatrix(self, m: int, n: int, h: Optional[ListNode]) -> List[List[int]]:
+        a=[n*[-1]for _ in[0]*m];(f:=lambda r,c,i,j,h:h and(0<=(x:=r+i)<m and 0<=(y:=c+j)<n and a[x][y]<0 and(exec('a[x][y]=h.val'),f(x,y,i,j,h.next))or f(r,c,j,-i,h)))(0,-1,0,1,h);return a
+
 test('''
 2326. Spiral Matrix IV
 Medium

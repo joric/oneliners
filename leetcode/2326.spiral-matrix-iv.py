@@ -27,6 +27,23 @@ class Solution:
     def spiralMatrix(self, m: int, n: int, h: Optional[ListNode]) -> List[List[int]]:
         a=[n*[-1]for _ in[0]*m];(f:=lambda r,c,i,j,h:h and(0<=(x:=r+i)<m and 0<=(y:=c+j)<n and a[x][y]<0 and(exec('a[x][y]=h.val'),f(x,y,i,j,h.next))or f(r,c,j,-i,h)))(0,-1,0,1,h);return a
 
+
+class Solution:
+    def spiralMatrix(self, m: int, n: int, h: Optional[ListNode]) -> List[List[int]]:
+
+        def f(i, j, w, h):
+            n = 2*max(max(i,j),max(w-1-j,h-1-i))+1
+            c = 2*min(min(i,j),min(w-1-j,h-1-i))
+            return (n*n-c*c+1)//4+(i+j-c)*(1-2*(i<j))
+
+        #def f(i, j, w, h):
+        # return min(i,j,h-1-i,w-1-j)*2*(w+h-2)+(0 if i<=j else 1 if i+j<w else 2 if i+j>=w+h-1 else 3)*(w+h-2-4*min(i,j,h-1-i,w-1-j))+(j-i if i<=j else w-1-i-j if i+j<w else h+w-2-i-j if i+j>=w+h-1 else i+j-h+1)
+
+        d = eval(ListNode.serialize(h))
+
+        return [[f(i,j,n,m) for i in range(n)] for j in range(m)]
+
+
 test('''
 2326. Spiral Matrix IV
 Medium

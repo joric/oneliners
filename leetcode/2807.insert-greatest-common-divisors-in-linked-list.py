@@ -14,10 +14,6 @@ class Solution:
 
 class Solution:
     def insertGreatestCommonDivisors(self, h: Optional[ListNode]) -> Optional[ListNode]:
-        return(f:=lambda p:p and p.next and setattr(p,'next',ListNode(gcd(p.val,p.next.val),f(p.next)))or p)(h)
-
-class Solution:
-    def insertGreatestCommonDivisors(self, h: Optional[ListNode]) -> Optional[ListNode]:
         return(f:=lambda p:p and p.next and setattr(p,'next',type(h)(gcd(p.val,p.next.val),f(p.next)))or p)(h)
 
 # supposedly POTD for 2024-09-08 upd. nope it was POTD of 2024-09-10

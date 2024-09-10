@@ -22,6 +22,10 @@ class Solution:
     def insertGreatestCommonDivisors(self, h: Optional[ListNode]) -> Optional[ListNode]:
         t=eval(h.serialize(h));return h.deserialize(str([*chain(*zip(t,map(gcd,t,t[1:]+[0])))][:-1]))
 
+class Solution:
+    def insertGreatestCommonDivisors(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        l=ListNode;return(f:=lambda n:n.next and l(n.val,l(gcd(n.val,n.next.val),f(n.next)))or n)(h)
+
 test('''
 2807. Insert Greatest Common Divisors in Linked List
 Medium

@@ -1001,7 +1001,7 @@ You can also specify maxsize option as `(f:=lru_cache(maxsize)(lambda ...)` in c
 class Solution:
     def shortestCommonSupersequence(self, a: str, b: str) -> str:
         return(f:=lru_cache(9**5)(lambda i,j:a[i:]and b[j:]and(a[i]==b[j]and a[i]+f(i+1,j+1)
-            or min(a[i]+f(i+1,j),b[j]+f(i,j+1),key=len))or a[i:] or b[j:]))(0,0)
+            or min(a[i]+f(i+1,j),b[j]+f(i,j+1),key=len))or a[i:]or b[j:]))(0,0)
 ```
 
 ### Reduce

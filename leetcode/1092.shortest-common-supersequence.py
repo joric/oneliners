@@ -14,7 +14,7 @@ class Solution:
 
 class Solution:
     def shortestCommonSupersequence(self, a: str, b: str) -> str:
-        return(f:=lru_cache(9**5)(lambda i,j:a[i:]and b[j:]and(a[i]==b[j]and a[i]+f(i+1,j+1)or min(a[i]+f(i+1,j),b[j]+f(i,j+1),key=len))or a[i:] or b[j:]))(0,0)
+        return(f:=lru_cache(9**5)(lambda i,j:a[i:]and b[j:]and(a[i]==b[j]and a[i]+f(i+1,j+1)or min(a[i]+f(i+1,j),b[j]+f(i,j+1),key=len))or a[i:]or b[j:]))(0,0)
 
 test('''
 1092. Shortest Common Supersequence

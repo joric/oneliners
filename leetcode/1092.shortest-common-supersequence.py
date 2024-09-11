@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def shortestCommonSupersequence(self, s1: str, s2: str) -> str:
-       @cache
+       @lru_cache(maxsize=10000)
        def solve(i,j):
             if i == len(s1): return s2[j:]
             if j == len(s2): return s1[i:]

@@ -992,6 +992,18 @@ class Solution:
             max(1+f(i-1,b-a[i]),f(i-1,b))))(len(a)-1,t),f.cache_clear())and(-1,r)[r>0]
 ```
 
+You can also specify maxsize option as `(lru_cache(maxsize))(f)` in case of memory issues:
+
+* https://leetcode.com/problems/shortest-common-supersequence
+
+```python
+
+class Solution:
+    def shortestCommonSupersequence(self, a: str, b: str) -> str:
+        return(f:=lru_cache(9**5)(lambda i,j:a[i:]and b[j:]and(a[i]==b[j]and a[i]+f(i+1,j+1)
+            or min(a[i]+f(i+1,j),b[j]+f(i,j+1),key=len))or a[i:] or b[j:]))(0,0)
+```
+
 ### Reduce
 
 Use it to flatten a loop.

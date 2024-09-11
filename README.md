@@ -992,7 +992,7 @@ class Solution:
             max(1+f(i-1,b-a[i]),f(i-1,b))))(len(a)-1,t),f.cache_clear())and(-1,r)[r>0]
 ```
 
-You can also specify maxsize option as `(f:=lru_cache(maxsize)(lambda ...)` in case of memory issues:
+You can also specify maxsize option as `lru_cache(maxsize)(lambda ...)` in case of memory issues:
 
 * https://leetcode.com/problems/shortest-common-supersequence
 

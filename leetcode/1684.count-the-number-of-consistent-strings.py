@@ -18,6 +18,10 @@ class Solution:
     def countConsistentStrings(self, a: str, w: List[str]) -> int:
         return sum(not({*s}-{*a})for s in w)
 
+class Solution:
+    def countConsistentStrings(self, a: str, w: List[str]) -> int:
+        return sum({*s}<={*a}for s in w)
+
 test('''
 1684. Count the Number of Consistent Strings
 Easy

@@ -12,7 +12,7 @@ class Solution:
 
 class Solution:
     def xorQueries(self, a: List[int], q: List[List[int]]) -> List[int]:
-        x=[0,*accumulate(a,xor)];return[x[i]^x[j+1]for i,j in q]
+        a=[0,*accumulate(a,xor)];return[a[i]^a[j+1]for i,j in q]
 
 test('''
 1310. XOR Queries of a Subarray

@@ -25,12 +25,15 @@ class Solution:
     def xorQueries(self, a: List[int], q: List[List[int]]) -> List[int]:
         f=cache(lambda i,j:reduce(lambda x,y:x^y,a[i:j+1]));return[f(i,j)for i,j in q]
 
+class Solution:
+    def xorQueries(self, a: List[int], q: List[List[int]]) -> List[int]:
+        return starmap(cache(lambda i,j:reduce(lambda x,y:x^y,a[i:j+1])),q)
+
 # https://leetcode.com/problems/xor-queries-of-a-subarray/discuss/471231/2-clean-lines-Python
 
 class Solution:
     def xorQueries(self, a: List[int], q: List[List[int]]) -> List[int]:
         a=[0,*accumulate(a,xor)];return[a[i]^a[j+1]for i,j in q]
-
 
 test('''
 1310. XOR Queries of a Subarray

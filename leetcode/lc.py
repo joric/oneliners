@@ -61,7 +61,7 @@ class TreeNode:
 
     @staticmethod
     def serialize(root):
-        return str(TreeNode.dump(root)).replace('None','null') if root else []
+        return str(TreeNode.dump(root)).replace('None','null') if root else'[]'
 
     @staticmethod
     def deserialize(str):
@@ -271,7 +271,7 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
                     return json.loads(TreeNode.serialize(a))==expected
                 elif type(a) is ListNode:
                     return json.loads(ListNode.serialize(a))==expected
-                return sorted(a)==sorted(expected)
+                return sorted(a or[])==sorted(expected or [])
             elif t is ListNode or t is TreeNode:
                 return t.serialize(res)==t.serialize(expected)
             elif res is None and expected is not None:

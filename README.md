@@ -1277,7 +1277,7 @@ class Solution:
 
 ```
 
-Python handles comparisons in the same order as `and` operator (e.g. `log` throws exception if n==0):
+Python handles comparisons in the same order as an `and` operator, so you can use a shorter form:
 
 * https://leetcode.com/problems/power-of-four
 

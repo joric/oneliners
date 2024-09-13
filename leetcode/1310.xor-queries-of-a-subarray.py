@@ -8,11 +8,29 @@ class Solution:
             a[i+1] ^= a[i]
         return [a[j]^a[i-1]if i else a[j]for i,j in q]
 
+# https://leetcode.com/problems/xor-queries-of-a-subarray/discuss/5779356/Solution-by-using-reduce
+
+class Solution:
+    def xorQueries(self, arr: List[int], queries: List[List[int]]) -> List[int]:
+        response = []
+        cache = {}
+        for left, right in queries:
+            key = (left, right)
+            if key not in cache.keys():
+                cache[key] = reduce(lambda x,y: x^y,arr[left:right+1])
+            response.append(cache[key])
+        return response
+
+class Solution:
+    def xorQueries(self, a: List[int], q: List[List[int]]) -> List[int]:
+        f=cache(lambda i,j:reduce(lambda x,y:x^y,a[i:j+1]));return[f(i,j)for i,j in q]
+
 # https://leetcode.com/problems/xor-queries-of-a-subarray/discuss/471231/2-clean-lines-Python
 
 class Solution:
     def xorQueries(self, a: List[int], q: List[List[int]]) -> List[int]:
         a=[0,*accumulate(a,xor)];return[a[i]^a[j+1]for i,j in q]
+
 
 test('''
 1310. XOR Queries of a Subarray

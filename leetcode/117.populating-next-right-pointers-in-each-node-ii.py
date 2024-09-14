@@ -1,9 +1,6 @@
 from lc import *
 
-# TODO fix tests
-
 # https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
-
 # Definition for a Node.
 class Node:
     def __init__(self, val: int = 0, left: 'Node' = None, right: 'Node' = None, next: 'Node' = None):
@@ -45,10 +42,9 @@ class Node:
                 root = q.pop(0)
                 res.append(root and root.val)
                 if root:
-                    q.append(root.left)
-                    q.append(root.right)
+                    root.left and q.append(root.left)
+                    root.right and q.append(root.right)
             res.append('#')
-        res.pop()
         while res and res[-1] is None:
             res.pop()
         return res
@@ -86,9 +82,11 @@ class Solution:
 
 class Solution:
     def connect(self, root: 'Node') -> 'Node':
-        def f(n, c):
-            while n and not (n.left or n.right): n = n.next
-            if n: c.next = n.left or n.right
+        def f(n,c):
+            while n and not (n.left or n.right):
+                n = n.next
+            if n:
+                c.next = n.left or n.right
         if root:
             if root.left and root.right: root.left.next = root.right
             elif root.left and root.next: f(root.next, root.left)
@@ -96,6 +94,12 @@ class Solution:
             self.connect(root.right)
             self.connect(root.left)
         return root
+
+# convert bfs to recursive
+
+class Solution:
+    def connect(self, r: 'Node') -> 'Node':
+        a,q=setattr,deque();r and q.append(r);(f:=lambda:(n:=len(q),p:=None,[(t:=q.popleft(),a(t,'next',None),p and a(p,'next',t),p:=t,t.left and q.append(t.left),t.right and q.append(t.right))for i in range(n)],q and f()))();return r
 
 test('''
 117. Populating Next Right Pointers in Each Node II

@@ -2,7 +2,62 @@ from lc import *
 
 # https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
 
-# TODO fix tests
+# Definition for a Node.
+class Node:
+    def __init__(self, val: int = 0, left: 'Node' = None, right: 'Node' = None, next: 'Node' = None):
+        self.val = val
+        self.left = left
+        self.right = right
+        self.next = next
+
+    @staticmethod
+    def deserialize(str):
+        return Node.parse(json.loads(str))
+
+    def parse(arr):
+        if not arr:
+            return None
+        if type(arr) is int:
+            return Node(arr)
+        nodes = [None if x is None else Node(x) for x in arr]
+        kids = nodes[::-1]
+        root = kids and kids.pop()
+        for node in nodes:
+            if node:
+                if kids:
+                    node.left = kids.pop()
+                if kids:
+                    node.right = kids.pop()
+        return root
+
+    # The serialized output is in level order as connected by the next pointers, with '#' signifying the end of each level.
+
+    @staticmethod
+    def dump(root):
+        q = []
+        res = []
+        q.append(root)
+        while len(q):
+            nodes = len(q)
+            for _ in range(nodes):
+                root = q.pop(0)
+                res.append(root and root.val)
+                if root:
+                    q.append(root.left)
+                    q.append(root.right)
+            res.append('#')
+        res.pop()
+        while res and res[-1] is None:
+            res.pop()
+        return res
+
+    @staticmethod
+    def serialize(root):
+        return str(Node.dump(root)).replace('None','null') if root else'[]'
+
+    def __repr__(self):
+        d = Node.dump(self)
+        return f'[{','.join(map(str,d))}]'
 
 class Solution:
     def connect(self, root: 'Optional[Node]', next: 'Node' = None) -> 'Optional[Node]':

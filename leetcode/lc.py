@@ -179,24 +179,18 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
         cnames.append(cname)
         return
 
-    def vp(s):
-        try:
-            return json.loads(s)
-        except Exception as e:
-            return s
-
     def vc(func, name, v):
-        is_gen = lambda v: hasattr(v,'__iter__') and not hasattr(v,'__len__')
-        is_iter = lambda v: type(v) in (tuple, set, list, dict,deque) or is_gen(v)
-        to_list = lambda v: v if not is_iter(v) else [to_list(x) for x in v]
         tname = get_type_hints(func).get(name, None)
 
-        if cast:
-            v = cast(name, v)
+        wrapper = ''
+        if '__args__' in dir(tname) and len(tname.__args__)>1:
+            tname, wrapper = tname.__args__
 
         try:
-            if 'parse' in dir(tname):
-                return (getattr(tname,'parse'))(v)
+            if 'deserialize' in dir(tname):
+                f = getattr(tname,'deserialize')
+                return f(v)
+            v = json.loads(v)
             x = tname(v)
             if type(x) is float:
                 return round(x,5)
@@ -204,9 +198,17 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
         except Exception as e:
             pass
 
+        is_gen = lambda v: hasattr(v,'__iter__') and not hasattr(v,'__len__')
+        is_iter = lambda v: type(v) in (tuple, set, list, dict,deque) or is_gen(v)
+        to_list = lambda v: v if not is_iter(v) else [to_list(x) for x in v]
+
+        if cast:
+            v = cast(name, v)
+
         hint = str(tname)
         if type(v) is str:
             return v # see linked-list-cycle-ii
+        # unwrap some vars
         if 'List[lc.ListNode]' in hint or 'List[typing.Optional[lc.ListNode]]' in hint:
             return [ListNode.parse(x) for x in v]
         if 'List[lc.TreeNode]' in hint or 'List[typing.Optional[lc.TreeNode]]' in hint:
@@ -284,6 +286,8 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
                 return all([*x]==[*y] for x,y in zip(res,expected))
             elif type(expected) is list: # letter-combinations-of-a-phone-number
                 return list(res)==expected
+            elif type(expected) is str:
+                return str(res)==expected
             else:
                 return res==expected
 
@@ -331,8 +335,9 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
         passed, total = 0, len(tests)
 
         for t in tests:
-            args = tuple(map(vp, t['input']))
-            expected = tuple(map(vp, t['output']))
+
+            args = t['input']
+            expected = t['output']
 
             func = getattr(cname(), [*filter(lambda s:not s.startswith('__'),dir(cname))][-1])
             args, iargs, orig = vcast(func, args, init)
@@ -367,6 +372,12 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
 
     param = []
     t = 0
+
+    def vp(s):
+        try:
+            return json.loads(s)
+        except Exception as e:
+            return s
 
     if custom_class_tests:
         for s in text.splitlines():

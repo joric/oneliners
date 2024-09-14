@@ -14,7 +14,7 @@ class Solution:
 
 class Solution:
     def connect(self, t: 'Optional[Node]') -> 'Optional[Node]':
-        return(f:=lambda t,n,a=setattr:t and (a(t,'next',n),f(t.right,n and n.left),f(t.left,t.right))and t)(t,None)
+        return(f:=lambda t,n,a=setattr:t and(a(t,'next',n),f(t.right,n and n.left),f(t.left,t.right))and t)(t,None)
 
 test('''
 116. Populating Next Right Pointers in Each Node

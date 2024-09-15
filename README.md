@@ -518,6 +518,12 @@ MyHashSet=type('',(set,),{'remove':set.discard,'contains':set.__contains__})
 MyStack=type('',(list,),{'push':list.append,'top':lambda s:s[-1],'empty':lambda s:not s})
 ```
 
+But subclassing fails since Python 3.7, `type() doesn't support MRO entry resolution; use types.new_class()`.
+
+When you try to use `types.new_class()` it says `TypeError: .__init_subclass__() takes no keyword arguments')`.
+
+This can be avoided by creating the class first, then adding the methods to it separately, e.g.:
+
 * https://leetcode.com/problems/insert-delete-getrandom-o1
 
 ```python

@@ -39,9 +39,19 @@ RandomizedSet=type('',(),{'__init__':lambda s:setattr(s,'h',set()),'insert':lamb
 
 RandomizedSet=type('',(set,),{'insert':lambda s,x:not(x in s or s.add(x)),'remove':lambda s,x:x in s and not s.discard(x),'getRandom':lambda s:choice([*s])})
 
-RandomizedSet=type('',(Counter,),{'insert':lambda s,x:s.update({x})or s[x]<2,'remove':lambda s,x:s.pop(x,0),'getRandom':lambda s:choice([*s])})
+# does not work since 3.7 "type() doesn't support MRO entry resolution; use types.new_class()"
+#RandomizedSet=type('',(Counter,),{'insert':lambda s,x:s.update({x})or s[x]<2,'remove':lambda s,x:s.pop(x,0),'getRandom':lambda s:choice([*s])})
 
-с=Counter;с.insert=lambda s,x:s.update({x})or s[x]<2;с.remove=lambda s,x:s.pop(x,0);с.getRandom=lambda s:choice([*s]);RandomizedSet=с
+#с=Counter;с.insert=lambda s,x:s.update({x})or s[x]<2;с.remove=lambda s,x:s.pop(x,0);с.getRandom=lambda s:choice([*s]);RandomizedSet=с
+
+# I am getting TypeError: .__init_subclass__() takes no keyword arguments, how to fix?
+'''
+RandomizedSet=__import__('types').new_class('',(Counter,),{
+    'insert':lambda s,x:s.update({x})or s[x]<2,
+    'remove':lambda s,x:s.pop(x,0),
+    'getRandom':lambda s:choice([*s])
+})
+'''
 
 test('''
 380. Insert Delete GetRandom O(1)

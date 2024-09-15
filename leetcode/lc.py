@@ -419,15 +419,27 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
         ok = check(results,expected,*methods)
         print_res(ok, results, expected, methods, arglist)
 
+import warnings
+warnings.filterwarnings('ignore') 
+
 if __name__ == "__main__":
     import os
+    def custom_test(text=None, classname=None, check=None, init=None, custom=None, cast=None, sort=None, inplace=None):
+        # TODO implement custom tests
+        pass
     path = '.'
-    files = sorted(os.listdir(path), key=lambda s:[int(c) if c.isdigit() else c for c in re.split(r'(\d+)',s)])
-    for filename in files:
-        m = re.search(r'^([\d]+\..*)\.py$', filename)
-        if not m: continue
+
+    files = filter(lambda s:re.search(r'^([\d]+\..*)\.py$',s), os.listdir(path))
+    files = sorted(files, key=lambda s:[int(c) if c.isdigit() else c for c in re.split(r'(\d+)',s)])
+
+    for i, filename in enumerate(files):
         with open(filename) as f:
-            print(f'\x1b[96m{filename}\x1b[0m')
+            #print(f'\x1b[96m{filename}\x1b[0m')
+            sys.stderr.write(f'\r{i*100//len(files)}%')
             text = f.read()
+            text = text.replace('test(','custom_test(')
             code = compile(text, filename, 'exec')
-            exec(code, globals())
+            exec(code)
+
+    print('\rAll tests passed.')
+

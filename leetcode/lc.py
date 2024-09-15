@@ -229,9 +229,23 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
             return t(v) if v is not None else None if t is not bool else False
         return v
 
+    def default_cast(args):
+        out = []
+        for x in args:
+            try:
+                x = json.loads(x)
+            except:
+                try:
+                    x = float(x)
+                except:
+                    pass
+            out.append(x)
+        return out
+
     def vcast(func, args, init=None):
         func = func.__wrapped__ if hasattr (func, '__wrapped__') else func
         if not hasattr(func,'__code__'):
+            args = default_cast(args)
             return args, args, args
 
         # determine 'self', need for "minustwoliners" (unreliable)
@@ -256,6 +270,7 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
         c = lambda c,t,w=50: '\x1b[{1}m{2}\x1b[0m'.format(s:=g(t), 30+c, s[:w]+'...' if e==2 and len(s)>=w else s)
         e = 2 if passed else 1
         print('%s args %s result %s expected %s' % (c(e,'PASSED' if passed else 'FAILED'), c(e,args), c(e,res), c(e,expected)))
+        return 0 if passed else 1
 
     main = importlib.import_module('__main__')
 
@@ -269,12 +284,10 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
                 return sorted(res)==sorted(expected)
             if inplace:
                 a = args[0]
-                if type(a) is TreeNode:
-                    return json.loads(TreeNode.serialize(a))==expected
-                elif type(a) is ListNode:
-                    return json.loads(ListNode.serialize(a))==expected
+                if 'Node' in str(type(a)):
+                    return type(a).serialize(a)==type(a).serialize(expected)
                 return sorted(a or[])==sorted(expected or [])
-            elif t is ListNode or t is TreeNode:
+            elif 'Node' in str(t):
                 return t.serialize(res)==t.serialize(expected)
             elif res is None and expected is not None:
                 return False
@@ -315,6 +328,8 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
                 if m[i]:
                     out.append(m[i])
         return out
+
+    exitcode = 0
 
     if not custom_class_tests:
         for s in text.splitlines():
@@ -358,7 +373,7 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
             if type(ok) is tuple: # see linked-list-cycle-ii (substitutes res with custom res)
                 ok, res = ok[:2]
 
-            print_res(ok, res, expected, *orig)
+            exitcode |= print_res(ok, res, expected, *orig)
             passed += int(ok)
 
         #if total: print('Passed %d/%d tests.' % (passed, total))
@@ -417,29 +432,33 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
                 results.append(res)
 
         ok = check(results,expected,*methods)
-        print_res(ok, results, expected, methods, arglist)
+        exitcode |= print_res(ok, results, expected, methods, arglist)
+
+    exit(exitcode)
 
 import warnings
 warnings.filterwarnings('ignore') 
 
 if __name__ == "__main__":
     import os
-    def custom_test(text=None, classname=None, check=None, init=None, custom=None, cast=None, sort=None, inplace=None):
-        # TODO implement custom test
-        pass
-    path = '.'
-
-    files = filter(lambda s:re.search(r'^([\d]+\..*)\.py$',s), os.listdir(path))
+    files = filter(lambda s:re.search(r'^([\d]+\..*)\.py$',s), os.listdir('.'))
     files = sorted(files, key=lambda s:[int(c) if c.isdigit() else c for c in re.split(r'(\d+)',s)])
 
     for i, filename in enumerate(files):
-        with open(filename) as f:
-            #print(f'\x1b[96m{filename}\x1b[0m')
-            sys.stderr.write(f'\r{i*100//len(files)}%')
-            text = f.read()
-            text = text.replace('test(','custom_test(')
-            code = compile(text, filename, 'exec')
-            exec(code)
+        if i<120: continue
+
+        #sys.stderr.write(f'\r{i*100//len(files)}%')
+        #text = f.read()
+        #text = text.replace('test(','custom_test(')
+        #code = compile(text, filename, 'exec')
+        #exec(code)
+
+        print(f'[{i}] \x1b[96m{filename}\x1b[0m')
+
+        exitcode = os.system(filename)
+
+        if exitcode or i==300:
+            exit(exitcode)
 
     print('\r\x1b[32mTests passed.')
 

@@ -77,4 +77,4 @@ Accepted
 3,307,635
 Submissions
 5,698,034
-''', check=lambda r,e,a,t: sorted(a[:e[0]])==sorted(json.loads(e[1].replace(',_',''))))
+''', check=lambda r,e,a,t: sorted(a[:int(e[0])])==sorted(json.loads(e[1].replace(',_',''))))

@@ -120,6 +120,6 @@ nums is sorted in non-decreasing order.
 
 ''', 
 
-check=lambda res,exp,nums:nums[:exp[0]]==json.loads(exp[1].replace(',_',''))
+check=lambda r,e,a:a[:int(e[0])]==json.loads(e[1].replace(',_',''))
 
 )

@@ -5,7 +5,43 @@ class Node:
         self.val = val
         self.neighbors = neighbors if neighbors is not None else []
 
-    def serialize(self):
+    @staticmethod
+    def serialize(root):
+        return str(Node.dump(root)).replace('None','null') if root else'[]'
+
+    @staticmethod
+    def dump(root):
+        q = []
+        res = []
+        q.append(root)
+        while len(q):
+            nodes = len(q)
+            for _ in range(nodes):
+                root = q.pop(0)
+                res.append(root and root.val)
+                if root:
+                    for nei in root.neighbors:
+                        q.append(nei)
+        while res and res[-1] is None:
+            res.pop()
+        return res
+
+    def __repr__(self):
+        return(f:=lambda x:x and f'Node{{val: {x.val}, neighbors: {[f(nei) for nei in x.neighbors]}}}'or 'None')(self)
+
+    def parse(v):
+        nodes = {}
+        for i,nei in enumerate(v):
+            k = i+1
+            if k not in nodes:
+                nodes[k] = Node(k)
+            for i in nei:
+                if i not in nodes:
+                    nodes[i] = Node(i)
+                nodes[k].neighbors.append(nodes[i])
+        return None if 1 not in nodes else nodes[1]
+    '''
+        def serialize(self):
         nodes = {}
         def f(node):
             if node.val in nodes:
@@ -40,6 +76,7 @@ class Node:
                     nodes[i] = Node(i)
                 nodes[k].neighbors.append(nodes[i])
         return None if 1 not in nodes else nodes[1]
+    '''
 
 class Solution:
     def cloneGraph(self, node: 'Node') -> 'Node':
@@ -95,23 +132,25 @@ Example 1:
 
 Input: adjList = [[2,4],[1,3],[2,4],[1,3]]
 Output: [[2,4],[1,3],[2,4],[1,3]]
+
 Explanation: There are 4 nodes in the graph.
 1st node (val = 1)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).
 2nd node (val = 2)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).
 3rd node (val = 3)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).
 4th node (val = 4)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).
-Example 2:
 
+Example 2:
 
 Input: adjList = [[]]
 Output: [[]]
 Explanation: Note that the input contains one empty list. The graph consists of only one node with val = 1 and it does not have any neighbors.
+
 Example 3:
 
 Input: adjList = []
 Output: []
+
 Explanation: This an empty graph, it does not have any nodes.
- 
 
 Constraints:
 
@@ -135,4 +174,4 @@ Clone Binary Tree With Random Pointer
 Medium
 Clone N-ary Tree
 Medium
-''', check=lambda r,e,*args:str(r)==str(e))
+''', inplace=True)

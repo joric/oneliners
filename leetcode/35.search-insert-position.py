@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/search-insert-position/
+
 class Solution:
     def searchInsert(self, nums: List[int], target: int) -> int:
         return bisect_left(nums, target)
@@ -27,10 +29,12 @@ Example 1:
 
 Input: nums = [1,3,5,6], target = 5
 Output: 2
+
 Example 2:
 
 Input: nums = [1,3,5,6], target = 2
 Output: 1
+
 Example 3:
 
 Input: nums = [1,3,5,6], target = 7

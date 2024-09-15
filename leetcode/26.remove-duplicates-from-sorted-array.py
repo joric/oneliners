@@ -86,6 +86,4 @@ Constraints:
 -100 <= nums[i] <= 100
 nums is sorted in non-decreasing order.
 
-''', 
-check=lambda r,e,a:a[:e[0]]==json.loads(e[1].replace(',_',''))
-)
+''', check=lambda r,e,a:a[:int(e[0])]==json.loads(e[1].replace(',_','')))

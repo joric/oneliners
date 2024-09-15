@@ -310,7 +310,7 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
     p,t = '',0
     def split_vars(s, prepend=', '):
         out = []
-        if m:=re.split(r'\, [a-zA-Z]+\d* = ', prepend+s):
+        if m:=re.split(r'\, [a-zA-Z_]+\d* = ', prepend+s):
             for i in range(len(m)):
                 if m[i]:
                     out.append(m[i])

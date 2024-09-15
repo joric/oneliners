@@ -10,7 +10,7 @@ class Solution:
 
 class Solution:
     def champagneTower(self, p: int, r: int, g: int) -> float:
-        return min(1,(f:=cache(lambda i,j:i==j==0and p or i>=j>=0and(max(f(i-1,j-1)-1,0)+max(f(i-1,j)-1,0))/2))(r,g))
+        return min(1,(f:=cache(lambda i,j:i==j==0 and p or i>=j>=0 and(max(f(i-1,j-1)-1,0)+max(f(i-1,j)-1,0))/2))(r,g))
 
 test('''
 799. Champagne Tower

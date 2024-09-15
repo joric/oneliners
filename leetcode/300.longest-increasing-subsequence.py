@@ -43,7 +43,7 @@ class Solution:
 
 class Solution:
     def lengthOfLIS(self, n: List[int]) -> int:
-        return(f:=cache(lambda i,j:n[i:]and max((j==-1or n[j]<n[i])and 1+f(i+1,i),f(i+1,j))or 0))(0,-1)
+        return(f:=cache(lambda i,j:n[i:]and max((j==-1 or n[j]<n[i])and 1+f(i+1,i),f(i+1,j))or 0))(0,-1)
 
 # dp solution
 

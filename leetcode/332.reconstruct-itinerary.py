@@ -16,7 +16,7 @@ class Solution:
 
 class Solution:
     def findItinerary(self, t: List[List[str]]) -> List[str]:
-        d,r=defaultdict(list),[];[d[a].append(b)for a,b in sorted(t)[::-1]];f=lambda a:([f(d[a].pop())for _ in[0]*300if d[a]],r.append(a));f('JFK');return r[::-1]
+        d,r=defaultdict(list),[];[d[a].append(b)for a,b in sorted(t)[::-1]];f=lambda a:([f(d[a].pop())for _ in[0]*300 if d[a]],r.append(a));f('JFK');return r[::-1]
 
 test('''
 332. Reconstruct Itinerary

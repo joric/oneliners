@@ -430,4 +430,4 @@ if __name__ == "__main__":
             print(f'\x1b[96m{filename}\x1b[0m')
             text = f.read()
             code = compile(text, filename, 'exec')
-            exec(code)
+            exec(code, globals())

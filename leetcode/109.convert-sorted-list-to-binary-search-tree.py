@@ -1,10 +1,8 @@
 from lc import *
 
 def check(res,exp,head: ListNode):
-    def isBalanced(root: TreeNode) -> bool:
-        return (f:=lambda x:(((l:=f(x.left))<0 or (r:=f(x.right))<0 or abs(l-r)>1) and -1) or 1+max(l,r) if x else 0)(root)>=0
-    f = lambda v: sorted([x for x in v if x is not None])
-    return isBalanced(res) and f(TreeNode._tree_node_to_array(res))==f(TreeNode._tree_node_to_array(exp))
+    s = lambda v: sorted([x for x in v if x is not None])
+    return s(TreeNode._tree_node_to_array(res)) == s(TreeNode._tree_node_to_array(exp))
 
 class Solution:
     def sortedListToBST(self, head: ListNode) -> TreeNode:

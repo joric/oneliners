@@ -4,7 +4,9 @@ def check(res,exp,head: ListNode):
     def isBalanced(root: TreeNode) -> bool:
         return (f:=lambda x:(((l:=f(x.left))<0 or (r:=f(x.right))<0 or abs(l-r)>1) and -1) or 1+max(l,r) if x else 0)(root)>=0
 
-    return (f:=lambda v:sorted([x for x in v if x is not None]))(res and res.dump(res) or [])==f(exp and exp.dump(exp) or []) and isBalanced(res)
+    f = lambda v: sorted([x for x in v if x is not None])
+
+    return f(TreeNode._tree_node_to_array(res))==f(TreeNode._tree_node_to_array(exp)) and isBalanced(res)
 
 class Solution:
     def sortedListToBST(self, head: ListNode) -> TreeNode:

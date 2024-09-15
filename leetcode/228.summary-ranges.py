@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def summaryRanges(self, n: List[int]) -> List[str]:
-        o=r=[];[(x-1not in r and(r:=[],o:=o+[r]),setitem(r,slice(1,None),[x]))for x in n];return['->'.join(map(str,r))for r in o]
+        o=r=[];[(~-x not in r and(r:=[],o:=o+[r]),setitem(r,slice(1,None),[x]))for x in n];return['->'.join(map(str,r))for r in o]
 
 test('''
 228. Summary Ranges

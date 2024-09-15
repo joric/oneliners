@@ -425,7 +425,7 @@ warnings.filterwarnings('ignore')
 if __name__ == "__main__":
     import os
     def custom_test(text=None, classname=None, check=None, init=None, custom=None, cast=None, sort=None, inplace=None):
-        # TODO implement custom tests
+        # TODO implement custom test
         pass
     path = '.'
 
@@ -441,5 +441,5 @@ if __name__ == "__main__":
             code = compile(text, filename, 'exec')
             exec(code)
 
-    print('\rAll tests passed.')
+    print('\r\x1b[32mTests passed.')
 

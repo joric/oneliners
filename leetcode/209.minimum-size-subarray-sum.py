@@ -22,11 +22,6 @@ class Solution:
 
 class Solution:
     def minSubArrayLen(self, s: int, a: List[int]) -> int:
-        a=[*accumulate(a)];return min([i-bisect_right(a,x-s)+1for i,x in enumerate(a)if x>=s],default=0)
-
-
-class Solution:
-    def minSubArrayLen(self, s: int, a: List[int]) -> int:
         a=[*accumulate(a)];return-max([~i+bisect_right(a,x-s)for i,x in enumerate(a)if x>=s],default=0)
 
 test('''

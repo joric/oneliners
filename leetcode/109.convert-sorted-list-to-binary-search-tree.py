@@ -71,9 +71,7 @@ class Solution:
     def sortedListToBST(self, head: ListNode) -> TreeNode:
         return (f:=lambda i,j:None if i>j else TreeNode(v[(m:=(i+j)//2)],f(i,m-1),f(m+1,j)))(0,len(v:=(g:=lambda x:x and[x.val]+g(x.next)or[])(head))-1)
 
-
 test('''
-
 109. Convert Sorted List to Binary Search Tree
 Medium
 
@@ -116,5 +114,4 @@ Submissions
 724,040
 
 ''', check=check
-
 )

@@ -31,7 +31,7 @@ class Solution:
 
 class Solution:
     def findTheLongestSubstring(self, s: str) -> int:
-        r=x=0;v={0:-1};return max((x:=x^1<<('aeiou'.find(c)+1)>>1,v.setdefault(x,i))and i-v[x]for i,c in enumerate(s))
+        x,v=0,{0:-1};return max((x:=x^1<<('aeiou'.find(c)+1)>>1,v.setdefault(x,i))and i-v[x]for i,c in enumerate(s))
 
 test('''
 1371. Find the Longest Substring Containing Vowels in Even Counts

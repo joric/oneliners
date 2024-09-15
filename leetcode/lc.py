@@ -298,7 +298,7 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
             elif t is Counter:
                 return set(res.keys())==set(expected)
             elif 'numpy.ndarray' in str(t):
-                return all([*x]==[*y] for x,y in zip(res,expected))
+                return all(x==y for x,y in zip(res,expected))
             elif type(expected) is list: # letter-combinations-of-a-phone-number
                 return list(res)==expected
             elif type(expected) is str:
@@ -447,7 +447,9 @@ if __name__ == "__main__":
     files = sorted(files, key=lambda s:[int(c) if c.isdigit() else c for c in re.split(r'(\d+)',s)])
 
     for i, filename in enumerate(files):
-        if i<150: continue
+        index = int(re.search(r'^([\d]+)', filename)[0])
+
+        if index<295: continue
 
         #sys.stderr.write(f'\r{i*100//len(files)}%')
         #text = f.read()

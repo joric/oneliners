@@ -419,7 +419,15 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
         ok = check(results,expected,*methods)
         print_res(ok, results, expected, methods, arglist)
 
-import sys
-if not sys.warnoptions:
-    import warnings
-    warnings.simplefilter("ignore")
+if __name__ == "__main__":
+    import os
+    path = '.'
+    files = sorted(os.listdir(path), key=lambda s:[int(c) if c.isdigit() else c for c in re.split(r'(\d+)',s)])
+    for filename in files:
+        m = re.search(r'^([\d]+\..*)\.py$', filename)
+        if not m: continue
+        with open(filename) as f:
+            print(f'\x1b[96m{filename}\x1b[0m')
+            text = f.read()
+            code = compile(text, filename, 'exec')
+            exec(code)

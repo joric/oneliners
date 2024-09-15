@@ -1,9 +1,5 @@
 from lc import *
 
-def check(res,exp,head: ListNode):
-    s = lambda v: sorted([x for x in v if x is not None])
-    return s(TreeNode._tree_node_to_array(res)) == s(TreeNode._tree_node_to_array(exp))
-
 class Solution:
     def sortedListToBST(self, head: ListNode) -> TreeNode:
         if not head or not head.next:
@@ -111,5 +107,5 @@ Accepted
 Submissions
 724,040
 
-''', check=check
+''', check=lambda r,e,*a:(s:=lambda v: sorted([x for x in v if x is not None]))(TreeNode._tree_node_to_array(r)) == s(TreeNode._tree_node_to_array(e))
 )

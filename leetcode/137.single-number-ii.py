@@ -28,10 +28,6 @@ class Solution:
     def singleNumber(self, n: List[int]) -> int:
         return (sum(set(n))*3-sum(n))//2
 
-class Solution:
-    def singleNumber(self, n: List[int]) -> int:
-        return(sum({*n})*3-sum(n))/2
-
 test('''
 137. Single Number II
 Medium

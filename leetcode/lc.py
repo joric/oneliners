@@ -182,28 +182,27 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
     def vc(func, name, v):
         tname = get_type_hints(func).get(name, None)
 
-        wrapper = ''
-        if '__args__' in dir(tname) and len(tname.__args__)>1:
-            tname, wrapper = tname.__args__
-
-        try:
-            if 'deserialize' in dir(tname):
-                f = getattr(tname,'deserialize')
-                return f(v)
-            v = json.loads(v)
-            x = tname(v)
-            if type(x) is float:
-                return round(x,5)
-            return x
-        except Exception as e:
-            pass
+        if cast: # see 191.number-of-1-bits.py
+            v = cast(name, v)
+        else:
+            wrapper = ''
+            if '__args__' in dir(tname) and len(tname.__args__)>1:
+                tname, wrapper = tname.__args__
+            try:
+                if 'deserialize' in dir(tname):
+                    f = getattr(tname,'deserialize')
+                    return f(v)
+                v = json.loads(v)
+                x = tname(v)
+                if type(x) is float:
+                    return round(x,5)
+                return x
+            except Exception as e:
+                pass
 
         is_gen = lambda v: hasattr(v,'__iter__') and not hasattr(v,'__len__')
         is_iter = lambda v: type(v) in (tuple, set, list, dict,deque) or is_gen(v)
         to_list = lambda v: v if not is_iter(v) else [to_list(x) for x in v]
-
-        if cast:
-            v = cast(name, v)
 
         hint = str(tname)
         if type(v) is str:
@@ -236,9 +235,12 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
                 x = json.loads(x)
             except:
                 try:
-                    x = float(x)
+                    x = int(x)
                 except:
-                    pass
+                    try:
+                        x = float(x)
+                    except:
+                        pass
             out.append(x)
         return out
 
@@ -445,7 +447,7 @@ if __name__ == "__main__":
     files = sorted(files, key=lambda s:[int(c) if c.isdigit() else c for c in re.split(r'(\d+)',s)])
 
     for i, filename in enumerate(files):
-        if i<120: continue
+        if i<150: continue
 
         #sys.stderr.write(f'\r{i*100//len(files)}%')
         #text = f.read()

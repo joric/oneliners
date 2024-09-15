@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/number-of-1-bits/
+
 # Kernighan
 
 class Solution:

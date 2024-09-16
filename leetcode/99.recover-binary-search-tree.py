@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def recoverTree(self, root: Optional[TreeNode]) -> None:
-        self.first, self.second, self.prev = None, None, TreeNode(float('-inf')) 
+        self.first, self.second, self.prev = None, None, TreeNode(-inf)
         def inorder(node):
             if node:
                 inorder(node.left)

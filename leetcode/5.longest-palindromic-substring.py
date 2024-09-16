@@ -67,7 +67,7 @@ class Solution:
 
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-        n,r=len(s),[0,1];f=lambda j,k:(all(j>=0 and k<n and s[j]==s[k]and(j:=j-1,k:=k+1)for _ in s),r[1]<k-j-1and setitem(r,slice(0,1),[j+1,k-j-1]));[(f(i,i),f(i,i+1))for i in range(n-1)];return s[r[0]:r[0]+r[1]]
+        n,r=len(s),[0,1];f=lambda j,k:(all(j>=0 and k<n and s[j]==s[k]and(j:=j-1,k:=k+1)for _ in s),r[1]<k-j-1 and setitem(r,slice(0,1),[j+1,k-j-1]));[(f(i,i),f(i,i+1))for i in range(n-1)];return s[r[0]:r[0]+r[1]]
 
 # https://leetcode.com/problems/longest-palindromic-substring/discuss/484124/Shortest-and-easy-understandable-but-Slow-Python
 

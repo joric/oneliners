@@ -286,8 +286,10 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
             if inplace:
                 a = args[0]
                 if 'Node' in str(type(a)):
+                    if type(expected) is list:
+                        expected = type(a).parse(expected)
                     return type(a).serialize(a)==type(a).serialize(expected)
-                return sorted(a or[])==sorted(expected or [])
+                return sorted(a or [])==sorted(expected or [])
             elif 'Node' in str(t):
                 return t.serialize(res)==t.serialize(expected)
             elif res is None and expected is not None:
@@ -449,11 +451,28 @@ if __name__ == "__main__":
     import os
     files = filter(lambda s:re.search(r'^([\d]+)\..*\.py$',s), os.listdir('.'))
     files = sorted(files, key=lambda s:[int(c) if c.isdigit() else c for c in re.split(r'(\d+)',s)])
+    #sys.stdout = open(os.devnull, 'w')
+
+    import subprocess
+
     for i, filename in enumerate(files):
         index = int(re.search(r'^([\d]+)', filename)[0])
-        if index<341: continue
-        print(f'[{i}/{len(files)}] \x1b[96m{filename}\x1b[0m')
-        exitcode = os.system(filename)
-        if exitcode or i==300:
-            exit(exitcode)
+        if index<99: continue
+
+        #print(f'[{i}/{len(files)}] \x1b[96m{filename}\x1b[0m')
+        sys.stderr.write(f'\r[{i}/{len(files)}] {i*100//len(files)}%')
+
+        with open(os.devnull, 'wb') as devnull:
+
+            process = subprocess.Popen(['py', filename], stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+            stdout, stderr = process.communicate()
+            exitcode = process.wait()
+
+            if exitcode or i==300:
+                #sys.stdout = sys.__stdout__
+                #print(stdout, stderr, exitcode)
+
+                sys.stderr.buffer.write(stderr)
+
+                exit(exitcode)
     print('\r\x1b[32mTests passed.')

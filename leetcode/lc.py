@@ -288,7 +288,7 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
                 if 'Node' in str(type(a)):
                     e = type(a).deserialize(expected)
                     return type(a).serialize(a)==type(a).serialize(e)
-                if expected == '[]': expected = None
+                if expected == '[]': expected = None # 114.flatten-binary-tree-to-linked-list.py
                 return (a or [])==(expected or [])
             elif 'Node' in str(t):
                 return t.serialize(res)==t.serialize(expected)

@@ -11,6 +11,7 @@ class Node:
 
     @staticmethod
     def deserialize(str):
+        str = str.replace(',#','')
         return Node.parse(json.loads(str))
 
     def parse(arr):

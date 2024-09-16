@@ -12,6 +12,8 @@ class Node:
 
     @staticmethod
     def deserialize(str):
+        # there's an issue with types, return type is node but template is a list with markers
+        str = str.replace(',#','') # just remove the markers
         return Node.parse(json.loads(str))
 
     def parse(arr):

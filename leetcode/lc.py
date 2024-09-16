@@ -286,9 +286,8 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
             if inplace:
                 a = args[0]
                 if 'Node' in str(type(a)):
-                    if type(expected) is list:
-                        expected = type(a).parse(expected)
-                    return type(a).serialize(a)==type(a).serialize(expected)
+                    e = type(a).deserialize(expected)
+                    return type(a).serialize(a)==type(a).serialize(e)
                 return sorted(a or [])==sorted(expected or [])
             elif 'Node' in str(t):
                 return t.serialize(res)==t.serialize(expected)
@@ -369,7 +368,8 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
             if len(expected)==1:
                 expected = expected[0]
 
-            expected = vc(func, 'return', expected)
+            if not inplace:
+                expected = vc(func, 'return', expected)
 
             # leetcode does not convert bool result to int result since Aug 2023
             ok = False if type(res) in (float,bool) and type(expected)==int else check(res, expected, *args)
@@ -457,7 +457,9 @@ if __name__ == "__main__":
 
     for i, filename in enumerate(files):
         index = int(re.search(r'^([\d]+)', filename)[0])
-        if index<99: continue
+
+        #if index<99: continue
+        if i<98: continue
 
         #print(f'[{i}/{len(files)}] \x1b[96m{filename}\x1b[0m')
         sys.stderr.write(f'\r[{i}/{len(files)}] {i*100//len(files)}%')
@@ -472,6 +474,9 @@ if __name__ == "__main__":
                 #sys.stdout = sys.__stdout__
                 #print(stdout, stderr, exitcode)
 
+                print(f'\rTest failed in {filename}')
+
+                sys.stdout.buffer.write(stdout)
                 sys.stderr.buffer.write(stderr)
 
                 exit(exitcode)

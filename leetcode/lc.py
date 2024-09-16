@@ -357,6 +357,7 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
             expected = t['output']
 
             func = getattr(cname(), [*filter(lambda s:not s.startswith('__'),dir(cname))][-1])
+
             args, iargs, orig = vcast(func, args, init)
 
             if init:
@@ -436,7 +437,7 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
         ok = check(results,expected,*methods)
         exitcode |= print_res(ok, results, expected, methods, arglist)
 
-    exit(exitcode)
+    exitcode and exit(exitcode)
 
 import warnings
 warnings.filterwarnings('ignore') 

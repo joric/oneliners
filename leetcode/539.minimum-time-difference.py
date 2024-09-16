@@ -12,6 +12,10 @@ class Solution:
     def findMinDifference(self, p: List[str]) -> int:
         t=sorted(int(s[:2])*60+int(s[3:])for s in p);return min((y-x)%1440 for x,y in zip(t,t[1:]+[t[0]+1440]))
 
+class Solution:
+    def findMinDifference(self, p: List[str]) -> int:
+        return-max(map(sub,t:=sorted(int(s[:2])*60+int(s[3:])for s in p),t[1:]+[t[0]+1440]))
+
 test('''
 539. Minimum Time Difference
 Medium

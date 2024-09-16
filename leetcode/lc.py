@@ -282,13 +282,14 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
         def check(res, expected, *args):
             t = type(res)
             if sort:
-                return sorted(res)==sorted(expected)
+                return sorted(res or [])==sorted(expected or [])
             if inplace:
                 a = args[0]
                 if 'Node' in str(type(a)):
                     e = type(a).deserialize(expected)
                     return type(a).serialize(a)==type(a).serialize(e)
-                return sorted(a or [])==sorted(expected or [])
+                if expected == '[]': expected = None
+                return (a or [])==(expected or [])
             elif 'Node' in str(t):
                 return t.serialize(res)==t.serialize(expected)
             elif res is None and expected is not None:

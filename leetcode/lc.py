@@ -449,24 +449,11 @@ if __name__ == "__main__":
     import os
     files = filter(lambda s:re.search(r'^([\d]+)\..*\.py$',s), os.listdir('.'))
     files = sorted(files, key=lambda s:[int(c) if c.isdigit() else c for c in re.split(r'(\d+)',s)])
-
     for i, filename in enumerate(files):
         index = int(re.search(r'^([\d]+)', filename)[0])
-
         if index<341: continue
-
-        #sys.stderr.write(f'\r{i*100//len(files)}%')
-        #text = f.read()
-        #text = text.replace('test(','custom_test(')
-        #code = compile(text, filename, 'exec')
-        #exec(code)
-
         print(f'[{i}/{len(files)}] \x1b[96m{filename}\x1b[0m')
-
         exitcode = os.system(filename)
-
         if exitcode or i==300:
             exit(exitcode)
-
     print('\r\x1b[32mTests passed.')
-

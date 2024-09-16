@@ -272,7 +272,6 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
         c = lambda c,t,w=50: '\x1b[{1}m{2}\x1b[0m'.format(s:=g(t), 30+c, s[:w]+'...' if e==2 and len(s)>=w else s)
         e = 2 if passed else 1
         print('%s args %s result %s expected %s' % (c(e,'PASSED' if passed else 'FAILED'), c(e,args), c(e,res), c(e,expected)))
-        return 0 if passed else 1
 
     main = importlib.import_module('__main__')
 
@@ -376,8 +375,10 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
             if type(ok) is tuple: # see linked-list-cycle-ii (substitutes res with custom res)
                 ok, res = ok[:2]
 
-            exitcode |= print_res(ok, res, expected, *orig)
+            print_res(ok, res, expected, *orig)
             passed += int(ok)
+
+            exitcode |= 0 if ok else 1
 
         #if total: print('Passed %d/%d tests.' % (passed, total))
 
@@ -435,7 +436,9 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
                 results.append(res)
 
         ok = check(results,expected,*methods)
-        exitcode |= print_res(ok, results, expected, methods, arglist)
+        print_res(ok, results, expected, methods, arglist)
+
+        exitcode |= 0 if ok else 1
 
     exitcode and exit(exitcode)
 

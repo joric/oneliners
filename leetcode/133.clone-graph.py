@@ -6,11 +6,30 @@ class Node:
         self.neighbors = neighbors if neighbors is not None else []
 
     @staticmethod
+    def deserialize(str):
+        return Node.parse(json.loads(str))
+
+    @staticmethod
     def serialize(root):
         return str(Node.dump(root)).replace('None','null') if root else'[]'
 
+    def parse(v):
+        print('--- parsing', v)
+        nodes = {}
+        for i,nei in enumerate(v):
+            k = i+1
+            if k not in nodes:
+                nodes[k] = Node(k)
+            for i in nei:
+                if i not in nodes:
+                    nodes[i] = Node(i)
+                nodes[k].neighbors.append(nodes[i])
+        print('parsed')
+        return None if 1 not in nodes else nodes[1]
+
     @staticmethod
     def dump(root):
+        print('---dumping', root)
         q = []
         res = []
         q.append(root)
@@ -22,45 +41,36 @@ class Node:
                 if root:
                     for nei in root.neighbors:
                         q.append(nei)
+
         while res and res[-1] is None:
             res.pop()
+        print('---dumped', res)
         return res
 
     def __repr__(self):
         return(f:=lambda x:x and f'Node{{val: {x.val}, neighbors: {[f(nei) for nei in x.neighbors]}}}'or 'None')(self)
 
-    def parse(v):
-        nodes = {}
-        for i,nei in enumerate(v):
-            k = i+1
-            if k not in nodes:
-                nodes[k] = Node(k)
-            for i in nei:
-                if i not in nodes:
-                    nodes[i] = Node(i)
-                nodes[k].neighbors.append(nodes[i])
-        return None if 1 not in nodes else nodes[1]
     '''
-        def serialize(self):
-        nodes = {}
-        def f(node):
-            if node.val in nodes:
-                return
-            nodes[node.val] = node
-            for nei in node.neighbors:
-                f(nei)
-        f(self)
+    def serialize(self):
+    nodes = {}
+    def f(node):
+        if node.val in nodes:
+            return
+        nodes[node.val] = node
+        for nei in node.neighbors:
+            f(nei)
+    f(self)
 
-        res = []
-        k = 1
-        while True:
-            if k not in nodes:
-                break
-            res.append([])
-            for node in nodes[k].neighbors:
-                res[-1].append(node.val)
-            k += 1
-        return res
+    res = []
+    k = 1
+    while True:
+        if k not in nodes:
+            break
+        res.append([])
+        for node in nodes[k].neighbors:
+            res[-1].append(node.val)
+        k += 1
+    return res
 
     def __repr__(self):
         return str(self.serialize())

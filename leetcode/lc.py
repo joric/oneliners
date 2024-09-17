@@ -459,8 +459,8 @@ if __name__ == "__main__":
     for i, filename in enumerate(files):
         index = int(re.search(r'^([\d]+)', filename)[0])
 
-        #if index<99: continue
-        if i<98: continue
+        if index<133: continue
+        #if i<98: continue
 
         #print(f'[{i}/{len(files)}] \x1b[96m{filename}\x1b[0m')
         sys.stderr.write(f'\r[{i}/{len(files)}] {i*100//len(files)}%')

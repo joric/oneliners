@@ -249,7 +249,7 @@ class Solution:
 
 Generator expressions `(x for y in z)` are memory efficient since they only require memory for
 the one value they yield. If you don't care about memory you can use square brackets to make it a list comprehension that automatically runs the loop.
-You can also exhaust a generator using `all()` or `any()` depending on the return values.
+You can also exhaust a generator using `all()`, `any()` or `sum()`, depending on the return values.
 You can also save a few chars using `[*g]` syntax instead of `list(g)` where g is a generator function.
 Generator length `len(list(g))` can be calculated in constant memory as `sum(1 for _ in g)`.
 

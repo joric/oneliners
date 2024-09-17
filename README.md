@@ -1283,7 +1283,7 @@ class Solution:
 
 ```
 
-Python handles comparisons in the same order as an `and` operator, so you can use a shorter form:
+Python handles multi-argument comparisons in the same order as an `and` operator, so you can use a shorter form:
 
 * https://leetcode.com/problems/power-of-four
 

@@ -1359,7 +1359,7 @@ class Solution:
             (len(grid)-1,len(grid[0])-1)
 ```
 
-You can use bitwise `&`,`|` instead of `and`,`or` where possible. You can use `x&1` instead of `x==1` for x in `0..2`,
+You can use bitwise `&`,`|` instead of `and`,`or` where possible. You can use `x&1` instead of `x==1` for x in `0..2`.
 
 * https://leetcode.com/problems/scramble-string
 

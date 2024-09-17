@@ -26,6 +26,10 @@ class Solution:
     def uncommonFromSentences(self, a: str, b: str) -> List[str]:
         c=Counter((a+' '+b).split());return[w for w in c if c[w]<2]
 
+class Solution:
+    def uncommonFromSentences(self, a: str, b: str) -> List[str]:
+        a,c=(a+' '+b).split(),Counter;return{*a}-{*(c(a)-c({*a}))}
+
 test('''
 884. Uncommon Words from Two Sentences
 Easy
@@ -73,4 +77,4 @@ Accepted
 176,217
 Submissions
 251,006
-''')
+''', sort=True)

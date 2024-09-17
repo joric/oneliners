@@ -1523,7 +1523,7 @@ class Solution:
         return sum(map(abs,map(sub,s:=s.encode(),s[1:])))
 ```
 
-Applying a function to an iterable with `starmap` and `pairwise` may be done with `map`:
+Applying a function to an iterable with `starmap` and `pairwise` may be done with `map` (12 chars shorter):
 
 * https://leetcode.com/problems/find-the-original-array-of-prefix-xor
 

@@ -21,6 +21,10 @@ class Solution:
     def diffWaysToCompute(self, s: str) -> List[int]:
         return(f:=lambda s:[eval(f'{a}{c}{b}')for i,c in enumerate(s)if c in'+-*'for a in f(s[:i])for b in f(s[i+1:])]or[int(s)])(s)
 
+class Solution:
+    def diffWaysToCompute(self, s: str) -> List[int]:
+        return(f:=lambda s:[eval(f'{a}{c}{b}')for i,c in enumerate(s)if c<'0'for a in f(s[:i])for b in f(s[i+1:])]or[int(s)])(s)
+
 test('''
 241. Different Ways to Add Parentheses
 Medium

@@ -24,15 +24,15 @@ class Solution:
             res.append(count)
         return res
 
-class Solution:
-    def sumPrefixScores(self, w: List[str]) -> List[int]:
-        t,r={},[];[(p:=t,[(setitem(p,c,p.get(c,{})),p:=p[c],setitem(p,'$',1+p.get('$',0)))for c in s])for s in w];[(p:=t,n:=0,[(p:=p[c],n:=n+p['$'])for c in s],r.append(n))for s in w];return r
-
 # https://leetcode.com/problems/sum-of-prefix-scores-of-strings/discuss/2590037/Python3-Brute-Force
 
 class Solution:
-    def sumPrefixScores(self, w: List[str]) -> List[int]:
-        c=Counter();[c.update([s[:i+1]])for s in w for i in range(len(s))];return[sum(c[s[:i+1]]for i in range(len(s)))for s in w]
+    def sumPrefixScores(self, d: List[str]) -> List[int]:
+        c=Counter([w[:i+1]for w in d for i in range(len(w))]);return[sum(c[w[:i+1]]for i in range(len(w)))for w in d]
+
+class Solution:
+    def sumPrefixScores(self, d: List[str]) -> List[int]:
+        t=[[w[:i+1]for i in range(len(w))]for w in d];c=Counter(chain(*t));return[sum(c[s]for s in p)for p in t]
 
 test('''
 2416. Sum of Prefix Scores of Strings

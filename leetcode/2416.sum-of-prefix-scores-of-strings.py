@@ -32,7 +32,7 @@ class Solution:
 
 class Solution:
     def sumPrefixScores(self, d: List[str]) -> List[int]:
-        t=[[w[:i+1]for i in range(len(w))]for w in d];c=Counter(chain(*t));return[sum(c[s]for s in p)for p in t]
+        t=[[w[:i+1]for i in range(len(w))]for w in d];c=Counter(chain(*t));return[sum(map(c.get,p))for p in t]
 
 test('''
 2416. Sum of Prefix Scores of Strings

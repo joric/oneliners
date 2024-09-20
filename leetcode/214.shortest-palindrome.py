@@ -13,6 +13,12 @@ class Solution:
     def shortestPalindrome(self, s: str) -> str:
         r=s[::-1];return next(r[:i]+s for i in range(len(s)+1)if s.startswith(r[i:]))
 
+# another solution
+
+class Solution:
+    def shortestPalindrome(self, s: str) -> str:
+        return s[max(i for i in range(len(s)+1)if s[:i]==s[i-1::-1]):][::-1]+s
+
 test('''
 214. Shortest Palindrome
 Hard
@@ -39,6 +45,11 @@ Example 2:
 Input: s = "abcd"
 Output: "dcbabcd"
  
+
+Other examples:
+
+Input: s = ""
+Output: ""
 
 Constraints:
 

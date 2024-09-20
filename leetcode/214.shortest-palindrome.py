@@ -1,11 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/shortest-palindrome/discuss/5231821/Simple-One-Liner
-
-class Solution:
-    def shortestPalindrome(self, s: str) -> str:
-        return next(s[::-1][:i]+s for i in range(len(s)+1)if s.startswith(s[::-1][i:]))
-
 # https://leetcode.com/problems/shortest-palindrome/discuss/60099/AC-in-288-ms-simple-brute-force
 
 class Solution:

@@ -7,6 +7,10 @@ class Solution:
     def lexicalOrder(self, n: int) -> List[int]:
         return map(int,sorted(map(str,range(1,n+1))))
 
+class Solution:
+    def lexicalOrder(self, n: int) -> List[int]:
+        return sorted(range(1,n+1),key=str)
+
 test('''
 386. Lexicographical Numbers
 Medium

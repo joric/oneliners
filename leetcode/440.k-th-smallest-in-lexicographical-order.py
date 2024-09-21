@@ -53,6 +53,24 @@ class Solution:
     def findKthNumber(self, n: int, k: int) -> int:
         c=1;return next(c for _ in count()if not(k>1 and((s:=0,a:=(b:=c)),all(a<=n for _ in count()if(s:=s+min(b,n)-a+1,a:=a*10,b:=b*10+9)),k>s and(c:=c+1,k:=k-s)or(c:=c*10,k:=k-1))))
 
+
+class Solution:
+    def findKthNumber(self, n: int, k: int) -> int:
+        c = 1 
+        while k>1:
+            s = (f:=lambda s,a,b,c:a<=n and f(s+min(b,n)-a+1,a*10,b*10+9,c)or s)(0,c,c,c)
+            if k>s:
+                c += 1
+                k -= s 
+            else:
+                c *= 10
+                k -= 1
+        return c
+
+class Solution:
+    def findKthNumber(self, n: int, k: int) -> int:
+        return(g:=lambda c,k:k>1 and(g(c+1,k-s)if k>(s:=(f:=lambda s,a,b,c:a<=n and f(s+min(b,n)-a+1,a*10,b*10+9,c)or s)(0,c,c,c))else g(c*10,k-1))or c)(1,k)
+
 test('''
 440. K-th Smallest in Lexicographical Order
 Hard

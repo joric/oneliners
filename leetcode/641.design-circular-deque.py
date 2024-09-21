@@ -58,8 +58,8 @@ class MyCircularDeque(deque):
 
 MyCircularDeque=type('',(deque,),{
     '__init__':lambda s,k:setattr(s,'n',k),
-    'insertFront':lambda s,v:(s.n>len(s)and s.appendleft(v))==None,
-    'insertLast':lambda s,v:(s.n>len(s)and s.append(v))==None,
+    'insertFront':lambda s,v:s.n>len(s)and not s.appendleft(v),
+    'insertLast':lambda s,v:s.n>len(s)and not s.append(v),
     'deleteFront':lambda s:bool(s and[s.popleft()]),
     'deleteLast':lambda s:bool(s and[s.pop()]),
     'getFront':lambda s:s[0]if s else-1,

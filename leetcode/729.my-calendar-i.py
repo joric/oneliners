@@ -52,6 +52,10 @@ MyCalendar=type('',(list,),{'book':lambda s,a,b:not(any(q>a<b>p for p,q in s)or 
 
 class MyCalendar(list):book=lambda s,a,b:not(any(q>a<b>p for p,q in s)or s.append([a,b]))
 
+class MyCalendar(list):
+    def book(s, a: int, b: int) -> bool:
+        return not(any(q>a<b>p for p,q in s)or s.append([a,b]))
+
 test('''
 729. My Calendar I
 Medium

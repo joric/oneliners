@@ -8,11 +8,11 @@ class Solution:
 
 class Solution:
     def arrayRankTransform(self, a: List[int]) -> List[int]:
-        return map(dict(zip(sorted(set(a)),count(1))).get,a)
+        return __import__('scipy').stats.rankdata(a,'dense')
 
 class Solution:
     def arrayRankTransform(self, a: List[int]) -> List[int]:
-        return __import__('scipy').stats.rankdata(a,'dense')
+        return map(dict(zip(sorted({*a}),count(1))).get,a)
 
 test('''
 1331. Rank Transform of an Array

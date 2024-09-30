@@ -2,7 +2,6 @@ from lc import *
 
 # https://leetcode.com/problems/design-a-stack-with-increment-operation/discuss/539716/JavaC%2B%2BPython-Lazy-increment-O(1)
 
-
 class CustomStack:
     def __init__(self, maxSize: int):
         self.n = maxSize

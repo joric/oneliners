@@ -24,6 +24,10 @@ class Solution:
     def canArrange(self, a: List[int], k: int) -> bool:
         c=Counter(v%k for v in a);return not(c[0]%2+any(c[r]-c[(k-r)%k]for r in c))
 
+class Solution:
+    def canArrange(self, a: List[int], k: int) -> bool:
+        c=Counter(v%k for v in a);return not(c[0]%2+any(c[r]-c[-r%k]for r in c))
+
 test('''
 1497. Check If Array Pairs Are Divisible by k
 Medium

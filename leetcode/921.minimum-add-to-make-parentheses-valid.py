@@ -1,5 +1,17 @@
 from lc import *
 
+# https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/discuss/181132/C%2B%2BJavaPython-Straight-Forward-One-Pass
+
+class Solution:
+    def minAddToMakeValid(self, s: str) -> int:
+        left = right = 0
+        for i in s:
+            if right == 0 and i == ')':
+                left += 1
+            else:
+                right += 1 if i == '(' else -1
+        return left + right
+
 # https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/discuss/2093360/1-line-Python-not-optimize-but-fun
 
 class Solution:

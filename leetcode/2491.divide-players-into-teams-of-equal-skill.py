@@ -56,6 +56,24 @@ class Solution:
     def dividePlayers(self, s: List[int]) -> int:
         s.sort();return(-1,r:=sum((inf,s[i]*s[~i])[s[i]+s[~i]==s[0]+s[-1]]for i in range(len(s)//2)))[r<inf]
 
+# https://leetcode.com/problems/divide-players-into-teams-of-equal-skill/discuss/5868532/One-Line-Solution
+
+class Solution:
+    def dividePlayers(self, a: List[int]) -> int:
+        return a.sort() or max(sum((-inf,a[i]*a[~i])[a[i]+a[~i]==a[0]+a[-1]] for i in range(len(a)//2)),-1)
+
+class Solution:
+    def dividePlayers(self, a: List[int]) -> int:
+        return a.sort() or max(sum((-inf,p*q)[p+q==a[0]+a[-1]] for p,q in zip(a,a[:-len(a)//2-1:-1])),-1)
+
+class Solution:
+    def dividePlayers(self, a: List[int]) -> int:
+        return all(starmap(eq,pairwise(map(add,a:=sorted(a),b:=a[::-1])))) and sum(map(mul,a,b))//2 or -1
+
+class Solution:
+    def dividePlayers(self, a: List[int]) -> int:
+        return (-1,sum(map(mul,a:=sorted(a),b:=a[::-1]))//2)[all(starmap(eq,pairwise(map(add,a,b))))]
+
 # updated 2024-10-04 (POTD)
 
 class Solution:

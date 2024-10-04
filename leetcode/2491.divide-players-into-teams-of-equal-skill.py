@@ -56,6 +56,12 @@ class Solution:
     def dividePlayers(self, s: List[int]) -> int:
         s.sort();return(-1,r:=sum((inf,s[i]*s[~i])[s[i]+s[~i]==s[0]+s[-1]]for i in range(len(s)//2)))[r<inf]
 
+# updated 2024-10-04 (POTD)
+
+class Solution:
+    def dividePlayers(self, s: List[int]) -> int:
+        s.sort();return(-1,sum(map(mul,s,t:=s[::-1]))//2)[len({*map(add,s,t)})<2]
+
 test('''
 2491. Divide Players Into Teams of Equal Skill
 Medium

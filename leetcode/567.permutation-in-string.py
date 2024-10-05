@@ -31,6 +31,10 @@ class Solution:
     def checkInclusion(self, a: str, b: str) -> bool:
         s=sorted;return any(s(a)==s(b[i:i+len(a)])for i in range(len(b)-len(a)+1))
 
+class Solution:
+    def checkInclusion(self, a: str, b: str) -> bool:
+        s,l=sorted,len;return any(s(a)==s(b[i:i+l(a)])for i in range(l(b)-l(a)+1))
+
 test('''
 
 567. Permutation in String

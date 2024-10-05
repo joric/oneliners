@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/permutation-in-string/
+
 class Solution:
     def checkInclusion(self, a: str, b: str) -> bool:
         n, m = len(a), len(b)
@@ -15,6 +17,15 @@ class Solution:
     def checkInclusion(self, a: str, b: str) -> bool:
         return any(Counter(a)==Counter(b[i:i+len(a)]) for i in range(len(b)-len(a)+1))
 
+# updated 2024-10-05 (POTD)
+
+class Solution:
+    def checkInclusion(self, a: str, b: str) -> bool:
+        c=Counter;return any(c(a)==c(b[i:i+len(a)])for i in range(len(b)-len(a)+1))
+
+class Solution:
+    def checkInclusion(self, a: str, b: str) -> bool:
+        return any(sorted(a)==sorted(b[i:i+len(a)])for i in range(len(b)-len(a)+1))
 
 test('''
 

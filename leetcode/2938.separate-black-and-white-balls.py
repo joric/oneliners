@@ -1,5 +1,11 @@
 from lc import *
 
+# https://leetcode.com/problems/separate-black-and-white-balls/discuss/4317507/Python-one-liner
+
+class Solution:
+    def minimumSteps(self, s: str) -> int:
+        return sum(b-a for a,b in zip(count(0),(i for i,c in enumerate(s)if c=='0')))
+
 # https://leetcode.com/problems/separate-black-and-white-balls/discuss/4305143/Python-3-oror-3-lines-with-explanation-oror-TS%3A-92-15
 
 class Solution:

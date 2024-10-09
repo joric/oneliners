@@ -22,6 +22,12 @@ class Solution:
 
 class Solution:
     def minAddToMakeValid(self, s: str) -> int:
+        return 1+s.find('()')and self.minAddToMakeValid(s.replace('()',''))or len(s)
+
+# updated 2024-10-09 (POTD)
+
+class Solution:
+    def minAddToMakeValid(self, s: str) -> int:
         [s:=s.replace('()','')for _ in[0]*999];return len(s)
 
 test('''

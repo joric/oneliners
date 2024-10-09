@@ -36,6 +36,10 @@ class Solution:
 
 class Solution:
     def minAddToMakeValid(self, s: str) -> int:
+        return len(reduce(lambda s,_:s.replace('()',''),s,s))
+
+class Solution:
+    def minAddToMakeValid(self, s: str) -> int:
         [s:=s.replace('()','')for _ in s];return len(s)
 
 test('''

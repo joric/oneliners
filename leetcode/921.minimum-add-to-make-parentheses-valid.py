@@ -24,6 +24,10 @@ class Solution:
     def minAddToMakeValid(self, s: str) -> int:
         return 1+s.find('()')and self.minAddToMakeValid(s.replace('()',''))or len(s)
 
+class Solution:
+    def minAddToMakeValid(self, s: str) -> int:
+        return(f:=lambda s:1+s.find('()')and f(s.replace('()',''))or len(s))(s)
+
 # updated 2024-10-09 (POTD)
 
 class Solution:

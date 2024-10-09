@@ -20,9 +20,13 @@ class Solution:
 # js
 
 # return s.split('').reduce((t,c)=>(c=='('||t.length==0||t[t.length-1]==')'?t.push(c):t.pop(),t),[]).length;
-
+# var minAddToMakeValid=(s,x=0,r=0)=>([...s].map(c=>(c=='('?x++ :x?x-- :r++)),x+r);
 
 # https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/discuss/3453688/One-line-(stupid)-solution.-For-fun!
+
+class Solution:
+    def minAddToMakeValid(self, s: str) -> int:
+        x=r=0;[(x:=x+1)if c=='(' else (x:=x-1) if x else (r:=r+1)for c in s];return x+r;
 
 class Solution:
     def minAddToMakeValid(self, s: str) -> int:
@@ -41,6 +45,7 @@ class Solution:
 class Solution:
     def minAddToMakeValid(self, s: str) -> int:
         [s:=s.replace('()','')for _ in s];return len(s)
+
 
 test('''
 921. Minimum Add to Make Parentheses Valid

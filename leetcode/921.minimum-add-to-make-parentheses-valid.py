@@ -28,7 +28,7 @@ class Solution:
 
 class Solution:
     def minAddToMakeValid(self, s: str) -> int:
-        [s:=s.replace('()','')for _ in[0]*999];return len(s)
+        [s:=s.replace('()','')for _ in s];return len(s)
 
 test('''
 921. Minimum Add to Make Parentheses Valid

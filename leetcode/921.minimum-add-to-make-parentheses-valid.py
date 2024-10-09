@@ -17,6 +17,10 @@ class Solution:
 class Solution:
     def minAddToMakeValid(self, s: str) -> int:
         return len(reduce(lambda a,b:b if not a else a[:-1] if b==')'and a[-1]=='('else a+b,s))if s else 0
+# js
+
+# return s.split('').reduce((t,c)=>(c=='('||t.length==0||t[t.length-1]==')'?t.push(c):t.pop(),t),[]).length;
+
 
 # https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/discuss/3453688/One-line-(stupid)-solution.-For-fun!
 

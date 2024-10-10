@@ -5,14 +5,25 @@ from lc import *
 class Solution:
     def maxWidthRamp(self, a: List[int]) -> int:
         a = [i for _,i in sorted((v,i) for i,v in enumerate(a))]
-        b = accumulate(a, min)
-        return max(map(sub, a, b))
+        return max(map(sub, a, accumulate(a, min)))
 
 # updated 2024-10-10 (POTD)
 
 class Solution:
     def maxWidthRamp(self, a: List[int]) -> int:
         return max(map(sub,a:=[i for _,i in sorted((v,i)for i,v in enumerate(a))],accumulate(a,min)))
+
+class Solution:
+    def maxWidthRamp(self, a: List[int]) -> int:
+        return max(map(sub,a:=[*zip(*sorted(enumerate(a),key=itemgetter(1)))][0],accumulate(a,min)))
+
+class Solution:
+    def maxWidthRamp(self, a: List[int]) -> int:
+        return max(map(sub,a:=sorted(range(len(a)),key=lambda i:a[i]),accumulate(a,min)))
+
+class Solution:
+    def maxWidthRamp(self, a: List[int]) -> int:
+        return max(map(sub,a:=sorted(range(len(a)),key=a.__getitem__),accumulate(a,min)))
 
 test('''
 962. Maximum Width Ramp

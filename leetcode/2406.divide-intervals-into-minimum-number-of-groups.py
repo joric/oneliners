@@ -38,6 +38,30 @@ class Solution:
     def minGroups(self, v: List[List[int]]) -> int:
         c,a=Counter(),0;[c.update({a:1,b+1:-1})for a,b in v];return max(a:=a+c[k]for k in sorted(c))
 
+# https://leetcode.com/problems/divide-intervals-into-minimum-number-of-groups/discuss/3900475/Min-heap-very-short-code
+
+class Solution:
+    def minGroups(self, v: List[List[int]]) -> int:
+        v.sort()
+        h = []
+        for a,b in v:
+            if h and a > h[0]:
+                heappop(h)
+            heappush(h,b)
+        return len(h)
+
+class Solution:
+    def minGroups(self, v: List[List[int]]) -> int:
+        v.sort();h=[];[(h and a>h[0]and heappop(h),heappush(h,b))for a,b in v];return len(h)
+
+class Solution:
+    def minGroups(self, v: List[List[int]]) -> int:
+        v.sort();h=[];[heappush(h,b)or h and a>h[0]and heappop(h)for a,b in v];return len(h)
+
+class Solution:
+    def minGroups(self, v: List[List[int]]) -> int:
+        v.sort();h=[];[heappush(h,b)or[a]>h[:1]and heappop(h)for a,b in v];return len(h)
+
 test('''
 2406. Divide Intervals Into Minimum Number of Groups
 Medium

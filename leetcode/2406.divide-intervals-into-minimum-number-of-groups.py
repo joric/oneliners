@@ -32,7 +32,7 @@ class Solution:
 
 class Solution:
     def minGroups(self, v: List[List[int]]) -> int:
-        c=Counter();[c.update({a:1,b+1:-1})for a,b in v];return max(accumulate(c[n]for n in sorted(c)))
+        c=Counter();[c.update({a:1,b+1:-1})for a,b in v];return max(accumulate(c[k]for k in sorted(c)))
 
 test('''
 2406. Divide Intervals Into Minimum Number of Groups

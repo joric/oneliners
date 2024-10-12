@@ -70,10 +70,6 @@ class Solution:
     def minGroups(self, v: List[List[int]]) -> int:
         h=[];[heappush(h,b)or a>h[0]and heappop(h)for a,b in sorted(v)];return len(h)
 
-class Solution:
-    def minGroups(self, v: List[List[int]]) -> int:
-        h=[];[(heappush(h,b),a>h[0]and heappop(h))for a,b in sorted(v)];return len(h)
-
 test('''
 2406. Divide Intervals Into Minimum Number of Groups
 Medium

@@ -1,5 +1,22 @@
 from lc import *
 
+# https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/discuss/104904/Python-Heap-based-solution
+
+class Solution:
+    def smallestRange(self, a: List[List[int]]) -> List[int]:
+        heapify(q:=[(r[0],i,0)for i,r in enumerate(a)])
+        t = -inf,inf
+        r = max(r[0]for r in a)
+        while q:
+            l,i,j = heappop(q)
+            if r-l<t[1]-t[0]:
+                t = l,r
+            if j+1 == len(a[i]):
+                return t
+            v = a[i][j+1]
+            r = max(r,v)
+            heappush(q,(v,i,j+1))
+
 # https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/discuss/5493444/Only-9-lines-Simple-With-Explanation
 
 class Solution:

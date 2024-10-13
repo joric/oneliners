@@ -18,6 +18,12 @@ class Solution:
     def smallestRange(self, a: List[List[int]]) -> List[int]:
         b=sorted({*sum(a,[])});b=b[:bisect_right(b,min(a,key=itemgetter(-1))[-1])];q=[0,inf];[(r:=max([t[bisect_left(t,l)]for t in a]))-l<q[1]-q[0] and(q:=[l,r])for l in b];return q
 
+# updated 2024-10-13 (POTD)
+
+class Solution:
+    def smallestRange(self, a: List[List[int]]) -> List[int]:
+        b=sorted({*sum(a,[])});b=b[:bisect_right(b,min(a,key=itemgetter(-1))[-1])];q=[0,inf];[(r:=max([t[bisect_left(t,l)]for t in a]))-l<q[1]-q[0]and(q:=[l,r])for l in b];return q
+
 test('''
 632. Smallest Range Covering Elements from K Lists
 Hard

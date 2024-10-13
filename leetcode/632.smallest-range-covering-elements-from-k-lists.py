@@ -4,15 +4,14 @@ from lc import *
 
 class Solution:
     def smallestRange(self, nums: List[List[int]]) -> List[int]:
-        avls = sorted(set(sum(nums, [])))
-        mx = min(nums, key=itemgetter(-1))[-1]
-        avls = avls[:bisect_right(avls, mx)]
-        ans = [0, math.inf]
-        for l in avls:
-            r = max([lst[bisect_left(lst, l)] for lst in nums])
-            if r - l < ans[1] - ans[0]:
-                ans = [l, r]
-        return ans
+        q = [0,inf]
+        b = sorted(set(sum(nums, [])))
+        b = b[:bisect_right(b,min(nums,key=itemgetter(-1))[-1])]
+        for l in b:
+            r = max([t[bisect_left(t,l)]for t in nums])
+            if r-l<q[1]-q[0]:
+                q = [l, r]
+        return q
 
 class Solution:
     def smallestRange(self, a: List[List[int]]) -> List[int]:
@@ -22,7 +21,7 @@ class Solution:
 
 class Solution:
     def smallestRange(self, a: List[List[int]]) -> List[int]:
-        b=sorted({*sum(a,[])});b=b[:bisect_right(b,min(a,key=itemgetter(-1))[-1])];q=[0,inf];[(r:=max([t[bisect_left(t,l)]for t in a]))-l<q[1]-q[0]and(q:=[l,r])for l in b];return q
+        q,b=[0,inf],sorted({*sum(a,[])});b=b[:bisect_right(b,min(a,key=itemgetter(-1))[-1])];[(r:=max([t[bisect_left(t,l)]for t in a]))-l<q[1]-q[0]and(q:=[l,r])for l in b];return q
 
 test('''
 632. Smallest Range Covering Elements from K Lists

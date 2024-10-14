@@ -1580,7 +1580,7 @@ class Solution:
         return-sum(map(mul,count(-n),sorted(Counter(chain(*r)).values())[::-1]))
 ```
 
-You can replace ceil(x/k) with -(-x//k):
+You can replace `ceil(x/k)` with `-(-x//k)`:
 
 * https://leetcode.com/problems/maximal-score-after-applying-k-operations
 

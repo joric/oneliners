@@ -1580,6 +1580,21 @@ class Solution:
         return-sum(map(mul,count(-n),sorted(Counter(chain(*r)).values())[::-1]))
 ```
 
+You can replace ceil(x/k) with -(-x//k):
+
+* https://leetcode.com/problems/maximal-score-after-applying-k-operations
+
+```python
+class Solution:
+    def maxKelements(self, a: List[int], k: int) -> int:
+        a.sort();return sum((x:=a.pop(),insort(a,ceil(x/3)))[0]for _ in range(k))
+
+class Solution:
+    def maxKelements(self, a: List[int], k: int) -> int:
+        a.sort();return sum((x:=a.pop(),insort(a,-(-x//3)))[0]for _ in range(k))
+```
+
+
 ### Notes
 
 * An expression like `x&(x-1)==0` is useful to check if unsigned `x` is power of 2 or 0 (Kernighan, rightmost bit).

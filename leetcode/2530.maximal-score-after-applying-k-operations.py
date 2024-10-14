@@ -6,6 +6,13 @@ class Solution:
     def maxKelements(self, a: List[int], k: int) -> int:
         heapify(a:=[-i for i in a]);return-sum(heapreplace(a,a[0]//3)for _ in range(k))
 
+
+# updated 2024-10-14 (POTD)
+
+class Solution:
+    def maxKelements(self, a: List[int], k: int) -> int:
+        heapify(a:=[*map(neg,a)]);return-sum(heapreplace(a,a[0]//3)for _ in range(k))
+
 test('''
 2530. Maximal Score After Applying K Operations
 Medium

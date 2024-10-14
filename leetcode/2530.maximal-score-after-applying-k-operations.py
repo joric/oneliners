@@ -13,6 +13,46 @@ class Solution:
     def maxKelements(self, a: List[int], k: int) -> int:
         heapify(a:=[*map(neg,a)]);return-sum(heapreplace(a,a[0]//3)for _ in range(k))
 
+# https://leetcode.com/problems/maximal-score-after-applying-k-operations/discuss/3016912/PYTHON-or-SORT-or-SIMPLE
+
+class Solution:
+    def maxKelements(self, a: List[int], k: int) -> int:
+        a.sort()
+        r = 0
+        while k:
+            x = a.pop()
+            insort(a,ceil(x/3))
+            k -= 1
+            r += x
+        return r
+
+class Solution:
+    def maxKelements(self, a: List[int], k: int) -> int:
+        a.sort()
+        def f(k,r):
+            if k==0:
+                return r
+            x = a.pop()
+            insort(a,ceil(x/3))
+            return f(k-1,r+x)
+        return f(k,0)
+
+class Solution:
+    def maxKelements(self, a: List[int], k: int) -> int:
+        a.sort();return(f:=lambda k,r:(x:=a.pop(),insort(a,ceil(x/3)))and f(k-1,r+x)if k else r)(k,0)
+
+class Solution:
+    def maxKelements(self, a: List[int], k: int) -> int:
+        a.sort();return sum(x for _ in range(k)if(x:=a.pop(),insort(a,ceil(x/3))))
+
+class Solution:
+    def maxKelements(self, a: List[int], k: int) -> int:
+        a.sort();return sum((x:=a.pop(),insort(a,ceil(x/3)))[0]for _ in range(k))
+
+class Solution:
+    def maxKelements(self, a: List[int], k: int) -> int:
+        a.sort();return sum((x:=a.pop(),insort(a,-(-x//3)))[0]for _ in range(k))
+
 test('''
 2530. Maximal Score After Applying K Operations
 Medium

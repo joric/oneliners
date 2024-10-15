@@ -50,6 +50,12 @@ class Solution:
             heappush(h,b)
         return len(h)
 
+# https://leetcode.com/problems/divide-intervals-into-minimum-number-of-groups/discuss/5904571/one-line-solution
+
+class Solution:
+    def minGroups(self, a: List[List[int]]) -> int:
+        return len((q:=[],[(q and q[0]<s and heappop(q),heappush(q,e))for s,e in sorted(a)])[0])
+
 class Solution:
     def minGroups(self, v: List[List[int]]) -> int:
         v.sort();h=[];[(h and a>h[0]and heappop(h),heappush(h,b))for a,b in v];return len(h)
@@ -57,6 +63,7 @@ class Solution:
 class Solution:
     def minGroups(self, v: List[List[int]]) -> int:
         h=[];[heappop(h)for a,b in sorted(v)if heappush(h,b)or a>h[0]];return len(h)
+
 
 test('''
 2406. Divide Intervals Into Minimum Number of Groups

@@ -10,9 +10,11 @@ class Solution:
                 A[i][j], A[~j][i], A[~i][~j], A[j][~i] = \
                          A[~j][i], A[~i][~j], A[j][~i], A[i][j]
 
+# https://leetcode.com/problems/rotate-image/discuss/5886153/one-line-solution
+
 class Solution:
     def rotate(self, m: List[List[int]]) -> None:
-        m[:] = zip(*m[::-1])
+        m[:]=zip(*m[::-1])
 
 test('''
 48. Rotate Image

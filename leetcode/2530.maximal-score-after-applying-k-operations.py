@@ -53,6 +53,12 @@ class Solution:
     def maxKelements(self, a: List[int], k: int) -> int:
         a.sort();return sum((x:=a.pop(),insort(a,-(-x//3)))[0]for _ in range(k))
 
+# https://leetcode.com/problems/maximal-score-after-applying-k-operations/discuss/5910943/One-Line-Solution
+
+class Solution:
+    def maxKelements(self, a: List[int], k: int) -> int:
+        [a.append(-(-x//3))for x in a if~-x];return sum(([1]*k+sorted(a))[-k:])
+
 test('''
 2530. Maximal Score After Applying K Operations
 Medium

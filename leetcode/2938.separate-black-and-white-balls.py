@@ -15,7 +15,7 @@ class Solution:
 # updated 2024-10-15 (POTD)
 
 # cpp:  long long res=0;for(int i=0,z=0;i<s.size();res+=s[i++]=='0'?i-1-z++:0);return res;
-# js:   z=0;return[...s].reduce((a,c,i)=>a+(c=='0'?i-z++:0),0)
+# js:   let z=0;return[...s].reduce((a,c,i)=>a+(c=='0'?i-z++:0),0)
 
 class Solution:
     def minimumSteps(self, s: str) -> int:

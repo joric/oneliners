@@ -64,7 +64,6 @@ class Solution:
     def minGroups(self, v: List[List[int]]) -> int:
         h=[];[heappop(h)for a,b in sorted(v)if heappush(h,b)or a>h[0]];return len(h)
 
-
 test('''
 2406. Divide Intervals Into Minimum Number of Groups
 Medium

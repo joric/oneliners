@@ -42,10 +42,15 @@ class Solution:
     def minAddToMakeValid(self, s: str) -> int:
         return len(reduce(lambda s,_:s.replace('()',''),s,s))
 
+# https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/discuss/5890643/one-line-solution
+
+class Solution:
+    def minAddToMakeValid(self, s: str) -> int:
+        return min(len(s:=s.replace('()',''))for _ in s)
+
 class Solution:
     def minAddToMakeValid(self, s: str) -> int:
         [s:=s.replace('()','')for _ in s];return len(s)
-
 
 test('''
 921. Minimum Add to Make Parentheses Valid

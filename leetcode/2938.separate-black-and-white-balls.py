@@ -10,7 +10,25 @@ class Solution:
 
 class Solution:
     def minimumSteps(self, s: str) -> int:
-        return sum(d:=[i for i,c in enumerate(s)if c=='0'])-comb(len(d),2)
+        return sum(d:=[i for i,c in enumerate(s)if c<'1'])-comb(len(d),2)
+
+# updated 2024-10-15 (POTD)
+
+# cpp:  long long res=0;for(int i=0,z=0;i<s.size();res+=s[i++]=='0'?i-1-z++:0);return res;
+# js:   z=0;return[...s].reduce((a,c,i)=>a+(c=='0'?i-z++:0),0)
+
+class Solution:
+    def minimumSteps(self, s: str) -> int:
+        t=r=0
+        for i,c in enumerate(s):
+            if c=='0':
+                r += i - t
+                t += 1
+        return r
+
+class Solution:
+    def minimumSteps(self, s: str) -> int:
+        t=-1;return sum(i-(t:=t+1)for i,c in enumerate(s)if c<'1')
 
 test('''
 2938. Separate Black and White Balls

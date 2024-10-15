@@ -34,7 +34,7 @@ class Solution:
 
 class Solution:
     def minimumSteps(self, s: str) -> int:
-        t=-1;return sum(i-(t:=t+1)for i,c in enumerate(s)if c<'1')
+        t=-1;return sum(i-(t:=t+1)for i,c in enumerate(s)if'1'>c)
 
 test('''
 2938. Separate Black and White Balls

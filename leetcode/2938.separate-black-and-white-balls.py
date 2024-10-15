@@ -12,6 +12,12 @@ class Solution:
     def minimumSteps(self, s: str) -> int:
         return sum(d:=[i for i,c in enumerate(s)if c<'1'])-comb(len(d),2)
 
+# https://leetcode.com/problems/separate-black-and-white-balls/discuss/5913697/One-line-solution.-O(n)
+
+class Solution:
+    def minimumSteps(self, s: str) -> int:
+        return reduce(lambda c,n:((c[0],sum(c)),(c[0]+1, c[1]))[n=='1'],s,(0,0))[1]
+
 # updated 2024-10-15 (POTD)
 
 # cpp:  long long res=0;for(int i=0,z=0;i<s.size();res+=s[i++]=='0'?i-1-z++:0);return res;

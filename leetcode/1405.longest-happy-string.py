@@ -24,12 +24,6 @@ class Solution:
     def longestDiverseString(self, a: int, b: int, c: int) -> str:
         (i,x),(j,y),(k,z)=sorted(((a,'a'),(b,'b'),(c,'c')));j+=i;return''.join(([z,z,y]*j+[z]*min((k-2*j),2),(chain(*zip([z*2]*(k-j)+[z]*(2*j-k),[y]*(j))),chain(*zip([y*2]*(j-k)+[y]*(2*k-j),[z]*(k))))[k<j])[k<2*j]).replace(y,x,i)
 
-# https://leetcode.com/problems/longest-happy-string/discuss/564277/C%2B%2BJava-a-greater-b-greater-c
-
-class Solution:
-    def longestDiverseString(self, a: int, b: int, c: int) -> str:
-        return(f:=lambda a,b,c,x,y,z:(p:=min(2,a),q:=a-p>=b)and(f(b,a,c,y,x,z)if a<b else f(a,c,b,x,z,y)if b<c else x*p+y*q+f(a-p,b-q,c,x,y,z)if b else x*p))(a,b,c,'a','b','c')
-
 # https://leetcode.com/problems/longest-happy-string/discuss/569902/Simple-and-short-python-code(16-ms-faster-than-92.72)
 
 class Solution:
@@ -46,6 +40,12 @@ class Solution:
 class Solution:
     def longestDiverseString(self, a: int, b: int, c: int) -> str:
         r,d='',{'a':a,'b':b,'c':c};all(d[t:=max(d,key=(lambda x:d[x]*(-1,1)[x!=t],d.get)[i<2 or t!=r[-2]])]and(setitem(d,t,d[t]-1),r:=r+t)for i in range(a+b+c));return r
+
+# https://leetcode.com/problems/longest-happy-string/discuss/564277/C%2B%2BJava-a-greater-b-greater-c
+
+class Solution:
+    def longestDiverseString(self, a: int, b: int, c: int) -> str:
+        return(f:=lambda a,b,c,x,y,z:[q:=a-(p:=min(2,a))>=b]and(f(b,a,c,y,x,z)if a<b else f(a,c,b,x,z,y)if b<c else x*p+y*q+f(a-p,b-q,c,x,y,z)if b else x*p))(a,b,c,*'abc')
 
 # updated 2024-10-16 (POTD)
 

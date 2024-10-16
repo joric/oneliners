@@ -28,7 +28,7 @@ class Solution:
 
 # https://leetcode.com/problems/longest-happy-string/discuss/569902/Simple-and-short-python-code(16-ms-faster-than-92.72)
 
-class Solution(object):
+class Solution:
     def longestDiverseString(self, a: int, b: int, c: int) -> str:
         r,d='',{'a':a,'b':b,'c':c}
         for i in range(a+b+c):
@@ -39,7 +39,7 @@ class Solution(object):
                 break
         return r
 
-class Solution(object):
+class Solution:
     def longestDiverseString(self, a: int, b: int, c: int) -> str:
         r,d='',{'a':a,'b':b,'c':c};all(d[t:=max(d,key=(lambda x:d[x]*(-1,1)[x!=t],d.get)[i<2 or t!=r[-2]])]and(setitem(d,t,d[t]-1),r:=r+t)for i in range(a+b+c));return r
 

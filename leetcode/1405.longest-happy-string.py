@@ -30,9 +30,9 @@ class Solution:
 
 class Solution(object):
     def longestDiverseString(self, a: int, b: int, c: int) -> str:
-        r,d,g='',{'a':a,'b':b,'c':c},[-1,1]
+        r,d='',{'a':a,'b':b,'c':c}
         for i in range(a+b+c):
-            if d[t:=max(d,key=(lambda x:d[x]*g[x!=r[i-1]],d.get)[i<2 or r[i-1]!=r[i-2]])]:
+            if d[t:=max(d,key=(lambda x:d[x]*(-1,1)[x!=r[-1]],d.get)[i<2 or r[-1]!=r[-2]])]:
                 setitem(d,t,d[t]-1)
                 r += t
             else:
@@ -41,7 +41,7 @@ class Solution(object):
 
 class Solution(object):
     def longestDiverseString(self, a: int, b: int, c: int) -> str:
-        r,d,g='',{'a':a,'b':b,'c':c},[-1,1];all(d[t:=max(d,key=(lambda x:d[x]*g[x!=r[i-1]],d.get)[i<2 or r[i-1]!=r[i-2]])]and(setitem(d,t,d[t]-1),r:=r+t)for i in range(a+b+c));return r
+        r,d='',{'a':a,'b':b,'c':c};all(d[t:=max(d,key=(lambda x:d[x]*(-1,1)[x!=t],d.get)[i<2 or t!=r[-2]])]and(setitem(d,t,d[t]-1),r:=r+t)for i in range(a+b+c));return r
 
 test('''
 A string s is called happy if it satisfies the following conditions:

@@ -26,6 +26,23 @@ class Solution:
     def longestDiverseString(self, a: int, b: int, c: int) -> str:
         (i,x),(j,y),(k,z)=sorted(((a,'a'),(b,'b'),(c,'c')));j+=i;return''.join(([z,z,y]*j+[z]*min((k-2*j),2),(chain(*zip([z*2]*(k-j)+[z]*(2*j-k),[y]*(j))),chain(*zip([y*2]*(j-k)+[y]*(2*k-j),[z]*(k))))[k<j])[k<2*j]).replace(y,x,i)
 
+# https://leetcode.com/problems/longest-happy-string/discuss/569902/Simple-and-short-python-code(16-ms-faster-than-92.72)
+
+class Solution(object):
+    def longestDiverseString(self, a: int, b: int, c: int) -> str:
+        r,d,g='',{'a':a,'b':b,'c':c},[-1,1]
+        for i in range(a+b+c):
+            if d[t:=max(d,key=(lambda x:d[x]*g[x!=r[i-1]],d.get)[i<2 or r[i-1]!=r[i-2]])]:
+                setitem(d,t,d[t]-1)
+                r += t
+            else:
+                break
+        return r
+
+class Solution(object):
+    def longestDiverseString(self, a: int, b: int, c: int) -> str:
+        r,d,g='',{'a':a,'b':b,'c':c},[-1,1];all(d[t:=max(d,key=(lambda x:d[x]*g[x!=r[i-1]],d.get)[i<2 or r[i-1]!=r[i-2]])]and(setitem(d,t,d[t]-1),r:=r+t)for i in range(a+b+c));return r
+
 test('''
 A string s is called happy if it satisfies the following conditions:
 
@@ -50,7 +67,6 @@ Example 2:
 Input: a = 7, b = 1, c = 0
 Output: "aabaa"
 Explanation: It is the only correct answer in this case.
- 
 
 Constraints:
 
@@ -60,5 +76,5 @@ Accepted
 88,094
 Submissions
 153,131
-''', check=lambda s,e,a,b,c: all(x not in s for x in ["aaa", "bbb", "ccc"])and s.count('a')<=a and s.count('b')<=b and s.count('c')<=c
+''' #, check=lambda s,e,a,b,c: all(x not in s for x in ["aaa", "bbb", "ccc"])and s.count('a')<=a and s.count('b')<=b and s.count('c')<=c
 )

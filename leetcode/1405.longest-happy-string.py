@@ -20,6 +20,8 @@ class Solution:
         t = chain(*zip([y*2]*(j-k)+[y]*(2*k-j),[z]*(k)))
         return''.join((v,(w,t)[k<j])[k<2*j]).replace(y,x,i)
 
+# updated 2024-10-16 (POTD)
+
 class Solution:
     def longestDiverseString(self, a: int, b: int, c: int) -> str:
         (i,x),(j,y),(k,z)=sorted(((a,'a'),(b,'b'),(c,'c')));j+=i;return''.join(([z,z,y]*j+[z]*min((k-2*j),2),(chain(*zip([z*2]*(k-j)+[z]*(2*j-k),[y]*(j))),chain(*zip([y*2]*(j-k)+[y]*(2*k-j),[z]*(k))))[k<j])[k<2*j]).replace(y,x,i)
@@ -58,4 +60,5 @@ Accepted
 88,094
 Submissions
 153,131
-''')
+''', check=lambda s,e,a,b,c: all(x not in s for x in ["aaa", "bbb", "ccc"])and s.count('a')<=a and s.count('b')<=b and s.count('c')<=c
+)

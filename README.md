@@ -90,7 +90,7 @@ class Solution:
         return(s:=type(h)._list_node_to_array(h))==s[::-1]
 ```
 
-You can also dump the entire preprocessed solution file to check all the imports for yourself:
+You can also dump the entire preprocessed solution file to check all the imports for yourself (see [gist](https://gist.github.com/joric/90422e5c4729581a465a9904e4c292db)):
 
 ```python
 with open(__file__, 'rt') as f:
@@ -116,7 +116,7 @@ The solution above is not very reliable, because tests and environment may chang
 
 * https://leetcode.com/discuss/feedback/4643730/a-python-solution-that-contain-malicious-payload-in-your-website
 
-You can explore the sandbox using shell commands, e.g.:
+You can explore the sandbox using shell commands, e.g. (see [gist](https://gist.github.com/joric/66d5598a912ce76cbba8bacab2d350ad)):
 
 ```python
 import subprocess

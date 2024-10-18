@@ -3,6 +3,18 @@ from lc import *
 # https://leetcode.com/problems/remove-sub-folders-from-the-filesystem/discuss/409028/JavaPython-3-3-methods-from-O(n-*-(logn-%2B-m-2))-to-O(n-*-m)-w-brief-explanation-and-analysis.
 
 class Solution:
+    def removeSubfolders(self, folder: List[str]) -> List[str]:
+        folder.sort(key=lambda f: len(f))
+        seen = set()
+        for f in folder:
+            for i in range(2, len(f)):
+                if f[i] == '/' and f[: i] in seen:
+                    break
+            else:
+                seen.add(f)
+        return list(seen)
+
+class Solution:
     def removeSubfolders(self, d: List[str]) -> List[str]:
         r=[];[r.append(f)for f in sorted(d)if not r or not f.startswith(r[-1]+'/')];return r
 

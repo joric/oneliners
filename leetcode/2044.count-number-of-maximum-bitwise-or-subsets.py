@@ -14,6 +14,30 @@ class Solution:
     def countMaxOrSubsets(self, n: List[int]) -> int:
         c=Counter([0]);[c.update({k|a:v})for a in n for k,v in deepcopy(c).items()];return c[max(c)]
 
+# https://leetcode.com/problems/count-number-of-maximum-bitwise-or-subsets/solutions/5930848/One-Line-Solution/
+
+class Solution:
+    def countMaxOrSubsets(self, a: List[int]) -> int:
+        return sum(reduce(or_,(v for i,v in enumerate(a) if 1<<i&m))==reduce(or_,a) for m in range(1,1<<len(a)))
+
+class Solution:
+    def countMaxOrSubsets(self, a: List[int]) -> int:
+        return sum(reduce(or_,q)==reduce(or_,a) for k in range(len(a)) for q in combinations(a,k+1))
+
+class Solution:
+    def countMaxOrSubsets(self, a: List[int]) -> int:
+        return (f:=cache(lambda i,o,O=reduce(or_,a):a[i:] and f(i+1,o)+f(i+1,o|a[i]) or o==O))(0,0)
+
+class Solution:
+    def countMaxOrSubsets(self, a: List[int]) -> int:
+        return (f:=lambda i,o,O=reduce(or_,a):a[i:] and f(i+1,o)+f(i+1,o|a[i]) or o==O)(0,0)
+
+# updated 2024-10-18 (POTD)
+
+class Solution:
+    def countMaxOrSubsets(self, a: List[int]) -> int:
+        return(f:=lambda i,o,x=reduce(or_,a):a[i:]and f(i+1,o)+f(i+1,o|a[i])or o==x)(0,0)
+
 test('''
 2044. Count Number of Maximum Bitwise-OR Subsets
 Medium

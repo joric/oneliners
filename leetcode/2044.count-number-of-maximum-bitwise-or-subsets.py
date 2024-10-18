@@ -22,15 +22,7 @@ class Solution:
 
 class Solution:
     def countMaxOrSubsets(self, a: List[int]) -> int:
-        return sum(reduce(or_,q)==reduce(or_,a) for k in range(len(a)) for q in combinations(a,k+1))
-
-class Solution:
-    def countMaxOrSubsets(self, a: List[int]) -> int:
-        return (f:=cache(lambda i,o,O=reduce(or_,a):a[i:] and f(i+1,o)+f(i+1,o|a[i]) or o==O))(0,0)
-
-class Solution:
-    def countMaxOrSubsets(self, a: List[int]) -> int:
-        return (f:=lambda i,o,O=reduce(or_,a):a[i:] and f(i+1,o)+f(i+1,o|a[i]) or o==O)(0,0)
+        return sum(reduce(or_,q)==reduce(or_,a)for k in range(len(a)) for q in combinations(a,k+1))
 
 # updated 2024-10-18 (POTD)
 

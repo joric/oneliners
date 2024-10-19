@@ -22,6 +22,10 @@ class Solution:
     def insertIntoBST(self, r: Optional[TreeNode], v: int) -> Optional[TreeNode]:
         return(f:=lambda r,x:TreeNode(x)if not r else TreeNode(r.val,r.left,f(r.right,x))if r.val<x else TreeNode(r.val,f(r.left,x),r.right))(r,v)
 
+class Solution:
+    def insertIntoBST(self, r: Optional[TreeNode], v: int) -> Optional[TreeNode]:
+        return(f:=lambda r,x:setattr(r,t:=('left','right')[r.val<x],f(getattr(r,t),x))or r if r else TreeNode(x))(r,v)
+
 test('''
 701. Insert into a Binary Search Tree
 Medium

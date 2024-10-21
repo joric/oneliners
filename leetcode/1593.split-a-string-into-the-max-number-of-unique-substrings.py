@@ -31,7 +31,7 @@ class Solution:
 
 class Solution:
     def maxUniqueSplit(self, s: str) -> int:
-        return(f:=lambda s,v:1+max(s[:i]in v or f(s[i:],{s[:i],*v})for i in range(1,len(s)+2)))(s,())-3
+        return(f:=lambda s,v:max(s[:i]in v or-~f(s[i:],{s[:i],*v})for i in range(1,len(s)+2)))(s,())-2
 
 test('''
 1593. Split a String Into the Max Number of Unique Substrings

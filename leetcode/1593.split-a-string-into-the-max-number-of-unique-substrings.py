@@ -2,6 +2,8 @@ from lc import *
 
 # https://leetcode.com/problems/split-a-string-into-the-max-number-of-unique-substrings/discuss/855359/Python-One-Liner
 
+# 2024-10-21 (POTD)
+
 class Solution:
     def maxUniqueSplit(self, s: str) -> int:
         return(f:=lambda s,v:max([1+f(s[i+1:],{c,*v})for i in range(len(s))if(c:=s[:i+1])not in v]+[0]))(s,())

@@ -6,6 +6,10 @@ from lc import *
 
 class Solution:
     def maxUniqueSplit(self, s: str) -> int:
+        return(f:=lambda j,v=set():max([1+f(j+i,v|{s[j:j+i]})for i in range(1,len(s)-j+1)if s[j:j+i]not in v]+[0]))(0)
+
+class Solution:
+    def maxUniqueSplit(self, s: str) -> int:
         return(f:=lambda s,v:max([1+f(s[i+1:],{c,*v})for i in range(len(s))if(c:=s[:i+1])not in v]+[0]))(s,())
 
 class Solution:
@@ -15,6 +19,10 @@ class Solution:
 class Solution:
     def maxUniqueSplit(self, s: str) -> int:
         return(f:=lambda s,v:max([1+f(s[i:],{s[:i],*v})for i in range(1,len(s)+1)if s[:i]not in v]+[0]))(s,())
+
+class Solution:
+    def maxUniqueSplit(self, s: str) -> int:
+        return(f:=lambda s,v:max(s[:i]in v or 1+f(s[i:],{s[:i],*v})for i in range(1,len(s)+2)))(s,())-2
 
 test('''
 1593. Split a String Into the Max Number of Unique Substrings

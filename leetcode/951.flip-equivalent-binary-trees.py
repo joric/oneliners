@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def flipEquiv(self, a: Optional[TreeNode], b: Optional[TreeNode]) -> bool:
-        return(f:=lambda a,b:bool(not(a or b)or a and b and a.val==b.val and(f(a.left,b.left)and f(a.right,b.right)or f(a.left,b.right)and f(a.right,b.left))))(a,b)
+        return(f:=lambda a,b:bool(a==b or a and b and a.val==b.val and(f(a.left,b.left)and f(a.right,b.right)or f(a.left,b.right)and f(a.right,b.left))))(a,b)
 
 test('''
 951. Flip Equivalent Binary Trees

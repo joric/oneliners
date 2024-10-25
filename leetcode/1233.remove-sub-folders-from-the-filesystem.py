@@ -20,6 +20,9 @@ class Solution:
     def removeSubfolders(self, d: List[str]) -> List[str]:
         r=[];[r.append(f)for f in sorted(d)if not(r and f.startswith(r[-1]+'/'))];return r
 
+
+# https://leetcode.com/problems/remove-sub-folders-from-the-filesystem/discuss/5966255/One-Line-Solution
+
 class Solution:
     def removeSubfolders(self, f: List[str]) -> List[str]:
         q=' ';return[q:=v for v in sorted(f)if v.find(q+'/')]

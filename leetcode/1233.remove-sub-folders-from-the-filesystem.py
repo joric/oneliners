@@ -14,9 +14,11 @@ class Solution:
                 seen.add(f)
         return list(seen)
 
+# updated 2024-10-25 (POTD)
+
 class Solution:
     def removeSubfolders(self, d: List[str]) -> List[str]:
-        r=[];[r.append(f)for f in sorted(d)if not r or not f.startswith(r[-1]+'/')];return r
+        r=[];[r.append(f)for f in sorted(d)if not(r and f.startswith(r[-1]+'/'))];return r
 
 test('''
 1233. Remove Sub-Folders from the Filesystem

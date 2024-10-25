@@ -6,6 +6,10 @@ class Solution:
     def flipEquiv(self, a: Optional[TreeNode], b: Optional[TreeNode]) -> bool:
         return(f:=lambda a,b:bool(a==b or a and b and a.val==b.val and(f(a.left,b.left)and f(a.right,b.right)or f(a.left,b.right)and f(a.right,b.left))))(a,b)
 
+class Solution:
+    def flipEquiv(self, a: Optional[TreeNode], b: Optional[TreeNode]) -> bool:
+        f=lambda t:hash(t and(t.val,*sorted([f(t.left),f(t.right)])));return f(a)==f(b)
+
 test('''
 951. Flip Equivalent Binary Trees
 Medium

@@ -163,12 +163,6 @@ class Solution:search=contains
 class Solution:myPow=pow
 ```
 
-* https://leetcode.com/problems/serialize-and-deserialize-binary-tree
-
-```python
-Codec=TreeNode
-```
-
 Note that it only works for the built-in functions, they can omit `self` parameter.
 It's a built-in CPython feature:
 
@@ -183,6 +177,14 @@ class Solution:reverseWords=lambda _,s:' '.join(w[::-1]for w in s.split())
 ```
 
 It's not necessarily shorter, because lambdas can't use semicolons.
+
+In some cases you don't even have to write "class Solution:", e.g:
+
+* https://leetcode.com/problems/serialize-and-deserialize-binary-tree
+
+```python
+Codec=TreeNode
+```
 
 ### Shortest
 

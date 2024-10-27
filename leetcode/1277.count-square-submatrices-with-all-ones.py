@@ -1,5 +1,11 @@
 from lc import *
 
+# https://leetcode.com/problems/count-square-submatrices-with-all-ones/discuss/5974487/One-Line-Solution
+
+class Solution:
+    def countSquares(self, g: List[List[int]]) -> int:
+        return sum(starmap(f:=cache(lambda i,j:i*j*g[i][j]and 1+min(f(i,j-1),f(i-1,j-1),f(i-1,j))or g[i][j]),product(range(len(g)),range(len(g[0])))))
+
 # https://leetcode.com/problems/count-square-submatrices-with-all-ones/
 
 class Solution:
@@ -8,6 +14,10 @@ class Solution:
             for j in range(1, len(matrix[0])):
                 matrix[i][j] *= min(matrix[i - 1][j], matrix[i][j - 1], matrix[i - 1][j - 1]) + 1
         return sum(map(sum, matrix))
+
+class Solution:
+    def countSquares(self, g: List[List[int]]) -> int:
+        [setitem(g[i],j,g[i][j]*(min(g[i-1][j],g[i][j-1],g[i-1][j-1])+1))for i in range(1,len(g))for j in range(1,len(g[0]))];return sum(map(sum,g))
 
 test('''
 1277. Count Square Submatrices with All Ones

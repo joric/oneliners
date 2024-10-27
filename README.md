@@ -222,6 +222,13 @@ class Solution:
         return 1
 ```
 
+You can also write:
+
+```python
+class Solution:stoneGame=truth
+```
+
+
 * https://leetcode.com/problems/strictly-palindromic-number
 
 ```python
@@ -230,7 +237,11 @@ class Solution:
         0
 ```
 
-Notice no return operator in the last one, can be anything (e.g. `pass`), the function always returns None.
+Notice no return operator here, can be anything (e.g. `pass`), as the function returns None. You can also write:
+
+```python
+class Solution:isStrictlyPalindromic=not_
+```
 
 ### Lambdas
 

@@ -21,6 +21,10 @@ class Solution:
 
 class Solution:
     def longestSquareStreak(self, n: List[int]) -> int:
+        return(t:=max(reduce(lambda c,x:setitem(c,x,1+c.get(x*x,0))or c,sorted(n)[::-1],{}).values()),-1)[t<2]
+
+class Solution:
+    def longestSquareStreak(self, n: List[int]) -> int:
         c=Counter();[setitem(c,x,c[x*x]+1)for x in reversed(sorted(n))];return(t:=max(c.values()),-1)[t<2]
 
 class Solution:

@@ -27,6 +27,10 @@ class Solution:
     def longestSquareStreak(self, n: List[int]) -> int:
         c=Counter();return max(setitem(c,x,t:=c[x*x]+1)or(t,-1)[t<2]for x in sorted(n)[::-1])
 
+class Solution:
+    def longestSquareStreak(self, n: List[int]) -> int:
+        c={};return max(setitem(c,x,t:=1+c.get(x*x,0))or(t,-1)[t<2]for x in sorted(n)[::-1])
+
 test('''
 2501. Longest Square Streak in an Array
 Medium

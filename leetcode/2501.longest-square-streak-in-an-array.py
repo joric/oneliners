@@ -35,7 +35,11 @@ class Solution:
     def longestSquareStreak(self, n: List[int]) -> int:
         c={};return max(setitem(c,x,t:=1+c.get(x*x,0))or(t,-1)[t<2]for x in sorted(n)[::-1])
 
-# https://leetcode.com/problems/longest-square-streak-in-an-array/discuss/5182735/Python-Simple-Recursive-Memo-or-No-Sorting-or-TC%3A-O(N)-or-SC%3A-O(N)
+# https://leetcode.com/problems/longest-square-streak-in-an-array/discuss/5977715/One-Line-Solution
+
+class Solution:
+    def longestSquareStreak(self, a: List[int]) -> int:
+        return (-1,r:=max(map(f:=cache(lambda v:1+(v*v in a and f(v*v))),a:={*a})))[r>1]
 
 class Solution:
     def longestSquareStreak(self, n: List[int]) -> int:

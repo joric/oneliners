@@ -39,7 +39,7 @@ class Solution:
 
 class Solution:
     def longestSquareStreak(self, n: List[int]) -> int:
-        s=set(n);return(t:=max(map(f:=cache(lambda x:1+(x*x in s and f(x*x))),n)),-1)[t<2]
+        s={*n};return(t:=max(map(f:=cache(lambda x:1+(x*x in s and f(x*x))),n)),-1)[t<2]
 
 test('''
 2501. Longest Square Streak in an Array

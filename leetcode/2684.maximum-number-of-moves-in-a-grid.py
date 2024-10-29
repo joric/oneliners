@@ -6,6 +6,14 @@ class Solution:
     def maxMoves(self, g: List[List[int]]) -> int:
         return max(map(f:=cache(lambda i,j=0:max([0]+[1+f(x,y)for x,y in((i-1,j+1),(i,j+1),(i+1,j+1))if len(g)>x>-1<y<len(g[0])and g[i][j]<g[x][y]])),range(len(g))))
 
+class Solution:
+    def maxMoves(self, g: List[List[int]]) -> int:
+        return max(map(f:=cache(lambda i,j=0:max([0]+[1+f(x,j+1)for x in(i-1,i,i+1)if len(g)>x>=0<j+1<len(g[0])and g[i][j]<g[x][j+1]])),range(len(g))))
+
+class Solution:
+    def maxMoves(self, g: List[List[int]]) -> int:
+        return max(map(f:=cache(lambda i,j=0:max([0]+[1+f(x,j+1)for x in(i-1,i,i+1)if g[x:x+1]and-~j<len(g[0])and g[i][j]<g[x][j+1]])),range(len(g))))
+
 test('''
 2684. Maximum Number of Moves in a Grid
 Medium

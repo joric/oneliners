@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def maxMoves(self, g: List[List[int]]) -> int:
-        f=cache(lambda i,j=0:max([0]+[1+f(x,y)for x,y in((i-1,j+1),(i,j+1),(i+1,j+1))if len(g)>x>-1<y<len(g[0])and g[i][j]<g[x][y]]));return max(map(f,range(len(g))))
+        return max(map(f:=cache(lambda i,j=0:max([0]+[1+f(x,y)for x,y in((i-1,j+1),(i,j+1),(i+1,j+1))if len(g)>x>-1<y<len(g[0])and g[i][j]<g[x][y]])),range(len(g))))
 
 test('''
 2684. Maximum Number of Moves in a Grid

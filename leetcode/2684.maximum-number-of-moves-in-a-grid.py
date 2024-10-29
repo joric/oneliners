@@ -1,6 +1,7 @@
 from lc import *
 
 # https://leetcode.com/problems/maximum-number-of-moves-in-a-grid/discuss/3522132/Python-3-Python-Simple-DFS-Cache-Answer
+# 2024-10-29 (POTD)
 
 class Solution:
     def maxMoves(self, g: List[List[int]]) -> int:

@@ -1,5 +1,11 @@
 from lc import *
 
+# https://leetcode.com/problems/maximum-number-of-moves-in-a-grid/discuss/5981684/Python3-oror-1-line-and-multi-line
+
+class Solution:
+    def maxMoves(self, g: List[List[int]]) -> int:
+        s,n={*range(len(g))},len(g[0]);g.append([0]*n);return sum(bool(s:={x for i in s for x in(i+1,i,i-1)if g[x][j+1]>g[i][j]})for j in range(n-1)if s)
+
 # https://leetcode.com/problems/maximum-number-of-moves-in-a-grid/discuss/3522132/Python-3-Python-Simple-DFS-Cache-Answer
 # 2024-10-29 (POTD)
 

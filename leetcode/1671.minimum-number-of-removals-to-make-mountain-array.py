@@ -13,13 +13,23 @@ class Solution:
                 r = c
         return n-r
 
+# https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array/discuss/955021/O(NlogN)-3-liner-solution-with-7-lines-helper-funcition
+
+class Solution:
+    def minimumMountainRemovals(self, a: List[int]) -> int:
+        n = len(a)
+        def f(a):
+            d=[inf]*n
+            return[setitem(d,i:=bisect_left(d,x),x)or i for x in a]
+        return n - max(x+y+1 for x,y in zip(f(a),f(a[::-1])[::-1])if x and y)
+
 # https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array/discuss/952136/Python-LIS-O(nlogn)
 
 class Solution:
     def minimumMountainRemovals(self, a: List[int]) -> int:
         n = len(a)
         def f(a):
-            d = [10**9]*n
+            d = [inf]*n
             for x in a:
                 i = bisect_left(d, x)
                 d[i] = x
@@ -28,7 +38,7 @@ class Solution:
 
 class Solution:
     def minimumMountainRemovals(self, a: List[int]) -> int:
-        n=len(a);f=lambda a:(d:=[10**9]*n,[setitem(d,i:=bisect_left(d,x),x)for x in a],i if i else -n)[2];return n-max(1+f(a[:i+2])+f(a[:i:-1])for i in range(n-1))
+        n=len(a);f=lambda a:(d:=[inf]*n,[setitem(d,i:=bisect_left(d,x),x)for x in a],i if i else -n)[2];return n-max(1+f(a[:i+2])+f(a[:i:-1])for i in range(n-1))
 
 test('''
 1671. Minimum Number of Removals to Make Mountain Array

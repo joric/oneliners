@@ -1,5 +1,19 @@
 from lc import *
 
+# https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array/discuss/952053/Python-3-solutions%3A-LIS-dp-O(n-log-n)-explained
+
+class Solution:
+    def minimumMountainRemovals(self, d: List[int]) -> int:
+        n = len(d)
+        a, b = [1]*n, [1]*n
+        for i in range(1, n):
+            for j in range(i):
+                if d[j]<d[i]: a[i]=max(a[i], 1+a[j])
+                if d[j]>d[i]: 
+                    if a[j]>1: b[i] = max(b[i], 1 + a[j])
+                    if b[j]>1: b[i] = max(b[i], 1 + b[j])
+        return n-max(b)
+
 # https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array/discuss/2564659/ONLY-4-Lines-more-to-LIS
 
 class Solution:

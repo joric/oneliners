@@ -17,7 +17,7 @@ class Solution:
 
 class Solution:
     def minimumTotalDistance(self, a: List[int], b: List[List[int]]) -> int:
-        a.sort();b.sort();return(f:=cache(lambda i,j,k=0:a[i:]and b[j:]and min(f(i,j+1),f(i+1,j,k+1)+abs(a[i]-b[j][0])if b[j][1]>k else inf)or(0,inf)[not b[j:]]))(0,0)
+        a.sort();b.sort();return(f:=cache(lambda i,j,k=0:a[i:]and b[j:]and min(f(i,j+1),f(i+1,j,k+1)+abs(a[i]-b[j][0])if k<b[j][1]else inf)or(0,inf)[not b[j:]]))(0,0)
 
 test('''
 2463. Minimum Total Distance Traveled

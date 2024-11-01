@@ -7,6 +7,10 @@ class Solution:
     def makeFancyString(self, s: str) -> str:
         return re.sub(r'(.)\1\1+','\\1'*2,s)
 
+class Solution:
+    def makeFancyString(self, s: str) -> str:
+        return re.sub(r'(.)\1+','\\1'*2,s)
+
 test('''
 1957. Delete Characters to Make Fancy String
 Easy

@@ -1,6 +1,7 @@
 from lc import *
 
 # https://leetcode.com/problems/delete-characters-to-make-fancy-string/
+# s.replace(/(.)\1\1+/g, '$1$1'); // js
 
 class Solution:
     def makeFancyString(self, s: str) -> str:

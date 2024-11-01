@@ -11,6 +11,16 @@ class Solution:
     def makeFancyString(self, s: str) -> str:
         return re.sub(r'(.)\1+','\\1'*2,s)
 
+# https://leetcode.com/problems/delete-characters-to-make-fancy-string/discuss/5992534/One-Line-Solution
+
+class Solution:
+    def makeFancyString(self, s: str) -> str:
+        return s[:2]+''.join(c for p,q,c in zip(s,s[1:],s[2:]) if p+q!=q+c)
+
+class Solution:
+    def makeFancyString(self, s: str) -> str:
+        return ''.join(c*min(len([*p]),2) for c,p in groupby(s))
+
 class Solution:
     def makeFancyString(self, s: str) -> str:
         return re.sub(r'(.)\1+',r'\1\1',s)

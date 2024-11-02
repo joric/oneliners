@@ -16,6 +16,10 @@ class Solution:
     def isCircularSentence(self, s: str) -> bool:
         return all(a==b for a,_,b in re.findall(r'(?=(\w \w))',s+' '+s))
 
+class Solution:
+    def isCircularSentence(self, s: str) -> bool:
+        return not re.search('(.) (?!\\1)',s+' '+s)
+
 test('''
 2490. Circular Sentence
 Easy

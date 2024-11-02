@@ -1207,14 +1207,6 @@ class Solution:
 
 Many problems can be solved with a single regex:
 
-* https://leetcode.com/problems/make-the-string-great
-
-```python
-class Solution:
-    def makeGood(self, s: str) -> str:
-        [s:=re.sub(r'(.)(?!\1)(?i:\1)','',s)for _ in s];return s
-```
-
 * https://leetcode.com/problems/sort-vowels-in-a-string
 
 ```python
@@ -1229,6 +1221,14 @@ class Solution:
 class Solution:
     def isValid(self, w: str) -> bool:
         return match('^(?=.*[aeiou])(?=.*[^0-9aeiou])[a-z0-9]{3,}$',w,I)
+```
+
+* https://leetcode.com/problems/make-the-string-great
+
+```python
+class Solution:
+    def makeGood(self, s: str) -> str:
+        [s:=re.sub(r'(.)(?!\1)(?i:\1)','',s)for _ in s];return s
 ```
 
 * https://leetcode.com/problems/circular-sentence

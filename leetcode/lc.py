@@ -457,10 +457,9 @@ if __name__ == "__main__":
     import subprocess
 
     for i, filename in enumerate(files):
-        index = int(re.search(r'^([\d]+)', filename)[0])
+        id = int(re.search(r'^([\d]+)', filename)[0])
 
-        if index<88: continue
-        #if index<133: continue
+        if id<88: continue
         #if i<=88: continue
 
         #print(f'[{i}/{len(files)}] \x1b[96m{filename}\x1b[0m')
@@ -472,7 +471,7 @@ if __name__ == "__main__":
             stdout, stderr = process.communicate()
             exitcode = process.wait()
 
-            if exitcode or i==300:
+            if exitcode:
                 #sys.stdout = sys.__stdout__
                 #print(stdout, stderr, exitcode)
 

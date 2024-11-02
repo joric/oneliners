@@ -1231,6 +1231,14 @@ class Solution:
         return match('^(?=.*[aeiou])(?=.*[^0-9aeiou])[a-z0-9]{3,}$',w,I)
 ```
 
+* https://leetcode.com/problems/circular-sentence
+
+```python
+class Solution:
+    def isCircularSentence(self, s: str) -> bool:
+        return not re.search('(.) (?!\\1)',s+' '+s)
+```
+
 ### Misc
 
 Note that `key=itemgetter(n)` is the same length as `key=lambda x:x[n]` but a little bit clearer to read.

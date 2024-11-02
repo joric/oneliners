@@ -18,6 +18,10 @@ class Solution:
 
 class Solution:
     def isCircularSentence(self, s: str) -> bool:
+        return all(a[-1]==b[0]for a,b in pairwise(s.split()*2))
+
+class Solution:
+    def isCircularSentence(self, s: str) -> bool:
         return not re.search('(.) (?!\\1)',s+' '+s)
 
 test('''

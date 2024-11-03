@@ -4,10 +4,6 @@ from lc import *
 
 class Solution:
     def rotateString(self, a: str, b: str) -> bool:
-        return a in b+b and len(b)==len(a)
-
-class Solution:
-    def rotateString(self, a: str, b: str) -> bool:
         return len(a)==len(b)and a in b+b
 
 test('''

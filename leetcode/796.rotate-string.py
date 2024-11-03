@@ -8,7 +8,7 @@ class Solution:
 
 class Solution:
     def rotateString(self, a: str, b: str) -> bool:
-        return len(b)==len(a)and a in b+b
+        return len(a)==len(b)and a in b+b
 
 test('''
 796. Rotate String

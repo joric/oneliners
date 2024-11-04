@@ -24,7 +24,7 @@ class Solution:
 
 class Solution:
     def compressedString(self, w: str) -> str:
-        return re.sub(r'(.)\1{,8}',lambda m:f'{len(m[0])}'+m[1],w)
+        return re.sub(r'(.)\1{,8}',lambda m:str(len(m[0]))+m[1],w)
 
 test('''
 3163. String Compression III

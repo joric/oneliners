@@ -347,7 +347,7 @@ class Solution:
 ### Walrus operator
 
 The controversial walrus operator (`:=`) added in Python 3.8 ([PEP-572](https://peps.python.org/pep-0572/)
-that [resulted in Guido resign](https://www.infoworld.com/article/3292936/guido-van-rossum-resigns-whats-next-for-python.html)),
+that resulted in [Guido's resign](https://www.infoworld.com/article/3292936/guido-van-rossum-resigns-whats-next-for-python.html)),
 can be used to define or update a variable or a function (mostly used for recursive functions).
 
 You can define and call a recursive function in a single line with Y-combinator, e.g.:

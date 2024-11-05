@@ -24,6 +24,10 @@ class Solution:
     def minChanges(self, s: str) -> int:
         return sum(map(ne,*[iter(s)]*2))
 
+class Solution:
+    def minChanges(self, s: str) -> int:
+        return sum(map(ne,s:=iter(s),s))
+
 test('''
 2914. Minimum Number of Changes to Make Binary String Beautiful
 Medium

@@ -299,8 +299,14 @@ class Solution:
 
 class Solution:
     def minChanges(self, s: str) -> int:
+        return sum(map(ne,s:=iter(s),s))
+
+class Solution:
+    def minChanges(self, s: str) -> int:
         return sum(map(ne,*[iter(s)]*2))
 ```
+
+Remember the `[iter(s)]*n` pattern to break a list into n-sized pieces.
 
 ### Counters
 

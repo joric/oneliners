@@ -636,7 +636,7 @@ class Solution:
 
 ```
 
-See bisect implementation here:
+Bisect implementation for reference:
 
 * https://github.com/python/cpython/blob/main/Lib/bisect.py
 

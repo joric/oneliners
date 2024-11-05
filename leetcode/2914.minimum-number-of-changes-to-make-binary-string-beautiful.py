@@ -1,5 +1,11 @@
 from lc import *
 
+# https://leetcode.com/problems/minimum-number-of-changes-to-make-binary-string-beautiful/discuss/6008334/One-line-solution
+
+class Solution:
+    def minChanges(self, s: str) -> int:
+        return sum(a!=b for a,b in zip(*[iter(s)]*2))
+
 # https://leetcode.com/problems/minimum-number-of-changes-to-make-binary-string-beautiful/discuss/4689100/One-line-Python-100
 
 class Solution:
@@ -9,6 +15,10 @@ class Solution:
 class Solution:
     def minChanges(self, s: str) -> int:
         return sum(map(ne,s[::2],s[1::2]))
+
+class Solution:
+    def minChanges(self, s: str) -> int:
+        return sum(map(ne,*[iter(s)]*2))
 
 test('''
 2914. Minimum Number of Changes to Make Binary String Beautiful

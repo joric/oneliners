@@ -288,6 +288,20 @@ class Solution:
         s=iter(s);return sum(c not in s for c in t)
 ```
 
+You can also use `iter()` to split a list into chunks:
+
+* https://leetcode.com/problems/minimum-number-of-changes-to-make-binary-string-beautiful
+
+```python
+class Solution:
+    def minChanges(self, s: str) -> int:
+        return sum(map(ne,s[::2],s[1::2]))
+
+class Solution:
+    def minChanges(self, s: str) -> int:
+        return sum(map(ne,*[iter(s)]*2))
+```
+
 ### Counters
 
 Counters (`collections.Counter()`) can be updated, similar to `dict.update()`, it's much faster than a sum of counters.

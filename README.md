@@ -306,7 +306,7 @@ class Solution:
         return sum(map(ne,*[iter(s)]*2))
 ```
 
-Remember the `[iter(s)]*n` pattern to break a list into n-sized pieces.
+The `[iter(s)]*n` code breaks a list into n-sized pieces.
 
 ### Counters
 

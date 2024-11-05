@@ -14,6 +14,10 @@ class Solution:
 
 class Solution:
     def minChanges(self, s: str) -> int:
+        return sum(starmap(ne,batched(s,2))) # 3.12 only
+
+class Solution:
+    def minChanges(self, s: str) -> int:
         return sum(map(ne,s[::2],s[1::2]))
 
 class Solution:

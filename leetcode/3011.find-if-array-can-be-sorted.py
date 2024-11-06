@@ -7,7 +7,7 @@ from lc import *
 
 class Solution:
     def canSortArray(self, a: List[int]) -> bool:
-        return all(max(a)<min(b)for a,b in pairwise([[*v]for _,v in groupby(a,key=int.bit_count)]))
+        return all(max(a)<min(b)for a,b in pairwise([[*v]for _,v in groupby(a,int.bit_count)]))
 
 # https://leetcode.com/problems/find-if-array-can-be-sorted/discuss/4859284/one-line-solution
 

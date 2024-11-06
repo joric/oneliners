@@ -3,17 +3,21 @@ from lc import *
 # biweekly-contest-122 Q2
 # https://leetcode.com/problems/find-if-array-can-be-sorted
 
+# https://leetcode.com/problems/find-if-array-can-be-sorted/discuss/4859284/one-line-solution
+
+class Solution:
+    def canSortArray(self, a: List[int]) -> bool:
+        return[*chain(*(sorted(i)for _,i in groupby(a,int.bit_count)))]==sorted(a)
+
 # https://leetcode.com/problems/find-if-array-can-be-sorted/solutions/4598317/1-liner/
 
 class Solution:
     def canSortArray(self, a: List[int]) -> bool:
         return all(max(a)<min(b)for a,b in pairwise([[*v]for _,v in groupby(a,int.bit_count)]))
 
-# https://leetcode.com/problems/find-if-array-can-be-sorted/discuss/4859284/one-line-solution
-
 class Solution:
     def canSortArray(self, a: List[int]) -> bool:
-        return[*chain(*(sorted(i)for _,i in groupby(a,int.bit_count)))]==sorted(a)
+        l=0,;return all(max(l)<min(l:=[*i])for _,i in groupby(a,int.bit_count))
 
 test('''
 3011. Find if Array Can Be Sorted

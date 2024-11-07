@@ -1,5 +1,11 @@
 from lc import *
 
+# https://leetcode.com/problems/largest-combination-with-bitwise-and-greater-than-zero/discuss/5408154/slow-one-liner
+
+class Solution:
+    def largestCombination(self, c: List[int]) -> int:
+        return max(sum((Counter(i for i,e in enumerate(reversed(bin(v)))if e=='1')for v in c),Counter(),).values())
+
 # https://leetcode.com/problems/largest-combination-with-bitwise-and-greater-than-zero/discuss/2039903/JavaC%2B%2BPython-Bit-Solution
 
 class Solution:

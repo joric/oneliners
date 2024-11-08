@@ -1,5 +1,8 @@
 from lc import *
 
+# js: return x=~(~0<<m),a.map(n=>x^=n).reverse()
+# js: x=~(~0<<m);return a.map(n=>x^=n).reverse()
+
 # https://leetcode.com/problems/maximum-xor-for-each-query/discuss/4351631/One-line-solution
 
 class Solution:
@@ -26,14 +29,11 @@ class Solution:
 
 class Solution:
     def getMaximumXor(self, n: List[int], m: int) -> List[int]:
-        return[*accumulate([~-2**m]+n,xor)][:0:-1]
+        return[*accumulate([2**m-1]+n,xor)][:0:-1]
 
 class Solution:
     def getMaximumXor(self, n: List[int], m: int) -> List[int]:
-        t=~-2**m;return[t:=t^x for x in n][::-1]
-
-# js: return x=~(~0<<m),a.map(n=>x^=n).reverse()
-# js: x=~(~0<<m);return a.map(n=>x^=n).reverse()
+        t=2**m-1;return[t:=t^x for x in n][::-1]
 
 test('''
 1829. Maximum XOR for Each Query

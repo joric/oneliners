@@ -32,6 +32,9 @@ class Solution:
     def getMaximumXor(self, n: List[int], m: int) -> List[int]:
         t=~-2**m;return[t:=t^x for x in n][::-1]
 
+# js: return x=~(~0<<m),a.map(n=>x^=n).reverse()
+# js: x=~(~0<<m);return a.map(n=>x^=n).reverse()
+
 test('''
 1829. Maximum XOR for Each Query
 Medium

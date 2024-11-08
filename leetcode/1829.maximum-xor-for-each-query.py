@@ -20,6 +20,10 @@ class Solution:
     def getMaximumXor(self, n: List[int], m: int) -> List[int]:
         t=0;return[~-(1<<m)^(t:=t^x)for x in n][::-1]
 
+class Solution:
+    def getMaximumXor(self, n: List[int], m: int) -> List[int]:
+        return[*accumulate([~-2**m]+n,xor)][:0:-1]
+
 test('''
 1829. Maximum XOR for Each Query
 Medium

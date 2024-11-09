@@ -4,7 +4,41 @@ from lc import *
 
 class Solution:
     def minEnd(self, n: int, x: int) -> int:
-        return sum(2**b for i,b in enumerate([i for i in range(31)if 2**i&x==0]+[*range(31,64)])if(n-1)&2**i)+x
+        return sum(2**b for i,b in enumerate([i for i in range(31)if 2**i&x==0]+[*range(31,64)])if~-n&2**i)+x
+
+# https://leetcode.com/problems/minimum-array-end/discuss/5081947/JavaC%2B%2BPython-Bits-Manipulation
+
+class Solution:
+    def minEnd(self, n: int, x: int) -> int:
+        n -= 1
+        b = 1
+        for i in range(64):
+            if b & x == 0:
+                x |= (n & 1) * b
+                n >>= 1
+            b <<= 1
+        return x
+
+class Solution:
+    def minEnd(self, n: int, x: int) -> int:
+        n-=1;b=1;[(b&x==0 and(x:=x|(n&1)*b,n:=n//2),b:=b*2)for i in range(64)];return x
+
+class Solution:
+    def minEnd(self, n: int, x: int) -> int:
+        n -= 1
+        for i in range(64):
+            if (x >> i) & 1 == 0:
+                x |= (n & 1) << i
+                n >>= 1
+        return x
+
+class Solution:
+    def minEnd(self, n: int, x: int) -> int:
+        n-=1;[(0==1&(x>>i)and(x:=x|(n&1)<<i,n:=n//2))for i in range(64)];return x
+
+class Solution:
+    def minEnd(self, n: int, x: int) -> int:
+        n-=1;[(x:=x|(n&1)<<i,n:=n//2)for i in range(64)if(x>>i)&1==0];return x
 
 test('''
 3133. Minimum Array End

@@ -42,7 +42,7 @@ class Solution:
 
 class Solution:
     def minEnd(self, n: int, x: int) -> int:
-        return(f:=lambda a,b:b and 2*f(a>>-~-b%2,b//2)|(a|b)&1 or a)(n-1,x)
+        return(f:=lambda n,x:x and 2*f(n>>-~-x%2,x//2)|(n|x)&1 or n)(n-1,x)
 
 test('''
 3133. Minimum Array End

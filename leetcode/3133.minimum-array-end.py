@@ -44,14 +44,14 @@ class Solution:
     def minEnd(self, n: int, x: int) -> int:
         return(f:=lambda n,x:x and 2*f(n>>-~-x%2,x//2)|(n|x)&1 or n)(n-1,x)
 
-# TLE (cpp: int64_t r=x;while(--n)r=-~r|x;return r)
-class Solution:
-    def minEnd(self, n: int, x: int) -> int:
-        r=x;all((r:=-~r|x)for _ in range(n-1));return r
-
 class Solution:
     def minEnd(self, n: int, x: int) -> int:
         [(x:=x|~n%2<<i,n:=-~n//2)for i in range(64)if~x>>i&1];return x
+
+# TLE (cpp: int64_t r=x;while(--n)r=-~r|x;return r)
+class Solution:
+    def minEnd(self, n: int, x: int) -> int:
+        r=x;all(r:=-~r|x for _ in range(n-1));return r
 
 test('''
 3133. Minimum Array End

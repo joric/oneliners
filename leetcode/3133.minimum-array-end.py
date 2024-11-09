@@ -38,7 +38,11 @@ class Solution:
 
 class Solution:
     def minEnd(self, n: int, x: int) -> int:
-        n-=1;[(x:=x|(n&1)<<i,n:=n//2)for i in range(64)if(x>>i)&1==0];return x
+        n-=1;[(x:=x|(n&1)<<i,n:=n//2)for i in range(64)if x>>i&1<1];return x
+
+class Solution:
+    def minEnd(self, n: int, x: int) -> int:
+        return(f:=lambda a,b:b and 2*f(a>>-~-b%2,b//2)|(a|b)&1 or a)(n-1,x)
 
 test('''
 3133. Minimum Array End

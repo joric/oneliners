@@ -15,7 +15,7 @@ class Solution:
 
 class Solution:
     def primeSubOperation(self, a: List[int]) -> bool:
-        s=set(r:=range(2,n:=999));[x in s and(s:=s-set(range(x**2,n,x)))for x in r];p,m=sorted([0,*s]),1;return all(m<=(b:=x-p[bisect_right(p,x-m)-1])and(m:=b+1)for x in a)
+        s=set(r:=range(2,n:=999));[x in s and(s:=s-set(range(x**2,n,x)))for x in r];p=sorted([0,*s]);m=b=0;return all((m:=b+1)<=(b:=x-p[bisect_right(p,x-m)-1])for x in a)
 
 test('''
 2601. Prime Subtraction Operation

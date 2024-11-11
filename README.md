@@ -486,6 +486,17 @@ class Solution:
             range(2,int(n**0.5)+1), [0,0]+[1]*(n-2)))
 ```
 
+You can also calculate primes like this:
+
+* https://leetcode.com/problems/prime-subtraction-operation
+
+```python
+class Solution:
+    def primeSubOperation(self, a: List[int]) -> bool:
+        m,p=1,[0]+[i for i in range(2,999)if all(i%j for j in range(2,i))];\
+        return all(m<(m:=x-p[bisect_right(p,x-m)-1]+1)for x in a)
+```
+
 Note slices can extend the list implicitly, e.g.:
 
 ```python

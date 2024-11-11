@@ -17,6 +17,14 @@ class Solution:
     def primeSubOperation(self, a: List[int]) -> bool:
         s=set(r:=range(2,n:=999));[x in s and(s:=s-set(range(x**2,n,x)))for x in r];p=sorted([0,*s]);m=b=0;return all((m:=b+1)<=(b:=x-p[bisect_right(p,x-m)-1])for x in a)
 
+class Solution:
+    def primeSubOperation(self, a: List[int]) -> bool:
+        m,s=1,set(r:=range(2,n:=999));[x in s and(s:=s-set(range(x**2,n,x)))for x in r];p=sorted([0,*s]);return all(m<(m:=x-p[bisect_right(p,x-m)-1]+1)for x in a)
+
+class Solution:
+    def primeSubOperation(self, a: List[int]) -> bool:
+        m,p=1,[0]+[i for i in range(2,999)if all(i%j for j in range(2,i))];return all(m<(m:=x-p[bisect_right(p,x-m)-1]+1)for x in a)
+
 test('''
 2601. Prime Subtraction Operation
 Medium

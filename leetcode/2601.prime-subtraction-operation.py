@@ -48,7 +48,7 @@ class Solution:
 
 class Solution:
     def primeSubOperation(self, a: List[int]) -> bool:
-        m,g=1,range(2,n:=999);p=sorted([0,*reduce(lambda r,x:r-set(range(x**2,n,x))if x in r else r,g,set(g))]);return all(m<=(b:=n-p[bisect_right(p,n-m)-1])and(m:=b+1)for n in a)
+        m,g=1,range(2,n:=999);p=sorted([0,*reduce(lambda r,x:x in r and r-set(range(x**2,n,x))or r,g,set(g))]);return all(m<=(b:=n-p[bisect_right(p,n-m)-1])and(m:=b+1)for n in a)
 
 test('''
 2601. Prime Subtraction Operation

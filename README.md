@@ -472,6 +472,11 @@ Note that `setitem` also supports slices:
 * https://leetcode.com/problems/count-primes/discuss/111420/Python3-solution-using-Sieve-of-Eratosthenes-time-is-O(n)
 
 ```python
+# TLE, too slow
+class Solution:
+    def countPrimes(self, n):
+        g=range(2,n);return len(reduce(lambda r,x:r-set(range(x**2,n,x))if x in r else r,g,set(g)))
+
 class Solution:
     def countPrimes(self, n):
         a = [0,0]+[1]*(n-2)

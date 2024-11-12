@@ -1,5 +1,14 @@
 from lc import *
 
+# https://leetcode.com/problems/most-beautiful-item-for-each-query/discuss/1576050/Python-4-lines-Solution
+
+class Solution:
+    def maximumBeauty(self, items: List[List[int]], queries: List[int]) -> List[int]:
+        a = sorted(items + [[0, 0]])
+        for i in range(len(a)-1):
+            a[i+1][1] = max(a[i][1],a[i+1][1])
+        return[a[bisect.bisect(a,[x+1])-1][1] for x in queries]
+
 # https://leetcode.com/problems/most-beautiful-item-for-each-query/discuss/2825114/Python-3-oror-3-lines-binary-search-w-example-oror-TS%3A-80-58
 
 class Solution:

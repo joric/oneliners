@@ -3,14 +3,18 @@ from lc import *
 # https://leetcode.com/problems/most-beautiful-item-for-each-query/discuss/1576050/Python-4-lines-Solution
 
 class Solution:
-    def maximumBeauty(self, i: List[List[int]], q: List[int]) -> List[int]:
-        a=sorted(i+[[0,0]]);[setitem(a[i+1],1,max(a[i][1],a[i+1][1]))for i in range(len(a)-1)];return[a[bisect.bisect(a,[x+1])-1][1]for x in q]
+    def maximumBeauty(self, a: List[List[int]], q: List[int]) -> List[int]:
+        a=sorted(a+[[0,0]]);[setitem(a[i+1],1,max(a[i][1],a[i+1][1]))for i in range(len(a)-1)];return[a[bisect.bisect(a,[x+1])-1][1]for x in q]
 
 # https://leetcode.com/problems/most-beautiful-item-for-each-query/discuss/2825114/Python-3-oror-3-lines-binary-search-w-example-oror-TS%3A-80-58
 
 class Solution:
-    def maximumBeauty(self, i: List[List[int]], q: List[int]) -> List[int]:
-        p,b=zip(*sorted(i));b=[*accumulate(b,max)];return[(x>=p[0])*b[bisect_right(p,x)-1]for x in q]
+    def maximumBeauty(self, a: List[List[int]], q: List[int]) -> List[int]:
+        p,b=zip(*sorted(a));b=[*accumulate(b,max)];return[(x>=p[0])*b[bisect_right(p,x)-1]for x in q]
+
+class Solution:
+    def maximumBeauty(self, a: List[List[int]], q: List[int]) -> List[int]:
+        a,b=zip(*sorted(a));b=0,*accumulate(b,max);return[b[bisect_right(a,x)]for x in q]
 
 test('''
 2070. Most Beautiful Item for Each Query

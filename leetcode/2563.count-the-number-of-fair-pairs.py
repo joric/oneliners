@@ -24,7 +24,6 @@ class Solution:
     def countFairPairs(self, a: List[int], l: int, u: int) -> int:
         a.sort();return sum(bisect_right(a,u-x,hi=i)-bisect_left(a,l-x, hi=i)for i,x in enumerate(a))
 
-
 # https://leetcode.com/problems/count-the-number-of-fair-pairs/discuss/3174148/Python3-Sort-and-Bilinear-Search-3-lines
 
 class Solution:
@@ -42,7 +41,6 @@ class Solution:
 class Solution:
     def countFairPairs(self, a: list[int], l: int, u: int) -> int:
         a.sort();return sub(*(sum(bisect_right(a,p-x,hi=i)for i,x in enumerate(a))for p in(u,l-1)))
-
 
 test('''
 2563. Count the Number of Fair Pairs

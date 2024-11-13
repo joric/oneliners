@@ -13,23 +13,6 @@ class Solution:
             ans += b - a
         return ans
 
-# https://leetcode.com/problems/count-the-number-of-fair-pairs/discuss/3189582/Python-Elegant-and-Short-or-Two-lines-or-Bisect-or-In-place
-
-class Solution:
-    def countFairPairs(self, nums: List[int], lower: int, upper: int) -> int:
-        nums.sort()
-        return sum(bisect_right(nums, upper - num, hi=i) - bisect_left(nums, lower - num, hi=i)for i, num in enumerate(nums))
-
-class Solution:
-    def countFairPairs(self, a: List[int], l: int, u: int) -> int:
-        a.sort();return sum(bisect_right(a,u-x,hi=i)-bisect_left(a,l-x, hi=i)for i,x in enumerate(a))
-
-# https://leetcode.com/problems/count-the-number-of-fair-pairs/discuss/3174148/Python3-Sort-and-Bilinear-Search-3-lines
-
-class Solution:
-    def countFairPairs(self, a: List[int], l: int, u: int) -> int:
-        a.sort();return sum(abs(bisect_left(a,l-a[k])-bisect_right(a,u-a[k])) -(l-a[k]<=a[k]<=u-a[k])for k in range(len(a)))//2
-
 # https://leetcode.com/problems/count-the-number-of-fair-pairs/discuss/3177505/Python3-oror-3-lines-sort-and-bisect-oror-TS%3A-68-71
 
 class Solution:

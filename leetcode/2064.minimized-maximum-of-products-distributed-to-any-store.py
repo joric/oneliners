@@ -22,6 +22,10 @@ class Solution:
 
 class Solution:
     def minimizedMaximum(self, n: int, q: List[int]) -> int:
+        return-~bisect_left(range(1,max(q)),0,key=lambda x:n+sum(-i//x for i in q))
+
+class Solution:
+    def minimizedMaximum(self, n: int, q: List[int]) -> int:
         return-~bisect_left(range(1,9**6),-n,key=lambda x:sum(-i//x for i in q))
 
 test('''

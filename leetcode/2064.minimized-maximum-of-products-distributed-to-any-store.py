@@ -22,7 +22,7 @@ class Solution:
 
 class Solution:
     def minimizedMaximum(self, n: int, q: List[int]) -> int:
-        return-~bisect_left(range(1,max(q)),0,key=lambda x:n+sum(-i//x for i in q))
+        return-~bisect_left(range(1,9**6),0,key=lambda x:n+sum(-i//x for i in q))
 
 test('''
 2064. Minimized Maximum of Products Distributed to Any Store

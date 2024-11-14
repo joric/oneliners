@@ -1,10 +1,24 @@
 from lc import *
 
+# https://leetcode.com/problems/minimized-maximum-of-products-distributed-to-any-store/discuss/2008815/Python
+
+class Solution:
+    def minimizedMaximum(self, n: int, q: List[int]) -> int:
+        f=lambda x:n<sum(ceil(i/x)for i in q)
+        l,h = 1,max(q)
+        while l <= h:
+            m = (l+h)//2
+            if f(m):
+                l = m + 1
+            else:
+                h = m - 1
+        return l
+
 # https://leetcode.com/problems/minimized-maximum-of-products-distributed-to-any-store/discuss/5762681/One-line-solution
 
 class Solution:
     def minimizedMaximum(self, n: int, q: List[int]) -> int:
-        return-~bisect_left(range(1,max(q)),0,key=lambda p:n-sum(-(-x//p)for x in q))
+        return-~bisect_left(range(1,max(q)),0,key=lambda x:n-sum(-(-i//x)for i in q))
 
 test('''
 2064. Minimized Maximum of Products Distributed to Any Store

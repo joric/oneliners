@@ -54,7 +54,7 @@ class Solution:
             r -= 1
 
         t = a[r:]
-        return max(0,min(r,min(~i+r+bisect_left(t,a[i])for i in range(l))))
+        return max(0,min(r,min(r-i-1+bisect_left(t,a[i])for i in range(l))))
 
 class Solution:
     def findLengthOfShortestSubarray(self, a: List[int]) -> int:

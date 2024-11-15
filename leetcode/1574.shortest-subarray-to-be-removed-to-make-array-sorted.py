@@ -58,6 +58,13 @@ class Solution:
 
 class Solution:
     def findLengthOfShortestSubarray(self, a: List[int]) -> int:
+        l = next((i for i in range(1,len(a))if a[i]<a[i-1]),1)
+        r = next((i for i in range(len(a)-1,-1,-1)if a[i]<a[i-1]),-1)
+        t = a[r:]
+        return max(0,min(r,min(r-i-1+bisect_left(t,a[i])for i in range(l))))
+
+class Solution:
+    def findLengthOfShortestSubarray(self, a: List[int]) -> int:
         l,r=next((i for i in range(1,len(a))if a[i]<a[i-1]),1),next((i for i in range(len(a)-1,-1,-1)if a[i]<a[i-1]),-1);t=a[r:];return max(0,min(r,min(~i+r+bisect_left(t,a[i])for i in range(l))))
 
 test('''

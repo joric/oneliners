@@ -1,5 +1,27 @@
 from lc import *
 
+# https://leetcode.com/problems/shortest-subarray-to-be-removed-to-make-array-sorted
+
+class Solution:
+    def findLengthOfShortestSubarray(self, arr: List[int]) -> int:
+        n = len(arr)
+        left = 0
+        while left<n-1 and arr[left] <= arr[left+1]: left +=1
+        if left == n-1: return 0
+        right = n-1
+        while right > left and arr[right-1] <= arr[right]: right-=1
+        if right == 0: return n-1
+        res = min(n - left - 1, right)
+        i = 0
+        j = right
+        while i <= left and j < n:
+            if arr[j] >= arr[i]:
+                res = min(res, j - i - 1)
+                i+=1
+            else:
+                j+=1
+        return res
+
 # https://leetcode.com/problems/shortest-subarray-to-be-removed-to-make-array-sorted/discuss/831006/ororor-Python-3-ororor-Thoughts
 
 class Solution:

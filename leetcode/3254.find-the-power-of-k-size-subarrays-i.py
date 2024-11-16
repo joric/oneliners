@@ -4,10 +4,6 @@ from lc import *
 # const resultsArray = f = (nums, k) => k === 1 ? nums : f(nums.map((v, i, a) => v === a[i-1] + 1 ? v : -1).slice(1), k - 1);
 
 class Solution:
-    def resultsArray(self, nums: List[int], k: int) -> List[int]:
-        return k>1 and self.resultsArray([v if v == nums[i - 1] + 1 else -1 for i, v in enumerate(nums)][1:],k-1)or nums
-
-class Solution:
     def resultsArray(self, a: List[int], k: int) -> List[int]:
         return(f:=lambda a,k:k>1 and f([(-1,x)[x==a[i-1]+1]for i,x in enumerate(a)][1:],k-1)or a)(a,k)
 

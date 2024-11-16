@@ -237,7 +237,7 @@ class Solution:
         0
 ```
 
-This is 1-symbol solution. Notice no return operator here, can be `pass`, as function returns None. You can also write:
+This is 1-symbol solution. Notice no return operator here, can be `pass`, as function returns None. You can also do:
 
 ```python
 class Solution:isStrictlyPalindromic=not_

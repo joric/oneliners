@@ -15,6 +15,10 @@ class Solution:
     def resultsArray(self, a: List[int], k: int) -> List[int]:
         return k>1 and self.resultsArray([(-1,x)[x==a[i-1]+1]for i,x in enumerate(a)][1:],k-1)or a
 
+class Solution:
+    def resultsArray(self, a: List[int], k: int) -> List[int]:
+        c=l=1;return[(-1,x)[(c:=(2,c+1)[l+1==(l:=x)])>k]for x in a][k-1:]
+
 test('''
 3254. Find the Power of K-Size Subarrays I
 Medium

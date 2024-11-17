@@ -5,7 +5,7 @@ from lc import *
 class Solution:
     def shortestSubarray(self, a: List[int], k: int) -> int:
         h,t=[],inf
-        for i,s in enumerate(accumulate([0]+a)):
+        for i,s in enumerate(accumulate(a, initial=0)):
             while h and s-k>=h[0][0]:
                 t = min(t,i-heappop(h)[1])
             heappush(h,(s,i))

@@ -1,5 +1,20 @@
 from lc import *
 
+# TLE https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/discuss/6052964/Swift-or-Brute-force
+
+class Solution:
+    def shortestSubarray(self, a: List[int], k: int) -> int:
+        n,t=len(a),inf
+        for i in range(n):
+            s = 0
+            for j in range(i,n):
+                s += a[j]
+                if s>=k:
+                    t = min(t,j-i+1)
+                if s<=0 or s>=k:
+                    break
+        return(-1,t)[t<inf]
+
 # https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/discuss/349161/Python-7-line-heap
 
 class Solution:

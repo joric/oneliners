@@ -1273,6 +1273,20 @@ class Solution:
         return not re.search('(.) (?!\\1)',s+' '+s)
 ```
 
+### Accumulate
+
+There are many uses, remember that it supports any function besides the default "sum". E.g.
+
+```python
+[x for i,x in enumerate(a)if x>=max(a[:i+1])]
+```
+
+Is equal to:
+
+```python
+compress(a,map(ge,a,accumulate(a,max)))
+```
+
 ### Misc
 
 Note that `key=itemgetter(n)` is the same length as `key=lambda x:x[n]` but a little bit clearer to read.

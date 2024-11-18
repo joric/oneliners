@@ -39,8 +39,13 @@ class Solution:
         code = code * 2
         return [sum(code[i+1:i+k+1]) for i in range(len(code)//2)]
 
-# https://leetcode.com/problems/defuse-the-bomb/discuss/6056398/1-liner
+# https://leetcode.com/problems/defuse-the-bomb/discuss/1235556/Python-two-lines-brute-force
 
+class Solution:
+    def decrypt(self, c: List[int], k: int) -> List[int]:
+        n,r=len(c),range(1,k+1)if k>0 else range(k,0);return[sum(c[(i+j)%n]for j in r)for i in range(n)]if k else[0]*n
+
+# https://leetcode.com/problems/defuse-the-bomb/discuss/6056398/1-liner
 #def decrypt(code, k)
 #  code.map.with_index { |_, i| k.abs.times.sum { |j| code[(i + (j + 1) * k / k.abs) % code.size] } }
 #end
@@ -51,7 +56,7 @@ class Solution:
 
 class Solution:
     def decrypt(self, c: List[int], k: int) -> List[int]:
-        n,t=len(c),abs(k);return[sum(c[(i+-~j*k//t)%n]for j in range(t))for i in range(n)]
+        n,t=len(c),abs(k);return[sum(c[(i-~j*k//t)%n]for j in range(t))for i in range(n)]
 
 test('''
 1652. Defuse the Bomb

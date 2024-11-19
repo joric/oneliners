@@ -17,7 +17,11 @@ class Solution:
 
 class Solution:
     def maximumSubarraySum(self, a: List[int], k: int) -> int:
-        r=c=0;p,d=[-1]*100001,-1;[(c:=c+a[i],i>=k and(c:=c-a[i-k]),d:=max(d,p[a[i]]),setitem(p,a[i],i),i-d>=k and(r:=max(r,c)))for i in range(len(a))];return r
+        r=c=0;p,d=[-1]*9**6,-1;[(c:=c+a[i],i>=k and(c:=c-a[i-k]),d:=max(d,p[a[i]]),setitem(p,a[i],i),i-d>=k and(r:=max(r,c)))for i in range(len(a))];return r
+
+class Solution:
+    def maximumSubarraySum(self, a: List[int], k: int) -> int:
+        d,c,p=-1,0,{};return max(c*(i>=k+d)for i,x in enumerate(a)if(c:=c+x-a[i-k]*(i>=k),d:=max(d,p.get(x,-1)),setitem(p,x,i)))
 
 test('''
 2461. Maximum Sum of Distinct Subarrays With Length K

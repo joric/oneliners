@@ -17,10 +17,6 @@ class Solution:
 
 class Solution:
     def maximumSubarraySum(self, a: List[int], k: int) -> int:
-        r=c=0;p,d=[-1]*9**6,-1;[(c:=c+a[i],i>=k and(c:=c-a[i-k]),d:=max(d,p[a[i]]),setitem(p,a[i],i),i-d>=k and(r:=max(r,c)))for i in range(len(a))];return r
-
-class Solution:
-    def maximumSubarraySum(self, a: List[int], k: int) -> int:
         d,c,p=-1,0,{};return max(c*(i>=k+d)for i,x in enumerate(a)if(c:=c+x-a[i-k]*(i>=k),d:=max(d,p.get(x,-1)),setitem(p,x,i)))
 
 test('''
@@ -62,7 +58,11 @@ Output: 0
 Explanation: The subarrays of nums with length 3 are:
 - [4,4,4] which does not meet the requirements because the element 4 is repeated.
 We return 0 because no subarrays meet the conditions.
- 
+
+Other examples:
+
+Input: nums = [1,2,2], k = 2
+Output: 3
 
 Constraints:
 

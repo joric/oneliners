@@ -1,22 +1,21 @@
 from lc import *
 
 # https://leetcode.com/problems/take-k-of-each-character-from-left-and-right/discuss/2948183/Python-clean-12-line-sliding-window-solution-with-explanation
-
 # TODO
 
 class Solution:
     def takeCharacters(self, s: str, k: int) -> int:
+        t=j=0
         d = {c:s.count(c)-k for c in 'abc'}
         p = {c:0 for c in 'abc'}
-        if any(x < 0 for x in d.values()):
+        if any(x<0 for x in d.values()):
             return -1
-        t = l = 0
-        for r, c in enumerate(s):
+        for i,c in enumerate(s):
             p[c] += 1
-            while p[c] > d[c]:
-                p[s[l]] -= 1
-                l += 1
-            t = max(t, r - l + 1)
+            while p[c]>d[c]:
+                p[s[j]] -= 1
+                j += 1
+            t = max(t, i-j+1)
         return len(s) - t
 
 test('''

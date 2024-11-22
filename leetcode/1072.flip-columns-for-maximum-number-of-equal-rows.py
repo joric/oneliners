@@ -1,5 +1,11 @@
 from lc import *
 
+# https://leetcode.com/problems/flip-columns-for-maximum-number-of-equal-rows/discuss/6071545/One-Line-Solution
+
+class Solution:
+    def maxEqualRowsAfterFlips(self, g: List[List[int]]) -> int:
+        return max(Counter(tuple(q) for r in g for q in (r,map(not_,r))).values())
+
 # https://leetcode.com/problems/flip-columns-for-maximum-number-of-equal-rows/discuss/303752/Python-1-Line
 
 class Solution:

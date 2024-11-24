@@ -4,7 +4,15 @@ from lc import *
 
 class Solution:
     def maxMatrixSum(self, m: List[List[int]]) -> int:
-        return sum(abs(x) for r in m for x in r)-2*(sum(x<1 for r in m for x in r)%2 and min(abs(x) for r in m for x in r)or 0)
+        return sum(abs(x)for r in m for x in r)-2*(sum(x<1 for r in m for x in r)%2 and min(abs(x) for r in m for x in r)or 0)
+
+class Solution:
+    def maxMatrixSum(self, m: List[List[int]]) -> int:
+        t=[x for r in m for x in r];p=[*map(abs,t)];return sum(p)-2*(sum(map(0..__ge__,t))%2 and min(p))
+
+class Solution:
+    def maxMatrixSum(self, m: List[List[int]]) -> int:
+        p=[*map(abs,t:=[*chain(*m)])];return sum(p)-2*(sum(map(0..__ge__,t))%2 and min(p))
 
 test('''
 1975. Maximum Matrix Sum

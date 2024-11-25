@@ -1,5 +1,28 @@
 from lc import *
 
+# https://leetcode.com/problems/sliding-puzzle/discuss/3789645/Python-3-oror-17-lines-BFS-oror-TS%3A-97-98
+
+class Solution:
+    def slidingPuzzle(self, b: List[List[int]]) -> int:
+        m = ((1,3),(0,2,4),(1,5),(0,4),(1,3,5),(2,4))
+        s = (*b[0],*b[1])
+        q,v,r = deque([s]),set(),0
+        while q:
+            for _ in range(len(q)):
+                s = list(q.popleft())
+                j = s.index(0)
+                if s == [1,2,3,4,5,0]:
+                    return r
+                for i in m[j]:
+                    c = s[:]
+                    c[j], c[i] = c[i], 0
+                    c = tuple(c)
+                    if c in v: continue
+                    q.append(c)
+                    v.add(c)
+            r+= 1
+        return -1
+
 # https://leetcode.com/problems/sliding-puzzle/discuss/113613/C%2B%2B-9-lines-DFS-and-BFS
 
 class Solution:
@@ -24,24 +47,20 @@ class Solution:
 
 class Solution:
     def slidingPuzzle(self, b: List[List[int]]) -> int:
-        v={}
+        v = {}
         @cache
         def f(s,i,j,k,r):
-            s = ''.join(s[{i:j,j:i}.get(k,k)] for k in range(len(s)))
-            if s=='123450':
+            if(s:=''.join(s[{i:j,j:i}.get(k,k)]for k in range(len(s))))=='123450':
                 return k
             if k<r and k<v.get(s,inf):
-                v[k] = k
-                return min(f(s,j,z,k+1,r)for z in{0:(1,3),1:(0,2,4),2:(1,5),3:(0,4),4:(3,5,1),5:(4,2)}[j])
+                v[s] = k
+                return min(f(s,j,z,k+1,r)for z in((1,3),(0,2,4),(1,5),(0,4),(3,5,1),(4,2))[j])
             return r
-        s = ''.join(map(str,sum(b,[])))
-        i = s.find(0)
-        t = f(s,i,i,0,inf)
-        return t if t<inf else t
+        return(-1,t:=f(s:=''.join(map(str,sum(b,[]))),i:=s.find('0'),i,0,inf))[t<inf]
 
 class Solution:
     def slidingPuzzle(self, b: List[List[int]]) -> int:
-        v,f={},cache(lambda s,i,j,k,r:k if(s:=''.join(s[{i:j,j:i}.get(k,k)]for k in range(len(s))))=='123450'else min(f(s,j,z,k+1,r)for z in{0:(1,3),1:(0,2,4),2:(1,5),3:(0,4),4:(3,5,1),5:(4,2)}[j])if k<r and k<v.get(s,inf)and[setitem(v,s,k)]else r);return(-1,t:=f(s:=''.join(map(str,sum(b,[]))),i:=s.find('0'),i,0,inf))[t<inf]
+        v,f={},cache(lambda s,i,j,k,r:k if(s:=''.join(s[{i:j,j:i}.get(k,k)]for k in range(len(s))))=='123450'else min(f(s,j,z,k+1,r)for z in((1,3),(0,2,4),(1,5),(0,4),(3,5,1),(4,2))[j])if k<r and k<v.get(s,inf)and[setitem(v,s,k)]else r);return(-1,t:=f(s:=''.join(map(str,sum(b,[]))),i:=s.find('0'),i,0,inf))[t<inf]
 
 test('''
 773. Sliding Puzzle

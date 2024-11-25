@@ -27,26 +27,6 @@ class Solution:
 
 class Solution:
     def slidingPuzzle(self, b: List[List[int]]) -> int:
-        m,v,d={0:(1,3),1:(0,2,4),2:(1,5),3:(0,4),4:(3,5,1),5:(4,2)},{},[inf]
-        @cache
-        def f(s, i, j, k):
-            s = list(s)
-            s[i], s[j] = s[j], s[i]
-            s = ''.join(s)
-            if s == '123450':
-                d[0] = min(d[0],k)
-                return
-            if k < d[0] and (s not in v or v[s]>k):
-                v[s] = k
-                for z in m[j]:
-                    f(s, j, z, k + 1)
-        s=''.join(map(str,sum(b,[])))
-        i=s.find('0')
-        f(s, i, i, 0)
-        return(-1,d[0])[d[0]<inf]
-
-class Solution:
-    def slidingPuzzle(self, b: List[List[int]]) -> int:
         v = {}
         @cache
         def f(s,i,j,k,r):

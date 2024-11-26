@@ -17,6 +17,10 @@ class Solution:
     def findChampion(self, n: int, e: List[List[int]]) -> int:
         return[*t][0]if 2>len(t:={*range(n)}-{x for _,x in e})else-1
 
+class Solution:
+    def findChampion(self, n: int, e: List[List[int]]) -> int:
+        return[-1,*(t:={*range(n)}-{x for _,x in e})][len(t)<2]
+
 test('''
 2924. Find Champion II
 Medium

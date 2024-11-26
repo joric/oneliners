@@ -19,7 +19,7 @@ class Solution:
 
 class Solution:
     def findChampion(self, n: int, e: List[List[int]]) -> int:
-        return[-1,*(t:={*range(n)}-{x for _,x in e})][len(t)<2]
+        return(-1,*(t:={*range(n)}-{x for _,x in e}))[len(t)<2]
 
 test('''
 2924. Find Champion II

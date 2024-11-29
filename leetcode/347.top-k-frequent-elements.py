@@ -14,7 +14,7 @@ class Solution:
 
 class Solution:
     def topKFrequent(self, n: List[int], k: int) -> List[int]:
-        return dict(Counter(n).most_common(k))
+        return dict(Counter(n).most_common(k)) # stopped working since Aug 2023
 
 class Solution:
     def topKFrequent(self, n: List[int], k: int) -> List[int]:

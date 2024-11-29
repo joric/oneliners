@@ -51,7 +51,7 @@ class Solution:
         return map(int.bit_count,range(n+1))
 ```
 
-Though the two examples above stopped worked since Aug 2023 (`expected return type integer []`).
+Though the two examples above stopped worked since Aug 2023 (`expected return type integer[]`).
 
 You can also return linked list of values as `ListNode('a,b,...')`. This one is really specific, but sometimes useful.
 

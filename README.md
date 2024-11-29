@@ -30,17 +30,18 @@ class Solution:
         return __import__('numpy').linalg.matrix_rank([[1]+x for x in p])<3
 ```
 
-Sometimes you can save on casting of the return type, e.g. Leetcode autoconverts keys and mixed types to lists.
+Sometimes you can save on casting of the return type, e.g. Leetcode autoconverted keys and mixed types to lists.
 
 * https://leetcode.com/problems/top-k-frequent-elements
 
 ```python
+
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         return dict(Counter(nums).most_common(k))
 ```
 
-It also automatically evaluates generators:
+It also automatically evaluated generators:
 
 * https://leetcode.com/problems/counting-bits
 
@@ -49,6 +50,8 @@ class Solution:
     def countBits(self, n: int) -> List[int]:
         return map(int.bit_count,range(n+1))
 ```
+
+Though the two examples above stopped worked since Aug 2023 (`expected return type integer []`).
 
 You can also return linked list of values as `ListNode('a,b,...')`. This one is really specific, but sometimes useful.
 

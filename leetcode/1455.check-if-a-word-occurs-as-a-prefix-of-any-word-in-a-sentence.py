@@ -12,6 +12,10 @@ class Solution:
     def isPrefixOfWord(self, s: str, w: str) -> int:
         return next((i+1 for i,x in enumerate(s.split())if x.find(w)==0),-1)
 
+class Solution:
+    def isPrefixOfWord(self, s: str, w: str) -> int:
+        return next((i+1 for i,x in enumerate(s.split())if match(w,x)),-1)
+
 test('''
 1455. Check If a Word Occurs As a Prefix of Any Word in a Sentence
 Easy

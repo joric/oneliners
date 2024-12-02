@@ -1,6 +1,8 @@
 from lc import *
 
 # https://leetcode.com/problems/check-if-a-word-occurs-as-a-prefix-of-any-word-in-a-sentence
+# return s.split(' ').findIndex(w=>w.startsWith(t))+1||-1
+# return('_ '+s).split(' ').findIndex(w=>w.startsWith(t))
 
 class Solution:
     def isPrefixOfWord(self, s: str, w: str) -> int:

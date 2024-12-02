@@ -48,6 +48,11 @@ Output: -1
 Explanation: "you" is not a prefix of any word in the sentence.
  
 
+Other examples:
+
+Input: sentence = "hellohello hellohellohello", searchWord = "ell"
+Output: -1
+
 Constraints:
 
 1 <= sentence.length <= 100

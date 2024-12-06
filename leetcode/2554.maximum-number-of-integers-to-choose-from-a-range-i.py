@@ -36,6 +36,10 @@ class Solution:
     def maxCount(self, b: List[int], n: int, m: int) -> int:
         return sum(map(m.__ge__,accumulate(sorted({*range(1,n+1)}-{*b}))))
 
+class Solution:
+    def maxCount(self, b: List[int], n: int, m: int) -> int:
+        return bisect_right([*accumulate(sorted({*range(1,n+1)}-{*b}))],m)
+
 test('''
 2554. Maximum Number of Integers to Choose From a Range I
 Medium

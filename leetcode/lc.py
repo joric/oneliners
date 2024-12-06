@@ -269,7 +269,7 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
 
     def print_res(passed, res, expected, *args):
         g = lambda t:str(t.serialize(t) if type(t) is ListNode or type(t) is TreeNode  else t)
-        c = lambda c,t,w=50: '\x1b[{1}m{2}\x1b[0m'.format(s:=g(t), 30+c, s[:w]+'...' if e==2 and len(s)>=w else s)
+        c = lambda c,t,w=50: '\x1b[{1}m{2}\x1b[0m'.format(s:=g(t), 30+c, s[:w]+'...' if len(s)>=w else s)
         e = 2 if passed else 1
         print('%s args %s result %s expected %s' % (c(e,'PASSED' if passed else 'FAILED'), c(e,args), c(e,res), c(e,expected)))
 

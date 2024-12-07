@@ -655,7 +655,7 @@ class Solution:
 
 ```
 
-Bisect implementation for reference:
+Bisect implementation for reference (you HAVE to read and learn this):
 
 * https://github.com/python/cpython/blob/main/Lib/bisect.py
 

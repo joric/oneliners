@@ -28,6 +28,10 @@ class Solution:
     def minimumSize(self, a: List[int], k: int) -> int:
         return bisect_left(range(max(a)),1,1,key=lambda i:sum((x-1)//i for x in a)<=k)
 
+class Solution:
+    def minimumSize(self, a: List[int], k: int) -> int:
+        return bisect_left(range(10**9),1,1,key=lambda i:sum((x-1)//i for x in a)<=k)
+
 test('''
 1760. Minimum Limit of Balls in a Bag
 Medium

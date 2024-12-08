@@ -10,6 +10,10 @@ class Solution:
     def maxTwoEvents(self, A: List[List[int]]) -> int:
         S,E,V=zip(*(A:=sorted(A)));M=[*accumulate(V[::-1],max)][::-1];return max(M[:1]+[(j:=bisect_right(S,e))<len(A) and v+M[j] for s,e,v in A])
 
+class Solution:
+    def maxTwoEvents(self, a: List[List[int]]) -> int:
+        a.sort();b,_,t=zip(*a);t=[*accumulate(t[::-1],max)][::-1];return max(t[:1]+[(j:=bisect_right(b,e))<len(a)and v+t[j]for _,e,v in a])
+
 test('''
 2054. Two Best Non-Overlapping Events
 Medium

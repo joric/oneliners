@@ -1,14 +1,14 @@
 from lc import *
 
-# https://leetcode.com/problems/two-best-non-overlapping-events/discuss/1851939/Python-sort%2Bbisect-(binary-search)
-# TODO
+# https://leetcode.com/problems/two-best-non-overlapping-events/discuss/4185733/One-Line-Solution
 
 class Solution:
     def maxTwoEvents(self, a: List[List[int]]) -> int:
-        t = [*map(list,sorted(a))]
-        for i in range(len(t)-2, -1, -1):
-            t[i][2] = max(t[i][2], t[i+1][2])
-        return max(v+(t[i][2]if(i:=bisect_right(t,[e+1,0]))<len(t)else 0)for _,e,v in a)
+        return max((M:=[*accumulate(map(itemgetter(2),(a:=sorted(a))[::-1]),max)][::-1])+[(j:=bisect_right(a,e,key=itemgetter(0)))<len(a) and v+M[j] for s,e,v in a])
+
+class Solution:
+    def maxTwoEvents(self, A: List[List[int]]) -> int:
+        S,E,V=zip(*(A:=sorted(A)));M=[*accumulate(V[::-1],max)][::-1];return max(M[:1]+[(j:=bisect_right(S,e))<len(A) and v+M[j] for s,e,v in A])
 
 test('''
 2054. Two Best Non-Overlapping Events

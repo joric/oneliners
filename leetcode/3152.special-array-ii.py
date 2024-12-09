@@ -20,6 +20,10 @@ class Solution:
     def isArraySpecial(self, a: List[int], q: List[List[int]]) -> List[bool]:
         p=[*accumulate(starmap(eq,pairwise(map((1).__and__,a))),initial=0)];return[p[i]==p[j] for i,j in q]
 
+class Solution:
+    def isArraySpecial(self, a: List[int], q: List[List[int]]) -> List[bool]:
+        p=[*accumulate(starmap(eq,pairwise(x&1 for x in a)),initial=0)];return[p[i]==p[j] for i,j in q]
+
 test('''
 3152. Special Array II
 Medium

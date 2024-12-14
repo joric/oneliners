@@ -34,7 +34,7 @@ class Solution:
 
 class Solution:
     def pickGifts(self, g: List[int], k: int) -> int:
-        [setitem(g,g.index(t:=max(g)),isqrt(t))for i in range(k)];return sum(g)
+        [setitem(g,g.index(t:=max(g)),isqrt(t))for _ in range(k)];return sum(g)
 
 test('''
 2558. Take Gifts From the Richest Pile

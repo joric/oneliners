@@ -19,7 +19,7 @@ class Solution:
 
 class Solution:
     def continuousSubarrays(self, a: List[int]) -> int:
-        return sum((f:=cache(lambda j,x,y:j<len(a)and abs((x:=min(x,a[j]))-(y:=max(y,a[j])))<3 and 1+f(j+1,x,y)))(i,x,x)for i,x in enumerate(a))
+        f=cache(lambda j,x,y:j<len(a)and abs((x:=min(x,a[j]))-(y:=max(y,a[j])))<3 and 1+f(j+1,x,y));return sum(f(i,x,x)for i,x in enumerate(a))
 
 test('''
 2762. Continuous Subarrays

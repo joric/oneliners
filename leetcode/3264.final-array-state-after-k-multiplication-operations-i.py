@@ -1,6 +1,7 @@
 from lc import *
 
 # https://leetcode.com/problems/final-array-state-after-k-multiplication-operations-i/discuss/5690001/3-Lines
+# similar to https://leetcode.com/problems/take-gifts-from-the-richest-pile
 
 class Solution:
     def getFinalState(self, a: List[int], k: int, m: int) -> List[int]:

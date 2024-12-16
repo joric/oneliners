@@ -1,6 +1,7 @@
 from lc import *
 
 # https://leetcode.com/problems/take-gifts-from-the-richest-pile/discuss/3153336/Python-3-oror-6-lines-heap-w-example-oror-TS%3A-95-99
+# similar to https://leetcode.com/problems/final-array-state-after-k-multiplication-operations-i
 
 class Solution:
     def pickGifts(self, gifts: List[int], k: int) -> int:
@@ -11,18 +12,6 @@ class Solution:
         for _ in range(k):
             g = -heappushpop(heap, -isqrt(g))
         return g - sum(heap)
-
-# https://leetcode.com/problems/take-gifts-from-the-richest-pile/discuss/4331874/2-Line-JS-Solution
-'''
-var pickGifts = function (gifts, k) {
-    while(k>0){
-        index = gifts.indexOf(Math.max(...gifts));
-        gifts[index] = Math.floor(Math.sqrt(gifts[index]));
-        k--;
-    }
-    return gifts.reduce((sum,ele)=>sum+ele);
-};
-'''
 
 # https://leetcode.com/problems/take-gifts-from-the-richest-pile/discuss/3148009/Pyrhon-2-lines-brute-force-100%2B100
 

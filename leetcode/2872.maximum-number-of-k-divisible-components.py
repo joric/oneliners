@@ -5,24 +5,26 @@ from lc import *
 class Solution:
     def maxKDivisibleComponents(self, n: int, e: List[List[int]], v: List[int], k: int) -> int:
         g,s=defaultdict(list),set()
-        [g[i].append(j)or g[j].append(i)for i,j in e]
+        for i,j in e:
+            g[i].append(j)
+            g[j].append(i)
         def f(i,x):
-            if i not in s:
-                s.add(i)
-                t = v[i]%k
-                r = 0
-                for j in g[i]:
-                    if j!=x:
-                        a,b = f(j,i)
-                        t = (t+b)%k
-                        r += a
-                return r+(t==0),t
-            return 0,0
+            if i in s:
+                return 0,0
+            s.add(i)
+            t = v[i] % k
+            r = 0
+            for j in g[i]:
+                if j != x:
+                    a, b = f(j,i)
+                    t = (t + b)%k
+                    r += a
+            return r+(t==0), t
         return max(f(0,-1)[0],1)
 
 class Solution:
     def maxKDivisibleComponents(self, n: int, e: List[List[int]], v: List[int], k: int) -> int:
-        g,s=defaultdict(list),set();[g[i].append(j)or g[j].append(i)for i,j in e];f=lambda i,x:i in s and (0,0)or((s.add(i),t:=v[i]%k)and sum((p:=f(j,i),t:=(t+p[1])%k)and p[0]for j in g[i]if j!=x)+(t==0),t);return max(f(0,-1)[0],1)
+        g,s=defaultdict(list),set();[g[i].append(j)or g[j].append(i)for i,j in e];f=lambda i,x:i in s and(0,0)or((s.add(i),t:=v[i]%k)and sum((p:=f(j,i),t:=(t+p[1])%k)and p[0]for j in g[i]if j!=x)+(t==0),t);return max(f(0,-1)[0],1)
 
 test('''
 2872. Maximum Number of K-Divisible Components

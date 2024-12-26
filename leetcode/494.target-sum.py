@@ -53,7 +53,11 @@ Example 2:
 
 Input: nums = [1], target = 1
 Output: 1
- 
+
+Other examples:
+
+Input: nums = [7,9,3,8,0,2,4,8,3,9], target = 0
+Output: 0
 
 Constraints:
 

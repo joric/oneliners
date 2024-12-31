@@ -22,6 +22,10 @@ class Solution:
     def mincostTickets(self, days: List[int], costs: List[int]) -> int:
         return (f:=cache(lambda i:i<len(days) and min(f(bisect_left(days,days[i]+d,i+1))+c for d,c in zip([1,7,30],costs))))(0)
 
+class Solution:
+    def mincostTickets(self, d: List[int], c: List[int]) -> int:
+        return(f:=cache(lambda i:i<len(d)and min(y+f(bisect_left(d,d[i]+x,i+1))for x,y in zip([1,7,30],c))))(0)
+
 test('''
 983. Minimum Cost For Tickets
 Medium

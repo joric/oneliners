@@ -6,6 +6,10 @@ class Solution:
     def vowelStrings(self, w: List[str], q: List[List[int]]) -> List[int]:
         p=[0,*accumulate(s[0]in'aeiou'and s[-1]in'aeiou'for s in w)];return[p[j+1]-p[i]for i,j in q]
 
+class Solution:
+    def vowelStrings(self, w: List[str], q: List[List[int]]) -> List[int]:
+        p=[0,*accumulate({s[0],s[-1]}<{*'aeiou'}for s in w)];return[p[j+1]-p[i]for i,j in q]
+
 test('''
 2559. Count Vowel Strings in Ranges
 Solved

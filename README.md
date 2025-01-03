@@ -1510,34 +1510,6 @@ class Solution:
         return h.deserialize(str([sum(v)for k,v in groupby(eval(h.serialize(h)),bool)if k]))
 ```
 
-You can save a few characters using asterisk operator `*`.
-One `*` means "expand this as a list", two `**` means "expand this as a dictionary".
-
-* https://leetcode.com/problems/check-if-it-is-a-straight-line
-
-```python
-class Solution:
-    def checkStraightLine(self, p):
-        (a,b),(c,d)=p[:2];return all((x-a)*(d-b)==(c-a)*(y-b)for x,y in p)
-
-class Solution:
-    def checkStraightLine(self, p):
-        (a,b),(c,d),*_=p;return all((x-a)*(d-b)==(c-a)*(y-b)for x,y in p)
-```
-
-* https://leetcode.com/problems/maximum-average-subarray-i
-
-
-```python
-class Solution:
-    def findMaxAverage(self, n: List[int], k: int) -> float:
-        s=[0]+[*accumulate(n)];return max(map(sub,s[k:],s))/k
-
-class Solution:
-    def findMaxAverage(self, n: List[int], k: int) -> float:
-        s=[0,*accumulate(n)];return max(map(sub,s[k:],s))/k
-```
-
 Quite a few things become shorter with `statistics.mode` (most common value of discrete or nominal data).
 
 * https://leetcode.com/problems/set-mismatch
@@ -1672,13 +1644,56 @@ class Solution:
         a.sort();return sum((x:=a.pop(),insort(a,-(-x//3)))[0]for _ in range(k))
 ```
 
+### Asterisk operator
+
+You can save a few characters using asterisk operator `*`.
+One `*` means "expand this as a list", two `**` means "expand this as a dictionary".
+
+* https://leetcode.com/problems/check-if-it-is-a-straight-line
+
+```python
+class Solution:
+    def checkStraightLine(self, p):
+        (a,b),(c,d)=p[:2];return all((x-a)*(d-b)==(c-a)*(y-b)for x,y in p)
+
+class Solution:
+    def checkStraightLine(self, p):
+        (a,b),(c,d),*_=p;return all((x-a)*(d-b)==(c-a)*(y-b)for x,y in p)
+```
+
+There's a nice way to convert an iterable to list, e.g. `x=[*g]` equals `*x,=g` (1 char shorter).
+You can also use this syntax to unpack iterables, e.g. `a,*b,c=range(5)` means `a=1;b=[2,3,4];c=5`.
+
+* https://leetcode.com/problems/maximum-average-subarray-i
+
+
+```python
+class Solution:
+    def findMaxAverage(self, n: List[int], k: int) -> float:
+        s=[0]+[*accumulate(n)];return max(map(sub,s[k:],s))/k
+
+class Solution:
+    def findMaxAverage(self, n: List[int], k: int) -> float:
+        s=[0,*accumulate(n)];return max(map(sub,s[k:],s))/k
+```
+
+* https://leetcode.com/problems/number-of-ways-to-split-array
+
+```python
+class Solution:
+    def waysToSplitArray(self, a: list[int]) -> int:
+        return sum(map((sum(a)/2).__le__,accumulate(a[:-1])))
+
+class Solution:
+    def waysToSplitArray(self, a: list[int]) -> int:
+        *p,s=accumulate(a);return sum(map((s/2).__le__,p))
+```
+
 
 ### Notes
 
 * An expression like `x&(x-1)==0` is useful to check if unsigned `x` is power of 2 or 0 (Kernighan, rightmost bit).
 * Unless the following token starts with e or E, you can remove the space following a number. E.g. `i==4 and j==4` becomes `i==4and j==4`.
-* There's a nice way to convert an iterable to list using star operator, e.g. `x=[*g]` equals `*x,=g` (1 char shorter).
-  You can also use this syntax to unpack iterables, e.g. `a,*b,c=range(5)` means `a=1;b=[2,3,4];c=5`.
 * Instead of range(x), you can use the * operator on a list of anything, e.g. `[1]*8` can replace `range(8)` (unless you really need the counter value).
 * Conditions like `if i<len(r)` may be replaced with `if r[i:]`, it's 3 characters shorter.
 * You can replace `set(n)` with `{*n}` (2 characters shorter).

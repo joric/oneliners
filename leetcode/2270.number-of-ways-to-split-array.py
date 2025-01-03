@@ -17,6 +17,10 @@ class Solution:
     def waysToSplitArray(self, a: list[int]) -> int:
         return sum(map((sum(a)/2).__le__,accumulate(a[:-1])))
 
+class Solution:
+    def waysToSplitArray(self, a: list[int]) -> int:
+        *p,s=accumulate(a);return sum(map((s/2).__le__,p))
+
 test('''
 2270. Number of Ways to Split Array
 Medium

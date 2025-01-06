@@ -1,6 +1,15 @@
 from lc import *
 
-# https://leetcode.com/problems/minimum-number-of-operations-to-move-all-balls-to-each-box
+# https://leetcode.com/problems/minimum-number-of-operations-to-move-all-balls-to-each-box/solutions/1170285/python-3-true-one-liner/
+
+class Solution:
+  def minOperations(self, boxes: str) -> List[int]:
+    A = list(map(int, boxes))
+    B = list(accumulate(A))
+    return list(accumulate(B[:-1], lambda z,x: z + 2*x - B[-1], initial=sum(starmap(mul, enumerate(A)))))
+
+class Solution: minOperations = lambda _,S: \
+  list(accumulate((B := list(accumulate(A := list(map(int, S)))))[:-1], lambda z,x: z + 2*x - B[-1], initial=sum(starmap(mul, enumerate(A)))))
 
 class Solution:
     def minOperations(self, b: str) -> List[int]:

@@ -19,6 +19,10 @@ class Solution:
     def minOperations(self, b: str) -> List[int]:
         r=range(len(b));return[sum(abs(j-i)for j in r if'0'<b[j])for i in r]
 
+class Solution:
+    def minOperations(self, b: str) -> List[int]:
+        r=range(len(b));return[sum(int(b[j])*abs(j-i)for j in r)for i in r]
+
 test('''
 1769. Minimum Number of Operations to Move All Balls to Each Box
 Solved

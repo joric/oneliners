@@ -13,7 +13,7 @@ class Solution: minOperations = lambda _,S: \
 
 class Solution:
     def minOperations(self, b: str) -> List[int]:
-        return[sum(abs(i-j)for i,c in enumerate(b)if'1'==c)for j in range(len(b))]
+        return[sum(abs(i-j)for i,c in enumerate(b)if'0'<c)for j in range(len(b))]
 
 test('''
 1769. Minimum Number of Operations to Move All Balls to Each Box

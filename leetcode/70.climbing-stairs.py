@@ -88,6 +88,8 @@ class Solution:
     def climbStairs(self, n):
         return pow(x:=2<<n,n+2,x*x+~x)%x
 
+# also see fibonacci-number solutions
+
 test('''
 
 70. Climbing Stairs

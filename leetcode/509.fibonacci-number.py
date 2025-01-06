@@ -61,6 +61,8 @@ class Solution:
     def fib(self, n: int) -> int:
         return pow(x:=2<<n,n+1,x*x+~x)%x
 
+# also see climbing stairs solutions
+
 test('''
 509. Fibonacci Number
 Easy

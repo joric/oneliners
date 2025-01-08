@@ -1145,6 +1145,23 @@ class Solution:
         return sorted(2**a*3**b*5**c for a,b,c in product(*[range(32)]*3))[n-1]
 ```
 
+### Combinations
+
+Can be used anywhere in place of nested loops. Example:
+
+* https://leetcode.com/problems/count-prefix-and-suffix-pairs-ii
+
+```python
+class Solution:
+    def countPrefixSuffixPairs(self, w: List[str]) -> int:
+        r=range(len(w))
+        return sum(i<j and w[j].startswith(w[i])and w[j].endswith(w[i])for i in r for j in r)
+
+class Solution:
+    def countPrefixSuffixPairs(self, w: List[str]) -> int:
+        return sum(b.startswith(a)and b.endswith(a)for a,b in combinations(w,2))
+```
+
 ### Semicolons
 
 Nobody will stop you from using semicolons, but you'd still have to convert while and for loops.

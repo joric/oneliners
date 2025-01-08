@@ -24,6 +24,11 @@ class Solution:
 
 class Solution:
     def countPrefixSuffixPairs(self, w: List[str]) -> int:
+        r=range(len(w))
+        return sum(i<j and w[j].startswith(w[i])and w[j].endswith(w[i])for i in r for j in r)
+
+class Solution:
+    def countPrefixSuffixPairs(self, w: List[str]) -> int:
         return sum(b.startswith(a)and b.endswith(a)for a,b in combinations(w,2))
 
 test('''

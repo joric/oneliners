@@ -1679,7 +1679,6 @@ class Solution:
 ```
 
 There's a nice way to convert an iterable to list, e.g. `x=[*g]` equals `*x,=g` (1 char shorter).
-You can also use this syntax to unpack iterables, e.g. `a,*b,c=range(5)` means `a=1;b=[2,3,4];c=5`.
 
 * https://leetcode.com/problems/maximum-average-subarray-i
 
@@ -1693,6 +1692,8 @@ class Solution:
     def findMaxAverage(self, n: List[int], k: int) -> float:
         s=[0,*accumulate(n)];return max(map(sub,s[k:],s))/k
 ```
+
+You can also use this syntax to unpack iterables, e.g. `a,*b,c=range(5)` means `a=1;b=[2,3,4];c=5`.
 
 * https://leetcode.com/problems/number-of-ways-to-split-array
 

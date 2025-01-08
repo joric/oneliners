@@ -27,6 +27,24 @@ class Solution:
         r=range(len(w))
         return sum(i<j and w[j].startswith(w[i])and w[j].endswith(w[i])for i in r for j in r)
 
+# https://leetcode.com/problems/count-prefix-and-suffix-pairs-i/solutions/6246619/one-line-solution/?envType=daily-question&envId=2025-01-08
+
+class TrieNode:
+    def __init__(self):
+        self.children = defaultdict(TrieNode)
+        self.cnt = 0
+
+class Solution:
+    def countPrefixSuffixPairs(self, words: List[str]) -> int:
+        ans, root = 0, TrieNode()
+        for word in words:
+            node = root
+            for ch in zip(word, reversed(word)):
+                node = node.children[ch]
+                ans += node.cnt 
+            node.cnt += 1     
+        return ans
+
 class Solution:
     def countPrefixSuffixPairs(self, w: List[str]) -> int:
         return sum(b.startswith(a)and b.endswith(a)for a,b in combinations(w,2))

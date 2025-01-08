@@ -1678,7 +1678,7 @@ class Solution:
         (a,b),(c,d),*_=p;return all((x-a)*(d-b)==(c-a)*(y-b)for x,y in p)
 ```
 
-There's a nice way to convert an iterable to list, e.g. `x=[*g]` equals `*x,=g` (1 char shorter).
+There's a nice way to convert an iterable to list, e.g. `x=[*g]` equals `*x,=g` (1 char shorter). Or expand lists:
 
 * https://leetcode.com/problems/maximum-average-subarray-i
 

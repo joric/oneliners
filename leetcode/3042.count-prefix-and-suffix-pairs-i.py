@@ -35,6 +35,10 @@ class Solution:
     def countPrefixSuffixPairs(self, w: List[str]) -> int:
         return sum(0==b.find(a)and b.endswith(a)for a,b in combinations(w,2))
 
+class Solution:
+    def countPrefixSuffixPairs(self, w: List[str]) -> int:
+        return sum(a==b[:len(a)]==b[-len(a):]for a,b in combinations(w,2))
+
 test('''
 3042. Count Prefix and Suffix Pairs I
 Easy

@@ -1160,6 +1160,10 @@ class Solution:
 class Solution:
     def countPrefixSuffixPairs(self, w: List[str]) -> int:
         return sum(b.startswith(a)and b.endswith(a)for a,b in combinations(w,2))
+
+class Solution:
+    def countPrefixSuffixPairs(self, w: List[str]) -> int:
+        return sum(a==b[:len(a)]==b[-len(a):]for a,b in combinations(w,2))
 ```
 
 ### Semicolons

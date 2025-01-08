@@ -18,6 +18,14 @@ class Solution:
     def countPrefixSuffixPairs(self, d: List[str]) -> int:
         r,t=0,(T:=lambda:defaultdict(T))();[(x:=t,r:=r+sum((x:=x[k]).get(0,0)for k in zip(w,w[::-1])),setitem(x,0,x.get(0,0)+1))for w in d];return r
 
+class Solution:
+    def countPrefixSuffixPairs(self, w: List[str]) -> int:
+        return sum(1 for i in range(len(w))for j in range(i+1,len(w))if len(w[i])<=len(w[j])and w[j][0:len(w[i])] == w[i]and w[j][len(w[j])-len(w[i]):]==w[i])
+
+class Solution:
+    def countPrefixSuffixPairs(self, w: List[str]) -> int:
+        return sum(b.startswith(a)and b.endswith(a)for a,b in combinations(w,2))
+
 test('''
 3042. Count Prefix and Suffix Pairs I
 Easy

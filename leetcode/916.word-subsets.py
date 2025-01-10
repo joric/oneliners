@@ -14,7 +14,7 @@ class Solution:
 
 class Solution:
     def wordSubsets(self, a: List[str], b: List[str]) -> List[str]:
-        t=reduce(ior,map(c:=Counter,b));return[w for w in a if t<=c(w)]
+        r=reduce(ior,map(c:=Counter,b));return[w for w in a if c(w)>=r]
 
 test('''
 916. Word Subsets

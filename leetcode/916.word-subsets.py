@@ -10,19 +10,7 @@ class Solution:
 
 class Solution:
     def wordSubsets(self, a: List[str], b: List[str]) -> List[str]:
-        c=reduce(ior,map(Counter,b));return[w for w in a if Counter(w)&c==c]
-
-class Solution:
-    def wordSubsets(self, a: List[str], b: List[str]) -> List[str]:
-        c=Counter;t=reduce(ior,map(c,b));return[w for w in a if c(w)&t==t]
-
-class Solution:
-    def wordSubsets(self, a: List[str], b: List[str]) -> List[str]:
-        return compress(a,map(reduce(ior,map(Counter,b)).__le__,map(Counter,a)))
-
-class Solution:
-    def wordSubsets(self, a: List[str], b: List[str]) -> List[str]:
-        c=Counter;t=reduce(ior,map(c,b));return[w for w in a if t<=c(w)]
+        c=Counter;return compress(a,map(reduce(ior,map(c,b)).__le__,map(c,a)))
 
 class Solution:
     def wordSubsets(self, a: List[str], b: List[str]) -> List[str]:

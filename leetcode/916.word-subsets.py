@@ -1,11 +1,18 @@
 from lc import *
 
+# https://leetcode.com/problems/word-subsets/solutions/176850/2-line-python/?envType=daily-question&envId=2025-01-10
+
 class Solution:
     def wordSubsets(self, words1: List[str], words2: List[str]) -> List[str]:
         return (lambda c:[a for a in words1 if not c-Counter(a)])(reduce(lambda a,b:a|Counter(b), words2, Counter()))
 
-test('''
+# POTD 2025-01-10
 
+class Solution:
+    def wordSubsets(self, a: List[str], b: List[str]) -> List[str]:
+        c=reduce(ior,map(Counter,b));return[w for w in a if Counter(w)&c==c]
+
+test('''
 916. Word Subsets
 Medium
 
@@ -43,5 +50,4 @@ Constraints:
 1 <= words1[i].length, words2[i].length <= 10
 words1[i] and words2[i] consist only of lowercase English letters.
 All the strings of words1 are unique.
-
 ''')

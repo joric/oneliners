@@ -24,6 +24,10 @@ class Solution:
     def wordSubsets(self, a: List[str], b: List[str]) -> List[str]:
         c=Counter;t=reduce(ior,map(c,b));return[w for w in a if t<=c(w)]
 
+class Solution:
+    def wordSubsets(self, a: List[str], b: List[str]) -> List[str]:
+        t=reduce(ior,map(c:=Counter,b));return[w for w in a if t<=c(w)]
+
 test('''
 916. Word Subsets
 Medium

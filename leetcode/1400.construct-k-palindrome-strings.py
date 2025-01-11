@@ -8,7 +8,7 @@ class Solution:
 
 class Solution:
     def canConstruct(self, s: str, k: int) -> bool:
-        c=Counter(s);return sum(c[k]&1 for k in c)<=k<=len(s)
+        c=Counter(s);return sum(1&c[k]for k in c)<=k<=len(s)
 
 test('''
 1400. Construct K Palindrome Strings

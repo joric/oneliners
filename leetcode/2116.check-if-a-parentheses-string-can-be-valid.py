@@ -15,6 +15,10 @@ class Solution:
     def canBeValid(self, s: str, l: str) -> bool:
         a=b=0;any((a:=a+(-1,1)[a and(j<'1'or'('<i)],b:=b+(-1,1)[j<'1'or')'>i],b<0)[2]for i,j in zip(s,l));return a==0
 
+class Solution:
+    def canBeValid(self, s: str, l: str) -> bool:
+        a=b=0;any((a:=a+1-2*(a and(j<'1'or'('<i)),b:=b-1+2*(j<'1'or')'>i),b<0)[2]for i,j in zip(s,l));return a==0
+
 test('''
 2116. Check if a Parentheses String Can Be Valid
 Medium

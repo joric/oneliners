@@ -10,6 +10,10 @@ class Solution:
     def canConstruct(self, s: str, k: int) -> bool:
         c=Counter(s);return sum(1&c[k]for k in c)<=k<=len(s)
 
+class Solution:
+    def canConstruct(self, s: str, k: int) -> bool:
+        return sum(1&s.count(i)for i in set(s))<=k<=len(s)
+
 test('''
 1400. Construct K Palindrome Strings
 Solved
@@ -38,6 +42,11 @@ Input: s = "true", k = 4
 Output: true
 Explanation: The only possible solution is to put each character in a separate string.
  
+
+Other examples:
+
+Input: s = "yzyzyzyzyzyzyzy", k = 2
+Output: true
 
 Constraints:
 

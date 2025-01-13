@@ -1718,11 +1718,11 @@ Sometimes you can replace `Counter` with `set` and `count` (and it's even faster
 ```python
 class Solution:
     def canConstruct(self, s: str, k: int) -> bool:
-        return sum(i&1 for i in Counter(s).values())<=k<=len(s)
+        return sum(x&1 for x in Counter(s).values())<=k<=len(s)
 
 class Solution:
     def canConstruct(self, s: str, k: int) -> bool:
-        return sum(1&s.count(i)for i in set(s))<=k<=len(s)
+        return sum(1&s.count(x)for x in set(s))<=k<=len(s)
 ```
 
 * https://leetcode.com/problems/minimum-length-of-string-after-operations

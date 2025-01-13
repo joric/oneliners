@@ -10,6 +10,14 @@ class Solution:
     def minimumLength(self, s: str) -> int:
         c=Counter(s);return sum(2-c[k]%2 for k in c)
 
+class Solution:
+    def minimumLength(self, s: str) -> int:
+        return sum(2-(1&s.count(i))for i in set(s))
+
+class Solution:
+    def minimumLength(self, s: str) -> int:
+        return sum(2-s.count(i)%2 for i in set(s))
+
 test('''
 3223. Minimum Length of String After Operations
 Solved

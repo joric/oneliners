@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def minimumLength(self, s: str) -> int:
-        return sum(2-(x%2)for x in Counter(s).values())
+        return sum(2-x%2 for x in Counter(s).values())
 
 class Solution:
     def minimumLength(self, s: str) -> int:
@@ -12,11 +12,11 @@ class Solution:
 
 class Solution:
     def minimumLength(self, s: str) -> int:
-        return sum(2-(1&s.count(i))for i in set(s))
+        return sum(2-(1&s.count(x))for x in set(s))
 
 class Solution:
     def minimumLength(self, s: str) -> int:
-        return sum(2-s.count(i)%2 for i in set(s))
+        return sum(2-s.count(x)%2 for x in set(s))
 
 test('''
 3223. Minimum Length of String After Operations

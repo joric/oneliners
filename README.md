@@ -351,6 +351,32 @@ class Solution:
         return(Counter(s)-Counter(t)).total()
 ```
 
+Sometimes you can replace `Counter` with `set` and `count` (and it's even faster):
+
+* https://leetcode.com/problems/construct-k-palindrome-strings
+
+```python
+class Solution:
+    def canConstruct(self, s: str, k: int) -> bool:
+        return sum(x&1 for x in Counter(s).values())<=k<=len(s)
+
+class Solution:
+    def canConstruct(self, s: str, k: int) -> bool:
+        return sum(1&s.count(x)for x in set(s))<=k<=len(s)
+```
+
+* https://leetcode.com/problems/minimum-length-of-string-after-operations
+
+```python
+class Solution:
+    def minimumLength(self, s: str) -> int:
+        return sum(2-x%2 for x in Counter(s).values())
+
+class Solution:
+    def minimumLength(self, s: str) -> int:
+        return sum(2-s.count(x)%2 for x in set(s))
+```
+
 ### Walrus operator
 
 The controversial walrus operator (`:=`) added in Python 3.8 ([PEP-572](https://peps.python.org/pep-0572/)
@@ -1709,32 +1735,6 @@ class Solution:
 class Solution:
     def waysToSplitArray(self, a: list[int]) -> int:
         *p,s=accumulate(a);return sum(map((s/2).__le__,p))
-```
-
-Sometimes you can replace `Counter` with `set` and `count` (and it's even faster):
-
-* https://leetcode.com/problems/construct-k-palindrome-strings
-
-```python
-class Solution:
-    def canConstruct(self, s: str, k: int) -> bool:
-        return sum(x&1 for x in Counter(s).values())<=k<=len(s)
-
-class Solution:
-    def canConstruct(self, s: str, k: int) -> bool:
-        return sum(1&s.count(x)for x in set(s))<=k<=len(s)
-```
-
-* https://leetcode.com/problems/minimum-length-of-string-after-operations
-
-```python
-class Solution:
-    def minimumLength(self, s: str) -> int:
-        return sum(2-x%2 for x in Counter(s).values())
-
-class Solution:
-    def minimumLength(self, s: str) -> int:
-        return sum(2-s.count(x)%2 for x in set(s))
 ```
 
 ### Notes

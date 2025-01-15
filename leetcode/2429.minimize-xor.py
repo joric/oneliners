@@ -20,6 +20,10 @@ class Solution:
     def minimizeXor(self, a: int, b: int) -> int:
         return 2**x-1 if a.bit_length()<=(x:=b.bit_count())else int(bin(a)[2:][::-1].replace(*('01','10')[(d:=a.bit_count()-x)>0],abs(d))[::-1],2)
 
+class Solution:
+    def minimizeXor(self, x: int, y: int) -> int:
+        b=int.bit_count;x=(x,~x)[(d:=b(x)-b(y))<0];[x:=x&x-1for _ in range(abs(d))];return(x,~x)[d<0]
+
 test('''
 2429. Minimize XOR
 Medium

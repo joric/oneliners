@@ -1,6 +1,19 @@
 from lc import *
 
-# https://leetcode.com/problems/minimize-xor/description/?envType=daily-question&envId=2025-01-15
+# https://leetcode.com/problems/minimize-xor/solutions/2648723/java-c-python-bit-count/?envType=daily-question&envId=2025-01-15
+
+class Solution:
+    def minimizeXor(self, a: int, b: int) -> int:
+        r=t=a
+        a,b=map(int.bit_count,(a,b))
+        c=lambda a,b:(a>b)-(a<b)
+        for i in range(32):
+            if c(a,b)==c((1<<i)&t, 0.5):
+                r ^= 1<<i
+                a -= c(a, b)
+        return r
+
+# https://leetcode.com/problems/minimize-xor/solutions/2657760/python3-1-line/?envType=daily-question&envId=2025-01-15
 
 class Solution:
     def minimizeXor(self, a: int, b: int) -> int:
@@ -22,7 +35,7 @@ class Solution:
 
 class Solution:
     def minimizeXor(self, x: int, y: int) -> int:
-        b=int.bit_count;x=(x,~x)[(d:=b(x)-b(y))<0];[x:=x&x-1for _ in range(abs(d))];return(x,~x)[d<0]
+        b=int.bit_count;x=(x,~x)[(d:=b(x)-b(y))<0];[x:=x&x-1 for _ in range(abs(d))];return(x,~x)[d<0]
 
 test('''
 2429. Minimize XOR

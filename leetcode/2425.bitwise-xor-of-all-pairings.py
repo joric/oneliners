@@ -6,6 +6,16 @@ class Solution:
     def xorAllNums(self, a: List[int], b: List[int]) -> int:
         return(len(a)%2*reduce(xor,b))^(len(b)%2*reduce(xor,a))
 
+# https://leetcode.com/problems/bitwise-xor-of-all-pairings/solutions/2646839/python3-one-line-reduce/?envType=daily-question&envId=2025-01-16
+
+class Solution:
+    def xorAllNums(self, a: List[int], b: List[int]) -> int:
+        return reduce(lambda x,y:x^y,len(a)%2*b+len(b)%2*a,0)
+
+class Solution:
+    def xorAllNums(self, a: List[int], b: List[int]) -> int:
+        return reduce(xor,len(a)%2*b+len(b)%2*a,0)
+
 test('''
 2425. Bitwise XOR of All Pairings
 Solved

@@ -224,6 +224,10 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
             return round(v, 5)
         elif type(v) is bool and hint==str(int):
             return v
+
+        # leetcode does not convert bool result to int result since Aug 2023
+        #if type(res) in (float,bool) and type(expected)==int: ok = False
+        #if type(res) in (float,int) and type(expected)==bool: ok = False
         #if t:=next((t for t in (str,bool,int) if hint==str(t)), None):
         #    return t(v) if v is not None else None if t is not bool else False
         return v
@@ -373,10 +377,6 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
                 expected = vc(func, 'return', expected)
 
             ok = check(res, expected, *args)
-
-            # leetcode does not convert bool result to int result since Aug 2023
-            if type(res) in (float,bool) and type(expected)==int: ok = False
-            if type(res) in (float,int) and type(expected)==bool: ok = False
 
             if type(ok) is tuple: # see linked-list-cycle-ii (substitutes res with custom res)
                 ok, res = ok[:2]

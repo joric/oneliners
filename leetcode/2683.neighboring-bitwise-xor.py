@@ -6,6 +6,10 @@ class Solution:
     def doesValidArrayExist(self, d: List[int]) -> bool:
         return reduce(xor,d)<1
 
+class Solution:
+    def doesValidArrayExist(self, d: List[int]) -> bool:
+        return sum(d)&1<1
+
 test('''
 2683. Neighboring Bitwise XOR
 Solved

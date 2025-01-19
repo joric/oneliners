@@ -15,6 +15,20 @@ class Solution:
     def thirdMax(self, nums: List[int]) -> int:
         return heapq.nlargest(3,set(nums))[-1 if len(set(nums)) > 2 else 0]
 
+class Solution:
+    def thirdMax(self, a: List[int]) -> int:
+        return 3>len({*a})and max(a)or sorted({*a})[-3]
+
+# https://leetcode.com/problems/third-maximum-number/solutions/4274952/set-and-sort/
+
+class Solution:
+    def thirdMax(self, a: List[int]) -> int:
+        a=sorted({*a});return 3>len(a)and a[-1]or a[-3]
+
+class Solution:
+    def thirdMax(self, a: List[int]) -> int:
+        a=sorted({*a});return a[(-3,-1)[len(a)<3]]
+
 test('''
 414. Third Maximum Number
 Solved

@@ -29,6 +29,14 @@ class Solution:
     def thirdMax(self, a: List[int]) -> int:
         a=sorted({*a});return a[(-3,-1)[len(a)<3]]
 
+class Solution:
+    def thirdMax(self, a: List[int]) -> int:
+        return sorted({*a})[(-3,-1)[len({*a})<3]]
+
+class Solution:
+    def thirdMax(self, a: List[int]) -> int:
+        return sorted({*a})[(len({*a})<3)*2-3]
+
 test('''
 414. Third Maximum Number
 Solved

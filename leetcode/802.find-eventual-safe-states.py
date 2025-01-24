@@ -34,7 +34,7 @@ class Solution:
 
 class Solution:
     def eventualSafeNodes(self, g: List[List[int]]) -> List[int]:
-        v=set();f=cache(lambda i:not v&{i}and(v.add(i)or not g[i]or all(map(f,g[i]))));return[*filter(f,range(len(g)))];
+        v=set();return[*filter(f:=cache(lambda i:not v&{i}and(v.add(i)or all(map(f,g[i])))),range(len(g)))];
 
 test('''
 802. Find Eventual Safe States

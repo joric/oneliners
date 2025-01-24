@@ -18,6 +18,24 @@ class Solution:
     def eventualSafeNodes(self, g: List[List[int]]) -> List[int]:
         v,s=set(),set();return filter(f:=lambda u:u in s if u in v else v.add(u)or all(map(f,g[u]))and[s.add(u)],range(len(g)))
 
+# https://leetcode.com/problems/find-eventual-safe-states/solutions/4071045/shortest-7-line-dfs/?envType=daily-question&envId=2025-01-24
+
+class Solution:
+    def eventualSafeNodes(self, g: List[List[int]]) -> List[int]:
+        v = set()
+        @cache
+        def f(i):
+            if i in v:
+                return False
+            v.add(i)
+            if not g[i] or all(f(j) for j in g[i]):
+                return True
+        return [i for i in range(len(g))if f(i)]
+
+class Solution:
+    def eventualSafeNodes(self, g: List[List[int]]) -> List[int]:
+        v=set();f=cache(lambda i:not v&{i}and(v.add(i)or not g[i]or all(map(f,g[i]))));return[*filter(f,range(len(g)))];
+
 test('''
 802. Find Eventual Safe States
 Medium

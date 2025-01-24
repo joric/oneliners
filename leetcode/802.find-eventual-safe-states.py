@@ -34,7 +34,11 @@ class Solution:
 
 class Solution:
     def eventualSafeNodes(self, g: List[List[int]]) -> List[int]:
-        v=set();return[*filter(f:=cache(lambda i:not v&{i}and(v.add(i)or all(map(f,g[i])))),range(len(g)))];
+        v=set();return[*filter(f:=cache(lambda i:not v&{i}and(v.add(i)or all(map(f,g[i])))),range(len(g)))]
+
+class Solution:
+    def eventualSafeNodes(self, g: List[List[int]]) -> List[int]:
+        v={-1};return[*filter(f:=cache(lambda i:not v&{i}and(v.add(i)or all(map(f,g[i])))),range(len(g)))]
 
 test('''
 802. Find Eventual Safe States
@@ -70,6 +74,11 @@ Output: [4]
 Explanation:
 Only node 4 is a terminal node, and every path starting at node 4 leads to node 4.
  
+
+Other examples:
+
+Input: graph = [[],[0,2,3,4],[3],[4],[]]
+Output: [0,1,2,3,4]
 
 Constraints:
 

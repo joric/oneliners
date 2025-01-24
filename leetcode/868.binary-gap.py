@@ -16,6 +16,10 @@ class Solution:
     def binaryGap(self, n: int) -> int:
         return max([0]+[1+len(x)for x in bin(n)[2:].split('1')[1:-1]])
 
+class Solution:
+    def binaryGap(self, n: int) -> int:
+        return max([0]+[1+len(x)for x in f'{n:b}'.split('1')[1:-1]])
+
 test('''
 868. Binary Gap
 Easy

@@ -29,6 +29,10 @@ class Solution:
     def findMaxFish(self, g: List[List[int]]) -> int:
         e=enumerate;return max(map(f:=lambda z:(t:=g.pop(z,0))and t+sum(f(z+1j**k)for k in range(4)),set(g:={i+j*1j:x for i,r in e(g)for j,x in e(r)})))
 
+class Solution:
+    def findMaxFish(self, g: List[List[int]]) -> int:
+        e=enumerate;return max(map(f:=lambda z:(t:=g.pop(z,0))+sum(f(z+1j**k)for k in range(4)if t),set(g:={i+j*1j:x for i,r in e(g)for j,x in e(r)})))
+
 test('''
 2658. Maximum Number of Fish in a Grid
 Solved

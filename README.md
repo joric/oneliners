@@ -981,8 +981,8 @@ class Solution:
 
 class Solution:
     def findRedundantConnection(self, e: List[List[int]]) -> List[int]:
-        t=''.join(map(chr,range(1001)));
-        return next((u,v)for u,v in e if t[u]==(t:=t.replace(t[u],t[v]))[u])
+        t=''.join(map(chr,range(1001)));return next((u,v)for u,v in e if t[u]==(t:=t.replace(t[u],\
+        t[v]))[u])
 ```
 
 Another example:

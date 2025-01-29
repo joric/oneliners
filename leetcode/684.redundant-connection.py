@@ -41,6 +41,14 @@ class Solution:
     def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
         t=''.join(map(chr,range(1001)));return next((u,v)for u,v in edges if(t[u]==t[v],t:=t.replace(t[u],t[v]))[0])
 
+class Solution:
+    def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
+        t=''.join(map(chr,range(1001)));return next((u,v)for u,v in edges if(t[u]==t[v],t:=t.replace(t[u],t[v]))[0])
+
+class Solution:
+    def findRedundantConnection(self, e: List[List[int]]) -> List[int]:
+        t=''.join(map(chr,range(1001)));return next((u,v)for u,v in e if(t[u]==t[v],t:=t.replace(t[u],t[v]))[0])
+
 test('''
 684. Redundant Connection
 Medium

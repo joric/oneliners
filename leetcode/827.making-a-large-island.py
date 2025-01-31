@@ -32,18 +32,11 @@ class Solution(object):
 
         return res if res!=0 else m*n
 
-# TLE
-# TODO: mark islands, precalculate island areas, merge nearby islands on the 2nd pass
+# TLE(!) TODO: mark islands, precalculate island areas, merge nearby islands on the 2nd pass
 
 class Solution:
     def largestIsland(self, g: List[List[int]]) -> int:
-        e,s=enumerate,0;
-        t = {i+j*1j:x for i,r in e(g)for j,x in e(r)}
-        for k in set(t):
-            g = deepcopy(t)
-            g[k] = 1
-            s = max(s, max(map(f:=lambda z:g.pop(z,0)and 1+sum(f(z+1j**k)for k in range(4)),set(g))))
-        return s
+        e=enumerate;t={i+j*1j:x for i,r in e(g)for j,x in e(r)};return max(max(map(f:=lambda z:g.pop(z,0)and 1+sum(f(z+1j**k)for k in range(4)),set(g:={z:t[z]or z==p for z in t})))for p in t)
 
 test('''
 827. Making A Large Island

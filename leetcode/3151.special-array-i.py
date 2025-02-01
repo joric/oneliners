@@ -10,6 +10,10 @@ class Solution:
     def isArraySpecial(self, n: List[int]) -> bool:
         return all(1&abs(a-b)for a,b in pairwise(n))
 
+class Solution:
+    def isArraySpecial(self, n: List[int]) -> bool:
+        return all(a+b&1 for a,b in pairwise(n))
+
 test('''
 3151. Special Array I
 Solved

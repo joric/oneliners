@@ -1737,6 +1737,69 @@ class Solution:
         *p,s=accumulate(a);return sum(map((s/2).__le__,p))
 ```
 
+### Operator module
+
+Operation            |Syntax             |Function                           
+---------------------|-------------------|-----------------------------------
+Addition             |`a + b`            |`add(a, b)`                        
+Concatenation        |`seq1 + seq2`      |`concat(seq1, seq2)`               
+Containment Test     |`obj in seq`       |`contains(seq, obj)`               
+Division             |`a / b`            |`truediv(a, b)`                    
+Division             |`a // b`           |`floordiv(a, b)`                   
+Bitwise And          |`a & b`            |`and_(a, b)`                       
+Bitwise Exclusive Or |`a ^ b`            |`xor(a, b)`                        
+Bitwise Inversion    |`~ a`              |`invert(a)`                        
+Bitwise Or           |`a \| b`            |`or_(a, b)`                        
+Exponentiation       |`a ** b`           |`pow(a, b)`                        
+Identity             |`a is b`           |`is_(a, b)`                        
+Identity             |`a is not b`       |`is_not(a, b)`                     
+Indexed Assignment   |`obj[k] = v`       |`setitem(obj, k, v)`               
+Indexed Deletion     |`del obj[k]`       |`delitem(obj, k)`                  
+Indexing             |`obj[k]`           |`getitem(obj, k)`                  
+Left Shift           |`a << b`           |`lshift(a, b)`                     
+Modulo               |`a % b`            |`mod(a, b)`                        
+Multiplication       |`a * b`            |`mul(a, b)`                        
+Matrix Multiplication|`a @ b`            |`matmul(a, b)`                     
+Negation (Arithmetic)|`- a`              |`neg(a)`                           
+Negation (Logical)   |`not a`            |`not_(a)`                          
+Positive             |`+ a`              |`pos(a)`                           
+Right Shift          |`a >> b`           |`rshift(a, b)`                     
+Slice Assignment     |`seq[i:j] = values`|`setitem(seq, slice(i, j), values)`
+Slice Deletion       |`del seq[i:j]`     |`delitem(seq, slice(i, j))`        
+Slicing              |`seq[i:j]`         |`getitem(seq, slice(i, j))`        
+String Formatting    |`s % obj`          |`mod(s, obj)`                      
+Subtraction          |`a - b`            |`sub(a, b)`                        
+Truth Test           |`obj`              |`truth(obj)`                       
+Ordering             |`a < b`            |`lt(a, b)`                         
+Ordering             |`a <= b`           |`le(a, b)`                         
+Equality             |`a == b`           |`eq(a, b)`                         
+Difference           |`a != b`           |`ne(a, b)`                         
+Ordering             |`a >= b`           |`ge(a, b)`                         
+Ordering             |`a > b`            |`gt(a, b)`       
+
+### Precedence
+
+Precedence|Operators                                     |Description                                                |Associativity
+----------|----------------------------------------------|-----------------------------------------------------------|-------------
+1         |`()`                                          |Parentheses                                                |Left to right
+2         |`x[i], x[i:j]`                                |Subscription, slicing                                      |Left to right
+3         |`await x`                                     |Await expression                                           |N/A          
+4         |`\*\*`                                        |Exponentiation                                             |Right to left
+5         |`+x, -x, ~x`                                  |Positive, negative, bitwise NOT                            |Right to left
+6         |`*, @, /, //, %`                              |Multiply (matrix), division, remainder                     |Left to right
+7         |`+, –`                                        |Addition and subtraction                                   |Left to right
+8         |`<<, >>`                                      |Shifts                                                     |Left to right
+9         |`&`                                           |Bitwise AND                                                |Left to right
+10        |`^`                                           |Bitwise XOR                                                |Left to right
+11        |`\|`                                          |Bitwise OR                                                 |Left to right
+12        |`in, not in, is, is not, <, <=, >, >=, !=, ==`|Comparisons, membership tests, identity tests              |Left to Right
+13        |`not x`                                       |Boolean NOT                                                |Right to left
+14        |`and`                                         |Boolean AND                                                |Left to right
+15        |`or`                                          |Boolean OR                                                 |Left to right
+16        |`if-else`                                     |Conditional expression                                     |Right to left
+17        |`lambda`                                      |Lambda expression                                          |N/A          
+18        |`:=`                                          |Assignment expression (walrus)                             |Right to left
+
 ### Notes
 
 * An expression like `x&(x-1)==0` is useful to check if unsigned `x` is power of 2 or 0 (Kernighan, rightmost bit).

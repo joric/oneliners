@@ -12,6 +12,10 @@ class Solution:
 
 class Solution:
     def isArraySpecial(self, n: List[int]) -> bool:
+        return all(1&(a^b)for a,b in pairwise(n))
+
+class Solution:
+    def isArraySpecial(self, n: List[int]) -> bool:
         return all(a+b&1 for a,b in pairwise(n))
 
 test('''

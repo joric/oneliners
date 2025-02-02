@@ -18,6 +18,10 @@ class Solution:
     def check(self, n: List[int]) -> bool:
         return sum(x>n[-~i%len(n)]for i,x in enumerate(n))<2
 
+class Solution:
+    def check(self, n: List[int]) -> bool:
+        return sum(map(gt,n,n[1:]+n))<2
+
 test('''
 1752. Check if Array Is Sorted and Rotated
 Solved

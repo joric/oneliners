@@ -1747,8 +1747,6 @@ If s consists of repeating parts then at some point it should be equal to the ro
 Checking If s is a sub-string of (s+s)[1:-1] basicaly does all the job of checking for all rotated versions
 of s except s+s just in a single operation (which is usually SIMD-accelerated).
 
-* https://leetcode.com/problems/repeated-substring-pattern
-
 ```python
 class Solution:
     def repeatedSubstringPattern(self, s: str) -> bool:

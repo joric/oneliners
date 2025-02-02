@@ -1737,6 +1737,32 @@ class Solution:
         *p,s=accumulate(a);return sum(map((s/2).__le__,p))
 ```
 
+### Rotations
+
+You can use list concatenated with its copy to find rotations.
+
+* https://leetcode.com/problems/repeated-substring-pattern/solutions/826417/rust-oneliner-by-joric-mmmu/
+
+If s consists of repeating parts then at some point it should be equal to the rotated version of itself.
+Checking If s is a sub-string of (s+s)[1:-1] basicaly does all the job of checking for all rotated versions
+of s except s+s just in a single operation (which is usually SIMD-accelerated).
+
+* https://leetcode.com/problems/repeated-substring-pattern
+
+```python
+class Solution:
+    def repeatedSubstringPattern(self, s: str) -> bool:
+        return s in (s+s)[1:-1]
+```
+
+* https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/
+
+```python
+class Solution:
+    def check(self, n: List[int]) -> bool:
+        return sum(map(gt,n,n[1:]+n))<2
+```
+
 ### Operator module
 
 Operation            |Syntax             |Function                           

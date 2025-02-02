@@ -18,6 +18,12 @@ class Solution:
     def check(self, n: List[int]) -> bool:
         return sum(x>n[-~i%len(n)]for i,x in enumerate(n))<2
 
+# https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/solutions/1053508/java-c-python-easy-and-concise/
+
+class Solution:
+    def check(self, n: List[int]) -> bool:
+        return sum(a>b for a,b in zip(n,n[1:]+n[:1]))<2
+
 class Solution:
     def check(self, n: List[int]) -> bool:
         return sum(map(gt,n,n[1:]+n))<2

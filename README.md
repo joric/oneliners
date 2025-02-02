@@ -1765,7 +1765,7 @@ class Solution:
 
 ### Operators
 
-These operators are available from the included "operator" module, you can use them for `map()`.
+These operators are available by default from the included "operator" module.
 
 Operation            |Syntax             |Function                           
 ---------------------|-------------------|-----------------------------------

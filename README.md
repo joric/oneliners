@@ -1808,6 +1808,9 @@ Slice Assignment     |`seq[i:j] = values`|`setitem(seq, slice(i, j), values)`
 Slice Deletion       |`del seq[i:j]`     |`delitem(seq, slice(i, j))`        
 Slicing              |`seq[i:j]`         |`getitem(seq, slice(i, j))`        
 
+
+You can also use them as member functions (with underscores), e.g. `(1).__lt__`.
+
 ### Precedence
 
 Precedence|Operators                                     |Description                                                |Associativity

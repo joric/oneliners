@@ -1763,7 +1763,9 @@ class Solution:
         return sum(map(gt,n,n[1:]+n))<2
 ```
 
-### Operator module
+### Operators
+
+These operators are avaialble from the "operator" module included by default.
 
 Operation            |Syntax             |Function                           
 ---------------------|-------------------|-----------------------------------

@@ -1805,7 +1805,7 @@ Subtraction                 |`a - b`            |`sub(a, b)`
 Ordering (Less)             |`a < b`            |`lt(a, b)`                         
 Ordering (Less or Equal)    |`a <= b`           |`le(a, b)`                         
 Equality                    |`a == b`           |`eq(a, b)`                         
-Difference                  |`a != b`           |`ne(a, b)`                         
+Difference (Not Equal)      |`a != b`           |`ne(a, b)`                         
 Ordering (Greater or Equal) |`a >= b`           |`ge(a, b)`                         
 Ordering (Greater)          |`a > b`            |`gt(a, b)`                         
 **Ternary**                 |                   |

@@ -1815,7 +1815,7 @@ Slice Deletion       |`del seq[i:j]`     |`delitem(seq, slice(i, j))`
 Slicing              |`seq[i:j]`         |`getitem(seq, slice(i, j))`        
 
 
-They retain the same naming as member functions (but with underscores), e.g. `(1).__lt__`.
+They use the same naming for member functions, but with underscores, e.g. `(1).__lt__`.
 
 ### Precedence
 

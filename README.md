@@ -1771,7 +1771,7 @@ Default python `set` doesn't maintain insertion order. There are two modules tha
 
 ### Operators
 
-These operators are available by default from the included "operator" module.
+These operators are available from the "operator" module that is included by default.
 
 Operation            |Syntax             |Function                           
 ---------------------|-------------------|-----------------------------------

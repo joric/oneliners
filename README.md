@@ -1802,12 +1802,12 @@ Matrix Multiplication       |`a @ b`            |`matmul(a, b)`
 Right Shift                 |`a >> b`           |`rshift(a, b)`                     
 String Formatting           |`s % obj`          |`mod(s, obj)`                      
 Subtraction                 |`a - b`            |`sub(a, b)`                        
-Ordering (Less)             |`a < b`            |`lt(a, b)`                         
+Ordering (Less Than)        |`a < b`            |`lt(a, b)`                         
 Ordering (Less or Equal)    |`a <= b`           |`le(a, b)`                         
 Equality                    |`a == b`           |`eq(a, b)`                         
 Difference (Not Equal)      |`a != b`           |`ne(a, b)`                         
 Ordering (Greater or Equal) |`a >= b`           |`ge(a, b)`                         
-Ordering (Greater)          |`a > b`            |`gt(a, b)`                         
+Ordering (Greater Than)     |`a > b`            |`gt(a, b)`                         
 **Ternary**                 |                   |
 Indexed Assignment          |`obj[k] = v`       |`setitem(obj, k, v)`               
 Slice Assignment            |`seq[i:j] = values`|`setitem(seq, slice(i, j), values)`

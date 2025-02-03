@@ -1761,6 +1761,14 @@ class Solution:
         return sum(map(gt,n,n[1:]+n))<2
 ```
 
+### Sorted Containers
+
+Default python `set` doesn't maintain insertion order. There are two modules that provide ordered sets.
+
+* `sortedcontainers` - SortedList, SortedDict, and SortedSet (maintains sorted order).
+* `sortedcollections` - ValueSortedDict, ItemSortedDict, OrderedDict, and OrderedSet (maintains insertion order).
+
+
 ### Operators
 
 These operators are available by default from the included "operator" module.

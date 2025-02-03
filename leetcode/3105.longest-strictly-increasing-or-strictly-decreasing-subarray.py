@@ -11,6 +11,16 @@ class Solution:
     def longestMonotonicSubarray(self, a: List[int]) -> int:
         i=d=1;return max([max(i:=i*(a[j]<a[j+1])+1,d:=d*(a[j]>a[j+1])+1)for j in range(len(a)-1)]+[1])
 
+# https://leetcode.com/problems/longest-strictly-increasing-or-strictly-decreasing-subarray/solutions/5137205/one-line-solution/?envType=daily-question&envId=2025-02-03
+
+class Solution:
+    def longestMonotonicSubarray(self, a: List[int]) -> int:
+        return max([u:=(d:=1)]+[max(u:=u*lt(*q)+1,d:=d*gt(*q)+1)for q in pairwise(a)])
+
+class Solution:
+    def longestMonotonicSubarray(self, a: List[int]) -> int:
+        u=d=1;return max([1]+[max(u:=u*lt(*q)+1,d:=d*gt(*q)+1)for q in pairwise(a)])
+
 test('''
 3105. Longest Strictly Increasing or Strictly Decreasing Subarray
 Easy

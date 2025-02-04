@@ -1461,10 +1461,9 @@ UNIX editor ed._
 * https://leetcode.com/problems/rotate-array
 
 ```python
-# AKA Doug Mcllroy, Programming Pearls
+# rotate array AKA Doug Mcllroy, Programming Pearls
 # reverse parts at split point then reverse whole array
 # you can do it in a reverse order to change direction
-
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
         def reverse(i, j):

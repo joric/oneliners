@@ -1366,6 +1366,11 @@ If there are more counters, you can combine counter update and calculation.
 * https://leetcode.com/problems/maximum-ascending-subarray-sum
 
 ```python
+
+class Solution:
+    def maxAscendingSum(self, n: List[int]) -> int:
+        p=c=0;return max((c:=x+c*(x>p),p:=x)[0]for x in n)
+
 class Solution:
     def maxAscendingSum(self, n: List[int]) -> int:
         p=c=0;return max(c:=x+c*(x>p)+0*(p:=x)for x in n)

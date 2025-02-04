@@ -1438,6 +1438,8 @@ the array AB into the array BA, but let's also assume we have
 a subroutine that reverses the elements in a specified portion
 of the array._
 
+Rotate string "ABCDEFGH" by 3 characters left (I=3, indexes in this example start from 1):
+
 ```c
 reverse(1, I)    /* CBADEFGH */
 reverse(I+1, N)  /* CBAHGFED */

@@ -1540,8 +1540,8 @@ class Solution:
 
 ```python
 class Solution:
-    def check(self, n: List[int]) -> bool:
-        return sum(map(gt,n,n[1:]+n))<2
+    def check(self, a: List[int]) -> bool:
+        return sum(map(gt,a,a[1:]+a))<2
 ```
 
 ### Misc

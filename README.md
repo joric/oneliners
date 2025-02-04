@@ -1537,9 +1537,9 @@ There also problems where you have to determine if string was rotated. The trick
 
 * https://leetcode.com/problems/repeated-substring-pattern/solutions/826417/rust-oneliner-by-joric-mmmu/
 
-If s consists of repeating parts then at some point it should be equal to the rotated version of itself.
+_If s consists of repeating parts then at some point it should be equal to the rotated version of itself.
 Checking If s is a sub-string of (s+s)[1:-1] basicaly does all the job of checking for all rotated versions
-of s except s+s just in a single operation (which is usually SIMD-accelerated).
+of s except s+s just in a single operation (which is usually SIMD-accelerated)._
 
 ```python
 class Solution:

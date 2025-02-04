@@ -1533,7 +1533,7 @@ class Solution:
 
 ```
 
-There also problems where you have to determine if string was rotated. The trick is to search in a list concatenated with its copy.
+There also problems where you have to determine if string was rotated. The trick is to search in a string concatenated with its copy.
 
 * https://leetcode.com/problems/repeated-substring-pattern/solutions/826417/rust-oneliner-by-joric-mmmu/
 

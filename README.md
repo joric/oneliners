@@ -1458,7 +1458,7 @@ UNIXt editor ed._
 * https://leetcode.com/problems/rotate-array
 
 ```python
-# AKA Doug Mclroy, Programming Pearls
+# AKA Doug Mcllroy, Programming Pearls
 # reverse parts at split point then reverse whole array
 # you can do it in a reverse order to change direction
 

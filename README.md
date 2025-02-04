@@ -1928,6 +1928,7 @@ Negation (Arithmetic)       |`- a`              |`neg(a)`
 Negation (Logical)          |`not a`            |`not_(a)`                          
 Positive                    |`+ a`              |`pos(a)`                           
 Truth Test                  |`obj`              |`truth(obj)`                       
+Bitwise Inversion           |`~ a`              |`invert(a)`                        
 **Binary**                  |                   |
 Addition                    |`a + b`            |`add(a, b)`                        
 Concatenation               |`seq1 + seq2`      |`concat(seq1, seq2)`               
@@ -1936,7 +1937,6 @@ Division                    |`a / b`            |`truediv(a, b)`
 Division                    |`a // b`           |`floordiv(a, b)`                   
 Bitwise And                 |`a & b`            |`and_(a, b)`                       
 Bitwise Exclusive Or        |`a ^ b`            |`xor(a, b)`                        
-Bitwise Inversion           |`~ a`              |`invert(a)`                        
 Bitwise Or                  |`a \| b`           |`or_(a, b)`                        
 Exponentiation              |`a ** b`           |`pow(a, b)`                        
 Identity                    |`a is b`           |`is_(a, b)`                        

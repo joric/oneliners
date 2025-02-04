@@ -405,7 +405,7 @@ from sortedcontainers import SortedList
 
 class Solution:
     def minimumDeviation(self, nums: List[int]) -> int:
-        s,r = SortedList(i*2 if i & 1 else i for i in nums), 10**9
+        s,r = SortedList(i*2 if i & 1 else i for i in nums),inf
         while True:
             r = min(r,s[-1]-s[0])
             if 1&s[-1]: break
@@ -414,7 +414,7 @@ class Solution:
 
 class Solution:
     def minimumDeviation(self, a: List[int]) -> int:
-        s,r=__import__('sortedcontainers').SortedList(i%2 and i*2 or i for i in a),inf
+        s,r=__import__('sortedcontainers').SortedList(i*-~(1&i)for i in a),inf;
         return next(r for _ in count()if[r:=min(r,s[-1]-s[0])]and 1&s[-1]or s.add(s.pop()//2))
 ```
 

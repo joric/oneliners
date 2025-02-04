@@ -1428,8 +1428,10 @@ class Solution:
 
 ### Rotations
 
-Rotating an array is a classic inteview question that was originaly published in Programming Pearls (page 33).
+Rotating an array is a classic inteview question that was originaly published in Programming Pearls..
 It's usually shown on the palms of your hands. You reverse array parts at split point and then reverse the entrie array.
+
+_Brian Kernighan and P.J. Plauger used precisely this code in their 1981 Software tools in Pascal to move lines in a text editor. Kernighan reports that it ran correctly the first time it was executed, while their previous code for a similar task based on linked lists had several bugs._
 
 * https://leetcode.com/problems/rotate-array
 
@@ -1450,6 +1452,12 @@ class Solution:
         reverse(0, k-1)
         reverse(k, n-1)
         return nums
+```
+
+It's pretty suboptimal though. Reversing three times is simplest but moves every element exactly twice, takes O(N) time and O(1) space
+It is possible to circle shift an array moving each element exactly once also in O(N) time and O(1) space using GCD.
+
+```python
 
 # GCD solution, true O(n)
 # https://stackoverflow.com/questions/876293/fastest-algorithm-for-circle-shift-n-sized-array-for-m-position
@@ -1463,8 +1471,12 @@ class Solution:
             while (k := (j + shift) % n) != i:
                 nums[j],nums[k] = nums[k],nums[j]
                 j = k
+```
 
-# the same using built-in reverse function
+Other ways:
+
+```python
+# using built-in reverse function
 
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
@@ -1473,7 +1485,7 @@ class Solution:
         nums[k:] = reversed(nums[k:])
         nums.reverse()
 
-# some python tricks (not inplace)
+# not inplace
 
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:

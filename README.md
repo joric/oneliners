@@ -1971,7 +1971,7 @@ Precedence|Operators                                     |Description           
 1         |`()`                                          |Parentheses                                                |Left to right
 2         |`x[i], x[i:j]`                                |Subscription, slicing                                      |Left to right
 3         |`await x`                                     |Await expression                                           |N/A          
-4         |`\*\*`                                        |Exponentiation                                             |Right to left
+4         |`**`                                          |Exponentiation                                             |Right to left
 5         |`+x, -x, ~x`                                  |Positive, negative, bitwise NOT                            |Right to left
 6         |`*, @, /, //, %`                              |Multiply (matrix), division, remainder                     |Left to right
 7         |`+, –`                                        |Addition and subtraction                                   |Left to right

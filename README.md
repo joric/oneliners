@@ -1438,11 +1438,11 @@ the array AB into the array BA, but let's also assume we have
 a subroutine that reverses the elements in a specified portion
 of the array._
 
-Rotating string "ABCDEFGH" by k=3 characters left (n is string length, indexes start from 1):
+Rotating string "ABCDEFGH" by i=3 characters left (n is string length, indexes start from 1):
 
 ```c
-reverse(1, k)    /* CBADEFGH */
-reverse(k+1, n)  /* CBAHGFED */
+reverse(1, i)    /* CBADEFGH */
+reverse(i+1, n)  /* CBAHGFED */
 reverse(1, n)    /* DEFGHABC */
 ```
 

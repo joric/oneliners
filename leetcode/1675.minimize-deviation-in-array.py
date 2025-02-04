@@ -25,14 +25,11 @@ from sortedcontainers import SortedList
 class Solution:
     def minimumDeviation(self, nums: List[int]) -> int:
         s,r = SortedList(i*2 if i & 1 else i for i in nums), 10**9
-        while s[-1]%2==0:
+        while True:
             r = min(r,s[-1]-s[0])
+            if 1&s[-1]: break
             s.add(s.pop()//2)
-        return min(r,s[-1]-s[0])
-
-class Solution:
-    def minimumDeviation(self, n: List[int]) -> int:
-        return next((min(r,s[-1]-s[0]) for _ in count() if not(s[-1]%2==0 and (r:=min(r,s[-1]-s[0]),s.add(s.pop()//2)))),(s:=__import__('sortedcontainers').SortedList(i%2 and i*2 or i for i in n),r:=inf))
+        return r
 
 class Solution:
     def minimumDeviation(self, a: List[int]) -> int:

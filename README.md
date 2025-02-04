@@ -1558,7 +1558,7 @@ class Solution:
 ### Misc
 
 Note that `key=itemgetter(n)` is the same length as `key=lambda x:x[n]` but a little bit clearer to read.
-The performance of itemgetter is also better (up to 2x, because of the creation of the lambda).
+The performance of itemgetter is also better than lambda (up to 2x, because of the creation of the lambda).
 
 Sometimes you can skip `key=itemgetter(0)` in comparison operations by converting an argument
 to a tuple (15 characters shorter).

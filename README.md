@@ -1436,7 +1436,7 @@ the array AB into the array BA, but let's also assume we have
 a subroutine that reverses the elements in a specified portion
 of the array._
 
-```cpp
+```c
 reverse(1, I)    /* CBADEFGH */
 reverse(I+1, N)  /* CBAHGFED */
 reverse(1, N)    /* DEFGHABC */

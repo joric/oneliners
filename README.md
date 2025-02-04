@@ -1380,6 +1380,76 @@ class Solution:
         p=c=0;return max(c:=x+c*(p<(p:=x))for x in n)
 ```
 
+### Asterisk operator
+
+You can save a few characters using asterisk operator `*`.
+One `*` means "expand this as a list", two `**` means "expand this as a dictionary".
+
+* https://leetcode.com/problems/check-if-it-is-a-straight-line
+
+```python
+class Solution:
+    def checkStraightLine(self, p):
+        (a,b),(c,d)=p[:2];return all((x-a)*(d-b)==(c-a)*(y-b)for x,y in p)
+
+class Solution:
+    def checkStraightLine(self, p):
+        (a,b),(c,d),*_=p;return all((x-a)*(d-b)==(c-a)*(y-b)for x,y in p)
+```
+
+There's a nice way to convert an iterable to list, e.g. `x=[*g]` equals `*x,=g` (1 char shorter). Or expand lists:
+
+* https://leetcode.com/problems/maximum-average-subarray-i
+
+
+```python
+class Solution:
+    def findMaxAverage(self, n: List[int], k: int) -> float:
+        s=[0]+[*accumulate(n)];return max(map(sub,s[k:],s))/k
+
+class Solution:
+    def findMaxAverage(self, n: List[int], k: int) -> float:
+        s=[0,*accumulate(n)];return max(map(sub,s[k:],s))/k
+```
+
+You can also use this syntax to unpack iterables, e.g. `a,*b,c=range(5)` means `a=1;b=[2,3,4];c=5`.
+
+* https://leetcode.com/problems/number-of-ways-to-split-array
+
+```python
+class Solution:
+    def waysToSplitArray(self, a: list[int]) -> int:
+        return sum(map((sum(a)/2).__le__,accumulate(a[:-1])))
+
+class Solution:
+    def waysToSplitArray(self, a: list[int]) -> int:
+        *p,s=accumulate(a);return sum(map((s/2).__le__,p))
+```
+
+### Rotations
+
+You can use list concatenated with its copy to find rotations.
+
+* https://leetcode.com/problems/repeated-substring-pattern/solutions/826417/rust-oneliner-by-joric-mmmu/
+
+If s consists of repeating parts then at some point it should be equal to the rotated version of itself.
+Checking If s is a sub-string of (s+s)[1:-1] basicaly does all the job of checking for all rotated versions
+of s except s+s just in a single operation (which is usually SIMD-accelerated).
+
+```python
+class Solution:
+    def repeatedSubstringPattern(self, s: str) -> bool:
+        return s in (s+s)[1:-1]
+```
+
+* https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/
+
+```python
+class Solution:
+    def check(self, n: List[int]) -> bool:
+        return sum(map(gt,n,n[1:]+n))<2
+```
+
 ### Misc
 
 Note that `key=itemgetter(n)` is the same length as `key=lambda x:x[n]` but a little bit clearer to read.
@@ -1732,76 +1802,6 @@ class Solution:
 class Solution:
     def maxKelements(self, a: List[int], k: int) -> int:
         a.sort();return sum((x:=a.pop(),insort(a,-(-x//3)))[0]for _ in range(k))
-```
-
-### Asterisk operator
-
-You can save a few characters using asterisk operator `*`.
-One `*` means "expand this as a list", two `**` means "expand this as a dictionary".
-
-* https://leetcode.com/problems/check-if-it-is-a-straight-line
-
-```python
-class Solution:
-    def checkStraightLine(self, p):
-        (a,b),(c,d)=p[:2];return all((x-a)*(d-b)==(c-a)*(y-b)for x,y in p)
-
-class Solution:
-    def checkStraightLine(self, p):
-        (a,b),(c,d),*_=p;return all((x-a)*(d-b)==(c-a)*(y-b)for x,y in p)
-```
-
-There's a nice way to convert an iterable to list, e.g. `x=[*g]` equals `*x,=g` (1 char shorter). Or expand lists:
-
-* https://leetcode.com/problems/maximum-average-subarray-i
-
-
-```python
-class Solution:
-    def findMaxAverage(self, n: List[int], k: int) -> float:
-        s=[0]+[*accumulate(n)];return max(map(sub,s[k:],s))/k
-
-class Solution:
-    def findMaxAverage(self, n: List[int], k: int) -> float:
-        s=[0,*accumulate(n)];return max(map(sub,s[k:],s))/k
-```
-
-You can also use this syntax to unpack iterables, e.g. `a,*b,c=range(5)` means `a=1;b=[2,3,4];c=5`.
-
-* https://leetcode.com/problems/number-of-ways-to-split-array
-
-```python
-class Solution:
-    def waysToSplitArray(self, a: list[int]) -> int:
-        return sum(map((sum(a)/2).__le__,accumulate(a[:-1])))
-
-class Solution:
-    def waysToSplitArray(self, a: list[int]) -> int:
-        *p,s=accumulate(a);return sum(map((s/2).__le__,p))
-```
-
-### Rotations
-
-You can use list concatenated with its copy to find rotations.
-
-* https://leetcode.com/problems/repeated-substring-pattern/solutions/826417/rust-oneliner-by-joric-mmmu/
-
-If s consists of repeating parts then at some point it should be equal to the rotated version of itself.
-Checking If s is a sub-string of (s+s)[1:-1] basicaly does all the job of checking for all rotated versions
-of s except s+s just in a single operation (which is usually SIMD-accelerated).
-
-```python
-class Solution:
-    def repeatedSubstringPattern(self, s: str) -> bool:
-        return s in (s+s)[1:-1]
-```
-
-* https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/
-
-```python
-class Solution:
-    def check(self, n: List[int]) -> bool:
-        return sum(map(gt,n,n[1:]+n))<2
 ```
 
 ### Sorted Containers

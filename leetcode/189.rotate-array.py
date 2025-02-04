@@ -1,14 +1,13 @@
 from lc import *
 
 # https://leetcode.com/problems/rotate-array/discuss/895412/Python-O(n)-inplace-solution-explained
-# AKA Doug Mcelroy, programming pearls, page 33
-
+# AKA Doug Mcllroy, programming pearls, page 33
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
         def reverse(i, j):
-            while i < j:
+            while i<j:
                 nums[i], nums[j] = nums[j], nums[i]
-                i, j = i+1, j-1
+                i,j = i+1, j-1
         n = len(nums)
         k = k % n
         reverse(0, n-1)
@@ -17,7 +16,6 @@ class Solution:
         return nums
 
 # GCD solution, true O(n) https://stackoverflow.com/questions/876293/fastest-algorithm-for-circle-shift-n-sized-array-for-m-position
-
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
         n = len(nums)
@@ -28,8 +26,7 @@ class Solution:
                 nums[j],nums[k] = nums[k],nums[j]
                 j = k
 
-# misc
-
+# not inplace
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
         k = k % len(nums)
@@ -43,11 +40,6 @@ class Solution:
         nums.reverse()
         nums[:k] = reversed(nums[:k])
         nums[k:] = reversed(nums[k:])
-
-class Solution:
-    def rotate(self, nums: List[int], k: int) -> None:
-        k = k % len(nums)
-        nums[:] = nums[-k:] + nums[:-k]
 
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
@@ -65,20 +57,9 @@ class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
         nums[:]=(q:=deque(nums)).rotate(k) or q
 
-
 class Solution:
-    def rotate(self, nums: List[int], k: int) -> None:
-        def reverse(i, j):
-            while i<j:
-                nums[i], nums[j] = nums[j], nums[i]
-                i,j = i+1, j-1
-        n = len(nums)
-        k = k % n
-        reverse(0, n-1)
-        reverse(0, k-1)
-        reverse(k, n-1)
-        return nums
-
+    def rotate(self, n: List[int], k: int) -> None:
+        k%=len(n);n[:]=n[-k:]+n[:-k]
 
 test('''
 

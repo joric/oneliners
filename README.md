@@ -1509,19 +1509,6 @@ class Solution:
 # not inplace
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
-        k = k % len(nums)
-        nums[:] = nums[-k:] + nums[:-k]
-
-class Solution:
-    def rotate(self, nums: List[int], k: int) -> None:
-        nums[:] = nums[-(k-len(nums)):]+nums[:-(k-len(nums))]
-
-class Solution:
-    def rotate(self, nums: List[int], k: int) -> None:
-        nums[:]=nums[-k%len(nums):]+nums[:-k%len(nums)]
-
-class Solution:
-    def rotate(self, nums: List[int], k: int) -> None:
         [nums.insert(0,nums.pop()) for _ in range(k)]
 
 # built-in rotate method (rotates the other way so we use deque)
@@ -1529,6 +1516,10 @@ class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
         nums[:]=(q:=deque(nums)).rotate(k) or q
 
+# minified
+class Solution:
+    def rotate(self, n: List[int], k: int) -> None:
+        k%=len(n);n[:]=n[-k:]+n[:-k]
 ```
 
 There also problems where you have to determine if string was rotated. The trick is to search in a string concatenated with its copy.

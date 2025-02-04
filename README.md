@@ -1092,7 +1092,7 @@ class Solution:
             or min(a[i]+f(i+1,j),b[j]+f(i,j+1),key=len))or a[i:]or b[j:]))(0,0)
 ```
 
-CPP version of a cache decorator: https://gist.github.com/joric/ed96c06c2e5440e0cbf84b3ff78f3a12
+CPP version of a cache decorator: [cache_decorator.cpp](https://gist.github.com/joric/ed96c06c2e5440e0cbf84b3ff78f3a12).
 
 ### Reduce
 

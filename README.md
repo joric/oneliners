@@ -1454,7 +1454,7 @@ editor in their book. Brian Kernighan reports that this code
 indeed ran correctly the first time it was executed, while
 their previous code for a similar task contained several bugs.
 This code is also used in several text editors, including the
-UNIXt editor ed._
+UNIX editor ed._
 
 
 * https://leetcode.com/problems/rotate-array

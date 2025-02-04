@@ -1337,6 +1337,44 @@ Is equal to:
 compress(a,map(ge,a,accumulate(a,max)))
 ```
 
+### Kadane
+
+For the Kadane-like problems you have to maintain a couple of counters. You can just use `max` on a comprehension.
+
+* https://leetcode.com/problems/maximum-subarray
+
+```python
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        cur_max, max_till_now = 0, -inf
+        for c in nums:
+            cur_max = max(c, cur_max + c)
+            max_till_now = max(max_till_now, cur_max)
+        return max_till_now
+
+class Solution:
+    def maxSubArray(self, a: List[int]) -> int:
+        return max(accumulate(a,lambda x,y:max(x+y,y)))
+
+class Solution:
+    def maxSubArray(self, n: List[int]) -> int:
+        c=0;return max(c:=max(x,c+x)for x in n)
+```
+
+If there are more counters, you can combine counter update and calculation.
+
+* https://leetcode.com/problems/maximum-ascending-subarray-sum
+
+```python
+class Solution:
+    def maxAscendingSum(self, n: List[int]) -> int:
+        p=c=0;return max(c:=x+c*(x>p)+0*(p:=x)for x in n)
+
+class Solution:
+    def maxAscendingSum(self, n: List[int]) -> int:
+        p=c=0;return max(c:=x+c*(p<(p:=x))for x in n)
+```
+
 ### Misc
 
 Note that `key=itemgetter(n)` is the same length as `key=lambda x:x[n]` but a little bit clearer to read.
@@ -1813,7 +1851,6 @@ Indexed Assignment          |`obj[k] = v`       |`setitem(obj, k, v)`
 Slice Assignment            |`seq[i:j] = values`|`setitem(seq, slice(i, j), values)`
 Slice Deletion              |`del seq[i:j]`     |`delitem(seq, slice(i, j))`        
 Slicing                     |`seq[i:j]`         |`getitem(seq, slice(i, j))`        
-
 
 They use the same naming for the member functions, but with underscores, e.g. `(1).__lt__`.
 

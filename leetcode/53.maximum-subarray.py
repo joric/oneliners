@@ -47,6 +47,19 @@ class Solution:
     def maxSubArray(self, a: List[int]) -> int:
         return max(accumulate(a,lambda x,y:max(x+y,y)))
 
+# smaller kadane
+
+class Solution:
+    def maxSubArray(self, n: List[int]) -> int:
+        c,p = 0,-inf
+        for x in n:
+            p=max(p,c:=max(x,c+x))
+        return p
+
+class Solution:
+    def maxSubArray(self, n: List[int]) -> int:
+        c=0;return max(c:=max(x,c+x)for x in n)
+
 test('''
 53. Maximum Subarray
 Medium

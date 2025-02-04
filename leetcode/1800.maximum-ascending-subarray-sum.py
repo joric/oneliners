@@ -1,5 +1,6 @@
 from lc import *
 
+# kadane-like
 # https://leetcode.com/problems/maximum-ascending-subarray-sum/solutions/1119686/python3-line-sweep/?envType=daily-question&envId=2025-02-04
 
 class Solution:

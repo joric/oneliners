@@ -1480,8 +1480,8 @@ class Solution:
 ```
 
 It's pretty suboptimal though. Reversing three times is simplest but moves every element exactly twice, takes O(N) time and O(1) space
-It is possible to circle shift an array moving each element exactly once also in O(N) time and O(1) space.
-(https://stackoverflow.com/questions/876293/fastest-algorithm-for-circle-shift-n-sized-array-for-m-position)
+It is possible to circle shift an array moving each element exactly once also in O(N) time and O(1) space
+(https://stackoverflow.com/questions/876293/fastest-algorithm-for-circle-shift-n-sized-array-for-m-position).
 
 ```python
 # GCD solution, true O(n)

@@ -1485,7 +1485,6 @@ It is possible to circle shift an array moving each element exactly once also in
 
 ```python
 # GCD solution, true O(n)
-
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
         n = len(nums)
@@ -1501,7 +1500,6 @@ Other ways:
 
 ```python
 # using built-in reverse function
-
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
         k = k % len(nums)
@@ -1510,7 +1508,6 @@ class Solution:
         nums.reverse()
 
 # not inplace
-
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
         k = k % len(nums)
@@ -1529,7 +1526,6 @@ class Solution:
         [nums.insert(0,nums.pop()) for _ in range(k)]
 
 # built-in rotate method (rotates the other way so we use deque)
-
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
         nums[:]=(q:=deque(nums)).rotate(k) or q

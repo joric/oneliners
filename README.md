@@ -1443,7 +1443,7 @@ reverse(1, N)    /* DEFGHABC */
 ```
 
 _This implementation of rotating a ten-element array up by
-five positions (Figure 1) is from Doug Mcllroy; try it.
+five positions ([Figure 1](https://i.imgur.com/UvQJ6tu.png)) is from Doug Mcllroy; try it.
 The reversal code is time- and space-efficient, and is so
 short and simple that it's pretty hard to get wrong._
 

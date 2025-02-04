@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/minimize-deviation-in-array
+
 class Solution:
     def minimumDeviation(self, nums: List[int]) -> int:
         r,q = inf,[]
@@ -19,6 +21,7 @@ class Solution:
         return next((r for _ in count() if not(len(q)==len(nums) and (a:=-heappop(q),r:=min(r,a-m),a%2==0 and (m:=min(m,a//2),heappush(q,-a//2))))),(r:=inf,q:=[],[heappush(q,a%2 and -a*2 or -a) for a in nums],m:=-max(q)))
 
 from sortedcontainers import SortedList
+
 class Solution:
     def minimumDeviation(self, nums: List[int]) -> int:
         s,r = SortedList(i*2 if i & 1 else i for i in nums), 10**9
@@ -31,6 +34,9 @@ class Solution:
     def minimumDeviation(self, n: List[int]) -> int:
         return next((min(r,s[-1]-s[0]) for _ in count() if not(s[-1]%2==0 and (r:=min(r,s[-1]-s[0]),s.add(s.pop()//2)))),(s:=__import__('sortedcontainers').SortedList(i%2 and i*2 or i for i in n),r:=inf))
 
+class Solution:
+    def minimumDeviation(self, a: List[int]) -> int:
+        s,r=__import__('sortedcontainers').SortedList(i%2 and i*2 or i for i in a),inf;return next(r for _ in count()if[r:=min(r,s[-1]-s[0])]and 1&s[-1]or s.add(s.pop()//2))
 
 test('''
 1675. Minimize Deviation in Array

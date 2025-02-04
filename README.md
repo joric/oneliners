@@ -377,6 +377,46 @@ class Solution:
         return sum(2-s.count(x)%2 for x in set(s))
 ```
 
+Unlike `dict`, python `set` does NOT maintain insertion order. There are modules that implements ordered set.
+
+* [sortedcontainers](https://pypi.org/project/sortedcontainers/) - `SortedList`, `SortedDict`, `SortedSet` (maintains sorted order).
+* [sortedcollections](https://pypi.org/project/sortedcollections/) - `ValueSortedDict`, `ItemSortedDict`, `OrderedDict`, `OrderedSet` ([maintains insertion order](https://www.educative.io/answers/what-is-orderedset-in-python)).
+
+You can use `SortedList` in a bunch of problems instead of a heap.
+
+* https://leetcode.com/problems/minimize-deviation-in-array
+
+```python
+class Solution:
+    def minimumDeviation(self, nums: List[int]) -> int:
+        r,q = inf,[]
+        for a in nums:
+            heappush(q,a%2 and -a*2 or -a)
+        m = -max(q)
+        while len(q) == len(nums):
+            a = -heappop(q)
+            r = min(r, a - m)
+            if a%2==0:
+                m = min(m, a//2)
+                heappush(q, -a//2)
+        return r
+
+from sortedcontainers import SortedList
+
+class Solution:
+    def minimumDeviation(self, nums: List[int]) -> int:
+        s,r = SortedList(i*2 if i & 1 else i for i in nums),inf
+        while s[-1]%2==0:
+            r = min(r,s[-1]-s[0])
+            s.add(s.pop()//2)
+        return min(r,s[-1]-s[0])
+
+class Solution:
+    def minimumDeviation(self, a: List[int]) -> int:
+        s,r=__import__('sortedcontainers').SortedList(i%2 and i*2 or i for i in a),inf
+        return next(r for _ in count()if[r:=min(r,s[-1]-s[0])]and 1&s[-1]or s.add(s.pop()//2))
+```
+
 ### Walrus operator
 
 The controversial walrus operator (`:=`) added in Python 3.8 ([PEP-572](https://peps.python.org/pep-0572/)
@@ -1897,14 +1937,6 @@ class Solution:
     def maxKelements(self, a: List[int], k: int) -> int:
         a.sort();return sum((x:=a.pop(),insort(a,-(-x//3)))[0]for _ in range(k))
 ```
-
-### Sorted Containers
-
-Unlike `dict`, python `set` does NOT maintain insertion order. There are two modules that provide ordered sets.
-
-* [sortedcontainers](https://pypi.org/project/sortedcontainers/) - `SortedList`, `SortedDict`, `SortedSet` (maintains sorted order).
-* [sortedcollections](https://pypi.org/project/sortedcollections/) - `ValueSortedDict`, `ItemSortedDict`, `OrderedDict`, `OrderedSet` ([maintains insertion order](https://www.educative.io/answers/what-is-orderedset-in-python)).
-
 
 ### Operators
 

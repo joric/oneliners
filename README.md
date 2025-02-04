@@ -1430,7 +1430,7 @@ class Solution:
 
 ### Rotations
 
-Rotating an array problem was published in Programming Pearls ([pages 624-625 of a September 1983 edition](https://dl.acm.org/doi/pdf/10.1145/358172.358176)).
+Rotate array problem was published in Programming Pearls ([pages 624-625 of a September 1983 edition](https://dl.acm.org/doi/pdf/10.1145/358172.358176)).
 
 _The problem continues to look hard until you finally come
 up with the right aha! insight. Let's view it as transforming
@@ -1438,7 +1438,7 @@ the array AB into the array BA, but let's also assume we have
 a subroutine that reverses the elements in a specified portion
 of the array._
 
-Rotate string "ABCDEFGH" by 3 characters left (I=3, indexes in this example start from 1):
+Rotating string "ABCDEFGH" by 3 characters left (I=3, indexes in this example start from 1):
 
 ```c
 reverse(1, I)    /* CBADEFGH */
@@ -1457,7 +1457,6 @@ indeed ran correctly the first time it was executed, while
 their previous code for a similar task contained several bugs.
 This code is also used in several text editors, including the
 UNIX editor ed._
-
 
 * https://leetcode.com/problems/rotate-array
 

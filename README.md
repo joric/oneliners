@@ -1808,8 +1808,8 @@ class Solution:
 
 Default python `set` doesn't maintain insertion order. There are two modules that provide ordered sets.
 
-* [sortedcontainers](https://pypi.org/project/sortedcontainers/) - SortedList, SortedDict, and SortedSet (maintains sorted order).
-* [sortedcollections](https://pypi.org/project/sortedcollections/) - ValueSortedDict, ItemSortedDict, OrderedDict, and OrderedSet ([maintains insertion order](https://www.educative.io/answers/what-is-orderedset-in-python)).
+* [sortedcontainers](https://pypi.org/project/sortedcontainers/) - `SortedList`, `SortedDict`, and `SortedSet` (maintains sorted order).
+* [sortedcollections](https://pypi.org/project/sortedcollections/) - `ValueSortedDict`, `ItemSortedDict`, `OrderedDict`, and `OrderedSet` ([maintains insertion order](https://www.educative.io/answers/what-is-orderedset-in-python)).
 
 
 ### Operators

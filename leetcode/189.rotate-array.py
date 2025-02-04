@@ -60,9 +60,10 @@ class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
         nums[:]=(q:=deque(nums)).rotate(k) or q
 
+# minified
 class Solution:
-    def rotate(self, n: List[int], k: int) -> None:
-        k%=len(n);n[:]=n[-k:]+n[:-k]
+    def rotate(self, a: List[int], k: int) -> None:
+        k%=len(a);a[:]=a[-k:]+a[:-k]
 
 test('''
 

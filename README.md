@@ -1518,8 +1518,8 @@ class Solution:
 
 # minified
 class Solution:
-    def rotate(self, n: List[int], k: int) -> None:
-        k%=len(n);n[:]=n[-k:]+n[:-k]
+    def rotate(self, a: List[int], k: int) -> None:
+        k%=len(a);a[:]=a[-k:]+a[:-k]
 ```
 
 There also problems where you have to determine if string was rotated. The trick is to search in a string concatenated with its copy.

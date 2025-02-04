@@ -1361,7 +1361,7 @@ class Solution:
         c=0;return max(c:=max(x,c+x)for x in n)
 ```
 
-If there are more counters, you can combine intermediary and target counters calculation.
+If there are more counters, you can combine intermediary counter and target counter calculation.
 
 * https://leetcode.com/problems/maximum-ascending-subarray-sum
 

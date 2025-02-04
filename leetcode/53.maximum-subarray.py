@@ -45,7 +45,7 @@ class Solution:
 
 class Solution:
     def maxSubArray(self, a: List[int]) -> int:
-        return max(accumulate(a,lambda x,y:max(x+y,y)))
+        return max(accumulate(a,lambda c,x:max(c+x,x)))
 
 # smaller kadane
 
@@ -53,12 +53,12 @@ class Solution:
     def maxSubArray(self, n: List[int]) -> int:
         c,p = 0,-inf
         for x in n:
-            p=max(p,c:=max(x,c+x))
+            p=max(p,c:=max(c+x,x))
         return p
 
 class Solution:
     def maxSubArray(self, n: List[int]) -> int:
-        c=0;return max(c:=max(x,c+x)for x in n)
+        c=0;return max(c:=max(c+x,x)for x in n)
 
 test('''
 53. Maximum Subarray

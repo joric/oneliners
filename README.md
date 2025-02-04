@@ -1354,11 +1354,11 @@ class Solution:
 
 class Solution:
     def maxSubArray(self, a: List[int]) -> int:
-        return max(accumulate(a,lambda x,y:max(x+y,y)))
+        return max(accumulate(a,lambda c,x:max(c+x,x)))
 
 class Solution:
     def maxSubArray(self, n: List[int]) -> int:
-        c=0;return max(c:=max(x,c+x)for x in n)
+        c=0;return max(c:=max(c+x,x)for x in n)
 ```
 
 If there are more counters, you can combine intermediary counter and target counter calculation.

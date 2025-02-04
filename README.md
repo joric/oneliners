@@ -1900,7 +1900,7 @@ class Solution:
 
 ### Sorted Containers
 
-Default python `set` doesn't maintain insertion order. There are two modules that provide ordered sets.
+Unlike `dict`, python `set` does NOT maintain insertion order. There are two modules that provide ordered sets.
 
 * [sortedcontainers](https://pypi.org/project/sortedcontainers/) - `SortedList`, `SortedDict`, `SortedSet` (maintains sorted order).
 * [sortedcollections](https://pypi.org/project/sortedcollections/) - `ValueSortedDict`, `ItemSortedDict`, `OrderedDict`, `OrderedSet` ([maintains insertion order](https://www.educative.io/answers/what-is-orderedset-in-python)).

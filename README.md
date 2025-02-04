@@ -1353,8 +1353,8 @@ class Solution:
         return max_till_now
 
 class Solution:
-    def maxSubArray(self, a: List[int]) -> int:
-        return max(accumulate(a,lambda c,x:max(c+x,x)))
+    def maxSubArray(self, n: List[int]) -> int:
+        return max(accumulate(n,lambda c,x:max(c+x,x)))
 
 class Solution:
     def maxSubArray(self, n: List[int]) -> int:

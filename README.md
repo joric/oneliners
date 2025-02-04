@@ -1428,7 +1428,79 @@ class Solution:
 
 ### Rotations
 
-You can use list concatenated with its copy to find rotations.
+Rotating an array is a classic inteview question that was originaly published in Programming Pearls (page 33).
+It's usually shown on the palms of your hands. You reverse array parts at split point and then reverse the entrie array.
+
+* https://leetcode.com/problems/rotate-array
+
+```python
+
+# https://leetcode.com/problems/rotate-array/discuss/895412/Python-O(n)-inplace-solution-explained
+# AKA Doug Mcelroy, programming pearls, page 33
+
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        def reverse(i, j):
+            while i < j:
+                nums[i], nums[j] = nums[j], nums[i]
+                i, j = i+1, j-1
+        n = len(nums)
+        k = k % n
+        reverse(0, n-1)
+        reverse(0, k-1)
+        reverse(k, n-1)
+        return nums
+
+# GCD solution, true O(n)
+# https://stackoverflow.com/questions/876293/fastest-algorithm-for-circle-shift-n-sized-array-for-m-position
+
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        n = len(nums)
+        shift = n - (k % n)
+        for i in range(gcd(n, shift)):
+            j = i
+            while (k := (j + shift) % n) != i:
+                nums[j],nums[k] = nums[k],nums[j]
+                j = k
+
+# the same using built-in reverse function
+
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        k = k % len(nums)
+        nums[:k] = reversed(nums[:k])
+        nums[k:] = reversed(nums[k:])
+        nums.reverse()
+
+# some python tricks (not inplace)
+
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        k = k % len(nums)
+        nums[:] = nums[-k:] + nums[:-k]
+
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        nums[:] = nums[-(k-len(nums)):]+nums[:-(k-len(nums))]
+
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        nums[:]=nums[-k%len(nums):]+nums[:-k%len(nums)]
+
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        [nums.insert(0,nums.pop()) for _ in range(k)]
+
+# built-in rotate method (rotates the other way so we use deque)
+
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        nums[:]=(q:=deque(nums)).rotate(k) or q
+
+```
+
+You can also use list concatenated with its copy to find rotations.
 
 * https://leetcode.com/problems/repeated-substring-pattern/solutions/826417/rust-oneliner-by-joric-mmmu/
 

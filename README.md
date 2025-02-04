@@ -1428,23 +1428,37 @@ class Solution:
 
 ### Rotations
 
-Rotating an array is a classic inteview question that was originaly published in Programming Pearls.
-Doug Mcelroy shows it on the palms of the hands. You reverse array parts at split point and then reverse the entrie array.
+Rotating an array problem was published in Programming Pearls ([pages 624-625 of a September 1983 edition](https://dl.acm.org/doi/pdf/10.1145/358172.358176)).
+
+_The problem continues to look hard until you finally come
+up with the right aha! insight. Let's view it as transforming
+the array AB into the array BA, but let's also assume we have
+a subroutine that reverses the elements in a specified portion
+of the array._
 
 ```cpp
-reverse(0. 1-1) /* chadefgh */
-reverse(j. n-1) /* chahgfed */
-reverse(0, n-1) /* defghabe */
+reverse(1, I)    /* CBADEFGH */
+reverse(I+1, N)  /* CBAHGFED */
+reverse(1, N)    /* DEFGHABC */
 ```
 
-_Brian Kernighan and P.J. Plauger used precisely this code in their 1981 Software tools in Pascal to move lines in a text editor. Kernighan reports that it ran correctly the first time it was executed, while their previous code for a similar task based on linked lists had several bugs._
+_This implementation of rotating a ten-element array up by
+five positions (Figure 1) is from Doug Mcllroy; try it.
+The reversal code is time- and space-efficient, and is so
+short and simple that it's pretty hard to get wrong._
+
+_It is exactly the code that Kernighan and Plauger use in the text
+editor in their book. Brian Kernighan reports that this code
+indeed ran correctly the first time it was executed, while
+their previous code for a similar task contained several bugs.
+This code is also used in several text editors, including the
+UNIXt editor ed._
+
 
 * https://leetcode.com/problems/rotate-array
 
 ```python
-
-# https://leetcode.com/problems/rotate-array/discuss/895412/Python-O(n)-inplace-solution-explained
-# AKA Doug Mcelroy, programming pearls, page 33
+# AKA Doug Mclroy, Programming Pearls
 # reverse parts at split point then reverse whole array
 # you can do it in a reverse order to change direction
 
@@ -1464,11 +1478,10 @@ class Solution:
 
 It's pretty suboptimal though. Reversing three times is simplest but moves every element exactly twice, takes O(N) time and O(1) space
 It is possible to circle shift an array moving each element exactly once also in O(N) time and O(1) space using GCD.
+See https://stackoverflow.com/questions/876293/fastest-algorithm-for-circle-shift-n-sized-array-for-m-position
 
 ```python
-
 # GCD solution, true O(n)
-# https://stackoverflow.com/questions/876293/fastest-algorithm-for-circle-shift-n-sized-array-for-m-position
 
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
@@ -1520,7 +1533,7 @@ class Solution:
 
 ```
 
-You can also use list concatenated with its copy to find rotations.
+There also problems where you have to determine if string was rotated. The trick is to search in a list concatenated with its copy.
 
 * https://leetcode.com/problems/repeated-substring-pattern/solutions/826417/rust-oneliner-by-joric-mmmu/
 

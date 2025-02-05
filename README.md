@@ -414,7 +414,7 @@ class Solution:
 
 class Solution:
     def minimumDeviation(self, a: List[int]) -> int:
-        s,r=__import__('sortedcontainers').SortedList(i*-~(1&i)for i in a),inf;
+        s,r=__import__('sortedcontainers').SortedList(i*(1+i%2)for i in a),inf;
         return next(r for _ in count()if[r:=min(r,s[-1]-s[0])]and 1&s[-1]or s.add(s.pop()//2))
 ```
 

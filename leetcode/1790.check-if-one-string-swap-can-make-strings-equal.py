@@ -29,6 +29,14 @@ class Solution:
     def areAlmostEqual(self, a: str, b: str) -> bool:
         return sorted(a)==sorted(b)and sum(map(ne,a,b))<3
 
+class Solution:
+    def areAlmostEqual(self, a: str, b: str) -> bool:
+        s=sorted;return s(a)==s(b)and sum(map(ne,a,b))<3
+
+class Solution:
+    def areAlmostEqual(self, a: str, b: str) -> bool:
+        return(s:=sorted)(a)==s(b)and sum(map(ne,a,b))<3
+
 test('''
 1790. Check if One String Swap Can Make Strings Equal
 Easy

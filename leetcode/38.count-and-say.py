@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/count-and-say/
+
 class Solution:
     def countAndSay(self, n: int) -> str:
         return reduce(lambda a,i:''.join(str(len(list(v)))+str(k) for k,v in groupby(a)),range(1,n),'1')

@@ -14,7 +14,7 @@ class Solution:
 
 class Solution:
     def countAndSay(self, n: int) -> str:
-        a='1';[a:=''.join(str(len([*v]))+str(k)for k,v in groupby(a))for _ in[0]*~-n];return a
+        return reduce(lambda a,_:''.join(f'{len([*v])}{k}'for k,v in groupby(a)),[0]*~-n,'1')
 
 class Solution:
     def countAndSay(self, n: int) -> str:

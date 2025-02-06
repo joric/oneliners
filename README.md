@@ -1994,7 +1994,7 @@ class Solution:
 
 ### Operators
 
-These operators are available from the "operator" module that is included by default.
+These operators are available from the "operator" module that Leetcode includes by default.
 
 Operation                   |Syntax             |Function                           
 ----------------------------|-------------------|-----------------------------------

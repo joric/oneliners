@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def countAndSay(self, n: int) -> str:
-        return reduce(lambda a,i:''.join(str(len(list(v)))+str(k) for k,v in groupby(a)),range(1,n),'1')
+        return reduce(lambda a,_:''.join(str(len(list(v)))+str(k) for k,v in groupby(a)),range(1,n),'1')
 
 class Solution:
     def countAndSay(self, n: int) -> str:

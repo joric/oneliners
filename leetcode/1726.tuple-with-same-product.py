@@ -25,7 +25,17 @@ class Solution:
 
 class Solution:
     def tupleSameProduct(self, a) -> int:
+        return sum(4*n*(n-1)for n in Counter(starmap(mul,combinations(a,2))).values())
+
+class Solution:
+    def tupleSameProduct(self, a) -> int:
         return sum(~-n*n*4 for n in Counter(starmap(mul,combinations(a,2))).values())
+
+n=10
+
+print(2*comb(n,2))
+
+print(n*(n-1))
 
 test('''
 1726. Tuple with Same Product

@@ -1689,6 +1689,25 @@ class Solution:
             *a+(i+j-2*a+1,4*n-6*a-i-j-3)[i>j]for j in r]for i in r]
 ```
 
+You can write combination function (binomial) `n*(n-1)//2` as `comb(n,2)`, or write `(n-1)` as `~-n` to cut parens.
+
+* https://leetcode.com/problems/tuple-with-same-product
+
+```python
+class Solution:
+    def tupleSameProduct(self, a) -> int:
+        return sum(8*comb(n,2)for n in Counter(starmap(mul,combinations(a,2))).values())
+
+class Solution:
+    def tupleSameProduct(self, a) -> int:
+        return sum(4*n*(n-1)for n in Counter(starmap(mul,combinations(a,2))).values())
+
+class Solution:
+    def tupleSameProduct(self, a) -> int:
+        return sum(~-n*n*4 for n in Counter(starmap(mul,combinations(a,2))).values())
+```
+
+
 You can replace `0 if x==y else z` with `x-y and z`, it's a little bit counterintuitive, but shorter.
 
 Condition `x if c else y` can be written as `c and x or y`, it's shorter but depends on x (x should not be 0).

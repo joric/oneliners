@@ -13,25 +13,7 @@ class Solution:
                 freq[key] = 1 + freq.get(key, 0)
         return 8*ans
 
-# https://leetcode.com/problems/tuple-with-same-product/solutions/3878713/python-one-line/?envType=daily-question&envId=2025-02-06
-
-class Solution:
-    def tupleSameProduct(self, A):
-        return sum(4*v*(v-1) for v in Counter(A[i]*A[j] for i in range(len(A)) for j in range(i)).values() if v>1)
-
-# https://leetcode.com/problems/tuple-with-same-product/solutions/1334867/one-multi-line-100-speed/?envType=daily-question&envId=2025-02-06
-
-class Solution:
-    def tupleSameProduct(self, nums) -> int:
-        return sum(4*n*(n-1)for n in Counter(a*b for a,b in combinations(nums,2)).values()if n>1)
-
-class Solution:
-    def tupleSameProduct(self, a) -> int:
-        return sum(8*comb(n,2)for n in Counter(starmap(mul,combinations(a,2))).values()if n>1)
-
-class Solution:
-    def tupleSameProduct(self, a) -> int:
-        return sum(4*n*~-n*(n>1)for n in Counter(starmap(mul,combinations(a,2))).values())
+# https://leetcode.com/problems/tuple-with-same-product/editorial/?envType=daily-question&envId=2025-02-06
 
 class Solution:
     def tupleSameProduct(self, a) -> int:

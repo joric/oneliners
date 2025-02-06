@@ -1585,7 +1585,7 @@ class Solution:
         return sum(map(gt,a,a[1:]+a))<2
 ```
 
-### Misc
+### Itemgetter
 
 Note that `key=itemgetter(n)` is the same length as `key=lambda x:x[n]` but a little bit clearer to read.
 The performance of itemgetter is also better than lambda (up to 2x, because of the creation of the lambda).
@@ -1609,6 +1609,8 @@ class Solution:
 
 ```
 
+### Pop
+
 You could also use `map(list.pop, v)` instead of `[x[-1] for x in v]` to collect the last elements of the list.
 
 * https://leetcode.com/problems/diagonal-traverse-ii
@@ -1618,6 +1620,8 @@ class Solution:
     def findDiagonalOrder(self, n: List[List[int]]) -> List[int]:
         return map(list.pop,sorted([i+j,j,t]for i,r in enumerate(n)for j,t in enumerate(r)))
 ```
+
+### Zip
 
 Using `zip` to get elements from the list of tuples is usually shorter, but not always:
 
@@ -1632,6 +1636,8 @@ class Solution:
     def findSmallestSetOfVertices(self, n: int, edges: List[List[int]]) -> List[int]:
         return {*range(n)}-{j for _,j in edges}
 ```
+
+### Comparison chaining
 
 You can can use `a!=b!=c` in a single boolean condition, similar to `0<=i<n` and `m>j>=0<=i<n`.
 
@@ -1670,6 +1676,8 @@ class Solution:
         return n>0==log(n,4)%1
 ```
 
+### Bitwise inversion
+
 `~` reverts every bit. Therefore, `~x` means `-x-1`. You can use it as reversed index, i.e. for `i=0`, `a[~i]` means `a[-1]`, etc. or just replace `-x-1` with `~x`.
 
 For integer n, you can write `n+1` as `-~n`, `n-1` as `~-n`. This uses the same number of characters, but can indirectly cut spaces or parens for operator precedence.
@@ -1689,6 +1697,8 @@ class Solution:
             *a+(i+j-2*a+1,4*n-6*a-i-j-3)[i>j]for j in r]for i in r]
 ```
 
+### Comb
+
 You can write combination function (binomial) `n*(n-1)//2` as `comb(n,2)`, or write `(n-1)` as `~-n` to cut parens.
 
 * https://leetcode.com/problems/tuple-with-same-product
@@ -1707,6 +1717,8 @@ class Solution:
         return sum(~-n*n*4 for n in Counter(starmap(mul,combinations(a,2))).values())
 ```
 
+
+### If-Else
 
 You can replace `0 if x==y else z` with `x-y and z`, it's a little bit counterintuitive, but shorter.
 
@@ -1740,6 +1752,8 @@ class Solution:
             or (k not in v and (v.update({k:v[i]+1}) or q.append(k)))),-1)
 ```
 
+### Value checking
+
 You can check if any of the numbers is negative as `x|y<0` or if both numbers are non-zero as `x|y`.
 
 * https://leetcode.com/problems/minimum-path-sum
@@ -1768,7 +1782,9 @@ class Solution:
             |(f(a[i:],b[:-i])&f(a[:i],b[-i:])) for i in range(1,len(a)))))(s1,s2)
 ```
 
-You can use booleans as indexes in lists, even nested: `(a,(b,c)[u==w])[x==y]`, or you can multiply by a boolean.
+### Boolean indices
+
+You can use booleans as indices in lists, even nested: `(a,(b,c)[u==w])[x==y]`, or you can multiply by a boolean.
 
 * https://leetcode.com/problems/removing-stars-from-a-string
 
@@ -1785,6 +1801,8 @@ class Solution:
   def simplifyPath(self, path: str) -> str:
     return'/'+'/'.join(reduce(lambda r,p:(r+[p]*('.'!=p!=''),r[:-1])[p=='..'],path.split('/'),[]))
 ```
+
+### Cmp
 
 Python 3 lacks `cmp` (3-way compare) and sign function (`copysign(bool(x),x)` is too long), but you can use `(x>0)-(x<0)` for `sign(x)`
 and `(a>b)-(a<b)` for `cmp(a,b)`. Note you can use `-1,0,1` indexes for Python lists natively.
@@ -1814,6 +1832,8 @@ class Solution:
 
 ```
 
+### Comparison predicates
+
 You can replace `x>0` predicate with `0..__lt___` function and replace `x!=0` with `operator.truth` or just `bool`:
 
 * https://leetcode.com/problems/merge-nodes-in-between-zeros
@@ -1823,6 +1843,8 @@ class Solution:
     def mergeNodes(self, h: Optional[ListNode]) -> Optional[ListNode]:
         return h.deserialize(str([sum(v)for k,v in groupby(eval(h.serialize(h)),bool)if k]))
 ```
+
+### Mode
 
 Quite a few things become shorter with `statistics.mode` (most common value of discrete or nominal data).
 
@@ -1873,6 +1895,8 @@ class Solution:
         return mode(nums)
 ```
 
+### Encode
+
 You can use `s.encode()` instead of `ord` or `map(ord,s)` It's the same length but doesn't need generation evaluation.
 
 * https://leetcode.com/problems/score-of-a-string
@@ -1886,6 +1910,8 @@ class Solution:
     def scoreOfString(self, s: str) -> int:
         return sum(map(abs,map(sub,s:=s.encode(),s[1:])))
 ```
+
+### Starmap
 
 Applying a function to an iterable with `starmap` and `pairwise` may be done with `map` (12 chars shorter):
 
@@ -1915,6 +1941,8 @@ class Solution:
         return sum(map(abs,map(sub,*map(sorted,(s,t)))))
 ```
 
+### Numpy
+
 You can use `numpy.convolve` for sliding windows, it's usually shorter than reduce or list comprehension:
 
 * https://leetcode.com/problems/grumpy-bookstore-owner
@@ -1930,6 +1958,8 @@ class Solution:
         return max(__import__('numpy').convolve(a:=[*map(mul,c,g)],[1]*m))+sum(c)-sum(a)
 ```
 
+### Enumerate
+
 You can use `count()` and `map` to replace an `enumerate` list comprehension (a few characters shorter):
 
 * https://leetcode.com/problems/maximum-total-importance-of-roads
@@ -1944,6 +1974,8 @@ class Solution:
         return-sum(map(mul,count(-n),sorted(Counter(chain(*r)).values())[::-1]))
 ```
 
+### Ceil
+
 You can replace `ceil(x/k)` with `-(-x//k)` (1 character shorter):
 
 * https://leetcode.com/problems/maximal-score-after-applying-k-operations
@@ -1957,6 +1989,8 @@ class Solution:
     def maxKelements(self, a: List[int], k: int) -> int:
         a.sort();return sum((x:=a.pop(),insort(a,-(-x//3)))[0]for _ in range(k))
 ```
+
+## Tables
 
 ### Operators
 
@@ -2028,7 +2062,7 @@ Precedence|Operators                                     |Description           
 17        |`lambda`                                      |Lambda expression                                          |N/A          
 18        |`:=`                                          |Assignment expression (walrus)                             |Right to left
 
-### Notes
+## Notes
 
 * An expression like `x&(x-1)==0` is useful to check if unsigned `x` is power of 2 or 0 (Kernighan, rightmost bit).
 * Unless the following token starts with e or E, you can remove the space following a number. E.g. `i==4 and j==4` becomes `i==4and j==4`.

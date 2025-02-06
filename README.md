@@ -1552,7 +1552,7 @@ class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
         [nums.insert(0,nums.pop()) for _ in range(k)]
 
-# built-in rotate method (rotates the other way so we use deque)
+# deque built-in rotate method
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
         nums[:]=(q:=deque(nums)).rotate(k) or q

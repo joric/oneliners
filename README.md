@@ -1811,8 +1811,6 @@ class Solution:
 
 ```
 
-### Comparison predicates
-
 You can replace `x>0` predicate with `0..__lt___` function and replace `x!=0` with `operator.truth` or just `bool`:
 
 * https://leetcode.com/problems/merge-nodes-in-between-zeros

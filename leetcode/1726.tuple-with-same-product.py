@@ -17,6 +17,10 @@ class Solution:
 
 class Solution:
     def tupleSameProduct(self, a) -> int:
+        return 8*sum(map(comb,Counter(starmap(mul,combinations(a,2))).values(),repeat(2)))
+
+class Solution:
+    def tupleSameProduct(self, a) -> int:
         return sum(8*comb(n,2)for n in Counter(starmap(mul,combinations(a,2))).values())
 
 class Solution:

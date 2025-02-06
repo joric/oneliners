@@ -1892,6 +1892,9 @@ class Solution:
 
 ### Starmap
 
+Starmap makes an iterator that computes the function using arguments obtained from the iterable.
+Used instead of map() when argument parameters have already been "pre-zipped" into tuples (see [itertools.starmap](https://docs.python.org/3/library/itertools.html#itertools.starmap)).
+
 Applying a function to an iterable with `starmap` and `pairwise` may be done with `map` (12 chars shorter):
 
 * https://leetcode.com/problems/find-the-original-array-of-prefix-xor

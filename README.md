@@ -2037,7 +2037,7 @@ Slice Assignment            |`seq[i:j] = values`|`setitem(seq, slice(i, j), valu
 Slice Deletion              |`del seq[i:j]`     |`delitem(seq, slice(i, j))`        
 Slicing                     |`seq[i:j]`         |`getitem(seq, slice(i, j))`        
 
-They use the same naming for the member functions, but with underscores, e.g. `(1).__lt__`.
+The same naming goes for the member functions, but with underscores, e.g. `(1).__lt__`.
 
 ### Precedence
 

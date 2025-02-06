@@ -8,15 +8,7 @@ class Solution:
 
 class Solution:
     def countAndSay(self, n: int) -> str:
-        return reduce(lambda a,i:''.join(str(len([*v]))+str(k)for k,v in groupby(a)),range(1,n),'1')
-
-class Solution:
-    def countAndSay(self, n: int) -> str:
-        return reduce(lambda a,i:''.join(str(len([*v]))+str(k)for k,v in groupby(a)),[0]*~-n,'1')
-
-class Solution:
-    def countAndSay(self, n: int) -> str:
-        return reduce(lambda a,_:''.join(f'{len([*v])}{k}'for k,v in groupby(a)),[0]*~-n,'1')
+        return reduce(lambda a,_:''.join(f'{len([*v])}{k}'for k,v in groupby(a)),range(1,n),'1')
 
 class Solution:
     def countAndSay(self, n: int) -> str:

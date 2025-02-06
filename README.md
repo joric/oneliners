@@ -1697,27 +1697,6 @@ class Solution:
             *a+(i+j-2*a+1,4*n-6*a-i-j-3)[i>j]for j in r]for i in r]
 ```
 
-### Comb
-
-You can write combination function (binomial) `n*(n-1)//2` as `comb(n,2)`, or write `(n-1)` as `~-n` to cut parens.
-
-* https://leetcode.com/problems/tuple-with-same-product
-
-```python
-class Solution:
-    def tupleSameProduct(self, a) -> int:
-        return sum(8*comb(n,2)for n in Counter(starmap(mul,combinations(a,2))).values())
-
-class Solution:
-    def tupleSameProduct(self, a) -> int:
-        return sum(4*n*(n-1)for n in Counter(starmap(mul,combinations(a,2))).values())
-
-class Solution:
-    def tupleSameProduct(self, a) -> int:
-        return sum(~-n*n*4 for n in Counter(starmap(mul,combinations(a,2))).values())
-```
-
-
 ### If-Else
 
 You can replace `0 if x==y else z` with `x-y and z`, it's a little bit counterintuitive, but shorter.
@@ -1939,6 +1918,26 @@ class Solution:
 class Solution:
     def minMovesToSeat(self, s: List[int], t: List[int]) -> int:
         return sum(map(abs,map(sub,*map(sorted,(s,t)))))
+```
+
+### Comb
+
+You can write combination function (binomial) `n*(n-1)//2` as `comb(n,2)`, or write `(n-1)` as `~-n` to cut parens.
+
+* https://leetcode.com/problems/tuple-with-same-product
+
+```python
+class Solution:
+    def tupleSameProduct(self, a) -> int:
+        return sum(8*comb(n,2)for n in Counter(starmap(mul,combinations(a,2))).values())
+
+class Solution:
+    def tupleSameProduct(self, a) -> int:
+        return sum(4*n*(n-1)for n in Counter(starmap(mul,combinations(a,2))).values())
+
+class Solution:
+    def tupleSameProduct(self, a) -> int:
+        return sum(~-n*n*4 for n in Counter(starmap(mul,combinations(a,2))).values())
 ```
 
 ### Numpy

@@ -1,8 +1,24 @@
 from lc import *
 
 class Solution:
-   def countAndSay(self, n: int) -> str:
-       return reduce(lambda a,i:''.join(str(len(list(v)))+str(k) for k,v in groupby(a)),range(1,n),'1')
+    def countAndSay(self, n: int) -> str:
+        return reduce(lambda a,i:''.join(str(len(list(v)))+str(k) for k,v in groupby(a)),range(1,n),'1')
+
+class Solution:
+    def countAndSay(self, n: int) -> str:
+        return reduce(lambda a,i:''.join(str(len([*v]))+str(k)for k,v in groupby(a)),range(1,n),'1')
+
+class Solution:
+    def countAndSay(self, n: int) -> str:
+        return reduce(lambda a,i:''.join(str(len([*v]))+str(k)for k,v in groupby(a)),[0]*~-n,'1')
+
+class Solution:
+    def countAndSay(self, n: int) -> str:
+        a='1';[a:=''.join(str(len([*v]))+str(k)for k,v in groupby(a))for _ in[0]*~-n];return a
+
+class Solution:
+    def countAndSay(self, n: int) -> str:
+        a='1';[a:=''.join(f'{len([*v])}{k}'for k,v in groupby(a))for _ in[0]*~-n];return a
 
 test('''
 38. The count-and-say sequence is a sequence of digit strings defined by the recursive formula:

@@ -1,15 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/sort-characters-by-frequency
-
-class Solution:
-    def frequencySort(self, s: str) -> str:
-        return''.join(v*k for k,v in Counter(s).most_common())
-
-class Solution:
-    def frequencySort(self, s: str) -> str:
-        return''.join(starmap(mul,Counter(s).most_common()))
-
 # testcase issue for sorting?
 # https://github.com/LeetCode-Feedback/LeetCode-Feedback/issues/20113
 
@@ -26,11 +16,21 @@ class Solution:
 
 class Solution:
     def frequencySort(self, s: str) -> str:
-        return ''.join(sorted(s,key=lambda c:-s.count(c)))
+        return''.join(sorted(s,key=lambda c:-s.count(c)))
 
 class Solution:
     def frequencySort(self, s: str) -> str:
         return''.join(sorted(s,key=Counter(s).get)[::-1])
+
+# https://leetcode.com/problems/sort-characters-by-frequency
+
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        return''.join(v*k for k,v in Counter(s).most_common())
+
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        return''.join(starmap(mul,Counter(s).most_common()))
 
 test('''
 

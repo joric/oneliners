@@ -30,6 +30,10 @@ class Solution:
     def queryResults(self, limit: int, q: List[List[int]]) -> List[int]:
         t=Counter;b,c=t(),t();return[(p:=b[x],c.update({p:-1}),0<c[p]or c.pop(p),setitem(b,x,y),c.update([y]),len(c))[5]for x,y in q]
 
+class Solution:
+    def queryResults(self, limit: int, q: List[List[int]]) -> List[int]:
+        t=Counter;b,c=t(),t();return[(p:=b[x],c.update({p:-1,y:p!=y}),0<c[p]or c.pop(p),setitem(b,x,y),len(c))[-1]for x,y in q]
+
 test('''
 3160. Find the Number of Distinct Colors Among the Balls
 Medium
@@ -81,6 +85,10 @@ Other examples:
 
 Input: limit = 1, queries = [[0,2],[1,10],[0,10],[0,3],[1,5]]
 Output: [1,2,1,2,2]
+
+
+Input: limit = 1, queries = [[0,1],[0,4],[0,4],[0,1],[1,2]]
+Output: [1,1,1,1,2]
 
 Constraints:
 

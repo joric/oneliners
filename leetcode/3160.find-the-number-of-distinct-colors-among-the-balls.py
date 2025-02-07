@@ -1,6 +1,6 @@
 from lc import *
 
-# https://leetcode.com/problems/find-the-number-of-distinct-colors-among-the-balls/solutions/5206993/simple-python-solution/?envType=daily-question&envId=2025-02-07
+# https://leetcode.com/problems/find-the-number-of-distinct-colors-among-the-balls/solutions/5207199/easy-and-fast/?envType=daily-question&envId=2025-02-07
 
 class Solution:
     def queryResults(self, limit: int, q: List[List[int]]) -> List[int]:
@@ -28,7 +28,7 @@ class Solution:
 
 class Solution:
     def queryResults(self, limit: int, q: List[List[int]]) -> List[int]:
-        t=Counter;b,c=t(),t();return[(c.update({b[x]:-1}),1>c[b[x]]and c.pop(b[x]),setitem(b,x,y),c.update([y]),len(c))[-1]for x,y in q]
+        t=Counter;b,c=t(),t();return[(p:=b[x],c.update({p:-1}),0<c[p]or c.pop(p),setitem(b,x,y),c.update([y]),len(c))[5]for x,y in q]
 
 test('''
 3160. Find the Number of Distinct Colors Among the Balls
@@ -76,6 +76,11 @@ After query 2, ball 0 has color 1, and balls 1 and 2 have color 2.
 After query 3, ball 0 has color 1, balls 1 and 2 have color 2, and ball 3 has color 4.
 After query 4, ball 0 has color 1, balls 1 and 2 have color 2, ball 3 has color 4, and ball 4 has color 5.
  
+
+Other examples:
+
+Input: limit = 1, queries = [[0,2],[1,10],[0,10],[0,3],[1,5]]
+Output: [1,2,1,2,2]
 
 Constraints:
 

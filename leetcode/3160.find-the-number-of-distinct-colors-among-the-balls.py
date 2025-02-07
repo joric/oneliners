@@ -1,6 +1,7 @@
 from lc import *
 
 # https://leetcode.com/problems/find-the-number-of-distinct-colors-among-the-balls/solutions/5207199/easy-and-fast/?envType=daily-question&envId=2025-02-07
+# can't do +c to clear keys because TLE
 
 class Solution:
     def queryResults(self, limit: int, q: List[List[int]]) -> List[int]:
@@ -8,11 +9,11 @@ class Solution:
         for x, y in q:
             p = b[x]
             c[p] -= 1
-            if c[p] < 1:
+            if c[p]<1:
                 c.pop(p)
             b[x] = y
             c[y] += 1
-            r.append(len(c)) # can't do +c because TLE
+            r.append(len(c))
         return r
 
 class Solution:
@@ -32,7 +33,7 @@ class Solution:
 
 class Solution:
     def queryResults(self, limit: int, q: List[List[int]]) -> List[int]:
-        t=Counter;b,c=t(),t();return[(p:=b[x],c.update({p:-1,y:p!=y}),0<c[p]or c.pop(p),setitem(b,x,y),len(c))[-1]for x,y in q]
+        t=Counter;b,c=t(),t();return[(p:=b[x],c.update({p:-1,y:p!=y}),0<c[p]or c.pop(p),setitem(b,x,y),len(c))[4]for x,y in q]
 
 test('''
 3160. Find the Number of Distinct Colors Among the Balls

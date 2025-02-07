@@ -14,12 +14,16 @@ from lc import *
 # eeeeoollvtdc
 # 444422221111
 
-# faulty tests
+# faulty tests below
+
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        return''.join(sorted(s,key=lambda x:-Counter(s)[x]))
+
 class Solution:
     def frequencySort(self, s: str) -> str:
         return''.join(sorted(s,key=lambda c:-s.count(c)))
 
-# faulty tests
 class Solution:
     def frequencySort(self, s: str) -> str:
         return''.join(sorted(s,key=Counter(s).get)[::-1])
@@ -33,6 +37,7 @@ class Solution:
 class Solution:
     def frequencySort(self, s: str) -> str:
         return''.join(starmap(mul,Counter(s).most_common()))
+
 
 test('''
 

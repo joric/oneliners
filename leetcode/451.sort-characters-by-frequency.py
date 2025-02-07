@@ -14,10 +14,12 @@ from lc import *
 # eeeeoollvtdc
 # 444422221111
 
+# faulty tests
 class Solution:
     def frequencySort(self, s: str) -> str:
         return''.join(sorted(s,key=lambda c:-s.count(c)))
 
+# faulty tests
 class Solution:
     def frequencySort(self, s: str) -> str:
         return''.join(sorted(s,key=Counter(s).get)[::-1])

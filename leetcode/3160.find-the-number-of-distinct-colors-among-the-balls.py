@@ -33,7 +33,7 @@ class Solution:
 
 class Solution:
     def queryResults(self, limit: int, q: List[List[int]]) -> List[int]:
-        t=Counter;b,c=t(),t();return[(p:=b[x],c.update({p:-1,y:p!=y}),0<c[p]or c.pop(p),setitem(b,x,y),len(c))[4]for x,y in q]
+        t=Counter;b,c=t(),t();return[(c.update({(p:=b[x]):-1,y:p!=y}),0<c[p]or c.pop(p),setitem(b,x,y),len(c))[3]for x,y in q]
 
 test('''
 3160. Find the Number of Distinct Colors Among the Balls

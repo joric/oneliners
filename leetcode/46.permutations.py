@@ -1,5 +1,11 @@
 from lc import *
 
+# https://leetcode.com/problems/permutations/solutions/6389129/one-line-solution-by-mikposp-b88e/
+
+class Solution:
+    def permute(self, a: List[int]) -> List[List[int]]:
+        return a and [[v,*p]for v in a for p in self.permute([u for u in a if u!=v])]or[[]]
+
 # Heap's permutation scheme with 2 swaps, see https://en.wikipedia.org/wiki/Heap%27s_algorithm
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
@@ -53,12 +59,6 @@ class Solution:
 # minus-two-liner:
 class Solution: permute=permutations
 
-
-# https://leetcode.com/problems/permutations/solutions/6389129/one-line-solution-by-mikposp-b88e/
-
-class Solution:
-    def permute(self, a: List[int]) -> List[List[int]]:
-        return a and [[v,*p]for v in a for p in self.permute([u for u in a if u!=v])]or[[]]
 
 test('''
 

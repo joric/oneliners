@@ -37,11 +37,7 @@ class NumberContainers:
                 return i
         return -1
 
-NumberContainers=type('',(),{
-    '__init__':lambda s:setattr(s,'q',defaultdict(list))or setattr(s,'d',{}),
-    'change':lambda s,i,x:heappush(s.q[x],i)or setitem(s.d,i,x),
-    'find':lambda s,x:(f:=lambda h:(heappush(h,i)or i if x==s.d[i:=heappop(h)]else f(h))if h else-1)(s.q[x])
-})
+NumberContainers=type('',(),{'__init__':lambda s:setattr(s,'q',defaultdict(list))or setattr(s,'d',{}),'change':lambda s,i,x:heappush(s.q[x],i)or setitem(s.d,i,x),'find':lambda s,x:(f:=lambda h:h and(x==s.d[i:=heappop(h)]and(heappush(h,i)or i)or f(h))or-1)(s.q[x])})
 
 test('''
 2349. Design a Number Container System

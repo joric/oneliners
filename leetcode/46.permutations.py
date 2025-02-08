@@ -1,5 +1,24 @@
 from lc import *
 
+# Heap's permutation scheme with 2 swaps, see https://en.wikipedia.org/wiki/Heap%27s_algorithm
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        def h(j):
+            if j==len(nums)-1:
+                res.append(nums[:])
+            for i in range(j, len(nums)):
+                nums[i], nums[j] = nums[j], nums[i]
+                h(j+1)
+                nums[i], nums[j] = nums[j], nums[i]
+        h(0)
+        return res
+
+class Solution:
+    def permute(self, a: List[int]) -> List[List[int]]:
+        return (r:=[], s:=lambda x,y: (t:=a[x],setitem(a,x,a[y]),setitem(a,y,t)), (h:=lambda j=0:
+            j==len(a)-1 and r.append(a[:]) or [(s(i,j),h(j+1),s(i,j)) for i in range(j,len(a))])()) and r
+
 # https://leetcode.com/problems/permutations/discuss/18241/One-Liners-in-Python
 
 # Solution 1: Recursive, take any number as first
@@ -34,24 +53,12 @@ class Solution:
 # minus-two-liner:
 class Solution: permute=permutations
 
-# Heap's permutation scheme with 2 swaps, see https://en.wikipedia.org/wiki/Heap%27s_algorithm
-class Solution:
-    def permute(self, nums: List[int]) -> List[List[int]]:
-        res = []
-        def h(j):
-            if j==len(nums)-1:
-                res.append(nums[:])
-            for i in range(j, len(nums)):
-                nums[i], nums[j] = nums[j], nums[i]
-                h(j+1)
-                nums[i], nums[j] = nums[j], nums[i]
-        h(0)
-        return res
+
+# https://leetcode.com/problems/permutations/solutions/6389129/one-line-solution-by-mikposp-b88e/
 
 class Solution:
     def permute(self, a: List[int]) -> List[List[int]]:
-        return (r:=[], s:=lambda x,y: (t:=a[x],setitem(a,x,a[y]),setitem(a,y,t)), (h:=lambda j=0:
-            j==len(a)-1 and r.append(a[:]) or [(s(i,j),h(j+1),s(i,j)) for i in range(j,len(a))])()) and r
+        return a and [[v,*p]for v in a for p in self.permute([u for u in a if u!=v])]or[[]]
 
 test('''
 

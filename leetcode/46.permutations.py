@@ -59,9 +59,7 @@ class Solution:
 # minus-two-liner:
 class Solution: permute=permutations
 
-
 test('''
-
 46. Permutations
 Medium
 

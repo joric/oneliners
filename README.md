@@ -1907,7 +1907,7 @@ class Solution:
         return map(xor,p,[0]+p)
 ```
 
-You can also replace `starmap` and `enumerate` with `map` and `count()`.
+You can also replace `starmap` and `enumerate` with `map` and `count()` (7 characters shorter).
 
 * https://leetcode.com/problems/count-number-of-bad-pairs
 

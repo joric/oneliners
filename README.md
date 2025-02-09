@@ -1637,9 +1637,9 @@ class Solution:
         return {*range(n)}-{j for _,j in edges}
 ```
 
-### Comparison chaining
+### Range checking
 
-You can can use `a!=b!=c` in a single boolean condition, similar to `0<=i<n` and `m>j>=0<=i<n`.
+Python has comparison chaining. You can can use `a!=b!=c` in a single boolean condition, similar to `0<=i<n` and `m>j>=0<=i<n`.
 
 * https://leetcode.com/problems/expressive-words/discuss/122660/C%2B%2BJavaPython-2-Pointers-and-4-pointers
 
@@ -1674,6 +1674,34 @@ class Solution:
 class Solution:
     def isPowerOfFour(self, n: int) -> bool:
         return n>0==log(n,4)%1
+```
+
+You can check if any of the numbers is negative as `x|y<0` or if both numbers are non-zero as `x|y`.
+
+* https://leetcode.com/problems/minimum-path-sum
+
+```python
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        return (f:=cache(lambda i,j:i|j<0 and inf or grid[i][j]+(i|j and min(f(i,j-1),f(i-1,j)))))
+            (len(grid)-1,len(grid[0])-1)
+```
+
+You can use bitwise `&`,`|` instead of `and`,`or` where possible. You can use `x&1` instead of `x==1`, if 0<=x<=2.
+
+* https://leetcode.com/problems/scramble-string
+
+```python
+
+class Solution:
+    def isScramble(self, s1: str, s2: str) -> bool:
+        return (f:=cache(lambda a,b:a==b or any((f(a[:i],b[:i]) and f(a[i:],b[i:]))
+            or (f(a[i:],b[:-i]) and f(a[:i],b[-i:])) for i in range(1,len(a)))))(s1,s2)
+
+class Solution:
+    def isScramble(self, s1: str, s2: str) -> bool:
+        return (f:=cache(lambda a,b:a==b or any((f(a[:i],b[:i])&f(a[i:],b[i:]))
+            |(f(a[i:],b[:-i])&f(a[:i],b[-i:])) for i in range(1,len(a)))))(s1,s2)
 ```
 
 ### Bitwise inversion
@@ -1729,36 +1757,6 @@ class Solution:
         return (n:=len(board),v:={1:0},q:=[1]) and next((v[i]+1 for i in q for j in range(i+1,i+7)
             if (k:=(x:=(j-1)%n,y:=(j-1)//n) and ((c:=board[~y][y%2 and ~x or x])>0 and c or j))==n*n
             or (k not in v and (v.update({k:v[i]+1}) or q.append(k)))),-1)
-```
-
-### Value checking
-
-You can check if any of the numbers is negative as `x|y<0` or if both numbers are non-zero as `x|y`.
-
-* https://leetcode.com/problems/minimum-path-sum
-
-```python
-class Solution:
-    def minPathSum(self, grid: List[List[int]]) -> int:
-        return (f:=cache(lambda i,j:i|j<0 and inf or grid[i][j]+(i|j and min(f(i,j-1),f(i-1,j)))))
-            (len(grid)-1,len(grid[0])-1)
-```
-
-You can use bitwise `&`,`|` instead of `and`,`or` where possible. You can use `x&1` instead of `x==1`, if 0<=x<=2.
-
-* https://leetcode.com/problems/scramble-string
-
-```python
-
-class Solution:
-    def isScramble(self, s1: str, s2: str) -> bool:
-        return (f:=cache(lambda a,b:a==b or any((f(a[:i],b[:i]) and f(a[i:],b[i:]))
-            or (f(a[i:],b[:-i]) and f(a[:i],b[-i:])) for i in range(1,len(a)))))(s1,s2)
-
-class Solution:
-    def isScramble(self, s1: str, s2: str) -> bool:
-        return (f:=cache(lambda a,b:a==b or any((f(a[:i],b[:i])&f(a[i:],b[i:]))
-            |(f(a[i:],b[:-i])&f(a[:i],b[-i:])) for i in range(1,len(a)))))(s1,s2)
 ```
 
 ### Boolean

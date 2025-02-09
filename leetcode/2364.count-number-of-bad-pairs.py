@@ -4,15 +4,15 @@ from lc import *
 
 class Solution:
     def countBadPairs(self, a: List[int]) -> int:
-        return comb(len(n),2)-sum(comb(n,2) for n in Counter(starmap(sub,enumerate(a))).values())
+        return comb(len(x),2)-sum(comb(x,2) for x in Counter(starmap(sub,enumerate(a))).values())
 
 class Solution:
     def countBadPairs(self, a: List[int]) -> int:
-        return sum(n*(len(a)-n)for n in Counter(starmap(sub,enumerate(a))).values())//2
+        return sum(x*(len(a)-x)for x in Counter(starmap(sub,enumerate(a))).values())//2
 
 class Solution:
     def countBadPairs(self, a: List[int]) -> int:
-        return sum(n*(len(a)-n)for n in Counter(map(sub,a,count())).values())//2
+        return sum(x*(len(a)-x)for x in Counter(map(sub,a,count())).values())//2
 
 test('''
 2364. Count Number of Bad Pairs

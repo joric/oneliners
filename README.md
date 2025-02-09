@@ -1907,6 +1907,21 @@ class Solution:
         return map(xor,p,[0]+p)
 ```
 
+You can also replace `starmap` and `enumerate` with `map` and `count()`.
+
+* https://leetcode.com/problems/count-number-of-bad-pairs
+
+```python
+class Solution:
+    def countBadPairs(self, a: List[int]) -> int:
+        return sum(x*(len(a)-x)for x in Counter(starmap(sub,enumerate(a))).values())//2
+
+class Solution:
+    def countBadPairs(self, a: List[int]) -> int:
+        return sum(x*(len(a)-x)for x in Counter(map(sub,a,count())).values())//2
+
+```
+
 Very often you can replace `zip` with `map`, it evaluates iterables the same way:
 
 * https://leetcode.com/problems/minimum-number-of-moves-to-seat-everyone[

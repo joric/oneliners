@@ -1286,9 +1286,30 @@ class Solution:
             a,b = b,a+b
         return a 
 
+# classic Binet
+
+class Solution:
+    def fib(self, n: int) -> int:
+        phi = (1 + sqrt(5)) / 2
+        return round(pow(phi, n) / sqrt(5))
+
+class Solution:
+    def fib(self, n: int) -> int:
+        n-=1;r=5**.5;return round(((1+r)/2)**-~n/r)
+
 class Solution:
     def fib(self, n: int) -> int:
         r=5**.5;return round(((1+r)/2)**n/r)
+
+# generating function
+
+class Solution:
+    def fib(self, n: int) -> int:
+        x=1<<32;return x**~-n*x*x//(x*x+~x)%x
+
+class Solution:
+    def fib(self, n: int) -> int:
+        x=9**n;return x**-~n//(x*x+~x)%x
 
 class Solution:
     def fib(self, n: int) -> int:

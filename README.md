@@ -1404,7 +1404,7 @@ class Solution:
         c=0;return max(c:=max(c+x,x)for x in n)
 ```
 
-If there are more counters, you can combine intermediary counter and target counter calculation.
+If there are more counters, you can combine intermediary counter and target counter calculation using a walrus operator.
 
 * https://leetcode.com/problems/maximum-ascending-subarray-sum
 

@@ -1639,7 +1639,7 @@ class Solution:
 
 ### Range checking
 
-Python has comparison chaining. You can can use `a!=b!=c` in a single boolean condition, similar to `0<=i<n` and `m>j>=0<=i<n`.
+Python has comparison chaining. You can can use `a!=b!=c` in a condition, similar to `0<=i<n` and `m>j>=0<=i<n`.
 
 * https://leetcode.com/problems/expressive-words/discuss/122660/C%2B%2BJavaPython-2-Pointers-and-4-pointers
 

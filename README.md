@@ -1761,7 +1761,7 @@ class Solution:
             |(f(a[i:],b[:-i])&f(a[:i],b[-i:])) for i in range(1,len(a)))))(s1,s2)
 ```
 
-### Boolean indices
+### Boolean
 
 You can use booleans as indices in lists, even nested: `(a,(b,c)[u==w])[x==y]`, or you can multiply by a boolean.
 
@@ -1888,6 +1888,22 @@ class Solution:
         return sum(map(abs,map(sub,s:=s.encode(),s[1:])))
 ```
 
+### Enumerate
+
+You can use `count()` and `map` to replace an `enumerate` list comprehension (a few characters shorter):
+
+* https://leetcode.com/problems/maximum-total-importance-of-roads
+
+```python
+class Solution:
+    def maximumImportance(self, n: int, r: List[List[int]]) -> int:
+        return sum(v*(n-i)for i,(_,v)in enumerate(Counter(chain(*r)).most_common()))
+
+class Solution:
+    def maximumImportance(self, n: int, r: List[List[int]]) -> int:
+        return-sum(map(mul,count(-n),sorted(Counter(chain(*r)).values())[::-1]))
+```
+
 ### Starmap
 
 Starmap makes an iterator that computes the function using arguments obtained from the iterable.
@@ -1907,6 +1923,20 @@ class Solution:
         return map(xor,p,[0]+p)
 ```
 
+Very often you can replace `zip` with `map`, it evaluates iterables the same way:
+
+* https://leetcode.com/problems/minimum-number-of-moves-to-seat-everyone[
+
+```python
+class Solution:
+    def minMovesToSeat(self, s: List[int], t: List[int]) -> int:
+        return sum(abs(a-b)for a,b in zip(*map(sorted,(s,t))))
+
+class Solution:
+    def minMovesToSeat(self, s: List[int], t: List[int]) -> int:
+        return sum(map(abs,map(sub,*map(sorted,(s,t)))))
+```
+
 You can also replace `starmap` and `enumerate` with `map` and `count()` (7 characters shorter).
 
 * https://leetcode.com/problems/count-number-of-bad-pairs
@@ -1920,20 +1950,6 @@ class Solution:
     def countBadPairs(self, a: List[int]) -> int:
         return sum(x*(len(a)-x)for x in Counter(map(sub,a,count())).values())//2
 
-```
-
-Very often you can replace `zip` with `map`, it evaluates iterables the same way:
-
-* https://leetcode.com/problems/minimum-number-of-moves-to-seat-everyone[
-
-```python
-class Solution:
-    def minMovesToSeat(self, s: List[int], t: List[int]) -> int:
-        return sum(abs(a-b)for a,b in zip(*map(sorted,(s,t))))
-
-class Solution:
-    def minMovesToSeat(self, s: List[int], t: List[int]) -> int:
-        return sum(map(abs,map(sub,*map(sorted,(s,t)))))
 ```
 
 ### Comb
@@ -1971,22 +1987,6 @@ class Solution:
 class Solution:
     def maxSatisfied(self, c: List[int], g: List[int], m: int) -> int:
         return max(__import__('numpy').convolve(a:=[*map(mul,c,g)],[1]*m))+sum(c)-sum(a)
-```
-
-### Enumerate
-
-You can use `count()` and `map` to replace an `enumerate` list comprehension (a few characters shorter):
-
-* https://leetcode.com/problems/maximum-total-importance-of-roads
-
-```python
-class Solution:
-    def maximumImportance(self, n: int, r: List[List[int]]) -> int:
-        return sum(v*(n-i)for i,(_,v)in enumerate(Counter(chain(*r)).most_common()))
-
-class Solution:
-    def maximumImportance(self, n: int, r: List[List[int]]) -> int:
-        return-sum(map(mul,count(-n),sorted(Counter(chain(*r)).values())[::-1]))
 ```
 
 ### Ceil

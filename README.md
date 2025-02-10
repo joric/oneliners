@@ -1379,6 +1379,14 @@ class Solution:
         [s:=re.sub(r'(.)(?!\1)(?i:\1)','',s)for _ in s];return s
 ```
 
+* https://leetcode.com/problems/clear-digits
+
+```python
+class Solution:
+    def clearDigits(self, s: str) -> str:
+        [s:=re.sub('(\D)\d','',s)for _ in s];return s
+```
+
 * https://leetcode.com/problems/circular-sentence
 
 ```python

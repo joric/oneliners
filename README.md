@@ -1384,7 +1384,7 @@ class Solution:
 ```python
 class Solution:
     def clearDigits(self, s: str) -> str:
-        [s:=re.sub('(\D)\d','',s)for _ in s];return s
+        [s:=re.sub('\D\d','',s)for _ in s];return s
 ```
 
 * https://leetcode.com/problems/circular-sentence

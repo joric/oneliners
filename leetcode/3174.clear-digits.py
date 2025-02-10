@@ -31,17 +31,17 @@ class Solution:
 
 class Solution:
     def clearDigits(self, s: str) -> str:
-        while search(p:='(\D)\d', s):
+        while search(p:='\D\d', s):
             s=re.sub(p,'',s)
         return s
 
 class Solution:
     def clearDigits(self, s: str) -> str:
-        [s:=re.sub(p,'',s)for _ in s if search(p:='(\D)\d', s)];return s
+        [s:=re.sub(p,'',s)for _ in s if search(p:='\D\d', s)];return s
 
 class Solution:
     def clearDigits(self, s: str) -> str:
-        [s:=re.sub('(\D)\d','',s)for _ in s];return s
+        [s:=re.sub('\D\d','',s)for _ in s];return s
 
 test('''
 3174. Clear Digits

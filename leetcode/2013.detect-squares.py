@@ -12,6 +12,8 @@ class DetectSquares:
 
 DetectSquares=type('',(list,),{'add':list.append,'count':lambda s,p:sum((c:=list.count)(s,[p[0],y])*c(s,[x,p[1]])for x,y in s if(p[0]-x)**2==(p[1]-y)**2>0)})
 
+class DetectSquares(list):add=list.append;count=lambda s,p:sum((c:=list.count)(s,[p[0],y])*c(s,[x,p[1]])for x,y in s if(p[0]-x)**2==(p[1]-y)**2>0)
+
 test('''
 2013. Detect Squares
 Medium

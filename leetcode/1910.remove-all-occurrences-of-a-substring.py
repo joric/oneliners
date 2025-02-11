@@ -55,6 +55,11 @@ Explanation: The following operations are done:
 Now s has no occurrences of "xy".
  
 
+Other examples:
+
+Input: s = "aabababa", part = "aba"
+Output: "ba"
+
 Constraints:
 
 1 <= s.length <= 1000

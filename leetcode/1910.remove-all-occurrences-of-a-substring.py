@@ -17,7 +17,16 @@ class Solution:
 
 class Solution:
     def removeOccurrences(self, s: str, p: str) -> str:
+        return reduce(lambda s,_:s.replace(p,'',1),s,s)
+
+class Solution:
+    def removeOccurrences(self, s: str, p: str) -> str:
+        [s:=s.replace(p,'',1)for _ in s];return s
+
+class Solution:
+    def removeOccurrences(self, s: str, p: str) -> str:
         [s:=re.sub(p,'',s,1)for _ in s];return s
+
 
 test('''
 1910. Remove All Occurrences of a Substring

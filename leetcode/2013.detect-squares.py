@@ -10,13 +10,7 @@ class DetectSquares:
     def count(self, point: List[int]) -> int:
         u,v = point;return sum(self.p.count([x,v])*self.p.count([u,y])for x,y in self.p if abs(u-x)==abs(v-y)and x!=u)
 
-DetectSquares=type('',(),{'__init__':lambda s:setattr(s,'p',[]),'add':lambda s,p:s.p.append(p),'count':lambda s,p:(lambda u,v:sum(s.p.count([u,y])*s.p.count([x,v])for x,y in s.p if abs(u-x)==abs(v-y)and x!=u))(*p)})
-
-DetectSquares=type('',(),{'__init__':lambda s:setattr(s,'p',[]),'add':lambda s,p:s.p.append(p),'count':lambda s,p:sum(s.p.count([u,y])*s.p.count([x,v])for x,y in s.p if abs((u:=p[0])-x)==abs((v:=p[1])-y)and x!=u)})
-
-DetectSquares=type('',(),{'__init__':lambda s:setattr(s,'p',[]),'add':lambda s,p:s.p.append(p),'count':lambda s,p:sum(s.p.count([p[0],y])*s.p.count([x,p[1]])for x,y in s.p if abs(p[0]-x)==abs(p[1]-y)and x!=p[0])})
-
-DetectSquares=type('',(),{'__init__':lambda s:setattr(s,'p',[]),'add':lambda s,p:s.p.append(p),'count':lambda s,p:sum(s.p.count([p[0],y])*s.p.count([x,p[1]])for x,y in s.p if x!=p[0]and(p[0]-x)**2==(p[1]-y)**2)})
+DetectSquares=type('',(),{'__init__':lambda s:setattr(s,'p',[]),'add':lambda s,p:s.p.append(p),'count':lambda s,p:sum(s.p.count([p[0],y])*s.p.count([x,p[1]])for x,y in s.p if(p[0]-x)**2==(p[1]-y)**2>0)})
 
 test('''
 2013. Detect Squares

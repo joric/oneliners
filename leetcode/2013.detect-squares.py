@@ -8,7 +8,7 @@ class DetectSquares:
     def add(self, point: List[int]) -> None:
         self.p.append(point)
     def count(self, point: List[int]) -> int:
-        u,v = point;return sum(self.p.count([x,v])*self.p.count([u,y])for x,y in self.p if abs(u-x)==abs(v-y)and x!=u)
+        u,v = point;return sum(self.p.count([x,v])*self.p.count([u,y])for x,y in self.p if(u-x)**2==(v-y)**2>0)
 
 DetectSquares=type('',(),{'__init__':lambda s:setattr(s,'p',[]),'add':lambda s,p:s.p.append(p),'count':lambda s,p:sum(s.p.count([p[0],y])*s.p.count([x,p[1]])for x,y in s.p if(p[0]-x)**2==(p[1]-y)**2>0)})
 

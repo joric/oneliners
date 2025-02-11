@@ -16,6 +16,8 @@ DetectSquares=type('',(),{'__init__':lambda s:setattr(s,'p',[]),'add':lambda s,p
 
 DetectSquares=type('',(),{'__init__':lambda s:setattr(s,'p',[]),'add':lambda s,p:s.p.append(p),'count':lambda s,p:sum(s.p.count([p[0],y])*s.p.count([x,p[1]])for x,y in s.p if abs(p[0]-x)==abs(p[1]-y)and x!=p[0])})
 
+DetectSquares=type('',(),{'__init__':lambda s:setattr(s,'p',[]),'add':lambda s,p:s.p.append(p),'count':lambda s,p:sum(s.p.count([p[0],y])*s.p.count([x,p[1]])for x,y in s.p if x!=p[0]and(p[0]-x)**2==(p[1]-y)**2)})
+
 test('''
 2013. Detect Squares
 Medium

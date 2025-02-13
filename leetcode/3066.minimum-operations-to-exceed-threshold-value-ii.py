@@ -25,6 +25,10 @@ class Solution:
     def minOperations(self, n: List[int], k: int) -> int:
         heapify(n);return next(c for c in count()if k<=n[0]or heappush(n,heappop(n)*2+heappop(n)))
 
+class Solution:
+    def minOperations(self, n: List[int], k: int) -> int:
+        p=heappop;heapify(n);return next(c for c in count()if k<=n[0]or heappush(n,p(n)*2+p(n)))
+
 test('''
  3066. Minimum Operations to Exceed Threshold Value II
 User Accepted:14797

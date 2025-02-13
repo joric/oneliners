@@ -16,6 +16,10 @@ class Solution:
     def maxProfit(self, p: List[int]) -> int:
         return(f:=cache(lambda i,b,k:k<4 and i<len(p)and max(b*p[i]+f(i+1,b*-1,k+1),f(i+1,b,k))or 0))(0,-1,0)
 
+class Solution:
+    def maxProfit(self, p: List[int]) -> int:
+        a=b=-inf;c=0;return max(x+(b:=max(b,(c:=max(c,x+(a:=max(a,-x))))-x))for x in p)
+
 test('''
 123. Best Time to Buy and Sell Stock III
 Hard

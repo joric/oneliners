@@ -15,7 +15,7 @@ class ProductOfNumbers:
     def getProduct(self, k: int) -> int:
         return self.a[-1] // self.a[~k] if k<len(self.a) else 0
 
-ProductOfNumbers=type('',(),{'__init__':lambda s: setattr(s,'a',[1]),'add':lambda s,x:setattr(s,'a',[1])if x<1 else s.a.append(s.a[-1]*x),'getProduct':lambda s,k:k<len(s.a)and s.a[-1]//s.a[~k]or 0})
+ProductOfNumbers=type('',(),{'__init__':lambda s:setattr(s,'a',[1]),'add':lambda s,x:s.__init__()if x<1 else s.a.append(s.a[-1]*x),'getProduct':lambda s,k:k<len(s.a)and s.a[-1]//s.a[~k]or 0})
 
 test('''
 1352. Product of the Last K Numbers

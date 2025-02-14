@@ -641,6 +641,13 @@ MyHashSet=type('',(set,),{'remove':set.discard,'contains':set.__contains__})
 MyStack=type('',(list,),{'push':list.append,'top':lambda s:s[-1],'empty':lambda s:not s})
 ```
 
+* https://leetcode.com/problems/product-of-the-last-k-numbers
+
+```python
+ProductOfNumbers=type('',(list,),{'__init__':lambda s:list.__init__(s,[1]),'add':lambda s,x:
+s.append(s[-1]*x)if x else s.__init__(),'getProduct':lambda s,k:s[k:]and s[-1]//s[~k]or 0})
+```
+
 Counter subclassing fails since Python 3.7, `type() doesn't support MRO entry resolution; use types.new_class()`.
 
 When you try to use `types.new_class()` it says `TypeError: .__init_subclass__() takes no keyword arguments')`.

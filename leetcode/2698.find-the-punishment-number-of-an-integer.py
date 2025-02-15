@@ -10,6 +10,20 @@ class Solution:
 
 class Solution:
     def punishmentNumber(self, n: int) -> int:
+        def f(s, t):
+            if t < 0:
+                return False
+            if not s and t==0:
+                return True
+            return any(f(s[i+1:],t-int(s[:i+1]))for i in range(len(s)))
+        return sum(x*x*f(str(x*x),x)for x in range(1,n+1))
+
+class Solution:
+    def punishmentNumber(self, n: int) -> int:
+        f=lambda s,t:(not s and t==0)or any(f(s[i+1:],t-int(s[:i+1]))for i in range(len(s))if t>=0);return sum(x*x*f(str(x*x),x)for x in range(1,n+1))
+
+class Solution:
+    def punishmentNumber(self, n: int) -> int:
         f=lambda x,t:0<=t<=x and(x==t or any(f(x//10**p,t-x%10**p)for p in(1,2,3)));return sum(x*x for x in range(1,n+1)if f(x*x,x))
 
 class Solution:

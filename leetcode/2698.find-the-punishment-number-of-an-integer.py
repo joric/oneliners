@@ -14,7 +14,7 @@ class Solution:
 
 class Solution:
     def punishmentNumber(self, n: int) -> int:
-        f=lambda x,t:x>0and any(x==t or f(x//10**p,t-x%10**p)for p in(1,2,3));return sum(x*x*f(x*x,x)for x in range(1,n+1))
+        f=lambda x,t:any(x==t or f(x//10**p,t-x%10**p)for p in(1,2,3)if x>0);return sum(x*x*f(x*x,x)for x in range(1,n+1))
 
 test('''
 2698. Find the Punishment Number of an Integer

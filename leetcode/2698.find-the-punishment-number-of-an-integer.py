@@ -12,6 +12,10 @@ class Solution:
     def punishmentNumber(self, n: int) -> int:
         f=lambda x,t:0<=t<=x and(x==t or any(f(x//10**p,t-x%10**p)for p in(1,2,3)));return sum(x*x for x in range(1,n+1)if f(x*x,x))
 
+class Solution:
+    def punishmentNumber(self, n: int) -> int:
+        f=lambda x,t:x>=t>=0and(x==t or any(f(x//10**p,t-x%10**p)for p in(1,2,3)));return sum(x*x*f(x*x,x)for x in range(1,n+1))
+
 test('''
 2698. Find the Punishment Number of an Integer
 Medium

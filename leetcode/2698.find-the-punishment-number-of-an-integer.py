@@ -26,14 +26,6 @@ class Solution:
 
 class Solution:
     def punishmentNumber(self, n: int) -> int:
-        return sum(x*x*(f:=lambda x,t:any(x==t or f(x//10**p,t-x%10**p)for p in(1,2,3)if x>0))(x*x,x)for x in range(1,n+1))
-
-class Solution:
-    def punishmentNumber(self, n: int) -> int:
-        f=lambda x,t:x*any(x==t or f(x//10**p,t-x%10**p)for p in(1,2,3)if x>0);return sum(f(x*x,x)for x in range(1,n+1))
-
-class Solution:
-    def punishmentNumber(self, n: int) -> int:
         f=lambda x,t:x*any(x==t or f(x//10**p,t-x%10**p)for p in(1,2,3)if x);return sum(f(x*x,x)for x in range(1,n+1))
 
 test('''

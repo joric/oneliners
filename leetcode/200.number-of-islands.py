@@ -1,5 +1,47 @@
 from lc import *
 
+# https://leetcode.com/problems/number-of-islands/solutions/491831/python-dsu-solution/?envType=company&envId=facebook&favoriteSlug=facebook-thirty-days
+
+class DSU(object):
+    def __init__(self,n,islandCount):
+        self.islandCount = islandCount
+        self.parents = [i for i in range(n)]
+
+    def find(self, x):
+        if self.parents[x] != x:
+            return self.find(self.parents[x])
+        return x
+
+    def union(self, a, b):
+        rootA = self.find(a)
+        rootB = self.find(b)
+        if rootA != rootB:
+            self.parents[rootA] = rootB
+            self.islandCount -=1
+
+class Solution(object):
+    def numIslands(self, grid):
+        if not grid or not grid[0]:
+            return 0
+        row, col = len(grid), len(grid[0])
+        islandCount = 0
+        for i in range(row):
+            for j in range(col):
+                if grid[i][j] == "1":
+                    islandCount += 1
+        dsu = DSU(row*col, islandCount)
+        for i in range(row):
+            for j in range(col):
+                if grid[i][j] == "1":
+                    currIdx = i*col+j
+                    for dx, dy in [(1,0),(-1,0),(0,1),(0,-1)]:
+                        newX, newY = i+dx, j+dy
+                        idx = newX*col + newY
+                        if 0<=newX<row and 0<=newY<col and grid[newX][newY] == "1":
+                            dsu.union(currIdx, idx)
+        return dsu.islandCount
+
+
 # https://leetcode.com/problems/number-of-islands
 
 class Solution:

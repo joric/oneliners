@@ -23,6 +23,14 @@ class Solution:
 
 class Solution:
     def numTilePossibilities(self, t: str) -> int:
+        return len({*chain(*map(permutations,[t]*len(t),range(1,len(t)+1)))})
+
+class Solution:
+    def numTilePossibilities(self, t: str) -> int:
+        n=len(t);return len({*chain(*map(permutations,[t]*n,range(1,n+1)))})
+
+class Solution:
+    def numTilePossibilities(self, t: str) -> int:
         return len({x for i in range(len(t))for x in permutations(t,i+1)})
 
 class Solution:

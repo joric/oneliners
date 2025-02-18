@@ -1,23 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/construct-smallest-number-from-di-string/solutions/6435293/one-line-solution-o-n/?envType=daily-question&envId=2025
-
-class Solution:
-    def smallestNumber(self, p: str) -> str: 
-        return ''.join(map(str,reduce(lambda a,i:a+[*range(i,len(a),-1)],(i for i,c in enumerate(p+'I',1) if c=='I'),[])))
-        
-class Solution:
-    def smallestNumber(self, p: str) -> str:  
-        return ''.join(map(str,reduce(lambda a,i:a+[*range(i,len(a),-1)],compress(count(1),map(eq,p+'I',repeat('I'))),[])))
-
-class Solution:
-    def smallestNumber(self, pattern: str) -> str:
-        ans = []
-        for i, ch in enumerate(pattern + 'I', start = 1):
-            if ch == 'I':
-                ans.extend(range(i, len(ans), -1))
-        return ''.join(map(str, ans))
-
 # https://leetcode.com/problems/construct-smallest-number-from-di-string/solutions/6438131/2-line-code/?envType=daily-question&envId=2025
 
 class Solution:
@@ -84,6 +66,24 @@ class Solution:
 class Solution:
     def smallestNumber(self, s: str) -> str:
         r='';[r:=r+''.join(map(str,range(i,len(r),-1)))for i,c in enumerate(s+'I',1)if'D'<c];return r
+
+# https://leetcode.com/problems/construct-smallest-number-from-di-string/solutions/6435293/one-line-solution-o-n/?envType=daily-question&envId=2025
+
+class Solution:
+    def smallestNumber(self, p: str) -> str: 
+        return ''.join(map(str,reduce(lambda a,i:a+[*range(i,len(a),-1)],(i for i,c in enumerate(p+'I',1) if c=='I'),[])))
+        
+class Solution:
+    def smallestNumber(self, p: str) -> str:  
+        return ''.join(map(str,reduce(lambda a,i:a+[*range(i,len(a),-1)],compress(count(1),map(eq,p+'I',repeat('I'))),[])))
+
+class Solution:
+    def smallestNumber(self, pattern: str) -> str:
+        ans = []
+        for i, ch in enumerate(pattern + 'I', start = 1):
+            if ch == 'I':
+                ans.extend(range(i, len(ans), -1))
+        return ''.join(map(str, ans))
 
 class Solution:
     def smallestNumber(self, s: str) -> str:

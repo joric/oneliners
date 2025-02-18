@@ -45,7 +45,7 @@ class Solution:
 
 class Solution:
     def smallestNumber(self, s: str) -> str:
-        r=[];[r:=r+[*range(i,len(r),-1)]for i,c in enumerate(s+'I',1)if'I'==c];return''.join(map(str,r))
+        r=[];[r:=r+[*range(i,len(r),-1)]for i,c in enumerate(s+'I',1)if'D'<c];return''.join(map(str,r))
 
 test('''
 2375. Construct Smallest Number From DI String

@@ -1,5 +1,43 @@
 from lc import *
 
+# https://leetcode.com/problems/construct-smallest-number-from-di-string/solutions/6435293/one-line-solution-o-n/?envType=daily-question&envId=2025
+
+class Solution:
+    def smallestNumber(self, p: str) -> str: 
+        return ''.join(map(str,reduce(lambda a,i:a+[*range(i,len(a),-1)],(i for i,c in enumerate(p+'I',1) if c=='I'),[])))
+        
+class Solution:
+    def smallestNumber(self, p: str) -> str:  
+        return ''.join(map(str,reduce(lambda a,i:a+[*range(i,len(a),-1)],compress(count(1),map(eq,p+'I',repeat('I'))),[])))
+
+class Solution:
+    def smallestNumber(self, pattern: str) -> str:
+        ans = []
+        for i, ch in enumerate(pattern + 'I', start = 1):
+            if ch == 'I':
+                ans.extend(range(i, len(ans), -1))
+        return ''.join(map(str, ans))
+
+# https://leetcode.com/problems/construct-smallest-number-from-di-string/solutions/6438131/2-line-code/?envType=daily-question&envId=2025
+
+class Solution:
+    def smallestNumber(self, pattern: str) -> str:
+        for perm in permutations(map(str, range(1, len(pattern) + 2))):
+            if all((p == 'I') == (a < b) for p, a, b in zip(pattern, perm, perm[1:])):
+                return ''.join(perm)
+
+class Solution:
+    def smallestNumber(self, s: str) -> str:
+        return next(''.join(p)for p in permutations(map(str,range(1,len(s)+2)))if all((c=='I')==(a<b)for c,a,b in zip(s,p,p[1:])))
+
+class Solution:
+    def smallestNumber(self, s: str) -> str:
+        return next(''.join(p)for p in permutations('123456789'[:len(s)+1])if all((c>'D')==(a<b)for c,a,b in zip(s,p,p[1:])))
+
+class Solution:
+    def smallestNumber(self, s: str) -> str:
+        return next(''.join(p)for p in permutations(digits[1:len(s)+2])if all((c>'D')==(a<b)for c,a,b in zip(s,p,p[1:])))
+
 # https://leetcode.com/problems/construct-smallest-number-from-di-string/solutions/2422380/java-c-python-easy-reverse/?envType=daily-question&envId=2025-02-18
 
 class Solution:
@@ -42,6 +80,14 @@ class Solution:
 class Solution:
     def smallestNumber(self, s: str) -> str:
         r=[];[r:=r+[*range(i,len(r),-1)]for i,c in enumerate(s+'I',1)if'D'<c];return''.join(map(str,r))
+
+class Solution:
+    def smallestNumber(self, s: str) -> str:
+        r='';[r:=r+''.join(map(str,range(i,len(r),-1)))for i,c in enumerate(s+'I',1)if'D'<c];return r
+
+class Solution:
+    def smallestNumber(self, s: str) -> str:
+        r='';[r:=r+digits[i:len(r):-1]for i,c in enumerate(s+'I',1)if'D'<c];return r
 
 test('''
 2375. Construct Smallest Number From DI String

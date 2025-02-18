@@ -87,6 +87,10 @@ class Solution:
 
 class Solution:
     def smallestNumber(self, s: str) -> str:
+        return reduce(lambda r,p:r+digits[p[0]:len(r):-1]*('D'<p[1]),enumerate(s+'I',1),'')
+
+class Solution:
+    def smallestNumber(self, s: str) -> str:
         r='';[r:=r+digits[i:len(r):-1]for i,c in enumerate(s+'I',1)if'D'<c];return r
 
 test('''

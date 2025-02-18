@@ -41,10 +41,6 @@ class Solution:
 
 class Solution:
     def smallestNumber(self, s: str) -> str:
-        return''.join(map(str,reduce(lambda r,q:r+[*range(q[0],len(r),-1)]*(q[1]=='I'),enumerate(s+'I',1),[])))
-
-class Solution:
-    def smallestNumber(self, s: str) -> str:
         r=[];[r:=r+[*range(i,len(r),-1)]for i,c in enumerate(s+'I',1)if'D'<c];return''.join(map(str,r))
 
 test('''

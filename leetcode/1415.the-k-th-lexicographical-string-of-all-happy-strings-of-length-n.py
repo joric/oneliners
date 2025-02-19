@@ -86,6 +86,16 @@ class Solution:
     def getHappyString(self, n: int, k: int) -> str:
         return next(islice((''.join(p)for p in product('abc',repeat=n)if all(2*x not in''.join(p)for x in'abc')),k-1,k),'')
 
+# https://leetcode.com/problems/the-k-th-lexicographical-string-of-all-happy-strings-of-length-n/solutions/5533528/a-lazy-4-line-bfs/?envType=daily-question&envId=2025-02-19
+
+class Solution:
+    def getHappyString(self, n: int, k: int) -> str:
+        r=[''];[r:=[s+c for s in r for c in'abc'if s[-1:]!=c]for _ in range(n)];return(r[k-1:]or[''])[0]
+
+class Solution:
+    def getHappyString(self, n: int, k: int) -> str:
+        r=[''];[r:=[s+c for s in r for c in'abc'if s[-1:]!=c]for _ in[0]*n];return(r[k-1:]or[''])[0]
+
 test('''
 1415. The k-th Lexicographical String of All Happy Strings of Length n
 Medium

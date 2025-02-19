@@ -1403,7 +1403,7 @@ class Solution:
 There are many uses, remember that it supports any function besides the default "sum".
 
 ```python
-[x for i,x in enumerate(a)if x>=max(a[:i+1])] # same as compress(a,map(ge,a,accumulate(a,max)))
+compress(a,map(ge,a,accumulate(a,max))) # same as [x for i,x in enumerate(a)if x>=max(a[:i+1])]
 ```
 
 ### Kadane

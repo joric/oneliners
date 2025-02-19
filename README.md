@@ -1403,7 +1403,13 @@ class Solution:
 There are many uses, remember that it supports any function besides the default "sum".
 
 ```python
-compress(a,map(ge,a,accumulate(a,max))) # same as [x for i,x in enumerate(a)if x>=max(a[:i+1])]
+class Solution():
+    def stalinSort(self, a: List[int]) -> List[int]:
+        return [x for i,x in enumerate(a)if x>=max(a[:i+1])]
+
+class Solution():
+    def stalinSort(self, a: List[int]) -> List[int]:
+        return compress(a,map(ge,a,accumulate(a,max)))
 ```
 
 ### Kadane

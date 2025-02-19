@@ -1084,6 +1084,8 @@ Cache decorator, `@lru_cache` or `@cache` (since Python 3.9) may be used as an i
 
 Reduces exponential complexity to quadratic or less, depending of the problem. Essentially, a built-in memoization.
 
+CPP version of a cache decorator: [cache_decorator.cpp](https://gist.github.com/joric/ed96c06c2e5440e0cbf84b3ff78f3a12).
+
 * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/2555929/python-oneliner-dfs-with-a-cache-decorator
 
 ```python
@@ -1141,8 +1143,6 @@ class Solution:
         return(f:=lru_cache(9**5)(lambda i,j:a[i:]and b[j:]and(a[i]==b[j]and a[i]+f(i+1,j+1)
             or min(a[i]+f(i+1,j),b[j]+f(i,j+1),key=len))or a[i:]or b[j:]))(0,0)
 ```
-
-CPP version of a cache decorator: [cache_decorator.cpp](https://gist.github.com/joric/ed96c06c2e5440e0cbf84b3ff78f3a12).
 
 ### Reduce
 

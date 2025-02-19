@@ -2033,7 +2033,7 @@ class Solution:
 
 ### Operators
 
-These operators are available from the "operator" module that Leetcode includes by default.
+These operators are available in a global namespace (Leetcode includes "operator" module by default).
 
 Operation                   |Syntax             |Function                           
 ----------------------------|-------------------|-----------------------------------

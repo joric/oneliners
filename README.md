@@ -1400,16 +1400,10 @@ class Solution:
 
 ### Accumulate
 
-There are many uses, remember that it supports any function besides the default "sum". E.g.
+There are many uses, remember that it supports any function besides the default "sum".
 
 ```python
-[x for i,x in enumerate(a)if x>=max(a[:i+1])]
-```
-
-Is equal to:
-
-```python
-compress(a,map(ge,a,accumulate(a,max)))
+[x for i,x in enumerate(a)if x>=max(a[:i+1])] # same as compress(a,map(ge,a,accumulate(a,max)))
 ```
 
 ### Kadane

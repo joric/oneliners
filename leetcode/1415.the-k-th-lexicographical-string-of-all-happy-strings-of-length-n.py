@@ -96,6 +96,10 @@ class Solution:
     def getHappyString(self, n: int, k: int) -> str:
         r=[''];[r:=[s+c for s in r for c in'abc'if s[-1:]!=c]for _ in[0]*n];return(r[k-1:]or[''])[0]
 
+class Solution:
+    def getHappyString(self, n: int, k: int) -> str:
+        r=[''];[r:=[s+c for s in r for c in'abc'if s[-1:]!=c]for _ in r*n];return(r[k-1:]+[''])[0]
+
 test('''
 1415. The k-th Lexicographical String of All Happy Strings of Length n
 Medium

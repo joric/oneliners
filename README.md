@@ -1082,7 +1082,7 @@ class Solution:
 
 Cache decorator, `@lru_cache` or `@cache` (since Python 3.9) may be used as an inline function `cache(lambda ...)`.
 Brings exponential complexity down to a quadratic or linear, depending of the problem. Essentially, a built-in memoization.
-Also see [CPP version](https://gist.github.com/joric/ed96c06c2e5440e0cbf84b3ff78f3a12) of a cache decorator.
+You can easily implement a [CPP version](https://gist.github.com/joric/ed96c06c2e5440e0cbf84b3ff78f3a12) of a cache decorator.
 
 * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/2555929/python-oneliner-dfs-with-a-cache-decorator
 

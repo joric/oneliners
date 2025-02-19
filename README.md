@@ -1978,7 +1978,7 @@ class Solution:
 
 ### Comb
 
-You can write combination function (binomial) `n*(n-1)//2` as `comb(n,2)`, or write `(n-1)` as `~-n` to cut parens.
+You can write combination function (binomial) `n*(n-1)//2` as `comb(n,2)`, you can write `(n-1)` as `~-n` to cut parens.
 
 * https://leetcode.com/problems/tuple-with-same-product
 

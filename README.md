@@ -1082,7 +1082,7 @@ class Solution:
 
 Cache decorator, `@lru_cache` or `@cache` (since Python 3.9) may be used as an inline function `cache(lambda ...)`.
 
-Reduces exponential complexity to quadratic or less, depending of the problem. Essentially, a built-in memoization.
+Reduces exponential complexity to a quadratic or linear, depending of the problem. Essentially, a built-in memoization.
 
 CPP version of a cache decorator: [cache_decorator.cpp](https://gist.github.com/joric/ed96c06c2e5440e0cbf84b3ff78f3a12).
 

@@ -1202,7 +1202,7 @@ class Solution:
 
 ### Product
 
-The product function (and all of the itertools) is sometimes handy.
+The product function from itertools is sometimes handy.
 
 * https://leetcode.com/problems/ugly-number-ii
 

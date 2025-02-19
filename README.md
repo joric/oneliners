@@ -2080,6 +2080,8 @@ The same naming goes for the member functions, but with underscores, e.g. `(1)._
 
 ### Precedence
 
+Knowing precedence helps to cut parens. For example you can replace `(n-1)` with `~-n` where possible.
+
 Precedence|Operators                                     |Description                                                |Associativity
 ----------|----------------------------------------------|-----------------------------------------------------------|-------------
 1         |`()`                                          |Parentheses                                                |Left to right

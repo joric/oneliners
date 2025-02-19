@@ -1275,13 +1275,7 @@ class Solution:
 
 ### Math tricks
 
-Many leetcode problems use Fibonacci sequence that can be calculated using a variety of different methods:
-
-* https://r-knott.surrey.ac.uk/Fibonacci/fibFormula.html
-* https://en.wikipedia.org/wiki/Generating_function
-* https://mathworld.wolfram.com/TribonacciNumber.html
-
-Examples:
+Many leetcode problems use Fibonacci sequence that can be calculated using a variety of different methods.
 
 * https://leetcode.com/problems/fibonacci-number
 
@@ -1293,7 +1287,7 @@ class Solution:
             a,b = b,a+b
         return a 
 
-# classic Binet
+# classic Binet, https://r-knott.surrey.ac.uk/Fibonacci/fibFormula.html
 
 class Solution:
     def fib(self, n: int) -> int:
@@ -1308,7 +1302,7 @@ class Solution:
     def fib(self, n: int) -> int:
         r=5**.5;return round(((1+r)/2)**n/r)
 
-# generating function
+# generating function, https://en.wikipedia.org/wiki/Generating_function
 
 class Solution:
     def fib(self, n: int) -> int:
@@ -1342,6 +1336,8 @@ class Solution:
 * https://leetcode.com/problems/n-th-tribonacci-number
 
 ```python
+# https://mathworld.wolfram.com/TribonacciNumber.html
+
 class Solution:
     def tribonacci(self, n):
         a,b,c = 1,0,0

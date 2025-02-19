@@ -1336,14 +1336,14 @@ class Solution:
 * https://leetcode.com/problems/n-th-tribonacci-number
 
 ```python
-# https://mathworld.wolfram.com/TribonacciNumber.html
-
 class Solution:
     def tribonacci(self, n):
         a,b,c = 1,0,0
         for _ in range(n):
             a,b,c = b,c,a+b+c
         return c
+
+# https://mathworld.wolfram.com/TribonacciNumber.html
 
 class Solution:
     def tribonacci(self, n: int) -> int:

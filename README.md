@@ -1081,9 +1081,7 @@ class Solution:
 ### Cache
 
 Cache decorator, `@lru_cache` or `@cache` (since Python 3.9) may be used as an inline function `cache(lambda ...)`.
-
-Reduces exponential complexity to a quadratic or linear, depending of the problem. Essentially, a built-in memoization.
-
+Brings exponential complexity down to a quadratic or linear, depending of the problem. Essentially, a built-in memoization.
 CPP version of a cache decorator: [cache_decorator.cpp](https://gist.github.com/joric/ed96c06c2e5440e0cbf84b3ff78f3a12).
 
 * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/2555929/python-oneliner-dfs-with-a-cache-decorator

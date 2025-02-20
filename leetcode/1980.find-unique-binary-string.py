@@ -2,6 +2,28 @@ from lc import *
 
 # https://leetcode.com/problems/find-unique-binary-string/discuss/1493853/Python-one-line-easy-to-understand-list-comprehension
 
+'''
+This uses Cantor's diagonal argument - a clever mathematical trick that guarantees we'll get a string different from all strings in the input list.
+
+Let's see how it works:
+
+Example 1: ["01","10"]
+Position 0: "01" -> take opposite of 0 -> "1"
+Position 1: "10" -> take opposite of 0 -> "1"
+Result: "11"
+
+Example 2: ["00","01"]
+Position 0: "00" -> take opposite of 0 -> "1"
+Position 1: "01" -> take opposite of 1 -> "0"
+Result: "11"
+
+Example 3: ["111","011","001"]
+Position 0: "111" -> take opposite of 1 -> "0"
+Position 1: "011" -> take opposite of 1 -> "0"
+Position 2: "001" -> take opposite of 1 -> "0"
+Result: "101"
+'''
+
 class Solution:
     def findDifferentBinaryString(self, n: List[str]) -> str:
         return''.join(str(int(x[i]=='0'))for i,x in enumerate(n))
@@ -48,7 +70,11 @@ Example 3:
 Input: nums = ["111","011","001"]
 Output: "101"
 Explanation: "101" does not appear in nums. "000", "010", "100", and "110" would also be correct.
- 
+
+Other examples:
+
+Input: nums = ["000","001","110"]
+Output: "010"
 
 Constraints:
 

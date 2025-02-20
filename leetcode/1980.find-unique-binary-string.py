@@ -34,6 +34,10 @@ class Solution:
 
 class Solution:
     def findDifferentBinaryString(self, n: List[str]) -> str:
+        return''.join('10'[n[i][i]>'0']for i in range(len(n)))
+
+class Solution:
+    def findDifferentBinaryString(self, n: List[str]) -> str:
         return''.join('10'[x[i]=='1']for i,x in enumerate(n))
 
 class Solution:

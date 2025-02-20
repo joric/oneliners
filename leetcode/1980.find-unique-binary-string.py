@@ -30,6 +30,10 @@ class Solution:
 
 class Solution:
     def findDifferentBinaryString(self, a: List[str]) -> str:
+        return next(s for s in map(''.join,product(*['01']*len(a)))if s not in a)
+
+class Solution:
+    def findDifferentBinaryString(self, a: List[str]) -> str:
         return''.join(str(int(x[i]=='0'))for i,x in enumerate(a))
 
 class Solution:

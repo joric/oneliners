@@ -26,7 +26,7 @@ Result: "101"
 
 class Solution:
     def findDifferentBinaryString(self, a: List[str]) -> str:
-        return next(t for s in product(*['01']*len(a))if(t:=''.join(s))not in a)
+        return next(filterfalse(a.__contains__,map(''.join,product(*['01']*len(a)))))
 
 class Solution:
     def findDifferentBinaryString(self, a: List[str]) -> str:

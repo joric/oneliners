@@ -1,5 +1,15 @@
 from lc import *
 
+# https://leetcode.com/problems/find-unique-binary-string
+
+class Solution:
+    def findDifferentBinaryString(self, a: List[str]) -> str:
+        return next(filterfalse(a.__contains__,map(''.join,product(*['01']*len(a)))))
+
+class Solution:
+    def findDifferentBinaryString(self, a: List[str]) -> str:
+        return next(s for s in map(''.join,product(*['01']*len(a)))if s not in a)
+
 # https://leetcode.com/problems/find-unique-binary-string/discuss/1493853/Python-one-line-easy-to-understand-list-comprehension
 
 '''
@@ -23,14 +33,6 @@ Position 1: "011" -> take opposite of 1 -> "0"
 Position 2: "001" -> take opposite of 1 -> "0"
 Result: "101"
 '''
-
-class Solution:
-    def findDifferentBinaryString(self, a: List[str]) -> str:
-        return next(filterfalse(a.__contains__,map(''.join,product(*['01']*len(a)))))
-
-class Solution:
-    def findDifferentBinaryString(self, a: List[str]) -> str:
-        return next(s for s in map(''.join,product(*['01']*len(a)))if s not in a)
 
 class Solution:
     def findDifferentBinaryString(self, a: List[str]) -> str:

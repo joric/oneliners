@@ -25,24 +25,24 @@ Result: "101"
 '''
 
 class Solution:
-    def findDifferentBinaryString(self, n: List[str]) -> str:
-        return''.join(str(int(x[i]=='0'))for i,x in enumerate(n))
+    def findDifferentBinaryString(self, a: List[str]) -> str:
+        return next(t for s in product(*['01']*len(a))if(t:=''.join(s))not in a)
 
 class Solution:
-    def findDifferentBinaryString(self, n: List[str]) -> str:
-        return''.join(str(1^int(x[i]))for i,x in enumerate(n))
+    def findDifferentBinaryString(self, a: List[str]) -> str:
+        return''.join(str(int(x[i]=='0'))for i,x in enumerate(a))
 
 class Solution:
-    def findDifferentBinaryString(self, n: List[str]) -> str:
-        return''.join('10'[n[i][i]>'0']for i in range(len(n)))
+    def findDifferentBinaryString(self, a: List[str]) -> str:
+        return''.join(str(1^int(x[i]))for i,x in enumerate(a))
 
 class Solution:
-    def findDifferentBinaryString(self, n: List[str]) -> str:
-        return''.join('10'[x[i]=='1']for i,x in enumerate(n))
+    def findDifferentBinaryString(self, a: List[str]) -> str:
+        return''.join('10'[n[i][i]>'0']for i in range(len(a)))
 
 class Solution:
-    def findDifferentBinaryString(self, n: List[str]) -> str:
-        return''.join('10'[x[i]>'0']for i,x in enumerate(n))
+    def findDifferentBinaryString(self, a: List[str]) -> str:
+        return''.join('10'[x[i]>'0']for i,x in enumerate(a))
 
 test('''
 1980. Find Unique Binary String
@@ -80,6 +80,9 @@ Other examples:
 Input: nums = ["000","001","110"]
 Output: "010"
 
+Input: nums = ["10","11"]
+Output: "00"
+
 Constraints:
 
 n == nums.length
@@ -91,4 +94,4 @@ Accepted
 53,822
 Submissions
 78,354
-''',check=lambda r,e,n:len(r)==len(n[0])and r not in n)
+''',check=lambda r,e,a:len(r)==len(a[0])and r not in a)

@@ -12,12 +12,6 @@ class FindElements:
     def __init__(self, r):
         self.find = lambda t:reduce(lambda n, b: n and (n.left, n.right)[int(b)], bin(t+1)[3:], r)!=None
 
-class FindElements:__init__=lambda s,r:setattr(s,'find',lambda t:None!=reduce(lambda n,b:n and(n.left,n.right)[int(b)], bin(t+1)[3:],r))
-
-class FindElements:__init__=lambda s,r:setattr(s,'find',lambda t:bool(reduce(lambda n,b:n and(n.left,n.right)[int(b)], bin(t+1)[3:],r)))
-
-FindElements=type('',(),{'__init__':lambda s,r:setattr(s,'r',r),'find':lambda s,t:None!=reduce(lambda n,b:n and(n.left,n.right)[int(b)],bin(t+1)[3:],s.r)})
-
 # tests-suite compatible (needs type annotation for the treenode)
 
 class FindElements:
@@ -31,6 +25,12 @@ class FindElements:
         self.r = r
     def find(self, t: int) -> bool:
         return reduce(lambda n, b: n and (n.left, n.right)[int(b)], bin(t+1)[3:],self.r)!=None
+
+# TODO make it work in lc, perhaps "if name not in dir(classname)" is the issue
+
+FindElements=type('',(),{'__init__':lambda s,r:setattr(s,'r',r),'find':lambda s,t:None!=reduce(lambda n,b:n and(n.left,n.right)[int(b)],bin(t+1)[3:],s.r)})
+
+class FindElements:__init__=lambda s,r:setattr(s,'find',lambda t:bool(reduce(lambda n,b:n and(n.left,n.right)[int(b)], bin(t+1)[3:],r)))
 
 test('''
 1261. Find Elements in a Contaminated Binary Tree
@@ -100,4 +100,4 @@ The height of the binary tree is less than or equal to 20
 The total number of nodes is between [1, 104]
 Total calls of find() is between [1, 104]
 0 <= target <= 106
-''', classname=FindElements)
+''', classname=FindElements, cast=lambda name,v:TreeNode(v) if name=='r' or name=='t' else v)

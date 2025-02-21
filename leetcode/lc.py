@@ -177,7 +177,7 @@ cnames = []
 # use test(```leetcode description```) to run latest Solution
 # note only the last solution is tested (classname override), but you can use empty test() between solutions
 
-def test(text=None, classname=None, check=None, init=None, custom=None, cast=None, sort=None, inplace=None):
+def test(text=None, classname=None, check=None, init=None, custom=None, cast=None, sort=None, inplace=None, types=None):
     import importlib
     if not text:
         cname = classname or importlib.import_module('__main__').Solution
@@ -186,6 +186,10 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
 
     def vc(func, name, v):
         tname = get_type_hints(func).get(name, None)
+
+        if not tname:
+            if t:=types.get(name):
+                tname = t
 
         if cast: # see 191.number-of-1-bits.py
             v = cast(name, v)

@@ -26,8 +26,6 @@ class FindElements:
     def find(self, t: int) -> bool:
         return reduce(lambda n, b: n and (n.left, n.right)[int(b)], bin(t+1)[3:],self.r)!=None
 
-# TODO make it work in lc, perhaps "if name not in dir(classname)" is the issue
-
 FindElements=type('',(),{'__init__':lambda s,r:setattr(s,'r',r),'find':lambda s,t:None!=reduce(lambda n,b:n and(n.left,n.right)[int(b)],bin(t+1)[3:],s.r)})
 
 class FindElements:__init__=lambda s,r:setattr(s,'find',lambda t:bool(reduce(lambda n,b:n and(n.left,n.right)[int(b)],bin(t+1)[3:],r)))

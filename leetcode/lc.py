@@ -36,6 +36,11 @@ import json
 
 from typing import *
 
+import warnings
+import subprocess
+import os
+warnings.filterwarnings('ignore') 
+
 class TreeNode:
     def __init__(self, x=0, left=None, right=None):
         self.val = x
@@ -429,8 +434,9 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
 
     for methods, arglist, expected in param:
         results = []
+
         for name,args in zip(methods,arglist):
-            if name not in dir(classname):
+            if name == classname.__name__:
                 func = getattr(classname, '__init__')
                 args, iargs, orig = vcast(func, args, init)
                 instance = classname(*args)
@@ -448,40 +454,47 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
 
     exitcode and exit(exitcode)
 
-import warnings
-warnings.filterwarnings('ignore') 
+def test_file(filename):
+    with open(os.devnull, 'wb') as devnull:
 
-if __name__ == "__main__":
-    import os
+        process = subprocess.Popen(['py', filename], stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+        stdout, stderr = process.communicate()
+        exitcode = process.wait()
+
+        if exitcode:
+            #sys.stdout = sys.__stdout__
+            #print(stdout, stderr, exitcode)
+
+            print(f'\rTest failed in {filename}')
+
+            sys.stdout.buffer.write(stdout)
+            sys.stderr.buffer.write(stderr)
+
+            exit(exitcode)
+
+def run_tests(latest=False):
     files = filter(lambda s:re.search(r'^([\d]+)\..*\.py$',s), os.listdir('.'))
     files = sorted(files, key=lambda s:[int(c) if c.isdigit() else c for c in re.split(r'(\d+)',s)])
-    #sys.stdout = open(os.devnull, 'w')
 
-    import subprocess
+    if latest:
+        files = sorted(files, key=os.path.getmtime, reverse=True)
 
     for i, filename in enumerate(files):
+
         id = int(re.search(r'^([\d]+)', filename)[0])
 
-        if id<88: continue
-        #if i<=88: continue
+        #if id<=88: continue
 
         #print(f'[{i}/{len(files)}] \x1b[96m{filename}\x1b[0m')
         sys.stderr.write(f'\r[{i}/{len(files)}] {i*100//len(files)}%')
 
-        with open(os.devnull, 'wb') as devnull:
+        test_file(filename)
 
-            process = subprocess.Popen(['py', filename], stderr=subprocess.PIPE, stdout=subprocess.PIPE)
-            stdout, stderr = process.communicate()
-            exitcode = process.wait()
+        if latest:
+            print('tested latest file', filename)
+            break
 
-            if exitcode:
-                #sys.stdout = sys.__stdout__
-                #print(stdout, stderr, exitcode)
-
-                print(f'\rTest failed in {filename}')
-
-                sys.stdout.buffer.write(stdout)
-                sys.stderr.buffer.write(stderr)
-
-                exit(exitcode)
     print('\r\x1b[32mTests passed.')
+
+if __name__ == "__main__":
+    run_tests(True)

@@ -30,7 +30,7 @@ class FindElements:
 
 FindElements=type('',(),{'__init__':lambda s,r:setattr(s,'r',r),'find':lambda s,t:None!=reduce(lambda n,b:n and(n.left,n.right)[int(b)],bin(t+1)[3:],s.r)})
 
-class FindElements:__init__=lambda s,r:setattr(s,'find',lambda t:bool(reduce(lambda n,b:n and(n.left,n.right)[int(b)], bin(t+1)[3:],r)))
+class FindElements:__init__=lambda s,r:setattr(s,'find',lambda t:bool(reduce(lambda n,b:n and(n.left,n.right)[int(b)],bin(t+1)[3:],r)))
 
 test('''
 1261. Find Elements in a Contaminated Binary Tree
@@ -100,4 +100,4 @@ The height of the binary tree is less than or equal to 20
 The total number of nodes is between [1, 104]
 Total calls of find() is between [1, 104]
 0 <= target <= 106
-''', classname=FindElements, cast=lambda name,v:TreeNode(v) if name=='r' or name=='t' else v)
+''', classname=FindElements, cast=lambda name,v:TreeNode.parse(v) if name=='r' else v)

@@ -16,7 +16,6 @@ class Solution:
     def similarPairs(self, w: List[str]) -> int:
         return sum(starmap(eq,combinations(map(set,w),2)))
 
-
 test('''
 2506. Count Pairs Of Similar Strings
 Solved

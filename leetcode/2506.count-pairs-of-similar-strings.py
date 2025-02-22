@@ -1,5 +1,11 @@
 from lc import *
 
+# https://leetcode.com/problems/count-pairs-of-similar-strings/solutions/3458283/solution-using-combinatorics/
+
+class Solution:
+    def similarPairs(self, w: List[str]) -> int:
+        return sum(comb(x,2)for x in Counter(map(frozenset,w)).values())
+
 # https://leetcode.com/problems/count-pairs-of-similar-strings/solutions/4097926/one-line-solution/
 
 class Solution:
@@ -9,6 +15,7 @@ class Solution:
 class Solution:
     def similarPairs(self, w: List[str]) -> int:
         return sum(starmap(eq,combinations(map(set,w),2)))
+
 
 test('''
 2506. Count Pairs Of Similar Strings

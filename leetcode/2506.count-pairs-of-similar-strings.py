@@ -6,6 +6,8 @@ class Solution:
     def similarPairs(self, w: List[str]) -> int:
         return sum(comb(x,2)for x in Counter(map(frozenset,w)).values())
 
+# js: similarPairs=w=>Object.values(w.map(e=>[...new Set([...e].sort())].join('')).reduce((a,n)=>(a[n]=++a[n]||1,a),{})).reduce((a,b)=>a+=(b*(b-1)/2),0);
+
 # https://leetcode.com/problems/count-pairs-of-similar-strings/solutions/4097926/one-line-solution/
 
 class Solution:

@@ -50,6 +50,16 @@ class Solution:
 
 class Solution:
     def constructFromPrePost(self, a: List[int], b: List[int]) -> Optional[TreeNode]:
+        def f(x):
+            if x!=b[0]:
+                x = a.pop(0)
+                r = TreeNode(x, f(x), f(x))
+                b.pop(0)
+                return r
+        return f(0)
+
+class Solution:
+    def constructFromPrePost(self, a: List[int], b: List[int]) -> Optional[TreeNode]:
         return(f:=lambda x:x!=b[0]and(TreeNode(x:=a.pop(0),f(x),f(x)),b.pop(0))[0]or None)(0)
 
 test('''

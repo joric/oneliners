@@ -12,12 +12,8 @@ class Solution:
             return root
 
 class Solution:
-    def constructFromPrePost(self, e: List[int], o: List[int]) -> Optional[TreeNode]:
-        return(f:=lambda e,o:e and e[0]in o and TreeNode(x:=e.pop(0),f(e,o[:o.index(x)]),f(e,o[:o.index(x)]))or None)(e,o)
-
-class Solution:
-    def constructFromPrePost(self, e: List[int], o: List[int]) -> Optional[TreeNode]:
-        return(f:=lambda e,o:e and e[0]in o and TreeNode(x:=e.pop(0),f(e,o:=o[:o.index(x)]),f(e,o))or None)(e,o)
+    def constructFromPrePost(self, a: List[int], b: List[int]) -> Optional[TreeNode]:
+        return(f:=lambda a,b:a and a[0]in b and TreeNode(x:=a.pop(0),f(a,b:=b[:b.index(x)]),f(a,b))or None)(a,b)
 
 test('''
 889. Construct Binary Tree from Preorder and Postorder Traversal

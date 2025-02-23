@@ -23,6 +23,35 @@ class Solution:
     def constructFromPrePost(self, a: List[int], b: List[int]) -> Optional[TreeNode]:
         return(f:=lambda b:{*a}&{*b}and TreeNode(x:=a.pop(0),f(b:=b[:b.index(x)]),f(b))or None)(b)
 
+# https://leetcode.com/problems/construct-binary-tree-from-preorder-and-postorder-traversal/solutions/6457261/4-line-code-simple-recursive-apporch/
+
+class Solution:
+    def __init__(self):
+        self.i = 0
+        self.j = 0
+    def constructFromPrePost(self, a: List[int], b: List[int]) -> Optional[TreeNode]:
+        r = TreeNode(a[self.i])
+        self.i += 1
+        if r.val != b[self.j]:
+            r.left = self.constructFromPrePost(a, b)
+        if r.val != b[self.j]:
+            r.right = self.constructFromPrePost(a, b)
+        self.j += 1
+        return r
+
+class Solution:
+    def constructFromPrePost(self, a: List[int], b: List[int]) -> Optional[TreeNode]:
+        def f():
+            x = a.pop(0)
+            r = TreeNode(x, x!=b[0]and f()or None, x!=b[0]and f()or None)
+            b.pop(0)
+            return r
+        return f()
+
+class Solution:
+    def constructFromPrePost(self, a: List[int], b: List[int]) -> Optional[TreeNode]:
+        return(f:=lambda x:x!=b[0]and(TreeNode(x:=a.pop(0),f(x),f(x)),b.pop(0))[0]or None)(0)
+
 test('''
 889. Construct Binary Tree from Preorder and Postorder Traversal
 Medium

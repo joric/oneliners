@@ -29,6 +29,12 @@ class Solution:
     def addTwoNumbers(self, a: Optional[ListNode], b: Optional[ListNode]) -> Optional[ListNode]:
         f=lambda n:n and n.val+10*f(n.next)or 0;return ListNode(','.join([*str(f(a)+f(b))][::-1]))
 
+# updated 2025-02-24 ListNode('...') does not work anymore
+
+class Solution:
+    def addTwoNumbers(self, a: Optional[ListNode], b: Optional[ListNode]) -> Optional[ListNode]:
+        f=lambda n:n and n.val+10*f(n.next)or 0;return a.deserialize(str([int(c)for c in str(f(a)+f(b))[::-1]]))
+
 test('''
 2. Add Two Numbers
 

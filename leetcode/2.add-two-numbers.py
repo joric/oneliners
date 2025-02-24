@@ -1,5 +1,21 @@
 from lc import *
 
+# https://leetcode.com/problems/add-two-numbers/
+
+class Solution:
+    def addTwoNumbers(self, a: Optional[ListNode], b: Optional[ListNode]) -> Optional[ListNode]:
+        f=lambda n:n and n.val+10*f(n.next)or 0;return ListNode(','.join([*str(f(a)+f(b))][::-1]))
+
+# ListNode('x,y,...') does not work anymore
+
+class Solution:
+    def addTwoNumbers(self, a: Optional[ListNode], b: Optional[ListNode]) -> Optional[ListNode]:
+        f=lambda n:n and n.val+10*f(n.next)or 0;return a.deserialize(str([int(c)for c in str(f(a)+f(b))[::-1]]))
+
+class Solution:
+    def addTwoNumbers(self, a: Optional[ListNode], b: Optional[ListNode]) -> Optional[ListNode]:
+        f=lambda n:n and n.val+10*f(n.next)or 0;return a.deserialize(str([*starmap(int,str(f(a)+f(b))[::-1])]))
+
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         carry = 0    
@@ -21,19 +37,14 @@ class Solution:
         l = lambda n: ListNode(n%10, l(n//10) if n>9 else None)
         return l(f(a)+f(b))
 
+# ListNode(bool) does not work anymore
 class Solution:
-    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        return (l:=lambda n:ListNode(n%10,n>9 and l(n//10)))((f:=lambda n:n and n.val+10*f(n.next) or 0)(l1)+f(l2))
+    def addTwoNumbers(self, a: Optional[ListNode], b: Optional[ListNode]) -> Optional[ListNode]:
+        return(g:=lambda n:ListNode(n%10,n>9 and g(n//10)))((f:=lambda n:n and n.val+10*f(n.next)or 0)(a)+f(b))
 
 class Solution:
     def addTwoNumbers(self, a: Optional[ListNode], b: Optional[ListNode]) -> Optional[ListNode]:
-        f=lambda n:n and n.val+10*f(n.next)or 0;return ListNode(','.join([*str(f(a)+f(b))][::-1]))
-
-# updated 2025-02-24 ListNode('...') does not work anymore
-
-class Solution:
-    def addTwoNumbers(self, a: Optional[ListNode], b: Optional[ListNode]) -> Optional[ListNode]:
-        f=lambda n:n and n.val+10*f(n.next)or 0;return a.deserialize(str([int(c)for c in str(f(a)+f(b))[::-1]]))
+        f,g=lambda n:n and n.val+10*f(n.next)or 0,lambda n:ListNode(n%10,n>9and g(n//10)or None);return g(f(a)+f(b))
 
 test('''
 2. Add Two Numbers

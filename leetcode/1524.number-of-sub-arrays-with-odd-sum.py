@@ -47,15 +47,12 @@ class Solution:
 
 class Solution:
     def numOfSubarrays(self, a: List[int]) -> int:
-        return mul(*reduce(lambda p,s:((p[0],p[1]+1),(p[0]+1,p[1]))[s%2],accumulate(a),(0,1)))%(10**9+7)
+        c=Counter(x&1 for x in accumulate(a));return-~c[0]*c[1]%(10**9+7)
 
 class Solution:
     def numOfSubarrays(self, a: List[int]) -> int:
-        return mul(*reduce(lambda p,s:(p[0]+s%2,p[1]+~-s%2),accumulate(a),(0,1)))%(10**9+7)
+        s=0;return(t:=sum(1&(s:=s+x)for x in a))*(len(a)-t+1)%(10**9+7)
 
-class Solution:
-    def numOfSubarrays(self, a: List[int]) -> int:
-        return(t:=sum(x&1for x in accumulate(a)))*(len(a)-t+1)%(10**9+7)
 
 test('''
 1524. Number of Sub-arrays With Odd Sum

@@ -53,7 +53,6 @@ class Solution:
     def numOfSubarrays(self, a: List[int]) -> int:
         s=0;return(t:=sum(1&(s:=s+x)for x in a))*(len(a)-t+1)%(10**9+7)
 
-
 test('''
 1524. Number of Sub-arrays With Odd Sum
 Solved

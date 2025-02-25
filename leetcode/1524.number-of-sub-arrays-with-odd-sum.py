@@ -31,6 +31,20 @@ class Solution:
             r += o
         return r % (10**9+7)
 
+# https://leetcode.com/problems/number-of-sub-arrays-with-odd-sum/solutions/5388917/easy-5-line-solution/
+
+class Solution:
+    def numOfSubarrays(self, a: List[int]) -> int:
+        r=p=0
+        for i in range(len(a)):
+            p = i - p + 1 if a[i]%2 else p
+            r = r+p
+        return r%(10**9+7)
+
+class Solution:
+    def numOfSubarrays(self, a: List[int]) -> int:
+        p=0;return sum(p:=(p,i-p+1)[1&a[i]]for i in range(len(a)))%(10**9+7)
+
 # https://leetcode.com/problems/number-of-sub-arrays-with-odd-sum/solutions/2061760/python-8-line-math-using-prefix-sum/?envType=daily-question&envId=2025-02-25
 
 class Solution:
@@ -48,6 +62,11 @@ class Solution:
 class Solution:
     def numOfSubarrays(self, a: List[int]) -> int:
         c=Counter(x&1 for x in accumulate(a));return-~c[0]*c[1]%(10**9+7)
+
+class Solution:
+    def numOfSubarrays(self, a: List[int]) -> int:
+        s=0;return(t:=sum(1&(s:=s+x)for x in a))*(len(a)-t+1)%(10**9+7)
+
 
 class Solution:
     def numOfSubarrays(self, a: List[int]) -> int:

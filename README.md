@@ -275,6 +275,20 @@ You can also exhaust a generator using `all()`, `any()` or `sum()`, depending on
 You can also save a few chars using `[*g]` syntax instead of `list(g)` where g is a generator function.
 Generator length `len(list(g))` can be calculated in constant memory as `sum(1 for _ in g)`.
 
+Generator expansion `[*g]` may use a traling comma `*g,` in the initialization section (1 character shorter).
+
+* https://leetcode.com/problems/maximum-absolute-sum-of-any-subarray
+
+```python
+class Solution:
+    def maxAbsoluteSum(self, a: List[int]) -> int:
+        a=[*accumulate([0]+a)];return max(a)-min(a)
+
+class Solution:
+    def maxAbsoluteSum(self, a: List[int]) -> int:
+        a=*accumulate([0]+a),;return max(a)-min(a)
+```
+
 ### Iterators
 
 Generators provide an easy, built-in way to create instances of Iterators.
@@ -2167,7 +2181,6 @@ Examples                                   | Results
 * You can subtract 1 or replace `not` operator with bitwise negation `~-` to save on space (1-5 characters shorter).
 * You can check for set membership with `{x}&s` instead of `x in s` (1 character shorter).
 * Very often `x==0` can be replaced with `x<1` (1 character shorter).
-* Generator expansion `[*g]` can use a traling comma `*g,` in the initialization section (1 character shorter).
 * A condition like `h>i>=0<=j<w` can be written as `h>i>-1<j<w` (1 character shorter).
 * You can replace `q and q[-1]==c` with `q[-1:]==[c]` (3 characters shorter).
 

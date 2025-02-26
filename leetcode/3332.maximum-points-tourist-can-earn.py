@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def maxScore(self, n: int, k: int, s: List[List[int]], t: List[List[int]]) -> int:
-        f=cache(lambda i,k,c:k>0 and max((t[c][j],s[i][c])[j==c]+f(i+1,k-1,j) for j in range(n))or 0);return max(f(0,k,i)for i in range(n))
+        f=cache(lambda i,k,c:k>0 and max((t[c][j],s[i][c])[j==c]+f(i+1,k-1,j)for j in range(n))or 0);return max(f(0,k,i)for i in range(n))
 
 test('''
 3332. Maximum Points Tourist Can Earn

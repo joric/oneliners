@@ -14,6 +14,10 @@ class Solution:
     def maxAbsoluteSum(self, a: List[int]) -> int:
         a=*accumulate([0]+a),;return max(a)-min(a)
 
+class Solution:
+    def maxAbsoluteSum(self, a: List[int]) -> int:
+        return max(a:=[*accumulate([0]+a)])-min(a)
+
 test('''
 1749. Maximum Absolute Sum of Any Subarray
 Solved

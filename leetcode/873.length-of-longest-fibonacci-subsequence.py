@@ -84,6 +84,9 @@ Other examples:
 Input: arr = [2,4,7,8,9,10,14,15,18,23,32,50]
 Output: 5
 
+Input: arr = [1,3,5]
+Output: 0
+
 Constraints:
 
 3 <= arr.length <= 1000

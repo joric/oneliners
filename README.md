@@ -1,6 +1,6 @@
 ## Oneliners
 
-Just FYI, this repository isn't just README.md, it's also about a thousand solutions [here](./leetcode).
+Just FYI, this repository isn't just README.md, it's also more than thousand solutions [here](./leetcode).
 
 ### Leetcode-specific
 

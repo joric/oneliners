@@ -1,5 +1,14 @@
 from lc import *
 
+# https://leetcode.com/problems/maximum-score-from-performing-multiplication-operations/solutions/1092218/one-line-recursive-solution-back-tracking-python/
+
+# TLE
+class Solution:
+    def maximumScore(self, a: List[int], m: List[int]) -> int:
+        return m and max(a[0]*m[0]+self.maximumScore(a[1:],m[1:]),a[-1]*m[0]+self.maximumScore(a[0:-1],m[1:]))or 0
+
+# https://leetcode.com/problems/maximum-score-from-performing-multiplication-operations/
+
 class Solution:
     def maximumScore(self, n: List[int], m: List[int]) -> int:
         a = [0] * (len(m) + 1)
@@ -21,6 +30,12 @@ class Solution:
 class Solution:
     def maximumScore(self, n: List[int], m: List[int]) -> int:
         return (f:=cache(lambda i,j: i<len(m) and max(m[i]*n[j]+f(i+1, j+1), m[i]*n[len(n)-1-(i-j)]+f(i+1, j))))(0,0)
+
+# updated 2025-02-27
+
+class Solution:
+    def maximumScore(self, n: List[int], m: List[int]) -> int:
+        return (f:=cache(lambda i,j:m[i:]and max(m[i]*n[j]+f(i+1,j+1),m[i]*n[~i+j]+f(i+1,j))or 0))(0,0)
 
 test('''
 1770. Maximum Score from Performing Multiplication Operations

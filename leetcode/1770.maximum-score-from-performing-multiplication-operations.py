@@ -35,7 +35,7 @@ class Solution:
 
 class Solution:
     def maximumScore(self, n: List[int], m: List[int]) -> int:
-        return (f:=cache(lambda i,j:m[i:]and max(m[i]*n[j]+f(i+1,j+1),m[i]*n[~i+j]+f(i+1,j))or 0))(0,0)
+        return(f:=cache(lambda i,j:m[i:]and max(m[i]*n[j]+f(i+1,j+1),m[i]*n[~i+j]+f(i+1,j))or 0))(0,0)
 
 test('''
 1770. Maximum Score from Performing Multiplication Operations

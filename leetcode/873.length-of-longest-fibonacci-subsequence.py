@@ -50,10 +50,6 @@ class Solution:
 
 class Solution:
     def lenLongestFibSubseq(self, n: List[int]) -> int:
-        s={*n};return(0,t:=max((f:=lambda a,b,c:s&{a+b}and f(b,a+b,c+1)or c)(a,b,2)for a,b in combinations(n,2)))[t>2]
-
-class Solution:
-    def lenLongestFibSubseq(self, n: List[int]) -> int:
         s={*n};return(0,t:=max(starmap(f:=lambda a,b,c=2:s&{a+b}and f(b,a+b,c+1)or c,combinations(n,2))))[t>2]
 
 test('''

@@ -27,6 +27,31 @@ class Solution:
     def lenLongestFibSubseq(self, a: List[int]) -> int:
         c,s={},{*a};return max([setitem(c,(y,x),c.get((x-y,y),2)+1)or c[y,x]for x,y in product(a,a)if x-y<y and{x-y}&s]+[0])
 
+class Solution:
+    def lenLongestFibSubseq(self, n: List[int]) -> int:
+        s,r={*n},2
+        for i in range(len(n)):
+            for j in range(i+1, len(n)):
+                a, b, c = n[i], n[j], 2
+                while a + b in s:
+                    a, b, c = b, a + b, c + 1
+                r = max(r, c)
+        return r if r > 2 else 0
+
+class Solution:
+    def lenLongestFibSubseq(self, n: List[int]) -> int:
+        s,r={*n},2
+        for a,b in combinations(n,2):
+            c = 2
+            while s&{a+b}:
+                a,b,c = b,a+b,c+1
+            r = max(r, c)
+        return r if r > 2 else 0
+
+class Solution:
+    def lenLongestFibSubseq(self, n: List[int]) -> int:
+        s={*n};return(0,r:=max((f:=lambda a,b,c:s&{a+b}and f(b,a+b,c+1)or c)(a,b,2)for a,b in combinations(n,2)))[r>2]
+
 test('''
 873. Length of Longest Fibonacci Subsequence
 Medium
@@ -53,6 +78,11 @@ Input: arr = [1,3,7,11,12,14,18]
 Output: 3
 Explanation: The longest subsequence that is fibonacci-like: [1,11,12], [3,11,14] or [7,11,18].
  
+
+Other examples:
+
+Input: arr = [2,4,7,8,9,10,14,15,18,23,32,50]
+Output: 5
 
 Constraints:
 

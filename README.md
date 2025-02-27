@@ -274,8 +274,7 @@ Sometimes you can unpack tuples as-is using starmap:
 ```python
 class Solution:
     def lenLongestFibSubseq(self, n: List[int]) -> int:
-        s={*n};return(0,t:=max(starmap(f:=lambda a,b,c=2:s&{a+b}and f(b,a+b,c+1)or c,\
-        combinations(n,2))))[t>2]
+        s={*n};return(0,t:=max(starmap(f:=lambda a,b,c=2:s&{a+b}and f(b,a+b,c+1)or c,combinations(n,2))))[t>2]
 ```
 
 ### Generators

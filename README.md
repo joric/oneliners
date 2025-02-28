@@ -518,8 +518,8 @@ class Solution:
 
 ### Setting values
 
-You can't use walrus operator for structures, however, you can use `__setattr__` for dictionaries or `__setitem__` for lists if you need an assignment
-(functions return `None`). To set a key for the list or for the dictionary, you can also use `setattr` or `setitem` functions from the `operator` module,
+You can use `__setattr__` for dictionaries or `__setitem__` for lists (both functions return `None`).
+To set a key for the list or for the dictionary, you can also use `setattr` or `setitem` functions from the `operator` module,
 e.g. `c[x]=1` is the same as `setitem(c,x,1)`.
 
 * https://leetcode.com/problems/add-one-row-to-tree/discuss/764593/Python-7-lines

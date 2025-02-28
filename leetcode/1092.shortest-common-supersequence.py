@@ -3,18 +3,32 @@ from lc import *
 # https://leetcode.com/problems/shortest-common-supersequence/discuss/677141/Solutions-under-10-lines.-No-tricks-and-interview-friendly.
 
 class Solution:
-    def shortestCommonSupersequence(self, s1: str, s2: str) -> str:
-       @lru_cache(maxsize=10000)
-       def solve(i,j):
-            if i == len(s1): return s2[j:]
-            if j == len(s2): return s1[i:]
-            if s1[i] == s2[j]: return s1[i]+solve(i+1,j+1)
-            return min(s1[i]+solve(i+1,j),s2[j]+solve(i,j+1),key=len)
-       return solve(0,0)
+    def shortestCommonSupersequence(self, a: str, b: str) -> str:
+        @lru_cache(10000)
+        def f(i,j):
+            if i == len(a): return b[j:]
+            if j == len(b): return a[i:]
+            if a[i] == b[j]: return a[i]+f(i+1,j+1)
+            return min(a[i]+f(i+1,j),b[j]+f(i,j+1),key=len)
+        return f(0,0)
 
 class Solution:
     def shortestCommonSupersequence(self, a: str, b: str) -> str:
         return(f:=lru_cache(9**5)(lambda i,j:a[i:]and b[j:]and(a[i]==b[j]and a[i]+f(i+1,j+1)or min(a[i]+f(i+1,j),b[j]+f(i,j+1),key=len))or a[i:]or b[j:]))(0,0)
+
+class Solution:
+    def shortestCommonSupersequence(self, a: str, b: str) -> str:
+        @lru_cache(10000)
+        def f(a,b):
+            if not a: return b
+            if not b: return a
+            if a[0]==b[0]: return a[0]+f(a[1:],b[1:])
+            return min(a[0]+f(a[1:],b), b[0]+f(a,b[1:]),key=len)
+        return f(a,b)
+
+class Solution:
+    def shortestCommonSupersequence(self, a: str, b: str) -> str:
+        return(f:=lru_cache(9**5)(lambda a,b:a and b and(a[0]==b[0]and a[0]+f(a[1:],b[1:])or min(a[0]+f(a[1:],b),b[0]+f(a,b[1:]),key=len))or a or b))(a,b)
 
 test('''
 1092. Shortest Common Supersequence

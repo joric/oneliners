@@ -756,7 +756,7 @@ class Solution:
 ### While loops
 
 While loops are not very oneliner-friendly. You can use  `count()` generator with `next()`.
-Note that `next` default parameter gets initialized first so you can use it for the startup code (but it cannot be used for the final calculations).
+Note that `next` default parameter runs first so you can use it for the startup code (but it cannot be used for the final calculations).
 
 * https://leetcode.com/problems/two-sum
 

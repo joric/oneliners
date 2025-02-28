@@ -30,6 +30,10 @@ class Solution:
     def shortestCommonSupersequence(self, a: str, b: str) -> str:
         return(f:=lru_cache(9**5)(lambda a,b:a and b and(a[0]==b[0]and a[0]+f(a[1:],b[1:])or min(a[0]+f(a[1:],b),b[0]+f(a,b[1:]),key=len))or a or b))(a,b)
 
+class Solution:
+    def shortestCommonSupersequence(self, a: str, b: str) -> str:
+        return(f:=lru_cache(9**5)(lambda a,b:a and b and((c:=a[0])==b[0]and c+f(a[1:],b[1:])or min(c+f(a[1:],b),b[0]+f(a,b[1:]),key=len))or a or b))(a,b)
+
 test('''
 1092. Shortest Common Supersequence
 Hard
@@ -60,6 +64,11 @@ Example 2:
 Input: str1 = "aaaaaaaa", str2 = "aaaaaaaa"
 Output: "aaaaaaaa"
  
+
+Other examples:
+
+Input: str1 = "bbbaaaba", str2 = "bbababbb"
+Output: "bbbaaababbb"
 
 Constraints:
 

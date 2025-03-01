@@ -16,11 +16,7 @@ class Solution:
 
 class Solution:
     def applyOperations(self, a: List[int]) -> List[int]:
-        return sorted(sum(((l:=len([*g]))//2*[k*2,0]+l%2*[k]for k,g in groupby(a)),[]),key=not_)
-
-class Solution:
-    def applyOperations(self, a: List[int]) -> List[int]:
-        return sorted(chain(*((l:=len([*g]))//2*[k*2,0]+l%2*[k]for k,g in groupby(a))),key=not_)
+        return sorted(sum(((t:=len([*g]))//2*[k*2,0]+t%2*[k]for k,g in groupby(a)),[]),key=not_)
 
 class Solution:
     def applyOperations(self, a: List[int]) -> List[int]:

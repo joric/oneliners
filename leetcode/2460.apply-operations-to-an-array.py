@@ -15,7 +15,15 @@ class Solution:
 
 class Solution:
     def applyOperations(self, a: List[int]) -> List[int]:
-        return(f:=lambda i:(a[i]==a[i+1]and exec('a[i]*=2;a[i+1]=0'),f(i+1))[1]if a[i+1:]else sorted(a,key=not_))(0)
+        def f(i,r,z):
+            if i>=len(a):
+                return r+[0]*z
+            if i<len(a)-1 and a[i]==a[i+1]:
+                return f(i+2,r+[a[i]*2],z+1)
+            if a[i]==0:
+                return f(i+1,r,z+1)
+            return f(i+1,r+[a[i]],z)
+        return f(0,[],0)
 
 # https://leetcode.com/problems/apply-operations-to-an-array/solutions/2784689/python3-simple-solution-list-comprehension/?envType=daily-question&envId=2025-03-01
 

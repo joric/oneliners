@@ -4,17 +4,6 @@ from lc import *
 
 class Solution:
     def applyOperations(self, a: List[int]) -> List[int]:
-        def f(i):
-            if not a[i+1:]:
-                return sorted(a,key=not_)
-            if a[i]==a[i+1]:
-                a[i]*=2
-                a[i+1] = 0
-            return f(i+1)
-        return f(0)
-
-class Solution:
-    def applyOperations(self, a: List[int]) -> List[int]:
         def f(i,r,z):
             if i>=len(a):
                 return r+[0]*z

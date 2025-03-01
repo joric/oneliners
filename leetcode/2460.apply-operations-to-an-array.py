@@ -10,15 +10,18 @@ class Solution:
                 a[i+1] = 0
         return sorted(a,key=not_)
 
+class Solution:
+    def applyOperations(self, a: List[int]) -> List[int]:
+        [a[i-1]-a[i]or exec('a[i-1]*=2;a[i]=0')for i in range(len(a))];return sorted(a,key=not_)
+
 # https://leetcode.com/problems/apply-operations-to-an-array/solutions/6479212/python-one-liner-code-golf/?envType=dail
+
+# class Solution:applyOperations=lambda _,n:sorted(sum(((l:=len([*g]))//2*[k*2,0]+l%2*[k]for k,g in groupby(n)),[]),key=not_)
 
 class Solution:
     def applyOperations(self, a: List[int]) -> List[int]:
         return sorted(sum(((l:=len([*g]))//2*[k*2,0]+l%2*[k]for k,g in groupby(a)),[]),key=not_)
 
-class Solution:
-    def applyOperations(self, a: List[int]) -> List[int]:
-        [a[i-1]-a[i]or exec('a[i-1]*=2;a[i]=0')for i in range(len(a))];return sorted(a,key=not_)
 
 test('''
 2460. Apply Operations to an Array

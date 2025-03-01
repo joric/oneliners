@@ -20,7 +20,12 @@ class Solution:
 
 class Solution:
     def applyOperations(self, a: List[int]) -> List[int]:
+        return sorted(chain(*((l:=len([*g]))//2*[k*2,0]+l%2*[k]for k,g in groupby(a))),key=not_)
+
+class Solution:
+    def applyOperations(self, a: List[int]) -> List[int]:
         [a[i-1]-a[i]or exec('a[i-1]*=2;a[i]=0')for i in range(len(a))];return sorted(a,key=not_)
+
 
 test('''
 2460. Apply Operations to an Array

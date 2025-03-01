@@ -22,7 +22,6 @@ class Solution:
     def applyOperations(self, a: List[int]) -> List[int]:
         return sorted(sum(((l:=len([*g]))//2*[k*2,0]+l%2*[k]for k,g in groupby(a)),[]),key=not_)
 
-
 test('''
 2460. Apply Operations to an Array
 Easy

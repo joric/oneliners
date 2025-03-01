@@ -32,6 +32,14 @@ class Solution:
     def applyOperations(self, a: List[int]) -> List[int]:
         [exec('a[i]*=2;a[i+1]=0')for i in range(len(a)-1)if a[i]==a[i+1]];return sorted(a,key=not_)
 
+class Solution:
+    def applyOperations(self, a: List[int]) -> List[int]:
+        [a[i]-a[i+1]or exec('a[i]*=2;a[i+1]=0')for i in range(len(a)-1)];return sorted(a,key=not_)
+
+class Solution:
+    def applyOperations(self, a: List[int]) -> List[int]:
+        [a[i-1]-a[i]or exec('a[i-1]*=2;a[i]=0')for i in range(len(a))];return sorted(a,key=not_)
+
 test('''
 2460. Apply Operations to an Array
 Easy

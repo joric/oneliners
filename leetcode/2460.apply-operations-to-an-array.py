@@ -20,6 +20,23 @@ class Solution:
     def applyOperations(self, a: List[int]) -> List[int]:
         [a[i-1]-a[i]or exec('a[i-1]*=2;a[i]=0')for i in range(len(a))];return sorted(a,key=not_)
 
+class Solution:
+    def applyOperations(self, a: List[int]) -> List[int]:
+        r = []
+        x = 0
+        for y in a:
+            if x==y:
+                r += [x*2]
+                x = 0
+            else:
+                r += [x]
+                x = y
+        return sorted(r + [x], key=not_)[:-1]
+
+class Solution:
+    def applyOperations(self, a: List[int]) -> List[int]:
+        x=0;return sorted([x*(1+(x==y)+0*(x:=y*(x!=y)))for y in a]+[x],key=not_)[:-1]
+
 test('''
 2460. Apply Operations to an Array
 Easy

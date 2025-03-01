@@ -1,28 +1,21 @@
 from lc import *
 
-# https://leetcode.com/problems/apply-operations-to-an-array/solutions/2783107/one-pass-c-java-python3/?envType=daily-question&envId=2025-03-01
+# https://leetcode.com/problems/apply-operations-to-an-array
 
 class Solution:
     def applyOperations(self, a: List[int]) -> List[int]:
-        j = 0
-        for i in range(len(a)):
-            if i+1<len(a) and a[i]==a[i+1]:
-                a[i] *= 2
-                a[i+1] = 0
-            if a[i]:
-                a[j],a[i] = a[i],a[j]
-                j += 1
-        return a
-
-# https://leetcode.com/problems/apply-operations-to-an-array/solutions/2783236/python-5-line-solution/?envType=daily-question&envId=2025-03-01
-
-class Solution:
-    def applyOperations(self, a: List[int]) -> List[int]:
-        for i in range(len(a)-1):
+        def f(i):
+            if not a[i+1:]:
+                return sorted(a,key=not_)
             if a[i]==a[i+1]:
-                a[i], a[i+1] = a[i]*2, 0
-        p = [i for i in a if i]
-        return p+[0]*(len(a)-len(p))
+                a[i]*=2
+                a[i+1] = 0
+            return f(i+1)
+        return f(0)
+
+class Solution:
+    def applyOperations(self, a: List[int]) -> List[int]:
+        return(f:=lambda i:(a[i]==a[i+1]and exec('a[i]*=2;a[i+1]=0'),f(i+1))[1]if a[i+1:]else sorted(a,key=not_))(0)
 
 # https://leetcode.com/problems/apply-operations-to-an-array/solutions/2784689/python3-simple-solution-list-comprehension/?envType=daily-question&envId=2025-03-01
 

@@ -1,19 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/apply-operations-to-an-array
-
-class Solution:
-    def applyOperations(self, a: List[int]) -> List[int]:
-        def f(i,r,z):
-            if i>=len(a):
-                return r+[0]*z
-            if i<len(a)-1 and a[i]==a[i+1]:
-                return f(i+2,r+[a[i]*2],z+1)
-            if a[i]==0:
-                return f(i+1,r,z+1)
-            return f(i+1,r+[a[i]],z)
-        return f(0,[],0)
-
 # https://leetcode.com/problems/apply-operations-to-an-array/solutions/2784689/python3-simple-solution-list-comprehension/?envType=daily-question&envId=2025-03-01
 
 class Solution:
@@ -22,19 +8,13 @@ class Solution:
             if a[i] == a[i+1]:
                 a[i] *= 2
                 a[i+1] = 0
-        return [x for x in a if x!=0] + [x for x in a if x==0]
+        return sorted(a,key=not_)
+
+# https://leetcode.com/problems/apply-operations-to-an-array/solutions/6479212/python-one-liner-code-golf/?envType=dail
 
 class Solution:
     def applyOperations(self, a: List[int]) -> List[int]:
-        [exec('a[i]*=2;a[i+1]=0')for i,(x,y)in enumerate(pairwise(a))if x==y];return sorted(a,key=not_)
-
-class Solution:
-    def applyOperations(self, a: List[int]) -> List[int]:
-        [exec('a[i]*=2;a[i+1]=0')for i in range(len(a)-1)if a[i]==a[i+1]];return sorted(a,key=not_)
-
-class Solution:
-    def applyOperations(self, a: List[int]) -> List[int]:
-        [a[i]-a[i+1]or exec('a[i]*=2;a[i+1]=0')for i in range(len(a)-1)];return sorted(a,key=not_)
+        return sorted(sum(((l:=len([*g]))//2*[k*2,0]+l%2*[k]for k,g in groupby(a)),[]),key=not_)
 
 class Solution:
     def applyOperations(self, a: List[int]) -> List[int]:

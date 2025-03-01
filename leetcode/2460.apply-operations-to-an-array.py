@@ -26,6 +26,10 @@ class Solution:
 
 class Solution:
     def applyOperations(self, a: List[int]) -> List[int]:
+        [exec('a[i]*=2;a[i+1]=0')for i,(x,y)in enumerate(pairwise(a))if x==y];return sorted(a,key=not_)
+
+class Solution:
+    def applyOperations(self, a: List[int]) -> List[int]:
         [exec('a[i]*=2;a[i+1]=0')for i in range(len(a)-1)if a[i]==a[i+1]];return sorted(a,key=not_)
 
 test('''

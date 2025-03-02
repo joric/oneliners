@@ -7,6 +7,24 @@ class Solution:
 # https://leetcode.com/problems/merge-two-2d-arrays-by-summing-values/solutions/6483556/two-pointers-one-line/?envType=daily-question&envId=2
 
 class Solution:
+    def mergeArrays(self, nums1: List[List[int]], nums2: List[List[int]]) -> List[List[int]]:
+        ans, p1, p2, n, m = [], 0, 0, len(nums1), len(nums2)
+        while p1 < n and p2 < m:   
+            if nums1[p1][0] < nums2[p2][0]:
+                ans.append(nums1[p1])
+                p1 += 1
+            elif nums1[p1][0] > nums2[p2][0]:
+                ans.append(nums2[p2])
+                p2 += 1
+            else:
+                ans.append([nums1[p1][0], nums1[p1][1] + nums2[p2][1]])
+                p1 += 1
+                p2 += 1
+        ans.extend(nums1[p1:])
+        ans.extend(nums2[p2:])
+        return ans
+
+class Solution:
     def mergeArrays(self, a: list[list[int]], b: list[list[int]]) -> list[list[int]]:
         c = Counter()
         for k,v in a+b:

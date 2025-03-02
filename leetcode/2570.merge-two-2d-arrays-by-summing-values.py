@@ -4,7 +4,7 @@ class Solution:
     def mergeArrays(self, a: list[list[int]], b: list[list[int]]) -> list[list[int]]:
         return sorted([[k,sum(v for x,v in a+b if x==k)]for k in{x for x,_ in a+b}])
 
-# https://leetcode.com/problems/merge-two-2d-arrays-by-summing-values/solutions/3205268/python-one-line/?envType=daily-question&envId=2025-03-02
+# https://leetcode.com/problems/merge-two-2d-arrays-by-summing-values/solutions/6483556/two-pointers-one-line/?envType=daily-question&envId=2
 
 class Solution:
     def mergeArrays(self, a: list[list[int]], b: list[list[int]]) -> list[list[int]]:

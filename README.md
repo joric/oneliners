@@ -1480,6 +1480,7 @@ class Solution:
 
 You can save a few characters using asterisk operator `*`.
 One `*` means "expand this as a list", two `**` means "expand this as a dictionary".
+Note with `**` you can only expand dictionaries, e.g. `{'a':1, **dict}`.
 
 * https://leetcode.com/problems/check-if-it-is-a-straight-line
 

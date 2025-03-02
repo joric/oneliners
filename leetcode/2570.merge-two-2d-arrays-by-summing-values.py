@@ -23,6 +23,10 @@ class Solution:
 
 class Solution:
     def mergeArrays(self, a: List[List[int]], b: List[List[int]]) -> List[List[int]]:
+        return sorted(add(*map(Counter,map(dict,(a,b)))).items())
+
+class Solution:
+    def mergeArrays(self, a: List[List[int]], b: List[List[int]]) -> List[List[int]]:
         c,d=Counter,dict;return sorted((c(d(a))+c(d(b))).items())
 
 class Solution:

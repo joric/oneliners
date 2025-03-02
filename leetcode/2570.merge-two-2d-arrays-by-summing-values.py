@@ -15,7 +15,15 @@ class Solution:
 
 class Solution:
     def mergeArrays(self, a: List[List[int]], b: List[List[int]]) -> List[List[int]]:
+        return sorted((Counter(dict(a))+Counter(dict(b))).items())
+
+class Solution:
+    def mergeArrays(self, a: List[List[int]], b: List[List[int]]) -> List[List[int]]:
         c,d=Counter,dict;return sorted((c(d(a))+c(d(b))).items())
+
+class Solution:
+    def mergeArrays(self, a: List[List[int]], b: List[List[int]]) -> List[List[int]]:
+        c=Counter;return sorted((c(dict(a))+c(dict(b))).items())
 
 test('''
 2570. Merge Two 2D Arrays by Summing Values

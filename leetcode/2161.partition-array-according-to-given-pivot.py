@@ -12,6 +12,10 @@ class Solution:
     def pivotArray(self, a: List[int], p: int) -> List[int]:
         return sorted(a,key=lambda x:(x>p)-(x<p))
 
+class Solution:
+    def pivotArray(self, a: List[int], p: int) -> List[int]:
+        return sorted(a,key=lambda x:(x>p,x==p))
+
 test('''
 2161. Partition Array According to Given Pivot
 Medium

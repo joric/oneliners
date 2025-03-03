@@ -6,7 +6,7 @@ class Solution:
     def pivotArray(self, a: List[int], p: int) -> List[int]:
         return [i for i in a if i<p] + [i for i in a if i==p] + [i for i in a if i>p]
 
-# https://leetcode.com/problems/partition-array-according-to-given-pivot/solutions/1765575/one-liner-brief-python3/
+# https://leetcode.com/problems/partition-array-according-to-given-pivot/solutions/6489688/one-line-solution/
 
 class Solution:
     def pivotArray(self, a: List[int], p: int) -> List[int]:

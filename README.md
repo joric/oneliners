@@ -1837,7 +1837,6 @@ class Solution:
 
 Python 3 lacks `cmp` (3-way compare) and sign function (`copysign(bool(x),x)` is too long), but you can use `(x>0)-(x<0)` for `sign(x)`
 and `(a>b)-(a<b)` for `cmp(a,b)`. Note you can use `-1,0,1` indexes for Python lists natively.
-Cmp sorting key may be reduced further to `key=(x>p,x==p)`.
 
 * https://leetcode.com/problems/stone-game-iii
 
@@ -1872,6 +1871,16 @@ You can replace `x>0` predicate with `0..__lt___` function and replace `x!=0` wi
 class Solution:
     def mergeNodes(self, h: Optional[ListNode]) -> Optional[ListNode]:
         return h.deserialize(str([sum(v)for k,v in groupby(eval(h.serialize(h)),bool)if k]))
+```
+
+Cmp as a sorting key may be reduced further to `key=(x>p,x==p)`.
+
+* https://leetcode.com/problems/partition-array-according-to-given-pivot
+
+```python
+class Solution:
+    def pivotArray(self, a: List[int], p: int) -> List[int]:
+        return sorted(a,key=lambda x:(x>p,x==p))
 ```
 
 ### Mode

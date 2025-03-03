@@ -1873,7 +1873,7 @@ class Solution:
         return h.deserialize(str([sum(v)for k,v in groupby(eval(h.serialize(h)),bool)if k]))
 ```
 
-Cmp as a sorting key may be reduced further to `key=(x>p,x==p)`.
+Cmp as a sorting key may be reduced further to a tuple `(x>p,x==p)`.
 
 * https://leetcode.com/problems/partition-array-according-to-given-pivot
 

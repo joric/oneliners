@@ -6,11 +6,7 @@ class Solution:
     def pivotArray(self, a: List[int], p: int) -> List[int]:
         return [i for i in a if i<p] + [i for i in a if i==p] + [i for i in a if i>p]
 
-# https://leetcode.com/problems/partition-array-according-to-given-pivot/solutions/4303693/python3-inplace-sort-o-n-log-n/?envType=daily-question&envId=2025-03-03
-
-class Solution:
-    def pivotArray(self, a: List[int], p: int) -> List[int]:
-        return sorted(a,key=lambda x:(x>p,x==p,x<p))
+# https://leetcode.com/problems/partition-array-according-to-given-pivot/solutions/2243219/python-fast-one-liner/?envType=daily-question&envId=2025-03-03
 
 class Solution:
     def pivotArray(self, a: List[int], p: int) -> List[int]:

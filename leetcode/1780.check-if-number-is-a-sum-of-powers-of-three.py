@@ -14,11 +14,23 @@ class Solution:
 
 class Solution:
     def checkPowersOfThree(self, n: int) -> bool:
+        return False if n%3==2 else self.checkPowersOfThree(n//3) if n>3 else True
+
+class Solution:
+    def checkPowersOfThree(self, n: int) -> bool:
         return next(n%3<1 for _ in[0]*n if n%3>1 or(n:=n//3)<1)
 
 class Solution:
     def checkPowersOfThree(self, n: int) -> bool:
+        return n<1 or n%3<2 and self.checkPowersOfThree(n//3)
+
+class Solution:
+    def checkPowersOfThree(self, n: int) -> bool:
         return'2'not in __import__('numpy').base_repr(n,3)
+
+class Solution:
+    def checkPowersOfThree(self, n: int) -> bool:
+        return(f:=lambda n:n<1 or n%3<2 and f(n//3))(n)
 
 test('''
 1780. Check if Number is a Sum of Powers of Three

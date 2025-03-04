@@ -44,7 +44,7 @@ class Solution:
 
 class Solution:
     def checkPowersOfThree(self, n: int) -> bool:
-        return all(n//3**i%3<2for i in range(99))
+        return all(n//3**i%3<2for i in range(16))
 
 test('''
 1780. Check if Number is a Sum of Powers of Three

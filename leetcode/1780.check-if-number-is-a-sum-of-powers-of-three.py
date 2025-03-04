@@ -28,6 +28,8 @@ class Solution:
     def checkPowersOfThree(self, n: int) -> bool:
         return'2'not in __import__('numpy').base_repr(n,3)
 
+# https://leetcode.com/problems/check-if-number-is-a-sum-of-powers-of-three/solutions/1258033/python-3-two-one-liners/?envType=daily-question&envId=2
+
 class Solution:
     def checkPowersOfThree(self, n: int) -> bool:
         while n:
@@ -39,6 +41,10 @@ class Solution:
 class Solution:
     def checkPowersOfThree(self, n: int) -> bool:
         return(f:=lambda n:n<1 or n%3<2 and f(n//3))(n)
+
+class Solution:
+    def checkPowersOfThree(self, n: int) -> bool:
+        return all(n//3**i%3<2for i in range(99))
 
 test('''
 1780. Check if Number is a Sum of Powers of Three

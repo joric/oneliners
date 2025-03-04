@@ -30,9 +30,11 @@ class Solution:
 
 class Solution:
     def checkPowersOfThree(self, n: int) -> bool:
-        while n and n%3<2:
+        while n:
+            if n%3==2:
+                return False
             n//=3
-        return n%3<2
+        return True
 
 class Solution:
     def checkPowersOfThree(self, n: int) -> bool:

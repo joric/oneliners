@@ -1,10 +1,6 @@
 from lc import *
 
-# https://leetcode.com/problems/count-total-number-of-colored-cells/solutions/4469467/one-line-mathematical-solution-very-easy/?envType=daily-question&envId=2025-03-05
-
-class Solution:
-    def coloredCells(self, n: int) -> int:
-        return(n**2-n)*2+1
+# https://leetcode.com/problems/count-total-number-of-colored-cells/solutions/3256196/java-c-python-cut-and-combine-o-1/?envType=daily-question&envId=2025-03-05
 
 class Solution:
     def coloredCells(self, n: int) -> int:

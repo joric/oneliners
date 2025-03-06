@@ -1,5 +1,19 @@
 from lc import *
 
+# https://leetcode.com/problems/find-missing-and-repeated-values/solutions/5051420/math-approach-using-sum-of-squares-o-1-space-step-by-step-math/?envType=daily-question&envId=2025-03-06
+
+class Solution:
+    def findMissingAndRepeatedValues(self, g: List[List[int]]) -> List[int]:
+        n = len(g)
+        t = sum(g,[])
+        s = sum(t)
+        q = sum(x*x for x in t)
+        e = n*n
+        c = -~e*e//2
+        d = s-c
+        r = (d+(q-(2*e+1)*c//3)//d)//2
+        return r,r-d
+
 # https://leetcode.com/problems/find-missing-and-repeated-values/
 
 class Solution:

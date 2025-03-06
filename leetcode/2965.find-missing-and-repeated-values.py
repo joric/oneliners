@@ -19,7 +19,6 @@ class Solution:
 class Solution:
     def findMissingAndRepeatedValues(self, g: List[List[int]]) -> List[int]:
         v = sorted(sum(g,[]))
-        b = 0
         a = next(x for x,g in groupby(v) if len([*g])>1)
         v.remove(a)
         b = sum(x for x in range(1,len(v)+2)) - sum(v)

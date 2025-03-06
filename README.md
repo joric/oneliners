@@ -2204,9 +2204,11 @@ Examples                                   | Results
 
 ## References
 
-* [They're not characters at all, they're just brilliant repositories of fantastic, killer one-liners (Stephen Fry interview)](https://youtu.be/8k2AbqTBxao?t=251)
 * [Don't Piss down my back and tell me it's raining: Notebook for Sarcastic, Witty, and Sharp Tongued One Liners](https://www.amazon.com/Dont-Piss-down-back-raining/dp/B08ZQGV1XH)
+* [They're not characters at all, they're just brilliant repositories of fantastic, killer one-liners](https://youtu.be/8k2AbqTBxao?t=251)
 * [Python One-Liners: Write Concise, Eloquent Python Like a Professional](https://www.amazon.com/Python-One-Liners-Concise-Eloquent-Professional/dp/1718500505)
-* [Python One-Liners - Concise Python Code](https://pythononeliners.com)
-* [Tips for Golfing in Python (Stack Overflow)](https://codegolf.stackexchange.com/questions/54/tips-for-golfing-in-python)
-* [One-line coder makes me depressed (Reddit)](https://redd.it/15wz7n7)
+* [Python One-Liners - Concise Python Code](https://www.amazon.com/gp/product/1718500505)
+* [One-line coder makes me depressed](https://redd.it/15wz7n7)
+* [Tips for Golfing in Python](https://codegolf.stackexchange.com/questions/54/tips-for-golfing-in-python)
+* [King of One-Liners](https://youtu.be/DbbKaM8_LUc)
+

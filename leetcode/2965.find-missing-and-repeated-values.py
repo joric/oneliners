@@ -32,11 +32,25 @@ class Solution:
 
 class Solution:
     def findMissingAndRepeatedValues(self, g: List[List[int]]) -> List[int]:
-        t=sum(g,[]);return sum(t)-sum({*t}),({*range(1,len(t)+1)}-{*t}).pop()
+        return sum(a:=sum(g,[]))-sum({*a}),({*range(1,len(a)+1)}-{*a}).pop()
+
+# https://leetcode.com/problems/find-missing-and-repeated-values/solutions/6504323/one-line-solution/?envType=daily-question&envId=2025-03-06
 
 class Solution:
     def findMissingAndRepeatedValues(self, g: List[List[int]]) -> List[int]:
-        return sum(t:=sum(g,[]))-sum({*t}),({*range(1,len(t)+1)}-{*t}).pop()
+        z=Counter(chain(*g));return itemgetter(2,0)({z[v]:v for v in range(1,len(g)**2+1)})
+
+class Solution:
+    def findMissingAndRepeatedValues(self, g: List[List[int]]) -> List[int]:
+        return(q:=mode(sum(g,[]))),q^reduce(xor,chain(range(1,len(g)**2+1),*g))
+
+class Solution:
+    def findMissingAndRepeatedValues(self, g: List[List[int]]) -> List[int]:
+        return mode(a:=sum(g,[])),(n:=len(a))*-~n//2-sum({*a})
+
+class Solution:
+    def findMissingAndRepeatedValues(self, g: List[List[int]]) -> List[int]:
+        return mode(a:=sum(g,[])),comb(len(a)+1,2)-sum({*a})
 
 test('''
 2965. Find Missing and Repeated Values

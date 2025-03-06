@@ -1887,6 +1887,18 @@ class Solution:
 
 Quite a few things become shorter with `statistics.mode` (most common value of discrete or nominal data).
 
+* https://leetcode.com/problems/find-missing-and-repeated-values
+
+```python
+class Solution:
+    def findMissingAndRepeatedValues(self, g: List[List[int]]) -> List[int]:
+        return sum(a:=sum(g,[]))-sum(b:={*a}),(n:=len(a))*(n+1)//2-sum({*a})
+
+class Solution:
+    def findMissingAndRepeatedValues(self, g: List[List[int]]) -> List[int]:
+        return mode(a:=sum(g,[])),comb(len(a)+1,2)-sum({*a})
+```
+
 * https://leetcode.com/problems/set-mismatch
 
 ```python

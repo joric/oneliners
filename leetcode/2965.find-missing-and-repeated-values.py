@@ -46,11 +46,12 @@ class Solution:
 
 class Solution:
     def findMissingAndRepeatedValues(self, g: List[List[int]]) -> List[int]:
-        return mode(a:=sum(g,[])),(n:=len(a))*-~n//2-sum({*a})
+        return sum(a:=sum(g,[]))-sum(b:={*a}),(n:=len(a))*(n+1)//2-sum({*a})
 
 class Solution:
     def findMissingAndRepeatedValues(self, g: List[List[int]]) -> List[int]:
         return mode(a:=sum(g,[])),comb(len(a)+1,2)-sum({*a})
+
 
 test('''
 2965. Find Missing and Repeated Values

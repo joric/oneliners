@@ -1892,7 +1892,7 @@ Quite a few things become shorter with `statistics.mode` (most common value of d
 ```python
 class Solution:
     def findMissingAndRepeatedValues(self, g: List[List[int]]) -> List[int]:
-        return sum(a:=sum(g,[]))-sum(b:={*a}),(n:=len(a))*(n+1)//2-sum({*a})
+        return sum(a:=sum(g,[]))-sum({*a}),(n:=len(a))*(n+1)//2-sum({*a})
 
 class Solution:
     def findMissingAndRepeatedValues(self, g: List[List[int]]) -> List[int]:

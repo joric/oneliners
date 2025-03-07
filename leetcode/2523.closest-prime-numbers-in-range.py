@@ -79,9 +79,49 @@ class Solution:
                     break
         return min(zip(p,p[1:]),key=lambda x:x[1]-x[0],default=[-1,-1])
 
+# 13 ms
+class Solution:
+    def closestPrimes(self, a: int, b: int) -> List[int]:
+        p=[]
+        def f(x,n,t):
+            if x>=n:
+                return
+            if all(x%i for i in range(2,isqrt(x)+1)):
+                p.append(x)
+                if x<=t+2:
+                    return
+                t = x
+            f(x+1,n,t)
+        f(max(2,a),b+1,-1)
+        return min([*zip(p,p[1:])],key=lambda x:x[1]-x[0],default=[-1,-1])
+
+# 13 ms
+class Solution:
+    def closestPrimes(self, a: int, b: int) -> List[int]:
+        def f(x,n,t=-1):
+            if x>=n:
+                return []
+            if all(x%i for i in range(2,isqrt(x)+1)):
+                if x<t+3:
+                    return [x]
+                return [x]+f(x+1,n,x)
+            return f(x+1,n,t)
+        return min([*zip(p:=f(max(2,a),b+1),p[1:])],key=lambda x:x[1]-x[0],default=[-1,-1])
+
+# 5000 ms
+class Solution:
+    def closestPrimes(self, a: int, b: int) -> List[int]:
+        f=lambda x,n,t=-1:x<n and(all(x%i for i in range(2,x))and [x]+f((x+1,n)[x<t+3],n,x)or f(x+1,n,t))or[];return min([*zip(p:=f(max(2,a),b+1),p[1:])],key=lambda x:x[1]-x[0],default=[-1,-1])
+
+# 13 ms
 class Solution:
     def closestPrimes(self, a: int, b: int) -> list[int]:
         p=[];any(all(x%i for i in range(2,isqrt(x)+1))and[p.append(x)]and p[2:]and p[-1]<=2+p[-2]for x in range(max(2,a),b+1));return min(zip(p,p[1:]),key=lambda x:x[1]-x[0],default=[-1,-1])
+
+# 5000 ms
+class Solution:
+    def closestPrimes(self, a: int, b: int) -> list[int]:
+        p,t=[],-1;any(all(x%i for i in range(2,x))and[p.append(x)]and t+3>(t:=x)for x in range(max(2,a),b+1));return min(zip(p,p[1:]),key=lambda x:x[1]-x[0],default=[-1,-1])
 
 test('''
 2523. Closest Prime Numbers in Range

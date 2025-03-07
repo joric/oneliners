@@ -4,24 +4,17 @@ from lc import *
 
 class Solution:
     def closestPrimes(self, a: int, b: int) -> List[int]:
-        p = [0,0]+[1]*(b-1)
-        b = b+1
-        [setitem(p,j,0)for i in range(2,isqrt(b)+1)for j in range(i*i,b,i)]
-        p = [i for i,p in enumerate(p)if p and a<=i<=b]
-        return[-1,-1]if len(p)<2 else min([*zip(p,p[1:])],key=lambda x:x[1]-x[0])
+        s = [0,0]+[1]*b
+        [setitem(s,j,0)for i in range(2,isqrt(b)+1)for j in range(i*i,b+1,i)]
+        p = [i for i,p in enumerate(s)if p and a<=i<=b]
+        return min(zip(p,p[1:]),key=lambda x:x[1]-x[0],default=[-1,-1])
 
-# TLE
 class Solution:
-    def closestPrimes(self, a: int, b: int) -> List[int]:
-        p = [i for i in range(a,b+1)if all(i%j for j in range(2,i))]
-        return 1<len(p)and min([*zip(p,p[1:])],key=lambda x:x[1]-x[0])or[-1,-1]
-
-# MLE
-class Solution:
-    def closestPrimes(self, a: int, b: int) -> List[int]:
-        s=set(r:=range(2,n:=b+1));[x in s and(s:=s-set(range(x**2,n,x)))for x in r]
-        p = sorted(x for x in s if a<=x<=b)
-        return 1<len(p)and min([*zip(p,p[1:])],key=lambda x:x[1]-x[0])or[-1,-1]
+    def closestPrimes(self, a: int, b: int) -> list[int]:
+        s=[0,0]+[1]*(n:=b+1)
+        any(setitem(s,slice(i*i,n,i),[0]*len(s[i*i:n:i]))for i in range(2,isqrt(n)+1))
+        p=sorted(i for i,x in enumerate(s)if x and a<=i<=b)
+        return min(zip(p,p[1:]),key=lambda x:x[1]-x[0],default=[-1,-1])
 
 # https://leetcode.com/problems/closest-prime-numbers-in-range/solutions/2979147/python-twin-primes-no-sieve/?envType=daily-question&envId=2025-03-07
 

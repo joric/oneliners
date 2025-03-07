@@ -23,51 +23,7 @@ class Solution:
         p = sorted(x for x in s if a<=x<=b)
         return 1<len(p)and min([*zip(p,p[1:])],key=lambda x:x[1]-x[0])or[-1,-1]
 
-class Solution:
-    def closestPrimes(self, a: int, b: int) -> List[int]:
-        p = [0,0]+[1]*b
-        [setitem(p,j,0)for i in range(2,isqrt(b+1)+1)for j in range(i*i,b+1,i)]
-        p = [i for i,p in enumerate(p)if p and a<=i<=b]
-        return[-1,-1]if len(p)<2 else min([*zip(p,p[1:])],key=lambda x:x[1]-x[0])
-
-# https://leetcode.com/problems/closest-prime-numbers-in-range/solutions/2977469/python-sieve-of-eratosthenes/?envType=daily-question&envId=2025-03-07
-
-class Solution:
-    def closestPrimes(self, a: int, b: int) -> list[int]:
-        p = [0]*(b+1)
-        t = -1
-        r =[-1,-1]
-        for i in range(2,b+1):
-            if not p[i]:
-                for j in range(i*2,b+1,i):
-                    p[j] = 1
-                if a<=i<=b:
-                    if t==-1:
-                        t = i
-                    elif r==[-1,-1]or i-t<r[1]-r[0]:
-                        r=[t,i]
-                    t = i
-        return r
-
 # https://leetcode.com/problems/closest-prime-numbers-in-range/solutions/2979147/python-twin-primes-no-sieve/?envType=daily-question&envId=2025-03-07
-
-class Solution:
-    def closestPrimes(self, a: int, b: int) -> list[int]:
-        def is_prime(x):
-            if x == 1:
-                return False
-            for i in range(2,isqrt(x)+1):
-                if x % i == 0:
-                    return False
-            return True
-        p = []
-        for x in range(a, b + 1):
-            if is_prime(x):
-                if p and x <= p[-1] + 2:
-                    return p[-1], x
-                p.append(x)
-
-        return min(((p[i-1],p[i]) for i in range(1,len(p))), key=lambda x:x[1]-x[0], default=[-1,-1])
 
 class Solution:
     def closestPrimes(self, a: int, b: int) -> list[int]:

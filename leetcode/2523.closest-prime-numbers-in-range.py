@@ -3,17 +3,17 @@ from lc import *
 # https://leetcode.com/problems/closest-prime-numbers-in-range/solutions/2982421/python-3-8-lines-w-example-xx/?envType=daily-question&envId=2025-03-07
 
 class Solution:
-    def closestPrimes(self, a: int, b: int) -> List[int]:
-        s = [0,0]+[1]*b
-        [setitem(s,j,0)for i in range(2,isqrt(b)+1)for j in range(i*i,b+1,i)]
-        p = [i for i,p in enumerate(s)if p and a<=i<=b]
-        return min(zip(p,p[1:]),key=lambda x:x[1]-x[0],default=[-1,-1])
-
-class Solution:
     def closestPrimes(self, a: int, b: int) -> list[int]:
         s=[0,0]+[1]*(n:=b+1)
         any(setitem(s,slice(i*i,n,i),[0]*len(s[i*i:n:i]))for i in range(2,isqrt(n)+1))
         p=sorted(i for i,x in enumerate(s)if x and a<=i<=b)
+        return min(zip(p,p[1:]),key=lambda x:x[1]-x[0],default=[-1,-1])
+
+class Solution:
+    def closestPrimes(self, a: int, b: int) -> List[int]:
+        s = [0,0]+[1]*b
+        [setitem(s,j,0)for i in range(2,isqrt(b)+1)for j in range(i*i,b+1,i)]
+        p = [i for i,p in enumerate(s)if p and a<=i<=b]
         return min(zip(p,p[1:]),key=lambda x:x[1]-x[0],default=[-1,-1])
 
 # https://leetcode.com/problems/closest-prime-numbers-in-range/solutions/2979147/python-twin-primes-no-sieve/?envType=daily-question&envId=2025-03-07

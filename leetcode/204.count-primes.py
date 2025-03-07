@@ -2,33 +2,29 @@ from lc import *
 
 # based on this https://stackoverflow.com/questions/10639861/python-prime-generator-in-one-line
 # also see https://blog.finxter.com/10-python-one-liners/
-# does not work (MLE)
 
+# MLE
 class Solution:
-    def countPrimes(self, n):
-        return len(reduce(lambda r,x:r-set(range(x**2,n,x))if x in r else r,range(2,isqrt(n)+1),set(range(2,n))))
-
-class Solution:
-    def countPrimes(self, n):
-        return len(reduce(lambda r,x:r-set(range(x**2,n,x))if x in r else r,range(2,n),set(range(2,n))))
-
-class Solution:
-    def countPrimes(self, n):
+    def countPrimes(self, n: int) -> int:
         g=range(2,n);return len(reduce(lambda r,x:r-set(range(x**2,n,x))if x in r else r,g,set(g)))
 
 # https://leetcode.com/problems/count-primes/discuss/111420/Python3-solution-using-Sieve-of-Eratosthenes-time-is-O(n)
 
 class Solution:
-    def countPrimes(self, n):
-        a = [0,0]+[1]*(n-2)
+    def countPrimes(self, n: int) -> int:
+        s = [0,0]+[1]*(n-2)
         for i in range(2,int(n**0.5)+1):
-            if a[i]:
-                a[i*i:n:i] = [0]*len(a[i*i:n:i])
-        return sum(a)
+            if s[i]:
+                s[i*i:n:i] = [0]*len(s[i*i:n:i])
+        return sum(s)
 
 class Solution:
-    def countPrimes(self, n):
-        return sum(reduce(lambda a,i:a[i] and setitem(a,slice(i*i,n,i),[0]*len(a[i*i:n:i])) or a, range(2,int(n**0.5)+1), [0,0]+[1]*(n-2)))
+    def countPrimes(self, n: int) -> int:
+        return sum(reduce(lambda s,i:setitem(s,slice(i*i,n,i),[0]*len(s[i*i:n:i]))or s,range(2,isqrt(n)+1),[0,0]+[1]*(n-2)))
+
+class Solution:
+    def countPrimes(self, n: int) -> int:
+        s=[0,0]+[1]*(n-2);[setitem(s,j,0)for i in range(2,isqrt(n)+1)for j in range(i*i,n,i)];return sum(s)
 
 test('''
 204. Count Primes

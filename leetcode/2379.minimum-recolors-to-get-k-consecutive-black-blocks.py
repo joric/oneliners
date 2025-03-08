@@ -29,6 +29,10 @@ class Solution:
     def minimumRecolors(self, b: str, k: int) -> int:
         return k-max(b[i:i+k].count('B')for i in range(len(b)))
 
+class Solution:
+    def minimumRecolors(self, b: str, k: int) -> int:
+        return k-max(b[i:i+k].count('B')for i in range(99))
+
 test('''
 2379. Minimum Recolors to Get K Consecutive Black Blocks
 Easy

@@ -23,6 +23,10 @@ class Solution:
 
 class Solution:
     def minimumRecolors(self, b: str, k: int) -> int:
+        return min(b[i:i+k].count('W')for i in range(len(b)-k+1))
+
+class Solution:
+    def minimumRecolors(self, b: str, k: int) -> int:
         return k-max(b[i:i+k].count('B')for i in range(len(b)))
 
 test('''

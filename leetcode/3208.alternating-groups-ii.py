@@ -6,50 +6,50 @@ from lc import *
 # https://leetcode.com/problems/alternating-groups-ii/solutions/5443075/python-3-one-line-fast-and-short/?envType=daily-question&envId=2025-03-09
 
 class Solution:
-    def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
-        n,g,c = len(a),0,1
+    def numberOfAlternatingGroups(self, c: List[int], k: int) -> int:
+        n,g,t = len(a),0,1
         for i in range(1,n+k-1):
-            if a[(i-1)%n]!=a[i%n]:
-                c += 1
+            if c[(i-1)%n]!=c[i%n]:
+                t += 1
             else:
-                c = 1
-            if c>=k:
+                t = 1
+            if t>=k:
                 g += 1
         return g
 
 # use negative indexes instead of mod
 
 class Solution:
-    def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
-        c=1;return sum(k<=(c:=1+c*(a[i]!=a[i-1]))for i in range(2-k,len(a)))
+    def numberOfAlternatingGroups(self, c: List[int], k: int) -> int:
+        t=1;return sum(k<=(t:=1+t*(c[i]!=c[i-1]))for i in range(2-k,len(c)))
 
 # concatenated list solutions
 
 class Solution:
-    def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
-       return sum(max(0,sum(g)-k+2)for x,g in groupby(starmap(ne,pairwise(a+a[:k-1])))if x)
+    def numberOfAlternatingGroups(self, c: List[int], k: int) -> int:
+       return sum(max(0,sum(g)-k+2)for x,g in groupby(starmap(ne,pairwise(c+c[:k-1])))if x)
 
 class Solution:
-    def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
-       return sum(x*max(0,sum(g)-k+2)for x,g in groupby(starmap(ne,pairwise(a+a[:k-1]))))
+    def numberOfAlternatingGroups(self, c: List[int], k: int) -> int:
+       return sum(x*max(0,sum(g)-k+2)for x,g in groupby(starmap(ne,pairwise(c+c[:k-1]))))
 
 class Solution:
-    def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
-        c=1;return sum(k<=(c:=1+c*(x!=y))for x,y in pairwise(a+a[:k-1]))
+    def numberOfAlternatingGroups(self, c: List[int], k: int) -> int:
+        t=1;return sum(k<=(t:=1+t*(x!=y))for x,y in pairwise(c+c[:k-1]))
 
 class Solution:
-    def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
-        c=1;return sum(k<=(c:=1+c*ne(*p))for p in pairwise(a+a[:k-1]))
+    def numberOfAlternatingGroups(self, c: List[int], k: int) -> int:
+        t=1;return sum(k<=(t:=1+t*ne(*p))for p in pairwise(c+c[:k-1]))
 
 # another approach
 
 class Solution:
-    def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
-        c=1;return sum(k<(c:=[c+1,2][l==r])for l,r in pairwise(a+a[:k]))
+    def numberOfAlternatingGroups(self, c: List[int], k: int) -> int:
+        t=1;return sum(k<(t:=[t+1,2][l==r])for l,r in pairwise(c+c[:k]))
 
 class Solution:
-    def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
-        c=1;return sum(k<(c:=~-c*ne(*p)+2)for p in pairwise(a+a[:k]))
+    def numberOfAlternatingGroups(self, c: List[int], k: int) -> int:
+        t=1;return sum(k<(t:=~-t*ne(*p)+2)for p in pairwise(c+c[:k]))
 
 test('''
 3208. Alternating Groups II

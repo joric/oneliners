@@ -17,6 +17,14 @@ class Solution:
                 g += 1
         return g
 
+# use negative indexes instead of mod
+
+class Solution:
+    def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
+        c=1;return sum(k<=(c:=1+c*(a[i]!=a[i-1]))for i in range(2-k,len(a)))
+
+# concatenated list solutions
+
 class Solution:
     def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
        return sum(max(0,sum(g)-k+2)for x,g in groupby(starmap(ne,pairwise(a+a[:k-1])))if x)
@@ -25,12 +33,6 @@ class Solution:
     def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
        return sum(x*max(0,sum(g)-k+2)for x,g in groupby(starmap(ne,pairwise(a+a[:k-1]))))
 
-# use negative indexes instead of mod
-class Solution:
-    def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
-        c=1;return sum(k<=(c:=1+c*(a[i]!=a[i-1]))for i in range(2-k,len(a)))
-
-# optimize concatenated list solutions
 class Solution:
     def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
         c=1;return sum(k<=(c:=1+c*(x!=y))for x,y in pairwise(a+a[:k-1]))

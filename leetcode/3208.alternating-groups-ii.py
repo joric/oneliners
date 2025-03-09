@@ -1,5 +1,8 @@
 from lc import *
 
+# ruby https://leetcode.com/problems/alternating-groups-ii/solutions/6515321/ruby-1-liner/
+# def number_of_alternating_groups(a, k) = (a+l=a[n=0,k-1]).count{ k <= n = (l==l=_1) ? 1 : n+1 }
+
 # https://leetcode.com/problems/alternating-groups-ii/solutions/5443075/python-3-one-line-fast-and-short/?envType=daily-question&envId=2025-03-09
 
 class Solution:

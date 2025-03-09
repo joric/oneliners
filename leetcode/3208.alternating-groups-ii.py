@@ -8,7 +8,44 @@ class Solution:
 
 class Solution:
     def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
-        c=1;return sum(k<=(c:=c*(a[i]!=a[i-1])+1)for i in range(-k+2,len(a)))
+       return sum(x*max(0,sum(g)-k+2)for x,g in groupby(starmap(ne,pairwise(a+a[:k-1]))))
+
+# https://leetcode.com/problems/alternating-groups-ii/solutions/5503485/sliding-window-time-o-n/
+
+class Solution:
+    def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
+        n,g,c = len(a),0,1
+        for i in range(1,n+k-1):
+            if a[(i-1)%n]!=a[i%n]:
+                c += 1
+            else:
+                c = 1
+            if c>=k:
+                g += 1
+        return g
+
+# use negative indexes instead of mod
+
+class Solution:
+    def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
+        n,g,c = len(a),0,1
+        for i in range(2-k,n):
+            c = 1 + c * (a[i]!=a[i-1])
+            if c>=k:
+                g += 1
+        return g
+
+class Solution:
+    def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
+        c=1;return sum(k<=(c:=1+c*(a[i]!=a[i-1]))for i in range(2-k,len(a)))
+
+class Solution:
+    def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
+        c=1;return sum(k<=(c:=1+c*(x!=y))for x,y in pairwise(a+a[:k-1]))
+
+class Solution:
+    def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
+        c=1;return sum(k<=(c:=1+c*ne(*p))for p in pairwise(a+a[:k-1]))
 
 test('''
 3208. Alternating Groups II

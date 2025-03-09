@@ -41,6 +41,12 @@ class Solution:
     def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
         c=1;return sum(k<=(c:=1+c*ne(*p))for p in pairwise(a+a[:k-1]))
 
+# another approach
+
+class Solution:
+    def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
+        c=1;return sum(k<(c:=[c+1,2][l==r])for l,r in pairwise(a+a[:k]))
+
 class Solution:
     def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
         c=1;return sum(k<(c:=~-c*ne(*p)+2)for p in pairwise(a+a[:k]))

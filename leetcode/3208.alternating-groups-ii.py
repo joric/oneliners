@@ -7,14 +7,6 @@ from lc import *
 
 class Solution:
     def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
-       return sum(max(0,sum(g)-k+2)for x,g in groupby(starmap(ne,pairwise(a+a[:k-1])))if x)
-
-class Solution:
-    def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
-       return sum(x*max(0,sum(g)-k+2)for x,g in groupby(starmap(ne,pairwise(a+a[:k-1]))))
-
-class Solution:
-    def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
         n,g,c = len(a),0,1
         for i in range(1,n+k-1):
             if a[(i-1)%n]!=a[i%n]:
@@ -28,16 +20,15 @@ class Solution:
 # use negative indexes instead of mod
 class Solution:
     def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
-        n,g,c = len(a),0,1
-        for i in range(2-k,n):
-            c = 1 + c * (a[i]!=a[i-1])
-            if c>=k:
-                g += 1
-        return g
+        c=1;return sum(k<=(c:=1+c*(a[i]!=a[i-1]))for i in range(2-k,len(a)))
 
 class Solution:
     def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
-        c=1;return sum(k<=(c:=1+c*(a[i]!=a[i-1]))for i in range(2-k,len(a)))
+       return sum(max(0,sum(g)-k+2)for x,g in groupby(starmap(ne,pairwise(a+a[:k-1])))if x)
+
+class Solution:
+    def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
+       return sum(x*max(0,sum(g)-k+2)for x,g in groupby(starmap(ne,pairwise(a+a[:k-1]))))
 
 class Solution:
     def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:

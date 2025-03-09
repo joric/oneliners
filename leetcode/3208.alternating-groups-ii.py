@@ -30,6 +30,7 @@ class Solution:
     def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
         c=1;return sum(k<=(c:=1+c*(a[i]!=a[i-1]))for i in range(2-k,len(a)))
 
+# optimize concatenated list solutions
 class Solution:
     def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
         c=1;return sum(k<=(c:=1+c*(x!=y))for x,y in pairwise(a+a[:k-1]))

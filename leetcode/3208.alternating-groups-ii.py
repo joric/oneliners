@@ -13,8 +13,6 @@ class Solution:
     def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
        return sum(x*max(0,sum(g)-k+2)for x,g in groupby(starmap(ne,pairwise(a+a[:k-1]))))
 
-# https://leetcode.com/problems/alternating-groups-ii/solutions/5503485/sliding-window-time-o-n/
-
 class Solution:
     def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
         n,g,c = len(a),0,1
@@ -28,7 +26,6 @@ class Solution:
         return g
 
 # use negative indexes instead of mod
-
 class Solution:
     def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
         n,g,c = len(a),0,1
@@ -49,6 +46,10 @@ class Solution:
 class Solution:
     def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
         c=1;return sum(k<=(c:=1+c*ne(*p))for p in pairwise(a+a[:k-1]))
+
+class Solution:
+    def numberOfAlternatingGroups(self, a: List[int], k: int) -> int:
+        c=1;return sum(k<(c:=~-c*ne(*p)+2)for p in pairwise(a+a[:k]))
 
 test('''
 3208. Alternating Groups II

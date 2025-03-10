@@ -36,7 +36,7 @@ class Solution:
     def countOfSubstrings(self, w: str, k: int) -> int:
         n=len(w);p,t,c,s,r=[0]*(n+1),'aeiou',Counter(),0,0;any(setitem(p,i,p[i+1]+1)for i in range(n-1,-1,-1)if w[i]in t);any(setitem(c,x,c[x]+1)or all(all(1<=c[v]for v in t)and(q:=(e-s+1)-sum(c[v]for v in t))>=k and(q==k and(r:=r+1+p[e+1]),setitem(c,w[s],c[w[s]]-1),s:=s+1)for _ in w)for e,x in enumerate(w));return r
 
-# https://leetcode.com/problems/count-of-substrings-containing-every-vowel-and-k-consonants-ii/?envType=daily-question&envId=2025-03-10
+# https://leetcode.com/problems/count-of-substrings-containing-every-vowel-and-k-consonants-ii/solutions/6520375/beats-95-very-easy-java-solution-give-it-a-try/?envType=daily-question&env
 
 class Solution:
     def countOfSubstrings(self, w: str, k: int) -> int:
@@ -72,6 +72,7 @@ class Solution:
                 r += min(q[0]if k else inf,*d)-j
         return r
 
+# 2000 ms
 class Solution:
     def countOfSubstrings(self, w: str, k: int) -> int:
         j,t,q,d=-1,'aeiou',deque(),[-1]*5;return sum(k==len(q)and j<min(d)and min(q[0]if k else inf,*d)-j for i,c in enumerate(w)if c in t and[setitem(d,t.find(c),i)]or(q.append(i),all(k<len(q)and(j:=q.popleft())for _ in w)))

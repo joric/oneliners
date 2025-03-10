@@ -1,36 +1,19 @@
 from lc import *
 
-# 2404 ms
+# https://leetcode.com/problems/count-of-substrings-containing-every-vowel-and-k-consonants-ii/solutions/6519286/c-solution-using-subset-logic/?envType=daily-question&envId=2025-03-10
+
 class Solution:
-    def countOfSubstrings(self, word: str, k: int) -> int:
-        result = z = count = left = 0
-        ans = Counter()
-        vowel = {*'aeiou'}
-
-        for i, ch in enumerate(word):
-            if ch in vowel: ans[ch] += 1
-            else: 
-                z += 1
-                count = 0
-
-            while z > k:
-                if word[left] not in vowel:
-                    z -= 1
-                else:
-                    ans[word[left]] -= 1
-                    ans = +ans
-                left += 1
-
-            while len(ans) == len(vowel) and z == k:
-                count += 1
-                if word[left] in vowel:
-                    ans[word[left]] -= 1
-                    ans = +ans
-                else:
-                    z -= 1
-                left += 1
-            result += count
-        return result
+    def countOfSubstrings(self, w: str, k: int) -> int:
+        def f(i):
+            c=p=r=0;t,d='aeiou',Counter()
+            for j in range(len(w)):
+                w[j] in t and[d.update(w[j])]or(c:=c+1)
+                while len(d)==len(t)and c>=i:
+                    r+=len(w)-j
+                    w[p] in t and(d:=d+Counter({w[p]:-1}))or(c:=c-1)
+                    p+=1
+            return r
+        return f(k)-f(k+1)
 
 # https://leetcode.com/problems/count-of-substrings-containing-every-vowel-and-k-consonants-ii/solutions/6092551/python-shortest-solution-with-sidling-window-and-dp/?envType=daily-question&envId=2025-03-10
 
@@ -48,26 +31,10 @@ class Solution:
                 start += 1
         return res
 
-class Solution:
-    def countOfSubstrings(self, w: str, k: int) -> int:
-        n=len(w);p,t,c,s,r=[0]*(n+1),'aeiou',Counter(),0,0
-        for i in range(n-1,-1,-1):
-            if w[i] in t:
-                p[i] = 1 + p[i+1]
-        for e,x in enumerate(w):
-            c[x] += 1
-            while all(1<=c[v]for v in t)and(q:=(e-s+1)-sum(c[v]for v in t))>=k:
-                if q==k:
-                    r += 1+p[e+1]
-                c[w[s]] -= 1
-                s += 1
-        return r
-
 # 9843 ms
 class Solution:
     def countOfSubstrings(self, w: str, k: int) -> int:
         n=len(w);p,t,c,s,r=[0]*(n+1),'aeiou',Counter(),0,0;any(setitem(p,i,p[i+1]+1)for i in range(n-1,-1,-1)if w[i]in t);any(setitem(c,x,c[x]+1)or all(all(1<=c[v]for v in t)and(q:=(e-s+1)-sum(c[v]for v in t))>=k and(q==k and(r:=r+1+p[e+1]),setitem(c,w[s],c[w[s]]-1),s:=s+1)for _ in w)for e,x in enumerate(w));return r
-
 
 test('''
 3306. Count of Substrings Containing Every Vowel and K Consonants II

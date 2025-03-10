@@ -57,6 +57,25 @@ class Solution:
     def countOfSubstrings(self, w: str, k: int) -> int:
         j,t,q,d=-1,'aeiou',deque(),{};return sum((c in t and[setitem(d,c,i)]or(q.append(i),all(k<len(q)and(j:=q.popleft())for _ in w)),(k==len(q)and j<min(d.get(v,-1)for v in t))and min(q[0]if k else inf,*d.values())-j or 0)[1]for i,c in enumerate(w))
 
+
+class Solution:
+    def countOfSubstrings(self, w: str, k: int) -> int:
+        r,j,t,q,d=0,-1,'aeiou',deque(),[-1]*5
+        for i,c in enumerate(w):
+            if c in t:
+                d[t.find(c)] = i
+            else:
+                q.append(i)
+                if len(q) > k:
+                    j = q.popleft()
+            if k==len(q)and j<min(d):
+                r += min(q[0]if k else inf,*d)-j
+        return r
+
+class Solution:
+    def countOfSubstrings(self, w: str, k: int) -> int:
+        j,t,q,d=-1,'aeiou',deque(),[-1]*5;return sum(k==len(q)and j<min(d)and min(q[0]if k else inf,*d)-j for i,c in enumerate(w)if c in t and[setitem(d,t.find(c),i)]or(q.append(i),all(k<len(q)and(j:=q.popleft())for _ in w)))
+
 test('''
 3306. Count of Substrings Containing Every Vowel and K Consonants II
 Medium

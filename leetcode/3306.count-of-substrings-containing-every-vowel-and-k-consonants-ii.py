@@ -66,7 +66,7 @@ class Solution:
                 d[t.find(c)] = i
             else:
                 q.append(i)
-                if len(q) > k:
+                if k<len(q):
                     j = q.popleft()
             if k==len(q)and j<min(d):
                 r += min(q[0]if k else inf,*d)-j

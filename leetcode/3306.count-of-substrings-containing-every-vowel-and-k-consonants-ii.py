@@ -72,10 +72,9 @@ class Solution:
                 r += min(q[0]if k else inf,*d)-j
         return r
 
-# 2000 ms
 class Solution:
     def countOfSubstrings(self, w: str, k: int) -> int:
-        j,t,q,d=-1,'aeiou',deque(),[-1]*5;return sum(k==len(q)and j<min(d)and min(q[0]if k else inf,*d)-j for i,c in enumerate(w)if c in t and[setitem(d,t.find(c),i)]or(q.append(i),all(k<len(q)and(j:=q.popleft())for _ in w)))
+        j,t,q,d=-1,'aeiou',deque(),[-1]*5;return sum(k==len(q)and j<min(d)and min(q[0]if k else inf,*d)-j for i,c in enumerate(w)if c in t and[setitem(d,t.find(c),i)]or(q.append(i),k<len(q)and(j:=q.popleft())))
 
 test('''
 3306. Count of Substrings Containing Every Vowel and K Consonants II
@@ -123,6 +122,15 @@ word[0..5], which is "ieaouq".
 word[6..11], which is "qieaou".
 word[7..12], which is "ieaouq".
  
+
+Other examples:
+
+Input: word = "biuaoe", k = 1
+Output: 1
+
+Input: word = "auoeia", k = 0
+Output: 3
+
 
 Constraints:
 

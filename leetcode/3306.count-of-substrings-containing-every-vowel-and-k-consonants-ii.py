@@ -1,40 +1,36 @@
 from lc import *
 
-# fastest 
-
+# 2404 ms
 class Solution:
-    def countOfSubstrings(self, w: str, k: int) -> int:
-        res = 0
-        t = set('aeiou')
-        n = len(w)
-        d = Counter()
-        lo, hi, cnt = 0, 0, 0
+    def countOfSubstrings(self, word: str, k: int) -> int:
+        result = z = count = left = 0
+        ans = Counter()
+        vowel = {*'aeiou'}
 
-        for c in w:
-            if c in t:
-                d[c] += 1
-            else:
-                cnt += 1
+        for i, ch in enumerate(word):
+            if ch in vowel: ans[ch] += 1
+            else: 
+                z += 1
+                count = 0
 
-            while cnt > k:
-                if w[hi] in t:
-                    d += Counter({w[hi]:-1})
+            while z > k:
+                if word[left] not in vowel:
+                    z -= 1
                 else:
-                    cnt -= 1
-                hi += 1
-                lo = hi
+                    ans[word[left]] -= 1
+                    ans = +ans
+                left += 1
 
-            while cnt == k and hi < n:
-                if w[hi] in t and d[w[hi]] > 1:
-                    d += Counter({w[hi]:-1})
-                    hi += 1
+            while len(ans) == len(vowel) and z == k:
+                count += 1
+                if word[left] in vowel:
+                    ans[word[left]] -= 1
+                    ans = +ans
                 else:
-                    break
-
-            if cnt == k and len(d) == 5:
-                res += hi - lo + 1
-
-        return res
+                    z -= 1
+                left += 1
+            result += count
+        return result
 
 # https://leetcode.com/problems/count-of-substrings-containing-every-vowel-and-k-consonants-ii/solutions/6092551/python-shortest-solution-with-sidling-window-and-dp/?envType=daily-question&envId=2025-03-10
 

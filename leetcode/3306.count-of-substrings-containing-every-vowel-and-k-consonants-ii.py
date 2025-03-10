@@ -1,5 +1,41 @@
 from lc import *
 
+# fastest 
+
+class Solution:
+    def countOfSubstrings(self, w: str, k: int) -> int:
+        res = 0
+        t = set('aeiou')
+        n = len(w)
+        d = Counter()
+        lo, hi, cnt = 0, 0, 0
+
+        for c in w:
+            if c in t:
+                d[c] += 1
+            else:
+                cnt += 1
+
+            while cnt > k:
+                if w[hi] in t:
+                    d += Counter({w[hi]:-1})
+                else:
+                    cnt -= 1
+                hi += 1
+                lo = hi
+
+            while cnt == k and hi < n:
+                if w[hi] in t and d[w[hi]] > 1:
+                    d += Counter({w[hi]:-1})
+                    hi += 1
+                else:
+                    break
+
+            if cnt == k and len(d) == 5:
+                res += hi - lo + 1
+
+        return res
+
 # https://leetcode.com/problems/count-of-substrings-containing-every-vowel-and-k-consonants-ii/solutions/6092551/python-shortest-solution-with-sidling-window-and-dp/?envType=daily-question&envId=2025-03-10
 
 class Solution:
@@ -35,6 +71,7 @@ class Solution:
 class Solution:
     def countOfSubstrings(self, w: str, k: int) -> int:
         n=len(w);p,t,c,s,r=[0]*(n+1),'aeiou',Counter(),0,0;any(setitem(p,i,p[i+1]+1)for i in range(n-1,-1,-1)if w[i]in t);any(setitem(c,x,c[x]+1)or all(all(1<=c[v]for v in t)and(q:=(e-s+1)-sum(c[v]for v in t))>=k and(q==k and(r:=r+1+p[e+1]),setitem(c,w[s],c[w[s]]-1),s:=s+1)for _ in w)for e,x in enumerate(w));return r
+
 
 test('''
 3306. Count of Substrings Containing Every Vowel and K Consonants II

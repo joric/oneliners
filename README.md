@@ -129,7 +129,7 @@ You can set your own execution time using `atexit` (worked in March 2025):
 * https://leetcode.com/discuss/post/6269419/0ms-bug-leetcode-by-phamvietanhvietnames-tuj2/
 
 ```python
-__import__('atexit').register(lambda: open("display_runtime.txt", "w").write("0"))
+__import__('atexit').register(lambda: open("display_runtime.txt", "w").write("0")) # 0 ... 2^31-1
 ```
 
 ### Minus-two-liners

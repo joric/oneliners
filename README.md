@@ -124,7 +124,7 @@ import subprocess
 print(subprocess.run(["ls", "-la", "/"]))
 ```
 
-You can fix your own execution time using `atexit` (March 2025):
+You can set your own execution time using `atexit` (March 2025):
 
 * https://leetcode.com/discuss/post/6269419/0ms-bug-leetcode-by-phamvietanhvietnames-tuj2/
 

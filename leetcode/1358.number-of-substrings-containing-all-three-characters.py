@@ -37,6 +37,10 @@ class Solution:
     def numberOfSubstrings(self, s: str) -> int:
         d=[-1]*3;return comb(len(s)+1,2)-sum(setitem(d,'abc'.find(c),i)or i-min(d)for i,c in enumerate(s))
 
+class Solution:
+    def numberOfSubstrings(self, s: str) -> int:
+        d=[-1]*3;return sum(setitem(d,'abc'.find(c),i)or 1+min(d)for i,c in enumerate(s))
+
 test('''
 1358. Number of Substrings Containing All Three Characters
 Solved

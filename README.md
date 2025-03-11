@@ -129,8 +129,7 @@ You can fix your own execution time using `atexit` (worked in March 2025):
 * https://leetcode.com/discuss/post/6269419/0ms-bug-leetcode-by-phamvietanhvietnames-tuj2/
 
 ```python
-import("atexit").register(lambda: open("display_runtime.txt", "w").write("0")) # make python run at 0ms
-
+__import__('atexit').register(lambda: open("display_runtime.txt", "w").write("0"))
 ```
 
 ### Minus-two-liners

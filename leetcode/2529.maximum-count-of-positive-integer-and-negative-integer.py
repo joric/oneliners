@@ -25,6 +25,10 @@ class Solution:
     def maximumCount(self, a: List[int]) -> int:
         return max(sum(map(f,a,repeat(0)))for f in(lt,gt))
 
+class Solution:
+    def maximumCount(self, a: List[int]) -> int:
+        return max(sum(f(x,0)for x in a)for f in(lt,gt))
+
 test('''
 2529. Maximum Count of Positive Integer and Negative Integer
 Easy

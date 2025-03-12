@@ -12,14 +12,9 @@ class Solution:
     def maximumCount(self, a: List[int]) -> int:
         return max(sum(map((0).__lt__,a)),sum(map((0).__gt__,a)))
 
-# -2 if remove spaces after 0
 class Solution:
     def maximumCount(self, a: List[int]) -> int:
         return max(sum(x>0 for x in a),sum(x<0 for x in a))
-
-class Solution:
-    def maximumCount(self, a: List[int]) -> int:
-        return max(sum(map(f,a,[0]*len(a)))for f in(lt,gt))
 
 class Solution:
     def maximumCount(self, a: List[int]) -> int:

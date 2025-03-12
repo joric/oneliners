@@ -10,10 +10,6 @@ class Solution:
 
 class Solution:
     def maximumCount(self, a: List[int]) -> int:
-        return max(sum(map((0).__lt__,a)),sum(map((0).__gt__,a)))
-
-class Solution:
-    def maximumCount(self, a: List[int]) -> int:
         return max(sum(x>0 for x in a),sum(x<0 for x in a))
 
 class Solution:

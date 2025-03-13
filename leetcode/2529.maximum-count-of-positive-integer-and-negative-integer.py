@@ -3,8 +3,8 @@ from lc import *
 # https://leetcode.com/problems/maximum-count-of-positive-integer-and-negative-integer/solutions/6526047/beat-100-python-one-line-solution/?envType=daily-question&envId=2025-03-12
 
 class Solution:
-    def maximumCount(self, nums: List[int]) -> int:
-        return max(bisect_left(nums, 0), len(nums)-bisect_right(nums, 0))
+    def maximumCount(self, a: List[int]) -> int:
+        return max(bisect_left(a,0),len(a)-bisect_right(a,0))
 
 # https://leetcode.com/problems/maximum-count-of-positive-integer-and-negative-integer/solutions/3016922/python3-one-line/?envType=daily-question&envId=2025-03-12
 
@@ -19,6 +19,10 @@ class Solution:
 class Solution:
     def maximumCount(self, a: List[int]) -> int:
         return max(sum(f(x,0)for x in a)for f in(lt,gt))
+
+class Solution:
+    def maximumCount(self, a: List[int]) -> int:
+        return max(l:=bisect_left(a,0),sum(map(bool,a[l:])))
 
 test('''
 2529. Maximum Count of Positive Integer and Negative Integer

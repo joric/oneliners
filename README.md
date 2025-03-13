@@ -346,6 +346,8 @@ Counters (`collections.Counter()`) can be updated, similar to `dict.update()`, i
 E.g. `c[i]+=1` is equivalent to `c.update([i])`, `c[i]-=1` is `c.update({i:-1})`.
 To delete a key you can use the `.pop` method (same as `del`), it's shorter than `popitem()`.
 
+Note that `c.update({i:x})` and `setitem(c,i,c[i]+x)` behaves differently. If x is negative and count becomes `<=0`, the key is removed.
+
 You can easily remove zero and negative values from a counter (it's the official way, see [documentation](https://docs.python.org/3/library/collections.html#collections.Counter)):
 
 ```python

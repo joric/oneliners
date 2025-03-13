@@ -340,6 +340,21 @@ class Solution:
         return sum(map(ne,*[iter(s)]*2))
 ```
 
+### Dictionaries
+
+Starting from python version 3.7 dictionary order is guaranteed to be insertion order.
+
+* Implementation proposal: https://mail.python.org/pipermail/python-dev/2012-December/123028.html
+
+A simple Hash Table consists of key-value pair arranged in pseudo random order based on the calculations from Hash Function.
+The traditional implementation of python dict used a sparse array which had lots of unused spaces in between.
+The new implementation uses a combination of dense array and sparse array,
+the dense array stores the key-value pair while the sparse array stores the indices to this dense array.
+
+* Faster iteration (up to 2x faster, https://mail.python.org/pipermail/python-dev/2017-December/151283.html)
+* Order is maintained on iterating and converting a dictionary to other data type.
+* Less memory required for both usage and creation of dictionaries.
+
 ### Counters
 
 Counters (`collections.Counter()`) can be updated, similar to `dict.update()`, it's much faster than a sum of counters.
@@ -348,7 +363,7 @@ To delete a key you can use the `.pop` method (same as `del`), it's shorter than
 
 Note that `c.update({i:x})` and `setitem(c,i,c[i]+x)` behaves differently. If x is negative and count becomes `<=0`, the key is removed.
 
-You can easily remove zero and negative values from a counter (it's the official way, see [documentation](https://docs.python.org/3/library/collections.html#collections.Counter)):
+You can also remove zero and negative values manually (there is an the official way, see [documentation](https://docs.python.org/3/library/collections.html#collections.Counter)):
 
 ```python
 c = Counter({1:1,2:0,3:-1}); print(c:=+c) #{1: 1}, same as c += Counter()

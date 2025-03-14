@@ -23,6 +23,10 @@ class Solution:
     def maximumCandies(self, c: List[int], k: int) -> int:
         return bisect_left(range(sum(c)//k),1,key=lambda m:sum(x//-~m for x in c)<k)
 
+class Solution:
+    def maximumCandies(self, c: List[int], k: int) -> int:
+        return bisect_left(range(9**8),1,key=lambda m:sum(x//-~m for x in c)<k)
+
 test('''
 2226. Maximum Candies Allocated to K Children
 Medium

@@ -49,6 +49,11 @@ Output: 0
 Explanation: There are 11 children but only 7 candies in total, so it is impossible to ensure each child receives at least one candy. Thus, each child gets no candy and the answer is 0.
  
 
+Other examples:
+
+Input: candies = [4,7,5], k = 16
+Output: 1
+
 Constraints:
 
 1 <= candies.length <= 105

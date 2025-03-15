@@ -27,11 +27,7 @@ class Solution:
 
 class Solution:
     def minCapability(self, a: List[int], k: int) -> int:
-        return bisect_right(range(max(a)),0,key=lambda c,s=0:sum(s:=s==0 and v<=c for v in a)>=k)
-
-class Solution:
-    def minCapability(self, a: List[int], k: int) -> int:
-        return bisect_right(range(10**9),0,key=lambda c,s=0:sum(s:=s==0 and v<=c for v in a)>=k)
+        return bisect_right(range(10**9),0,key=lambda m,t=0:sum(t:=t<1and m>=x for x in a)>=k)
 
 test('''
 2560. House Robber IV

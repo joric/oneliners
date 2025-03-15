@@ -2107,7 +2107,7 @@ class Solution:
 ### Default arguments
 
 Default arguments in Python are mutable and they're static across all calls (see [Jackson Gabbard - Coding Interview Problem: Dinner Party](https://youtu.be/3teHU4n-czU?t=334)).
-You can use that to your advantage, e.g. make a trigger that fires only once.
+You can use that to your advantage, e.g. make a counter or a trigger that fires only once.
 
 * https://leetcode.com/problems/house-robber-iv
 

@@ -2104,19 +2104,6 @@ class Solution:
         a.sort();return sum((x:=a.pop(),insort(a,-(-x//3)))[0]for _ in range(k))
 ```
 
-### Default arguments
-
-Default arguments in Python are mutable and they're static across all calls (see [Jackson Gabbard - Coding Interview Problem: Dinner Party](https://youtu.be/3teHU4n-czU?t=334)).
-You can use that to your advantage, e.g. make a counter or a trigger that fires only once.
-
-* https://leetcode.com/problems/house-robber-iv
-
-```python
-class Solution:
-    def minCapability(self, a: List[int], k: int) -> int:
-        return bisect_left(range(10**9),1,key=lambda m,t=0:sum(t:=(1-t)*(m>=x)for x in a)>=k)
-```
-
 ## Tables
 
 ### Operators

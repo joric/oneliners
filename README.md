@@ -2106,8 +2106,8 @@ class Solution:
 
 ### Default arguments
 
-You can take advantage of the fact that default arguments in Python are mutable and they're static across all calls (see [Jackson Gabbard - Coding Interview Problem: Dinner Party](https://youtu.be/3teHU4n-czU?t=334)).
-You can also use that to make a trigger that fires only once.
+Default arguments in Python are mutable and they're static across all calls (see [Jackson Gabbard - Coding Interview Problem: Dinner Party](https://youtu.be/3teHU4n-czU?t=334)).
+You can use that to your advantage, e.g. make a trigger that fires only once.
 
 * https://leetcode.com/problems/house-robber-iv
 

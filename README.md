@@ -2116,8 +2116,6 @@ class Solution:
     def repairCars(self, r: List[int], c: int) -> int:
         return bisect_left(range(c*c*min(r)),c,key=lambda m:sum(isqrt(m//x)for x in r))
 
-# note that `list(9**15)` results in `Memory error` right away
-
 class Solution:
     def repairCars(self, r: List[int], c: int) -> int:
         return bisect_left(range(9**15),c,key=lambda m:sum(isqrt(m//x)for x in r))

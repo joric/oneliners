@@ -2111,7 +2111,6 @@ Range in python 3 has random access optimization, so you can save a few characte
 * https://leetcode.com/problems/minimum-time-to-repair-cars/
 
 ```python
-
 class Solution:
     def repairCars(self, r: List[int], c: int) -> int:
         return bisect_left(range(c*c*min(r)),c,key=lambda m:sum(isqrt(m//x)for x in r))

@@ -2107,6 +2107,7 @@ class Solution:
 ### Range
 
 Range in python 3 has random access optimization, so you can save a few characters on calculating exact range for binary search.
+There will be no `memory error` for large ranges if you don't explicitly convert a range to a list.
 
 * https://leetcode.com/problems/minimum-time-to-repair-cars/
 

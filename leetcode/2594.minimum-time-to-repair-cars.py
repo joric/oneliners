@@ -10,6 +10,8 @@ class Solution:
     def repairCars(self, r: List[int], c: int) -> int:
         return bisect_left(range(10**14),c,key=lambda m:sum(isqrt(m//x)for x in r))
 
+# 10**14 can also be replaced with 8**16 or 1<<47
+
 class Solution:
     def repairCars(self, r: List[int], c: int) -> int:
         return bisect_left(range(9**15),c,key=lambda m:sum(isqrt(m//x)for x in r))

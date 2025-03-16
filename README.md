@@ -723,7 +723,7 @@ UndergroundSystem=type('',(),{'h':{},'m':{},'checkIn':lambda s,i,v,t:setitem(s.m
 
 Binary search can be replaced by the built-in `bisect` methods.
 Custom binary search can use either an item getter object or a key function (since Python 3.10).
-Stock bisect implementation is in [bisect.py](https://github.com/python/cpython/blob/main/Lib/bisect.py) (read it please).
+Stock bisect implementation is in [bisect.py](https://github.com/python/cpython/blob/main/Lib/bisect.py) (you need to learn it).
 
 * https://leetcode.com/problems/guess-number-higher-or-lower
 

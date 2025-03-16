@@ -778,6 +778,21 @@ class Solution:
 
 ```
 
+Range in python 3 has random access optimization, so you can save a few characters on calculating exact range for binary search.
+There will be no `memory error` for large ranges if you don't explicitly convert a range to a list.
+
+* https://leetcode.com/problems/minimum-time-to-repair-cars/
+
+```python
+class Solution:
+    def repairCars(self, r: List[int], c: int) -> int:
+        return bisect_left(range(c*c*min(r)),c,key=lambda m:sum(isqrt(m//x)for x in r))
+
+class Solution:
+    def repairCars(self, r: List[int], c: int) -> int:
+        return bisect_left(range(9**15),c,key=lambda m:sum(isqrt(m//x)for x in r))
+```
+
 ### While loops
 
 While loops are not very oneliner-friendly. You can use `next()` function with an endless `count()` generator.
@@ -2102,23 +2117,6 @@ class Solution:
 class Solution:
     def maxKelements(self, a: List[int], k: int) -> int:
         a.sort();return sum((x:=a.pop(),insort(a,-(-x//3)))[0]for _ in range(k))
-```
-
-### Range
-
-Range in python 3 has random access optimization, so you can save a few characters on calculating exact range for binary search.
-There will be no `memory error` for large ranges if you don't explicitly convert a range to a list.
-
-* https://leetcode.com/problems/minimum-time-to-repair-cars/
-
-```python
-class Solution:
-    def repairCars(self, r: List[int], c: int) -> int:
-        return bisect_left(range(c*c*min(r)),c,key=lambda m:sum(isqrt(m//x)for x in r))
-
-class Solution:
-    def repairCars(self, r: List[int], c: int) -> int:
-        return bisect_left(range(9**15),c,key=lambda m:sum(isqrt(m//x)for x in r))
 ```
 
 ## Tables

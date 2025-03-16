@@ -1,11 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/minimum-time-to-repair-cars/solutions/3321055/python-3-3-lines-bisect-left-t-s-58-54/?envType=daily-question&envId=2025-03-16
-
-class Solution:
-    def repairCars(self, r: List[int], c: int) -> int:
-        return bisect_left(range(c*c*min(r)),c,key=lambda m:sum(isqrt(m//x)for x in r))
-
 # https://leetcode.com/problems/minimum-time-to-repair-cars/solutions/3311975/c-java-python3-binary-search-1-liner/?envType=daily-question&envId=2025-03-16
 
 class Solution:

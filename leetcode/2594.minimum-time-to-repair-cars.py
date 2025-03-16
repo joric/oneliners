@@ -4,6 +4,10 @@ from lc import *
 
 class Solution:
     def repairCars(self, r: List[int], c: int) -> int:
+        return bisect_left(range(c*c*min(r)),c,key=lambda m:sum(isqrt(m//x)for x in r))
+
+class Solution:
+    def repairCars(self, r: List[int], c: int) -> int:
         return bisect_left(range(10**14),c,key=lambda m:sum(isqrt(m//x)for x in r))
 
 class Solution:

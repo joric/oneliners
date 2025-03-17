@@ -28,6 +28,10 @@ class Solution:
 
 class Solution:
     def divideArray(self, a: List[int]) -> bool:
+        return reduce(xor,map(pow,a,repeat(2)))<1
+
+class Solution:
+    def divideArray(self, a: List[int]) -> bool:
         return reduce(xor,(1<<x for x in a))<1
 
 class Solution:

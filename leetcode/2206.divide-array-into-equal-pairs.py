@@ -18,6 +18,22 @@ class Solution:
     def divideArray(self, a: List[int]) -> bool:
         s=set();[s:=s^{x}for x in a];return not s
 
+# https://leetcode.com/problems/divide-array-into-equal-pairs/solutions/3102577/best-solution-ever-only-using-xor/?envType=daily-question&envId=2025-03-17
+
+class Solution:
+    def divideArray(self, a: List[int]) -> bool:
+        p=q=0;[(p:=p^x,q:=q^~-x)for x in a];return p==q==0
+
+# https://leetcode.com/problems/divide-array-into-equal-pairs/solutions/2105016/why-xoring-does-not-work/?envType=daily-question&envId=2025-03-17
+
+class Solution:
+    def divideArray(self, a: List[int]) -> bool:
+        return reduce(xor,(1<<x-1 for x in a))<1
+
+class Solution:
+    def divideArray(self, a: List[int]) -> bool:
+        s=0;[s:=s^1<<x-1 for x in a];return s<1
+
 test('''
 2206. Divide Array Into Equal Pairs
 Easy

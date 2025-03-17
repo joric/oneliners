@@ -28,11 +28,11 @@ class Solution:
 
 class Solution:
     def divideArray(self, a: List[int]) -> bool:
-        return reduce(xor,(1<<x-1 for x in a))<1
+        return reduce(xor,(1<<x for x in a))<1
 
 class Solution:
     def divideArray(self, a: List[int]) -> bool:
-        s=0;[s:=s^1<<x-1 for x in a];return s<1
+        s=0;[s:=s^1<<x for x in a];return s<1
 
 test('''
 2206. Divide Array Into Equal Pairs

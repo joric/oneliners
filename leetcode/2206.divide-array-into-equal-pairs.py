@@ -8,6 +8,10 @@ class Solution:
 
 class Solution:
     def divideArray(self, a: List[int]) -> bool:
+        return all(1>c&1 for c in Counter(a).values())
+
+class Solution:
+    def divideArray(self, a: List[int]) -> bool:
         return not reduce(lambda s,x:s^{x},a,set())
 
 class Solution:

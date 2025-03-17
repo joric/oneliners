@@ -38,6 +38,16 @@ class Solution:
     def divideArray(self, a: List[int]) -> bool:
         s=0;[s:=s^1<<x for x in a];return s<1
 
+# https://leetcode.com/problems/divide-array-into-equal-pairs/solutions/6546526/one-line-solution-by-mikposp-japs/
+
+class Solution:
+    def divideArray(self, a: List[int]) -> bool:
+        return all(c&1<1 for c in Counter(a).values())
+
+class Solution:
+    def divideArray(self, a: List[int]) -> bool:
+        return all(a.count(x)&1<1for x in a)
+
 test('''
 2206. Divide Array Into Equal Pairs
 Easy

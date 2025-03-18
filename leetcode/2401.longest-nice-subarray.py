@@ -1,5 +1,12 @@
 from lc import *
 
+# https://leetcode.com/problems/longest-nice-subarray/solutions/3168576/5-lines-scala-recursion/?envType=daily-question&envId=2025-03-18
+
+class Solution:
+    def longestNiceSubarray(self, a: list[int]) -> int:
+        return(f:=lambda i,j,m,k:j<len(a)and(k&a[j]and f(i+1,j,m,k^a[i])or f(i,j+1,max(m,j+1-i),k|a[j]))or m)(*[0]*4)
+
+
 # https://leetcode.com/problems/longest-nice-subarray/solutions/2603282/python3-8-lines-two-pointer-dict-w-explanation-t-s-95-81/?envType=daily-question&envId=2025-03-18
 
 class Solution:
@@ -13,26 +20,9 @@ class Solution:
             m = max(m, j-i+1)
         return m
 
-# TLE
 class Solution:
     def longestNiceSubarray(self, a: List[int]) -> int:
-        i=k=m=0
-        for j in range(len(a)):
-            all(not(k&a[j])or(k:=k^a[i],i:=i+1)for _ in a)
-            k ^= a[j]
-            m = max(m, j-i+1)
-        return m
-
-# TLE
-class Solution:
-    def longestNiceSubarray(self, a: List[int]) -> int:
-        i=k=0;return max((all(not(k&a[j])or(k:=k^a[i],i:=i+1)for _ in a),k:=k^a[j],j-i+1)[2]for j in range(len(a)))
-
-# https://leetcode.com/problems/longest-nice-subarray/solutions/3168576/5-lines-scala-recursion/?envType=daily-question&envId=2025-03-18
-
-class Solution:
-    def longestNiceSubarray(self, a: list[int]) -> int:
-        return(f:=lambda i,j,m,k:j<len(a)and(k&a[j]and f(i+1,j,m,k&~a[i])or f(i,j+1,max(m,j+1-i),k|a[j]))or m)(0,0,0,0)
+        i=k=0;return max((all(k&x and(k:=k^a[i],i:=i+1)for _ in a),k:=k^x,j-i+1)[2]for j,x in enumerate(a))
 
 test('''
 2401. Longest Nice Subarray
@@ -66,7 +56,12 @@ Example 2:
 Input: nums = [3,1,5,11,13]
 Output: 1
 Explanation: The length of the longest nice subarray is 1. Any subarray of length 1 can be chosen.
- 
+
+
+Other examples:
+
+Input: nums = [178830999,19325904,844110858,806734874,280746028,64,256,33554432,882197187,104359873,453049214,820924081,624788281,710612132,839991691]
+Output: 4
 
 Constraints:
 

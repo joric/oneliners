@@ -1,27 +1,38 @@
 from lc import *
 
-# https://leetcode.com/problems/longest-nice-subarray/solutions/6549500/ruby-one-liner-code-golf/?envType=daily-question&envId=2025-03-18
+# https://leetcode.com/problems/longest-nice-subarray/solutions/2603282/python3-8-lines-two-pointer-dict-w-explanation-t-s-95-81/?envType=daily-question&envId=2025-03-18
 
 class Solution:
     def longestNiceSubarray(self, a: List[int]) -> int:
         i=k=m=0
         for j in range(len(a)):
             while a[j]&k:
-                k &= ~a[i]
+                k ^= a[i]
                 i += 1
-            k |= a[j]
-            m = max(m,j-i+1)
+            k ^= a[j]
+            m = max(m, j-i+1)
         return m
 
+# TLE
 class Solution:
     def longestNiceSubarray(self, a: List[int]) -> int:
-        i=k=m=0;return max((all(1 for _ in a if not(k&a[j]and(k:=k&~a[i],i:=i+1))),k:=k|a[j],j-i+1)[2]for j in range(len(a)))
+        i=k=m=0
+        for j in range(len(a)):
+            all(not(k&a[j])or(k:=k^a[i],i:=i+1)for _ in a)
+            k ^= a[j]
+            m = max(m, j-i+1)
+        return m
+
+# TLE
+class Solution:
+    def longestNiceSubarray(self, a: List[int]) -> int:
+        i=k=0;return max((all(not(k&a[j])or(k:=k^a[i],i:=i+1)for _ in a),k:=k^a[j],j-i+1)[2]for j in range(len(a)))
 
 # https://leetcode.com/problems/longest-nice-subarray/solutions/3168576/5-lines-scala-recursion/?envType=daily-question&envId=2025-03-18
 
 class Solution:
     def longestNiceSubarray(self, a: list[int]) -> int:
-        return(f:=lambda i,j,m,k:j<len(a)and(f(i+1,j,m,k&~a[i])if k&a[j]else f(i,j+1,max(m,j+1-i),a[j]|k))or m)(0,0,0,0)
+        return(f:=lambda i,j,m,k:j<len(a)and(k&a[j]and f(i+1,j,m,k&~a[i])or f(i,j+1,max(m,j+1-i),k|a[j]))or m)(0,0,0,0)
 
 test('''
 2401. Longest Nice Subarray

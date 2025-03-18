@@ -46,7 +46,7 @@ class Solution:
 
 class Solution:
     def divideArray(self, a: List[int]) -> bool:
-        return all(a.count(x)&1<1for x in a)
+        return all(1>1&a.count(x)for x in a)
 
 test('''
 2206. Divide Array Into Equal Pairs

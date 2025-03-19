@@ -1,5 +1,19 @@
 from lc import *
 
+# https://leetcode.com/problems/minimum-operations-to-make-binary-array-elements-equal-to-one-i/solutions/5357154/recursion/?envType=daily-question&envId=2025-03-19
+
+class Solution:
+    def minOperations(self, a: List[int]) -> int:
+        def f(a,c=0):
+            if len(a)<3:
+                return(-1,c)[sum(a)>1]
+            elif a.pop(0)<1:
+                c+=1
+                a[0] ^= 1
+                a[1] ^= 1
+            return f(a,c)
+        return f(a)
+
 # https://leetcode.com/problems/minimum-operations-to-make-binary-array-elements-equal-to-one-i/solutions/6510546/minimum-operations-to-make-binary-array-elements-equal-to-one-i/?envType=daily-question&envId=2025-03-19
 
 class Solution:
@@ -30,7 +44,7 @@ class Solution:
 
 class Solution:
     def minOperations(self, a: List[int]) -> int:
-        return(-1,len([[setitem(a,i+j,a[i+j]^1)for j in(1,2)]for i in range(len(a)-2)if a[i]<1]))[sum(a[-2:])==2]
+        return(-1,len([[setitem(a,i+j,a[i+j]^1)for j in(1,2)]for i in range(len(a)-2)if a[i]<1]))[sum(a[-2:])>1]
 
 test('''
 3191. Minimum Operations to Make Binary Array Elements Equal to One I

@@ -30,7 +30,7 @@ class Solution:
 
 class Solution:
     def minOperations(self, a: List[int]) -> int:
-        return(-1,len([[setitem(a,i+j,a[i+j]^1)for j in(1,2)]for i in range(len(a)-2)if a[i]<1]))[a[-2]+a[-1]==2]
+        return(-1,len([[setitem(a,i+j,a[i+j]^1)for j in(1,2)]for i in range(len(a)-2)if a[i]<1]))[sum(a[-2:])==2]
 
 test('''
 3191. Minimum Operations to Make Binary Array Elements Equal to One I

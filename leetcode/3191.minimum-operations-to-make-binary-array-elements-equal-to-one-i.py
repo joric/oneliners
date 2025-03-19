@@ -24,13 +24,21 @@ class Solution:
         return(-1,c)[a[-2]==a[-1]==1]
 
 # does not work on LC site for some reason
+# remote: 3.11.10 (main, Sep  7 2024, 18:35:41) [GCC 13.2.0]
+# local:  3.12.9 (tags/v3.12.9:fdb8142, Feb  4 2025, 15:27:58) [MSC v.1942 64 bit (AMD64)]
 class Solution:
     def minOperations(self, a: List[int]) -> int:
         return(-1,c:=len([[exec('a[i+j]^=1')for j in(1,2)]for i in range(len(a)-2)if a[i]<1]))[a[-2]==a[-1]==1]
 
+# this works on LC
+class Solution:
+    def minOperations(self, a: List[int]) -> int:
+        return(-1,c:=len([[exec('a[i+j]^=1',{'a':a,'i':i,'j':j})for j in(1,2)]for i in range(len(a)-2)if a[i]<1]))[a[-2]==a[-1]==1]
+
 class Solution:
     def minOperations(self, a: List[int]) -> int:
         return(-1,c:=len([[setitem(a,i+j,a[i+j]^1)for j in(1,2)]for i in range(len(a)-2)if a[i]<1]))[a[-2]==a[-1]==1]
+
 
 test('''
 3191. Minimum Operations to Make Binary Array Elements Equal to One I

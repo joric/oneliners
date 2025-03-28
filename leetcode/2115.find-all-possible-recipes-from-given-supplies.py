@@ -19,6 +19,12 @@ class Solution:
     def findAllRecipes(self, r: List[str], g: List[List[str]], s: List[str]) -> List[str]:
         c={*s};[c.add(x)for _ in r for x,a in zip(r,g)if{*a}<=c];return[*(c-{*s})]
 
+
+class Solution:
+    def findAllRecipes(self, recipes: List[str], ingredients: List[List[str]], supplies: List[str]) -> List[str]:
+        curr = set(supplies)
+        return [r for i, r in enumerate(recipes) if all(v in curr and curr.add(r) for v in ingredients[i])]
+
 test('''
 2115. Find All Possible Recipes from Given Supplies
 Medium

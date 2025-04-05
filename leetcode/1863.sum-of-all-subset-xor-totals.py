@@ -10,6 +10,8 @@ class Solution:
     def subsetXORSum(self, n: List[int]) -> int:
         return reduce(or_,n)<<~-len(n)
 
+# POTD 2025-04-05
+
 class Solution:
     def subsetXORSum(self, n: List[int]) -> int:
         return reduce(or_,n)<<len(n)-1

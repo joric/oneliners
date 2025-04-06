@@ -35,6 +35,12 @@ class Solution:
     def largestDivisibleSubset(self, n):
         s={-1:[]};[setitem(s,x,max((s[d]for d in s if x%d<1),key=len)+[x])for x in sorted(n)];return max(s.values(),key=len)
 
+# POTD 2025-04-06
+
+class Solution:
+    def largestDivisibleSubset(self, n: List[int]) -> List[int]:
+        s={-1:[]};[setitem(s,x,max((s[d]for d in s if x%d<1),key=len)+[x])for x in sorted(n)];return[*max(s.values(),key=len)]
+
 test('''
 368. Largest Divisible Subset
 Medium

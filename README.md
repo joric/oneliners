@@ -782,7 +782,7 @@ class Solution:
 
 ### Range
 
-Range in Python 3 supports random access, so you can save a few chars using a hardcoded range.
+Range in Python 3 supports random access, so you can save a few chars using a long hardcoded range.
 
 * https://leetcode.com/problems/minimum-time-to-repair-cars/
 

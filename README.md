@@ -1464,7 +1464,7 @@ class Solution:
 
 ### Accumulate
 
-There are many uses, remember that it supports any function besides the default "sum".
+There are many uses for `itertools.accumulate`, remember that it supports any function besides the default "sum".
 
 ```python
 class Solution():

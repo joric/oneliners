@@ -132,6 +132,10 @@ You can set your own execution time using `atexit` (worked in March 2025):
 __import__('atexit').register(lambda: open("display_runtime.txt", "w").write("0")) # 0..2147483647
 ```
 
+See https://github.com/LeetCode-Feedback/LeetCode-Feedback/issues/25646
+
+`we have decided not to allocate development resources to fixing it at this time.`
+
 ### Minus-two-liners
 
 Some leetcode problems may be solved at the function declaration level.

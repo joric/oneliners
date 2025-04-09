@@ -10,6 +10,10 @@ class Solution:
     def minOperations(self, a: List[int], k: int) -> int:
         return-(min(a)<k)or len({*a})-(k in a)
 
+class Solution:
+    def minOperations(self, a: List[int], k: int) -> int:
+        return-(min(a)<k)|len({*a})-(k in a)
+
 test('''
 3375. Minimum Operations to Make Array Values Equal to K
 Solved

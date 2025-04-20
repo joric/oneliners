@@ -38,6 +38,10 @@ class Solution:
 
 class Solution:
     def numRabbits(self, a: List[int]) -> int:
+        return sum(-(-a.count(i)//-~i)*-~i for i in{*a})
+
+class Solution:
+    def numRabbits(self, a: List[int]) -> int:
         return sum(a.count(i)//~i*~i for i in{*a})
 
 test('''

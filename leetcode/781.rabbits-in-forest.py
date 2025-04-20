@@ -22,10 +22,6 @@ class Solution:
     def numRabbits(self, a: List[int]) -> int:
         return sum((i+a.count(i))//-~i*-~i for i in{*a})
 
-class Solution:
-    def numRabbits(self, a: List[int]) -> int:
-        return sum(~-a.count(i)//-~i+1*-~i for i in{*a})
-
 # ceil-based, note ceil(x/y) == -(-x//y)
 
 class Solution:

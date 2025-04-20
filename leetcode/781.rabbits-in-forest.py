@@ -30,7 +30,7 @@ class Solution:
 
 class Solution:
     def numRabbits(self, a: List[int]) -> int:
-        return sum(ceil(a.count(i)/(i+1))*(i+1)for i in set(a))
+        return sum(ceil(a.count(i)/(i+1))*(i+1)for i in{*a})
 
 class Solution:
     def numRabbits(self, a: List[int]) -> int:

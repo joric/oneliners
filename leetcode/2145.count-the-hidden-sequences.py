@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def numberOfArrays(self, d: List[int], l: int, u: int) -> int:
-        return max(0,u-l-max(a:=[0,*accumulate(d)])+min(a)+1)
+        return max(0,1+u-l-max(a:=[0,*accumulate(d)])+min(a))
 
 test('''
 2145. Count the Hidden Sequences

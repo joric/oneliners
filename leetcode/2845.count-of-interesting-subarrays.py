@@ -14,6 +14,10 @@ class Solution:
     def countInterestingSubarrays(self, a: List[int], m: int, k: int) -> int:
         p=Counter([0]);return sum((p[(q-k)%m],p.update([q%m]))[0]for q in accumulate(map(lambda v:v%m==k,a)))
 
+class Solution:
+    def countInterestingSubarrays(self, a: List[int], m: int, k: int) -> int:
+        p=Counter([0]);return sum((p[(q-k)%m],p.update([q%m]))[0]for q in accumulate(v%m==k for v in a))
+
 test('''
 2845. Count of Interesting Subarrays
 Solved

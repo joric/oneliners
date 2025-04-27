@@ -20,6 +20,10 @@ class Solution:
 
 class Solution:
     def countSubarrays(self, a: List[int]) -> int:
+        return sum(v+a[i]==a[i+1]/2 for i,v in enumerate(a[2:]))
+
+class Solution:
+    def countSubarrays(self, a: List[int]) -> int:
         return sum(l+r==m/2 for l,m,r in zip(a,a[1:],a[2:]))
 
 test('''

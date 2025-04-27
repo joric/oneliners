@@ -10,11 +10,11 @@ class Solution:
     def countSubarrays(self, a: List[int]) -> int:
         return sum(a[i+1]/2==a[i]+a[i+2]for i in range(len(a)-2))
 
-# https://leetcode.com/problems/count-subarrays-of-length-three-with-a-condition/solutions/6171755/python3-3-lines-zip-and-count-t-s-92-93/?envType=daily-question&envId=2025-04-27
+# numpy 
 
 class Solution:
     def countSubarrays(self, a: List[int]) -> int:
-        return sum(x+x+z+z==y for x,y,z in zip(a,a[1:],a[2:]))
+        a=__import__('numpy').array(a);return((a[:-2]+a[2:])==a[1:-1]/2).sum()
 
 # https://leetcode.com/problems/count-subarrays-of-length-three-with-a-condition/solutions/6676966/one-line-solution/?envType=daily-question&envId=2025-04-27
 
@@ -24,7 +24,11 @@ class Solution:
 
 class Solution:
     def countSubarrays(self, a: List[int]) -> int:
-        return sum(l+r==m/2 for l,m,r in zip(a,a[1:],a[2:]))
+        return sum(y==2*(x+z)for x,y,z in zip(a,a[1:],a[2:]))
+
+class Solution:
+    def countSubarrays(self, a: List[int]) -> int:
+        return sum(x+z==y/2 for x,y,z in zip(a,a[1:],a[2:]))
 
 test('''
 3392. Count Subarrays of Length Three With a Condition

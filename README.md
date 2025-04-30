@@ -2246,6 +2246,7 @@ Examples                                   | Results
 ## Notes
 
 * An expression like `x&(x-1)==0` is useful to check if unsigned `x` is power of 2 or 0 (Kernighan, rightmost bit).
+* You can use Kernighan to check for even values (`x%2==0` or `1>1&x`) as `1&~x` (1 character shorter).
 * Unless the following token starts with e or E, you can remove the space following a number. E.g. `i==4 and j==4` becomes `i==4and j==4`.
 * Instead of range(x), you can use the * operator on a list of anything, e.g. `[1]*8` can replace `range(8)` (unless you really need the counter value).
 * Conditions like `if i<len(r)` may be replaced with `if r[i:]`, it's 3 characters shorter.
@@ -2256,7 +2257,6 @@ Examples                                   | Results
 * Very often `x==0` can be replaced with `x<1` (1 character shorter).
 * A condition like `h>i>=0<=j<w` can be written as `h>i>-1<j<w` (1 character shorter).
 * You can replace `q and q[-1]==c` with `q[-1:]==[c]` (3 characters shorter).
-* You can check for even values (`x%2==0` or `1>1&x`) as `1&~x` (1 character shorter).
 
 ## References
 

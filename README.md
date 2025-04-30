@@ -2256,6 +2256,7 @@ Examples                                   | Results
 * Very often `x==0` can be replaced with `x<1` (1 character shorter).
 * A condition like `h>i>=0<=j<w` can be written as `h>i>-1<j<w` (1 character shorter).
 * You can replace `q and q[-1]==c` with `q[-1:]==[c]` (3 characters shorter).
+* You can check for even values (`x%2==0` or `1>1&x`) as `1&~x` (1 character shorter).
 
 ## References
 

@@ -10,6 +10,10 @@ class Solution:
     def findNumbers(self, a: List[int]) -> int:
         return sum(1>1&len(str(x))for x in a)
 
+class Solution:
+    def findNumbers(self, a: List[int]) -> int:
+        return sum(1&~len(str(x))for x in a)
+
 test('''
 1295. Find Numbers with Even Number of Digits
 Solved

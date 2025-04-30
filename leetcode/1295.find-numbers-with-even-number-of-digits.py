@@ -10,6 +10,8 @@ class Solution:
     def findNumbers(self, a: List[int]) -> int:
         return sum(1>1&len(str(x))for x in a)
 
+# Kerninghan
+
 class Solution:
     def findNumbers(self, a: List[int]) -> int:
         return sum(1&~len(str(x))for x in a)

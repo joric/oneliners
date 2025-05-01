@@ -344,7 +344,7 @@ class Solution:
 
 ### Dictionaries
 
-Starting from python version 3.7 dictionary order is guaranteed to be insertion order.
+Starting from Python 3.7 dictionary order is guaranteed to be insertion order.
 
 * Implementation proposal: https://mail.python.org/pipermail/python-dev/2012-December/123028.html
 

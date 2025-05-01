@@ -371,7 +371,7 @@ You can also remove zero and negative values manually (there is an the official 
 c = Counter({1:1,2:0,3:-1}); print(c:=+c) #{1: 1}, same as c += Counter()
 ```
 
-Since python 3.7, as a dict subclass, Counter inherited the capability to remember insertion order.
+Since Python 3.7, as a dict subclass, Counter inherited the capability to remember insertion order.
 
 * https://leetcode.com/problems/reduction-operations-to-make-the-array-elements-equal
 

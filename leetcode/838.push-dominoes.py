@@ -8,6 +8,10 @@ class Solution:
 
 class Solution:
     def pushDominoes(self, s: str) -> str:
+        return re.sub(r'R?\.+L?',lambda m:{'RL':(l:=len(s:=m[0]))//2*'R'+l%2*'.'+l//2*'L','R.':'R'*l,'.L':'L'*l}.get(s[0]+s[-1],s),s)
+
+class Solution:
+    def pushDominoes(self, s: str) -> str:
         return all(s!=(s:=s.replace('R.L','*').replace('R.','RR').replace('.L','LL'))for _ in s)or s.replace('*','R.L')
 
 test('''

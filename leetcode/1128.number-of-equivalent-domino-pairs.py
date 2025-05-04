@@ -30,6 +30,10 @@ class Solution:
     def numEquivDominoPairs(self, a: List[List[int]]) -> int:
         return sum(comb(x,2)for x in Counter(map(frozenset,a)).values())
 
+class Solution:
+    def numEquivDominoPairs(self, a: List[List[int]]) -> int:
+        return sum(map(comb,Counter(map(frozenset,a)).values(),[2]*99))
+
 test('''
 1128. Number of Equivalent Domino Pairs
 Solved

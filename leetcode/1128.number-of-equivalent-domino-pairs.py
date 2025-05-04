@@ -18,6 +18,18 @@ class Solution:
     def numEquivDominoPairs(self, a: List[List[int]]) -> int:
         return sum(comb(x,2)for x in Counter(map(tuple,map(sorted,a))).values())
 
+# https://leetcode.com/problems/number-of-equivalent-domino-pairs/solutions/6712102/one-line-solutions/?envType=daily-question&envId=2025-05-04
+
+class Solution:
+    def numEquivDominoPairs(self, a: List[List[int]]) -> int:
+        return sum(comb(x,2)for x in Counter(1<<x|1<<y for x,y in a).values())
+
+# https://leetcode.com/problems/number-of-equivalent-domino-pairs/solutions/487328/python-frozenset-1-liner/?envType=daily-question&envId=2025-05-04
+
+class Solution:
+    def numEquivDominoPairs(self, a: List[List[int]]) -> int:
+        return sum(comb(x,2)for x in Counter(map(frozenset,a)).values())
+
 test('''
 1128. Number of Equivalent Domino Pairs
 Solved

@@ -17,6 +17,10 @@ class Solution:
     def numTilings(self, n: int) -> int:
         return(f:=cache(lambda n:n>2 and f(n-1)*2+f(n-3)or(n,1)[n<1]))(n)%(10**9+7)
 
+class Solution:
+    def numTilings(self, n: int) -> int:
+        return(f:=cache(lambda n:n>2 and f(n-1)*2+f(n-3)or max(n,1)))(n)%(10**9+7)
+
 test('''
 790. Domino and Tromino Tiling
 Medium

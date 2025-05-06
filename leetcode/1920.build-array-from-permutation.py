@@ -26,6 +26,10 @@ class Solution:
 
 class Solution:
     def buildArray(self, a: List[int]) -> List[int]:
+        return itemgetter(*a)(a) # does not work for [0]
+
+class Solution:
+    def buildArray(self, a: List[int]) -> List[int]:
         return[a[x]for x in a]
 
 test('''
@@ -58,6 +62,13 @@ ans = [nums[nums[0]], nums[nums[1]], nums[nums[2]], nums[nums[3]], nums[nums[4]]
     = [nums[5], nums[0], nums[1], nums[2], nums[3], nums[4]]
     = [4,5,0,1,2,3]
  
+
+Example 3:
+
+Input: nums = [0]
+Output: [0]
+Explanation: passes local tests but leetcode says Output 0, expected [0]
+
 
 Constraints:
 

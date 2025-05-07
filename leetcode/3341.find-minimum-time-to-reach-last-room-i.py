@@ -11,9 +11,7 @@ class Solution:
         d = [[inf] * n for _ in range(m)]
         d[0][0] = 0
         def dfs(i,j):
-            for dir in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
-                x = i + dir[0]
-                y = j + dir[1]
+            for x,y in ((i+1,j),(i-1,j),(i,j+1),(i,j-1)):
                 if 0 <= x < len(t) and 0 <= y < len(t[0]):
                     if d[x][y] > d[i][j] + 1:
                         d[x][y] = max(t[x][y], d[i][j]) + 1

@@ -2,7 +2,7 @@ from lc import *
 
 # https://leetcode.com/problems/find-minimum-time-to-reach-last-room-i/solutions/6021695/java-dfs/?envType=daily-question&envId=2025-05-07
 
-# TODO
+# TLE
 
 class Solution:
     def minTimeToReach(self, t: List[List[int]]) -> int:
@@ -17,6 +17,24 @@ class Solution:
                         dfs(x,y)
         dfs(0,0)
         return d[m-1][n-1]
+
+# TODO
+
+class Solution:
+    def minTimeToReach(self, A: List[List[int]]) -> int:
+        n, m = len(A), len(A[0])
+        dp = [[inf] * m for i in range(n)]
+        h = [[0, 1, 0, 0]] # arrive time, next cost, i, j
+        A[0][0] = -1
+        while h:
+            t, c, i, j = heappop(h)
+            if t >= dp[i][j]: continue
+            if i == n - 1 and j == m - 1: return t
+            dp[i][j] = t
+            for di, dj in [[1, 0], [0, 1], [-1, 0], [0, -1]]:
+                x, y = i + di, j + dj
+                if 0 <= x < n and 0 <= y < m and dp[x][y] == inf:
+                    heappush(h, [max(A[x][y] + c, t + c), 2 - c, x, y])
 
 test('''
 3341. Find Minimum Time to Reach Last Room I

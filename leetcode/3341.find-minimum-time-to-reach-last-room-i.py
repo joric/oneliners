@@ -6,8 +6,7 @@ from lc import *
 
 class Solution:
     def minTimeToReach(self, t: List[List[int]]) -> int:
-        m = len(t)
-        n = len(t[0]) if m > 0 else 0
+        m,n = len(t), len(t[0])
         d = [[inf] * n for _ in range(m)]
         d[0][0] = 0
         def dfs(i,j):

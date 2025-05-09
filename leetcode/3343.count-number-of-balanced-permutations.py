@@ -1,33 +1,28 @@
 from lc import *
 
-# https://leetcode.com/problems/count-number-of-balanced-permutations/solutions/6000433/python-22-lines-with-recursion/?envType=daily-question&envId=2025-05-09
+# https://leetcode.com/problems/count-number-of-balanced-permutations/solutions/6000532/dp/?envType=daily-question&envId=2025-05-09
 
 # TODO
 
 class Solution:
     def countBalancedPermutations(self, num: str) -> int:
+        cnt = Counter(int(ch) for ch in num)
+        total = sum(int(ch) for ch in num)
         @cache
-        def dfs(i, c1, c2, acc):
-            if i > 10 or c1 > N1 or c2 > N2 or acc > total // 2:
-                return 0  # pruning immediately
-            if c1 == N1 and c2 == N2:
-                return 1 if acc == total // 2 else 0
-            c = 0
-            for k1 in range(C[i] + 1):
-                n1, n2 = N1 - c1, N2 - c2
-                k2 = C[i] - k1
-                c += comb(n1, k1) * comb(n2, k2) * dfs(i + 1, c1 + k1, c2 + k2, acc + k1 * i)
-                c %= M
-            return c
-        C, M = defaultdict(int), 10 ** 9 + 7
-        N1, N2 = len(num) // 2, (len(num) + 1) // 2  # N2 = len(num) - N1
-        total = 0
-        for n in num:
-            C[int(n)] += 1
-            total += int(n)
-        if total % 2 == 1:
-            return 0
-        return dfs(0, 0, 0, 0) % M
+        def dfs(i, odd, even, balance):
+            if odd == 0 and even == 0 and balance == 0:
+                return 1
+            if i < 0 or odd < 0 or even < 0 or balance < 0:
+                return 0
+            res = 0
+            for j in range(0, cnt[i] + 1):
+                res += comb(odd, j) * comb(even, cnt[i] - j) * dfs(i - 1, odd - j, even - cnt[i] + j, balance - i * j)
+            return res % 1000000007
+        return 0 if total % 2 else dfs(9, len(num) - len(num) // 2, len(num) // 2, total // 2)
+
+class Solution:
+    def countBalancedPermutations(self, s: str) -> int:
+        c,t,n=Counter(map(int,s)),sum(map(int,s)),len(s)//2;f=cache(lambda i,o,e,b:not(o|e|b)or 0<=min(i,o,e,b)and sum(comb(o,j)*comb(e,c[i]-j)*f(i-1,o-j,e-c[i]+j,b-i*j)for j in range(c[i]+1))%(10**9+7));return~t%2 and f(9,len(s)-n,n,t//2)
 
 test('''
 3343. Count Number of Balanced Permutations

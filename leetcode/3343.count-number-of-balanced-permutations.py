@@ -22,6 +22,10 @@ class Solution:
     def countBalancedPermutations(self, s: str) -> int:
         c,t,n=Counter(map(int,s)),sum(map(int,s)),len(s)//2;f=cache(lambda i,o,e,b:not(o|e|b)or 0<=min(i,o,e,b)and sum(comb(o,j)*comb(e,c[i]-j)*f(i-1,o-j,e-c[i]+j,b-i*j)for j in range(c[i]+1))%(10**9+7));return~t%2 and f(9,len(s)-n,n,t//2)
 
+class Solution:
+    def countBalancedPermutations(self, s: str) -> int:
+        c,t,n=Counter(m:=[*map(int,s)]),sum(m),len(s)//2;f=cache(lambda i,o,e,b:not(o|e|b)or min(i,o,e,b)>=0and sum(comb(o,j)*comb(e,c[i]-j)*f(i-1,o-j,e-c[i]+j,b-i*j)for j in range(c[i]+1))%(10**9+7));return~t%2and f(9,len(s)-n,n,t//2)
+
 test('''
 3343. Count Number of Balanced Permutations
 Solved

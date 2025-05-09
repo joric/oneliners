@@ -2,8 +2,6 @@ from lc import *
 
 # https://leetcode.com/problems/count-number-of-balanced-permutations/solutions/6000532/dp/?envType=daily-question&envId=2025-05-09
 
-# TODO
-
 class Solution:
     def countBalancedPermutations(self, num: str) -> int:
         cnt = Counter(int(ch) for ch in num)

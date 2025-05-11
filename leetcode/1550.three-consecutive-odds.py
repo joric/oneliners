@@ -1,5 +1,15 @@
 from lc import *
 
+# https://leetcode.com/problems/three-consecutive-odds/submissions/1630533035/?envType=daily-question&envId=2025-05-11
+
+class Solution:
+    def threeConsecutiveOdds(self, a: List[int]) -> bool:
+        return any(1&v&u&w for v,u,w in zip(a,a[1:],a[2:]))
+
+class Solution:
+    def threeConsecutiveOdds(self, a: List[int]) -> bool:
+        return '111' in ''.join(str(v&1) for v in a)
+
 # https://leetcode.com/problems/three-consecutive-odds/discuss/825552/Python-one-line-solution
 
 class Solution:

@@ -30,18 +30,6 @@ class Solution:
 
 class Solution:
     def threeConsecutiveOdds(self, a: List[int]) -> bool:
-        return any(1&a&b&c for a,b,c in zip(a,a[1:],a[2:]))
-
-class Solution:
-    def threeConsecutiveOdds(self, a: List[int]) -> bool:
-        return'111'in''.join(map(str,map((1).__and__,a)))
-
-class Solution:
-    def threeConsecutiveOdds(self, a: List[int]) -> bool:
-        return'111'in''.join(str(1&x)for x in a)
-
-class Solution:
-    def threeConsecutiveOdds(self, a: List[int]) -> bool:
         c=0;return max(c:=x%2*-~c for x in a)>2
 
 test('''

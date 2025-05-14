@@ -30,7 +30,7 @@ class Solution:
 
 class Solution:
     def lengthAfterTransformations(self, s: str, t: int, a: List[int]) -> int:
-        p,m,o=__import__('numpy'),10**9+7,object;u,v=p.eye(n:=26,dtype=o),p.zeros((n,n),dtype=o);[setitem(v[i],j%n,1)for i,x in enumerate(a)for j in range(i+1,i+x+1)];all((t&1 and(u:=u@v%m),v:=v@v%m,t:=t>>1)[2]for _ in count());return sum(sum(u[ord(c)-97])%m for c in s)%m
+        p,m,o=__import__('numpy'),10**9+7,object;u,v=p.eye(n:=26,dtype=o),p.zeros((n,n),dtype=o);[setitem(v[i],j%n,1)for i,x in enumerate(a)for j in range(i+1,i+x+1)];all((t and(u:=u@v%m),v:=v@v%m,t:=t>>1)[2]for _ in count());return sum(sum(u[ord(c)-97])%m for c in s)%m
 
 test('''
 3337. Total Characters in String After Transformations II

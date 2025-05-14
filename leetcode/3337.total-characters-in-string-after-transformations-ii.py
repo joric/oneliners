@@ -40,23 +40,24 @@ class Solution:
         d=[sum(r)%m for r in u]
         return sum(d[ord(c)-97] for c in s)%m
 
+import numpy as np
+MOD = 10**9 + 7
 class Solution:
-    def lengthAfterTransformations(self, s: str, t: int, a: List[int]) -> int:
-        p,n,m=__import__('numpy'),26,10**9+7
-        r,u,v=range(n),p.eye(n),p.zeros((n,n))
-        f=lambda a,b:(d:=p.dot(a,b),any(setitem(d[i],j,d[i][j]%m)for i,j in product(r,r)))[0]
-        any(setitem(v[i],j%26,1)for i,x in enumerate(a)for j in range(i+1,i+x+1))
-        all((t&1 and(u:=f(u,v)),v:=f(v,v),t:=t>>1)and t for _ in count())
-        d=[sum(r)%m for r in u]
-        return sum(d[ord(c)-97]for c in s)%m
+    def lengthAfterTransformations(self, s: str, t: int, nums: List[int]) -> int:
+        base,cur = np.zeros((26,26), dtype=object), np.eye(26, dtype=object)
+        for i,v in enumerate(nums):
+            for j in range(i+1, i+v+1):
+                base[i][j%26]=1
+        while t:
+            if t&1>0: cur=np.dot(cur,base)%MOD
+            base=np.dot(base,base)%MOD
+            t>>=1
+        data=[sum(r)%MOD for r in cur]
+        return sum(data[ord(ch)-97] for ch in s)%MOD
 
 class Solution:
     def lengthAfterTransformations(self, s: str, t: int, a: List[int]) -> int:
-        p,n,m=__import__('numpy'),26,10**9+7;r,u,v,f=range(n),p.eye(n,dtype=object),p.zeros((n,n),dtype=object),lambda a,b:(d:=p.dot(a,b),any(setitem(d[i],j,d[i][j]%m)for i,j in product(r,r)))[0];any(setitem(v[i],j%26,1)for i,x in enumerate(a)for j in range(i+1,i+x+1));all((t&1 and(u:=f(u,v)),v:=f(v,v),t:=t>>1)and t for _ in count());d=[sum(r)%m for r in u];return sum(d[ord(c)-97]for c in s)%m
-
-class Solution:
-    def lengthAfterTransformations(self, s: str, t: int, a: List[int]) -> int:
-        p,n,m=__import__('numpy'),26,10**9+7;r,u,v,f=range(n),p.eye(n,dtype=object),p.zeros((n,n),dtype=object),lambda a,b:(d:=p.dot(a,b),[setitem(d[i],j,d[i][j]%m)for i in r for j in r])[0];[setitem(v[i],j%n,1)for i,x in enumerate(a)for j in range(i+1,i+x+1)];all((t&1 and(u:=f(u,v)),v:=f(v,v),t:=t>>1)and t for _ in count());d=[sum(r)%m for r in u];return sum(d[ord(c)-97]for c in s)%m
+        p,n,m=__import__('numpy'),26,10**9+7;r,u,v=range(n),p.eye(n,dtype=object),p.zeros((n,n),dtype=object);[setitem(v[i],j%n,1)for i,x in enumerate(a)for j in range(i+1,i+x+1)];all((t&1 and(u:=p.dot(u,v)%m),v:=p.dot(v,v)%m,t:=t>>1)and t for _ in count());d=[sum(r)%m for r in u];return sum(d[ord(c)-97]for c in s)%m
 
 test('''
 3337. Total Characters in String After Transformations II

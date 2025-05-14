@@ -1,63 +1,6 @@
 from lc import *
 
-# https://leetcode.com/problems/total-characters-in-string-after-transformations-ii/solutions/6742197/if-you-use-numpy-beware-of-the-integer-overflow/
-
-import numpy as np
-
-class Solution:
-    def lengthAfterTransformations(self, s: str, t: int, nums: List[int]) -> int:
-        cnt,mo = [0]*26,7+10**9
-        cnt = np.array(cnt, dtype=object)
-
-        for l in s:
-            cur = ord(l) - ord('a')
-            cnt[cur] += 1
-
-        ref = np.zeros((26,26), dtype=object)
-
-        for i in range(26):
-            temp = nums[i]
-            new = [0]*26
-
-            for j in range(nums[i]):
-                k = (i+j+1)%26
-                new[k] += 1
-                new[k] %= mo
-
-            ref[i] = np.array(new, dtype=object)
-
-        ref = ref.T
-
-        while t:
-            if t%2:
-                cnt = (ref @ cnt) % mo
-            t //= 2
-            ref = (ref @ ref) % mo
-        
-        return int(np.sum(cnt)%mo)
-
 # https://leetcode.com/problems/total-characters-in-string-after-transformations-ii/solutions/5974501/python-using-numpy/?envType=daily-question&envId=2025-05-14
-
-import numpy as np
-
-MOD = 10**9 + 7
-class Solution:
-    def lengthAfterTransformations(self, s: str, t: int, nums: List[int]) -> int:
-        base,cur = np.zeros((26,26)), np.eye(26)
-        for i,v in enumerate(nums):
-            for j in range(i+1, i+v+1):
-                base[i][j%26]=1
-        def mul(a,b):
-            c = np.dot(a,b)
-            for i,j in product(range(26),repeat=2):
-                c[i][j]%=MOD
-            return c
-        while t:
-            if t&1>0: cur=mul(cur,base)
-            base=mul(base,base)
-            t>>=1
-        data=[sum(r)%MOD for r in cur]
-        return sum(data[ord(ch)-97] for ch in s)%MOD
 
 import numpy as np
 MOD = 10**9 + 7
@@ -68,8 +11,8 @@ class Solution:
             for j in range(i+1, i+v+1):
                 base[i][j%26]=1
         while t:
-            if t&1>0: cur=np.dot(cur,base)%MOD
-            base=np.dot(base,base)%MOD
+            if t&1>0: cur=cur@base%MOD
+            base=base@base%MOD
             t>>=1
         data=[sum(r)%MOD for r in cur]
         return sum(data[ord(ch)-97] for ch in s)%MOD
@@ -79,7 +22,7 @@ class Solution:
         p,n,m=__import__('numpy'),26,10**9+7
         u,v=p.eye(n,dtype=object),p.zeros((n,n),dtype=object)
         [setitem(v[i],j%n,1)for i,x in enumerate(a)for j in range(i+1,i+x+1)]
-        all((t&1 and(u:=p.dot(u,v)%m),v:=p.dot(v,v)%m,t:=t>>1)[2] for _ in count())
+        all((t&1 and(u:=u@v%m),v:=v@v%m,t:=t>>1)[2] for _ in count())
         return sum(sum(u[ord(c)-97])%m for c in s)%m
 
 class Solution:

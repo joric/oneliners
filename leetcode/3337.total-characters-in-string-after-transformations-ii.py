@@ -25,6 +25,9 @@ class Solution:
         all((t&1 and(u:=u@v%m),v:=v@v%m,t:=t>>1)[2] for _ in count())
         return sum(sum(u[ord(c)-97])%m for c in s)%m
 
+# a single comprehension is longer:
+# v=p.array([[j%n in[k%n for k in range(i+1,i+x+1)]for j in range(n)]for i,x in enumerate(a)],dtype=o)
+
 class Solution:
     def lengthAfterTransformations(self, s: str, t: int, a: List[int]) -> int:
         p,m,o=__import__('numpy'),10**9+7,object;u,v=p.eye(n:=26,dtype=o),p.zeros((n,n),dtype=o);[setitem(v[i],j%n,1)for i,x in enumerate(a)for j in range(i+1,i+x+1)];all((t&1 and(u:=u@v%m),v:=v@v%m,t:=t>>1)[2]for _ in count());return sum(sum(u[ord(c)-97])%m for c in s)%m

@@ -10,6 +10,10 @@ class Solution:
     def getLongestSubsequence(self, w: List[str], g: List[int]) -> List[str]:
         return[next(p)[0]for _,p in groupby(zip(w,g),itemgetter(1))]
 
+class Solution:
+    def getLongestSubsequence(self, w: List[str], g: List[int]) -> List[str]:
+        return[x for i,x in enumerate(w)if i<1or g[i]^g[i-1]]
+
 test('''
 2900. Longest Unequal Adjacent Groups Subsequence I
 Solved

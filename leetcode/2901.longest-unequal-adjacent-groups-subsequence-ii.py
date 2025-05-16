@@ -15,7 +15,7 @@ class Solution:
 
 class Solution:
     def getWordsInLongestSubsequence(self, w: List[str], g: List[int]) -> List[str]:
-        d=[];[d.append(max((q for t,b,q in zip(w,g,d)if a!=b and len(s)==len(t) and sum(map(ne,s,t))<2),key=len,default=[])+[s])for s,a in zip(w,g)];return max(d,key=len)
+        d=[];[d.append(max((q for t,b,q in zip(w,g,d)if a!=b and len(s)==len(t)and sum(map(ne,s,t))<2),key=len,default=[])+[s])for s,a in zip(w,g)];return max(d,key=len)
 
 test('''
 2901. Longest Unequal Adjacent Groups Subsequence II

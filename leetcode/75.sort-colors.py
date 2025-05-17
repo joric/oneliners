@@ -59,23 +59,18 @@ class Solution:
 # updated 2024-06-12
 
 class Solution:
-    def sortColors(self, n: List[int]) -> None:
-        n.sort()
-
-
-class Solution:
     def sortColors(self, nums: List[int]) -> None:
         zero = one = 0
         for color in nums:
             zero += color == 0
             one += color == 1
-
-        print(zero, one)
-
         for i in range(len(nums)):
             nums[i] = 0 if i<zero else 1 if i<zero+one else 2
-
         return nums
+
+class Solution:
+    def sortColors(self, n: List[int]) -> None:
+        n.sort()
 
 test('''
 75. Sort Colors

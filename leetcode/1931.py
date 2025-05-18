@@ -65,8 +65,6 @@ class Solution:
             return 1
         return f(0,tuple([0]*m))
 
-# TODO
-
 class Solution:
     def colorTheGrid(self, m: int, n: int) -> int:
         @cache
@@ -75,6 +73,10 @@ class Solution:
             s={*([p[j-1]]if(j:=k%m)else[]),*([p[j]]if(i:=k//m)else[])}
             return sum(f(k+1,tuple((x,c)[i==j]for i,x in enumerate(p)))for c in(0,1,2)if c not in s)%(10**9+7)
         return f(0,tuple([0]*m))
+
+class Solution:
+    def colorTheGrid(self, m: int, n: int) -> int:
+        return(f:=cache(lambda k,p:k==m*n or[s:={*([p[j-1]]if(j:=k%m)else[]),*([p[j]]if(i:=k//m)else[])}]and sum(f(k+1,tuple((x,c)[i==j]for i,x in enumerate(p)))for c in(0,1,2)if c not in s)%(10**9+7)))(0,tuple([0]*m))
 
 test('''
 1931. Painting a Grid With Three Different Colors

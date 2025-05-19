@@ -2,6 +2,7 @@ from lc import *
 
 # biweekly-contest-123 Q1
 # https://leetcode.com/problems/type-of-triangle-ii
+# https://leetcode.com/problems/type-of-triangle/?envType=daily-question&envId=2025-05-19
 
 class Solution:
     def triangleType(self, n: List[int]) -> str:
@@ -22,6 +23,10 @@ class Solution:
 class Solution:
     def triangleType(self, n: List[int]) -> str:
         return('none','equilateral','isosceles','scalene')[2*max(n)<sum(n)and len({*n})]
+
+class Solution:
+    def triangleType(self, n: List[int]) -> str:
+        return('none','equilateral','isosceles','scalene')[len({*n})*(sum(n)>2*max(n))]
 
 test('''
 3024. Type of Triangle II

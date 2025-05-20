@@ -1,5 +1,79 @@
 from lc import *
 
+# https://leetcode.com/problems/painting-a-grid-with-three-different-colors/description/?envType=daily-question&envId=2025-05-18
+
+import numpy as np
+
+class Solution:
+    def colorTheGrid(self, m: int, n: int) -> int:
+        if n < m:
+            return self.colorTheGrid(n, m)
+
+        def get_possible_columns(h: int) -> list[str]:
+            if h == 1:
+                return ["R", "G", "B"]
+            columns = list()
+            for previous_column in get_possible_columns(h - 1):
+                for c in "RGB":
+                    if previous_column[-1] == c:
+                        continue
+                    columns.append(previous_column + c)
+            return columns
+
+        MODULO = 1_000_000_007
+        possible_columns = get_possible_columns(m)
+        size = len(possible_columns)
+
+        M = np.asmatrix(np.zeros((size, size), dtype=object))
+        for i in range(0, size):
+            column_i = possible_columns[i]
+            for j in range(i + 1, size):
+                for ci, cj in zip(column_i, possible_columns[j]):
+                    if ci == cj:
+                        break
+                else:
+                    M[i, j] = 1
+                    M[j, i] = 1
+        X = np.asmatrix(np.ones((size, 1), dtype=object))
+
+        bit = n - 1
+        if bit & 1 == 1:
+            X = M * X % MODULO
+        bit >>= 1
+        while bit > 0:
+            M = M * M % MODULO
+            if bit & 1 == 1:
+                X = M * X % MODULO
+            bit >>= 1
+        return int(np.sum(X)) % MODULO
+
+
+import numpy as p
+
+class Solution:
+    def colorTheGrid(self, m: int, n: int) -> int:
+        g=lambda h:[*'RGB']if h==1 else[p+c for p in g(h-1)for c in'RGB'if p[-1]!=c]
+        k=10**9+7
+        l=g(m)
+        s=len(l)
+        m=p.zeros((s,s),object)
+
+        for i in range(s):
+            for j in range(i+1,s):
+                if all(a!=b for a,b in zip(l[i],l[j])):
+                    m[i,j]=m[j,i]=1
+
+        x = p.ones((s,1),object)
+        b = n-1
+        if b&1: x=m@x%k
+        b>>=1
+        while b>0:
+            m=m@m%k
+            if b&1:x=m@x%k
+            b>>=1
+        return int(x.sum())%k
+
+
 # https://leetcode.com/problems/painting-a-grid-with-three-different-colors/solutions/1330889/python-o-2-m-n-m-dp-solution-explained/?envType=daily-question&envId=2025-05-18
 
 class Solution:

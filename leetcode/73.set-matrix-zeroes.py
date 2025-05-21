@@ -65,6 +65,19 @@ class Solution:
     def setZeroes(self, m: List[List[int]]) -> None:
         r,c=[[0 in x for x in p]for p in (m,zip(*m))];[setitem(m[i],j,m[i][j]*(r[i]+c[j]==0))for i in range(len(m))for j in range(len(m[0]))]
 
+class Solution:
+    def setZeroes(self, m: List[List[int]]) -> None:
+        r,c=[[0 in x for x in p]for p in(m,zip(*m))];[setitem(m[i],j,0)for i in range(len(m))for j in range(len(m[0]))if r[i]or c[j]]
+
+
+class Solution:
+    def setZeroes(self, m: List[List[int]]) -> None:
+        r,c=[[0 in x for x in p]for p in(m,zip(*m))];m[:]=[[0 if r[i]or c[j]else m[i][j]for j in range(len(m[0]))]for i in range(len(m))]
+
+class Solution:
+    def setZeroes(self, m: List[List[int]]) -> None:
+        r,c=[[0 in x for x in p]for p in(m,zip(*m))];m[:]=[[m[i][j]*((r[i]+c[j])<1)for j in range(len(m[0]))]for i in range(len(m))]
+
 test('''
 73. Set Matrix Zeroes
 Medium

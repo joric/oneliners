@@ -4,6 +4,14 @@ from lc import *
 
 class Solution:
     def findWordsContaining(self, w: List[str], x: str) -> List[int]:
+        return[*compress(count(),(x in s for s in w))]
+
+class Solution:
+    def findWordsContaining(self, w: List[str], x: str) -> List[int]:
+        return[*compress(count(),map(str.__contains__,w,repeat(x)))]
+
+class Solution:
+    def findWordsContaining(self, w: List[str], x: str) -> List[int]:
         return filter(lambda i:x in w[i],range(len(w)))
 
 class Solution:
@@ -13,6 +21,7 @@ class Solution:
 class Solution:
     def findWordsContaining(self, w: List[str], x: str) -> List[int]:
         return[i for i,s in enumerate(w)if x in s]
+
 
 test('''
 2942. Find Words Containing Character

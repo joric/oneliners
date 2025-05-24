@@ -22,7 +22,6 @@ class Solution:
     def findWordsContaining(self, w: List[str], x: str) -> List[int]:
         return[i for i,s in enumerate(w)if x in s]
 
-
 test('''
 2942. Find Words Containing Character
 Solved

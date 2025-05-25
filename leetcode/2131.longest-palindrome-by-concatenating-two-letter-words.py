@@ -46,7 +46,7 @@ class Solution:
 
 class Solution:
     def longestPalindrome(self, w: List[str]) -> int:
-        c,t=Counter(w),0;return(sum(min(c[s],c[s[::-1]])if s!=s[::-1]else(t:=t|c[s]&1,-2&c[s])[1]for s in c)+t)*2
+        c,t=Counter(w),0;return(sum(min(c[s],c[p])if s!=(p:=s[::-1])else(t:=t|c[s]&1,-2&c[s])[1]for s in c)+t)*2
 
 test('''
 2131. Longest Palindrome by Concatenating Two Letter Words

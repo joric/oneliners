@@ -40,6 +40,14 @@ class Solution:
     def longestPalindrome(self, words: List[str]) -> int:
         return (lambda c:2*(sum(min(c[w],c[w[::-1]]) if w!=w[::-1] else c[w]-(c[w]%2) for w in c)+any(w==w[::-1] and c[w]%2 for w in c)))(Counter(words))
 
+class Solution:
+    def longestPalindrome(self, w: List[str]) -> int:
+        c=Counter(w);return 2*(sum(min(c[s],c[s[::-1]])if s!=s[::-1]else c[s]-(c[s]%2)for s in c)+any(s==s[::-1]and c[s]%2for s in c))
+
+class Solution:
+    def longestPalindrome(self, w: List[str]) -> int:
+        c,t=Counter(w),0;return(sum(min(c[s],c[s[::-1]])if s!=s[::-1]else(t:=t|c[s]&1,-2&c[s])[1]for s in c)+t)*2
+
 test('''
 2131. Longest Palindrome by Concatenating Two Letter Words
 Medium
@@ -84,6 +92,11 @@ Example 4:
 
 Input: words = ["qo","fo","fq","qf","fo","ff","qq","qf","of","of","oo","of","of","qf","qf","of"]
 Output: 14
+
+Other examples:
+
+Input: words = ["ll","lb","bb","bx","xx","lx","xx","lx","ll","xb","bx","lb","bb","lb","bl","bb","bx","xl","lb","xx"]
+Output: 26
 
 Constraints:
 

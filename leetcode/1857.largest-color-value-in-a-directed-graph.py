@@ -1,5 +1,45 @@
 from lc import *
 
+# https://leetcode.com/problems/largest-color-value-in-a-directed-graph/solutions/3397614/python-short-and-clean-dfs-dp-functional-programming/
+
+class Solution:
+    def largestPathValue(self, colors: str, edges: list[list[int]]) -> int:
+        Node = int
+        Color = str
+        Graph = Mapping[Node, tuple[Color, Collection[Node]]]
+        def max_color_count(graph: Graph) -> int:
+            seen: set[Node] = set()
+            @cache
+            def count_colors(root: Node) -> Counter[Color]:
+                color, nodes = graph[root]
+                if root in seen: return Counter({color: inf})
+                seen.add(root)
+                counter = Counter({color: 1}) + reduce(or_, map(count_colors, nodes), Counter())
+                seen.remove(root)
+                return counter
+            return max(count_colors(node).most_common(1)[0][1] for node in graph)
+        graph: Graph = {i: (c, set()) for i, c in enumerate(colors)}
+        for u, v in edges: graph[u][1].add(v)
+        count: int = max_color_count(graph)
+        return -1 if count == inf else count
+
+class Solution:
+    def largestPathValue(self, c: str, e: list[list[int]]) -> int:
+        g={i:[x,set()]for i,x in enumerate(c)}
+        [g[u][1].add(v)for u,v in e]
+        s = set()
+        @cache
+        def f(u):
+            x,d = g[u]
+            if u in s:
+                return Counter({x:inf})
+            s.add(u)
+            t = Counter({x:1})+reduce(or_,map(f,d),Counter())
+            s.remove(u)
+            return t
+        n = max(f(u).most_common(1)[0][1] for u in g)
+        return -1 if n == inf else n
+
 # https://leetcode.com/problems/largest-color-value-in-a-directed-graph/discuss/1198908/Python-shortest-code-and-fast
 
 class Solution:
@@ -21,6 +61,10 @@ class Solution:
 class Solution:
     def largestPathValue(self, colors: str, edges: List[List[int]]) -> int:
         return (d:=Counter(),g:=defaultdict(list),c:=defaultdict(Counter),[(g[u].append(v),d.update({v})) for u,v in edges],q:=[u for u in range(len(colors)) if d[u]==0],[(c[u].update({colors[u]:1}),[(setitem(c,v,c[v]|c[u]),d.update({v:-1}),d[v]==0 and q.append(v)) for v in g[u]]) for u in q],sum(d.values()) and -1 or max(max(c[u].values()) for u in c))[-1]
+
+class Solution:
+    def largestPathValue(self, s: str, e: List[List[int]]) -> int:
+        d,g,c=Counter(),defaultdict(list),defaultdict(Counter);[(g[u].append(v),d.update({v})) for u,v in e];q=[u for u in range(len(s))if d[u]==0];[(c[u].update({s[u]:1}),[(setitem(c,v,c[v]|c[u]),d.update({v:-1}),d[v]==0 and q.append(v))for v in g[u]])for u in q];return sum(d.values())and -1 or max(max(c[u].values())for u in c)
 
 test('''
 1857. Largest Color Value in a Directed Graph

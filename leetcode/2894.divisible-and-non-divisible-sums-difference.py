@@ -4,11 +4,23 @@ from lc import *
 
 class Solution:
     def differenceOfSums(self, n: int, m: int) -> int:
+        return(1+n)*n//2-(1+n//m)*(n//m)*m
+
+class Solution:
+    def differenceOfSums(self, n: int, m: int) -> int:
         return comb(n+1,2)-comb(n//m+1,2)*2*m
 
 class Solution:
     def differenceOfSums(self, n: int, m: int) -> int:
-        return(1+n)*n//2-(1+n//m)*(n//m)*m
+        return(1+n)*n//2-n//m*(n//m+1)*m
+
+class Solution:
+    def differenceOfSums(self, n: int, m: int) -> int:
+        return-~n*n//2-(k:=n//m)*-~k*m
+
+class Solution:
+    def differenceOfSums(self, n: int, m: int) -> int:
+        return-~n*n//2-n//m*m*(n//m+1)
 
 test('''
 2894. Divisible and Non-divisible Sums Difference

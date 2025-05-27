@@ -22,6 +22,10 @@ class Solution:
     def differenceOfSums(self, n: int, m: int) -> int:
         return-~n*n//2-n//m*m*(n//m+1)
 
+class Solution:
+    def differenceOfSums(self, n: int, m: int) -> int:
+        k=n//m;return-~n*n//2-k*-~k*m
+
 test('''
 2894. Divisible and Non-divisible Sums Difference
 Solved

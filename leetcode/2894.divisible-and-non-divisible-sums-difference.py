@@ -1,5 +1,11 @@
 from lc import *
 
+# https://leetcode.com/problems/divisible-and-non-divisible-sums-difference/solutions/4538165/1-line-solution/
+
+class Solution:
+    def differenceOfSums(self, n: int, m: int) -> int:
+        return sum(num if num % m != 0 else -num for num in range(1, n + 1))
+
 # https://leetcode.com/problems/divisible-and-non-divisible-sums-difference/solutions/4143950/java-c-python-math/
 
 class Solution:
@@ -32,7 +38,7 @@ class Solution:
 
 class Solution:
     def differenceOfSums(self, n: int, m: int) -> int:
-        k=n//m;return~k*m*k-~n*n//2
+        k=n//m;return~k*k*m-~n*n//2
 
 test('''
 2894. Divisible and Non-divisible Sums Difference

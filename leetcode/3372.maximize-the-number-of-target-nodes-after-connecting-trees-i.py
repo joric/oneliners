@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def maxTargetNodes(self, a: List[List[int]], b: List[List[int]], k: int) -> List[int]:
-        t=lambda e:(g:=defaultdict(list),[g[u].append(v) or g[v].append(u)for u,v in e])[0]
+        t=lambda e:(g:=defaultdict(list),[g[u].append(v)or g[v].append(u)for u,v in e])[0]
         f=lambda g,r,p,k:k>=0 and 1+sum(f(g,u,r,k-1)for u in g[r]if u!=p)
         a,b=t(a),t(b)
         c=max(f(b,i,-1,k-1)for i in range(len(b)))

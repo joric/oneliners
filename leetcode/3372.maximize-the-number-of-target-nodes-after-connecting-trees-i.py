@@ -5,14 +5,14 @@ from lc import *
 class Solution:
     def maxTargetNodes(self, a: List[List[int]], b: List[List[int]], k: int) -> List[int]:
         t=lambda e:(g:=defaultdict(list),[g[u].append(v) or g[v].append(u)for u,v in e])[0]
-        f=lambda g,r,p,k,c=1:k>=0 and c+sum(f(g,u,r,k-1)for u in g[r]if u!=p)
+        f=lambda g,r,p,k:k>=0 and 1+sum(f(g,u,r,k-1)for u in g[r]if u!=p)
         a,b=t(a),t(b)
         c=max(f(b,i,-1,k-1)for i in range(len(b)))
         return[c+f(a,i,-1,k)for i in range(len(a))]
 
 class Solution:
     def maxTargetNodes(self, a: List[List[int]], b: List[List[int]], k: int) -> List[int]:
-        t,f=lambda e:(g:=defaultdict(list),[g[u].append(v) or g[v].append(u)for u,v in e])[0],lambda g,r,p,k,c=1:k>=0 and c+sum(f(g,u,r,k-1)for u in g[r]if u!=p);a,b=t(a),t(b);c=max(f(b,i,-1,k-1)for i in range(len(b)));return[c+f(a,i,-1,k)for i in range(len(a))]
+        a,b=map(lambda e:(g:=defaultdict(list),[g[x].append(y)or g[y].append(x)for x,y in e])[0],(a,b));f=lambda g,r,p,k:k>=0 and 1+sum(f(g,u,r,k-1)for u in g[r]if u!=p);c=max(f(b,i,-1,k-1)for i in range(len(b)));return [c+f(a,i,-1,k)for i in range(len(a))]
 
 test('''
 3372. Maximize the Number of Target Nodes After Connecting Trees I

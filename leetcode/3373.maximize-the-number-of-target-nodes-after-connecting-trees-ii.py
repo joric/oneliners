@@ -75,7 +75,7 @@ class Solution:
 
 class Solution:
     def maxTargetNodes(self, a: List[List[int]], b: List[List[int]]) -> List[int]:
-        t=lambda e:(g:=defaultdict(list),[g[u].append(v)or g[v].append(u)for u,v in e])[0];f=lambda n,g:(r:=set(),b:=set(),s:={n},q:=deque(),(h:=lambda c,u:((b,r)[c].add(u),[not(v in s)and[s.add(v),q.append((not c,v))]for v in g[u]],q and h(*q.popleft())))(True,n),(r,b))[5];((a,b),u),((c,d),v)=[(f(e[0][0],g:=t(e)),g)for e in (a,b)];return[max(len(c),len(d))+(len(b),len(a))[i in a]for i in sorted(u.keys())]
+        f=lambda n,g:(r:=set(),b:=set(),s:={n},q:=deque(),(h:=lambda c,u:((b,r)[c].add(u),[not(v in s)and[s.add(v),q.append((not c,v))]for v in g[u]],q and h(*q.popleft())))(True,n),(r,b))[5];((a,b),u),((c,d),v)=[(f(e[0][0],g:=(lambda e:(g:=defaultdict(list),[g[u].append(v)or g[v].append(u)for u,v in e])[0])(e)),g)for e in (a,b)];return[max(len(c),len(d))+(len(b),len(a))[i in a]for i in sorted(u.keys())]
 
 test('''
 3373. Maximize the Number of Target Nodes After Connecting Trees II

@@ -50,7 +50,8 @@ class Solution:
                 ans.append(len(blue1) + maxi)
         return ans
 
-# TODO: maybe use 785.is-graph-bipartite.py
+# maybe use 785.is-graph-bipartite.py
+
 class Solution:
     def maxTargetNodes(self, a: List[List[int]], b: List[List[int]]) -> List[int]:
         t=lambda e:(g:=defaultdict(list),[g[u].append(v)or g[v].append(u)for u,v in e])[0]
@@ -59,9 +60,11 @@ class Solution:
             q.append((True, n))
             s.add(n)
             while q:
-                c, u = q.popleft()
-                if c: r.add(u)
-                else: b.add(u)
+                c,u = q.popleft()
+                if c:
+                    r.add(u)
+                else:
+                    b.add(u)
                 for v in g[u]:
                     if v in s: continue
                     s.add(v)
@@ -69,6 +72,10 @@ class Solution:
             return r,b
         ((a,b),u),((c,d),v)=[(f(e[0][0],g:=t(e)),g)for e in (a,b)]
         return[max(len(c),len(d))+(len(b),len(a))[i in a]for i in sorted(u.keys())]
+
+class Solution:
+    def maxTargetNodes(self, a: List[List[int]], b: List[List[int]]) -> List[int]:
+        t=lambda e:(g:=defaultdict(list),[g[u].append(v)or g[v].append(u)for u,v in e])[0];f=lambda n,g:(r:=set(),b:=set(),s:={n},q:=deque(),(h:=lambda c,u:((b,r)[c].add(u),[not(v in s)and[s.add(v),q.append((not c,v))]for v in g[u]],q and h(*q.popleft())))(True,n),(r,b))[5];((a,b),u),((c,d),v)=[(f(e[0][0],g:=t(e)),g)for e in (a,b)];return[max(len(c),len(d))+(len(b),len(a))[i in a]for i in sorted(u.keys())]
 
 test('''
 3373. Maximize the Number of Target Nodes After Connecting Trees II

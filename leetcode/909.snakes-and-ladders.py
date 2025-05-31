@@ -23,8 +23,11 @@ class Solution:
     def snakesAndLadders(self, board: List[List[int]]) -> int:
         return (n:=len(board),v:={1:0},q:=[1]) and next((v[i]+1 for i in q for j in range(i+1,i+7) if (k:=(x:=(j-1)%n,y:=(j-1)//n) and ((c:=board[~y][y%2 and ~x or x])>0 and c or j))==n*n or (k not in v and (v.update({k:v[i]+1}) or q.append(k)))),-1)
 
-test('''
+class Solution:
+    def snakesAndLadders(self, b: List[List[int]]) -> int:
+        n,v,q=len(b),{1:0},[1];return next((1+v[i]for i in q for j in range(i+1,i+7)if n*n==(k:=(x:=~-j%n,y:=~-j//n)and(0<(c:=b[~y][y%2 and~x or x])and c or j))or(k not in v and(v.update({k:v[i]+1})or q.append(k)))),-1)
 
+test('''
 909. Snakes and Ladders
 Medium
 

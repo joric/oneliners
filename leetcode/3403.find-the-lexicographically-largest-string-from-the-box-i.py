@@ -6,6 +6,10 @@ class Solution:
     def answerString(self, w: str, n: int) -> str:
         return(w,max(w[i:i+len(w)-n+1]for i in range(len(w))))[n>1]
 
+class Solution:
+    def answerString(self, w: str, n: int) -> str:
+        return[w,max(w[i:i-~len(w)-n]for i in range(len(w)))][n>1]
+
 test('''
 3403. Find the Lexicographically Largest String From the Box I
 Solved

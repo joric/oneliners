@@ -16,9 +16,26 @@ class Solution:
     def smallestEquivalentString(self, s1: str, s2: str, baseStr: str) -> str:
         return (p:={},f:=lambda x:x if x==p.get(x,x) else f(p[x]),[p:=p|{max(w:=[*map(f,v)]):min(w)} for v in zip(s1,s2)]) and ''.join(map(f,baseStr))
 
+class Solution:
+    def smallestEquivalentString(self, a: str, b: str, s: str) -> str:
+        return(p:={},f:=lambda x:x if x==p.get(x,x)else f(p[x]),[p:=p|{max(w:=[*map(f,v)]):min(w)}for v in zip(a,b)])and''.join(map(f,s))
+
+# updated 2025-06-05
+
+class Solution:
+    def smallestEquivalentString(self, a: str, b: str, s: str) -> str:
+        p = {}
+        f = lambda x:x if x==p.get(x,x) else f(p[x])
+        for v in zip(a,b):
+            w = [*map(f,v)]
+            p[max(w)] = min(w)
+        return ''.join(map(f,s))
+
+class Solution:
+    def smallestEquivalentString(self, a: str, b: str, s: str) -> str:
+        p={};f=lambda x:x==p.get(x,x)and x or f(p[x]);[p:=p|{max(w:=[*map(f,v)]):min(w)}for v in zip(a,b)];return''.join(map(f,s))
 
 test('''
-
 1061. Lexicographically Smallest Equivalent String
 Medium
 
@@ -70,6 +87,4 @@ Constraints:
 1 <= s1.length, s2.length, baseStr <= 1000
 s1.length == s2.length
 s1, s2, and baseStr consist of lowercase English letters.
-
 ''')
-

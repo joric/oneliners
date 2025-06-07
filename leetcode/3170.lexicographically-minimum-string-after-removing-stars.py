@@ -6,6 +6,10 @@ class Solution:
     def clearStars(self, s: str) -> str:
         h=[];[heappop(h)if c=='*'else heappush(h,(c,-i))for i,c in enumerate(s)];return''.join(c for c,_ in sorted(h,key=lambda x:-x[1]))
 
+class Solution:
+    def clearStars(self, s: str) -> str:
+        h=[];[heappush(h,(c,-i))if c>'*'else heappop(h)for i,c in enumerate(s)];return''.join(c for c,_ in sorted(h,key=lambda x:-x[1]))
+
 test('''
 3170. Lexicographically Minimum String After Removing Stars
 Solved

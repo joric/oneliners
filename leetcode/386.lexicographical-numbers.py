@@ -71,6 +71,9 @@ class Solution:
     def lexicalOrder(self, n: int) -> List[int]:
         return sorted(range(1,n+1),key=str)
 
+# POTD 2025-06-08
+# JavaScript var lexicalOrder=(n,r=[],d=(x=0,y=x*10)=>Array.from({length:10},(_,i,z=y+i)=>0<z && z<=n && (r.push(z),d(z))))=>(d(),r);
+
 test('''
 386. Lexicographical Numbers
 Medium

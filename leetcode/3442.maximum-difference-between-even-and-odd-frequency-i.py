@@ -11,23 +11,11 @@ class Solution:
 
 class Solution:
     def maxDifference(self, s: str) -> int:
-        c=Counter(s);f=lambda a,e:a(x for x in c.values()if e(x%2,0));return f(max,ne)-f(min,eq)
-
-class Solution:
-    def maxDifference(self, s: str) -> int:
         c=Counter(s);f=lambda a,e:a(c[i]for i in c if e(c[i]%2,0));return f(max,ne)-f(min,eq)
 
 class Solution:
     def maxDifference(self, s: str) -> int:
         v=Counter(s).values();return max(x for x in v if x%2)-min(x for x in v if x%2==0)
-
-class Solution:
-    def maxDifference(self, s: str) -> int:
-        v=Counter(s).values();return max(x for x in v if x&1)-min(x for x in v if~x&1)
-
-class Solution:
-    def maxDifference(self, s: str) -> int:
-        v=Counter(s).values();return max(x for x in v if x%2)-min(x for x in v if~x%2)
 
 class Solution:
     def maxDifference(self, s: str) -> int:

@@ -15,7 +15,7 @@ class Solution:
 
 class Solution:
     def maxDifference(self, s: str) -> int:
-        v=Counter(s).values();return max(x for x in v if x%2)-min(x for x in v if x%2==0)
+        c=Counter(s);return max(c[i]for i in c if c[i]%2)-min(c[i]for i in c if~c[i]%2)
 
 class Solution:
     def maxDifference(self, s: str) -> int:

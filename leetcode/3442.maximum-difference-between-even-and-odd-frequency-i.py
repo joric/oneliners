@@ -29,6 +29,10 @@ class Solution:
     def maxDifference(self, s: str) -> int:
         v=Counter(s).values();return max(x for x in v if x%2)-min(x for x in v if~x%2)
 
+class Solution:
+    def maxDifference(self, s: str) -> int:
+        v=Counter(s).values();return max(x%2*x for x in v)-min(x for x in v if~x%2)
+
 test('''
 3442. Maximum Difference Between Even and Odd Frequency I
 Solved
@@ -67,7 +71,11 @@ Explanation:
 
 The character 'a' has an odd frequency of 3, and 'c' has an even frequency of 2.
 The maximum difference is 3 - 2 = 1.
- 
+
+Other examples:
+
+Input: s = "tzt"
+Output: -1
 
 Constraints:
 

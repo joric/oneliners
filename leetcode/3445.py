@@ -20,11 +20,7 @@ class Solution:
 
 class Solution:
     def maxDifference(self, s: str, k: int) -> int:
-        q,f,t=-inf,lambda a,b:((a&1)<<1)|(b&1),'01234';[(l:=-1,d:=[inf]*4,u:=0,v:=0,x:=0,y:=0,[(u:=u+(s[r]==a),v:=v+(s[r]==b),all(r-l>=k and v-y>=2 and(setitem(d,m:=f(x,y),min(d[m],x-y)),l:=l+1,x:=x+(s[l]==a),y:=y+(s[l]==b))for _ in count()),inf>d[m:=f(u,v)^2]and(q:=max(q, u-v-d[m])))for r in range(len(s))])for a in t for b in t if a!=b];return q
-
-class Solution:
-    def maxDifference(self, s: str, k: int) -> int:
-        q,f,t=-inf,lambda a,b:(a&1)<<1|b&1,'01234';[(l:=-1,d:=[inf]*4,u:=0,v:=0,x:=0,y:=0,[(u:=u+(c==a),v:=v+(c==b),all(r-l>=k and v-y>=2 and(setitem(d,m:=f(x,y),min(d[m],x-y)),l:=l+1,x:=x+(s[l]==a),y:=y+(s[l]==b))for _ in count()),inf>d[m:=f(u,v)^2]and(q:=max(q, u-v-d[m])))for r,c in enumerate(s)])for a in t for b in t if a!=b];return q
+        q,f,t=-inf,lambda a,b:(a&1)<<1|b&1,'01234';[(l:=-1,d:=[inf]*4,u:=0,v:=0,x:=0,y:=0,[(u:=u+(c==a),v:=v+(c==b),all(r-l>=k and v-y>=2 and(setitem(d,m:=f(x,y),min(d[m],x-y)),l:=l+1,x:=x+(s[l]==a),y:=y+(s[l]==b))for _ in count()),inf>d[m:=f(u,v)^2]and(q:=max(q,u-v-d[m])))for r,c in enumerate(s)])for a in t for b in t if a!=b];return q
 
 test('''
 3445. Maximum Difference Between Even and Odd Frequency II

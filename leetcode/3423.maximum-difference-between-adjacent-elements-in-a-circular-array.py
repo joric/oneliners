@@ -24,7 +24,11 @@ class Solution:
 
 class Solution:
     def maxAdjacentDistance(self, a: List[int]) -> int:
-        return max(abs(i-j)for i,j in zip(a,a[1:]+a))
+        return max(map(abs,starmap(sub,pairwise(2*a))))
+
+class Solution:
+    def maxAdjacentDistance(self, a: List[int]) -> int:
+        return max(abs(x-y)for x,y in zip(a,a[1:]+a))
 
 class Solution:
     def maxAdjacentDistance(self, a: List[int]) -> int:
@@ -63,7 +67,11 @@ Explanation:
 
 The adjacent elements nums[0] and nums[1] have the maximum absolute difference of |-5 - (-10)| = 5.
 
- 
+
+Other examples:
+
+Input: nums = [2,1,0]
+Output: 2
 
 Constraints:
 

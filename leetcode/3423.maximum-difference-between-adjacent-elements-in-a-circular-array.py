@@ -4,27 +4,11 @@ from lc import *
 
 class Solution:
     def maxAdjacentDistance(self, a: List[int]) -> int:
-        return max(map(abs,starmap(sub,pairwise(a+[a[0]]))))
-
-class Solution:
-    def maxAdjacentDistance(self, a: List[int]) -> int:
-        return max(map(abs,starmap(sub,zip(a,a[1:]+a[:1]))))
-
-class Solution:
-    def maxAdjacentDistance(self, a: List[int]) -> int:
-        return max(abs(a[i]-a[i-1])for i in range(len(a)))
-
-class Solution:
-    def maxAdjacentDistance(self, a: List[int]) -> int:
         return max(abs(x-y)for x,y in pairwise(a+[a[0]]))
 
 class Solution:
     def maxAdjacentDistance(self, a: List[int]) -> int:
         return max(abs(x-a[i-1])for i,x in enumerate(a))
-
-class Solution:
-    def maxAdjacentDistance(self, a: List[int]) -> int:
-        return max(map(abs,starmap(sub,pairwise(2*a))))
 
 class Solution:
     def maxAdjacentDistance(self, a: List[int]) -> int:

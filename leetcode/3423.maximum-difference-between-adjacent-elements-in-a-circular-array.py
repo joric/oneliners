@@ -22,6 +22,14 @@ class Solution:
     def maxAdjacentDistance(self, a: List[int]) -> int:
         return max(abs(x-a[i-1])for i,x in enumerate(a))
 
+class Solution:
+    def maxAdjacentDistance(self, a: List[int]) -> int:
+        return max(abs(i-j)for i,j in zip(a,a[1:]+a))
+
+class Solution:
+    def maxAdjacentDistance(self, a: List[int]) -> int:
+        return max(abs(x-y)for x,y in pairwise(2*a))
+
 test('''
 3423. Maximum Difference Between Adjacent Elements in a Circular Array
 Easy

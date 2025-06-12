@@ -8,7 +8,11 @@ class Solution:
 
 class Solution:
     def maxAdjacentDistance(self, a: List[int]) -> int:
-        return max(abs(a[i]-a[i - 1])for i in range(len(a)))
+        return max(map(abs,starmap(sub,zip(a,a[1:]+a[:1]))))
+
+class Solution:
+    def maxAdjacentDistance(self, a: List[int]) -> int:
+        return max(abs(a[i]-a[i-1])for i in range(len(a)))
 
 class Solution:
     def maxAdjacentDistance(self, a: List[int]) -> int:

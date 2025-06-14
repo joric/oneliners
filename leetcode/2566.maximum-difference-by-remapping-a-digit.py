@@ -17,14 +17,6 @@ class Solution:
 
 class Solution:
     def minMaxDifference(self, a: int) -> int:
-        f=lambda s,t:[int(''.join(c!=d and c or t for c in s))for d in s];return max(f(s:=str(a),'9'))-min(f(s,'0'))
-
-class Solution:
-    def minMaxDifference(self, a: int) -> int:
-        f=lambda s,t:[int(''.join((t,c)[c!=d]for c in s))for d in s];return max(f(s:=str(a),'9'))-min(f(s,'0'))
-
-class Solution:
-    def minMaxDifference(self, a: int) -> int:
         f=lambda t,s=str(a):[int(''.join((t,c)[c!=d]for c in s))for d in s];return max(f('9'))-min(f('0'))
 
 class Solution:

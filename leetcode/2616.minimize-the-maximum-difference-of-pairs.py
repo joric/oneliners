@@ -25,6 +25,12 @@ class Solution:
     def minimizeMax(self, a: List[int], p: int) -> int:
         n=len(a);a.sort();f=lambda x:next((c for _ in[0]*n if not(i<n and(a[i]-a[i-1]<=x and(c:=c+1,i:=i+1),i:=i+1))),(c:=0,i:=1));return p and bisect_left(range(20**7),p,key=f)
 
+# https://leetcode.com/problems/minimize-the-maximum-difference-of-pairs/solutions/5916466/one-line-solution/?envType=daily-question&envId=2025-06-13
+
+class Solution:
+    def minimizeMax(self, a: List[int], p: int) -> int:
+        return bisect_left(range(max(a)),1,key=lambda d,q=0,a=sorted(a):sum(q:=q^1 and u-v<=d for v,u in pairwise(a))>=p)
+
 test('''
 2616. Minimize the Maximum Difference of Pairs
 Medium

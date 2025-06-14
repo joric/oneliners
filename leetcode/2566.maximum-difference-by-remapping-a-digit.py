@@ -27,6 +27,10 @@ class Solution:
     def minMaxDifference(self, a: int) -> int:
         f=lambda t,s=str(a):[int(s.replace(d,t))for d in s];return max(f('9'))-min(f('0'))
 
+class Solution:
+    def minMaxDifference(self, a: int) -> int:
+        f=lambda t,s=str(a):[int(re.sub(d,t,s))for d in s];return max(f('9'))-min(f('0'))
+
 test('''
 2566. Maximum Difference by Remapping a Digit
 Easy

@@ -46,11 +46,11 @@ class Solution:
 
 class Solution:
     def maxDiff(self, n: int) -> int:
-        return max(v:=[int(t)for p in permutations(digits,2)if(t:=str(n).replace(*p))[0]>'0'])-min(v)
+        return max(v:=[int(t)for x in digits for y in'019'if(t:=str(n).replace(x,y))[0]>'0'])-min(v)
 
 class Solution:
     def maxDiff(self, n: int) -> int:
-        return max(v:=[int(t)for x in digits for y in'019'if(t:=str(n).replace(x,y))[0]>'0'])-min(v)
+        return max(v:=[int(t)for p in permutations(digits,2)if(t:=str(n).replace(*p))[0]>'0'])-min(v)
 
 class Solution:
     def maxDiff(self, n: int) -> int:

@@ -44,6 +44,10 @@ class Solution:
     def maxDiff(self, n: int) -> int:
         s=str(n);return max(v:=[int(t)for x in s for y in digits if(t:=s.replace(x,y))[0]>'0'])-min(v)
 
+class Solution:
+    def maxDiff(self, n: int) -> int:
+        return max(v:=[int(t)for x in digits for y in'019'if(t:=str(n).replace(x,y))[0]>'0'])-min(v)
+
 test('''
 1432. Max Difference You Can Get From Changing an Integer
 Solved

@@ -1,7 +1,7 @@
 from lc import *
 
-# Q2 https://leetcode.com/contest/biweekly-contest-25/
 # https://leetcode.com/problems/max-difference-you-can-get-from-changing-an-integer/
+# Q2 https://leetcode.com/contest/biweekly-contest-25/
 # a contest problem, I had this submission back then (May 02 2020)
 
 class Solution:
@@ -43,6 +43,10 @@ class Solution:
 class Solution:
     def maxDiff(self, n: int) -> int:
         s=str(n);return max(v:=[int(t)for x in s for y in digits if(t:=s.replace(x,y))[0]>'0'])-min(v)
+
+class Solution:
+    def maxDiff(self, n: int) -> int:
+        return max(v:=[int(t)for p in permutations(digits,2)if(t:=str(n).replace(*p))[0]>'0'])-min(v)
 
 class Solution:
     def maxDiff(self, n: int) -> int:

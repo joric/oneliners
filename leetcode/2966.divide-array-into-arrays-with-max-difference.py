@@ -57,6 +57,10 @@ class Solution:
     def divideArray(self, a: List[int], k: int) -> List[List[int]]:
         return(r:=[*zip(*[iter(sorted(a))]*3)])*all(q-p<=k for p,_,q in r)
 
+class Solution:
+    def divideArray(self, a: List[int], k: int) -> List[List[int]]:
+        r=*zip(*[iter(sorted(a))]*3),;return r*all(q-p<=k for p,_,q in r)
+
 test(''''
 2966. Divide Array Into Arrays With Max Difference
 Medium

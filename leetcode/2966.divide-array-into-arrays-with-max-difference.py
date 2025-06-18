@@ -31,6 +31,20 @@ class Solution:
 # updated 2024-02-01
 # https://leetcode.com/problems/divide-array-into-arrays-with-max-difference/discuss/4656961/One-line-solution.-Runtime-greater-99
 
+class Solution: # python 3.12 ftw / doesn't work on leetcode 2025-06-18 just yet
+    def divideArray(self, n: List[int], k: int) -> List[List[int]]:
+        return([],r:=[*batched(sorted(n),3)])[all(k>=b-a for a,_,b in r)]
+
+class Solution:
+    def divideArray(self, a: List[int], k: int) -> List[List[int]]:
+        return(r:=[*batched(sorted(a),3)])*all(q-p<=k for p,_,q in r)
+
+# POTD 2025-06-18
+
+class Solution:
+    def divideArray(self, n: List[int], k: int) -> List[List[int]]:
+        r=[*zip(*[iter(sorted(n))]*3)];return all(a[2]<=a[0]+k for a in r)and r or[]
+
 class Solution:
     def divideArray(self, n: List[int], k: int) -> List[List[int]]:
         r=*zip(*[iter(sorted(n))]*3),;return([],r)[all(k>=b-a for a,_,b in r)]
@@ -38,10 +52,6 @@ class Solution:
 class Solution:
     def divideArray(self, n: List[int], k: int) -> List[List[int]]:
         return([],r:=[*zip(*[iter(sorted(n))]*3)])[all(k>=b-a for a,_,b in r)]
-
-class Solution: # python 3.12 ftw
-    def divideArray(self, n: List[int], k: int) -> List[List[int]]:
-        return([],r:=[*batched(sorted(n),3)])[all(k>=b-a for a,_,b in r)]
 
 test(''''
 2966. Divide Array Into Arrays With Max Difference

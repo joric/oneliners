@@ -15,6 +15,10 @@ class Solution:
         n.sort();r=[];return next(([]for i in range(0,len(n),3)if k<n[i+2]-n[i]or r.append(n[i:i+3])),r)
 
 class Solution:
+    def divideArray(self, a: List[int], k: int) -> List[List[int]]:
+        a.sort();r=range(0,len(a),3);return[a[i:i+3]for i in r]*all(k>=a[i+2]-a[i]for i in r)
+
+class Solution:
     def divideArray(self, n: List[int], k: int) -> List[List[int]]:
         r = []
         for n in zip(*[iter(sorted(n))]*3):

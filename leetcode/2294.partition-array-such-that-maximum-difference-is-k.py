@@ -58,7 +58,21 @@ The difference between the maximum and minimum value in the first subsequences i
 The difference between the maximum and minimum value in the second subsequences is 4 - 4 = 0.
 The difference between the maximum and minimum value in the third subsequences is 5 - 5 = 0.
 Since three subsequences were created, we return 3. It can be shown that 3 is the minimum number of subsequences needed.
- 
+
+
+Other examples:
+
+Input: nums = [3,1,3,4,2], k = 0
+Output: 4
+
+Input: nums = [0], k = 1
+Output: 1
+
+Input: nums = [0], k = 5
+Output: 1
+
+Input: nums = [0,1,2,3], k = 1
+Output: 2
 
 Constraints:
 

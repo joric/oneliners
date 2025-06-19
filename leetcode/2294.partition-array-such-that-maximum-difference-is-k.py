@@ -4,6 +4,10 @@ from lc import *
 
 class Solution:
     def partitionArray(self, a: List[int], k: int) -> int:
+        a.sort();q=a.pop(0);return 1+len([q:=v for v in a if v>q+k])
+
+class Solution:
+    def partitionArray(self, a: List[int], k: int) -> int:
         return len({*accumulate(sorted(a),lambda q,v:(q,v)[v-q>k])})
 
 class Solution:

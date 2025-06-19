@@ -1,5 +1,20 @@
 from lc import *
 
+# https://leetcode.com/problems/partition-array-such-that-maximum-difference-is-k/solutions/6859518/greedy-counting-sortbeats-100-by-anwende-ednw/
+
+class Solution:
+    def partitionArray(self, a: List[int], k: int) -> int:
+        a.sort()
+        p = i = 0
+        while i < len(a):
+            i = bisect_right(a, a[i]+k, i)
+            p += 1
+        return p
+
+class Solution:
+    def partitionArray(self, a: List[int], k: int) -> int:
+        a.sort();i=0;return sum(0<(i:=bisect_right(a,a[i]+k,i))for _ in a if i<len(a))
+
 # https://leetcode.com/problems/partition-array-such-that-maximum-difference-is-k/solutions/6855596/one-line-solution/?envType=daily-question&envId=2025-06-19
 
 class Solution:

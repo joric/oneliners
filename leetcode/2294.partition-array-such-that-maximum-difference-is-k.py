@@ -12,6 +12,10 @@ class Solution:
 
 class Solution:
     def partitionArray(self, a: List[int], k: int) -> int:
+        q=-1;return len([q:=v for v in sorted(a)if q==-1 or v-q>k])
+
+class Solution:
+    def partitionArray(self, a: List[int], k: int) -> int:
         a.sort();q=a[0];return len({q:=(q,v)[v-q>k]for v in a})
 
 test('''

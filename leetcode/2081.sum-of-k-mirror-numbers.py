@@ -38,6 +38,11 @@ class Solution:
     def kMirror(self, k: int, n: int) -> int:
         x,s=['0'],setitem;f=lambda x:(m:=len(x))and next((x for i in range(m//2,m)if k>1+int(x[i])and(s(x,i,t:=str(int(x[i])+1)),s(x,~i,t),[s(x,j,'0')or s(x,~j,'0')for j in range(m//2,i)])),['1']+['0']*~-m+['1']);return sum(next(t for _ in count()if str(t:=int(''.join(x:=f(x)),k))==str(t)[::-1])for _ in range(n))
 
+# TLE
+class Solution:
+    def kMirror(self, k: int, n: int) -> int:
+        return sum(islice((i for i in count(1)if(s:=str(i))==s[::-1]and(p:=(f:=lambda f,y:str(y)if y<k else f(f,y//k)+str(y%k))(f,i))==p[::-1]),n))
+
 test('''
 2081. Sum of k-Mirror Numbers
 Solved

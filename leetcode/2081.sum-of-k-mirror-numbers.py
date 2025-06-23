@@ -38,10 +38,31 @@ class Solution:
     def kMirror(self, k: int, n: int) -> int:
         x,s=['0'],setitem;f=lambda x:(m:=len(x))and next((x for i in range(m//2,m)if k>1+int(x[i])and(s(x,i,t:=str(int(x[i])+1)),s(x,~i,t),[s(x,j,'0')or s(x,~j,'0')for j in range(m//2,i)])),['1']+['0']*~-m+['1']);return sum(next(t for _ in count()if str(t:=int(''.join(x:=f(x)),k))==str(t)[::-1])for _ in range(n))
 
-# TLE
+# TLE, even with cache(lambda)
 class Solution:
     def kMirror(self, k: int, n: int) -> int:
         return sum(islice((i for i in count(1)if(s:=str(i))==s[::-1]and(p:=(f:=lambda f,y:str(y)if y<k else f(f,y//k)+str(y%k))(f,i))==p[::-1]),n))
+
+class Solution:
+    def kMirror(self, k: int, n: int) -> int:
+        return sum(islice((x for x in merge((int(str(a)+str(a)[-2::-1])for a in count(1)),(int(str(a)+str(a)[::-1])for a in count(1)))if(b:=(lambda y,f=(lambda f,z:str(z)if z<k else f(f,z//k)+str(z%k)):f(f,y))(x))==b[::-1]),n))
+
+class Solution:
+    def kMirror(self, k: int, n: int) -> int:
+        def to_base_k(num: int) -> str:
+            if num < k:
+                return str(num)
+            return to_base_k(num // k) + str(num % k)
+        def is_k_mirror(x: int) -> bool:
+            b = to_base_k(x)
+            return b == b[::-1]
+        gen1 = (int(str(a) + str(a)[-2::-1]) for a in count(1))
+        gen2 = (int(str(a) + str(a)[::-1]) for a in count(1))
+        return sum(islice((x for x in merge(gen1, gen2) if is_k_mirror(x)), n))
+
+class Solution:
+    def kMirror(self, k: int, n: int) -> int:
+        g=lambda z:str(z)if z<k else g(z//k)+str(z%k);f=lambda x:g(x)==g(x)[::-1];return sum(islice((x for x in merge((int(str(a)+str(a)[-2::-1])for a in count(1)),(int(str(a)+str(a)[::-1])for a in count(1)))if f(x)),n))
 
 test('''
 2081. Sum of k-Mirror Numbers

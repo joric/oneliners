@@ -43,6 +43,7 @@ class Solution:
     def kMirror(self, k: int, n: int) -> int:
         g=lambda z:z<k and str(z)or g(z//k)+str(z%k);return sum(islice((i for i in count(1)if str(i)==str(i)[::-1]and g(i)==g(i)[::-1]),n))
 
+# 4726ms
 class Solution:
     def kMirror(self, k: int, n: int) -> int:
         def to_base_k(num: int) -> str:
@@ -56,6 +57,7 @@ class Solution:
         gen2 = (int(str(a) + str(a)[::-1]) for a in count(1))
         return sum(islice((x for x in merge(gen1, gen2) if is_k_mirror(x)), n))
 
+# 8354ms
 class Solution:
     def kMirror(self, k: int, n: int) -> int:
         f=lambda z:z<k and str(z)or f(z//k)+str(z%k);return sum(islice((x for x in merge((int(str(a)+str(a)[-2::-1])for a in count(1)),(int(str(a)+str(a)[::-1])for a in count(1)))if f(x)==f(x)[::-1]),n))

@@ -38,7 +38,11 @@ class Solution:
     def kMirror(self, k: int, n: int) -> int:
         x,s=['0'],setitem;f=lambda x:(m:=len(x))and next((x for i in range(m//2,m)if k>1+int(x[i])and(s(x,i,t:=str(int(x[i])+1)),s(x,~i,t),[s(x,j,'0')or s(x,~j,'0')for j in range(m//2,i)])),['1']+['0']*~-m+['1']);return sum(next(t for _ in count()if str(t:=int(''.join(x:=f(x)),k))==str(t)[::-1])for _ in range(n))
 
-# chatgpt
+# chatgpt, this one is TLE, even with cache(lambda)
+class Solution:
+    def kMirror(self, k: int, n: int) -> int:
+        g=lambda z:z<k and str(z)or g(z//k)+str(z%k);return sum(islice((i for i in count(1)if str(i)==str(i)[::-1]and g(i)==g(i)[::-1]),n))
+
 class Solution:
     def kMirror(self, k: int, n: int) -> int:
         def to_base_k(num: int) -> str:
@@ -54,16 +58,7 @@ class Solution:
 
 class Solution:
     def kMirror(self, k: int, n: int) -> int:
-        return sum(islice((x for x in merge((int(str(a)+str(a)[-2::-1])for a in count(1)),(int(str(a)+str(a)[::-1])for a in count(1)))if(b:=(lambda y,f=(lambda f,z:str(z)if z<k else f(f,z//k)+str(z%k)):f(f,y))(x))==b[::-1]),n))
-
-class Solution:
-    def kMirror(self, k: int, n: int) -> int:
-        g=lambda z:z<k and str(z)or g(z//k)+str(z%k);f=lambda x:g(x)==g(x)[::-1];return sum(islice((x for x in merge((int(str(a)+str(a)[-2::-1])for a in count(1)),(int(str(a)+str(a)[::-1])for a in count(1)))if f(x)),n))
-
-# this one is TLE, even with cache(lambda)
-class Solution:
-    def kMirror(self, k: int, n: int) -> int:
-        g=lambda z:z<k and str(z)or g(z//k)+str(z%k);return sum(islice((i for i in count(1)if str(i)==str(i)[::-1]and g(i)==g(i)[::-1]),n))
+        f=lambda z:z<k and str(z)or f(z//k)+str(z%k);return sum(islice((x for x in merge((int(str(a)+str(a)[-2::-1])for a in count(1)),(int(str(a)+str(a)[::-1])for a in count(1)))if f(x)==f(x)[::-1]),n))
 
 test('''
 2081. Sum of k-Mirror Numbers

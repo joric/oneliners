@@ -57,10 +57,10 @@ class Solution:
         gen2 = (int(str(a) + str(a)[::-1]) for a in count(1))
         return sum(islice((x for x in merge(gen1, gen2) if is_k_mirror(x)), n))
 
-# 8354ms
+# 9027ms
 class Solution:
     def kMirror(self, k: int, n: int) -> int:
-        f=lambda z:z<k and str(z)or f(z//k)+str(z%k);return sum(islice((x for x in merge((int(str(a)+str(a)[-2::-1])for a in count(1)),(int(str(a)+str(a)[::-1])for a in count(1)))if f(x)==f(x)[::-1]),n))
+        return sum(islice((x for x in merge((int(str(a)+str(a)[-2::-1])for a in count(1)),(int(str(a)+str(a)[::-1])for a in count(1)))if(f:=lambda z:z<k and str(z)or f(z//k)+str(z%k))(x)==f(x)[::-1]),n))
 
 test('''
 2081. Sum of k-Mirror Numbers

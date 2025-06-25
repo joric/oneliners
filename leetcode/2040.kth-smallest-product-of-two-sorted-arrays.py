@@ -42,6 +42,10 @@ class Solution:
     def kthSmallestProduct(self, a: List[int], b: List[int], k: int) -> int:
         l,t,f=bisect_left,10**10,lambda x:sum(bisect_right(b,x//y)if y>0 else len(b)-l(b,-(-x//y))if y<0 else(x>=0)*len(b)for y in a);return l(range(2*t),k,key=lambda i:f(i-t))-t
 
+class Solution:
+    def kthSmallestProduct(self, a: List[int], b: List[int], k: int) -> int:
+        l,t=bisect_left,10**10;return l(range(2*t),k,key=lambda x:sum((bisect_right(b,(x-t)//y),len(b)-l(b,-((t-x)//y)))[y<0]if y else(x>=t)*len(b)for y in a))-t
+
 test('''
 2040. Kth Smallest Product of Two Sorted Arrays
 Hard
@@ -86,6 +90,11 @@ Explanation: The 3 smallest products are:
 - nums1[4] * nums2[0] = 2 * (-3) = -6
 The 3rd smallest product is -6.
  
+
+Other examples:
+
+Input: nums1 = [-6], nums2 = [-9], k = 1
+Output: 54
 
 Constraints:
 

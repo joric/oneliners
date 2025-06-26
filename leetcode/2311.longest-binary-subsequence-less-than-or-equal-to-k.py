@@ -43,6 +43,11 @@ Explanation: "000001" is the longest subsequence of s that makes up a binary num
 The length of this subsequence is 6, so 6 is returned.
  
 
+Other examples:
+
+Input: s = "0", k = 583196182
+Output: 1
+
 Constraints:
 
 1 <= s.length <= 1000

@@ -1,5 +1,22 @@
 from lc import *
 
+# https://leetcode.com/problems/longest-subsequence-repeated-k-times/solutions/6890122/my-thoughts/
+
+class Solution:
+    def longestSubsequenceRepeatedK(self, s: str, k: int) -> str:
+        t = Counter(s)
+        d = sorted(i for i in t if t[i]>=k)
+        q = deque([''])
+        while q:
+            for _ in range(len(q)):
+                r = q.popleft()
+                for w in d:
+                    c = r+w
+                    t = iter(s)
+                    if all(x in t for x in c*k):
+                        q.append(c)
+        return r
+
 # https://leetcode.com/problems/longest-subsequence-repeated-k-times/solutions/1471930/python-answer-is-not-so-long-explained/
 
 class Solution:
@@ -20,7 +37,7 @@ class Solution:
 
 class Solution:
     def longestSubsequenceRepeatedK(self, s: str, k: int) -> str:
-        c=Counter(s);h=''.join(i*(c[i]//k)for i in c);return next(c for c in[*sorted({''.join(t)for l in range(len(h)+1)for r in combinations(h,l)for t in permutations(r)},key=lambda x:(len(x),x))][::-1]if(t:=iter(s))and all(x in t for x in c*k))
+        t=Counter(s);h=''.join(i*(t[i]//k)for i in t);return next(c for c in[*sorted({''.join(t)for l in range(len(h)+1)for r in combinations(h,l)for t in permutations(r)},key=lambda x:(len(x),x))][::-1]if(t:=iter(s))and all(x in t for x in c*k))
 
 test('''
 2014. Longest Subsequence Repeated k Times

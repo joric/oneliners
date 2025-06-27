@@ -22,6 +22,10 @@ class Solution:
     def longestSubsequenceRepeatedK(self, s: str, k: int) -> str:
         h=''.join(i*(x//k)for i,x in Counter(s).items());v={''.join(t)for l in range(len(h)+1)for r in combinations(h,l)for t in permutations(r)};return next(c for c in sorted(v,key=lambda x:(len(x),x),reverse=True)if(t:=iter(s))and all(x in t for x in c*k))
 
+class Solution:
+    def longestSubsequenceRepeatedK(self, s: str, k: int) -> str:
+        h=''.join(i*(x//k)for i,x in Counter(s).items());v={''.join(t)for l in range(len(h)+1)for r in combinations(h,l)for t in permutations(r)};return next(c for c in[*sorted(v,key=lambda x:(len(x),x))][::-1]if(t:=iter(s))and all(x in t for x in c*k))
+
 test('''
 2014. Longest Subsequence Repeated k Times
 Hard

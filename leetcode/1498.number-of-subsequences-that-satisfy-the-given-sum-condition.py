@@ -14,8 +14,6 @@ class Solution:
 
 # https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/discuss/3266145/Python-Two-Liner-O(N-log-N)
 
-# POTD 2025-06-29
-
 class Solution:
     def numSubseq(self, a: List[int], t: int) -> int:
         a.sort();return sum(2**(j-i-1)for i,x in enumerate(a)for j in[bisect_right(a,t-x)]if i<j)%(10**9+7)
@@ -31,6 +29,8 @@ class Solution:
 class Solution:
     def numSubseq(self, a: List[int], t: int) -> int:
         a.sort();return sum(1<<p for i,x in enumerate(a)if(p:=bisect_right(a,t-x)+~i)>=0)%(10**9+7)
+
+# https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/solutions/6897201/1-line-by-joric-p2o1/
 
 class Solution:
     def numSubseq(self, a: List[int], t: int) -> int:

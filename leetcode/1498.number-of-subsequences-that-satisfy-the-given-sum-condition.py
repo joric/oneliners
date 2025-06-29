@@ -32,6 +32,10 @@ class Solution:
     def numSubseq(self, a: List[int], t: int) -> int:
         a.sort();return sum(1<<p for i,x in enumerate(a)if(p:=bisect_right(a,t-x)+~i)>=0)%(10**9+7)
 
+class Solution:
+    def numSubseq(self, a: List[int], t: int) -> int:
+        a.sort();return sum(1<<~i+bisect_right(a,t-x)for i,x in enumerate(a)if t-x>=x)%(10**9+7)
+
 test('''
 1498. Number of Subsequences That Satisfy the Given Sum Condition
 Medium

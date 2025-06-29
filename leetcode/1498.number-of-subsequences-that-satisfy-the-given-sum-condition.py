@@ -14,13 +14,19 @@ class Solution:
 
 # https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/discuss/3266145/Python-Two-Liner-O(N-log-N)
 
-class Solution:
-    def numSubseq(self, nums: List[int], target: int) -> int:
-        return (s:=sorted(nums)) and sum(2**(j-i-1) for i,n in enumerate(s) for j in [bisect_right(s,target-n)] if i<j)%(10**9+7)
+# POTD 2025-06-29
 
 class Solution:
-    def numSubseq(self, s: List[int], t: int) -> int:
-        return s.sort() or sum(2**(j-i-1) for i,n in enumerate(s) for j in [bisect_right(s,t-n)] if i<j)%(10**9+7)
+    def numSubseq(self, a: List[int], t: int) -> int:
+        a.sort();return sum(2**(j-i-1)for i,x in enumerate(a)for j in[bisect_right(a,t-x)]if i<j)%(10**9+7)
+
+class Solution:
+    def numSubseq(self, a: List[int], t: int) -> int:
+        a.sort();return sum(1<<(j-i-1)for i,x in enumerate(a)if(i<(j:=bisect_right(a,t-x))))%(10**9+7)
+
+class Solution:
+    def numSubseq(self, a: List[int], t: int) -> int:
+        a.sort();return sum(1<<~-j for i,x in enumerate(a)if(j:=bisect_right(a,t-x)-i)>0)%(10**9+7)
 
 test('''
 1498. Number of Subsequences That Satisfy the Given Sum Condition

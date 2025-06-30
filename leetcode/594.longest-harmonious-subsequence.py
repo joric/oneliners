@@ -16,11 +16,11 @@ class Solution:
 
 class Solution:
     def findLHS(self, a: list[int]) -> int:
-        c=Counter(a);return max((0,c[k]+c[k+1])[k+1in c]for k in c)
+        c=Counter(a);return max((0,c[k]+c[k+1])[k+1 in c]for k in c)
 
 class Solution:
     def findLHS(self, a: list[int]) -> int:
-        c=Counter(a);return max((c[k]+c[k+1])*(k+1in c)for k in c)
+        c=Counter(a);return max((c[k]+c[k+1])*(k+1 in c)for k in c)
 
 test('''
 594. Longest Harmonious Subsequence

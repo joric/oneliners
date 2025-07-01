@@ -5,8 +5,7 @@ from lc import *
 # TLE
 class Solution:
     def possibleStringCount(self, w: str, k: int) -> int:
-        t=[len(list(g))for _,g in groupby(w)];
-        return(f:=cache(lambda i,k:k<=0 if i==len(t) else t[i]*f(i+1,k)if k<=0 else sum(f(i+1,k-j)for j in range(1,t[i]+1))))(0,k)%(10**9+7)
+        t=[len(list(g))for _,g in groupby(w)];return(f:=cache(lambda i,k:k<=0 if i==len(t)else t[i]*f(i+1,k)if k<=0 else sum(f(i+1,k-j)for j in range(1,t[i]+1))))(0,k)%(10**9+7)
 
 class Solution:
     def possibleStringCount(self, w: str, k: int) -> int:

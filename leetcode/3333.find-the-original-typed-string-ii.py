@@ -30,7 +30,7 @@ class Solution:
 
 class Solution:
     def possibleStringCount(self, w: str, k: int) -> int:
-        m,d=10**9+7,[1]+[0]*k;return(prod(t)if k<=len(t:=[len(list(g))for _,g in groupby(w)])else[(s:=[0]*(k+1),setitem(s,0,d[0]),[setitem(s,i,(s[i-1]+d[i])%m)for i in range(1,k+1)],[(c:=s[i-1] if i>0 else 0,c:=((c-s[i-x-1]) if i>x else (c+(x-i)*d[0]) if i<x else c)%m,setitem(d,i,c%m))for i in range(k,-1,-1)])for x in reversed(t)]and d[k])%m
+        m,d=10**9+7,[1]+[0]*k;return(prod(t)if k<=len(t:=[len(list(g))for _,g in groupby(w)])else[(s:=[0]*(k+1),setitem(s,0,d[0]),[setitem(s,i,(s[i-1]+d[i])%m)for i in range(1,k+1)],[(c:=s[i-1] if i>0 else 0,c:=((c-s[i-x-1])if i>x else(c+(x-i)*d[0])if i<x else c)%m,setitem(d,i,c%m))for i in range(k,-1,-1)])for x in reversed(t)]and d[k])%m
 
 test('''
 3333. Find the Original Typed String II

@@ -15,6 +15,10 @@ class Solution:
     def kthCharacter(self, k: int, o: List[int]) -> str:
         return chr(sum(x for i,x in enumerate(o)if~-k&1<<i)%26+97)
 
+class Solution:
+    def kthCharacter(self, k: int, o: List[int]) -> str:
+        return chr(sum(k-1>>i&x for i,x in enumerate(o))%26+97)
+
 test('''
 3307. Find the K-th Character in String Game II
 Hard

@@ -19,11 +19,19 @@ class Solution:
 
 class Solution:
     def findLucky(self, a: List[int]) -> int:
-        c=Counter(a);return max([-1]+[i for i in c if i==c[i]])
+        c=Counter(a);return max([-1]+[k for k in c if k==c[k]])
 
 class Solution:
     def findLucky(self, a: List[int]) -> int:
-        return max([-1]+[i for i in a if a.count(i)==i])
+        return max([-1]+[x for x in a if a.count(x)==x])
+
+class Solution:
+    def findLucky(self, a: List[int]) -> int:
+        return max(-1-~x*(x==a.count(x))for x in a)
+
+class Solution:
+    def findLucky(self, a: List[int]) -> int:
+        return max((-1,x)[x==a.count(x)]for x in a)
 
 test('''
 1394. Find Lucky Integer in an Array

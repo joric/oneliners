@@ -1,5 +1,11 @@
 from lc import *
 
+# https://leetcode.com/problems/find-lucky-integer-in-an-array/solutions/4163155/one-line-solution-with-using-itertools-groupby/?envType=daily-question&envId=2025-07-05
+
+class Solution:
+    def findLucky(self, a: List[int]) -> int:
+        return next((x for x,g in groupby(sorted(a,reverse=True))if x==len([*g])),-1)
+
 # https://leetcode.com/problems/find-lucky-integer-in-an-array/submissions/316935355/?envType=daily-question&envId=2025-07-05
 
 class Solution:
@@ -14,6 +20,18 @@ class Solution:
 class Solution:
     def findLucky(self, a: List[int]) -> int:
         c=Counter(a);return max([-1]+[i for i in c if i==c[i]])
+
+class Solution:
+    def findLucky(self, a: List[int]) -> int:
+        c=Counter(a);return max({-1}|{i for i in c if i==c[i]})
+
+class Solution:
+    def findLucky(self, a: List[int]) -> int:
+        return max([-1]+[i for i in{*a}if a.count(i)==i])
+
+class Solution:
+    def findLucky(self, a: List[int]) -> int:
+        return max([-1]+[i for i in a if a.count(i)==i])
 
 test('''
 1394. Find Lucky Integer in an Array

@@ -61,7 +61,7 @@ class Solution:
 
 class Solution:
     def maxEvents(self, e: list[list[int]]) -> int:
-        t=''.join(map(chr,range(100002)));return sum(b>=(c:=ord(t[a]))and(t:=t.replace(t[a],t[c+1]))!=0for a,b in sorted(e,key=itemgetter(1)))
+        t=''.join(map(chr,range(7**6)));return sum(b>=(c:=ord(t[a]))and(t:=t.replace(t[a],t[c+1]))!=0for a,b in sorted(e,key=itemgetter(1)))
 
 test('''
 1353. Maximum Number of Events That Can Be Attended

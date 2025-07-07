@@ -47,13 +47,13 @@ class Solution:
     def maxEvents(self, e: list[list[int]]) -> int:
         e.sort(key=itemgetter(1))
         t=''.join(map(chr,range(e[-1][1]+2)))
-        s = 0
+        r = 0
         for a,b in e:
             c = ord(t[a])
             if b>=c:
-                s += 1
+                r += 1
                 t = t.replace(t[a],t[c+1])
-        return s
+        return r
 
 class Solution:
     def maxEvents(self, e: list[list[int]]) -> int:

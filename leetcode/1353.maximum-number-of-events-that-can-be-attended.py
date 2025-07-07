@@ -49,9 +49,10 @@ class Solution:
         t=''.join(map(chr,range(e[-1][1]+2)))
         s = 0
         for a,b in e:
-            if b>=ord(t[a]):
+            c = ord(t[a])
+            if b>=c:
                 s += 1
-                t = t.replace(t[a],t[ord(t[a])+1])
+                t = t.replace(t[a],t[c+1])
         return s
 
 class Solution:

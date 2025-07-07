@@ -41,6 +41,23 @@ class Solution:
     def maxEvents(self, e: list[list[int]]) -> int:
         e.sort(key=itemgetter(1));p=[*range(e[-1][1]+2)];f=lambda x:x if x==p[x]else setitem(p,x,f(p[x]))or p[x];return len([setitem(p,c,f(c+1))for a,b in e if(c:=f(a))<=b])
 
+# unicode find
+
+class Solution:
+    def maxEvents(self, e: list[list[int]]) -> int:
+        e.sort(key=itemgetter(1))
+        t=''.join(map(chr,range(e[-1][1]+2)))
+        s = 0
+        for a,b in e:
+            if b>=ord(t[a]):
+                s += 1
+                t = t.replace(t[a],t[ord(t[a])+1])
+        return s
+
+class Solution:
+    def maxEvents(self, e: list[list[int]]) -> int:
+        e.sort(key=itemgetter(1));t=''.join(map(chr,range(e[-1][1]+2)));return sum(b>=(c:=ord(t[a]))and(t:=t.replace(t[a],t[c+1]))!=0for a,b in e)
+
 test('''
 1353. Maximum Number of Events That Can Be Attended
 Attempted

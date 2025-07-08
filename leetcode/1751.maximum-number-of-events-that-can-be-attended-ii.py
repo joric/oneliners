@@ -2,6 +2,8 @@ from lc import *
 
 # https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended-ii/discuss/2204293/Python.-Recursion-%2B-LRU-Cache-%2B-Binary-Search...-3-lines-only...
 
+# POTD 2025-07-08
+
 class Solution:
     def maxValue(self, e: List[List[int]], k: int) -> int:
         e.sort();return(f:=cache(lambda i,k:i<len(e)and k and max(f(i+1,k),e[i][2]+f(bisect_left(e,[e[i][1]+1]),k-1))))(0,k)

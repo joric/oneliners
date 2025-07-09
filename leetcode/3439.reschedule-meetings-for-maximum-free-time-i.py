@@ -42,6 +42,10 @@ class Solution:
     def maxFreeTime(self, t: int, k: int, s: List[int], e: List[int]) -> int:
         c=[0,*accumulate(map(sub,s+[t],[0]+e))];return max(map(sub,c[k+1:],c))
 
+class Solution:
+    def maxFreeTime(self, t: int, k: int, s: List[int], e: List[int]) -> int:
+        return-min(map(sub,c:=[0,*accumulate(map(sub,s+[t],[0]+e))],c[k+1:]))
+
 test('''
 3439. Reschedule Meetings for Maximum Free Time I
 Medium

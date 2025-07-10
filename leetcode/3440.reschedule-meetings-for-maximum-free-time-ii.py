@@ -73,10 +73,12 @@ class Solution:
         for i in range(n-1,-1,-1):r[i]=max(r[i+1],g[i+1])
         a=l=0
         for i in range(1,n+1):
-            c=g[i-1]+g[i];d=e[i-1]-s[i-1]
-            if l>=d or r[i]>=d:c+=d
-            a=max(a,c)
-            l=max(l,g[i-1])
+            c = g[i-1]+g[i]
+            d = e[i-1]-s[i-1]
+            if l>=d or r[i]>=d:
+                c+=d
+            a = max(a,c)
+            l = max(l,g[i-1])
         return a
 
 class Solution:

@@ -1,29 +1,32 @@
 from lc import *
 
-# https://leetcode.com/problems/reschedule-meetings-for-maximum-free-time-ii/solutions/6914758/reschedule-meetings-for-maximum-free-time-ii/?envType=daily-question&envId=2025-07-10
+# https://leetcode.com/problems/reschedule-meetings-for-maximum-free-time-ii/solutions/6943282/python3-three-line-simple-solution/
 
 class Solution:
-    def maxFreeTime(self, eventTime: int, startTime: list[int], endTime: list[int]) -> int:
-        n = len(startTime)
-        q = [False] * n
-        t1 = 0
-        t2 = 0
-        for i in range(n):
-            if endTime[i] - startTime[i] <= t1:
-                q[i] = True
-            t1 = max(t1, startTime[i] - (0 if i == 0 else endTime[i - 1]))
-            if endTime[n - i - 1] - startTime[n - i - 1] <= t2:
-                q[n - i - 1] = True
-            t2 = max(t2,(eventTime if i == 0 else startTime[n - i])- endTime[n - i - 1])
-        res = 0
-        for i in range(n):
-            left = 0 if i == 0 else endTime[i - 1]
-            right = eventTime if i == n - 1 else startTime[i + 1]
-            if q[i]:
-                res = max(res, right - left)
-            else:
-                res = max(res, right - left - (endTime[i] - startTime[i]))
-        return res
+    def maxFreeTime(
+        self, eventTime: int, startTime: List[int], endTime: List[int]
+    ) -> int:
+        gaps = [*map(sub, startTime + [eventTime], [0] + endTime)]
+
+        three_largest = nlargest(3, enumerate(gaps), key=lambda x: x[1])
+
+        return max(
+            (
+                gaps[i]
+                + gaps[i + 1]
+                + (e - s)
+                * any(
+                    large_group >= (e - s) and lgroup_idx not in (i, i + 1)
+                    for lgroup_idx, large_group in three_largest
+                )
+                for i, (s, e) in enumerate(zip(startTime, endTime))
+            ),
+            default=0,
+        )
+
+class Solution:
+    def maxFreeTime(self, t: int, s: list[int], e: list[int]) -> int:
+        g=[*map(sub,s+[t],[0]+e)];l=nlargest(3,enumerate(g),key=itemgetter(1));return max((g[i]+g[i+1]+(e-s)*any(v>=(e-s)and j not in(i,i+1)for j,v in l)for i,(s,e)in enumerate(zip(s,e))),default=0)
 
 class Solution:
     def maxFreeTime(self, e: int, s: list[int], d: list[int]) -> int:
@@ -44,7 +47,6 @@ class Solution:
             h=e if i==n-1 else s[i+1]
             r=max(r,h-l) if q[i] else max(r,h-l-(d[i]-s[i]))
         return r
-
 
 # https://leetcode.com/problems/reschedule-meetings-for-maximum-free-time-ii/solutions/6357765/c-java-explained-find-largest-gap-towards-left-and-right/?envType=daily-question&envId=2025-07-10
 
@@ -83,18 +85,22 @@ class Solution:
 
 class Solution:
     def maxFreeTime(self, t: int, s: list[int], e: list[int]) -> int:
-        n,a=len(s),accumulate
-        g=[s[0],*map(sub,(*s,t)[1:],e)]
-        l,r=[0,*a(g,max)],[0,*a(g[:0:-1],max)][::-1]
-        return max(g[i]+g[i+1]+(d:=e[i]-s[i])*(d<=r[i+1]or l[i]>=d)for i in range(n))
+        a=accumulate
+        g=[*map(sub,s+[t],[0]+e)]
+        l,r=[0,*a(g,max)],[0,*a(g[:0:-1],max)][::-1][1:]
+        return max(g[i]+g[i+1]+(d:=e[i]-s[i])*(d<=r[i]or l[i]>=d)for i in range(len(s)))
 
 class Solution:
     def maxFreeTime(self, t: int, s: list[int], e: list[int]) -> int:
-        a,g=accumulate,[s[0],*map(sub,(*s,t)[1:],e)];return max(x+y+d*(1-(l<d>r))for x,y,d,l,r in zip(g,g[1:],map(sub,e,s),[0,*a(g,max)],[0,*a(g[:0:-1],max)][-2::-1]))
+        a,g=accumulate,[*map(sub,s+[t],[0]+e)];return max(a+b+(1^(e<c-d>f))*(c-d)for a,b,c,d,e,f in zip(g,g[1:],e,s,[0,*a(g,max)],[0,*a(g[:0:-1],max)][-2::-1]))
 
-class Solution:
+
+# https://leetcode.com/problems/reschedule-meetings-for-maximum-free-time-ii/solutions/6943115/functional-javascript-1-liner-messiest-code-ever/
+# maxFreeTime = (t, s, e, m = 0, $ = (j, i) => m < e[m = Math.max(m, s[j + 1] - ~~e[j]), i] - s[i]) => s.map((x, i) => $(i - 1, i)).reduceRight((n, x, i) => Math.max(n, s[i + 1] - ~~e[i - 1] - $(i, i) * x * (e[i] - s[i])), m = 0 * s.push(t))
+
+class Solution: # Bonus TLE
     def maxFreeTime(self, t: int, s: list[int], e: list[int]) -> int:
-        a,g=accumulate,[s[0],*map(sub,(*s,t)[1:],e)];return max(a+b+(1-(e<c-d>f))*(c-d)for a,b,c,d,e,f in zip(g,g[1:],e,s,[0,*a(g,max)],[0,*a(g[:0:-1],max)][-2::-1]))
+        g=[*map(sub,s+[t],[0]+e)];return max(g[i]+g[i+1]+(d:=e[i]-s[i])*(max(g[:i]+g[i+2:])>=d)for i in range(len(s)))
 
 test('''
 3440. Reschedule Meetings for Maximum Free Time II
@@ -170,6 +176,9 @@ Output: 24
 
 Input: eventTime = 37, startTime = [5,14,27,34], endTime = [13,18,31,37]
 Output: 16
+
+Input: eventTime = 34, startTime = [0,17], endTime = [14,19]
+Output: 18
 
 Constraints:
 

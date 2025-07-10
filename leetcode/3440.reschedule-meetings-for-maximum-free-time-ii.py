@@ -81,15 +81,14 @@ class Solution:
 
 class Solution:
     def maxFreeTime(self, t: int, s: list[int], e: list[int]) -> int:
-        n,l=len(s),0;g=[s[0],*map(sub,(*s,t)[1:],e)];r=[0,*accumulate(g[:0:-1],max)][::-1];return max((g[i-1]+g[i]+(d:=e[i-1]-s[i-1])*(d<=r[i]or l>=d),l:=max(l,g[i-1]))[0]for i in range(1,n+1))
+        n,a=len(s),accumulate
+        g=[s[0],*map(sub,(*s,t)[1:],e)]
+        l,r=[0,*a(g,max)],[0,*a(g[:0:-1],max)][::-1]
+        return max(g[i]+g[i+1]+(d:=e[i]-s[i])*(d<=r[i+1]or l[i]>=d)for i in range(n))
 
 class Solution:
     def maxFreeTime(self, t: int, s: list[int], e: list[int]) -> int:
-        n,l=len(s),0;g=[s[0],*map(sub,(*s,t)[1:],e)];r=[0,*accumulate(g[:0:-1],max)][::-1];return max((g[i]+g[i+1]+(d:=e[i]-s[i])*(d<=r[i+1]or l>=d),l:=max(l,g[i]))[0]for i in range(n))
-
-class Solution:
-    def maxFreeTime(self, t: int, s: list[int], e: list[int]) -> int:
-        n,a=len(s),accumulate;g=[s[0],*map(sub,(*s,t)[1:],e)];r=[0,*a(g[:0:-1],max)][::-1];l=[0,*a(g,max)];return max(g[i]+g[i+1]+(d:=e[i]-s[i])*(d<=r[i+1]or l[i]>=d)for i in range(n))
+        n,a=len(s),accumulate;g=[s[0],*map(sub,(*s,t)[1:],e)];l,r=[0,*a(g,max)],[0,*a(g[:0:-1],max)][::-1];return max(g[i]+g[i+1]+(d:=e[i]-s[i])*(d<=r[i+1]or l[i]>=d)for i in range(n))
 
 test('''
 3440. Reschedule Meetings for Maximum Free Time II

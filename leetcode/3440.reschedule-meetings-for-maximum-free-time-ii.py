@@ -81,10 +81,6 @@ class Solution:
 
 class Solution:
     def maxFreeTime(self, t: int, s: list[int], e: list[int]) -> int:
-        n=len(s);g,s,r,a,l=[s[0]],s+[t],[0]*(n+1),0,0;[g.append(s[i+1]-e[i])for i in range(n)];[setitem(r,i,max(r[i+1],g[i+1]))for i in range(n-1,-1,-1)];[(c:=g[i-1]+g[i],d:=e[i-1]-s[i-1],c:=c+d*(l>=d or r[i]>=d),a:=max(a,c),l:=max(l,g[i-1]))for i in range(1,n+1)];return a
-
-class Solution:
-    def maxFreeTime(self, t: int, s: list[int], e: list[int]) -> int:
         n,l=len(s),0;g=[s[0],*map(sub,(*s,t)[1:],e)];r=[0,*accumulate(g[:0:-1],max)][::-1];return max((g[i-1]+g[i]+(d:=e[i-1]-s[i-1])*(d<=r[i]or l>=d),l:=max(l,g[i-1]))[0]for i in range(1,n+1))
 
 test('''

@@ -94,7 +94,7 @@ class Solution:
 
 class Solution:
     def maxFreeTime(self, t: int, s: list[int], e: list[int]) -> int:
-        a,g=accumulate,[s[0],*map(sub,(*s,t)[1:],e)];return max(x+y+(1-(l<e-s>r))*(e-s)for x,y,e,s,l,r in zip(g,g[1:],e,s,[0,*a(g,max)],[0,*a(g[:0:-1],max)][-2::-1]))
+        a,g=accumulate,[s[0],*map(sub,(*s,t)[1:],e)];return max(a+b+(1-(e<c-d>f))*(c-d)for a,b,c,d,e,f in zip(g,g[1:],e,s,[0,*a(g,max)],[0,*a(g[:0:-1],max)][-2::-1]))
 
 test('''
 3440. Reschedule Meetings for Maximum Free Time II

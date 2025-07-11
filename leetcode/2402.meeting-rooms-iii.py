@@ -43,7 +43,25 @@ class Solution:
 
 class Solution:
     def mostBooked(self, n: int, m: List[List[int]]) -> int:
-        r,c,f=[0]*n,[0]*n,setitem;[(j:=-1,any(s>=r[i]and[j:=i]or(j<0 or r[i]<r[j])and(j:=i)<0for i in range(n)),f(c,j,c[j]+1),f(r,j,max(r[j],s)+e-s))for s,e in sorted(m)];return c.index(max(c))
+        r,c,f=[0]*n,[0]*n,setitem;[(j:=-1,any(s>=r[i]and[j:=i]or(j<0 or r[i]<r[j])and(j:=i)<0 for i in range(n)),f(c,j,c[j]+1),f(r,j,max(r[j],s)+e-s))for s,e in sorted(m)];return c.index(max(c))
+
+# https://leetcode.com/problems/meeting-rooms-iii/solutions/4747389/python3-11-lines-solution/
+
+class Solution:
+    def mostBooked(self, n: int, m: List[List[int]]) -> int:
+        m.sort()
+        c = [0] * n
+        e = [0] * n
+        for s, t in m:
+            e = [max(x, s) for x in e]
+            r = e.index(min(e))
+            e[r] += (t - s)
+            c[r] += 1
+        return c.index(max(c))
+
+class Solution:
+    def mostBooked(self, n: int, m: List[List[int]]) -> int:
+        c,e,s=[0]*n,[0]*n,setitem;[(i:=(e:=[max(x,a)for x in e]).index(min(e)),s(e,i,e[i]+b-a),s(c,i,c[i]+1))for a,b in sorted(m)];return c.index(max(c))
 
 test('''
 2402. Meeting Rooms III

@@ -1,5 +1,12 @@
 from lc import *
 
+# https://leetcode.com/problems/reschedule-meetings-for-maximum-free-time-ii/solutions/6943115/functional-javascript-1-liner-messiest-code-ever/
+# maxFreeTime = (t, s, e, m = 0, $ = (j, i) => m < e[m = Math.max(m, s[j + 1] - ~~e[j]), i] - s[i]) => s.map((x, i) => $(i - 1, i)).reduceRight((n, x, i) => Math.max(n, s[i + 1] - ~~e[i - 1] - $(i, i) * x * (e[i] - s[i])), m = 0 * s.push(t))
+
+class Solution: # TLE
+    def maxFreeTime(self, t: int, s: list[int], e: list[int]) -> int:
+        g=[*map(sub,s+[t],[0]+e)];return max(g[i]+g[i+1]+(d:=e[i]-s[i])*(max(g[:i]+g[i+2:])>=d)for i in range(len(s)))
+
 # https://leetcode.com/problems/reschedule-meetings-for-maximum-free-time-ii/solutions/6943282/python3-three-line-simple-solution/
 
 class Solution:
@@ -93,14 +100,6 @@ class Solution:
 class Solution:
     def maxFreeTime(self, t: int, s: list[int], e: list[int]) -> int:
         a,g=accumulate,[*map(sub,s+[t],[0]+e)];return max(a+b+(1^(e<c-d>f))*(c-d)for a,b,c,d,e,f in zip(g,g[1:],e,s,[0,*a(g,max)],[0,*a(g[:0:-1],max)][-2::-1]))
-
-
-# https://leetcode.com/problems/reschedule-meetings-for-maximum-free-time-ii/solutions/6943115/functional-javascript-1-liner-messiest-code-ever/
-# maxFreeTime = (t, s, e, m = 0, $ = (j, i) => m < e[m = Math.max(m, s[j + 1] - ~~e[j]), i] - s[i]) => s.map((x, i) => $(i - 1, i)).reduceRight((n, x, i) => Math.max(n, s[i + 1] - ~~e[i - 1] - $(i, i) * x * (e[i] - s[i])), m = 0 * s.push(t))
-
-class Solution: # Bonus TLE
-    def maxFreeTime(self, t: int, s: list[int], e: list[int]) -> int:
-        g=[*map(sub,s+[t],[0]+e)];return max(g[i]+g[i+1]+(d:=e[i]-s[i])*(max(g[:i]+g[i+2:])>=d)for i in range(len(s)))
 
 test('''
 3440. Reschedule Meetings for Maximum Free Time II

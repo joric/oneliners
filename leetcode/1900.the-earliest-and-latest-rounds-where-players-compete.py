@@ -65,7 +65,7 @@ class Solution:
 
 class Solution:
     def earliestAndLatest(self, n: int, a: int, b: int) -> list[int]:
-        s=set();(f:=cache(lambda l,r,m,q:l>r and f(r,l,m,q)or l==r and s.add(q)or[f(i,j,-~m//2,q+1)for i in range(1,l+1)for j in range(l-i+1,r-i+1)if l+r-m/2<=i+j<=-~m/2]))(a,n-b+1,n,1);return min(s),max(s)
+        s=set();(f:=lambda l,r,m,q:l>r and f(r,l,m,q)or l==r and s.add(q)or[f(i,j,-~m//2,q+1)for i in range(1,l+1)for j in range(l-i+1,r-i+1)if l+r-m/2<=i+j<=-~m/2])(a,n-b+1,n,1);return min(s),max(s)
 
 test('''
 1900. The Earliest and Latest Rounds Where Players Compete

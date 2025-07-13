@@ -42,17 +42,17 @@ class Solution():
 class Solution:
     def minTime(self, n: int, e: List[List[int]], k: int) -> int:
         t = ''.join(map(chr, range(n)))
-        for u,v,r in sorted(e,key=lambda x:-x[2]):
+        for u,v,w in sorted(e,key=lambda x:-x[2]):
             if t[u]!=t[v]:
                 t = t.replace(t[u],t[v])
                 n -= 1
                 if n<k:
-                    return r
+                    return w
         return 0
 
 class Solution:
     def minTime(self, n: int, e: List[List[int]], k: int) -> int:
-        t=''.join(map(chr,range(n)));return next((r for u,v,r in sorted(e,key=lambda x:-x[2])if t[u]!=t[v]and(t:=t.replace(t[u],t[v]))and(n:=n-1)<k),0)
+        t=''.join(map(chr,range(n)));return next((w for u,v,w in sorted(e,key=lambda x:-x[2])if t[u]!=t[v]and(t:=t.replace(t[u],t[v]))and(n:=n-1)<k),0)
 
 test('''
 3608. Minimum Time for K Connected Components

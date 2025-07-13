@@ -37,6 +37,8 @@ class Solution():
                 return t
         return 0
 
+# let's do unicode find
+
 class Solution:
     def minTime(self, n: int, e: List[List[int]], k: int) -> int:
         t = ''.join(map(chr, range(n)))

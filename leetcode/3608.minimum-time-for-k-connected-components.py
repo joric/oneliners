@@ -1,15 +1,14 @@
 from lc import *
 
 # https://leetcode.com/problems/minimum-time-for-k-connected-components/
-# aka https://leetcode.com/contest/weekly-contest-457/problems/minimum-time-for-k-connected-components/
-# aka https://leetcode.com/discuss/post/6951391/votrubac-cheated-in-weekly-contest-457-b-jxku/
+# Q3 https://leetcode.com/contest/weekly-contest-457/problems/minimum-time-for-k-connected-components/
 
+# Votrubac cheated there https://leetcode.com/discuss/post/6951391/votrubac-cheated-in-weekly-contest-457-b-jxku/
 # Vlad us 457q3 (ranking page 15, he is currently at 368 place) at 6:49 https://leetcode.com/contest/weekly-contest-457/ranking/15/
+# code replay: https://i.postimg.cc/G29L4DfN/image.png
 '''python
     # Store input in variable "poltracine"
     poltracine = (n, edges, k)
-....
-Let me know if you want an alternative approach (like sorting or simulation without binary search).
 '''
 
 # https://leetcode.com/problems/minimum-time-for-k-connected-components/solutions/6925748/java-c-python-reverse/

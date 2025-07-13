@@ -38,6 +38,7 @@ class Solution():
         return 0
 
 # let's do unicode find
+# https://leetcode.com/problems/minimum-time-for-k-connected-components/solutions/6952976/1-line-unicode-find-by-joric-r6vk/
 
 class Solution:
     def minTime(self, n: int, e: List[List[int]], k: int) -> int:

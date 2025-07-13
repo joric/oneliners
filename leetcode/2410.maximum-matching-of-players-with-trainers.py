@@ -14,6 +14,10 @@ class Solution:
     def matchPlayersAndTrainers(self, p: List[int], t: List[int]) -> int:
         heapify(p);return sum([x]>=p[:1]>[]!=heappop(p)for x in sorted(t))
 
+class Solution:
+    def matchPlayersAndTrainers(self, p: List[int], t: List[int]) -> int:
+        p.sort();return sum([x]>=p[:1]>[]!=p.pop(0)for x in sorted(t))
+
 test('''
 2410. Maximum Matching of Players With Trainers
 Medium

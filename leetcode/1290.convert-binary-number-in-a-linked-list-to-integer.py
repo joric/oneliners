@@ -18,6 +18,10 @@ class Solution:
 
 class Solution:
     def getDecimalValue(self, h: Optional[ListNode]) -> int:
+        return int(''.join(map(str,type(h)._list_node_to_array(h))),2)
+
+class Solution:
+    def getDecimalValue(self, h: Optional[ListNode]) -> int:
         return int((f:=lambda h:h and str(h.val)+f(h.next)or'')(h),2)
 
 class Solution:
@@ -27,6 +31,7 @@ class Solution:
 class Solution:
     def getDecimalValue(self, h: Optional[ListNode]) -> int:
         return int(''.join(map(str,eval(h.serialize(h)))),2)
+
 
 test('''
 1290. Convert Binary Number in a Linked List to Integer

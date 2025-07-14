@@ -1,5 +1,15 @@
 from lc import *
 
+# https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/solutions/1615736/simple-5-line-solution-python-time-o-n-space-o-1/?envType=daily-question&envId=2025-07-14
+
+class Solution:
+    def getDecimalValue(self, h: ListNode) -> int:
+        r = 0
+        while h:
+            r = r*2+h.val
+            h = h.next
+        return r
+
 # https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/solutions/6932144/one-line-solution/?envType=daily-question&envId=2025-07-14
 
 class Solution:

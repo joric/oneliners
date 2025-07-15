@@ -34,6 +34,12 @@ class Solution:
     def isValid(self, w: str) -> bool:
         return match('^(?=.*[aeiou])(?=.*[^0-9aeiou])[a-z0-9]{3,}$',w,I)
 
+# POTD 2025-07-15
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        return bool(match('(?=.*[aeiou])(?=.*[^\daeiou])\w{3,}$',s,I))
+
 test('''
 3136. Valid Word
 Easy

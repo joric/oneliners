@@ -2,6 +2,7 @@ from lc import *
 
 # https://leetcode.com/problems/find-the-maximum-length-of-valid-subsequence-i/solutions/5389361/java-c-python-dp/?envType=daily-question&envId=2025-07-16
 
+
 class Solution:
     def maximumLength(self, a: List[int]) -> int:
         a=[x&1 for x in a];return max(a.count(0),a.count(1),len([*groupby(a)]))
@@ -16,7 +17,7 @@ class Solution:
 
 class Solution:
     def maximumLength(self, a: List[int]) -> int:
-        return max(sum(a:=[x&1 for x in a]),a.count(1),len([*groupby(a)]))
+        return max(sum(a:=[x&1 for x in a]),a.count(0),len([*groupby(a)]))
 
 test('''
 3201. Find the Maximum Length of Valid Subsequence I

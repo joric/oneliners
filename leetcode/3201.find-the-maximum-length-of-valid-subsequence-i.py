@@ -5,6 +5,10 @@ from lc import *
 
 class Solution:
     def maximumLength(self, a: List[int]) -> int:
+        a=[*map((1).__and__,a)];return max(sum(a),a.count(1),len([*groupby(a)]))
+
+class Solution:
+    def maximumLength(self, a: List[int]) -> int:
         a=[x&1 for x in a];return max(a.count(0),a.count(1),len([*groupby(a)]))
 
 class Solution:

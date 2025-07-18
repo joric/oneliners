@@ -18,6 +18,10 @@ class Solution:
     def minimumDifference(self, t: List[int]) -> int:
         n=len(t)//3;a,b=sorted(map(neg,t[:n])),sorted(t[-n:]);p,q=[-sum(a)],[sum(b)];[(heappush(a,-t[i]),p.append(p[-1]+t[i]+heappop(a)),heappush(b,t[~i]),q.append(q[-1]+t[~i]-heappop(b)))for i in range(n,2*n)];return min(map(sub,p,q[::-1]))
 
+class Solution:
+    def minimumDifference(self, t: List[int]) -> int:
+        s,h=sorted,heappushpop;n=len(t)//3;a,b=s(map(neg,t[:n])),s(t[-n:]);p,q=[-sum(a)],[sum(b)];[(p.append(p[-1]+t[i]+h(a,-t[i])),q.append(q[-1]+t[~i]-h(b,t[~i])))for i in range(n,2*n)];return min(map(sub,p,q[::-1]))
+
 test('''
 2163. Minimum Difference in Sums After Removal of Elements
 Hard

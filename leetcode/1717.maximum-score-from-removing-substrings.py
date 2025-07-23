@@ -1,5 +1,8 @@
 from lc import *
 
+# POTD july 12, 2024
+# POTD july 23, 2025
+
 # https://leetcode.com/problems/maximum-score-from-removing-substrings/discuss/1009040/Linear-time-solution-using-stack
 
 class Solution:
@@ -18,6 +21,9 @@ class Solution:
             return r
         return f('ab',x)+f('ba',y)if x>y else f('ba',y)+f('ab',x)
 
+class Solution:
+    def maximumGain(self, s: str, x: int, y: int) -> int:
+        d=[s];f=lambda t,p,q='',r=0:all((q==''or q[-1]!=t[0]or c!=t[1])and(q:=q+c)or(q:=q[:-1],r:=r+p)for c in d[0])and setitem(d,0,q)or r;return f('ab',x)+f('ba',y)if x>y else f('ba',y)+f('ab',x)
 
 # https://leetcode.com/problems/maximum-score-from-removing-substrings/discuss/1009489/PythonC%2B%2B-Clean-Linear-Scan-O(1)-Space
 
@@ -72,6 +78,7 @@ class Solution:
 class Solution:
     def maximumGain(self, s: str, x: int, y: int) -> int:
         z=1-2*(x<y);x,y=(x,y)[::z];return(t:=lambda p:p[2]+y*min(p[:2]))(reduce(lambda p,c:{'b':((w:=p[0],p[1]+1,p[2]),(w-1,p[1],p[2]+x))[w>0],'a':(w+1,*p[1:3])}.get(c,(0,0,t(p))),s[::z],[0]*3))
+
 
 test('''
 1717. Maximum Score From Removing Substrings

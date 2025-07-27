@@ -10,6 +10,18 @@ class Solution:
     def countHillValley(self, a: List[int]) -> int:
         d=[x-y for x,y in zip(a,a[1:])if x!=y];return sum(x*y<0 for x,y in zip(d,d[1:]))
 
+class Solution:
+    def countHillValley(self, a: List[int]) -> int:
+        d=[*filter(None,map(sub,a,a[1:]))];return sum(x*y<0 for x,y in zip(d,d[1:]))
+
+class Solution:
+    def countHillValley(self, a: List[int]) -> int:
+        d=[*filter(None,map(sub,a,a[1:]))];return sum(x*y<0 for x,y in pairwise(d))
+
+class Solution:
+    def countHillValley(self, a: List[int]) -> int:
+        return sum(x*y<0for x,y in pairwise(filter(None,map(sub,a,a[1:]))))
+
 test('''
 2210. Count Hills and Valleys in an Array
 Solved

@@ -22,11 +22,11 @@ class Solution:
 
 class Solution:
     def findClosestElements(self, a: List[int], k: int, x: int) -> List[int]:
-        return sorted(nsmallest(k, a, key=lambda n:(abs(n-x),n)))
+        return sorted(nsmallest(k,a,key=lambda n:(abs(x-n),n)))
 
 class Solution:
     def findClosestElements(self, a: List[int], k: int, x: int) -> List[int]:
-        return sorted(sorted(a,key=lambda e:abs(x-e))[:k])
+        return sorted(sorted(a,key=lambda n:abs(x-n))[:k])
 
 test('''
 658. Find K Closest Elements

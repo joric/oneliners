@@ -14,6 +14,10 @@ class Solution:
     def countMaxOrSubsets(self, n: List[int]) -> int:
         c=Counter([0]);[c.update({k|a:v})for a in n for k,v in deepcopy(c).items()];return c[max(c)]
 
+class Solution:
+    def countMaxOrSubsets(self, a: List[int]) -> int:
+        c=Counter([0]);[c.update({k|x:v})for x in a for k,v in[*c.items()]];return c[max(c)]
+
 # https://leetcode.com/problems/count-number-of-maximum-bitwise-or-subsets/solutions/5930848/One-Line-Solution/
 
 class Solution:

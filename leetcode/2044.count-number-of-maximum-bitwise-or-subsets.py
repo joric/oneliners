@@ -34,6 +34,12 @@ class Solution:
     def countMaxOrSubsets(self, a: List[int]) -> int:
         return(f:=lambda i,o,x=reduce(or_,a):a[i:]and f(i+1,o)+f(i+1,o|a[i])or o==x)(0,0)
 
+# updated 2025-07-28 (POTD)
+
+class Solution:
+    def countMaxOrSubsets(self, a: List[int]) -> int:
+        return(f:=lambda i,o:a[i:]and f(i+1,o)+f(i+1,o|a[i])or o==reduce(or_,a))(0,0)
+
 test('''
 2044. Count Number of Maximum Bitwise-OR Subsets
 Medium

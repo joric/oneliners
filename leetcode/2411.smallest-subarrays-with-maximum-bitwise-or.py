@@ -10,6 +10,10 @@ class Solution:
     def smallestSubarrays(self, a: List[int]) -> List[int]:
         d={};return[1-i+max([*(d:=d|{q:i for q in range(32)if a[i]&1<<q}).values(),i])for i in range(len(a)-1,-1,-1)][::-1]
 
+class Solution:
+    def smallestSubarrays(self, a: List[int]) -> List[int]:
+        d={};return[1-i+max([*(d:=d|{q:i for q in range(32)if a[i]&1<<q}).values(),i])for i in range(len(a))[::-1]][::-1]
+
 test('''
 2411. Smallest Subarrays With Maximum Bitwise OR
 Solved

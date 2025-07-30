@@ -55,6 +55,11 @@ Starting at index 1, the shortest subarray that yields the maximum bitwise OR is
 Therefore, we return [2,1].
  
 
+Other examples:
+
+Input: nums = [0]
+Output: [1]
+
 Constraints:
 
 n == nums.length

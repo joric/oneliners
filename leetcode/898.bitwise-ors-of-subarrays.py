@@ -19,7 +19,7 @@ class Solution:
 
 class Solution:
     def subarrayBitwiseORs(self, a: List[int]) -> int:
-        c,r=set(),set();[r.update(c:={i|j for j in c}|{i})for i in a];return len(r)
+        c,r={0},set();[r.update(c:={i|j for j in c}|{i})for i in a];return len(r)
 
 test('''
 898. Bitwise ORs of Subarrays

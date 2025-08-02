@@ -29,7 +29,7 @@ class Solution:
 
 class Solution:
     def minCost(self, a: List[int], b: List[int]) -> int:
-        c=Counter(a);c.subtract(b);return((m:=min(c),e:=sorted((+c+-c).elements()),sum(min(i,2*m)for i in e[:len(e)//2:2]))[2],-1)[any(i&1 for i in c.values())]
+        c=Counter(a);c.subtract(b);return((m:=min(c),e:=sorted((+c+-c).elements()),sum(min(i,2*m)for i in e[:len(e)//2:2]))[2],-1)[any(1&c[i]for i in c)]
 
 test('''
 2561. Rearranging Fruits

@@ -52,6 +52,12 @@ class Solution:
     def totalFruit(self, f: List[int]) -> int:
         return (c:=Counter(),i:=0,[(c.update({x}),len(c)>2 and (k:=f[i],i:=i+1,c.update({k:-1}),c[k]==0 and c.pop(k))) for x in f]) and len(f)-i
 
+# POTD 2025-08-04
+
+class Solution:
+    def totalFruit(self, f: List[int]) -> int:
+        c,i=Counter(),0;[(c.update({x}),2<len(c)and(k:=f[i],i:=i+1,c.update({k:-1}),0==c[k]and c.pop(k)))for x in f];return len(f)-i
+
 test('''
 904. Fruit Into Baskets
 Medium

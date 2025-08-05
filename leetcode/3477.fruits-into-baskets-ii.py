@@ -23,7 +23,7 @@ class Solution:
 
 class Solution:
     def numOfUnplacedFruits(self, f: List[int], b: List[int]) -> int:
-        return sum(1>any(x<=y==b.pop(i)for i,y in enumerate(b))for x in f)
+        return sum(1-any(x<=y==b.pop(i)for i,y in enumerate(b))for x in f)
 
 test('''
 3477. Fruits Into Baskets II

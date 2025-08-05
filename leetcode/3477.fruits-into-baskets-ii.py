@@ -69,7 +69,10 @@ fruits[1] = 6 cannot be placed in baskets[1] = 4 (insufficient capacity) but can
 fruits[2] = 1 is placed in baskets[1] = 4.
 Since all fruits are successfully placed, we return 0.
 
- 
+Other examples:
+
+Input: fruits = [4], baskets = [4]
+Output: 0
 
 Constraints:
 

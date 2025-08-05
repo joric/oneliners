@@ -1,5 +1,17 @@
 from lc import *
 
+# https://leetcode.com/problems/fruits-into-baskets-ii/solutions/6516012/python-simple-brute-force/?envType=daily-question&envId=2025-08-05
+
+class Solution:
+    def numOfUnplacedFruits(self, f: List[int], b: List[int]) -> int:
+        v = set()
+        for x in f:
+            for i,y in enumerate(b):
+                if y >= x and i not in v:
+                    v.add(i)
+                    break
+        return len(f) - len(v)
+
 # https://leetcode.com/problems/fruits-into-baskets-ii/solutions/6515625/python3-7-lines-for-else-t-s-96-88/?envType=daily-question&envId=2025-08-05
 
 class Solution:

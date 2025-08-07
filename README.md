@@ -925,7 +925,7 @@ class Solution:
         return(f:=lambda n:n and n^f(n//2))(n)
 ```
 
-### Swapping values
+### Swap
 
 To swap values you can use either `exec` (inline version of `a,b=b,a`) or a temporary variable (`t:=a,a:=b,b:=t`).
 

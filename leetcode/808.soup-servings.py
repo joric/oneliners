@@ -1,5 +1,54 @@
 from lc import *
 
+# https://leetcode.com/problems/soup-servings/solutions/3834232/no-explanation-real-theta-1-rust-solution/?envType=daily-question&envId=2025-08-08
+
+class Solution:
+    def soupServings(self, n: int) -> float:
+        N = 194
+        results = [[0.0 for _ in range(N)] for _ in range(N)]
+
+        results[0][0] = 0.5
+        for j in range(1, N):
+            results[0][j] = 1.0
+
+        for i in range(1, N):
+            for j in range(1, N):
+                results[i][j] = (
+                    results[i - 4 if i > 4 else 0][j]
+                    + results[i - 3 if i > 3 else 0][j - 1 if j > 1 else 0]
+                    + results[i - 2 if i > 2 else 0][j - 2 if j > 2 else 0]
+                    + results[i - 1 if i > 1 else 0][j - 3 if j > 3 else 0]
+                ) / 4.0
+
+        ANSWERS = [results[i][i] for i in range(N)]
+
+        if n == 0:
+            return 0.5
+
+        n = ceil(n/25)
+
+        if n >= len(ANSWERS):
+            return 1.0
+        else:
+            return ANSWERS[n]
+
+
+class Solution:
+    def soupServings(self, n: int) -> float:
+        if n > 4800:
+            return 1.0
+        N = 194
+        r = [[0.0] * N for _ in range(N)]
+        r[0][0] = 0.5
+        for j in range(1, N):
+            r[0][j] = 1.0
+        for i in range(1, N):
+            for j in range(1, N):
+                r[i][j] = sum(r[i-d if i>=d else 0][j-(4-d) if j>=(4-d) else 0]for d in range(1,5))/4
+        n = ceil(n/25)
+        return 1.0 if n >= N else r[n][n]
+
+
 # https://leetcode.com/problems/soup-servings/discuss/121711/C%2B%2BJavaPython-When-N-greater-4800-just-return-1
 
 class Solution:
@@ -55,6 +104,11 @@ Example 3:
 
 Input: n = 51
 Output: 0.65625
+
+Other examples:
+
+Input: n = 1
+Output: 0.62500
 
 Constraints:
 

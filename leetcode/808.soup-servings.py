@@ -4,37 +4,6 @@ from lc import *
 
 class Solution:
     def soupServings(self, n: int) -> float:
-        N = 194
-        results = [[0.0 for _ in range(N)] for _ in range(N)]
-
-        results[0][0] = 0.5
-        for j in range(1, N):
-            results[0][j] = 1.0
-
-        for i in range(1, N):
-            for j in range(1, N):
-                results[i][j] = (
-                    results[i - 4 if i > 4 else 0][j]
-                    + results[i - 3 if i > 3 else 0][j - 1 if j > 1 else 0]
-                    + results[i - 2 if i > 2 else 0][j - 2 if j > 2 else 0]
-                    + results[i - 1 if i > 1 else 0][j - 3 if j > 3 else 0]
-                ) / 4.0
-
-        ANSWERS = [results[i][i] for i in range(N)]
-
-        if n == 0:
-            return 0.5
-
-        n = ceil(n/25)
-
-        if n >= len(ANSWERS):
-            return 1.0
-        else:
-            return ANSWERS[n]
-
-
-class Solution:
-    def soupServings(self, n: int) -> float:
         if n > 4800:
             return 1.0
         N = 194

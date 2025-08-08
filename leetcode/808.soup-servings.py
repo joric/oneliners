@@ -12,6 +12,10 @@ class Solution:
     def soupServings(self, n: int) -> float:
         return n>1e4or(f:=cache(lambda a,b:a>0<b and mean(f(a-4+x,b-x)for x in range(4))or((1,2)[b>0],0)[a>0]/2))(n:=-(-n//25),n)
 
+class Solution:
+    def soupServings(self, n: int) -> float:
+        return n>1e4or(f:=cache(lambda a,b:a>0<b and mean(f(a-4+x,b-x)for x in range(4))or((b>0)+1,0)[a>0]/2))(n:=-(-n//25),n)
+
 test('''
 808. Soup Servings
 Medium

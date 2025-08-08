@@ -4,19 +4,13 @@ from lc import *
 
 class Solution:
     def soupServings(self, n: int) -> float:
-        if n > 4800:
-            return 1.0
         N = 194
-        r = [[0.0] * N for _ in range(N)]
-        r[0][0] = 0.5
-        for j in range(1, N):
-            r[0][j] = 1.0
+        r = [[0.5 if i==0==j else 1.0 if i==0 else 0.0 for j in range(N)]for i in range(N)]
         for i in range(1, N):
             for j in range(1, N):
                 r[i][j] = sum(r[i-d if i>=d else 0][j-(4-d) if j>=(4-d) else 0]for d in range(1,5))/4
         n = ceil(n/25)
-        return 1.0 if n >= N else r[n][n]
-
+        return 1.0 if n>4800 or n>N else r[n][n]
 
 # https://leetcode.com/problems/soup-servings/discuss/121711/C%2B%2BJavaPython-When-N-greater-4800-just-return-1
 

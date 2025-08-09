@@ -18,10 +18,6 @@ class Solution:
     def isPowerOfTwo(self, n: int) -> bool:
         return(n&~-n<1)*n>0
 
-class Solution:
-    def isPowerOfTwo(self, n: int) -> bool:
-        return n&-n==n>0
-
 # POTD 2025-08-09
 
 class Solution:

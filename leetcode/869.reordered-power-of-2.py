@@ -39,7 +39,14 @@ Example 2:
 
 Input: n = 10
 Output: false
- 
+
+Other examples:
+
+Input: n = 46
+Output: True
+
+Input: n = 1521
+Output: False
 
 Constraints:
 

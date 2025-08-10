@@ -24,7 +24,7 @@ class Solution:
 
 class Solution:
     def reorderedPowerOf2(self, n: int) -> bool:
-        return(s:=sorted)(str(n))in[s(str(1<<i))for i in range(30)]
+        return(s:=sorted)(str(n))in(s(str(1<<i))for i in range(30))
 
 test('''
 869. Reordered Power of 2

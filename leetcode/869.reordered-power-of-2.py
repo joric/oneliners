@@ -6,10 +6,15 @@ class Solution:
 
 class Solution:
     def reorderedPowerOf2(self, n: int) -> bool:
-        return any(sorted(str(n))==sorted(str(1<<i)) for i in range(30))
+        return any(sorted(str(n))==sorted(str(1<<i))for i in range(30))
+
+# POTD 2025-08-10
+
+class Solution:
+    def reorderedPowerOf2(self, n: int) -> bool:
+        s=sorted;return any(s(str(n))==s(str(1<<i))for i in range(30))
 
 test('''
-
 869. Reordered Power of 2
 Medium
 
@@ -39,5 +44,4 @@ Output: false
 Constraints:
 
 1 <= n <= 10^9
-
 ''')

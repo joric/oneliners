@@ -1,5 +1,6 @@
 from lc import *
 
+# https://leetcode.com/problems/maximum-product-of-three-numbers/
 # same as https://binarysearch.com/problems/Max-Product-of-Three-Numbers
 
 class Solution:

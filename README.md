@@ -2122,6 +2122,22 @@ class Solution:
         a.sort();return sum((x:=a.pop(),insort(a,-(-x//3)))[0]for _ in range(k))
 ```
 
+### Prod
+
+In Python, the prod() function, available in the math module (from Python 3.8 onwards), calculates the product of all elements in an iterable.
+
+* https://leetcode.com/problems/maximum-product-of-three-numbers
+
+```python
+class Solution:
+    def maximumProduct(self, nums: List[int]) -> int:
+        return max((v:=sorted(nums))[-1]*v[-2]*v[-3], v[0]*v[1]*v[-1])
+
+class Solution:
+    def maximumProduct(self, nums: List[int]) -> int:
+        return max(prod((v:=sorted(nums))[-3:]), v[0]*v[1]*v[-1])
+```
+
 ## Tables
 
 ### Operators

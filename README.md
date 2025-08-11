@@ -2125,6 +2125,7 @@ class Solution:
 ### Prod
 
 In Python, the prod() function, available in the math module (from Python 3.8 onwards), calculates the product of all elements in an iterable.
+Unfortunately, you cannot represent the indices 0, 1, -1 as a single slice with step.
 
 * https://leetcode.com/problems/maximum-product-of-three-numbers
 
@@ -2137,8 +2138,6 @@ class Solution:
     def maximumProduct(self, nums: List[int]) -> int:
         return max(prod((v:=sorted(nums))[-3:]), v[0]*v[1]*v[-1])
 ```
-
-Unfortunately, you cannot represent the indices 0, 1, -1 as a single slice with step.
 
 ## Tables
 

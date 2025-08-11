@@ -16,7 +16,7 @@ class Solution:
 
 class Solution:
     def productQueries(self, n: int, q: List[List[int]]) -> List[int]:
-        p=[1<<i for i in range(31)if 1<<i&n];return [prod(p[a:b+1])%(10**9+7)for a,b in q]
+        p=[1<<i for i in range(31)if 1<<i&n];return[prod(p[a:b+1])%(10**9+7)for a,b in q]
 
 test('''
 2438. Range Product Queries of Powers

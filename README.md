@@ -2138,6 +2138,8 @@ class Solution:
         return max(prod((v:=sorted(nums))[-3:]), v[0]*v[1]*v[-1])
 ```
 
+Unfortunately, you cannot represent the indices 0, 1, -1 as a single slice with step.
+
 ## Tables
 
 ### Operators

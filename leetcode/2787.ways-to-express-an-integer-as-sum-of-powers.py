@@ -63,6 +63,10 @@ class Solution:
     def numberOfWays(self, n: int, x: int) -> int:
         return(f:=cache(lambda n,i:0<(r:=n-i**x)and f(r,i+1)+f(n,i+1)or r==0))(n,1)%(10**9+7)
 
+class Solution:
+    def numberOfWays(self, n: int, x: int) -> int:
+        return(f:=cache(lambda n,i:n>=i**x and f(n-i**x,i+1)+f(n,i+1)or n<1))(n,1)%(10**9+7)
+
 test('''
 2787. Ways to Express an Integer as Sum of Powers
 Medium

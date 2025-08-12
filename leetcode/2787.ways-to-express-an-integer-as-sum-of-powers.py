@@ -21,7 +21,7 @@ class Solution:
 
 class Solution: # MLE
     def numberOfWays(self, n: int, x: int) -> int:
-        return(f:=cache(lambda n,x,s=1:n>0 and s<=n and f(n-s**x,x,s+1)+f(n,x,s+1)or n==0))(n,x)%(10**9+7)
+        return(f:=cache(lambda n,i:i<=n>0 and f(n-i**x,i+1)+f(n,i+1)or n==0))(n,1)%(10**9+7)
 
 # https://leetcode.com/problems/ways-to-express-an-integer-as-sum-of-powers/solutions/7051628/two-simple-lines-of-code/?envType=daily-question&envId=2025-08-12
 

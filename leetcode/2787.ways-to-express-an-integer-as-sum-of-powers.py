@@ -17,12 +17,6 @@ class Solution:
             return s
         return f(n,1)%(10**9+7)
 
-# https://leetcode.com/problems/ways-to-express-an-integer-as-sum-of-powers/solutions/3847607/easy-recursion-memoization/?envType=daily-question&envId=2025-08-12
-
-class Solution: # MLE
-    def numberOfWays(self, n: int, x: int) -> int:
-        return(f:=cache(lambda n,i:i<=n>0 and f(n-i**x,i+1)+f(n,i+1)or n==0))(n,1)%(10**9+7)
-
 # https://leetcode.com/problems/ways-to-express-an-integer-as-sum-of-powers/solutions/7051628/two-simple-lines-of-code/?envType=daily-question&envId=2025-08-12
 
 class Solution:
@@ -39,6 +33,16 @@ class Solution:
     def numberOfWays(self, n: int, x: int) -> int:
         return ~~(f:=cache(lambda i,n,p=[q**x for q in range(1,round(n**(1/x))+1)]:
             i<len(p) and n>=p[i] and (f(i+1,n)+f(i+1,n-p[i]))%(10**9+7) or n==0))(0,n)
+
+# https://leetcode.com/problems/ways-to-express-an-integer-as-sum-of-powers/solutions/3847607/easy-recursion-memoization/?envType=daily-question&envId=2025-08-12
+
+class Solution: # MLE
+    def numberOfWays(self, n: int, x: int) -> int:
+        return(f:=cache(lambda n,i:n==0 or i<=n>0 and f(n-i**x,i+1)+f(n,i+1)))(n,1)%(10**9+7)
+
+class Solution: # MLE
+    def numberOfWays(self, n: int, x: int) -> int:
+        return(f:=cache(lambda n,i:n>=i and f(n-i**x,i+1)+f(n,i+1)or n==0))(n,1)%(10**9+7)
 
 # https://leetcode.com/problems/ways-to-express-an-integer-as-sum-of-powers/solutions/3802157/python-medium/?envType=daily-question&envId=2025-08-12
 

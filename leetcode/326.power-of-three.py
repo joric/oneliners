@@ -4,6 +4,12 @@ from lc import *
 
 class Solution:
     def isPowerOfThree(self, n: int) -> bool:
+        while n and n%3==0:
+            n /= 3
+        return n==1
+
+class Solution:
+    def isPowerOfThree(self, n: int) -> bool:
         return n>0==pow(3,19,n)
 
 class Solution:

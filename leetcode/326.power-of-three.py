@@ -36,6 +36,11 @@ Output: false
 Explanation: There is no x where 3x = (-1).
  
 
+Other examples:
+
+Input: n = 1
+Output: true
+
 Constraints:
 
 -231 <= n <= 231 - 1

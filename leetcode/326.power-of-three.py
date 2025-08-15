@@ -54,6 +54,8 @@ Output: true
 Input: n = 243
 Output: true
 
+Input: n = 45
+Output: false
 
 Constraints:
 

@@ -51,6 +51,10 @@ Other examples:
 Input: n = 1
 Output: true
 
+Input: n = 243
+Output: true
+
+
 Constraints:
 
 -231 <= n <= 231 - 1

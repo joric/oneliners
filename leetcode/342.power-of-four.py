@@ -66,7 +66,7 @@ class Solution:
 
 class Solution:
     def isPowerOfFour(self, n: int) -> bool:
-        t=n-1;return n>0and n&t==0and t%3==0
+        t=n-1;return n>0 and n&t==0 and t%3==0
 
 class Solution:
     def isPowerOfFour(self, n: int) -> bool:
@@ -101,15 +101,21 @@ Example 1:
 
 Input: n = 16
 Output: true
+
 Example 2:
 
 Input: n = 5
 Output: false
+
 Example 3:
 
 Input: n = 1
 Output: true
- 
+
+Other examples:
+
+Input: n = 2
+Output: false
 
 Constraints:
 

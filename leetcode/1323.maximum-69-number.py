@@ -12,6 +12,10 @@ class Solution:
     def maximum69Number (self, n: int) -> int:
         return int(re.sub('6','9',str(n),1))
 
+class Solution:
+    def maximum69Number (self, n: int) -> int:
+        return int(re.sub(*'69',str(n),1))
+
 test('''
 1323. Maximum 69 Number
 Easy

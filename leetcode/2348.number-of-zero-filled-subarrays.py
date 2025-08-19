@@ -62,7 +62,11 @@ Example 3:
 Input: nums = [2,10,2019]
 Output: 0
 Explanation: There is no subarray filled with 0. Therefore, we return 0.
- 
+
+Other examples:
+
+Input: nums = [13,17,-8,-18,1,11,-19,1,-15,-7,2,-4]
+Output: 0
 
 Constraints:
 

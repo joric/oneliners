@@ -79,8 +79,12 @@ class Solution:
         return a-1
 
 class Solution:
-    def longestSubarray(self, n):
-        s=a=u=0;[(a:=max(a,u:=max(u*x,s)+1),s:=s*x+x)for x in n];return a-1
+    def longestSubarray(self, n: List[int]) -> int:
+        s=a=0;t=-1;[(a:=max(a,t:=max(-~t*x,s)),s:=-~s*x)for x in n];return a
+
+class Solution:
+    def longestSubarray(self, n: List[int]) -> int:
+        s=a=u=0;[(a:=max(a,u:=max(u*x,s)+1),s:=s*x+x)for x in n];return~-a
 
 test('''
 1493. Longest Subarray of 1's After Deleting One Element

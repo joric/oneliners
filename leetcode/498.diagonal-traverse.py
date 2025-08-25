@@ -10,6 +10,10 @@ class Solution:
     def findDiagonalOrder(self, m:List[List[int]]) -> List[int]:
         e=enumerate;return[a[2]for a in sorted((i+j,(i-j)*((i+j)%2*2-1),x)for i,r in e(m)for j,x in e(r))]
 
+class Solution:
+    def findDiagonalOrder(self, m:List[List[int]]) -> List[int]:
+        e=enumerate;return[a[2]for a in sorted((i+j,(-1)**(i+j+1)*(i-j),x)for i,r in e(m)for j,x in e(r))]
+
 test('''
 498. Diagonal Traverse
 Solved

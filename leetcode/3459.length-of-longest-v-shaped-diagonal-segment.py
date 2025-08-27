@@ -14,7 +14,6 @@ class Solution:
                 res2 = dp(i + ds[d2][0], j + ds[d2][1], nx[x], d2, 0) + 1
                 res = max(res, res2)
             return res
-
         ds = [[1,1],[1,-1],[-1,-1],[-1,1]]
         nx = [2,2,0]
         res = 0

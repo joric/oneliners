@@ -26,7 +26,6 @@ class Solution:
                     res = max(res, cur)
         return res
 
-# TODO
 class Solution:
     def lenOfVDiagonal(self,g:List[List[int]])->int:
         s,p,r,n,m=[[1,1],[1,-1],[-1,-1],[-1,1]],[2,2,0],0,len(g),len(g[0])
@@ -38,11 +37,11 @@ class Solution:
             if k:
                 r=max(r,f(i+s[(d+1)%4][0],j+s[(d+1)%4][1],p[x],(d+1)%4,0)+1)
             return r
-        for i in range(n):
-            for j in range(m):
-                if g[i][j]==1:
-                    r=max(r,max(f(i,j,1,d,1)for d in range(4)))
-        return r
+        return+max(0<g[i][j]and max(f(i,j,1,d,1)for d in range(4))for i in range(n)for j in range(m))
+
+class Solution:
+    def lenOfVDiagonal(self,g:List[List[int]])->int:
+        s,p,n,m=[[1,1],[1,-1],[-1,-1],[-1,1]],[2,2,0],len(g),len(g[0]);f=cache(lambda i,j,x,d,k:n>i>-1<j<m and x==g[i][j]and 1+max(f(i+s[d][0],j+s[d][1],p[x],d,k),k and f(i+s[d+1&3][0],j+s[(d+1)%4][1],p[x],(d+1)%4,0)));return+max(0<g[i][j]and max(f(i,j,1,d,1)for d in range(4))for i in range(n)for j in range(m))
 
 test('''
 3459. Length of Longest V-Shaped Diagonal Segment

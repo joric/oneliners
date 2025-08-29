@@ -1744,7 +1744,7 @@ class Solution:
 
 ### Comparison chaining
 
-Python has comparison chaining. You can use expressions like `0<=i<n`, `m>j>=0<=i<n` and `a!=b!=c` in a single condition.
+Python has comparison chaining. You can use expressions like `0<=i<n`, `m>j>=0<=i<n`, `m>j>-1<i<n` and `a!=b!=c` in a single condition.
 
 * https://leetcode.com/problems/expressive-words/discuss/122660/C%2B%2BJavaPython-2-Pointers-and-4-pointers
 

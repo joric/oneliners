@@ -217,6 +217,14 @@ class Solution:
         return mode(n)
 ```
 
+* https://leetcode.com/problems/alice-and-bob-playing-flower-game
+
+```python
+class Solution:
+    def flowerGame(self, n: int, m: int) -> int:
+        return m*n//2
+```
+
 * https://leetcode.com/problems/count-of-matches-in-tournament
 
 ```python

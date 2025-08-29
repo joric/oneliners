@@ -3,9 +3,19 @@ from lc import *
 # weekly-contest-382 Q3
 # https://leetcode.com/problems/alice-and-bob-playing-flower-game
 
-class Solution:
+class Solution: # WA
     def flowerGame(self, n: int, m: int) -> int:
         return(m+1)//2*n//2+(n+1)//2*m//2
+
+class Solution:
+    def flowerGame(self, n: int, m: int) -> int:
+        return reduce(lambda a,x:a+((m+1)>>1,m>>1)[x&1],range(1,n+1),0)
+
+# https://leetcode.com/problems/alice-and-bob-playing-flower-game/solutions/4636832/m-n-2/?envType=daily-question&envId=2025-08-29
+
+class Solution:
+    def flowerGame(self, n: int, m: int) -> int:
+        return m*n//2
 
 test('''
 3021. Alice and Bob Playing Flower Game

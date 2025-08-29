@@ -1,6 +1,7 @@
 from lc import *
 
 # weekly-contest-382 Q3
+# https://leetcode.com/contest/weekly-contest-382/
 # https://leetcode.com/problems/alice-and-bob-playing-flower-game
 
 class Solution: # WA

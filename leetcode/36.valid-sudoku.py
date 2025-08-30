@@ -23,6 +23,11 @@ class Solution:
         r=range(9);return len(s:=[x for i in r for j in r if(c:=b[i][j])>'.'for x in((c,i),(j,c),(i//3,j//3,c))])==len({*s})
 
 class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        s = [x for i,r in enumerate(board) for j,c in enumerate(r) if c>'.' for x in((c,i),(j,c),(i//3,j//3,c))]
+        return len(s)==len({*s})
+
+class Solution:
     def isValidSudoku(self, b: List[List[str]]) -> bool:
         e=enumerate;return len(s:=[x for i,r in e(b)for j,c in e(r)if c>'.'for x in((c,i),(j,c),(i//3,j//3,c))])==len({*s})
 

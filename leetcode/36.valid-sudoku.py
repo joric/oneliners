@@ -4,15 +4,21 @@ from lc import *
 
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-        return len(s:=sum(([(c,i),(j,c),(i//3,j//3,c)] for i in range(9) for j in range(9) for c in [board[i][j]] if c!='.'),[]))==len(set(s))
+        return 1==max(Counter(x for i,row in enumerate(board) for j,c in enumerate(row) if c != '.' for x in ((c,i),(j,c),(i//3,j//3,c))).values()or[1])
 
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-        return 1==max(Counter(x for i,row in enumerate(board) for j,c in enumerate(row) if c != '.' for x in ((c,i),(j,c),(i//3,j//3,c))).values()or[1])
+        return len(s:=sum(([(c,i),(j,c),(i//3,j//3,c)] for i in range(9) for j in range(9) for c in [board[i][j]] if c!='.'),[]))==len(set(s))
+
+class Solution:
+    def isValidSudoku(self, b: List[List[str]]) -> bool:
+        e=enumerate;return 1==max(Counter(x for i,r in e(b)for j,c in e(r)if c>'.'for x in((c,i),(j,c),(i//3,j//3,c))).values()or[1])
+
+class Solution:
+    def isValidSudoku(self, b: List[List[str]]) -> bool:
+        r=range(9);return len(s:=sum(([(c,i),(j,c),(i//3,j//3,c)]for i in r for j in r for c in[b[i][j]]if c>'.'),[]))==len({*s})
 
 test('''
-
-
 36. Valid Sudoku
 Medium
 
@@ -77,6 +83,4 @@ Constraints:
 board.length == 9
 board[i].length == 9
 board[i][j] is a digit 1-9 or '.'.
-
 ''')
-

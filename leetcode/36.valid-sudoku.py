@@ -18,6 +18,10 @@ class Solution:
     def isValidSudoku(self, b: List[List[str]]) -> bool:
         r=range(9);return len(s:=sum(([(c,i),(j,c),(i//3,j//3,c)]for i in r for j in r for c in[b[i][j]]if c>'.'),[]))==len({*s})
 
+class Solution:
+    def isValidSudoku(self, b: List[List[str]]) -> bool:
+        r=range(9);return len(s:=[x for i in r for j in r if(c:=b[i][j])>'.'for x in((c,i),(j,c),(i//3,j//3,c))])==len({*s})
+
 test('''
 36. Valid Sudoku
 Medium

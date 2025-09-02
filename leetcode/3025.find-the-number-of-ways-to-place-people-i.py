@@ -21,7 +21,7 @@ class Solution:
 
 class Solution:
     def numberOfPairs(self, p: List[List[int]]) -> int:
-        r,n=0,len(p);p.sort(key=lambda p:(p[0],-p[1]));[(m:=-inf,[m<p[j][1]<=p[i][1]and(m:=p[j][1],r:=r+1)for j in range(i+1,n)])for i in range(n)];return r
+        r,n=0,len(p);p.sort(key=lambda p:(p[0],-p[1]));[(m:=-inf,[m<(t:=p[j][1])<=p[i][1]and(m:=t,r:=r+1)for j in range(i+1,n)])for i in range(n)];return r
 
 test('''
 3025. Find the Number of Ways to Place People I

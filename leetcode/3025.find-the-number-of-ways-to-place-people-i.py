@@ -34,6 +34,16 @@ class Solution:
     def numberOfPairs(self, p: List[List[int]]) -> int:
         return sum(a<=b and c>=d and not any(a<=x<=b and d<=y<=c for x,y in p if(x,y)not in((a,c),(b,d)))for(a,c),(b,d)in product(p,p)if(a,c)!=(b,d))
 
+# Use all() with a logical OR instead of not any() with a logical AND (De Morgan's law)
+
+class Solution:
+    def numberOfPairs(self, p: List[List[int]]) -> int:
+        return sum(a<=b and c>=d and all((x,y)in((a,c),(b,d))or not(a<=x<=b and d<=y<=c)for x,y in p)for (a,c),(b,d)in product(p,p)if(a,c)!=(b,d))
+
+class Solution:
+    def numberOfPairs(self, p: List[List[int]]) -> int:
+        return sum(a<=b and c>=d and sum(a<=x<=b and d<=y<=c for x,y in p)<3for(a,c),(b,d)in product(p,p)if(a,c)!=(b,d))
+
 test('''
 3025. Find the Number of Ways to Place People I
 Medium

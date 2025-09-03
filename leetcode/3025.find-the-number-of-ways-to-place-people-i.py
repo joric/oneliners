@@ -1,6 +1,7 @@
 from lc import *
 
-# biweekly-contest-123 Q3
+# biweekly-contest-123 Q2
+# https://leetcode.com/contest/biweekly-contest-123/
 # https://leetcode.com/problems/find-the-number-of-ways-to-place-people-i
 
 class Solution:
@@ -22,6 +23,16 @@ class Solution:
 class Solution:
     def numberOfPairs(self, p: List[List[int]]) -> int:
         r,n=0,len(p);p.sort(key=lambda p:(p[0],-p[1]));[(m:=-inf,[m<(t:=p[j][1])<=p[i][1]and(m:=t,r:=r+1)for j in range(i+1,n)])for i in range(n)];return r
+
+# https://leetcode.com/problems/find-the-number-of-ways-to-place-people-i/solutions/7147525/three-simple-lines-of-code/?envType=daily-question&envId=2025-09-02
+
+class Solution:
+    def numberOfPairs(self, a: List[List[int]]) -> int:
+        return sum(x1<=x2 and y1>=y2 and not any(x1<=x<=x2 and y2<=y<=y1 for x,y in a if (x,y) not in ((x1,y1),(x2,y2))) for (x1,y1),(x2,y2) in product(a,a) if (x1,y1)!=(x2,y2))
+
+class Solution:
+    def numberOfPairs(self, p: List[List[int]]) -> int:
+        return sum(a<=b and c>=d and not any(a<=x<=b and d<=y<=c for x,y in p if(x,y)not in((a,c),(b,d)))for(a,c),(b,d)in product(p,p)if(a,c)!=(b,d))
 
 test('''
 3025. Find the Number of Ways to Place People I

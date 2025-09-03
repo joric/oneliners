@@ -42,7 +42,7 @@ class Solution:
 
 class Solution:
     def numberOfPairs(self, p: List[List[int]]) -> int:
-        return sum(a<=b and c>=d and sum(a<=x<=b and d<=y<=c for x,y in p)<3for(a,c),(b,d)in product(p,p)if(a,c)!=(b,d))
+        return sum(a<=b and c>=d and sum(a<=x<=b and d<=y<=c for x,y in p)<3 for(a,c),(b,d)in product(p,p)if(a,c)!=(b,d))
 
 test('''
 3025. Find the Number of Ways to Place People I

@@ -46,7 +46,7 @@ class Solution:
 
 class Solution:
     def minOperations(self, q: List[List[int]]) -> int:
-        f=lambda a:sum(max(0,a-4**i)for i in range(16));return sum(f(r+1)-f(l)+1>>1 for l,r in q)
+        f=lambda x:sum(max(0,x-4**i)for i in range(16));return sum(f(b+1)-f(a)+1>>1 for a,b in q)
 
 test('''
 3495. Minimum Operations to Make Array Elements Zero

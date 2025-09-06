@@ -1,11 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/minimum-operations-to-make-array-elements-zero/solutions/6570962/math/
-
-class Solution:
-    def minOperations(self, q: List[List[int]]) -> int:
-        f=lambda a:a>0 and sum(a-4**i+1 for i in range(int(log(a,4))+1));return sum((1+f(r)-f(l-1))//2 for l,r in q)
-
 # https://leetcode.com/problems/minimum-operations-to-make-array-elements-zero/solutions/6568657/powers-of-4/?envType=daily-question&envId=2025-09-06
 
 class Solution:
@@ -33,6 +27,24 @@ class Solution:
 class Solution:
     def minOperations(self, q: List[List[int]]) -> int:
         return sum(-~sum(t*-~i for i in range(16)if(t:=min(r,4**-~i-1)-max(l,4**i)+1)>0)//2 for l,r in q)
+
+class Solution:
+    def minOperations(self, q: List[List[int]]) -> int:
+        return sum(-~sum(t*-~i for i in range(16)if(t:=min(r+1,4**-~i)-max(l,4**i))>0)//2 for l,r in q)
+
+# https://leetcode.com/problems/minimum-operations-to-make-array-elements-zero/solutions/6570962/math/
+
+class Solution:
+    def minOperations(self, q: List[List[int]]) -> int:
+        f=lambda a:a>0 and sum(a-4**i+1 for i in range(int(log(a,4))+1));return sum((1+f(r)-f(l-1))//2 for l,r in q)
+
+class Solution:
+    def minOperations(self, q: List[List[int]]) -> int:
+        f=lambda a:sum(max(0,a-4**i)for i in range(16));return sum((1+f(r+1)-f(l))//2 for l,r in q)
+
+class Solution:
+    def minOperations(self, q: List[List[int]]) -> int:
+        f=lambda a:sum(max(0,a-4**i)for i in range(16));return sum(1+f(r+1)-f(l)>>1 for l,r in q)
 
 test('''
 3495. Minimum Operations to Make Array Elements Zero

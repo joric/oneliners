@@ -85,7 +85,10 @@ In the fourth operation, select nums[3] and nums[4]. The array becomes [0, 0, 0,
 The minimum number of operations required is 4.
 The output is 4.
 
- 
+Other examples:
+
+Input: queries = [[1,8]]
+Output: 7
 
 Constraints:
 

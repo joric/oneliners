@@ -36,6 +36,10 @@ class Solution:
     def minOperations(self, q: List[List[int]]) -> int:
         return sum(-~sum(-~i*-~t for i in range(16)if(t:=min(r,4**-~i-1)-max(l,4**i))>=0)//2 for l,r in q)
 
+class Solution:
+    def minOperations(self, q: List[List[int]]) -> int:
+        return sum(-~sum(t*-~i for i in range(16)if(t:=min(r,4**-~i-1)-max(l,4**i)+1)>0)//2 for l,r in q)
+
 test('''
 3495. Minimum Operations to Make Array Elements Zero
 Solved

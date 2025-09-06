@@ -26,18 +26,6 @@ class Solution:
 
 class Solution:
     def minOperations(self, q: List[List[int]]) -> int:
-        return sum((sum((-~i*(min(r,4**-~i-1)+1-max(l,4**i)))for i in range(16)if max(l,4**i)<=min(r,4**-~i-1))+1)//2 for l,r in q)
-
-class Solution:
-    def minOperations(self, q: List[List[int]]) -> int:
-        return sum(-~sum(-~i*(b+1-a)for i in range(16)if(a:=max(l,4**i))<=(b:=min(r,4**-~i-1)))//2 for l,r in q)
-
-class Solution:
-    def minOperations(self, q: List[List[int]]) -> int:
-        return sum(-~sum(-~i*-~t for i in range(16)if(t:=min(r,4**-~i-1)-max(l,4**i))>=0)//2 for l,r in q)
-
-class Solution:
-    def minOperations(self, q: List[List[int]]) -> int:
         return sum(-~sum(t*-~i for i in range(16)if(t:=min(r,4**-~i-1)-max(l,4**i)+1)>0)//2 for l,r in q)
 
 test('''

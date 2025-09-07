@@ -2,9 +2,14 @@ from lc import *
 
 # https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/solutions/464344/trivial-python-ruby-java-c/?envType=daily-question&envId=2025-09-07
 
+
 class Solution:
     def sumZero(self, n: int) -> List[int]:
         a=range(1,n);return[*a,-sum(a)]
+
+class Solution:
+    def sumZero(self, n: int) -> List[int]:
+        return[*range(1,n),-n*~-n//2]
 
 class Solution:
     def sumZero(self, n: int) -> List[int]:

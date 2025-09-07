@@ -6,6 +6,10 @@ class Solution:
     def sumZero(self, n: int) -> List[int]:
         a=range(1,n);return[*a,-sum(a)]
 
+class Solution:
+    def sumZero(self, n: int) -> List[int]:
+        return[*(range(1-n,n,2))]
+
 test('''
 1304. Find N Unique Integers Sum up to Zero
 Solved

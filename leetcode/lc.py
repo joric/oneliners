@@ -1,4 +1,11 @@
 # coding: utf-8
+
+'''
+You can have multiple test() calls without parameters between the solutions to test them.
+The last one should have test(<description>,[checker]) syntax to parse leetcode description.
+Checker is optional, can be named, e.g. checker = lambda res,expected,param: <checker code>.
+'''
+
 from string import *
 from re import *
 from datetime import *

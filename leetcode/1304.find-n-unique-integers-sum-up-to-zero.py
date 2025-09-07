@@ -55,4 +55,4 @@ Hint 1
 Return an array where the values are symmetric. (+x , -x).
 Hint 2
 If n is odd, append value 0 in your returned array.
-''')
+''', check=lambda res,expected,param: len(res)==len({*res}) and sum(res)==0 )

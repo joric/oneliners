@@ -14,6 +14,10 @@ class Solution:
     def getNoZeroIntegers(self, n: int) -> List[int]:
         return[x for a in range(n)if'0'not in str(x:=(a,n-a))][0]
 
+class Solution:
+    def getNoZeroIntegers(self, n: int) -> List[int]:
+        return[x for a in range(n)if{'0'}-{*str(x:=(a,n-a))}][0]
+
 test('''
 1317. Convert Integer to the Sum of Two No-Zero Integers
 Solved

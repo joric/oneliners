@@ -1,16 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/number-of-people-aware-of-a-secret/solutions/2229982/java-c-python-sliding-window-o-n-time-o-forget-space/?envType=daily-question&envId=2025-09-09
-
-class Solution:
-    def peopleAwareOfSecret(self, n: int, delay: int, forget: int) -> int:
-        dp = [1] + [0] * (n - 1)
-        mod = 10 ** 9 + 7
-        share = 0
-        for i in range(1, n):
-            dp[i] = share = (share + dp[i - delay] - dp[i - forget]) % mod
-        return sum(dp[-forget:]) % mod
-
 # https://leetcode.com/problems/number-of-people-aware-of-a-secret/solutions/2230188/python-4-lines/?envType=daily-question&envId=2025-09-09
 
 class Solution:
@@ -30,6 +19,21 @@ class Solution:
 class Solution:
     def peopleAwareOfSecret(self, n: int, d: int, f: int) -> int:
         p=[[1,0]]+[[0,0]for _ in range(n-1)];[setitem(p,i,[sum([i[0]for i in p[max(0,i-f+1):max(0,i-d+1)]]),p[i-f][0]])for i in range(1,n)];return sum([i[0]-i[1]for i in p])%(10**9+7)
+
+# https://leetcode.com/problems/number-of-people-aware-of-a-secret/solutions/2229982/java-c-python-sliding-window-o-n-time-o-forget-space/?envType=daily-question&envId=2025-09-09
+
+class Solution:
+    def peopleAwareOfSecret(self, n: int, delay: int, forget: int) -> int:
+        dp = [1] + [0] * (n - 1)
+        mod = 10 ** 9 + 7
+        share = 0
+        for i in range(1, n):
+            dp[i] = share = (share + dp[i - delay] - dp[i - forget]) % mod
+        return sum(dp[-forget:]) % mod
+
+class Solution:
+    def peopleAwareOfSecret(self, n: int, d: int, f: int) -> int:
+        p,s=[1]+[0]*~-n,0;[setitem(p,i,s:=(s+p[i-d]-p[i-f]))for i in range(1,n)];return sum(p[-f:])%(10**9+7)
 
 test('''
 2327. Number of People Aware of a Secret

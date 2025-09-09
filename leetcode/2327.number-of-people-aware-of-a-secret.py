@@ -39,6 +39,10 @@ class Solution:
     def peopleAwareOfSecret(self, n: int, d: int, g: int) -> int:
         p=lambda i:i>0 and p(i-1)+f(i);f=cache(lambda i:i<2 or p(i-d)-p(i-g));return(p(n)-p(n-g))%(10**9+7)
 
+class Solution:
+    def peopleAwareOfSecret(self, n: int, d: int, f: int) -> int:
+        p=cache(lambda i:i>0 and p(i-1)+(i<2 or p(i-d)-p(i-f)));return(p(n)-p(n-f))%(10**9+7)
+
 test('''
 2327. Number of People Aware of a Secret
 Solved

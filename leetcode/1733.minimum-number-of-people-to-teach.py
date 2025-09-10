@@ -16,6 +16,10 @@ class Solution:
         if not friendships: return 0
         return min(len({u for f in friendships for u in f if l not in userToLang[u]}) for l in range(1,n+1))
 
+class Solution:
+    def minimumTeachings(self, n: int, l: List[List[int]], f: List[List[int]]) -> int:
+        u={u:{*x}for u,x in enumerate(l,1)};f=[u for t in f if not u[t[0]]&u[t[1]]];return min(len({x for t in f for x in t if r not in u[x]})for r in range(1,n+1))
+
 # https://leetcode.com/problems/minimum-number-of-people-to-teach/solutions/3219815/python-3-5-lines-w-explanation-and-example-t-s-95-45/?envType=daily-question&envId=2025-09-10
 
 class Solution:

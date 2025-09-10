@@ -30,6 +30,10 @@ class Solution:
     def minimumTeachings(self, n: int, l: List[List[int]], f: List[List[int]]) -> int:
         l=[*map(set,l)];u={*chain(*((i-1,j-1)for i,j in f if not l[i-1]&l[j-1]))};return len(u)-max([0,*Counter(chain(*[l[i] for i in u])).values()])
 
+class Solution:
+    def minimumTeachings(self, n: int, l: List[List[int]], f: List[List[int]]) -> int:
+        l=[*map(set,l)];u={k-1 for i,j in f if not l[i-1]&l[j-1]for k in(i,j)};return len(u)-max(Counter(x for i in u for x in l[i]).values()or[0])
+
 test('''
 1733. Minimum Number of People to Teach
 Medium

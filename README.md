@@ -2287,6 +2287,7 @@ Examples                                   | Results
 ## References
 
 * [Don't Piss down my back and tell me it's raining: Notebook for Sarcastic, Witty, and Sharp Tongued One Liners](https://www.amazon.com/Dont-Piss-down-back-raining/dp/B08ZQGV1XH)
+* [Designed a one line solution for the Gmail API issue that caused hundreds of thousands $ losses to clients](https://www.linkedin.com/in/dan-kurta/)
 * [They're not characters at all, they're just brilliant repositories of fantastic, killer one-liners (Stephen Fry)](https://youtu.be/8k2AbqTBxao?t=251)
 * [Python One-Liners: Write Concise, Eloquent Python Like a Professional](https://www.amazon.com/Python-One-Liners-Concise-Eloquent-Professional/dp/1718500505)
 * [Python One-Liners - Concise Python Code](https://www.amazon.com/gp/product/1718500505)

@@ -1884,6 +1884,20 @@ class Solution:
     return'/'+'/'.join(reduce(lambda r,p:(r+[p]*('.'!=p!=''),r[:-1])[p=='..'],path.split('/'),[]))
 ```
 
+Sometimes you can use `any()` instead of `bool()` (1 character shorter):
+
+* https://leetcode.com/problems/vowels-game-in-a-string
+
+```python
+class Solution:
+    def doesAliceWin(self, s: str) -> bool:
+        return bool({*s}&{*'aeiou'})
+
+class Solution:
+    def doesAliceWin(self, s: str) -> bool:
+        return any({*s}&{*'aeiou'})
+```
+
 ### Cmp
 
 Python 3 lacks `cmp` (3-way compare) and sign function (`copysign(bool(x),x)` is too long), but you can use `(x>0)-(x<0)` for `sign(x)`

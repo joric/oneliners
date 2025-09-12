@@ -18,7 +18,19 @@ class Solution:
 
 class Solution:
     def doesAliceWin(self, s: str) -> bool:
+        return not {*s}.isdisjoint('aeiou')
+
+class Solution:
+    def doesAliceWin(self, s: str) -> bool:
         return bool({*s}&{*'aeiou'})
+
+class Solution:
+    def doesAliceWin(self, s: str) -> bool:
+        return{*s}&{*'aeiou'}>set()
+
+class Solution:
+    def doesAliceWin(self, s: str) -> bool:
+        return any({*s}&{*'aeiou'})
 
 test('''
 3227. Vowels Game in a String

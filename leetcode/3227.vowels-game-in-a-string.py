@@ -6,6 +6,18 @@ class Solution:
     def doesAliceWin(self, s: str) -> bool:
         return sum(c in'aeiou'for c in s)>0
 
+class Solution:
+    def doesAliceWin(self, s: str) -> bool:
+        return any(c in'aeiou'for c in s)
+
+class Solution:
+    def doesAliceWin(self, s: str) -> bool:
+        return bool(re.search('[aeiou]',s))
+
+class Solution:
+    def doesAliceWin(self, s: str) -> bool:
+        return bool({*s}&{*'aeiou'})
+
 test('''
 3227. Vowels Game in a String
 Medium

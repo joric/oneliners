@@ -14,6 +14,8 @@ class Solution:
     def doesAliceWin(self, s: str) -> bool:
         return bool(re.search('[aeiou]',s))
 
+# https://leetcode.com/problems/vowels-game-in-a-string/solutions/7176687/one-line-solution/
+
 class Solution:
     def doesAliceWin(self, s: str) -> bool:
         return bool({*s}&{*'aeiou'})

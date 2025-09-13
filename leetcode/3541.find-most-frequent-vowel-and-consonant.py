@@ -22,6 +22,26 @@ class Solution:
     def maxFreqSum(self, s: str) -> int:
         return sum(max([*Counter(findall(f'[{q}aeiou]',s)).values(),0])for q in' ^')
 
+#class Solution:
+#    def maxFreqSum(self, s: str) -> int:
+#        return sum(max((s.count(c)for(c in f'{q}aeiou')^q),default=0)for q in(0,1))
+
+# https://leetcode.com/problems/find-most-frequent-vowel-and-consonant/solutions/7183936/simple-solution/?envType=daily-question&envId=2025-09-13
+
+class Solution:
+    def maxFreqSum(self, s: str) -> int:
+        r = 'aeiou'
+        a = b = 0
+        for i in s:
+            t = s.count(i)
+            if i in r: a = max(t,a)
+            if i not in r: b = max(t,b)
+        return a+b
+
+class Solution:
+    def maxFreqSum(self, s:str)->int:
+        return sum(max(((c in'aeiou')^q)*s.count(c)for c in s)for q in(0,1))
+
 test('''
 3541. Find Most Frequent Vowel and Consonant
 Easy

@@ -1,5 +1,12 @@
 from lc import *
 
+
+# https://leetcode.com/problems/vowel-spellchecker/solutions/211189/java-c-python-two-hashmap/?envType=daily-question&envId=2025-09-14
+
+class Solution:
+    def spellchecker(self, w: List[str], q: List[str]) -> List[str]:
+        a,b,c={x: x for x in w},{x.lower(): x for x in w[::-1]},{re.sub('[aeiou]','#',x.lower()):x for x in w[::-1]};return [a.get(x) or b.get(x.lower()) or c.get(re.sub('[aeiou]', '#', x.lower()), '') for x in q]
+
 class Solution:
     def spellchecker(self, wordlist: List[str], queries: List[str]) -> List[str]:
         return (
@@ -8,14 +15,17 @@ class Solution:
             v:= {(f:=lambda s:re.sub("[aeiou]", '*', s.lower()))(s): s for s in wordlist[::-1]}
         ) and [w.get(s) or c.get(s.lower()) or v.get(f(s),'') for s in queries]
 
-
 class Solution:
     def spellchecker(self, wordlist: List[str], queries: List[str]) -> List[str]:
-        return (p:=((lambda x:x,{}),(lambda x:x.lower(),{}),(lambda x: ''.join([l if l not in set(list('aeiou')) else '*' for l in x.lower()]),{}))) \
-            and [setitem(h,f(w),w) for f,h in p for w in wordlist if f(w) not in h] and [next((h[f(w)] for f,h in p if f(w) in h),'') for w in queries]
+        return(p:=((lambda x:x,{}),(lambda x:x.lower(),{}),(lambda x:''.join([l if l not in set(list('aeiou')) else '*' for l in x.lower()]),{})))and [setitem(h,f(w),w) for f,h in p for w in wordlist if f(w) not in h] and [next((h[f(w)] for f,h in p if f(w) in h),'') for w in queries]
+
+# https://leetcode.com/problems/vowel-spellchecker/solutions/7187768/swift-1-liner/?envType=daily-question&envId=2025-09-14
+
+class Solution:
+    def spellchecker(self, w: List[str], q: List[str]) -> List[str]:
+        s=[lambda z:z,lambda z:z.lower(),lambda z:re.sub('[aeiou]',' ',z.lower())];m=[{f(y):y for y in w[::-1]}for f in s];return[next((d.get(f(x))for f,d in zip(s,m)if f(x) in d),'')for x in q]
 
 test('''
-
 966. Vowel Spellchecker
 Medium
 
@@ -63,6 +73,4 @@ Constraints:
 1 <= wordlist.length, queries.length <= 5000
 1 <= wordlist[i].length, queries[i].length <= 7
 wordlist[i] and queries[i] consist only of only English letters.
-
-
 ''')

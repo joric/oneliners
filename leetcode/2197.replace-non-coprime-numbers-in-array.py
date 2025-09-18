@@ -13,7 +13,7 @@ class Solution():
 
 class Solution():
     def replaceNonCoprimes(self, a: List[int]) -> List[int]:
-        s=[];[s.append(x)or all(len(s)>1<gcd(*s[-2:])and[s.append(lcm(s.pop(),s.pop()))]for _ in a)for x in a];return s
+        s=[];[s.append(x)or all(len(s)>1<gcd(*s[-2:])!=s.append(lcm(s.pop(),s.pop()))for _ in a)for x in a];return s
 
 test('''
 2197. Replace Non-Coprime Numbers in Array

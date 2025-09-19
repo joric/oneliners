@@ -2,6 +2,8 @@ from lc import *
 
 # https://leetcode.com/problems/zigzag-iterator/
 
+# TODO
+
 def checker(result,expected,param):
     return True
 

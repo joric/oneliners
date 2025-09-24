@@ -1,17 +1,16 @@
 from lc import *
 
-# not enough precision
+# https://leetcode.com/problems/fraction-to-recurring-decimal/
 
+# not enough precision
 class Solution:
     def fractionToDecimal(self, n: int, d: int) -> str:
-        t=f"{n/d:.16f}"[:-1].rstrip('0').rstrip('.')
+        t=f"{n/d:.17f}"[:-1].rstrip('0').rstrip('.')
         if'.'not in t:return t
         a,b=t.split('.')
-        m=re.match(r'(.*?)(.+)\2+$',b)
-        return f"{a}.{m.group(1)}({m.group(2)})" if m else f"{a}.{b}"
+        return f'{a}.{m.group(1)}({m.group(2)})'if(m:=re.match(r'(.*?)(.+?)\2+$',b))else f'{a}.{b}'
 
 # last digit is wrong
-
 from decimal import Decimal, getcontext
 class Solution:
     def fractionToDecimal(self, n: int, d: int) -> str:
@@ -21,7 +20,6 @@ class Solution:
         if'.'not in t:return t
         a,b=t.split('.')
         return f'{a}.{m.group(1)}({m.group(2)})'if(m:=re.match(r'(.*?)(.+?)\2+$',b))else f'{a}.{b}'
-
 
 # https://leetcode.com/problems/fraction-to-recurring-decimal/solutions/51138/3-line-python-solution-using-dictionary-with-explanation/?envType=daily-question&envId=2025-09-24
 
@@ -72,6 +70,9 @@ Output: "0.(6)"
 
 Input: numerator = 1, denominator = 17
 Output: "0.(0588235294117647)"
+
+Input: numerator = 1, denominator = 6
+Output: "0.1(6)"
 
 Constraints:
 

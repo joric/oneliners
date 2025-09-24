@@ -21,33 +21,6 @@ class Solution:
         a,b=t.split('.')
         return f'{a}.{m.group(1)}({m.group(2)})'if(m:=re.match(r'(.*?)(.+?)\2+$',b))else f'{a}.{b}'
 
-# still fails large tests
-
-class Solution:
-    def fractionToDecimal(self, n: int, d: int) -> str:
-        if n == 0:
-            return "0"
-
-        getcontext().prec = 800  # give enough room
-        val = Decimal(n) / Decimal(d)
-
-        # force fixed-point, then strip trailing zeroes
-        s = format(val, 'f').rstrip('0').rstrip('.')
-
-        if '.' not in s:
-            return s
-
-        print(s)
-
-        a, b = s.split('.')
-
-        m = re.search(r'(.+?)\1{2,}', b)
-        if m:
-            prefix = b[:m.start()]
-            repeat = m.group(1)
-            return f'{a}.{prefix}({repeat})'
-        return f'{a}.{b}'
-
 # https://leetcode.com/problems/fraction-to-recurring-decimal/solutions/51138/3-line-python-solution-using-dictionary-with-explanation/?envType=daily-question&envId=2025-09-24
 
 class Solution:

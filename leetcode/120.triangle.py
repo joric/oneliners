@@ -3,16 +3,20 @@ from lc import *
 # https://leetcode.com/problems/triangle/discuss/38827/One-liner-in-Python/
 
 class Solution:
-    def minimumTotal(self, t: List[List[int]]) -> int:
-        return reduce(lambda a,b:[f+min(d,e)for d,e,f in zip(a,a[1:],b)],t[::-1])[0]
-
-class Solution:
     def minimumTotal(self, triangle: List[List[int]]) -> int:
         def combine_rows(lower_row, upper_row):
             return [upper + min(lower_left, lower_right)
                     for upper, lower_left, lower_right in
                     zip(upper_row, lower_row, lower_row[1:])]
         return reduce(combine_rows, triangle[::-1])[0]
+
+class Solution:
+    def minimumTotal(self, t: List[List[int]]) -> int:
+        a=t[-1];[a:=[min(a[i],a[i+1])+b[i]for i in range(len(a)-1)]for b in t[-2::-1]];return a[0]
+
+class Solution:
+    def minimumTotal(self, t: List[List[int]]) -> int:
+        return reduce(lambda a,b:[f+min(d,e)for d,e,f in zip(a,a[1:],b)],t[::-1])[0]
 
 class Solution:
     def minimumTotal(self, t: List[List[int]]) -> int:

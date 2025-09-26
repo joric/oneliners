@@ -28,10 +28,6 @@ class Solution:
     def triangleNumber(self, a: List[int]) -> int:
         a.sort();n=len(a);return sum(sum(bisect_left(a[j+1:],a[i]+a[j])for j in range(i+1,n-1))for i in range(n-2))
 
-class Solution:
-    def triangleNumber(self, a: List[int]) -> int:
-        a.sort();n=len(a);return sum(sum(bisect_left(a[j+1:],a[i]+a[j])for j in range(i+1,n-1))for i in range(n-2))
-
 test('''
 611. Valid Triangle Number
 Solved

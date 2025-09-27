@@ -4,7 +4,11 @@ from lc import *
 
 class Solution:
     def largestTriangleArea(self, p: List[List[int]]) -> float:
-        return max(abs((x1*(y2-y3)+x2*(y3-y1)+x3*(y1-y2))/2)for(x1,y1),(x2,y2),(x3,y3)in combinations(p,3))  
+        return max(abs((x1*(y2-y3)+x2*(y3-y1)+x3*(y1-y2))/2)for(x1,y1),(x2,y2),(x3,y3)in combinations(p,3))
+
+class Solution:
+    def largestTriangleArea(self, p: List[List[int]]) -> float:
+        return max(abs((a*(d-f)+c*(f-b)+e*(b-d))/2)for(a,b),(c,d),(e,f)in combinations(p,3))
 
 test('''
 812. Largest Triangle Area

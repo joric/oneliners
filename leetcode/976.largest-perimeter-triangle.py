@@ -23,15 +23,15 @@ class Solution:
 
 class Solution:
     def largestPerimeter(self, a: List[int]) -> int:
-        a.sort();return max((c<a+b)*(a+b+c)for a,b,c in combinations(a,3)) # TLE
+        a.sort();return max((a+b>c)*(a+b+c)for a,b,c in combinations(a,3)) # TLE
 
 class Solution:
     def largestPerimeter(self, a: List[int]) -> int:
-        return a.sort()or max((c<a+b)*(a+b+c)for a,b,c in zip(a,a[1:],a[2:]))
+        return a.sort()or max((a+b>c)*(a+b+c)for a,b,c in zip(a,a[1:],a[2:]))
 
 class Solution:
     def largestPerimeter(self, a: List[int]) -> int:
-        a.sort();return max((c<a+b)*(a+b+c)for a,b,c in zip(a,a[1:],a[2:]))
+        a.sort();return max((a+b>c)*(a+b+c)for a,b,c in zip(a,a[1:],a[2:]))
 
 test('''
 976. Largest Perimeter Triangle

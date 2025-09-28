@@ -11,7 +11,7 @@ class Solution:
     def largestPerimeter(self, a: List[int]) -> int:
         a.sort();return max((a[i+2]<sum(a[i:i+2]))*sum(a[i:i+3])for i in range(len(a)-2))
 
-# https://leetcode.com/problems/largest-perimeter-triangle/description/?envType=daily-question&envId=2025-09-28
+# https://leetcode.com/problems/largest-perimeter-triangle/solutions/2207499/1-liner/?envType=daily-question&envId=2025-09-28
 
 class Solution:
     def largestPerimeter(self, a: List[int]) -> int:

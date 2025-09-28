@@ -8,6 +8,10 @@ class Solution:
 
 class Solution:
     def largestPerimeter(self, a: List[int]) -> int:
+        a.sort();return max((p[2]<sum(p[:-1]))*sum(p)for p in zip(a,a[1:],a[2:]))
+
+class Solution:
+    def largestPerimeter(self, a: List[int]) -> int:
         a.sort();return max((c<a+b)*(a+b+c)for a,b,c in zip(a,a[1:],a[2:]))
 
 test('''

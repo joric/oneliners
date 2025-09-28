@@ -1,5 +1,6 @@
 from lc import *
 
+# https://leetcode.com/problems/largest-perimeter-triangle/solutions/2207499/1-liner/?envType=daily-question&envId=2025-09-28
 # https://leetcode.com/problems/largest-perimeter-triangle/description/?envType=daily-question&envId=2025-09-28
 
 class Solution:

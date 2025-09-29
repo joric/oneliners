@@ -12,6 +12,10 @@ class Solution:
 
 class Solution:
     def minScoreTriangulation(self, v: List[int]) -> int:
+        return(f:=cache(lambda a:2<len(a)and min(f(a[:k+1])+a[0]*a[k]*a[-1]+f(a[k:])for k in range(1,len(a)-1))))(tuple(v))
+
+class Solution:
+    def minScoreTriangulation(self, v: List[int]) -> int:
         return(f:=cache(lambda i,j:j-i>1 and min(f(i,k)+v[i]*v[k]*v[j]+f(k,j)for k in range(i+1,j))))(0,len(v)-1)
 
 test('''

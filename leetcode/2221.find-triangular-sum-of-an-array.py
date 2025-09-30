@@ -6,6 +6,10 @@ class Solution:
     def triangularSum(self, a: List[int]) -> int:
         return sum(comb(len(a)-1,i)*a[i]for i in range(len(a)))%10
 
+class Solution:
+    def triangularSum(self, a: List[int]) -> int:
+        return sum(comb(len(a)-1,i)*x for i,x in enumerate(a))%10
+
 test('''
 2221. Find Triangular Sum of an Array
 Solved

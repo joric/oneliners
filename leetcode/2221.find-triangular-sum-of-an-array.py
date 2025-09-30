@@ -8,7 +8,7 @@ class Solution:
 
 class Solution:
     def triangularSum(self, a: List[int]) -> int:
-        return sum(comb(len(a)-1,i)*x for i,x in enumerate(a))%10
+        return sum(x*comb(len(a)-1,i)for i,x in enumerate(a))%10
 
 test('''
 2221. Find Triangular Sum of an Array

@@ -21,6 +21,30 @@ class Solution:             # Time = O(k*m*n) | Space = O(m*n)
 
 class Solution:
     def trapRainWater(self, h: List[List[int]]) -> int:
+        m,n,p=len(h),len(h[0]),heappop
+        c={i+j*1j:h[i][j] for i in range(m) for j in range(n)}
+        q=[(c[z],int(z.real),int(z.imag),z) for z in c if z.real in (0,m-1) or z.imag in (0,n-1)]
+        heapify(q)
+        v={z for *_,z in q}
+        def f(x,_,g,z):
+            w = 0
+            for k in range(4):
+                t=z+1j**k
+                if t in c and t not in v:
+                    v.add(t);
+                    y = c[t]
+                    if y<x:
+                        w+=x-y
+                    heappush(q,(x if x>y else y,t.real,t.imag,t))
+            return w + (f(*p(q))if q else 0)
+        return f(*p(q))
+
+class Solution:
+    def trapRainWater(self, h: List[List[int]]) -> int:
+        m,n,p=len(h),len(h[0]),heappop;c={i+j*1j:h[i][j]for i in range(m)for j in range(n)};q=[(c[z],int(z.real),int(z.imag),z)for z in c if z.real in(0,m-1)or z.imag in(0,n-1)];v={z for *_,z in q};heapify(q);return(f:=lambda x,_,g,z:sum(v.add(t)or heappush(q,(x if x>(y:=c[t])else y,t.real,t.imag,t))or y<x and x-y for k in range(4)if(t:=z+1j**k)in c and t not in v)+(f(*p(q))if q else 0))(*p(q))
+
+class Solution:
+    def trapRainWater(self, h: List[List[int]]) -> int:
         m, n, r = len(h), len(h[0]), 0
         q = [*set((h[i][j],i,j)for i in range(m)for j in range(n)if i in(0,m-1)or j in(0,n-1))]
         v = {(x,y)for z,x,y in q}

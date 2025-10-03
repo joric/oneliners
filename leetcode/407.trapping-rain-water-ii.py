@@ -20,23 +20,6 @@ class Solution:             # Time = O(k*m*n) | Space = O(m*n)
 # https://leetcode.com/problems/trapping-rain-water-ii/solutions/245884/python-heap-solution-15-lines/?envType=daily-question&envId=2025-10-03
 
 class Solution:
-    def trapRainWater(self, hm: List[List[int]]) -> int:
-        if not hm or not hm[0]: return 0
-        m, n, res = len(hm), len(hm[0]), 0
-        heap = list(set([(hm[i][0], i, 0) for i in range(m)] + [(hm[i][n - 1], i, n - 1) for i in range(m)] + [(hm[0][j], 0, j) for j in range(n)] + [(hm[m - 1][j], m - 1, j) for j in range(n)]))
-        heapq.heapify(heap)
-        seen = {(x, y) for h, x, y in heap}
-        while heap:
-            h, x, y = heapq.heappop(heap)
-            for d in ((1, 0), (-1, 0), (0, 1), (0, -1)):
-                xx, yy = x + d[0], y + d[1]
-                if not (xx >= m or xx < 0 or yy >= n or yy < 0 or (xx, yy) in seen): 
-                    seen.add((xx, yy))
-                    res += max(0, h - hm[xx][yy])
-                    heapq.heappush(heap, (max(h, hm[xx][yy]), xx, yy))
-        return res
-
-class Solution:
     def trapRainWater(self, h: List[List[int]]) -> int:
         m, n, r = len(h), len(h[0]), 0
         q = [*set((h[i][j],i,j)for i in range(m)for j in range(n)if i in(0,m-1)or j in(0,n-1))]
@@ -50,10 +33,6 @@ class Solution:
                     heappush(q,(max(z,h[i][j]),i,j))
                     r += max(0,z-h[i][j])
         return r
-
-class Solution:
-    def trapRainWater(self, h: List[List[int]]) -> int:
-        m,n=len(h),len(h[0]);q=[*set((h[i][j],i,j)for i in range(m)for j in range(n)if i in(0,m-1)or j in(0,n-1))];v={(x,y)for z,x,y in q};heapify(q);return(f:=lambda z,x,y:sum(v.add((i,j))or heappush(q,(max(z,h[i][j]),i,j))or max(0,z-h[i][j]) for i,j in((x+1,y),(x-1,y),(x,y+1),(x,y-1))if m>i>-1<j<n and (i,j)not in v)+(q and f(*heappop(q))or 0))(*heappop(q))
 
 class Solution:
     def trapRainWater(self, h: List[List[int]]) -> int:

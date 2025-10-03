@@ -55,6 +55,10 @@ class Solution:
     def trapRainWater(self, h: List[List[int]]) -> int:
         m,n=len(h),len(h[0]);q=[*set((h[i][j],i,j)for i in range(m)for j in range(n)if i in(0,m-1)or j in(0,n-1))];v={(x,y)for z,x,y in q};heapify(q);return(f:=lambda z,x,y:sum(v.add((i,j))or heappush(q,(max(z,h[i][j]),i,j))or max(0,z-h[i][j]) for i,j in((x+1,y),(x-1,y),(x,y+1),(x,y-1))if m>i>-1<j<n and (i,j)not in v)+(q and f(*heappop(q))or 0))(*heappop(q))
 
+class Solution:
+    def trapRainWater(self, h: List[List[int]]) -> int:
+        m,n,p=len(h),len(h[0]),heappop;q=[*set((h[i][j],i,j)for i in range(m)for j in range(n)if i in(0,m-1)or j in(0,n-1))];v={(x,y)for z,x,y in q};heapify(q);return(f:=lambda z,x,y:sum(v.add((i,j))or heappush(q,(max(z,h[i][j]),i,j))or max(0,z-h[i][j])for i,j in((x+1,y),(x-1,y),(x,y+1),(x,y-1))if m>i>-1<j<n and(i,j)not in v)+(q and f(*p(q))or 0))(*p(q))
+
 test('''
 407. Trapping Rain Water II
 Solved

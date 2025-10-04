@@ -24,6 +24,25 @@ class Solution:
 
 class Solution:
     def romanToInt(self, s: str) -> int:
+        d = {'M':1000, 'D':500, 'C':100, 'L':50, 'X':10, 'V':5, 'I':1}
+        r, p = 0, 'I'
+        for c in s[::-1]:
+            r = r - d[c] if d[c] < d[p] else r + d[c]
+            p = c
+        return r
+
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        d = {'M':1000,'D':500,'C':100,'L':50,'X':10,'V':5,'I':1}
+        r=p=0
+        for c in s[::-1]:
+            t = d[c]
+            r += t*(1,-1)[t<p]
+            p = t
+        return r
+
+class Solution:
+    def romanToInt(self, s: str) -> int:
         p=0;return sum((t:={'M':1000,'D':500,'C':100,'L':50,'X':10,'V':5,'I':1}[c])-2*t*(t<p+(p:=t)-t)for c in s[::-1])
 
 test('''

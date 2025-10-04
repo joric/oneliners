@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/roman-to-integer
+
 class Solution:
     def romanToInt(self, s: str) -> int:
         return sum(s.count(c)*d for c,d in zip(('M','D','C','L','X','V','I','IV','IX','XL','XC','CD','CM'),(1000,500,100,50,10,5,1,-2,-2,-20,-20,-200,-200)))
@@ -15,6 +17,14 @@ class Solution:
 class Solution:
     def romanToInt(self, s: str) -> int:
         return reduce(lambda a,c:(a[0]-d[c] if d[c]<d[a[1]] else a[0]+d[c], c), s[::-1], (0,'I',d:={'M':1000,'D':500,'C':100,'L':50,'X':10,'V':5,'I':1}))[0]
+
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        return reduce(lambda a,c:(a-d[p]if d[p]<d[c]else a+d[p],p:=c)[0],s+(p:=''),[d:={'M':1000,'D':500,'C':100,'L':50,'X':10,'V':5,'I':1}])[0]
+
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        p=0;return sum((t:={'M':1000,'D':500,'C':100,'L':50,'X':10,'V':5,'I':1}[c])-2*t*(t<p+(p:=t)-t)for c in s[::-1])
 
 test('''
 13. Roman to Integer

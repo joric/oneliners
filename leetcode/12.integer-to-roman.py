@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/integer-to-roman
+
 class Solution:
     def intToRoman(self, num: int) -> str:
         return ''.join((('','M','MM','MMM','MMMM')[num//1000],
@@ -36,9 +38,27 @@ class Solution:
             a:=lambda i,x,r: a(i,x-k[i],r+v[i]) if x>=k[i] else (i+1,x,r)) and (f:=
             lambda i,x,r: f(*a(i,x,r)) if x else (i,x,r))(0,num,'')[-1]
 
+class Solution:
+    def intToRoman(self, num: int) -> str:
+        v,k,a,f=('M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I'),(1000,900,500,400,100,90,50,40,10,9,5,4,1),lambda i,x,r:a(i,x-k[i],r+v[i])if x>=k[i]else(i+1,x,r),lambda i,x,r: f(*a(i,x,r))if x else(i,x,r);return f(0,num,'')[-1]
+
+class Solution:
+    def intToRoman(self, n: int) -> str:
+        return 'M'*(n//1000)+''.join([[[r[0]*d,r[0]+r[1]][d>3],[r[1]+r[0]*(d-5),r[0]+r[2]][d>8]][d>4]for d,r in((n%1000//100,'CDM'),(n%100//10,'XLC'),(n%10,'IVX'))])
+
+class Solution:
+    def intToRoman(self, n: int) -> str:
+        return'M'*(n//1000)+''.join([[a*d,a+b][d>3],[b+a*(d-5),a+c][d>8]][d>4]for d,(a,b,c)in((n%1000//100,'CDM'),(n%100//10,'XLC'),(n%10,'IVX')))
+
+class Solution:
+    def intToRoman(self, n: int) -> str:
+        return'M'*(n//1000)+''.join([[a*d,a+b][d>3],[b+a*(d-5),a+c][d>8]][d>4]for d,(a,b,c)in((n%1000//100,'CDM'),(n%100//10,'XLC'),(n%10,'IVX')))
+
+class Solution:
+    def intToRoman(self, n: int) -> str:
+        return'M'*(n//1000)+''.join([[a*d,a+b][d>3],[b+a*(d-5),a+c][d>8]][d>4]for d,(a,b,c)in((n//100%10,'CDM'),(n//10%10,'XLC'),(n%10,'IVX')))
 
 test('''
-
 12. Integer to Roman
 Medium
 

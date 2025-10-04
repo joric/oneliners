@@ -2,6 +2,14 @@ from lc import *
 
 # https://leetcode.com/problems/container-with-most-water/discuss/5022219/one-line-solution
 
+class Solution: #TLE
+    def maxArea(self, h: List[int]) -> int:
+        e=enumerate;return max((j-i)*min(a,b)for i,a in e(h)for j,b in e(h[i+1:],i+1))
+
+class Solution:
+    def maxArea(self, h: List[int]) -> int:
+        return(f:=lambda l,r:l<r and max((r-l)*min(h[l],h[r]),f(l+1,r)if h[l]<h[r]else f(l,r-1)))(0,len(h)-1)
+
 class Solution:
     def maxArea(self, h: List[int]) -> int:
         m,i,j=0,0,len(h)-1
@@ -14,6 +22,10 @@ class Solution:
 class Solution:
     def maxArea(self, h: List[int]) -> int:
         return(i:=0,j:=len(h)-1)and max((min(l:=h[j],r:=h[i])*(j-i),i:=i+(l>r),j:=j-(l<=r))[0]for _ in h)
+
+class Solution:
+    def maxArea(self, h: List[int]) -> int:
+        i,j=0,len(h)-1;return max((min(l:=h[j],r:=h[i])*(j-i),i:=i+(l>r),j:=j-(l<=r))[0]for _ in h)
 
 test('''
 11. Container With Most Water

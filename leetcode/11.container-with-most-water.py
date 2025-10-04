@@ -11,12 +11,14 @@ class Solution:
         return(f:=lambda l,r:l<r and max((r-l)*min(h[l],h[r]),f(l+1,r)if h[l]<h[r]else f(l,r-1)))(0,len(h)-1)
 
 class Solution:
-    def maxArea(self, h: List[int]) -> int:
-        m,i,j=0,0,len(h)-1
-        for _ in h:
-            m = max(m, min(h[j], h[i])*(j-i))
-            i += h[j] > h[i]
-            j -= h[j] <= h[i]
+    def maxArea(self, h: list[int]) -> int:
+        i, j = 0, len(h) - 1
+        m = 0
+        while i < j:
+            a, b = h[i], h[j]
+            m = max(m, (j-i) * min(a, b))
+            i += a < b
+            j -= a >= b
         return m
 
 class Solution:

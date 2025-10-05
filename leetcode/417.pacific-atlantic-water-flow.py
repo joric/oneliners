@@ -17,9 +17,11 @@ class Solution:
             and (y,x) not in s and m[y][x]>=v and (s.add((y,x)),list(map(f,(y,y,y-1,y+1),(x-1,x+1,x,x),[s]*4,[m[y][x]]*4))),
             [list(map(f,(0,h-1),(x,x),(p,a))) for x in range(w)],[list(map(f,(y,y),(0,w-1),(p,a))) for y in range(h)],p&a)[-1]
 
+class Solution:
+    def pacificAtlantic(self, m: List[List[int]]) -> List[List[int]]:
+        h,w,p,a=len(m),len(m[0]),set(),set();f=lambda y,x,s,v=-inf:w>x>-1<y<h and (y,x) not in s and m[y][x]>=v and(s.add((y,x))or[*map(f,(y,y,y-1,y+1),(x-1,x+1,x,x),[s]*4,[m[y][x]]*4)]);[[*map(f,(0,h-1),(x,x),(p,a))]for x in range(w)];[[*map(f,(y,y),(0,w-1),(p,a))]for y in range(h)];return[*(p&a)]
 
 test('''
-
 417. Pacific Atlantic Water Flow
 Medium
 
@@ -74,5 +76,4 @@ m == heights.length
 n == heights[r].length
 1 <= m, n <= 200
 0 <= heights[r][c] <= 10^5
-
 ''', sort=True)

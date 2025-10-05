@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/pacific-atlantic-water-flow/description/?envType=daily-question&envId=2025-10-05
+
 class Solution:
     def pacificAtlantic(self, m: List[List[int]]) -> List[List[int]]:
         h,w,p,a = len(m), len(m[0]) if m else 0, set(), set()
@@ -9,17 +11,38 @@ class Solution:
                 list(map(dfs,(y,y,y-1,y+1),(x-1,x+1,x,x),[s]*4,[m[y][x]]*4))
         [list(map(dfs,(0,h-1),(x,x),(p,a))) for x in range(w)]
         [list(map(dfs,(y,y),(0,w-1),(p,a))) for y in range(h)]
-        return p&a
+        return list(p&a)
 
 class Solution:
     def pacificAtlantic(self, m: List[List[int]]) -> List[List[int]]:
-        return (h:=len(m),w:=len(m[0]) if m else 0,p:=set(),a:=set(),f:=lambda y,x,s,v=-inf: 0<=x<w and 0<=y<h
-            and (y,x) not in s and m[y][x]>=v and (s.add((y,x)),list(map(f,(y,y,y-1,y+1),(x-1,x+1,x,x),[s]*4,[m[y][x]]*4))),
-            [list(map(f,(0,h-1),(x,x),(p,a))) for x in range(w)],[list(map(f,(y,y),(0,w-1),(p,a))) for y in range(h)],p&a)[-1]
+        h,w,p,a=len(m),len(m[0]),set(),set()
+        f=lambda y,x,s,v=-inf:w>x>-1<y<h and(y,x)not in s and v<=m[y][x]and(s.add((y,x)),[*map(f,(y,y,y-1,y+1),(x-1,x+1,x,x),[s]*4,[m[y][x]]*4)])
+        [[*map(f,(y,y),(0,w-1),(p,a))]for y in range(h)]
+        [[*map(f,(0,h-1),(x,x),(p,a))]for x in range(w)]
+        return[*(p&a)]
+
+# complex numbers
 
 class Solution:
     def pacificAtlantic(self, m: List[List[int]]) -> List[List[int]]:
-        h,w,p,a=len(m),len(m[0]),set(),set();f=lambda y,x,s,v=-inf:w>x>-1<y<h and (y,x) not in s and m[y][x]>=v and(s.add((y,x))or[*map(f,(y,y,y-1,y+1),(x-1,x+1,x,x),[s]*4,[m[y][x]]*4)]);[[*map(f,(0,h-1),(x,x),(p,a))]for x in range(w)];[[*map(f,(y,y),(0,w-1),(p,a))]for y in range(h)];return[*(p&a)]
+        h,w,p,a,e=len(m),len(m[0]),set(),set(),enumerate
+        g={i+j*1j:x for i,r in e(m)for j,x in e(r)}
+        f=lambda z,s,v=-inf:z in g and z not in s and v<=(x:=g[z])and(s.add(z)or[f(z+1j**k,s,x)for k in range(4)])
+        [[*map(f,(i+0j,i+(w-1)*1j),(p,a))]for i in range(h)]
+        [[*map(f,(j*1j,(h-1)+j*1j),(p,a))]for j in range(w)]
+        return[*map(lambda z:[int(z.real),int(z.imag)],p&a)]
+
+class Solution:
+    def pacificAtlantic(self, m: List[List[int]]) -> List[List[int]]:
+        h,w,p,a=len(m),len(m[0]),set(),set()
+        f=lambda y,x,s,v=-inf:w>x>-1<y<h and(y,x)not in s and v<=m[y][x]and(s.add((y,x)),[*map(f,(y,y,y-1,y+1),(x-1,x+1,x,x),[s]*4,[m[y][x]]*4)])
+        [[*map(f,(i,i),(0,w-1),(p,a))]for i in range(h)]
+        [[*map(f,(0,h-1),(j,j),(p,a))]for j in range(w)]
+        return[*(p&a)]
+
+class Solution:
+    def pacificAtlantic(self, m: List[List[int]]) -> List[List[int]]:
+        h,w,p,a=len(m),len(m[0]),set(),set();f=lambda y,x,s,v=-inf:w>x>-1<y<h and(y,x)not in s and v<=m[y][x]and(s.add((y,x)),[*map(f,(y,y,y-1,y+1),(x-1,x+1,x,x),[s]*4,[m[y][x]]*4)]);[[*map(f,(0,h-1),(x,x),(p,a))]for x in range(w)];[[*map(f,(y,y),(0,w-1),(p,a))]for y in range(h)];return[*(p&a)]
 
 test('''
 417. Pacific Atlantic Water Flow

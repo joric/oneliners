@@ -133,7 +133,7 @@ class Solution:
 
 class Solution:
     def avoidFlood(self,r:List[int])->List[int]:
-        v,e,t,s,z={},[],[-1]*len(r),setitem,1;[x and(s(t,i,-1),x in v and(z:=(j:=bisect_left(e,v[x]))<len(e))and(s(t,e[j],x),e.pop(j)),s(v,x,i))or(e.append(i),s(t,i,1))for i,x in enumerate(r)if z];return t*z
+        v,e,t,s,z={},[],[-1]*len(r),setitem,1;[x and(s(t,i,-1),x in v and(z:=(j:=bisect_left(e,v[x]))<len(e))and(s(t,e.pop(j),x)),s(v,x,i))or(e.append(i),s(t,i,1))for i,x in enumerate(r)if z];return t*z
 
 test('''
 1488. Avoid Flood in The City

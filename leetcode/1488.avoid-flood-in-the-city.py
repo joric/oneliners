@@ -124,7 +124,7 @@ class Solution:
             if x:
                 if x in v:
                     z=(j:=bisect_left(e,v[x]))<len(e)
-                    z and(s(t,e.pop(j),x))
+                    z and (s(t,e.pop(j),x))
                 (s(v,x,i),s(t,i,-1))
             else:
                 (e.append(i),s(t,i,1))

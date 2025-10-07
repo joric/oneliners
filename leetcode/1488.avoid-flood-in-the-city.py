@@ -119,17 +119,18 @@ class Solution:
 
 class Solution:
     def avoidFlood(self,r:List[int])->List[int]:
-        v,e,t,s,z={},[],[-1]*len(r),setitem,0
+        v,e,t,s,z={},[],[-1]*len(r),setitem,1
         for i,x in enumerate(r):
             if x:
                 if x in v:
-                    z = (j:=bisect_left(e,v[x]))>=len(e)
-                    z or (s(t,e[j],x),e.pop(j))
-                z or s(v,x,i)
+                    z=(j:=bisect_left(e,v[x]))<len(e)
+                    z and(s(t,e.pop(j),x))
+                (s(v,x,i),s(t,i,-1))
             else:
                 (e.append(i),s(t,i,1))
-            if z: break
-        return (t,[])[z]
+            if not z:
+                break
+        return t*z
 
 class Solution:
     def avoidFlood(self,r:List[int])->List[int]:

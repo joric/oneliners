@@ -185,7 +185,11 @@ Input: rains = [1,2,0,1,2]
 Output: []
 Explanation: After the second day, full lakes are  [1,2]. We have to dry one lake in the third day.
 After that, it will rain over lakes [1,2]. It's easy to prove that no matter which lake you choose to dry in the 3rd day, the other one will flood.
- 
+
+Other examples
+
+Input: rains = [0,0,0,0,0,0,0,0,0,0,0,0,0,56438,0,0,76913,0,0,53492,0,50824,0,0,0,0,0,0,0,0,79212,0,0,0,0,0,0,36713,62045,79212,36713,56438,0,0,0,62045,0,76913,50824,0,0,0,0,0,53492,0]
+Output: []
 
 Constraints:
 

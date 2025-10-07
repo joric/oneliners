@@ -85,7 +85,7 @@ class Solution:
         t,r = ''.join(map(chr,range(n*n))),range(n)
         for w,i,j in sorted((g[i][j],i,j)for i,j in product(r,r)):
             for x,y in ((i+1,j),(i-1,j),(i,j+1),(i,j-1)):
-                if n>y>-1<x<n and g[x][y]<=w:
+                if n>y>-1<x<n and g[x][y]<w:
                     t = t.replace(t[i*n+j],t[x*n+y])
             if t[0]==t[-1]:
                 return w
@@ -93,7 +93,7 @@ class Solution:
 
 class Solution:
     def swimInWater(self, g: List[List[int]]) -> int:
-        n=len(g);t,r=''.join(map(chr,range(n*n))),range(n);return next((w for w,i,j in sorted((g[i][j],i,j)for i,j in product(r,r))if[t:=t.replace(t[i*n+j],t[x*n+y])for x,y in((i+1,j),(i-1,j),(i,j+1),(i,j-1))if n>y>-1<x<n and g[x][y]<=w]and t[0]==t[-1]),0)
+        n=len(g);t,r=''.join(map(chr,range(n*n))),range(n);return next((w for w,i,j in sorted((g[i][j],i,j)for i,j in product(r,r))if[t:=t.replace(t[i*n+j],t[x*n+y])for x,y in((i+1,j),(i-1,j),(i,j+1),(i,j-1))if n>y>-1<x<n and g[x][y]<w]and t[0]==t[-1]),0)
 
 test('''
 778. Swim in Rising Water

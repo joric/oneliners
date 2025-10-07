@@ -122,7 +122,7 @@ class Solution:
         for i,x in enumerate(r):
             if x:
                 if x in v:
-                    z=(j:=bisect_left(e,v[x]))<len(e)
+                    z = (j:=bisect_left(e,v[x]))<len(e)
                     z and s(t,e.pop(j),x)
                 s(v,x,i)
             else:

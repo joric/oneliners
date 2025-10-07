@@ -135,6 +135,10 @@ class Solution:
     def avoidFlood(self,r:List[int])->List[int]:
         v,e,t,s,z={},[],[-1]*len(r),setitem,0;all(not z and x and((x in v and(z:=(j:=bisect_left(e,v[x]))>=len(e),z or(s(t,e[j],x),e.pop(j)))),z or s(v,x,i))or(e.append(i),s(t,i,1))for i,x in enumerate(r));return (t,[])[z]
 
+class Solution:
+    def avoidFlood(self,r:List[int])->List[int]:
+        v,e,t,s,z={},[],[-1]*len(r),setitem,1;all(z and x and((x in v and(z:=(j:=bisect_left(e,v[x]))<len(e),z and(s(t,e[j],x),e.pop(j)))),z and s(v,x,i))or(e.append(i),s(t,i,1))for i,x in enumerate(r));return t*z
+
 test('''
 1488. Avoid Flood in The City
 Medium

@@ -10,6 +10,10 @@ class Solution:
     def successfulPairs(self, s: List[int], p: List[int], c: int) -> List[int]:
         p.sort();return[len(p)-bisect_left(p,(c+a-1)//a)for a in s]
 
+class Solution:
+    def successfulPairs(self, s: List[int], p: List[int], c: int) -> List[int]:
+        p.sort();return[len(p)-bisect_left(p,c/a)for a in s]
+
 test('''
 2300. Successful Pairs of Spells and Potions
 Medium

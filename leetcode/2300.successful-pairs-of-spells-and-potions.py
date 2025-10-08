@@ -12,6 +12,10 @@ class Solution:
 
 class Solution:
     def successfulPairs(self, s: List[int], p: List[int], c: int) -> List[int]:
+        return[len(p)-bisect_left(sorted(p),c/a)for a in s] #TLE
+
+class Solution:
+    def successfulPairs(self, s: List[int], p: List[int], c: int) -> List[int]:
         p.sort();return[len(p)-bisect_left(p,c/a)for a in s]
 
 test('''

@@ -1,6 +1,6 @@
 from lc import *
 
-# https://leetcode.com/problems/successful-pairs-of-spells-and-potions/?envType=daily-question&envId=2025-10-08
+# https://leetcode.com/problems/successful-pairs-of-spells-and-potions/solutions/3367968/python-1-line-code-beats-98-7/
 
 class Solution:
     def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:

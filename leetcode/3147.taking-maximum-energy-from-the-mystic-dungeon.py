@@ -50,7 +50,7 @@ class Solution:
     def maximumEnergy(self, e: List[int], k: int) -> int:
         [setitem(e,~i-k,e[~i-k]+e[~i])for i in range(len(e)-k)];return max(e)
 
-class Solution: # needs context
+class Solution: # needs context in 3.11.10
     def maximumEnergy(self, e: List[int], k: int) -> int:
         [exec('e[~i-k]+=e[~i]')for i in range(len(e)-k)];return max(e)
 

@@ -671,7 +671,7 @@ class Solution:
         d=[];return[setitem(d,slice(i:=bisect_right(d,e),i+1),[e])or i+1for e in o]
 ```
 
-Sometimes `exec` is shorter than `setitem`.
+Sometimes (very often) `exec` is shorter than `setitem`.
 
 * https://leetcode.com/problems/design-parking-system
 
@@ -681,6 +681,18 @@ ParkingSystem=type('',(),{'__init__':lambda s,a,b,c:setattr(s,'p',[0,a,b,c]),'ad
 
 ParkingSystem=type('',(),{'__init__':lambda s,a,b,c:setattr(s,'p',[0,a,b,c]),'addCar':lambda s,t:\
     exec('s.p[t]-=1')or s.p[t]>=0})
+```
+
+* https://leetcode.com/problems/taking-maximum-energy-from-the-mystic-dungeon
+
+```python
+class Solution:
+    def maximumEnergy(self, e: List[int], k: int) -> int:
+        [setitem(e,i,e[i]+e[i+k])for i in range(len(e)-k)[::-1]];return max(e)
+
+class Solution:
+    def maximumEnergy(self, e: List[int], k: int) -> int:
+        exec('for i in range(len(e)-k):e[~i-k]+=e[~i]');return max(e)
 ```
 
 ### Classes

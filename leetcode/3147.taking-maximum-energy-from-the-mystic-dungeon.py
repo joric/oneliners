@@ -30,17 +30,17 @@ class Solution:
     def maximumEnergy(self, e: List[int], k: int) -> int:
         return max(map(f:=cache(lambda i:i<len(e)and e[i]+f(i+k)or 0),range(len(e))))
 
-class Solution:
-    def maximumEnergy(self, e: List[int], k: int) -> int:
-        for i in range(len(e)-k-1,-1,-1):
-            e[i] += e[i+k]
-        return max(e)
-
 # https://leetcode.com/problems/taking-maximum-energy-from-the-mystic-dungeon/solutions/5146815/1-line-memoization-in-python3/?envType=daily-question&envId=2025-10-10
 
 class Solution:
     def maximumEnergy(self, e: List[int], k: int) -> int:
         n=len(e);return max(map(f:=cache(lambda i:i<n and e[i]+f(i+k)),range(n)))
+
+class Solution:
+    def maximumEnergy(self, e: List[int], k: int) -> int:
+        for i in range(len(e)-k-1,-1,-1):
+            e[i] += e[i+k]
+        return max(e)
 
 class Solution:
     def maximumEnergy(self, e: List[int], k: int) -> int:
@@ -69,7 +69,7 @@ You are given an array energy and an integer k. Return the maximum possible ener
 
 Example 1:
 
-Input:  energy = [5,2,-10,-5,1], k = 3
+Input: energy = [5,2,-10,-5,1], k = 3
 
 Output: 3
 

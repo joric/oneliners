@@ -36,6 +36,12 @@ class Solution:
             e[i] += e[i+k]
         return max(e)
 
+# https://leetcode.com/problems/taking-maximum-energy-from-the-mystic-dungeon/solutions/5146815/1-line-memoization-in-python3/?envType=daily-question&envId=2025-10-10
+
+class Solution:
+    def maximumEnergy(self, e: List[int], k: int) -> int:
+        n=len(e);return max(map(f:=cache(lambda i:i<n and e[i]+f(i+k)),range(n)))
+
 class Solution:
     def maximumEnergy(self, e: List[int], k: int) -> int:
         [setitem(e,i,e[i]+e[i+k])for i in range(len(e)-k)[::-1]];return max(e)

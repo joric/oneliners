@@ -18,7 +18,7 @@ class Solution:
 
 class Solution:
     def maximumTotalDamage(self, p: List[int]) -> int:
-        t=[0]*5;[t:=(f:=lambda a,x,b,y,c,z,d:(max(a,z*d+((c,b)[y>z+2],a)[x>z+2]),z,a,x,b))(*t,*p)for p in sorted(Counter(p).items())[::-1]];return t[0]
+        t=[0]*5;[t:=(lambda a,x,b,y,c,z,d:(max(a,z*d+((c,b)[y>z+2],a)[x>z+2]),z,a,x,b))(*t,*p)for p in sorted(Counter(p).items())[::-1]];return t[0]
 
 # https://leetcode.com/problems/maximum-total-damage-with-spell-casting/solutions/5320392/dp-binary-search-4-lines-python/?envType=daily-question&envId=2025-10-11
 

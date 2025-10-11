@@ -58,6 +58,10 @@ class Solution:
     def maximumEnergy(self, e: List[int], k: int) -> int:
         exec('for i in range(len(e)-k):e[~i-k]+=e[~i]');return max(e)
 
+class Solution:
+    def maximumEnergy(self, e: List[int], k: int) -> int:
+        return max(max(accumulate(e[~x::-k]))for x in range(k))
+
 test('''
 3147. Taking Maximum Energy From the Mystic Dungeon
 Medium

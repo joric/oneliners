@@ -33,7 +33,16 @@ class Solution:
 
 class Solution:
     def magicalSum(self, m: int, k: int, a: List[int]) -> int:
-        return(f:=cache(lambda x,y,i,b:y>-1<x+(t:=b.bit_count())and(i<len(a)and sum(comb(x,c)*a[i]**c*f(x-c,y-((d:=b+c)%2),i+1,d//2)for c in range(x+1))%(10**9+7)if x else y==t)))(m,k,0,0)
+        @cache
+        def f(x,y,i,b):
+            if x==0:
+                return y==b.bit_count()
+            return i<len(a) and sum(comb(x,c)*pow(a[i],c)*f(x-c,y-((d:=b+c)%2),i+1,d//2)for c in range(x+1))%(10**9+7)
+        return f(m,k,0,0)
+
+class Solution:
+    def magicalSum(self, m: int, k: int, a: List[int]) -> int:
+        return(f:=cache(lambda x,y,i,b:x<1 and y==b.bit_count()or i<len(a)and sum(comb(x,c)*a[i]**c*f(x-c,y-((d:=b+c)%2),i+1,d//2)for c in range(x+1))%(10**9+7)))(m,k,0,0)
 
 test('''
 3539. Find Sum of Array Product of Magical Sequences

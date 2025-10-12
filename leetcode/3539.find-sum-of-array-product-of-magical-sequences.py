@@ -1,6 +1,6 @@
 from lc import *
 
-# https://leetcode.com/problems/find-sum-of-array-product-of-magical-sequences/description/?envType=daily-question&envId=2025-10-12
+# https://leetcode.com/problems/find-sum-of-array-product-of-magical-sequences/solutions/6712507/python-solution-17-lines/?envType=daily-question&envId=2025-10-12
 
 MOD = 10**9 + 7
 class Solution:

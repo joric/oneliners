@@ -22,6 +22,10 @@ class Solution:
     def removeAnagrams(self, w: List[str]) -> List[str]:
         return[next(g)for k,g in groupby(w,key=sorted)]
 
+class Solution:
+    def removeAnagrams(self, w: List[str]) -> List[str]:
+        return[next(g)for k,g in groupby(w,sorted)]
+
 test('''
 2273. Find Resultant Array After Removing Anagrams
 Easy

@@ -14,6 +14,14 @@ class Solution:
     def hasIncreasingSubarrays(self, a: List[int], k: int) -> bool:
         f=lambda i:all(map(lt,a[i:i+k-1],a[i+1:i+k]));return any(f(i)*f(i+k)for i in range(len(a)-2*k+1))
 
+class Solution:
+    def hasIncreasingSubarrays(self, a: List[int], k: int) -> bool:
+        return any(mul(*[all(map(lt,a[j:j+k],a[j+1:j+k]))for j in(i,i+k)])for i in range(len(a)-2*k+1))
+
+class Solution:
+    def hasIncreasingSubarrays(self, a: List[int], k: int) -> bool:
+        f=lambda i:all(map(lt,a[i:i+k],a[i+1:i+k]));return any(f(i)&f(i+k)for i in range(len(a)-2*k+1))
+
 test('''
 3349. Adjacent Increasing Subarrays Detection I
 Easy

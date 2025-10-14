@@ -20,7 +20,7 @@ class Solution:
 
 class Solution:
     def hasIncreasingSubarrays(self, a: List[int], k: int) -> bool:
-        f=lambda i:all(map(lt,a[i:i+k],a[i+1:i+k]));return any(f(i)&f(i+k)for i in range(len(a)-2*k+1))
+        f=lambda i:all(map(lt,a[i:i+k],a[i+1:i+k]));return any(f(i)*f(i+k)for i in range(len(a)-2*k+1))
 
 test('''
 3349. Adjacent Increasing Subarrays Detection I
@@ -54,7 +54,10 @@ Input: nums = [1,2,3,4,4,4,4,5,6,7], k = 5
 
 Output: false
 
- 
+Other examples:
+
+Input: nums = [-15,19], k = 1
+Output: true
 
 Constraints:
 

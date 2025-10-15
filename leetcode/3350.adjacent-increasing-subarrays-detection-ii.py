@@ -49,8 +49,7 @@ class Solution:
 class Solution:
     def maxIncreasingSubarrays(self, a: List[int]) -> int:
         q = [*accumulate(map(lt,a,a[1:]),lambda q,p:q*p+1,initial=1)]
-        return bisect_left(range(len(a)),1,
-            key=lambda k:not any(q1>=k<=q2 for q1,q2 in zip(q,q[k:])))-1
+        return bisect_left(range(len(a)),1,key=lambda k:not any(q1>=k<=q2 for q1,q2 in zip(q,q[k:])))-1
 
 # https://leetcode.com/problems/adjacent-increasing-subarrays-detection-ii/solutions/6028753/java-c-python-one-pass-o-1-space/?envType=daily-question&envId=2025-10-15
 

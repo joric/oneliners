@@ -4,6 +4,10 @@ from lc import *
 
 class Solution:
     def hasIncreasingSubarrays(self, a: List[int], k: int) -> bool:
+        return any(all(a[i+j]<a[i+j+1]and a[i+k+j]<a[i+k+j+1]for j in range(k-1))for i in range(len(a)-2*k+1))
+
+class Solution:
+    def hasIncreasingSubarrays(self, a: List[int], k: int) -> bool:
         f=lambda i:all(starmap(lt,pairwise(a[i:i+k])));return any(f(i)and f(i+k)for i in range(len(a)-k*2+1))
 
 class Solution:

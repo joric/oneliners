@@ -1,22 +1,4 @@
 from lc import *
-
-# https://leetcode.com/problems/adjacent-increasing-subarrays-detection-ii/solutions/6028753/java-c-python-one-pass-o-1-space/?envType=daily-question&envId=2025-10-15
-
-class Solution:
-    def maxIncreasingSubarrays(self, a: list[int]) -> int:
-        n = len(a)
-        up = 1
-        pre_max_up = 0
-        res = 0
-        for i in range(1, n):
-            if a[i] > a[i - 1]:
-                up = up + 1
-            else:
-                pre_max_up = up
-                up = 1
-            res = max(res, up // 2, min(pre_max_up, up))
-        return res
-
 # https://leetcode.com/problems/adjacent-increasing-subarrays-detection-ii/solutions/7273273/swift-1-liner-code-explanation/?envType=daily-question&envId=2025-10-15
 
 """
@@ -50,6 +32,31 @@ class Solution:
 class Solution:
     def maxIncreasingSubarrays(self, a: list[int]) -> int:
         p=pairwise;return max((max(x//2,y//2,min(x,y))for x,y in p(j-i for i,j in p([0,*[i for i,(x,y)in enumerate(p(a),1)if y<=x],len(a)]))),default=len(a)//2)
+
+# https://leetcode.com/problems/adjacent-increasing-subarrays-detection-ii/solutions/6028753/java-c-python-one-pass-o-1-space/?envType=daily-question&envId=2025-10-15
+
+class Solution:
+    def maxIncreasingSubarrays(self, a: list[int]) -> int:
+        n = len(a)
+        up = 1
+        pre_max_up = 0
+        res = 0
+        for i in range(1, n):
+            if a[i] > a[i - 1]:
+                up = up + 1
+            else:
+                pre_max_up = up
+                up = 1
+            res = max(res, up // 2, min(pre_max_up, up))
+        return res
+
+class Solution:
+    def maxIncreasingSubarrays(self, a: list[int]) -> int:
+        u,p=1,0;return max((a[i]>a[i-1]and(u:=u+1)or(p:=u,u:=1))and max(u//2,min(p,u))for i in range(1,len(a)))
+
+class Solution:
+    def maxIncreasingSubarrays(self, a: list[int]) -> int:
+        u=p=0;return max((a[i]>a[i-1]and(u:=u+1)or(p:=u,u:=1))and max(u//2,min(p,u))for i in range(len(a)))
 
 test('''
 3350. Adjacent Increasing Subarrays Detection II
@@ -100,6 +107,9 @@ Output: 1
 
 Input: nums = [-15,-13,4,7]
 Output: 2
+
+Input: nums = [14,-3,12]
+Output: 1
 
 Constraints:
 

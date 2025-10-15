@@ -19,18 +19,18 @@ class Solution:
 
 # https://leetcode.com/problems/adjacent-increasing-subarrays-detection-ii/solutions/7273273/swift-1-liner-code-explanation/?envType=daily-question&envId=2025-10-15
 
-'''
+"""
 class Solution {
     func maxIncreasingSubarrays(_ nums: [Int]) -> Int {
         nums
             .chunked(by: <)                             // Split into strictly increasing segments
-            .map(\.count)                               // Get the length of each increasing segment
+            .map(\\.count)                               // Get the length of each increasing segment
             .adjacentPairs()                            // Pair each segment with its neighbor
             .map { max($0 / 2, $1 / 2, min($0, $1)) }   // Compute valid k for each pair
             .max() ?? nums.count / 2                    // Return the maximum k found, or half the array length if no adjacent pairs (i.e. only one segment)
     }
 }
-'''
+"""
 
 class Solution:
     def maxIncreasingSubarrays(self, a: list[int]) -> int:
@@ -42,6 +42,11 @@ class Solution:
 class Solution:
     def maxIncreasingSubarrays(self, a: list[int]) -> int:
         s=[j-i for i,j in pairwise([0]+[i for i,(x,y)in enumerate(pairwise(a),1)if y<=x]+[len(a)])];return len(a)//2 if len(s)==1 else max(max(x//2,y//2,min(x,y))for x,y in pairwise(s))
+
+class Solution:
+    def maxIncreasingSubarrays(self, a: list[int]) -> int:
+        return max((max(x//2,y//2,min(x,y))for x,y in pairwise([j-i for i,j in pairwise([0]+[i for i,(x,y)in enumerate(pairwise(a),1)if y<=x]+[len(a)])])),default=len(a)//2)
+
 
 test('''
 3350. Adjacent Increasing Subarrays Detection II

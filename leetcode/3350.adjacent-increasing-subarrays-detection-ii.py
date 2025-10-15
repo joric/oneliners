@@ -47,7 +47,6 @@ class Solution:
     def maxIncreasingSubarrays(self, a: list[int]) -> int:
         return max((max(x//2,y//2,min(x,y))for x,y in pairwise([j-i for i,j in pairwise([0]+[i for i,(x,y)in enumerate(pairwise(a),1)if y<=x]+[len(a)])])),default=len(a)//2)
 
-
 test('''
 3350. Adjacent Increasing Subarrays Detection II
 Medium

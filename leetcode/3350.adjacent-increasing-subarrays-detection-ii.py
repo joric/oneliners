@@ -33,6 +33,12 @@ class Solution:
     def maxIncreasingSubarrays(self, a: list[int]) -> int:
         p=pairwise;return max((max(x//2,y//2,min(x,y))for x,y in p(j-i for i,j in p([0,*[i for i,(x,y)in enumerate(p(a),1)if y<=x],len(a)]))),default=len(a)//2)
 
+# by AB
+
+class Solution:
+    def maxIncreasingSubarrays(self, n: list[int]) -> int:
+        p=pairwise;return max(max(-b//2,-max(a,b))for a,b in p(starmap(sub,p(i for i,(c,d)in enumerate(p(n[:1]*2+n+n[-1:]))if c>=d))))
+
 # https://leetcode.com/problems/adjacent-increasing-subarrays-detection-ii/solutions/6028753/java-c-python-one-pass-o-1-space/?envType=daily-question&envId=2025-10-15
 
 class Solution:
@@ -57,6 +63,7 @@ class Solution:
 class Solution:
     def maxIncreasingSubarrays(self, a: list[int]) -> int:
         u=p=0;return max((a[i]>a[i-1]and(u:=u+1)or(p:=u,u:=1))and max(u//2,min(p,u))for i in range(len(a)))
+
 
 test('''
 3350. Adjacent Increasing Subarrays Detection II

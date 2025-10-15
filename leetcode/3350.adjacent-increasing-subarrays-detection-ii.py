@@ -64,6 +64,14 @@ class Solution:
     def maxIncreasingSubarrays(self, a: list[int]) -> int:
         u=p=0;return max((a[i]>a[i-1]and(u:=u+1)or(p:=u,u:=1))and max(u//2,min(p,u))for i in range(len(a)))
 
+class Solution:
+    def maxIncreasingSubarrays(self, a: list[int]) -> int:
+        u=p=0;return max((x>a[i-1]and(u:=u+1)or(p:=u,u:=1))and max(u//2,min(p,u))for i,x in enumerate(a))
+
+class Solution:
+    def maxIncreasingSubarrays(self, a: list[int]) -> int:
+        u=p=0;return max(max(u//2,min(p,u))for i,x in enumerate(a)if x>a[i-1]and(u:=u+1)or(p:=u,u:=1))
+
 test('''
 3350. Adjacent Increasing Subarrays Detection II
 Medium

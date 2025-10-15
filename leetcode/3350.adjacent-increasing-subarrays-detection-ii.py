@@ -39,6 +39,19 @@ class Solution:
     def maxIncreasingSubarrays(self, n: list[int]) -> int:
         p=pairwise;return max(max(-b//2,-max(a,b))for a,b in p(starmap(sub,p(i for i,(c,d)in enumerate(p(n[:1]*2+n+n[-1:]))if c>=d))))
 
+# https://leetcode.com/problems/adjacent-increasing-subarrays-detection-ii/solutions/7275849/two-simple-lines-of-code/
+
+class Solution:
+    def maxIncreasingSubarrays(self, a: List[int]) -> int:
+        f = lambda g,a:[*accumulate(starmap(g,pairwise(a)),lambda q,p:q*p+1,initial=1)]
+        return max(map(min,f(lt,a),f(gt,a[::-1])[-2::-1]))
+
+class Solution:
+    def maxIncreasingSubarrays(self, a: List[int]) -> int:
+        q = [*accumulate(map(lt,a,a[1:]),lambda q,p:q*p+1,initial=1)]
+        return bisect_left(range(len(a)),1,
+            key=lambda k:not any(q1>=k<=q2 for q1,q2 in zip(q,q[k:])))-1
+
 # https://leetcode.com/problems/adjacent-increasing-subarrays-detection-ii/solutions/6028753/java-c-python-one-pass-o-1-space/?envType=daily-question&envId=2025-10-15
 
 class Solution:

@@ -27,6 +27,10 @@ class Solution:
            bucket[num%val] += 1
         return min(bucket)*val + bucket.index(min(bucket))
 
+class Solution:
+    def findSmallestInteger(self, a: List[int], v: int) -> int:
+        c=Counter(x%v for x in a);m=min(c.get(i,0)for i in range(v));return m*v+min(i for i in range(v)if c.get(i,0)==m)
+
 class Solution: # TLE
     def findSmallestInteger(self, a: List[int], v: int) -> int:
         return min(c:=[sum(x%v==i for x in a)for i in range(v)])*v+c.index(min(c))

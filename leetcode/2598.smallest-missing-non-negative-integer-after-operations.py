@@ -45,7 +45,7 @@ class Solution:
 
 class Solution:
     def findSmallestInteger(self, a: List[int], v: int) -> int:
-        c=[0]*v;exec('for x in a:c[x%v]+=1');return (m:=min(c))*v+c.index(m)
+        c=[0]*v;exec('for x in a:c[x%v]+=1');return(m:=min(c))*v+c.index(m)
 
 test('''
 2598. Smallest Missing Non-negative Integer After Operations

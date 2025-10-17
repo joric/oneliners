@@ -35,9 +35,14 @@ class Solution:
         def f(i,m,c):
             if i==len(s):
                 return 0
-            r = g((n:=m|(1<<(j:=ord(s[i])-ord('a')))).bit_count()>k,i,j,n,c)
+            j = ord(s[i])-ord('a')
+            n = m|(1<<(j))
+            r = g(n.bit_count()>k,i,j,n,c)
             if c:
-                r = max(r, max(g((q:=m|(1<<p)).bit_count()>k,i,p,q,0)for p in range(26)))
+                for p in range(26):
+                    q = m|(1<<p)
+                    e = q.bit_count()
+                    r = max(r, g(e>k,i,p,q,0))
             return r
         return f(0,0,1)+1
 

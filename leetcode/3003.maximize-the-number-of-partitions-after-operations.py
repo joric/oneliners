@@ -45,6 +45,58 @@ class Solution:
     def maxPartitionsAfterOperations(self, s: str, k: int) -> int:
         g=lambda i,j,m,c:(t:=(q:=m|1<<j).bit_count()>k)+f(i+1,t and 1<<j or q,c);return(f:=cache(lambda i,m,c:i<len(s)and max(r:=g(i,ord(s[i])-ord('a'),m,c),c and max(g(i,j,m,0)for j in range(26))or r)))(0,0,1)+1
 
+
+# https://leetcode.com/problems/maximize-the-number-of-partitions-after-operations/solutions/4521417/python3-recursive-dp/?envType=daily-question&envId=2025-10-17
+
+class Solution:
+    def maxPartitionsAfterOperations(self, s: str, k: int) -> int:
+        a = [1 << (ord(c) - ord("a")) for c in s]
+        @cache
+        def f(i, o, m):
+            if i == len(a):
+                return 0
+            n = m | a[i]
+            if n.bit_count() > k:
+                r = 1 + f(i + 1, o, a[i])
+            else:
+                r = f(i + 1, o, n)
+            if o:
+                for j in range(26):
+                    p = m | (1 << j)
+                    if p.bit_count() > k:
+                        r = max(r, 1 + f(i + 1, 0, 1 << j))
+                    else:
+                        r = max(r, f(i + 1, 0, p))
+            return r
+        return f(0, 1, 0) + 1
+
+class Solution:
+    def maxPartitionsAfterOperations(self, s: str, k: int) -> int:
+        d = [1<<(ord(c)-ord("a"))for c in s]
+        g = lambda i,b,o,m:(t:=(n:=m|b).bit_count()>k)+f(i+1,o,t and b or n)
+        @cache
+        def f(i,o,m):
+            if i == len(d):
+                return 0
+            r = g(i, d[i], o, m)
+            if o:
+                for j in range(26):
+                    r = max(r, g(i, 1<<j, 0, m))
+            return r
+        return f(0,1,0) + 1
+
+class Solution:
+    def maxPartitionsAfterOperations(self, s: str, k: int) -> int:
+        @cache
+        def f(i,o,m):
+            g=lambda b,o:(t:=(n:=m|b).bit_count()>k)+f(i+1,o,t and b or n)
+            return i<len(s)and max(r:=g(1<<(ord(s[i])-ord("a")),o),o and max(g(1<<j,0)for j in range(26)))
+        return f(0,1,0)+1
+
+class Solution:
+    def maxPartitionsAfterOperations(self, s: str, k: int) -> int:
+        return(f:=cache(lambda i,o,m:i<len(s)and max(r:=(g:=lambda b,o:(t:=(n:=m|b).bit_count()>k)+f(i+1,o,t and b or n))(1<<(ord(s[i])-ord("a")),o),o and max(g(1<<j,0)for j in range(26)))))(0,1,0)+1
+
 test('''
 3003. Maximize the Number of Partitions After Operations
 Solved

@@ -90,12 +90,12 @@ class Solution:
         @cache
         def f(i,o,m):
             g=lambda b,o:(t:=(n:=m|b).bit_count()>k)+f(i+1,o,t and b or n)
-            return i<len(s)and max(r:=g(1<<(ord(s[i])-ord("a")),o),o and max(g(1<<j,0)for j in range(26)))
+            return i<len(s)and max(g(1<<(ord(s[i])-ord("a")),o),o and max(g(1<<j,0)for j in range(26)))
         return f(0,1,0)+1
 
 class Solution:
     def maxPartitionsAfterOperations(self, s: str, k: int) -> int:
-        return(f:=cache(lambda i,o,m:i<len(s)and max(r:=(g:=lambda b,o:(t:=(n:=m|b).bit_count()>k)+f(i+1,o,t and b or n))(1<<(ord(s[i])-ord("a")),o),o and max(g(1<<j,0)for j in range(26)))))(0,1,0)+1
+        return(f:=cache(lambda i,o,m:i<len(s)and max((g:=lambda b,o:(t:=(n:=m|b).bit_count()>k)+f(i+1,o,t and b or n))(1<<(ord(s[i])-ord("a")),o),o and max(g(1<<j,0)for j in range(26)))))(0,1,0)+1
 
 test('''
 3003. Maximize the Number of Partitions After Operations

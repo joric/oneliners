@@ -36,12 +36,11 @@ class Solution:
             if i==len(s):
                 return 0
             j = ord(s[i])-ord('a')
-            n = m|(1<<(j))
+            n = m|(1<<j)
             r = g(i,j,n,c)
             if c:
                 for p in range(26):
-                    q = m|(1<<p)
-                    r = max(r, g(i,p,q,0))
+                    r = max(r, g(i,p,m|(1<<p),0))
             return r
         return f(0,0,1)+1
 

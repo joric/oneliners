@@ -29,7 +29,7 @@ class Solution:
 
 class Solution:
     def maxPartitionsAfterOperations(self, s: str, k: int) -> int:
-        g=lambda i,j,m,c:(t:=(q:=m|(1<<j)).bit_count()>k)+f(i+1,t and 1<<j or q,c)
+        g=lambda i,j,m,c:(t:=(q:=m|1<<j).bit_count()>k)+f(i+1,t and 1<<j or q,c)
         @cache
         def f(i,m,c):
             if i==len(s):

@@ -41,8 +41,7 @@ class Solution:
             if c:
                 for p in range(26):
                     q = m|(1<<p)
-                    e = q.bit_count()
-                    r = max(r, g(e>k,i,p,q,0))
+                    r = max(r, g(q.bit_count()>k,i,p,q,0))
             return r
         return f(0,0,1)+1
 

@@ -1,5 +1,7 @@
 from lc import *
 
+sys.setrecursionlimit(550000) # as of 2025-10-17 for this problem
+
 # https://leetcode.com/problems/maximize-the-number-of-partitions-after-operations/solutions/4520834/c-java-python-clean-bitmask-dp/?envType=daily-question&envId=2025-10-17
 
 class Solution:
@@ -89,13 +91,13 @@ class Solution:
     def maxPartitionsAfterOperations(self, s: str, k: int) -> int:
         @cache
         def f(i,o,m):
-            g=lambda b,p:f(i+1,p,(t:=(n:=m|b).bit_count()>k)and b or n)+t
-            return i<len(s)and max(g(1<<(ord(s[i])-ord("a")),o),o and max(g(1<<j,0)for j in range(26)))
+            g=lambda b,p:f(i+1,p,(t:=(n:=m|1<<b).bit_count()>k)and 1<<b or n)+t
+            return i<len(s)and max(g(ord(s[i])-97,o),o and max(g(j,0)for j in range(26)))
         return f(0,1,0)+1
 
 class Solution:
     def maxPartitionsAfterOperations(self, s: str, k: int) -> int:
-        return(f:=cache(lambda i,o,m:i<len(s)and max((g:=lambda b,p:f(i+1,p,(t:=(n:=m|b).bit_count()>k)and b or n)+t)(1<<(ord(s[i])-ord("a")),o),o and max(g(1<<j,0)for j in range(26)))))(0,1,0)+1
+        return(f:=cache(lambda i,o,m:i<len(s)and max((g:=lambda b,p:f(i+1,p,(t:=(n:=m|1<<b).bit_count()>k)and 1<<b or n)+t)(ord(s[i])-97,o),o and max(g(j,0)for j in range(26)))))(0,1,0)+1
 
 test('''
 3003. Maximize the Number of Partitions After Operations
@@ -160,6 +162,9 @@ Other examples:
 
 Input: s = "qertyuiopasdfghjklzxcvbnmqertyuiopasdfghjklzxcvbnmw", k = 25
 Output: 3
+
+Input: s = "noyynxgvtkhxsqdqcjyecjpwcawkgsrxmixokubliztvglyftkcrkpdfofwhaydetelrlyzirwmcjlnghqzsepsztnshfsanwezyrwugjtupaukeqhnqjuuyzlixhzewymafxyjasqlfvvabungssaylgcxydwvnwcayoogevdkpkxbvofwgohtjocqhtykbrpurqxqvwyxdxxqhstlbkcuohtkmlyqfdzcbatmshcpoeoqirqtyuabiwrtyprucmfpcezmawmjhsskexpzlnasejilkjtbwuylzdpunifykhyteoglauzfaljvndlpeubkxtmnisawrdlzfcvfljdrtnzwhyuelqdtbgjvrublexxslrckupnwznerwanngvfppxnayeorsgnozapmgnsbzuxmaeoyrfwhhsdnxsflqklbtopradhxgadzjrrdutduhiurdjaovkgtulcjndpcibywdzwxucxakouievplehkdkdhpnfgjqrrjcwdnwgfujzpkihjjvxrdtluuxdpzwwgdifhzvuuhpoe", k = 22
+Output: 11
 
 Constraints:
 

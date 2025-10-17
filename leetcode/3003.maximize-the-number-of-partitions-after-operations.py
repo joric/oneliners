@@ -27,10 +27,18 @@ class Solution:
             return r
         return f(0, 0, True) + 1
 
+
 class Solution:
     def maxPartitionsAfterOperations(self, s: str, k: int) -> int:
-        g=lambda t,i,p,q,c:t+f(i+1,t and 1<<p or q,c);
-        f=cache(lambda i,m,c:i<len(s) and max(r:=g((n:=m|(1<<(j:=ord(s[i])-ord('a')))).bit_count()>k,i,j,n,c),c and max(g((q:=m|(1<<p)).bit_count()>k,i,p,q,0)for p in range(26))or r))
+        g=lambda t,i,p,q,c:t+f(i+1,t and 1<<p or q,c)
+        @cache
+        def f(i,m,c):
+            if i==len(s):
+                return 0
+            r = g((n:=m|(1<<(j:=ord(s[i])-ord('a')))).bit_count()>k,i,j,n,c)
+            if c:
+                r = max(r, max(g((q:=m|(1<<p)).bit_count()>k,i,p,q,0)for p in range(26)))
+            return r
         return f(0,0,1)+1
 
 class Solution:

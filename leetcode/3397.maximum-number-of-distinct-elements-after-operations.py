@@ -39,6 +39,8 @@ class Solution:
     def maxDistinctElements(self, a: List[int], k: int) -> int:
         p=-inf;return sum(p<(p:=max(min(max(p+1,x-k),x+k),p))for x in sorted(a))
 
+# https://leetcode.com/problems/maximum-number-of-distinct-elements-after-operations/solutions/7283564/1-line/
+
 class Solution:
     def maxDistinctElements(self, a: List[int], k: int) -> int:
         p=-inf;return sum(p<(p:=max(x,min(x+2*k,p+1)))for x in sorted(a))

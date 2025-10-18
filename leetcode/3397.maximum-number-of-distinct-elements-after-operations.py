@@ -25,6 +25,10 @@ class Solution:
     def maxDistinctElements(self, a: List[int], k: int) -> int:
         p=-inf;return sum((n:=min(max(p+1,x-k),x+k))>p+n-(p:=n)for x in sorted(a))
 
+class Solution:
+    def maxDistinctElements(self, a: List[int], k: int) -> int:
+        p=-inf;return sum(p<(p:=max(min(max(p+1,x-k),x+k),p))for x in sorted(a))
+
 test('''
 3397. Maximum Number of Distinct Elements After Operations
 Medium

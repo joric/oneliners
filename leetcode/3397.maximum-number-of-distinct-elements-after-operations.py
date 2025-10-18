@@ -12,7 +12,7 @@ class Solution:
 
 class Solution:
     def maxDistinctElements(self, a: List[int], k: int) -> int:
-        return len({*groupby(accumulate(sorted(a),lambda p,n:max(n,min(n+2*k,p+1))))})
+        return len({*groupby(accumulate(sorted(a),lambda p,x:max(x,min(x+2*k,p+1))))})
 
 # https://leetcode.com/problems/maximum-number-of-distinct-elements-after-operations/solutions/6393698/python-simple-greedy-o-n-log-n-solution-10-lines-of-code/?envType=daily-question&envId=2025-10-18
 
@@ -38,6 +38,10 @@ class Solution:
 class Solution:
     def maxDistinctElements(self, a: List[int], k: int) -> int:
         p=-inf;return sum(p<(p:=max(min(max(p+1,x-k),x+k),p))for x in sorted(a))
+
+class Solution:
+    def maxDistinctElements(self, a: List[int], k: int) -> int:
+        p=-inf;return sum(p<(p:=max(x,min(x+2*k,p+1)))for x in sorted(a))
 
 test('''
 3397. Maximum Number of Distinct Elements After Operations

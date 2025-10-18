@@ -1,12 +1,18 @@
 from lc import *
 
 # https://leetcode.com/problems/maximum-number-of-distinct-elements-after-operations/solutions/6173955/one-line-method/?envType=daily-question&envId=2025-10-18
-
 # const maxDistinctElements = (nums, k, m = -Infinity, l = nums.sort((x, y) => x - y)) => l.length - l.reduce((s, v) => v + k <= m ? s + 1 : (m = Math.max(m + 1, v - k), s), 0);
 
 class Solution:
     def maxDistinctElements(self, a: List[int], k: int) -> int:
         m=-inf;return len(a)-sum((m:=[max(m+1,x-k),m][x+k<=m])and x+k<=m for x in sorted(a))
+
+# https://leetcode.com/problems/maximum-number-of-distinct-elements-after-operations/solutions/7283044/swift-1-liner/?envType=daily-question&envId=2025-10-18
+# class Solution {func maxDistinctElements(_ nums: [Int], _ k: Int) -> Int {nums.sorted().reductions { $0 >= $1 ? min($1 + 2 * k, $0 + 1) : $1 }.chunked(by: ==).count}}
+
+class Solution:
+    def maxDistinctElements(self, a: List[int], k: int) -> int:
+        return len([*groupby(accumulate(sorted(a),lambda p,n:min(n+2*k,p+1)if p>=n else n))])
 
 # https://leetcode.com/problems/maximum-number-of-distinct-elements-after-operations/solutions/6393698/python-simple-greedy-o-n-log-n-solution-10-lines-of-code/?envType=daily-question&envId=2025-10-18
 

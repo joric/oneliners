@@ -38,7 +38,27 @@ class Solution:
 
 class Solution:
     def findLexSmallestString(self, s: str, a: int, b: int) -> str:
-        d,v={c:str((int(c)+a)%10)for c in digits},set();f=lambda s:s not in v and(v.add(s),o:=1,f(''.join(d[c]if(o:=o^1)else c for c in s)),f(s[b:]+s[:b]))and v;return min(f(s))
+        d,v={c:str((int(c)+a)%10)for c in digits},set();f=lambda s:s not in v and(v.add(s),o:=1,f(''.join(d[c]if(o:=o^1)else c for c in s)),f(s[b:]+s[:b]));f(s);return min(v)
+
+# https://leetcode.com/problems/lexicographically-smallest-string-after-applying-operations/solutions/6481901/easiest-recursive-function-to-generate-all-combinations/?envType=daily-question&envId=2025-10-19
+
+class Solution:
+    def findLexSmallestString(self, s: str, a: int, b: int) -> str:
+        def f(p, s):
+            if s in p: return p
+            p.add(s)
+            f(p, ''.join(str((int(c)+a)%10)if i%2 else c for i,c in enumerate(s)))
+            f(p, s[-b:]+s[:-b])
+            return p
+        return min(f(set(),s))
+
+class Solution:
+    def findLexSmallestString(self, s: str, a: int, b: int) -> str:
+        return min((f:=lambda p,s:s in p or(p.add(s),f(p,''.join((c,str((int(c)+a)%10))[i%2]for i,c in enumerate(s))),f(p,s[-b:]+s[:-b]))and p)(set(),s))
+
+class Solution:
+    def findLexSmallestString(self, s: str, a: int, b: int) -> str:
+        v=set();f=lambda s:s in v or(v.add(s),f(''.join((c,str((int(c)+a)%10))[i%2]for i,c in enumerate(s))),f(s[-b:]+s[:-b]));f(s);return min(v)
 
 test('''
 1625. Lexicographically Smallest String After Applying Operations

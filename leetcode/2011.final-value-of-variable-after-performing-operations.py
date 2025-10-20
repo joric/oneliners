@@ -18,6 +18,8 @@ class Solution:
     def finalValueAfterOperations(self, o: List[str]) -> int:
         return sum('+'in s or-1for s in o)
 
+# POTD 2025-10-20
+
 class Solution:
     def finalValueAfterOperations(self, o: List[str]) -> int:
         return len(o)-str(o).count('-')

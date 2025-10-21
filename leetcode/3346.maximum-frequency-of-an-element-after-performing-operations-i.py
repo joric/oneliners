@@ -15,6 +15,13 @@ class Solution:
 
 class Solution:
     def maxFrequency(self, n: List[int], k: int, o: int) -> int:
+        c=Counter(n)
+        s=min(c)
+        w=sum(c[s+i]for i in range(k))
+        return max(c[x]+min((w:=w+c[x+k]-c[x-k-1])-c[x],o)for x in range(s,max(c)+1))
+
+class Solution:
+    def maxFrequency(self, n: List[int], k: int, o: int) -> int:
         s=min(c:=Counter(n));w=sum(c[s+i]for i in range(k));return max(c[x]+min((w:=w+c[x+k]-c[x-k-1])-c[x],o)for x in range(s,max(c)+1))
 
 test('''
@@ -58,7 +65,12 @@ Explanation:
 We can achieve a maximum frequency of two by:
 
 Adding 0 to nums[1].
- 
+
+
+Other examples;
+
+Input: nums = [88,53], k = 27, numOperations = 2
+Output: 2
 
 Constraints:
 

@@ -48,12 +48,12 @@ class Solution:
         p,m=__import__('numpy'),len(n)
         l,a,s,r={},0,p.zeros(m+1, dtype=p.int32),p.array(0)
         for i, x in enumerate(n):
-            if x in l: s[l[x]+1:i+1] -= 1 if x%2 else -1
+            if x in l:
+                s[l[x]+1:i+1] -= 1 if x%2 else -1
             s[i+1] = s[i] + (1 if x%2 else -1)
-            f = p.flatnonzero(s[:i+1] == s[i+1])
-            if f.size:
-                r = max(r, i+1 - f[0])
             l[x] = i
+            if (f:=p.flatnonzero(s[:i+1] == s[i+1])).size:
+                r = max(r, i+1 - f[0])
         return r.item()
 
 

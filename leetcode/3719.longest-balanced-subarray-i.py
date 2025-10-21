@@ -36,6 +36,12 @@ class Solution:
                     ans = max(ans, j-i+1)
         return ans
 
+# barely passed TLE
+
+class Solution:
+    def longestBalanced(self, n: List[int]) -> int:
+        p,m,s=__import__('numpy'),len(n),setitem;l,a,q={},0,p.zeros(m+1,dtype=p.int32);return int(max((k:=(-1)**~-x,x in l and s(q,t:=slice(l[x]+1,i+1),q[t]-k),s(q,i+1,q[i]+k),s(l,x,i))and(f:=p.flatnonzero(q[:i+1]==q[i+1])).size and i+1-f[0]for i,x in enumerate(n)))
+
 test('''
 3721. Longest Balanced Subarray II
 Hard

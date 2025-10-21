@@ -24,6 +24,16 @@ class Solution:
     def maxFrequency(self, n: List[int], k: int, o: int) -> int:
         s=min(c:=Counter(n));w=sum(c[s+i]for i in range(k));return max(c[x]+min((w:=w+c[x+k]-c[x-k-1])-c[x],o)for x in range(s,max(c)+1))
 
+# https://leetcode.com/problems/maximum-frequency-of-an-element-after-performing-operations-i/solutions/6027191/python-binary-search-easy-to-understand/?envType=daily-question&envId=2025-10-21
+
+class Solution:
+    def maxFrequency(self, a: List[int], k: int, o: int) -> int:
+        a.sort();c=Counter(a);return max(min(bisect_left(a,i+k+1)-bisect_left(a,i-k)-c[i],o)+c[i]for i in range(1,max(a)+1))
+
+class Solution:
+    def maxFrequency(self, a: List[int], k: int, o: int) -> int:
+        a.sort();c,b=Counter(a),bisect_left;return max(c[i]+min(b(a,i+k+1)-b(a,i-k)-c[i],o)for i in range(max(a)+1))
+
 test('''
 3346. Maximum Frequency of an Element After Performing Operations I
 Solved

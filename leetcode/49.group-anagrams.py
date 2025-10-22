@@ -10,9 +10,15 @@ class Solution: # does not work either (packed groupbys?)
     def groupAnagrams(self, s: List[str]) -> List[List[str]]:
         f=sorted;return map(itemgetter(1),groupby(f(s,key=f),f))
 
-class Solution:
+class Solution: # also fails
     def groupAnagrams(self, s: List[str]) -> List[List[str]]:
         f=sorted;return(v for _,v in groupby(f(s,key=f),f))
+
+# 2025-10-22 leetcode wants lists now
+
+class Solution:
+    def groupAnagrams(self, s: List[str]) -> List[List[str]]:
+        f=sorted;return[[*v]for _,v in groupby(f(s,key=f),f)]
 
 test('''
 49. Group Anagrams

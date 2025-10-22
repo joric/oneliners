@@ -2,14 +2,11 @@ from lc import *
 
 # https://leetcode.com/problems/group-anagrams/
 
-# return[*zip(*groupby(f(s,key=f),f))][1] does not work
-'''
-class Solution:
+class Solution: # does not work for some reason
     def groupAnagrams(self, s: List[str]) -> List[List[str]]:
-        f=sorted;return[*zip(*groupby(f(s,key=f),f))] - nope
-'''
+        f=sorted;return[*zip(*groupby(f(s,key=f),f))][1]
 
-class Solution:
+class Solution: # does not work either (packed groupbys?)
     def groupAnagrams(self, s: List[str]) -> List[List[str]]:
         f=sorted;return map(itemgetter(1),groupby(f(s,key=f),f))
 

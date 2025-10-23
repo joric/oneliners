@@ -18,10 +18,6 @@ class Solution:
             digits = [(x+y)%10 for x, y in pairwise(digits)]
         return digits[0] == digits[1]
 
-class Solution:
-    def hasSameDigits(self, s: str) -> bool:
-        d=map(int,s);[d:=[x%10 for x in map(sum,pairwise(d))]for _ in s[2:]];return d[0]==d[1]
-
 # POTD 2025-10-23
 
 class Solution:

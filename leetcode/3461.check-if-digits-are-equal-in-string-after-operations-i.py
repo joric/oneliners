@@ -26,18 +26,6 @@ class Solution:
 
 class Solution:
     def hasSameDigits(self, s: str) -> bool:
-        [s:=[sum(map(int,p))%10 for p in pairwise(s)]for _ in s[2:]];return s[0]==s[1]
-
-class Solution:
-    def hasSameDigits(self, s: str) -> bool:
-        [s:=[sum(map(int,p))%10 for p in pairwise(s)]for _ in s[2:]];return eq(*s[:2])
-
-class Solution:
-    def hasSameDigits(self, s: str) -> bool:
-        return eq(*[s:=[sum(p)%10 for p in pairwise(map(int,s))]for _ in s[2:]][-1])
-
-class Solution:
-    def hasSameDigits(self, s: str) -> bool:
         return eq(*[s:=[sum(map(int,p))%10 for p in pairwise(s)]for _ in s[2:]][-1])
 
 test('''

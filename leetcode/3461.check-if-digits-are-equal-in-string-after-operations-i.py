@@ -20,11 +20,13 @@ class Solution:
 
 class Solution:
     def hasSameDigits(self, s: str) -> bool:
-        d=map(int,s);[d:=[sum(p)%10 for p in pairwise(d)]for _ in s[2:]];return eq(*d[:2])
+        d=map(int,s);[d:=[x%10 for x in map(sum,pairwise(d))]for _ in s[2:]];return eq(*d[:2])
+
+# POTD 2025-10-23
 
 class Solution:
     def hasSameDigits(self, s: str) -> bool:
-        d=map(int,s);[d:=[x%10 for x in map(sum,pairwise(d))]for _ in s[2:]];return eq(*d[:2])
+        d=map(int,s);[d:=[sum(p)%10 for p in pairwise(d)]for _ in s[2:]];return eq(*d[:2])
 
 test('''
 3461. Check If Digits Are Equal in String After Operations I

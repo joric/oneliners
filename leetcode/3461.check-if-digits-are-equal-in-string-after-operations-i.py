@@ -20,7 +20,7 @@ class Solution:
 
 class Solution:
     def hasSameDigits(self, s: str) -> bool:
-        d=map(int,s);[d:=[x%10 for x in map(sum,pairwise(d))]for _ in s[2:]];return eq(*d[:2])
+        d=map(int,s);[d:=[x%10 for x in map(sum,pairwise(d))]for _ in s[2:]];return d[0]==d[1]
 
 # POTD 2025-10-23
 

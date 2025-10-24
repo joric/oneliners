@@ -12,6 +12,10 @@ class Solution:
     def nextBeautifulNumber(self, n: int) -> int:
         return next(v for v in count(n+1)if all(starmap(eq,Counter(map(int,str(v))).items())))
 
+class Solution:
+    def nextBeautifulNumber(self, n: int) -> int:
+        return next(x for x in count(n+1)if all(str(x).count(d)==int(d)for d in str(x)))
+
 test('''
 2048. Next Greater Numerically Balanced Number
 Solved

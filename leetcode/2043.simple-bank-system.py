@@ -32,6 +32,13 @@ class Bank:
 
 Bank=type('',(),{'__init__':lambda s,b:setattr(s,'b',b),'transfer':lambda s,a,b,m:s.withdraw(a,m)and(s.deposit(b,m)or s.deposit(a,m)==None),'deposit':lambda s,a,m:1<=a<=len(s.b)and setitem(s.b,a-1,s.b[a-1]+m)==None,'withdraw':lambda s,a,m:1<=a<=len(s.b) and s.b[a-1]>=m and setitem(s.b,a-1,s.b[a-1]-m)==None})
 
+class Bank:
+    __init__= lambda s,b:setattr(s,'b',b)
+    transfer=lambda s,a,b,m:s.withdraw(a,m)and(s.deposit(b,m)or s.deposit(a,m)==None)
+    deposit=lambda s,a,m:setitem(s.b,a-1,s.b[a-1]+m)==None
+    withdraw=lambda s,a,m:s.b[a-1]>=m and setitem(s.b,a-1,s.b[a-1]-m)==None
+
+
 test('''
 2043. Simple Bank System
 Solved
@@ -105,4 +112,4 @@ Simply apply the operations if the transaction is valid.
 Similar Questions
 Design an ATM Machine
 Medium
-''', Bank)
+''', Bank, types={'balance':List[int]})

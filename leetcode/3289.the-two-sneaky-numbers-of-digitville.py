@@ -6,6 +6,16 @@ class Solution:
     def getSneakyNumbers(self, a: List[int]) -> List[int]:
         return[n for n,c in Counter(a).items()if c>1]
 
+# https://leetcode.com/problems/the-two-sneaky-numbers-of-digitville/solutions/5790274/one-line-beats-100/
+
+class Solution:
+    def getSneakyNumbers(self, a: List[int]) -> List[int]:
+        return[*{*filter(lambda x:a.count(x)==2,a)}]
+
+class Solution:
+    def getSneakyNumbers(self, a: List[int]) -> List[int]:
+        return[*{x for x in a if a.count(x)==2}]
+
 test('''
 3289. The Two Sneaky Numbers of Digitville
 Easy

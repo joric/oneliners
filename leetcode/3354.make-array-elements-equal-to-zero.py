@@ -27,7 +27,7 @@ class Solution:
 
 class Solution:
     def countValidSelections(self, a: List[int]) -> int:
-        p,s=0,sum(a);return sum(1==abs(t:=s-2*p)or(t==0)*2for x in a if p==(p:=p+x))
+        p,s=0,sum(a);return sum(1==abs(t:=s-2*p)or(t==0)*2 for x in a if p==(p:=p+x))
 
 test('''
 3354. Make Array Elements Equal to Zero

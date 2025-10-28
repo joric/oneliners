@@ -27,7 +27,7 @@ class Solution:
 
 class Solution:
     def countValidSelections(self, a: List[int]) -> int:
-        p,s=0,sum(a);return sum(1==abs(t:=s-2*p)or(t==0)*2 for x in a if p==(p:=p+x))
+        return sum((abs(t:=sum(a)-2*p)<2)+(t==0)for p,x in pairwise([0,*accumulate(a)])if p==x)
 
 class Solution:
     def countValidSelections(self, a: List[int]) -> int:
@@ -61,7 +61,6 @@ Return the number of possible valid selections.
 Example 1:
 
 Input: nums = [1,0,2,0,3]
-
 Output: 2
 
 Explanation:
@@ -87,6 +86,11 @@ Other examples:
 Input: nums = [16,13,10,0,0,0,10,6,7,8,7]
 Output: 3
  
+
+Other examples:
+
+Input: nums = [0]
+Output: 2
 
 Constraints:
 

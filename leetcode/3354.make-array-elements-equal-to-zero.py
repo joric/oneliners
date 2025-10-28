@@ -25,8 +25,6 @@ class Solution:
     def countValidSelections(self, a: List[int]) -> int:
         p,s=[0,*accumulate(a)],sum(a);return sum(1==abs(t:=s-2*p[i])or 2*(t==0)for i,x in enumerate(a)if x==0)
 
-# this passes
-
 class Solution:
     def countValidSelections(self, a: List[int]) -> int:
         p,s=0,sum(a);return sum(1==abs(t:=s-2*p)or(t==0)*2for x in a if p==(p:=p+x))

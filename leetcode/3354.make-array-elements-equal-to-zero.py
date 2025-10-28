@@ -29,23 +29,7 @@ class Solution:
 
 class Solution:
     def countValidSelections(self, a: List[int]) -> int:
-        s=sum(a);return sum(1==abs(t:=s-2*sum(a[:i]))or 2*(t==0)for i,x in enumerate(a)if x==0)
-
-class Solution:
-    def countValidSelections(self, a: List[int]) -> int:
-        p,s=0,sum(a);return sum(1==abs(t:=s-2*p)or 2*(t==0)for x in a if[p:=p+x]and x==0)
-
-class Solution:
-    def countValidSelections(self, a: List[int]) -> int:
-        p,s=0,sum(a);return sum(   1==abs(t:=s-2*p)or 2*(t==0)  for x in a if[p:=p+x]and x==0)
-
-class Solution:
-    def countValidSelections(self, a: List[int]) -> int:
-        p,s=0,sum(a);return sum(((1==abs(t:=s-2*p)or 2*(t==0))*(x==0),p:=p+x)[0]for x in a)
-
-class Solution:
-    def countValidSelections(self, a: List[int]) -> int:
-        p,s=0,sum(a);return sum((x+(p:=p+x)==p)*(1==abs(t:=s-2*p)or 2*(t==0))for x in a)
+        p,s=0,sum(a);return sum(1==abs(t:=s-2*p)or(t==0)*2for x in a if p==(p:=p+x))
 
 test('''
 3354. Make Array Elements Equal to Zero

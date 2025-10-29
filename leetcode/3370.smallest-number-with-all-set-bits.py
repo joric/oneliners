@@ -10,6 +10,10 @@ class Solution:
     def smallestNumber(self, n: int) -> int:
         return~-2**(len(bin(n)[2:]))
 
+class Solution:
+    def smallestNumber(self, n: int) -> int:
+        return~-2**n.bit_length()
+
 test('''
 3370. Smallest Number With All Set Bits
 Easy

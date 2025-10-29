@@ -14,6 +14,12 @@ class Solution:
     def smallestNumber(self, n: int) -> int:
         return~-2**n.bit_length()
 
+# https://leetcode.com/problems/smallest-number-with-all-set-bits/solutions/7307864/one-line-solution-by-mikposp/
+
+class Solution:
+    def smallestNumber(self, n: int) -> int:
+        return~-2**len(f'{n:b}')
+
 test('''
 3370. Smallest Number With All Set Bits
 Easy

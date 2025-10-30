@@ -35,6 +35,13 @@ class Solution:
     def minNumberOperations(self, a: List[int]) -> int:
         return sum(a)-sum(map(min,pairwise(a)))
 
+class Solution:
+    def minNumberOperations(self, a: List[int]) -> int:
+        return sum(a)-sum(map(min,a,[0]+a))
+
+class Solution:
+    def minNumberOperations(self, a: List[int]) -> int:
+        return sum(a)-sum(map(min,a,a[1:]))
 
 test('''
 1526. Minimum Number of Increments on Subarrays to Form a Target Array

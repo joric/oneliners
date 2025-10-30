@@ -16,6 +16,7 @@ class Solution:
     def minNumberOperations(self, a: List[int]) -> int:
         return sum(a)-sum(min(p)for p in pairwise(a))
 
+# https://leetcode.com/problems/minimum-number-of-increments-on-subarrays-to-form-a-target-array/solutions/7303805/one-line-solution-by-mikposp-plyz/
 # POTD 2025-10-30
 
 class Solution:

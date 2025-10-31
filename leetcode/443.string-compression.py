@@ -16,6 +16,14 @@ class Solution:
     def compress(self, c: List[str]) -> int:
         c[:]=re.sub(r'(?<=(.))\1+',lambda m:str(1+len(m.group())),''.join(c))
 
+class Solution:
+    def compress(self, c: List[str]) -> int:
+        c[:]=re.sub(r'(?<=(.))\1+',lambda m:str(len(m[0])+1),''.join(c))
+
+class Solution:
+    def compress(self, c: List[str]) -> int:
+        c[:]=re.sub(r'(.)\1+',lambda m:m[1]+str(len(m[0])),''.join(c))
+
 test('''
 443. String Compression
 Medium

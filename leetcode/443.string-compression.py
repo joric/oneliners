@@ -10,8 +10,13 @@ class Solution:
     def compress(self, chars: List[str]) -> int:
         chars[:] = ''.join((lambda c,x:(c,c+str(x))[x>1])(c,len(list(g))) for c,g in groupby(chars))
 
-test('''
+# https://leetcode.com/problems/string-compression/solutions/92562/1-liner-by-stefanpochmann-tkst/
 
+class Solution:
+    def compress(self, c: List[str]) -> int:
+        c[:]=re.sub(r'(?<=(.))\1+',lambda m:str(1+len(m.group())),''.join(c))
+
+test('''
 443. String Compression
 Medium
 

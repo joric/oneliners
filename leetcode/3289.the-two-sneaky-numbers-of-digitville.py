@@ -16,6 +16,49 @@ class Solution:
     def getSneakyNumbers(self, a: List[int]) -> List[int]:
         return[*{x for x in a if a.count(x)==2}]
 
+class Solution:
+    def getSneakyNumbers(self, a: List[int]) -> List[int]:
+        return[*{x for x in a if a.count(x)==2}]
+
+# https://leetcode.com/problems/the-two-sneaky-numbers-of-digitville/solutions/7307972/one-line-solution-by-mikposp-xvbo/
+
+class Solution:
+    def getSneakyNumbers(self, a: List[int]) -> List[int]:
+        g = lambda:chain(a,range(len(a)-2))
+        q = (q:=reduce(xor,g()))&-q
+        return [reduce(xor,(v for v in g() if f(v&q))) for f in (bool,not_)]
+
+class Solution:
+    def getSneakyNumbers(self, a: List[int]) -> List[int]:
+        return [bisect_right(range(len(a)-2),q,key=lambda m:sum(v<=m for v in a)-m) for q in (1,2)]
+
+class Solution:
+    def getSneakyNumbers(self, a: List[int]) -> List[int]:
+        q = set()
+        return [v for v in a if v in q or q.add(v)]
+
+class Solution:
+    def getSneakyNumbers(self, a: List[int]) -> List[int]:
+        return [q for p,q in pairwise(sorted(a)) if p==q]
+
+class Solution:
+    def getSneakyNumbers(self, a: List[int]) -> List[int]:
+        return [v for v,_ in Counter(a).most_common(2)]
+
+class Solution:
+    def getSneakyNumbers(self, a: List[int]) -> List[int]:
+        return nlargest(2,z:=Counter(a),z.get)
+
+class Solution:
+    def getSneakyNumbers(self, a: List[int]) -> List[int]:
+        return [*Counter(a)-Counter({*a})]
+
+class Solution:
+    def getSneakyNumbers(self, a: List[int]) -> List[int]:
+        return multimode(a)
+
+
+
 test('''
 3289. The Two Sneaky Numbers of Digitville
 Easy

@@ -4,7 +4,11 @@ from lc import *
 
 class Solution:
     def modifiedList(self, a: List[int], h: Optional[ListNode]) -> Optional[ListNode]:
-        a=set(a);return h.deserialize(str([x for x in eval(h.serialize(h))if x not in a]))
+        a={*a};return h.deserialize(str([x for x in eval(h.serialize(h))if x not in a]))
+
+class Solution: # TLE
+    def modifiedList(self, a: List[int], h: Optional[ListNode]) -> Optional[ListNode]:
+        return h.deserialize(str([x for x in eval(h.serialize(h))if x not in a]))
 
 class Solution:
     def modifiedList(self, a: List[int], h: Optional[ListNode]) -> Optional[ListNode]:

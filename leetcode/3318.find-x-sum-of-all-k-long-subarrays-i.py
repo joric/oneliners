@@ -24,7 +24,7 @@ class Solution:
 
 class Solution:
     def findXSum(self, a: List[int], k: int, x: int) -> List[int]:
-        return[sum(map(prod,nlargest(x,Counter(a[i:i+k]).items(),lambda q:q[::-1])))for i in range(len(a)-k+1)]
+        return[sum(map(prod,nlargest(x,Counter(a[i:i+k]).items(),lambda p:p[::-1])))for i in range(len(a)-k+1)]
 
 test('''
 3318. Find X-Sum of All K-Long Subarrays I

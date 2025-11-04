@@ -4,6 +4,14 @@ from lc import *
 
 class Solution:
     def findXSum(self, a: List[int], k: int, x: int) -> List[int]:
+        def f(i):
+            c = Counter(a[i:i + k])
+            t = nlargest(x,c,lambda y:(c[y],y))
+            return sum(map(lambda y:y*c[y],t))
+        return map(f,range(len(a)+1-k))
+
+class Solution:
+    def findXSum(self, a: List[int], k: int, x: int) -> List[int]:
         return[sum(map(prod,nlargest(x,Counter(a[i:i+k]).items(),lambda q:q[::-1])))for i in range(len(a)-k+1)]
 
 test('''

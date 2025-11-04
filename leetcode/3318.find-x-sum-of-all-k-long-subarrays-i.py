@@ -1,5 +1,19 @@
 from lc import *
 
+# https://leetcode.com/problems/find-x-sum-of-all-k-long-subarrays-i/solutions/5905359/python-simple-solution-sliding-window-so-dn2v/?envType=da
+
+class Solution:
+    def findXSum(self, a: List[int], k: int, x: int) -> List[int]:
+        res = []
+        for i in range(len(a)-k+1):
+            c = nlargest(x,[[v,k]for k,v in Counter(a[i:i+k]).items()])
+            res.append(sum(map(prod,c)))
+        return res
+
+class Solution:
+    def findXSum(self, a: List[int], k: int, x: int) -> List[int]:
+        return[sum(map(prod,nlargest(x,[[v,k]for k,v in Counter(a[i:i+k]).items()])))for i in range(len(a)-k+1)]
+
 # https://leetcode.com/problems/find-x-sum-of-all-k-long-subarrays-i/solutions/5949380/one-line-solution-by-mikposp-7mbr/?envType=daily-question&envId=2025-11-04
 
 class Solution:

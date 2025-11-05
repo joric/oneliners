@@ -49,18 +49,16 @@ class Solution:
         p=[w:=sum(s[:r+1]),*[0]*(n-1)]
         [setitem(p,i,w:=w+(i+r<n and s[i+r])-(i-r-1>=0 and s[i-r-1]))for i in range(1,n)]
         def f(x):
-            d = [0] * (n + 1)
-            c, m = 0, k
+            d,c,m=[0]*(n+1),0, k
             for i in range(n):
                 c += d[i]
-                if p[i] + c < x:
-                    t = x-p[i]-c
+                t = x-p[i]-c
+                if t>0:
                     if t>m:
                         return False
                     m -= t
                     c += t
-                    b = min(n,i+2*r+1)
-                    d[b] -= t
+                    d[min(n,i+2*r+1)] -= t
             return True
         return bisect_right(range(sum(s)+k+1), False, key=lambda x: not f(x)) - 1
 

@@ -2,10 +2,6 @@ from lc import *
 
 # https://leetcode.com/problems/power-grid-maintenance/solutions/7187225/unionfind-sortedlist-by-viniusck-0r2x/
 
-# TODO
-
-from sortedcontainers import SortedList
-
 class UnionFind:
     """UnionFind."""
 
@@ -66,8 +62,6 @@ class Solution:
             elif u == 2:
                 cur_list.discard(v)
         return ans
-
-# a-la unicode find
 
 class Solution:
     def processQueries(self, n: int, c: List[List[int]], q: List[List[int]]) -> List[int]:

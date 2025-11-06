@@ -1,104 +1,29 @@
 from lc import *
 
-# https://leetcode.com/problems/power-grid-maintenance/solutions/7187225/unionfind-sortedlist-by-viniusck-0r2x/
-
-class UnionFind:
-    """UnionFind."""
-
-    def __init__(self, size: int) -> None:
-        """Constructor of UnionFind."""
-        self.parents = [i for i in range(size)]
-        self.rank = [0] * size
-
-    def find(self, i: int) -> int:
-        if self.parents[i] == i:
-            return i
-        self.parents[i] = self.find(self.parents[i])
-        return self.parents[i]
-
-    def union(self, i: int, j: int) -> None:
-        pi = self.find(i)
-        pj = self.find(j)
-        if pi == pj:
-            return
-        pi_rank, pj_rank = self.rank[pi], self.rank[pj]
-        if pi_rank < pj_rank:
-            self.parents[pi] = pj
-            self.rank[pi] += 1
-        else:
-            self.parents[pj] = pi
-            self.rank[pj] += 1
-
-    def __repr__(self) -> str:
-        return f"UnionFind(parents={self.parents}, rank={self.rank})"
-
-
-class Solution:
-    def processQueries(self, c: int, connections: List[List[int]], queries: List[List[int]]) -> List[int]:
-        connections.sort()
-        ans = []
-        uf = UnionFind(c)
-        for u, v in connections:
-            u, v = u - 1, v - 1
-            uf.union(u, v)
-        for u, v in connections:
-            u, v = u - 1, v - 1
-            uf.find(u)
-            uf.find(v)
-        par_sets = defaultdict(SortedList)
-        for v, p in enumerate(uf.parents):
-            par_sets[p].add(v)
-        for u, v in queries:
-            v = v - 1
-            cur_list = par_sets[uf.parents[v]]
-            if u == 1:
-                try:
-                    if v in cur_list:
-                        ans.append(v + 1)
-                    else:
-                        ans.append(cur_list[0] + 1)
-                except (IndexError, KeyError):
-                    ans.append(-1)
-            elif u == 2:
-                cur_list.discard(v)
-        return ans
+# https://leetcode.com/problems/power-grid-maintenance/solutions/7329582/union-find-sortedlist-by-gsvamsi-vjw0/
 
 class Solution:
     def processQueries(self, n: int, c: List[List[int]], q: List[List[int]]) -> List[int]:
-        c.sort()
-        p = list(range(n))
-        f = lambda i: i if p[i] == i else f(setitem(p, i, f(p[i])) or p[i])
+        p = [*range(n+1)]
+        def f(i):
+            if p[i] != i:
+                p[i] = f(p[i])
+            return p[i]
         for u, v in c:
-            u, v = u - 1, v - 1
-            x, y = f(u), f(v)
-            x != y and setitem(p, x, y)
-        s = defaultdict(SortedList)
-        [s[f(i)].add(i)for i in range(n)]
-        a = []
-        for x, v in q:
-            v -= 1
-            l = s[f(v)]
-            if x == 1:
-                a.append((v if v in l else l[0]) + 1 if l else -1)
-            else:
-                l.discard(v)
-        return a
+            a, b = f(u), f(v)
+            a != b and setitem(p, a, b)
+        g = defaultdict(SortedList)
+        for i in range(1, n+1):
+            g[f(i)].add(i)
+        r = []
+        for x,s in q:
+            d = g[f(s)]
+            r.append(s if s in d else (d[0] if d else -1)) if x==1 else d.discard(s)
+        return r
 
 class Solution:
     def processQueries(self, n: int, c: List[List[int]], q: List[List[int]]) -> List[int]:
-        c.sort()
-        p=[*range(n)]
-        f=lambda i:i if p[i]==i else f(setitem(p,i,f(p[i]))or p[i])
-        [setitem(p,*t)for u,v in c if not eq(*(t:=[*map(f,(u-1,v-1))]))]
-        s = defaultdict(SortedList)
-        [s[f(i)].add(i)for i in range(n)]
-        a = []
-        [(t:=s[f(v:=y-1)],a.append((v if v in t else t[0])+1 if t else -1)if x==1 else t.discard(v))for x,y in q]
-        return a
-
-class Solution:
-    def processQueries(self, n: int, c: List[List[int]], q: List[List[int]]) -> List[int]:
-        c.sort();p,s,a=[*range(n)],defaultdict(SortedList),[];f=lambda i:i if p[i]==i else f(setitem(p,i,f(p[i]))or p[i]);[setitem(p,*t)for u,v in c if not eq(*(t:=[*map(f,(u-1,v-1))]))];[s[f(i)].add(i)for i in range(n)];[(t:=s[f(v:=y-1)],a.append((v if v in t else t[0])+1 if t else -1)if x==1 else t.discard(v))for x,y in q];return a
+        p,g=[*range(n+1)],defaultdict(SortedList);f=lambda i:i!=p[i]and setitem(p,i,f(p[i]))or p[i];[setitem(p,f(u),f(v))for u,v in c];[g[f(i)].add(i)for i in range(n+1)];return[s if s in d else(d[0]if d else -1)for x,s in q if[d:=g[f(s)]]and x==1 or d.discard(s)]
 
 test('''
 3607. Power Grid Maintenance
@@ -144,7 +69,6 @@ Query [1,2]: Station 2 is offline, so the check is resolved by the operational s
 Example 2:
 
 Input: c = 3, connections = [], queries = [[1,1],[2,1],[1,1]]
-
 Output: [1,-1]
 
 Explanation:
@@ -153,7 +77,12 @@ There are no connections, so each station is its own isolated grid.
 Query [1,1]: Station 1 is online in its isolated grid, so the maintenance check is resolved by station 1.
 Query [2,1]: Station 1 goes offline.
 Query [1,1]: Station 1 is offline and there are no other stations in its grid, so the result is -1.
- 
+
+Other examples:
+
+Input: c = 1, connections = [], queries = [[1,1],[2,1],[2,1],[2,1],[2,1]]
+Output: [1]
+
 
 Constraints:
 

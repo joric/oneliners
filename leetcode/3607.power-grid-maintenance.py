@@ -23,7 +23,7 @@ class Solution:
 
 class Solution:
     def processQueries(self, n: int, c: List[List[int]], q: List[List[int]]) -> List[int]:
-        p,g=[*range(n+1)],defaultdict(SortedList);f=lambda i:i!=p[i]and setitem(p,i,f(p[i]))or p[i];[setitem(p,f(u),f(v))for u,v in c];[g[f(i)].add(i)for i in range(n+1)];return[s if s in d else(d[0]if d else -1)for x,s in q if[d:=g[f(s)]]and x==1 or d.discard(s)]
+        p,g=[*range(n+1)],defaultdict(SortedList);f=lambda i:i!=p[i]and setitem(p,i,f(p[i]))or p[i];[setitem(p,f(u),f(v))for u,v in c];[g[f(i)].add(i)for i in range(n+1)];return[s if s in d else(d[0]if d else-1)for x,s in q if[d:=g[f(s)]]and x==1 or d.discard(s)]
 
 test('''
 3607. Power Grid Maintenance

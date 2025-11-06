@@ -67,6 +67,45 @@ class Solution:
                 cur_list.discard(v)
         return ans
 
+# a-la unicode find
+
+class Solution:
+    def processQueries(self, n: int, c: List[List[int]], q: List[List[int]]) -> List[int]:
+        c.sort()
+        p = list(range(n))
+        f = lambda i: i if p[i] == i else f(setitem(p, i, f(p[i])) or p[i])
+        for u, v in c:
+            u, v = u - 1, v - 1
+            x, y = f(u), f(v)
+            x != y and setitem(p, x, y)
+        s = defaultdict(SortedList)
+        [s[f(i)].add(i)for i in range(n)]
+        a = []
+        for x, v in q:
+            v -= 1
+            l = s[f(v)]
+            if x == 1:
+                a.append((v if v in l else l[0]) + 1 if l else -1)
+            else:
+                l.discard(v)
+        return a
+
+class Solution:
+    def processQueries(self, n: int, c: List[List[int]], q: List[List[int]]) -> List[int]:
+        c.sort()
+        p=[*range(n)]
+        f=lambda i:i if p[i]==i else f(setitem(p,i,f(p[i]))or p[i])
+        [setitem(p,*t)for u,v in c if not eq(*(t:=[*map(f,(u-1,v-1))]))]
+        s = defaultdict(SortedList)
+        [s[f(i)].add(i)for i in range(n)]
+        a = []
+        [(t:=s[f(v:=y-1)],a.append((v if v in t else t[0])+1 if t else -1)if x==1 else t.discard(v))for x,y in q]
+        return a
+
+class Solution:
+    def processQueries(self, n: int, c: List[List[int]], q: List[List[int]]) -> List[int]:
+        c.sort();p,s,a=[*range(n)],defaultdict(SortedList),[];f=lambda i:i if p[i]==i else f(setitem(p,i,f(p[i]))or p[i]);[setitem(p,*t)for u,v in c if not eq(*(t:=[*map(f,(u-1,v-1))]))];[s[f(i)].add(i)for i in range(n)];[(t:=s[f(v:=y-1)],a.append((v if v in t else t[0])+1 if t else -1)if x==1 else t.discard(v))for x,y in q];return a
+
 test('''
 3607. Power Grid Maintenance
 Medium

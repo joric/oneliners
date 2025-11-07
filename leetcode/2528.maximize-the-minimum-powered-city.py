@@ -62,6 +62,10 @@ class Solution:
             return True
         return bisect_right(range(sum(s)+k+1), False, key=lambda x: not f(x)) - 1
 
+class Solution:
+    def maxPower(self, s: List[int], r: int, k: int) -> int:
+        n=len(s);p=[w:=sum(s[:r+1]),*[0]*(n-1)];[setitem(p,i,w:=w+(i+r<n and s[i+r])-(i-r-1>=0 and s[i-r-1]))for i in range(1,n)];f=lambda x:(d:=[0]*(n+1),c:=0,m:=k)and all((c:=c+d[i],t:=x-p[i]-c)and m>=t>0 and(m:=m-t,c:=c+t,setitem(d,j:=min(n,i+2*r+1),d[j]-t))or t<=0 for i in range(n));return bisect_right(range(sum(s)+k+1),0,key=lambda x:not f(x))-1
+
 test('''
 2528. Maximize the Minimum Powered City
 Hard
@@ -105,6 +109,12 @@ Output: 4
 Explanation: 
 It can be proved that we cannot make the minimum power of a city greater than 4.
  
+
+Other examples:
+
+Input: stations = [2,10,12,3], r = 0, k = 14
+Output: 9
+
 
 Constraints:
 

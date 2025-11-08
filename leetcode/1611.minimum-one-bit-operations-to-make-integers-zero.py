@@ -76,6 +76,11 @@ Explanation: The binary representation of 6 is "110".
 "001" -> "000" with the 1st operation.
  
 
+Other examples:
+
+Input: n = 9
+Output: 14
+
 Constraints:
 
 0 <= n <= 10^9

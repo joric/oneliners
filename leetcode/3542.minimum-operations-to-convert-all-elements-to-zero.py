@@ -55,6 +55,14 @@ class Solution:
     def minOperations(self, a: List[int]) -> int:
         s=[];return sum(((f:=lambda:[x]<=s[-1:]and x<s.pop()and f()+1)(),s.append(x))[0]for x in a+[0])
 
+class Solution:
+    def minOperations(self, a: List[int]) -> int:
+        s=[];return sum(((f:=lambda:s[-1:]>=[x]<[s.pop()]and f()+1)(),s.append(x))[0]for x in a+[0])
+
+class Solution:
+    def minOperations(self, a: List[int]) -> int:
+        s=[];return sum(((f:=lambda:s[-1:]>=[x]and(x<s.pop())+f())(),s.append(x))[0]for x in a+[0])
+
 test('''
 3542. Minimum Operations to Convert All Elements to Zero
 Medium

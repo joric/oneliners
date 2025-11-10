@@ -43,14 +43,6 @@ class Solution:
             s.append(x)
         return r
 
-class Solution:
-    def minOperations(self, a: List[int]) -> int:
-        r,s = 0,[]
-        for x in a+[0]:
-            while[x]<=s[-1:]:r+=x<s.pop()
-            s.append(x)
-        return r
-
 class Solution: #TLE
     def minOperations(self, a: List[int]) -> int:
         s=[];return sum((sum(x<s.pop()for _ in a if[x]<=s[-1:]),s.append(x))[0]for x in a+[0])

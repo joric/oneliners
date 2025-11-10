@@ -25,6 +25,44 @@ class Solution:
     def minOperations(self, a: List[int]) -> int:
         s=[];return sum(((f:=lambda i:s and i<=s[-1]and(s.pop()!=i)+f(i)or 0)(i),s.append(i))[0]for i in a)+len({*filter(None,s)})
 
+# https://leetcode.com/problems/minimum-operations-to-convert-all-elements-to-zero/solutions/7331617/five-simple-lines-of-code-by-mikposp-gwrq/?envType=daily-question&envId=2025-11-10
+
+class Solution:
+    def minOperations(self, a: List[int]) -> int:
+        res,st = 0,[]
+        for v in chain(a,[0]):
+            while st and st[-1]>=v: res += st.pop()>v
+            st.append(v)
+        return res
+
+class Solution:
+    def minOperations(self, a: List[int]) -> int:
+        r,s = 0,[]
+        for x in a+[0]:
+            while s and s[-1]>=x:r+=x<s.pop()
+            s.append(x)
+        return r
+
+class Solution:
+    def minOperations(self, a: List[int]) -> int:
+        r,s = 0,[]
+        for x in a+[0]:
+            while[x]<=s[-1:]:r+=x<s.pop()
+            s.append(x)
+        return r
+
+class Solution: #TLE
+    def minOperations(self, a: List[int]) -> int:
+        s=[];return sum((sum(x<s.pop()for _ in a if[x]<=s[-1:]),s.append(x))[0]for x in a+[0])
+
+class Solution:
+    def minOperations(self, a: List[int]) -> int:
+        s=[];return sum((sum(x<s.pop()for _ in iter(lambda:[x]<=s[-1:],0)),s.append(x))[0]for x in a+[0])
+
+class Solution:
+    def minOperations(self, a: List[int]) -> int:
+        s=[];return sum(((f:=lambda:[x]<=s[-1:]and x<s.pop()and f()+1)(),s.append(x))[0]for x in a+[0])
+
 test('''
 3542. Minimum Operations to Convert All Elements to Zero
 Medium
@@ -53,7 +91,6 @@ Thus, the minimum number of operations required is 1.
 Example 2:
 
 Input: nums = [3,1,2,1]
-
 Output: 3
 
 Explanation:
@@ -75,7 +112,11 @@ Select subarray [1,1] (which is [2]), where the minimum non-negative integer is 
 Select subarray [3,3] (which is [2]), where the minimum non-negative integer is 2. Setting all occurrences of 2 to 0 results in [0,0,0,0,0,2].
 Select subarray [5,5] (which is [2]), where the minimum non-negative integer is 2. Setting all occurrences of 2 to 0 results in [0,0,0,0,0,0].
 Thus, the minimum number of operations required is 4.
- 
+
+Other examples:
+
+Input: nums = [1,3]
+Output: 2
 
 Constraints:
 

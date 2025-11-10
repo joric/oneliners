@@ -1,5 +1,18 @@
 from lc import *
 
+# https://leetcode.com/problems/minimum-operations-to-convert-all-elements-to-zero/solutions/7339030/easy-peasy-lemon-squeezy-by-zeusdinesh-dqkr/
+
+class Solution:
+    def minOperations(self, a: List[int]) -> int:
+        s=[-1]
+        r=0
+        for x in a:
+            while x<s[-1]: s.pop()
+            if x>s[-1]:
+                r+=(x>0) 
+                s.append(x)
+        return r
+
 # https://leetcode.com/problems/minimum-operations-to-convert-all-elements-to-zero/solutions/7208350/easy-python-solution-by-sb012-dzap/
 
 class Solution:

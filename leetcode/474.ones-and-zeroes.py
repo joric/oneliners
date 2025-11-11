@@ -16,7 +16,7 @@ class Solution:
 
 class Solution:
     def findMaxForm(self, s: List[str], m: int, n: int) -> int:
-        c=[[*map(t.count,'01')]for t in s];f=cache(lambda i,m,n:-inf if m<0 or n<0 else i<len(c)and max(f(i+1,m,n),1+f(i+1,m-c[i][0],n-c[i][1])));return f(0,m,n)
+        return(f:=cache(lambda i,m,n:-inf if m<0 or n<0 else i<len(s)and max(f(i+1,m,n),1+f(i+1,m-s[i].count('0'),n-s[i].count('1')))))(0,m,n)
 
 # https://leetcode.com/problems/ones-and-zeroes/solutions/1810883/python-4-lines-knapsack-by-fjm11111-63mn/?envType=daily-question&envId=2025-11-11
 

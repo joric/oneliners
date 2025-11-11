@@ -30,7 +30,7 @@ class Solution:
 
 class Solution:
     def findMaxForm(self, s: List[str], m: int, n: int) -> int:
-        c={(0,m,n)};[c:=c|{(i+1,x-a,y-b)for i,x,y in c for a,b in[map(t.count,'01')]if x-a>-1<y-b}for t in s];return max(t[0]for t in c)
+        c={(0,m,n)};[c:=c|{(i+1,x-a,y-b)for i,x,y in c for a,b in[map(t.count,'01')]if x-a>-1<y-b}for t in s];return max(c)[0]
 
 test('''
 474. Ones and Zeroes

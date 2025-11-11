@@ -30,6 +30,10 @@ class Solution:
 
 class Solution:
     def findMaxForm(self, s: List[str], m: int, n: int) -> int:
+        return max(reduce(lambda c,t:c|{(i+1,x-a,y-b)for i,x,y in c for a,b in[map(t.count,'01')]if x-a>-1<y-b},s,{(0,m,n)}))[0]
+
+class Solution:
+    def findMaxForm(self, s: List[str], m: int, n: int) -> int:
         c={(0,m,n)};[c:=c|{(i+1,x-a,y-b)for i,x,y in c for a,b in[map(t.count,'01')]if x-a>-1<y-b}for t in s];return max(c)[0]
 
 test('''

@@ -22,10 +22,6 @@ class Solution:
     def minOperations(self, a: List[int]) -> int:
         n=len(a);return n-q if(q:=a.count(1))else next((w+n-2 for w in range(n+1)for i in range(n-w+1)if gcd(*a[i:i+w])==1),-1)
 
-class Solution:
-    def minOperations(self, a: List[int]) -> int:
-        n=len(a);return n-q if(q:=a.count(1))else next((w+n-2 for w in range(n+1)for i in range(n-w+1)if gcd(*a[i:i+w])==1),-1)
-
 test('''
 2654. Minimum Number of Operations to Make All Array Elements Equal to 1
 Solved

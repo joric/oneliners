@@ -30,6 +30,12 @@ class Solution:
     def rangeAddQueries(self, n: int, q: List[List[int]]) -> List[List[int]]:
         t=__import__('numpy').zeros((n,n),int);[t[a:c+1,b:d+1].__iadd__(1)for a,b,c,d in q];return t.tolist()
 
+# https://leetcode.com/problems/increment-submatrices-by-one/solutions/3795148/use-numpy-to-brute-force-by-asukaminato-6ssy/?envType=daily-question&envId=2025-11-14
+
+class Solution:
+    def rangeAddQueries(self, n: int, q: List[List[int]]) -> List[List[int]]:
+        t=__import__('numpy').full((n,n),0);[t[a:c+1,b:d+1].__iadd__(1)for a,b,c,d in q];return t.tolist()
+
 test('''
 2536. Increment Submatrices by One
 Medium

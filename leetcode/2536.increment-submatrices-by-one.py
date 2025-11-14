@@ -24,6 +24,10 @@ class Solution:
 
 class Solution:
     def rangeAddQueries(self, n: int, q: List[List[int]]) -> List[List[int]]:
+        t=[[0]*n for _ in range(n)];[[setitem(t[i],j,t[i][j]+1)for i in range(a,c+1)for j in range(b,d+1)]for a,b,c,d in q];return t
+
+class Solution:
+    def rangeAddQueries(self, n: int, q: List[List[int]]) -> List[List[int]]:
         t=__import__('numpy').zeros((n,n),int);[t[a:c+1,b:d+1].__iadd__(1)for a,b,c,d in q];return t.tolist()
 
 test('''

@@ -94,7 +94,7 @@ class Solution:
 You can also dump the entire preprocessed solution file to check all the imports for yourself (see [gist](https://gist.github.com/joric/90422e5c4729581a465a9904e4c292db)):
 
 ```python
-with open(__file__, 'rt') as f:print(f.read())
+with open(__file__, 'rt') as f: print(f.read())
 ```
 
 The solution driver code writes all results to the `user.out` file, so we can use it like this:

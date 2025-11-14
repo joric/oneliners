@@ -321,7 +321,8 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
             elif t is Counter:
                 return set(res.keys())==set(expected)
             elif 'numpy.ndarray' in str(t):
-                return all(x==y for x,y in zip(res,expected))
+                #return all(x==y for x,y in zip(res,expected))
+                return __import__('numpy').array_equal(res, expected)
             elif type(expected) is list: # letter-combinations-of-a-phone-number
                 return list(res)==expected
             elif type(expected) is str:

@@ -91,13 +91,11 @@ class Solution:
                 c += 1
         return r
 
-class Solution:
-    def numberOfSubstrings(self, s: str) -> int:
-        n=len(s);p=[-1,*accumulate(range(n),lambda p,i:(i,p)[i and'0'<s[i-1]])];f=lambda i,j,c,r:f(i,p[j],c+1,r+min(j-p[j],d-c*c+1)if c*c<=(d:=(i-p[j])-c)else r)if j>0 and c*c<=n else r;return sum(f(i,i,s[i-1]=='0',0)for i in range(1,n+1))
+# 17076 ms
 
 class Solution:
     def numberOfSubstrings(self, s: str) -> int:
-        n=len(s);p=[-1,*accumulate(range(n),lambda p,i:(i,p)[i and'0'<s[i-1]])];f=lambda i,j,c:j>0 and c*c<=n and f(i,p[j],c+1)+(c*c<=(d:=(i-p[j])-c))*min(j-p[j],d-c*c+1);return sum(f(i,i,s[i-1]<'1')for i in range(1,n+1))
+        n=len(s);p=[-1,*accumulate(range(n),lambda p,i:(i,p)[i and'0'<s[i-1]])];f=lambda i,j,c:j and c*c<=n and f(i,p[j],c+1)+(c*c<=(d:=(i-p[j])-c))*min(j-p[j],d-c*c+1);return sum(f(i,i,s[i-1]<'1')for i in range(1,n+1))
 
 test('''
 3234. Count the Number of Substrings With Dominant Ones

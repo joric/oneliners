@@ -77,11 +77,10 @@ class Solution:
                 cnt0 += 1
         return res
 
-# TODO
 class Solution:
     def numberOfSubstrings(self, s: str) -> int:
-        n=len(s);p,r=[-1]*(n+1),0
-        [setitem(p,i+1,i if i==0 or s[i-1]=='0' else p[i])for i in range(n)]
+        n=len(s);p=[-1,*accumulate(range(n),lambda p,i:(i,p)[i>0 and s[i-1]>'0'])]
+        r=0
         for i in range(1,n+1):
             c = 1 if s[i-1]=='0' else 0
             j = i
@@ -92,6 +91,9 @@ class Solution:
                 c += 1
         return r
 
+class Solution:
+    def numberOfSubstrings(self, s: str) -> int:
+        n=len(s);p=[-1,*accumulate(range(n),lambda p,i:(i,p)[i>0 and s[i-1]>'0'])];f=lambda i,j,c,r:f(i,p[j],c+1,r+min(j-p[j],d-c*c+1)if c*c<=(d:=(i-p[j])-c)else r)if j>0 and c*c<=n else r;return sum(f(i,i,s[i-1]=='0',0)for i in range(1,n+1))
 
 test('''
 3234. Count the Number of Substrings With Dominant Ones

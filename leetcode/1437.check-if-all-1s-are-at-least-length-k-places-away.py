@@ -50,6 +50,14 @@ class Solution:
     def kLengthApart(self, n: List[int], k: int) -> bool:
         t=~k;return not any(x and(i-t<=k or(t:=i)*0)for i,x in enumerate(n))
 
+class Solution:
+    def kLengthApart(self, n: List[int], k: int) -> bool:
+        t=~k;return all(not((i-t<=k or(t:=i)*0))for i,x in enumerate(n)if x)
+
+class Solution:
+    def kLengthApart(self, n: List[int], k: int) -> bool:
+        t=~k;return all(i-t>k and[t:=i]for i,x in enumerate(n)if x)
+
 test('''
 1437. Check If All 1's Are at Least Length K Places Away
 Solved
@@ -74,7 +82,11 @@ Example 2:
 Input: nums = [1,0,0,1,0,1], k = 2
 Output: false
 Explanation: The second 1 and third 1 are only one apart from each other.
- 
+
+Other examples:
+
+Input: nums = [1,1,1,1,1], k = 0
+Output: true
 
 Constraints:
 

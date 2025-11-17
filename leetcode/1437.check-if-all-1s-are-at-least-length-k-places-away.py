@@ -44,6 +44,8 @@ class Solution:
 
 # https://leetcode.com/problems/check-if-all-1s-are-at-least-length-k-places-away/solutions/7202756/1-line-angry-solution-javascript-python-iqeli/?envType=daily-question&envId=2025-11-17
 
+# js: kLengthApart=(a,k,p=-k-1)=>!a.some((x,i)=>x&&(i-p<=k?1:(p=i,0)))
+
 Solution=type('',(),{"kLengthApart":lambda s,n,k:(_:=-k-1)and not any(x and(i-_<=k or(_:=i)*0)for i,x in enumerate(n))})
 
 class Solution:
@@ -57,6 +59,18 @@ class Solution:
 class Solution:
     def kLengthApart(self, n: List[int], k: int) -> bool:
         t=~k;return all(i-t>k and[t:=i]for i,x in enumerate(n)if x)
+
+class Solution:
+    def kLengthApart(self, n: List[int], k: int) -> bool:
+        t=~k;return all(i-t>k>t-(t:=i)for i,x in enumerate(n)if x)
+
+class Solution:
+    def kLengthApart(self, n: List[int], k: int) -> bool:
+        t=~k;return all(i-t>k>=-(t:=i)for i,x in enumerate(n)if x)
+
+class Solution:
+    def kLengthApart(self, n: List[int], k: int) -> bool:
+        t=~k;return all(i>k+t<(t:=i)for i,x in enumerate(n)if x)
 
 test('''
 1437. Check If All 1's Are at Least Length K Places Away
@@ -86,6 +100,9 @@ Explanation: The second 1 and third 1 are only one apart from each other.
 Other examples:
 
 Input: nums = [1,1,1,1,1], k = 0
+Output: true
+
+Input: nums = [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], k = 100
 Output: true
 
 Constraints:

@@ -16,11 +16,7 @@ class Solution:
 
 class Solution:
     def isOneBitCharacter(self, b: List[int]) -> bool:
-        return not(b[-2::-1]+[0]).index(0)%2
-
-class Solution:
-    def isOneBitCharacter(self, b: List[int]) -> bool:
-        return(b[-2::-1]+[0]).index(0)%2<1
+        return[*b[-2::-1],0].index(0)%2<1
 
 test('''
 717. 1-bit and 2-bit Characters

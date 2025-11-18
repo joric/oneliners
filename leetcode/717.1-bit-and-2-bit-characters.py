@@ -1,16 +1,16 @@
 from lc import *
 
-# https://leetcode.com/problems/1-bit-and-2-bit-characters/description/?envType=daily-question&envId=2025-11-18
-
-class Solution:
-    def isOneBitCharacter(self, b: List[int]) -> bool:
-        return not([*b[::-1],0][1:].index(0)%2)
-
 # https://leetcode.com/problems/1-bit-and-2-bit-characters/solutions/782768/one-line-pythonic-solution-by-jrbt-laa8/?envType=daily-question&envId=2025-11-18
 
 class Solution:
     def isOneBitCharacter(self, b: List[int]) -> bool:
         return not(len(''.join(map(str,b)).split('0')[-2])%2)
+
+# https://leetcode.com/problems/1-bit-and-2-bit-characters/description/?envType=daily-question&envId=2025-11-18
+
+class Solution:
+    def isOneBitCharacter(self, b: List[int]) -> bool:
+        return not([*b[::-1],0][1:].index(0)%2)
 
 # https://leetcode.com/problems/1-bit-and-2-bit-characters/solutions/556711/one-line-python-code-by-akandeha-gmmh/?envType=daily-question&envId=2025-11-18
 

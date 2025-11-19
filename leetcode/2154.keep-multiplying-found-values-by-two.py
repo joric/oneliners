@@ -24,16 +24,9 @@ class Solution:
 
 class Solution:
     def findFinalValue(self, a: List[int], o: int) -> int:
-        while o in a: o*=2
+        while o in a:
+            o*=2
         return o
-
-class Solution:
-    def findFinalValue(self, a: List[int], o: int) -> int:
-        all(o:=o*2 for _ in a if o in a);return o
-
-class Solution:
-    def findFinalValue(self, a: List[int], o: int) -> int:
-        [o:=o*2 for _ in a if o in a];return o
 
 class Solution:
     def findFinalValue(self, a: List[int], o: int) -> int:

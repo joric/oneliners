@@ -10,6 +10,14 @@ class Solution:
     def findFinalValue(self, a: List[int], o: int) -> int:
         x=o;[x:=x+x*(x==y)for y in sorted(a)];return x
 
+# https://leetcode.com/problems/keep-multiplying-found-values-by-two/solutions/6004734/2-line-code-by-ak-youngster-pljv/?envType=daily-question&envId=2025-11-19
+
+class Solution:
+    def findFinalValue(self, a: List[int], o: int) -> int:
+        while o in a:
+            o*=2
+        return o
+
 # https://leetcode.com/problems/keep-multiplying-found-values-by-two/solutions/7339327/one-line-solution-by-mikposp-ahxw/?envType=daily-question&envId=2025-11-19
 
 class Solution:
@@ -19,14 +27,6 @@ class Solution:
 class Solution:
     def findFinalValue(self, a: List[int], o: int) -> int:
         return min({o*2**i for i in range(11)}-{*a})
-
-# https://leetcode.com/problems/keep-multiplying-found-values-by-two/solutions/6004734/2-line-code-by-ak-youngster-pljv/?envType=daily-question&envId=2025-11-19
-
-class Solution:
-    def findFinalValue(self, a: List[int], o: int) -> int:
-        while o in a:
-            o*=2
-        return o
 
 class Solution:
     def findFinalValue(self, a: List[int], o: int) -> int:

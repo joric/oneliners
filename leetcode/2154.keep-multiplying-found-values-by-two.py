@@ -20,6 +20,25 @@ class Solution:
     def findFinalValue(self, a: List[int], o: int) -> int:
         return min({o*2**i for i in range(11)}-{*a})
 
+# https://leetcode.com/problems/keep-multiplying-found-values-by-two/solutions/6004734/2-line-code-by-ak-youngster-pljv/?envType=daily-question&envId=2025-11-19
+
+class Solution:
+    def findFinalValue(self, a: List[int], o: int) -> int:
+        while o in a: o*=2
+        return o
+
+class Solution:
+    def findFinalValue(self, a: List[int], o: int) -> int:
+        all(o:=o*2 for _ in a if o in a);return o
+
+class Solution:
+    def findFinalValue(self, a: List[int], o: int) -> int:
+        [o:=o*2 for _ in a if o in a];return o
+
+class Solution:
+    def findFinalValue(self, a: List[int], o: int) -> int:
+        [o:=o*-~(o in a)for _ in a];return o
+
 test('''
 2154. Keep Multiplying Found Values by Two
 Easy
@@ -53,7 +72,11 @@ Input: nums = [2,7,9], original = 4
 Output: 4
 Explanation:
 - 4 is not found in nums. Thus, 4 is returned.
- 
+
+Other solutions:
+
+Input: nums = [8,19,4,2,15,3], original = 2
+Output: 16
 
 Constraints:
 

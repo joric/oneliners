@@ -98,7 +98,14 @@ Input: intervals = [[1,2],[2,3],[2,4],[4,5]]
 Output: 5
 Explanation: let nums = [1, 2, 3, 4, 5].
 It can be shown that there cannot be any containing array of size 4.
- 
+
+Other examples:
+
+Input: intervals = [[1,3],[1,2],[0,1]]
+Output: 3
+
+Input: intervals = [[2,10],[3,7],[3,15],[4,11],[6,12],[6,16],[7,8],[7,11],[7,15],[11,12]]
+Output: 5
 
 Constraints:
 

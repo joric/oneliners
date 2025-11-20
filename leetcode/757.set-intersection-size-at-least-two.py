@@ -82,6 +82,55 @@ class Solution:
     def intersectionSizeTwo(self, a: List[List[int]]) -> int:
         r=[];[r.extend(e-i for i in range(1-sum(-b<=i for i in r[-2:]),-1,-1))for e,b in sorted((e,-b)for b,e in a)];return len(r)
 
+# https://leetcode.com/problems/set-intersection-size-at-least-two/solutions/113085/ever-wonder-why-the-greedy-algorithm-wor-gtt7/?envType=daily-q
+
+class Solution:
+    def intersectionSizeTwo(self, a: List[List[int]]) -> int:
+        m=l=s=-1
+        for c,d in sorted(a,key=lambda x:(x[1],-x[0])):
+            i=c<=l
+            j=c<=s
+            if i and j:
+                continue
+            m+=1 if i else 2
+            s=l if i else d-1
+            l=d
+        return m+1
+
+class Solution:
+    def intersectionSizeTwo(self, a: List[List[int]]) -> int:
+        r=x=y=-1
+        for a,b in sorted(a,key=lambda x:(x[1],-x[0])):
+            i=a>x
+            j=a>y
+            if i or j:
+                x=b
+                y=(x,b-1)[i]
+                r=r+1+i
+        return r+1
+
+class Solution:
+    def intersectionSizeTwo(self, a: List[List[int]]) -> int:
+        r=x=y=-1
+        for a,b in sorted(a,key=lambda x:(x[1],-x[0])):
+            if a>x or a>y:
+                y=(x,b-1)[a>x]
+                r=r+1+(a>x)
+                x=b
+        return r+1
+
+class Solution:
+    def intersectionSizeTwo(self, a: List[List[int]]) -> int:
+        r=x=y=-1;[(a>x or a>y)and(y:=(x,b-1)[a>x],r:=r+1+(a>x),x:=b)for a,b in sorted(a,key=lambda x:(x[1],-x[0]))];return r+1
+
+class Solution:
+    def intersectionSizeTwo(self, a: List[List[int]]) -> int:
+        r=x=y=-1;[((i:=a>x)or a>y)and(y:=(x,b-1)[i],r:=r+1+i,x:=b)for a,b in sorted(a,key=lambda x:(x[1],-x[0]))];return r+1
+
+class Solution:
+    def intersectionSizeTwo(self, a: List[List[int]]) -> int:
+        x=y=-1;return sum((y:=(x,b-1)[i],x:=b,1+i)[2]for a,b in sorted(a,key=lambda x:(x[1],-x[0]))if(i:=a>x)or a>y)
+
 test('''
 757. Set Intersection Size At Least Two
 Hard

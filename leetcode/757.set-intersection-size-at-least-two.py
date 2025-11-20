@@ -29,7 +29,7 @@ class Solution:
 
 class Solution:
     def intersectionSizeTwo(self, v: List[List[int]]) -> int:
-        p=[0,-inf,-inf];[p:=(f:=lambda r,a,b:(r+2,e-1,e)if s>b else(r+1,b,e)if a<s<=b else(r,a,b))(*p)for s,e in sorted(v,key=itemgetter(1))];return p[0]
+        p=[0,-inf,-inf];[p:=(f:=lambda r,a,b:s>b and(r+2,e-1,e)or a<s<=b and(r+1,b,e)or(r,a,b))(*p)for s,e in sorted(v,key=itemgetter(1))];return p[0]
 
 # https://leetcode.com/problems/set-intersection-size-at-least-two/solutions/4912570/7-line-simple-on-by-yoongyeom-4uq2/?envType=daily-question&envId=2025-11-20
 

@@ -1,5 +1,22 @@
 from lc import *
 
+# https://leetcode.com/problems/set-intersection-size-at-least-two/solutions/1050159/java-13-lines-of-code-based-on-sorting-t-rasc/?envType=daily-question&envId=2025-11-20
+
+class Solution:
+    def intersectionSizeTwo(self, a: List[List[int]]) -> int:
+        a.sort(key=lambda x:(x[1], x[0]))
+        r = [a[0][1]-1,a[0][1]]
+        for s,e in a[1:]:
+            if s > r[-1]:
+                r += [e - 1, e]
+            elif s > r[-2]:
+                r +=[e]
+        return len(r)
+
+class Solution:
+    def intersectionSizeTwo(self, a: List[List[int]]) -> int:
+        a.sort(key=lambda x:(x[1],x[0]));r=[a[0][1]-1,a[0][1]];[r.extend(s>r[-1]and[e-1,e]or s>r[-2]and[e]or[])for s,e in a[1:]];return len(r)
+
 # https://leetcode.com/problems/set-intersection-size-at-least-two/solutions/230716/python-5-lines-onlogn-by-jason003-is7e/?envType=daily-question&envId=2025-11-20
 
 class Solution:

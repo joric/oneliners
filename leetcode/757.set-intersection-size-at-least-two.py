@@ -1,5 +1,36 @@
 from lc import *
 
+# https://leetcode.com/problems/set-intersection-size-at-least-two/solutions/230716/python-5-lines-onlogn-by-jason003-is7e/?envType=daily-question&envId=2025-11-20
+
+class Solution:
+    def intersectionSizeTwo(self, intervals: List[List[int]]) -> int:
+        res, p1, p2 = 0, -float('inf'), -float('inf') # res is the result, p1 and p2 is 2 current points
+        for s, e in sorted(intervals, key = lambda i: i[1]): # sort the intervals ascending by their end point
+            if s > p2: res, p1, p2 = res + 2, e - 1, e
+            elif p1 < s <= p2: res, p1, p2 = res + 1, p2, e
+        return res
+
+class Solution:
+    def intersectionSizeTwo(self, v: List[List[int]]) -> int:
+        r=0;a=b=-inf
+        for s,e in sorted(v,key=itemgetter(1)):
+            if s>b:
+                r,a,b=r+2,e-1,e
+            elif a<s<=b:
+                r,a,b=r+1,b,e
+        return r
+
+class Solution:
+    def intersectionSizeTwo(self, v: List[List[int]]) -> int:
+        r=0;a=b=-inf
+        for s,e in sorted(v,key=itemgetter(1)):
+            r,a,b=s>b and(r+2,e-1,e)or a<s<=b and(r+1,b,e)or(r,a,b)
+        return r
+
+class Solution:
+    def intersectionSizeTwo(self, v: List[List[int]]) -> int:
+        p=[0,-inf,-inf];[p:=(f:=lambda r,a,b:(r+2,e-1,e)if s>b else(r+1,b,e)if a<s<=b else(r,a,b))(*p)for s,e in sorted(v,key=itemgetter(1))];return p[0]
+
 # https://leetcode.com/problems/set-intersection-size-at-least-two/solutions/4912570/7-line-simple-on-by-yoongyeom-4uq2/?envType=daily-question&envId=2025-11-20
 
 class Solution:
@@ -15,20 +46,6 @@ class Solution:
 class Solution:
     def intersectionSizeTwo(self, a: List[List[int]]) -> int:
         r=[];[r.extend(e-i for i in reversed(range(max(2-len(r)+bisect_left(r,s),0))))for s,e in sorted(a,key=lambda x:(x[1],-x[0]))];return len(r)
-
-# https://leetcode.com/problems/set-intersection-size-at-least-two/solutions/230716/python-5-lines-onlogn-by-jason003-is7e/?envType=daily-question&envId=2025-11-20
-
-class Solution:
-    def intersectionSizeTwo(self, intervals: List[List[int]]) -> int:
-        res, p1, p2 = 0, -float('inf'), -float('inf') # res is the result, p1 and p2 is 2 current points
-        for s, e in sorted(intervals, key = lambda i: i[1]): # sort the intervals ascending by their end point
-            if s > p2: res, p1, p2 = res + 2, e - 1, e
-            elif p1 < s <= p2: res, p1, p2 = res + 1, p2, e
-        return res
-
-class Solution:
-    def intersectionSizeTwo(self, v: List[List[int]]) -> int:
-        p=[0,-inf,-inf];[p:=(f:=lambda r,a,b:(r+2,e-1,e)if s>b else(r+1,b,e)if a<s<=b else(r,a,b))(*p)for s,e in sorted(v,key=itemgetter(1))];return p[0]
 
 # https://leetcode.com/problems/set-intersection-size-at-least-two/solutions/4457897/python-5-lines-by-dkoshman-abrn/?envType=daily-question&envId=2025-11-20
 

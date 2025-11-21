@@ -131,6 +131,14 @@ class Solution:
     def intersectionSizeTwo(self, a: List[List[int]]) -> int:
         x=y=-1;return sum((y:=(x,b-1)[i],x:=b,1+i)[2]for a,b in sorted(a,key=lambda x:(x[1],-x[0]))if(i:=a>x)or a>y)
 
+class Solution:
+    def intersectionSizeTwo(self, a: List[List[int]]) -> int:
+        x=y=-1;return sum((y:=(x,b-1)[i],x:=b,1+i)[2]for a,b in sorted(a,key=lambda x:(x[1],-x[0]))if(i:=a>x)or a>y)
+
+class Solution:
+    def intersectionSizeTwo(self, v: List[List[int]]) -> int:
+        a=b=-1;return sum((b:=(a,i-1)[t],a:=i,1+t)[2]for i,j in sorted((e,-s)for s,e in v)if(t:=-j>a)or-j>b)
+
 test('''
 757. Set Intersection Size At Least Two
 Hard
@@ -171,6 +179,15 @@ Input: intervals = [[1,3],[1,2],[0,1]]
 Output: 3
 
 Input: intervals = [[2,10],[3,7],[3,15],[4,11],[6,12],[6,16],[7,8],[7,11],[7,15],[11,12]]
+Output: 5
+
+Input: intervals = [[0,2],[0,3],[0,2]]
+Output: 2
+
+Input: intervals = [[4,14],[6,17],[7,14],[14,21],[4,7]]
+Output: 4
+
+Input: intervals = [[1,3],[3,7],[5,7],[7,8]]
 Output: 5
 
 Constraints:

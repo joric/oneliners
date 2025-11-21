@@ -56,7 +56,10 @@ class Solution:
                 c.append(coeff)
         return first == second
 
-
+# TLE
+class Solution:
+    def hasSameDigits(self, s: str) -> bool:
+        d=map(int,s);[d:=[sum(p)%10 for p in pairwise(d)]for _ in s[2:]];return eq(*d[:2])
 
 test('''
 3463. Check If Digits Are Equal in String After Operations II

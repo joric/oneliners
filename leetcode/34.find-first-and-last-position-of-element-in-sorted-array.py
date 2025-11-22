@@ -31,8 +31,8 @@ public:
     }
 };
 
-'''
 
+'''
 
 class Solution:
     def searchRange(self, v: List[int], t: int) -> List[int]:

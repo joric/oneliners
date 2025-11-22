@@ -32,6 +32,14 @@ public:
 };
 
 
+// c++20
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& v, int t) {
+        return [&, auto[a,b]=equal_range(v.begin(), v.end(), t)](){return a==b ? vector<int>{-1,-1} : vector<int>{int(a-v.begin()), int(b-v.begin()-1)}};
+    }
+};
+
 '''
 
 class Solution:

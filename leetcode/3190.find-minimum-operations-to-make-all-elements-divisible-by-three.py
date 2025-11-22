@@ -2,6 +2,9 @@ from lc import *
 
 # https://leetcode.com/problems/find-minimum-operations-to-make-all-elements-divisible-by-three/solutions/7361287/one-line-solution-by-mikposp-4ejb/?envType=daily-question&envId=2025-11-22
 
+# kotlin
+# class Solution{fun minimumOperations(a: IntArray)=a.count{it%3!=0}}
+
 class Solution:
     def minimumOperations(self, a: List[int]) -> int:
         return sum(0<x%3 for x in a)

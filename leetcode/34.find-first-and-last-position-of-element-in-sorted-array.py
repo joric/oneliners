@@ -1,5 +1,39 @@
 from lc import *
 
+# https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array
+
+
+'''cpp version with equal range (still longer than python)
+
+// https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/solutions/6652071/stdequal_range-by-beervirus-q0o3/
+
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+        auto [l,r] = equal_range(nums.begin(), nums.end(), target);
+        if (l == nums.end() || *l != target) return {-1,-1};
+        return {(int)distance(nums.begin(), l), (int)distance(nums.begin(), r) - 1};
+    }
+};
+
+
+// https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/solutions/1181940/c-short-stdequal_range-solution-by-seand-fpdh/
+
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+        auto [l, r] = equal_range(begin(nums), end(nums), target);
+        if (l == end(nums) || *l != target)
+            return {-1, -1};
+
+        int i = l - begin(nums), j = r - 1 - begin(nums);
+        return {i, j};
+    }
+};
+
+'''
+
+
 class Solution:
     def searchRange(self, v: List[int], t: int) -> List[int]:
         return(v.index(t),len(v)-1-v[::-1].index(t))if v.count(t)else(-1,-1)

@@ -18,7 +18,7 @@ class Solution:
     def kthGrammar(self, n: int, k: int) -> int:
         return int.bit_count(k-1)&1
 
-# cpp version is actually shorter (!)
+# cpp is shorter here (also maybe equal_range problems could be shorter because python doesn't have it)
 # return popcount(k-1u)&1;
 
 class Solution:

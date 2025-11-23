@@ -27,7 +27,7 @@ class Solution:
 
 class Solution:
     def maxSumDivThree(self, a: List[int]) -> int:
-        return(f:=cache(lambda i,r:i<len(a)and max(f(i+1,r),a[i]+f(i+1,(r+a[i])%3))or r and-99))(0,0)
+        return(f:=cache(lambda i,r:i<len(a)and max(f(i+1,r),a[i]+f(i+1,(r+a[i])%3))or-99*r))(0,0)
 
 test('''
 1262. Greatest Sum Divisible by Three

@@ -6,16 +6,12 @@ class Solution:
     def prefixesDivBy5(self, a: List[int]) -> List[bool]:
         return [*map(not_,accumulate(a,lambda q,v:(q*2+v)%5))]
 
+# https://leetcode.com/problems/binary-prefix-divisible-by-5/solutions/411320/python-3-one-line-9945-by-ye15-0bgx/?envType=daily-question&envId=2025-11-24
+
 class Solution:
     def prefixesDivBy5(self, n: List[int]) -> List[bool]:
         n=''.join(str(a)for a in n)
         return [ not(int(n[:i+1],2)%5) for i in range(len(n))]
-
-# https://leetcode.com/problems/binary-prefix-divisible-by-5/solutions/411320/python-3-one-line-9945-by-ye15-0bgx/?envType=daily-question&envId=2025-11-24
-
-class Solution:
-    def prefixesDivBy5(self, A: List[int]) -> List[bool]:
-        return [x == 0 for x in accumulate(A, lambda x, y: (2*x+y)%5)]
 
 # https://leetcode.com/problems/binary-prefix-divisible-by-5/solutions/551755/python-one-liners-explained-by-rmoskalen-369y/?envType=daily-question&envId=2025-11-24
 

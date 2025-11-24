@@ -29,7 +29,7 @@ class Solution:
 
 class Solution:
     def prefixesDivBy5(self, a: List[int]) -> List[bool]:
-        n=0;return[(n:=2*n+i)%5<1 for i in a]
+        t=0;return[1>(t:=2*t+x)%5 for x in a]
 
 test('''
 1018. Binary Prefix Divisible By 5

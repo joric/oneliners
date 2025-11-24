@@ -31,7 +31,7 @@ class Solution:
 
 class Solution:
     def prefixesDivBy5(self, a: List[int]) -> List[bool]:
-            return[x%5<1 for x in accumulate(a,lambda x,y:x*2+y)]
+        return[x%5<1 for x in accumulate(a,lambda x,y:x*2+y)]
 
 class Solution:
     def prefixesDivBy5(self, a: List[int]) -> List[bool]:

@@ -27,6 +27,10 @@ class Solution:
 
 class Solution:
     def smallestRepunitDivByK(self, k: int) -> int:
+        return~next((~i-1 for i in range(k)if(n:=n*10+1)%k<1),n:=0)
+
+class Solution:
+    def smallestRepunitDivByK(self, k: int) -> int:
         n=0;return-next((~i for i in range(k)if(n:=n*10+1)%k<1),1)
 
 test('''

@@ -25,6 +25,10 @@ class Solution:
     def smallestRepunitDivByK(self, k: int) -> int:
         r=0;return next((n for n in range(1,k+1)if(r:=(r*10+1)%k)<1),-1)
 
+class Solution:
+    def smallestRepunitDivByK(self, k: int) -> int:
+        n=0;return-next((~i for i in range(k)if(n:=n*10+1)%k<1),1)
+
 test('''
 1015. Smallest Integer Divisible by K
 Solved

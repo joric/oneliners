@@ -21,6 +21,10 @@ class Solution:
     def numberOfPaths(self, x: List[List[int]], k: int) -> int:
         m,n=len(x),len(x[0]);return+((f:=cache(lambda i,j,p:i<m and j<n and(1>(p:=(p+x[i][j])%k)and i==m-1 and j==n-1 or(f(i+1,j,p)+f(i,j+1,p))%(10**9+7))))(0,0,0),f.cache_clear())[0]
 
+class Solution:
+    def numberOfPaths(self, x: List[List[int]], k: int) -> int:
+        return+((f:=cache(lambda i,j,p:i<(m:=len(x))and j<(n:=len(x[0]))and(1>(p:=(p+x[i][j])%k)and i>m-2 and j>n-2 or f(i+1,j,p)+f(i,j+1,p))))(0,0,0),f.cache_clear())[0]%(10**9+7)
+
 test('''
 2435. Paths in Matrix Whose Sum Is Divisible by K
 Hard

@@ -1,5 +1,16 @@
 from lc import *
 
+# https://leetcode.com/problems/maximum-subarray-sum-with-length-divisible-by-k/solutions/6124606/dp-in-5-lines-of-python3-by-metaphysical-j29a/?envType=daily-question&envId=2025-11-27
+
+class Solution:
+    def maxSubarraySum(self, a: List[int], k: int) -> int:
+        n = len(a)
+        p = [0,*accumulate(a)]
+        d = [-inf]*(n+1)
+        for i in range(k,n+1):
+            d[i]=(p[i]-p[i-k])+max(0,d[i-k])
+        return max(d)
+
 # https://leetcode.com/problems/maximum-subarray-sum-with-length-divisible-by-k/solutions/6141294/memoziationrecursive-solution-by-farzan_-uqzy/?envType=daily-question&envId=2025-11-27
 
 class Solution:
@@ -18,18 +29,26 @@ class Solution:
 # https://leetcode.com/problems/maximum-subarray-sum-with-length-divisible-by-k/solutions/6124583/javacpython-best-time-to-buy-and-sell-st-u6fb/?envType=daily-question&envId=2025-11-27
 
 class Solution:
-    def maxSubarraySum(self, A: List[int], k: int) -> int:
+    def maxSubarraySum(self, a: List[int], k: int) -> int:
         prefix = [inf] * k
         prefix[-1] = 0
         res = -inf
-        for i, pre in enumerate(accumulate(A)):
+        for i, pre in enumerate(accumulate(a)):
             res = max(res, pre - prefix[i % k])
             prefix[i % k] = min(prefix[i % k], pre)
         return res
 
 class Solution:
     def maxSubarraySum(self, a: List[int], k: int) -> int:
-        p=[inf]*~-k+[0];return max((x-p[i%k],setitem(p,i%k,min(p[i%k],x)))[0]for i,x in enumerate(accumulate(a)))
+        p=defaultdict(lambda:inf);p[k-1]=0;return max((s-p[t:=i%k],p.update({t:min(s,p[t])}))[0]for i,s in enumerate(accumulate(a)))
+
+class Solution:
+    def maxSubarraySum(self, a: List[int], k: int) -> int:
+        p=[inf]*~-k+[0];return max((s-p[i%k],setitem(p,i%k,min(p[i%k],s)))[0]for i,s in enumerate(accumulate(a)))
+
+class Solution:
+    def maxSubarraySum(self, a: List[int], k: int) -> int:
+        p=[inf]*~-k+[0];return max((s-p[t:=i%k],setitem(p,t,min(s,p[t])))[0]for i,s in enumerate(accumulate(a)))
 
 class Solution:
     def maxSubarraySum(self, a: List[int], k: int) -> int:

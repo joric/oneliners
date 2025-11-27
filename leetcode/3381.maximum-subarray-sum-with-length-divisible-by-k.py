@@ -1,5 +1,21 @@
 from lc import *
 
+# https://leetcode.com/problems/maximum-subarray-sum-with-length-divisible-by-k/solutions/7377435/three-simple-lines-of-code-by-mikposp/
+
+class Solution:
+    def maxSubarraySum(self, a: List[int], k: int) -> int:
+        res,p = -inf,[0,*accumulate(a)]
+        for i in range(k):
+            q = -inf
+            for j in range(i+k,len(p),k):
+                q = (0,q)[q>0]+p[j]-p[j-k]
+                res = max(res,q)
+        return res
+
+class Solution:
+    def maxSubarraySum(self, a: List[int], k: int) -> int:
+        p=[0,*accumulate(a)];return max(max(accumulate((p[j]-p[j-k]for j in range(i+k,len(p),k)),lambda q,v:(0,q)[q>0]+v,initial=-inf))for i in range(k))
+
 # https://leetcode.com/problems/maximum-subarray-sum-with-length-divisible-by-k/solutions/6124606/dp-in-5-lines-of-python3-by-metaphysical-j29a/?envType=daily-question&envId=2025-11-27
 
 class Solution:
@@ -26,17 +42,23 @@ class Solution:
         q=lambda l,r:l and s[r]-s[l-1]or s[r]
         return max(map(f:=cache(lambda i:i>=k-1 and max(q(i-k+1,i),q(i-k+1,i)+f(i-k))),range(k-1,len(a))))
 
+# https://leetcode.com/problems/maximum-subarray-sum-with-length-divisible-by-k/solutions/7377346/323ms-two-liner-on-by-y9q1tghgex-28s0/
+
+class Solution:
+    def maxSubarraySum(self, a: List[int], k: int) -> int:
+        p=[0,*accumulate(a)];return  max(reduce(lambda x,y:x if inf>x>y else y,[m:=inf]+[p[i]-(m:=min(m,p[j],p[i-k]))for i in range(j+k,len(p),k)])for j in range(min(k,len(p)-k)))
+
 # https://leetcode.com/problems/maximum-subarray-sum-with-length-divisible-by-k/solutions/6124583/javacpython-best-time-to-buy-and-sell-st-u6fb/?envType=daily-question&envId=2025-11-27
 
 class Solution:
     def maxSubarraySum(self, a: List[int], k: int) -> int:
-        prefix = [inf] * k
-        prefix[-1] = 0
-        res = -inf
-        for i, pre in enumerate(accumulate(a)):
-            res = max(res, pre - prefix[i % k])
-            prefix[i % k] = min(prefix[i % k], pre)
-        return res
+        p = [inf] * k
+        p[-1] = 0
+        r = -inf
+        for i,x in enumerate(accumulate(a)):
+            r = max(r, x-p[i%k])
+            p[i % k] = min(x, p[i%k])
+        return r
 
 class Solution:
     def maxSubarraySum(self, a: List[int], k: int) -> int:

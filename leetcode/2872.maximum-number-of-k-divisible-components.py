@@ -32,6 +32,32 @@ class Solution:
     def maxKDivisibleComponents(self, n: int, e: List[List[int]], v: List[int], k: int) -> int:
         g,s=defaultdict(set),set();[g[i].add(j)or g[j].add(i)for i,j in e];f=lambda i,x:i in s and(0,0)or((s.add(i),t:=v[i]%k)and sum((p:=f(j,i),t:=(t+p[1])%k)and p[0]for j in g[i]if j!=x)+(t==0),t);return max(f(0,-1)[0],1)
 
+
+# https://leetcode.com/problems/maximum-number-of-k-divisible-components/solutions/6169655/dfs-based-solution-simple-short-code-by-6hftf/
+
+class Solution:
+    def maxKDivisibleComponents(self, n: int, e: List[List[int]], v: List[int], k: int) -> int:
+        g = defaultdict(set)
+        for i,j in e:
+            g[i].add(j)
+            g[j].add(i)
+        r = 0
+        def f(c, p):
+            nonlocal r
+            t = v[c]
+            for d in g[c]:
+                if d != p:
+                    t += f(d, c)
+            if t % k == 0:
+                r += 1
+            return t
+        f(0,-1)
+        return r
+
+class Solution:
+    def maxKDivisibleComponents(self, n: int, e: List[List[int]], v: List[int], k: int) -> int:
+        g,r=defaultdict(set),[0];[g[i].add(j)or g[j].add(i)for i,j in e];(f:=lambda c,p:(t:=v[c]+sum(f(d,c)for d in g[c]if d!=p),setitem(r,0,r[0]+((t%k)<1)),t)[0])(0,-1);return r[0]
+
 test('''
 2872. Maximum Number of K-Divisible Components
 Hard
@@ -67,12 +93,18 @@ Example 2:
 
 Input: n = 7, edges = [[0,1],[0,2],[1,3],[1,4],[2,5],[2,6]], values = [3,0,6,1,5,2,1], k = 3
 Output: 3
+
 Explanation: We remove the edge connecting node 0 with 2, and the edge connecting node 0 with 1. The resulting split is valid because:
 - The value of the component containing node 0 is values[0] = 3.
 - The value of the component containing nodes 2, 5, and 6 is values[2] + values[5] + values[6] = 9.
 - The value of the component containing nodes 1, 3, and 4 is values[1] + values[3] + values[4] = 6.
 It can be shown that no other valid split has more than 3 connected components.
  
+
+Other examples:
+
+Input: n = 1, edges = [], values = [0], k = 1
+Output: 1
 
 Constraints:
 

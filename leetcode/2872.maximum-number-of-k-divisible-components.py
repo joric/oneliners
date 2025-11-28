@@ -58,6 +58,10 @@ class Solution:
     def maxKDivisibleComponents(self, n: int, e: List[List[int]], v: List[int], k: int) -> int:
         g,r=defaultdict(set),[0];[g[i].add(j)or g[j].add(i)for i,j in e];(f:=lambda c,p:(t:=v[c]+sum(f(d,c)for d in g[c]if d!=p),setitem(r,0,r[0]+((t%k)<1)),t)[0])(0,-1);return r[0]
 
+class Solution:
+    def maxKDivisibleComponents(self, n: int, e: List[List[int]], v: List[int], k: int) -> int:
+        g=defaultdict(set);[g[i].add(j)or g[j].add(i)for i,j in e];return(f:=lambda c,p,r:(t:=v[c]+sum((u:=f(d,c,r),r:=u[1])[0][0]for d in g[c]if d!=p),r+(t%k<1)))(0,-1,0)[1]
+
 test('''
 2872. Maximum Number of K-Divisible Components
 Hard
@@ -105,6 +109,10 @@ Other examples:
 
 Input: n = 1, edges = [], values = [0], k = 1
 Output: 1
+
+Input: n = 9, edges = [[1,2],[1,7],[0,6],[0,8],[0,3],[3,4],[0,5],[2,5]], values = [1,4,4,0,2,1,1,6,2], k = 7
+Output: 2
+
 
 Constraints:
 

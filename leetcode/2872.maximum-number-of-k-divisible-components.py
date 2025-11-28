@@ -36,6 +36,28 @@ class Solution:
 # https://leetcode.com/problems/maximum-number-of-k-divisible-components/solutions/6169655/dfs-based-solution-simple-short-code-by-6hftf/
 
 class Solution:
+    def maxKDivisibleComponents(self, n: int, edges: List[List[int]], values: List[int], k: int) -> int:
+        res = 0
+        adj = defaultdict(list)
+        for s,e in edges:
+            adj[s].append(e)
+            adj[e].append(s)
+
+        def dfs(cur, par):
+            nonlocal res
+            total = values[cur]
+
+            for child in adj[cur]:
+                if child != par:
+                    total += dfs(child, cur)
+            if total % k == 0 :
+                res += 1
+            return total
+
+        dfs(0, -1)
+        return res
+
+class Solution:
     def maxKDivisibleComponents(self, n: int, e: List[List[int]], v: List[int], k: int) -> int:
         g = defaultdict(set)
         for i,j in e:
@@ -60,7 +82,7 @@ class Solution:
 
 class Solution:
     def maxKDivisibleComponents(self, n: int, e: List[List[int]], v: List[int], k: int) -> int:
-        g=defaultdict(set);[g[i].add(j)or g[j].add(i)for i,j in e];return(f:=lambda c,p,r:(t:=v[c]+sum((u:=f(d,c,r),r:=u[1])[0][0]for d in g[c]if d!=p),r+(t%k<1)))(0,-1,0)[1]
+        g=defaultdict(set);[g[i].add(j)or g[j].add(i)for i,j in e];return(f:=lambda c,p,r=0:(t:=v[c]+sum((u:=f(d,c,r),r:=u[1])[0][0]for d in g[c]if d!=p),r+(t%k<1)))(0,-1)[1]
 
 test('''
 2872. Maximum Number of K-Divisible Components

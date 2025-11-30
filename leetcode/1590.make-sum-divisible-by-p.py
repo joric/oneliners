@@ -25,6 +25,8 @@ class Solution:
                 n = min(n, i-c[k])
         return n if n < len(a) else -1
 
+# POTD 2023-11-30
+
 class Solution:
     def minSubarray(self, a: List[int], p: int) -> int:
         c,n,t={0:-1},len(a),sum(a)%p;return(-1,n:=min(i-c[k]for i,x in enumerate(accumulate(a))if setitem(c,x%p,i)or(k:=(x-t)%p)in c))[n<len(a)]

@@ -11,9 +11,21 @@ class Solution:
             s -= b.pop()
         return s//n
 
+# POTD 2025-12-01
+
 class Solution:
     def maxRunTime(self, n: int, b: List[int]) -> int:
-        b.sort();s=sum(b);return next(s//n for _ in b*2if not(b[-1]>s/n and(n:=n-1,s:=s-b.pop())))
+        b.sort();s=sum(b);return next(s//n for _ in[0]*n if not(s/n<b[-1]and(n:=n-1,s:=s-b.pop())))
+
+class Solution:
+    def maxRunTime(self, n: int, b: List[int]) -> int:
+        b.sort();s=sum(b);return next(s//n for _ in[0]*n if s/n>=b[-1]or(n:=n-1,s:=s-b.pop())==0)
+
+# https://leetcode.com/problems/maximum-running-time-of-n-computers/solutions/7384390/swift1liner-by-orchidhunter-nex5/
+
+class Solution:
+    def maxRunTime(self, n: int, b: List[int]) -> int:
+        return bisect_left(range(1,10**15),1,key=lambda m:sum(min(x,m)for x in b)<n*m)
 
 test('''
 2141. Maximum Running Time of N Computers
@@ -63,6 +75,11 @@ Example 3:
 
 Input: n = 3, batteries = [10,10,3,5]
 Output: 8
+
+Other examples:
+
+Input: n = 1, batteries = [1]
+Output: 1
 
 Constraints:
 

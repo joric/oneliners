@@ -27,6 +27,10 @@ class Solution:
     def maxRunTime(self, n: int, b: List[int]) -> int:
         return bisect_left(range(1,10**15),1,key=lambda m:sum(min(x,m)for x in b)<n*m)
 
+class Solution:
+    def maxRunTime(self, n: int, b: List[int]) -> int:
+        return~-bisect_left(range(9**15),1,key=lambda m:n*m>sum(min(x,m)for x in b))
+
 test('''
 2141. Maximum Running Time of N Computers
 Hard

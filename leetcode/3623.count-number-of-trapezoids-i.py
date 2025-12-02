@@ -14,7 +14,14 @@ class Solution:
 
 class Solution:
     def countTrapezoids(self, p: List[List[int]]) -> int:
-        h=[comb(c,2)for c in Counter(y for _,y in p).values()];return((sum(h)**2-sum(map(mul,h,h)))//2)%(10**9+7)
+        h=[comb(c,2)for c in Counter(y for _,y in p).values()]
+        t=sum(h)
+        s=sum(map(mul,h,h))
+        return(t*t-s)//2%(10**9+7)
+
+class Solution:
+    def countTrapezoids(self, p: List[List[int]]) -> int:
+        h=[comb(c,2)for c in Counter(y for _,y in p).values()];return(sum(h)**2-sum(map(mul,h,h)))//2%(10**9+7)
 
 # https://leetcode.com/problems/count-number-of-trapezoids-i/solutions/7386223/two-simple-lines-of-code-by-mikposp-famp/?envType=daily-question&envId=2025-12-02
 
@@ -49,6 +56,10 @@ class Solution:
 class Solution:
     def countTrapezoids(self, p: List[List[int]]) -> int:
         t=0;return sum((c:=comb(n,2))*((t:=t+c)-c)for n in Counter(y for _,y in p).values())%(10**9+7)
+
+class Solution:
+    def countTrapezoids(self, p: List[List[int]]) -> int:
+        m,t=Counter(y for _,y in p),0;return sum((c:=comb(m[k],2))*((t:=t+c)-c)for k in m)%(10**9+7)
 
 test('''
 3623. Count Number of Trapezoids I

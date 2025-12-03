@@ -30,26 +30,7 @@ class Solution:
 
 class Solution:
     def countTrapezoids(self, p: List[List[int]]) -> int:
-        c=[Counter()for _ in[0]*4]
-        for(a,b),(d,e)in combinations(p,2):
-            u,v=d-a,e-b
-            g=gcd(u,v)
-            u,v=u//g,v//g
-            if u<0 or(u==0 and v<0):
-                u,v=-u,-v
-            i=u*b-v*a
-            x,y=a+d,b+e
-            for j,t in enumerate(((u,v),(u,v,i),(x,y),(x,y,u,v,i))):
-                c[j][t]+=1
-        return sum([1,-1,-1,1][j]*sum(comb(v,2)for v in t.values())for j,t in enumerate(c))
-
-class Solution:
-    def countTrapezoids(self, p: List[List[int]]) -> int:
-        c=[Counter()for _ in[0]*4];[(u:=d-a,v:=e-b,g:=gcd(u,v),u:=u//g,v:=v//g,(u<0 or u==0>v)and(u:=-u,v:=-v),i:=u*b-v*a,x:=a+d,y:=b+e,[c[j].update([t])for j,t in enumerate(((u,v),(u,v,i),(x,y),(x,y,u,v,i)))])for(a,b),(d,e)in combinations(p,2)];return sum((1,-1,-1,1)[j]*sum(comb(v,2)for v in t.values())for j,t in enumerate(c))
-
-class Solution:
-    def countTrapezoids(self, p: List[List[int]]) -> int:
-        c=[Counter()for _ in[0]*4];[(u:=d-a,v:=e-b,g:=gcd(u,v),u:=u//g,v:=v//g,(u<0 or u==0>v)and(u:=-u,v:=-v),i:=u*b-v*a,r:=(a+d,b+e),[c[j].update([t])for j,t in enumerate(((u,v),(u,v,i),r,(*r,u,v,i)))])for(a,b),(d,e)in combinations(p,2)];return sum((1,-1,-1,1)[j]*sum(comb(v,2)for v in t.values())for j,t in enumerate(c))
+        t=[Counter()for _ in[0]*4];[(u:=c-a,v:=d-b,g:=gcd(u,v),u:=u//g,v:=v//g,(u<0 or u==0>v)and(u:=-u,v:=-v),i:=u*b-v*a,r:=(a+c,b+d),[t[j].update([p])for j,p in enumerate(((u,v),(u,v,i),r,(*r,u,v,i)))])for(a,b),(c,d)in combinations(p,2)];return sum((1,-1,-1,1)[j]*sum(comb(v,2)for v in p.values())for j,p in enumerate(t))
 
 test('''
 3625. Count Number of Trapezoids II

@@ -27,7 +27,7 @@ class Solution:
 
 class Solution:
     def countTrapezoids(self, p: List[List[int]]) -> int:
-        t=[Counter()for _ in[0]*4];[(u:=c-a,v:=d-b,g:=gcd(u,v),u:=u//g,v:=v//g,(u<0 or u==0>v)and(u:=-u,v:=-v),r:=u*b-v*a,q:=(a+c,b+d),[t[i].update([d])for i,d in enumerate(((u,v),(u,v,r),(*q,u,v,r),q))])for(a,b),(c,d)in combinations(p,2)];return sum((-1)**i*sum(comb(d[k],2)for k in d)for i,d in enumerate(t))
+        s=[Counter()for _ in[0]*4];[(u:=c-a,v:=d-b,g:=gcd(u,v),u:=u//g,v:=v//g,(u<0 or u==0>v)and(u:=-u,v:=-v),r:=u*b-v*a,q:=(a+c,b+d),[s[i].update([t])for i,t in enumerate(((u,v),(u,v,r),(*q,u,v,r),q))])for(a,b),(c,d)in combinations(p,2)];return sum((-1)**i*sum(comb(t[k],2)for k in t)for i,t in enumerate(s))
 
 test('''
 3625. Count Number of Trapezoids II

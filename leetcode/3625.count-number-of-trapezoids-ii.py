@@ -3,13 +3,13 @@ from lc import *
 # https://leetcode.com/problems/count-number-of-trapezoids-ii/solutions/6980653/python-parallel-lines-and-midpoints-by-a-5gr1/?envType=daily-question&envId=2025-12-03
 
 class Solution:
-    def countTrapezoids(self, A: List[List[int]]) -> int:
+    def countTrapezoids(self, points: List[List[int]]) -> int:
         slopes = Counter()
         lines = Counter()
         mids = Counter()
         midlines = Counter()
 
-        for (x1, y1), (x2, y2) in combinations(A, 2):
+        for (x1, y1), (x2, y2) in combinations(points, 2):
             dx, dy = x2 - x1, y2 - y1
             g = gcd(dx, dy)
             dx, dy = dx // g, dy // g

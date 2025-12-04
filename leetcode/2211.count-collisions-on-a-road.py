@@ -4,6 +4,10 @@ from lc import *
 
 class Solution:
     def countCollisions(self, s: str) -> int:
+        return ((len(s)-len(s:=re.sub('RL','S',s)))*2+len(s)-len(re.sub('R+S','S',re.sub('SL+','S',s))))
+
+class Solution:
+    def countCollisions(self, s: str) -> int:
         return len(s.lstrip('L').rstrip('R').replace('S',''))
 
 test('''

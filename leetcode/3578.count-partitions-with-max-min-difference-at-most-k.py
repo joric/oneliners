@@ -6,23 +6,25 @@ from lc import *
 class Solution:
     def countPartitions(self, a: List[int], k: int) -> int:
         @cache
-        def f(i, k):
+        def f(i):
             n = len(a)
             if i == n:
                 return 1
             w = 0
             l,r = inf,-inf
-            for j in range(i, n):
+            for j in range(i,n):
                 x = a[j]
-                if x < l:
-                    l = x
-                if x > r:
-                    r = x
+                l = min(l,x)
+                r = max(r,x)
                 if r - l > k:
                     break
-                w = (w + f(j + 1, k))
+                w += f(j+1)
             return w
-        return f(0, k) %(10**9+7)
+        return f(0) %(10**9+7)
+
+class Solution:
+    def countPartitions(self, a: List[int], k: int) -> int:
+        return(f:=cache(lambda i,l=inf,r=-inf:i<(n:=len(a))and sum(f(j+1)for j in range(i,n)if(r:=max(r,a[j]))-(l:=min(l,a[j]))<=k)%(10**9+7)or 1))(0)
 
 # https://leetcode.com/problems/count-partitions-with-max-min-difference-at-most-k/description/?envType=daily-question&envId=2025-12-06
 

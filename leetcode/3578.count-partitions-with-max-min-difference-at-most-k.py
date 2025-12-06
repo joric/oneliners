@@ -85,15 +85,6 @@ class Solution:
 
 class Solution:
     def countPartitions(self, a: List[int], k: int) -> int:
-        v=j=-1;p,w=[0,1],SortedList()
-        for i,x in enumerate(a):
-            w.add(x)
-            all(j<i and k<w[-1]-w[0]!=w.remove(a[j:=j+1])for _ in a)
-            p.append((v:=p[-1]-p[j+1])+p[-1])
-        return v%(10**9+7)
-
-class Solution:
-    def countPartitions(self, a: List[int], k: int) -> int:
         v=j=-1;p,w=[0,1],SortedList();[(w.add(x),all(j<i and k<w[-1]-w[0]!=w.remove(a[j:=j+1])for _ in a),p.append(p[-1]+(v:=p[-1]-p[j+1])))for i,x in enumerate(a)];return v%(10**9+7)
 
 test('''

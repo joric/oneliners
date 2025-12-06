@@ -1,5 +1,29 @@
 from lc import *
 
+# https://leetcode.com/problems/count-partitions-with-max-min-difference-at-most-k/solutions/6821972/recursive-to-optimal-solution-memoizatio-qlce/
+# TLE
+
+class Solution:
+    def countPartitions(self, a: List[int], k: int) -> int:
+        @cache
+        def f(i, k):
+            n = len(a)
+            if i == n:
+                return 1
+            w = 0
+            l,r = inf,-inf
+            for j in range(i, n):
+                x = a[j]
+                if x < l:
+                    l = x
+                if x > r:
+                    r = x
+                if r - l > k:
+                    break
+                w = (w + f(j + 1, k))
+            return w
+        return f(0, k) %(10**9+7)
+
 # https://leetcode.com/problems/count-partitions-with-max-min-difference-at-most-k/description/?envType=daily-question&envId=2025-12-06
 
 class Solution:
@@ -56,6 +80,10 @@ class Solution:
 class Solution:
     def countPartitions(self, a: List[int], k: int) -> int:
         p,v,j,w=[0,1],-1,0,SortedList();[(w.add(x),all(j<=i and k<w[-1]-w[0]and(w.remove(a[j]),j:=j+1)for _ in a),p.append(((v:=p[-1]-p[j])+p[-1])))for i,x in enumerate(a)];return v%(10**9+7)
+
+class Solution:
+    def countPartitions(self, a: List[int], k: int) -> int:
+        return sum(1 for i in range(len(a)) for j in range(i,len(a)) if max(a[i:j+1])-min(a[i:j+1])<=k)%(10**9+7)
 
 test('''
 3578. Count Partitions With Max-Min Difference at Most K

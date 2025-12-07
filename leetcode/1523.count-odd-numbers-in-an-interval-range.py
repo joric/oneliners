@@ -1,8 +1,14 @@
 from lc import *
 
+# https://leetcode.com/problems/count-odd-numbers-in-an-interval-range/?envType=daily-question&envId=2025-12-07
+
 class Solution:
     def countOdds(self, low: int, high: int) -> int:
         return (high + 1)//2 - low//2
+
+class Solution:
+    def countOdds(self, l: int, h: int) -> int:
+        return-~h//2-l//2
 
 test('''
 1523. Count Odd Numbers in an Interval Range

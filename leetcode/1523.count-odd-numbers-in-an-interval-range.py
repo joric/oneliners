@@ -8,7 +8,7 @@ class Solution:
 
 class Solution:
     def countOdds(self, l: int, h: int) -> int:
-        return(h-l+1)//2+(h&l&1)
+        return(h+1-l)//2+(h&l&1)
 
 class Solution:
     def countOdds(self, l: int, h: int) -> int:

@@ -20,6 +20,10 @@ class Solution:
     def specialTriplets(self, a: List[int]) -> int:
         l,r=Counter(),Counter();return sum((r[x/2],r.update({x:l[x*2]}),l.update([x]))[0]for x in a)%(10**9+7)
 
+class Solution:
+    def specialTriplets(self, a: List[int]) -> int:
+        c=Counter;l,r=c(),c();return sum((r[x/2],r.update({x:l[x*2]}),l.update([x]))[0]for x in a)%(10**9+7)
+
 test('''
 3583. Count Special Triplets
 Solved

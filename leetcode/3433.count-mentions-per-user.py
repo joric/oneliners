@@ -45,7 +45,7 @@ class Solution:
 
 class Solution:
     def countMentions(self, n: int, e: List[List[str]]) -> List[int]:
-        r,o,u,s=[0]*n,[1]*n,range(n),setitem;e.sort(key=lambda x:(int(x[1]),x[0]=='MESSAGE'));[b=='MESSAGE'and((p=='ALL'and[s(r,i,r[i]+1)for i in u])or(p=='HERE'and(q:=int(t),[s(r,i,r[i]+1)for i in u if o[i]<=q]))or[s(r,int(i),r[int(i)]+1)for i in p.replace('id','').split()])or s(o,int(p),int(t)+60)for b,t,p in e];return r
+        r,o,u,s=[0]*n,[1]*n,range(n),setitem;e.sort(key=lambda x:(int(x[1]),x[0]=='MESSAGE'));[b=='MESSAGE'and((p=='ALL'and[s(r,i,r[i]+1)for i in u])or(p=='HERE'and(q:=int(t),[s(r,i,r[i]+1)for i in u if o[i]<=q]))or[s(r,i:=int(g[2:]),r[i]+1)for g in p.split()])or s(o,int(p),int(t)+60)for b,t,p in e];return r
 
 test('''
 3433. Count Mentions Per User

@@ -40,14 +40,14 @@ class Solution:
                 setitem(u,int(p),int(t)+60)
             else:
                 if p != 'HERE' and p != 'ALL':
-                    [c.update([int(t[2:])])for t in p.split()]
+                    [c.update([int(i[2:])])for i in p.split()]
                 else:
                     [c.update([i])for i in r if p=='ALL'or u[i]<=int(t)]
         return[c[i]for i in r]
 
 class Solution:
     def countMentions(self, n: int, e: List[List[str]]) -> List[int]:
-        c,u,r,o=Counter(),[1]*n,range(n),'OFFLINE';e.sort(key=lambda x:(int(x[1]),x[0]!=o));[m==o and[setitem(u,int(p),int(t)+60)]or'HERE'!=p!='ALL' and[c.update([int(t[2:])])for t in p.split()]or [c.update([i])for i in r if p=='ALL'or u[i]<=int(t)]for m,t,p in e];return[c[i]for i in r]
+        c,u,r,o=Counter(),[1]*n,range(n),'OFFLINE';e.sort(key=lambda x:(int(x[1]),x[0]!=o));[m==o and[setitem(u,int(p),int(t)+60)]or'HERE'!=p!='ALL'and[c.update([int(i[2:])])for i in p.split()]or[c.update([i])for i in r if p=='ALL'or u[i]<=int(t)]for m,t,p in e];return[c[i]for i in r]
 
 test('''
 3433. Count Mentions Per User

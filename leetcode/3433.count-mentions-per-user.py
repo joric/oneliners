@@ -119,7 +119,10 @@ At timestamp 10, id0 goes offline.
 
 At timestamp 12, "HERE" is mentioned. Because id0 is still offline, they will not be mentioned. mentions = [0,1]
 
- 
+Other examples:
+
+Input: numberOfUsers = 3, events = [["MESSAGE","1","id0 id1"],["MESSAGE","5","id2"],["MESSAGE","6","ALL"],["OFFLINE","5","2"]]
+Output: [2,2,2]
 
 Constraints:
 

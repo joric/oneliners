@@ -36,7 +36,7 @@ class Solution:
         c,u,r,o=Counter(),[1]*n,range(n),'OFFLINE'
         e.sort(key=lambda x:(int(x[1]),x[0]!=o))
         for m,t,p in e:
-            if m == o:
+            if m==o:
                 setitem(u,int(p),int(t)+60)
             else:
                 'id' in p and[c.update([int(i[2:])])for i in p.split()]or[c.update([i])for i in r if p=='ALL'or u[i]<=int(t)]

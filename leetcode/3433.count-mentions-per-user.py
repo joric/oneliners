@@ -37,7 +37,7 @@ class Solution:
                         if online[user] <= int(stamp):
                             mentions[user]+= 1
                 else:
-                    for id in mentioned.replace('id','').split(" "):
+                    for id in mentioned.replace('id','').split():
                         mentions[int(id)]+= 1
             else:
                 online[int(mentioned)] = int(stamp) + 60

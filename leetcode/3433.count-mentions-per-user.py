@@ -1,24 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/count-mentions-per-user/solutions/6329892/python-detailed-explanation-by-1dx8mmgpl-2h1w/?envType=daily-question&envId=2025-12-12
-
-class Solution:
-    def countMentions(self, n: int, e: List[List[str]]) -> List[int]:
-        r = [0]*n 
-        o = [1] * n
-        e.sort(key = lambda x: (int(x[1]), x[0] != 'OFFLINE'))
-        for m,t,p in e:
-            if m == 'OFFLINE':
-                setitem(o,int(p),int(t)+60)
-            else:
-                if p != 'HERE' and p != 'ALL':
-                    [setitem(r,i:=int(t[2:]),r[i]+1)for t in p.split()]
-                elif p == 'ALL':
-                    [setitem(r,i,r[i]+1)for i in range(len(o))]
-                else:
-                    [setitem(r,i,r[i]+1)for i in range(len(o))if o[i]<=int(t)]
-        return r
-
 # https://leetcode.com/problems/count-mentions-per-user/solutions/6333135/python3-simulation-ts-42-ms-18-mb-by-spa-cf57/?envType=daily-question&envId=2025-12-12
 
 class Solution:
@@ -46,6 +27,27 @@ class Solution:
 class Solution:
     def countMentions(self, n: int, e: List[List[str]]) -> List[int]:
         r,o,u,s=[0]*n,[1]*n,range(n),setitem;e.sort(key=lambda x:(int(x[1]),x[0]=='MESSAGE'));[b=='MESSAGE'and((p=='ALL'and[s(r,i,r[i]+1)for i in u])or(p=='HERE'and(q:=int(t),[s(r,i,r[i]+1)for i in u if o[i]<=q]))or[s(r,i:=int(g[2:]),r[i]+1)for g in p.split()])or s(o,int(p),int(t)+60)for b,t,p in e];return r
+
+
+# https://leetcode.com/problems/count-mentions-per-user/solutions/6329892/python-detailed-explanation-by-1dx8mmgpl-2h1w/?envType=daily-question&envId=2025-12-12
+
+class Solution:
+    def countMentions(self, n: int, e: List[List[str]]) -> List[int]:
+        c,u,r,o=Counter(),[1]*n,range(n),'OFFLINE'
+        e.sort(key=lambda x:(int(x[1]),x[0]!=o))
+        for m,t,p in e:
+            if m == o:
+                setitem(u,int(p),int(t)+60)
+            else:
+                if p != 'HERE' and p != 'ALL':
+                    [c.update([int(t[2:])])for t in p.split()]
+                else:
+                    [c.update([i])for i in r if p=='ALL'or u[i]<=int(t)]
+        return[c[i]for i in r]
+
+class Solution:
+    def countMentions(self, n: int, e: List[List[str]]) -> List[int]:
+        c,u,r,o=Counter(),[1]*n,range(n),'OFFLINE';e.sort(key=lambda x:(int(x[1]),x[0]!=o));[m==o and[setitem(u,int(p),int(t)+60)]or'HERE'!=p!='ALL' and[c.update([int(t[2:])])for t in p.split()]or [c.update([i])for i in r if p=='ALL'or u[i]<=int(t)]for m,t,p in e];return[c[i]for i in r]
 
 test('''
 3433. Count Mentions Per User

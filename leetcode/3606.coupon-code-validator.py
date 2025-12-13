@@ -8,6 +8,10 @@ class Solution:
 
 class Solution:
     def validateCoupons(self, c: List[str], b: List[str], a: List[bool]) -> List[str]:
+        return[y for x,y,z in sorted(zip(b,c,a))if z and fullmatch(r'\w+',y)and x[0]in'egpr']
+
+class Solution:
+    def validateCoupons(self, c: List[str], b: List[str], a: List[bool]) -> List[str]:
         return[y for x,y,z in sorted(zip(b,c,a))if z and match('\w+$',y)and x[0]in'egpr']
 
 class Solution:

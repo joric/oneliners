@@ -14,6 +14,10 @@ class Solution:
     def validateCoupons(self, c: List[str], b: List[str], a: List[bool]) -> List[str]:
         return[x for _,x in sorted((y,x)for x,y,z in zip(c,b,a)if z and re.fullmatch(r'\w+',x)and y[0]in'egpr')]
 
+class Solution:
+    def validateCoupons(self, c: List[str], b: List[str], a: List[bool]) -> List[str]:
+        return[x for _,x in sorted((y,x)for x,y,z in zip(c,b,a)if z and match('\w+$',x)and y[0]in'egpr')]
+
 test('''
 3606. Coupon Code Validator
 Easy

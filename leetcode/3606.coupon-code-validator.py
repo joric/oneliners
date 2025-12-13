@@ -1,6 +1,6 @@
 from lc import *
 
-# https://leetcode.com/problems/coupon-code-validator/description/?envType=daily-question&envId=2025-12-13
+# https://leetcode.com/problems/coupon-code-validator/solutions/6984863/python-one-line-solution-by-redberry33-6pdl/?envType=daily-question&envId=2025-12-13
 
 class Solution:
     def validateCoupons(self, code: List[str], businessLine: List[str], isActive: List[bool]) -> List[str]:
@@ -17,6 +17,14 @@ class Solution:
 class Solution:
     def validateCoupons(self, c: List[str], b: List[str], a: List[bool]) -> List[str]:
         return[x for _,x in sorted((y,x)for x,y,z in zip(c,b,a)if z and match(r'\w+$',x)and y[0]in'egpr')]
+
+class Solution:
+    def validateCoupons(self, c: List[str], b: List[str], a: List[bool]) -> List[str]:
+        return[x for y,x,z in sorted(zip(b,c,a))if z and match(r'\w+$',x)and y[0]in'egpr']
+
+class Solution:
+    def validateCoupons(self, c: List[str], b: List[str], a: List[bool]) -> List[str]:
+        return[y for x,y,z in sorted(zip(b,c,a))if z and match('\w+$',y)and x[0]in'egpr']
 
 test('''
 3606. Coupon Code Validator

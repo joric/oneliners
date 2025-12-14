@@ -1,5 +1,11 @@
 from lc import *
 
+# https://leetcode.com/problems/number-of-ways-to-divide-a-long-corridor/solutions/4338588/one-line-solution-by-mikposp-u0k1/?envType=daily-question&envId=2025-12-14
+
+class Solution:
+    def numberOfWays(self, c: str) -> int:
+        return prod(1+len(m.group(1))for m in re.finditer(r'S(P*)S',c[c.find('S')+1:]))%(10**9+7)if(s:=c.count('S'))and s%2==0 else 0
+
 # https://leetcode.com/problems/number-of-ways-to-divide-a-long-corridor/discuss/1709725/JavaC%2B%2BPython-Two-Solutions-with-Explanation
 
 class Solution:
@@ -38,6 +44,8 @@ class Solution:
             if x>'P':
                 a,b,c,d=c|b*(i-d)%(10**9+7),a&c-1,0,i
         return b
+
+# POTD 2025-12-14
 
 class Solution:
     def numberOfWays(self, s: str) -> int:

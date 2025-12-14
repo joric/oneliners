@@ -1,5 +1,26 @@
 from lc import *
 
+# https://leetcode.com/problems/number-of-ways-to-divide-a-long-corridor/solutions/1709725/javacpython-two-solutions-with-explanati-qpnl/?envType=daily-question&envId=2025-12-14
+
+class Solution:
+    def numberOfWays(self, s: str) -> int:
+        a = [i for i,c in enumerate(s) if c == 'S']
+        r = 1
+        for i in range(1,len(a) - 1,2):
+            r *= a[i+1] - a[i]
+        return r%(10**9+7)*(len(a)%2==0 and len(a)>=2)
+
+class Solution:
+    def numberOfWays(self, s: str) -> int:
+        a=[i for i,c in enumerate(s)if c=='S']
+        n=len(a)
+        r = prod(a[i+1]-a[i]for i in range(1,len(a)-1,2))
+        return r%(10**9+7)*(2<=n and n%2==0)
+
+class Solution:
+    def numberOfWays(self, s: str) -> int:
+        return prod(y-x for x,y in pairwise([i for i,c in enumerate(s)if c=='S'][1:-1]))%(10**9+7)*(s.count('S')%2==0)
+
 # https://leetcode.com/problems/number-of-ways-to-divide-a-long-corridor/solutions/4338588/one-line-solution-by-mikposp-u0k1/?envType=daily-question&envId=2025-12-14
 
 class Solution:
@@ -50,6 +71,7 @@ class Solution:
 class Solution:
     def numberOfWays(self, s: str) -> int:
         p=(1,0)*2;[p:=(p[2]|p[1]*(i-p[3])%(10**9+7),p[0]&p[2]-1,0,i)for i,c in enumerate(s)if c>'P'];return p[1]
+
 
 test('''
 2147. Number of Ways to Divide a Long Corridor

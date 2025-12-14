@@ -6,31 +6,6 @@ class Solution:
     def numberOfWays(self, c: str) -> int:
         return prod(1+len(m.group(1))for m in re.finditer(r'S(P*)S',c[c.find('S')+1:]))%(10**9+7)if(s:=c.count('S'))and s%2==0 else 0
 
-# https://leetcode.com/problems/number-of-ways-to-divide-a-long-corridor/discuss/1709725/JavaC%2B%2BPython-Two-Solutions-with-Explanation
-
-class Solution:
-    def numberOfWays(self, s: str) -> int:
-        a = [i for i,c in enumerate(s) if c=='S']
-        r = 1
-        for i in range(1,len(a)-1,2):
-            r *= a[i+1] - a[i]
-        return r % (10**9+7) * (len(a) % 2 == 0 and len(a) >= 2)
-
-class Solution:
-    def numberOfWays(self, s: str) -> int:
-        n=len(a:=[i for i,c in enumerate(s)if c>'P']);return(n>1,0)[n&1]*reduce(mul,(a[i+1]-a[i]for i in range(1,n-1,2)),1)%(10**9+7)
-
-class Solution:
-    def numberOfWays(self, s: str) -> int:
-        a=[i for i,c in enumerate(s)if c=='S']
-        n=len(a)
-        r = prod(a[i+1]-a[i]for i in range(1,len(a)-1,2))
-        return r%(10**9+7)*(2<=n and n%2==0)
-
-class Solution:
-    def numberOfWays(self, s: str) -> int:
-        return prod(y-x for x,y in pairwise([i for i,c in enumerate(s)if c=='S'][1:-1]))%(10**9+7)*(s.count('S')%2==0)
-
 # another solution
 
 class Solution:
@@ -56,11 +31,34 @@ class Solution:
                 a,b,c,d=c|b*(i-d)%(10**9+7),a&c-1,0,i
         return b
 
-# POTD 2025-12-14
-
 class Solution:
     def numberOfWays(self, s: str) -> int:
         p=(1,0)*2;[p:=(p[2]|p[1]*(i-p[3])%(10**9+7),p[0]&p[2]-1,0,i)for i,c in enumerate(s)if c>'P'];return p[1]
+
+# https://leetcode.com/problems/number-of-ways-to-divide-a-long-corridor/discuss/1709725/JavaC%2B%2BPython-Two-Solutions-with-Explanation
+
+class Solution:
+    def numberOfWays(self, s: str) -> int:
+        a = [i for i,c in enumerate(s) if c=='S']
+        r = 1
+        for i in range(1,len(a)-1,2):
+            r *= a[i+1] - a[i]
+        return r % (10**9+7) * (len(a) % 2 == 0 and len(a) >= 2)
+
+class Solution:
+    def numberOfWays(self, s: str) -> int:
+        n=len(a:=[i for i,c in enumerate(s)if c>'P']);return(n>1,0)[n&1]*reduce(mul,(a[i+1]-a[i]for i in range(1,n-1,2)),1)%(10**9+7)
+
+class Solution:
+    def numberOfWays(self, s: str) -> int:
+        a=[i for i,c in enumerate(s)if c=='S']
+        n=len(a)
+        r = prod(a[i+1]-a[i]for i in range(1,len(a)-1,2))
+        return r%(10**9+7)*(2<=n and n%2==0)
+
+class Solution:
+    def numberOfWays(self, s: str) -> int:
+        n=len(p:=[i for i,c in enumerate(s)if'P'<c]);return(n>1>n%2)*prod(map(sub,p[2::2],p[1::2]))%(10**9+7)
 
 test('''
 2147. Number of Ways to Divide a Long Corridor
@@ -104,7 +102,16 @@ Example 3:
 Input: corridor = "S"
 Output: 0
 Explanation: There is no way to divide the corridor because there will always be a section that does not have exactly two seats.
- 
+
+
+Other examples:
+
+Input: corridor = "P"
+Output: 0
+
+Input: corridor = "SSPSSPSSSPPSPSPPS"
+Output: 8
+
 
 Constraints:
 

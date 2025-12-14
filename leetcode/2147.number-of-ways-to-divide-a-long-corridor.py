@@ -72,7 +72,6 @@ class Solution:
     def numberOfWays(self, s: str) -> int:
         p=(1,0)*2;[p:=(p[2]|p[1]*(i-p[3])%(10**9+7),p[0]&p[2]-1,0,i)for i,c in enumerate(s)if c>'P'];return p[1]
 
-
 test('''
 2147. Number of Ways to Divide a Long Corridor
 Hard

@@ -76,7 +76,11 @@ class Solution:
 
 class Solution:
     def maxProfit(self, n: int, p: List[int], f: List[int], h: List[List[int]], b: int) -> int:
-        t=[[]for _ in p];[t[u-1].append(v-1)for u,v in h];h=lambda x,y:[max(x[i]+y[k-i]for i in range(k+1))for k in range(b+1)];z=lambda u:(x:=[0]*(b+1),y:=[0]*(b+1),[(o:=[*z(v)],x:=h(x,o[0]),y:=h(y,o[1]))for v in t[u]], (x[:c]+[max(x[k],y[k-c]+f[u]-c)for k in range(c,b+1)]for c in(p[u],p[u]>>1)))[-1];return max(next(z(0)))
+        t=[[]for _ in p];[t[u-1].append(v-1)for u,v in h];h=lambda x,y:[max(x[i]+y[k-i]for i in range(k+1))for k in range(b+1)];z=lambda u:(x:=[0]*(b+1),y:=[0]*(b+1),[(o:=[*z(v)],x:=h(x,o[0]),y:=h(y,o[1]))for v in t[u]],(x[:c]+[max(x[k],y[k-c]+f[u]-c)for k in range(c,b+1)]for c in(p[u],p[u]>>1)))[3];return max(next(z(0)))
+
+class Solution:
+    def maxProfit(self, n: int, p: List[int], f: List[int], h: List[List[int]], b: int) -> int:
+        t=[[]for _ in p];[t[u-1].append(v-1)for u,v in h];h=lambda x,y:[max(x[i]+y[k-i]for i in range(k+1))for k in range(b+1)];z=lambda u,x=[0]*(b+1),y=[0]*(b+1):([(x:=h(x,(o:=[*z(v)])[0]),y:=h(y,o[1]))for v in t[u]],[x[:c]+[max(x[k],y[k-c]+f[u]-c)for k in range(c,b+1)]for c in(p[u],p[u]>>1)])[1];return max(z(0)[0])
 
 test('''
 3562. Maximum Profit from Trading Stocks with Discounts

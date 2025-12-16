@@ -68,6 +68,8 @@ class Solution:
             return g(p[u]),g(p[u]>>1)
         return max(z(0,-1)[0])
 
+# POTD 2025-12-16
+# 16240 ms
 class Solution:
     def maxProfit(self, n: int, p: List[int], f: List[int], h: List[List[int]], b: int) -> int:
         t=[[]for _ in range(n)];[t[u-1].append(v-1)for u,v in h];h=lambda x,y:(z:=[-inf]*len(x),[setitem(z,i+j,max(z[i+j],a+y[j]))for i,a in enumerate(x)for j in range(len(x)-i)])[0];z=lambda u,q:(x:=[0]*(b+1),y:=[0]*(b+1),[(x:=h(x,(c:=z(v, u))[0]),y:=h(y,c[1]))for v in t[u]if v!=q],((g:=lambda c:(r:=x[:],[setitem(r,k,max(r[k],y[k-c]+f[u]-c))for k in range(c,b+1)])[0])(p[u]),g(p[u]>>1)))[3];return max(z(0,-1)[0])

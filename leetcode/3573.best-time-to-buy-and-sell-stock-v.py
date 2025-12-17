@@ -61,6 +61,10 @@ class Solution:
     def maximumProfit(self, p: List[int], k: int) -> int:
         f=cache(lambda i,j,e:(max(f(i-1,j,e),f(i-1,j-1,0)+p[i]*(1,-1)[e<2])if e else max(f(i-1,j,0),f(i-1,j,1)+p[i],f(i-1,j,2)-p[i]))if i>-1<j else(-inf,0)[e<=0<=j]);return(f(len(p)-1,k,0),f.cache_clear())[0]
 
+class Solution:
+    def maximumProfit(self, p: List[int], k: int) -> int:
+        f=cache(lambda i,j,e:(max(f(i-1,j,e),f(i-1,j-1,0)+p[i]*~-(~-e*2))if e else max(f(i-1,j,0),f(i-1,j,1)+p[i],f(i-1,j,2)-p[i]))if i>-1<j else(-inf,0)[e<=0<=j]);return(f(len(p)-1,k,0),f.cache_clear())[0]
+
 test('''
 3573. Best Time to Buy and Sell Stock V
 Medium

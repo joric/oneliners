@@ -33,6 +33,11 @@ class Solution:
     def maxProfit(self, P: List[int], S: List[int], k: int) -> int:
         a=accumulate;c=[0,*a(map(mul,P,S))];v=[0,*a(P)];return c[-1]+max([0,*(-c[i+k]+c[i]+v[i+k]-v[i+k//2]for i in range(len(P)-k+1))])
 
+# TLE
+class Solution:
+    def maxProfit(self, p: List[int], s: List[int], k: int) -> int:
+        return sum(map(mul,p,s))+max([0]+[sum(p[i+k//2:i+k])-sum(map(mul,p[i:i+k],s[i:i+k]))for i in range(len(p)-k+1)])
+
 class Solution:
     def maxProfit(self, p: List[int], s: List[int], k: int) -> int:
         c,v=[[0,*accumulate(x)]for x in(map(mul,p,s),p)];return c[-1]+max(0,*[x-y+z-w for x,y,z,w in zip(c,c[k:],v[k:],v[k//2:])])

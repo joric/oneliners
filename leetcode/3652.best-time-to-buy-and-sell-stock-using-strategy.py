@@ -1,6 +1,6 @@
 from lc import *
 
-# https://leetcode.com/problems/best-time-to-buy-and-sell-stock-using-strategy/description/?envType=daily-question&envId=2025-12-18
+# https://leetcode.com/problems/best-time-to-buy-and-sell-stock-using-strategy/solutions/7420606/two-simple-lines-of-code-by-mikposp-z2vx/?envType=daily-question&envId=2025-12-18
 
 class Solution:
     def maxProfit(self, a: List[int], b: List[int], k: int) -> int:

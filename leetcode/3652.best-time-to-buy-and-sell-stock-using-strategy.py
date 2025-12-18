@@ -29,6 +29,14 @@ class Solution:
     def maxProfit(self, a: List[int], b: List[int], k: int) -> int:
         return max([s:=sum(map(mul,a,k//2*[0]+k//2*[1]+b[k:])),*[s:=s+u*v-p-o*w+o for u,v,p,o,w in zip(a,b,a[k//2:],a[k:],b[k:])],sum(map(mul,a,b))])
 
+class Solution:
+    def maxProfit(self, P: List[int], S: List[int], k: int) -> int:
+        a=accumulate;c=[0,*a(map(mul,P,S))];v=[0,*a(P)];return c[-1]+max([0,*(-c[i+k]+c[i]+v[i+k]-v[i+k//2]for i in range(len(P)-k+1))])
+
+class Solution:
+    def maxProfit(self, p: List[int], s: List[int], k: int) -> int:
+        c,v=[[0,*accumulate(x)]for x in(map(mul,p,s),p)];return c[-1]+max(0,*[x-y+z-w for x,y,z,w in zip(c,c[k:],v[k:],v[k//2:])])
+
 test('''
 3652. Best Time to Buy and Sell Stock using Strategy
 Medium

@@ -1,5 +1,26 @@
 from lc import *
 
+# 
+
+# unicode find attempt (TLE)
+class Solution:
+    def findAllPeople(self, n: int, m: List[List[int]], p: int) -> List[int]:
+        t = ''.join(map(chr,range(n)))
+        g = defaultdict(list)
+        for u,v,w in m:
+            g[w].append((u,v))
+        t = t.replace(t[0],t[p])
+        for w in sorted(g):
+            while True:
+                changed = False
+                for u, v in g[w]:
+                    if (t[u] == t[0]) != (t[v] == t[0]):
+                        t = t.replace(t[u], t[v])
+                        changed = True
+                if not changed:
+                    break
+        return [i for i in range(n) if t[i] == t[0]]
+
 # union find
 
 class Solution:
@@ -40,8 +61,7 @@ class Solution:
 
 class Solution:
     def findAllPeople(self, n: int, m: List[List[int]], p: int) -> List[int]:
-        k,r={0,p},itemgetter(2);m.sort(key=r);[(s:=defaultdict(set),[s[x].add(y)or s[y].add(x)for x,y,_ in g],t:=k&s.keys(),all(k.update(t:=reduce(set.union,(s[x]-k for x in t),set()))or t for _ in m))for _,g in groupby(m,r)];return k
-
+        k,r={0,p},itemgetter(2);m.sort(key=r);[(s:=defaultdict(set),[s[x].add(y)or s[y].add(x)for x,y,_ in g],t:=k&s.keys(),all(k.update(t:=reduce(set.union,(s[x]-k for x in t),set()))or t for _ in m))for _,g in groupby(m,r)];return[*k]
 
 test('''
 2092. Find All People With Secret
@@ -93,7 +113,12 @@ At time 1, person 1 shares the secret with person 2, and person 2 shares the sec
 Note that person 2 can share the secret at the same time as receiving it.
 At time 2, person 3 shares the secret with person 4.
 Thus, people 0, 1, 2, 3, and 4 know the secret after all the meetings.
- 
+
+
+Other examples:
+
+Input: n = 5, meetings = [[1,4,3],[0,4,3]], firstPerson = 3
+Output: [0,1,3,4]
 
 Constraints:
 

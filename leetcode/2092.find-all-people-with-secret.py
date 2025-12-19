@@ -1,6 +1,6 @@
 from lc import *
 
-# 
+# https://leetcode.com/problems/find-all-people-with-secret/?envType=daily-question&envId=2025-12-19
 
 # unicode find attempt (TLE)
 class Solution:

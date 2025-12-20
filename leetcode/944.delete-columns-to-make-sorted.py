@@ -12,6 +12,10 @@ class Solution:
 
 class Solution:
     def minDeletionSize(self, s: List[str]) -> int:
+        return sum(c>sorted(c)for c in map(list,zip(*s)))
+
+class Solution:
+    def minDeletionSize(self, s: List[str]) -> int:
         return sum(c>tuple(sorted(c))for c in zip(*s))
 
 class Solution:

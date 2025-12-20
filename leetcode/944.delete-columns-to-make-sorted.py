@@ -3,6 +3,10 @@ from lc import *
 # https://leetcode.com/problems/delete-columns-to-make-sorted/solutions/2989243/1-line-python-3-good-use-of-zip-by-sirhi-zumi/?envType=daily-question&envId=2025-12-20
 
 class Solution:
+    def minDeletionSize(self, s: List[str]) -> int:
+        return sum(map(ne,map(list,zip(*s)),map(sorted,zip(*s))))
+
+class Solution:
     def minDeletionSize(self, strs: List[str]) -> int:
         return sum(list(col)!=sorted(col) for col in zip(*strs))
 

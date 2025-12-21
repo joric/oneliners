@@ -32,7 +32,38 @@ class Solution:
 
 class Solution:
     def minDeletionSize(self, s: List[str]) -> int:
-        p,n=zip(*s),len(s);r=['']*n;[r:=t for x in p if(t:=[r[i]+x[i]for i in range(n)])==sorted(t)];return len(s[0])-len(r[0])
+        n=len(s);r=['']*n;[r:=t for x in zip(*s)if(t:=[r[i]+x[i]for i in range(n)])==sorted(t)];return len(s[0])-len(r[0])
+
+class Solution:
+    def minDeletionSize(self, s: List[str]) -> int:
+        r=['']*len(s);[r:=t for c in zip(*s)if(t:=[x+c[i]for i,x in enumerate(r)])==sorted(t)];return len(s[0])-len(r[0])
+
+class Solution:
+    def minDeletionSize(self, s: List[str]) -> int:
+        r=['']*len(s);[r:=t for c in zip(*s)if(t:=[a+b for a,b in zip(r,c)])==sorted(t)];return len(s[0])-len(r[0])
+
+class Solution:
+    def minDeletionSize(self, s: List[str]) -> int:
+        r=['']*len(s)
+        for c in zip(*s):
+            if (t:=[a+b for a,b in zip(r,c)])==sorted(t):
+                r =t 
+        return len(s[0])-len(r[0])
+
+class Solution:
+    def minDeletionSize(self, s: List[str]) -> int:
+        p=['']*len(s)
+        r = 0
+        for c in zip(*s):
+            if(t:=[a+b for a,b in zip(p,c)])==sorted(t):
+                p = t
+            else:
+                r += 1
+        return r
+
+class Solution:
+    def minDeletionSize(self, s: List[str]) -> int:
+        p=['']*len(s);return sum(sorted(t:=[*map(''.join,zip(p,c))])!=t or not(p:=t)for c in zip(*s))
 
 test('''
 955. Delete Columns to Make Sorted II

@@ -71,6 +71,10 @@ class Solution:
     def minDeletionSize(self, s: List[str]) -> int:
         p=[[]]*len(s);return sum(sorted(t:=[*zip(p,c)])<t or t>(p:=t)for c in zip(*s))
 
+class Solution:
+    def minDeletionSize(self, s: List[str]) -> int:
+        p=[0]*len(s);return sum(sorted(t:=[*zip(p,c)])<t or(p:=t)<[]for c in zip(*s))
+
 test('''
 955. Delete Columns to Make Sorted II
 Medium

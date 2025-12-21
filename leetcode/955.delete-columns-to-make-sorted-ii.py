@@ -63,7 +63,7 @@ class Solution:
 
 class Solution:
     def minDeletionSize(self, s: List[str]) -> int:
-        p=['']*len(s);return sum(sorted(t:=[*map(''.join,zip(p,c))])!=t or not(p:=t)for c in zip(*s))
+        p=['']*len(s);return sum(sorted(t:=[*map(''.join,zip(p,c))])<t or t>(p:=t)for c in zip(*s))
 
 test('''
 955. Delete Columns to Make Sorted II

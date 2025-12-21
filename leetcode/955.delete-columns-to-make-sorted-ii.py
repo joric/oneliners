@@ -1,5 +1,24 @@
 from lc import *
 
+# https://leetcode.com/problems/delete-columns-to-make-sorted-ii/solutions/203042/delete-columns-to-make-sorted-ii-by-leet-bvi2/?envType=daily-question&envId=2025-12-21
+
+class Solution:
+    def minDeletionSize(self, s: List[str]) -> int:
+        t=[0]*~-len(s)
+        r = 0
+        for c in zip(*s):
+            if all(t[i] or c[i]<=c[i+1] for i in range(len(c)-1)):
+                for i in range(len(c)-1):
+                    if c[i]<c[i+1]:
+                        t[i] = 1
+            else:
+                r += 1
+        return r
+
+class Solution:
+    def minDeletionSize(self, s: List[str]) -> int:
+        t=[0]*~-len(s);return sum(not all(t[i]or c[i]<=c[i+1]for i in range(len(c)-1))or[setitem(t,i,c[i]<c[i+1])for i in range(len(c)-1)]and 0 for c in zip(*s))
+
 # https://leetcode.com/problems/delete-columns-to-make-sorted-ii/solutions/3920690/python-3-6-lines-w-explanation-ts-53-54-vx1jx/?envType=daily-question&envId=2025-12-21
 
 class Solution: 
@@ -52,7 +71,12 @@ Example 3:
 Input: strs = ["zyx","wvu","tsr"]
 Output: 3
 Explanation: We have to delete every column.
- 
+
+
+Other examples:
+
+Input: strs = ["xga","xfb","yfa"]
+Output: 1
 
 Constraints:
 

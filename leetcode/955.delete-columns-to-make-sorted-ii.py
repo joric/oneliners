@@ -32,23 +32,21 @@ class Solution:
 
 class Solution:
     def minDeletionSize(self, s: List[str]) -> int:
-        n=len(s);r=['']*n;[r:=t for x in zip(*s)if(t:=[r[i]+x[i]for i in range(n)])==sorted(t)];return len(s[0])-len(r[0])
-
-class Solution:
-    def minDeletionSize(self, s: List[str]) -> int:
-        r=['']*len(s);[r:=t for c in zip(*s)if(t:=[x+c[i]for i,x in enumerate(r)])==sorted(t)];return len(s[0])-len(r[0])
-
-class Solution:
-    def minDeletionSize(self, s: List[str]) -> int:
-        r=['']*len(s);[r:=t for c in zip(*s)if(t:=[a+b for a,b in zip(r,c)])==sorted(t)];return len(s[0])-len(r[0])
-
-class Solution:
-    def minDeletionSize(self, s: List[str]) -> int:
-        r=['']*len(s)
+        p=['']*len(s)
         for c in zip(*s):
-            if (t:=[a+b for a,b in zip(r,c)])==sorted(t):
-                r =t 
-        return len(s[0])-len(r[0])
+            if (t:=[*map(''.join,zip(p,c))])==sorted(t):
+                p=t 
+        return len(s[0])-len(p[0])
+
+class Solution:
+    def minDeletionSize(self, s: List[str]) -> int:
+        p=['']*len(s);[r:=t for c in zip(*s)if(t:=[a+b for a,b in zip(p,c)])==sorted(t)];return len(s[0])-len(p[0])
+
+class Solution:
+    def minDeletionSize(self, s: List[str]) -> int:
+        return len(s[0])-len(reduce(lambda p,c:(t if sorted(t:=[*map(''.join,zip(p,c))])==t else p),zip(*s),['']*len(s))[0])
+
+# https://leetcode.com/problems/delete-columns-to-make-sorted-ii/solutions/203182/javacpython-greedy-solution-omn-by-lee21-5t1p/?envT
 
 class Solution:
     def minDeletionSize(self, s: List[str]) -> int:
@@ -64,6 +62,10 @@ class Solution:
 class Solution:
     def minDeletionSize(self, s: List[str]) -> int:
         p=['']*len(s);return sum(not sorted(t:=[*map(''.join,zip(p,c))])==t==(p:=t)for c in zip(*s))
+
+class Solution:
+    def minDeletionSize(self, s: List[str]) -> int:
+        p=['']*len(s);return sum(sorted(t:=[*map(''.join,zip(p,c))])<t or t>(p:=t)for c in zip(*s))
 
 class Solution:
     def minDeletionSize(self, s: List[str]) -> int:

@@ -50,26 +50,15 @@ class Solution:
 
 class Solution:
     def minDeletionSize(self, s: List[str]) -> int:
-        p=['']*len(s)
+        p = [''] * len(s)
         r = 0
         for c in zip(*s):
-            if(t:=[a+b for a,b in zip(p,c)])==sorted(t):
+            t = [*zip(p,c)]
+            if t == sorted(t):
                 p = t
             else:
                 r += 1
         return r
-
-class Solution:
-    def minDeletionSize(self, s: List[str]) -> int:
-        p=['']*len(s);return sum(not sorted(t:=[*map(''.join,zip(p,c))])==t==(p:=t)for c in zip(*s))
-
-class Solution:
-    def minDeletionSize(self, s: List[str]) -> int:
-        p=['']*len(s);return sum(sorted(t:=[*map(''.join,zip(p,c))])<t or t>(p:=t)for c in zip(*s))
-
-class Solution:
-    def minDeletionSize(self, s: List[str]) -> int:
-        p=[[]]*len(s);return sum(sorted(t:=[*zip(p,c)])<t or t>(p:=t)for c in zip(*s))
 
 class Solution:
     def minDeletionSize(self, s: List[str]) -> int:

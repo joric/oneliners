@@ -1033,7 +1033,7 @@ class Solution:
 ```
 
 
-You can convert lists or tuples to `True` with `!=0` instead of `bool()` (3 chars shorter), or compare with `[]` (no spacing).
+You can convert lists or tuples to `True` with `!=0` instead of `bool()` (3 chars shorter), or compare with `[]` (no space).
 
 * https://leetcode.com/problems/number-of-islands
 

@@ -1,10 +1,20 @@
 from lc import *
 
+# https://leetcode.com/problems/delete-columns-to-make-sorted-iii/solutions/3424743/python-solution-in-5-lines-by-metaphysic-b76q/?envType=daily-question&envId=2025-12-22
+
+class Solution:
+    def minDeletionSize(self, s: List[str]) -> int:
+        m,n=len(s),len(s[0])
+        p=[0]*-~n
+        for i in range(n):
+            p[i] = 1+max([p[j] for j in range(i)if all(s[k][j] <= s[k][i] for k in range(m))], default=0)
+        return n - max(p)
+
 # https://leetcode.com/problems/delete-columns-to-make-sorted-iii/description/?envType=daily-question&envId=2025-12-22
 
 class Solution:
     def minDeletionSize(self, a: List[str]) -> int:
-        a=[*zip(*a)];f=cache(lambda i,j:i<len(a)and(1+f(i+1,j)if any(map(lt,r:=a[i],j))else min(f(i+1,tuple(r)),1+f(i+1,j))));return+f(0,tuple('a'*len(a)))
+        a=[*zip(*a)];f=cache(lambda i,p:i<len(a)and(1+f(i+1,p)if any(map(lt,r:=a[i],p))else min(f(i+1,r),1+f(i+1,p))));return+f(0,'a'*len(a))
 
 test('''
 960. Delete Columns to Make Sorted III

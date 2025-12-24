@@ -24,6 +24,10 @@ class Solution:
     def minimumBoxes(self, a: List[int], c: List[int]) -> int:
         return sum(map(lt,accumulate(sorted(c)[::-1]),repeat(sum(a))))+1
 
+class Solution:
+    def minimumBoxes(self, a: List[int], c: List[int]) -> int:
+        return bisect_left([*accumulate(sorted(c)[::-1])],sum(a))+1
+
 test('''
 3074. Apple Redistribution into Boxes
 User Accepted:19509

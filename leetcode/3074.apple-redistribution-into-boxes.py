@@ -18,6 +18,12 @@ class Solution:
     def minimumBoxes(self, a: List[int], c: List[int]) -> int:
         return next((i+1 for i,x in enumerate(accumulate(sorted(c)[::-1]))if x>=sum(a)),len(c))
 
+# https://leetcode.com/problems/apple-redistribution-into-boxes/solutions/7434223/one-line-solution-by-mikposp-5jik/?envType=daily-question&envId=2025-12-24
+
+class Solution:
+    def minimumBoxes(self, a: List[int], c: List[int]) -> int:
+        return sum(map(lt,accumulate(sorted(c)[::-1]),repeat(sum(a))))+1
+
 test('''
 3074. Apple Redistribution into Boxes
 User Accepted:19509

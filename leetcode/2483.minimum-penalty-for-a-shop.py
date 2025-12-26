@@ -1,14 +1,20 @@
 from lc import *
 
+# https://leetcode.com/problems/minimum-penalty-for-a-shop/solutions/3978365/one-line-with-numpy-by-patrick40-mnvz/?envType=daily-question&envId=2025-12-26
+
+class Solution:
+    def bestClosingTime(self, c: str) -> int:
+        return(n:=__import__('numpy')).argmin(n.cumsum([[1,-1][c=='Y']for c in 'Y'+c]))
+
 # https://leetcode.com/problems/minimum-penalty-for-a-shop/discuss/2851607/Python-3-oror-3-lines-wexample-oror-TM%3A-120ms19.3MB
 
 class Solution:
     def bestClosingTime(self, c: str) -> int:
-        return(c:=[*accumulate([2*(x>'N')-1for x in c],initial=0)]).index(max(c))
+        return(c:=[*accumulate([2*(x>'N')-1 for x in c],initial=0)]).index(max(c))
 
 class Solution:
     def bestClosingTime(self, c: str) -> int:
-        t=0;return(c:=[0]+[t:=t+2*(x>'N')-1for x in c]).index(max(c))
+        t=0;return(c:=[0]+[t:=t+2*(x>'N')-1 for x in c]).index(max(c))
 
 test('''
 2483. Minimum Penalty for a Shop

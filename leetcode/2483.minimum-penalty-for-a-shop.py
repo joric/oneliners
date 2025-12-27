@@ -14,7 +14,7 @@ class Solution:
 
 class Solution:
     def bestClosingTime(self, c: str) -> int:
-        t=0;return(a:=[0]+[t:=t+2*(x>'N')-1for x in c]).index(max(a))
+        t=0;return(a:=[0]+[t:=t-1+2*(x>'N')for x in c]).index(max(a))
 
 test('''
 2483. Minimum Penalty for a Shop

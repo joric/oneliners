@@ -15,30 +15,13 @@ class Solution:
 
 # https://leetcode.com/problems/pyramid-transition-matrix/solutions/113038/python-solution-by-lee215-n6gd/?envType=daily-question&envId=2025-12-29
 
-class Solution(object):
+class Solution: # TLE
     def pyramidTransition(self, bottom: str, allowed: List[str]) -> bool:
-        def pyramid(bottom):
-            if len(bottom) == 1: return True
-            for i in itertools.product(*(f[a][b] for a, b in zip(bottom, bottom[1:]))):
-                if pyramid(i): return True
-            return False
         f = collections.defaultdict(lambda: defaultdict(list))
         for a, b, c in allowed: f[a][b].append(c)
-        return pyramid(bottom)
-
-class Solution(object):
-    def pyramidTransition(self, bottom: str, allowed: List[str]) -> bool:
         def pyramid(bottom):
             return len(bottom) == 1 or any(pyramid(i) for i in product(*(f[a][b] for a, b in zip(bottom, bottom[1:]))))
-        f = collections.defaultdict(lambda: defaultdict(list))
-        for a, b, c in allowed: f[a][b].append(c)
         return pyramid(bottom)
-
-class Solution(object):
-    def pyramidTransition(self, b: str, a: List[str]) -> bool:
-        d=defaultdict(lambda: defaultdict(list))
-        for x,y,z in a: d[x][y].append(z)
-        return(f:=lambda b:len(b)==1 or any(f(i) for i in product(*(d[x][y]for x,y in zip(b,b[1:])))))(b)
 
 class Solution:
     def pyramidTransition(self,b:str,a:List[str])->bool:

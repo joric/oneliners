@@ -17,13 +17,11 @@ class Solution:
             return g[i][j] % 2 == 0 and (s in "43816729" * 2 or s in "43816729"[::-1] * 2)
         return sum(isMagic(i, j) for i in range(len(g) - 2) for j in range(len(g[0]) - 2) if g[i + 1][j + 1] == 5)
 
-class Solution:
-    def numMagicSquaresInside(self, g: List[List[int]]) -> int:
-        r=range(len(g)-2);return sum(g[i][j]%2==0 and((s:=''.join(str(g[i+x//3][j+x%3])for x in(0,1,2,5,8,7,6,3)))in'43816729'*2 or s in'92761834'*2)for i in r for j in r if g[i+1][j+1]==5)
+# 2025-12-30 POTD
 
 class Solution:
     def numMagicSquaresInside(self, g: List[List[int]]) -> int:
-        r=range(len(g)-2);return sum(g[i][j]%2==0 and''.join(str(g[i+x//3][j+x%3])for x in(0,1,2,5,8,7,6,3))in'43816729'*2+2*'92761834'for i in r for j in r if g[i+1][j+1]==5)
+        return sum(g[i][j]%2<1 and''.join(str(g[i+x//3][j+x%3])for x in(0,1,2,5,8,7,6,3))in'43816729'*2+2*'92761834'for i in range(len(g)-2)for j in range(len(g[0])-2)if g[i+1][j+1]==5)
 
 test('''
 840. Magic Squares In Grid
@@ -60,6 +58,11 @@ Example 2:
 Input: grid = [[8]]
 Output: 0
  
+
+Other examples:
+
+Input: grid = [[4,3,8,4],[9,5,1,9],[2,7,6,2],[4,3,8,4],[9,5,1,9],[2,7,6,2]]
+Output: 2
 
 Constraints:
 

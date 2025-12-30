@@ -29,6 +29,14 @@ class Solution:
     def numMagicSquaresInside(self, g: List[List[int]]) -> int:
         return sum(r[j+1]==5>q[j]%2+4 and''.join(map(str,q[j:j+3]+[r[j+2]]+s[j:j+3][::-1]+[r[j]]))in(t:='43816729'*2)+t[::-1]for q,r,s in zip(g,g[1:],g[2:])for j in range(len(q)-2))
 
+class Solution:
+    def numMagicSquaresInside(self, g: List[List[int]]) -> int:
+        return sum(r[j+1]==5>q[j]%2+4!=''.join(map(str,q[j:j+3]+[r[j+2]]+s[j:j+3][::-1]+[r[j]]))in'43816729'*2+2*'92761834'for q,r,s in zip(g,g[1:],g[2:])for j in range(len(q)-2))
+
+class Solution:
+    def numMagicSquaresInside(self, g: List[List[int]]) -> int:
+        return sum(r[j+1]==5>q[j]%2+4!=''.join(map(str,q[j:j+3]+[r[j+2]]+s[j:j+3][::-1]+[r[j]]))in(t:='43816729'*2)+t[::-1]for q,r,s in zip(g,g[1:],g[2:])for j in range(len(q)-2))
+
 test('''
 840. Magic Squares In Grid
 Medium

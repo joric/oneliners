@@ -102,9 +102,11 @@ class Solution:
     def latestDayToCross(self, s: int, t: int, m: List[List[int]]) -> int:
         v,z="".join,range;u,w=f'A{v("A"+v(chr(r*t+c+67)for c in z(t-2))+"B"for r in z(s))}B',set();return next(d for d,(r,c)in enumerate(m)if not((w.add((r-1,c-1)),[(x:=j+c-1,y:=i+r-1,s>y>=0<=x<t and(y,x)in w and(u:=u.replace(u[(r-1)*t+c],u[y*t+x+1])))for i,j in product(*[[-1,0,1]]*2)])and u[0]!=u[-1]))
 
+# 2025-12-31 POTD
+
 class Solution:
-    def latestDayToCross(self, h, m, C):
-        v,j=range,"".join;u=j(f'A{j(chr(r*m+c+67)for c in v(m-2))}B'for r in v(h));w=set();return next(i for i,(p,q)in enumerate(C)if(r:=p-1,c:=q-1,w.add((r,c)),[(b:=y+r,a:=k+c,h>b>=0<=a<m and(b,a)in w and(u:=u.replace(u[r*m+c],u[b*m+a])))for y,k in product(*[[-1,0,1]]*2)])and u[0]==u[-1])
+    def latestDayToCross(self, r: int, c: int, s: List[List[int]]) -> int:
+        v,j=range,"".join;u=j(f'A{j(chr(i*c+k+67)for k in v(c-2))}B'for i in v(r));w=set();return next(i for i,(p,q)in enumerate(s)if(x:=p-1,y:=q-1,w.add((x,y)),[(b:=d+x,a:=e+y,r>b>=0<=a<c and(b,a)in w and(u:=u.replace(u[x*c+y],u[b*c+a])))for d,e in product(*[[-1,0,1]]*2)])and u[0]==u[-1])
 
 test('''
 1970. Last Day Where You Can Still Cross

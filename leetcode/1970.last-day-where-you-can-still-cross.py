@@ -120,6 +120,14 @@ class Solution:
     def latestDayToCross(self, r: int, c: int, s: List[List[int]]) -> int:
         w,v,j=set(),range,''.join;u=j(f'A{j(chr(i*c+k+67)for k in v(c-2))}B'for i in v(r));return next(i for i,(p,q)in enumerate(s)if(w.add((x:=p-1,y:=q-1)),[r>b>-1<a<c!=(b,a)in w and(u:=u.replace(u[x*c+y],u[b*c+a]))for b in v(x-1,x+2)for a in v(y-1,y+2)])!=u[0]==u[-1])
 
+class Solution:
+    def latestDayToCross(self, r: int, c: int, s: List[List[int]]) -> int:
+        v,j=range,''.join;w=set();u=j(f'A{j(chr(i*c+k+67)for k in v(c-2))}B'for i in v(r));return next(i for i,(p,q)in enumerate(s)if(w.add((x:=p-1,y:=q-1))or[u:=u.replace(u[x*c+y],u[b*c+a])for b in v(x-1,x+2)for a in v(y-1,y+2)if(b,a)in w])!=u[0]==u[-1])
+
+class Solution:
+    def latestDayToCross(self, r: int, c: int, s: List[List[int]]) -> int:
+        v=range;w=set();u=''.join(['AB'[n%c>0],chr(n+66)][0<n%c<c-1]for n in v(r*c));return next(i for i,(p,q)in enumerate(s)if(w.add((x:=p-1,y:=q-1))or[u:=u.replace(u[x*c+y],u[b*c+a])for b in v(x-1,x+2)for a in v(y-1,y+2)if(b,a)in w])!=u[0]==u[-1])
+
 test('''
 1970. Last Day Where You Can Still Cross
 Hard

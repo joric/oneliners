@@ -79,6 +79,9 @@ Output: ["1OFw","0MvB"]
 Input: code = ["SAVE10", "SAVE20", "ELEC30"], businessLine = ["groc", "groce", "elect"], isActive = [true, true, true]
 Output: []
 
+Input: code = ["dummy"], businessLine = ["pharmacyindustry"], isActive = [true]
+Output: []
+
 Constraints:
 
 n == code.length == businessLine.length == isActive.length

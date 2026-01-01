@@ -2174,7 +2174,7 @@ class Solution:
 
 ### Join
 
-`"".join()` can be replaced with string format unpacking (2+ chars shorter):
+`"".join()` can be replaced by string format unpacking (2+ chars shorter):
 
 * https://leetcode.com/problems/magic-squares-in-grid
 

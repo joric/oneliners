@@ -6,6 +6,12 @@ class Solution:
     def plusOne(self, d: List[int]) -> List[int]:
         return map(int,str(int(''.join(map(str,d)))+1))
 
+# 2026-01-01 POTD
+
+class Solution:
+    def plusOne(self, d: List[int]) -> List[int]:
+        return[*map(int,str(int(''.join(map(str,d)))+1))]
+
 test('''
 66. Plus One
 Easy

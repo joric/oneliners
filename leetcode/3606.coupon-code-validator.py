@@ -14,9 +14,17 @@ class Solution:
     def validateCoupons(self, c: List[str], b: List[str], a: List[bool]) -> List[str]:
         return[y for x,y,z in sorted(zip(b,c,a))if z and match('\w+$',y)and x[0]in'egpr']
 
+# 2025-12-13 POTD https://leetcode.com/problems/coupon-code-validator/submissions/1854644066/ (doesn't work in 2026)
+
 class Solution:
     def validateCoupons(self, c: List[str], b: List[str], a: List[bool]) -> List[str]:
         return[y for x,y,z in sorted(zip(b,c,a))if match('\w+$',y)and(x[0]in'egpr')*z]
+
+# 2026-01-01 
+
+class Solution:
+    def validateCoupons(self, c: List[str], b: List[str], a: List[bool]) -> List[str]:
+        return[y for x,y,z in sorted(zip(b,c,a))if match('\w+$',y)and(x in('electronics','grocery','pharmacy','restaurant'))*z]
 
 test('''
 3606. Coupon Code Validator
@@ -56,6 +64,11 @@ Example 2:
 Input: code = ["GROCERY15","ELECTRONICS_50","DISCOUNT10"], businessLine = ["grocery","electronics","invalid"], isActive = [false,true,true]
 
 Output: ["ELECTRONICS_50"]
+
+Other examples:
+
+Input: code = ["SAVE10", "SAVE20", "ELEC30"], businessLine = ["groc", "groce", "elect"], isActive = [true, true, true]
+Output: []
 
 Explanation:
 

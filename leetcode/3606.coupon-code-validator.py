@@ -65,22 +65,19 @@ Input: code = ["GROCERY15","ELECTRONICS_50","DISCOUNT10"], businessLine = ["groc
 
 Output: ["ELECTRONICS_50"]
 
-Other examples:
-
-Input: code = ["SAVE10", "SAVE20", "ELEC30"], businessLine = ["groc", "groce", "elect"], isActive = [true, true, true]
-Output: []
-
 Explanation:
 
 First coupon is inactive (invalid).
 Second coupon is valid.
 Third coupon has invalid business line (invalid).
- 
 
 Other examples:
 
 Input: code = ["1OFw","0MvB"], businessLine = ["electronics","pharmacy"], isActive = [true,true]
 Output: ["1OFw","0MvB"]
+
+Input: code = ["SAVE10", "SAVE20", "ELEC30"], businessLine = ["groc", "groce", "elect"], isActive = [true, true, true]
+Output: []
 
 Constraints:
 

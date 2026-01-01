@@ -12,6 +12,18 @@ class Solution:
     def plusOne(self, d: List[int]) -> List[int]:
         return[*map(int,str(int(''.join(map(str,d)))+1))]
 
+class Solution:
+    def plusOne(self, d: List[int]) -> List[int]:
+        return[*map(int,'%d'%-~int(''.join(map(str,d))))]
+
+class Solution:
+    def plusOne(self, d: List[int]) -> List[int]:
+        return[*map(int,f"{-~int(''.join(map(str,d)))}")]
+
+class Solution:
+    def plusOne(self, d: List[int]) -> List[int]:
+        return[*map(int,str(int('%d'*len(d)%(*d,))+1))]
+
 test('''
 66. Plus One
 Easy

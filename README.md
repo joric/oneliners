@@ -2174,7 +2174,7 @@ class Solution:
 
 ### Join
 
-`''.join(map(str,a))` can be replaced by format string muliplication and unpacking `'%d'*len(a)%(*a,)` (2 characters shorter):
+`''.join(map(str,a))` can be replaced by format string multiplication and unpacking `'%d'*len(a)%(*a,)` (2 characters shorter):
 
 * https://leetcode.com/problems/magic-squares-in-grid
 

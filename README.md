@@ -2172,6 +2172,38 @@ class Solution:
         return max(prod((v:=sorted(nums))[-3:]), v[0]*v[1]*v[-1])
 ```
 
+### Join
+
+`"".join()` can be replaced with string format unpacking (2+ chars shorter):
+
+* https://leetcode.com/problems/magic-squares-in-grid
+
+```python
+class Solution:
+    def numMagicSquaresInside(self, g: List[List[int]]) -> int:
+        return sum(r[j+1]==5>q[j]%2+4!="".join(map(str,q[j:j+3]+[r[j+2],*s[j:j+3][::-1],r[j]]))in
+        (t:='43816729'*2)+t[::-1]for q,r,s in zip(g,g[1:],g[2:])for j in range(len(q)-2))
+
+class Solution:
+    def numMagicSquaresInside(self, g: List[List[int]]) -> int:
+        return sum(r[j+1]==5>q[j]%2+4!='%d'*8%(*q[j:j+3],r[j+2],*s[j:j+3][::-1],r[j])in
+        (t:='43816729'*2)+t[::-1]for q,r,s in zip(g,g[1:],g[2:])for j in range(len(q)-2))
+```
+
+* https://leetcode.com/problems/plus-one
+
+```python
+
+class Solution:
+    def plusOne(self, d: List[int]) -> List[int]:
+        return[*map(int,str(int(''.join(map(str,d)))+1))]
+
+class Solution:
+    def plusOne(self, d: List[int]) -> List[int]:
+        return[*map(int,str(int('%d'*len(d)%(*d,))+1))]
+
+```
+
 ## Tables
 
 ### Operators

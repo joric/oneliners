@@ -22,6 +22,12 @@ class Solution:
     def repeatedNTimes(self, a: List[int]) -> int:
         return next(i for i,j in permutations(a,2)if i==j)
 
+# https://leetcode.com/problems/n-repeated-element-in-size-2n-array/solutions/334240/python-3-easy-to-understand-by-akaghosti-yok1/
+
+class Solution:
+    def repeatedNTimes(self, a: List[int]) -> int:
+        return(sum(a)-sum({*a}))//(len(a)-len({*a}))
+
 # https://leetcode.com/problems/n-repeated-element-in-size-2n-array/solutions/1562650/python3-one-line-solution-by-sirenescx-6kru/?envType=daily-question&envId=2026-01-02
 
 class Solution:
@@ -33,6 +39,12 @@ class Solution:
 class Solution:
     def repeatedNTimes(self, a: List[int]) -> int:
         return Counter(a).most_common(1)[0][0]
+
+# https://leetcode.com/problems/n-repeated-element-in-size-2n-array/solutions/655751/python-3-the-simplest-code-by-tot0-fc65/
+
+class Solution:
+    def repeatedNTimes(self, a: List[int]) -> int:
+        return mode(a)
 
 test('''
 961. N-Repeated Element in Size 2N Array
@@ -62,7 +74,12 @@ Example 3:
 
 Input: nums = [5,1,5,2,5,3,5,4]
 Output: 5
- 
+
+
+Other examples:
+
+Input: nums = [9,5,3,3]
+Output: 3
 
 Constraints:
 
@@ -70,6 +87,7 @@ Constraints:
 nums.length == 2 * n
 0 <= nums[i] <= 104
 nums contains n + 1 unique elements and one of them is repeated exactly n times.
+
  
 Seen this question in a real interview before?
 1/5

@@ -2034,7 +2034,7 @@ class Solution:
 
 class Solution:
     def repeatedNTimes(self, a: List[int]) -> int:
-        return sorted(a)[len(a)//2]
+        return mode(a)
 ```
 
 ### Encode

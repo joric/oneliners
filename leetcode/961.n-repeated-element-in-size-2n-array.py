@@ -16,6 +16,12 @@ class Solution:
     def repeatedNTimes(self, a: List[int]) -> int:
         c=Counter(a);return[k for k in c if c[k]==len(a)/2][0]
 
+# https://leetcode.com/problems/n-repeated-element-in-size-2n-array/solutions/208563/javacpython-o1-solution-by-lee215-mhu6/
+
+class Solution:
+    def repeatedNTimes(self, a: List[int]) -> int:
+        return next(i for i,j in permutations(a,2)if i==j)
+
 # https://leetcode.com/problems/n-repeated-element-in-size-2n-array/solutions/1562650/python3-one-line-solution-by-sirenescx-6kru/?envType=daily-question&envId=2026-01-02
 
 class Solution:

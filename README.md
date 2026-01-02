@@ -2022,6 +2022,21 @@ class Solution:
         return mode(nums)
 ```
 
+In most cases, `most_common()` can be replaced with `mode()`:
+
+* https://leetcode.com/problems/n-repeated-element-in-size-2n-array
+
+```python
+
+class Solution:
+    def repeatedNTimes(self, a: List[int]) -> int:
+        return Counter(a).most_common(1)[0][0]
+
+class Solution:
+    def repeatedNTimes(self, a: List[int]) -> int:
+        return sorted(a)[len(a)//2]
+```
+
 ### Encode
 
 You can use `s.encode()` instead of `ord` or `map(ord,s)` It's the same length but doesn't need generation evaluation.

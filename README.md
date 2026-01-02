@@ -2022,7 +2022,7 @@ class Solution:
         return mode(nums)
 ```
 
-In most cases, `most_common()` can be replaced with `mode()`:
+In most cases, `mode()` can replace (the underlying) `Counter.most_common()` function:
 
 * https://leetcode.com/problems/n-repeated-element-in-size-2n-array
 

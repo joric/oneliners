@@ -6,6 +6,12 @@ class Solution:
     def numOfWays(self, n: int) -> int:
         return((np:=__import__('numpy')).sum(np.linalg.matrix_power(np.array([[3,2],[2,2]],dtype=object), n) @ [0,3]) if n else 3) % (10**9+7)
 
+# reduce
+
+class Solution:
+    def numOfWays(self, n: int) -> int:
+        return reduce(lambda p,_:(p[1],5*p[1]-2*p[0]),range(n),(3,12))[0]%(10**9+7)
+
 # https://leetcode.com/problems/number-of-ways-to-paint-n-3-grid/description/?envType=daily-question&envId=2026-01-03
 
 class Solution:

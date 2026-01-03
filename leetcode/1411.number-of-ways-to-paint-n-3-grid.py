@@ -31,7 +31,6 @@ class Solution:
     def numOfWays(self, n: int) -> int:
         a,b=0,3;[a:=a+(b:=a+b<<1)for _ in[0]*n];return(a+b)%(10**9+7)
 
-
 test('''
 1411. Number of Ways to Paint N × 3 Grid
 Hard

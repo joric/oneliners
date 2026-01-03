@@ -1,5 +1,11 @@
 from lc import *
 
+# matrix exponentiation
+
+class Solution:
+    def numOfWays(self, n: int) -> int:
+        return((np:=__import__('numpy')).sum(np.linalg.matrix_power(np.array([[3,2],[2,2]],dtype=object), n) @ [0,3]) if n else 3) % (10**9+7)
+
 # https://leetcode.com/problems/number-of-ways-to-paint-n-3-grid/description/?envType=daily-question&envId=2026-01-03
 
 class Solution:
@@ -24,6 +30,7 @@ class Solution:
 class Solution:
     def numOfWays(self, n: int) -> int:
         a,b=0,3;[a:=a+(b:=a+b<<1)for _ in[0]*n];return(a+b)%(10**9+7)
+
 
 test('''
 1411. Number of Ways to Paint N × 3 Grid

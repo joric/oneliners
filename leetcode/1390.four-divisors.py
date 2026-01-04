@@ -1,19 +1,5 @@
 from lc import *
 
-# https://leetcode.com/problems/four-divisors/solutions/860814/clean-and-short-python-by-daciuk-bhs0/
-
-class Solution:
-    def sumFourDivisors(self, a: List[int]) -> int:
-        @cache
-        def f(x):
-            s=set()
-            for i in range(1,ceil(sqrt(x))+1):
-                x%i<1!=s.update({i,x//i})
-                if len(s)>4:
-                    return 0
-            return sum(s)*(len(s)==4)
-        return sum(map(f,a))
-
 # https://leetcode.com/problems/four-divisors/solutions/1434020/python3-dynamic-programming-7-lines-by-r-7fwh/?envType=daily-question&envId=2026-01-04
 
 class Solution:
@@ -25,6 +11,31 @@ class Solution:
 class Solution:
     def sumFourDivisors(self, a: List[int]) -> int:
         n=max(a)+1;p,q=[1]*n,[1]*n;[setitem(p,j,p[j]+i)or setitem(q,j,q[j]+1)for i in range(2,n)for j in range(i,n,i)];return sum(p[x]*(q[x]==4)for x in a)
+
+# https://leetcode.com/problems/four-divisors/solutions/860814/clean-and-short-python-by-daciuk-bhs0/
+
+class Solution:
+    def sumFourDivisors(self, a: List[int]) -> int:
+        def f(x):
+            s=set()
+            for i in range(1,isqrt(x)+1):
+                x%i<1!=s.update({i,x//i})
+                if len(s)>4:
+                    return 0
+            return sum(s)*(len(s)==4)
+        return sum(map(f,a))
+
+class Solution:
+    def sumFourDivisors(self, a: List[int]) -> int:
+        return sum(sum(next((s for i in range(1,isqrt(x)+1)if x%i<1==s.update({i,x//i})>len(s)>4),s:=set()))*(len(s)==4)for x in a)
+
+class Solution:
+    def sumFourDivisors(self, a: List[int]) -> int:
+        return sum(sum(s)*(len(s)==4)for x in a for s in[{d for i in range(1,isqrt(x)+1)if x%i<1 for d in(i,x//i)}])
+
+class Solution:
+    def sumFourDivisors(self, a: List[int]) -> int:
+        return sum(sum(s)for x in a if len(s:={d for i in range(1,isqrt(x)+1)for d in(i,x//i)if x%i<1})==4)
 
 test('''
 1390. Four Divisors

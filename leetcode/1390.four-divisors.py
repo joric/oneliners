@@ -35,10 +35,6 @@ class Solution:
 
 class Solution:
     def sumFourDivisors(self, a: List[int]) -> int:
-        return sum(sum(s)for x in a if len(s:={d for i in range(1,isqrt(x)+1)for d in(i,x//i)if x%i<1})==4)
-
-class Solution:
-    def sumFourDivisors(self, a: List[int]) -> int:
         return sum(sum(s:={d for i in range(1,isqrt(x)+1)for d in(i,x//i)if x%i<1})*(len(s)==4)for x in a)
 
 test('''

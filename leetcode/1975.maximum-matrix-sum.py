@@ -24,6 +24,14 @@ class Solution:
     def maxMatrixSum(self, m: List[List[int]]) -> int:
         return sum(p:=[*map(abs,t:=sum(m,[]))])-sum(x<0 for x in t)%2*2*min(p)
 
+class Solution:
+    def maxMatrixSum(self, m: List[List[int]]) -> int:
+        return sum(p:=[*map(abs,t:=[*chain(*m)])])-(prod(t)<0)*2*min(p)
+
+class Solution:
+    def maxMatrixSum(self, m: List[List[int]]) -> int:
+        return sum(p:=[*map(abs,t:=sum(m,[]))])-(prod(t)<0)*2*min(p)
+
 test('''
 1975. Maximum Matrix Sum
 Medium

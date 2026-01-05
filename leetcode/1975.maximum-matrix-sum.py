@@ -18,10 +18,6 @@ class Solution:
     def maxMatrixSum(self, m: List[List[int]]) -> int:
         p=[*map(abs,t:=[*chain(*m)])];return sum(p)-2*(sum(x<1 for x in t)%2*min(p))
 
-class Solution:
-    def maxMatrixSum(self, m: List[List[int]]) -> int:
-        return sum(p:=[*map(abs,t:=[*chain(*m)])])-2*(sum(map(truth,t))%2*min(p))
-
 # 2026-01-05 POTD
 
 class Solution:

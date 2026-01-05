@@ -14,6 +14,20 @@ class Solution:
     def maxMatrixSum(self, m: List[List[int]]) -> int:
         p=[*map(abs,t:=[*chain(*m)])];return sum(p)-2*(sum(map(0..__ge__,t))%2 and min(p))
 
+class Solution:
+    def maxMatrixSum(self, m: List[List[int]]) -> int:
+        p=[*map(abs,t:=[*chain(*m)])];return sum(p)-2*(sum(x<1 for x in t)%2*min(p))
+
+class Solution:
+    def maxMatrixSum(self, m: List[List[int]]) -> int:
+        return sum(p:=[*map(abs,t:=[*chain(*m)])])-2*(sum(map(truth,t))%2*min(p))
+
+# 2026-01-05 POTD
+
+class Solution:
+    def maxMatrixSum(self, m: List[List[int]]) -> int:
+        return sum(p:=[*map(abs,t:=sum(m,[]))])-sum(x<0 for x in t)%2*2*min(p)
+
 test('''
 1975. Maximum Matrix Sum
 Medium
@@ -50,6 +64,11 @@ Output: 16
 Explanation: We can follow the following step to reach sum equals 16:
 - Multiply the 2 last elements in the second row by -1.
  
+
+Other examples:
+
+Input: matrix = [[10000,10000,10000],[10000,10000,10000],[10000,10000,10000]]
+Output: 90000
 
 Constraints:
 

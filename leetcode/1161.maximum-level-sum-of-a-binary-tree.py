@@ -1,8 +1,10 @@
 from lc import *
 
+# https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/description/?envType=daily-question&envId=2026-01-06
+
 class Solution:
-    def maxLevelSum(self, r: TreeNode) -> int:
-        c=Counter();f=lambda n,d:n and(c.update({d:n.val}),f(n.left,d+1),f(n.right,d+1));f(r,1);return max(c,key=c.get)
+    def maxLevelSum(self, t: TreeNode) -> int:
+        c=Counter();f=lambda n,d:n and(c.update({d:n.val}),f(n.left,d+1),f(n.right,d+1));f(t,1);return max(c,key=c.get)
 
 test('''
 1161. Maximum Level Sum of a Binary Tree

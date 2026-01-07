@@ -24,8 +24,13 @@ class Solution:
     def maxProduct(self, root: Optional[TreeNode]) -> int:
         return (r:=[],s:=(f:=lambda x:r.append(a:=x.val+f(x.left)+f(x.right)) or a if x else 0)(root)) and max((s-x)*x for x in r) % (10**9+7)
 
-test('''
+# 2026-01-07 POTD
 
+class Solution:
+    def maxProduct(self, t: Optional[TreeNode]) -> int:
+        r=[];f=lambda x:x and(r.append(a:=x.val+f(x.left)+f(x.right))or a)or 0;s=f(t);return max(x*(s-x)for x in r)%(10**9+7)
+
+test('''
 1339. Maximum Product of Splitted Binary Tree
 Medium
 1.6K

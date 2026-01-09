@@ -93,7 +93,11 @@ Example 3:
 Input: root = [0,1,3,null,2]
 Output: [2]
 Explanation: The deepest node in the tree is 2, the valid subtrees are the subtrees of nodes 2, 1 and 0 but the subtree of node 2 is the smallest.
- 
+
+Other examples:
+
+Input: root = [0,2,1,null,null,3]
+Output: [3]
 
 Constraints:
 

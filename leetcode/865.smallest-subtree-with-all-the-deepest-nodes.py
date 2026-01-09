@@ -11,18 +11,6 @@ class Solution:
     while len(last_q) > 1: last_q = {parents[node] for node in last_q}
     return next(iter(last_q))
 
-# https://leetcode.com/problems/smallest-subtree-with-all-the-deepest-nodes/description/?envType=daily-question&envId=2026-01-09
-
-class Solution:
-    def subtreeWithAllDeepest(self, root: TreeNode) -> TreeNode:
-        def dfs(root):
-            if not root: return 0, None
-            l, r = dfs(root.left), dfs(root.right)
-            if l[0] > r[0]: return l[0] + 1, l[1]
-            elif l[0] < r[0]: return r[0] + 1, r[1]
-            else: return l[0] + 1, root
-        return dfs(root)[1]
-
 # https://leetcode.com/problems/smallest-subtree-with-all-the-deepest-nodes/solutions/6612886/two-lines-by-charnavoki-h68i/?envType=daily-question&envId=2026-01-09
 # const subtreeWithAllDeepest = f = (n, x = d(n.right), y = d(n.left)) => x === y ? n : f(x > y ? n.right : n.left); const d = (n) => n ? 1 + Math.max(d(n.left), d(n.right)) : 0;
 
@@ -45,6 +33,30 @@ class Solution:
 class Solution:
     def subtreeWithAllDeepest(self, t: TreeNode) -> TreeNode:
         d=lambda t:t and-~max(d(t.left),d(t.right))or 0;return(f:=lambda t:t and(t if(l:=d(t.left))==(r:=d(t.right))else f((t.left,t.right)[r>l])))(t)
+
+# https://leetcode.com/problems/smallest-subtree-with-all-the-deepest-nodes/description/?envType=daily-question&envId=2026-01-09
+
+class Solution:
+    def subtreeWithAllDeepest(self, root: TreeNode) -> TreeNode:
+        def dfs(root):
+            if not root: return 0, None
+            l, r = dfs(root.left), dfs(root.right)
+            if l[0] > r[0]: return l[0] + 1, l[1]
+            elif l[0] < r[0]: return r[0] + 1, r[1]
+            else: return l[0] + 1, root
+        return dfs(root)[1]
+
+class Solution:
+    def subtreeWithAllDeepest(self, t: TreeNode) -> TreeNode:
+        def f(t):
+            if not t: return 0, None
+            (l:=f(t.left),r:=f(t.right))
+            return(l[0]+1,l[1])if l[0]>r[0]else(r[0]+1,r[1])if(l[0]<r[0])else(l[0]+1,t)
+        return f(t)[1]
+
+class Solution:
+    def subtreeWithAllDeepest(self, t: TreeNode) -> TreeNode:
+        return(f:=lambda t:t and((((l:=f(t.left))[0]+1,t),((r:=f(t.right))[0]+1,r[1]))[l[0]<r[0]],(l[0]+1,l[1]))[l[0]>r[0]]or(0,0))(t)[1]
 
 test('''
 865. Smallest Subtree with all the Deepest Nodes

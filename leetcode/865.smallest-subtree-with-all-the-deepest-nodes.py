@@ -40,7 +40,11 @@ class Solution:
 
 class Solution:
     def subtreeWithAllDeepest(self, t: TreeNode) -> TreeNode:
-        d=lambda n:n and-~max(d(n.left),d(n.right))or 0;return(f:=lambda n:n and(n if(x:=d(n.right))==(y:=d(n.left))else f((n.left,n.right)[x>y])))(t)
+        d=lambda t:t and-~max(d(t.left),d(t.right))or 0;return(f:=lambda t:t and(t if(x:=d(t.right))==(y:=d(t.left))else f((t.left,t.right)[x>y])))(t)
+
+class Solution:
+    def subtreeWithAllDeepest(self, t: TreeNode) -> TreeNode:
+        d=lambda t:t and-~max(d(t.left),d(t.right))or 0;return(f:=lambda t:t and(t if(l:=d(t.left))==(r:=d(t.right))else f((t.left,t.right)[r>l])))(t)
 
 test('''
 865. Smallest Subtree with all the Deepest Nodes

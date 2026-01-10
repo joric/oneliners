@@ -82,14 +82,6 @@ class Solution:
 
 class Solution:
     def minimumDeleteSum(self, a: str, b: str) -> int:
-        return(f:=cache(lambda i,j:(f(i+1,j+1)if a[i]==b[j]else min(ord(a[i])+f(i+1,j),ord(b[j])+f(i,j+1)))if a[i:]and b[j:]else sum(map(ord,a[i:]+b[j:]))))(0,0)
-
-class Solution:
-    def minimumDeleteSum(self, a: str, b: str) -> int:
-        return sum(map(ord,a+b))-2*(f:=cache(lambda i,j:a[i:]and b[j:]and(a[i]==b[j]and ord(a[i])+f(i+1,j+1)or max(f(i+1,j),f(i,j+1)))or 0))(0,0)
-
-class Solution:
-    def minimumDeleteSum(self, a: str, b: str) -> int:
         return sum(map(ord,a+b))-2*(f:=cache(lambda i,j:a[i:]and b[j:]and(a[i]==b[j]and ord(a[i])+f(i+1,j+1)or max(f(i+1,j),f(i,j+1)))or 0))(0,0)
 
 test('''

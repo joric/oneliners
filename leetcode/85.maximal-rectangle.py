@@ -76,20 +76,7 @@ class Solution:
 
 class Solution:
     def maximalRectangle(self,m:List[List[str]])->int:
-        a=0;[(x:=-1,[(x:=x&int(''.join(r),2),a:=max(a,len(max(f'{x:b}'.split('0'),key=len))*(j+1)))for j,r in enumerate(m[i:])])for i in range(len(m))];return a
-
-class Solution:
-    def maximalRectangle(self,m:List[List[str]])->int:
         a=0;[(x:=-1,[(a:=max(a,len(max(bin(x:=x&int(''.join(r),2))[2:].split('0'),key=len))*(j+1)))for j,r in enumerate(m[i:])])for i in range(len(m))];return a
-
-class Solution:
-    def maximalRectangle(self,m:List[List[str]])->int:
-        a=0;
-        for i in range(len(m)):
-            x=-1
-            for j,r in enumerate(m[i:]):
-                a=max(a,len(max(bin(x:=x&int(''.join(r),2))[2:].split('0'),key=len))*(j+1))
-        return a
 
 class Solution:
     def maximalRectangle(self,m:List[List[str]])->int:

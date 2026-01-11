@@ -70,7 +70,15 @@ class Solution:
 
 class Solution:
     def maximalRectangle(self,m:List[List[str]])->int:
+        a,h,w=0,len(m),len(m[0]);[(c:=w-j,[(c:=(m[k][j:j+c]+['0']).index('0'),a:=max(a,c*(k-i+1)))for k in range(i,h)])for i in range(h)for j in range(w)if(h-i)*(w-j)>=a];return a
+
+class Solution:
+    def maximalRectangle(self,m:List[List[str]])->int:
         m=[int("".join(r),2)for r in m];a=0;[(x:=-1,[(x:=x&y,a:=max(a,len(max(f"{x:b}".split('0'),key=len))*(k+1)))for k,y in enumerate(m[i:])])for i in range(len(m))];return a
+
+class Solution:
+    def maximalRectangle(self,m:List[List[str]])->int:
+        a=0;[(x:=-1,[(x:=x&int(''.join(r),2),a:=max(a,len(max(f'{x:b}'.split('0'),key=len))*(j+1)))for j,r in enumerate(m[i:])])for i in range(len(m))];return a
 
 test('''
 85. Maximal Rectangle

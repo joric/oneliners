@@ -66,8 +66,6 @@ class Solution:
     def maximalRectangle(self,m:List[List[str]])->int:
         a,h,w=0,len(m),len(m[0]);[(r:=0,c:=w-j,[(c:=next((min(c,l-j)for l in range(j,j+c)if'1'>m[k][l]),c),a:=max(a,c*(r:=r+1)))for k in range(i,h)])for i in range(h)for j in range(w)if(h-i)*(w-j)>=a];return a
 
-# gemini 3 pro
-
 class Solution:
     def maximalRectangle(self,m:List[List[str]])->int:
         a,h,w=0,len(m),len(m[0]);[(c:=w-j,[(c:=(m[k][j:j+c]+['0']).index('0'),a:=max(a,c*(k-i+1)))for k in range(i,h)])for i in range(h)for j in range(w)if(h-i)*(w-j)>=a];return a
@@ -79,6 +77,27 @@ class Solution:
 class Solution:
     def maximalRectangle(self,m:List[List[str]])->int:
         a=0;[(x:=-1,[(x:=x&int(''.join(r),2),a:=max(a,len(max(f'{x:b}'.split('0'),key=len))*(j+1)))for j,r in enumerate(m[i:])])for i in range(len(m))];return a
+
+class Solution:
+    def maximalRectangle(self,m:List[List[str]])->int:
+        a=0;[(x:=-1,[(a:=max(a,len(max(bin(x:=x&int(''.join(r),2))[2:].split('0'),key=len))*(j+1)))for j,r in enumerate(m[i:])])for i in range(len(m))];return a
+
+class Solution:
+    def maximalRectangle(self,m:List[List[str]])->int:
+        a=0;
+        for i in range(len(m)):
+            x=-1
+            for j,r in enumerate(m[i:]):
+                a=max(a,len(max(bin(x:=x&int(''.join(r),2))[2:].split('0'),key=len))*(j+1))
+        return a
+
+class Solution:
+    def maximalRectangle(self,m:List[List[str]])->int:
+        return max(max(len(max(bin(x:=x&int(''.join(r),2))[2:].split('0')))*(j+1)for j,r in enumerate(m[i:]))for i in range(len(m))if(x:=-1))
+
+class Solution:
+    def maximalRectangle(self,m:List[List[str]])->int:
+        return max(len(max(bin(x:=x&int(''.join(r),2))[2:].split('0')))*(j+1)for i in range(len(m))if(x:=-1)for j,r in enumerate(m[i:]))
 
 test('''
 85. Maximal Rectangle

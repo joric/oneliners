@@ -16,6 +16,8 @@ class Solution:
     def minTimeToVisitAllPoints(self, p: List[List[int]]) -> int:
         return sum(max(abs(a-c),abs(b-d))for(a,b),(c,d)in zip(p,p[1:]))
 
+# POTD 2026-01-12
+
 class Solution:
     def minTimeToVisitAllPoints(self, p: List[List[int]]) -> int:
         return sum(max(abs(a-c),abs(b-d))for(a,b),(c,d)in pairwise(p))

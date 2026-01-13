@@ -2355,6 +2355,7 @@ Examples                                   | Results
 * A condition like `h>i>=0<=j<w` can be written as `h>i>-1<j<w` (1 character shorter).
 * You can replace `q and q[-1]==c` with `q[-1:]==[c]` (3 characters shorter).
 * Shift precedence can be used to write `(a+b)//2` as `a+b>>1` (2 characters shorter).
+* You can replace `==0` and `!=0` with `<()` or `>()` to cut extra space on casting.
 
 ## References
 

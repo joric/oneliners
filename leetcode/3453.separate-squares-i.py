@@ -22,6 +22,10 @@ class Solution:
     def separateSquares(self, s: List[List[int]]) -> float:
         h=w=0;a=-sum(l*l for*_,l in s)/2;return next(y-a/w for y,l in sorted(e for*_,y,l in s for e in((y,l),(y+l,-l)))if 0<=(a:=a+w*(y-h))or(h:=y,w:=w+l)<())
 
+class Solution:
+    def separateSquares(self, s: List[List[int]]) -> float:
+        h=w=0;a=sum(l*l for*_,l in s)/2;return next(y+a/w for y,l in sorted(chain(*[((y,l),(y+l,-l))for*_,y,l in s]))if 0>=(a:=a-w*(y-h))or(h:=y,w:=w+l)<())
+
 test('''
 3453. Separate Squares I
 Medium

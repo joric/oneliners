@@ -57,6 +57,10 @@ class Solution:
     def separateSquares(self, a: List[List[int]]) -> float:
         e={};c=[];k=[];g=0;[e.setdefault(t,[]).append((i,l,l+s))for l,d,s in a for i,t in((1,d),(0,d+s))];[([c.append(x)if i else c.remove(x)for i,*x in e[y]],u:=0,w:=0,[u<v and(w:=w+v-max(u,x),u:=v)for x,v in sorted(c)],k.append((g:=g+(n-y)*w,w,n)))for y,n in pairwise(sorted(e))];return next(n-(t-g/2)/w for t,w,n in k if t>=g/2)
 
+class Solution:
+    def separateSquares(self, a: List[List[int]]) -> float:
+        e,c,k,g={},[],[],0;[(e.setdefault(d+s*j,[]).append((1-j,l,l+s)))for l,d,s in a for j in(0,1)];[([[c.remove,c.append][i](x)for i,*x in e[y]],u:=0,w:=0,[u<v and(w:=w+v-max(u,x),u:=v)for x,v in sorted(c)],k.append((g:=g+(n-y)*w,w,n)))for y,n in pairwise(sorted(e))];return next(n-(t-g/2)/w for t,w,n in k if t>=g/2)
+
 test('''
 3454. Separate Squares II
 Hard

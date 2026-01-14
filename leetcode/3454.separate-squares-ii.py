@@ -36,6 +36,14 @@ class Solution:
 
 class Solution:
     def separateSquares(self, a: List[List[int]]) -> float:
+        e,c={},[];[e.setdefault(t,[]).append((i,l,l+s))for l,d,s in a for i,t in((1,d),(0,d+s))];
+        q=[(w,n-y,n)for y,n in pairwise(sorted(e))if([c.append(x)if i else c.remove(x)for i,*x in e[y]],u:=0,w:=0,[u<v and(w:=w+v-max(u,x),u:=v)for x,v in sorted(c)])];
+        t=sum(w*h for w,h,_ in q)/2
+        g=0
+        return next(n-(g-t)/w for w,h,n in q if(g:=g+w*h)>=t)
+
+class Solution:
+    def separateSquares(self, a: List[List[int]]) -> float:
         e={};c=[];k=[];g=0;
         for l,d,s in a:
             for i,t in((1,d),(0,d+s)):

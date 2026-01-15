@@ -8,11 +8,6 @@ class Solution:
             return max(reduce(lambda w, b: (w[0]+1, w[1]) if b[1]-b[0] == 1 else (2, max(w[0], w[1])), pairwise(sorted(bars)), (2, 0)))
         return min(find_max(hBars), find_max(vBars)) ** 2
 
-
-class Solution:
-    def maximizeSquareHoleArea(self, n: int, m: int, hBars: List[int], vBars: List[int]) -> int:
-        f=lambda b:max(map(len,''.join([str(int(y-x==1))for x,y in pairwise(sorted(b))]).split('0')))+2;return min(f(h),f(v))**2
-
 # https://leetcode.com/problems/maximize-area-of-square-hole-in-grid/solutions/4329556/python-3-5-lines-map-to-strings-ts-98-90-7i53/?envType=daily-question&envId=2026-01-15
 
 class Solution:
@@ -25,8 +20,7 @@ class Solution:
 
 class Solution:
     def maximizeSquareHoleArea(self, n: int, m: int, h: List[int], v: List[int]) -> int:
-        f=lambda b:max(map(len,''.join(str(int(y-x==1))for x,y in pairwise(sorted(b))).split('0')))+2
-        return pow(min(f(h),f(v)),2)
+        f=lambda b:max(map(len,''.join(str(int(y-x==1))for x,y in pairwise(sorted(b))).split('0')))+2;return pow(min(f(h),f(v)),2)
 
 # https://leetcode.com/problems/maximize-area-of-square-hole-in-grid/solutions/7491818/two-simple-lines-of-code-by-mikposp-jgn8/?envType=daily-question&envId=2026-01-15
 

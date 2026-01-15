@@ -52,8 +52,6 @@ class Solution:
     def maximizeSquareHoleArea(self, n: int, m: int, h: List[int], v: List[int]) -> int:
         return min(1+max(len([*g])for _,g in groupby(starmap(sub,enumerate(sorted(b)))))for b in(h,v))**2
 
-# another solution
-
 class Solution:
     def maximizeSquareHoleArea(self, n: int, m: int, h: List[int], v: List[int]) -> int:
         return(min(((c:=0)*(l:=-1)+max((c:=(c+1)*(-~l==(l:=x)))for x in sorted(w)))for w in(h,v))+2)**2

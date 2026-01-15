@@ -22,16 +22,6 @@ class Solution:
     def maximizeSquareHoleArea(self, n: int, m: int, h: List[int], v: List[int]) -> int:
         f=lambda b:max(map(len,''.join(str(int(y-x==1))for x,y in pairwise(sorted(b))).split('0')))+2;return pow(min(f(h),f(v)),2)
 
-# https://leetcode.com/problems/maximize-area-of-square-hole-in-grid/solutions/7491818/two-simple-lines-of-code-by-mikposp-jgn8/?envType=daily-question&envId=2026-01-15
-
-class Solution:
-    def maximizeSquareHoleArea(self, n: int, m: int, h: List[int], v: List[int]) -> int:
-        return(min(max(accumulate(map(sub,q:=sorted(w),q[1:]),lambda p,x:(x==-1)*-~p,initial=0))for w in(h,v))+2)**2
-
-class Solution:
-    def maximizeSquareHoleArea(self, n: int, m: int, h: List[int], v: List[int]) -> int:
-        return(min(max(accumulate([0,*map(sub,q:=sorted(w),q[1:])],lambda p,x:(x==-1)*-~p))for w in(h,v))+2)**2
-
 # https://leetcode.com/problems/maximize-area-of-square-hole-in-grid/solutions/4330028/3-lines-python-by-soonwookwon-ala4/?envType=daily-question&envId=2026-01-15
 
 class Solution:
@@ -43,6 +33,16 @@ class Solution:
 class Solution:
     def maximizeSquareHoleArea(self, n: int, m: int, h: List[int], v: List[int]) -> int:
         f=lambda b:max(1+len([*g])for _,g in groupby(x-i for i,x in enumerate(sorted(b))));return pow(min(f(h),f(v)),2)
+
+# https://leetcode.com/problems/maximize-area-of-square-hole-in-grid/solutions/7491818/two-simple-lines-of-code-by-mikposp-jgn8/?envType=daily-question&envId=2026-01-15
+
+class Solution:
+    def maximizeSquareHoleArea(self, n: int, m: int, h: List[int], v: List[int]) -> int:
+        return(min(max(accumulate(map(sub,q:=sorted(w),q[1:]),lambda p,x:(x==-1)*-~p,initial=0))for w in(h,v))+2)**2
+
+class Solution:
+    def maximizeSquareHoleArea(self, n: int, m: int, h: List[int], v: List[int]) -> int:
+        return(min(max(accumulate([0,*map(sub,q:=sorted(w),q[1:])],lambda p,x:(x==-1)*-~p))for w in(h,v))+2)**2
 
 class Solution:
     def maximizeSquareHoleArea(self, n: int, m: int, h: List[int], v: List[int]) -> int:
@@ -58,7 +58,7 @@ class Solution:
 
 class Solution:
     def maximizeSquareHoleArea(self, n: int, m: int, h: List[int], v: List[int]) -> int:
-        return min(1+max(len([*g])for _,g in groupby(map(sub,sorted(b),count())))for b in(h,v))**2
+        return min(1+max(len([*g])for _,g in groupby(map(sub,sorted(w),count())))for w in(h,v))**2
 
 class Solution:
     def maximizeSquareHoleArea(self, n: int, m: int, h: List[int], v: List[int]) -> int:
@@ -66,7 +66,7 @@ class Solution:
 
 class Solution:
     def maximizeSquareHoleArea(self, n: int, m: int, h: List[int], v: List[int]) -> int:
-        return min(1+max(Counter(map(sub,sorted(b),count())).values())for b in(h,v))**2
+        return min(1+max(Counter(map(sub,sorted(w),count())).values())for w in(h,v))**2
 
 test('''
 2943. Maximize Area of Square Hole in Grid

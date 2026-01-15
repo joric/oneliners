@@ -2219,6 +2219,23 @@ class Solution:
 
 ```
 
+### Enumerate
+
+Sometimes `count()` can replace `enumerate()` (7 chars shorter):
+
+*  https://leetcode.com/problems/maximize-area-of-square-hole-in-grid
+
+```python
+
+class Solution:
+    def maximizeSquareHoleArea(self, n: int, m: int, h: List[int], v: List[int]) -> int:
+        return min(1+max(Counter(starmap(sub,enumerate(sorted(w)))).values())for w in(h,v))**2
+
+class Solution:
+    def maximizeSquareHoleArea(self, n: int, m: int, h: List[int], v: List[int]) -> int:
+        return min(1+max(Counter(map(sub,sorted(w),count())).values())for w in(h,v))**2
+```
+
 ## Tables
 
 ### Operators

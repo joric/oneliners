@@ -2053,9 +2053,9 @@ class Solution:
         return sum(map(abs,map(sub,s:=s.encode(),s[1:])))
 ```
 
-### Enumerate
+### Count
 
-You can use `count()` and `map` to replace an `enumerate` list comprehension (a few characters shorter):
+You can use `count()` to replace `enumerate` in a `map` expression (4-7 characters shorter):
 
 * https://leetcode.com/problems/maximum-total-importance-of-roads
 
@@ -2067,6 +2067,19 @@ class Solution:
 class Solution:
     def maximumImportance(self, n: int, r: List[List[int]]) -> int:
         return-sum(map(mul,count(-n),sorted(Counter(chain(*r)).values())[::-1]))
+```
+
+*  https://leetcode.com/problems/maximize-area-of-square-hole-in-grid
+
+```python
+
+class Solution:
+    def maximizeSquareHoleArea(self, n: int, m: int, h: List[int], v: List[int]) -> int:
+        return min(1+max(Counter(starmap(sub,enumerate(sorted(w)))).values())for w in(h,v))**2
+
+class Solution:
+    def maximizeSquareHoleArea(self, n: int, m: int, h: List[int], v: List[int]) -> int:
+        return min(1+max(Counter(map(sub,sorted(w),count())).values())for w in(h,v))**2
 ```
 
 ### Starmap
@@ -2217,23 +2230,6 @@ class Solution:
     def plusOne(self, d: List[int]) -> List[int]:
         return[*map(int,str(int('%d'*len(d)%(*d,))+1))]
 
-```
-
-### Enumerate
-
-Sometimes `count()` can replace `enumerate()` (7 chars shorter):
-
-*  https://leetcode.com/problems/maximize-area-of-square-hole-in-grid
-
-```python
-
-class Solution:
-    def maximizeSquareHoleArea(self, n: int, m: int, h: List[int], v: List[int]) -> int:
-        return min(1+max(Counter(starmap(sub,enumerate(sorted(w)))).values())for w in(h,v))**2
-
-class Solution:
-    def maximizeSquareHoleArea(self, n: int, m: int, h: List[int], v: List[int]) -> int:
-        return min(1+max(Counter(map(sub,sorted(w),count())).values())for w in(h,v))**2
 ```
 
 ## Tables

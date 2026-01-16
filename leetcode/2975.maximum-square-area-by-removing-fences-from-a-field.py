@@ -31,6 +31,24 @@ class Solution:
     def maximizeSquareArea(self, m: int, n: int, a: List[int], b: List[int]) -> int:
         a,b=starmap(lambda v,t:{abs(x-y)for x,y in combinations(sorted(v+[1,t]),2)},((a,m),(b,n)));return b&a and max(b&a)**2%(10**9+7)or-1
 
+# POTD 2026-01-16
+
+class Solution:
+    def maximizeSquareArea(self, m: int, n: int, a: List[int], b: List[int]) -> int:
+        g=lambda v,t:{abs(x-y)for x,y in combinations(v+[1,t],2)};return(s:=g(a,m)&g(b,n))and max(s)**2%(10**9+7)or-1
+
+class Solution:
+    def maximizeSquareArea(self, m: int, n: int, a: List[int], b: List[int]) -> int:
+        return max(and_(*[{abs(x-y)for x,y in combinations(v+[1,t],2)}for v,t in((a,m),(b,n))])|{0})**2%(10**9+7)or-1
+
+class Solution:
+    def maximizeSquareArea(self, m: int, n: int, a: List[int], b: List[int]) -> int:
+        return max(and_(*[{abs(x-y)for x,y in combinations(k,2)}for k in(a+[1,m],b+[1,n])])|{0})**2%(10**9+7)or-1
+
+class Solution:
+    def maximizeSquareArea(self, m: int, n: int, a: List[int], b: List[int]) -> int:
+        g=lambda v,t:{abs(x-y)for x,y in combinations(v+[1,t],2)};return max(g(a,m)&g(b,n)|{0})**2%(10**9+7)or-1
+
 test('''
 2975. Maximum Square Area by Removing Fences From a Field
 User Accepted:2702

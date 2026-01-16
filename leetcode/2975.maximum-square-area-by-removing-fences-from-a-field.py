@@ -53,6 +53,8 @@ class Solution:
     def maximizeSquareArea(self, m: int, n: int, a: List[int], b: List[int]) -> int:
         g=lambda v,t:{abs(x-y)for x in v+[1]for y in[t]+v};return max(g(a,m)&g(b,n)|{0})**2%(10**9+7)or-1
 
+# https://leetcode.com/problems/maximum-square-area-by-removing-fences-from-a-field/solutions/7492122/three-simple-lines-of-code-by-mikposp/
+
 class Solution:
     def maximizeSquareArea(self, m: int, n: int, a: List[int], b: List[int]) -> int:
         g=lambda v,t:{x-y for x in v+[t]for y in[1]+v};return max(g(a,m)&g(b,n))**2%(10**9+7)or-1

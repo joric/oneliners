@@ -33,6 +33,10 @@ class Solution:
     def largestSquareArea(self, p: List[List[int]], q: List[List[int]]) -> int:
         return max(max(0,min(min(c,g)-max(a,e),min(d,h)-max(b,f)))for((a,b),(c,d)),((e,f),(g,h))in combinations(zip(p,q),2))**2
 
+class Solution:
+    def largestSquareArea(self, p: List[List[int]], q: List[List[int]]) -> int:
+        return(m:=max)(m(0,min(min(c,g)-m(a,e),min(d,h)-m(b,f)))for((a,b),(c,d)),((e,f),(g,h))in combinations(zip(p,q),2))**2
+
 test('''
 3047. Find the Largest Area of Square Inside Two Rectangles
 User Accepted:8669

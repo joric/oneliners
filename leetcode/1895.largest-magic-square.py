@@ -31,10 +31,6 @@ class Solution:
 
 class Solution:
     def largestMagicSquare(self,g:List[List[int]])->int:
-        m,n,r=len(g),len(g[0]),range;return next(s for s in r(m+n,0,-1)for i in r(m-s+1)for j in r(n-s+1)if len({sum((h:=[t[j:j+s]for t in g[i:i+s]])[k][k]for k in r(s)),sum(h[k][~k]for k in r(s)),*map(sum,h+[*zip(*h)])})<2)
-
-class Solution:
-    def largestMagicSquare(self,g:List[List[int]])->int:
         m,n,r=len(g),len(g[0]),range;return next(s for s in r(m+n,0,-1)for i in r(m-s+1)for j in r(n-s+1)if len({*map(sum,(h:=[t[j:j+s]for t in g[i:i+s]])+[*zip(*h)]+[*zip(*[(h[k][k],h[k][~k])for k in r(s)])])})<2)
 
 test('''

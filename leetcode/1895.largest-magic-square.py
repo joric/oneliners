@@ -16,13 +16,10 @@ class Solution:
                     and sum(g[i+k][j+k]for k in range(s))==t
                     and sum(g[i+k][j+s-1-k]for k in range(s))==t):
                         return s
-class Solution:
-    def largestMagicSquare(self,g:List[List[int]])->int:
-        m,n=len(g),len(g[0]);r,c=[[[*accumulate([0,*x])]for x in t]for t in(g,zip(*g))];return next(s for s in range(min(m,n),0,-1)for i in range(m-s+1)for j in range(n-s+1)if(t:=r[i][j+s]-r[i][j])and all(t==r[k][j+s]-r[k][j]for k in range(i+1,i+s))and all(t==c[k][i+s]-c[k][i]for k in range(j,j+s))and sum(g[i+k][j+k]for k in range(s))==sum(g[i+k][j+s-1-k]for k in range(s))==t)
 
 class Solution:
     def largestMagicSquare(self,g:List[List[int]])->int:
-        m,n=len(g),len(g[0]);r,c=[[[*accumulate([0,*x])]for x in t]for t in(g,zip(*g))];return next(s for s in range(min(m,n),0,-1)for i in range(m-s+1)for j in range(n-s+1)if(t:=r[i][j+s]-r[i][j])and all(t==r[k][j+s]-r[k][j]for k in range(i+1,i+s))and all(t==c[k][i+s]-c[k][i]for k in range(j,j+s))and sum(g[i+k][j+k]-g[i+k][j+s-1-k]for k in range(s))<1)
+        m,n=len(g),len(g[0]);r,c=[[[*accumulate([0,*x])]for x in t]for t in(g,zip(*g))];return next(s for s in range(min(m,n),0,-1)for i in range(m-s+1)for j in range(n-s+1)if(t:=r[i][j+s]-r[i][j])and all(t==r[k][j+s]-r[k][j]for k in range(i+1,i+s))and all(t==c[k][i+s]-c[k][i]for k in range(j,j+s))and sum(g[i+k][j+k]for k in range(s))==sum(g[i+k][j+s-1-k]for k in range(s))==t)
 
 test('''
 1895. Largest Magic Square

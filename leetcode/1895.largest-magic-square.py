@@ -33,6 +33,14 @@ class Solution:
     def largestMagicSquare(self,g:List[List[int]])->int:
         m,n,r=len(g),len(g[0]),range;return next(s for s in r(m+n,0,-1)for i in r(m-s+1)for j in r(n-s+1)if len({*map(sum,(h:=[t[j:j+s]for t in g[i:i+s]])+[*zip(*h)]+[*zip(*[(h[k][k],h[k][~k])for k in r(s)])])})<2)
 
+class Solution:
+    def largestMagicSquare(self,g:List[List[int]])->int:
+        m,n,r=len(g),len(g[0]),range;return next(s for s in r(m+n,0,-1)for i in r(m-s+1)for j in r(n-s+1)if len({*map(sum,[*(h:=[t[j:j+s]for t in g[i:i+s]]),*zip(*h),*zip(*[(h[k][k],h[k][~k])for k in r(s)])])})<2)
+
+class Solution:
+    def largestMagicSquare(self,g:List[List[int]])->int:
+        m,r=len(g),range;return next(s for s in r(m,0,-1)for i in r(m-s+1)for j in r(len(g[0])-s+1)if len({*map(sum,[*(h:=[t[j:j+s]for t in g[i:i+s]]),*zip(*h),*zip(*[(h[k][k],h[k][~k])for k in r(s)])])})<2)
+
 test('''
 1895. Largest Magic Square
 Medium

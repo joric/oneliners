@@ -36,6 +36,38 @@ class Solution:
     def maxSideLength(self, g: List[List[int]], t: int) -> int:
         f,s,e=lambda i,j:i|j>-1 and g[i][j],0,enumerate;[(setitem(r,j,x+f(i-1,j)+f(i,j-1)-f(i-1,j-1)),s:=s+(i>=s<=j and t>=f(i,j)-f(i+~s,j)-f(i,j+~s)+f(i+~s,j+~s)))for i,r in e(g)for j,x in e(r)];return s
 
+# https://leetcode.com/problems/maximum-side-length-of-a-square-with-sum-less-than-or-equal-to-threshold/solutions/452383/c-no-dp-recursion-beats-100-on-space-wit-h3av/
+
+class Solution:
+    def maxSideLength(self, g: List[List[int]], t: int) -> int:
+        h, w = len(g), len(g[0])
+        def f(k, y, x, z):
+            r,c = y+z,x+z
+            if r == h or c == w: return z
+            k -= g[r][c]
+            if k<0 or next((1 for i in range(z-1,-1,-1)if(k:=k-g[y+i][c]-g[r][x+i])<0),0):
+                return z
+            return f(k,y,x,z+1)
+        return max(t>=g[i][j]and f(t-g[i][j],i,j,1)for i in range(h)for j in range(w))
+
+class Solution:
+    def maxSideLength(self, g: List[List[int]], t: int) -> int:
+        h, w = len(g), len(g[0])
+        def f(x, y, z):
+            if x + z - 1 >= h or y + z - 1 >= w: return 0
+            if sum(sum(r[y:y + z]) for r in g[x:x + z]) <= t:
+                return 1 + f(x, y, z + 1)
+            return 0
+        return~-max((k:=1)and[k:=k+f(i,j,k)for j in range(w)][-1]for i in range(h))
+
+class Solution:
+    def maxSideLength(self, g: List[List[int]], t: int) -> int:
+        h,w=len(g),len(g[0]);f=lambda x,y,z:h-x>z-1<w-y and t>=sum(sum(r[y:y+z])for r in g[x:x+z])and 1+f(x,y,z+1);return~-max((k:=1)and[k:=k+f(i,j,k)for j in range(w)][-1]for i in range(h))
+
+class Solution:
+    def maxSideLength(self, g: List[List[int]], t: int) -> int:
+        h,w=len(g),len(g[0]);s=0;f=lambda x,y,z:h-x>=z<=w-y and t>=sum(sum(r[y:y+z])for r in g[x:x+z])and 1+f(x,y,z+1);[s:=s+f(i,j,s+1)for i in range(h)for j in range(w)];return s
+
 test('''
 1292. Maximum Side Length of a Square with Sum Less than or Equal to Threshold
 Medium
@@ -57,7 +89,14 @@ Example 2:
 
 Input: mat = [[2,2,2,2,2],[2,2,2,2,2],[2,2,2,2,2],[2,2,2,2,2],[2,2,2,2,2]], threshold = 1
 Output: 0
- 
+
+Other examples:
+
+Input: mat = [[18,70],[61,1],[25,85],[14,40],[11,96],[97,96],[63,45]], threshold = 40184
+Output: 2
+
+Input: mat = [[5,5,1],[5,5,5],[5,5,5]], threshold = 1
+Output: 1
 
 Constraints:
 

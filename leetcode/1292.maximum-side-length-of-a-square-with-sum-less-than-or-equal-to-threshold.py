@@ -66,7 +66,7 @@ class Solution:
 
 class Solution:
     def maxSideLength(self, g: List[List[int]], t: int) -> int:
-        h,w=len(g),len(g[0]);s=0;f=lambda x,y,z:h-x>=z<=w-y and t>=sum(sum(r[y:y+z])for r in g[x:x+z])and 1+f(x,y,z+1);[s:=s+f(i,j,s+1)for i in range(h)for j in range(w)];return s
+        h,w,s=len(g),len(g[0]),0;f=lambda x,y,z:h-x>=z<=w-y and t>=sum(sum(r[y:y+z])for r in g[x:x+z])and-~f(x,y,z+1);[s:=s+f(i,j,s+1)for i in range(h)for j in range(w)];return s
 
 test('''
 1292. Maximum Side Length of a Square with Sum Less than or Equal to Threshold

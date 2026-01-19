@@ -32,6 +32,10 @@ class Solution:
     def maxSideLength(self, g: List[List[int]], t: int) -> int:
         f,s,e=lambda i,j:i>-1<j and g[i][j]or 0,0,enumerate;[(setitem(g[i],j,g[i][j]+f(i-1,j)+f(i,j-1)-f(i-1,j-1)),s:=s+(i>=s<=j and t>=f(i,j)-f(i-s-1,j)-f(i,j-s-1)+f(i-s-1,j-s-1)))for i,r in e(g)for j,x in e(r)];return s
 
+class Solution:
+    def maxSideLength(self, g: List[List[int]], t: int) -> int:
+        f,s,e=lambda i,j:i|j>-1 and g[i][j],0,enumerate;[(setitem(r,j,x+f(i-1,j)+f(i,j-1)-f(i-1,j-1)),s:=s+(i>=s<=j and t>=f(i,j)-f(i+~s,j)-f(i,j+~s)+f(i+~s,j+~s)))for i,r in e(g)for j,x in e(r)];return s
+
 test('''
 1292. Maximum Side Length of a Square with Sum Less than or Equal to Threshold
 Medium

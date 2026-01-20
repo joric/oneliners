@@ -36,6 +36,10 @@ class Solution:
     def minBitwiseArray(self, a: List[int]) -> List[int]:
         return[x%2-1 or x-(-~x&~x)//2 for x in a]
 
+class Solution:
+    def minBitwiseArray(self, a: List[int]) -> List[int]:
+        return[x%2-1or x+(-~x&~x)//-2for x in a]
+
 test('''
 3314. Construct the Minimum Bitwise Array I
 Easy

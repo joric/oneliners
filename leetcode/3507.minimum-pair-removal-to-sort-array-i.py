@@ -67,11 +67,11 @@ class Solution:
 
 class Solution:
     def minimumPairRemoval(self, a: List[int]) -> int:
-        return sum(a>sorted(a)!=[a:=a[:i]+[s]+a[i+2:]for s,i in[min(zip(map(add,a,a[1:]),count()))]]for _ in a+a)
+        return sum(a>sorted(a)!=a.insert(i:=min(zip(map(add,a,a[1:]),count()))[1],a.pop(i)+a.pop(i))for _ in a+a)
 
 class Solution:
     def minimumPairRemoval(self, a: List[int]) -> int:
-        return sum(a>sorted(a)!=a.insert(i:=min(zip(map(add,a,a[1:]),count()))[1],a.pop(i)+a.pop(i))for _ in a+a)
+        return sum(a>sorted(a)!=[a:=a[:i]+[s]+a[i+2:]for s,i in[min(zip(map(add,a,a[1:]),count()))]]for _ in a)
 
 test('''
 3507. Minimum Pair Removal to Sort Array I

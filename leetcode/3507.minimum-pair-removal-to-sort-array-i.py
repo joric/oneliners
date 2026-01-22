@@ -49,6 +49,10 @@ class Solution:
     def minimumPairRemoval(self, a: List[int]) -> int:
         return+(f:=lambda a:a>sorted(a)and-~f(a.insert(i:=(t:=[*map(add,a,a[1:])]).index(min(t)),a.pop(i)+a.pop(i))or a))(a)
 
+class Solution:
+    def minimumPairRemoval(self, a: List[int]) -> int:
+        return+(f:=lambda:a>sorted(a)and(a.insert(i:=(t:=[*map(add,a,a[1:])]).index(min(t)),a.pop(i)+a.pop(i))or-~f()))()
+
 test('''
 3507. Minimum Pair Removal to Sort Array I
 Easy

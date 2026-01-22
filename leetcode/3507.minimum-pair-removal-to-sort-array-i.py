@@ -57,6 +57,22 @@ class Solution:
     def minimumPairRemoval(self, a: List[int]) -> int:
         return sum(a>sorted(a)!=a.insert(i:=(t:=[*map(add,a,a[1:])]).index(min(t)),a.pop(i)+a.pop(i))for _ in a+a)
 
+class Solution:
+    def minimumPairRemoval(self, a: List[int]) -> int:
+        return sum(sorted(a)<a!=(a:=a[:(p:=min(zip(map(add,a,a[1:]),count())))[1]]+[p[0]]+a[p[1]+2:])for _ in a+a)
+
+class Solution:
+    def minimumPairRemoval(self, a: List[int]) -> int:
+        return sum(a>sorted(a)!=(p:=min(zip(map(add,a,a[1:]),count())),a:=a[:p[1]]+[p[0]]+a[p[1]+2:])for _ in a+a)
+
+class Solution:
+    def minimumPairRemoval(self, a: List[int]) -> int:
+        return sum(a>sorted(a)!=[a:=a[:i]+[s]+a[i+2:]for s,i in[min(zip(map(add,a,a[1:]),count()))]]for _ in a+a)
+
+class Solution:
+    def minimumPairRemoval(self, a: List[int]) -> int:
+        return sum(a>sorted(a)!=a.insert(i:=min(zip(map(add,a,a[1:]),count()))[1],a.pop(i)+a.pop(i))for _ in a+a)
+
 test('''
 3507. Minimum Pair Removal to Sort Array I
 Easy
@@ -100,6 +116,9 @@ Other examples:
 
 Input: nums = [2,2,-1,3,-2,2,1,1,1,0,-1]
 Output: 9
+
+Input: nums = [-2,1,2,-1,-1,-2,-2,-1,-1,1,1]
+Output: 10
 
 Constraints:
 

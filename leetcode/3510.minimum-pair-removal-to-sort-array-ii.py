@@ -140,6 +140,10 @@ class Solution:
     def minimumPairRemoval(self, a: List[int]) -> int:
         n=len(a);l,r,v,q,s=[*range(-1,n-1)],[*range(1,n+1)],sum(a[i]>a[i+1]for i in range(n-1)),SortedList([a[i]+a[i+1],i]for i in range(n-1)),setitem;f=lambda i,v,d=0:[0<=i<(j:=r[i])<n and((q.discard,q.add)[d]([a[i]+a[j],i]),v:=v+[-1,1][d]*(a[i]>a[j]))]and v;b=lambda v:v and((i:=q.pop(0)[1],[v:=f(t,v)for t in[l[i],i,r[i]]],s(a,i,a[i]+a[r[i]]),s(r,i,r[r[i]]),n>r[i]and s(l,r[i],i),[v:=f(t,v,1)for t in[l[i],i]])and 1+b(v));return b(v)
 
+class Solution:
+    def minimumPairRemoval(self, a: List[int]) -> int:
+        n=len(a);l,r,v,q,s=[*range(-1,n-1)],[*range(1,n+1)],sum(map(gt,a,a[1:])),SortedList([a[i]+a[i+1],i]for i in range(n-1)),setitem;f=lambda i,v,d:[0<=i<(j:=r[i])<n and((q.discard,q.add)[d]([a[i]+a[j],i]),v:=v+[-1,1][d]*(a[i]>a[j]))]and v;b=lambda v:v and((i:=q.pop(0)[1],[v:=f(t,v,0)for t in[l[i],i,r[i]]],s(a,i,a[i]+a[r[i]]),s(r,i,r[r[i]]),n>r[i]and s(l,r[i],i),[v:=f(t,v,1)for t in[l[i],i]])and-~b(v));return b(v)
+
 test('''
 3510. Minimum Pair Removal to Sort Array II
 Attempted

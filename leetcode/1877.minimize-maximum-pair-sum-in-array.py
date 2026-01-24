@@ -40,6 +40,8 @@ class Solution:
     def minPairSum(self, a: List[int]) -> int:
         a.sort();return max(map(sum,zip(a,a[::-1])))
 
+# https://leetcode.com/problems/minimize-maximum-pair-sum-in-array/solutions/4298396/one-line-solution-by-mikposp-uq2g/
+
 class Solution:
     def minPairSum(self, a: List[int]) -> int:
         a.sort();return max(map(add,a,a[::-1]))

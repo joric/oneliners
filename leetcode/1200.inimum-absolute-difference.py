@@ -14,6 +14,14 @@ class Solution:
     def minimumAbsDifference(self, a: List[int]) -> List[List[int]]:
         a.sort();d=defaultdict(list);[d[y-x].append((x,y))for x,y in pairwise(a)];return d[min(d)]
 
+class Solution:
+    def minimumAbsDifference(self, a: List[int]) -> List[List[int]]:
+        d=defaultdict(list);[d[y-x].append((x,y))for x,y in pairwise(sorted(a))];return d[min(d)]
+
+class Solution:
+    def minimumAbsDifference(self, a: List[int]) -> List[List[int]]:
+        d={};[d.setdefault(-sub(*p),[]).append(p)for p in pairwise(sorted(a))];return d[min(d)]
+
 # https://leetcode.com/problems/minimum-absolute-difference/solutions/7524943/one-line-solution-by-xxxxkav-qgl7/?envType=daily-question&envId=2026-01-26
 
 class Solution:
@@ -31,6 +39,10 @@ class Solution:
 class Solution: # TLE
     def minimumAbsDifference(self, a: List[int]) -> List[List[int]]:
         a.sort();return[p for p in pairwise(a)if sub(*p)==max(map(sub,a,a[1:]))]
+
+class Solution:
+    def minimumAbsDifference(self, a: List[int]) -> List[List[int]]:
+        a.sort();m=max(map(sub,a,b:=a[1:]));return[p for p in zip(a,b)if sub(*p)==m]
 
 class Solution:
     def minimumAbsDifference(self, a: List[int]) -> List[List[int]]:

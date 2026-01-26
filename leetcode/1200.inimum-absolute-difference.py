@@ -10,6 +10,10 @@ class Solution:
             c[a[i+1]-a[i]].append([a[i],a[i+1]])
         return c[sorted(c)[0]]
 
+class Solution:
+    def minimumAbsDifference(self, a: List[int]) -> List[List[int]]:
+        a.sort();d=defaultdict(list);[d[y-x].append((x,y))for x,y in pairwise(a)];return d[min(d)]
+
 # https://leetcode.com/problems/minimum-absolute-difference/solutions/7524943/one-line-solution-by-xxxxkav-qgl7/?envType=daily-question&envId=2026-01-26
 
 class Solution:

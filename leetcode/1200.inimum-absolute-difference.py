@@ -40,6 +40,8 @@ class Solution:
     def minimumAbsDifference(self, a: List[int]) -> List[List[int]]:
         t=[*pairwise(sorted(a))];return[p for p in t if sub(*p)==max(starmap(sub,t))]
 
+# https://leetcode.com/problems/minimum-absolute-difference/solutions/7526242/two-simple-lines-of-code-by-mikposp/
+
 class Solution: # TLE
     def minimumAbsDifference(self, a: List[int]) -> List[List[int]]:
         a.sort();return[p for p in pairwise(a)if sub(*p)==max(map(sub,a,a[1:]))]

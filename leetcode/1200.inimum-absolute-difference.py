@@ -20,6 +20,10 @@ class Solution:
 
 class Solution:
     def minimumAbsDifference(self, a: List[int]) -> List[List[int]]:
+        d=defaultdict(list);[d[-sub(*p)].append(p)for p in pairwise(sorted(a))];return d[min(d)]
+
+class Solution:
+    def minimumAbsDifference(self, a: List[int]) -> List[List[int]]:
         d={};[d.setdefault(-sub(*p),[]).append(p)for p in pairwise(sorted(a))];return d[min(d)]
 
 # https://leetcode.com/problems/minimum-absolute-difference/solutions/7524943/one-line-solution-by-xxxxkav-qgl7/?envType=daily-question&envId=2026-01-26

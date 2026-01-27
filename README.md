@@ -2357,7 +2357,7 @@ Examples                                   | Results
 
 * An expression like `x&(x-1)==0` is useful to check if unsigned `x` is power of 2 or 0 (Kernighan, rightmost bit).
 * You can use Kernighan to check for even values (`x%2==0` or `1>1&x`) as `1&~x` (1 character shorter).
-* You can remove the space before a number in most cases. E.g. `i==3 and j==4` becomes `i==3and j==4`.
+* You can remove the space after a number in most cases. E.g. `i==3 and j==4` becomes `i==3and j==4`.
 * You can use the * operator on a list, e.g. `[1]*8` can replace `range(8)` (unless you really need the counter value).
 * Conditions like `if i<len(r)` may be replaced with `if r[i:]`, it's 3 characters shorter.
 * You can replace `set(n)` with `{*n}` (2 characters shorter).

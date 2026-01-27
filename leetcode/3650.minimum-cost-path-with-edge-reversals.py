@@ -65,7 +65,7 @@ class Solution:
 
 class Solution:
     def minCost(self, n: int, g: List[List[int]]) -> int:
-        d=defaultdict(list);[d[s].append((e,w))or d[e].append((s,2*w))for s,e,w in g];h,v=[],set();return(f:=lambda s,u:u+1==n and s or(u in v or(v.add(u),[heappush(h,(s+w,t))for t,w in d[u]]),h and f(*heappop(h)))[1]or-1)(0,0)
+        d=defaultdict(list);[d[s].append((e,w))or d[e].append((s,2*w))for s,e,w in g];h,v=[],set();return(f:=lambda s,u:u+2>n and s or(u in v or(v.add(u),[heappush(h,(s+w,t))for t,w in d[u]]),h and f(*heappop(h)))[1]or-1)(0,0)
 
 test('''
 3650. Minimum Cost Path with Edge Reversals

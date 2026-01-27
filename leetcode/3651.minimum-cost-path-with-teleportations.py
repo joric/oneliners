@@ -44,7 +44,9 @@ class Solution:
             for i in range(m-1,-1,-1):
                 for j in range(n-1,-1,-1):
                     setitem(c[i],j,0 if i==m-1 and j==n-1 else min(inf,c[i+1][j]+g[i+1][j]if i<m-1 else inf,c[i][j+1]+g[i][j+1]if j<n-1 else inf,p[g[i][j]]if x and p[g[i][j]]<inf else inf))
-            p=[inf]*(h+1);[setitem(p,g[i][j],v)for i in range(m)for j in range(n)if(v:=c[i][j])<p[g[i][j]]];p=[*accumulate(p,min)]
+            p=[inf]*(h+1)
+            [setitem(p,g[i][j],v)for i in range(m)for j in range(n)if(v:=c[i][j])<p[g[i][j]]]
+            p=[*accumulate(p,min)]
         return c[0][0]
 
 class Solution:

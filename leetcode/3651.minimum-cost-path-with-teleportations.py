@@ -53,6 +53,10 @@ class Solution:
     def minCost(self, g: List[List[int]], k: int) -> int:
         m,n,h=len(g),len(g[0]),max(map(max,g));c,p=[[0]*n for _ in range(m)],None;[([setitem(c[i],j,(i,j)!=(m-1,n-1)and+min(inf,c[i+1][j]+g[i+1][j]if i<m-1 else inf,c[i][j+1]+g[i][j+1]if j<n-1 else inf,p[g[i][j]]if x and p[g[i][j]]<inf else inf))for j in range(n-1,-1,-1)for i in range(m-1,-1,-1)],p:=[inf]*(h+1),[setitem(p,g[i][j],v)for i in range(m)for j in range(n)if(v:=c[i][j])<p[g[i][j]]],p:=[*accumulate(p,min)])for x in range(k+1)];return c[0][0]
 
+class Solution:
+    def minCost(self, g: List[List[int]], k: int) -> int:
+        l=sum(g,[]);w=len(g[0]);n=len(l);c=[0]*n;q=inf;p=[q]*-~max(l);r=range;s=setitem;[([s(c,i,i<n-1 and+min(c[i+w]+l[i+w]if i+w<n else q,c[i+1]+l[i+1]if(i+1)%w else q,p[l[i]]if x else q))for i in r(n)[::-1]],p:=[q]*len(p),[s(p,l[i],v)for i in r(n)if(v:=c[i])<p[l[i]]],p:=[*accumulate(p,min)])for x in r(k+1)];return c[0]
+
 test('''
 3651. Minimum Cost Path with Teleportations
 Hard

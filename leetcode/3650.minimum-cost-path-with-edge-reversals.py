@@ -44,6 +44,23 @@ class Solution:
 
 class Solution:
     def minCost(self, n: int, g: List[List[int]]) -> int:
+        d=defaultdict(list)
+        for s,e,w in g:
+            d[s].append((e,w))
+            d[e].append((s,2*w))
+        h=[(0,0)]
+        v={-1}
+        while h:
+            s,u=heappop(h)
+            if u==n-1:
+                return s
+            if{u}-v:
+                v.add(u)
+                [heappush(h,(s+w,t))for t,w in d[u]]
+        return -1
+
+class Solution:
+    def minCost(self, n: int, g: List[List[int]]) -> int:
         d=defaultdict(list);[d[s].append((e,w))or d[e].append((s,2*w))for s,e,w in g];h,v=[],set();return(f:=lambda s,c:s if c==n-1 else[c not in v and(v.add(c),[heappush(h,(s+j,i))for i,j in d[c]if i not in v]),h and f(*heappop(h))][1]or-1)(0,0)
 
 class Solution:
@@ -100,6 +117,8 @@ Output: 24
 Input: n = 4, edges = [[2,3,25],[2,1,18],[3,1,2]]
 Output: -1
 
+Input: n = 5, edges = [[1,2,8],[3,1,10],[0,3,3]]
+Output: -1
 
 Constraints:
 

@@ -25,6 +25,10 @@ class Solution:
     def minimumCost(self, s: str, t: str, o: List[str], c: List[str], p: List[int]) -> int:
         (h:=defaultdict,f:=lambda g,s:(d:=h(lambda:inf),d.update({s:0}),q:=[],(z:=lambda p,v:(p==d[v]and[e+p<d[w]and setitem(d,w,e+p)==heappush(q,(e+p,w))for w,e in g[v]],q and z(*heappop(q))))(0,s))and d,n:=len(o),m:=len(s),g:=h(list),[g[o[i]].append((c[i],p[i]))for i in range(n)],d:={(a:=chr(i+ord('a'))):f(g,a)for i in range(27)});return(-1,r:=sum(d[s[i]][t[i]]for i in range(m)))[r<inf]
 
+class Solution:
+    def minimumCost(self, s: str, t: str, o: List[str], c: List[str], p: List[int]) -> int:
+        d=defaultdict(lambda:inf);e=setitem;r={*o,*c,*s,*t};[e(d,u+v,min(d[u+v],w))for u,v,w in zip(o,c,p)];[e(d,k+k,0)or[e(d,i+j,min(d[i+j],d[i+k]+d[k+j]))for i in r for j in r]for k in r];return(-1,t:=sum(d[u+v]for u,v in zip(s,t)))[t<inf]
+
 test('''
 2976. Minimum Cost to Convert String I
 Medium

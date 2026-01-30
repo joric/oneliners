@@ -60,6 +60,56 @@ class Solution:
     def minimumCost(self, s: str, t: str, o: List[str], c: List[str], p: List[int]) -> int:
         return(z:=setitem,r:=range,f:=inf,u:={*o,*c},m:={x:i for i,x in enumerate(u)},n:=len(m),q:=r(n),w:=[[0 if i==j else f for j in q]for i in q],any(z(w[m[a]],m[b],min(w[m[a]][m[b]],e))for a,b,e in zip(o,c,p)),any(w[i][k]<f and any(w[k][j]<f and z(w[i],j,min(w[i][j],w[i][k]+w[k][j]))for j in q)for k in q for i in q),d:=[0]+[f]*(k:=len(s)),g:={len(x)for x in u},[d[i]<f and((i<k and s[i]==t[i]and z(d,i+1,min(d[i+1],d[i]))),[z(d,i+l,min(d[i+l],d[i]+w[x][y]))for l in g if i+l<=k and(x:=m.get(s[i:i+l],-1))>-1<(y:=m.get(t[i:i+l],-1))and w[x][y]<f])for i in r(k)])and(-1,d[k])[d[k]<f]
 
+# https://leetcode.com/problems/minimum-cost-to-convert-string-ii/solutions/4468594/easy-to-understand-bfs-dijkstra-by-delet-ihnt/
+
+class Solution:
+    def minimumCost(self, source: str, target: str, original: List[str], changed: List[str], cost: List[int]) -> int:
+        lookup = {a: {} for a in set(original)}
+        
+        def bfs(a):
+            heap = [(0, a)]
+            visited = set()
+            while heap:
+                curr_cost, b = heappop(heap)
+                if b in visited:
+                    continue
+                visited.add(b)
+                lookup[a][b] = curr_cost
+                for c in graph[b]:
+                    heappush(heap, (curr_cost + graph[b][c], c))
+        
+        graph = defaultdict(dict)
+        for x, y, z in zip(original, changed, cost):
+            if y not in graph[x]:
+                graph[x][y] = z
+            else:
+                graph[x][y] = min(graph[x][y], z)
+
+        for a in set(original):
+            bfs(a)
+
+        n = len(source)
+        dp = [float('inf')] * (n + 1)
+        dp[0] = 0
+
+        for i in range(1, n + 1):
+            if source[i - 1] == target[i - 1]:
+                dp[i] = dp[i - 1]
+
+            for length in set(len(s) for s in original):
+                if i >= length and (s := source[i - length:i]) in lookup and (t := target[i - length:i]) in lookup[s]:
+                    dp[i] = min(dp[i], dp[i - length] + lookup[s][t])
+
+        return dp[-1] if dp[-1] < float('inf') else -1
+
+class Solution:
+    def minimumCost(self, s: str, t: str, o: List[str], c: List[str], k: List[int]) -> int:
+        e=setitem;g=defaultdict(dict);l={a:{}for a in o};n=len(s);d=[0]+[inf]*n;u={*map(len,o)};f=lambda a:(q:=lambda d,b,h=[],v=set():(b not in v and(v.add(b),setitem(l[a],b,d),[heappush(h,(d+g[b][x],x))for x in g[b]]),h and q(*heappop(h))))(0,a);[e(g[x],y,z if y not in g[x]else min(g[x][y],z))for x,y,z in zip(o,c,k)];[*map(f,{*o})];[(s[i-1]==t[i-1]and e(d,i,d[i-1]),[e(d,i,min(d[i],d[i-j]+l[x][y]))for j in u if i>=j and(x:=s[i-j:i])in l and(y:=t[i-j:i])in l[x]])for i in range(1,n+1)];return(-1,t:=d[-1])[inf>t]
+
+class Solution:
+    def minimumCost(self, s: str, t: str, o: List[str], c: List[str], k: List[int]) -> int:
+        e=setitem;g=defaultdict(dict);l={};n=len(s);d=[0]+[inf]*n;u={*map(len,o)};[e(g[x],y,min(g[x].get(y,inf),z))for x,y,z in zip(o,c,k)];[(e(l,a,{}),(q:=lambda d,b,h=[]:(b in l[a]or(e(l[a],b,d),[heappush(h,(d+g[b][x],x))for x in g[b]]),h and q(*heappop(h))))(0,a))for a in{*o}];[(s[i-1]==t[i-1]and e(d,i,d[i-1]),[e(d,i,min(d[i],d[i-j]+l[x][y]))for j in u if i>=j and(x:=s[i-j:i])in l and(y:=t[i-j:i])in l[x]])for i in range(1,n+1)];return(-1,t:=d[-1])[inf>t]
+
 test('''
 2977. Minimum Cost to Convert String II
 Hard

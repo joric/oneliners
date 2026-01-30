@@ -106,6 +106,50 @@ class Solution:
     def minimumCost(self, s: str, t: str, o: List[str], c: List[str], k: List[int]) -> int:
         e=setitem;g=defaultdict(dict);l={a:{}for a in o};n=len(s);d=[0]+[inf]*n;u={*map(len,o)};f=lambda a:(q:=lambda d,b,h=[],v=set():(b not in v and(v.add(b),setitem(l[a],b,d),[heappush(h,(d+g[b][x],x))for x in g[b]]),h and q(*heappop(h))))(0,a);[e(g[x],y,z if y not in g[x]else min(g[x][y],z))for x,y,z in zip(o,c,k)];[*map(f,{*o})];[(s[i-1]==t[i-1]and e(d,i,d[i-1]),[e(d,i,min(d[i],d[i-j]+l[x][y]))for j in u if i>=j and(x:=s[i-j:i])in l and(y:=t[i-j:i])in l[x]])for i in range(1,n+1)];return(-1,t:=d[-1])[inf>t]
 
+# https://leetcode.com/problems/minimum-cost-to-convert-string-ii/solutions/4468594/easy-to-understand-bfs-dijkstra-by-delet-ihnt/
+
+class Solution:
+    def minimumCost(self, s: str, t: str, o: List[str], c: List[str], k: List[int]) -> int:
+        l = {a: {} for a in set(o)}
+        
+        def f(a):
+            h = [(0, a)]
+            v = set()
+            while h:
+                d, b = heappop(h)
+                if b in v:
+                    continue
+                v.add(b)
+                l[a][b] = d
+                for x in g[b]:
+                    heappush(h, (d + g[b][x], x))
+        
+        g = defaultdict(dict)
+        for x, y, z in zip(o, c, k):
+            if y not in g[x]:
+                g[x][y] = z
+            else:
+                g[x][y] = min(g[x][y], z)
+
+        for a in set(o):
+            f(a)
+
+        n = len(s)
+        d = [inf] * (n + 1)
+        d[0] = 0
+
+        u = set(len(x) for x in o)
+        for i in range(1, n + 1):
+            if s[i - 1] == t[i - 1]:
+                d[i] = d[i - 1]
+
+            for j in u:
+                if i >= j and (x := s[i - j:i]) in l and (y := t[i - j:i]) in l[x]:
+                    d[i] = min(d[i], d[i - j] + l[x][y])
+
+        return d[-1] if d[-1] < inf else -1
+
+
 class Solution:
     def minimumCost(self, s: str, t: str, o: List[str], c: List[str], k: List[int]) -> int:
         e=setitem;g=defaultdict(dict);l={};n=len(s);d=[0]+[inf]*n;u={*map(len,o)};[e(g[x],y,min(g[x].get(y,inf),z))for x,y,z in zip(o,c,k)];[(e(l,a,{}),(q:=lambda d,b,h=[]:(b in l[a]or(e(l[a],b,d),[heappush(h,(d+g[b][x],x))for x in g[b]]),h and q(*heappop(h))))(0,a))for a in{*o}];[(s[i-1]==t[i-1]and e(d,i,d[i-1]),[e(d,i,min(d[i],d[i-j]+l[x][y]))for j in u if i>=j and(x:=s[i-j:i])in l and(y:=t[i-j:i])in l[x]])for i in range(1,n+1)];return(-1,t:=d[-1])[inf>t]

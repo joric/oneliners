@@ -149,7 +149,6 @@ class Solution:
 
         return d[-1] if d[-1] < inf else -1
 
-
 class Solution:
     def minimumCost(self, s: str, t: str, o: List[str], c: List[str], k: List[int]) -> int:
         e=setitem;g=defaultdict(dict);l={};n=len(s);d=[0]+[inf]*n;u={*map(len,o)};[e(g[x],y,min(g[x].get(y,inf),z))for x,y,z in zip(o,c,k)];[(e(l,a,{}),(q:=lambda d,b,h=[]:(b in l[a]or(e(l[a],b,d),[heappush(h,(d+g[b][x],x))for x in g[b]]),h and q(*heappop(h))))(0,a))for a in{*o}];[(s[i-1]==t[i-1]and e(d,i,d[i-1]),[e(d,i,min(d[i],d[i-j]+l[x][y]))for j in u if i>=j and(x:=s[i-j:i])in l and(y:=t[i-j:i])in l[x]])for i in range(1,n+1)];return(-1,t:=d[-1])[inf>t]

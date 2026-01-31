@@ -1,5 +1,11 @@
 from lc import * 
 
+# https://leetcode.com/problems/find-smallest-letter-greater-than-target/solutions/566915/python-3-one-line-with-bisect_right-and-5tirp/?envType=daily-question&envId=2026-01-31
+
+class Solution:
+    def nextGreatestLetter(self, l: List[str], t: str) -> str:
+        return min((c for c in l if c>t), default=min(l))
+
 # https://leetcode.com/problems/find-smallest-letter-greater-than-target/discuss/566915/Python-3-one-line-with-bisect_right-and-with-min
 
 class Solution:
@@ -20,8 +26,7 @@ class Solution:
 
 class Solution:
     def nextGreatestLetter(self, l: List[str], t: str) -> str:
-        return (l+l)[bisect_right(l,t)]
-
+        return(l+l)[bisect_right(l,t)]
 
 test('''
 744. Find Smallest Letter Greater Than Target

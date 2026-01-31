@@ -52,6 +52,9 @@ public:
 
 Also see https://leetcode.com/discuss/post/189808/java-13-is-the-official-version-on-leetc-mr8p/
 
+December 8 2023: cpp passes brute in 2980 ms, almost hits the 3s limit. Java runs in 695ms.
+Probably Memory Sanitizer (MemSan): detects uninitialized reads (expected slow-down 3x)?
+
 tags: quick java, fast java, java bruteforce, java limits
 
 '''

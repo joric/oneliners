@@ -52,6 +52,8 @@ public:
 
 Also see https://leetcode.com/discuss/post/189808/java-13-is-the-official-version-on-leetc-mr8p/
 
+tags: quick java, fast java, java bruteforce, java limits
+
 '''
 
 # https://leetcode.com/problems/corporate-flight-bookings/solutions/1313236/python-4-lines-o-n/

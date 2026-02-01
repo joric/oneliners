@@ -1,11 +1,27 @@
 from lc import *
 
-# biweekly-contest-122 Q1
+# biweekly-contest-122 Q1 https://leetcode.com/contest/biweekly-contest-122/
 # https://leetcode.com/problems/divide-an-array-into-subarrays-with-minimum-cost-i
+
+# https://leetcode.com/problems/divide-an-array-into-subarrays-with-minimum-cost-i/solutions/4602572/python3-1-line-by-true-detective-phcj/?envType=daily-question&envId=2026-02-01
+
+class Solution:
+    def minimumCost(self, a: List[int]) -> int:
+        return a[0]+sum(nsmallest(2,a[1:]))
+
+# POTD 2026-02-01
 
 class Solution:
     def minimumCost(self, a: List[int]) -> int:
         return a[0]+sum(sorted(a[1:])[:2])
+
+class Solution:
+    def minimumCost(self, a: List[int]) -> int:
+        return a.pop(0)+sum(sorted(a)[:2])
+
+class Solution:
+    def minimumCost(self, a: List[int]) -> int:
+        c,*a=a;return c+sum(sorted(a)[:2])
 
 test('''
 3010. Divide an Array Into Subarrays With Minimum Cost I

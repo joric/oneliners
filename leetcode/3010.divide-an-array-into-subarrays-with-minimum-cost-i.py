@@ -23,6 +23,10 @@ class Solution:
     def minimumCost(self, a: List[int]) -> int:
         c,*a=a;return c+sum(sorted(a)[:2])
 
+class Solution:
+    def minimumCost(self, a: List[int]) -> int:
+        c,*a=a;a.sort();return c+a[0]+a[1]
+
 test('''
 3010. Divide an Array Into Subarrays With Minimum Cost I
 Easy

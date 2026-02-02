@@ -21,6 +21,12 @@ class Solution:
     def minimumCost(self, a: List[int], k: int, d: int) -> int:
         n,s,m=len(a),__import__('sortedcontainers').SortedList(a[1:1+d]),inf;c=sum(s[:k-2]);[(c:=c+(a[i]if s.bisect(a[i])<=k-2 else s[k-2]),m:=min(m,c),s.add(a[i]),c:=c-(a[i-d]if s.bisect(a[i-d])<=k-2 else s[k-2]),s.remove(a[i-d]))for i in range(1+d,n)];return a[0]+m
 
+# POTD 2026-02-02 SortedList is globally available now
+
+class Solution:
+    def minimumCost(self, a: List[int], k: int, d: int) -> int:
+        n,s,m=len(a),SortedList(a[1:1+d]),inf;c=sum(s[:k-2]);[(c:=c+(a[i]if s.bisect(a[i])<=k-2 else s[k-2]),m:=min(m,c),s.add(a[i]),c:=c-(a[i-d]if s.bisect(a[i-d])<=k-2 else s[k-2]),s.remove(a[i-d]))for i in range(1+d,n)];return a[0]+m
+
 test('''
 3013. Divide an Array Into Subarrays With Minimum Cost II
 Hard

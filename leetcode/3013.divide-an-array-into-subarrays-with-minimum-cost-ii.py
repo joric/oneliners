@@ -55,6 +55,10 @@ class Solution:
     def minimumCost(self, a: List[int], k: int, d: int) -> int:
         s,t=SortedList(a[1:d+1]+[inf]),k-2;c=sum(s[:t]);return a[0]+min((c:=c+min(u,s[t]),s.add(u),c:=c-min(v,s[t]),s.remove(v))[0]for u,v in zip(a[d+1:],a[1:]))
 
+class Solution:
+    def minimumCost(self, a: List[int], k: int, d: int) -> int:
+        p,*a=a;s=SortedList(a[:d]+[inf]);k-=2;c=sum(s[:k]);return p+min((c:=c+min(u,s[k]),s.add(u),c:=c-min(v,s[k]),s.remove(v))[0]for u,v in zip(a[d:],a))
+
 test('''
 3013. Divide an Array Into Subarrays With Minimum Cost II
 Hard
@@ -92,7 +96,11 @@ Output: 36
 Explanation: The best possible way to divide nums into 4 subarrays is: [10], [8], and [18,9]. This choice is valid because ik-1 - i1 is 2 - 1 = 1 which is equal to dist.The total cost is nums[0] + nums[1] + nums[2] which is 10 + 8 + 18 = 36.
 The division [10], [8,18], and [9] is not valid, because the difference between ik-1 and i1 is 3 - 1 = 2, which is greater than dist.
 It can be shown that there is no possible way to divide nums into 3 subarrays at a cost lower than 36.
- 
+
+Other examples:
+
+Input: nums = [2,2,1], k = 3, dist = 1
+Output: 5
 
 Constraints:
 

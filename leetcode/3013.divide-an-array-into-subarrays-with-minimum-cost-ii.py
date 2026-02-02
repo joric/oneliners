@@ -43,6 +43,10 @@ class Solution:
     def minimumCost(self, a: List[int], k: int, d: int) -> int:
         s,m,t=SortedList(a[1:1+d]),inf,k-2;b,c=s.bisect,sum(s[:t]);[(m:=min(m,c:=c+(t<b(u)and s[t]or u)),s.add(u),c:=c-(t<b(v)and s[t]or v),s.remove(v))for u,v in zip(a[1+d:],a[1:])];return a[0]+m
 
+class Solution:
+    def minimumCost(self, a: List[int], k: int, d: int) -> int:
+        s,t=SortedList(a[1:1+d]),k-2;b,c=s.bisect,sum(s[:t]);return a[0]+min((c:=c+(t<b(u)and s[t]or u),s.add(u),c:=c-(t<b(v)and s[t]or v),s.remove(v))[0]for u,v in zip(a[1+d:],a[1:]))
+
 test('''
 3013. Divide an Array Into Subarrays With Minimum Cost II
 Hard

@@ -10,6 +10,18 @@ class Solution:
     def isTrionic(self, a: List[int]) -> bool:
         return[k for k,_ in groupby((x>y)-(x<y)for x,y in zip(a,a[1:]))]==[-1,1,-1]
 
+class Solution:
+    def isTrionic(self, a: List[int]) -> bool:
+        return[k for k,_ in groupby((x>y)-(x<y)for x,y in pairwise(a))]==[-1,1,-1]
+
+class Solution:
+    def isTrionic(self, a: List[int]) -> bool:
+        return(-1,1,-1)==next(zip(*groupby(pairwise(a),lambda p:gt(*p)-lt(*p))))
+
+class Solution:
+    def isTrionic(self, a: List[int]) -> bool:
+        return(-1,1,-1)==next(zip(*groupby((x>y)-(x<y)for x,y in pairwise(a))))
+
 test('''
 3637. Trionic Array I
 Easy
@@ -51,7 +63,13 @@ Explanation:
 
 There is no way to pick p and q to form the required three segments.
 
- 
+Other examples:
+
+Input: nums = [2,4,3,3]
+Output: false
+
+Input: nums = [1,6,6,3,7]
+Output: false
 
 Constraints:
 

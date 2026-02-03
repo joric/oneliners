@@ -9,10 +9,10 @@ class Solution:
         s, x = a[0], inf
 
         for i, (l, r) in enumerate(pairwise(a)):
-            if l > r:
+            if l>r:
                 s += r
 
-                if x > l:
+                if x>l:
                     x = l
                     continue
 
@@ -22,39 +22,7 @@ class Solution:
                     s -= a[j]
                     j += 1
 
-            elif l < r:
-                s += r
-                if x > l:
-                    q = i
-                if j < p < q <= i and s > o:
-                    o = s
-            else:
-                s = r
-                j = i+1
-            x = l
-        return o
-
-# TODO
-
-class Solution:
-    def maxSumTrionic(self, a: List[int]) -> int:
-        j = p = q = 0
-        n, o = len(a), -inf
-        s, x = a[0], inf
-
-        for i, (l, r) in enumerate(pairwise(a)):
-            if l > r:
-                s += r
-
-                if x > l:
-                    x = l
-                    continue
-
-                p = i
-
-                [(s:=s-a[j],j:=j+1)for _ in a if j<q or j+1-p<0>a[j]]
-
-            elif l < r:
+            elif l<r:
                 s += r
                 if x>l:
                     q = i
@@ -65,6 +33,27 @@ class Solution:
                 j = i+1
             x = l
         return o
+
+class Solution:
+    def maxSumTrionic(self, a: List[int]) -> int:
+        j=p=q=0;n=len(a);s=a[0];o=-inf;x=inf
+        for i,(l,r)in enumerate(pairwise(a)):
+            if l>r:
+                [s:=s+r,x>l and[x:=l]or(p:=i,all((j<q or j+1-p<0>a[j])and(s:=s-a[j],j:=j+1)for _ in a))]
+            elif l<r:
+                [s:=s+r,(x>l and[q:=i],(j<p<q<=i and s>o and(o:=s)))]
+            else:
+                (s:=r,j:=i+1)
+            (x:=l)
+        return o
+
+class Solution:
+    def maxSumTrionic(self, a: List[int]) -> int:
+        j=p=q=0;n=len(a);s=a[0];o=-inf;x=inf;[(l>r and[s:=s+r,x>l and[x:=l]or(p:=i,all((j<q or j+1-p<0>a[j])and(s:=s-a[j],j:=j+1)for _ in a))]or l<r and[s:=s+r,(x>l and[q:=i],(j<p<q<=i and s>o and(o:=s)))]or[s:=r,j:=i+1],x:=l)for i,(l,r)in enumerate(pairwise(a))];return o
+
+class Solution:
+    def maxSumTrionic(self, a: List[int]) -> int:
+        j=p=q=0;s=a[0];o,x=-inf,inf;[(l==r and[s:=r,j:=i+1]or(s:=s+r,l>r and(x>l and[x:=l]or(p:=i,all((j<q or a[j]<0>j-p+1)and(s:=s-a[j],j:=j+1)for _ in a)))or(x>l and[q:=i],j<p<q<=i and s>o and(o:=s))),x:=l)for i,(l,r)in enumerate(zip(a,a[1:]))];return o
 
 test('''
 3640. Trionic Array II
@@ -112,7 +101,12 @@ nums[l...p] = nums[0...1] = [1, 4] is strictly increasing (1 < 4).
 nums[p...q] = nums[1...2] = [4, 2] is strictly decreasing (4 > 2).
 nums[q...r] = nums[2...3] = [2, 7] is strictly increasing (2 < 7).
 Sum = 1 + 4 + 2 + 7 = 14.
- 
+
+Other examples:
+
+Input: nums = [1,4,2,2,3,1,2]
+Output: 8
+
 
 Constraints:
 

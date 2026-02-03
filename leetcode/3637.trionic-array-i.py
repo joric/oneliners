@@ -22,6 +22,8 @@ class Solution:
     def isTrionic(self, a: List[int]) -> bool:
         return(-1,1,-1)==next(zip(*groupby((x>y)-(x<y)for x,y in pairwise(a))))
 
+# https://leetcode.com/problems/trionic-array-i/solutions/7546990/one-line-solution-by-mikposp-6u7o/
+
 class Solution:
     def isTrionic(self, a: List[int]) -> bool:
         return(1,-1,1)==next(zip(*groupby((x<y)-(x>y)for x,y in pairwise(a))))

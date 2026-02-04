@@ -128,6 +128,8 @@ Other examples:
 Input: nums = [1,4,2,2,3,1,2]
 Output: 8
 
+Input: nums = [2,993,-791,-635,-569]
+Output: -431
 
 Constraints:
 

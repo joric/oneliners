@@ -53,7 +53,28 @@ class Solution:
 
 class Solution:
     def maxSumTrionic(self, a: List[int]) -> int:
+        j=p=q=0;n=len(a);s=a[0];o=-inf;x=inf
+        for i,(l,r)in enumerate(pairwise(a)):
+            if l>r:
+                [s:=s+r,x>l and[x:=l]or(p:=i,all((j<q or j+1-p<0>a[j])and(s:=s-a[j],j:=j+1)for _ in a))]
+            elif l<r:
+                [s:=s+r,(x>l and[q:=i],o:=(o,s)[j<p<q<=i and s>o])]
+            else:
+                (s:=r,j:=i+1)
+            (x:=l)
+        return o
+
+class Solution:
+    def maxSumTrionic(self, a: List[int]) -> int:
         j=p=q=0;s=a[0];o,x=-inf,inf;[(l==r and[s:=r,j:=i+1]or(s:=s+r,l>r and(x>l and[x:=l]or(p:=i,all((j<q or a[j]<0>j-p+1)and(s:=s-a[j],j:=j+1)for _ in a)))or(x>l and[q:=i],j<p<q<=i and s>o and(o:=s))),x:=l)for i,(l,r)in enumerate(zip(a,a[1:]))];return o
+
+class Solution:
+    def maxSumTrionic(self, a: List[int]) -> int:
+        j=p=q=0;s=a[0];o,x=-inf,inf;[(l==r and[s:=r,j:=i+1]or(s:=s+r,l>r and(x>l and[x:=l]or(p:=i,all((j<q or a[j]<0>j-p+1)and(s:=s-a[j],j:=j+1)for _ in a)))or(x>l and[q:=i],j<p<q<=i and s>o and(o:=s))),x:=l)for i,(l,r)in enumerate(pairwise(a))];return o
+
+class Solution:
+    def maxSumTrionic(self, a: List[int]) -> int:
+        j=p=q=0;s=a[0];o,x=-inf,inf;[(l==r and[s:=r,j:=i+1]or(s:=s+r,l>r and(x>l and[x:=l]or(p:=i,all((j<q or a[j]<0>j-p+1)and(s:=s-a[j],j:=j+1)for _ in a)))or(x>l and[q:=i],o:=(o,s)[j<p<q<=i!=s>o])),x:=l)for i,(l,r)in enumerate(pairwise(a))];return o
 
 test('''
 3640. Trionic Array II

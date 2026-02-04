@@ -53,14 +53,16 @@ class Solution:
 
 class Solution:
     def maxSumTrionic(self, a: List[int]) -> int:
-        j=p=q=0;n=len(a);s=a[0];o=-inf;x=inf
+        j=p=q=0;s=a[0];o,x=-inf,inf;
         for i,(l,r)in enumerate(pairwise(a)):
-            if l>r:
-                [s:=s+r,x>l and[x:=l]or(p:=i,all((j<q or j+1-p<0>a[j])and(s:=s-a[j],j:=j+1)for _ in a))]
-            elif l<r:
-                [s:=s+r,(x>l and[q:=i],o:=(o,s)[j<p<q<=i and s>o])]
+            if l==r:
+                [s:=r,j:=i+1]
             else:
-                (s:=r,j:=i+1)
+                (s:=s+r)
+                if l>r:
+                    (x>l and[x:=l]or(p:=i,all((j<q or a[j]<0>j-p+1)and(s:=s-a[j],j:=j+1)for _ in a)))
+                else:
+                    (x>l and[q:=i],o:=(o,s)[j<p<q<=i!=s>o])
             (x:=l)
         return o
 
@@ -130,6 +132,9 @@ Output: 8
 
 Input: nums = [2,993,-791,-635,-569]
 Output: -431
+
+Input: nums = [35,941,281,713,-160,996]
+Output: 1970
 
 Constraints:
 

@@ -4,15 +4,15 @@ from lc import *
 
 class Solution:
     def minRemoval(self, a: List[int], k: int) -> int:
-        return(lambda a:reduce(lambda i,v:i+(v>a[i]*k),a,0))(sorted(a))
+        return(lambda a:reduce(lambda i,x:i+(x>a[i]*k),a,0))(sorted(a))
 
 class Solution:
     def minRemoval(self, a: List[int], k: int) -> int:
-        a.sort();return reduce(lambda i,v:i+(v>a[i]*k),a,0)
+        a.sort();return reduce(lambda i,x:i+(x>a[i]*k),a,0)
 
 class Solution:
     def minRemoval(self, a: List[int], k: int) -> int:
-        a.sort();i=0;[i:=i+(v>a[i]*k)for v in a];return i
+        a.sort();i=0;[i:=i+(x>a[i]*k)for x in a];return i
 
 test('''
 3634. Minimum Removals to Balance Array

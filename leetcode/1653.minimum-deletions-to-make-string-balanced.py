@@ -6,6 +6,12 @@ class Solution:
     def minimumDeletions(self, s: str) -> int:
         a=b=0;[c>'a'and(b:=b+1)or(a:=min(a+1,b))for c in s];return a
 
+# POTD 2026-02-07
+
+class Solution:
+    def minimumDeletions(self, s: str) -> int:
+        a=b=0;[a:=min(a+(c<='a'),b:=b+(c>'a'))for c in s];return a
+
 test('''
 1653. Minimum Deletions to Make String Balanced
 Medium

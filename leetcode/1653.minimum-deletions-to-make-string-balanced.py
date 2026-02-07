@@ -12,6 +12,14 @@ class Solution:
     def minimumDeletions(self, s: str) -> int:
         a=b=0;[a:=min(a+(c<='a'),b:=b+(c>'a'))for c in s];return a
 
+class Solution:
+    def minimumDeletions(self, s: str) -> int:
+        a=b=0;[a:=a+(a<(b:=b+(k:=c>'a')))-k for c in s];return a
+
+class Solution:
+    def minimumDeletions(self, s: str) -> int:
+        a=b=0;[a:=a-(k:=c>'a')+(a<(b:=b+k))for c in s];return a
+
 test('''
 1653. Minimum Deletions to Make String Balanced
 Medium

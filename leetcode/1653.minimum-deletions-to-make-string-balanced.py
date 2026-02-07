@@ -12,6 +12,10 @@ class Solution:
 
 class Solution:
     def minimumDeletions(self, s: str) -> int:
+        i=0;[i:=max(0,i+1-2*(c<'b'))for c in s];return s.count('b')-i
+
+class Solution:
+    def minimumDeletions(self, s: str) -> int:
         a=b=0;[c>'a'and(b:=b+1)or(a:=min(a+1,b))for c in s];return a
 
 # POTD 2026-02-07

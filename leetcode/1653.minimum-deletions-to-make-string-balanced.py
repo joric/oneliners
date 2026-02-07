@@ -1,6 +1,14 @@
 from lc import *
 
-# https://leetcode.com/problems/minimum-deletions-to-make-string-balanced
+# https://leetcode.com/problems/minimum-deletions-to-make-string-balanced/solutions/5555966/one-line-solution-using-functools-by-jhz-a6tw/?envType=daily-question&envId=2026-02-07
+
+class Solution:
+    def minimumDeletions(self, s: str) -> int:
+        return s.count('b')-reduce(lambda a,b:max(0,a+(-1)**('a'==b)),s,0)
+
+class Solution:
+    def minimumDeletions(self, s: str) -> int:
+        return s.count('b')-reduce(lambda a,b:max(0,a+1-2*(b<'b')),s,0)
 
 class Solution:
     def minimumDeletions(self, s: str) -> int:
@@ -15,16 +23,6 @@ class Solution:
 class Solution:
     def minimumDeletions(self, s: str) -> int:
         a=b=0;[a:=a+(a<(b:=b+(k:=c>'a')))-k for c in s];return a
-
-# https://leetcode.com/problems/minimum-deletions-to-make-string-balanced/solutions/5555966/one-line-solution-using-functools-by-jhz-a6tw/?envType=daily-question&envId=2026-02-07
-
-class Solution:
-    def minimumDeletions(self, s: str) -> int:
-        return s.count('b')-reduce(lambda a,b:max(0,a+(-1)**('a'==b)),s,0)
-
-class Solution:
-    def minimumDeletions(self, s: str) -> int:
-        return s.count('b')-reduce(lambda a,b:max(0,a+1-2*(b<'b')),s,0)
 
 class Solution:
     def minimumDeletions(self, s: str) -> int:

@@ -24,6 +24,12 @@ class Solution:
     def isBalanced(self, root: TreeNode) -> bool:
         return (f:=lambda x:(((l:=f(x.left))<0 or (r:=f(x.right))<0 or abs(l-r)>1) and -1) or 1+max(l,r) if x else 0)(root)>=0
 
+# POTD 2026-02-08
+
+class Solution:
+    def isBalanced(self, t: TreeNode) -> bool:
+        return(f:=lambda x:x and((l:=f(x.left))>=0<=(r:=f(x.right))and 2>abs(l-r)and 1+max(l,r)or-1)or 0)(t)>=0
+
 test('''
 110. Balanced Binary Tree
 Easy

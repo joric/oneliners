@@ -28,7 +28,7 @@ class Solution:
 
 class Solution:
     def isBalanced(self, t: TreeNode) -> bool:
-        return(f:=lambda x:x and((l:=f(x.left))>=0<=(r:=f(x.right))and 2>abs(l-r)and 1+max(l,r)or-1)or 0)(t)>=0
+        return(f:=lambda x:x and((l:=f(x.left))>-1<(r:=f(x.right))and 2>abs(l-r)and-~max(l,r)or-1)or 0)(t)>=0
 
 test('''
 110. Balanced Binary Tree

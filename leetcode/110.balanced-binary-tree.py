@@ -77,6 +77,12 @@ Example 4:
 Input: root = [3,9,20,null,null,15,7]
 Output: true
 
+Other examples:
+
+Input: root = [1,2,2,3,null,null,3,4,null,null,4]
+Output: false
+
+
 Constraints:
 
 The number of nodes in the tree is in the range [0, 5000].

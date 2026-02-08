@@ -40,7 +40,7 @@ class Solution:
 
 class Solution:
     def isBalanced(self, t: Optional[TreeNode]) -> bool:
-        return(f:=lambda t:t and(inf,max(l:=f(t.left),r:=f(t.right))+1)[-2<l-r<2]or 0)(t)!=inf
+        return(f:=lambda t:t and(inf,max(l:=f(t.left),r:=f(t.right))+1)[-2<l-r<2]or 0)(t)<inf
 
 test('''
 110. Balanced Binary Tree

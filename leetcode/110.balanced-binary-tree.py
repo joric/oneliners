@@ -32,6 +32,16 @@ class Solution:
     def isBalanced(self, t: TreeNode) -> bool:
         return(f:=lambda x:x and((l:=f(x.left))>-1<(r:=f(x.right))and 2>abs(l-r)and-~max(l,r)or-1)or 0)(t)>=0
 
+# https://leetcode.com/problems/balanced-binary-tree/solutions/7561669/one-line-solution-by-xxxxkav-nfj4/
+
+class Solution:
+    def isBalanced(self, t: Optional[TreeNode]) -> bool:
+        return(f:=lambda r:(inf,max(l:=f(r.left),r:=f(r.right))+1)[-2<l-r<2]if r else 0)(t)!=inf
+
+class Solution:
+    def isBalanced(self, t: Optional[TreeNode]) -> bool:
+        return(f:=lambda t:t and(inf,max(l:=f(t.left),r:=f(t.right))+1)[-2<l-r<2]or 0)(t)!=inf
+
 test('''
 110. Balanced Binary Tree
 Easy

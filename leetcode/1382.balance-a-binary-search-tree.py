@@ -114,6 +114,28 @@ class Solution:
 
         return new_root
 
+# https://leetcode.com/problems/balance-a-binary-search-tree/solutions/5373588/python-3-in-11-simple-lines-and-in-one-l-tggr/?envType=daily-question&envId=2026-02-09
+
+class Solution:
+  def balanceBST(self, root: TreeNode) -> TreeNode:
+    def traverse(node):
+      if node:
+        yield from traverse(node.left)
+        yield node.val
+        yield from traverse(node.right)
+    
+    def build(i, j):
+      if i < j:
+        mid = (i + j) // 2
+        return TreeNode(vals[mid], build(i, mid), build(mid+1, j))
+
+    vals = list(traverse(root))
+    return build(0, len(vals))
+
+class Solution:
+  def balanceBST(self, r: TreeNode) -> TreeNode:
+    return (f2 := lambda i, j: TreeNode(v[m := (i + j) // 2], f2(i, m), f2(m+1, j)) if i < j else None)(0, len(v := (f1 := lambda x: [*f1(x.left), x.val, *f1(x.right)] if x else [])(r)))
+
 # https://leetcode.com/problems/balance-a-binary-search-tree/discuss/551956/Python-3-DFS-(in-order)-extraction-and-balanced-tree-building
 
 class Solution:
@@ -136,6 +158,9 @@ class Solution:
 class Solution:
     def balanceBST(self, t: TreeNode) -> TreeNode:
         a=sorted(filter(None,t._tree_node_to_array()));return(f:=lambda l,r:l<=r and type(t)(a[m:=(l+r)//2],f(l,m-1),f(m+1,r))or None)(0,len(a)-1)
+
+
+# POTD 2026-02-09
 
 class Solution:
     def balanceBST(self, t: TreeNode) -> TreeNode:

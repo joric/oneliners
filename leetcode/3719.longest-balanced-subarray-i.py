@@ -36,11 +36,52 @@ class Solution:
                     ans = max(ans, j-i+1)
         return ans
 
-# barely passed TLE
+# bigger limits
 
 class Solution:
     def longestBalanced(self, n: List[int]) -> int:
         p,m,s=__import__('numpy'),len(n),setitem;l,a,q={},0,p.zeros(m+1,dtype=p.int32);return int(max((k:=(-1)**~-x,x in l and s(q,t:=slice(l[x]+1,i+1),q[t]-k),s(q,i+1,q[i]+k),s(l,x,i))and(f:=p.flatnonzero(q[:i+1]==q[i+1])).size and i+1-f[0]for i,x in enumerate(n)))
+
+# https://leetcode.com/problems/longest-balanced-subarray-i/solutions/7285378/python-simple-brute-force-by-rnotappl-egqz/
+
+class Solution: #TLE
+    def longestBalanced(self, a: List[int]) -> int:
+        return max((e:=set(),o:=set(),[(e,o)[x%2].add(x)for x in a[i:j+1]],(len(e)==len(o))*(j-i+1))[3]for i,j in combinations(range(len(a)),2))
+
+class Solution:
+    def longestBalanced(self, a: list[int]) -> int:
+        r = 0
+        for i in range(len(a)):
+            o = set()
+            e = set()
+            for j in range(i,len(a)):
+                if a[j]%2==0:
+                    e.add(a[j])
+                else:
+                    o.add(a[j])
+                if len(o)==len(e):
+                    r = max(r,j-i+1)
+        return r
+
+class Solution:
+    def longestBalanced(self, a: list[int]) -> int:
+        r = 0
+        for i in range(len(a)):
+            o = set()
+            e = set()
+            for j in range(i,len(a)):
+                (o,e)[a[j]%2].add(a[j])
+                if len(o)==len(e):
+                    r = max(r,j-i+1)
+        return r
+
+class Solution:
+    def longestBalanced(self, a: list[int]) -> int:
+        return max((o:=set(),e:=set(),max((o,e)[a[j]%2].add(a[j])or(len(o)==len(e))*(j-i+1)for j in range(i,len(a))))[2]for i in range(len(a)))
+
+class Solution:
+    def longestBalanced(self, a: list[int]) -> int:
+        return max(max((o,e)[x&1].add(x)or(len(o)==len(e))*(j+1)for j,x in enumerate(a[i:]))for i in range(len(a))if(o:={*()},e:={*()}))
 
 test('''
 3721. Longest Balanced Subarray II

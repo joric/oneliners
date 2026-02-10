@@ -83,6 +83,10 @@ class Solution:
     def longestBalanced(self, a: list[int]) -> int:
         return max(max((o,e)[x&1].add(x)or(len(o)==len(e))*(j+1)for j,x in enumerate(a[i:]))for i in range(len(a))if(o:={*()},e:={*()}))
 
+class Solution:
+    def longestBalanced(self, a: list[int]) -> int:
+        return max(max((o,e)[x&1].add(x)or-~j*(len(o)==len(e))for j,x in enumerate(a[i:]))for i in range(len(a))if(o:={*()},e:={*()}))
+
 test('''
 3721. Longest Balanced Subarray II
 Hard

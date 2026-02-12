@@ -2232,7 +2232,7 @@ class Solution:
 
 ```
 
-### Max
+### Nested loops
 
 You can rewrite all nested loops with multiple max into a single max expression:
 

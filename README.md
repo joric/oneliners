@@ -1325,6 +1325,36 @@ class Solution:
         return sum(a==b[:len(a)]==b[-len(a):]for a,b in combinations(w,2))
 ```
 
+In case if you need an assignment between the loops, you still can rewrite nested loops into a single aggregation:
+
+* https://leetcode.com/problems/longest-balanced-subarray-i
+
+```python
+class Solution:
+    def longestBalanced(self, a: list[int]) -> int:
+        return max(max((o,e)[x&1].add(x)or-~j*(len(o)==len(e))
+            for j,x in enumerate(a[i:]))for i in range(len(a))if(o:={*()},e:={*()}))
+
+class Solution:
+    def longestBalanced(self, a: list[int]) -> int:
+        return max((o,e)[x&1].add(x)or-~j*(len(o)==len(e))
+            for i in range(len(a))if(o:={*()},e:={*()})for j,x in enumerate(a[i:]))
+```
+
+* https://leetcode.com/problems/longest-balanced-substring-i
+
+```python
+class Solution:
+    def longestBalanced(self, s: str) -> int:
+        return max(max(j+1 for j,x in enumerate(s[i:])
+            if c.update([x])or len({*c.values()})<2)for i in range(len(s))if[c:=Counter()])
+
+class Solution:
+    def longestBalanced(self, s: str) -> int:
+        return max(j+1 for i in range(len(s))if[c:=Counter()]for j,x in enumerate(s[i:])
+            if c.update([x])or len({*c.values()})<2)
+```
+
 ### Semicolons
 
 Nobody will stop you from using semicolons, but you'd still have to convert while and for loops.
@@ -2230,38 +2260,6 @@ class Solution:
     def plusOne(self, d: List[int]) -> List[int]:
         return[*map(int,str(int('%d'*len(d)%(*d,))+1))]
 
-```
-
-### Nested loops
-
-You can rewrite all nested loops with multiple max into a single max expression:
-
-* https://leetcode.com/problems/longest-balanced-subarray-i
-
-```python
-class Solution:
-    def longestBalanced(self, a: list[int]) -> int:
-        return max(max((o,e)[x&1].add(x)or-~j*(len(o)==len(e))
-            for j,x in enumerate(a[i:]))for i in range(len(a))if(o:={*()},e:={*()}))
-
-class Solution:
-    def longestBalanced(self, a: list[int]) -> int:
-        return max((o,e)[x&1].add(x)or-~j*(len(o)==len(e))
-            for i in range(len(a))if(o:={*()},e:={*()})for j,x in enumerate(a[i:]))
-```
-
-* https://leetcode.com/problems/longest-balanced-substring-i
-
-```python
-class Solution:
-    def longestBalanced(self, s: str) -> int:
-        return max(max(j+1 for j,x in enumerate(s[i:])
-            if c.update([x])or len({*c.values()})<2)for i in range(len(s))if[c:=Counter()])
-
-class Solution:
-    def longestBalanced(self, s: str) -> int:
-        return max(j+1 for i in range(len(s))if[c:=Counter()]for j,x in enumerate(s[i:])
-            if c.update([x])or len({*c.values()})<2)
 ```
 
 ## Tables

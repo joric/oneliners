@@ -43,6 +43,10 @@ class Solution:
     def longestBalanced(self, s: str) -> int:
         return max(max(j+1 for j,x in enumerate(s[i:])if c.update([x])or len({*c.values()})<2)for i in range(len(s))if[c:=Counter()])
 
+class Solution:
+    def longestBalanced(self, s: str) -> int:
+        return max(j+1 for i in range(len(s))if[c:=Counter()]for j,x in enumerate(s[i:])if c.update([x])or len({*c.values()})<2)
+
 test('''
 3713. Longest Balanced Substring I
 Medium

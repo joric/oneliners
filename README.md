@@ -2232,6 +2232,38 @@ class Solution:
 
 ```
 
+### Max
+
+You can rewrite all nested loops with multiple max into a single max expression:
+
+* https://leetcode.com/problems/longest-balanced-subarray-i
+
+```python
+class Solution:
+    def longestBalanced(self, a: list[int]) -> int:
+        return max(max((o,e)[x&1].add(x)or-~j*(len(o)==len(e))
+            for j,x in enumerate(a[i:]))for i in range(len(a))if(o:={*()},e:={*()}))
+
+class Solution:
+    def longestBalanced(self, a: list[int]) -> int:
+        return max((o,e)[x&1].add(x)or-~j*(len(o)==len(e))
+            for i in range(len(a))if(o:={*()},e:={*()})for j,x in enumerate(a[i:]))
+```
+
+* https://leetcode.com/problems/longest-balanced-substring-i
+
+```python
+class Solution:
+    def longestBalanced(self, s: str) -> int:
+        return max(max(j+1 for j,x in enumerate(s[i:])
+            if c.update([x])or len({*c.values()})<2)for i in range(len(s))if[c:=Counter()])
+
+class Solution:
+    def longestBalanced(self, s: str) -> int:
+        return max(j+1 for i in range(len(s))if[c:=Counter()]for j,x in enumerate(s[i:])
+            if c.update([x])or len({*c.values()})<2)
+```
+
 ## Tables
 
 ### Operators

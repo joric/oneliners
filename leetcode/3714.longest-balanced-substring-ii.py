@@ -104,6 +104,10 @@ class Solution:
     def longestBalanced(self, s: str) -> int:
         p,d,e=[0]*3,{},enumerate;return max(i-d.setdefault((j,u),i)for i,x in e(' '+s)if i<1 or[setitem(p,k:=ord(x)%3,p[k]+1)]for a,b,c in[p]for j,u in e(((a-b,b-c),(a-b,c),(b-c,a),(c-a,b),(b,c),(c,a),(a,b))))
 
+class Solution:
+    def longestBalanced(self, s: str) -> int:
+        p,d,e=[0]*3,{},enumerate;return max(i-d.setdefault((j,u),i)for i,x in e(' '+s)if[setitem(p,k:=ord(x)%3,p[k]+1)]for a,b,c in[p]for j,u in e(((a-b,b-c),(a-b,c),(b-c,a),(c-a,b),(b,c),(c,a),(a,b))))
+
 test('''
 3714. Longest Balanced Substring II
 Medium

@@ -12,6 +12,12 @@ class Solution:
     def champagneTower(self, p: int, r: int, g: int) -> float:
         return min(1,(f:=cache(lambda i,j:i==j==0 and p or i>=j>=0 and(max(f(i-1,j-1)-1,0)+max(f(i-1,j)-1,0))/2))(r,g))
 
+# POTD 2026-02-14
+
+class Solution:
+    def champagneTower(self, p: int, r: int, g: int) -> float:
+        return min(1,(f:=cache(lambda i,j:i>-1<j and(i+j<1and p or(max(f(i-1,j-1),1)+max(f(i-1,j),1))/2-1)))(r,g))
+
 test('''
 799. Champagne Tower
 Medium
@@ -49,7 +55,11 @@ Example 3:
 
 Input: poured = 100000009, query_row = 33, query_glass = 17
 Output: 1.00000
- 
+
+Other examples:
+
+Input: poured = 25, query_row = 6, query_glass = 1
+Output: 0.18750
 
 Constraints:
 

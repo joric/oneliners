@@ -26,6 +26,10 @@ class Solution:
     def champagneTower(self, p: int, r: int, g: int) -> float:
         a=[p];[(a:=[*map(add,a:=[max(0,x/2-.5)for x in a]+[0],[0]+a)])for i in'A'*r];return min(1,a[g])
 
+class Solution:
+    def champagneTower(self, p: int, r: int, g: int) -> float:
+        a=[p];[(a:=[*map(add,a:=[max(0,x-1)/2for x in a]+[0],[0]+a)])for _ in[0]*r];return min(1,a[g])
+
 test('''
 799. Champagne Tower
 Medium

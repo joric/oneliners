@@ -2396,6 +2396,7 @@ Examples                                   | Results
 * You can check for set membership with `{x}&s` instead of `x in s` (1 character shorter).
 * Very often `x==0` can be replaced with `x<1` (1 character shorter).
 * A condition like `h>i>=0<=j<w` can be written as `h>i>-1<j<w` (1 character shorter).
+* A condition like `i>-1<j` can be written as `~i&~j` (1 character shorter).
 * You can replace `q and q[-1]==c` with `q[-1:]==[c]` (3 characters shorter).
 * Shift precedence can be used to write `(a+b)//2` as `a+b>>1` (2 characters shorter).
 * You can replace `==0` and `!=0` with `<()` or `>()` to cut space (1 character shorter).

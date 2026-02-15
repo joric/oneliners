@@ -125,7 +125,7 @@ class ListNode:
         self.next = next
 
     def dump(self):
-        if self.has_cycle():
+        if self and self.has_cycle():
             return 'Error - Found cycle in the ListNode'
         out = []
         while self:

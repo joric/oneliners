@@ -309,12 +309,13 @@
                 labels: ['Easy', 'Medium', 'Hard'],
                 type: 'pie',
                 marker: { colors: ['#00b8a3', '#ffc01e', '#ff375f'] },
-                textinfo: 'value',
+                textinfo: 'label+value+percent',
             }], { 
                 ...commonLayout, 
                 title: 'Daily Question Distribution',
                 // Pie needs slightly less margin, but kept generous to be safe
                 margin: { t: 80, b: 60, l: 20, r: 20 },
+                showlegend: false,
             }, config);
 
             // 3. FREQ CHART

@@ -296,8 +296,8 @@
                 // CRITICAL FIX: Bottom margin increased to 100 to prevent axis title clipping
                 margin: { t: 60, b: 100, l: 60, r: 40 }, 
                 hoverlabel: {
-                    bgcolor: "#333",
-                    font: { color: "white" },
+                    bgcolor: "#fff",
+                    font: { color: "#000" },
                     bordercolor: "#333"
                 },
                 // Legend top-horizontal to save vertical space
@@ -321,7 +321,8 @@
                 ...commonLayout, 
                 title: 'Daily Question Distribution',
                 // Pie needs slightly less margin, but kept generous to be safe
-                margin: { t: 80, b: 60, l: 20, r: 20 } 
+                margin: { t: 80, b: 60, l: 20, r: 20 },
+                showlegend: false,
             }, config);
 
             // 3. FREQ CHART

@@ -1,0 +1,3 @@
+from lc import *
+
+test('''

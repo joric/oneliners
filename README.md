@@ -2410,5 +2410,5 @@ Examples                                   | Results
 * [Python One-Liners - Concise Python Code](https://www.amazon.com/gp/product/1718500505)
 * [One-line coder makes me depressed](https://redd.it/15wz7n7)
 * [Tips for Golfing in Python](https://codegolf.stackexchange.com/questions/54/tips-for-golfing-in-python)
+* [Leetcode Daily Analysis](https://www.reddit.com/r/leetcode/comments/1dzcfap/i_did_an_analysis_of_every_daily_problem/)
 * [King of One-Liners](https://youtu.be/DbbKaM8_LUc)
-

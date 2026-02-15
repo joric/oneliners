@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/add-binary
+
 class Solution:
     def addBinary(self, a: str, b: str) -> str:
         c = 0
@@ -15,6 +17,7 @@ class Solution:
             c //= 2
         return r[::-1]
 
+# POTD 2026-02-15
 
 class Solution:
     def addBinary(self, a: str, b: str) -> str:

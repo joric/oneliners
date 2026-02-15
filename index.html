@@ -303,10 +303,10 @@
                 // Legend top-horizontal to save vertical space
                 legend: { 
                     orientation: "h", 
-                    yanchor: "bottom", 
-                    y: 1.02, 
-                    xanchor: "right",
-                    x: 1 
+                    xanchor: "center",
+                    x: 0.5,
+                    yanchor: 'top',
+                    y: 0,
                 }
             };
             const config = { responsive: true, displayModeBar: false };
@@ -322,7 +322,7 @@
                 title: 'Daily Question Distribution',
                 // Pie needs slightly less margin, but kept generous to be safe
                 margin: { t: 80, b: 60, l: 20, r: 20 },
-                showlegend: false,
+                //showlegend: false,
             }, config);
 
             // 3. FREQ CHART

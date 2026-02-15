@@ -311,6 +311,8 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
                     e = type(a).deserialize(expected)
                     return type(a).serialize(a)==type(a).serialize(e)
                 if expected == '[]': expected = None # 114.flatten-binary-tree-to-linked-list.py
+                if (data:=json.loads(expected)):
+                    return a == data
                 return (a or [])==(expected or [])
             elif 'Node' in str(t):
                 return t.serialize(res)==t.serialize(expected)

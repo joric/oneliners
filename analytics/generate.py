@@ -114,7 +114,8 @@ def generate_calendar_html(calendar_data):
             if day in days_data:
                 info = days_data[day]
                 diff_class = info['diff']
-                link = f"{LEETCODE_BASE_URL}{info['slug']}/"
+                #link = f"{LEETCODE_BASE_URL}{info['slug']}/"
+                link = f"https://raw.githubusercontent.com/joric/oneliners/refs/heads/main/leetcode/{info['id']}.{info['slug']}.py"
                 tooltip = f"{info['id']}. {info['title']}"
                 month_html += f'<div class="day-cell {diff_class}" title="{tooltip}"><a href="{link}" target="_blank">{day}</a></div>'
             else:

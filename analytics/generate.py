@@ -9,6 +9,7 @@ import statistics
 INPUT_FILE = "daily.csv"
 OUTPUT_FILE = "../index.html"
 LEETCODE_BASE_URL = "https://leetcode.com/problems/"
+GITHUB_BASE_URL = "https://github.com/joric/oneliners/blob/main/leetcode/"
 
 def load_data(filename):
     if not os.path.exists(filename):
@@ -26,7 +27,10 @@ def get_stats(rows):
     recur_times = []
     counts = collections.defaultdict(int)
     
-    # Existing stats structures
+    # Track metadata for tooltips and counts
+    # q_id -> { "count": int, "dates": [str, str...] }
+    question_meta = collections.defaultdict(lambda: {"count": 0, "dates": []})
+
     diff_map = {"Easy": 0, "Medium": 1, "Hard": 2}
     heatmap_data = [[0]*7 for _ in range(3)] 
     diff_counts = {"Easy": 0, "Medium": 0, "Hard": 0}
@@ -38,7 +42,7 @@ def get_stats(rows):
         
         day_idx = (d_obj.weekday() + 1) % 7 # 0=Sun
         
-        # 1. Heatmap & Pie Data
+        # 1. Heatmap Data
         if difficulty in diff_map:
             r = diff_map[difficulty]
             heatmap_data[r][day_idx] += 1
@@ -51,6 +55,10 @@ def get_stats(rows):
         
         counts[q_id] += 1
         last_appearance[q_id] = d_obj
+        
+        # 3. Metadata Collection
+        question_meta[q_id]["count"] += 1
+        question_meta[q_id]["dates"].append(row["date"])
 
     # Normalize heatmap
     heatmap_percents = [[0.0]*7 for _ in range(3)]
@@ -86,10 +94,11 @@ def get_stats(rows):
         "heatmap": heatmap_percents, 
         "recur_times": recur_times,
         "freq_counts": dict(freq_counts),
-        "summary": summary
+        "summary": summary,
+        "question_meta": dict(question_meta)
     }
 
-def generate_calendar_html(calendar_data):
+def generate_calendar_html(calendar_data, question_meta):
     html_parts = []
     sorted_months = sorted(calendar_data.keys(), key=lambda x: datetime.strptime(x, "%B %Y"), reverse=True)
 
@@ -110,14 +119,33 @@ def generate_calendar_html(calendar_data):
         """
         for _ in range(start_day_idx):
             month_html += '<div class="day-cell empty"></div>'
+            
         for day in range(1, num_days + 1):
             if day in days_data:
                 info = days_data[day]
                 diff_class = info['diff']
-                #link = f"{LEETCODE_BASE_URL}{info['slug']}/"
-                link = f"https://github.com/joric/oneliners/blob/main/leetcode/{info['id']}.{info['slug']}.py"
-                tooltip = f"{info['id']}. {info['title']}"
-                month_html += f'<div class="day-cell {diff_class}" title="{tooltip}"><a href="{link}" target="_blank">{day}</a></div>'
+                q_id = info['id']
+                
+                # Links
+                github_link = f"{GITHUB_BASE_URL}{info['id']}.{info['slug']}.py"
+                leetcode_link = f"{LEETCODE_BASE_URL}{info['slug']}/"
+                
+                # Meta info for tooltip and count
+                meta = question_meta.get(q_id, {"count": 0, "dates": []})
+                count = meta["count"]
+                dates_list = meta["dates"]
+                
+                # Format tooltip
+                # Limit dates shown if too many? No, user asked for all.
+                dates_str = "\n".join(dates_list)
+                tooltip = f"{info['id']}. {info['title']}\nAppearances: {count}\nDates:\n{dates_str}"
+                
+                month_html += f"""
+                <div class="day-cell {diff_class}" title="{tooltip}">
+                    <a href="{github_link}" target="_blank" class="day-number">{day}</a>
+                    <a href="{leetcode_link}" target="_blank" class="occ-count">{count}</a>
+                </div>
+                """
             else:
                 month_html += f'<div class="day-cell empty">{day}</div>'
         month_html += "</div></div>"
@@ -135,7 +163,7 @@ def generate_html(rows, stats):
         }
 
     json_stats = json.dumps(stats)
-    calendar_block = generate_calendar_html(calendar_data)
+    calendar_block = generate_calendar_html(calendar_data, stats["question_meta"])
     
     s = stats["summary"]
     summary_text = (f"{s['max_freq_count']} questions appeared {s['max_freq_apps']} times. "
@@ -194,14 +222,55 @@ def generate_html(rows, stats):
         .month-header {{ background: #2c3e50; color: white; padding: 15px; text-align: center; font-weight: bold; font-size: 1.1em; }}
         .days-container {{ display: grid; grid-template-columns: repeat(7, 1fr); padding: 10px; gap: 2px; }}
         .day-name {{ text-align: center; font-size: 0.85em; color: #777; padding-bottom: 10px; font-weight: 600; }}
-        .day-cell {{ aspect-ratio: 1 / 1; border: 1px solid #f0f0f0; display: flex; align-items: center; justify-content: center; font-size: 0.95em; cursor: pointer; border-radius: 4px; transition: transform 0.1s ease; }}
+        
+        /* --- Day Cell Styles --- */
+        .day-cell {{ 
+            aspect-ratio: 1 / 1; 
+            border: 1px solid #f0f0f0; 
+            position: relative; /* For absolute positioning of count */
+            font-size: 0.95em; 
+            cursor: pointer; 
+            border-radius: 4px; 
+            transition: transform 0.1s ease; 
+        }}
         .day-cell:hover:not(.empty) {{ transform: scale(1.1); z-index: 2; box-shadow: 0 4px 8px rgba(0,0,0,0.15); }}
-        .day-cell a {{ text-decoration: none; color: inherit; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }}
+        
+        /* Main Number Link (GitHub) */
+        .day-number {{ 
+            text-decoration: none; 
+            color: inherit; 
+            width: 100%; 
+            height: 100%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-weight: 500;
+        }}
+        
+        /* Occurrence Count Link (LeetCode) */
+        .occ-count {{
+            position: absolute;
+            top: 2px;
+            right: 4px;
+            font-size: 0.7em;
+            text-decoration: none;
+            font-weight: bold;
+            z-index: 5;
+            opacity: 0.85;
+        }}
+        .occ-count:hover {{ text-decoration: underline; opacity: 1; }}
+
         .day-cell.empty {{ background: transparent; border: none; cursor: default; }}
         
+        /* Difficulty Colors */
         .Easy {{ background-color: #00b8a3; color: white; border-color: #00b8a3; }}
+        .Easy .occ-count {{ color: white; }}
+        
         .Medium {{ background-color: #ffc01e; color: black; border-color: #ffc01e; }}
+        .Medium .occ-count {{ color: rgba(0,0,0,0.7); }}
+        
         .Hard {{ background-color: #ff375f; color: white; border-color: #ff375f; }}
+        .Hard .occ-count {{ color: white; }}
         
         @media (max-width: 900px) {{
             .stats-grid {{ grid-template-columns: 1fr; }}

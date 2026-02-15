@@ -152,6 +152,7 @@
 
     <footer>
       <a target="_blank" href="https://www.reddit.com/r/leetcode/comments/1dzcfap/i_did_an_analysis_of_every_daily_problem/">I did an analysis of every daily problem (Reddit)</a>
+      <p><span id="total"></span></p>
     </footer>
     
     <!-- Github Corner -->
@@ -290,11 +291,33 @@
             });
         }
 
+        function getLeetCodeTime(startDate = new Date('2020-04-01')) {
+            const now = new Date();
+            let y = now.getFullYear() - startDate.getFullYear();
+            let m = now.getMonth() - startDate.getMonth();
+            let d = now.getDate() - startDate.getDate();
+            if (d < 0) {
+                d += new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+                m--;
+            }
+            if (m < 0) {
+                m += 12;
+                y--;
+            }
+            return `${y} year${y!==1?'s':''}, ${m} month${m!==1?'s':''} and ${d} day${d!==1?'s':''}`;
+        }
+
+        //document.getElementById('leetcodeTime').innerText = getLeetCodeTime();
+
         function renderSummary(countAtMax, maxFreq, totalDays, uniqueQuestions, avgRecur) {
             const html = `${countAtMax} questions appeared ${maxFreq} times. 
                           Out of ${totalDays} total days, there were ${uniqueQuestions} unique questions.<br>
                           Average time between reoccurrences: ${avgRecur} days.`;
+
             document.getElementById('summary').innerHTML = html;
+
+            const total = document.getElementById('total');
+            total && (total.innerHTML = getLeetCodeTime());
         }
 
         function renderCharts(diffCounts, freqCounts, heatmapPercents, recurTimes) {

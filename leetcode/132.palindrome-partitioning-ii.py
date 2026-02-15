@@ -40,19 +40,58 @@ class Solution:
         return(f:=cache(lambda s,i:s[i:]!=s[i:][::-1]and min(1+f(s,j+1)for j in range(i,len(s))if s[i:j+1]==s[i:j+1][::-1])or 0))(s,0)
 
 test('''
-132. Palindrome Partitioning
+132. Palindrome Partitioning II
+Solved
+Hard
+Topics
+premium lock icon
+Companies
+Given a string s, partition s such that every substring of the partition is a palindrome.
 
-Examples:
+Return the minimum cuts needed for a palindrome partitioning of s.
 
-Input: s = "bababcbadcede"
-Output: 4
+ 
 
-Explanation: If we do 4 partitions in the following way, each substring of the partition will be a palindrome.
-bab | abcba | d | c | ede.
+Example 1:
 
 Input: s = "aab"
-Output: 1 
+Output: 1
+Explanation: The palindrome partitioning ["aa","b"] could be produced using 1 cut.
+Example 2:
 
-Explanation: If we do 1 partition in the following way, each substring of the partition will be a palindrome.
-aa | b.
+Input: s = "a"
+Output: 0
+Example 3:
+
+Input: s = "ab"
+Output: 1
+ 
+
+Constraints:
+
+1 <= s.length <= 2000
+s consists of lowercase English letters only.
+ 
+Seen this question in a real interview before?
+1/5
+Yes
+No
+Accepted
+393,808/1.1M
+Acceptance Rate
+36.5%
+Topics
+String
+Dynamic Programming
+icon
+Companies
+Similar Questions
+Palindrome Partitioning
+Medium
+Palindrome Partitioning IV
+Hard
+Maximum Number of Non-overlapping Palindrome Substrings
+Hard
+Number of Great Partitions
+Hard
 ''')

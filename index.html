@@ -404,7 +404,7 @@
                         
                         const meta = questionMeta[qId] || { count: 0, dates: [] };
                         const datesStr = meta.dates.join('\n');
-                        const tooltip = `${info.id}. ${info.title}\nAppearances: ${meta.count}\nDates:\n${datesStr}`;
+                        const tooltip = `${info.id}. ${info.title}\nAppearances:\n${datesStr}`;
 
                         html += `<div class="day-cell ${diffClass}" title="${tooltip}">
                                     <a href="${leetcodeLink}" target="_blank" class="day-number">${day}</a>

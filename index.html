@@ -306,6 +306,19 @@
             return `${y} year${y!==1?'s':''}, ${m} month${m!==1?'s':''}, and ${d} day${d!==1?'s':''}`;
         }
 
+        function getDaysSince(startDate = new Date('2020-04-01')) {
+            const now = new Date();
+            const diffTime = Math.abs(now - startDate);
+            return Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        }
+
+        function formatDays(days) {
+            const years = Math.floor(days / 365);
+            const months = Math.floor((days % 365) / 30);
+            const remainingDays = days % 30;
+            return `${years} year${years !== 1 ? 's' : ''}, ${months} month${months !== 1 ? 's' : ''}, and ${remainingDays} day${remainingDays !== 1 ? 's' : ''}`;
+        }
+
         function renderSummary(countAtMax, maxFreq, totalDays, uniqueQuestions, avgRecur) {
             const html = `${countAtMax} questions appeared ${maxFreq} times.
                           Out of ${totalDays} total days, there were ${uniqueQuestions} unique questions.<br>

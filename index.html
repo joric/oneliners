@@ -301,8 +301,11 @@
             Plotly.newPlot('freqChart', [{
                 x: freqKeys, y: freqVals, type: 'bar', marker: { color: '#448aff' }
             }], {
-                ...commonLayout, title: 'Question Frequency (Appearances)',
-                xaxis: {title: 'Appearances'}, yaxis: {title: '# Questions'}
+                ...commonLayout, 
+                title: 'Question Frequency (Appearances)',
+                xaxis: {title: 'Appearances',tickmode: 'linear', dtick: 1},
+                yaxis: {title: '# Questions'},
+                margin: { t: 40, b: 80, l: 60, r: 40 } 
             }, config);
 
             // 3. Heatmap

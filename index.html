@@ -344,7 +344,9 @@
                 for (let j=0; j<7; j++) {
                     annotations.push({
                         xref: 'x1', yref: 'y1', x: days[j], y: diffs[i],
-                        text: heatmapPercents[i][j] + '%',
+                        //text: heatmapPercents[i][j] + '%',
+                        text: Math.round(heatmapPercents[i][j]),
+
                         font: { color: heatmapPercents[i][j] > 50 ? 'white' : 'black' }, showarrow: false
                     });
                 }

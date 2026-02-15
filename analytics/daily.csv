@@ -1561,6 +1561,7 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2024-07-08,find-the-winner-of-the-circular-game,1823,Find the Winner of the Circular Game,Medium,81.8
 2024-07-09,average-waiting-time,1701,Average Waiting Time,Medium,73.2
 2024-07-10,crawler-log-folder,1598,Crawler Log Folder,Easy,66.72024-07-11,reverse-substrings-between-each-pair-of-parentheses,1190,Reverse Substrings Between Each Pair of Parentheses,Medium,71.9
+2024-07-11,reverse-substrings-between-each-pair-of-parentheses,1190,Reverse Substrings Between Each Pair of Parentheses,Medium,71.9
 2024-07-12,maximum-score-from-removing-substrings,1717,Maximum Score From Removing Substrings,Medium,66.6
 2024-07-13,robot-collisions,2751,Robot Collisions,Hard,56.0
 2024-07-14,number-of-atoms,726,Number of Atoms,Hard,65.0

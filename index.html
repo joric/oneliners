@@ -48,7 +48,7 @@
         /* --- Calendar Grid System --- */
         .calendar-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
+            grid-template-columns: repeat(3, 1fr); 
             gap: 20px; 
         }
         
@@ -70,7 +70,37 @@
             align-items: center;
             justify-content: center;
         }
-        .day-cell:hover:not(.empty) { transform: scale(1.1); z-index: 2; box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+        
+        /* Default hover: CSS Scale only */
+        .day-cell:hover:not(.empty) { 
+            transform: scale(1.1); 
+            z-index: 5; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15); 
+        }
+
+        /* 
+           1. HOVER/CLICKED RELATED: Dotted Black Border 
+           Applied to corresponding tasks on HOVER and CLICK.
+        */
+        .day-cell.highlight-related {
+            transform: scale(1.1) !important;
+            z-index: 10 !important;
+            border: 3px dotted #000 !important; /* Dotted Black */
+            filter: brightness(1.05);
+            box-shadow: none !important;
+        }
+
+        /* 
+           2. CLICKED TARGET: Solid Black Border 
+           Only applied to the specific cell you CLICKED.
+        */
+        .day-cell.highlight-clicked-active {
+            transform: scale(1.15) !important;
+            z-index: 20 !important;
+            border: 3px solid #000 !important; /* Solid Black */
+            filter: brightness(1.1);
+            box-shadow: none !important; 
+        }
         
         /* Main Number Link (GitHub) */
         .day-number { 
@@ -111,14 +141,13 @@
         .Hard { background-color: #ff375f; color: white; border-color: #ff375f; }
         .Hard .occ-count { color: white; }
         
+        @media (max-width: 1100px) {
+            .calendar-grid { grid-template-columns: repeat(2, 1fr); }
+        }
         @media (max-width: 900px) {
             .stats-grid { grid-template-columns: 1fr; }
-            .chart-card { 
-                height: auto; 
-                min-height: 400px;
-                padding-bottom: 20px;
-            }
-            .calendar-grid { grid-template-columns: 1fr; }
+            .chart-card { height: auto; min-height: 400px; padding-bottom: 20px; }
+            .calendar-grid { grid-template-columns: repeat(1, 1fr); }
         }
 
         footer {
@@ -184,16 +213,13 @@
             const questions = {};
             const lastAppearance = {};
             const recurTimes = [];
-            const counts = {}; // qId -> count
+            const counts = {}; 
             
             const diffMap = {"Easy": 0, "Medium": 1, "Hard": 2};
             const heatmapData = [[0,0,0,0,0,0,0], [0,0,0,0,0,0,0], [0,0,0,0,0,0,0]];
             const diffCounts = {"Easy": 0, "Medium": 0, "Hard": 0};
             
-            // Meta: q_id -> { count, dates: [] }
             const questionMeta = {};
-
-            // Calendar Data: "Month Year" -> DayInt -> InfoObj
             const calendarData = {};
 
             rows.forEach(row => {
@@ -206,14 +232,12 @@
                 
                 const dayIdx = dObj.getUTCDay(); 
 
-                // 1. Stats
                 if (diffMap[difficulty] !== undefined) {
                     const r = diffMap[difficulty];
                     heatmapData[r][dayIdx]++;
                     diffCounts[difficulty]++;
                 }
 
-                // 2. Recurrence
                 if (lastAppearance[qId]) {
                     const diffTime = Math.abs(dObj - lastAppearance[qId]);
                     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
@@ -221,14 +245,12 @@
                 }
                 lastAppearance[qId] = dObj;
 
-                // 3. Counts & Meta
                 counts[qId] = (counts[qId] || 0) + 1;
                 
                 if (!questionMeta[qId]) questionMeta[qId] = { count: 0, dates: [] };
                 questionMeta[qId].count++;
                 questionMeta[qId].dates.push(row.date);
 
-                // 4. Calendar Structure
                 const monthNames = ["January", "February", "March", "April", "May", "June",
                                   "July", "August", "September", "October", "November", "December"];
                 const monthStr = `${monthNames[dObj.getUTCMonth()]} ${dObj.getUTCFullYear()}`;
@@ -243,8 +265,6 @@
             });
 
             // --- Calculations ---
-            
-            // Heatmap Percents
             const heatmapPercents = [[0,0,0,0,0,0,0], [0,0,0,0,0,0,0], [0,0,0,0,0,0,0]];
             for(let r=0; r<3; r++) {
                 const rowTotal = heatmapData[r].reduce((a,b) => a+b, 0);
@@ -255,13 +275,11 @@
                 }
             }
 
-            // Freq Counts
             const freqCounts = {};
             Object.values(counts).forEach(c => {
                 freqCounts[c] = (freqCounts[c] || 0) + 1;
             });
 
-            // Summary Stats
             const totalDays = rows.length;
             const uniqueQuestions = Object.keys(counts).length;
             
@@ -281,8 +299,8 @@
             renderSummary(countAtMax, maxFreq, totalDays, uniqueQuestions, avgRecurrence);
             renderCharts(diffCounts, freqCounts, heatmapPercents, recurTimes);
             renderCalendar(calendarData, questionMeta);
+            setupInteractions(); 
             
-            // Force Resize update
             requestAnimationFrame(() => {
                 ['pieChart', 'freqChart', 'heatmapChart', 'recurChart'].forEach(id => {
                     Plotly.Plots.resize(document.getElementById(id));
@@ -316,11 +334,8 @@
         }
 
         function renderCharts(diffCounts, freqCounts, heatmapPercents, recurTimes) {
-            
-            // 1. GLOBAL CONFIG
             const commonLayout = {
                 autosize: true, 
-                // CRITICAL FIX: Bottom margin increased to 100 to prevent axis title clipping
                 margin: { t: 60, b: 100, l: 60, r: 40 }, 
                 hoverlabel: {
                     bgcolor: "#fff",
@@ -330,7 +345,7 @@
             };
             const config = { responsive: true, displayModeBar: false };
 
-            // 2. PIE CHART
+            // 1. Pie
             Plotly.newPlot('pieChart', [{
                 values: [diffCounts.Easy, diffCounts.Medium, diffCounts.Hard],
                 labels: ['Easy', 'Medium', 'Hard'],
@@ -340,12 +355,10 @@
             }], { 
                 ...commonLayout, 
                 title: 'Daily Question Distribution',
-                // Pie needs slightly less margin, but kept generous to be safe
                 margin: { t: 80, b: 60, l: 20, r: 20 },
-                //showlegend: false,
             }, config);
 
-            // 3. FREQ CHART
+            // 2. Freq
             const freqKeys = Object.keys(freqCounts).map(Number).sort((a,b)=>a-b);
             const freqVals = freqKeys.map(k => freqCounts[k]);
             Plotly.newPlot('freqChart', [{
@@ -357,7 +370,7 @@
                 yaxis: { title: 'Count' }
             }, config);
 
-            // 4. HEATMAP
+            // 3. Heatmap
             const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
             const diffs = ['Easy', 'Medium', 'Hard'];
             const annotations = [];
@@ -365,9 +378,7 @@
                 for (let j=0; j<7; j++) {
                     annotations.push({
                         xref: 'x1', yref: 'y1', x: days[j], y: diffs[i],
-                        //text: heatmapPercents[i][j] + '%',
                         text: Math.round(heatmapPercents[i][j]),
-
                         font: { color: heatmapPercents[i][j] > 50 ? 'white' : 'black' }, showarrow: false
                     });
                 }
@@ -382,7 +393,7 @@
                 margin: { ...commonLayout.margin, r: 50 } 
             }, config);
 
-            // 5. HISTOGRAM
+            // 4. Histogram
             Plotly.newPlot('recurChart', [{
                 x: recurTimes, type: 'histogram', marker: { color: '#448aff' }, xbins: { size: 30 }
             }], {
@@ -433,7 +444,8 @@
                         const datesStr = meta.dates.join('\n');
                         const tooltip = `${info.id}. ${info.title}\nAppearances: ${meta.count}\nDates:\n${datesStr}`;
 
-                        html += `<div class="day-cell ${diffClass}" title="${tooltip}">
+                        // ADDED data-qid HERE
+                        html += `<div class="day-cell ${diffClass}" title="${tooltip}" data-qid="${qId}">
                                     <a href="${leetcodeLink}" target="_blank" class="day-number">${day}</a>
                                     <a href="${githubLink}" target="_blank" class="occ-count">${meta.count}</a>
                                  </div>`;
@@ -450,6 +462,84 @@
             window.addEventListener('resize', function() {
                 const ids = ['pieChart', 'freqChart', 'heatmapChart', 'recurChart'];
                 ids.forEach(id => Plotly.Plots.resize(document.getElementById(id)));
+            });
+        }
+
+        // --- UPDATED INTERACTION LOGIC ---
+        function setupInteractions() {
+            const container = document.getElementById('calendar');
+            let lockedQId = null; 
+
+            const clearHighlights = () => {
+                document.querySelectorAll('.highlight-clicked-active, .highlight-related').forEach(el => {
+                    el.classList.remove('highlight-clicked-active', 'highlight-related');
+                });
+            };
+
+            // 1. Mouse Over (HOVER)
+            //    If NOT locked: apply DOTTED to all others, keep target clean (just scale via CSS)
+            container.addEventListener('mouseover', function(e) {
+                if (lockedQId) return; // If locked, don't change anything on hover
+
+                const target = e.target.closest('.day-cell');
+                if (target && target.dataset.qid) {
+                    const qId = target.dataset.qid;
+                    // Apply DOTTED to all matches...
+                    document.querySelectorAll(`.day-cell[data-qid="${qId}"]`).forEach(el => {
+                        // ...EXCEPT the one we are hovering
+                        if (el !== target) {
+                            el.classList.add('highlight-related');
+                        }
+                    });
+                }
+            });
+
+            // 2. Mouse Out
+            container.addEventListener('mouseout', function(e) {
+                if (lockedQId) return;
+
+                const target = e.target.closest('.day-cell');
+                if (target && target.dataset.qid) {
+                    clearHighlights();
+                }
+            });
+
+            // 3. Click / Touch (LOCK)
+            const handleLock = (e) => {
+                const target = e.target.closest('.day-cell');
+                
+                if (!target || !target.dataset.qid) {
+                    return; 
+                }
+
+                const qId = target.dataset.qid;
+                lockedQId = qId;
+
+                // Clear previous state completely
+                clearHighlights(); 
+                
+                // Find all matches
+                const matches = document.querySelectorAll(`.day-cell[data-qid="${qId}"]`);
+                matches.forEach(el => {
+                    if (el === target) {
+                        // The clicked one gets SOLID BLACK
+                        el.classList.add('highlight-clicked-active');
+                    } else {
+                        // All others get DOTTED BLACK
+                        el.classList.add('highlight-related');
+                    }
+                });
+            };
+
+            container.addEventListener('mousedown', handleLock);
+            container.addEventListener('touchstart', handleLock, { passive: true });
+
+            // 4. Click Outside to Unlock
+            document.body.addEventListener('mousedown', function(e) {
+                if (!e.target.closest('.day-cell')) {
+                    lockedQId = null;
+                    clearHighlights();
+                }
             });
         }
     </script>

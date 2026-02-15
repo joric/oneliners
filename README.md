@@ -92,6 +92,18 @@ class Solution:
         return(s:=type(h)._list_node_to_array(h))==s[::-1]
 ```
 
+* https://leetcode.com/problems/sort-list
+
+```python
+class Solution:
+    def sortList(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        t=ListNode;return t._array_to_list_node(sorted(t._list_node_to_array(h)))
+
+class Solution:
+    def sortList(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        t=ListNode;return t.deserialize(str(sorted(eval(t.serialize(h)))))
+```
+
 You can also dump the entire preprocessed solution file to check all the imports for yourself (see [gist](https://gist.github.com/joric/90422e5c4729581a465a9904e4c292db)):
 
 ```python

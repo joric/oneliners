@@ -1,0 +1,2147 @@
+date,titleSlug,questionFrontendId,title,difficulty,acRate
+2020-04-01,single-number,136,Single Number,Easy,73.5
+2020-04-02,happy-number,202,Happy Number,Easy,56.4
+2020-04-03,maximum-subarray,53,Maximum Subarray,Medium,50.9
+2020-04-04,move-zeroes,283,Move Zeroes,Easy,61.9
+2020-04-05,best-time-to-buy-and-sell-stock-ii,122,Best Time to Buy and Sell Stock II,Medium,67.0
+2020-04-06,group-anagrams,49,Group Anagrams,Medium,68.9
+2020-04-07,counting-elements,1426,Counting Elements,Easy,60.2
+2020-04-08,middle-of-the-linked-list,876,Middle of the Linked List,Easy,78.8
+2020-04-09,backspace-string-compare,844,Backspace String Compare,Easy,49.2
+2020-04-10,min-stack,155,Min Stack,Medium,54.6
+2020-04-11,diameter-of-binary-tree,543,Diameter of Binary Tree,Easy,60.9
+2020-04-12,last-stone-weight,1046,Last Stone Weight,Easy,65.5
+2020-04-13,contiguous-array,525,Contiguous Array,Medium,49.0
+2020-04-14,perform-string-shifts,1427,Perform String Shifts,Easy,54.7
+2020-04-15,product-of-array-except-self,238,Product of Array Except Self,Medium,66.4
+2020-04-16,valid-parenthesis-string,678,Valid Parenthesis String,Medium,38.1
+2020-04-17,number-of-islands,200,Number of Islands,Medium,59.9
+2020-04-18,minimum-path-sum,64,Minimum Path Sum,Medium,64.4
+2020-04-19,search-in-rotated-sorted-array,33,Search in Rotated Sorted Array,Medium,41.1
+2020-04-20,construct-binary-search-tree-from-preorder-traversal,1008,Construct Binary Search Tree from Preorder Traversal,Medium,82.2
+2020-04-21,leftmost-column-with-at-least-a-one,1428,Leftmost Column with at Least a One,Medium,54.5
+2020-04-22,subarray-sum-equals-k,560,Subarray Sum Equals K,Medium,43.8
+2020-04-23,bitwise-and-of-numbers-range,201,Bitwise AND of Numbers Range,Medium,47.1
+2020-04-24,lru-cache,146,LRU Cache,Medium,42.8
+2020-04-25,jump-game,55,Jump Game,Medium,38.6
+2020-04-26,longest-common-subsequence,1143,Longest Common Subsequence,Medium,57.8
+2020-04-27,maximal-square,221,Maximal Square,Medium,46.9
+2020-04-28,first-unique-number,1429,First Unique Number,Medium,53.8
+2020-04-29,binary-tree-maximum-path-sum,124,Binary Tree Maximum Path Sum,Hard,40.2
+2020-04-30,check-if-a-string-is-a-valid-sequence-from-root-to-leaves-path-in-a-binary-tree,1430,Check If a String Is a Valid Sequence from Root to Leaves Path in a Binary Tree,Medium,46.9
+2020-05-01,first-bad-version,278,First Bad Version,Easy,44.6
+2020-05-02,jewels-and-stones,771,Jewels and Stones,Easy,88.7
+2020-05-03,ransom-note,383,Ransom Note,Easy,61.9
+2020-05-04,number-complement,476,Number Complement,Easy,67.7
+2020-05-05,first-unique-character-in-a-string,387,First Unique Character in a String,Easy,62.3
+2020-05-06,majority-element,169,Majority Element,Easy,65.0
+2020-05-07,cousins-in-binary-tree,993,Cousins in Binary Tree,Easy,56.3
+2020-05-08,check-if-it-is-a-straight-line,1232,Check If It Is a Straight Line,Easy,39.5
+2020-05-09,valid-perfect-square,367,Valid Perfect Square,Easy,43.8
+2020-05-10,find-the-town-judge,997,Find the Town Judge,Easy,49.8
+2020-05-11,flood-fill,733,Flood Fill,Easy,64.3
+2020-05-12,single-element-in-a-sorted-array,540,Single Element in a Sorted Array,Medium,59.2
+2020-05-13,remove-k-digits,402,Remove K Digits,Medium,33.7
+2020-05-14,implement-trie-prefix-tree,208,Implement Trie (Prefix Tree),Medium,65.7
+2020-05-15,maximum-sum-circular-subarray,918,Maximum Sum Circular Subarray,Medium,45.2
+2020-05-16,odd-even-linked-list,328,Odd Even Linked List,Medium,61.5
+2020-05-17,find-all-anagrams-in-a-string,438,Find All Anagrams in a String,Medium,51.1
+2020-05-18,permutation-in-string,567,Permutation in String,Medium,44.5
+2020-05-19,online-stock-span,901,Online Stock Span,Medium,66.1
+2020-05-20,kth-smallest-element-in-a-bst,230,Kth Smallest Element in a BST,Medium,73.0
+2020-05-21,count-square-submatrices-with-all-ones,1277,Count Square Submatrices with All Ones,Medium,75.3
+2020-05-22,sort-characters-by-frequency,451,Sort Characters By Frequency,Medium,72.7
+2020-05-23,interval-list-intersections,986,Interval List Intersections,Medium,71.8
+2020-05-24,construct-binary-search-tree-from-preorder-traversal,1008,Construct Binary Search Tree from Preorder Traversal,Medium,82.2
+2020-05-25,uncrossed-lines,1035,Uncrossed Lines,Medium,63.2
+2020-05-26,contiguous-array,525,Contiguous Array,Medium,49.0
+2020-05-27,possible-bipartition,886,Possible Bipartition,Medium,50.7
+2020-05-28,counting-bits,338,Counting Bits,Easy,78.5
+2020-05-29,course-schedule,207,Course Schedule,Medium,47.1
+2020-05-30,k-closest-points-to-origin,973,K Closest Points to Origin,Medium,66.6
+2020-05-31,edit-distance,72,Edit Distance,Medium,56.9
+2020-06-01,invert-binary-tree,226,Invert Binary Tree,Easy,77.4
+2020-06-02,delete-node-in-a-linked-list,237,Delete Node in a Linked List,Medium,80.2
+2020-06-03,two-city-scheduling,1029,Two City Scheduling,Medium,66.8
+2020-06-04,reverse-string,344,Reverse String,Easy,78.8
+2020-06-05,random-pick-with-weight,528,Random Pick with Weight,Medium,47.0
+2020-06-06,queue-reconstruction-by-height,406,Queue Reconstruction by Height,Medium,73.6
+2020-06-07,coin-change-ii,518,Coin Change II,Medium,64.3
+2020-06-08,power-of-two,231,Power of Two,Easy,47.8
+2020-06-09,is-subsequence,392,Is Subsequence,Easy,48.1
+2020-06-10,search-insert-position,35,Search Insert Position,Easy,46.5
+2020-06-11,sort-colors,75,Sort Colors,Medium,64.1
+2020-06-12,insert-delete-getrandom-o1,380,Insert Delete GetRandom O(1),Medium,54.5
+2020-06-13,largest-divisible-subset,368,Largest Divisible Subset,Medium,45.5
+2020-06-14,cheapest-flights-within-k-stops,787,Cheapest Flights Within K Stops,Medium,39.4
+2020-06-15,search-in-a-binary-search-tree,700,Search in a Binary Search Tree,Easy,80.1
+2020-06-16,validate-ip-address,468,Validate IP Address,Medium,27.2
+2020-06-17,surrounded-regions,130,Surrounded Regions,Medium,40.1
+2020-06-18,h-index-ii,275,H-Index II,Medium,38.3
+2020-06-19,longest-duplicate-substring,1044,Longest Duplicate Substring,Hard,30.6
+2020-06-20,permutation-sequence,60,Permutation Sequence,Hard,47.6
+2020-06-21,dungeon-game,174,Dungeon Game,Hard,38.3
+2020-06-22,single-number-ii,137,Single Number II,Medium,63.2
+2020-06-23,count-complete-tree-nodes,222,Count Complete Tree Nodes,Easy,66.2
+2020-06-24,unique-binary-search-trees,96,Unique Binary Search Trees,Medium,61.3
+2020-06-25,find-the-duplicate-number,287,Find the Duplicate Number,Medium,61.1
+2020-06-26,sum-root-to-leaf-numbers,129,Sum Root to Leaf Numbers,Medium,66.2
+2020-06-27,perfect-squares,279,Perfect Squares,Medium,54.9
+2020-06-28,reconstruct-itinerary,332,Reconstruct Itinerary,Hard,43.3
+2020-06-29,unique-paths,62,Unique Paths,Medium,64.5
+2020-06-30,word-search-ii,212,Word Search II,Hard,36.4
+2020-07-01,climbing-stairs,70,Climbing Stairs,Easy,53.0
+2020-07-02,arranging-coins,441,Arranging Coins,Easy,46.7
+2020-07-03,binary-tree-level-order-traversal-ii,107,Binary Tree Level Order Traversal II,Medium,63.8
+2020-07-04,prison-cells-after-n-days,957,Prison Cells After N Days,Medium,39.0
+2020-07-05,ugly-number-ii,264,Ugly Number II,Medium,46.3
+2020-07-06,hamming-distance,461,Hamming Distance,Easy,75.5
+2020-07-07,plus-one,66,Plus One,Easy,45.7
+2020-07-08,island-perimeter,463,Island Perimeter,Easy,72.9
+2020-07-09,3sum,15,3Sum,Medium,34.9
+2020-07-10,maximum-width-of-binary-tree,662,Maximum Width of Binary Tree,Medium,43.0
+2020-07-11,flatten-a-multilevel-doubly-linked-list,430,Flatten a Multilevel Doubly Linked List,Medium,60.2
+2020-07-12,subsets,78,Subsets,Medium,78.7
+2020-07-13,reverse-bits,190,Reverse Bits,Easy,59.3
+2020-07-14,same-tree,100,Same Tree,Easy,62.7
+2020-07-15,angle-between-hands-of-a-clock,1344,Angle Between Hands of a Clock,Medium,63.8
+2020-07-16,reverse-words-in-a-string,151,Reverse Words in a String,Medium,44.1
+2020-07-17,powx-n,50,"Pow(x, n)",Medium,35.1
+2020-07-18,top-k-frequent-elements,347,Top K Frequent Elements,Medium,63.0
+2020-07-19,course-schedule-ii,210,Course Schedule II,Medium,50.9
+2020-07-20,add-binary,67,Add Binary,Easy,53.9
+2020-07-21,remove-linked-list-elements,203,Remove Linked List Elements,Easy,49.3
+2020-07-22,word-search,79,Word Search,Medium,43.1
+2020-07-23,binary-tree-zigzag-level-order-traversal,103,Binary Tree Zigzag Level Order Traversal,Medium,59.4
+2020-07-24,single-number-iii,260,Single Number III,Medium,70.8
+2020-07-25,all-paths-from-source-to-target,797,All Paths From Source to Target,Medium,82.5
+2020-07-26,find-minimum-in-rotated-sorted-array-ii,154,Find Minimum in Rotated Sorted Array II,Hard,43.7
+2020-07-27,add-digits,258,Add Digits,Easy,66.8
+2020-07-28,construct-binary-tree-from-inorder-and-postorder-traversal,106,Construct Binary Tree from Inorder and Postorder Traversal,Medium,63.5
+2020-07-29,task-scheduler,621,Task Scheduler,Medium,60.1
+2020-07-30,best-time-to-buy-and-sell-stock-with-cooldown,309,Best Time to Buy and Sell Stock with Cooldown,Medium,58.6
+2020-07-31,word-break-ii,140,Word Break II,Hard,51.2
+2020-08-01,detect-capital,520,Detect Capital,Easy,56.4
+2020-08-02,design-hashset,705,Design HashSet,Easy,67.1
+2020-08-03,valid-palindrome,125,Valid Palindrome,Easy,48.0
+2020-08-04,power-of-four,342,Power of Four,Easy,48.2
+2020-08-05,design-add-and-search-words-data-structure,211,Design Add and Search Words Data Structure,Medium,45.6
+2020-08-06,find-all-duplicates-in-an-array,442,Find All Duplicates in an Array,Medium,75.8
+2020-08-07,vertical-order-traversal-of-a-binary-tree,987,Vertical Order Traversal of a Binary Tree,Hard,48.1
+2020-08-08,path-sum-iii,437,Path Sum III,Medium,46.2
+2020-08-09,rotting-oranges,994,Rotting Oranges,Medium,54.4
+2020-08-10,excel-sheet-column-number,171,Excel Sheet Column Number,Easy,64.1
+2020-08-11,h-index,274,H-Index,Medium,39.1
+2020-08-12,pascals-triangle-ii,119,Pascal's Triangle II,Easy,64.3
+2020-08-13,iterator-for-combination,1286,Iterator for Combination,Medium,73.3
+2020-08-14,longest-palindrome,409,Longest Palindrome,Easy,55.3
+2020-08-15,non-overlapping-intervals,435,Non-overlapping Intervals,Medium,53.6
+2020-08-16,best-time-to-buy-and-sell-stock-iii,123,Best Time to Buy and Sell Stock III,Hard,48.5
+2020-08-17,distribute-candies-to-people,1103,Distribute Candies to People,Easy,65.3
+2020-08-18,numbers-with-same-consecutive-differences,967,Numbers With Same Consecutive Differences,Medium,58.1
+2020-08-19,goat-latin,824,Goat Latin,Easy,68.4
+2020-08-20,reorder-list,143,Reorder List,Medium,59.3
+2020-08-21,sort-array-by-parity,905,Sort Array By Parity,Easy,76.2
+2020-08-22,random-point-in-non-overlapping-rectangles,497,Random Point in Non-overlapping Rectangles,Medium,40.1
+2020-08-23,stream-of-characters,1032,Stream of Characters,Hard,52.1
+2020-08-24,sum-of-left-leaves,404,Sum of Left Leaves,Easy,60.7
+2020-08-25,minimum-cost-for-tickets,983,Minimum Cost For Tickets,Medium,65.2
+2020-08-26,fizz-buzz,412,Fizz Buzz,Easy,72.5
+2020-08-27,find-right-interval,436,Find Right Interval,Medium,52.4
+2020-08-28,implement-rand10-using-rand7,470,Implement Rand10() Using Rand7(),Medium,45.9
+2020-08-29,pancake-sorting,969,Pancake Sorting,Medium,70.8
+2020-08-30,largest-component-size-by-common-factor,952,Largest Component Size by Common Factor,Hard,40.8
+2020-08-31,delete-node-in-a-bst,450,Delete Node in a BST,Medium,51.6
+2020-09-01,largest-time-for-given-digits,949,Largest Time for Given Digits,Medium,35.3
+2020-09-02,contains-duplicate-iii,220,Contains Duplicate III,Hard,22.9
+2020-09-03,repeated-substring-pattern,459,Repeated Substring Pattern,Easy,46.1
+2020-09-04,partition-labels,763,Partition Labels,Medium,79.9
+2020-09-05,all-elements-in-two-binary-search-trees,1305,All Elements in Two Binary Search Trees,Medium,79.8
+2020-09-06,image-overlap,835,Image Overlap,Medium,63.7
+2020-09-07,word-pattern,290,Word Pattern,Easy,42.2
+2020-09-08,sum-of-root-to-leaf-binary-numbers,1022,Sum of Root To Leaf Binary Numbers,Easy,73.1
+2020-09-09,compare-version-numbers,165,Compare Version Numbers,Medium,41.0
+2020-09-10,bulls-and-cows,299,Bulls and Cows,Medium,50.4
+2020-09-11,maximum-product-subarray,152,Maximum Product Subarray,Medium,34.5
+2020-09-12,combination-sum-iii,216,Combination Sum III,Medium,70.1
+2020-09-13,insert-interval,57,Insert Interval,Medium,41.8
+2020-09-14,house-robber,198,House Robber,Medium,51.2
+2020-09-15,length-of-last-word,58,Length of Last Word,Easy,52.6
+2020-09-16,maximum-xor-of-two-numbers-in-an-array,421,Maximum XOR of Two Numbers in an Array,Medium,53.3
+2020-09-17,robot-bounded-in-circle,1041,Robot Bounded In Circle,Medium,55.8
+2020-09-18,best-time-to-buy-and-sell-stock,121,Best Time to Buy and Sell Stock,Easy,53.9
+2020-09-19,sequential-digits,1291,Sequential Digits,Medium,65.3
+2020-09-20,unique-paths-iii,980,Unique Paths III,Hard,81.9
+2020-09-21,car-pooling,1094,Car Pooling,Medium,56.0
+2020-09-22,majority-element-ii,229,Majority Element II,Medium,52.0
+2020-09-23,gas-station,134,Gas Station,Medium,45.5
+2020-09-24,find-the-difference,389,Find the Difference,Easy,59.6
+2020-09-25,largest-number,179,Largest Number,Medium,36.5
+2020-09-26,teemo-attacking,495,Teemo Attacking,Easy,56.6
+2020-09-27,evaluate-division,399,Evaluate Division,Medium,61.9
+2020-09-28,subarray-product-less-than-k,713,Subarray Product Less Than K,Medium,51.6
+2020-09-29,word-break,139,Word Break,Medium,47.0
+2020-09-30,first-missing-positive,41,First Missing Positive,Hard,39.7
+2020-10-01,number-of-recent-calls,933,Number of Recent Calls,Easy,75.6
+2020-10-02,combination-sum,39,Combination Sum,Medium,72.0
+2020-10-03,k-diff-pairs-in-an-array,532,K-diff Pairs in an Array,Medium,43.1
+2020-10-04,remove-covered-intervals,1288,Remove Covered Intervals,Medium,56.3
+2020-10-05,complement-of-base-10-integer,1009,Complement of Base 10 Integer,Easy,60.8
+2020-10-06,insert-into-a-binary-search-tree,701,Insert into a Binary Search Tree,Medium,73.7
+2020-10-07,rotate-list,61,Rotate List,Medium,38.2
+2020-10-08,binary-search,704,Binary Search,Easy,57.9
+2020-10-09,serialize-and-deserialize-bst,449,Serialize and Deserialize BST,Medium,57.8
+2020-10-10,minimum-number-of-arrows-to-burst-balloons,452,Minimum Number of Arrows to Burst Balloons,Medium,59.1
+2020-10-11,remove-duplicate-letters,316,Remove Duplicate Letters,Medium,49.9
+2020-10-12,buddy-strings,859,Buddy Strings,Easy,33.1
+2020-10-13,sort-list,148,Sort List,Medium,58.6
+2020-10-14,house-robber-ii,213,House Robber II,Medium,42.2
+2020-10-15,rotate-array,189,Rotate Array,Medium,41.0
+2020-10-16,search-a-2d-matrix,74,Search a 2D Matrix,Medium,50.5
+2020-10-17,repeated-dna-sequences,187,Repeated DNA Sequences,Medium,49.2
+2020-10-18,best-time-to-buy-and-sell-stock-iv,188,Best Time to Buy and Sell Stock IV,Hard,43.6
+2020-10-19,minimum-domino-rotations-for-equal-row,1007,Minimum Domino Rotations For Equal Row,Medium,52.2
+2020-10-20,clone-graph,133,Clone Graph,Medium,58.1
+2020-10-21,asteroid-collision,735,Asteroid Collision,Medium,44.5
+2020-10-22,minimum-depth-of-binary-tree,111,Minimum Depth of Binary Tree,Easy,48.5
+2020-10-23,132-pattern,456,132 Pattern,Medium,33.8
+2020-10-24,bag-of-tokens,948,Bag of Tokens,Medium,59.0
+2020-10-25,stone-game-iv,1510,Stone Game IV,Hard,59.8
+2020-10-26,champagne-tower,799,Champagne Tower,Medium,58.2
+2020-10-27,linked-list-cycle-ii,142,Linked List Cycle II,Medium,51.9
+2020-10-28,summary-ranges,228,Summary Ranges,Easy,51.0
+2020-10-29,maximize-distance-to-closest-person,849,Maximize Distance to Closest Person,Medium,48.2
+2020-10-30,number-of-longest-increasing-subsequence,673,Number of Longest Increasing Subsequence,Medium,48.3
+2020-10-31,recover-binary-search-tree,99,Recover Binary Search Tree,Medium,53.6
+2020-11-01,convert-binary-number-in-a-linked-list-to-integer,1290,Convert Binary Number in a Linked List to Integer,Easy,81.1
+2020-11-02,insertion-sort-list,147,Insertion Sort List,Medium,54.1
+2020-11-03,consecutive-characters,1446,Consecutive Characters,Easy,60.4
+2020-11-04,minimum-height-trees,310,Minimum Height Trees,Medium,41.8
+2020-11-05,minimum-cost-to-move-chips-to-the-same-position,1217,Minimum Cost to Move Chips to The Same Position,Easy,71.7
+2020-11-06,find-the-smallest-divisor-given-a-threshold,1283,Find the Smallest Divisor Given a Threshold,Medium,60.5
+2020-11-07,add-two-numbers-ii,445,Add Two Numbers II,Medium,61.2
+2020-11-08,binary-tree-tilt,563,Binary Tree Tilt,Easy,62.1
+2020-11-09,maximum-difference-between-node-and-ancestor,1026,Maximum Difference Between Node and Ancestor,Medium,78.1
+2020-11-10,flipping-an-image,832,Flipping an Image,Easy,82.1
+2020-11-11,valid-square,593,Valid Square,Medium,44.1
+2020-11-12,permutations-ii,47,Permutations II,Medium,59.6
+2020-11-13,populating-next-right-pointers-in-each-node,116,Populating Next Right Pointers in Each Node,Medium,63.2
+2020-11-14,poor-pigs,458,Poor Pigs,Hard,59.6
+2020-11-15,range-sum-of-bst,938,Range Sum of BST,Easy,86.9
+2020-11-16,longest-mountain-in-array,845,Longest Mountain in Array,Medium,40.5
+2020-11-17,mirror-reflection,858,Mirror Reflection,Medium,62.5
+2020-11-18,merge-intervals,56,Merge Intervals,Medium,47.6
+2020-11-19,decode-string,394,Decode String,Medium,59.4
+2020-11-20,search-in-rotated-sorted-array-ii,81,Search in Rotated Sorted Array II,Medium,37.9
+2020-11-21,numbers-at-most-n-given-digit-set,902,Numbers At Most N Given Digit Set,Hard,42.5
+2020-11-22,unique-morse-code-words,804,Unique Morse Code Words,Easy,82.9
+2020-11-23,house-robber-iii,337,House Robber III,Medium,54.3
+2020-11-24,basic-calculator-ii,227,Basic Calculator II,Medium,43.9
+2020-11-25,smallest-integer-divisible-by-k,1015,Smallest Integer Divisible by K,Medium,46.6
+2020-11-26,longest-substring-with-at-least-k-repeating-characters,395,Longest Substring with At Least K Repeating Characters,Medium,45.0
+2020-11-27,partition-equal-subset-sum,416,Partition Equal Subset Sum,Medium,46.5
+2020-11-28,sliding-window-maximum,239,Sliding Window Maximum,Hard,46.7
+2020-11-29,jump-game-iii,1306,Jump Game III,Medium,65.0
+2020-11-30,the-skyline-problem,218,The Skyline Problem,Hard,42.9
+2020-12-01,maximum-depth-of-binary-tree,104,Maximum Depth of Binary Tree,Easy,75.7
+2020-12-02,linked-list-random-node,382,Linked List Random Node,Medium,63.3
+2020-12-03,increasing-order-search-tree,897,Increasing Order Search Tree,Easy,78.3
+2020-12-04,the-kth-factor-of-n,1492,The kth Factor of n,Medium,67.9
+2020-12-05,can-place-flowers,605,Can Place Flowers,Easy,29.1
+2020-12-06,populating-next-right-pointers-in-each-node-ii,117,Populating Next Right Pointers in Each Node II,Medium,53.0
+2020-12-07,spiral-matrix-ii,59,Spiral Matrix II,Medium,71.5
+2020-12-08,pairs-of-songs-with-total-durations-divisible-by-60,1010,Pairs of Songs With Total Durations Divisible by 60,Medium,53.0
+2020-12-09,binary-search-tree-iterator,173,Binary Search Tree Iterator,Medium,72.5
+2020-12-10,valid-mountain-array,941,Valid Mountain Array,Easy,33.5
+2020-12-11,remove-duplicates-from-sorted-array-ii,80,Remove Duplicates from Sorted Array II,Medium,59.2
+2020-12-12,smallest-subtree-with-all-the-deepest-nodes,865,Smallest Subtree with all the Deepest Nodes,Medium,70.8
+2020-12-13,burst-balloons,312,Burst Balloons,Hard,59.2
+2020-12-14,palindrome-partitioning,131,Palindrome Partitioning,Medium,69.7
+2020-12-15,squares-of-a-sorted-array,977,Squares of a Sorted Array,Easy,72.9
+2020-12-16,validate-binary-search-tree,98,Validate Binary Search Tree,Medium,33.1
+2020-12-17,4sum-ii,454,4Sum II,Medium,57.3
+2020-12-18,increasing-triplet-subsequence,334,Increasing Triplet Subsequence,Medium,39.6
+2020-12-19,cherry-pickup-ii,1463,Cherry Pickup II,Hard,71.9
+2020-12-20,decoded-string-at-index,880,Decoded String at Index,Medium,36.5
+2020-12-21,smallest-range-ii,910,Smallest Range II,Medium,36.3
+2020-12-22,balanced-binary-tree,110,Balanced Binary Tree,Easy,52.7
+2020-12-23,next-greater-element-iii,556,Next Greater Element III,Medium,34.1
+2020-12-24,swap-nodes-in-pairs,24,Swap Nodes in Pairs,Medium,64.8
+2020-12-25,diagonal-traverse,498,Diagonal Traverse,Medium,60.6
+2020-12-26,decode-ways,91,Decode Ways,Medium,35.1
+2020-12-27,jump-game-iv,1345,Jump Game IV,Hard,46.2
+2020-12-28,reach-a-number,754,Reach a Number,Medium,43.2
+2020-12-29,pseudo-palindromic-paths-in-a-binary-tree,1457,Pseudo-Palindromic Paths in a Binary Tree,Medium,68.4
+2020-12-30,game-of-life,289,Game of Life,Medium,69.5
+2020-12-31,largest-rectangle-in-histogram,84,Largest Rectangle in Histogram,Hard,44.9
+2021-01-01,check-array-formation-through-concatenation,1640,Check Array Formation Through Concatenation,Easy,56.6
+2021-01-02,find-a-corresponding-node-of-a-binary-tree-in-a-clone-of-that-tree,1379,Find a Corresponding Node of a Binary Tree in a Clone of That Tree,Easy,85.8
+2021-01-03,beautiful-arrangement,526,Beautiful Arrangement,Medium,64.3
+2021-01-04,merge-two-sorted-lists,21,Merge Two Sorted Lists,Easy,64.7
+2021-01-05,remove-duplicates-from-sorted-list-ii,82,Remove Duplicates from Sorted List II,Medium,47.8
+2021-01-06,kth-missing-positive-number,1539,Kth Missing Positive Number,Easy,60.3
+2021-01-07,longest-substring-without-repeating-characters,3,Longest Substring Without Repeating Characters,Medium,35.1
+2021-01-08,check-if-two-string-arrays-are-equivalent,1662,Check If Two String Arrays are Equivalent,Easy,85.5
+2021-01-09,word-ladder,127,Word Ladder,Hard,39.7
+2021-01-10,create-sorted-array-through-instructions,1649,Create Sorted Array through Instructions,Hard,39.0
+2021-01-11,merge-sorted-array,88,Merge Sorted Array,Easy,50.2
+2021-01-12,add-two-numbers,2,Add Two Numbers,Medium,43.4
+2021-01-13,boats-to-save-people,881,Boats to Save People,Medium,59.4
+2021-01-14,minimum-operations-to-reduce-x-to-zero,1658,Minimum Operations to Reduce X to Zero,Medium,39.7
+2021-01-15,get-maximum-in-generated-array,1646,Get Maximum in Generated Array,Easy,50.5
+2021-01-16,kth-largest-element-in-an-array,215,Kth Largest Element in an Array,Medium,66.9
+2021-01-17,count-sorted-vowel-strings,1641,Count Sorted Vowel Strings,Medium,78.5
+2021-01-18,max-number-of-k-sum-pairs,1679,Max Number of K-Sum Pairs,Medium,55.1
+2021-01-19,longest-palindromic-substring,5,Longest Palindromic Substring,Medium,34.1
+2021-01-20,valid-parentheses,20,Valid Parentheses,Easy,40.7
+2021-01-21,find-the-most-competitive-subsequence,1673,Find the Most Competitive Subsequence,Medium,50.5
+2021-01-22,determine-if-two-strings-are-close,1657,Determine if Two Strings Are Close,Medium,54.7
+2021-01-23,sort-the-matrix-diagonally,1329,Sort the Matrix Diagonally,Medium,82.9
+2021-01-24,merge-k-sorted-lists,23,Merge k Sorted Lists,Hard,53.4
+2021-01-25,check-if-all-1s-are-at-least-length-k-places-away,1437,Check If All 1's Are at Least Length K Places Away,Easy,58.0
+2021-01-26,path-with-minimum-effort,1631,Path With Minimum Effort,Medium,59.8
+2021-01-27,concatenation-of-consecutive-binary-numbers,1680,Concatenation of Consecutive Binary Numbers,Medium,57.1
+2021-01-28,smallest-string-with-a-given-numeric-value,1663,Smallest String With A Given Numeric Value,Medium,66.8
+2021-01-29,vertical-order-traversal-of-a-binary-tree,987,Vertical Order Traversal of a Binary Tree,Hard,48.1
+2021-01-30,minimize-deviation-in-array,1675,Minimize Deviation in Array,Hard,54.0
+2021-01-31,next-permutation,31,Next Permutation,Medium,40.4
+2021-02-01,number-of-1-bits,191,Number of 1 Bits,Easy,71.7
+2021-02-02,trim-a-binary-search-tree,669,Trim a Binary Search Tree,Medium,66.3
+2021-02-03,linked-list-cycle,141,Linked List Cycle,Easy,50.7
+2021-02-04,longest-harmonious-subsequence,594,Longest Harmonious Subsequence,Easy,54.9
+2021-02-05,simplify-path,71,Simplify Path,Medium,43.2
+2021-02-06,binary-tree-right-side-view,199,Binary Tree Right Side View,Medium,63.4
+2021-02-07,shortest-distance-to-a-character,821,Shortest Distance to a Character,Easy,71.7
+2021-02-08,peeking-iterator,284,Peeking Iterator,Medium,59.7
+2021-02-09,convert-bst-to-greater-tree,538,Convert BST to Greater Tree,Medium,69.5
+2021-02-10,copy-list-with-random-pointer,138,Copy List with Random Pointer,Medium,56.8
+2021-02-11,valid-anagram,242,Valid Anagram,Easy,64.9
+2021-02-12,number-of-steps-to-reduce-a-number-to-zero,1342,Number of Steps to Reduce a Number to Zero,Easy,85.2
+2021-02-13,shortest-path-in-binary-matrix,1091,Shortest Path in Binary Matrix,Medium,47.7
+2021-02-14,is-graph-bipartite,785,Is Graph Bipartite?,Medium,56.0
+2021-02-15,the-k-weakest-rows-in-a-matrix,1337,The K Weakest Rows in a Matrix,Easy,73.5
+2021-02-16,letter-case-permutation,784,Letter Case Permutation,Medium,74.3
+2021-02-17,container-with-most-water,11,Container With Most Water,Medium,55.6
+2021-02-18,arithmetic-slices,413,Arithmetic Slices,Medium,65.1
+2021-02-19,minimum-remove-to-make-valid-parentheses,1249,Minimum Remove to Make Valid Parentheses,Medium,69.0
+2021-02-20,roman-to-integer,13,Roman to Integer,Easy,61.8
+2021-02-21,broken-calculator,991,Broken Calculator,Medium,54.5
+2021-02-22,longest-word-in-dictionary-through-deleting,524,Longest Word in Dictionary through Deleting,Medium,51.3
+2021-02-23,search-a-2d-matrix-ii,240,Search a 2D Matrix II,Medium,53.1
+2021-02-24,score-of-parentheses,856,Score of Parentheses,Medium,64.1
+2021-02-25,shortest-unsorted-continuous-subarray,581,Shortest Unsorted Continuous Subarray,Medium,36.9
+2021-02-26,validate-stack-sequences,946,Validate Stack Sequences,Medium,69.5
+2021-02-27,divide-two-integers,29,Divide Two Integers,Medium,17.6
+2021-02-28,maximum-frequency-stack,895,Maximum Frequency Stack,Hard,66.4
+2021-03-01,distribute-candies,575,Distribute Candies,Easy,67.9
+2021-03-02,set-mismatch,645,Set Mismatch,Easy,44.5
+2021-03-03,missing-number,268,Missing Number,Easy,67.4
+2021-03-04,intersection-of-two-linked-lists,160,Intersection of Two Linked Lists,Easy,58.1
+2021-03-05,average-of-levels-in-binary-tree,637,Average of Levels in Binary Tree,Easy,72.9
+2021-03-06,short-encoding-of-words,820,Short Encoding of Words,Medium,60.4
+2021-03-07,design-hashmap,706,Design HashMap,Easy,65.6
+2021-03-08,remove-palindromic-subsequences,1332,Remove Palindromic Subsequences,Easy,76.5
+2021-03-09,add-one-row-to-tree,623,Add One Row to Tree,Medium,64.0
+2021-03-10,integer-to-roman,12,Integer to Roman,Medium,65.4
+2021-03-11,coin-change,322,Coin Change,Medium,44.3
+2021-03-12,check-if-a-string-contains-all-binary-codes-of-size-k,1461,Check If a String Contains All Binary Codes of Size K,Medium,56.5
+2021-03-13,binary-trees-with-factors,823,Binary Trees With Factors,Medium,52.9
+2021-03-14,swapping-nodes-in-a-linked-list,1721,Swapping Nodes in a Linked List,Medium,68.0
+2021-03-15,encode-and-decode-tinyurl,535,Encode and Decode TinyURL,Medium,86.4
+2021-03-16,best-time-to-buy-and-sell-stock-with-transaction-fee,714,Best Time to Buy and Sell Stock with Transaction Fee,Medium,68.9
+2021-03-17,generate-random-point-in-a-circle,478,Generate Random Point in a Circle,Medium,39.9
+2021-03-18,wiggle-subsequence,376,Wiggle Subsequence,Medium,48.6
+2021-03-19,keys-and-rooms,841,Keys and Rooms,Medium,73.3
+2021-03-20,design-underground-system,1396,Design Underground System,Medium,74.7
+2021-03-21,reordered-power-of-2,869,Reordered Power of 2,Medium,62.6
+2021-03-22,vowel-spellchecker,966,Vowel Spellchecker,Medium,51.4
+2021-03-23,3sum-with-multiplicity,923,3Sum With Multiplicity,Medium,45.5
+2021-03-24,advantage-shuffle,870,Advantage Shuffle,Medium,52.6
+2021-03-25,pacific-atlantic-water-flow,417,Pacific Atlantic Water Flow,Medium,55.6
+2021-03-26,word-subsets,916,Word Subsets,Medium,52.0
+2021-03-27,palindromic-substrings,647,Palindromic Substrings,Medium,70.3
+2021-03-28,reconstruct-original-digits-from-english,423,Reconstruct Original Digits from English,Medium,51.2
+2021-03-29,flip-binary-tree-to-match-preorder-traversal,971,Flip Binary Tree To Match Preorder Traversal,Medium,50.6
+2021-03-30,russian-doll-envelopes,354,Russian Doll Envelopes,Hard,37.1
+2021-03-31,stamping-the-sequence,936,Stamping The Sequence,Hard,62.5
+2021-04-01,palindrome-linked-list,234,Palindrome Linked List,Easy,53.6
+2021-04-02,ones-and-zeroes,474,Ones and Zeroes,Medium,47.7
+2021-04-03,longest-valid-parentheses,32,Longest Valid Parentheses,Hard,34.4
+2021-04-04,design-circular-queue,622,Design Circular Queue,Medium,51.5
+2021-04-05,global-and-local-inversions,775,Global and Local Inversions,Medium,42.5
+2021-04-06,minimum-operations-to-make-array-equal,1551,Minimum Operations to Make Array Equal,Medium,82.3
+2021-04-07,determine-if-string-halves-are-alike,1704,Determine if String Halves Are Alike,Easy,78.7
+2021-04-08,letter-combinations-of-a-phone-number,17,Letter Combinations of a Phone Number,Medium,61.0
+2021-04-09,verifying-an-alien-dictionary,953,Verifying an Alien Dictionary,Easy,55.1
+2021-04-10,longest-increasing-path-in-a-matrix,329,Longest Increasing Path in a Matrix,Hard,53.8
+2021-04-11,deepest-leaves-sum,1302,Deepest Leaves Sum,Medium,86.3
+2021-04-12,beautiful-arrangement-ii,667,Beautiful Arrangement II,Medium,60.2
+2021-04-13,flatten-nested-list-iterator,341,Flatten Nested List Iterator,Medium,64.6
+2021-04-14,partition-list,86,Partition List,Medium,56.7
+2021-04-15,fibonacci-number,509,Fibonacci Number,Easy,71.4
+2021-04-16,remove-all-adjacent-duplicates-in-string-ii,1209,Remove All Adjacent Duplicates in String II,Medium,58.0
+2021-04-17,number-of-submatrices-that-sum-to-target,1074,Number of Submatrices That Sum to Target,Hard,74.4
+2021-04-18,remove-nth-node-from-end-of-list,19,Remove Nth Node From End of List,Medium,45.9
+2021-04-19,combination-sum-iv,377,Combination Sum IV,Medium,54.2
+2021-04-20,n-ary-tree-preorder-traversal,589,N-ary Tree Preorder Traversal,Easy,75.6
+2021-04-21,triangle,120,Triangle,Medium,57.1
+2021-04-22,brick-wall,554,Brick Wall,Medium,55.1
+2021-04-23,count-binary-substrings,696,Count Binary Substrings,Easy,65.6
+2021-04-24,critical-connections-in-a-network,1192,Critical Connections in a Network,Hard,56.1
+2021-04-25,rotate-image,48,Rotate Image,Medium,75.0
+2021-04-26,furthest-building-you-can-reach,1642,Furthest Building You Can Reach,Medium,49.8
+2021-04-27,power-of-three,326,Power of Three,Easy,46.8
+2021-04-28,unique-paths-ii,63,Unique Paths II,Medium,41.9
+2021-04-29,find-first-and-last-position-of-element-in-sorted-array,34,Find First and Last Position of Element in Sorted Array,Medium,44.7
+2021-04-30,powerful-integers,970,Powerful Integers,Medium,43.8
+2021-05-01,prefix-and-suffix-search,745,Prefix and Suffix Search,Hard,41.1
+2021-05-02,course-schedule-iii,630,Course Schedule III,Hard,40.2
+2021-05-03,running-sum-of-1d-array,1480,Running Sum of 1d Array,Easy,86.8
+2021-05-04,non-decreasing-array,665,Non-decreasing Array,Medium,24.8
+2021-05-05,jump-game-ii,45,Jump Game II,Medium,40.6
+2021-05-06,convert-sorted-list-to-binary-search-tree,109,Convert Sorted List to Binary Search Tree,Medium,62.3
+2021-05-07,delete-operation-for-two-strings,583,Delete Operation for Two Strings,Medium,62.1
+2021-05-08,super-palindromes,906,Super Palindromes,Hard,39.0
+2021-05-09,construct-target-array-with-multiple-sums,1354,Construct Target Array With Multiple Sums,Hard,36.2
+2021-05-10,count-primes,204,Count Primes,Medium,33.8
+2021-05-11,maximum-points-you-can-obtain-from-cards,1423,Maximum Points You Can Obtain from Cards,Medium,53.3
+2021-05-12,range-sum-query-2d-immutable,304,Range Sum Query 2D - Immutable,Medium,54.9
+2021-05-13,ambiguous-coordinates,816,Ambiguous Coordinates,Medium,56.8
+2021-05-14,flatten-binary-tree-to-linked-list,114,Flatten Binary Tree to Linked List,Medium,65.6
+2021-05-15,valid-number,65,Valid Number,Hard,20.1
+2021-05-16,binary-tree-cameras,968,Binary Tree Cameras,Hard,46.8
+2021-05-17,longest-string-chain,1048,Longest String Chain,Medium,61.2
+2021-05-18,find-duplicate-file-in-system,609,Find Duplicate File in System,Medium,67.7
+2021-05-19,minimum-moves-to-equal-array-elements-ii,462,Minimum Moves to Equal Array Elements II,Medium,60.2
+2021-05-20,binary-tree-level-order-traversal,102,Binary Tree Level Order Traversal,Medium,67.8
+2021-05-21,find-and-replace-pattern,890,Find and Replace Pattern,Medium,76.8
+2021-05-22,n-queens,51,N-Queens,Hard,69.1
+2021-05-23,find-the-shortest-superstring,943,Find the Shortest Superstring,Hard,43.9
+2021-05-24,to-lower-case,709,To Lower Case,Easy,83.5
+2021-05-25,evaluate-reverse-polish-notation,150,Evaluate Reverse Polish Notation,Medium,52.0
+2021-05-26,partitioning-into-minimum-number-of-deci-binary-numbers,1689,Partitioning Into Minimum Number Of Deci-Binary Numbers,Medium,88.7
+2021-05-27,maximum-product-of-word-lengths,318,Maximum Product of Word Lengths,Medium,60.1
+2021-05-28,maximum-erasure-value,1695,Maximum Erasure Value,Medium,58.3
+2021-05-29,n-queens-ii,52,N-Queens II,Hard,74.4
+2021-05-30,maximum-gap,164,Maximum Gap,Medium,46.5
+2021-05-31,search-suggestions-system,1268,Search Suggestions System,Medium,65.1
+2021-06-01,max-area-of-island,695,Max Area of Island,Medium,72.3
+2021-06-02,interleaving-string,97,Interleaving String,Medium,40.3
+2021-06-03,maximum-area-of-a-piece-of-cake-after-horizontal-and-vertical-cuts,1465,Maximum Area of a Piece of Cake After Horizontal and Vertical Cuts,Medium,41.0
+2021-06-04,open-the-lock,752,Open the Lock,Medium,60.3
+2021-06-05,maximum-performance-of-a-team,1383,Maximum Performance of a Team,Hard,47.8
+2021-06-06,longest-consecutive-sequence,128,Longest Consecutive Sequence,Medium,47.3
+2021-06-07,min-cost-climbing-stairs,746,Min Cost Climbing Stairs,Easy,65.9
+2021-06-08,construct-binary-tree-from-preorder-and-inorder-traversal,105,Construct Binary Tree from Preorder and Inorder Traversal,Medium,64.4
+2021-06-09,jump-game-vi,1696,Jump Game VI,Medium,45.7
+2021-06-10,my-calendar-i,729,My Calendar I,Medium,56.6
+2021-06-11,stone-game-vii,1690,Stone Game VII,Medium,58.0
+2021-06-12,minimum-number-of-refueling-stops,871,Minimum Number of Refueling Stops,Hard,40.1
+2021-06-13,palindrome-pairs,336,Palindrome Pairs,Hard,35.4
+2021-06-14,maximum-units-on-a-truck,1710,Maximum Units on a Truck,Easy,73.7
+2021-06-15,matchsticks-to-square,473,Matchsticks to Square,Medium,40.3
+2021-06-16,generate-parentheses,22,Generate Parentheses,Medium,75.0
+2021-06-17,number-of-subarrays-with-bounded-maximum,795,Number of Subarrays with Bounded Maximum,Medium,53.2
+2021-06-18,range-sum-query-mutable,307,Range Sum Query - Mutable,Medium,41.1
+2021-06-19,k-inverse-pairs-array,629,K Inverse Pairs Array,Hard,49.6
+2021-06-20,swim-in-rising-water,778,Swim in Rising Water,Hard,61.1
+2021-06-21,pascals-triangle,118,Pascal's Triangle,Easy,74.8
+2021-06-22,number-of-matching-subsequences,792,Number of Matching Subsequences,Medium,50.9
+2021-06-23,reverse-linked-list-ii,92,Reverse Linked List II,Medium,47.9
+2021-06-24,out-of-boundary-paths,576,Out of Boundary Paths,Medium,48.1
+2021-06-25,redundant-connection,684,Redundant Connection,Medium,63.1
+2021-06-26,count-of-smaller-numbers-after-self,315,Count of Smaller Numbers After Self,Hard,42.5
+2021-06-27,candy,135,Candy,Hard,43.5
+2021-06-28,remove-all-adjacent-duplicates-in-string,1047,Remove All Adjacent Duplicates In String,Easy,69.8
+2021-06-29,max-consecutive-ones-iii,1004,Max Consecutive Ones III,Medium,63.5
+2021-06-30,lowest-common-ancestor-of-a-binary-tree,236,Lowest Common Ancestor of a Binary Tree,Medium,62.9
+2021-07-01,gray-code,89,Gray Code,Medium,59.6
+2021-07-02,find-k-closest-elements,658,Find K Closest Elements,Medium,47.6
+2021-07-03,max-sum-of-rectangle-no-larger-than-k,363,Max Sum of Rectangle No Larger Than K,Hard,44.2
+2021-07-04,count-vowels-permutation,1220,Count Vowels Permutation,Hard,61.9
+2021-07-05,reshape-the-matrix,566,Reshape the Matrix,Easy,63.2
+2021-07-06,reduce-array-size-to-the-half,1338,Reduce Array Size to The Half,Medium,68.9
+2021-07-07,kth-smallest-element-in-a-sorted-matrix,378,Kth Smallest Element in a Sorted Matrix,Medium,62.6
+2021-07-08,maximum-length-of-repeated-subarray,718,Maximum Length of Repeated Subarray,Medium,50.9
+2021-07-09,longest-increasing-subsequence,300,Longest Increasing Subsequence,Medium,55.8
+2021-07-10,decode-ways-ii,639,Decode Ways II,Hard,30.8
+2021-07-11,find-median-from-data-stream,295,Find Median from Data Stream,Hard,52.1
+2021-07-12,isomorphic-strings,205,Isomorphic Strings,Easy,45.4
+2021-07-13,find-peak-element,162,Find Peak Element,Medium,46.0
+2021-07-14,custom-sort-string,791,Custom Sort String,Medium,70.9
+2021-07-15,valid-triangle-number,611,Valid Triangle Number,Medium,51.3
+2021-07-16,4sum,18,4Sum,Medium,36.4
+2021-07-17,three-equal-parts,927,Three Equal Parts,Hard,39.9
+2021-07-18,reverse-nodes-in-k-group,25,Reverse Nodes in k-Group,Hard,59.5
+2021-07-19,lowest-common-ancestor-of-a-binary-search-tree,235,Lowest Common Ancestor of a Binary Search Tree,Medium,65.3
+2021-07-20,shuffle-an-array,384,Shuffle an Array,Medium,58.4
+2021-07-21,push-dominoes,838,Push Dominoes,Medium,57.2
+2021-07-22,partition-array-into-disjoint-intervals,915,Partition Array into Disjoint Intervals,Medium,48.8
+2021-07-23,binary-tree-pruning,814,Binary Tree Pruning,Medium,72.3
+2021-07-24,word-ladder-ii,126,Word Ladder II,Hard,27.2
+2021-07-25,non-negative-integers-without-consecutive-ones,600,Non-negative Integers without Consecutive Ones,Hard,39.9
+2021-07-26,convert-sorted-array-to-binary-search-tree,108,Convert Sorted Array to Binary Search Tree,Easy,72.1
+2021-07-27,3sum-closest,16,3Sum Closest,Medium,45.9
+2021-07-28,beautiful-array,932,Beautiful Array,Medium,65.9
+2021-07-29,01-matrix,542,01 Matrix,Medium,48.9
+2021-07-30,map-sum-pairs,677,Map Sum Pairs,Medium,56.7
+2021-07-31,trapping-rain-water,42,Trapping Rain Water,Hard,62.5
+2021-08-01,making-a-large-island,827,Making A Large Island,Hard,47.8
+2021-08-02,two-sum,1,Two Sum,Easy,53.1
+2021-08-03,subsets-ii,90,Subsets II,Medium,57.7
+2021-08-04,path-sum-ii,113,Path Sum II,Medium,58.8
+2021-08-05,stone-game,877,Stone Game,Medium,70.7
+2021-08-06,n-ary-tree-level-order-traversal,429,N-ary Tree Level Order Traversal,Medium,70.9
+2021-08-07,palindrome-partitioning-ii,132,Palindrome Partitioning II,Hard,34.1
+2021-08-08,rank-transform-of-a-matrix,1632,Rank Transform of a Matrix,Hard,40.9
+2021-08-09,add-strings,415,Add Strings,Easy,51.7
+2021-08-10,flip-string-to-monotone-increasing,926,Flip String to Monotone Increasing,Medium,61.5
+2021-08-11,array-of-doubled-pairs,954,Array of Doubled Pairs,Medium,39.2
+2021-08-12,group-anagrams,49,Group Anagrams,Medium,68.9
+2021-08-13,set-matrix-zeroes,73,Set Matrix Zeroes,Medium,56.4
+2021-08-14,remove-boxes,546,Remove Boxes,Hard,47.9
+2021-08-15,minimum-window-substring,76,Minimum Window Substring,Hard,43.3
+2021-08-16,range-sum-query-immutable,303,Range Sum Query - Immutable,Easy,64.0
+2021-08-17,count-good-nodes-in-binary-tree,1448,Count Good Nodes in Binary Tree,Medium,73.0
+2021-08-18,decode-ways,91,Decode Ways,Medium,35.1
+2021-08-19,maximum-product-of-splitted-binary-tree,1339,Maximum Product of Splitted Binary Tree,Medium,47.7
+2021-08-20,valid-sudoku,36,Valid Sudoku,Medium,60.1
+2021-08-21,sudoku-solver,37,Sudoku Solver,Hard,61.9
+2021-08-22,rectangle-area-ii,850,Rectangle Area II,Hard,54.2
+2021-08-23,two-sum-iv-input-is-a-bst,653,Two Sum IV - Input is a BST,Easy,61.4
+2021-08-24,complex-number-multiplication,537,Complex Number Multiplication,Medium,71.9
+2021-08-25,sum-of-square-numbers,633,Sum of Square Numbers,Medium,36.6
+2021-08-26,verify-preorder-serialization-of-a-binary-tree,331,Verify Preorder Serialization of a Binary Tree,Medium,45.4
+2021-08-27,longest-uncommon-subsequence-ii,522,Longest Uncommon Subsequence II,Medium,41.8
+2021-08-28,maximum-profit-in-job-scheduling,1235,Maximum Profit in Job Scheduling,Hard,54.4
+2021-08-29,patching-array,330,Patching Array,Hard,53.1
+2021-08-30,range-addition-ii,598,Range Addition II,Easy,56.2
+2021-08-31,find-minimum-in-rotated-sorted-array,153,Find Minimum in Rotated Sorted Array,Medium,50.8
+2021-09-01,array-nesting,565,Array Nesting,Medium,56.3
+2021-09-02,unique-binary-search-trees-ii,95,Unique Binary Search Trees II,Medium,58.2
+2021-09-03,erect-the-fence,587,Erect the Fence,Hard,51.9
+2021-09-04,sum-of-distances-in-tree,834,Sum of Distances in Tree,Hard,65.3
+2021-09-05,orderly-queue,899,Orderly Queue,Hard,65.9
+2021-09-06,slowest-key,1629,Slowest Key,Easy,59.1
+2021-09-07,reverse-linked-list,206,Reverse Linked List,Easy,77.0
+2021-09-08,shifting-letters,848,Shifting Letters,Medium,44.8
+2021-09-09,largest-plus-sign,764,Largest Plus Sign,Medium,48.3
+2021-09-10,arithmetic-slices-ii-subsequence,446,Arithmetic Slices II - Subsequence,Hard,54.6
+2021-09-11,basic-calculator,224,Basic Calculator,Hard,43.7
+2021-09-12,reachable-nodes-in-subdivided-graph,882,Reachable Nodes In Subdivided Graph,Hard,50.5
+2021-09-13,maximum-number-of-balloons,1189,Maximum Number of Balloons,Easy,59.7
+2021-09-14,reverse-only-letters,917,Reverse Only Letters,Easy,65.0
+2021-09-15,longest-turbulent-subarray,978,Longest Turbulent Subarray,Medium,47.5
+2021-09-16,spiral-matrix,54,Spiral Matrix,Medium,50.2
+2021-09-17,intersection-of-two-arrays-ii,350,Intersection of Two Arrays II,Easy,58.5
+2021-09-18,expression-add-operators,282,Expression Add Operators,Hard,40.0
+2021-09-19,distinct-subsequences,115,Distinct Subsequences,Hard,47.6
+2021-09-20,find-winner-on-a-tic-tac-toe-game,1275,Find Winner on a Tic Tac Toe Game,Easy,53.9
+2021-09-21,max-consecutive-ones,485,Max Consecutive Ones,Easy,59.7
+2021-09-22,maximum-length-of-a-concatenated-string-with-unique-characters,1239,Maximum Length of a Concatenated String with Unique Characters,Medium,54.1
+2021-09-23,break-a-palindrome,1328,Break a Palindrome,Medium,51.8
+2021-09-24,n-th-tribonacci-number,1137,N-th Tribonacci Number,Easy,63.8
+2021-09-25,shortest-path-in-a-grid-with-obstacles-elimination,1293,Shortest Path in a Grid with Obstacles Elimination,Hard,45.3
+2021-09-26,transform-to-chessboard,782,Transform to Chessboard,Hard,50.9
+2021-09-27,unique-email-addresses,929,Unique Email Addresses,Easy,67.2
+2021-09-28,sort-array-by-parity-ii,922,Sort Array By Parity II,Easy,70.8
+2021-09-29,split-linked-list-in-parts,725,Split Linked List in Parts,Medium,64.2
+2021-09-30,partition-to-k-equal-sum-subsets,698,Partition to K Equal Sum Subsets,Medium,38.3
+2021-10-01,longest-common-subsequence,1143,Longest Common Subsequence,Medium,57.8
+2021-10-02,dungeon-game,174,Dungeon Game,Hard,38.3
+2021-10-03,jump-game,55,Jump Game,Medium,38.6
+2021-10-04,island-perimeter,463,Island Perimeter,Easy,72.9
+2021-10-05,climbing-stairs,70,Climbing Stairs,Easy,53.0
+2021-10-06,find-all-duplicates-in-an-array,442,Find All Duplicates in an Array,Medium,75.8
+2021-10-07,word-search,79,Word Search,Medium,43.1
+2021-10-08,implement-trie-prefix-tree,208,Implement Trie (Prefix Tree),Medium,65.7
+2021-10-09,word-search-ii,212,Word Search II,Hard,36.4
+2021-10-10,bitwise-and-of-numbers-range,201,Bitwise AND of Numbers Range,Medium,47.1
+2021-10-11,diameter-of-binary-tree,543,Diameter of Binary Tree,Easy,60.9
+2021-10-12,guess-number-higher-or-lower,374,Guess Number Higher or Lower,Easy,53.8
+2021-10-13,construct-binary-search-tree-from-preorder-traversal,1008,Construct Binary Search Tree from Preorder Traversal,Medium,82.2
+2021-10-14,perfect-squares,279,Perfect Squares,Medium,54.9
+2021-10-15,best-time-to-buy-and-sell-stock-with-cooldown,309,Best Time to Buy and Sell Stock with Cooldown,Medium,58.6
+2021-10-16,best-time-to-buy-and-sell-stock-iii,123,Best Time to Buy and Sell Stock III,Hard,48.5
+2021-10-17,path-sum-iii,437,Path Sum III,Medium,46.2
+2021-10-18,cousins-in-binary-tree,993,Cousins in Binary Tree,Easy,56.3
+2021-10-19,next-greater-element-i,496,Next Greater Element I,Easy,72.6
+2021-10-20,reverse-words-in-a-string,151,Reverse Words in a String,Medium,44.1
+2021-10-21,insert-delete-getrandom-o1,380,Insert Delete GetRandom O(1),Medium,54.5
+2021-10-22,sort-characters-by-frequency,451,Sort Characters By Frequency,Medium,72.7
+2021-10-23,find-minimum-in-rotated-sorted-array-ii,154,Find Minimum in Rotated Sorted Array II,Hard,43.7
+2021-10-24,count-complete-tree-nodes,222,Count Complete Tree Nodes,Easy,66.2
+2021-10-25,min-stack,155,Min Stack,Medium,54.6
+2021-10-26,invert-binary-tree,226,Invert Binary Tree,Easy,77.4
+2021-10-27,sort-colors,75,Sort Colors,Medium,64.1
+2021-10-28,3sum,15,3Sum,Medium,34.9
+2021-10-29,rotting-oranges,994,Rotting Oranges,Medium,54.4
+2021-10-30,longest-duplicate-substring,1044,Longest Duplicate Substring,Hard,30.6
+2021-10-31,flatten-a-multilevel-doubly-linked-list,430,Flatten a Multilevel Doubly Linked List,Medium,60.2
+2021-11-01,surrounded-regions,130,Surrounded Regions,Medium,40.1
+2021-11-02,unique-paths-iii,980,Unique Paths III,Hard,81.9
+2021-11-03,sum-root-to-leaf-numbers,129,Sum Root to Leaf Numbers,Medium,66.2
+2021-11-04,sum-of-left-leaves,404,Sum of Left Leaves,Easy,60.7
+2021-11-05,arranging-coins,441,Arranging Coins,Easy,46.7
+2021-11-06,single-number-iii,260,Single Number III,Medium,70.8
+2021-11-07,multiply-strings,43,Multiply Strings,Medium,40.7
+2021-11-08,unique-binary-search-trees,96,Unique Binary Search Trees,Medium,61.3
+2021-11-09,number-of-valid-words-for-each-puzzle,1178,Number of Valid Words for Each Puzzle,Hard,46.8
+2021-11-10,best-time-to-buy-and-sell-stock-ii,122,Best Time to Buy and Sell Stock II,Medium,67.0
+2021-11-11,minimum-value-to-get-positive-step-by-step-sum,1413,Minimum Value to Get Positive Step by Step Sum,Easy,65.5
+2021-11-12,remove-linked-list-elements,203,Remove Linked List Elements,Easy,49.3
+2021-11-13,daily-temperatures,739,Daily Temperatures,Medium,66.1
+2021-11-14,iterator-for-combination,1286,Iterator for Combination,Medium,73.3
+2021-11-15,largest-divisible-subset,368,Largest Divisible Subset,Medium,45.5
+2021-11-16,kth-smallest-number-in-multiplication-table,668,Kth Smallest Number in Multiplication Table,Hard,51.8
+2021-11-17,unique-paths,62,Unique Paths,Medium,64.5
+2021-11-18,find-all-numbers-disappeared-in-an-array,448,Find All Numbers Disappeared in an Array,Easy,61.1
+2021-11-19,hamming-distance,461,Hamming Distance,Easy,75.5
+2021-11-20,single-element-in-a-sorted-array,540,Single Element in a Sorted Array,Medium,59.2
+2021-11-21,construct-binary-tree-from-inorder-and-postorder-traversal,106,Construct Binary Tree from Inorder and Postorder Traversal,Medium,63.5
+2021-11-22,delete-node-in-a-bst,450,Delete Node in a BST,Medium,51.6
+2021-11-23,largest-component-size-by-common-factor,952,Largest Component Size by Common Factor,Hard,40.8
+2021-11-24,interval-list-intersections,986,Interval List Intersections,Medium,71.8
+2021-11-25,maximum-subarray,53,Maximum Subarray,Medium,50.9
+2021-11-26,search-insert-position,35,Search Insert Position,Easy,46.5
+2021-11-27,product-of-array-except-self,238,Product of Array Except Self,Medium,66.4
+2021-11-28,all-paths-from-source-to-target,797,All Paths From Source to Target,Medium,82.5
+2021-11-29,accounts-merge,721,Accounts Merge,Medium,57.5
+2021-11-30,maximal-rectangle,85,Maximal Rectangle,Hard,51.0
+2021-12-01,house-robber,198,House Robber,Medium,51.2
+2021-12-02,odd-even-linked-list,328,Odd Even Linked List,Medium,61.5
+2021-12-03,maximum-product-subarray,152,Maximum Product Subarray,Medium,34.5
+2021-12-04,stream-of-characters,1032,Stream of Characters,Hard,52.1
+2021-12-05,house-robber-iii,337,House Robber III,Medium,54.3
+2021-12-06,minimum-cost-to-move-chips-to-the-same-position,1217,Minimum Cost to Move Chips to The Same Position,Easy,71.7
+2021-12-07,convert-binary-number-in-a-linked-list-to-integer,1290,Convert Binary Number in a Linked List to Integer,Easy,81.1
+2021-12-08,binary-tree-tilt,563,Binary Tree Tilt,Easy,62.1
+2021-12-09,jump-game-iii,1306,Jump Game III,Medium,65.0
+2021-12-10,domino-and-tromino-tiling,790,Domino and Tromino Tiling,Medium,50.3
+2021-12-11,nth-magical-number,878,Nth Magical Number,Hard,35.4
+2021-12-12,partition-equal-subset-sum,416,Partition Equal Subset Sum,Medium,46.5
+2021-12-13,consecutive-characters,1446,Consecutive Characters,Easy,60.4
+2021-12-14,range-sum-of-bst,938,Range Sum of BST,Easy,86.9
+2021-12-15,insertion-sort-list,147,Insertion Sort List,Medium,54.1
+2021-12-16,minimum-height-trees,310,Minimum Height Trees,Medium,41.8
+2021-12-17,maximal-square,221,Maximal Square,Medium,46.9
+2021-12-18,numbers-at-most-n-given-digit-set,902,Numbers At Most N Given Digit Set,Hard,42.5
+2021-12-19,decode-string,394,Decode String,Medium,59.4
+2021-12-20,minimum-absolute-difference,1200,Minimum Absolute Difference,Easy,69.6
+2021-12-21,power-of-two,231,Power of Two,Easy,47.8
+2021-12-22,reorder-list,143,Reorder List,Medium,59.3
+2021-12-23,course-schedule-ii,210,Course Schedule II,Medium,50.9
+2021-12-24,merge-intervals,56,Merge Intervals,Medium,47.6
+2021-12-25,basic-calculator-ii,227,Basic Calculator II,Medium,43.9
+2021-12-26,k-closest-points-to-origin,973,K Closest Points to Origin,Medium,66.6
+2021-12-27,number-complement,476,Number Complement,Easy,67.7
+2021-12-28,middle-of-the-linked-list,876,Middle of the Linked List,Easy,78.8
+2021-12-29,populating-next-right-pointers-in-each-node,116,Populating Next Right Pointers in Each Node,Medium,63.2
+2021-12-30,smallest-integer-divisible-by-k,1015,Smallest Integer Divisible by K,Medium,46.6
+2021-12-31,maximum-difference-between-node-and-ancestor,1026,Maximum Difference Between Node and Ancestor,Medium,78.1
+2022-01-01,burst-balloons,312,Burst Balloons,Hard,59.2
+2022-01-02,pairs-of-songs-with-total-durations-divisible-by-60,1010,Pairs of Songs With Total Durations Divisible by 60,Medium,53.0
+2022-01-03,find-the-town-judge,997,Find the Town Judge,Easy,49.8
+2022-01-04,complement-of-base-10-integer,1009,Complement of Base 10 Integer,Easy,60.8
+2022-01-05,palindrome-partitioning,131,Palindrome Partitioning,Medium,69.7
+2022-01-06,car-pooling,1094,Car Pooling,Medium,56.0
+2022-01-07,linked-list-random-node,382,Linked List Random Node,Medium,63.3
+2022-01-08,cherry-pickup-ii,1463,Cherry Pickup II,Hard,71.9
+2022-01-09,robot-bounded-in-circle,1041,Robot Bounded In Circle,Medium,55.8
+2022-01-10,add-binary,67,Add Binary,Easy,53.9
+2022-01-11,sum-of-root-to-leaf-binary-numbers,1022,Sum of Root To Leaf Binary Numbers,Easy,73.1
+2022-01-12,insert-into-a-binary-search-tree,701,Insert into a Binary Search Tree,Medium,73.7
+2022-01-13,minimum-number-of-arrows-to-burst-balloons,452,Minimum Number of Arrows to Burst Balloons,Medium,59.1
+2022-01-14,string-to-integer-atoi,8,String to Integer (atoi),Medium,17.5
+2022-01-15,jump-game-iv,1345,Jump Game IV,Hard,46.2
+2022-01-16,maximize-distance-to-closest-person,849,Maximize Distance to Closest Person,Medium,48.2
+2022-01-17,word-pattern,290,Word Pattern,Easy,42.2
+2022-01-18,can-place-flowers,605,Can Place Flowers,Easy,29.1
+2022-01-19,linked-list-cycle-ii,142,Linked List Cycle II,Medium,51.9
+2022-01-20,koko-eating-bananas,875,Koko Eating Bananas,Medium,48.5
+2022-01-21,gas-station,134,Gas Station,Medium,45.5
+2022-01-22,stone-game-iv,1510,Stone Game IV,Hard,59.8
+2022-01-23,sequential-digits,1291,Sequential Digits,Medium,65.3
+2022-01-24,detect-capital,520,Detect Capital,Easy,56.4
+2022-01-25,valid-mountain-array,941,Valid Mountain Array,Easy,33.5
+2022-01-26,all-elements-in-two-binary-search-trees,1305,All Elements in Two Binary Search Trees,Medium,79.8
+2022-01-27,maximum-xor-of-two-numbers-in-an-array,421,Maximum XOR of Two Numbers in an Array,Medium,53.3
+2022-01-28,design-add-and-search-words-data-structure,211,Design Add and Search Words Data Structure,Medium,45.6
+2022-01-29,largest-rectangle-in-histogram,84,Largest Rectangle in Histogram,Hard,44.9
+2022-01-30,rotate-array,189,Rotate Array,Medium,41.0
+2022-01-31,richest-customer-wealth,1672,Richest Customer Wealth,Easy,88.1
+2022-02-01,best-time-to-buy-and-sell-stock,121,Best Time to Buy and Sell Stock,Easy,53.9
+2022-02-02,find-all-anagrams-in-a-string,438,Find All Anagrams in a String,Medium,51.1
+2022-02-03,4sum-ii,454,4Sum II,Medium,57.3
+2022-02-04,contiguous-array,525,Contiguous Array,Medium,49.0
+2022-02-05,merge-k-sorted-lists,23,Merge k Sorted Lists,Hard,53.4
+2022-02-06,remove-duplicates-from-sorted-array-ii,80,Remove Duplicates from Sorted Array II,Medium,59.2
+2022-02-07,find-the-difference,389,Find the Difference,Easy,59.6
+2022-02-08,add-digits,258,Add Digits,Easy,66.8
+2022-02-09,k-diff-pairs-in-an-array,532,K-diff Pairs in an Array,Medium,43.1
+2022-02-10,subarray-sum-equals-k,560,Subarray Sum Equals K,Medium,43.8
+2022-02-11,permutation-in-string,567,Permutation in String,Medium,44.5
+2022-02-12,word-ladder,127,Word Ladder,Hard,39.7
+2022-02-13,subsets,78,Subsets,Medium,78.7
+2022-02-14,maximum-depth-of-binary-tree,104,Maximum Depth of Binary Tree,Easy,75.7
+2022-02-15,single-number,136,Single Number,Easy,73.5
+2022-02-16,swap-nodes-in-pairs,24,Swap Nodes in Pairs,Medium,64.8
+2022-02-17,combination-sum,39,Combination Sum,Medium,72.0
+2022-02-18,remove-k-digits,402,Remove K Digits,Medium,33.7
+2022-02-19,minimize-deviation-in-array,1675,Minimize Deviation in Array,Hard,54.0
+2022-02-20,remove-covered-intervals,1288,Remove Covered Intervals,Medium,56.3
+2022-02-21,majority-element,169,Majority Element,Easy,65.0
+2022-02-22,excel-sheet-column-number,171,Excel Sheet Column Number,Easy,64.1
+2022-02-23,clone-graph,133,Clone Graph,Medium,58.1
+2022-02-24,sort-list,148,Sort List,Medium,58.6
+2022-02-25,compare-version-numbers,165,Compare Version Numbers,Medium,41.0
+2022-02-26,shortest-path-visiting-all-nodes,847,Shortest Path Visiting All Nodes,Hard,65.3
+2022-02-27,maximum-width-of-binary-tree,662,Maximum Width of Binary Tree,Medium,43.0
+2022-02-28,summary-ranges,228,Summary Ranges,Easy,51.0
+2022-03-01,counting-bits,338,Counting Bits,Easy,78.5
+2022-03-02,is-subsequence,392,Is Subsequence,Easy,48.1
+2022-03-03,arithmetic-slices,413,Arithmetic Slices,Medium,65.1
+2022-03-04,champagne-tower,799,Champagne Tower,Medium,58.2
+2022-03-05,delete-and-earn,740,Delete and Earn,Medium,56.5
+2022-03-06,count-all-valid-pickup-and-delivery-options,1359,Count All Valid Pickup and Delivery Options,Hard,65.0
+2022-03-07,merge-two-sorted-lists,21,Merge Two Sorted Lists,Easy,64.7
+2022-03-08,linked-list-cycle,141,Linked List Cycle,Easy,50.7
+2022-03-09,remove-duplicates-from-sorted-list-ii,82,Remove Duplicates from Sorted List II,Medium,47.8
+2022-03-10,add-two-numbers,2,Add Two Numbers,Medium,43.4
+2022-03-11,rotate-list,61,Rotate List,Medium,38.2
+2022-03-12,copy-list-with-random-pointer,138,Copy List with Random Pointer,Medium,56.8
+2022-03-13,valid-parentheses,20,Valid Parentheses,Easy,40.7
+2022-03-14,simplify-path,71,Simplify Path,Medium,43.2
+2022-03-15,minimum-remove-to-make-valid-parentheses,1249,Minimum Remove to Make Valid Parentheses,Medium,69.0
+2022-03-16,validate-stack-sequences,946,Validate Stack Sequences,Medium,69.5
+2022-03-17,score-of-parentheses,856,Score of Parentheses,Medium,64.1
+2022-03-18,remove-duplicate-letters,316,Remove Duplicate Letters,Medium,49.9
+2022-03-19,maximum-frequency-stack,895,Maximum Frequency Stack,Hard,66.4
+2022-03-20,minimum-domino-rotations-for-equal-row,1007,Minimum Domino Rotations For Equal Row,Medium,52.2
+2022-03-21,partition-labels,763,Partition Labels,Medium,79.9
+2022-03-22,smallest-string-with-a-given-numeric-value,1663,Smallest String With A Given Numeric Value,Medium,66.8
+2022-03-23,broken-calculator,991,Broken Calculator,Medium,54.5
+2022-03-24,boats-to-save-people,881,Boats to Save People,Medium,59.4
+2022-03-25,two-city-scheduling,1029,Two City Scheduling,Medium,66.8
+2022-03-26,binary-search,704,Binary Search,Easy,57.9
+2022-03-27,the-k-weakest-rows-in-a-matrix,1337,The K Weakest Rows in a Matrix,Easy,73.5
+2022-03-28,search-in-rotated-sorted-array-ii,81,Search in Rotated Sorted Array II,Medium,37.9
+2022-03-29,find-the-duplicate-number,287,Find the Duplicate Number,Medium,61.1
+2022-03-30,search-a-2d-matrix,74,Search a 2D Matrix,Medium,50.5
+2022-03-31,split-array-largest-sum,410,Split Array Largest Sum,Hard,55.8
+2022-04-01,reverse-string,344,Reverse String,Easy,78.8
+2022-04-02,valid-palindrome-ii,680,Valid Palindrome II,Easy,41.0
+2022-04-03,next-permutation,31,Next Permutation,Medium,40.4
+2022-04-04,swapping-nodes-in-a-linked-list,1721,Swapping Nodes in a Linked List,Medium,68.0
+2022-04-05,container-with-most-water,11,Container With Most Water,Medium,55.6
+2022-04-06,3sum-with-multiplicity,923,3Sum With Multiplicity,Medium,45.5
+2022-04-07,last-stone-weight,1046,Last Stone Weight,Easy,65.5
+2022-04-08,kth-largest-element-in-a-stream,703,Kth Largest Element in a Stream,Easy,57.0
+2022-04-09,top-k-frequent-elements,347,Top K Frequent Elements,Medium,63.0
+2022-04-10,baseball-game,682,Baseball Game,Easy,76.6
+2022-04-11,shift-2d-grid,1260,Shift 2D Grid,Easy,67.4
+2022-04-12,game-of-life,289,Game of Life,Medium,69.5
+2022-04-13,spiral-matrix-ii,59,Spiral Matrix II,Medium,71.5
+2022-04-14,search-in-a-binary-search-tree,700,Search in a Binary Search Tree,Easy,80.1
+2022-04-15,trim-a-binary-search-tree,669,Trim a Binary Search Tree,Medium,66.3
+2022-04-16,convert-bst-to-greater-tree,538,Convert BST to Greater Tree,Medium,69.5
+2022-04-17,increasing-order-search-tree,897,Increasing Order Search Tree,Easy,78.3
+2022-04-18,kth-smallest-element-in-a-bst,230,Kth Smallest Element in a BST,Medium,73.0
+2022-04-19,recover-binary-search-tree,99,Recover Binary Search Tree,Medium,53.6
+2022-04-20,binary-search-tree-iterator,173,Binary Search Tree Iterator,Medium,72.5
+2022-04-21,design-hashset,705,Design HashSet,Easy,67.1
+2022-04-22,design-hashmap,706,Design HashMap,Easy,65.6
+2022-04-23,encode-and-decode-tinyurl,535,Encode and Decode TinyURL,Medium,86.4
+2022-04-24,design-underground-system,1396,Design Underground System,Medium,74.7
+2022-04-25,peeking-iterator,284,Peeking Iterator,Medium,59.7
+2022-04-26,min-cost-to-connect-all-points,1584,Min Cost to Connect All Points,Medium,67.1
+2022-04-27,smallest-string-with-swaps,1202,Smallest String With Swaps,Medium,58.4
+2022-04-28,path-with-minimum-effort,1631,Path With Minimum Effort,Medium,59.8
+2022-04-29,is-graph-bipartite,785,Is Graph Bipartite?,Medium,56.0
+2022-04-30,evaluate-division,399,Evaluate Division,Medium,61.9
+2022-05-01,backspace-string-compare,844,Backspace String Compare,Easy,49.2
+2022-05-02,sort-array-by-parity,905,Sort Array By Parity,Easy,76.2
+2022-05-03,shortest-unsorted-continuous-subarray,581,Shortest Unsorted Continuous Subarray,Medium,36.9
+2022-05-04,max-number-of-k-sum-pairs,1679,Max Number of K-Sum Pairs,Medium,55.1
+2022-05-05,implement-stack-using-queues,225,Implement Stack using Queues,Easy,64.4
+2022-05-06,remove-all-adjacent-duplicates-in-string-ii,1209,Remove All Adjacent Duplicates in String II,Medium,58.0
+2022-05-07,132-pattern,456,132 Pattern,Medium,33.8
+2022-05-08,flatten-nested-list-iterator,341,Flatten Nested List Iterator,Medium,64.6
+2022-05-09,letter-combinations-of-a-phone-number,17,Letter Combinations of a Phone Number,Medium,61.0
+2022-05-10,combination-sum-iii,216,Combination Sum III,Medium,70.1
+2022-05-11,count-sorted-vowel-strings,1641,Count Sorted Vowel Strings,Medium,78.5
+2022-05-12,permutations-ii,47,Permutations II,Medium,59.6
+2022-05-13,populating-next-right-pointers-in-each-node-ii,117,Populating Next Right Pointers in Each Node II,Medium,53.0
+2022-05-14,network-delay-time,743,Network Delay Time,Medium,54.3
+2022-05-15,deepest-leaves-sum,1302,Deepest Leaves Sum,Medium,86.3
+2022-05-16,shortest-path-in-binary-matrix,1091,Shortest Path in Binary Matrix,Medium,47.7
+2022-05-17,find-a-corresponding-node-of-a-binary-tree-in-a-clone-of-that-tree,1379,Find a Corresponding Node of a Binary Tree in a Clone of That Tree,Easy,85.8
+2022-05-18,critical-connections-in-a-network,1192,Critical Connections in a Network,Hard,56.1
+2022-05-19,longest-increasing-path-in-a-matrix,329,Longest Increasing Path in a Matrix,Hard,53.8
+2022-05-20,unique-paths-ii,63,Unique Paths II,Medium,41.9
+2022-05-21,coin-change,322,Coin Change,Medium,44.3
+2022-05-22,palindromic-substrings,647,Palindromic Substrings,Medium,70.3
+2022-05-23,ones-and-zeroes,474,Ones and Zeroes,Medium,47.7
+2022-05-24,longest-valid-parentheses,32,Longest Valid Parentheses,Hard,34.4
+2022-05-25,russian-doll-envelopes,354,Russian Doll Envelopes,Hard,37.1
+2022-05-26,number-of-1-bits,191,Number of 1 Bits,Easy,71.7
+2022-05-27,number-of-steps-to-reduce-a-number-to-zero,1342,Number of Steps to Reduce a Number to Zero,Easy,85.2
+2022-05-28,missing-number,268,Missing Number,Easy,67.4
+2022-05-29,maximum-product-of-word-lengths,318,Maximum Product of Word Lengths,Medium,60.1
+2022-05-30,divide-two-integers,29,Divide Two Integers,Medium,17.6
+2022-05-31,check-if-a-string-contains-all-binary-codes-of-size-k,1461,Check If a String Contains All Binary Codes of Size K,Medium,56.5
+2022-06-01,running-sum-of-1d-array,1480,Running Sum of 1d Array,Easy,86.8
+2022-06-02,transpose-matrix,867,Transpose Matrix,Easy,71.9
+2022-06-03,range-sum-query-2d-immutable,304,Range Sum Query 2D - Immutable,Medium,54.9
+2022-06-04,n-queens,51,N-Queens,Hard,69.1
+2022-06-05,n-queens-ii,52,N-Queens II,Hard,74.4
+2022-06-06,intersection-of-two-linked-lists,160,Intersection of Two Linked Lists,Easy,58.1
+2022-06-07,merge-sorted-array,88,Merge Sorted Array,Easy,50.2
+2022-06-08,remove-palindromic-subsequences,1332,Remove Palindromic Subsequences,Easy,76.5
+2022-06-09,two-sum-ii-input-array-is-sorted,167,Two Sum II - Input Array Is Sorted,Medium,61.7
+2022-06-10,longest-substring-without-repeating-characters,3,Longest Substring Without Repeating Characters,Medium,35.1
+2022-06-11,minimum-operations-to-reduce-x-to-zero,1658,Minimum Operations to Reduce X to Zero,Medium,39.7
+2022-06-12,maximum-erasure-value,1695,Maximum Erasure Value,Medium,58.3
+2022-06-13,triangle,120,Triangle,Medium,57.1
+2022-06-14,delete-operation-for-two-strings,583,Delete Operation for Two Strings,Medium,62.1
+2022-06-15,longest-string-chain,1048,Longest String Chain,Medium,61.2
+2022-06-16,longest-palindromic-substring,5,Longest Palindromic Substring,Medium,34.1
+2022-06-17,binary-tree-cameras,968,Binary Tree Cameras,Hard,46.8
+2022-06-18,prefix-and-suffix-search,745,Prefix and Suffix Search,Hard,41.1
+2022-06-19,search-suggestions-system,1268,Search Suggestions System,Medium,65.1
+2022-06-20,short-encoding-of-words,820,Short Encoding of Words,Medium,60.4
+2022-06-21,furthest-building-you-can-reach,1642,Furthest Building You Can Reach,Medium,49.8
+2022-06-22,kth-largest-element-in-an-array,215,Kth Largest Element in an Array,Medium,66.9
+2022-06-23,course-schedule-iii,630,Course Schedule III,Hard,40.2
+2022-06-24,construct-target-array-with-multiple-sums,1354,Construct Target Array With Multiple Sums,Hard,36.2
+2022-06-25,non-decreasing-array,665,Non-decreasing Array,Medium,24.8
+2022-06-26,maximum-points-you-can-obtain-from-cards,1423,Maximum Points You Can Obtain from Cards,Medium,53.3
+2022-06-27,partitioning-into-minimum-number-of-deci-binary-numbers,1689,Partitioning Into Minimum Number Of Deci-Binary Numbers,Medium,88.7
+2022-06-28,minimum-deletions-to-make-character-frequencies-unique,1647,Minimum Deletions to Make Character Frequencies Unique,Medium,61.2
+2022-06-29,queue-reconstruction-by-height,406,Queue Reconstruction by Height,Medium,73.6
+2022-06-30,minimum-moves-to-equal-array-elements-ii,462,Minimum Moves to Equal Array Elements II,Medium,60.2
+2022-07-01,maximum-units-on-a-truck,1710,Maximum Units on a Truck,Easy,73.7
+2022-07-02,maximum-area-of-a-piece-of-cake-after-horizontal-and-vertical-cuts,1465,Maximum Area of a Piece of Cake After Horizontal and Vertical Cuts,Medium,41.0
+2022-07-03,wiggle-subsequence,376,Wiggle Subsequence,Medium,48.6
+2022-07-04,candy,135,Candy,Hard,43.5
+2022-07-05,longest-consecutive-sequence,128,Longest Consecutive Sequence,Medium,47.3
+2022-07-06,fibonacci-number,509,Fibonacci Number,Easy,71.4
+2022-07-07,interleaving-string,97,Interleaving String,Medium,40.3
+2022-07-08,paint-house-iii,1473,Paint House III,Hard,61.0
+2022-07-09,jump-game-vi,1696,Jump Game VI,Medium,45.7
+2022-07-10,min-cost-climbing-stairs,746,Min Cost Climbing Stairs,Easy,65.9
+2022-07-11,binary-tree-right-side-view,199,Binary Tree Right Side View,Medium,63.4
+2022-07-12,matchsticks-to-square,473,Matchsticks to Square,Medium,40.3
+2022-07-13,binary-tree-level-order-traversal,102,Binary Tree Level Order Traversal,Medium,67.8
+2022-07-14,construct-binary-tree-from-preorder-and-inorder-traversal,105,Construct Binary Tree from Preorder and Inorder Traversal,Medium,64.4
+2022-07-15,max-area-of-island,695,Max Area of Island,Medium,72.3
+2022-07-16,out-of-boundary-paths,576,Out of Boundary Paths,Medium,48.1
+2022-07-17,k-inverse-pairs-array,629,K Inverse Pairs Array,Hard,49.6
+2022-07-18,number-of-submatrices-that-sum-to-target,1074,Number of Submatrices That Sum to Target,Hard,74.4
+2022-07-19,pascals-triangle,118,Pascal's Triangle,Easy,74.8
+2022-07-20,number-of-matching-subsequences,792,Number of Matching Subsequences,Medium,50.9
+2022-07-21,reverse-linked-list-ii,92,Reverse Linked List II,Medium,47.9
+2022-07-22,partition-list,86,Partition List,Medium,56.7
+2022-07-23,count-of-smaller-numbers-after-self,315,Count of Smaller Numbers After Self,Hard,42.5
+2022-07-24,search-a-2d-matrix-ii,240,Search a 2D Matrix II,Medium,53.1
+2022-07-25,find-first-and-last-position-of-element-in-sorted-array,34,Find First and Last Position of Element in Sorted Array,Medium,44.7
+2022-07-26,lowest-common-ancestor-of-a-binary-tree,236,Lowest Common Ancestor of a Binary Tree,Medium,62.9
+2022-07-27,flatten-binary-tree-to-linked-list,114,Flatten Binary Tree to Linked List,Medium,65.6
+2022-07-28,valid-anagram,242,Valid Anagram,Easy,64.9
+2022-07-29,find-and-replace-pattern,890,Find and Replace Pattern,Medium,76.8
+2022-07-30,word-subsets,916,Word Subsets,Medium,52.0
+2022-07-31,range-sum-query-mutable,307,Range Sum Query - Mutable,Medium,41.1
+2022-08-01,unique-paths,62,Unique Paths,Medium,64.5
+2022-08-02,kth-smallest-element-in-a-sorted-matrix,378,Kth Smallest Element in a Sorted Matrix,Medium,62.6
+2022-08-03,my-calendar-i,729,My Calendar I,Medium,56.6
+2022-08-04,mirror-reflection,858,Mirror Reflection,Medium,62.5
+2022-08-05,combination-sum-iv,377,Combination Sum IV,Medium,54.2
+2022-08-06,poor-pigs,458,Poor Pigs,Hard,59.6
+2022-08-07,count-vowels-permutation,1220,Count Vowels Permutation,Hard,61.9
+2022-08-08,longest-increasing-subsequence,300,Longest Increasing Subsequence,Medium,55.8
+2022-08-09,binary-trees-with-factors,823,Binary Trees With Factors,Medium,52.9
+2022-08-10,convert-sorted-array-to-binary-search-tree,108,Convert Sorted Array to Binary Search Tree,Easy,72.1
+2022-08-11,validate-binary-search-tree,98,Validate Binary Search Tree,Medium,33.1
+2022-08-12,lowest-common-ancestor-of-a-binary-search-tree,235,Lowest Common Ancestor of a Binary Search Tree,Medium,65.3
+2022-08-13,substring-with-concatenation-of-all-words,30,Substring with Concatenation of All Words,Hard,32.6
+2022-08-14,word-ladder-ii,126,Word Ladder II,Hard,27.2
+2022-08-15,roman-to-integer,13,Roman to Integer,Easy,61.8
+2022-08-16,first-unique-character-in-a-string,387,First Unique Character in a String,Easy,62.3
+2022-08-17,unique-morse-code-words,804,Unique Morse Code Words,Easy,82.9
+2022-08-18,reduce-array-size-to-the-half,1338,Reduce Array Size to The Half,Medium,68.9
+2022-08-19,split-array-into-consecutive-subsequences,659,Split Array into Consecutive Subsequences,Medium,51.1
+2022-08-20,minimum-number-of-refueling-stops,871,Minimum Number of Refueling Stops,Hard,40.1
+2022-08-21,stamping-the-sequence,936,Stamping The Sequence,Hard,62.5
+2022-08-22,power-of-four,342,Power of Four,Easy,48.2
+2022-08-23,palindrome-linked-list,234,Palindrome Linked List,Easy,53.6
+2022-08-24,power-of-three,326,Power of Three,Easy,46.8
+2022-08-25,ransom-note,383,Ransom Note,Easy,61.9
+2022-08-26,reordered-power-of-2,869,Reordered Power of 2,Medium,62.6
+2022-08-27,max-sum-of-rectangle-no-larger-than-k,363,Max Sum of Rectangle No Larger Than K,Hard,44.2
+2022-08-28,sort-the-matrix-diagonally,1329,Sort the Matrix Diagonally,Medium,82.9
+2022-08-29,number-of-islands,200,Number of Islands,Medium,59.9
+2022-08-30,rotate-image,48,Rotate Image,Medium,75.0
+2022-08-31,pacific-atlantic-water-flow,417,Pacific Atlantic Water Flow,Medium,55.6
+2022-09-01,count-good-nodes-in-binary-tree,1448,Count Good Nodes in Binary Tree,Medium,73.0
+2022-09-02,average-of-levels-in-binary-tree,637,Average of Levels in Binary Tree,Easy,72.9
+2022-09-03,numbers-with-same-consecutive-differences,967,Numbers With Same Consecutive Differences,Medium,58.1
+2022-09-04,vertical-order-traversal-of-a-binary-tree,987,Vertical Order Traversal of a Binary Tree,Hard,48.1
+2022-09-05,n-ary-tree-level-order-traversal,429,N-ary Tree Level Order Traversal,Medium,70.9
+2022-09-06,binary-tree-pruning,814,Binary Tree Pruning,Medium,72.3
+2022-09-07,construct-string-from-binary-tree,606,Construct String from Binary Tree,Medium,69.4
+2022-09-08,binary-tree-inorder-traversal,94,Binary Tree Inorder Traversal,Easy,76.5
+2022-09-09,the-number-of-weak-characters-in-the-game,1996,The Number of Weak Characters in the Game,Medium,44.0
+2022-09-10,best-time-to-buy-and-sell-stock-iv,188,Best Time to Buy and Sell Stock IV,Hard,43.6
+2022-09-11,maximum-performance-of-a-team,1383,Maximum Performance of a Team,Hard,47.8
+2022-09-12,bag-of-tokens,948,Bag of Tokens,Medium,59.0
+2022-09-13,utf-8-validation,393,UTF-8 Validation,Medium,45.2
+2022-09-14,pseudo-palindromic-paths-in-a-binary-tree,1457,Pseudo-Palindromic Paths in a Binary Tree,Medium,68.4
+2022-09-15,find-original-array-from-doubled-array,2007,Find Original Array From Doubled Array,Medium,40.5
+2022-09-16,maximum-score-from-performing-multiplication-operations,1770,Maximum Score from Performing Multiplication Operations,Hard,40.4
+2022-09-17,palindrome-pairs,336,Palindrome Pairs,Hard,35.4
+2022-09-18,trapping-rain-water,42,Trapping Rain Water,Hard,62.5
+2022-09-19,find-duplicate-file-in-system,609,Find Duplicate File in System,Medium,67.7
+2022-09-20,maximum-length-of-repeated-subarray,718,Maximum Length of Repeated Subarray,Medium,50.9
+2022-09-21,sum-of-even-numbers-after-queries,985,Sum of Even Numbers After Queries,Medium,68.2
+2022-09-22,reverse-words-in-a-string-iii,557,Reverse Words in a String III,Easy,83.2
+2022-09-23,concatenation-of-consecutive-binary-numbers,1680,Concatenation of Consecutive Binary Numbers,Medium,57.1
+2022-09-24,path-sum-ii,113,Path Sum II,Medium,58.8
+2022-09-25,design-circular-queue,622,Design Circular Queue,Medium,51.5
+2022-09-26,satisfiability-of-equality-equations,990,Satisfiability of Equality Equations,Medium,50.6
+2022-09-27,push-dominoes,838,Push Dominoes,Medium,57.2
+2022-09-28,remove-nth-node-from-end-of-list,19,Remove Nth Node From End of List,Medium,45.9
+2022-09-29,find-k-closest-elements,658,Find K Closest Elements,Medium,47.6
+2022-09-30,the-skyline-problem,218,The Skyline Problem,Hard,42.9
+2022-10-01,decode-ways,91,Decode Ways,Medium,35.1
+2022-10-02,number-of-dice-rolls-with-target-sum,1155,Number of Dice Rolls With Target Sum,Medium,61.0
+2022-10-03,minimum-time-to-make-rope-colorful,1578,Minimum Time to Make Rope Colorful,Medium,63.7
+2022-10-04,path-sum,112,Path Sum,Easy,50.8
+2022-10-05,add-one-row-to-tree,623,Add One Row to Tree,Medium,64.0
+2022-10-06,time-based-key-value-store,981,Time Based Key-Value Store,Medium,49.3
+2022-10-07,my-calendar-iii,732,My Calendar III,Hard,71.7
+2022-10-08,3sum-closest,16,3Sum Closest,Medium,45.9
+2022-10-09,two-sum-iv-input-is-a-bst,653,Two Sum IV - Input is a BST,Easy,61.4
+2022-10-10,break-a-palindrome,1328,Break a Palindrome,Medium,51.8
+2022-10-11,increasing-triplet-subsequence,334,Increasing Triplet Subsequence,Medium,39.6
+2022-10-12,largest-perimeter-triangle,976,Largest Perimeter Triangle,Easy,56.1
+2022-10-13,delete-node-in-a-linked-list,237,Delete Node in a Linked List,Medium,80.2
+2022-10-14,delete-the-middle-node-of-a-linked-list,2095,Delete the Middle Node of a Linked List,Medium,59.2
+2022-10-15,string-compression-ii,1531,String Compression II,Hard,52.5
+2022-10-16,minimum-difficulty-of-a-job-schedule,1335,Minimum Difficulty of a Job Schedule,Hard,59.6
+2022-10-17,check-if-the-sentence-is-pangram,1832,Check if the Sentence Is Pangram,Easy,83.3
+2022-10-18,count-and-say,38,Count and Say,Medium,55.7
+2022-10-19,top-k-frequent-words,692,Top K Frequent Words,Medium,58.2
+2022-10-20,integer-to-roman,12,Integer to Roman,Medium,65.4
+2022-10-21,contains-duplicate-ii,219,Contains Duplicate II,Easy,45.7
+2022-10-22,minimum-window-substring,76,Minimum Window Substring,Hard,43.3
+2022-10-23,set-mismatch,645,Set Mismatch,Easy,44.5
+2022-10-24,maximum-length-of-a-concatenated-string-with-unique-characters,1239,Maximum Length of a Concatenated String with Unique Characters,Medium,54.1
+2022-10-25,check-if-two-string-arrays-are-equivalent,1662,Check If Two String Arrays are Equivalent,Easy,85.5
+2022-10-26,continuous-subarray-sum,523,Continuous Subarray Sum,Medium,30.3
+2022-10-27,image-overlap,835,Image Overlap,Medium,63.7
+2022-10-28,group-anagrams,49,Group Anagrams,Medium,68.9
+2022-10-29,earliest-possible-day-of-full-bloom,2136,Earliest Possible Day of Full Bloom,Hard,71.8
+2022-10-30,shortest-path-in-a-grid-with-obstacles-elimination,1293,Shortest Path in a Grid with Obstacles Elimination,Hard,45.3
+2022-10-31,toeplitz-matrix,766,Toeplitz Matrix,Easy,69.1
+2022-11-01,where-will-the-ball-fall,1706,Where Will the Ball Fall,Medium,71.8
+2022-11-02,minimum-genetic-mutation,433,Minimum Genetic Mutation,Medium,54.0
+2022-11-03,longest-palindrome-by-concatenating-two-letter-words,2131,Longest Palindrome by Concatenating Two Letter Words,Medium,48.1
+2022-11-04,reverse-vowels-of-a-string,345,Reverse Vowels of a String,Easy,53.6
+2022-11-05,word-search-ii,212,Word Search II,Hard,36.4
+2022-11-06,orderly-queue,899,Orderly Queue,Hard,65.9
+2022-11-07,maximum-69-number,1323,Maximum 69 Number,Easy,82.4
+2022-11-08,make-the-string-great,1544,Make The String Great,Easy,68.4
+2022-11-09,online-stock-span,901,Online Stock Span,Medium,66.1
+2022-11-10,remove-all-adjacent-duplicates-in-string,1047,Remove All Adjacent Duplicates In String,Easy,69.8
+2022-11-11,remove-duplicates-from-sorted-array,26,Remove Duplicates from Sorted Array,Easy,56.5
+2022-11-12,find-median-from-data-stream,295,Find Median from Data Stream,Hard,52.1
+2022-11-13,reverse-words-in-a-string,151,Reverse Words in a String,Medium,44.1
+2022-11-14,most-stones-removed-with-same-row-or-column,947,Most Stones Removed with Same Row or Column,Medium,58.9
+2022-11-15,count-complete-tree-nodes,222,Count Complete Tree Nodes,Easy,66.2
+2022-11-16,guess-number-higher-or-lower,374,Guess Number Higher or Lower,Easy,53.8
+2022-11-17,rectangle-area,223,Rectangle Area,Medium,46.4
+2022-11-18,ugly-number,263,Ugly Number,Easy,42.0
+2022-11-19,erect-the-fence,587,Erect the Fence,Hard,51.9
+2022-11-20,basic-calculator,224,Basic Calculator,Hard,43.7
+2022-11-21,nearest-exit-from-entrance-in-maze,1926,Nearest Exit from Entrance in Maze,Medium,46.7
+2022-11-22,perfect-squares,279,Perfect Squares,Medium,54.9
+2022-11-23,valid-sudoku,36,Valid Sudoku,Medium,60.1
+2022-11-24,word-search,79,Word Search,Medium,43.1
+2022-11-25,sum-of-subarray-minimums,907,Sum of Subarray Minimums,Medium,37.3
+2022-11-26,maximum-profit-in-job-scheduling,1235,Maximum Profit in Job Scheduling,Hard,54.4
+2022-11-27,arithmetic-slices-ii-subsequence,446,Arithmetic Slices II - Subsequence,Hard,54.6
+2022-11-28,find-players-with-zero-or-one-losses,2225,Find Players With Zero or One Losses,Medium,73.3
+2022-11-29,insert-delete-getrandom-o1,380,Insert Delete GetRandom O(1),Medium,54.5
+2022-11-30,unique-number-of-occurrences,1207,Unique Number of Occurrences,Easy,77.3
+2022-12-01,determine-if-string-halves-are-alike,1704,Determine if String Halves Are Alike,Easy,78.7
+2022-12-02,determine-if-two-strings-are-close,1657,Determine if Two Strings Are Close,Medium,54.7
+2022-12-03,sort-characters-by-frequency,451,Sort Characters By Frequency,Medium,72.7
+2022-12-04,minimum-average-difference,2256,Minimum Average Difference,Medium,43.2
+2022-12-05,middle-of-the-linked-list,876,Middle of the Linked List,Easy,78.8
+2022-12-06,odd-even-linked-list,328,Odd Even Linked List,Medium,61.5
+2022-12-07,range-sum-of-bst,938,Range Sum of BST,Easy,86.9
+2022-12-08,leaf-similar-trees,872,Leaf-Similar Trees,Easy,70.1
+2022-12-09,maximum-difference-between-node-and-ancestor,1026,Maximum Difference Between Node and Ancestor,Medium,78.1
+2022-12-10,maximum-product-of-splitted-binary-tree,1339,Maximum Product of Splitted Binary Tree,Medium,47.7
+2022-12-11,binary-tree-maximum-path-sum,124,Binary Tree Maximum Path Sum,Hard,40.2
+2022-12-12,climbing-stairs,70,Climbing Stairs,Easy,53.0
+2022-12-13,minimum-falling-path-sum,931,Minimum Falling Path Sum,Medium,63.6
+2022-12-14,house-robber,198,House Robber,Medium,51.2
+2022-12-15,longest-common-subsequence,1143,Longest Common Subsequence,Medium,57.8
+2022-12-16,implement-queue-using-stacks,232,Implement Queue using Stacks,Easy,66.6
+2022-12-17,evaluate-reverse-polish-notation,150,Evaluate Reverse Polish Notation,Medium,52.0
+2022-12-18,daily-temperatures,739,Daily Temperatures,Medium,66.1
+2022-12-19,find-if-path-exists-in-graph,1971,Find if Path Exists in Graph,Easy,54.1
+2022-12-20,keys-and-rooms,841,Keys and Rooms,Medium,73.3
+2022-12-21,possible-bipartition,886,Possible Bipartition,Medium,50.7
+2022-12-22,sum-of-distances-in-tree,834,Sum of Distances in Tree,Hard,65.3
+2022-12-23,best-time-to-buy-and-sell-stock-with-cooldown,309,Best Time to Buy and Sell Stock with Cooldown,Medium,58.6
+2022-12-24,domino-and-tromino-tiling,790,Domino and Tromino Tiling,Medium,50.3
+2022-12-25,longest-subsequence-with-limited-sum,2389,Longest Subsequence With Limited Sum,Easy,71.8
+2022-12-26,jump-game,55,Jump Game,Medium,38.6
+2022-12-27,maximum-bags-with-full-capacity-of-rocks,2279,Maximum Bags With Full Capacity of Rocks,Medium,67.5
+2022-12-28,remove-stones-to-minimize-the-total,1962,Remove Stones to Minimize the Total,Medium,62.4
+2022-12-29,single-threaded-cpu,1834,Single-Threaded CPU,Medium,45.6
+2022-12-30,all-paths-from-source-to-target,797,All Paths From Source to Target,Medium,82.5
+2022-12-31,unique-paths-iii,980,Unique Paths III,Hard,81.9
+2023-01-01,word-pattern,290,Word Pattern,Easy,42.2
+2023-01-02,detect-capital,520,Detect Capital,Easy,56.4
+2023-01-03,delete-columns-to-make-sorted,944,Delete Columns to Make Sorted,Easy,74.6
+2023-01-04,minimum-rounds-to-complete-all-tasks,2244,Minimum Rounds to Complete All Tasks,Medium,62.9
+2023-01-05,minimum-number-of-arrows-to-burst-balloons,452,Minimum Number of Arrows to Burst Balloons,Medium,59.1
+2023-01-06,maximum-ice-cream-bars,1833,Maximum Ice Cream Bars,Medium,73.8
+2023-01-07,gas-station,134,Gas Station,Medium,45.5
+2023-01-08,max-points-on-a-line,149,Max Points on a Line,Hard,27.1
+2023-01-09,binary-tree-preorder-traversal,144,Binary Tree Preorder Traversal,Easy,70.1
+2023-01-10,same-tree,100,Same Tree,Easy,62.7
+2023-01-11,minimum-time-to-collect-all-apples-in-a-tree,1443,Minimum Time to Collect All Apples in a Tree,Medium,62.4
+2023-01-12,number-of-nodes-in-the-sub-tree-with-the-same-label,1519,Number of Nodes in the Sub-Tree With the Same Label,Medium,55.0
+2023-01-13,longest-path-with-different-adjacent-characters,2246,Longest Path With Different Adjacent Characters,Hard,54.5
+2023-01-14,lexicographically-smallest-equivalent-string,1061,Lexicographically Smallest Equivalent String,Medium,76.6
+2023-01-15,number-of-good-paths,2421,Number of Good Paths,Hard,56.3
+2023-01-16,insert-interval,57,Insert Interval,Medium,41.8
+2023-01-17,flip-string-to-monotone-increasing,926,Flip String to Monotone Increasing,Medium,61.5
+2023-01-18,maximum-sum-circular-subarray,918,Maximum Sum Circular Subarray,Medium,45.2
+2023-01-19,subarray-sums-divisible-by-k,974,Subarray Sums Divisible by K,Medium,55.5
+2023-01-20,non-decreasing-subsequences,491,Non-decreasing Subsequences,Medium,60.9
+2023-01-21,restore-ip-addresses,93,Restore IP Addresses,Medium,50.4
+2023-01-22,palindrome-partitioning,131,Palindrome Partitioning,Medium,69.7
+2023-01-23,find-the-town-judge,997,Find the Town Judge,Easy,49.8
+2023-01-24,snakes-and-ladders,909,Snakes and Ladders,Medium,43.8
+2023-01-25,find-closest-node-to-given-two-nodes,2359,Find Closest Node to Given Two Nodes,Medium,45.5
+2023-01-26,cheapest-flights-within-k-stops,787,Cheapest Flights Within K Stops,Medium,39.4
+2023-01-27,concatenated-words,472,Concatenated Words,Hard,49.4
+2023-01-28,data-stream-as-disjoint-intervals,352,Data Stream as Disjoint Intervals,Hard,60.1
+2023-01-29,lfu-cache,460,LFU Cache,Hard,44.5
+2023-01-30,n-th-tribonacci-number,1137,N-th Tribonacci Number,Easy,63.8
+2023-01-31,best-team-with-no-conflicts,1626,Best Team With No Conflicts,Medium,50.4
+2023-02-01,greatest-common-divisor-of-strings,1071,Greatest Common Divisor of Strings,Easy,51.5
+2023-02-02,verifying-an-alien-dictionary,953,Verifying an Alien Dictionary,Easy,55.1
+2023-02-03,zigzag-conversion,6,Zigzag Conversion,Medium,48.6
+2023-02-04,permutation-in-string,567,Permutation in String,Medium,44.5
+2023-02-05,find-all-anagrams-in-a-string,438,Find All Anagrams in a String,Medium,51.1
+2023-02-06,shuffle-the-array,1470,Shuffle the Array,Easy,88.6
+2023-02-07,fruit-into-baskets,904,Fruit Into Baskets,Medium,44.6
+2023-02-08,jump-game-ii,45,Jump Game II,Medium,40.6
+2023-02-09,naming-a-company,2306,Naming a Company,Hard,46.4
+2023-02-10,as-far-from-land-as-possible,1162,As Far from Land as Possible,Medium,51.6
+2023-02-11,shortest-path-with-alternating-colors,1129,Shortest Path with Alternating Colors,Medium,47.1
+2023-02-12,minimum-fuel-cost-to-report-to-the-capital,2477,Minimum Fuel Cost to Report to the Capital,Medium,64.5
+2023-02-13,count-odd-numbers-in-an-interval-range,1523,Count Odd Numbers in an Interval Range,Easy,49.9
+2023-02-14,add-binary,67,Add Binary,Easy,53.9
+2023-02-15,add-to-array-form-of-integer,989,Add to Array-Form of Integer,Easy,45.2
+2023-02-16,maximum-depth-of-binary-tree,104,Maximum Depth of Binary Tree,Easy,75.7
+2023-02-17,minimum-distance-between-bst-nodes,783,Minimum Distance Between BST Nodes,Easy,59.6
+2023-02-18,invert-binary-tree,226,Invert Binary Tree,Easy,77.4
+2023-02-19,binary-tree-zigzag-level-order-traversal,103,Binary Tree Zigzag Level Order Traversal,Medium,59.4
+2023-02-20,search-insert-position,35,Search Insert Position,Easy,46.5
+2023-02-21,single-element-in-a-sorted-array,540,Single Element in a Sorted Array,Medium,59.2
+2023-02-22,capacity-to-ship-packages-within-d-days,1011,Capacity To Ship Packages Within D Days,Medium,69.9
+2023-02-23,ipo,502,IPO,Hard,53.2
+2023-02-24,minimize-deviation-in-array,1675,Minimize Deviation in Array,Hard,54.0
+2023-02-25,best-time-to-buy-and-sell-stock,121,Best Time to Buy and Sell Stock,Easy,53.9
+2023-02-26,edit-distance,72,Edit Distance,Medium,56.9
+2023-02-27,construct-quad-tree,427,Construct Quad Tree,Medium,75.6
+2023-02-28,find-duplicate-subtrees,652,Find Duplicate Subtrees,Medium,59.5
+2023-03-01,sort-an-array,912,Sort an Array,Medium,56.1
+2023-03-02,string-compression,443,String Compression,Medium,55.0
+2023-03-03,find-the-index-of-the-first-occurrence-in-a-string,28,Find the Index of the First Occurrence in a String,Easy,42.8
+2023-03-04,count-subarrays-with-fixed-bounds,2444,Count Subarrays With Fixed Bounds,Hard,68.0
+2023-03-05,jump-game-iv,1345,Jump Game IV,Hard,46.2
+2023-03-06,kth-missing-positive-number,1539,Kth Missing Positive Number,Easy,60.3
+2023-03-07,minimum-time-to-complete-trips,2187,Minimum Time to Complete Trips,Medium,38.8
+2023-03-08,koko-eating-bananas,875,Koko Eating Bananas,Medium,48.5
+2023-03-09,linked-list-cycle-ii,142,Linked List Cycle II,Medium,51.9
+2023-03-10,linked-list-random-node,382,Linked List Random Node,Medium,63.3
+2023-03-11,convert-sorted-list-to-binary-search-tree,109,Convert Sorted List to Binary Search Tree,Medium,62.3
+2023-03-12,merge-k-sorted-lists,23,Merge k Sorted Lists,Hard,53.4
+2023-03-13,symmetric-tree,101,Symmetric Tree,Easy,57.0
+2023-03-14,sum-root-to-leaf-numbers,129,Sum Root to Leaf Numbers,Medium,66.2
+2023-03-15,check-completeness-of-a-binary-tree,958,Check Completeness of a Binary Tree,Medium,57.1
+2023-03-16,construct-binary-tree-from-inorder-and-postorder-traversal,106,Construct Binary Tree from Inorder and Postorder Traversal,Medium,63.5
+2023-03-17,implement-trie-prefix-tree,208,Implement Trie (Prefix Tree),Medium,65.7
+2023-03-18,design-browser-history,1472,Design Browser History,Medium,77.6
+2023-03-19,design-add-and-search-words-data-structure,211,Design Add and Search Words Data Structure,Medium,45.6
+2023-03-20,can-place-flowers,605,Can Place Flowers,Easy,29.1
+2023-03-21,number-of-zero-filled-subarrays,2348,Number of Zero-Filled Subarrays,Medium,66.7
+2023-03-22,minimum-score-of-a-path-between-two-cities,2492,Minimum Score of a Path Between Two Cities,Medium,57.4
+2023-03-23,number-of-operations-to-make-network-connected,1319,Number of Operations to Make Network Connected,Medium,63.0
+2023-03-24,reorder-routes-to-make-all-paths-lead-to-the-city-zero,1466,Reorder Routes to Make All Paths Lead to the City Zero,Medium,64.4
+2023-03-25,count-unreachable-pairs-of-nodes-in-an-undirected-graph,2316,Count Unreachable Pairs of Nodes in an Undirected Graph,Medium,49.3
+2023-03-26,longest-cycle-in-a-graph,2360,Longest Cycle in a Graph,Hard,49.8
+2023-03-27,minimum-path-sum,64,Minimum Path Sum,Medium,64.4
+2023-03-28,minimum-cost-for-tickets,983,Minimum Cost For Tickets,Medium,65.2
+2023-03-29,reducing-dishes,1402,Reducing Dishes,Hard,76.2
+2023-03-30,scramble-string,87,Scramble String,Hard,40.4
+2023-03-31,number-of-ways-of-cutting-a-pizza,1444,Number of Ways of Cutting a Pizza,Hard,62.1
+2023-04-01,binary-search,704,Binary Search,Easy,57.9
+2023-04-02,successful-pairs-of-spells-and-potions,2300,Successful Pairs of Spells and Potions,Medium,43.3
+2023-04-03,boats-to-save-people,881,Boats to Save People,Medium,59.4
+2023-04-04,optimal-partition-of-string,2405,Optimal Partition of String,Medium,78.0
+2023-04-05,minimize-maximum-of-array,2439,Minimize Maximum of Array,Medium,46.5
+2023-04-06,number-of-closed-islands,1254,Number of Closed Islands,Medium,66.4
+2023-04-07,number-of-enclaves,1020,Number of Enclaves,Medium,69.1
+2023-04-08,clone-graph,133,Clone Graph,Medium,58.1
+2023-04-09,largest-color-value-in-a-directed-graph,1857,Largest Color Value in a Directed Graph,Hard,50.0
+2023-04-10,valid-parentheses,20,Valid Parentheses,Easy,40.7
+2023-04-11,removing-stars-from-a-string,2390,Removing Stars From a String,Medium,75.6
+2023-04-12,simplify-path,71,Simplify Path,Medium,43.2
+2023-04-13,validate-stack-sequences,946,Validate Stack Sequences,Medium,69.5
+2023-04-14,longest-palindromic-subsequence,516,Longest Palindromic Subsequence,Medium,62.9
+2023-04-15,maximum-value-of-k-coins-from-piles,2218,Maximum Value of K Coins From Piles,Hard,60.6
+2023-04-16,number-of-ways-to-form-a-target-string-given-a-dictionary,1639,Number of Ways to Form a Target String Given a Dictionary,Hard,51.2
+2023-04-17,kids-with-the-greatest-number-of-candies,1431,Kids With the Greatest Number of Candies,Easy,87.6
+2023-04-18,merge-strings-alternately,1768,Merge Strings Alternately,Easy,80.1
+2023-04-19,longest-zigzag-path-in-a-binary-tree,1372,Longest ZigZag Path in a Binary Tree,Medium,65.9
+2023-04-20,maximum-width-of-binary-tree,662,Maximum Width of Binary Tree,Medium,43.0
+2023-04-21,profitable-schemes,879,Profitable Schemes,Hard,48.3
+2023-04-22,minimum-insertion-steps-to-make-a-string-palindrome,1312,Minimum Insertion Steps to Make a String Palindrome,Hard,70.9
+2023-04-23,restore-the-array,1416,Restore The Array,Hard,47.6
+2023-04-24,last-stone-weight,1046,Last Stone Weight,Easy,65.5
+2023-04-25,smallest-number-in-infinite-set,2336,Smallest Number in Infinite Set,Medium,71.7
+2023-04-26,add-digits,258,Add Digits,Easy,66.8
+2023-04-27,bulb-switcher,319,Bulb Switcher,Medium,52.9
+2023-04-28,similar-string-groups,839,Similar String Groups,Hard,55.0
+2023-04-29,checking-existence-of-edge-length-limited-paths,1697,Checking Existence of Edge Length Limited Paths,Hard,62.5
+2023-04-30,remove-max-number-of-edges-to-keep-graph-fully-traversable,1579,Remove Max Number of Edges to Keep Graph Fully Traversable,Hard,71.2
+2023-05-01,average-salary-excluding-the-minimum-and-maximum-salary,1491,Average Salary Excluding the Minimum and Maximum Salary,Easy,63.5
+2023-05-02,sign-of-the-product-of-an-array,1822,Sign of the Product of an Array,Easy,65.3
+2023-05-03,find-the-difference-of-two-arrays,2215,Find the Difference of Two Arrays,Easy,79.0
+2023-05-04,dota2-senate,649,Dota2 Senate,Medium,47.7
+2023-05-05,maximum-number-of-vowels-in-a-substring-of-given-length,1456,Maximum Number of Vowels in a Substring of Given Length,Medium,58.7
+2023-05-06,number-of-subsequences-that-satisfy-the-given-sum-condition,1498,Number of Subsequences That Satisfy the Given Sum Condition,Medium,43.7
+2023-05-07,find-the-longest-valid-obstacle-course-at-each-position,1964,Find the Longest Valid Obstacle Course at Each Position,Hard,62.9
+2023-05-08,matrix-diagonal-sum,1572,Matrix Diagonal Sum,Easy,83.1
+2023-05-09,spiral-matrix,54,Spiral Matrix,Medium,50.2
+2023-05-10,spiral-matrix-ii,59,Spiral Matrix II,Medium,71.5
+2023-05-11,uncrossed-lines,1035,Uncrossed Lines,Medium,63.2
+2023-05-12,solving-questions-with-brainpower,2140,Solving Questions With Brainpower,Medium,55.0
+2023-05-13,count-ways-to-build-good-strings,2466,Count Ways To Build Good Strings,Medium,54.5
+2023-05-14,maximize-score-after-n-operations,1799,Maximize Score After N Operations,Hard,57.9
+2023-05-15,swapping-nodes-in-a-linked-list,1721,Swapping Nodes in a Linked List,Medium,68.0
+2023-05-16,swap-nodes-in-pairs,24,Swap Nodes in Pairs,Medium,64.8
+2023-05-17,maximum-twin-sum-of-a-linked-list,2130,Maximum Twin Sum of a Linked List,Medium,80.9
+2023-05-18,minimum-number-of-vertices-to-reach-all-nodes,1557,Minimum Number of Vertices to Reach All Nodes,Medium,81.0
+2023-05-19,is-graph-bipartite,785,Is Graph Bipartite?,Medium,56.0
+2023-05-20,evaluate-division,399,Evaluate Division,Medium,61.9
+2023-05-21,shortest-bridge,934,Shortest Bridge,Medium,57.8
+2023-05-22,top-k-frequent-elements,347,Top K Frequent Elements,Medium,63.0
+2023-05-23,kth-largest-element-in-a-stream,703,Kth Largest Element in a Stream,Easy,57.0
+2023-05-24,maximum-subsequence-score,2542,Maximum Subsequence Score,Medium,53.7
+2023-05-25,new-21-game,837,New 21 Game,Medium,45.0
+2023-05-26,stone-game-ii,1140,Stone Game II,Medium,67.5
+2023-05-27,stone-game-iii,1406,Stone Game III,Hard,63.9
+2023-05-28,minimum-cost-to-cut-a-stick,1547,Minimum Cost to Cut a Stick,Hard,61.8
+2023-05-29,design-parking-system,1603,Design Parking System,Easy,88.0
+2023-05-30,design-hashset,705,Design HashSet,Easy,67.1
+2023-05-31,design-underground-system,1396,Design Underground System,Medium,74.7
+2023-06-01,shortest-path-in-binary-matrix,1091,Shortest Path in Binary Matrix,Medium,47.7
+2023-06-02,detonate-the-maximum-bombs,2101,Detonate the Maximum Bombs,Medium,48.7
+2023-06-03,time-needed-to-inform-all-employees,1376,Time Needed to Inform All Employees,Medium,60.0
+2023-06-04,number-of-provinces,547,Number of Provinces,Medium,66.6
+2023-06-05,check-if-it-is-a-straight-line,1232,Check If It Is a Straight Line,Easy,39.5
+2023-06-06,can-make-arithmetic-progression-from-sequence,1502,Can Make Arithmetic Progression From Sequence,Easy,69.6
+2023-06-07,minimum-flips-to-make-a-or-b-equal-to-c,1318,Minimum Flips to Make a OR b Equal to c,Medium,71.1
+2023-06-08,count-negative-numbers-in-a-sorted-matrix,1351,Count Negative Numbers in a Sorted Matrix,Easy,77.4
+2023-06-09,find-smallest-letter-greater-than-target,744,Find Smallest Letter Greater Than Target,Easy,52.4
+2023-06-10,maximum-value-at-a-given-index-in-a-bounded-array,1802,Maximum Value at a Given Index in a Bounded Array,Medium,39.2
+2023-06-11,snapshot-array,1146,Snapshot Array,Medium,36.9
+2023-06-12,summary-ranges,228,Summary Ranges,Easy,51.0
+2023-06-13,equal-row-and-column-pairs,2352,Equal Row and Column Pairs,Medium,70.4
+2023-06-14,minimum-absolute-difference-in-bst,530,Minimum Absolute Difference in BST,Easy,58.4
+2023-06-15,maximum-level-sum-of-a-binary-tree,1161,Maximum Level Sum of a Binary Tree,Medium,67.1
+2023-06-16,number-of-ways-to-reorder-array-to-get-same-bst,1569,Number of Ways to Reorder Array to Get Same BST,Hard,53.5
+2023-06-17,make-array-strictly-increasing,1187,Make Array Strictly Increasing,Hard,58.2
+2023-06-18,number-of-increasing-paths-in-a-grid,2328,Number of Increasing Paths in a Grid,Hard,58.3
+2023-06-19,find-the-highest-altitude,1732,Find the Highest Altitude,Easy,83.3
+2023-06-20,k-radius-subarray-averages,2090,K Radius Subarray Averages,Medium,46.2
+2023-06-21,minimum-cost-to-make-array-equal,2448,Minimum Cost to Make Array Equal,Hard,46.0
+2023-06-22,best-time-to-buy-and-sell-stock-with-transaction-fee,714,Best Time to Buy and Sell Stock with Transaction Fee,Medium,68.9
+2023-06-23,longest-arithmetic-subsequence,1027,Longest Arithmetic Subsequence,Medium,49.1
+2023-06-24,tallest-billboard,956,Tallest Billboard,Hard,52.2
+2023-06-25,count-all-possible-routes,1575,Count All Possible Routes,Hard,65.3
+2023-06-26,total-cost-to-hire-k-workers,2462,Total Cost to Hire K Workers,Medium,42.9
+2023-06-27,find-k-pairs-with-smallest-sums,373,Find K Pairs with Smallest Sums,Medium,40.0
+2023-06-28,path-with-maximum-probability,1514,Path with Maximum Probability,Medium,55.3
+2023-06-29,shortest-path-to-get-all-keys,864,Shortest Path to Get All Keys,Hard,53.6
+2023-06-30,last-day-where-you-can-still-cross,1970,Last Day Where You Can Still Cross,Hard,61.9
+2023-07-01,fair-distribution-of-cookies,2305,Fair Distribution of Cookies,Medium,69.2
+2023-07-02,maximum-number-of-achievable-transfer-requests,1601,Maximum Number of Achievable Transfer Requests,Hard,64.5
+2023-07-03,buddy-strings,859,Buddy Strings,Easy,33.1
+2023-07-04,single-number-ii,137,Single Number II,Medium,63.2
+2023-07-05,longest-subarray-of-1s-after-deleting-one-element,1493,Longest Subarray of 1's After Deleting One Element,Medium,67.6
+2023-07-06,minimum-size-subarray-sum,209,Minimum Size Subarray Sum,Medium,47.4
+2023-07-07,maximize-the-confusion-of-an-exam,2024,Maximize the Confusion of an Exam,Medium,67.3
+2023-07-08,put-marbles-in-bags,2551,Put Marbles in Bags,Hard,66.6
+2023-07-09,substring-with-largest-variance,2272,Substring With Largest Variance,Hard,46.3
+2023-07-10,minimum-depth-of-binary-tree,111,Minimum Depth of Binary Tree,Easy,48.5
+2023-07-11,all-nodes-distance-k-in-binary-tree,863,All Nodes Distance K in Binary Tree,Medium,64.7
+2023-07-12,find-eventual-safe-states,802,Find Eventual Safe States,Medium,63.3
+2023-07-13,course-schedule,207,Course Schedule,Medium,47.1
+2023-07-14,longest-arithmetic-subsequence-of-given-difference,1218,Longest Arithmetic Subsequence of Given Difference,Medium,54.7
+2023-07-15,maximum-number-of-events-that-can-be-attended-ii,1751,Maximum Number of Events That Can Be Attended II,Hard,61.7
+2023-07-16,smallest-sufficient-team,1125,Smallest Sufficient Team,Hard,55.5
+2023-07-17,add-two-numbers-ii,445,Add Two Numbers II,Medium,61.2
+2023-07-18,lru-cache,146,LRU Cache,Medium,42.8
+2023-07-19,non-overlapping-intervals,435,Non-overlapping Intervals,Medium,53.6
+2023-07-20,asteroid-collision,735,Asteroid Collision,Medium,44.5
+2023-07-21,number-of-longest-increasing-subsequence,673,Number of Longest Increasing Subsequence,Medium,48.3
+2023-07-22,knight-probability-in-chessboard,688,Knight Probability in Chessboard,Medium,56.2
+2023-07-23,all-possible-full-binary-trees,894,All Possible Full Binary Trees,Medium,82.7
+2023-07-24,powx-n,50,"Pow(x, n)",Medium,35.1
+2023-07-25,peak-index-in-a-mountain-array,852,Peak Index in a Mountain Array,Medium,68.3
+2023-07-26,minimum-speed-to-arrive-on-time,1870,Minimum Speed to Arrive on Time,Medium,46.8
+2023-07-27,maximum-running-time-of-n-computers,2141,Maximum Running Time of N Computers,Hard,50.0
+2023-07-28,predict-the-winner,486,Predict the Winner,Medium,55.4
+2023-07-29,soup-servings,808,Soup Servings,Medium,53.9
+2023-07-30,strange-printer,664,Strange Printer,Hard,55.0
+2023-07-31,minimum-ascii-delete-sum-for-two-strings,712,Minimum ASCII Delete Sum for Two Strings,Medium,65.1
+2023-08-01,combinations,77,Combinations,Medium,70.8
+2023-08-02,permutations,46,Permutations,Medium,78.7
+2023-08-03,letter-combinations-of-a-phone-number,17,Letter Combinations of a Phone Number,Medium,61.0
+2023-08-04,word-break,139,Word Break,Medium,47.0
+2023-08-05,unique-binary-search-trees-ii,95,Unique Binary Search Trees II,Medium,58.2
+2023-08-06,number-of-music-playlists,920,Number of Music Playlists,Hard,60.4
+2023-08-07,search-a-2d-matrix,74,Search a 2D Matrix,Medium,50.5
+2023-08-08,search-in-rotated-sorted-array,33,Search in Rotated Sorted Array,Medium,41.1
+2023-08-09,minimize-the-maximum-difference-of-pairs,2616,Minimize the Maximum Difference of Pairs,Medium,43.9
+2023-08-10,search-in-rotated-sorted-array-ii,81,Search in Rotated Sorted Array II,Medium,37.9
+2023-08-11,coin-change-ii,518,Coin Change II,Medium,64.3
+2023-08-12,unique-paths-ii,63,Unique Paths II,Medium,41.9
+2023-08-13,check-if-there-is-a-valid-partition-for-the-array,2369,Check if There is a Valid Partition For The Array,Medium,51.8
+2023-08-14,kth-largest-element-in-an-array,215,Kth Largest Element in an Array,Medium,66.9
+2023-08-15,partition-list,86,Partition List,Medium,56.7
+2023-08-16,sliding-window-maximum,239,Sliding Window Maximum,Hard,46.7
+2023-08-17,01-matrix,542,01 Matrix,Medium,48.9
+2023-08-18,maximal-network-rank,1615,Maximal Network Rank,Medium,65.1
+2023-08-19,find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree,1489,Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree,Hard,67.6
+2023-08-20,sort-items-by-groups-respecting-dependencies,1203,Sort Items by Groups Respecting Dependencies,Hard,66.4
+2023-08-21,repeated-substring-pattern,459,Repeated Substring Pattern,Easy,46.1
+2023-08-22,excel-sheet-column-title,168,Excel Sheet Column Title,Easy,41.1
+2023-08-23,reorganize-string,767,Reorganize String,Medium,54.8
+2023-08-24,text-justification,68,Text Justification,Hard,44.2
+2023-08-25,interleaving-string,97,Interleaving String,Medium,40.3
+2023-08-26,maximum-length-of-pair-chain,646,Maximum Length of Pair Chain,Medium,60.0
+2023-08-27,frog-jump,403,Frog Jump,Hard,46.1
+2023-08-28,implement-stack-using-queues,225,Implement Stack using Queues,Easy,64.4
+2023-08-29,minimum-penalty-for-a-shop,2483,Minimum Penalty for a Shop,Medium,67.3
+2023-08-30,minimum-replacements-to-sort-the-array,2366,Minimum Replacements to Sort the Array,Hard,53.6
+2023-08-31,minimum-number-of-taps-to-open-to-water-a-garden,1326,Minimum Number of Taps to Open to Water a Garden,Hard,50.9
+2023-09-01,counting-bits,338,Counting Bits,Easy,78.5
+2023-09-02,extra-characters-in-a-string,2707,Extra Characters in a String,Medium,52.5
+2023-09-03,unique-paths,62,Unique Paths,Medium,64.5
+2023-09-04,linked-list-cycle,141,Linked List Cycle,Easy,50.7
+2023-09-05,copy-list-with-random-pointer,138,Copy List with Random Pointer,Medium,56.8
+2023-09-06,split-linked-list-in-parts,725,Split Linked List in Parts,Medium,64.2
+2023-09-07,reverse-linked-list-ii,92,Reverse Linked List II,Medium,47.9
+2023-09-08,pascals-triangle,118,Pascal's Triangle,Easy,74.8
+2023-09-09,combination-sum-iv,377,Combination Sum IV,Medium,54.2
+2023-09-10,count-all-valid-pickup-and-delivery-options,1359,Count All Valid Pickup and Delivery Options,Hard,65.0
+2023-09-11,group-the-people-given-the-group-size-they-belong-to,1282,Group the People Given the Group Size They Belong To,Medium,87.5
+2023-09-12,minimum-deletions-to-make-character-frequencies-unique,1647,Minimum Deletions to Make Character Frequencies Unique,Medium,61.2
+2023-09-13,candy,135,Candy,Hard,43.5
+2023-09-14,reconstruct-itinerary,332,Reconstruct Itinerary,Hard,43.3
+2023-09-15,min-cost-to-connect-all-points,1584,Min Cost to Connect All Points,Medium,67.1
+2023-09-16,path-with-minimum-effort,1631,Path With Minimum Effort,Medium,59.8
+2023-09-17,shortest-path-visiting-all-nodes,847,Shortest Path Visiting All Nodes,Hard,65.3
+2023-09-18,the-k-weakest-rows-in-a-matrix,1337,The K Weakest Rows in a Matrix,Easy,73.5
+2023-09-19,find-the-duplicate-number,287,Find the Duplicate Number,Medium,61.1
+2023-09-20,minimum-operations-to-reduce-x-to-zero,1658,Minimum Operations to Reduce X to Zero,Medium,39.7
+2023-09-21,median-of-two-sorted-arrays,4,Median of Two Sorted Arrays,Hard,40.7
+2023-09-22,is-subsequence,392,Is Subsequence,Easy,48.1
+2023-09-23,longest-string-chain,1048,Longest String Chain,Medium,61.2
+2023-09-24,champagne-tower,799,Champagne Tower,Medium,58.2
+2023-09-25,find-the-difference,389,Find the Difference,Easy,59.6
+2023-09-26,remove-duplicate-letters,316,Remove Duplicate Letters,Medium,49.9
+2023-09-27,decoded-string-at-index,880,Decoded String at Index,Medium,36.5
+2023-09-28,sort-array-by-parity,905,Sort Array By Parity,Easy,76.2
+2023-09-29,monotonic-array,896,Monotonic Array,Easy,61.2
+2023-09-30,132-pattern,456,132 Pattern,Medium,33.8
+2023-10-01,reverse-words-in-a-string-iii,557,Reverse Words in a String III,Easy,83.2
+2023-10-02,remove-colored-pieces-if-both-neighbors-are-the-same-color,2038,Remove Colored Pieces if Both Neighbors are the Same Color,Medium,62.8
+2023-10-03,number-of-good-pairs,1512,Number of Good Pairs,Easy,89.1
+2023-10-04,design-hashmap,706,Design HashMap,Easy,65.6
+2023-10-05,majority-element-ii,229,Majority Element II,Medium,52.0
+2023-10-06,integer-break,343,Integer Break,Medium,60.5
+2023-10-07,build-array-where-you-can-find-the-maximum-exactly-k-comparisons,1420,Build Array Where You Can Find The Maximum Exactly K Comparisons,Hard,68.3
+2023-10-08,max-dot-product-of-two-subsequences,1458,Max Dot Product of Two Subsequences,Hard,62.5
+2023-10-09,find-first-and-last-position-of-element-in-sorted-array,34,Find First and Last Position of Element in Sorted Array,Medium,44.7
+2023-10-10,minimum-number-of-operations-to-make-array-continuous,2009,Minimum Number of Operations to Make Array Continuous,Hard,52.8
+2023-10-11,number-of-flowers-in-full-bloom,2251,Number of Flowers in Full Bloom,Hard,56.8
+2023-10-12,find-in-mountain-array,1095,Find in Mountain Array,Hard,40.3
+2023-10-13,min-cost-climbing-stairs,746,Min Cost Climbing Stairs,Easy,65.9
+2023-10-14,painting-the-walls,2742,Painting the Walls,Hard,50.9
+2023-10-15,number-of-ways-to-stay-in-the-same-place-after-some-steps,1269,Number of Ways to Stay in the Same Place After Some Steps,Hard,50.4
+2023-10-16,pascals-triangle-ii,119,Pascal's Triangle II,Easy,64.3
+2023-10-17,validate-binary-tree-nodes,1361,Validate Binary Tree Nodes,Medium,43.8
+2023-10-18,parallel-courses-iii,2050,Parallel Courses III,Hard,67.3
+2023-10-19,backspace-string-compare,844,Backspace String Compare,Easy,49.2
+2023-10-20,flatten-nested-list-iterator,341,Flatten Nested List Iterator,Medium,64.6
+2023-10-21,constrained-subsequence-sum,1425,Constrained Subsequence Sum,Hard,56.7
+2023-10-22,maximum-score-of-a-good-subarray,1793,Maximum Score of a Good Subarray,Hard,64.3
+2023-10-23,power-of-four,342,Power of Four,Easy,48.2
+2023-10-24,find-largest-value-in-each-tree-row,515,Find Largest Value in Each Tree Row,Medium,65.7
+2023-10-25,k-th-symbol-in-grammar,779,K-th Symbol in Grammar,Medium,46.6
+2023-10-26,binary-trees-with-factors,823,Binary Trees With Factors,Medium,52.9
+2023-10-27,longest-palindromic-substring,5,Longest Palindromic Substring,Medium,34.1
+2023-10-28,count-vowels-permutation,1220,Count Vowels Permutation,Hard,61.9
+2023-10-29,poor-pigs,458,Poor Pigs,Hard,59.6
+2023-10-30,sort-integers-by-the-number-of-1-bits,1356,Sort Integers by The Number of 1 Bits,Easy,78.2
+2023-10-31,find-the-original-array-of-prefix-xor,2433,Find The Original Array of Prefix Xor,Medium,88.1
+2023-11-01,find-mode-in-binary-search-tree,501,Find Mode in Binary Search Tree,Easy,56.3
+2023-11-02,count-nodes-equal-to-average-of-subtree,2265,Count Nodes Equal to Average of Subtree,Medium,86.3
+2023-11-03,build-an-array-with-stack-operations,1441,Build an Array With Stack Operations,Medium,79.9
+2023-11-04,last-moment-before-all-ants-fall-out-of-a-plank,1503,Last Moment Before All Ants Fall Out of a Plank,Medium,68.5
+2023-11-05,find-the-winner-of-an-array-game,1535,Find the Winner of an Array Game,Medium,57.0
+2023-11-06,seat-reservation-manager,1845,Seat Reservation Manager,Medium,69.3
+2023-11-07,eliminate-maximum-number-of-monsters,1921,Eliminate Maximum Number of Monsters,Medium,50.9
+2023-11-08,determine-if-a-cell-is-reachable-at-a-given-time,2849,Determine if a Cell Is Reachable at a Given Time,Medium,35.7
+2023-11-09,count-number-of-homogenous-substrings,1759,Count Number of Homogenous Substrings,Medium,57.7
+2023-11-10,restore-the-array-from-adjacent-pairs,1743,Restore the Array From Adjacent Pairs,Medium,74.8
+2023-11-11,design-graph-with-shortest-path-calculator,2642,Design Graph With Shortest Path Calculator,Hard,70.6
+2023-11-12,bus-routes,815,Bus Routes,Hard,47.7
+2023-11-13,sort-vowels-in-a-string,2785,Sort Vowels in a String,Medium,81.4
+2023-11-14,unique-length-3-palindromic-subsequences,1930,Unique Length-3 Palindromic Subsequences,Medium,66.1
+2023-11-15,maximum-element-after-decreasing-and-rearranging,1846,Maximum Element After Decreasing and Rearranging,Medium,65.9
+2023-11-16,find-unique-binary-string,1980,Find Unique Binary String,Medium,74.6
+2023-11-17,minimize-maximum-pair-sum-in-array,1877,Minimize Maximum Pair Sum in Array,Medium,81.5
+2023-11-18,frequency-of-the-most-frequent-element,1838,Frequency of the Most Frequent Element,Medium,44.6
+2023-11-19,reduction-operations-to-make-the-array-elements-equal,1887,Reduction Operations to Make the Array Elements Equal,Medium,72.9
+2023-11-20,minimum-amount-of-time-to-collect-garbage,2391,Minimum Amount of Time to Collect Garbage,Medium,85.3
+2023-11-21,count-nice-pairs-in-an-array,1814,Count Nice Pairs in an Array,Medium,48.9
+2023-11-22,diagonal-traverse-ii,1424,Diagonal Traverse II,Medium,57.0
+2023-11-23,arithmetic-subarrays,1630,Arithmetic Subarrays,Medium,83.8
+2023-11-24,maximum-number-of-coins-you-can-get,1561,Maximum Number of Coins You Can Get,Medium,84.6
+2023-11-25,sum-of-absolute-differences-in-a-sorted-array,1685,Sum of Absolute Differences in a Sorted Array,Medium,68.5
+2023-11-26,largest-submatrix-with-rearrangements,1727,Largest Submatrix With Rearrangements,Medium,75.3
+2023-11-27,knight-dialer,935,Knight Dialer,Medium,60.3
+2023-11-28,number-of-ways-to-divide-a-long-corridor,2147,Number of Ways to Divide a Long Corridor,Hard,49.4
+2023-11-29,number-of-1-bits,191,Number of 1 Bits,Easy,71.7
+2023-11-30,minimum-one-bit-operations-to-make-integers-zero,1611,Minimum One Bit Operations to Make Integers Zero,Hard,74.1
+2023-12-01,check-if-two-string-arrays-are-equivalent,1662,Check If Two String Arrays are Equivalent,Easy,85.5
+2023-12-02,find-words-that-can-be-formed-by-characters,1160,Find Words That Can Be Formed by Characters,Easy,70.6
+2023-12-03,minimum-time-visiting-all-points,1266,Minimum Time Visiting All Points,Easy,82.5
+2023-12-04,largest-3-same-digit-number-in-string,2264,Largest 3-Same-Digit Number in String,Easy,69.0
+2023-12-05,count-of-matches-in-tournament,1688,Count of Matches in Tournament,Easy,85.7
+2023-12-06,calculate-money-in-leetcode-bank,1716,Calculate Money in Leetcode Bank,Easy,78.3
+2023-12-07,largest-odd-number-in-string,1903,Largest Odd Number in String,Easy,63.4
+2023-12-08,construct-string-from-binary-tree,606,Construct String from Binary Tree,Medium,69.4
+2023-12-09,binary-tree-inorder-traversal,94,Binary Tree Inorder Traversal,Easy,76.5
+2023-12-10,transpose-matrix,867,Transpose Matrix,Easy,71.9
+2023-12-11,element-appearing-more-than-25-in-sorted-array,1287,Element Appearing More Than 25% In Sorted Array,Easy,61.0
+2023-12-12,maximum-product-of-two-elements-in-an-array,1464,Maximum Product of Two Elements in an Array,Easy,82.7
+2023-12-13,special-positions-in-a-binary-matrix,1582,Special Positions in a Binary Matrix,Easy,68.6
+2023-12-14,difference-between-ones-and-zeros-in-row-and-column,2482,Difference Between Ones and Zeros in Row and Column,Medium,84.5
+2023-12-15,destination-city,1436,Destination City,Easy,79.5
+2023-12-16,valid-anagram,242,Valid Anagram,Easy,64.9
+2023-12-17,design-a-food-rating-system,2353,Design a Food Rating System,Medium,45.2
+2023-12-18,maximum-product-difference-between-two-pairs,1913,Maximum Product Difference Between Two Pairs,Easy,82.8
+2023-12-19,image-smoother,661,Image Smoother,Easy,67.4
+2023-12-20,buy-two-chocolates,2706,Buy Two Chocolates,Easy,69.3
+2023-12-21,widest-vertical-area-between-two-points-containing-no-points,1637,Widest Vertical Area Between Two Points Containing No Points,Easy,87.5
+2023-12-22,maximum-score-after-splitting-a-string,1422,Maximum Score After Splitting a String,Easy,62.2
+2023-12-23,path-crossing,1496,Path Crossing,Easy,62.4
+2023-12-24,minimum-changes-to-make-alternating-binary-string,1758,Minimum Changes To Make Alternating Binary String,Easy,63.8
+2023-12-25,decode-ways,91,Decode Ways,Medium,35.1
+2023-12-26,number-of-dice-rolls-with-target-sum,1155,Number of Dice Rolls With Target Sum,Medium,61.0
+2023-12-27,minimum-time-to-make-rope-colorful,1578,Minimum Time to Make Rope Colorful,Medium,63.7
+2023-12-28,string-compression-ii,1531,String Compression II,Hard,52.5
+2023-12-29,minimum-difficulty-of-a-job-schedule,1335,Minimum Difficulty of a Job Schedule,Hard,59.6
+2023-12-30,redistribute-characters-to-make-all-strings-equal,1897,Redistribute Characters to Make All Strings Equal,Easy,67.3
+2023-12-31,largest-substring-between-two-equal-characters,1624,Largest Substring Between Two Equal Characters,Easy,68.6
+2024-01-01,assign-cookies,455,Assign Cookies,Easy,52.7
+2024-01-02,convert-an-array-into-a-2d-array-with-conditions,2610,Convert an Array Into a 2D Array With Conditions,Medium,87.2
+2024-01-03,number-of-laser-beams-in-a-bank,2125,Number of Laser Beams in a Bank,Medium,85.6
+2024-01-04,minimum-number-of-operations-to-make-array-empty,2870,Minimum Number of Operations to Make Array Empty,Medium,62.0
+2024-01-05,longest-increasing-subsequence,300,Longest Increasing Subsequence,Medium,55.8
+2024-01-06,maximum-profit-in-job-scheduling,1235,Maximum Profit in Job Scheduling,Hard,54.4
+2024-01-07,arithmetic-slices-ii-subsequence,446,Arithmetic Slices II - Subsequence,Hard,54.6
+2024-01-08,range-sum-of-bst,938,Range Sum of BST,Easy,86.9
+2024-01-09,leaf-similar-trees,872,Leaf-Similar Trees,Easy,70.1
+2024-01-10,amount-of-time-for-binary-tree-to-be-infected,2385,Amount of Time for Binary Tree to Be Infected,Medium,62.7
+2024-01-11,maximum-difference-between-node-and-ancestor,1026,Maximum Difference Between Node and Ancestor,Medium,78.1
+2024-01-12,determine-if-string-halves-are-alike,1704,Determine if String Halves Are Alike,Easy,78.7
+2024-01-13,minimum-number-of-steps-to-make-two-strings-anagram,1347,Minimum Number of Steps to Make Two Strings Anagram,Medium,82.0
+2024-01-14,determine-if-two-strings-are-close,1657,Determine if Two Strings Are Close,Medium,54.7
+2024-01-15,find-players-with-zero-or-one-losses,2225,Find Players With Zero or One Losses,Medium,73.3
+2024-01-16,insert-delete-getrandom-o1,380,Insert Delete GetRandom O(1),Medium,54.5
+2024-01-17,unique-number-of-occurrences,1207,Unique Number of Occurrences,Easy,77.3
+2024-01-18,climbing-stairs,70,Climbing Stairs,Easy,53.0
+2024-01-19,minimum-falling-path-sum,931,Minimum Falling Path Sum,Medium,63.6
+2024-01-20,sum-of-subarray-minimums,907,Sum of Subarray Minimums,Medium,37.3
+2024-01-21,house-robber,198,House Robber,Medium,51.2
+2024-01-22,set-mismatch,645,Set Mismatch,Easy,44.5
+2024-01-23,maximum-length-of-a-concatenated-string-with-unique-characters,1239,Maximum Length of a Concatenated String with Unique Characters,Medium,54.1
+2024-01-24,pseudo-palindromic-paths-in-a-binary-tree,1457,Pseudo-Palindromic Paths in a Binary Tree,Medium,68.4
+2024-01-25,longest-common-subsequence,1143,Longest Common Subsequence,Medium,57.8
+2024-01-26,out-of-boundary-paths,576,Out of Boundary Paths,Medium,48.1
+2024-01-27,k-inverse-pairs-array,629,K Inverse Pairs Array,Hard,49.6
+2024-01-28,number-of-submatrices-that-sum-to-target,1074,Number of Submatrices That Sum to Target,Hard,74.4
+2024-01-29,implement-queue-using-stacks,232,Implement Queue using Stacks,Easy,66.6
+2024-01-30,evaluate-reverse-polish-notation,150,Evaluate Reverse Polish Notation,Medium,52.0
+2024-01-31,daily-temperatures,739,Daily Temperatures,Medium,66.1
+2024-02-01,divide-array-into-arrays-with-max-difference,2966,Divide Array Into Arrays With Max Difference,Medium,71.5
+2024-02-02,sequential-digits,1291,Sequential Digits,Medium,65.3
+2024-02-03,partition-array-for-maximum-sum,1043,Partition Array for Maximum Sum,Medium,76.6
+2024-02-04,minimum-window-substring,76,Minimum Window Substring,Hard,43.3
+2024-02-05,first-unique-character-in-a-string,387,First Unique Character in a String,Easy,62.3
+2024-02-06,group-anagrams,49,Group Anagrams,Medium,68.9
+2024-02-07,sort-characters-by-frequency,451,Sort Characters By Frequency,Medium,72.7
+2024-02-08,perfect-squares,279,Perfect Squares,Medium,54.9
+2024-02-09,largest-divisible-subset,368,Largest Divisible Subset,Medium,45.5
+2024-02-10,palindromic-substrings,647,Palindromic Substrings,Medium,70.3
+2024-02-11,cherry-pickup-ii,1463,Cherry Pickup II,Hard,71.9
+2024-02-12,majority-element,169,Majority Element,Easy,65.0
+2024-02-13,find-first-palindromic-string-in-the-array,2108,Find First Palindromic String in the Array,Easy,83.9
+2024-02-14,rearrange-array-elements-by-sign,2149,Rearrange Array Elements by Sign,Medium,84.1
+2024-02-15,find-polygon-with-the-largest-perimeter,2971,Find Polygon With the Largest Perimeter,Medium,66.2
+2024-02-16,least-number-of-unique-integers-after-k-removals,1481,Least Number of Unique Integers after K Removals,Medium,63.0
+2024-02-17,furthest-building-you-can-reach,1642,Furthest Building You Can Reach,Medium,49.8
+2024-02-18,meeting-rooms-iii,2402,Meeting Rooms III,Hard,44.4
+2024-02-19,power-of-two,231,Power of Two,Easy,47.8
+2024-02-20,missing-number,268,Missing Number,Easy,67.4
+2024-02-21,bitwise-and-of-numbers-range,201,Bitwise AND of Numbers Range,Medium,47.1
+2024-02-22,find-the-town-judge,997,Find the Town Judge,Easy,49.8
+2024-02-23,cheapest-flights-within-k-stops,787,Cheapest Flights Within K Stops,Medium,39.4
+2024-02-24,find-all-people-with-secret,2092,Find All People With Secret,Hard,45.7
+2024-02-25,greatest-common-divisor-traversal,2709,Greatest Common Divisor Traversal,Hard,42.6
+2024-02-26,same-tree,100,Same Tree,Easy,62.7
+2024-02-27,diameter-of-binary-tree,543,Diameter of Binary Tree,Easy,60.9
+2024-02-28,find-bottom-left-tree-value,513,Find Bottom Left Tree Value,Medium,71.2
+2024-02-29,even-odd-tree,1609,Even Odd Tree,Medium,65.8
+2024-03-01,maximum-odd-binary-number,2864,Maximum Odd Binary Number,Easy,83.2
+2024-03-02,squares-of-a-sorted-array,977,Squares of a Sorted Array,Easy,72.9
+2024-03-03,remove-nth-node-from-end-of-list,19,Remove Nth Node From End of List,Medium,45.9
+2024-03-04,bag-of-tokens,948,Bag of Tokens,Medium,59.0
+2024-03-05,minimum-length-of-string-after-deleting-similar-ends,1750,Minimum Length of String After Deleting Similar Ends,Medium,56.0
+2024-03-06,linked-list-cycle,141,Linked List Cycle,Easy,50.7
+2024-03-07,middle-of-the-linked-list,876,Middle of the Linked List,Easy,78.8
+2024-03-08,count-elements-with-maximum-frequency,3005,Count Elements With Maximum Frequency,Easy,79.0
+2024-03-09,minimum-common-value,2540,Minimum Common Value,Easy,59.1
+2024-03-10,intersection-of-two-arrays,349,Intersection of Two Arrays,Easy,74.8
+2024-03-11,custom-sort-string,791,Custom Sort String,Medium,70.9
+2024-03-12,remove-zero-sum-consecutive-nodes-from-linked-list,1171,Remove Zero Sum Consecutive Nodes from Linked List,Medium,52.8
+2024-03-13,find-the-pivot-integer,2485,Find the Pivot Integer,Easy,84.0
+2024-03-14,binary-subarrays-with-sum,930,Binary Subarrays With Sum,Medium,63.1
+2024-03-15,product-of-array-except-self,238,Product of Array Except Self,Medium,66.4
+2024-03-16,contiguous-array,525,Contiguous Array,Medium,49.0
+2024-03-17,insert-interval,57,Insert Interval,Medium,41.8
+2024-03-18,minimum-number-of-arrows-to-burst-balloons,452,Minimum Number of Arrows to Burst Balloons,Medium,59.1
+2024-03-19,task-scheduler,621,Task Scheduler,Medium,60.1
+2024-03-20,merge-in-between-linked-lists,1669,Merge In Between Linked Lists,Medium,81.6
+2024-03-21,reverse-linked-list,206,Reverse Linked List,Easy,77.0
+2024-03-22,palindrome-linked-list,234,Palindrome Linked List,Easy,53.6
+2024-03-23,reorder-list,143,Reorder List,Medium,59.3
+2024-03-24,find-the-duplicate-number,287,Find the Duplicate Number,Medium,61.1
+2024-03-25,find-all-duplicates-in-an-array,442,Find All Duplicates in an Array,Medium,75.8
+2024-03-26,first-missing-positive,41,First Missing Positive,Hard,39.7
+2024-03-27,subarray-product-less-than-k,713,Subarray Product Less Than K,Medium,51.6
+2024-03-28,length-of-longest-subarray-with-at-most-k-frequency,2958,Length of Longest Subarray With at Most K Frequency,Medium,55.8
+2024-03-29,count-subarrays-where-max-element-appears-at-least-k-times,2962,Count Subarrays Where Max Element Appears at Least K Times,Medium,59.1
+2024-03-30,subarrays-with-k-different-integers,992,Subarrays with K Different Integers,Hard,63.6
+2024-03-31,count-subarrays-with-fixed-bounds,2444,Count Subarrays With Fixed Bounds,Hard,68.0
+2024-04-01,length-of-last-word,58,Length of Last Word,Easy,52.6
+2024-04-02,isomorphic-strings,205,Isomorphic Strings,Easy,45.4
+2024-04-03,word-search,79,Word Search,Medium,43.1
+2024-04-04,maximum-nesting-depth-of-the-parentheses,1614,Maximum Nesting Depth of the Parentheses,Easy,83.8
+2024-04-05,make-the-string-great,1544,Make The String Great,Easy,68.4
+2024-04-06,minimum-remove-to-make-valid-parentheses,1249,Minimum Remove to Make Valid Parentheses,Medium,69.0
+2024-04-07,valid-parenthesis-string,678,Valid Parenthesis String,Medium,38.1
+2024-04-08,number-of-students-unable-to-eat-lunch,1700,Number of Students Unable to Eat Lunch,Easy,78.2
+2024-04-09,time-needed-to-buy-tickets,2073,Time Needed to Buy Tickets,Easy,69.9
+2024-04-10,reveal-cards-in-increasing-order,950,Reveal Cards In Increasing Order,Medium,83.0
+2024-04-11,remove-k-digits,402,Remove K Digits,Medium,33.7
+2024-04-12,trapping-rain-water,42,Trapping Rain Water,Hard,62.5
+2024-04-13,maximal-rectangle,85,Maximal Rectangle,Hard,51.0
+2024-04-14,sum-of-left-leaves,404,Sum of Left Leaves,Easy,60.7
+2024-04-15,sum-root-to-leaf-numbers,129,Sum Root to Leaf Numbers,Medium,66.2
+2024-04-16,add-one-row-to-tree,623,Add One Row to Tree,Medium,64.0
+2024-04-17,smallest-string-starting-from-leaf,988,Smallest String Starting From Leaf,Medium,60.5
+2024-04-18,island-perimeter,463,Island Perimeter,Easy,72.9
+2024-04-19,number-of-islands,200,Number of Islands,Medium,59.9
+2024-04-20,find-all-groups-of-farmland,1992,Find All Groups of Farmland,Medium,75.8
+2024-04-21,find-if-path-exists-in-graph,1971,Find if Path Exists in Graph,Easy,54.1
+2024-04-22,open-the-lock,752,Open the Lock,Medium,60.3
+2024-04-23,minimum-height-trees,310,Minimum Height Trees,Medium,41.8
+2024-04-24,n-th-tribonacci-number,1137,N-th Tribonacci Number,Easy,63.8
+2024-04-25,longest-ideal-subsequence,2370,Longest Ideal Subsequence,Medium,47.4
+2024-04-26,minimum-falling-path-sum-ii,1289,Minimum Falling Path Sum II,Hard,64.4
+2024-04-27,freedom-trail,514,Freedom Trail,Hard,59.0
+2024-04-28,sum-of-distances-in-tree,834,Sum of Distances in Tree,Hard,65.3
+2024-04-29,minimum-number-of-operations-to-make-array-xor-equal-to-k,2997,Minimum Number of Operations to Make Array XOR Equal to K,Medium,86.5
+2024-04-30,number-of-wonderful-substrings,1915,Number of Wonderful Substrings,Medium,67.1
+2024-05-01,reverse-prefix-of-word,2000,Reverse Prefix of Word,Easy,86.2
+2024-05-02,largest-positive-integer-that-exists-with-its-negative,2441,Largest Positive Integer That Exists With Its Negative,Easy,75.1
+2024-05-03,compare-version-numbers,165,Compare Version Numbers,Medium,41.0
+2024-05-04,boats-to-save-people,881,Boats to Save People,Medium,59.4
+2024-05-05,delete-node-in-a-linked-list,237,Delete Node in a Linked List,Medium,80.2
+2024-05-06,remove-nodes-from-linked-list,2487,Remove Nodes From Linked List,Medium,74.4
+2024-05-07,double-a-number-represented-as-a-linked-list,2816,Double a Number Represented as a Linked List,Medium,61.6
+2024-05-08,relative-ranks,506,Relative Ranks,Easy,71.8
+2024-05-09,maximize-happiness-of-selected-children,3075,Maximize Happiness of Selected Children,Medium,55.1
+2024-05-10,k-th-smallest-prime-fraction,786,K-th Smallest Prime Fraction,Medium,68.1
+2024-05-11,minimum-cost-to-hire-k-workers,857,Minimum Cost to Hire K Workers,Hard,63.4
+2024-05-12,largest-local-values-in-a-matrix,2373,Largest Local Values in a Matrix,Easy,88.1
+2024-05-13,score-after-flipping-matrix,861,Score After Flipping Matrix,Medium,80.4
+2024-05-14,path-with-maximum-gold,1219,Path with Maximum Gold,Medium,68.0
+2024-05-15,find-the-safest-path-in-a-grid,2812,Find the Safest Path in a Grid,Medium,49.1
+2024-05-16,evaluate-boolean-binary-tree,2331,Evaluate Boolean Binary Tree,Easy,82.9
+2024-05-17,delete-leaves-with-a-given-value,1325,Delete Leaves With a Given Value,Medium,77.5
+2024-05-18,distribute-coins-in-binary-tree,979,Distribute Coins in Binary Tree,Medium,77.1
+2024-05-19,find-the-maximum-sum-of-node-values,3068,Find the Maximum Sum of Node Values,Hard,67.2
+2024-05-20,sum-of-all-subset-xor-totals,1863,Sum of All Subset XOR Totals,Easy,87.9
+2024-05-21,subsets,78,Subsets,Medium,78.7
+2024-05-22,palindrome-partitioning,131,Palindrome Partitioning,Medium,69.7
+2024-05-23,the-number-of-beautiful-subsets,2597,The Number of Beautiful Subsets,Medium,51.2
+2024-05-24,maximum-score-words-formed-by-letters,1255,Maximum Score Words Formed by Letters,Hard,82.1
+2024-05-25,word-break-ii,140,Word Break II,Hard,51.2
+2024-05-26,student-attendance-record-ii,552,Student Attendance Record II,Hard,55.1
+2024-05-27,special-array-with-x-elements-greater-than-or-equal-x,1608,Special Array With X Elements Greater Than or Equal X,Easy,66.9
+2024-05-28,get-equal-substrings-within-budget,1208,Get Equal Substrings Within Budget,Medium,58.3
+2024-05-29,number-of-steps-to-reduce-a-number-in-binary-representation-to-one,1404,Number of Steps to Reduce a Number in Binary Representation to One,Medium,61.5
+2024-05-30,count-triplets-that-can-form-two-arrays-of-equal-xor,1442,Count Triplets That Can Form Two Arrays of Equal XOR,Medium,85.0
+2024-05-31,single-number-iii,260,Single Number III,Medium,70.8
+2024-06-01,score-of-a-string,3110,Score of a String,Easy,93.6
+2024-06-02,reverse-string,344,Reverse String,Easy,78.8
+2024-06-03,append-characters-to-string-to-make-subsequence,2486,Append Characters to String to Make Subsequence,Medium,73.1
+2024-06-04,longest-palindrome,409,Longest Palindrome,Easy,55.3
+2024-06-05,find-common-characters,1002,Find Common Characters,Easy,74.5
+2024-06-06,hand-of-straights,846,Hand of Straights,Medium,56.7
+2024-06-07,replace-words,648,Replace Words,Medium,68.0
+2024-06-08,continuous-subarray-sum,523,Continuous Subarray Sum,Medium,30.3
+2024-06-09,subarray-sums-divisible-by-k,974,Subarray Sums Divisible by K,Medium,55.5
+2024-06-10,height-checker,1051,Height Checker,Easy,80.7
+2024-06-11,relative-sort-array,1122,Relative Sort Array,Easy,74.8
+2024-06-12,sort-colors,75,Sort Colors,Medium,64.1
+2024-06-13,minimum-number-of-moves-to-seat-everyone,2037,Minimum Number of Moves to Seat Everyone,Easy,87.8
+2024-06-14,minimum-increment-to-make-array-unique,945,Minimum Increment to Make Array Unique,Medium,60.0
+2024-06-15,ipo,502,IPO,Hard,53.2
+2024-06-16,patching-array,330,Patching Array,Hard,53.1
+2024-06-17,sum-of-square-numbers,633,Sum of Square Numbers,Medium,36.6
+2024-06-18,most-profit-assigning-work,826,Most Profit Assigning Work,Medium,55.9
+2024-06-19,minimum-number-of-days-to-make-m-bouquets,1482,Minimum Number of Days to Make m Bouquets,Medium,56.2
+2024-06-20,magnetic-force-between-two-balls,1552,Magnetic Force Between Two Balls,Medium,71.1
+2024-06-21,grumpy-bookstore-owner,1052,Grumpy Bookstore Owner,Medium,64.4
+2024-06-22,count-number-of-nice-subarrays,1248,Count Number of Nice Subarrays,Medium,71.0
+2024-06-23,longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit,1438,Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit,Medium,56.6
+2024-06-24,minimum-number-of-k-consecutive-bit-flips,995,Minimum Number of K Consecutive Bit Flips,Hard,62.8
+2024-06-25,binary-search-tree-to-greater-sum-tree,1038,Binary Search Tree to Greater Sum Tree,Medium,88.2
+2024-06-26,balance-a-binary-search-tree,1382,Balance a Binary Search Tree,Medium,84.6
+2024-06-27,find-center-of-star-graph,1791,Find Center of Star Graph,Easy,86.7
+2024-06-28,maximum-total-importance-of-roads,2285,Maximum Total Importance of Roads,Medium,69.4
+2024-06-29,all-ancestors-of-a-node-in-a-directed-acyclic-graph,2192,All Ancestors of a Node in a Directed Acyclic Graph,Medium,62.3
+2024-06-30,remove-max-number-of-edges-to-keep-graph-fully-traversable,1579,Remove Max Number of Edges to Keep Graph Fully Traversable,Hard,71.2
+2024-07-01,three-consecutive-odds,1550,Three Consecutive Odds,Easy,68.6
+2024-07-02,intersection-of-two-arrays-ii,350,Intersection of Two Arrays II,Easy,58.5
+2024-07-03,minimum-difference-between-largest-and-smallest-value-in-three-moves,1509,Minimum Difference Between Largest and Smallest Value in Three Moves,Medium,59.2
+2024-07-04,merge-nodes-in-between-zeros,2181,Merge Nodes in Between Zeros,Medium,89.9
+2024-07-05,find-the-minimum-and-maximum-number-of-nodes-between-critical-points,2058,Find the Minimum and Maximum Number of Nodes Between Critical Points,Medium,69.8
+2024-07-06,pass-the-pillow,2582,Pass the Pillow,Easy,57.1
+2024-07-07,water-bottles,1518,Water Bottles,Easy,71.0
+2024-07-08,find-the-winner-of-the-circular-game,1823,Find the Winner of the Circular Game,Medium,81.8
+2024-07-09,average-waiting-time,1701,Average Waiting Time,Medium,73.2
+2024-07-10,crawler-log-folder,1598,Crawler Log Folder,Easy,66.72024-07-11,reverse-substrings-between-each-pair-of-parentheses,1190,Reverse Substrings Between Each Pair of Parentheses,Medium,71.9
+2024-07-12,maximum-score-from-removing-substrings,1717,Maximum Score From Removing Substrings,Medium,66.6
+2024-07-13,robot-collisions,2751,Robot Collisions,Hard,56.0
+2024-07-14,number-of-atoms,726,Number of Atoms,Hard,65.0
+2024-07-15,create-binary-tree-from-descriptions,2196,Create Binary Tree From Descriptions,Medium,81.7
+2024-07-16,step-by-step-directions-from-a-binary-tree-node-to-another,2096,Step-By-Step Directions From a Binary Tree Node to Another,Medium,56.4
+2024-07-17,delete-nodes-and-return-forest,1110,Delete Nodes And Return Forest,Medium,72.5
+2024-07-18,number-of-good-leaf-nodes-pairs,1530,Number of Good Leaf Nodes Pairs,Medium,71.8
+2024-07-19,lucky-numbers-in-a-matrix,1380,Lucky Numbers in a Matrix,Easy,80.0
+2024-07-20,find-valid-matrix-given-row-and-column-sums,1605,Find Valid Matrix Given Row and Column Sums,Medium,82.7
+2024-07-21,build-a-matrix-with-conditions,2392,Build a Matrix With Conditions,Hard,79.3
+2024-07-22,sort-the-people,2418,Sort the People,Easy,84.8
+2024-07-23,sort-array-by-increasing-frequency,1636,Sort Array by Increasing Frequency,Easy,80.7
+2024-07-24,sort-the-jumbled-numbers,2191,Sort the Jumbled Numbers,Medium,60.0
+2024-07-25,sort-an-array,912,Sort an Array,Medium,55.9
+2024-07-26,find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance,1334,Find the City With the Smallest Number of Neighbors at a Threshold Distance,Medium,72.1
+2024-07-27,minimum-cost-to-convert-string-i,2976,Minimum Cost to Convert String I,Medium,63.3
+2024-07-28,second-minimum-time-to-reach-destination,2045,Second Minimum Time to Reach Destination,Hard,62.4
+2024-07-29,count-number-of-teams,1395,Count Number of Teams,Medium,70.1
+2024-07-30,minimum-deletions-to-make-string-balanced,1653,Minimum Deletions to Make String Balanced,Medium,68.2
+2024-07-31,filling-bookcase-shelves,1105,Filling Bookcase Shelves,Medium,68.6
+2024-08-01,number-of-senior-citizens,2678,Number of Senior Citizens,Easy,81.3
+2024-08-02,minimum-swaps-to-group-all-1s-together-ii,2134,Minimum Swaps to Group All 1's Together II,Medium,65.6
+2024-08-03,make-two-arrays-equal-by-reversing-subarrays,1460,Make Two Arrays Equal by Reversing Subarrays,Easy,75.8
+2024-08-04,range-sum-of-sorted-subarray-sums,1508,Range Sum of Sorted Subarray Sums,Medium,63.1
+2024-08-05,kth-distinct-string-in-an-array,2053,Kth Distinct String in an Array,Easy,82.1
+2024-08-06,minimum-number-of-pushes-to-type-word-ii,3016,Minimum Number of Pushes to Type Word II,Medium,80.0
+2024-08-07,integer-to-english-words,273,Integer to English Words,Hard,34.8
+2024-08-08,spiral-matrix-iii,885,Spiral Matrix III,Medium,84.5
+2024-08-09,magic-squares-in-grid,840,Magic Squares In Grid,Medium,55.1
+2024-08-10,regions-cut-by-slashes,959,Regions Cut By Slashes,Medium,77.5
+2024-08-11,minimum-number-of-days-to-disconnect-island,1568,Minimum Number of Days to Disconnect Island,Hard,58.8
+2024-08-12,kth-largest-element-in-a-stream,703,Kth Largest Element in a Stream,Easy,60.7
+2024-08-13,combination-sum-ii,40,Combination Sum II,Medium,58.9
+2024-08-14,find-k-th-smallest-pair-distance,719,Find K-th Smallest Pair Distance,Hard,46.3
+2024-08-15,lemonade-change,860,Lemonade Change,Easy,58.9
+2024-08-16,maximum-distance-in-arrays,624,Maximum Distance in Arrays,Medium,45.6
+2024-08-17,maximum-number-of-points-with-cost,1937,Maximum Number of Points with Cost,Medium,41.8
+2024-08-18,ugly-number-ii,264,Ugly Number II,Medium,49.5
+2024-08-19,2-keys-keyboard,650,2 Keys Keyboard,Medium,59.3
+2024-08-20,stone-game-ii,1140,Stone Game II,Medium,72.9
+2024-08-21,strange-printer,664,Strange Printer,Hard,60.9
+2024-08-22,number-complement,476,Number Complement,Easy,70.5
+2024-08-23,fraction-addition-and-subtraction,592,Fraction Addition and Subtraction,Medium,66.4
+2024-08-24,find-the-closest-palindrome,564,Find the Closest Palindrome,Hard,31.8
+2024-08-25,binary-tree-postorder-traversal,145,Binary Tree Postorder Traversal,Easy,77.5
+2024-08-26,n-ary-tree-postorder-traversal,590,N-ary Tree Postorder Traversal,Easy,81.0
+2024-08-27,two-sum,1,Two Sum,Easy,57.0
+2024-08-28,count-sub-islands,1905,Count Sub Islands,Medium,73.0
+2024-08-29,most-stones-removed-with-same-row-or-column,947,Most Stones Removed with Same Row or Column,Medium,62.7
+2024-08-30,modify-graph-edge-weights,2699,Modify Graph Edge Weights,Hard,55.7
+2024-08-31,path-with-maximum-probability,1514,Path with Maximum Probability,Medium,65.4
+2024-09-01,convert-1d-array-into-2d-array,2022,Convert 1D Array Into 2D Array,Easy,72.1
+2024-09-02,find-the-student-that-will-replace-the-chalk,1894,Find the Student that Will Replace the Chalk,Medium,53.2
+2024-09-03,sum-of-digits-of-string-after-convert,1945,Sum of Digits of String After Convert,Easy,74.8
+2024-09-04,walking-robot-simulation,874,Walking Robot Simulation,Medium,58.4
+2024-09-05,find-missing-observations,2028,Find Missing Observations,Medium,57.4
+2024-09-06,delete-nodes-from-linked-list-present-in-array,3217,Delete Nodes From Linked List Present in Array,Medium,69.5
+2024-09-07,linked-list-in-binary-tree,1367,Linked List in Binary Tree,Medium,51.9
+2024-09-08,split-linked-list-in-parts,725,Split Linked List in Parts,Medium,70.5
+2024-09-09,spiral-matrix-iv,2326,Spiral Matrix IV,Medium,82.3
+2024-09-10,insert-greatest-common-divisors-in-linked-list,2807,Insert Greatest Common Divisors in Linked List,Medium,91.5
+2024-09-11,minimum-bit-flips-to-convert-number,2220,Minimum Bit Flips to Convert Number,Easy,87.8
+2024-09-12,count-the-number-of-consistent-strings,1684,Count the Number of Consistent Strings,Easy,88.5
+2024-09-13,xor-queries-of-a-subarray,1310,XOR Queries of a Subarray,Medium,78.2
+2024-09-14,longest-subarray-with-maximum-bitwise-and,2419,Longest Subarray With Maximum Bitwise AND,Medium,65.4
+2024-09-15,find-the-longest-substring-containing-vowels-in-even-counts,1371,Find the Longest Substring Containing Vowels in Even Counts,Medium,75.7
+2024-09-16,minimum-time-difference,539,Minimum Time Difference,Medium,62.5
+2024-09-17,uncommon-words-from-two-sentences,884,Uncommon Words from Two Sentences,Easy,75.6
+2024-09-18,largest-number,179,Largest Number,Medium,42.5
+2024-09-19,different-ways-to-add-parentheses,241,Different Ways to Add Parentheses,Medium,73.0
+2024-09-20,shortest-palindrome,214,Shortest Palindrome,Hard,41.8
+2024-09-21,lexicographical-numbers,386,Lexicographical Numbers,Medium,76.2
+2024-09-22,k-th-smallest-in-lexicographical-order,440,K-th Smallest in Lexicographical Order,Hard,46.2
+2024-09-23,extra-characters-in-a-string,2707,Extra Characters in a String,Medium,57.3
+2024-09-24,find-the-length-of-the-longest-common-prefix,3043,Find the Length of the Longest Common Prefix,Medium,57.0
+2024-09-25,sum-of-prefix-scores-of-strings,2416,Sum of Prefix Scores of Strings,Hard,60.8
+2024-09-26,my-calendar-i,729,My Calendar I,Medium,58.2
+2024-09-27,my-calendar-ii,731,My Calendar II,Medium,62.9
+2024-09-28,design-circular-deque,641,Design Circular Deque,Medium,64.4
+2024-09-29,all-oone-data-structure,432,All O`one Data Structure,Hard,44.1
+2024-09-30,design-a-stack-with-increment-operation,1381,Design a Stack With Increment Operation,Medium,80.0
+2024-10-01,check-if-array-pairs-are-divisible-by-k,1497,Check If Array Pairs Are Divisible by k,Medium,46.2
+2024-10-02,rank-transform-of-an-array,1331,Rank Transform of an Array,Easy,70.8
+2024-10-03,make-sum-divisible-by-p,1590,Make Sum Divisible by P,Medium,42.6
+2024-10-04,divide-players-into-teams-of-equal-skill,2491,Divide Players Into Teams of Equal Skill,Medium,68.9
+2024-10-05,permutation-in-string,567,Permutation in String,Medium,48.4
+2024-10-06,sentence-similarity-iii,1813,Sentence Similarity III,Medium,48.5
+2024-10-07,minimum-string-length-after-removing-substrings,2696,Minimum String Length After Removing Substrings,Easy,77.1
+2024-10-08,minimum-number-of-swaps-to-make-the-string-balanced,1963,Minimum Number of Swaps to Make the String Balanced,Medium,78.1
+2024-10-09,minimum-add-to-make-parentheses-valid,921,Minimum Add to Make Parentheses Valid,Medium,74.5
+2024-10-10,maximum-width-ramp,962,Maximum Width Ramp,Medium,55.8
+2024-10-11,the-number-of-the-smallest-unoccupied-chair,1942,The Number of the Smallest Unoccupied Chair,Medium,60.4
+2024-10-12,divide-intervals-into-minimum-number-of-groups,2406,Divide Intervals Into Minimum Number of Groups,Medium,63.6
+2024-10-13,smallest-range-covering-elements-from-k-lists,632,Smallest Range Covering Elements from K Lists,Hard,70.0
+2024-10-14,maximal-score-after-applying-k-operations,2530,Maximal Score After Applying K Operations,Medium,64.0
+2024-10-15,separate-black-and-white-balls,2938,Separate Black and White Balls,Medium,64.0
+2024-10-16,longest-happy-string,1405,Longest Happy String,Medium,65.5
+2024-10-17,maximum-swap,670,Maximum Swap,Medium,51.9
+2024-10-18,count-number-of-maximum-bitwise-or-subsets,2044,Count Number of Maximum Bitwise-OR Subsets,Medium,89.6
+2024-10-19,find-kth-bit-in-nth-binary-string,1545,Find Kth Bit in Nth Binary String,Medium,70.2
+2024-10-20,parsing-a-boolean-expression,1106,Parsing A Boolean Expression,Hard,69.8
+2024-10-21,split-a-string-into-the-max-number-of-unique-substrings,1593,Split a String Into the Max Number of Unique Substrings,Medium,68.6
+2024-10-22,kth-largest-sum-in-a-binary-tree,2583,Kth Largest Sum in a Binary Tree,Medium,59.0
+2024-10-23,cousins-in-binary-tree-ii,2641,Cousins in Binary Tree II,Medium,75.8
+2024-10-24,flip-equivalent-binary-trees,951,Flip Equivalent Binary Trees,Medium,69.6
+2024-10-25,remove-sub-folders-from-the-filesystem,1233,Remove Sub-Folders from the Filesystem,Medium,78.6
+2024-10-26,height-of-binary-tree-after-subtree-removal-queries,2458,Height of Binary Tree After Subtree Removal Queries,Hard,54.9
+2024-10-27,count-square-submatrices-with-all-ones,1277,Count Square Submatrices with All Ones,Medium,80.7
+2024-10-28,longest-square-streak-in-an-array,2501,Longest Square Streak in an Array,Medium,53.1
+2024-10-29,maximum-number-of-moves-in-a-grid,2684,Maximum Number of Moves in a Grid,Medium,58.8
+2024-10-30,minimum-number-of-removals-to-make-mountain-array,1671,Minimum Number of Removals to Make Mountain Array,Hard,54.8
+2024-10-31,minimum-total-distance-traveled,2463,Minimum Total Distance Traveled,Hard,58.8
+2024-11-01,delete-characters-to-make-fancy-string,1957,Delete Characters to Make Fancy String,Easy,74.1
+2024-11-02,circular-sentence,2490,Circular Sentence,Easy,70.2
+2024-11-03,rotate-string,796,Rotate String,Easy,65.0
+2024-11-04,string-compression-iii,3163,String Compression III,Medium,67.0
+2024-11-05,minimum-number-of-changes-to-make-binary-string-beautiful,2914,Minimum Number of Changes to Make Binary String Beautiful,Medium,76.4
+2024-11-06,find-if-array-can-be-sorted,3011,Find if Array Can Be Sorted,Medium,66.5
+2024-11-07,largest-combination-with-bitwise-and-greater-than-zero,2275,Largest Combination With Bitwise AND Greater Than Zero,Medium,80.8
+2024-11-08,maximum-xor-for-each-query,1829,Maximum XOR for Each Query,Medium,84.8
+2024-11-09,minimum-array-end,3133,Minimum Array End,Medium,55.4
+2024-11-10,shortest-subarray-with-or-at-least-k-ii,3097,Shortest Subarray With OR at Least K II,Medium,50.2
+2024-11-11,prime-subtraction-operation,2601,Prime Subtraction Operation,Medium,55.6
+2024-11-12,most-beautiful-item-for-each-query,2070,Most Beautiful Item for Each Query,Medium,62.1
+2024-11-13,count-the-number-of-fair-pairs,2563,Count the Number of Fair Pairs,Medium,52.7
+2024-11-14,minimized-maximum-of-products-distributed-to-any-store,2064,Minimized Maximum of Products Distributed to Any Store,Medium,62.9
+2024-11-15,shortest-subarray-to-be-removed-to-make-array-sorted,1574,Shortest Subarray to be Removed to Make Array Sorted,Medium,51.3
+2024-11-16,find-the-power-of-k-size-subarrays-i,3254,Find the Power of K-Size Subarrays I,Medium,62.2
+2024-11-17,shortest-subarray-with-sum-at-least-k,862,Shortest Subarray with Sum at Least K,Hard,32.6
+2024-11-18,defuse-the-bomb,1652,Defuse the Bomb,Easy,79.3
+2024-11-19,maximum-sum-of-distinct-subarrays-with-length-k,2461,Maximum Sum of Distinct Subarrays With Length K,Medium,42.8
+2024-11-20,take-k-of-each-character-from-left-and-right,2516,Take K of Each Character From Left and Right,Medium,51.5
+2024-11-21,count-unguarded-cells-in-the-grid,2257,Count Unguarded Cells in the Grid,Medium,69.0
+2024-11-22,flip-columns-for-maximum-number-of-equal-rows,1072,Flip Columns For Maximum Number of Equal Rows,Medium,78.6
+2024-11-23,rotating-the-box,1861,Rotating the Box,Medium,79.2
+2024-11-24,maximum-matrix-sum,1975,Maximum Matrix Sum,Medium,67.6
+2024-11-25,sliding-puzzle,773,Sliding Puzzle,Hard,73.8
+2024-11-26,find-champion-ii,2924,Find Champion II,Medium,70.3
+2024-11-27,shortest-distance-after-road-addition-queries-i,3243,Shortest Distance After Road Addition Queries I,Medium,61.9
+2024-11-28,minimum-obstacle-removal-to-reach-corner,2290,Minimum Obstacle Removal to Reach Corner,Hard,70.4
+2024-11-29,minimum-time-to-visit-a-cell-in-a-grid,2577,Minimum Time to Visit a Cell In a Grid,Hard,56.3
+2024-11-30,valid-arrangement-of-pairs,2097,Valid Arrangement of Pairs,Hard,66.4
+2024-12-01,check-if-n-and-its-double-exist,1346,Check If N and Its Double Exist,Easy,41.6
+2024-12-02,check-if-a-word-occurs-as-a-prefix-of-any-word-in-a-sentence,1455,Check If a Word Occurs As a Prefix of Any Word in a Sentence,Easy,68.8
+2024-12-03,adding-spaces-to-a-string,2109,Adding Spaces to a String,Medium,71.8
+2024-12-04,make-string-a-subsequence-using-cyclic-increments,2825,Make String a Subsequence Using Cyclic Increments,Medium,65.7
+2024-12-05,move-pieces-to-obtain-a-string,2337,Move Pieces to Obtain a String,Medium,56.7
+2024-12-06,maximum-number-of-integers-to-choose-from-a-range-i,2554,Maximum Number of Integers to Choose From a Range I,Medium,68.0
+2024-12-07,minimum-limit-of-balls-in-a-bag,1760,Minimum Limit of Balls in a Bag,Medium,66.6
+2024-12-08,two-best-non-overlapping-events,2054,Two Best Non-Overlapping Events,Medium,64.0
+2024-12-09,special-array-ii,3152,Special Array II,Medium,45.7
+2024-12-10,find-longest-special-substring-that-occurs-thrice-i,2981,Find Longest Special Substring That Occurs Thrice I,Medium,61.9
+2024-12-11,maximum-beauty-of-an-array-after-applying-operation,2779,Maximum Beauty of an Array After Applying Operation,Medium,58.3
+2024-12-12,take-gifts-from-the-richest-pile,2558,Take Gifts From the Richest Pile,Easy,75.5
+2024-12-13,find-score-of-an-array-after-marking-all-elements,2593,Find Score of an Array After Marking All Elements,Medium,64.5
+2024-12-14,continuous-subarrays,2762,Continuous Subarrays,Medium,57.9
+2024-12-15,maximum-average-pass-ratio,1792,Maximum Average Pass Ratio,Medium,74.1
+2024-12-16,final-array-state-after-k-multiplication-operations-i,3264,Final Array State After K Multiplication Operations I,Easy,87.0
+2024-12-17,construct-string-with-repeat-limit,2182,Construct String With Repeat Limit,Medium,70.9
+2024-12-18,final-prices-with-a-special-discount-in-a-shop,1475,Final Prices With a Special Discount in a Shop,Easy,84.0
+2024-12-19,max-chunks-to-make-sorted,769,Max Chunks To Make Sorted,Medium,64.1
+2024-12-20,reverse-odd-levels-of-binary-tree,2415,Reverse Odd Levels of Binary Tree,Medium,86.7
+2024-12-21,maximum-number-of-k-divisible-components,2872,Maximum Number of K-Divisible Components,Hard,74.1
+2024-12-22,find-building-where-alice-and-bob-can-meet,2940,Find Building Where Alice and Bob Can Meet,Hard,52.2
+2024-12-23,minimum-number-of-operations-to-sort-a-binary-tree-by-level,2471,Minimum Number of Operations to Sort a Binary Tree by Level,Medium,74.2
+2024-12-24,find-minimum-diameter-after-merging-two-trees,3203,Find Minimum Diameter After Merging Two Trees,Hard,57.1
+2024-12-25,find-largest-value-in-each-tree-row,515,Find Largest Value in Each Tree Row,Medium,66.3
+2024-12-26,target-sum,494,Target Sum,Medium,51.8
+2024-12-27,best-sightseeing-pair,1014,Best Sightseeing Pair,Medium,62.6
+2024-12-28,maximum-sum-of-3-non-overlapping-subarrays,689,Maximum Sum of 3 Non-Overlapping Subarrays,Hard,59.7
+2024-12-29,number-of-ways-to-form-a-target-string-given-a-dictionary,1639,Number of Ways to Form a Target String Given a Dictionary,Hard,56.7
+2024-12-30,count-ways-to-build-good-strings,2466,Count Ways To Build Good Strings,Medium,59.0
+2024-12-31,minimum-cost-for-tickets,983,Minimum Cost For Tickets,Medium,67.4
+2025-01-01,maximum-score-after-splitting-a-string,1422,Maximum Score After Splitting a String,Easy,65.1
+2025-01-02,count-vowel-strings-in-ranges,2559,Count Vowel Strings in Ranges,Medium,67.8
+2025-01-03,number-of-ways-to-split-array,2270,Number of Ways to Split Array,Medium,55.9
+2025-01-04,unique-length-3-palindromic-subsequences,1930,Unique Length-3 Palindromic Subsequences,Medium,73.8
+2025-01-05,shifting-letters-ii,2381,Shifting Letters II,Medium,53.5
+2025-01-06,minimum-number-of-operations-to-move-all-balls-to-each-box,1769,Minimum Number of Operations to Move All Balls to Each Box,Medium,90.1
+2025-01-07,string-matching-in-an-array,1408,String Matching in an Array,Easy,69.7
+2025-01-08,count-prefix-and-suffix-pairs-i,3042,Count Prefix and Suffix Pairs I,Easy,77.8
+2025-01-09,counting-words-with-a-given-prefix,2185,Counting Words With a Given Prefix,Easy,84.5
+2025-01-10,word-subsets,916,Word Subsets,Medium,55.9
+2025-01-11,construct-k-palindrome-strings,1400,Construct K Palindrome Strings,Medium,68.6
+2025-01-12,check-if-a-parentheses-string-can-be-valid,2116,Check if a Parentheses String Can Be Valid,Medium,45.1
+2025-01-13,minimum-length-of-string-after-operations,3223,Minimum Length of String After Operations,Medium,75.0
+2025-01-14,find-the-prefix-common-array-of-two-arrays,2657,Find the Prefix Common Array of Two Arrays,Medium,87.0
+2025-01-15,minimize-xor,2429,Minimize XOR,Medium,62.4
+2025-01-16,bitwise-xor-of-all-pairings,2425,Bitwise XOR of All Pairings,Medium,66.9
+2025-01-17,neighboring-bitwise-xor,2683,Neighboring Bitwise XOR,Medium,79.8
+2025-01-18,minimum-cost-to-make-at-least-one-valid-path-in-a-grid,1368,Minimum Cost to Make at Least One Valid Path in a Grid,Hard,70.9
+2025-01-19,trapping-rain-water-ii,407,Trapping Rain Water II,Hard,64.0
+2025-01-20,first-completely-painted-row-or-column,2661,First Completely Painted Row or Column,Medium,63.9
+2025-01-21,grid-game,2017,Grid Game,Medium,60.9
+2025-01-22,map-of-highest-peak,1765,Map of Highest Peak,Medium,75.6
+2025-01-23,count-servers-that-communicate,1267,Count Servers that Communicate,Medium,73.5
+2025-01-24,find-eventual-safe-states,802,Find Eventual Safe States,Medium,70.2
+2025-01-25,make-lexicographically-smallest-array-by-swapping-elements,2948,Make Lexicographically Smallest Array by Swapping Elements,Medium,60.2
+2025-01-26,maximum-employees-to-be-invited-to-a-meeting,2127,Maximum Employees to Be Invited to a Meeting,Hard,61.8
+2025-01-27,course-schedule-iv,1462,Course Schedule IV,Medium,59.7
+2025-01-28,maximum-number-of-fish-in-a-grid,2658,Maximum Number of Fish in a Grid,Medium,70.5
+2025-01-29,redundant-connection,684,Redundant Connection,Medium,67.2
+2025-01-30,divide-nodes-into-the-maximum-number-of-groups,2493,Divide Nodes Into the Maximum Number of Groups,Hard,67.0
+2025-01-31,making-a-large-island,827,Making A Large Island,Hard,56.2
+2025-02-01,special-array-i,3151,Special Array I,Easy,81.6
+2025-02-02,check-if-array-is-sorted-and-rotated,1752,Check if Array Is Sorted and Rotated,Easy,55.7
+2025-02-03,longest-strictly-increasing-or-strictly-decreasing-subarray,3105,Longest Strictly Increasing or Strictly Decreasing Subarray,Easy,64.9
+2025-02-04,maximum-ascending-subarray-sum,1800,Maximum Ascending Subarray Sum,Easy,66.3
+2025-02-05,check-if-one-string-swap-can-make-strings-equal,1790,Check if One String Swap Can Make Strings Equal,Easy,49.5
+2025-02-06,tuple-with-same-product,1726,Tuple with Same Product,Medium,70.1
+2025-02-07,find-the-number-of-distinct-colors-among-the-balls,3160,Find the Number of Distinct Colors Among the Balls,Medium,54.2
+2025-02-08,design-a-number-container-system,2349,Design a Number Container System,Medium,57.1
+2025-02-09,count-number-of-bad-pairs,2364,Count Number of Bad Pairs,Medium,54.2
+2025-02-10,clear-digits,3174,Clear Digits,Easy,82.6
+2025-02-11,remove-all-occurrences-of-a-substring,1910,Remove All Occurrences of a Substring,Medium,78.4
+2025-02-12,max-sum-of-a-pair-with-equal-sum-of-digits,2342,Max Sum of a Pair With Equal Sum of Digits,Medium,66.0
+2025-02-13,minimum-operations-to-exceed-threshold-value-ii,3066,Minimum Operations to Exceed Threshold Value II,Medium,45.8
+2025-02-14,product-of-the-last-k-numbers,1352,Product of the Last K Numbers,Medium,62.9
+2025-02-15,find-the-punishment-number-of-an-integer,2698,Find the Punishment Number of an Integer,Medium,81.7
+2025-02-16,construct-the-lexicographically-largest-valid-sequence,1718,Construct the Lexicographically Largest Valid Sequence,Medium,72.8
+2025-02-17,letter-tile-possibilities,1079,Letter Tile Possibilities,Medium,83.5
+2025-02-18,construct-smallest-number-from-di-string,2375,Construct Smallest Number From DI String,Medium,85.6
+2025-02-19,the-k-th-lexicographical-string-of-all-happy-strings-of-length-n,1415,The k-th Lexicographical String of All Happy Strings of Length n,Medium,85.3
+2025-02-20,find-unique-binary-string,1980,Find Unique Binary String,Medium,79.4
+2025-02-21,find-elements-in-a-contaminated-binary-tree,1261,Find Elements in a Contaminated Binary Tree,Medium,84.1
+2025-02-22,recover-a-tree-from-preorder-traversal,1028,Recover a Tree From Preorder Traversal,Hard,83.2
+2025-02-23,construct-binary-tree-from-preorder-and-postorder-traversal,889,Construct Binary Tree from Preorder and Postorder Traversal,Medium,78.1
+2025-02-24,most-profitable-path-in-a-tree,2467,Most Profitable Path in a Tree,Medium,67.3
+2025-02-25,number-of-sub-arrays-with-odd-sum,1524,Number of Sub-arrays With Odd Sum,Medium,55.8
+2025-02-26,maximum-absolute-sum-of-any-subarray,1749,Maximum Absolute Sum of Any Subarray,Medium,71.2
+2025-02-27,length-of-longest-fibonacci-subsequence,873,Length of Longest Fibonacci Subsequence,Medium,57.5
+2025-02-28,shortest-common-supersequence,1092,Shortest Common Supersequence ,Hard,61.7
+2025-03-01,apply-operations-to-an-array,2460,Apply Operations to an Array,Easy,74.8
+2025-03-02,merge-two-2d-arrays-by-summing-values,2570,Merge Two 2D Arrays by Summing Values,Easy,81.8
+2025-03-03,partition-array-according-to-given-pivot,2161,Partition Array According to Given Pivot,Medium,89.8
+2025-03-04,check-if-number-is-a-sum-of-powers-of-three,1780,Check if Number is a Sum of Powers of Three,Medium,79.4
+2025-03-05,count-total-number-of-colored-cells,2579,Count Total Number of Colored Cells,Medium,66.1
+2025-03-06,find-missing-and-repeated-values,2965,Find Missing and Repeated Values,Easy,83.3
+2025-03-07,closest-prime-numbers-in-range,2523,Closest Prime Numbers in Range,Medium,51.7
+2025-03-08,minimum-recolors-to-get-k-consecutive-black-blocks,2379,Minimum Recolors to Get K Consecutive Black Blocks,Easy,68.6
+2025-03-09,alternating-groups-ii,3208,Alternating Groups II,Medium,59.9
+2025-03-10,count-of-substrings-containing-every-vowel-and-k-consonants-ii,3306,Count of Substrings Containing Every Vowel and K Consonants II,Medium,40.6
+2025-03-11,number-of-substrings-containing-all-three-characters,1358,Number of Substrings Containing All Three Characters,Medium,73.5
+2025-03-12,maximum-count-of-positive-integer-and-negative-integer,2529,Maximum Count of Positive Integer and Negative Integer,Easy,74.3
+2025-03-13,zero-array-transformation-ii,3356,Zero Array Transformation II,Medium,43.6
+2025-03-14,maximum-candies-allocated-to-k-children,2226,Maximum Candies Allocated to K Children,Medium,49.9
+2025-03-15,house-robber-iv,2560,House Robber IV,Medium,64.8
+2025-03-16,minimum-time-to-repair-cars,2594,Minimum Time to Repair Cars,Medium,59.6
+2025-03-17,divide-array-into-equal-pairs,2206,Divide Array Into Equal Pairs,Easy,79.2
+2025-03-18,longest-nice-subarray,2401,Longest Nice Subarray,Medium,64.8
+2025-03-19,minimum-operations-to-make-binary-array-elements-equal-to-one-i,3191,Minimum Operations to Make Binary Array Elements Equal to One I,Medium,80.4
+2025-03-20,minimum-cost-walk-in-weighted-graph,3108,Minimum Cost Walk in Weighted Graph,Hard,68.3
+2025-03-21,find-all-possible-recipes-from-given-supplies,2115,Find All Possible Recipes from Given Supplies,Medium,56.8
+2025-03-22,count-the-number-of-complete-components,2685,Count the Number of Complete Components,Medium,77.7
+2025-03-23,number-of-ways-to-arrive-at-destination,1976,Number of Ways to Arrive at Destination,Medium,37.3
+2025-03-24,count-days-without-meetings,3169,Count Days Without Meetings,Medium,48.1
+2025-03-25,check-if-grid-can-be-cut-into-sections,3394,Check if Grid can be Cut into Sections,Medium,68.3
+2025-03-26,minimum-operations-to-make-a-uni-value-grid,2033,Minimum Operations to Make a Uni-Value Grid,Medium,67.5
+2025-03-27,minimum-index-of-a-valid-split,2780,Minimum Index of a Valid Split,Medium,75.5
+2025-03-28,maximum-number-of-points-from-grid-queries,2503,Maximum Number of Points From Grid Queries,Hard,59.3
+2025-03-29,apply-operations-to-maximize-score,2818,Apply Operations to Maximize Score,Hard,53.7
+2025-03-30,partition-labels,763,Partition Labels,Medium,81.8
+2025-03-31,put-marbles-in-bags,2551,Put Marbles in Bags,Hard,72.2
+2025-04-01,solving-questions-with-brainpower,2140,Solving Questions With Brainpower,Medium,60.2
+2025-04-02,maximum-value-of-an-ordered-triplet-i,2873,Maximum Value of an Ordered Triplet I,Easy,58.2
+2025-04-03,maximum-value-of-an-ordered-triplet-ii,2874,Maximum Value of an Ordered Triplet II,Medium,56.5
+2025-04-04,lowest-common-ancestor-of-deepest-leaves,1123,Lowest Common Ancestor of Deepest Leaves,Medium,79.4
+2025-04-05,sum-of-all-subset-xor-totals,1863,Sum of All Subset XOR Totals,Easy,90.1
+2025-04-06,largest-divisible-subset,368,Largest Divisible Subset,Medium,49.3
+2025-04-07,partition-equal-subset-sum,416,Partition Equal Subset Sum,Medium,49.2
+2025-04-08,minimum-number-of-operations-to-make-elements-in-array-distinct,3396,Minimum Number of Operations to Make Elements in Array Distinct,Easy,71.3
+2025-04-09,minimum-operations-to-make-array-values-equal-to-k,3375,Minimum Operations to Make Array Values Equal to K,Easy,73.3
+2025-04-10,count-the-number-of-powerful-integers,2999,Count the Number of Powerful Integers,Hard,46.3
+2025-04-11,count-symmetric-integers,2843,  Count Symmetric Integers,Easy,83.1
+2025-04-12,find-the-count-of-good-integers,3272,Find the Count of Good Integers,Hard,69.5
+2025-04-13,count-good-numbers,1922,Count Good Numbers,Medium,57.3
+2025-04-14,count-good-triplets,1534,Count Good Triplets,Easy,85.5
+2025-04-15,count-good-triplets-in-an-array,2179,Count Good Triplets in an Array,Hard,65.8
+2025-04-16,count-the-number-of-good-subarrays,2537,Count the Number of Good Subarrays,Medium,65.9
+2025-04-17,count-equal-and-divisible-pairs-in-an-array,2176,Count Equal and Divisible Pairs in an Array,Easy,84.0
+2025-04-18,count-and-say,38,Count and Say,Medium,62.2
+2025-04-19,count-the-number-of-fair-pairs,2563,Count the Number of Fair Pairs,Medium,52.7
+2025-04-20,rabbits-in-forest,781,Rabbits in Forest,Medium,58.1
+2025-04-21,count-the-hidden-sequences,2145,Count the Hidden Sequences,Medium,56.7
+2025-04-22,count-the-number-of-ideal-arrays,2338,Count the Number of Ideal Arrays,Hard,56.9
+2025-04-23,count-largest-group,1399,Count Largest Group,Easy,74.7
+2025-04-24,count-complete-subarrays-in-an-array,2799,Count Complete Subarrays in an Array,Medium,75.9
+2025-04-25,count-of-interesting-subarrays,2845,Count of Interesting Subarrays,Medium,58.0
+2025-04-26,count-subarrays-with-fixed-bounds,2444,Count Subarrays With Fixed Bounds,Hard,69.3
+2025-04-27,count-subarrays-of-length-three-with-a-condition,3392,Count Subarrays of Length Three With a Condition,Easy,61.5
+2025-04-28,count-subarrays-with-score-less-than-k,2302,Count Subarrays With Score Less Than K,Hard,62.3
+2025-04-29,count-subarrays-where-max-element-appears-at-least-k-times,2962,Count Subarrays Where Max Element Appears at Least K Times,Medium,62.4
+2025-04-30,find-numbers-with-even-number-of-digits,1295,Find Numbers with Even Number of Digits,Easy,79.6
+2025-05-01,maximum-number-of-tasks-you-can-assign,2071,Maximum Number of Tasks You Can Assign,Hard,50.2
+2025-05-02,push-dominoes,838,Push Dominoes,Medium,63.0
+2025-05-03,minimum-domino-rotations-for-equal-row,1007,Minimum Domino Rotations For Equal Row,Medium,56.5
+2025-05-04,number-of-equivalent-domino-pairs,1128,Number of Equivalent Domino Pairs,Easy,60.6
+2025-05-05,domino-and-tromino-tiling,790,Domino and Tromino Tiling,Medium,51.4
+2025-05-06,build-array-from-permutation,1920,Build Array from Permutation,Easy,91.1
+2025-05-07,find-minimum-time-to-reach-last-room-i,3341,Find Minimum Time to Reach Last Room I,Medium,55.5
+2025-05-08,find-minimum-time-to-reach-last-room-ii,3342,Find Minimum Time to Reach Last Room II,Medium,67.9
+2025-05-09,count-number-of-balanced-permutations,3343,Count Number of Balanced Permutations,Hard,49.2
+2025-05-10,minimum-equal-sum-of-two-arrays-after-replacing-zeros,2918,Minimum Equal Sum of Two Arrays After Replacing Zeros,Medium,50.2
+2025-05-11,three-consecutive-odds,1550,Three Consecutive Odds,Easy,69.4
+2025-05-12,finding-3-digit-even-numbers,2094,Finding 3-Digit Even Numbers,Easy,78.8
+2025-05-13,total-characters-in-string-after-transformations-i,3335,Total Characters in String After Transformations I,Medium,45.7
+2025-05-14,total-characters-in-string-after-transformations-ii,3337,Total Characters in String After Transformations II,Hard,58.1
+2025-05-15,longest-unequal-adjacent-groups-subsequence-i,2900,Longest Unequal Adjacent Groups Subsequence I,Easy,66.9
+2025-05-16,longest-unequal-adjacent-groups-subsequence-ii,2901,Longest Unequal Adjacent Groups Subsequence II,Medium,51.4
+2025-05-17,sort-colors,75,Sort Colors,Medium,69.1
+2025-05-18,painting-a-grid-with-three-different-colors,1931,Painting a Grid With Three Different Colors,Hard,77.3
+2025-05-19,type-of-triangle,3024,Type of Triangle,Easy,44.2
+2025-05-20,zero-array-transformation-i,3355,Zero Array Transformation I,Medium,54.4
+2025-05-21,set-matrix-zeroes,73,Set Matrix Zeroes,Medium,62.4
+2025-05-22,zero-array-transformation-iii,3362,Zero Array Transformation III,Medium,54.9
+2025-05-23,find-the-maximum-sum-of-node-values,3068,Find the Maximum Sum of Node Values,Hard,69.5
+2025-05-24,find-words-containing-character,2942,Find Words Containing Character,Easy,90.4
+2025-05-25,longest-palindrome-by-concatenating-two-letter-words,2131,Longest Palindrome by Concatenating Two Letter Words,Medium,53.5
+2025-05-26,largest-color-value-in-a-directed-graph,1857,Largest Color Value in a Directed Graph,Hard,57.3
+2025-05-27,divisible-and-non-divisible-sums-difference,2894,Divisible and Non-divisible Sums Difference,Easy,91.0
+2025-05-28,maximize-the-number-of-target-nodes-after-connecting-trees-i,3372,Maximize the Number of Target Nodes After Connecting Trees I,Medium,69.5
+2025-05-29,maximize-the-number-of-target-nodes-after-connecting-trees-ii,3373,Maximize the Number of Target Nodes After Connecting Trees II,Hard,73.2
+2025-05-30,find-closest-node-to-given-two-nodes,2359,Find Closest Node to Given Two Nodes,Medium,53.0
+2025-05-31,snakes-and-ladders,909,Snakes and Ladders,Medium,48.0
+2025-06-01,distribute-candies-among-children-ii,2929,Distribute Candies Among Children II,Medium,55.7
+2025-06-02,candy,135,Candy,Hard,47.9
+2025-06-03,maximum-candies-you-can-get-from-boxes,1298,Maximum Candies You Can Get from Boxes,Hard,67.9
+2025-06-04,find-the-lexicographically-largest-string-from-the-box-i,3403,Find the Lexicographically Largest String From the Box I,Medium,41.0
+2025-06-05,lexicographically-smallest-equivalent-string,1061,Lexicographically Smallest Equivalent String,Medium,81.2
+2025-06-06,using-a-robot-to-print-the-lexicographically-smallest-string,2434,Using a Robot to Print the Lexicographically Smallest String,Medium,62.5
+2025-06-07,lexicographically-minimum-string-after-removing-stars,3170,Lexicographically Minimum String After Removing Stars,Medium,51.0
+2025-06-08,lexicographical-numbers,386,Lexicographical Numbers,Medium,76.2
+2025-06-09,k-th-smallest-in-lexicographical-order,440,K-th Smallest in Lexicographical Order,Hard,46.2
+2025-06-10,maximum-difference-between-even-and-odd-frequency-i,3442,Maximum Difference Between Even and Odd Frequency I,Easy,60.7
+2025-06-11,maximum-difference-between-even-and-odd-frequency-ii,3445,Maximum Difference Between Even and Odd Frequency II,Hard,48.7
+2025-06-12,maximum-difference-between-adjacent-elements-in-a-circular-array,3423,Maximum Difference Between Adjacent Elements in a Circular Array,Easy,75.7
+2025-06-13,minimize-the-maximum-difference-of-pairs,2616,Minimize the Maximum Difference of Pairs,Medium,50.9
+2025-06-14,maximum-difference-by-remapping-a-digit,2566,Maximum Difference by Remapping a Digit,Easy,76.1
+2025-06-15,max-difference-you-can-get-from-changing-an-integer,1432,Max Difference You Can Get From Changing an Integer,Medium,48.8
+2025-06-16,maximum-difference-between-increasing-elements,2016,Maximum Difference Between Increasing Elements,Easy,66.4
+2025-06-17,count-the-number-of-arrays-with-k-matching-adjacent-elements,3405,Count the Number of Arrays with K Matching Adjacent Elements,Hard,58.4
+2025-06-18,divide-array-into-arrays-with-max-difference,2966,Divide Array Into Arrays With Max Difference,Medium,79.0
+2025-06-19,partition-array-such-that-maximum-difference-is-k,2294,Partition Array Such That Maximum Difference Is K,Medium,81.8
+2025-06-20,maximum-manhattan-distance-after-k-changes,3443,Maximum Manhattan Distance After K Changes,Medium,54.2
+2025-06-21,minimum-deletions-to-make-string-k-special,3085,Minimum Deletions to Make String K-Special,Medium,67.2
+2025-06-22,divide-a-string-into-groups-of-size-k,2138,Divide a String Into Groups of Size k,Easy,77.1
+2025-06-23,sum-of-k-mirror-numbers,2081,Sum of k-Mirror Numbers,Hard,63.7
+2025-06-24,find-all-k-distant-indices-in-an-array,2200,Find All K-Distant Indices in an Array,Easy,77.4
+2025-06-25,kth-smallest-product-of-two-sorted-arrays,2040,Kth Smallest Product of Two Sorted Arrays,Hard,48.9
+2025-06-26,longest-binary-subsequence-less-than-or-equal-to-k,2311,Longest Binary Subsequence Less Than or Equal to K,Medium,52.9
+2025-06-27,longest-subsequence-repeated-k-times,2014,Longest Subsequence Repeated k Times,Hard,71.3
+2025-06-28,find-subsequence-of-length-k-with-the-largest-sum,2099,Find Subsequence of Length K With the Largest Sum,Easy,57.4
+2025-06-29,number-of-subsequences-that-satisfy-the-given-sum-condition,1498,Number of Subsequences That Satisfy the Given Sum Condition,Medium,49.3
+2025-06-30,longest-harmonious-subsequence,594,Longest Harmonious Subsequence,Easy,64.4
+2025-07-01,find-the-original-typed-string-i,3330,Find the Original Typed String I,Easy,72.1
+2025-07-02,find-the-original-typed-string-ii,3333,Find the Original Typed String II,Hard,45.6
+2025-07-03,find-the-k-th-character-in-string-game-i,3304,Find the K-th Character in String Game I,Easy,81.6
+2025-07-04,find-the-k-th-character-in-string-game-ii,3307,Find the K-th Character in String Game II,Hard,48.5
+2025-07-05,find-lucky-integer-in-an-array,1394,Find Lucky Integer in an Array,Easy,75.5
+2025-07-06,finding-pairs-with-a-certain-sum,1865,Finding Pairs With a Certain Sum,Medium,61.6
+2025-07-07,maximum-number-of-events-that-can-be-attended,1353,Maximum Number of Events That Can Be Attended,Medium,38.9
+2025-07-08,maximum-number-of-events-that-can-be-attended-ii,1751,Maximum Number of Events That Can Be Attended II,Hard,63.6
+2025-07-09,reschedule-meetings-for-maximum-free-time-i,3439,Reschedule Meetings for Maximum Free Time I,Medium,53.9
+2025-07-10,reschedule-meetings-for-maximum-free-time-ii,3440,Reschedule Meetings for Maximum Free Time II,Medium,60.4
+2025-07-11,meeting-rooms-iii,2402,Meeting Rooms III,Hard,51.7
+2025-07-12,the-earliest-and-latest-rounds-where-players-compete,1900,The Earliest and Latest Rounds Where Players Compete,Hard,72.7
+2025-07-13,maximum-matching-of-players-with-trainers,2410,Maximum Matching of Players With Trainers,Medium,75.2
+2025-07-14,convert-binary-number-in-a-linked-list-to-integer,1290,Convert Binary Number in a Linked List to Integer,Easy,82.3
+2025-07-15,valid-word,3136,Valid Word,Easy,50.9
+2025-07-16,find-the-maximum-length-of-valid-subsequence-i,3201,Find the Maximum Length of Valid Subsequence I,Medium,54.9
+2025-07-17,find-the-maximum-length-of-valid-subsequence-ii,3202,Find the Maximum Length of Valid Subsequence II,Medium,57.2
+2025-07-18,minimum-difference-in-sums-after-removal-of-elements,2163,Minimum Difference in Sums After Removal of Elements,Hard,69.9
+2025-07-19,remove-sub-folders-from-the-filesystem,1233,Remove Sub-Folders from the Filesystem,Medium,78.6
+2025-07-20,delete-duplicate-folders-in-system,1948,Delete Duplicate Folders in System,Hard,77.7
+2025-07-21,delete-characters-to-make-fancy-string,1957,Delete Characters to Make Fancy String,Easy,74.1
+2025-07-22,maximum-erasure-value,1695,Maximum Erasure Value,Medium,64.1
+2025-07-23,maximum-score-from-removing-substrings,1717,Maximum Score From Removing Substrings,Medium,66.6
+2025-07-24,minimum-score-after-removals-on-a-tree,2322,Minimum Score After Removals on a Tree,Hard,76.2
+2025-07-25,maximum-unique-subarray-sum-after-deletion,3487,Maximum Unique Subarray Sum After Deletion,Easy,40.5
+2025-07-26,maximize-subarrays-after-removing-one-conflicting-pair,3480,Maximize Subarrays After Removing One Conflicting Pair,Hard,64.7
+2025-07-27,count-hills-and-valleys-in-an-array,2210,Count Hills and Valleys in an Array,Easy,69.1
+2025-07-28,count-number-of-maximum-bitwise-or-subsets,2044,Count Number of Maximum Bitwise-OR Subsets,Medium,89.6
+2025-07-29,smallest-subarrays-with-maximum-bitwise-or,2411,Smallest Subarrays With Maximum Bitwise OR,Medium,62.0
+2025-07-30,longest-subarray-with-maximum-bitwise-and,2419,Longest Subarray With Maximum Bitwise AND,Medium,65.4
+2025-07-31,bitwise-ors-of-subarrays,898,Bitwise ORs of Subarrays,Medium,56.8
+2025-08-01,pascals-triangle,118,Pascal's Triangle,Easy,78.6
+2025-08-02,rearranging-fruits,2561,Rearranging Fruits,Hard,57.5
+2025-08-03,maximum-fruits-harvested-after-at-most-k-steps,2106,Maximum Fruits Harvested After at Most K Steps,Hard,61.0
+2025-08-04,fruit-into-baskets,904,Fruit Into Baskets,Medium,50.4
+2025-08-05,fruits-into-baskets-ii,3477,Fruits Into Baskets II,Easy,70.2
+2025-08-06,fruits-into-baskets-iii,3479,Fruits Into Baskets III,Medium,38.9
+2025-08-07,find-the-maximum-number-of-fruits-collected,3363,Find the Maximum Number of Fruits Collected,Hard,65.1
+2025-08-08,soup-servings,808,Soup Servings,Medium,59.7
+2025-08-09,power-of-two,231,Power of Two,Easy,49.8
+2025-08-10,reordered-power-of-2,869,Reordered Power of 2,Medium,66.0
+2025-08-11,range-product-queries-of-powers,2438,Range Product Queries of Powers,Medium,61.4
+2025-08-12,ways-to-express-an-integer-as-sum-of-powers,2787,Ways to Express an Integer as Sum of Powers,Medium,49.9
+2025-08-13,power-of-three,326,Power of Three,Easy,50.7
+2025-08-14,largest-3-same-digit-number-in-string,2264,Largest 3-Same-Digit Number in String,Easy,72.7
+2025-08-15,power-of-four,342,Power of Four,Easy,51.7
+2025-08-16,maximum-69-number,1323,Maximum 69 Number,Easy,84.5
+2025-08-17,new-21-game,837,New 21 Game,Medium,52.0
+2025-08-18,24-game,679,24 Game,Hard,59.3
+2025-08-19,number-of-zero-filled-subarrays,2348,Number of Zero-Filled Subarrays,Medium,70.1
+2025-08-20,count-square-submatrices-with-all-ones,1277,Count Square Submatrices with All Ones,Medium,80.7
+2025-08-21,count-submatrices-with-all-ones,1504,Count Submatrices With All Ones,Medium,71.1
+2025-08-22,find-the-minimum-area-to-cover-all-ones-i,3195,Find the Minimum Area to Cover All Ones I,Medium,78.2
+2025-08-23,find-the-minimum-area-to-cover-all-ones-ii,3197,Find the Minimum Area to Cover All Ones II,Hard,63.5
+2025-08-24,longest-subarray-of-1s-after-deleting-one-element,1493,Longest Subarray of 1's After Deleting One Element,Medium,71.0
+2025-08-25,diagonal-traverse,498,Diagonal Traverse,Medium,67.0
+2025-08-26,maximum-area-of-longest-diagonal-rectangle,3000,Maximum Area of Longest Diagonal Rectangle,Easy,45.9
+2025-08-27,length-of-longest-v-shaped-diagonal-segment,3459,Length of Longest V-Shaped Diagonal Segment,Hard,56.3
+2025-08-28,sort-matrix-by-diagonals,3446,Sort Matrix by Diagonals,Medium,84.7
+2025-08-29,alice-and-bob-playing-flower-game,3021,Alice and Bob Playing Flower Game,Medium,60.1
+2025-08-30,valid-sudoku,36,Valid Sudoku,Medium,64.1
+2025-08-31,sudoku-solver,37,Sudoku Solver,Hard,65.4
+2025-09-01,maximum-average-pass-ratio,1792,Maximum Average Pass Ratio,Medium,74.1
+2025-09-02,find-the-number-of-ways-to-place-people-i,3025,Find the Number of Ways to Place People I,Medium,64.0
+2025-09-03,find-the-number-of-ways-to-place-people-ii,3027,Find the Number of Ways to Place People II,Hard,64.4
+2025-09-04,find-closest-person,3516,Find Closest Person,Easy,88.9
+2025-09-05,minimum-operations-to-make-the-integer-zero,2749,Minimum Operations to Make the Integer Zero,Medium,58.2
+2025-09-06,minimum-operations-to-make-array-elements-zero,3495,Minimum Operations to Make Array Elements Zero,Hard,60.4
+2025-09-07,find-n-unique-integers-sum-up-to-zero,1304,Find N Unique Integers Sum up to Zero,Easy,78.5
+2025-09-08,convert-integer-to-the-sum-of-two-no-zero-integers,1317,Convert Integer to the Sum of Two No-Zero Integers,Easy,59.1
+2025-09-09,number-of-people-aware-of-a-secret,2327,Number of People Aware of a Secret,Medium,60.9
+2025-09-10,minimum-number-of-people-to-teach,1733,Minimum Number of People to Teach,Medium,67.7
+2025-09-11,sort-vowels-in-a-string,2785,Sort Vowels in a String,Medium,83.4
+2025-09-12,vowels-game-in-a-string,3227,Vowels Game in a String,Medium,77.1
+2025-09-13,find-most-frequent-vowel-and-consonant,3541,Find Most Frequent Vowel and Consonant,Easy,89.4
+2025-09-14,vowel-spellchecker,966,Vowel Spellchecker,Medium,61.4
+2025-09-15,maximum-number-of-words-you-can-type,1935,Maximum Number of Words You Can Type,Easy,82.9
+2025-09-16,replace-non-coprime-numbers-in-array,2197,Replace Non-Coprime Numbers in Array,Hard,57.7
+2025-09-17,design-a-food-rating-system,2353,Design a Food Rating System,Medium,52.9
+2025-09-18,design-task-manager,3408,Design Task Manager,Medium,49.2
+2025-09-19,design-spreadsheet,3484,Design Spreadsheet,Medium,74.4
+2025-09-20,implement-router,3508,Implement Router,Medium,39.2
+2025-09-21,design-movie-rental-system,1912,Design Movie Rental System,Hard,62.6
+2025-09-22,count-elements-with-maximum-frequency,3005,Count Elements With Maximum Frequency,Easy,79.9
+2025-09-23,compare-version-numbers,165,Compare Version Numbers,Medium,46.1
+2025-09-24,fraction-to-recurring-decimal,166,Fraction to Recurring Decimal,Medium,30.5
+2025-09-25,triangle,120,Triangle,Medium,59.8
+2025-09-26,valid-triangle-number,611,Valid Triangle Number,Medium,56.7
+2025-09-27,largest-triangle-area,812,Largest Triangle Area,Easy,71.4
+2025-09-28,largest-perimeter-triangle,976,Largest Perimeter Triangle,Easy,61.9
+2025-09-29,minimum-score-triangulation-of-polygon,1039,Minimum Score Triangulation of Polygon,Medium,67.3
+2025-09-30,find-triangular-sum-of-an-array,2221,Find Triangular Sum of an Array,Medium,82.0
+2025-10-01,water-bottles,1518,Water Bottles,Easy,72.6
+2025-10-02,water-bottles-ii,3100,Water Bottles II,Medium,78.1
+2025-10-03,trapping-rain-water-ii,407,Trapping Rain Water II,Hard,64.0
+2025-10-04,container-with-most-water,11,Container With Most Water,Medium,59.5
+2025-10-05,pacific-atlantic-water-flow,417,Pacific Atlantic Water Flow,Medium,60.5
+2025-10-06,swim-in-rising-water,778,Swim in Rising Water,Hard,67.5
+2025-10-07,avoid-flood-in-the-city,1488,Avoid Flood in The City,Medium,38.9
+2025-10-08,successful-pairs-of-spells-and-potions,2300,Successful Pairs of Spells and Potions,Medium,49.4
+2025-10-09,find-the-minimum-amount-of-time-to-brew-potions,3494,Find the Minimum Amount of Time to Brew Potions,Medium,62.7
+2025-10-10,taking-maximum-energy-from-the-mystic-dungeon,3147,Taking Maximum Energy From the Mystic Dungeon,Medium,61.0
+2025-10-11,maximum-total-damage-with-spell-casting,3186,Maximum Total Damage With Spell Casting,Medium,45.0
+2025-10-12,find-sum-of-array-product-of-magical-sequences,3539,Find Sum of Array Product of Magical Sequences,Hard,62.0
+2025-10-13,find-resultant-array-after-removing-anagrams,2273,Find Resultant Array After Removing Anagrams,Easy,69.8
+2025-10-14,adjacent-increasing-subarrays-detection-i,3349,Adjacent Increasing Subarrays Detection I,Easy,48.0
+2025-10-15,adjacent-increasing-subarrays-detection-ii,3350,Adjacent Increasing Subarrays Detection II,Medium,58.9
+2025-10-16,smallest-missing-non-negative-integer-after-operations,2598,Smallest Missing Non-negative Integer After Operations,Medium,55.9
+2025-10-17,maximize-the-number-of-partitions-after-operations,3003,Maximize the Number of Partitions After Operations,Hard,53.6
+2025-10-18,maximum-number-of-distinct-elements-after-operations,3397,Maximum Number of Distinct Elements After Operations,Medium,52.2
+2025-10-19,lexicographically-smallest-string-after-applying-operations,1625,Lexicographically Smallest String After Applying Operations,Medium,79.4
+2025-10-20,final-value-of-variable-after-performing-operations,2011,Final Value of Variable After Performing Operations,Easy,90.6
+2025-10-21,maximum-frequency-of-an-element-after-performing-operations-i,3346,Maximum Frequency of an Element After Performing Operations I,Medium,40.1
+2025-10-22,maximum-frequency-of-an-element-after-performing-operations-ii,3347,Maximum Frequency of an Element After Performing Operations II,Hard,53.9
+2025-10-23,check-if-digits-are-equal-in-string-after-operations-i,3461,Check If Digits Are Equal in String After Operations I,Easy,82.5
+2025-10-24,next-greater-numerically-balanced-number,2048,Next Greater Numerically Balanced Number,Medium,63.0
+2025-10-25,calculate-money-in-leetcode-bank,1716,Calculate Money in Leetcode Bank,Easy,82.3
+2025-10-26,simple-bank-system,2043,Simple Bank System,Medium,69.8
+2025-10-27,number-of-laser-beams-in-a-bank,2125,Number of Laser Beams in a Bank,Medium,87.0
+2025-10-28,make-array-elements-equal-to-zero,3354,Make Array Elements Equal to Zero,Easy,68.3
+2025-10-29,smallest-number-with-all-set-bits,3370,Smallest Number With All Set Bits,Easy,80.3
+2025-10-30,minimum-number-of-increments-on-subarrays-to-form-a-target-array,1526,Minimum Number of Increments on Subarrays to Form a Target Array,Hard,78.1
+2025-10-31,the-two-sneaky-numbers-of-digitville,3289,The Two Sneaky Numbers of Digitville,Easy,89.9
+2025-11-01,delete-nodes-from-linked-list-present-in-array,3217,Delete Nodes From Linked List Present in Array,Medium,69.5
+2025-11-02,count-unguarded-cells-in-the-grid,2257,Count Unguarded Cells in the Grid,Medium,69.0
+2025-11-03,minimum-time-to-make-rope-colorful,1578,Minimum Time to Make Rope Colorful,Medium,65.2
+2025-11-04,find-x-sum-of-all-k-long-subarrays-i,3318,Find X-Sum of All K-Long Subarrays I,Easy,76.1
+2025-11-05,find-x-sum-of-all-k-long-subarrays-ii,3321,Find X-Sum of All K-Long Subarrays II,Hard,41.1
+2025-11-06,power-grid-maintenance,3607,Power Grid Maintenance,Medium,56.3
+2025-11-07,maximize-the-minimum-powered-city,2528,Maximize the Minimum Powered City,Hard,61.8
+2025-11-08,minimum-one-bit-operations-to-make-integers-zero,1611,Minimum One Bit Operations to Make Integers Zero,Hard,78.4
+2025-11-09,count-operations-to-obtain-zero,2169,Count Operations to Obtain Zero,Easy,79.8
+2025-11-10,minimum-operations-to-convert-all-elements-to-zero,3542,Minimum Operations to Convert All Elements to Zero,Medium,52.9
+2025-11-11,ones-and-zeroes,474,Ones and Zeroes,Medium,53.0
+2025-11-12,minimum-number-of-operations-to-make-all-array-elements-equal-to-1,2654,Minimum Number of Operations to Make All Array Elements Equal to 1,Medium,54.6
+2025-11-13,maximum-number-of-operations-to-move-ones-to-the-end,3228,Maximum Number of Operations to Move Ones to the End,Medium,67.1
+2025-11-14,increment-submatrices-by-one,2536,Increment Submatrices by One,Medium,73.8
+2025-11-15,count-the-number-of-substrings-with-dominant-ones,3234,Count the Number of Substrings With Dominant Ones,Medium,42.1
+2025-11-16,number-of-substrings-with-only-1s,1513,Number of Substrings With Only 1s,Medium,57.4
+2025-11-17,check-if-all-1s-are-at-least-length-k-places-away,1437,Check If All 1's Are at Least Length K Places Away,Easy,64.3
+2025-11-18,1-bit-and-2-bit-characters,717,1-bit and 2-bit Characters,Easy,49.6
+2025-11-19,keep-multiplying-found-values-by-two,2154,Keep Multiplying Found Values by Two,Easy,75.1
+2025-11-20,set-intersection-size-at-least-two,757,Set Intersection Size At Least Two,Hard,57.9
+2025-11-21,unique-length-3-palindromic-subsequences,1930,Unique Length-3 Palindromic Subsequences,Medium,73.8
+2025-11-22,find-minimum-operations-to-make-all-elements-divisible-by-three,3190,Find Minimum Operations to Make All Elements Divisible by Three,Easy,90.9
+2025-11-23,greatest-sum-divisible-by-three,1262,Greatest Sum Divisible by Three,Medium,57.1
+2025-11-24,binary-prefix-divisible-by-5,1018,Binary Prefix Divisible By 5,Easy,53.5
+2025-11-25,smallest-integer-divisible-by-k,1015,Smallest Integer Divisible by K,Medium,54.3
+2025-11-26,paths-in-matrix-whose-sum-is-divisible-by-k,2435,Paths in Matrix Whose Sum Is Divisible by K,Hard,58.7
+2025-11-27,maximum-subarray-sum-with-length-divisible-by-k,3381,Maximum Subarray Sum With Length Divisible by K,Medium,49.6
+2025-11-28,maximum-number-of-k-divisible-components,2872,Maximum Number of K-Divisible Components,Hard,74.1
+2025-11-29,minimum-operations-to-make-array-sum-divisible-by-k,3512,Minimum Operations to Make Array Sum Divisible by K,Easy,92.4
+2025-11-30,make-sum-divisible-by-p,1590,Make Sum Divisible by P,Medium,42.6
+2025-12-01,maximum-running-time-of-n-computers,2141,Maximum Running Time of N Computers,Hard,56.4
+2025-12-02,count-number-of-trapezoids-i,3623,Count Number of Trapezoids I,Medium,48.0
+2025-12-03,count-number-of-trapezoids-ii,3625,Count Number of Trapezoids II,Hard,40.0
+2025-12-04,count-collisions-on-a-road,2211,Count Collisions on a Road,Medium,58.1
+2025-12-05,count-partitions-with-even-sum-difference,3432,Count Partitions with Even Sum Difference,Easy,85.2
+2025-12-06,count-partitions-with-max-min-difference-at-most-k,3578,Count Partitions With Max-Min Difference at Most K,Medium,58.9
+2025-12-07,count-odd-numbers-in-an-interval-range,1523,Count Odd Numbers in an Interval Range,Easy,54.3
+2025-12-08,count-square-sum-triples,1925,Count Square Sum Triples,Easy,77.1
+2025-12-09,count-special-triplets,3583,Count Special Triplets,Medium,47.1
+2025-12-10,count-the-number-of-computer-unlocking-permutations,3577,Count the Number of Computer Unlocking Permutations,Medium,59.0
+2025-12-11,count-covered-buildings,3531,Count Covered Buildings,Medium,58.8
+2025-12-12,count-mentions-per-user,3433,Count Mentions Per User,Medium,50.8
+2025-12-13,coupon-code-validator,3606,Coupon Code Validator,Easy,65.0
+2025-12-14,number-of-ways-to-divide-a-long-corridor,2147,Number of Ways to Divide a Long Corridor,Hard,54.6
+2025-12-15,number-of-smooth-descent-periods-of-a-stock,2110,Number of Smooth Descent Periods of a Stock,Medium,67.7
+2025-12-16,maximum-profit-from-trading-stocks-with-discounts,3562,Maximum Profit from Trading Stocks with Discounts,Hard,56.8
+2025-12-17,best-time-to-buy-and-sell-stock-v,3573,Best Time to Buy and Sell Stock V,Medium,60.8
+2025-12-18,best-time-to-buy-and-sell-stock-using-strategy,3652,Best Time to Buy and Sell Stock using Strategy,Medium,59.8
+2025-12-19,find-all-people-with-secret,2092,Find All People With Secret,Hard,48.4
+2025-12-20,delete-columns-to-make-sorted,944,Delete Columns to Make Sorted,Easy,78.0
+2025-12-21,delete-columns-to-make-sorted-ii,955,Delete Columns to Make Sorted II,Medium,49.7
+2025-12-22,delete-columns-to-make-sorted-iii,960,Delete Columns to Make Sorted III,Hard,72.6
+2025-12-23,two-best-non-overlapping-events,2054,Two Best Non-Overlapping Events,Medium,64.0
+2025-12-24,apple-redistribution-into-boxes,3074,Apple Redistribution into Boxes,Easy,78.4
+2025-12-25,maximize-happiness-of-selected-children,3075,Maximize Happiness of Selected Children,Medium,58.7
+2025-12-26,minimum-penalty-for-a-shop,2483,Minimum Penalty for a Shop,Medium,71.2
+2025-12-27,meeting-rooms-iii,2402,Meeting Rooms III,Hard,51.7
+2025-12-28,count-negative-numbers-in-a-sorted-matrix,1351,Count Negative Numbers in a Sorted Matrix,Easy,79.5
+2025-12-29,pyramid-transition-matrix,756,Pyramid Transition Matrix,Medium,60.6
+2025-12-30,magic-squares-in-grid,840,Magic Squares In Grid,Medium,55.1
+2025-12-31,last-day-where-you-can-still-cross,1970,Last Day Where You Can Still Cross,Hard,68.6
+2026-01-01,plus-one,66,Plus One,Easy,49.5
+2026-01-02,n-repeated-element-in-size-2n-array,961,N-Repeated Element in Size 2N Array,Easy,79.8
+2026-01-03,number-of-ways-to-paint-n-3-grid,1411,Number of Ways to Paint N × 3 Grid,Hard,80.5
+2026-01-04,four-divisors,1390,Four Divisors,Medium,56.6
+2026-01-05,maximum-matrix-sum,1975,Maximum Matrix Sum,Medium,67.6
+2026-01-06,maximum-level-sum-of-a-binary-tree,1161,Maximum Level Sum of a Binary Tree,Medium,70.0
+2026-01-07,maximum-product-of-splitted-binary-tree,1339,Maximum Product of Splitted Binary Tree,Medium,55.5
+2026-01-08,max-dot-product-of-two-subsequences,1458,Max Dot Product of Two Subsequences,Hard,69.3
+2026-01-09,smallest-subtree-with-all-the-deepest-nodes,865,Smallest Subtree with all the Deepest Nodes,Medium,77.5
+2026-01-10,minimum-ascii-delete-sum-for-two-strings,712,Minimum ASCII Delete Sum for Two Strings,Medium,70.9
+2026-01-11,maximal-rectangle,85,Maximal Rectangle,Hard,58.0
+2026-01-12,minimum-time-visiting-all-points,1266,Minimum Time Visiting All Points,Easy,84.8
+2026-01-13,separate-squares-i,3453,Separate Squares I,Medium,58.0
+2026-01-14,separate-squares-ii,3454,Separate Squares II,Hard,60.0
+2026-01-15,maximize-area-of-square-hole-in-grid,2943,Maximize Area of Square Hole in Grid,Medium,61.9
+2026-01-16,maximum-square-area-by-removing-fences-from-a-field,2975,Maximum Square Area by Removing Fences From a Field,Medium,49.4
+2026-01-17,find-the-largest-area-of-square-inside-two-rectangles,3047,Find the Largest Area of Square Inside Two Rectangles,Medium,66.8
+2026-01-18,largest-magic-square,1895,Largest Magic Square,Medium,75.3
+2026-01-19,maximum-side-length-of-a-square-with-sum-less-than-or-equal-to-threshold,1292,Maximum Side Length of a Square with Sum Less than or Equal to Threshold,Medium,65.5
+2026-01-20,construct-the-minimum-bitwise-array-i,3314,Construct the Minimum Bitwise Array I,Easy,85.3
+2026-01-21,construct-the-minimum-bitwise-array-ii,3315,Construct the Minimum Bitwise Array II,Medium,66.4
+2026-01-22,minimum-pair-removal-to-sort-array-i,3507,Minimum Pair Removal to Sort Array I,Easy,65.3
+2026-01-23,minimum-pair-removal-to-sort-array-ii,3510,Minimum Pair Removal to Sort Array II,Hard,39.2
+2026-01-24,minimize-maximum-pair-sum-in-array,1877,Minimize Maximum Pair Sum in Array,Medium,83.3
+2026-01-25,minimum-difference-between-highest-and-lowest-of-k-scores,1984,Minimum Difference Between Highest and Lowest of K Scores,Easy,66.2
+2026-01-26,minimum-absolute-difference,1200,Minimum Absolute Difference,Easy,75.0
+2026-01-27,minimum-cost-path-with-edge-reversals,3650,Minimum Cost Path with Edge Reversals,Medium,61.8
+2026-01-28,minimum-cost-path-with-teleportations,3651,Minimum Cost Path with Teleportations,Hard,45.8
+2026-01-29,minimum-cost-to-convert-string-i,2976,Minimum Cost to Convert String I,Medium,63.3
+2026-01-30,minimum-cost-to-convert-string-ii,2977,Minimum Cost to Convert String II,Hard,59.7
+2026-01-31,find-smallest-letter-greater-than-target,744,Find Smallest Letter Greater Than Target,Easy,58.8
+2026-02-01,divide-an-array-into-subarrays-with-minimum-cost-i,3010,Divide an Array Into Subarrays With Minimum Cost I,Easy,80.4
+2026-02-02,divide-an-array-into-subarrays-with-minimum-cost-ii,3013,Divide an Array Into Subarrays With Minimum Cost II,Hard,54.8
+2026-02-03,trionic-array-i,3637,Trionic Array I,Easy,49.5
+2026-02-04,trionic-array-ii,3640,Trionic Array II,Hard,47.3
+2026-02-05,transformed-array,3379,Transformed Array,Easy,70.3
+2026-02-06,minimum-removals-to-balance-array,3634,Minimum Removals to Balance Array,Medium,47.9
+2026-02-07,minimum-deletions-to-make-string-balanced,1653,Minimum Deletions to Make String Balanced,Medium,68.2
+2026-02-08,balanced-binary-tree,110,Balanced Binary Tree,Easy,57.8
+2026-02-09,balance-a-binary-search-tree,1382,Balance a Binary Search Tree,Medium,86.3
+2026-02-10,longest-balanced-subarray-i,3719,Longest Balanced Subarray I,Medium,65.7
+2026-02-11,longest-balanced-subarray-ii,3721,Longest Balanced Subarray II,Hard,33.8
+2026-02-12,longest-balanced-substring-i,3713,Longest Balanced Substring I,Medium,69.7
+2026-02-13,longest-balanced-substring-ii,3714,Longest Balanced Substring II,Medium,42.2
+2026-02-14,champagne-tower,799,Champagne Tower,Medium,63.8
+2026-02-15,add-binary,67,Add Binary,Easy,57.0

@@ -4,8 +4,6 @@ from lc import *
 
 # same as https://leetcode.com/problems/longest-balanced-subarray-i but with 10^5 limit instead of 1500
 
-# TODO
-
 class Solution:
     def longestBalanced(self, nums: list[int]) -> int:
         max_len = 0

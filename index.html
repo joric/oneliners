@@ -320,7 +320,7 @@
             }
             Plotly.newPlot('heatmapChart', [{
                 z: heatmapPercents, x: days, y: diffs, type: 'heatmap', colorscale: 'Teal', showscale: true
-            }], { ...commonLayout, title: 'Difficulty Day Frequency (%)', annotations: annotations }, config);
+            }], { ...commonLayout, title: 'Difficulty Day Frequency (%)', annotations: annotations, yaxis: { tickangle: -90 } }, config);
 
             // 4. Histogram
             Plotly.newPlot('recurChart', [{

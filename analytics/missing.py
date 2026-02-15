@@ -15,4 +15,16 @@ missing = sorted(missing, key=natsort)
 f = open('missing.csv', 'w', newline='')
 writer = csv.DictWriter(f, ['name', 'url'])
 writer.writeheader()
-writer.writerows({'name': x, 'url': 'https://leetcode.com/problems/' + x.split('.')[1]} for x in missing)
+
+os.makedirs("templates", exist_ok=True)
+
+rows = []
+
+for name in missing:
+    url = 'https://leetcode.com/problems/' + name.split('.')[1]
+    rows.append({'name':name, 'url': url})
+
+    f = open(os.path.join('templates', name), 'w')
+    f.write(f"from lc import *\n\n# {url}\n\ntest('''\n\n''')\n")
+
+writer.writerows(rows)

@@ -180,15 +180,11 @@
             rows.forEach(row => {
                 if (!row.date) return;
                 
-                // Parse date (YYYY-MM-DD) assume UTC to avoid timezone shifts
                 const parts = row.date.split('-');
                 const dObj = new Date(Date.UTC(parts[0], parts[1]-1, parts[2]));
                 const qId = row.questionFrontendId;
                 const difficulty = row.difficulty;
                 
-                // Day Index (0=Sun...6=Sat). JS getUTCDay() returns exactly that.
-                // In Python we did (weekday + 1) % 7 because Python Mon=0. 
-                // JS Sunday is already 0. So no math needed.
                 const dayIdx = dObj.getUTCDay(); 
 
                 // 1. Stats
@@ -259,13 +255,22 @@
             const maxFreq = Math.max(...Object.keys(freqCounts).map(Number));
             const countAtMax = freqCounts[maxFreq] || 0;
 
-            // --- Render ---
+            // --- Render Phase ---
+            // 1. Unhide content FIRST so Plotly has dimensions to work with
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+
+            // 2. Render all components
             renderSummary(countAtMax, maxFreq, totalDays, uniqueQuestions, avgRecurrence);
             renderCharts(diffCounts, freqCounts, heatmapPercents, recurTimes);
             renderCalendar(calendarData, questionMeta);
-
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('content').style.display = 'block';
+            
+            // 3. Force Resize update (double check)
+            requestAnimationFrame(() => {
+                ['pieChart', 'freqChart', 'heatmapChart', 'recurChart'].forEach(id => {
+                    Plotly.Plots.resize(document.getElementById(id));
+                });
+            });
         }
 
         function renderSummary(countAtMax, maxFreq, totalDays, uniqueQuestions, avgRecur) {
@@ -386,7 +391,7 @@
                 container.appendChild(card);
             });
             
-            // Force redraw charts on window resize just in case
+            // Standard window resize listener
             window.addEventListener('resize', function() {
                 const ids = ['pieChart', 'freqChart', 'heatmapChart', 'recurChart'];
                 ids.forEach(id => Plotly.Plots.resize(document.getElementById(id)));

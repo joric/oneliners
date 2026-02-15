@@ -113,7 +113,11 @@
         
         @media (max-width: 900px) {
             .stats-grid { grid-template-columns: 1fr; }
-            .chart-card { height: 350px; }
+            .chart-card { 
+                height: auto; 
+                min-height: 400px;
+                padding-bottom: 20px;
+            }
             .calendar-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -262,16 +266,14 @@
             const countAtMax = freqCounts[maxFreq] || 0;
 
             // --- Render Phase ---
-            // 1. Unhide content FIRST so Plotly has dimensions to work with
             document.getElementById('loading').style.display = 'none';
             document.getElementById('content').style.display = 'block';
 
-            // 2. Render all components
             renderSummary(countAtMax, maxFreq, totalDays, uniqueQuestions, avgRecurrence);
             renderCharts(diffCounts, freqCounts, heatmapPercents, recurTimes);
             renderCalendar(calendarData, questionMeta);
             
-            // 3. Force Resize update (double check)
+            // Force Resize update
             requestAnimationFrame(() => {
                 ['pieChart', 'freqChart', 'heatmapChart', 'recurChart'].forEach(id => {
                     Plotly.Plots.resize(document.getElementById(id));
@@ -287,39 +289,54 @@
         }
 
         function renderCharts(diffCounts, freqCounts, heatmapPercents, recurTimes) {
+            
+            // 1. GLOBAL CONFIG
             const commonLayout = {
                 autosize: true, 
-                margin: { t: 40, b: 80, l: 40, r: 40 },
+                // CRITICAL FIX: Bottom margin increased to 100 to prevent axis title clipping
+                margin: { t: 60, b: 100, l: 60, r: 40 }, 
                 hoverlabel: {
-                    bgcolor: "#333",    // Dark background
-                    font: { color: "white" }, // White text
-                    bordercolor: "#333" // Match border to background
+                    bgcolor: "#333",
+                    font: { color: "white" },
+                    bordercolor: "#333"
+                },
+                // Legend top-horizontal to save vertical space
+                legend: { 
+                    orientation: "h", 
+                    yanchor: "bottom", 
+                    y: 1.02, 
+                    xanchor: "right",
+                    x: 1 
                 }
             };
             const config = { responsive: true, displayModeBar: false };
 
-            // 1. Pie
+            // 2. PIE CHART
             Plotly.newPlot('pieChart', [{
                 values: [diffCounts.Easy, diffCounts.Medium, diffCounts.Hard],
                 labels: ['Easy', 'Medium', 'Hard'],
                 type: 'pie',
                 marker: { colors: ['#00b8a3', '#ffc01e', '#ff375f'] }
-            }], { ...commonLayout, title: 'Daily Question Distribution' }, config);
+            }], { 
+                ...commonLayout, 
+                title: 'Daily Question Distribution',
+                // Pie needs slightly less margin, but kept generous to be safe
+                margin: { t: 80, b: 60, l: 20, r: 20 } 
+            }, config);
 
-            // 2. Freq
+            // 3. FREQ CHART
             const freqKeys = Object.keys(freqCounts).map(Number).sort((a,b)=>a-b);
             const freqVals = freqKeys.map(k => freqCounts[k]);
             Plotly.newPlot('freqChart', [{
                 x: freqKeys, y: freqVals, type: 'bar', marker: { color: '#448aff' }
             }], {
                 ...commonLayout, 
-                title: 'Question Frequency (Appearances)',
-                xaxis: {title: 'Appearances',tickmode: 'linear', dtick: 1},
-                yaxis: {title: '# Questions'},
-                margin: { t: 40, b: 80, l: 60, r: 40 } 
+                title: 'Question Frequency',
+                xaxis: { title: 'Appearances', tickmode: 'linear', dtick: 1 },
+                yaxis: { title: '# Questions' }
             }, config);
 
-            // 3. Heatmap
+            // 4. HEATMAP
             const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
             const diffs = ['Easy', 'Medium', 'Hard'];
             const annotations = [];
@@ -334,14 +351,22 @@
             }
             Plotly.newPlot('heatmapChart', [{
                 z: heatmapPercents, x: days, y: diffs, type: 'heatmap', colorscale: 'Teal', showscale: true
-            }], { ...commonLayout, title: 'Difficulty Day Frequency (%)', annotations: annotations, yaxis: { tickangle: -90 } }, config);
+            }], { 
+                ...commonLayout, 
+                title: 'Difficulty Day Frequency (%)', 
+                annotations: annotations, 
+                yaxis: { tickangle: -90 },
+                margin: { ...commonLayout.margin, r: 50 } 
+            }, config);
 
-            // 4. Histogram
+            // 5. HISTOGRAM
             Plotly.newPlot('recurChart', [{
                 x: recurTimes, type: 'histogram', marker: { color: '#448aff' }, xbins: { size: 30 }
             }], {
-                ...commonLayout, title: 'Time for question to reoccur (Days)',
-                xaxis: {title: 'Days Between Appearances'}, yaxis: {title: 'Count'}
+                ...commonLayout, 
+                title: 'Recurrence Days',
+                xaxis: { title: 'Days' }, 
+                yaxis: { title: 'Count' }
             }, config);
         }
 
@@ -349,19 +374,15 @@
             const container = document.getElementById('calendar');
             container.innerHTML = '';
 
-            // Sort months descending
             const sortedMonths = Object.keys(calendarData).sort((a, b) => new Date(b) - new Date(a));
 
             sortedMonths.forEach(monthStr => {
                 const daysData = calendarData[monthStr];
-                const dt = new Date(monthStr + " 1"); // "January 2024 1"
+                const dt = new Date(monthStr + " 1"); 
                 const year = dt.getFullYear();
-                const month = dt.getMonth(); // 0-indexed
+                const month = dt.getMonth(); 
 
-                // Days in month
                 const daysInMonth = new Date(year, month + 1, 0).getDate();
-                
-                // Start day index (0=Sun)
                 const startDayIdx = new Date(year, month, 1).getDay();
 
                 const card = document.createElement('div');
@@ -372,12 +393,10 @@
                                 <div class="day-name">Sun</div><div class="day-name">Mon</div><div class="day-name">Tue</div>
                                 <div class="day-name">Wed</div><div class="day-name">Thu</div><div class="day-name">Fri</div><div class="day-name">Sat</div>`;
 
-                // Empty cells
                 for(let i=0; i<startDayIdx; i++) {
                     html += '<div class="day-cell empty"></div>';
                 }
 
-                // Days
                 for(let day=1; day<=daysInMonth; day++) {
                     if (daysData[day]) {
                         const info = daysData[day];
@@ -405,7 +424,6 @@
                 container.appendChild(card);
             });
             
-            // Standard window resize listener
             window.addEventListener('resize', function() {
                 const ids = ['pieChart', 'freqChart', 'heatmapChart', 'recurChart'];
                 ids.forEach(id => Plotly.Plots.resize(document.getElementById(id)));

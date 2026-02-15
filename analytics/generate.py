@@ -136,7 +136,6 @@ def generate_calendar_html(calendar_data, question_meta):
                 dates_list = meta["dates"]
                 
                 # Format tooltip
-                # Limit dates shown if too many? No, user asked for all.
                 dates_str = "\n".join(dates_list)
                 tooltip = f"{info['id']}. {info['title']}\nAppearances: {count}\nDates:\n{dates_str}"
                 
@@ -147,7 +146,8 @@ def generate_calendar_html(calendar_data, question_meta):
                 </div>
                 """
             else:
-                month_html += f'<div class="day-cell empty">{day}</div>'
+                # FIX: Ensure day number is centered even without links
+                month_html += f'<div class="day-cell empty"><span class="day-number-static">{day}</span></div>'
         month_html += "</div></div>"
         html_parts.append(month_html)
     return "\n".join(html_parts)
@@ -231,7 +231,12 @@ def generate_html(rows, stats):
             font-size: 0.95em; 
             cursor: pointer; 
             border-radius: 4px; 
-            transition: transform 0.1s ease; 
+            transition: transform 0.1s ease;
+            
+            /* Center content for simple days */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }}
         .day-cell:hover:not(.empty) {{ transform: scale(1.1); z-index: 2; box-shadow: 0 4px 8px rgba(0,0,0,0.15); }}
         
@@ -245,6 +250,12 @@ def generate_html(rows, stats):
             align-items: center; 
             justify-content: center; 
             font-weight: 500;
+        }}
+        
+        /* Static Day Number (No link) */
+        .day-number-static {{
+            color: #ccc;
+            font-weight: 400;
         }}
         
         /* Occurrence Count Link (LeetCode) */

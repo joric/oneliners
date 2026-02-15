@@ -55,7 +55,12 @@
             font-size: 0.95em; 
             cursor: pointer; 
             border-radius: 4px; 
-            transition: transform 0.1s ease; 
+            transition: transform 0.1s ease;
+            
+            /* Center content for simple days */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .day-cell:hover:not(.empty) { transform: scale(1.1); z-index: 2; box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
         
@@ -69,6 +74,12 @@
             align-items: center; 
             justify-content: center; 
             font-weight: 500;
+        }
+        
+        /* Static Day Number (No link) */
+        .day-number-static {
+            color: #ccc;
+            font-weight: 400;
         }
         
         /* Occurrence Count Link (LeetCode) */
@@ -253,7 +264,7 @@ Dates:
                     <a href="https://github.com/joric/oneliners/blob/main/leetcode/67.add-binary.py" target="_blank" class="day-number">15</a>
                     <a href="https://leetcode.com/problems/add-binary/" target="_blank" class="occ-count">4</a>
                 </div>
-                <div class="day-cell empty">16</div><div class="day-cell empty">17</div><div class="day-cell empty">18</div><div class="day-cell empty">19</div><div class="day-cell empty">20</div><div class="day-cell empty">21</div><div class="day-cell empty">22</div><div class="day-cell empty">23</div><div class="day-cell empty">24</div><div class="day-cell empty">25</div><div class="day-cell empty">26</div><div class="day-cell empty">27</div><div class="day-cell empty">28</div></div></div>
+                <div class="day-cell empty"><span class="day-number-static">16</span></div><div class="day-cell empty"><span class="day-number-static">17</span></div><div class="day-cell empty"><span class="day-number-static">18</span></div><div class="day-cell empty"><span class="day-number-static">19</span></div><div class="day-cell empty"><span class="day-number-static">20</span></div><div class="day-cell empty"><span class="day-number-static">21</span></div><div class="day-cell empty"><span class="day-number-static">22</span></div><div class="day-cell empty"><span class="day-number-static">23</span></div><div class="day-cell empty"><span class="day-number-static">24</span></div><div class="day-cell empty"><span class="day-number-static">25</span></div><div class="day-cell empty"><span class="day-number-static">26</span></div><div class="day-cell empty"><span class="day-number-static">27</span></div><div class="day-cell empty"><span class="day-number-static">28</span></div></div></div>
 
         <div class="month-card">
             <div class="month-header">January 2026</div>
@@ -5055,7 +5066,7 @@ Dates:
                     <a href="https://github.com/joric/oneliners/blob/main/leetcode/1598.crawler-log-folder.py" target="_blank" class="day-number">10</a>
                     <a href="https://leetcode.com/problems/crawler-log-folder/" target="_blank" class="occ-count">1</a>
                 </div>
-                <div class="day-cell empty">11</div>
+                <div class="day-cell empty"><span class="day-number-static">11</span></div>
                 <div class="day-cell Medium" title="1717. Maximum Score From Removing Substrings
 Appearances: 2
 Dates:

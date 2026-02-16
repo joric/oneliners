@@ -31,6 +31,10 @@ class Solution:
 
 class Solution:
     def validMountainArray(self, a: List[int]) -> bool:
+        s=sorted;m=a.index(max(a));return 0<m+1<len(a)and a[:m+1]==s({*a[:m+1]})and a[m:][::-1]==s({*a[m:]})
+
+class Solution:
+    def validMountainArray(self, a: List[int]) -> bool:
         m=a.index(max(a));return 1<m+1<len(a)and min(map(lt,a,a[1:m+1]))and min(map(gt,a[m:],a[m+1:]))
 
 test('''
@@ -64,7 +68,13 @@ Example 3:
 
 Input: arr = [0,3,2,1]
 Output: true
- 
+
+
+Other examples:
+
+Input: arr = [0,1,2,3,4,5,6,7,8,9]
+Output: false
+
 
 Constraints:
 

@@ -439,10 +439,10 @@
         }
 
         function renderSummary(countAtMax, maxFreq, totalDays, uniqueQuestions, avgRecur) {
-            const html = `${countAtMax} questions appeared ${maxFreq} times.
-                          Out of ${totalDays} total days, there were ${uniqueQuestions} unique questions.<br>
-                          ${getLeetCodeTime()} total.
-                          Average time between reoccurrences: ${avgRecur} days.`;
+            const html = `Out of ${totalDays} total days, there were ${uniqueQuestions} unique questions.
+                          ${countAtMax} questions appeared ${maxFreq} times.<br>
+                          Average time between reoccurrences: ${avgRecur} days.
+                          ${getLeetCodeTime()} total.`;
 
             document.getElementById('summary').innerHTML = html;
         }

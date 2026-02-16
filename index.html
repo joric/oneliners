@@ -112,8 +112,8 @@
             display: grid; 
             grid-template-columns: 1fr 1fr; 
             gap: 20px; 
-            margin-bottom: 20px; 
-            margin-top: 40px; 
+            margin-bottom: 40px; 
+            margin-top: 60px; 
         }
         
         .chart-card { 
@@ -422,16 +422,27 @@
             setupInteractions(taskDataMap); 
             setupSearch(searchIndex, taskDataMap);
 
-            // Handle Page Load Hash
-            if (window.location.hash) {
-                const slug = window.location.hash.substring(1);
-                if (slugToIdMap[slug]) {
-                    const qId = slugToIdMap[slug];
-                    setTimeout(() => {
-                        applyLockAndFilter(qId, null, taskDataMap);
-                    }, 100);
+            // Function to handle route changes based on hash
+            const handleHashChange = () => {
+                const hash = window.location.hash;
+                if (hash && hash.length > 1) {
+                    const slug = hash.substring(1);
+                    if (slugToIdMap[slug]) {
+                        const qId = slugToIdMap[slug];
+                        // Pass false to updateUrl so we don't push duplicate states during popstate
+                        applyLockAndFilter(qId, null, taskDataMap, false);
+                    }
+                } else {
+                    // Hash cleared or empty
+                    clearHighlights(false);
                 }
-            }
+            };
+
+            // Handle Page Load
+            handleHashChange();
+
+            // Handle Browser History Navigation (Back/Forward)
+            window.addEventListener('popstate', handleHashChange);
 
             requestAnimationFrame(() => {
                 ['pieChart', 'freqChart', 'heatmapChart', 'recurChart'].forEach(id => {
@@ -457,9 +468,9 @@
         }
 
         function renderSummary(countAtMax, maxFreq, totalDays, uniqueQuestions, avgRecur) {
-            const html = `Out of ${totalDays} total days, there were ${uniqueQuestions} unique questions.
+            const html = `Out of ${totalDays} total days, there were ${uniqueQuestions} unique questions.<br>
                           ${countAtMax} questions appeared ${maxFreq} times.<br>
-                          Average time between reoccurrences: ${avgRecur} days.
+                          Average time between reoccurrences: ${avgRecur} days.<br>
                           ${getLeetCodeTime()} total.`;
 
             document.getElementById('summary').innerHTML = html;
@@ -600,10 +611,16 @@
         // --- FILTERING AND LOCKING LOGIC ---
         let lockedQId = null; 
         
-        function applyLockAndFilter(qId, targetElement, taskDataMap) {
+        function applyLockAndFilter(qId, targetElement, taskDataMap, updateUrl = true) {
             lockedQId = qId;
 
-            clearHighlights(false); 
+            // Clear just the visual highlights first
+            document.querySelectorAll('.highlight-clicked-active, .highlight-related').forEach(el => {
+                el.classList.remove('highlight-clicked-active', 'highlight-related');
+            });
+            document.querySelectorAll('.month-card').forEach(el => {
+                el.classList.remove('hidden'); // Reset visibility momentarily before re-filtering
+            });
             
             const matches = document.querySelectorAll(`.day-cell[data-qid="${qId}"]`);
             
@@ -633,12 +650,13 @@
                 input.classList.add('selected');
                 clearBtn.style.display = 'block';
                 
-                if (taskData.slug) {
-                    window.location.hash = taskData.slug;
+                const newTitle = `${taskData.title} - LeetCode Daily`;
+                document.title = newTitle;
+
+                if (updateUrl && taskData.slug) {
+                    // Update URL and History
+                    history.pushState({qId: qId}, newTitle, '#' + taskData.slug);
                 }
-                
-                // Update Page Title
-                document.title = `${taskData.title} - ${DEFAULT_TITLE}`;
             }
         }
 
@@ -660,11 +678,11 @@
             input.value = '';
             clearBtn.style.display = 'none';
 
-            // Reset Page Title
             document.title = DEFAULT_TITLE;
 
             if (updateUrl) {
-                history.pushState("", document.title, window.location.pathname + window.location.search);
+                // Use pushState to clear hash and reset history entry
+                history.pushState({}, DEFAULT_TITLE, window.location.pathname + window.location.search);
             }
         }
 

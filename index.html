@@ -651,6 +651,7 @@
                 input.classList.add('selected');
                 clearBtn.style.display = 'block';
                 
+                // IMPORTANT: Set title BEFORE pushing state
                 const newTitle = `${taskData.title} - LeetCode Daily`;
                 document.title = newTitle;
 
@@ -678,10 +679,10 @@
             input.value = '';
             clearBtn.style.display = 'none';
 
+            // IMPORTANT: Set title BEFORE pushing state
             document.title = DEFAULT_TITLE;
 
             if (pushToHistory) {
-                // Only push a new state if user explicitly cleared it
                 history.pushState({}, DEFAULT_TITLE, window.location.pathname + window.location.search);
             }
         }

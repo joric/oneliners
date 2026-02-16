@@ -429,7 +429,8 @@
                     const slug = hash.substring(1);
                     if (slugToIdMap[slug]) {
                         const qId = slugToIdMap[slug];
-                        // Pass false to updateUrl so we don't push duplicate states during popstate
+                        // Pass false to applyLockAndFilter to prevent PUSHING new state, 
+                        // just update UI to match current history state
                         applyLockAndFilter(qId, null, taskDataMap, false);
                     }
                 } else {
@@ -438,7 +439,7 @@
                 }
             };
 
-            // Handle Page Load
+            // Handle Page Load (treat as history navigation so we don't push)
             handleHashChange();
 
             // Handle Browser History Navigation (Back/Forward)
@@ -611,15 +612,15 @@
         // --- FILTERING AND LOCKING LOGIC ---
         let lockedQId = null; 
         
-        function applyLockAndFilter(qId, targetElement, taskDataMap, updateUrl = true) {
+        function applyLockAndFilter(qId, targetElement, taskDataMap, pushToHistory = true) {
             lockedQId = qId;
 
-            // Clear just the visual highlights first
+            // Clear visuals but don't reset history inside this sub-call
             document.querySelectorAll('.highlight-clicked-active, .highlight-related').forEach(el => {
                 el.classList.remove('highlight-clicked-active', 'highlight-related');
             });
             document.querySelectorAll('.month-card').forEach(el => {
-                el.classList.remove('hidden'); // Reset visibility momentarily before re-filtering
+                el.classList.remove('hidden'); 
             });
             
             const matches = document.querySelectorAll(`.day-cell[data-qid="${qId}"]`);
@@ -653,14 +654,13 @@
                 const newTitle = `${taskData.title} - LeetCode Daily`;
                 document.title = newTitle;
 
-                if (updateUrl && taskData.slug) {
-                    // Update URL and History
+                if (pushToHistory && taskData.slug) {
                     history.pushState({qId: qId}, newTitle, '#' + taskData.slug);
                 }
             }
         }
 
-        function clearHighlights(updateUrl = true) {
+        function clearHighlights(pushToHistory = true) {
             lockedQId = null;
 
             document.querySelectorAll('.highlight-clicked-active, .highlight-related').forEach(el => {
@@ -680,8 +680,8 @@
 
             document.title = DEFAULT_TITLE;
 
-            if (updateUrl) {
-                // Use pushState to clear hash and reset history entry
+            if (pushToHistory) {
+                // Only push a new state if user explicitly cleared it
                 history.pushState({}, DEFAULT_TITLE, window.location.pathname + window.location.search);
             }
         }
@@ -706,13 +706,15 @@
                     } else {
                         e.preventDefault();
                         e.stopPropagation();
-                        applyLockAndFilter(qId, targetCell, taskDataMap);
+                        // This is a direct user action, so pushToHistory = true (default)
+                        applyLockAndFilter(qId, targetCell, taskDataMap, true);
                     }
                 } else {
                     if (!isSelected || lockedQId !== qId) {
                         e.preventDefault(); 
                         e.stopPropagation();
-                        applyLockAndFilter(qId, targetCell, taskDataMap);
+                        // This is a direct user action, so pushToHistory = true (default)
+                        applyLockAndFilter(qId, targetCell, taskDataMap, true);
                     }
                 }
             };
@@ -721,7 +723,8 @@
 
             document.body.addEventListener('click', function(e) {
                 if (!e.target.closest('.day-cell') && !e.target.closest('.search-wrapper')) {
-                    clearHighlights();
+                    // Direct user action to clear -> push state
+                    clearHighlights(true);
                     document.getElementById('search-results').style.display = 'none';
                 }
             });
@@ -809,13 +812,15 @@
                 const item = e.target.closest('.search-item');
                 if (item) {
                     const qId = item.dataset.qid; 
-                    applyLockAndFilter(qId, null, taskDataMap); 
+                    // User selection -> push state
+                    applyLockAndFilter(qId, null, taskDataMap, true); 
                     closeAllLists();
                 }
             });
 
             clearBtn.addEventListener('click', function(e) {
-                clearHighlights();
+                // User explicit clear -> push state
+                clearHighlights(true);
                 closeAllLists();
             });
         }

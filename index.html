@@ -639,24 +639,39 @@
         function setupInteractions(idToTitleMap) {
             const container = document.getElementById('calendar');
 
-            // 1. Hover - Only do visual scale (css), no dotted border
-            // (Previous dotted logic removed to fix "moving" highlights)
-
-            // 2. Click (Locking)
             const handleClick = (e) => {
-                const target = e.target.closest('.day-cell');
-                
-                if (!target || !target.dataset.qid) {
+                const targetCell = e.target.closest('.day-cell');
+                const isLink = e.target.tagName === 'A';
+
+                // 1. If clicking outside a valid cell, allow it (body handler will clear selection if needed)
+                if (!targetCell || !targetCell.dataset.qid) {
                     return; 
                 }
 
-                const qId = target.dataset.qid;
+                const qId = targetCell.dataset.qid;
+                const isSelected = targetCell.classList.contains('highlight-clicked-active');
 
-                if (lockedQId !== qId) {
-                    e.preventDefault(); 
-                    e.stopPropagation();
-                    applyLockAndFilter(qId, target, idToTitleMap);
-                } 
+                // 2. Logic to handle link clicks vs cell selections
+                if (isLink) {
+                    if (isSelected) {
+                        // If cell is already solidly selected, ALLOW link navigation
+                        return; 
+                    } else {
+                        // If cell is not yet selected (or dotted), PREVENT link, select cell instead
+                        e.preventDefault();
+                        e.stopPropagation();
+                        applyLockAndFilter(qId, targetCell, idToTitleMap);
+                    }
+                } else {
+                    // Clicked on the cell background (not a link)
+                    if (!isSelected || lockedQId !== qId) {
+                        // Select it
+                        e.preventDefault(); 
+                        e.stopPropagation();
+                        applyLockAndFilter(qId, targetCell, idToTitleMap);
+                    }
+                    // If already selected and clicked background, do nothing (maintain selection)
+                }
             };
 
             container.addEventListener('click', handleClick);

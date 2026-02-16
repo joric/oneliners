@@ -286,6 +286,7 @@
         const CSV_URL = 'analytics/daily.csv';
         const LEETCODE_BASE_URL = "https://leetcode.com/problems/";
         const GITHUB_BASE_URL = "https://github.com/joric/oneliners/blob/main/leetcode/";
+        const DEFAULT_TITLE = "LeetCode Daily History";
 
         document.addEventListener('DOMContentLoaded', () => {
             fetchData();
@@ -320,7 +321,7 @@
             
             const searchIndex = [];
             const seenInSearch = new Set();
-            const slugToIdMap = {}; // New Map for slugs
+            const slugToIdMap = {};
 
             rows.forEach(row => {
                 if (!row.date) return;
@@ -352,7 +353,6 @@
 
                 if (!seenInSearch.has(qId)) {
                     seenInSearch.add(qId);
-                    // Build Slug map
                     if (row.titleSlug) {
                         slugToIdMap[row.titleSlug] = qId;
                     }
@@ -416,8 +416,7 @@
             renderCharts(diffCounts, freqCounts, heatmapPercents, recurTimes);
             renderCalendar(calendarData, questionMeta);
             
-            // Build full data map for search/interaction
-            const taskDataMap = {}; // Maps ID -> {title, slug}
+            const taskDataMap = {}; 
             searchIndex.forEach(x => taskDataMap[x.idStr] = x);
 
             setupInteractions(taskDataMap); 
@@ -428,7 +427,6 @@
                 const slug = window.location.hash.substring(1);
                 if (slugToIdMap[slug]) {
                     const qId = slugToIdMap[slug];
-                    // Delay slightly to ensure rendering complete
                     setTimeout(() => {
                         applyLockAndFilter(qId, null, taskDataMap);
                     }, 100);
@@ -459,9 +457,9 @@
         }
 
         function renderSummary(countAtMax, maxFreq, totalDays, uniqueQuestions, avgRecur) {
-            const html = `Out of ${totalDays} total days, there were ${uniqueQuestions} unique questions.
+            const html = `Out of ${totalDays} total days, there were ${uniqueQuestions} unique questions.<br>
                           ${countAtMax} questions appeared ${maxFreq} times.<br>
-                          Average time between reoccurrences: ${avgRecur} days.
+                          Average time between reoccurrences: ${avgRecur} days.<br>
                           ${getLeetCodeTime()} total.`;
 
             document.getElementById('summary').innerHTML = html;
@@ -605,7 +603,7 @@
         function applyLockAndFilter(qId, targetElement, taskDataMap) {
             lockedQId = qId;
 
-            clearHighlights(false); // Clear visuals only, don't clear URL yet
+            clearHighlights(false); 
             
             const matches = document.querySelectorAll(`.day-cell[data-qid="${qId}"]`);
             
@@ -635,10 +633,12 @@
                 input.classList.add('selected');
                 clearBtn.style.display = 'block';
                 
-                // Update URL Hash
                 if (taskData.slug) {
                     window.location.hash = taskData.slug;
                 }
+                
+                // Update Page Title
+                document.title = `${taskData.title} - ${DEFAULT_TITLE}`;
             }
         }
 
@@ -660,8 +660,10 @@
             input.value = '';
             clearBtn.style.display = 'none';
 
+            // Reset Page Title
+            document.title = DEFAULT_TITLE;
+
             if (updateUrl) {
-                // Remove hash without page reload
                 history.pushState("", document.title, window.location.pathname + window.location.search);
             }
         }

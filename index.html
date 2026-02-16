@@ -20,17 +20,97 @@
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6f8; margin: 0; padding: 20px; }
         .container { max-width: 1400px; margin: 0 auto; }
         
-        .header-section { text-align: center; margin-bottom: 40px; }
+        .header-section { text-align: center; margin-bottom: 40px; position: relative; }
         h1 { color: #333; margin-bottom: 10px; }
-        .summary-text { font-size: 1.1em; color: #555; line-height: 1.5; }
+        .summary-text { font-size: 1.1em; color: #555; line-height: 1.5; margin-bottom: 20px;}
         #loading { text-align: center; font-size: 1.5em; color: #666; margin-top: 50px; }
         
+        /* --- Search Box Styles --- */
+        .search-wrapper {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto 30px auto;
+            z-index: 1000;
+        }
+
+        #search-input {
+            width: 100%;
+            padding: 12px 45px 12px 20px; 
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        #search-input:focus {
+            border-color: #448aff;
+        }
+        
+        #search-input.selected::placeholder {
+            color: #888; 
+            font-weight: normal; 
+        }
+
+        #search-clear {
+            position: absolute;
+            right: 10px; 
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: #999;
+            cursor: pointer;
+            display: none; 
+            width: 30px; 
+            height: 30px; 
+            line-height: 30px;
+            text-align: center;
+            border-radius: 50%;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        #search-clear:hover {
+            color: #555;
+            background: #e0e0e0; 
+        }
+
+        #search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1001; 
+            display: none; 
+            margin-top: 5px;
+            text-align: left;
+        }
+
+        .search-item {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-item:last-child { border-bottom: none; }
+        .search-item:hover { background: #f4f6f8; }
+        .search-item .id { color: #888; font-size: 0.9em; margin-right: 10px; min-width: 40px; text-align: right; }
+        .search-item .title { font-weight: 500; color: #333; }
+
         /* --- Chart Grid System --- */
         .stats-grid { 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
             gap: 20px; 
             margin-bottom: 40px; 
+            margin-top: 60px; 
         }
         
         .chart-card { 
@@ -63,7 +143,6 @@
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
-        /* HIDDEN STATE FOR MONTHS */
         .month-card.hidden {
             display: none;
         }
@@ -86,14 +165,13 @@
             justify-content: center;
         }
         
-        /* Default hover: CSS Scale only */
         .day-cell:hover:not(.empty) { 
             transform: scale(1.1); 
             z-index: 5; 
             box-shadow: 0 4px 8px rgba(0,0,0,0.15); 
         }
 
-        /* 1. RELATED: Dotted Black Border */
+        /* Dotted border for related items */
         .day-cell.highlight-related {
             transform: scale(1.1) !important;
             z-index: 10 !important;
@@ -102,7 +180,7 @@
             box-shadow: none !important;
         }
 
-        /* 2. CLICKED TARGET: Solid Black Border */
+        /* Solid border for the specific clicked item */
         .day-cell.highlight-clicked-active {
             transform: scale(1.15) !important;
             z-index: 20 !important;
@@ -170,11 +248,22 @@
         <div class="header-section">
             <h1>LeetCode Daily Stats & Calendar</h1>
             <div id="summary" class="summary-text"></div>
+            
+            <div class="search-wrapper">
+                <input type="text" id="search-input" placeholder="Search problems (e.g. 'Two Sum')..." autocomplete="off">
+                <span id="search-clear" title="Clear search">✕</span>
+                <div id="search-results"></div>
+            </div>
         </div>
         
         <div id="loading">Loading data...</div>
 
         <div id="content" style="display: none;">
+            
+            <div id="calendar" class="calendar-grid">
+                <!-- Calendar generated by JS -->
+            </div>
+
             <div class="stats-grid">
                 <div class="chart-card"><div id="pieChart"></div></div>
                 <div class="chart-card"><div id="freqChart"></div></div>
@@ -182,9 +271,6 @@
                 <div class="chart-card full-width"><div id="recurChart"></div></div>
             </div>
 
-            <div id="calendar" class="calendar-grid">
-                <!-- Calendar generated by JS -->
-            </div>
         </div>
     </div>
 
@@ -230,6 +316,9 @@
             
             const questionMeta = {};
             const calendarData = {};
+            
+            const searchIndex = [];
+            const seenInSearch = new Set();
 
             rows.forEach(row => {
                 if (!row.date) return;
@@ -238,7 +327,6 @@
                 const dObj = new Date(Date.UTC(parts[0], parts[1]-1, parts[2]));
                 const qId = row.questionFrontendId;
                 const difficulty = row.difficulty;
-                
                 const dayIdx = dObj.getUTCDay(); 
 
                 if (diffMap[difficulty] !== undefined) {
@@ -260,6 +348,17 @@
                 questionMeta[qId].count++;
                 questionMeta[qId].dates.push(row.date);
 
+                if (!seenInSearch.has(qId)) {
+                    seenInSearch.add(qId);
+                    searchIndex.push({
+                        id: parseInt(qId),
+                        idStr: qId,
+                        title: row.title,
+                        slug: row.titleSlug,
+                        searchStr: (qId + " " + row.title + " " + row.titleSlug).toLowerCase()
+                    });
+                }
+
                 const monthNames = ["January", "February", "March", "April", "May", "June",
                                   "July", "August", "September", "October", "November", "December"];
                 const monthStr = `${monthNames[dObj.getUTCMonth()]} ${dObj.getUTCFullYear()}`;
@@ -272,6 +371,8 @@
                     id: row.questionFrontendId
                 };
             });
+
+            searchIndex.sort((a, b) => a.id - b.id);
 
             // --- Calculations ---
             const heatmapPercents = [[0,0,0,0,0,0,0], [0,0,0,0,0,0,0], [0,0,0,0,0,0,0]];
@@ -301,15 +402,19 @@
             const maxFreq = Math.max(...Object.keys(freqCounts).map(Number));
             const countAtMax = freqCounts[maxFreq] || 0;
 
-            // --- Render Phase ---
             document.getElementById('loading').style.display = 'none';
             document.getElementById('content').style.display = 'block';
 
             renderSummary(countAtMax, maxFreq, totalDays, uniqueQuestions, avgRecurrence);
             renderCharts(diffCounts, freqCounts, heatmapPercents, recurTimes);
             renderCalendar(calendarData, questionMeta);
-            setupInteractions(); 
             
+            const idToTitleMap = {};
+            searchIndex.forEach(x => idToTitleMap[x.idStr] = x.title);
+
+            setupInteractions(idToTitleMap); 
+            setupSearch(searchIndex, idToTitleMap);
+
             requestAnimationFrame(() => {
                 ['pieChart', 'freqChart', 'heatmapChart', 'recurChart'].forEach(id => {
                     Plotly.Plots.resize(document.getElementById(id));
@@ -370,6 +475,7 @@
             // 2. Freq
             const freqKeys = Object.keys(freqCounts).map(Number).sort((a,b)=>a-b);
             const freqVals = freqKeys.map(k => freqCounts[k]);
+            
             Plotly.newPlot('freqChart', [{
                 x: freqKeys, y: freqVals, type: 'bar', marker: { color: '#448aff' }
             }], {
@@ -453,7 +559,6 @@
                         const datesStr = meta.dates.join('\n');
                         const tooltip = `${info.id}. ${info.title}\nAppearances: ${meta.count}\nDates:\n${datesStr}`;
 
-                        // ADDED data-qid HERE
                         html += `<div class="day-cell ${diffClass}" title="${tooltip}" data-qid="${qId}">
                                     <a href="${leetcodeLink}" target="_blank" class="day-number">${day}</a>
                                     <a href="${githubLink}" target="_blank" class="occ-count">${meta.count}</a>
@@ -475,51 +580,69 @@
         }
 
         // --- FILTERING AND LOCKING LOGIC ---
-        function setupInteractions() {
+        let lockedQId = null; 
+        
+        function applyLockAndFilter(qId, targetElement, idToTitleMap) {
+            lockedQId = qId;
+
+            clearHighlights(); 
+            
+            const matches = document.querySelectorAll(`.day-cell[data-qid="${qId}"]`);
+            
+            matches.forEach((el, index) => {
+                if (targetElement && el === targetElement) {
+                    el.classList.add('highlight-clicked-active'); 
+                } else if (!targetElement && index === 0) {
+                     el.classList.add('highlight-clicked-active');
+                } else {
+                    el.classList.add('highlight-related'); 
+                }
+            });
+
+            document.querySelectorAll('.month-card').forEach(card => {
+                if (!card.querySelector(`.day-cell[data-qid="${qId}"]`)) {
+                    card.classList.add('hidden');
+                }
+            });
+
+            const input = document.getElementById('search-input');
+            const clearBtn = document.getElementById('search-clear');
+            
+            if (qId && idToTitleMap) {
+                const title = idToTitleMap[qId] || '';
+                input.value = '';
+                input.placeholder = `#${qId} - ${title}`;
+                input.classList.add('selected');
+                clearBtn.style.display = 'block';
+            }
+        }
+
+        function clearHighlights() {
+            lockedQId = null;
+
+            document.querySelectorAll('.highlight-clicked-active, .highlight-related').forEach(el => {
+                el.classList.remove('highlight-clicked-active', 'highlight-related');
+            });
+            document.querySelectorAll('.month-card').forEach(el => {
+                el.classList.remove('hidden');
+            });
+
+            const input = document.getElementById('search-input');
+            const clearBtn = document.getElementById('search-clear');
+            
+            input.placeholder = "Search problems (e.g. 'Two Sum')...";
+            input.classList.remove('selected');
+            input.value = '';
+            clearBtn.style.display = 'none';
+        }
+
+        function setupInteractions(idToTitleMap) {
             const container = document.getElementById('calendar');
-            let lockedQId = null; 
 
-            const clearHighlights = () => {
-                // Clear highlight classes
-                document.querySelectorAll('.highlight-clicked-active, .highlight-related').forEach(el => {
-                    el.classList.remove('highlight-clicked-active', 'highlight-related');
-                });
-                // Unhide all months
-                document.querySelectorAll('.month-card').forEach(el => {
-                    el.classList.remove('hidden');
-                });
-            };
+            // 1. Hover - Only do visual scale (css), no dotted border
+            // (Previous dotted logic removed to fix "moving" highlights)
 
-            // 1. Mouse Over (HOVER)
-            container.addEventListener('mouseover', function(e) {
-                if (lockedQId) return; // Locked? Ignore hover.
-
-                const target = e.target.closest('.day-cell');
-                if (target && target.dataset.qid) {
-                    const qId = target.dataset.qid;
-                    // Apply DOTTED to all matches EXCEPT target
-                    document.querySelectorAll(`.day-cell[data-qid="${qId}"]`).forEach(el => {
-                        if (el !== target) {
-                            el.classList.add('highlight-related');
-                        }
-                    });
-                }
-            });
-
-            // 2. Mouse Out
-            container.addEventListener('mouseout', function(e) {
-                if (lockedQId) return; // Locked? Ignore mouseout.
-
-                const target = e.target.closest('.day-cell');
-                if (target && target.dataset.qid) {
-                    // Just clear classes, don't unhide months (months are only hidden on lock)
-                     document.querySelectorAll('.highlight-related').forEach(el => {
-                        el.classList.remove('highlight-related');
-                     });
-                }
-            });
-
-            // 3. Click (LOCKING & FILTERING)
+            // 2. Click (Locking)
             const handleClick = (e) => {
                 const target = e.target.closest('.day-cell');
                 
@@ -529,52 +652,75 @@
 
                 const qId = target.dataset.qid;
 
-                // --- CASE A: FIRST CLICK (LOCK) ---
                 if (lockedQId !== qId) {
-                    // Prevent link navigation on first click
                     e.preventDefault(); 
                     e.stopPropagation();
-
-                    lockedQId = qId;
-
-                    // 1. Reset everything
-                    clearHighlights(); 
-                    
-                    // 2. Highlight Matches
-                    const matches = document.querySelectorAll(`.day-cell[data-qid="${qId}"]`);
-                    matches.forEach(el => {
-                        if (el === target) {
-                            el.classList.add('highlight-clicked-active'); // Solid Black
-                        } else {
-                            el.classList.add('highlight-related'); // Dotted Black
-                        }
-                    });
-
-                    // 3. Filter Months
-                    // We need to find which months contain this ID
-                    // A month contains the ID if it contains a cell with that data-qid
-                    document.querySelectorAll('.month-card').forEach(card => {
-                        if (!card.querySelector(`.day-cell[data-qid="${qId}"]`)) {
-                            card.classList.add('hidden');
-                        }
-                    });
+                    applyLockAndFilter(qId, target, idToTitleMap);
                 } 
-                // --- CASE B: SECOND CLICK (NAVIGATE) ---
-                else {
-                    // Do nothing, let the <a> tag inside handle the navigation normally
-                    // user is clicking the same task again
-                }
             };
 
-            // Using Click here to properly intercept link navigation
             container.addEventListener('click', handleClick);
 
-            // 4. Click Outside to Unlock
             document.body.addEventListener('click', function(e) {
-                if (!e.target.closest('.day-cell')) {
-                    lockedQId = null;
+                if (!e.target.closest('.day-cell') && !e.target.closest('.search-wrapper')) {
                     clearHighlights();
+                    document.getElementById('search-results').style.display = 'none';
                 }
+            });
+        }
+
+        // --- SEARCH FUNCTIONALITY ---
+        function setupSearch(index, idToTitleMap) {
+            const input = document.getElementById('search-input');
+            const resultsDiv = document.getElementById('search-results');
+            const clearBtn = document.getElementById('search-clear');
+
+            input.addEventListener('input', function(e) {
+                const query = e.target.value.toLowerCase().trim();
+                
+                if (query.length > 0) {
+                    clearBtn.style.display = 'block';
+                } else {
+                    if (!lockedQId) clearBtn.style.display = 'none';
+                }
+
+                if (query.length === 0) {
+                    resultsDiv.style.display = 'none';
+                    return;
+                }
+
+                const matches = index
+                    .filter(item => item.searchStr.includes(query))
+                    .sort((a, b) => a.id - b.id)
+                    .slice(0, 10);
+
+                if (matches.length > 0) {
+                    let html = '';
+                    matches.forEach(item => {
+                        html += `<div class="search-item" data-qid="${item.idStr}">
+                                    <span class="id">#${item.id}</span>
+                                    <span class="title">${item.title}</span>
+                                 </div>`;
+                    });
+                    resultsDiv.innerHTML = html;
+                    resultsDiv.style.display = 'block';
+                } else {
+                    resultsDiv.style.display = 'none';
+                }
+            });
+
+            resultsDiv.addEventListener('click', function(e) {
+                const item = e.target.closest('.search-item');
+                if (item) {
+                    const qId = item.dataset.qid; 
+                    applyLockAndFilter(qId, null, idToTitleMap); 
+                    resultsDiv.style.display = 'none';
+                }
+            });
+
+            clearBtn.addEventListener('click', function(e) {
+                clearHighlights();
+                document.getElementById('search-results').style.display = 'none';
             });
         }
     </script>

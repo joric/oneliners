@@ -100,7 +100,13 @@
         }
 
         .search-item:last-child { border-bottom: none; }
-        .search-item:hover { background: #f4f6f8; }
+        
+        /* Active state for keyboard navigation */
+        .search-item.active,
+        .search-item:hover { 
+            background: #f4f6f8; 
+        }
+        
         .search-item .id { color: #888; font-size: 0.9em; margin-right: 10px; min-width: 40px; text-align: right; }
         .search-item .title { font-weight: 500; color: #333; }
 
@@ -128,7 +134,7 @@
         /* --- Calendar Grid System --- */
         .calendar-grid { 
             display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
+            grid-template-columns: repeat(3, 1fr); /* 3 items per row */
             gap: 20px; 
             transition: all 0.3s ease;
         }
@@ -171,7 +177,6 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.15); 
         }
 
-        /* Dotted border for related items */
         .day-cell.highlight-related {
             transform: scale(1.1) !important;
             z-index: 10 !important;
@@ -180,7 +185,6 @@
             box-shadow: none !important;
         }
 
-        /* Solid border for the specific clicked item */
         .day-cell.highlight-clicked-active {
             transform: scale(1.15) !important;
             z-index: 20 !important;
@@ -439,9 +443,9 @@
         }
 
         function renderSummary(countAtMax, maxFreq, totalDays, uniqueQuestions, avgRecur) {
-            const html = `Out of ${totalDays} total days, there were ${uniqueQuestions} unique questions.
+            const html = `Out of ${totalDays} total days, there were ${uniqueQuestions} unique questions.<br>
                           ${countAtMax} questions appeared ${maxFreq} times.<br>
-                          Average time between reoccurrences: ${avgRecur} days.
+                          Average time between reoccurrences: ${avgRecur} days.<br>
                           ${getLeetCodeTime()} total.`;
 
             document.getElementById('summary').innerHTML = html;
@@ -643,7 +647,6 @@
                 const targetCell = e.target.closest('.day-cell');
                 const isLink = e.target.tagName === 'A';
 
-                // 1. If clicking outside a valid cell, allow it (body handler will clear selection if needed)
                 if (!targetCell || !targetCell.dataset.qid) {
                     return; 
                 }
@@ -651,26 +654,24 @@
                 const qId = targetCell.dataset.qid;
                 const isSelected = targetCell.classList.contains('highlight-clicked-active');
 
-                // 2. Logic to handle link clicks vs cell selections
+                // Logic for Links vs Cell Selection
                 if (isLink) {
                     if (isSelected) {
-                        // If cell is already solidly selected, ALLOW link navigation
-                        return; 
+                        // ALLOW link logic to proceed (don't preventDefault)
+                        return;
                     } else {
-                        // If cell is not yet selected (or dotted), PREVENT link, select cell instead
+                        // Link clicked on non-active cell -> Select cell, Prevent navigation
                         e.preventDefault();
                         e.stopPropagation();
                         applyLockAndFilter(qId, targetCell, idToTitleMap);
                     }
                 } else {
-                    // Clicked on the cell background (not a link)
+                    // Click on background
                     if (!isSelected || lockedQId !== qId) {
-                        // Select it
                         e.preventDefault(); 
                         e.stopPropagation();
                         applyLockAndFilter(qId, targetCell, idToTitleMap);
                     }
-                    // If already selected and clicked background, do nothing (maintain selection)
                 }
             };
 
@@ -689,9 +690,31 @@
             const input = document.getElementById('search-input');
             const resultsDiv = document.getElementById('search-results');
             const clearBtn = document.getElementById('search-clear');
+            let currentFocus = -1;
+
+            const closeAllLists = () => {
+                currentFocus = -1;
+                resultsDiv.style.display = 'none';
+            };
+
+            const addActive = (items) => {
+                if (!items) return false;
+                removeActive(items);
+                if (currentFocus >= items.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (items.length - 1);
+                items[currentFocus].classList.add("active");
+                items[currentFocus].scrollIntoView({ block: 'nearest' });
+            };
+
+            const removeActive = (items) => {
+                for (let i = 0; i < items.length; i++) {
+                    items[i].classList.remove("active");
+                }
+            };
 
             input.addEventListener('input', function(e) {
                 const query = e.target.value.toLowerCase().trim();
+                currentFocus = -1;
                 
                 if (query.length > 0) {
                     clearBtn.style.display = 'block';
@@ -700,7 +723,7 @@
                 }
 
                 if (query.length === 0) {
-                    resultsDiv.style.display = 'none';
+                    closeAllLists();
                     return;
                 }
 
@@ -720,7 +743,24 @@
                     resultsDiv.innerHTML = html;
                     resultsDiv.style.display = 'block';
                 } else {
-                    resultsDiv.style.display = 'none';
+                    closeAllLists();
+                }
+            });
+
+            // Keyboard Navigation
+            input.addEventListener("keydown", function(e) {
+                let items = resultsDiv.getElementsByClassName("search-item");
+                if (e.key === "ArrowDown") {
+                    currentFocus++;
+                    addActive(items);
+                } else if (e.key === "ArrowUp") {
+                    currentFocus--;
+                    addActive(items);
+                } else if (e.key === "Enter") {
+                    e.preventDefault();
+                    if (currentFocus > -1) {
+                        if (items) items[currentFocus].click();
+                    }
                 }
             });
 
@@ -729,13 +769,13 @@
                 if (item) {
                     const qId = item.dataset.qid; 
                     applyLockAndFilter(qId, null, idToTitleMap); 
-                    resultsDiv.style.display = 'none';
+                    closeAllLists();
                 }
             });
 
             clearBtn.addEventListener('click', function(e) {
                 clearHighlights();
-                document.getElementById('search-results').style.display = 'none';
+                closeAllLists();
             });
         }
     </script>

@@ -50,9 +50,24 @@
             display: grid; 
             grid-template-columns: repeat(3, 1fr); 
             gap: 20px; 
+            transition: all 0.3s ease;
         }
         
-        .month-card { background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); overflow: hidden; display: flex; flex-direction: column; }
+        .month-card { 
+            background: white; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column; 
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        /* HIDDEN STATE FOR MONTHS */
+        .month-card.hidden {
+            display: none;
+        }
+
         .month-header { background: #2c3e50; color: white; padding: 15px; text-align: center; font-weight: bold; font-size: 1.1em; }
         .days-container { display: grid; grid-template-columns: repeat(7, 1fr); padding: 10px; gap: 2px; }
         .day-name { text-align: center; font-size: 0.85em; color: #777; padding-bottom: 10px; font-weight: 600; }
@@ -78,26 +93,20 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.15); 
         }
 
-        /* 
-           1. HOVER/CLICKED RELATED: Dotted Black Border 
-           Applied to corresponding tasks on HOVER and CLICK.
-        */
+        /* 1. RELATED: Dotted Black Border */
         .day-cell.highlight-related {
             transform: scale(1.1) !important;
             z-index: 10 !important;
-            border: 3px dotted #000 !important; /* Dotted Black */
+            border: 3px dotted #000 !important; 
             filter: brightness(1.05);
             box-shadow: none !important;
         }
 
-        /* 
-           2. CLICKED TARGET: Solid Black Border 
-           Only applied to the specific cell you CLICKED.
-        */
+        /* 2. CLICKED TARGET: Solid Black Border */
         .day-cell.highlight-clicked-active {
             transform: scale(1.15) !important;
             z-index: 20 !important;
-            border: 3px solid #000 !important; /* Solid Black */
+            border: 3px solid #000 !important; 
             filter: brightness(1.1);
             box-shadow: none !important; 
         }
@@ -465,28 +474,31 @@
             });
         }
 
-        // --- UPDATED INTERACTION LOGIC ---
+        // --- FILTERING AND LOCKING LOGIC ---
         function setupInteractions() {
             const container = document.getElementById('calendar');
             let lockedQId = null; 
 
             const clearHighlights = () => {
+                // Clear highlight classes
                 document.querySelectorAll('.highlight-clicked-active, .highlight-related').forEach(el => {
                     el.classList.remove('highlight-clicked-active', 'highlight-related');
+                });
+                // Unhide all months
+                document.querySelectorAll('.month-card').forEach(el => {
+                    el.classList.remove('hidden');
                 });
             };
 
             // 1. Mouse Over (HOVER)
-            //    If NOT locked: apply DOTTED to all others, keep target clean (just scale via CSS)
             container.addEventListener('mouseover', function(e) {
-                if (lockedQId) return; // If locked, don't change anything on hover
+                if (lockedQId) return; // Locked? Ignore hover.
 
                 const target = e.target.closest('.day-cell');
                 if (target && target.dataset.qid) {
                     const qId = target.dataset.qid;
-                    // Apply DOTTED to all matches...
+                    // Apply DOTTED to all matches EXCEPT target
                     document.querySelectorAll(`.day-cell[data-qid="${qId}"]`).forEach(el => {
-                        // ...EXCEPT the one we are hovering
                         if (el !== target) {
                             el.classList.add('highlight-related');
                         }
@@ -496,16 +508,19 @@
 
             // 2. Mouse Out
             container.addEventListener('mouseout', function(e) {
-                if (lockedQId) return;
+                if (lockedQId) return; // Locked? Ignore mouseout.
 
                 const target = e.target.closest('.day-cell');
                 if (target && target.dataset.qid) {
-                    clearHighlights();
+                    // Just clear classes, don't unhide months (months are only hidden on lock)
+                     document.querySelectorAll('.highlight-related').forEach(el => {
+                        el.classList.remove('highlight-related');
+                     });
                 }
             });
 
-            // 3. Click / Touch (LOCK)
-            const handleLock = (e) => {
+            // 3. Click (LOCKING & FILTERING)
+            const handleClick = (e) => {
                 const target = e.target.closest('.day-cell');
                 
                 if (!target || !target.dataset.qid) {
@@ -513,29 +528,49 @@
                 }
 
                 const qId = target.dataset.qid;
-                lockedQId = qId;
 
-                // Clear previous state completely
-                clearHighlights(); 
-                
-                // Find all matches
-                const matches = document.querySelectorAll(`.day-cell[data-qid="${qId}"]`);
-                matches.forEach(el => {
-                    if (el === target) {
-                        // The clicked one gets SOLID BLACK
-                        el.classList.add('highlight-clicked-active');
-                    } else {
-                        // All others get DOTTED BLACK
-                        el.classList.add('highlight-related');
-                    }
-                });
+                // --- CASE A: FIRST CLICK (LOCK) ---
+                if (lockedQId !== qId) {
+                    // Prevent link navigation on first click
+                    e.preventDefault(); 
+                    e.stopPropagation();
+
+                    lockedQId = qId;
+
+                    // 1. Reset everything
+                    clearHighlights(); 
+                    
+                    // 2. Highlight Matches
+                    const matches = document.querySelectorAll(`.day-cell[data-qid="${qId}"]`);
+                    matches.forEach(el => {
+                        if (el === target) {
+                            el.classList.add('highlight-clicked-active'); // Solid Black
+                        } else {
+                            el.classList.add('highlight-related'); // Dotted Black
+                        }
+                    });
+
+                    // 3. Filter Months
+                    // We need to find which months contain this ID
+                    // A month contains the ID if it contains a cell with that data-qid
+                    document.querySelectorAll('.month-card').forEach(card => {
+                        if (!card.querySelector(`.day-cell[data-qid="${qId}"]`)) {
+                            card.classList.add('hidden');
+                        }
+                    });
+                } 
+                // --- CASE B: SECOND CLICK (NAVIGATE) ---
+                else {
+                    // Do nothing, let the <a> tag inside handle the navigation normally
+                    // user is clicking the same task again
+                }
             };
 
-            container.addEventListener('mousedown', handleLock);
-            container.addEventListener('touchstart', handleLock, { passive: true });
+            // Using Click here to properly intercept link navigation
+            container.addEventListener('click', handleClick);
 
             // 4. Click Outside to Unlock
-            document.body.addEventListener('mousedown', function(e) {
+            document.body.addEventListener('click', function(e) {
                 if (!e.target.closest('.day-cell')) {
                     lockedQId = null;
                     clearHighlights();

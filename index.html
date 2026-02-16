@@ -101,11 +101,8 @@
 
         .search-item:last-child { border-bottom: none; }
         
-        /* Active state for keyboard navigation */
         .search-item.active,
-        .search-item:hover { 
-            background: #f4f6f8; 
-        }
+        .search-item:hover { background: #f4f6f8; }
         
         .search-item .id { color: #888; font-size: 0.9em; margin-right: 10px; min-width: 40px; text-align: right; }
         .search-item .title { font-weight: 500; color: #333; }
@@ -134,7 +131,7 @@
         /* --- Calendar Grid System --- */
         .calendar-grid { 
             display: grid; 
-            grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+            grid-template-columns: repeat(3, 1fr); 
             gap: 20px; 
             transition: all 0.3s ease;
         }
@@ -323,6 +320,7 @@
             
             const searchIndex = [];
             const seenInSearch = new Set();
+            const slugToIdMap = {}; // New Map for slugs
 
             rows.forEach(row => {
                 if (!row.date) return;
@@ -354,6 +352,11 @@
 
                 if (!seenInSearch.has(qId)) {
                     seenInSearch.add(qId);
+                    // Build Slug map
+                    if (row.titleSlug) {
+                        slugToIdMap[row.titleSlug] = qId;
+                    }
+                    
                     searchIndex.push({
                         id: parseInt(qId),
                         idStr: qId,
@@ -413,11 +416,24 @@
             renderCharts(diffCounts, freqCounts, heatmapPercents, recurTimes);
             renderCalendar(calendarData, questionMeta);
             
-            const idToTitleMap = {};
-            searchIndex.forEach(x => idToTitleMap[x.idStr] = x.title);
+            // Build full data map for search/interaction
+            const taskDataMap = {}; // Maps ID -> {title, slug}
+            searchIndex.forEach(x => taskDataMap[x.idStr] = x);
 
-            setupInteractions(idToTitleMap); 
-            setupSearch(searchIndex, idToTitleMap);
+            setupInteractions(taskDataMap); 
+            setupSearch(searchIndex, taskDataMap);
+
+            // Handle Page Load Hash
+            if (window.location.hash) {
+                const slug = window.location.hash.substring(1);
+                if (slugToIdMap[slug]) {
+                    const qId = slugToIdMap[slug];
+                    // Delay slightly to ensure rendering complete
+                    setTimeout(() => {
+                        applyLockAndFilter(qId, null, taskDataMap);
+                    }, 100);
+                }
+            }
 
             requestAnimationFrame(() => {
                 ['pieChart', 'freqChart', 'heatmapChart', 'recurChart'].forEach(id => {
@@ -586,10 +602,10 @@
         // --- FILTERING AND LOCKING LOGIC ---
         let lockedQId = null; 
         
-        function applyLockAndFilter(qId, targetElement, idToTitleMap) {
+        function applyLockAndFilter(qId, targetElement, taskDataMap) {
             lockedQId = qId;
 
-            clearHighlights(); 
+            clearHighlights(false); // Clear visuals only, don't clear URL yet
             
             const matches = document.querySelectorAll(`.day-cell[data-qid="${qId}"]`);
             
@@ -612,16 +628,21 @@
             const input = document.getElementById('search-input');
             const clearBtn = document.getElementById('search-clear');
             
-            if (qId && idToTitleMap) {
-                const title = idToTitleMap[qId] || '';
+            const taskData = taskDataMap[qId];
+            if (taskData) {
                 input.value = '';
-                input.placeholder = `#${qId} - ${title}`;
+                input.placeholder = `#${qId} - ${taskData.title}`;
                 input.classList.add('selected');
                 clearBtn.style.display = 'block';
+                
+                // Update URL Hash
+                if (taskData.slug) {
+                    window.location.hash = taskData.slug;
+                }
             }
         }
 
-        function clearHighlights() {
+        function clearHighlights(updateUrl = true) {
             lockedQId = null;
 
             document.querySelectorAll('.highlight-clicked-active, .highlight-related').forEach(el => {
@@ -638,9 +659,14 @@
             input.classList.remove('selected');
             input.value = '';
             clearBtn.style.display = 'none';
+
+            if (updateUrl) {
+                // Remove hash without page reload
+                history.pushState("", document.title, window.location.pathname + window.location.search);
+            }
         }
 
-        function setupInteractions(idToTitleMap) {
+        function setupInteractions(taskDataMap) {
             const container = document.getElementById('calendar');
 
             const handleClick = (e) => {
@@ -654,23 +680,19 @@
                 const qId = targetCell.dataset.qid;
                 const isSelected = targetCell.classList.contains('highlight-clicked-active');
 
-                // Logic for Links vs Cell Selection
                 if (isLink) {
                     if (isSelected) {
-                        // ALLOW link logic to proceed (don't preventDefault)
-                        return;
+                        return; // Allow link
                     } else {
-                        // Link clicked on non-active cell -> Select cell, Prevent navigation
                         e.preventDefault();
                         e.stopPropagation();
-                        applyLockAndFilter(qId, targetCell, idToTitleMap);
+                        applyLockAndFilter(qId, targetCell, taskDataMap);
                     }
                 } else {
-                    // Click on background
                     if (!isSelected || lockedQId !== qId) {
                         e.preventDefault(); 
                         e.stopPropagation();
-                        applyLockAndFilter(qId, targetCell, idToTitleMap);
+                        applyLockAndFilter(qId, targetCell, taskDataMap);
                     }
                 }
             };
@@ -686,7 +708,7 @@
         }
 
         // --- SEARCH FUNCTIONALITY ---
-        function setupSearch(index, idToTitleMap) {
+        function setupSearch(index, taskDataMap) {
             const input = document.getElementById('search-input');
             const resultsDiv = document.getElementById('search-results');
             const clearBtn = document.getElementById('search-clear');
@@ -747,7 +769,6 @@
                 }
             });
 
-            // Keyboard Navigation
             input.addEventListener("keydown", function(e) {
                 let items = resultsDiv.getElementsByClassName("search-item");
                 if (e.key === "ArrowDown") {
@@ -768,7 +789,7 @@
                 const item = e.target.closest('.search-item');
                 if (item) {
                     const qId = item.dataset.qid; 
-                    applyLockAndFilter(qId, null, idToTitleMap); 
+                    applyLockAndFilter(qId, null, taskDataMap); 
                     closeAllLists();
                 }
             });

@@ -12,20 +12,6 @@ class Solution:
         res = ((res & 0xaaaaaaaa) >> 1) | ((res & 0x55555555) << 1)
         return res & 0xFFFFFFFF
 
-# https://leetcode.com/problems/reverse-bits/solutions/2888999/one-line-solution-python3-by-mpranay2017-zi0e/?envType=daily-question&envId=2026-02-16
-
-class Solution:
-    def reverseBits(self, n: int) -> int:
-        return int(bin(n)[2:].zfill(32)[::-1],2)
-
-class Solution:
-    def reverseBits(self, n: int) -> int:
-        return int('{:0>32b}'.format(n)[::-1],2)
-
-class Solution:
-    def reverseBits(self, n: int) -> int:
-        return int(f'{n:0>32b}'[::-1],2)
-
 # https://leetcode.com/problems/reverse-bits/solutions/5009425/one-line-solution-by-mikposp-11sv/?envType=daily-question&envId=2026-02-16
 
 class Solution:

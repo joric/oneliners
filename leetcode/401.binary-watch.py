@@ -8,7 +8,7 @@ class Solution:
 
 class Solution:
     def readBinaryWatch(self, t: int) -> List[str]:
-        return[f"{h}:{m:02}"for h in range(12)for m in range(60)if(h*64+m).bit_count()==t]
+        return[f'{h}:{m:02}'for h in range(12)for m in range(60)if(h*64+m).bit_count()==t]
 
 test('''
 401. Binary Watch

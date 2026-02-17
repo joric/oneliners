@@ -10,6 +10,10 @@ class Solution:
     def readBinaryWatch(self, t: int) -> List[str]:
         return[f'{h}:{m:02}'for h in range(12)for m in range(60)if(h*64+m).bit_count()==t]
 
+class Solution:
+    def readBinaryWatch(self, t: int) -> List[str]:
+        return[f"{u}:{x%60:02}"for x in range(720)if(x+4*(u:=x//60)).bit_count()==t]
+
 test('''
 401. Binary Watch
 Easy

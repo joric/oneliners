@@ -122,6 +122,10 @@ def append_to_csv(filename, items):
     if not new_items:
         return
 
+    # print links
+    for item in new_items:
+        print(f"https://leetcode.com/problems/{item['titleSlug']}")
+
     with open(filename, 'a', newline='', encoding='utf-8') as f:
         writer = csv.DictWriter(f, fieldnames=FIELDNAMES)
         if not file_exists:

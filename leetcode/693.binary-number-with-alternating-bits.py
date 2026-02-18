@@ -1,5 +1,27 @@
 from lc import *
 
+# https://leetcode.com/problems/binary-number-with-alternating-bits/solutions/5148860/one-line-solution-by-mikposp-6w67/
+
+class Solution:
+    def hasAlternatingBits(self, v: int) -> bool:
+        return f'{v:b}'in'01'*16
+
+class Solution:
+    def hasAlternatingBits(self, v: int) -> bool:
+        return not search(r'(.)\1',bin(v))
+
+class Solution:
+    def hasAlternatingBits(self, v: int) -> bool:
+        return all(starmap(ne,pairwise(bin(v))))
+
+class Solution:
+    def hasAlternatingBits(self, v: int) -> bool:
+        return(q:=v>>1^v)&q+1==0
+
+class Solution:
+    def hasAlternatingBits(self, v: int) -> bool:
+        return 2**v.bit_length()-1^v==v>>1
+
 # https://leetcode.com/problems/binary-number-with-alternating-bits/solutions/108427/oneliners-c-java-ruby-python-by-stefanpo-2blp/?envType=daily-question&envId=2026-02-18
 
 class Solution:

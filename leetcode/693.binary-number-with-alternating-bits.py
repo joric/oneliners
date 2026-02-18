@@ -4,11 +4,19 @@ from lc import *
 
 class Solution:
     def hasAlternatingBits(self, n: int) -> bool:
+        return(n:=n^n//2)&n+1<1
+
+class Solution:
+    def hasAlternatingBits(self, n: int) -> bool:
         n^=n//4;return n&n-1<1
 
 class Solution:
     def hasAlternatingBits(self, n: int) -> bool:
         n^=n//2;return n&n+1<1
+
+class Solution:
+    def hasAlternatingBits(self, n: int) -> bool:
+        return(n^n//2)+1&n<1
 
 test('''
 693. Binary Number with Alternating Bits
@@ -36,7 +44,12 @@ Example 3:
 Input: n = 11
 Output: false
 Explanation: The binary representation of 11 is: 1011.
- 
+
+Other examples:
+
+Input: n = 4
+Output: false
+
 
 Constraints:
 

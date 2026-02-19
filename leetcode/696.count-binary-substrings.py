@@ -35,6 +35,10 @@ class Solution:
     def countBinarySubstrings(self, s: str) -> int:
         return sum(map(min,pairwise(map(len,findall(r'0+|1+',s)))))
 
+class Solution:
+    def countBinarySubstrings(self, s: str) -> int:
+        return sum(map(min,pairwise(map(len,findall('0+|1+',s)))))
+
 test('''
 696. Count Binary Substrings
 Solved

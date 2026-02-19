@@ -2149,3 +2149,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-02-16,reverse-bits,190,Reverse Bits,Easy,66.0
 2026-02-17,binary-watch,401,Binary Watch,Easy,59.8
 2026-02-18,binary-number-with-alternating-bits,693,Binary Number with Alternating Bits,Easy,64.1
+2026-02-19,count-binary-substrings,696,Count Binary Substrings,Easy,67.5

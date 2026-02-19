@@ -47,11 +47,7 @@ class Solution:
 
 class Solution:
     def makeLargestSpecial(self, s: str) -> str:
-        return(f:=lambda s,c=0,i=0:''.join(sorted(('1'+f(s[i+1:j])+'0',i:=j+1)[0]for j,v in enumerate(s)if not(c:=c+(v<'1')*2-1))[::-1]))(s)
-
-class Solution:
-    def makeLargestSpecial(self, s: str) -> str:
-        return(f:=lambda s,c=0,i=0:''.join(sorted(f'1{f(s[i+1:(i:=j+1)-1])}0'for j,v in enumerate(s)if not(c:=c+.5-int(v)))[::-1]))(s)
+        return(f:=lambda s,c=0,i=0:''.join(sorted(f'1{f(s[i+1:(i:=j+1)-1])}0'for j,v in enumerate(s)if(c:=c+int(v)*2-1)<1)[::-1]))(s)
 
 test('''
 761. Special Binary String

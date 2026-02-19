@@ -34,6 +34,8 @@ class Solution:
     def countBinarySubstrings(self, s: str) -> int:
         return sum(map(min,pairwise(map(len,findall(r'0+|1+',s)))))
 
+# https://leetcode.com/problems/count-binary-substrings/solutions/108604/1-liners-by-stefanpochmann/
+
 # POTD 2026-02-19
 
 class Solution:

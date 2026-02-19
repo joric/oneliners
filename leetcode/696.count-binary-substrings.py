@@ -24,8 +24,7 @@ class Solution:
 
 class Solution:
     def countBinarySubstrings(self, s: str) -> int:
-        return sum(map(min,pairwise(
-            map(len,s.replace('01','0 1').replace('10','1 0').split()))))
+        return sum(map(min,pairwise(map(len,s.replace('01','0 1').replace('10','1 0').split()))))
 
 class Solution:
     def countBinarySubstrings(self, s: str) -> int:
@@ -34,6 +33,12 @@ class Solution:
 class Solution:
     def countBinarySubstrings(self, s: str) -> int:
         return sum(map(min,pairwise(map(len,findall(r'0+|1+',s)))))
+
+# POTD 2026-02-19
+
+class Solution:
+    def countBinarySubstrings(self, s: str) -> int:
+        return sum(s.count('0'*i+'1'*i)+s.count('1'*i+'0'*i)for i in range(1,len(s)))
 
 class Solution:
     def countBinarySubstrings(self, s: str) -> int:

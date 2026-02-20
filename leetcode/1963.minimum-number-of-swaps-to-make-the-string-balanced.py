@@ -46,6 +46,10 @@ class Solution:
     def minSwaps(self, s: str) -> int:
         m=1;[m:=m+((0,-1)[m>1],1)[c=='[']for c in s];return m//2
 
+class Solution:
+    def minSwaps(self, s: str) -> int:
+        m=1;[m:=m-(m>1,-1)[c<']']for c in s];return m//2
+
 test('''
 1963. Minimum Number of Swaps to Make the String Balanced
 Medium

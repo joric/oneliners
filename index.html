@@ -97,6 +97,7 @@
             transition: background 0.2s;
             display: flex;
             align-items: center;
+            justify-content: space-between;
         }
 
         .search-item:last-child { border-bottom: none; }
@@ -105,7 +106,8 @@
         .search-item:hover { background: #f4f6f8; }
         
         .search-item .id { color: #888; font-size: 0.9em; margin-right: 10px; min-width: 40px; text-align: right; }
-        .search-item .title { font-weight: 500; color: #333; }
+        .search-item .title { font-weight: 500; color: #333; flex: 1; }
+        .search-item .count { color: #888; font-size: 0.9em; text-align: right; }
 
         /* --- Chart Grid System --- */
         .stats-grid { 
@@ -362,7 +364,8 @@
                         idStr: qId,
                         title: row.title,
                         slug: row.titleSlug,
-                        searchStr: (qId + " " + row.title + " " + row.titleSlug).toLowerCase()
+                        searchStr: (qId + " " + row.title + " " + row.titleSlug).toLowerCase(),
+                        get count() { return questionMeta[qId]?.count ?? 0; },
                     });
                 }
 
@@ -784,6 +787,7 @@
                         html += `<div class="search-item" data-qid="${item.idStr}">
                                     <span class="id">#${item.id}</span>
                                     <span class="title">${item.title}</span>
+                                    <span class="count">${item.count}</span>
                                  </div>`;
                     });
                     resultsDiv.innerHTML = html;

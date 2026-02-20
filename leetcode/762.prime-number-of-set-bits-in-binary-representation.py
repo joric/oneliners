@@ -29,7 +29,7 @@ class Solution:
 
 class Solution:
     def countPrimeSetBits(self, l: int, r: int) -> int:
-        return sum(i.bit_count()in(2,3,5,7,11,13,17,19)for i in range(l,r+1))
+        return sum(i.bit_count()in{2,3,5,7,11,13,17,19}for i in range(l,r+1))
 
 test('''
 762. Prime Number of Set Bits in Binary Representation

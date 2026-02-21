@@ -31,6 +31,8 @@ class Solution:
     def countPrimeSetBits(self, l: int, r: int) -> int:
         return sum(i.bit_count()in{2,3,5,7,11,13,17,19}for i in range(l,r+1))
 
+# https://leetcode.com/problems/prime-number-of-set-bits-in-binary-representation/solutions/113232/665772-by-stefanpochmann-sli1/
+
 class Solution:
     def countPrimeSetBits(self, l: int, r: int) -> int:
         return sum(665772>>i.bit_count()&1for i in range(l,r+1))

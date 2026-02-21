@@ -2151,3 +2151,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-02-18,binary-number-with-alternating-bits,693,Binary Number with Alternating Bits,Easy,64.1
 2026-02-19,count-binary-substrings,696,Count Binary Substrings,Easy,67.5
 2026-02-20,special-binary-string,761,Special Binary String,Hard,66.2
+2026-02-21,prime-number-of-set-bits-in-binary-representation,762,Prime Number of Set Bits in Binary Representation,Easy,73.3

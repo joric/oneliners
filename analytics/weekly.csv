@@ -328,3 +328,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-02-01,design-hit-counter,362,Design Hit Counter,Medium,69.6
 2026-02-08,4-keys-keyboard,651,4 Keys Keyboard,Medium,56.5
 2026-02-15,valid-word-square,422,Valid Word Square,Easy,42.4
+2026-02-22,rearrange-string-k-distance-apart,358,Rearrange String k Distance Apart,Hard,39.6

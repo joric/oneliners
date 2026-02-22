@@ -44,7 +44,7 @@ class Solution:
 
 class Solution:
     def hasAllCodes(self, s: str, k: int) -> bool:
-        return 0<len({*zip(*[s[i:]for i in range(k)])})>>k
+        return len({*zip(*[s[i:]for i in range(k)])})>>k>0
 
 test('''
 1461. Check If a String Contains All Binary Codes of Size K

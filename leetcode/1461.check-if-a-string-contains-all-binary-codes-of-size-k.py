@@ -1,46 +1,6 @@
 from lc import *
 
-# https://leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k/solutions/4016389/python-bitwise-manipulation-no-set-requi-q241/?envType=daily-question&envId=2026-02-23
-
-class Solution:
-    def hasAllCodes(self, s: str, k: int) -> bool:
-        m = 0
-        t = 1 << k
-        for i in range(len(s)-k+1):
-            x = int(s[i:i+k],2)
-            if x<t:
-                m |= 1<<x
-        return m==(1<<t)-1
-
-# https://leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k/description/?envType=daily-question&envId=2026-02-23
-
-class Solution(object):
-    def hasAllCodes(self, s, k):
-        return len(reduce(lambda a,i:(a.add(s[i:i+k]),a)[1],range(len(s)-k+1),set()))==2**k
-
-# https://leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k/solutions/660655/python3-one-line-brute-force-by-ye15-qgat/?envType=daily-question&envId=2026-02-23
-
-class Solution:
-    def hasAllCodes(self, s: str, k: int) -> bool:
-        return all(bin(i)[2:].zfill(k) in s for i in range(2**k))
-
-# https://leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k/solutions/660610/python-1-line-by-auwdish-j17o/?envType=daily-question&envId=2026-02-23
-
-class Solution:
-    def hasAllCodes(self, s: str, k: int) -> bool:
-        return len({s[i:i+k]for i in range(len(s)-k+1)})==2**k
-
-class Solution: # TLE
-    def hasAllCodes(self, s: str, k: int) -> bool:
-        return all(f'{i:0{k}b}'in s for i in range(1<<k))
-
-class Solution:
-    def hasAllCodes(self, s: str, k: int) -> bool:
-        return len({s[i:i+k]for i in range(len(s)-k+1)})==1<<k
-
-class Solution:
-    def hasAllCodes(self, s: str, k: int) -> bool:
-        return len({*zip(*[s[i:]for i in range(k)])})==1<<k
+# https://leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k
 
 class Solution:
     def hasAllCodes(self, s: str, k: int) -> bool:

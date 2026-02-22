@@ -4,6 +4,14 @@ from lc import *
 
 class Solution:
     def hasAllCodes(self, s: str, k: int) -> bool:
+        return len({s[i:i+k]for i in range(len(s)-k+1)})==1<<k
+
+class Solution:
+    def hasAllCodes(self, s: str, k: int) -> bool:
+        return len({*zip(*[s[i:]for i in range(k)])})==1<<k
+
+class Solution:
+    def hasAllCodes(self, s: str, k: int) -> bool:
         return len({*zip(*[s[i:]for i in range(k)])})>>k>0
 
 test('''

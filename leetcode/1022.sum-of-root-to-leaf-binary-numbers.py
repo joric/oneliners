@@ -58,6 +58,9 @@ Output: 1
 Input: root = [1,1]
 Output: 3
 
+Input: root = [0,1,0,0,null,0,0,null,null,null,1,null,null,null,1]
+Output: 5
+
 Constraints:
 
 The number of nodes in the tree is in the range [1, 1000].

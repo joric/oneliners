@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/sort-integers-by-the-number-of-1-bits/?envType=daily-question&envId=2026-02-25
+
 class Solution:
     def sortByBits(self, a: List[int]) -> List[int]:
         return sorted(a,key=lambda x:(x.bit_count(),x))

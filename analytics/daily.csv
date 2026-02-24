@@ -2154,3 +2154,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-02-21,prime-number-of-set-bits-in-binary-representation,762,Prime Number of Set Bits in Binary Representation,Easy,73.3
 2026-02-22,binary-gap,868,Binary Gap,Easy,69.6
 2026-02-23,check-if-a-string-contains-all-binary-codes-of-size-k,1461,Check If a String Contains All Binary Codes of Size K,Medium,56.9
+2026-02-24,sum-of-root-to-leaf-binary-numbers,1022,Sum of Root To Leaf Binary Numbers,Easy,73.7

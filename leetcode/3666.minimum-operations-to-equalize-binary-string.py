@@ -41,7 +41,7 @@ class Solution:
 
 class Solution:
     def minOperations(self, s: str, k: int) -> int:
-        n=len(s);return+(z:=s.count('0'))and next((i for i in range(1,n+1)if z<=i*k<=n*i-(z,n-z)[i%2]and i*k%2==z%2),-1)
+        n=len(s);return(z:=s.count('0'))and next((i for i in range(1,n+1)if z<=i*k<=n*i-(z,n-z)[i%2]and i*k%2==z%2),-1)
 
 test('''
 3666. Minimum Operations to Equalize Binary String

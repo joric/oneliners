@@ -532,8 +532,15 @@
                 }
             }
 
+            const colorscale = [
+                [0.0, "#e0f2e9"],
+                [0.3, "#a0d0b0"],
+                [0.6, "#50b060"],
+                [1.0, "#208040"] 
+            ];
+
             Plotly.newPlot('heatmapChart', [{
-                z: heatmapPercents, x: days, y: diffs, type: 'heatmap', colorscale: 'Greens', showscale: true
+                z: heatmapPercents, x: days, y: diffs, type: 'heatmap', colorscale: colorscale, showscale: true
             }], { 
                 ...commonLayout, 
                 title: 'Difficulty Day Frequency (%)', 

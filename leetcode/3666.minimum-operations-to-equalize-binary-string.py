@@ -53,6 +53,10 @@ class Solution:
     def minOperations(self, s: str, k: int) -> int:
         n,z=len(s),s.count('0');return next((i for i in range(n+1)if(z<=i*k<=n*i-(z,n-z)[i%2])*~(i*k^z)%2),-1)
 
+class Solution:
+    def minOperations(self, s: str, k: int) -> int:
+        n,z=len(s),s.count('0');return next((i for i in range(n+1)if(z<=i*k<=n*i-(z,n-z)[i%2])>(i*k^z)%2),-1)
+
 test('''
 3666. Minimum Operations to Equalize Binary String
 Hard

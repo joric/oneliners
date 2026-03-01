@@ -23,6 +23,10 @@ class Solution:
 
 class Solution:
     def minSwaps(self, a: List[List[int]]) -> int:
+        return max(-1,sum(next((j-i for j in range(i,len(a))if not(any(a[j][i+1:])or a.insert(i,a.pop(j)))),-inf)for i in range(len(a))))
+
+class Solution:
+    def minSwaps(self, a: List[List[int]]) -> int:
         return max(-1,sum(next((k for k,r in enumerate(a[i:])if not(any(r[i+1:])or a.insert(i,a.pop(i+k)))),-inf)for i in range(len(a))))
 
 test('''

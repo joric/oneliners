@@ -2160,3 +2160,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-02-27,minimum-operations-to-equalize-binary-string,3666,Minimum Operations to Equalize Binary String,Hard,21.5
 2026-02-28,concatenation-of-consecutive-binary-numbers,1680,Concatenation of Consecutive Binary Numbers,Medium,56.9
 2026-03-01,partitioning-into-minimum-number-of-deci-binary-numbers,1689,Partitioning Into Minimum Number Of Deci-Binary Numbers,Medium,88.8
+2026-03-02,minimum-swaps-to-arrange-a-binary-grid,1536,Minimum Swaps to Arrange a Binary Grid,Medium,49.3

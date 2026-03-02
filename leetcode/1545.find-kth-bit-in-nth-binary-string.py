@@ -27,6 +27,12 @@ class Solution:
     def findKthBit(self, n: int, k: int) -> str:
         return str(k//(k&-k)>>1&1^k&1^1)
 
+# POTD 2026-03-03
+
+class Solution:
+    def findKthBit(self, n: int, k: int) -> str:
+        return str(k//(k&-k)>>1&1^~k&1)
+
 test('''
 1545. Find Kth Bit in Nth Binary String
 Medium

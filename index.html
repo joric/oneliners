@@ -291,6 +291,8 @@
         const GITHUB_BASE_URL = "https://github.com/joric/oneliners/blob/main/leetcode/";
         const DEFAULT_TITLE = "LeetCode Daily History";
 
+        document.body.style.display = 'none';
+
         document.addEventListener('DOMContentLoaded', () => {
             fetchData();
         });
@@ -302,6 +304,7 @@
                 skipEmptyLines: true,
                 complete: function(results) {
                     processData(results.data);
+                    document.body.style.display = 'block';
                 },
                 error: function(err) {
                     document.getElementById('loading').textContent = "Error loading CSV: " + err.message;

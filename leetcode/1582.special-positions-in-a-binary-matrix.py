@@ -30,7 +30,7 @@ class Solution:
 
 class Solution:
     def numSpecial(self, m: List[List[int]]) -> int:
-        return sum(sum(с)==1==sum(m[с.index(1)])for с in zip(*m))
+        return sum(sum(c)==1==sum(m[c.index(1)])for c in zip(*m))
 
 test('''
 1582. Special Positions in a Binary Matrix

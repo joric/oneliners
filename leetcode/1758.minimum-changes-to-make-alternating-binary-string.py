@@ -18,6 +18,16 @@ class Solution:
     def minOperations(self, s: str) -> int:
         return min(n:=sum(map(eq,s,cycle('01'))),len(s)-n)
 
+class Solution:
+    def minOperations(self, s: str) -> int:
+        return min(n:=sum(map(eq,s,'01'*len(s))),len(s)-n)
+
+# POTD 2026-03-05
+
+class Solution:
+    def minOperations(self, s: str) -> int:
+        return min(n:=sum(map(eq,s,'01'*9999)),len(s)-n)
+
 test('''
 1758. Minimum Changes To Make Alternating Binary String
 Easy

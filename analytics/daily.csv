@@ -2164,3 +2164,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-03-03,find-kth-bit-in-nth-binary-string,1545,Find Kth Bit in Nth Binary String,Medium,70.6
 2026-03-04,special-positions-in-a-binary-matrix,1582,Special Positions in a Binary Matrix,Easy,68.8
 2026-03-05,minimum-changes-to-make-alternating-binary-string,1758,Minimum Changes To Make Alternating Binary String,Easy,63.8
+2026-03-06,check-if-binary-string-has-at-most-one-segment-of-ones,1784,Check if Binary String Has at Most One Segment of Ones,Easy,39.4

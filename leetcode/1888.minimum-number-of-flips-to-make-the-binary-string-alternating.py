@@ -19,6 +19,10 @@ class Solution:
     def minFlips(self,s:str)->int:
         n=len(s);a=sum(s[i]!=str(i&1)for i in range(n));return min(min(a:=n-a+n%2*(int(c)*2-1),n-a)for c in s)
 
+class Solution:
+    def minFlips(self,s:str)->int:
+        n=len(s);a=sum(i&1^int(s[i])for i in range(n));return min(min(a:=n-a+n%2*(int(c)*2-1),n-a)for c in s)
+
 test('''
 1888. Minimum Number of Flips to Make the Binary String Alternating
 Medium

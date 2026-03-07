@@ -10,6 +10,10 @@ class Solution:
     def findDifferentBinaryString(self, a: List[str]) -> str:
         return next(s for s in map(''.join,product(*['01']*len(a)))if s not in a)
 
+class Solution:
+    def findDifferentBinaryString(self, a: List[str]) -> str:
+        return next(t for s in product(*['01']*len(a))if(t:=''.join(s))not in a)
+
 # https://leetcode.com/problems/find-unique-binary-string/discuss/1493853/Python-one-line-easy-to-understand-list-comprehension
 
 '''
@@ -45,6 +49,8 @@ class Solution:
 class Solution:
     def findDifferentBinaryString(self, a: List[str]) -> str:
         return''.join('10'[n[i][i]>'0']for i in range(len(a)))
+
+# POTD 2026-03-07
 
 class Solution:
     def findDifferentBinaryString(self, a: List[str]) -> str:

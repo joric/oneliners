@@ -50,7 +50,7 @@ class Solution:
     def findDifferentBinaryString(self, a: List[str]) -> str:
         return''.join('10'[n[i][i]>'0']for i in range(len(a)))
 
-# POTD 2026-03-07
+# POTD 2026-03-08
 
 class Solution:
     def findDifferentBinaryString(self, a: List[str]) -> str:

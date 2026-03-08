@@ -3,7 +3,7 @@
 Just FYI, this isn't just README.md, it's also more than a thousand solutions in the repository.
 There's also [stats](https://joric.github.io/oneliners/).
 
-There are two metrics: number of chars and passing the tests without TLE. Post to [issues](https://github.com/joric/oneliners/issues) section if you can do better.
+There are two conditions: number of chars and passing the tests without TLE. Use [issues](https://github.com/joric/oneliners/issues) section if you can do better.
 
 ### Leetcode-specific
 

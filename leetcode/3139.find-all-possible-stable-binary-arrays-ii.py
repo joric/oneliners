@@ -46,6 +46,8 @@ class Solution:
     def numberOfStableArrays(self, z: int, o: int, l: int) -> int:
         f=cache(lambda i,j:i|j>0 and(f(i-1,j)+f(j,i-1)-f(j,i+~l)if j else i<=l));return(f(z,o)+f(o,z))%(10**9+7)
 
+# POTD 2026-03-10
+
 class Solution:
     def numberOfStableArrays(self, z: int, o: int, l: int) -> int:
         f=cache(lambda i,j:i|j>0 and(i<=l,f(i-1,j)+f(j,i-1)-f(j,i+~l))[j>0]);return(f(z,o)+f(o,z))%(10**9+7)

@@ -19,6 +19,10 @@ class Solution:
     def numberOfStableArrays(self, z: int, o: int, l: int) -> int:
         f=cache(lambda a,b:(a+b<1)+sum(f(b,a+~x)for x in range(a)[:l]));return(f(z,o)+f(o,z))%(10**9+7)
 
+class Solution:
+    def numberOfStableArrays(self, z: int, o: int, l: int) -> int:
+        f=cache(lambda a,b:0**(a+b)+sum(map(f,[b]*l,range(a)[-l:])));return(f(z,o)+f(o,z))%(10**9+7)
+
 test('''
 3129. Find All Possible Stable Binary Arrays I
 Medium

@@ -2166,3 +2166,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-03-05,minimum-changes-to-make-alternating-binary-string,1758,Minimum Changes To Make Alternating Binary String,Easy,63.8
 2026-03-06,check-if-binary-string-has-at-most-one-segment-of-ones,1784,Check if Binary String Has at Most One Segment of Ones,Easy,39.4
 2026-03-07,minimum-number-of-flips-to-make-the-binary-string-alternating,1888,Minimum Number of Flips to Make the Binary String Alternating,Medium,41.1
+2026-03-08,find-unique-binary-string,1980,Find Unique Binary String,Medium,79.5

@@ -9,6 +9,8 @@ class Solution:
             return 1 if (a + b == 0) else sum(dfs(b, a - d - 1) for d in range(min(a, limit)))
         return (dfs(zero, one) + dfs(one, zero)) % (10 ** 9 + 7)
 
+# POTD 2026-03-09
+
 class Solution:
     def numberOfStableArrays(self, z: int, o: int, l: int) -> int:
         f=cache(lambda a,b:(a+b<1)+sum(f(b,a+~x)for x in range(min(a,l))));return(f(z,o)+f(o,z))%(10**9+7)

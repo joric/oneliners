@@ -14,6 +14,8 @@ class Solution:
                 a[i][j] += a[i - 1][j] - b[i - 1 - l][j] + b[i - 1][j]
         return(a[z][o]+b[z][o])%(10**9+7)
 
+# MLE; do not pass without f.cache_clear() in the end
+
 class Solution:
     def numberOfStableArrays(self, z: int, o: int, l: int) -> int:
         f=cache(lambda i,j,k:0 if i<0 or j<0 else int(0<i<=l) if k==0 and j==0 else int(0<j<=l) if k==1 and i==0 else f(i-1,j,0)+f(i-1,j,1)-f(i-1-l,j,1) if k==0 else f(i,j-1,1)+f(i,j-1,0)-f(i,j-1-l,0));return(f(z,o,0)+f(z,o,1))%(10**9+7)
@@ -46,11 +48,11 @@ class Solution:
     def numberOfStableArrays(self, z: int, o: int, l: int) -> int:
         f=cache(lambda i,j:i|j>0 and(f(i-1,j)+f(j,i-1)-f(j,i+~l)if j else i<=l));return(f(z,o)+f(o,z))%(10**9+7)
 
-# POTD 2026-03-10
-
-class Solution: # MLE
+class Solution:
     def numberOfStableArrays(self, z: int, o: int, l: int) -> int:
         f=cache(lambda i,j:i|j>0 and(i<=l,f(i-1,j)+f(j,i-1)-f(j,i+~l))[j>0]);return(f(z,o)+f(o,z))%(10**9+7)
+
+# POTD 2026-03-10
 
 class Solution:
     def numberOfStableArrays(self, z: int, o: int, l: int) -> int:

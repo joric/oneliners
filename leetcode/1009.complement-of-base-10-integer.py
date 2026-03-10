@@ -1,6 +1,6 @@
 from lc import *
 
-# https://leetcode.com/problems/complement-of-base-10-integer/submissions/612521257/?envType=daily-question&envId=2026-03-11
+# https://leetcode.com/problems/complement-of-base-10-integer/solutions/612724/idiots-solution-for-python-3-100-no-loop-dwxd/
 
 class Solution:
     def bitwiseComplement(self, n: int) -> int:

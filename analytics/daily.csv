@@ -2167,3 +2167,5 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-03-06,check-if-binary-string-has-at-most-one-segment-of-ones,1784,Check if Binary String Has at Most One Segment of Ones,Easy,39.4
 2026-03-07,minimum-number-of-flips-to-make-the-binary-string-alternating,1888,Minimum Number of Flips to Make the Binary String Alternating,Medium,41.1
 2026-03-08,find-unique-binary-string,1980,Find Unique Binary String,Medium,79.5
+2026-03-09,find-all-possible-stable-binary-arrays-i,3129,Find All Possible Stable Binary Arrays I,Medium,54.1
+2026-03-10,find-all-possible-stable-binary-arrays-ii,3130,Find All Possible Stable Binary Arrays II,Hard,33.5

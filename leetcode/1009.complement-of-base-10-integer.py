@@ -33,6 +33,10 @@ class Solution:
 # POTD 2026-03-11
 
 class Solution:
+    def bitwiseComplement(self, n: int, m: int = 2) -> int:
+        return m-n-1 if m>n else self.bitwiseComplement(n, 2*m)
+
+class Solution:
     def bitwiseComplement(self, n: int) -> int:
         return~n+2**len(f'{n:b}')
 

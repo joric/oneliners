@@ -30,6 +30,8 @@ class Solution:
     def bitwiseComplement(self, n: int) -> int:
         return~-2**len(f'{n:b}')^n
 
+# POTD 2026-03-11
+
 class Solution:
     def bitwiseComplement(self, n: int) -> int:
         return~n+2**len(f'{n:b}')

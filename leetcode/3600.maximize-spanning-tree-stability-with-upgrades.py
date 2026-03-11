@@ -92,6 +92,14 @@ class Solution:
     def maxStability(self,n:int,e:List[List[int]],k:int)->int:
         c,r,t,w=0,inf,''.join(map(chr,range(n+1))),[];b=all(t[u]!=t[v]and(t:=t.replace(t[u],t[v]),c:=c+1,m and(r:=min(r,s)),m or w.append(s))for u,v,s,m in sorted(e,key=lambda p:(-p[3],-p[2]))if m or t[u]!=t[v]);return(-1,min([r]+[x<<(i>=len(w)-k)for i,x in enumerate(w)]))[b and c==n-1]
 
+class Solution:
+    def maxStability(self,n:int,e:List[List[int]],k:int)->int:
+        c,t,w=0,''.join(map(chr,range(n+1))),[];b=all(t[u]!=t[v]and(t:=t.replace(t[u],t[v]),c:=c+1,m or w.append(s))for u,v,s,m in sorted(e,key=lambda p:(-p[3],-p[2]))if m or t[u]!=t[v]);return(-1,min([s for*_,s,m in e if m]+[x<<(i>=len(w)-k)for i,x in enumerate(w)]))[b and c==n-1]
+
+class Solution:
+    def maxStability(self,n:int,e:List[List[int]],k:int)->int:
+        c,t=0,''.join(map(chr,range(n+1)));w=[s for u,v,s,m in sorted(e,key=lambda p:(-p[3],-p[2]))if(t[u]!=t[v]and[t:=t.replace(t[u],t[v]),c:=c+1]or m and[c:=-n])and m<1];return(-1,min([s for*_,s,m in e if m]+[x<<(i<k)for i,x in enumerate(w)]))[c==n-1]
+
 test('''
 3600. Maximize Spanning Tree Stability with Upgrades
 Hard

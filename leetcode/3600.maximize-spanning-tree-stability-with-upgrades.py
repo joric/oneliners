@@ -100,6 +100,10 @@ class Solution:
     def maxStability(self,n:int,e:List[List[int]],k:int)->int:
         c,t=0,''.join(map(chr,range(n+1)));w=[s for u,v,s,m in sorted(e,key=lambda p:(-p[3],-p[2]))if(t[u]!=t[v]and(t:=t.replace(t[u],t[v]),c:=c+1)or(c:=c-m)<c)and m<1];return(-1,min([s for*_,s,m in e if m]+[x<<(i<k)for i,x in enumerate(w[::-1])]))[c==n-1]
 
+class Solution:
+    def maxStability(self,n:int,e:List[List[int]],k:int)->int:
+        c,t=1,''.join(map(chr,range(n+1)));w=[s for u,v,s,m in sorted(e,key=lambda p:(-p[3],-p[2]))if(t[u]!=t[v]and(t:=t.replace(t[u],t[v]),c:=c+1)or(c:=c-m)<c)and m<1];return(min([s for*_,s,m in e if m]+[x<<(i<k)for i,x in enumerate(w[::-1])]),-1)[c<n]
+
 test('''
 3600. Maximize Spanning Tree Stability with Upgrades
 Hard

@@ -16,6 +16,8 @@ class Solution:
 
 # https://leetcode.com/problems/minimum-number-of-seconds-to-make-mountain-height-zero/solutions/5818751/o-log-n-w-sqrt-n-binary-search-math-simp-ksrl/?envType=daily-question&envId=2026-03-13
 
+# if bisect wasn't a module name we could've used bisect(range(m*m*min(w)),m-1,...) but alas
+
 class Solution:
     def minNumberOfSeconds(self, m: int, w: List[int]) -> int:
         return bisect_left(range(min(w)*(m+1)*m),m,key=lambda i:sum((sqrt(8*i/x+1)-1)//2for x in w))
@@ -31,6 +33,14 @@ class Solution:
 class Solution:
     def minNumberOfSeconds(self, m: int, w: List[int]) -> int:
         return bisect_left(range(m*m*min(w)),m,key=lambda i:sum(((8*i/x+1)**.5-1)//2for x in w))
+
+class Solution:
+    def minNumberOfSeconds(self, m: int, w: List[int]) -> int:
+        return bisect_left(range(m*m*min(w)),m,key=lambda i:sum(isqrt(8*i//x+1)-1>>1for x in w))
+
+class Solution:
+    def minNumberOfSeconds(self, m: int, w: List[int]) -> int:
+        return bisect_left(range(9**17),m,key=lambda i:sum(((8*i/x+1)**.5-1)//2for x in w))
 
 test('''
 3296. Minimum Number of Seconds to Make Mountain Height Zero
@@ -95,6 +105,9 @@ Other examples:
 
 Input: mountainHeight = 1, workerTimes = [5]
 Output: 5
+
+Input: mountainHeight = 100000, workerTimes = [1000000]
+Output: 5000050000000000
 
 Constraints:
 

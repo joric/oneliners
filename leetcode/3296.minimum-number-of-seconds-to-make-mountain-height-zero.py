@@ -115,9 +115,9 @@ Output: 5000050000000000
 
 Constraints:
 
-1 <= mountainHeight <= 105
-1 <= workerTimes.length <= 104
-1 <= workerTimes[i] <= 106
+1 <= mountainHeight <= 10^5
+1 <= workerTimes.length <= 10^4
+1 <= workerTimes[i] <= 10^6
  
 Seen this question in a real interview before?
 1/5

@@ -38,6 +38,14 @@ class Solution:
     def minNumberOfSeconds(self, m: int, w: List[int]) -> int:
         return bisect_left(range(9**17),m,key=lambda i:sum(isqrt(8*i//x+1)-1>>1for x in w))
 
+class Solution:
+    def minNumberOfSeconds(self, m: int, w: List[int]) -> int:
+        return bisect_left(range(9**17),m,key=lambda i:sum(~-isqrt(8*i//x+1)>>1for x in w))
+
+class Solution:
+    def minNumberOfSeconds(self, m: int, w: List[int]) -> int:
+        return bisect_left(range(9**17),m,key=lambda i:sum(((8*i/x+1)**.5-1)//2for x in w))
+
 test('''
 3296. Minimum Number of Seconds to Make Mountain Height Zero
 Medium

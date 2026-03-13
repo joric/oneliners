@@ -108,6 +108,12 @@ class Solution:
     def getHappyString(self, n: int, k: int) -> str:
         return([''.join(p)for p in product(*['abc']*n)if all(map(ne,p,p[1:]))][k-1:]+[''])[0]
 
+# POTD 2026-03-14
+
+class Solution:
+    def getHappyString(self, n: int, k: int) -> str:
+        return([''.join(p)for p in product(*['abc']*n)if all(map(ne,p,p[1:]))]+['']*k)[k-1]
+
 test('''
 1415. The k-th Lexicographical String of All Happy Strings of Length n
 Medium

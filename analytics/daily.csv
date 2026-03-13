@@ -2171,3 +2171,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-03-10,find-all-possible-stable-binary-arrays-ii,3130,Find All Possible Stable Binary Arrays II,Hard,33.5
 2026-03-11,complement-of-base-10-integer,1009,Complement of Base 10 Integer,Easy,60.6
 2026-03-12,maximize-spanning-tree-stability-with-upgrades,3600,Maximize Spanning Tree Stability with Upgrades,Hard,40.0
+2026-03-13,minimum-number-of-seconds-to-make-mountain-height-zero,3296,Minimum Number of Seconds to Make Mountain Height Zero,Medium,41.5

@@ -27,8 +27,6 @@ class Fancy:
         inc = self.add[-1] - self.add[i] * m
         return (self.d[i] * m + inc) % mod
 
-# TODO
-
 class Fancy:
     def __init__(s):
         s.d = []
@@ -56,32 +54,7 @@ class Fancy:
         else:
             return -1
 
-class Fancy:
-    def __init__(s):
-        s.d = []
-        s.a = [0]
-        s.m = [1]
-        s.t = 10**9+7
-
-    def append(s, a: int) -> None:
-        s.d.append(a)
-        s.a.append(s.a[-1])
-        s.m.append(s.m[-1])
-
-    def addAll(self, i: int) -> None:
-        self.a[-1] += i
-
-    def multAll(s, m: int) -> None:
-        s.a[-1] = s.a[-1] * m % s.t
-        s.m[-1] = s.m[-1] * m % s.t
-
-    def getIndex(s, i: int) -> int:
-        if i < len(s.d):
-            m = s.m[-1]*pow(s.m[i],s.t-2,s.t)
-            p = s.a[-1]-s.a[i] * m
-            return (s.d[i]*m+p) % s.t
-        else:
-            return -1
+Fancy=type('',(),{'t':10**9+7,'f':setattr,'g':setitem,'__init__':lambda s:s.f(s,'d',[])or s.f(s,'a',[0])or s.f(s,'m',[1]),'append':lambda s,a:s.d.append(a)or s.a.append(s.a[-1])or s.m.append(s.m[-1]),'addAll':lambda s,i:s.g(s.a,-1,s.a[-1]+i),'multAll':lambda s,m:s.g(s.a,-1,s.a[-1]*m%s.t)or s.g(s.m,-1,s.m[-1]*m%s.t),'getIndex':lambda s,i:(s.d[i]*(m:=s.m[-1]*pow(s.m[i],s.t-2,s.t))+s.a[-1]-s.a[i]*m)%s.t if i<len(s.d)else-1})
 
 test('''
 1622. Fancy Sequence

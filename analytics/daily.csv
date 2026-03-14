@@ -2172,3 +2172,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-03-11,complement-of-base-10-integer,1009,Complement of Base 10 Integer,Easy,60.6
 2026-03-12,maximize-spanning-tree-stability-with-upgrades,3600,Maximize Spanning Tree Stability with Upgrades,Hard,40.0
 2026-03-13,minimum-number-of-seconds-to-make-mountain-height-zero,3296,Minimum Number of Seconds to Make Mountain Height Zero,Medium,41.5
+2026-03-14,the-k-th-lexicographical-string-of-all-happy-strings-of-length-n,1415,The k-th Lexicographical String of All Happy Strings of Length n,Medium,85.3

@@ -73,6 +73,7 @@ Fancy=(p:=list.append,type('',(),{'__init__':lambda s:vars(s).update(d=[],a=[0],
 
 p=list.append;Fancy=type('',(),{'__init__':lambda s:vars(s).update(d=[],a=[0],m=[1]),'append':lambda s,v:p(s.d,v)or p(s.a,s.a[-1])or p(s.m,s.m[-1]),'addAll':lambda s,i:p(s.a,s.a.pop()+i),'multAll':lambda s,m:p(s.a,s.a.pop()*m)or p(s.m,s.m.pop()*m),'getIndex':lambda s,i:s.d[i:]and(s.d[i]*(x:=s.m[-1]//s.m[i])+s.a[-1]-s.a[i]*x)%(10**9+7)or-1})
 
+
 test('''
 1622. Fancy Sequence
 Solved

@@ -331,3 +331,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-02-22,rearrange-string-k-distance-apart,358,Rearrange String k Distance Apart,Hard,39.6
 2026-03-01,design-excel-sum-formula,631,Design Excel Sum Formula,Hard,39.8
 2026-03-08,design-log-storage-system,635,Design Log Storage System,Medium,59.3
+2026-03-15,design-search-autocomplete-system,642,Design Search Autocomplete System,Hard,49.7

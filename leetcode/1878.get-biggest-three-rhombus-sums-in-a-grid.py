@@ -8,6 +8,12 @@ class Solution:
 
 class Solution:
     def getBiggestThree(self, g: List[List[int]]) -> List[int]:
+        m,n,h=len(g),len(g[0]),[]
+        [*map(u:=lambda x:x in h or(heappush(h,x),h[3:]and heappop(h)),chain(*g))]
+        [u(sum(g[i+x][j+y]for x in range(-q,q+1)for y in{q-abs(x),abs(x)-q}))for q in range(1,(1+min(m,n))//2)for i in range(q,m-q)for j in range(q,n-q)];return sorted(h)[::-1]
+
+class Solution:
+    def getBiggestThree(self, g: List[List[int]]) -> List[int]:
         m,n,h=len(g),len(g[0]),[];[*map(u:=lambda x:x in h or(heappush(h,x),h[3:]and heappop(h)),chain(*g))];[u(sum(g[i+x][j+y]for x in range(-q,q+1)for y in{q-abs(x),abs(x)-q}))for q in range(1,(1+min(m,n))//2)for i in range(q,m-q)for j in range(q,n-q)];return sorted(h)[::-1]
 
 test('''

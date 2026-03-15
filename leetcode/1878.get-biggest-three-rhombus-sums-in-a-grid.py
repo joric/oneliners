@@ -9,12 +9,27 @@ class Solution:
 class Solution:
     def getBiggestThree(self, g: List[List[int]]) -> List[int]:
         m,n,h=len(g),len(g[0]),[]
-        [*map(u:=lambda x:x in h or(heappush(h,x),h[3:]and heappop(h)),chain(*g))]
-        [u(sum(g[i+x][j+y]for x in range(-q,q+1)for y in{q-abs(x),abs(x)-q}))for q in range(1,(1+min(m,n))//2)for i in range(q,m-q)for j in range(q,n-q)];return sorted(h)[::-1]
+        [*map(f:=lambda x:x in h or(heappush(h,x),h[3:]and heappop(h)),chain(*g))]
+        [f(sum(g[i+x][j+y]for x in range(-q,q+1)for y in{q-abs(x),abs(x)-q}))for q in range(1,(1+min(m,n))//2)for i in range(q,m-q)for j in range(q,n-q)];return sorted(h)[::-1]
 
 class Solution:
     def getBiggestThree(self, g: List[List[int]]) -> List[int]:
-        m,n,h=len(g),len(g[0]),[];[*map(u:=lambda x:x in h or(heappush(h,x),h[3:]and heappop(h)),chain(*g))];[u(sum(g[i+x][j+y]for x in range(-q,q+1)for y in{q-abs(x),abs(x)-q}))for q in range(1,(1+min(m,n))//2)for i in range(q,m-q)for j in range(q,n-q)];return sorted(h)[::-1]
+        m,n,h=len(g),len(g[0]),[];[*map(f:=lambda x:x in h or(heappush(h,x),h[3:]and heappop(h)),chain(*g))];[f(sum(g[i+x][j+y]for x in range(-q,q+1)for y in{q-abs(x),abs(x)-q}))for q in range(1,(1+min(m,n))//2)for i in range(q,m-q)for j in range(q,n-q)];return sorted(h)[::-1]
+
+class Solution:
+    def getBiggestThree(self, g: List[List[int]]) -> List[int]:
+        m,n,h=len(g),len(g[0]),[]
+        for q in range((1+min(m,n))//2):
+            for i in range(q,m-q):
+                for j in range(q,n-q):
+                    for x in[sum(g[i+x][j+y]for x in range(-q,q+1)for y in{q-abs(x),abs(x)-q})]:
+                        x in h or(heappush(h,x),h[3:]and heappop(h))
+        return sorted(h)[::-1]
+
+class Solution:
+    def getBiggestThree(self, g: List[List[int]]) -> List[int]:
+        m,n,h=len(g),len(g[0]),[];[x in h or(heappush(h,x),h[3:]and heappop(h))for q in range((1+min(m,n))//2)for i in range(q,m-q)for j in range(q,n-q)for x in[sum(g[i+x][j+y]for x in range(-q,q+1)for y in{q-abs(x),abs(x)-q})]];return sorted(h)[::-1]
+
 
 test('''
 1878. Get Biggest Three Rhombus Sums in a Grid

@@ -128,4 +128,4 @@ Hint 1
 Use two arrays to save the cumulative multipliers at each time point and cumulative sums adjusted by the current multiplier.
 Hint 2
 The function getIndex(idx) ask to the current value modulo 10^9+7. Use modular inverse and both arrays to calculate this value.
-''', Fancy)
+''', Fancy, types={'Fancy':type,'a':int,'i':int,'m':int,'i':int})

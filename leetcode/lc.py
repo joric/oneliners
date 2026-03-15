@@ -196,7 +196,7 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
     def vc(func, name, v):
         tname = get_type_hints(func).get(name, None)
 
-        if not tname:
+        if not tname and types:
             if t:=types.get(name):
                 tname = t
 

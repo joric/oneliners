@@ -54,11 +54,17 @@ class Fancy:
         else:
             return -1
 
+exec("class Fancy:\n def __init__(s):s.d=[];s.a=[0];s.m=[1]\n def append(s,v):s.d+=[v];s.a+=[s.a[-1]];s.m+=[s.m[-1]]\n def addAll(s,i):s.a[-1]+=i\n def multAll(s,m):s.a[-1]*=m;s.m[-1]*=m\n def getIndex(s,i):return s.d[i:]and(s.d[i]*(x:=s.m[-1]//s.m[i])+s.a[-1]-s.a[i]*x)%(10**9+7)or-1")
+
 Fancy=(t:=10**9+7,type('',(),{'__init__':lambda s:vars(s).update(d=[],a=[0],m=[1]),'append':lambda s,v:s.d.append(v)or s.a.append(s.a[-1])or s.m.append(s.m[-1]),'addAll':lambda s,i:s.a.append(s.a.pop()+i),'multAll':lambda s,m:s.a.append(s.a.pop()*m%t)or s.m.append(s.m.pop()*m%t),'getIndex':lambda s,i:s.d[i:]and(s.d[i]*(x:=s.m[-1]*pow(s.m[i],-1,t))+s.a[-1]-s.a[i]*x)%t or-1}))[1]
+
+F=Fancy=type('',(),{});F.__init__=lambda s:vars(s).update(d=[],a=[0],m=[1]);F.append=lambda s,v:s.d.append(v)or s.a.append(s.a[-1])or s.m.append(s.m[-1]);F.addAll=lambda s,i:s.a.append(s.a.pop()+i);F.multAll=lambda s,m:s.a.append(s.a.pop()*m)or s.m.append(s.m.pop()*m);F.getIndex=lambda s,i:s.d[i:]and(s.d[i]*(x:=s.m[-1]//s.m[i])+s.a[-1]-s.a[i]*x)%(10**9+7)or-1
 
 Fancy=type('',(),{'__init__':lambda s:vars(s).update(d=[],a=[0],m=[1]),'append':lambda s,v:s.d.append(v)or s.a.append(s.a[-1])or s.m.append(s.m[-1]),'addAll':lambda s,i:s.a.append(s.a.pop()+i),'multAll':lambda s,m:s.a.append(s.a.pop()*m)or s.m.append(s.m.pop()*m),'getIndex':lambda s,i:s.d[i:]and(s.d[i]*(x:=s.m[-1]//s.m[i])+s.a[-1]-s.a[i]*x)%(10**9+7)or-1})
 
-exec("class Fancy:\n def __init__(s):s.d=[];s.a=[0];s.m=[1]\n def append(s,v):s.d+=[v];s.a+=[s.a[-1]];s.m+=[s.m[-1]]\n def addAll(s,i):s.a[-1]+=i\n def multAll(s,m):s.a[-1]*=m;s.m[-1]*=m\n def getIndex(s,i):return s.d[i:]and(s.d[i]*(x:=s.m[-1]//s.m[i])+s.a[-1]-s.a[i]*x)%(10**9+7)or-1")
+Fancy=(p:=list.append,type('',(),{'__init__':lambda s:vars(s).update(d=[],a=[0],m=[1]),'append':lambda s,v:p(s.d,v)or p(s.a,s.a[-1])or p(s.m,s.m[-1]),'addAll':lambda s,i:p(s.a,s.a.pop()+i),'multAll':lambda s,m:p(s.a,s.a.pop()*m)or p(s.m,s.m.pop()*m),'getIndex':lambda s,i:s.d[i:]and((s.d[i]-s.a[i])*s.m[-1]//s.m[i]+s.a[-1])%(10**9+7)or-1}))[1]
+
+p=list.append;Fancy=type('',(),{'__init__':lambda s:vars(s).update(d=[],a=[0],m=[1]),'append':lambda s,v:p(s.d,v)or p(s.a,s.a[-1])or p(s.m,s.m[-1]),'addAll':lambda s,i:p(s.a,s.a.pop()+i),'multAll':lambda s,m:p(s.a,s.a.pop()*m)or p(s.m,s.m.pop()*m),'getIndex':lambda s,i:s.d[i:]and(s.d[i]*(x:=s.m[-1]//s.m[i])+s.a[-1]-s.a[i]*x)%(10**9+7)or-1})
 
 test('''
 1622. Fancy Sequence

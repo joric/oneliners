@@ -6,6 +6,10 @@ class Solution:
     def getBiggestThree(self, g: List[List[int]]) -> List[int]:
         m,n,h=len(g),len(g[0]),[];[*map(u:=lambda x:x in h or(heappush(h,x),h[3:]and heappop(h)),chain(*g))];f=cache(lambda i,j,k:n>i>-1<j<m and f(i-1,j+k,k)+g[j][i]);[u(f(i+q,j,-1)-f(i,j-q,-1)+f(i-1,j+q-1,-1)-f(i-q-1,j-1,-1)+f(i,j-q,1)-f(i-q,j,1)+f(i+q-1,j+1,1)-f(i-1,j+q+1,1))for q in range(1,(1+min(m,n))//2)for i in range(q,n-q)for j in range(q,m-q)];return sorted(h)[::-1]
 
+class Solution:
+    def getBiggestThree(self, g: List[List[int]]) -> List[int]:
+        m,n,h=len(g),len(g[0]),[];[*map(u:=lambda x:x in h or(heappush(h,x),h[3:]and heappop(h)),chain(*g))];[u(sum(g[i+x][j+y]for x in range(-q,q+1)for y in{q-abs(x),abs(x)-q}))for q in range(1,(1+min(m,n))//2)for i in range(q,m-q)for j in range(q,n-q)];return sorted(h)[::-1]
+
 test('''
 1878. Get Biggest Three Rhombus Sums in a Grid
 Medium
@@ -47,7 +51,12 @@ Example 3:
 Input: grid = [[7,7,7]]
 Output: [7]
 Explanation: All three possible rhombus sums are the same, so return [7].
- 
+
+
+Other examples:
+
+Input: grid = [[20,17,9,13,5,2,9,1,5],[14,9,9,9,16,18,3,4,12],[18,15,10,20,19,20,15,12,11],[19,16,19,18,8,13,15,14,11],[4,19,5,2,19,17,7,2,2]]
+Output: [107, 103, 102]
 
 Constraints:
 

@@ -452,7 +452,7 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
         results = []
 
         for name,args in zip(methods,arglist):
-            if name == classname.__name__:
+            if name == classname.__name__ or name not in dir(classname):
                 func = getattr(classname, '__init__')
                 args, iargs, orig = vcast(func, args, init)
                 instance = classname(*args)

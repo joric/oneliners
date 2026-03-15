@@ -54,9 +54,9 @@ class Fancy:
         else:
             return -1
 
-Fancy=type('',(),{'t':10**9+7,'f':setattr,'g':setitem,'__init__':lambda s:s.f(s,'d',[])or s.f(s,'a',[0])or s.f(s,'m',[1]),'append':lambda s,a:s.d.append(a)or s.a.append(s.a[-1])or s.m.append(s.m[-1]),'addAll':lambda s,i:s.g(s.a,-1,s.a[-1]+i),'multAll':lambda s,m:s.g(s.a,-1,s.a[-1]*m%s.t)or s.g(s.m,-1,s.m[-1]*m%s.t),'getIndex':lambda s,i:(s.d[i]*(m:=s.m[-1]*pow(s.m[i],s.t-2,s.t))+s.a[-1]-s.a[i]*m)%s.t if i<len(s.d)else-1})
+#Fancy=type('',(),{'t':10**9+7,'f':setattr,'g':setitem,'__init__':lambda s:s.f(s,'d',[])or s.f(s,'a',[0])or s.f(s,'m',[1]),'append':lambda s,a:s.d.append(a)or s.a.append(s.a[-1])or s.m.append(s.m[-1]),'addAll':lambda s,i:s.g(s.a,-1,s.a[-1]+i),'multAll':lambda s,m:s.g(s.a,-1,s.a[-1]*m%s.t)or s.g(s.m,-1,s.m[-1]*m%s.t),'getIndex':lambda s,i:(s.d[i]*(m:=s.m[-1]*pow(s.m[i],s.t-2,s.t))+s.a[-1]-s.a[i]*m)%s.t if i<len(s.d)else-1})
 
-Fancy=(t:=10**9+7,f:=setattr,g:=setitem,type('',(),{'__init__':lambda s:f(s,'d',[])or f(s,'a',[0])or f(s,'m',[1]),'append':lambda s,a:s.d.append(a)or s.a.append(s.a[-1])or s.m.append(s.m[-1]),'addAll':lambda s,i:g(s.a,-1,s.a[-1]+i),'multAll':lambda s,m:g(s.a,-1,s.a[-1]*m%t)or g(s.m,-1,s.m[-1]*m%t),'getIndex':lambda s,i:i<len(s.d)and(s.d[i]*(x:=s.m[-1]*pow(s.m[i],t-2,t))+s.a[-1]-s.a[i]*x)%t or-1}))[1]
+#Fancy=(t:=10**9+7,f:=setattr,g:=setitem,type('',(),{'__init__':lambda s:f(s,'d',[])or f(s,'a',[0])or f(s,'m',[1]),'append':lambda s,a:s.d.append(a)or s.a.append(s.a[-1])or s.m.append(s.m[-1]),'addAll':lambda s,i:g(s.a,-1,s.a[-1]+i),'multAll':lambda s,m:g(s.a,-1,s.a[-1]*m%t)or g(s.m,-1,s.m[-1]*m%t),'getIndex':lambda s,i:i<len(s.d)and(s.d[i]*(x:=s.m[-1]*pow(s.m[i],t-2,t))+s.a[-1]-s.a[i]*x)%t or-1}))[1]
 
 Fancy=(t:=10**9+7,type('',(),{'__init__':lambda s:vars(s).update(d=[],a=[0],m=[1]),'append':lambda s,v:s.d.append(v)or s.a.append(s.a[-1])or s.m.append(s.m[-1]),'addAll':lambda s,i:s.a.append(s.a.pop()+i),'multAll':lambda s,m:s.a.append(s.a.pop()*m%t)or s.m.append(s.m.pop()*m%t),'getIndex':lambda s,i:s.d[i:]and(s.d[i]*(x:=s.m[-1]*pow(s.m[i],-1,t))+s.a[-1]-s.a[i]*x)%t or-1}))[1]
 
@@ -128,4 +128,4 @@ Hint 1
 Use two arrays to save the cumulative multipliers at each time point and cumulative sums adjusted by the current multiplier.
 Hint 2
 The function getIndex(idx) ask to the current value modulo 10^9+7. Use modular inverse and both arrays to calculate this value.
-''', Fancy, types={'Fancy':type,'a':int,'i':int,'m':int,'i':int})
+''', Fancy, types={'getIndex':int})

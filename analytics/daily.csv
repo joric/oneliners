@@ -2175,3 +2175,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-03-14,the-k-th-lexicographical-string-of-all-happy-strings-of-length-n,1415,The k-th Lexicographical String of All Happy Strings of Length n,Medium,85.3
 2026-03-15,fancy-sequence,1622,Fancy Sequence,Hard,20.0
 2026-03-16,get-biggest-three-rhombus-sums-in-a-grid,1878,Get Biggest Three Rhombus Sums in a Grid,Medium,50.3
+2026-03-17,largest-submatrix-with-rearrangements,1727,Largest Submatrix With Rearrangements,Medium,75.2

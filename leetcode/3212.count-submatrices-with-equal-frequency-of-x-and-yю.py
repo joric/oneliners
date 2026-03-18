@@ -37,7 +37,7 @@ class Solution:
 
 class Solution:
     def numberOfSubmatrices(self, g: List[List[str]]) -> int:
-        a,b=[(__import__('numpy').array(g)==c).cumsum(1).cumsum(0)for c in'XY'];return int(((a==b)&(a>0)).sum())
+        a,b=[(__import__('numpy').array(g)==c).cumsum(1).cumsum(0)for c in'XY'];return int((a*(a==b)>0).sum())
 
 test('''
 3212. Count Submatrices With Equal Frequency of X and Y

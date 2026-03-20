@@ -1,5 +1,13 @@
 from lc import *
 
+# https://leetcode.com/problems/flip-square-submatrix-vertically/solutions/7086532/python-2-line-solution-100-faster-maths-g15ya/?envType=dail
+
+class Solution:
+    def reverseSubmatrix(self, g: List[List[int]], x: int, y: int, k: int) -> List[List[int]]:
+        for i in range(x,x+k//2):
+            g[i][y:y+k],g[x+k-(i-x+1)][y:y+k]=g[x+k-(i-x+1)][y:y+k],g[i][y:y+k]
+        return g
+
 # https://leetcode.com/problems/flip-square-submatrix-vertically/solutions/7470520/python-intuitive-o1-line-numpy-solution-ndxpj/?envType=daily-question&envId=2026-03-21
 
 import numpy as np

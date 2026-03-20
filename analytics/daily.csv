@@ -2178,3 +2178,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-03-17,largest-submatrix-with-rearrangements,1727,Largest Submatrix With Rearrangements,Medium,75.2
 2026-03-18,count-submatrices-with-top-left-element-and-sum-less-than-k,3070,Count Submatrices with Top-Left Element and Sum Less Than k,Medium,60.7
 2026-03-19,count-submatrices-with-equal-frequency-of-x-and-y,3212,Count Submatrices With Equal Frequency of X and Y,Medium,51.9
+2026-03-20,minimum-absolute-difference-in-sliding-submatrix,3567,Minimum Absolute Difference in Sliding Submatrix,Medium,68.9

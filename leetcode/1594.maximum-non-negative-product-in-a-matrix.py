@@ -30,15 +30,23 @@ class Solution:
 
 class Solution:
     def maxProductPath(self, g: List[List[int]]) -> int:
-        m,n=len(g),len(g[0]);f=cache(lambda i,j:m>i>-1<j<n and((c,c)if[c:=g[i][j]]and i==m-1 and j==n-1 else(min(r:=[v*c for v in[*f(i+1,j),*f(i,j+1)]if v!=None]),max(r)))or(None,None));return(-1,(t:=f(0,0)[1])%(10**9+7))[t>=0]
+        m,n=len(g),len(g[0]);f=cache(lambda i,j:i<m and j<n and[c:=g[i][j]]and(m+n-i-j<3 and(c,c)or(min(r:=[v*c for v in f(i+1,j)+f(i,j+1)]),max(r)))or());t=f(0,0)[1];return(t%(10**9+7),-1)[t<0]
 
 class Solution:
     def maxProductPath(self, g: List[List[int]]) -> int:
-        m,n=len(g),len(g[0]);f=cache(lambda i,j:i<m and j<n and[c:=g[i][j]]and((c,c)if(i,j)==(m-1,n-1)else(min(r:=[v*c for v in f(i+1,j)+f(i,j+1)]),max(r)))or());return((t:=f(0,0)[1])%(10**9+7),-1)[t<0]
+        m,n=len(g),len(g[0]);f=cache(lambda i,j:i<m and j<n and[c:=g[i][j]]and(min(r:=[v*c for v in f(i+1,j)+f(i,j+1)]or[c]),max(r))or());t=f(0,0)[1];return(t%(10**9+7),-1)[t<0]
 
 class Solution:
     def maxProductPath(self, g: List[List[int]]) -> int:
-        m,n=len(g),len(g[0]);f=cache(lambda i,j:i<m and j<n and[c:=g[i][j]]and((c,c)if m+n-i-j<3 else(min(r:=[v*c for v in f(i+1,j)+f(i,j+1)]),max(r)))or());t=f(0,0)[1];return(t%(10**9+7),-1)[t<0]
+        m,n=len(g),len(g[0]);f=cache(lambda i,j:i<m and j<n and(min(r:=[v*g[i][j]for v in f(i+1,j)+f(i,j+1)]or[g[i][j]]),max(r))or());t=f(0,0)[1];return(t%(10**9+7),-1)[t<0]
+
+class Solution:
+    def maxProductPath(self, g: List[List[int]]) -> int:
+        f=cache(lambda i,j:i<len(g)and j<len(g[0])and(min(r:=[v*g[i][j]for v in f(i+1,j)+f(i,j+1)]or[g[i][j]]),max(r))or());t=f(0,0)[1];return(t%(10**9+7),-1)[t<0]
+
+class Solution:
+    def maxProductPath(self, g: List[List[int]]) -> int:
+        f=cache(lambda i,j:g[i:]and g[0][j:]and[min(r:=[v*g[i][j]for v in f(i+1,j)+f(i,j+1)or[1]]),max(r)]);t=f(0,0)[1];return(t%(10**9+7),-1)[t<0]
 
 test('''
 1594. Maximum Non Negative Product in a Matrix

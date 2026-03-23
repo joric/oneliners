@@ -48,6 +48,10 @@ class Solution:
     def maxProductPath(self, g: List[List[int]]) -> int:
         f=cache(lambda i,j:g[i:]and g[0][j:]and[min(r:=[v*g[i][j]for v in f(i+1,j)+f(i,j+1)or[1]]),max(r)]);t=f(0,0)[1];return(t%(10**9+7),-1)[t<0]
 
+class Solution:
+    def maxProductPath(self, g: List[List[int]]) -> int:
+        f=cache(lambda i,j:g[i:]and g[0][j:]and(min(r:=[v*g[i][j]for v in f(i+1,j)+f(i,j+1)or[1]]),max(r)));t=f(0,0)[1];return(t%10**9+7,-1)[t<0]
+
 test('''
 1594. Maximum Non Negative Product in a Matrix
 Medium

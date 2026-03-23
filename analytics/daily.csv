@@ -2181,3 +2181,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-03-20,minimum-absolute-difference-in-sliding-submatrix,3567,Minimum Absolute Difference in Sliding Submatrix,Medium,68.9
 2026-03-21,flip-square-submatrix-vertically,3643,Flip Square Submatrix Vertically,Easy,73.8
 2026-03-22,determine-whether-matrix-can-be-obtained-by-rotation,1886,Determine Whether Matrix Can Be Obtained By Rotation,Easy,59.4
+2026-03-23,maximum-non-negative-product-in-a-matrix,1594,Maximum Non Negative Product in a Matrix,Medium,40.3

@@ -4,7 +4,15 @@ from lc import *
 
 class Solution:
     def canPartitionGrid(self, g: List[List[int]]) -> bool:
+        d=[*chain(*[*map(accumulate,(map(sum,g),map(sum,zip(*g))))])];return any(x+x==d[-1]for x in d)
+
+class Solution:
+    def canPartitionGrid(self, g: List[List[int]]) -> bool:
         a=list(chain(*(accumulate(map(sum,g))for g in(g,zip(*g)))));return any(x+x==a[-1]for x in a)
+
+class Solution:
+    def canPartitionGrid(self, g: List[List[int]]) -> bool:
+        d=[x for i in(g,zip(*g))for x in accumulate(map(sum,i))];return any(x+x==d[-1]for x in d)
 
 class Solution:
     def canPartitionGrid(self, g: List[List[int]]) -> bool:

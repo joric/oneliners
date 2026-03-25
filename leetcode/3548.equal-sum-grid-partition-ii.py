@@ -24,10 +24,14 @@ class Solution:
     def canPartitionGrid(self, g: List[List[int]]) -> bool:
         t=sum(map(sum,g));z=[*zip(*g)]
         def c(a):
-            s,p=set(),0
+            s=set()
+            p=0
             for i,r in enumerate(a[:-1]):
-                s|=set(r);p+=sum(r);d=2*p-t
-                if d in(0,a[0][0],a[0][-1],a[i][0])or(i>0<len(a[0])-1and d in s):return 1
+                s.update(r)
+                p+=sum(r)
+                d=2*p-t
+                if d in(0,a[0][0],a[0][-1],a[i][0])or(i>0<len(a[0])-1and d in s):
+                    return 1
         return any(c(m)for m in(g,g[::-1],z,z[::-1]))
 
 class Solution:

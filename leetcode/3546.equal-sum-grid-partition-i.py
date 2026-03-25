@@ -34,6 +34,18 @@ class Solution:
     def canPartitionGrid(self, g: List[List[int]]) -> bool:
         a=accumulate;d=[*a(map(sum,g)),*a(map(sum,zip(*g)))];return any(x+x==d[-1]for x in d)
 
+class Solution:
+    def canPartitionGrid(self, g: List[List[int]]) -> bool:
+        return sum(sum(g,[]))//2 in[*accumulate(map(sum,g)),*accumulate(map(sum,zip(*g)))]
+
+class Solution:
+    def canPartitionGrid(self, g: List[List[int]]) -> bool:
+        a=accumulate;return sum(sum(g,[]))//2 in[*a(map(sum,g)),*a(map(sum,zip(*g)))]
+
+class Solution:
+    def canPartitionGrid(self, g: List[List[int]]) -> bool:
+        f=lambda x:[*accumulate(map(sum,x))];return f(g)[-1]/2in f(g)+f(zip(*g))
+
 test('''
 3546. Equal Sum Grid Partition I
 Medium
@@ -71,7 +83,10 @@ Explanation:
 
 No horizontal or vertical cut results in two non-empty sections with equal sums. Thus, the answer is false.
 
- 
+Other examples:
+
+Input: grid = [[1,1,1]]
+Output: false
 
 Constraints:
 

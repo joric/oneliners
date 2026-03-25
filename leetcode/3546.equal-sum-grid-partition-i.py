@@ -12,15 +12,23 @@ class Solution:
 
 class Solution:
     def canPartitionGrid(self, g: List[List[int]]) -> bool:
-        a=accumulate;return any(map(eq,[sum(sum(g,[]))//2],[*a(map(sum,g)),*a(map(sum,zip(*g)))]))
-
-class Solution:
-    def canPartitionGrid(self, g: List[List[int]]) -> bool:
         d=[x for i in(g,zip(*g))for x in accumulate(map(sum,i))];return any(x+x==d[-1]for x in d)
 
 class Solution:
     def canPartitionGrid(self, g: List[List[int]]) -> bool:
         s=sum(sum(g,[]));return any(x+x==s for d in(g,zip(*g))for x in accumulate(map(sum,d)))
+
+# other solutions
+
+class Solution:
+    def canPartitionGrid(self, g: List[List[int]]) -> bool:
+        a=accumulate;return any(map(eq,[sum(sum(g,[]))//2],[*a(map(sum,g)),*a(map(sum,zip(*g)))]))
+
+class Solution:
+    def canPartitionGrid(self, g: List[List[int]]) -> bool:
+        return any(map(eq,[sum(sum(g,[]))//2],[*chain(*[*map(accumulate,(map(sum,g),map(sum,zip(*g))))])]))
+
+# shortest
 
 class Solution:
     def canPartitionGrid(self, g: List[List[int]]) -> bool:

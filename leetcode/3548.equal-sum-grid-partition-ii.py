@@ -38,6 +38,18 @@ class Solution:
     def canPartitionGrid(self, g: List[List[int]]) -> bool:
         t=sum(map(sum,g));z=[*zip(*g)];f=lambda a:(s:=set(),p:=0,any((s.update(r),p:=p+sum(r),d:=2*p-t,d in(0,a[0][0],a[0][-1],a[i][0])or(i>0<len(a[0])-1and d in s))[3]for i,r in enumerate(a[:-1])))[2];return any(f(m)for m in(g,g[::-1],z,z[::-1]))
 
+class Solution:
+    def canPartitionGrid(self, g: List[List[int]]) -> bool:
+        t=sum(map(sum,g));z=[*zip(*g)];f=lambda a,s=set(),p=0:any((s.update(r),p:=p+sum(r),d:=2*p-t,d in(0,a[0][0],a[0][-1],a[i][0])or i>0<len(r)-1and d in s)[3]for i,r in enumerate(a[:-1]));return any(f(m)for m in(g,g[::-1],z,z[::-1]))
+
+class Solution:
+    def canPartitionGrid(self, g: List[List[int]]) -> bool:
+        t=sum(map(sum,g));z=[*zip(*g)];return any(map(lambda a,s=set(),p=0:any((s.update(r),p:=p+sum(r),d:=2*p-t,d in(0,a[0][0],a[0][-1],a[i][0])or i>0<len(r)-1and d in s)[3]for i,r in enumerate(a[:-1])),(g,g[::-1],z,z[::-1])))
+
+class Solution:
+    def canPartitionGrid(self, g: List[List[int]]) -> bool:
+        t=sum(map(sum,g));z=[*zip(*g)];return any((s:=set(),p:=0,any((s.update(r),p:=p+sum(r),d:=2*p-t,d in(0,a[0][0],a[0][-1],a[i][0])or i>0<len(r)-1and d in s)[3]for i,r in enumerate(a[:-1])))[2]for a in(g,g[::-1],z,z[::-1]))
+
 test('''
 3548. Equal Sum Grid Partition II
 Hard

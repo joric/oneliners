@@ -3,7 +3,7 @@
 Just FYI, this isn't just README.md, it's also more than a thousand solutions in the repository.
 There's also [stats](https://joric.github.io/oneliners/).
 
-If find a shorter solution (that also passes online tests, as is no MLE, no TLE), post it to the [issues](https://github.com/joric/oneliners/issues) section.
+* If find a shorter solution (that also passes online tests, as is no MLE, no TLE), post it to the [issues](https://github.com/joric/oneliners/issues) section.
 
 ### Why Python
 

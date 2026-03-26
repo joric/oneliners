@@ -2184,3 +2184,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-03-23,maximum-non-negative-product-in-a-matrix,1594,Maximum Non Negative Product in a Matrix,Medium,40.3
 2026-03-24,construct-product-matrix,2906,Construct Product Matrix,Medium,39.5
 2026-03-25,equal-sum-grid-partition-i,3546,Equal Sum Grid Partition I,Medium,42.3
+2026-03-26,equal-sum-grid-partition-ii,3548,Equal Sum Grid Partition II,Hard,33.3

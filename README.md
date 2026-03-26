@@ -7,7 +7,7 @@ If you've found a shorter solution (that also passes online tests, that is - no 
 
 ### Why Python
 
-Python is almost always shorter. Maybe scala/ruby can beat it sometimes because they don't need `return` operator.
+Python is almost always shorter than other available languages (there's no Perl on Leetcode). Maybe scala/ruby can beat it sometimes because they don't need `return` operator.
 Even C++ is sometimes shorter than Python, well, in one particular case it's shorter by 1 character:
 
 * https://leetcode.com/problems/k-th-symbol-in-grammar/

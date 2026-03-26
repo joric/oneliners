@@ -2398,6 +2398,23 @@ Examples                                   | Results
 `combinations('ABCD', 2)`                  | AB AC AD BC BD CD
 `combinations_with_replacement('ABCD', 2)` | AA AB AC AD BB BC BD CC CD DD
 
+### Why Python
+
+Python is almost always shorter. Maybe scala/ruby can beat it sometimes because they don't need `return` operator.
+Even C++ is sometimes shorter than Python, well, in one particular case it's shorter by 1 character:
+
+* https://leetcode.com/problems/k-th-symbol-in-grammar/
+
+```python
+return(k-1).bit_count()&1
+```
+
+```cpp
+return popcount(k-1u)&1;
+```
+
+Note that `u` and `;` are mandatory in C++. If I find a shorter solution in other language I usually add it in comments.
+
 ## Notes
 
 * An expression like `x&(x-1)==0` is useful to check if unsigned `x` is power of 2 or 0 (Kernighan, rightmost bit).

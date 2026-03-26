@@ -20,7 +20,7 @@ return(k-1).bit_count()&1
 return popcount(k-1u)&1;
 ```
 
-Note that `u` and `;` are mandatory in C++. If I find a shorter solution in other language I usually add it in comments.
+Note that `u` and `;` are mandatory here. If I find a shorter solution in other language I usually add it in comments.
 
 ### Leetcode-specific
 

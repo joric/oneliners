@@ -5,6 +5,23 @@ There's also [stats](https://joric.github.io/oneliners/).
 
 If you've found a shorter solution (that also passes online tests, that is - no MLE, no TLE), post it to the [issues](https://github.com/joric/oneliners/issues) section.
 
+### Why Python
+
+Python is almost always shorter. Maybe scala/ruby can beat it sometimes because they don't need `return` operator.
+Even C++ is sometimes shorter than Python, well, in one particular case it's shorter by 1 character:
+
+* https://leetcode.com/problems/k-th-symbol-in-grammar/
+
+```python
+return(k-1).bit_count()&1
+```
+
+```cpp
+return popcount(k-1u)&1;
+```
+
+Note that `u` and `;` are mandatory in C++. If I find a shorter solution in other language I usually add it in comments.
+
 ### Leetcode-specific
 
 Leetcode imports modules as wildcards, so you don't have to specify module names. There are some exceptions:
@@ -2397,23 +2414,6 @@ Examples                                   | Results
 `permutations('ABCD', 2)`                  | AB AC AD BA BC BD CA CB CD DA DB DC
 `combinations('ABCD', 2)`                  | AB AC AD BC BD CD
 `combinations_with_replacement('ABCD', 2)` | AA AB AC AD BB BC BD CC CD DD
-
-### Why Python
-
-Python is almost always shorter. Maybe scala/ruby can beat it sometimes because they don't need `return` operator.
-Even C++ is sometimes shorter than Python, well, in one particular case it's shorter by 1 character:
-
-* https://leetcode.com/problems/k-th-symbol-in-grammar/
-
-```python
-return(k-1).bit_count()&1
-```
-
-```cpp
-return popcount(k-1u)&1;
-```
-
-Note that `u` and `;` are mandatory in C++. If I find a shorter solution in other language I usually add it in comments.
 
 ## Notes
 

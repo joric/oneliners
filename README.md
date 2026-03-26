@@ -12,9 +12,13 @@ Even C++ is sometimes shorter than Python, well, in one particular case it's sho
 
 * https://leetcode.com/problems/k-th-symbol-in-grammar/
 
+Python:
+
 ```python
 return(k-1).bit_count()&1
 ```
+
+C++:
 
 ```cpp
 return popcount(k-1u)&1;

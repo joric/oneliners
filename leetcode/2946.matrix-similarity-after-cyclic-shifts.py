@@ -22,10 +22,6 @@ class Solution:
     def areSimilar(self, m: List[List[int]], k: int) -> bool:
         return all(r==r[k%len(r):]+r[:k%len(r)]for r in m)
 
-class Solution:
-    def areSimilar(self, m: List[List[int]], k: int) -> bool:
-        return all(r==r[(t:=k%len(r)):]+r[:t]for r in m)
-
 test('''
 2946. Matrix Similarity After Cyclic Shifts
 Solved

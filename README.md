@@ -7,8 +7,9 @@ There's also [stats](https://joric.github.io/oneliners/).
 
 ### Why Python
 
-Python is almost always shorter than other languages (there's no Perl on Leetcode). Maybe scala/ruby can beat it sometimes because they don't need `return` operator.
-Even C++ is sometimes shorter than Python, well, in one particular case it's shorter by 1 character:
+Python code is almost always shorter than code in other languages (there's no Perl on Leetcode).
+Maybe Scala or Ruby can beat it sometimes because they don't need a return statement.
+Even C++ is sometimes shorter than Python—well, in one particular case it's shorter by one character.
 
 * https://leetcode.com/problems/k-th-symbol-in-grammar/
 

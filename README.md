@@ -9,17 +9,17 @@ There's also [stats](https://joric.github.io/oneliners/).
 
 Python code is almost always shorter than code in other languages (there's no Perl on Leetcode).
 Maybe Scala or Ruby can beat it sometimes because they don't need a return statement.
-Even C++ is sometimes shorter than Python—well, in one particular case it's shorter by one character.
+Even C++ is sometimes shorter than Python - well, in one particular case it's shorter by one character:
 
 * https://leetcode.com/problems/k-th-symbol-in-grammar/
 
-Python:
+Python
 
 ```python
 return(k-1).bit_count()&1
 ```
 
-C++:
+C++
 
 ```cpp
 return popcount(k-1u)&1;

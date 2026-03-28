@@ -22,8 +22,8 @@ class Solution:
         return{*s[::2]}=={*t[::2]}and{*s[1::2]}=={*t[1::2]}
 
 class Solution:
-    def canBeEqual(self, s: str, t: str) -> bool:
-        return all({*s[i::2]}=={*t[i::2]}for i in(0,1))
+    def canBeEqual(self, a: str, b: str) -> bool:
+        return all({*a[i::2]}=={*b[i::2]}for i in(0,1))
 
 test('''
 2839. Check if Strings Can be Made Equal With Operations I

@@ -3,8 +3,8 @@ from lc import *
 # https://leetcode.com/problems/check-if-strings-can-be-made-equal-with-operations-ii/solutions/3993607/python-3-1-line-counter-ts-100-65-by-spa-dnqw/
 
 class Solution:
-    def checkStrings(self, a: str, b: str) -> bool:
-        c=Counter;return all(c(a[i::2])==c(b[i::2])for i in(0,1))
+    def checkStrings(self, s: str, t: str) -> bool:
+        c=Counter;return all(c(s[i::2])==c(t[i::2])for i in(0,1))
 
 test('''
 2840. Check if Strings Can be Made Equal With Operations II

@@ -56,7 +56,7 @@ class Solution:
 
 class Solution:
     def findTheString(self, p: List[List[int]]) -> str:
-        n=len(p);r=range(n);c,a=1,[0]*n;return''if any(c>26 or([setitem(a,j,c)for j in r[i:]if p[i][j]],c:=c+1)<()for i in r if a[i]<1)or any(p[i][j]!=(1+(i<n-1>j and p[i+1][j+1]))*(a[i]==a[j])for i,j in product(r,r))else''.join(chr(96+x)for x in a)
+        r=range(n:=len(p));c,a=1,[0]*n;return''if any(c>26 or([setitem(a,j,c)for j in r[i:]if p[i][j]],c:=c+1)<()for i in r if a[i]<1)or any(p[i][j]!=(1+(i<n-1>j and p[i+1][j+1]))*(a[i]==a[j])for i,j in product(r,r))else''.join(chr(96+x)for x in a)
 
 test('''
 2573. Find the String with LCP

@@ -6,6 +6,10 @@ class Solution:
     def checkStrings(self, a: str, b: str) -> bool:
         c=Counter;return all(c(a[i::2])==c(b[i::2])for i in(0,1))
 
+class Solution:
+    def checkStrings(self, a: str, b: str) -> bool:
+        c=sorted;return all(c(a[i::2])==c(b[i::2])for i in(0,1))
+
 test('''
 2840. Check if Strings Can be Made Equal With Operations II
 Medium

@@ -8,6 +8,10 @@ class Solution:
 
 class Solution:
     def checkStrings(self, a: str, b: str) -> bool:
+        return all(sorted(a[i::2])==sorted(b[i::2])for i in(0,1))
+
+class Solution:
+    def checkStrings(self, a: str, b: str) -> bool:
         c=sorted;return all(c(a[i::2])==c(b[i::2])for i in(0,1))
 
 test('''

@@ -36,7 +36,7 @@ class Solution:
 
 class Solution:
     def generateString(self, a: str, b: str) -> str:
-        m=len(b);k=len(a)+m-1;t,f=['a']*k,[0]*k;s,e=setitem,enumerate;return''if any(x=='T'and any(y!=t[i+j]and f[i+j]or s(t,i+j,y)or s(f,i+j,1)for j,y in e(b))for i,x in e(a))or any(x=='F'and t[i:i+m]==[*b]and all(f[j]or s(t,j,'b')for j in range(i+m-1,i-1,-1))for i,x in e(a))else''.join(t)
+        m=len(b);k=len(a)+m-1;t,f=['a']*k,[0]*k;s,e=setitem,enumerate;return''if any(x=='T'and any(y!=t[i+j]and f[i+j]or s(t,i+j,y)or s(f,i+j,1)for j,y in e(b))for i,x in e(a))or any(x=='F'and[*b]==t[i:i+m]and all(f[j]or s(t,j,'b')for j in range(i+m-1,i-1,-1))for i,x in e(a))else''.join(t)
 
 test('''
 3474. Lexicographically Smallest Generated String

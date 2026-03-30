@@ -28,9 +28,9 @@ class Solution:
 class Solution:
     def generateString(self, a: str, b: str) -> str:
         n,m=len(a),len(b);t,f,s=['a']*(n+m-1),[0]*(n+m-1),setitem
-        if any(x=='T'and any(y!=t[i+j]!=y and f[i+j]or s(t,i+j,y)or s(f,i+j,1)for j,y in enumerate(b))for i, x in enumerate(a)):
+        if any(x=='T'and any(y!=t[i+j]!=y and f[i+j]or s(t,i+j,y)or s(f,i+j,1)for j,y in enumerate(b))for i,x in enumerate(a)):
             return ''
-        if any(x=='F'and[*b]==t[i:i+m]and not any(not f[j]and not s(t,j,'b')for j in range(i+m-1,i-1,-1))for i, x in enumerate(a)):
+        if any(x=='F'and[*b]==t[i:i+m]and not any(not f[j]and not s(t,j,'b')for j in range(i+m-1,i-1,-1))for i,x in enumerate(a)):
             return ''
         return ''.join(t)
 

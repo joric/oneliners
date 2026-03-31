@@ -2189,3 +2189,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-03-28,find-the-string-with-lcp,2573,Find the String with LCP,Hard,63.8
 2026-03-29,check-if-strings-can-be-made-equal-with-operations-i,2839,Check if Strings Can be Made Equal With Operations I,Easy,48.2
 2026-03-30,check-if-strings-can-be-made-equal-with-operations-ii,2840,Check if Strings Can be Made Equal With Operations II,Medium,58.7
+2026-03-31,lexicographically-smallest-generated-string,3474,Lexicographically Smallest Generated String,Hard,34.7

@@ -45,6 +45,12 @@ class Solution:
     def survivedRobotsHealths(self, p: List[int], h: List[int], d: str) -> List[int]:
         q=[];[*map((f:=lambda i:q.append(i)if d[i]=='R'else(q and 0<h[i]and(a:=h[q[-1]],b:=h[i],setitem(h,q[-1]if a>b else q.pop(),~-h[q[-1]]if a>b else 0),setitem(h,i,(0,h[i]-1)[a<b]),f(i)))),sorted(range(len(p)),key=p.__getitem__))];return filter(None,h)
 
+# POTD 2026-04-01
+
+class Solution:
+    def survivedRobotsHealths(self, p: List[int], h: List[int], d: str) -> List[int]:
+        q=[];[*map((f:=lambda i:q.append(i)if d[i]=='R'else(q and h[i]and(a:=h[q[-1]],b:=h[i],setitem(h,q[-1]if a>b else q.pop(),(0,~-a)[a>b]),setitem(h,i,(0,~-b)[a<b]),f(i)))),sorted(range(len(p)),key=p.__getitem__))];return[*filter(None,h)]
+
 test('''
 2751. Robot Collisions
 Hard

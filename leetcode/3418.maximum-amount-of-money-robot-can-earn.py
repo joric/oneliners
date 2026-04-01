@@ -29,7 +29,7 @@ class Solution:
     def maximumAmount(self,c:List[List[int]])->int:
         m,n=len(c),len(c[0]);s,r=setitem,range;c[0][0]=(0,0,c[0][0]);[s(c[0],j,(max(c[0][j]+c[0][j-1][0],c[0][j-1][1]),max(c[0][j]+c[0][j-1][1],c[0][j-1][2]),c[0][j]+c[0][j-1][2]))for j in r(1,n)];[s(c[i],0,(max(c[i][0]+c[i-1][0][0],c[i-1][0][1]),max(c[i][0]+c[i-1][0][1],c[i-1][0][2]),c[i][0]+c[i-1][0][2]))for i in r(1,m)];[[s(c[i],j,(max(c[i][j]+(k:=(max(c[i-1][j][0],c[i][j-1][0]),max(c[i-1][j][1],c[i][j-1][1]),max(c[i-1][j][2],c[i][j-1][2])))[0],k[1]),max(c[i][j]+k[1],k[2]),c[i][j]+k[2]))for j in r(1,n)]for i in r(1,m)];return max(c[-1][-1])
 
-# POTD 2026-04-01
+# POTD 2026-04-02
 
 class Solution:
     def maximumAmount(self, c: List[List[int]]) -> int:

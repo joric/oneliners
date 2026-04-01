@@ -29,6 +29,10 @@ class Solution:
     def maximumAmount(self,c:List[List[int]])->int:
         m,n=len(c),len(c[0]);s,r=setitem,range;c[0][0]=(0,0,c[0][0]);[s(c[0],j,(max(c[0][j]+c[0][j-1][0],c[0][j-1][1]),max(c[0][j]+c[0][j-1][1],c[0][j-1][2]),c[0][j]+c[0][j-1][2]))for j in r(1,n)];[s(c[i],0,(max(c[i][0]+c[i-1][0][0],c[i-1][0][1]),max(c[i][0]+c[i-1][0][1],c[i-1][0][2]),c[i][0]+c[i-1][0][2]))for i in r(1,m)];[[s(c[i],j,(max(c[i][j]+(k:=(max(c[i-1][j][0],c[i][j-1][0]),max(c[i-1][j][1],c[i][j-1][1]),max(c[i-1][j][2],c[i][j-1][2])))[0],k[1]),max(c[i][j]+k[1],k[2]),c[i][j]+k[2]))for j in r(1,n)]for i in r(1,m)];return max(c[-1][-1])
 
+class Solution:
+    def maximumAmount(self,c:List[List[int]])->int:
+        m=max;e=enumerate;d=[[-inf]*3]*(len(c[0])+1);[setitem(d,j+1,i==j==0 and[v,m(v,0),m(v,0)]or[(p:=[*map(m,d[j],d[j+1])])[0]+v,m(p[1]+v,p[0]),m(p[2]+v,p[1])])for i,r in e(c)for j,v in e(r)];return d[-1][2]
+
 test('''
 3418. Maximum Amount of Money Robot Can Earn
 Medium

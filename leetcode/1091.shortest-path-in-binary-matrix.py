@@ -63,7 +63,8 @@ class Solution:
 
 class Solution:
     def shortestPathBinaryMatrix(self, g):
-        n=len(g)-1;q=[(0,0,1)]*(g[0][0]==0)
+        n=len(g)-1
+        q=[(0,0,1)]*(g[0][0]==0)
         for r,c,d in q:
             if r==n==c:
                 return d

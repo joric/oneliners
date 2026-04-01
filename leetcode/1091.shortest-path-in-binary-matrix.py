@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/shortest-path-in-binary-matrix
+
 class Solution:
     def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
         n = len(grid)
@@ -43,7 +45,7 @@ class Solution:
         return -1
 
 class Solution:
-    def shortestPathBinaryMatrix(self, g):
+    def shortestPathBinaryMatrix(self, g: List[List[int]]) -> int:
         n = len(g) 
         d = [999]*n*n
         d[0] = 1
@@ -56,8 +58,25 @@ class Solution:
         return d[-1] if g[-1][-1]!=1 and d[-1]!=999 else -1
 
 class Solution:
-    def shortestPathBinaryMatrix(self, g):
+    def shortestPathBinaryMatrix(self, g: List[List[int]]) -> int:
         n=len(g);d,a,b=[999]*n*n,range(n),range(-1,2);e=[(i*n+j,(i+k)*n+j+l)for i,j,k,l in product(a,a,b,b)if n>j+l>=0<=i+k<n and g[i][j]+g[i+k][j+l]==0];d[0]=1;[setitem(d,v,min(d[v],d[u]+1))for _ in range(int(2*n**0.5)+2)for u,v in e];return g[-1][-1]!=1 and d[-1]!=999 and d[-1]or-1
+
+class Solution:
+    def shortestPathBinaryMatrix(self, g):
+        n=len(g)-1;q=[(0,0,1)]*(g[0][0]==0)
+        for r,c,d in q:
+            if r==n==c:
+                return d
+            for x in(r-1,r,r+1):
+                for y in(c-1,c,c+1):
+                    if 0<=x<=n>=y>=0==g[x][y]:
+                        g[x][y]=1
+                        q+=[(x,y,d+1)]
+        return-1
+
+class Solution:
+    def shortestPathBinaryMatrix(self, g):
+        n=len(g)-1;q=[(0,0,1)]*(g[0][0]<1);return next((d for r,c,d in q if r==n==c or any(setitem(g[x],y,1)or q.append((x,y,d+1))for x in(r-1,r,r+1)for y in(c-1,c,c+1)if 0<=x<=n>=y>=0==g[x][y])),-1)
 
 test('''
 1091. Shortest Path in Binary Matrix

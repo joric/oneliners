@@ -61,7 +61,7 @@ class Solution:
 
 class Solution:
     def maxWalls(self, r: List[int], d: List[int], w: List[int]) -> int:
-        w.sort();a=sorted(zip(r,d))+[(inf,0)];c=lambda x,y:max(0,bisect_right(w,y)-bisect_left(w,x));v,u=0,c((h:=a[0])[0]-h[1],h[0]-1);[(i:=c(e:=x+1,f:=min(x+y,p-1)),j:=c(g:=max(p-q,e),h:=p-1),t:=v,v:=max(v+i,u),u:=max(t+i+j-c(max(e,g),min(f,h)),u+j))for(x,y),(p,q)in pairwise(a)];return u+sum(c(z,z)for z in{*r})
+        w.sort();a=sorted(zip(r,d))+[(inf,0)];f=lambda x,y:max(0,bisect_right(w,y)-bisect_left(w,x));v,u=0,f((h:=a[0])[0]-h[1],h[0]-1);[(c:=f(e:=x+1,g:=min(x+y,p-1)),j:=f(i:=max(p-q,e),h:=p-1),t:=v,v:=max(v+c,u),u:=max(t+c+j-f(max(e,i),min(g,h)),u+j))for(x,y),(p,q)in pairwise(a)];return u+sum(f(z,z)for z in{*r})
 
 test('''
 3661. Maximum Walls Destroyed by Robots

@@ -2192,3 +2192,5 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-03-31,lexicographically-smallest-generated-string,3474,Lexicographically Smallest Generated String,Hard,34.7
 2026-04-01,robot-collisions,2751,Robot Collisions,Hard,56.1
 2026-04-02,maximum-amount-of-money-robot-can-earn,3418,Maximum Amount of Money Robot Can Earn,Medium,29.8
+2026-04-03,maximum-walls-destroyed-by-robots,3661,Maximum Walls Destroyed by Robots,Hard,47.8
+2026-04-04,decode-the-slanted-ciphertext,2075,Decode the Slanted Ciphertext,Medium,50.5

@@ -1,6 +1,6 @@
 from lc import *
 
-# https://leetcode.com/problems/robot-return-to-origin/solutions/106315/python-one-liner-by-aditya74-w6kg/?envType=daily-question&envId=2026-04-05
+# https://leetcode.com/problems/robot-return-to-origin/solutions/106315/python-one-liner-by-aditya74-w6kg/comments/3401026/
 
 class Solution:
     def judgeCircle(self, m: str) -> bool:

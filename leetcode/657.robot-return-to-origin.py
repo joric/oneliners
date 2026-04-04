@@ -22,6 +22,10 @@ class Solution:
     def judgeCircle(self, m: str) -> bool:
         return not sum(1j**(ord(c)%19)for c in m)
 
+class Solution:
+    def judgeCircle(self, m: str) -> bool:
+        return 0==sum(1j**(ord(c)%19)for c in m)
+
 test('''
 657. Robot Return to Origin
 Easy

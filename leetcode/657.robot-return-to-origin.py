@@ -12,7 +12,7 @@ class Solution:
 
 class Solution:
     def judgeCircle(self, m: str) -> bool:
-        l,r,u,d=map(m.count,'LRUD');return r==l and u==d
+        l,u,r,d=map(m.count,'LURD');return r==l and u==d
 
 class Solution:
     def judgeCircle(self, m: str) -> bool:

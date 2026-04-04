@@ -24,17 +24,14 @@ class Solution:
 
 '''
 for i in range(1,1000):
-    if [1j**(ord(c) % i) for c in 'LRUD']==[1,-1,1j,-1j]:
-        print(i)
+    t = [1j**(ord(c)%i) for c in 'LRUD']
+    if t[0]+t[1] == 0 and t[2]+t[3]==0:
+        print(i) # 15 19 23 35 71 75 83
 '''
 
 class Solution:
     def judgeCircle(self, m: str) -> bool:
-        return 0==sum(1j**(ord(c)%19)for c in m)
-
-class Solution:
-    def judgeCircle(self, m: str) -> bool:
-        return 0==sum(1j**(ord(c)%35)for c in m)
+        return 0==sum(1j**(ord(c)%15)for c in m)
 
 class Solution:
     def judgeCircle(self, m: str) -> bool:

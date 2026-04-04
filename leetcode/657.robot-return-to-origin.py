@@ -22,6 +22,8 @@ class Solution:
     def judgeCircle(self, m: str) -> bool:
         return sum(14**ord(c)%333%15-7for c in m)>0
 
+# POTD 2026-04-05
+
 '''
 for i in range(1,1000):
     t = [1j**(ord(c)%i) for c in 'LRUD']
@@ -31,13 +33,11 @@ for i in range(1,1000):
 
 class Solution:
     def judgeCircle(self, m: str) -> bool:
-        return 0==sum(1j**(ord(c)%15)for c in m)
-
-# POTD 2026-04-05
+        return 0==sum(1j**(ord(c)%19)for c in m)
 
 class Solution:
     def judgeCircle(self, m: str) -> bool:
-        return 0==sum(1j**(ord(c)//3)for c in m)
+        return sum(1j**(ord(c)//3)for c in m)==0
 
 test('''
 657. Robot Return to Origin

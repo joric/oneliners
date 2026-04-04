@@ -3,8 +3,12 @@ from lc import *
 # https://leetcode.com/problems/decode-the-slanted-ciphertext/solutions/4776504/5-line-solution-by-yoongyeom-86g7/
 
 class Solution:
-    def decodeCiphertext(self, s: str, n: int) -> str:
-        c=len(s)//n;return''.join(s[j::c+1]for j in range(c-n+2)).rstrip()
+    def decodeCiphertext(self, e: str, r: int) -> str:
+        n=len(e)//r;return''.join(e[i::n+1]for i in range(n-r+2)).rstrip()
+
+class Solution:
+    def decodeCiphertext(self, e: str, r: int) -> str:
+        n=len(e)//r;return''.join(e[i::n+1]for i in range(n)).rstrip()
 
 test('''
 2075. Decode the Slanted Ciphertext

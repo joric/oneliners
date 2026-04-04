@@ -59,7 +59,11 @@ Example 3:
 Input: encodedText = "coding", rows = 1
 Output: "coding"
 Explanation: Since there is only 1 row, both originalText and encodedText are the same.
- 
+
+Other examples:
+
+Input: encodedText = " b  ac", rows = 2
+Output: " abc"
 
 Constraints:
 

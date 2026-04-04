@@ -8,11 +8,11 @@ class Solution:
 
 class Solution:
     def judgeCircle(self, m: str) -> bool:
-        l,r,u,d=map(m.count,'LRUD');return r==l and u==d
+        c=m.count;return c('L')==c('R')and c('U')==c('D')
 
 class Solution:
     def judgeCircle(self, m: str) -> bool:
-        c=m.count;return c('L')==c('R')and c('U')==c('D')
+        l,r,u,d=map(m.count,'LRUD');return r==l and u==d
 
 class Solution:
     def judgeCircle(self, m: str) -> bool:

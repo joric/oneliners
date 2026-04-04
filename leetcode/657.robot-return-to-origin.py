@@ -33,7 +33,7 @@ for i in range(1,1000):
 
 class Solution:
     def judgeCircle(self, m: str) -> bool:
-        return 0==sum(1j**(ord(c)%19)for c in m)
+        return sum(1j**(ord(c)%15)for c in m)==0
 
 class Solution:
     def judgeCircle(self, m: str) -> bool:

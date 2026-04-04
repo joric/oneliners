@@ -4,10 +4,6 @@ from lc import *
 
 class Solution:
     def decodeCiphertext(self, e: str, r: int) -> str:
-        n=len(e)//r;return''.join(e[i::n+1]for i in range(n-r+2)).rstrip()
-
-class Solution:
-    def decodeCiphertext(self, e: str, r: int) -> str:
         n=len(e)//r;return''.join(e[i::n+1]for i in range(n)).rstrip()
 
 test('''

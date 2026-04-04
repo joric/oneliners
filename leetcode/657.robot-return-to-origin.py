@@ -22,17 +22,23 @@ class Solution:
     def judgeCircle(self, m: str) -> bool:
         return sum(14**ord(c)%333%15-7for c in m)>0
 
-class Solution:
-    def judgeCircle(self, m: str) -> bool:
-        return not sum(1j**(ord(c)%19)for c in m)
-
-class Solution:
-    def judgeCircle(self, m: str) -> bool:
-        return 0==sum(1j**(ord(c)//3)for c in m)
+'''
+for i in range(1,1000):
+    if [1j**(ord(c) % i) for c in 'LRUD']==[1,-1,1j,-1j]:
+        print(i)
+'''
 
 class Solution:
     def judgeCircle(self, m: str) -> bool:
         return 0==sum(1j**(ord(c)%19)for c in m)
+
+class Solution:
+    def judgeCircle(self, m: str) -> bool:
+        return 0==sum(1j**(ord(c)%35)for c in m)
+
+class Solution:
+    def judgeCircle(self, m: str) -> bool:
+        return 0==sum(1j**(ord(c)//3)for c in m)
 
 test('''
 657. Robot Return to Origin

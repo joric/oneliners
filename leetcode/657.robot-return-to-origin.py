@@ -24,6 +24,12 @@ class Solution:
 
 # POTD 2026-04-05
 
+# https://leetcode.com/problems/robot-return-to-origin/solutions/7785864/one-line-solution-by-mikposp/
+
+class Solution:
+    def judgeCircle(self, m: str) -> bool:
+        return sum(1j**'RUL'.find(c)for c in s)==0
+
 '''
 for i in range(1,1000):
     t = [1j**(ord(c)%i) for c in 'LRUD']
@@ -34,12 +40,6 @@ for i in range(1,1000):
 class Solution:
     def judgeCircle(self, m: str) -> bool:
         return sum(1j**(ord(c)%15)for c in m)==0
-
-# https://leetcode.com/problems/robot-return-to-origin/solutions/7785864/one-line-solution-by-mikposp/
-
-class Solution:
-    def judgeCircle(self, m: str) -> bool:
-        return sum(1j**'RUL'.find(c)for c in s)==0
 
 class Solution:
     def judgeCircle(self, m: str) -> bool:

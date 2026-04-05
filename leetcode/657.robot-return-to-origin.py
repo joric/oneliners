@@ -39,6 +39,10 @@ class Solution:
 
 class Solution:
     def judgeCircle(self, m: str) -> bool:
+        return sum(1j**'RUL'.find(c)for c in s)==0
+
+class Solution:
+    def judgeCircle(self, m: str) -> bool:
         return sum(1j**(ord(c)//3)for c in m)==0
 
 test('''

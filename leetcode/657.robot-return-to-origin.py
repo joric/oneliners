@@ -35,6 +35,8 @@ class Solution:
     def judgeCircle(self, m: str) -> bool:
         return sum(1j**(ord(c)%15)for c in m)==0
 
+# https://leetcode.com/problems/robot-return-to-origin/solutions/7785864/one-line-solution-by-mikposp/
+
 class Solution:
     def judgeCircle(self, m: str) -> bool:
         return sum(1j**(ord(c)//3)for c in m)==0

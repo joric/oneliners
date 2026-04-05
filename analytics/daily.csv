@@ -2194,3 +2194,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-04-02,maximum-amount-of-money-robot-can-earn,3418,Maximum Amount of Money Robot Can Earn,Medium,29.8
 2026-04-03,maximum-walls-destroyed-by-robots,3661,Maximum Walls Destroyed by Robots,Hard,47.8
 2026-04-04,decode-the-slanted-ciphertext,2075,Decode the Slanted Ciphertext,Medium,50.5
+2026-04-05,robot-return-to-origin,657,Robot Return to Origin,Easy,76.6

@@ -2195,3 +2195,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-04-03,maximum-walls-destroyed-by-robots,3661,Maximum Walls Destroyed by Robots,Hard,47.8
 2026-04-04,decode-the-slanted-ciphertext,2075,Decode the Slanted Ciphertext,Medium,50.5
 2026-04-05,robot-return-to-origin,657,Robot Return to Origin,Easy,76.6
+2026-04-06,walking-robot-simulation,874,Walking Robot Simulation,Medium,58.5

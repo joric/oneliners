@@ -4,14 +4,7 @@ from lc import *
 
 class Solution:
     def xorAfterQueries(self, n: List[int], q: List[List[int]]) -> int:
-        for l,r,k,v in q:
-            for i in range(l,r+1,k):
-                n[i]=n[i]*v
-        return reduce(xor,n)%(10**9+7)
-
-class Solution:
-    def xorAfterQueries(self, n: List[int], q: List[List[int]]) -> int:
-        [setitem(n,i,n[i]*v)for l,r,k,v in q for i in range(l,r+1,k)];return reduce(xor,n)%(10**9+7)
+        [setitem(n,i,n[i]*v%(10**9+7))for l,r,k,v in q for i in range(l,r+1,k)];return reduce(xor,n)
 
 test('''
 3653. XOR After Range Multiplication Queries I

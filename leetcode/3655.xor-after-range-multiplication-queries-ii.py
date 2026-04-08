@@ -29,6 +29,10 @@ class Solution:
     def xorAfterQueries(self,a:List[int],q:List[List[int]])->int:
         m=10**9+7;n=len(a);e=defaultdict(lambda:[1]*n);s=setitem;[k<isqrt(n)and(s(e[k],l,e[k][l]*v%m),t:=r+((l-r)%k or k),t<n and s(e[k],t,e[k][t]*pow(v,m-2,m)%m))or any(s(a,i,a[i]*v%m)for i in range(l,r+1,k))for l,r,k,v in q];all((c:=c*r[j]%m,s(a,j,a[j]*c%m))for k,r in e.items()for i in range(k)if(c:=1)for j in range(i,n,k));return reduce(xor,a)
 
+class Solution:
+    def xorAfterQueries(self,a:List[int],q:List[List[int]])->int:
+        m=10**9+7;n=len(a);e=defaultdict(lambda:[1]*n);s=setitem;g=range;[k<isqrt(n)and(s(e[k],l,e[k][l]*v%m),t:=r+((l-r)%k or k),t<n and s(e[k],t,e[k][t]*pow(v,m-2,m)%m))or any(s(a,i,a[i]*v%m)for i in g(l,r+1,k))for l,r,k,v in q];all((c:=c*r[j]%m,s(a,j,a[j]*c%m))for k,r in e.items()for i in g(k)if(c:=1)for j in g(i,n,k));return reduce(xor,a)
+
 test('''
 3655. XOR After Range Multiplication Queries II
 Attempted

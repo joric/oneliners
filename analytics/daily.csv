@@ -2198,3 +2198,5 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-04-06,walking-robot-simulation,874,Walking Robot Simulation,Medium,58.5
 2026-04-07,walking-robot-simulation-ii,2069,Walking Robot Simulation II,Medium,27.3
 2026-04-08,xor-after-range-multiplication-queries-i,3653,XOR After Range Multiplication Queries I,Medium,74.1
+2026-04-09,xor-after-range-multiplication-queries-ii,3655,XOR After Range Multiplication Queries II,Hard,47.8
+2026-04-10,minimum-distance-between-three-equal-elements-i,3740,Minimum Distance Between Three Equal Elements I,Easy,70.7

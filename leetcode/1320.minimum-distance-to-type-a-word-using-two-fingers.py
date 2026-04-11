@@ -21,6 +21,10 @@ class Solution:
 
 class Solution:
     def minimumDistance(self, w: str) -> int:
+        d=lambda a,b:a and sum(abs(x-y)for x,y in zip(*(divmod(ord(c)-65,6)for c in(a,b))));return(f:=cache(lambda i,l,r:i<len(w)and min(d(l,w[i])+f(i+1,w[i],r),d(r,w[i])+f(i+1,l,w[i]))))(0,0,0)
+
+class Solution:
+    def minimumDistance(self, w: str) -> int:
         d=lambda a,b:a and abs((x:=ord(a)-65)//6-(y:=ord(b)-65)//6)+abs(x%6-y%6);return(f:=cache(lambda i,l,r:i<len(w)and min(d(l,w[i])+f(i+1,w[i],r),d(r,w[i])+f(i+1,l,w[i]))))(0,0,0)
 
 test('''

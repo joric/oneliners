@@ -14,9 +14,11 @@ class Solution:
             seen[x] = (j, k)
         return -1 if result >= len(nums) else 2 * result
 
+# same as 3741
+
 class Solution:
     def minimumDistance(self, a: List[int]) -> int:
-        d=defaultdict(list);t=min((d[j][-1]-d[j][-3]for i,j in enumerate(a)if d[j].append(i)or len(d[j])>2),default=inf);return t<inf and t+t or-1
+        d=defaultdict(list);t=min((d[j][-1]-d[j][-3]for i,j in enumerate(a)if d[j].append(i)or len(d[j])>2),default=-1);return(t>0)*(t*2+1)-1
 
 test('''
 3740. Minimum Distance Between Three Equal Elements I

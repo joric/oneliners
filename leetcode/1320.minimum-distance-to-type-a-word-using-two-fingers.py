@@ -65,6 +65,11 @@ Finger 1 on letter 'Y' -> cost = Distance from letter 'A' to letter 'Y' = 4
 Total distance = 6
  
 
+Other examples:
+
+Input: word = "YEAR"
+Output: 7
+
 Constraints:
 
 2 <= word.length <= 300

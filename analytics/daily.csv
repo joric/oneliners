@@ -2201,3 +2201,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-04-09,xor-after-range-multiplication-queries-ii,3655,XOR After Range Multiplication Queries II,Hard,47.8
 2026-04-10,minimum-distance-between-three-equal-elements-i,3740,Minimum Distance Between Three Equal Elements I,Easy,70.7
 2026-04-11,minimum-distance-between-three-equal-elements-ii,3741,Minimum Distance Between Three Equal Elements II,Medium,67.9
+2026-04-12,minimum-distance-to-type-a-word-using-two-fingers,1320,Minimum Distance to Type a Word Using Two Fingers,Hard,59.5

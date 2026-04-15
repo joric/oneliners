@@ -25,7 +25,7 @@ class Solution:
 
 class Solution:
     def solveQueries(self, a: List[int], q: List[int]) -> List[int]:
-        d=defaultdict(list);[d[v].append(i)for i,v in enumerate(a)];return[2>len(p)and-1or min((x-p[(j:=bisect_left(p,x))-1])%len(a),(p[(j+1)%len(p)]-x)%len(a))for x in q for p in[d[a[x]]]]
+        d=defaultdict(list);[d[v].append(i)for i,v in enumerate(a)];return[2>len(p)and-1or min((x-p[(j:=bisect_left(p,x))-1])%len(a),(p[-~j%len(p)]-x)%len(a))for x in q for p in[d[a[x]]]]
 
 test('''
 3488. Closest Equal Element Queries

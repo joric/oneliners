@@ -21,6 +21,21 @@ class Solution:
 
 class Solution:
     def solveQueries(self, a: List[int], q: List[int]) -> List[int]:
+        d=defaultdict(list);
+        for i,v in enumerate(a):
+            d[v].append(i)
+        r = []
+        for x in q:
+            p = d[a[x]]
+            if len(p)<2:
+                r.append(-1)
+                continue
+            j = bisect_right(p,x)%len(p)
+            r.append(min((p[j]-x)%len(a),(x-p[j-2])%len(a)))
+        return r
+
+class Solution:
+    def solveQueries(self, a: List[int], q: List[int]) -> List[int]:
         m=len(a);d={};[d.setdefault(v,[]).append(i)for i,v in enumerate(a)];return[2>len(p:=d[a[x]])and-1or min((p[j:=bisect_right(p,x)%len(p)]-x)%m,(x-p[j-2])%m)for x in q]
 
 test('''

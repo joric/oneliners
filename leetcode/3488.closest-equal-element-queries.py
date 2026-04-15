@@ -21,7 +21,7 @@ class Solution:
 
 class Solution:
     def solveQueries(self, a: List[int], q: List[int]) -> List[int]:
-        d=defaultdict(list);
+        d = defaultdict(list);
         for i,v in enumerate(a):
             d[v].append(i)
         r = []

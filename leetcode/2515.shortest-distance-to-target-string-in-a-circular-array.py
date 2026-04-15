@@ -16,6 +16,11 @@ class Solution:
     def closestTarget(self, w: List[str], t: str, k: int) -> int:
         return min(x.index(t)for x in(w[k:]+w,(w+w[:k+1])[::-1]))if t in w else-1
 
+class Solution:
+    def closestTarget(self, w: List[str], t: str, k: int) -> int:
+        return t not in w and -1 or min((w[k:]+w).index(t),(w+w[:k+1])[::-1].index(t))
+
+
 test('''
 2515. Shortest Distance to Target String in a Circular Array
 Easy

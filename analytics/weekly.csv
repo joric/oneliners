@@ -336,3 +336,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-03-29,design-phone-directory,379,Design Phone Directory,Medium,52.7
 2026-04-01,kill-process,582,Kill Process,Medium,70.3
 2026-04-08,pour-water,755,Pour Water,Medium,48.6
+2026-04-15,missing-ranges,163,Missing Ranges,Easy,35.6

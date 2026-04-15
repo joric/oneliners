@@ -21,17 +21,20 @@ class Solution:
 
 class Solution:
     def solveQueries(self, a: List[int], q: List[int]) -> List[int]:
-        d = defaultdict(list);
-        for i,v in enumerate(a):
+        d = defaultdict(list)
+        for i, v in enumerate(a):
             d[v].append(i)
+        n = len(a)
         r = []
         for x in q:
             p = d[a[x]]
-            if len(p)<2:
+            if len(p) < 2:
                 r.append(-1)
                 continue
-            j = bisect_right(p,x)%len(p)
-            r.append(min((p[j]-x)%len(a),(x-p[j-2])%len(a)))
+            j = bisect_left(p, x)
+            left = p[j-1]
+            right = p[(j+1)%len(p)]
+            r.append(min((x - left) % n, (right - x) % n))
         return r
 
 class Solution:

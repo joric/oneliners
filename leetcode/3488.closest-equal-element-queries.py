@@ -39,7 +39,11 @@ class Solution:
 
 class Solution:
     def solveQueries(self, a: List[int], q: List[int]) -> List[int]:
-        m=len(a);d={};[d.setdefault(v,[]).append(i)for i,v in enumerate(a)];return[2>len(p:=d[a[x]])and-1or min((p[j:=bisect_right(p,x)%len(p)]-x)%m,(x-p[j-2])%m)for x in q]
+        n=len(a);d={};[d.setdefault(v,[]).append(i)for i,v in enumerate(a)];return[2>len(p:=d[a[x]])and-1or min((x-p[(j:=bisect_left(p,x))-1])%n,(p[(j+1)%len(p)]-x)%n)for x in q]
+
+class Solution:
+    def solveQueries(self, a: List[int], q: List[int]) -> List[int]:
+        n=len(a);d={};[d.setdefault(v,[]).append(i)for i,v in enumerate(a)];return[2>len(p:=d[a[x]])and-1or min((p[j:=bisect_right(p,x)%len(p)]-x)%n,(x-p[j-2])%n)for x in q]
 
 test('''
 3488. Closest Equal Element Queries

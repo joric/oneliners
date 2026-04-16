@@ -2205,3 +2205,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-04-13,minimum-distance-to-the-target-element,1848,Minimum Distance to the Target Element,Easy,54.4
 2026-04-14,minimum-total-distance-traveled,2463,Minimum Total Distance Traveled,Hard,58.8
 2026-04-15,shortest-distance-to-target-string-in-a-circular-array,2515,Shortest Distance to Target String in a Circular Array,Easy,50.6
+2026-04-16,closest-equal-element-queries,3488,Closest Equal Element Queries,Medium,33.1

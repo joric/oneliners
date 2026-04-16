@@ -28,13 +28,13 @@ class Solution:
         r = []
         for x in q:
             p = d[a[x]]
-            if len(p) < 2:
+            if len(p) > 1:
+                j = bisect_left(p, x)
+                left = p[j-1]
+                right = p[(j+1)%len(p)]
+                r.append(min((x - left) % n, (right - x) % n))
+            else:
                 r.append(-1)
-                continue
-            j = bisect_left(p, x)
-            left = p[j-1]
-            right = p[(j+1)%len(p)]
-            r.append(min((x - left) % n, (right - x) % n))
         return r
 
 class Solution:

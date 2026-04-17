@@ -1,19 +1,16 @@
 from lc import *
 
-# https://leetcode.com/problems/minimum-absolute-distance-between-mirror-pairs/solutions/7383928/python-3-lines-by-ante-ffc2/?envType=daily-question&envId=2026-04-17
+# https://leetcode.com/problems/minimum-absolute-distance-between-mirror-pairs/solutions/7926397/minimum-absolute-distance-between-mirror-oc90/?envType=daily-question&envId=2026-04-17
 
 class Solution:
-    def minMirrorPairDistance(self, a: List[int]) -> int:
-        d = defaultdict(lambda: inf)
-        r = inf
-        for i in range(len(a) - 1, -1,-1):
-            r = min(r, d[int(str(a[i])[::-1])]-i)
-            d[a[i]] = i
-        return -1 if r==inf else r
-
-class Solution:
-    def minMirrorPairDistance(self, a: List[int]) -> int:
-        d={};return(-1,t:=min((d.get(int(str(a[i])[::-1]),inf)-i,setitem(d,a[i],i))[0]for i in range(len(a)-1,-1,-1)))[t<inf]
+    def minMirrorPairDistance(self, nums: List[int]) -> int:
+        prev = dict()
+        ans = inf
+        for i, num in enumerate(nums):
+            if num in prev:
+                ans = min(ans, i - prev[num])
+            prev[int(str(num)[::-1])] = i
+        return -1 if ans == inf else ans
 
 class Solution:
     def minMirrorPairDistance(self, a: List[int]) -> int:

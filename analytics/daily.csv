@@ -2207,3 +2207,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-04-15,shortest-distance-to-target-string-in-a-circular-array,2515,Shortest Distance to Target String in a Circular Array,Easy,50.6
 2026-04-16,closest-equal-element-queries,3488,Closest Equal Element Queries,Medium,33.1
 2026-04-17,minimum-absolute-distance-between-mirror-pairs,3761,Minimum Absolute Distance Between Mirror Pairs,Medium,46.2
+2026-04-18,mirror-distance-of-an-integer,3783,Mirror Distance of an Integer,Easy,88.0

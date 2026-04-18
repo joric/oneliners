@@ -22,10 +22,6 @@ class Solution:
     def distance(self, a: List[int]) -> List[int]:
         d={};[d.setdefault(c,[]).append(i)for i,c in enumerate(a)];[setitem(a,x,s-len(t)*x-2*(x*~i+(p:=p+x)))for t in d.values()if[s:=sum(t),p:=0]for i,x in enumerate(t)];return a
 
-class Solution:
-    def distance(self, a: List[int]) -> List[int]:
-        d={};[d.setdefault(c,[]).append(i)for i,c in enumerate(a)];[setitem(a,x,s-len(t)*x-2*(x*~i+(p:=p+x)))for t in d.values()if[s:=sum(t),p:=0]for i,x in enumerate(t)];return a
-
 test('''
 2615. Sum of Distances
 Medium

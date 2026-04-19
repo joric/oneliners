@@ -29,7 +29,11 @@ class Solution:
 
 class Solution:
     def maxDistance(self, a: List[int], b: List[int]) -> int:
-        return max([t:=0]+[i-(t:=t+(t>=len(a)or a[t]>x))for i,x in enumerate(b)])
+        return max([j:=0]+[i-(j:=j+(j>=len(a)or a[j]>x))for i,x in enumerate(b)])
+
+class Solution:
+    def maxDistance(self, a: List[int], b: List[int]) -> int:
+        return max(j:=0,*[i-(j:=j+(j>=len(a)or a[j]>x))for i,x in enumerate(b)])
 
 test('''
 1855. Maximum Distance Between a Pair of Values

@@ -2209,3 +2209,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-04-17,minimum-absolute-distance-between-mirror-pairs,3761,Minimum Absolute Distance Between Mirror Pairs,Medium,46.2
 2026-04-18,mirror-distance-of-an-integer,3783,Mirror Distance of an Integer,Easy,88.0
 2026-04-19,maximum-distance-between-a-pair-of-values,1855,Maximum Distance Between a Pair of Values,Medium,54.7
+2026-04-20,two-furthest-houses-with-different-colors,2078,Two Furthest Houses With Different Colors,Easy,66.4

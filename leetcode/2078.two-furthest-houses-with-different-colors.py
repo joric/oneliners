@@ -22,6 +22,10 @@ class Solution:
     def maxDistance(self, c: List[int]) -> int:
         return max(i*(x!=c[0]or c[-1]!=c[~i])for i,x in enumerate(c))
 
+class Solution:
+    def maxDistance(self, c: List[int]) -> int:
+        return max(i*(x^c[0]|c[-1]^c[~i]>0)for i,x in enumerate(c))
+
 test('''
 2078. Two Furthest Houses With Different Colors
 Easy

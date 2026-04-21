@@ -17,6 +17,10 @@ class Solution:
     def countSmaller(self, a: List[int]) -> List[int]:
         c=SortedList();return[c.bisect_left(x)for x in a[::-1]if[c.add(x)]][::-1]
 
+class Solution:
+    def countSmaller(self, a: List[int]) -> List[int]:
+        c=[];return[bisect_left(c,x)for x in a[::-1]if[insort(c,x)]][::-1]
+
 test('''
 315. Count of Smaller Numbers After Self
 Solved

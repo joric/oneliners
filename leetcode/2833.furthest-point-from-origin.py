@@ -14,6 +14,23 @@ class Solution:
     def furthestDistanceFromOrigin(self, m: str) -> int:
         a,b,c=map(m.count,'RL_');return abs(a-b)+c
 
+'''kotlin
+
+fun furthestDistanceFromOrigin(moves: String): Int =
+          moves.groupingBy{it}.eachCount().let{ abs((it['L']?:0) - (it['R']?:0)) + (it['_']?:0) }
+
+class Solution {
+fun furthestDistanceFromOrigin(moves: String): Int =
+          moves.run{abs(count{it=='L'}-count{it=='R'})+count{it=='_'}}
+}
+
+class Solution {
+fun furthestDistanceFromOrigin(moves: String): Int =
+          m.count{it=='_'}+abs(m.count{it=='L'}-m.count{it=='R'})
+}
+
+'''
+
 test('''
 2833. Furthest Point From Origin
 Easy

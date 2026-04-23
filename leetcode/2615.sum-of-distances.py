@@ -30,6 +30,10 @@ class Solution:
     def distance(self,a:List[int])->List[int]:
         f=lambda a:(d:={},[(c:=d.get(x,(0,0)))[0]*i-c[1]-(setitem(d,x,(c[0]+1,c[1]+i))or 0)for i,x in enumerate(a)])[1];return map(sum,zip(f(a),f(a[::-1])[::-1]))
 
+class Solution:
+    def distance(self, a: List[int]) -> List[int]:
+        f=lambda a:(d:={},[(c:=d.get(x,(0,0)))[0]*i-c[1]-(setitem(d,x,(c[0]+1,c[1]+i))or 0)for i,x in enumerate(a)])[1];return map(add,f(a),f(a[::-1])[::-1])
+
 test('''
 2615. Sum of Distances
 Medium

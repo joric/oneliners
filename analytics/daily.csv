@@ -2213,3 +2213,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-04-21,minimize-hamming-distance-after-swap-operations,1722,Minimize Hamming Distance After Swap Operations,Medium,52.1
 2026-04-22,words-within-two-edits-of-dictionary,2452,Words Within Two Edits of Dictionary,Medium,63.9
 2026-04-23,sum-of-distances,2615,Sum of Distances,Medium,35.2
+2026-04-24,furthest-point-from-origin,2833,Furthest Point From Origin,Easy,69.6

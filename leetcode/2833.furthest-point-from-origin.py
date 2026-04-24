@@ -29,7 +29,17 @@ fun furthestDistanceFromOrigin(moves: String): Int =
           m.count{it=='_'}+abs(m.count{it=='L'}-m.count{it=='R'})
 }
 
+class Solution {
+fun furthestDistanceFromOrigin(moves: String): Int =
+          m.length-2*minOf(m.count{it=='L'},m.count{it=='R'})
+}
 '''
+
+# https://leetcode.com/problems/furthest-point-from-origin/solutions/8086561/one-line-solutions-by-xxxxkav-rfc9/
+
+class Solution:
+    def furthestDistanceFromOrigin(self, m: str) -> int:
+        return len(m)-2*min(map(m.count,'LR'))
 
 test('''
 2833. Furthest Point From Origin

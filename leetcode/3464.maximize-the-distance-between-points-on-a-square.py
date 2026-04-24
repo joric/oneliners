@@ -51,18 +51,14 @@ class Solution:
 
 class Solution:
     def maxDistance(self, s: int, p: List[List[int]], k: int) -> int:
-        def f(d):
-            a=sorted(x if y==0 else s+y if x==s else 3*s-x if y==s else 4*s-y for x,y in p)
+        def f(d,a=sorted(x+y if 0 in(y,s-x)else 4*s-x-y for x,y in p)):
             for i,n in enumerate(a):
-                c=(g:=lambda t,c:c if c>=k else((j:=bisect_left(a,a[t]+d))==len(p)and c)or(d+a[j]>n+4*s and 0)or g(j,c+1))(i,1)
-                if c==k:
+                def g(t,c):
+                    return(c==k or(j:=bisect_left(a,a[t]+d))==len(a))and c or(d+a[j]>n+4*s and-1)or g(j,c+1)
+                if g(i,1)>=k:
                     return False
             return True
-        return bisect_left(range(0,s+1),1,key=f)-1
-
-class Solution:
-    def maxDistance(self, s: int, p: List[List[int]], k: int) -> int:
-        return bisect_left(range(s+1),1,key=(f:=lambda d,a=sorted(x if y==0 else s+y if x==s else 3*s-x if y==s else 4*s-y for x,y in p):all((g:=lambda t,c:c if c>=k else((j:=bisect_left(a,a[t]+d))==len(p)and c or(d+a[j]>n+4*s and-1)or g(j,c+1)))(i,1)!=k for i,n in enumerate(a))))-1
+        return bisect_left(range(s+1),1,key=f)-1
 
 class Solution:
     def maxDistance(self, s: int, p: List[List[int]], k: int) -> int:

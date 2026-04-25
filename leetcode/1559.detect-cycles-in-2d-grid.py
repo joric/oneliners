@@ -32,6 +32,35 @@ class Solution:
     def containsCycle(self,g:List[List[str]])->bool:
         m,n,s=len(g),len(g[0]),setitem;f=cache(lambda i,j,d:(v:=g[i][j])and(s(g[i],j,1)or any(1==g[x][y]or v==g[x][y]and f(x,y,c)for x,y,c in((i-1,j,-2),(i,j-1,-1),(i,j+1,1),(i+1,j,2))if n>y>-1<x<m and d+c)or s(g[i],j,v)));return any(f(i:=k//n,j:=k%n,0)or s(g[i],j,0)for k in range(m*n))
 
+# https://leetcode.com/problems/detect-cycles-in-2d-grid/solutions/6662878/dfs-by-shashwatbangar-lj6q/
+
+class Solution:
+    def containsCycle(self, g: List[List[str]]) -> bool:
+        m,n,v=len(g),len(g[0]),set()
+        def f(i,j,a,b,c):
+            if n>j>-1<i<m and g[i][j]==c:
+                if (i,j)in v:
+                    return 1
+                v.add((i,j))
+                return any((x!=a or y!=b)and f(x,y,i,j,c)for x,y in ((i,j+1),(i+1,j),(i-1,j),(i,j-1)))
+        return any((i:=k//n,j:=k%n)not in v and f(i,j,-1,-1,g[i][j])for k in range(m*n))
+
+class Solution:
+    def containsCycle(self, g: List[List[str]]) -> bool:
+        m,n,v=len(g),len(g[0]),set();f=lambda i,j,a,b,c:(n>j>-1<i<m and g[i][j]==c)and(v&{(i,j)}or v.add((i,j))or any((x!=a or y!=b)and f(x,y,i,j,c)for x,y in((i,j+1),(i+1,j),(i-1,j),(i,j-1))));return any(f(i,j,-1,-1,g[i][j])for k in range(m*n)if{(i:=k//n,j:=k%n)}-v)
+
+class Solution:
+    def containsCycle(self, g: List[List[str]]) -> bool:
+        m,n,v=len(g),len(g[0]),set();f=lambda i,j,a,b,c:(n>j>-1<i<m and g[i][j]==c)and(v&{(i,j)}or v.add((i,j))or any(f(x,y,i,j,c)for x,y in((i,j+1),(i+1,j),(i-1,j),(i,j-1))if x!=a or y!=b));return any(f(i,j,-1,-1,g[i][j])for k in range(m*n)if{(i:=k//n,j:=k%n)}-v)
+
+class Solution:
+    def containsCycle(self, g: List[List[str]]) -> bool:
+        m,n,v=len(g),len(g[0]),set();f=lambda i,j,a,b,c:(n>j>-1<i<m and g[i][j]==c)and(v&{(i,j)}or v.add((i,j))or any(f(x,y,i,j,c)for x,y in((i,j+1),(i+1,j),(i-1,j),(i,j-1))if(x,y)!=(a,b)));return any(f(i,j,-1,-1,g[i][j])for k in range(m*n)if{(i:=k//n,j:=k%n)}-v)
+
+class Solution:
+    def containsCycle(self, g: List[List[str]]) -> bool:
+        v,e,f=set(),enumerate,lambda i,j,p,c:len(g)>i>-1<j<len(g[i])and g[i][j]==c and(v&{t:=(i,j)}or v.add(t)or any(f(*d,t,c)for d in((i+1,j),(i,j+1),(i-1,j),(i,j-1))if d!=p));return any(f(i,j,0,x)for i,r in e(g)for j,x in e(r)if{(i,j)}-v)
+
 test('''
 1559. Detect Cycles in 2D Grid
 Solved

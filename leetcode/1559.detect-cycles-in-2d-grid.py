@@ -59,7 +59,7 @@ class Solution:
 
 class Solution:
     def containsCycle(self, g: List[List[str]]) -> bool:
-        v,e,f=set(),enumerate,lambda i,j,p,c:len(g)>i>-1<j<len(g[i])and g[i][j]==c and(v&{t:=(i,j)}or v.add(t)or any(f(*d,t,c)for d in((i+1,j),(i,j+1),(i-1,j),(i,j-1))if d!=p));return any(f(i,j,0,x)for i,r in e(g)for j,x in e(r)if{(i,j)}-v)
+        v,e,f=set(),enumerate,lambda i,j,p,x:len(g)>i>-1<j<len(g[i])and x==g[i][j]and(v&{t:=(i,j)}or v.add(t)or any(f(*d,t,x)for d in((i+1,j),(i,j+1),(i-1,j),(i,j-1))if d!=p));return any(f(i,j,0,x)for i,r in e(g)for j,x in e(r)if{(i,j)}-v)
 
 test('''
 1559. Detect Cycles in 2D Grid

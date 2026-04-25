@@ -54,7 +54,9 @@ class Solution:
         def f(d,a=sorted(x+y if 0 in(y,s-x)else 4*s-x-y for x,y in p)):
             for i,n in enumerate(a):
                 def g(t,c):
-                    return(c==k or(j:=bisect_left(a,a[t]+d))==len(a))and c or(d+a[j]>n+4*s and-1)or g(j,c+1)
+                    if c==k or(j:=bisect_left(a,a[t]+d))==len(a):
+                        return c
+                    return -1 if d+a[j]>n+4*s else g(j,c+1)
                 if g(i,1)>=k:
                     return False
             return True

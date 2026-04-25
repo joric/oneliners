@@ -53,8 +53,8 @@ class Solution:
     def maxDistance(self, s: int, p: List[List[int]], k: int) -> int:
         def f(d,a=sorted(x+y if 0 in(y,s-x)else 4*s-x-y for x,y in p)):
             for i,n in enumerate(a):
-                def g(t,c):
-                    if c==k or(j:=bisect_left(a,a[t]+d))==len(a):
+                def g(i,c):
+                    if c==k or(j:=bisect_left(a,a[i]+d))==len(a):
                         return c
                     return -1 if d+a[j]>n+4*s else g(j,c+1)
                 if g(i,1)>=k:
@@ -66,14 +66,14 @@ class Solution:
     def maxDistance(self, s: int, p: List[List[int]], k: int) -> int:
         def f(d,a=sorted(x+y if 0 in(y,s-x)else 4*s-x-y for x,y in p)):
             for i,n in enumerate(a):
-                if(g:=lambda t,c:(c==k or(j:=bisect_left(a,a[t]+d))==len(a))and c or(d+a[j]>n+4*s and-1)or g(j,c+1))(i,1)>=k:
+                if(g:=lambda i,c:(c==k or(j:=bisect_left(a,a[i]+d))==len(a))and c or(d+a[j]>n+4*s and-1)or g(j,c+1))(i,1)>=k:
                     return False
             return True
         return bisect_left(range(s+1),1,key=f)-1
 
 class Solution:
     def maxDistance(self, s: int, p: List[List[int]], k: int) -> int:
-        b=bisect_left;return b(range(s+1),1,key=lambda d,a=sorted(x+y if 0 in(y,s-x)else 4*s-x-y for x,y in p):all((g:=lambda t,c:(c==k or(j:=b(a,a[t]+d))==len(a))and c or(d+a[j]>n+4*s and-1)or g(j,c+1))(i,1)<k for i,n in enumerate(a)))-1
+        b=bisect_left;return b(range(s+1),1,key=lambda d,a=sorted(x+y if 0 in(y,s-x)else 4*s-x-y for x,y in p):all((g:=lambda i,c:(c==k or(j:=b(a,a[i]+d))==len(a))and c or(d+a[j]>n+4*s and-1)or g(j,c+1))(i,1)<k for i,n in enumerate(a)))-1
 
 test('''
 3464. Maximize the Distance Between Points on a Square

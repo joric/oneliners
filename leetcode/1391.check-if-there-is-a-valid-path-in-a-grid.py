@@ -83,6 +83,10 @@ class Solution:
     def hasValidPath(self, g: List[List[int]]) -> bool:
         n=len(g[0]);t=''.join(map(chr,range(L:=len(s:=sum(g,[])))));all((t:=t.replace(t[k],t[k+d]))for k,v in enumerate(s)for d in(1,n)if d<2and~k%n and v in(1,4,6)and s[k+d]%2 or d==n and k+d<L and 1<v<5and s[k+d]in(2,5,6));return t[0]==t[-1]
 
+class Solution:
+    def hasValidPath(self, g: List[List[int]]) -> bool:
+        m,n=len(g),len(g[0]);t=''.join(map(chr,range(m*n)));s=sum(g,[]);all(t:=t.replace(t[i],t[j])for i,v in enumerate(s)for d,a,b,c in((1,82,42,~i%n),(n,28,100,1))if c and(j:=i+d)<m*n and a>>v&b>>s[j]&1);return t[0]==t[-1]
+
 test('''
 1391. Check if There is a Valid Path in a Grid
 Solved
@@ -125,7 +129,12 @@ Example 3:
 Input: grid = [[1,1,2]]
 Output: false
 Explanation: You will get stuck at cell (0, 1) and you cannot reach cell (0, 2).
- 
+
+Other examples:
+
+Input: grid = [[2],[2],[2],[2],[2],[2],[6]]
+Output: true
+
 
 Constraints:
 

@@ -47,23 +47,11 @@ class Solution:
 
 class Solution:
     def containsCycle(self, g: List[List[str]]) -> bool:
-        m,n,v=len(g),len(g[0]),set();f=lambda i,j,a,b,c:(n>j>-1<i<m and g[i][j]==c)and(v&{(i,j)}or v.add((i,j))or any((x!=a or y!=b)and f(x,y,i,j,c)for x,y in((i,j+1),(i+1,j),(i-1,j),(i,j-1))));return any(f(i,j,-1,-1,g[i][j])for k in range(m*n)if{(i:=k//n,j:=k%n)}-v)
-
-class Solution:
-    def containsCycle(self, g: List[List[str]]) -> bool:
-        m,n,v=len(g),len(g[0]),set();f=lambda i,j,a,b,c:(n>j>-1<i<m and g[i][j]==c)and(v&{(i,j)}or v.add((i,j))or any(f(x,y,i,j,c)for x,y in((i,j+1),(i+1,j),(i-1,j),(i,j-1))if x!=a or y!=b));return any(f(i,j,-1,-1,g[i][j])for k in range(m*n)if{(i:=k//n,j:=k%n)}-v)
-
-class Solution:
-    def containsCycle(self, g: List[List[str]]) -> bool:
-        m,n,v=len(g),len(g[0]),set();f=lambda i,j,a,b,c:(n>j>-1<i<m and g[i][j]==c)and(v&{(i,j)}or v.add((i,j))or any(f(x,y,i,j,c)for x,y in((i,j+1),(i+1,j),(i-1,j),(i,j-1))if(x,y)!=(a,b)));return any(f(i,j,-1,-1,g[i][j])for k in range(m*n)if{(i:=k//n,j:=k%n)}-v)
-
-class Solution:
-    def containsCycle(self, g: List[List[str]]) -> bool:
         v,e,f=set(),enumerate,lambda i,j,p,x:len(g)>i>-1<j<len(g[i])and x==g[i][j]and(v&{t:=(i,j)}or v.add(t)or any(f(*d,t,x)for d in((i+1,j),(i,j+1),(i-1,j),(i,j-1))if d!=p));return any(f(i,j,0,x)for i,r in e(g)for j,x in e(r)if{(i,j)}-v)
 
 class Solution:
     def containsCycle(self, g: List[List[str]]) -> bool:
-        v,e=set(),enumerate;g={i+j*1j:c for i,r in e(g)for j,c in e(r)};f=lambda z,p,x:g.get(z)==x and(v&{z}or v.add(z)or any(f(z+d,z,x)for d in(1,-1,1j,-1j)if z+d!=p));return any(f(z,-1,g[z])for z in g if{z}-v)
+        v,e=set(),enumerate;g={i+j*1j:c for i,r in e(g)for j,c in e(r)};f=lambda z,p,x:x==g.get(z)and(v&{z}or v.add(z)or any(f(z+d,z,x)for d in(1,-1,1j,-1j)if p-z-d));return any(f(z,-1,g[z])for z in g if{z}-v)
 
 test('''
 1559. Detect Cycles in 2D Grid

@@ -2215,3 +2215,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-04-23,sum-of-distances,2615,Sum of Distances,Medium,35.2
 2026-04-24,furthest-point-from-origin,2833,Furthest Point From Origin,Easy,69.6
 2026-04-25,maximize-the-distance-between-points-on-a-square,3464,Maximize the Distance Between Points on a Square,Hard,34.3
+2026-04-26,detect-cycles-in-2d-grid,1559,Detect Cycles in 2D Grid,Medium,54.2

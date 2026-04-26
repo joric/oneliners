@@ -1,5 +1,38 @@
 from lc import *
 
+# https://leetcode.com/problems/check-if-there-is-a-valid-path-in-a-grid/solutions/548292/python-dfs-and-bit-manipulation-14-lines-pfns/?envType=daily-question&envId=2026-04-27
+
+class Solution:
+    def hasValidPath(self, g: List[List[int]]) -> bool:
+        d, m, n = [0, 56, 146, 152, 176, 26, 50], 3*len(g), 3*len(g[0])
+        def get(r, c):
+            return 1 & ((0 <= r < m and 0 <= c < n) and (d[g[r//3][c//3]] >> 3*(r%3)+(c%3)))
+        stack,seen = [(1,1)], {(1, 1)}
+        while stack:
+            (r, c) = stack.pop()
+            if (r, c) == (m-2, n-2):
+                return True
+            for r, c in [(r-1, c), (r+1, c), (r, c+1), (r, c-1)]:
+                if (r, c) not in seen and get(r, c) == 1:
+                    seen.add((r, c))
+                    stack.append((r, c))
+        return False
+
+class Solution(object):
+    def hasValidPath(self, g: List[List[int]]) -> bool:
+        d,m,n,v=[0,56,146,152,176,26,50],3*len(g),3*len(g[0]),set()
+        q=lambda i,j:1&(n>j>-1<i<m and(d[g[i//3][j//3]]>>3*(i%3)+(j%3)))
+        f=cache(lambda i,j:(i,j)==(m-2,n-2)or v.add((i,j))or any(1==q(x,y)and(x,y)not in v and f(x,y)for x,y in((i-1,j),(i+1,j),(i,j+1),(i,j-1))))
+        return f(1,1)
+
+class Solution(object):
+    def hasValidPath(self, g: List[List[int]]) -> bool:
+        d,m,n,v=[0,56,146,152,176,26,50],3*len(g),3*len(g[0]),set();q=lambda i,j:1&(n>j>-1<i<m and(d[g[i//3][j//3]]>>3*(i%3)+(j%3)));f=cache(lambda i,j:(i,j)==(m-2,n-2)or v.add((i,j))or any(1==q(x,y)and(x,y)not in v and f(x,y)for x,y in((i-1,j),(i+1,j),(i,j+1),(i,j-1))));return f(1,1)
+
+class Solution:
+    def hasValidPath(self, g: List[List[int]]) -> bool:
+        m,n,d=3*len(g),3*len(g[0]),(0,56,146,152,176,26,50);v={(1,1)};q=[*v];[(v.add((r,c)),q.append((r,c)))for i,j in q for r,c in((i+1,j),(i-1,j),(i,j+1),(i,j-1))if m>r>-1<c<n and d[g[r//3][c//3]]>>r%3*3+c%3&1and{(r,c)}-v];return(m-2,n-2)in v
+
 # https://leetcode.com/problems/check-if-there-is-a-valid-path-in-a-grid/solutions/6797785/short-and-sweet-union-find-by-tleibert-it43/?envType=daily-question&envId=2026-04-27
 
 class Solution:
@@ -46,38 +79,9 @@ class Solution:
     def hasValidPath(self, g: List[List[int]]) -> bool:
         m,n=len(g),len(g[0]);t=''.join(map(chr,range(m*n)));all((v:=g[i:=k//n][j:=k%n],v in(1,4,6)and j<n-1and g[i][j+1]%2and(t:=t.replace(t[k],t[k+1])),v in(2,3,4)and i<m-1and g[i+1][j]in(2,5,6)and(t:=t.replace(t[k],t[k+n])))for k in range(m*n));return t[0]==t[-1]
 
-# https://leetcode.com/problems/check-if-there-is-a-valid-path-in-a-grid/solutions/548292/python-dfs-and-bit-manipulation-14-lines-pfns/?envType=daily-question&envId=2026-04-27
-
 class Solution:
     def hasValidPath(self, g: List[List[int]]) -> bool:
-        d, m, n = [0, 56, 146, 152, 176, 26, 50], 3*len(g), 3*len(g[0])
-        def get(r, c):
-            return 1 & ((0 <= r < m and 0 <= c < n) and (d[g[r//3][c//3]] >> 3*(r%3)+(c%3)))
-        stack,seen = [(1,1)], {(1, 1)}
-        while stack:
-            (r, c) = stack.pop()
-            if (r, c) == (m-2, n-2):
-                return True
-            for r, c in [(r-1, c), (r+1, c), (r, c+1), (r, c-1)]:
-                if (r, c) not in seen and get(r, c) == 1:
-                    seen.add((r, c))
-                    stack.append((r, c))
-        return False
-
-class Solution(object):
-    def hasValidPath(self, g: List[List[int]]) -> bool:
-        d,m,n,v=[0,56,146,152,176,26,50],3*len(g),3*len(g[0]),set()
-        q=lambda i,j:1&(n>j>-1<i<m and(d[g[i//3][j//3]]>>3*(i%3)+(j%3)))
-        f=cache(lambda i,j:(i,j)==(m-2,n-2)or v.add((i,j))or any(1==q(x,y)and(x,y)not in v and f(x,y)for x,y in((i-1,j),(i+1,j),(i,j+1),(i,j-1))))
-        return f(1,1)
-
-class Solution(object):
-    def hasValidPath(self, g: List[List[int]]) -> bool:
-        d,m,n,v=[0,56,146,152,176,26,50],3*len(g),3*len(g[0]),set();q=lambda i,j:1&(n>j>-1<i<m and(d[g[i//3][j//3]]>>3*(i%3)+(j%3)));f=cache(lambda i,j:(i,j)==(m-2,n-2)or v.add((i,j))or any(1==q(x,y)and(x,y)not in v and f(x,y)for x,y in((i-1,j),(i+1,j),(i,j+1),(i,j-1))));return f(1,1)
-
-class Solution:
-    def hasValidPath(self, g: List[List[int]]) -> bool:
-        m,n,d=3*len(g),3*len(g[0]),(0,56,146,152,176,26,50);v={(1,1)};q=[*v];[(v.add((r,c)),q.append((r,c)))for i,j in q for r,c in((i+1,j),(i-1,j),(i,j+1),(i,j-1))if m>r>-1<c<n and d[g[r//3][c//3]]>>r%3*3+c%3&1and{(r,c)}-v];return(m-2,n-2)in v
+        n=len(g[0]);t=''.join(map(chr,range(L:=len(s:=sum(g,[])))));all((t:=t.replace(t[k],t[k+d]))for k,v in enumerate(s)for d in(1,n)if d<2and~k%n and v in(1,4,6)and s[k+d]%2 or d==n and k+d<L and 1<v<5and s[k+d]in(2,5,6));return t[0]==t[-1]
 
 test('''
 1391. Check if There is a Valid Path in a Grid

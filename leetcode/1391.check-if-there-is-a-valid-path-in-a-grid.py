@@ -67,10 +67,6 @@ class Solution:
                 if v in(2,3,4)and i<m-1 and g[i+1][j]in(2,5,6):t=t.replace(t[k],t[k+n])
         return t[0]==t[-1]
 
-class Solution: # TLE
-    def hasValidPath(self, g: List[List[int]]) -> bool:
-        m,n=len(g),len(g[0]);t=''.join(map(chr,range(m*n)));all([i:=k//n,j:=k%n,v:=g[i][j],t:=t.replace(t[k],t[k+(j<n-1 and v in(1,4,6)and g[i][j+1]%2)]),t:=t.replace(t[k],t[k+n*(i<m-1 and 1<v<5 and g[i+1][j]in(2,5,6))])]for k in range(m*n));return t[0]==t[-1]
-
 class Solution:
     def hasValidPath(self, g: List[List[int]]) -> bool:
         e=enumerate;m,n=len(g),len(g[0]);t=''.join(map(chr,range(m*n)));all((k:=i*n+j,v in(1,4,6)and j<n-1 and r[j+1]in(1,3,5)and(t:=t.replace(t[k],t[k+1])),v in(2,3,4)and i<m-1 and g[i+1][j]in(2,5,6)and(t:=t.replace(t[k],t[k+n])))for i,r in e(g)for j,v in e(r));return t[0]==t[-1]
@@ -78,6 +74,10 @@ class Solution:
 class Solution:
     def hasValidPath(self, g: List[List[int]]) -> bool:
         m,n=len(g),len(g[0]);t=''.join(map(chr,range(m*n)));all((v:=g[i:=k//n][j:=k%n],v in(1,4,6)and j<n-1and g[i][j+1]%2and(t:=t.replace(t[k],t[k+1])),v in(2,3,4)and i<m-1and g[i+1][j]in(2,5,6)and(t:=t.replace(t[k],t[k+n])))for k in range(m*n));return t[0]==t[-1]
+
+class Solution: # TLE
+    def hasValidPath(self, g: List[List[int]]) -> bool:
+        m,n=len(g),len(g[0]);t=''.join(map(chr,range(m*n)));all([i:=k//n,j:=k%n,v:=g[i][j],t:=t.replace(t[k],t[k+(j<n-1 and v in(1,4,6)and g[i][j+1]%2)]),t:=t.replace(t[k],t[k+n*(i<m-1 and 1<v<5 and g[i+1][j]in(2,5,6))])]for k in range(m*n));return t[0]==t[-1]
 
 class Solution:
     def hasValidPath(self, g: List[List[int]]) -> bool:

@@ -77,7 +77,7 @@ class Solution(object):
 
 class Solution:
     def hasValidPath(self, g: List[List[int]]) -> bool:
-        m,n,d=3*len(g),3*len(g[0]),(0,56,146,152,176,26,50);v={(1,1)};q=[*v];[(v.add((r,c)),q.append((r,c)))for i,j in q for r,c in((i+1,j),(i-1,j),(i,j+1),(i,j-1))if m>r>=0<=c<n and d[g[r//3][c//3]]>>r%3*3+c%3&1 and{(r,c)}-v];return(m-2,n-2)in v
+        m,n,d=3*len(g),3*len(g[0]),(0,56,146,152,176,26,50);v={(1,1)};q=[*v];[(v.add((r,c)),q.append((r,c)))for i,j in q for r,c in((i+1,j),(i-1,j),(i,j+1),(i,j-1))if m>r>-1<c<n and d[g[r//3][c//3]]>>r%3*3+c%3&1and{(r,c)}-v];return(m-2,n-2)in v
 
 test('''
 1391. Check if There is a Valid Path in a Grid

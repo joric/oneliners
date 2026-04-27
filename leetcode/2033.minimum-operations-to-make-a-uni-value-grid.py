@@ -2,9 +2,21 @@ from lc import *
 
 # https://leetcode.com/problems/minimum-operations-to-make-a-uni-value-grid
 
+class Solution: # TLE
+    def minOperations(self, g: List[List[int]], x: int) -> int:
+        m=median(a:=reduce(add,g));return[int(sum(abs(v-m)for v in a)/x),-1][any((v-a[0])%x for v in a)]
+
 class Solution:
     def minOperations(self, g: List[List[int]], x: int) -> int:
-        m=median(a:=reduce(add,g));return[int(sum(abs(v-m) for v in a)/x),-1][any((v-a[0])%x for v in a)]
+        m=median(a:=[*chain(*g)]);return[int(sum(abs(v-m)for v in a)/x),-1][any((v-a[0])%x for v in a)]
+
+class Solution:
+    def minOperations(self, g: List[List[int]], x: int) -> int:
+        a=sorted(chain(*g));m=a[len(a)//2];return[sum(abs(v-m)for v in a)//x,-1][len({v%x for v in a})>1]
+
+class Solution:
+    def minOperations(self, g: List[List[int]], x: int) -> int:
+        m=median(a:=[*chain(*g)]);return[int(sum(abs(v-m)for v in a)//x),-1][len({v%x for v in a})>1]
 
 test('''
 2033. Minimum Operations to Make a Uni-Value Grid
@@ -44,6 +56,9 @@ Input: grid = [[1,2],[3,4]], x = 2
 Output: -1
 Explanation: It is impossible to make every element equal.
  
+
+Input: grid = [[2,2],[2,6],[8,8]], x = 4
+Output: -1
 
 Constraints:
 

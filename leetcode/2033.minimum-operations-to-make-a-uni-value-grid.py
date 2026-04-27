@@ -16,7 +16,7 @@ class Solution:
 
 class Solution:
     def minOperations(self, g: List[List[int]], x: int) -> int:
-        m=median(a:=[*chain(*g)]);return[int(sum(abs(v-m)for v in a)//x),-1][len({v%x for v in a})>1]
+        m=median(a:=[*chain(*g)]);return(int(sum(abs(v-m)for v in a)//x),-1)[len({v%x for v in a})>1]
 
 test('''
 2033. Minimum Operations to Make a Uni-Value Grid

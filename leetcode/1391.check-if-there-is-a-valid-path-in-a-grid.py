@@ -91,6 +91,10 @@ class Solution: # borderline TLE
     def hasValidPath(self, g: List[List[int]]) -> bool:
         n=len(g[0]);t=''.join(map(chr,r:=range(l:=len(s:=sum(g,[])))));all(t:=t.replace(t[i],t[j])for i in r for d,a,b,c in((1,82,42,~i%n),(n,28,100,1))if c>(j:=i+d)//l and a>>s[i]&b>>s[j]&1);return t[0]==t[-1]
 
+class Solution:
+    def hasValidPath(self, g: List[List[int]]) -> bool:
+        n=len(g[0]);r=range(l:=len(s:=sum(g,[])));t='%c'*l%(*r,);all(t:=t.replace(t[i],t[i+d])for i in r for d,a,b,c in((1,82,42,~i%n),(n,28,100,1))if c*l>i+d and a>>s[i]&b>>s[i+d]&1);return t[0]==t[-1]
+
 test('''
 1391. Check if There is a Valid Path in a Grid
 Solved

@@ -22,11 +22,18 @@ class Solution:
 
 class Solution:
     def maximumScore(self, g: List[List[int]]) -> int:
-        n,s=len(g),setitem;a,b,p=range(n),range(n+1),[];c=[[0,0]for _ in b];p=[[*accumulate((0,*x))]for x in zip(*g)];[(t:=c,c:=[[0,0]for _ in b],[s(c[j],1,max(c[j][1],p[i-1][k]-p[i-1][j]+t[k][1]))if k>j and i and o==1 else s(c[j],o,max(c[j][o],p[i][j]-p[i][k]+t[k][0]))if j>k else s(c[j],o,max(c[j][0],t[k][1]))for j,k,o in product(b,b,(0,1))])for i in reversed(a)];return max(*c[0])
+        n=len(g);r=range;b=r(n+1);c=[[0,0]]*(n+1);x=[[0,*accumulate(y)]for y in zip(*g)]
+        for i in r(n)[::-1]:
+            t=c
+            c=[[0,0]for _ in b]
+            for j,k,o in product(b,b,r(2)):
+                v=t[k]
+                c[j][o]=max(c[j][o],x[i-1][k]-x[i-1][j]+v[1]if k>j and i*o else x[i][j]-x[i][k]+v[0]if j>k else max(c[j][0]*o,v[1]))
+        return max(*c[0])
 
 class Solution:
     def maximumScore(self, g: List[List[int]]) -> int:
-        n,r,m=len(g),range,max;b=r(n+1);c=[[0,0]for _ in b];x=[[0,*accumulate(y)]for y in zip(*g)];[(t:=c,c:=[[0,0]for _ in b],[[setitem(c[j],o,m(c[j][o],x[i-1][k]-x[i-1][j]+t[k][1])if k>j and i and o else m(c[j][o],x[i][j]-x[i][k]+t[k][0])if j>k else m(c[j][0],t[k][1]))for j,k,o in product(b,b,r(2))]])for i in r(n)[::-1]];return m(*c[0])
+        n=len(g);r=range;b=r(n+1);c=[[0,0]]*(n+1);x=[[0,*accumulate(y)]for y in zip(*g)];[(t:=c,c:=[[0,0]for _ in b],[(v:=t[k],setitem(c[j],o,max(c[j][o],x[i-1][k]-x[i-1][j]+v[1]if k>j and i*o else x[i][j]-x[i][k]+v[0]if j>k else max(c[j][0]*o,v[1]))))for j,k,o in product(b,b,r(2))])for i in r(n)[::-1]];return max(*c[0])
 
 test('''
 3225. Maximum Score From Grid Operations

@@ -28,12 +28,12 @@ class Solution:
             c=[[0,0]for _ in b]
             for j,k,o in product(b,b,r(2)):
                 v=t[k]
-                c[j][o]=max(c[j][o],x[i-1][k]-x[i-1][j]+v[1]if k>j and i*o else x[i][j]-x[i][k]+v[0]if j>k else max(c[j][0]*o,v[1]))
+                c[j][o]=max(c[j][o],k>j and i*o and x[i-1][k]-x[i-1][j]+v[1]or j>k and x[i][j]-x[i][k]+v[0]or c[j][0]*o,v[1])
         return max(*c[0])
 
 class Solution:
     def maximumScore(self, g: List[List[int]]) -> int:
-        n=len(g);r=range;b=r(n+1);c=[[0,0]]*(n+1);x=[[0,*accumulate(y)]for y in zip(*g)];[(t:=c,c:=[[0,0]for _ in b],[(v:=t[k],setitem(c[j],o,max(c[j][o],x[i-1][k]-x[i-1][j]+v[1]if k>j and i*o else x[i][j]-x[i][k]+v[0]if j>k else max(c[j][0]*o,v[1]))))for j,k,o in product(b,b,r(2))])for i in r(n)[::-1]];return max(*c[0])
+        n=len(g);r=range;b=r(n+1);c=[[0,0]]*(n+1);x=[[0,*accumulate(y)]for y in zip(*g)];[(t:=c,c:=[[0,0]for _ in b],[(v:=t[k],setitem(c[j],o,max(c[j][o],k>j and i*o and x[i-1][k]-x[i-1][j]+v[1]or j>k and x[i][j]-x[i][k]+v[0]or c[j][0]*o,v[1])))for j,k,o in product(b,b,r(2))])for i in r(n)[::-1]];return max(*c[0])
 
 test('''
 3225. Maximum Score From Grid Operations

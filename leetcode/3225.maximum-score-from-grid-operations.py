@@ -35,6 +35,41 @@ class Solution:
     def maximumScore(self, g: List[List[int]]) -> int:
         n=len(g);r=range;b=r(n+1);c=[[0,0]]*(n+1);x=[[0,*accumulate(y)]for y in zip(*g)];[(t:=c,c:=[[0,0]for _ in b],[(v:=t[k],setitem(c[j],o,max(c[j][o],k>j and i*o and x[i-1][k]-x[i-1][j]+v[1]or j>k and x[i][j]-x[i][k]+v[0]or c[j][0]*o,v[1])))for j,k,o in product(b,b,r(2))])for i in r(n)[::-1]];return max(*c[0])
 
+# https://leetcode.com/problems/maximum-score-from-grid-operations/solutions/5830474/py3-dp-by-maxorgus-3b03/?envType=daily-question&envId=2026-04-29
+
+class Solution:
+    def maximumScore(self, g: List[List[int]]) -> int:
+        n = len(g)
+        a = [[0 for i in range(n)] for j in range(n+1)]
+        for i in range(n):
+            for j in range(n):
+                a[i+1][j] = a[i][j]+g[i][j]
+        @cache
+        def f(i,h,b):
+            if i == n:
+                return 0
+            r = 0
+            for j in range(n+1):
+                if i == 0:
+                    r = max(r,f(i+1,j,1))
+                else:
+                    if j<h:
+                        r = max(r,f(i+1,j,0)+a[h][i]-a[j][i])
+                    elif b:
+                        r = max(r,f(i+1,j,1)+a[j][i-1]-a[h][i-1])
+                    else:
+                        r = max(r,f(i+1,j,1))
+            return r
+        return f(0,0,1)
+
+class Solution:
+    def maximumScore(self, g: List[List[int]]) -> int:
+        n=len(g);a=[n*[0]for j in range(n+1)];[setitem(a[i+1],j,a[i][j]+g[i][j])for i in range(n)for j in range(n)];f=cache(lambda i,h,b:0 if i==n else max(f(i+1,j,j>=h)+(0 if i==0 else a[h][i]-a[j][i] if j<h else a[j][i-1]-a[h][i-1] if b else 0)for j in range(n+1)));return f(0,0,1)
+
+class Solution:
+    def maximumScore(self, g: List[List[int]]) -> int:
+        n=len(g);c=[[0,*accumulate(v)]for v in zip(*g)];return(f:=cache(lambda i,h,b:i<n and max(f(i+1,j,j>=h)+(i and[b*(c[i-1][j]-c[i-1][h]),c[i][h]-c[i][j]][j<h])for j in range(n+1))))(0,0,1)
+
 test('''
 3225. Maximum Score From Grid Operations
 Hard

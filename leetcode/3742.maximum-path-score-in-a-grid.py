@@ -18,10 +18,6 @@ class Solution:
 
 class Solution:
     def maxPathScore(self, g: List[List[int]], k: int) -> int:
-        return(max(-1,(f:=cache(lambda i,j,c,n=len(g),m=len(g[0]):v+(i+j<n+m-2and max(f(i+1,j,t),f(i,j+1,t)))if i-n<0>j-m and(t:=c+(0<(v:=g[i][j])))<=k else-inf))(0,0,0)),f.cache_clear())[0]
-
-class Solution:
-    def maxPathScore(self, g: List[List[int]], k: int) -> int:
         n,m=len(g),len(g[0]);f=cache(lambda i,j,c:v+(i+j<n+m-2and max(f(i+1,j,t),f(i,j+1,t)))if i-n<0>j-m and(t:=c+(0<(v:=g[i][j])))<=k else-inf);r=max(-1,f(0,0,0));f.cache_clear();return r
 
 class Solution:

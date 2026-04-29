@@ -68,7 +68,7 @@ class Solution:
 
 class Solution:
     def maximumScore(self, g: List[List[int]]) -> int:
-        n=len(g);c=[[0,*accumulate(v)]for v in zip(*g)];return(f:=cache(lambda i,h,b:i<n and max(f(i+1,j,j>=h)+(i and[b*(c[i-1][j]-c[i-1][h]),c[i][h]-c[i][j]][j<h])for j in range(n+1))))(0,0,1)
+        n=len(g);c=[[0,*accumulate(v)]for v in zip(*g)];f=cache(lambda i,h,b:i<n and max(f(i+1,j,j>=h)+(i and[b*(c[i-1][j]-c[i-1][h]),c[i][h]-c[i][j]][j<h])for j in range(n+1)));return f(0,0,1)
 
 class Solution:
     def maximumScore(self, g: List[List[int]]) -> int:

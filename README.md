@@ -2437,6 +2437,7 @@ Examples                                   | Results
 * You can replace `q and q[-1]==c` with `q[-1:]==[c]` (3 characters shorter).
 * Shift precedence can be used to write `(a+b)//2` as `a+b>>1` (2 characters shorter).
 * You can replace `==0` and `!=0` with `<()` or `>()` to cut space (1 character shorter).
+* You can replace `i!=n-1 and j!=m-1` with `i+j<n+m-2`, and `i<m and j<n` with `i-n<0>j-m`.
 
 ## References
 

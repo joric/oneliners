@@ -70,6 +70,10 @@ class Solution:
     def maximumScore(self, g: List[List[int]]) -> int:
         n=len(g);c=[[0,*accumulate(v)]for v in zip(*g)];return(f:=cache(lambda i,h,b:i<n and max(f(i+1,j,j>=h)+(i and[b*(c[i-1][j]-c[i-1][h]),c[i][h]-c[i][j]][j<h])for j in range(n+1))))(0,0,1)
 
+class Solution:
+    def maximumScore(self, g: List[List[int]]) -> int:
+        a=[(0,*accumulate(x))for x in zip(*g)];return(f:=cache(lambda i,h,b:i<len(g)and max(f(i+1,j,j>=h)+(i and(b,-1)[j<h]*(a[i-(j>=h)][j]-a[i-(j>=h)][h]))for j in range(len(g)+1))))(0,0,1)
+
 test('''
 3225. Maximum Score From Grid Operations
 Hard

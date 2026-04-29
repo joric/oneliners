@@ -75,6 +75,10 @@ class Solution: # TLE
     def maximumScore(self, g: List[List[int]]) -> int:
         n=len(g);c=[*zip(*g)];f=cache(lambda i,h,b:0 if i==n else max(f(i+1,j,j>=h)+(i and[b*sum(c[i-1][h:j]),sum(c[i][j:h])][j<h])for j in range(n+1)));return f(0,0,1)
 
+class Solution: # TLE
+    def maximumScore(self, g: List[List[int]]) -> int:
+        n=len(g);c=[*zip(*g)];f=cache(lambda i,h,b:0 if i==n else max(f(i+1,j,j>=h)+(i and b*sum(c[i-1][h:j])if j>=h else sum(c[i][j:h]))for j in range(n+1)));return f(0,0,1)
+
 class Solution:
     def maximumScore(self, g: List[List[int]]) -> int:
         a=[(0,*accumulate(x))for x in zip(*g)];return(f:=cache(lambda i,h,b:i<len(g)and max(f(i+1,j,t:=j>=h)+(i and(-1,b)[t]*(a[i-t][j]-a[i-t][h]))for j in range(len(g)+1))))(0,0,1)

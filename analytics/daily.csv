@@ -2219,3 +2219,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-04-27,check-if-there-is-a-valid-path-in-a-grid,1391,Check if There is a Valid Path in a Grid,Medium,56.0
 2026-04-28,minimum-operations-to-make-a-uni-value-grid,2033,Minimum Operations to Make a Uni-Value Grid,Medium,67.9
 2026-04-29,maximum-score-from-grid-operations,3225,Maximum Score From Grid Operations,Hard,49.6
+2026-04-30,maximum-path-score-in-a-grid,3742,Maximum Path Score in a Grid,Medium,37.0

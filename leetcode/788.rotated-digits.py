@@ -13,6 +13,12 @@ class Solution:
 '''kotlin
 class Solution {
     fun rotatedDigits(n: Int): Int {
+        return(1..n).count{val s =it.toString();s.any{it in "2569"}&&!s.any{it in "743"}}
+    }
+}
+
+class Solution {
+    fun rotatedDigits(n: Int): Int {
         return(1..n).count{"$it".any{it in "2569"}&&"$it".none{it in "347"}}
     }
 }

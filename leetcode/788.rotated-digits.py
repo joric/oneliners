@@ -7,8 +7,16 @@ class Solution:
         return sum([1 for x in range(n+1)if set('2569')&set(str(x))and not set('347')&set(str(x))])
 
 class Solution:
-    def rotatedDigits(self,n:int)->int:
+    def maxRotateFunction(self,n:int)->int:
         return sum({*'2569'}&(s:={*str(x)})>s&{*'347'}for x in range(n+1))
+
+'''kotlin
+class Solution {
+    fun rotatedDigits(n: Int): Int {
+        return(1..n).count{"$it".any{it in "2569"}&&"$it".none{it in "347"}}
+    }
+}
+'''
 
 test('''
 788. Rotated Digits

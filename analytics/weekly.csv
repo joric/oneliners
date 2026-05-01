@@ -339,3 +339,4 @@ date,titleSlug,questionFrontendId,title,difficulty,acRate
 2026-04-15,missing-ranges,163,Missing Ranges,Easy,35.6
 2026-04-22,zigzag-iterator,281,Zigzag Iterator,Medium,66.6
 2026-04-29,all-paths-from-source-lead-to-destination,1059,All Paths from Source Lead to Destination,Medium,37.1
+2026-05-01,employee-free-time,759,Employee Free Time,Hard,72.8

@@ -12,6 +12,12 @@ class Solution:
     def rotateString(self, a: str, b: str) -> bool:
         return(a in b+b)*len(b)==len(a)
 
+'''ruby
+def rotate_string(a,b)
+    a.size==b.size&&!!(b+b)[a]
+end
+'''
+
 test('''
 796. Rotate String
 Easy

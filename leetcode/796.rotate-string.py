@@ -6,6 +6,12 @@ class Solution:
     def rotateString(self, a: str, b: str) -> bool:
         return len(a)==len(b)and a in b+b
 
+# POTD 2026-05-03
+
+class Solution:
+    def rotateString(self, a: str, b: str) -> bool:
+        return(a in b+b)*len(b)==len(a)
+
 test('''
 796. Rotate String
 Easy

@@ -1,7 +1,6 @@
 ## Oneliners
 
-Just FYI, this isn't just README.md, it's also more than a thousand solutions in the repository.
-There's also [stats](https://joric.github.io/oneliners/).
+Just FYI, this isn't just README.md, it's also more than a thousand solutions in the repository. There is also stats [here](https://joric.github.io/leetcode).
 
 * If you find a shorter solution (that also passes online tests, as is no MLE, no TLE), post it to the [issues](https://github.com/joric/oneliners/issues) section.
 

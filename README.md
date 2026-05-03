@@ -7,7 +7,7 @@ There's also [stats](https://joric.github.io/oneliners/).
 
 ### Why Python
 
-Python code almost always shorter than code in other languages. There are exceptions though.
+Python code almost always shorter than code in other languages and has more libraries. There are few exceptions.
 
 * https://leetcode.com/problems/k-th-symbol-in-grammar
 

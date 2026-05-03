@@ -6,7 +6,7 @@ Just FYI, this isn't just README.md, it's also more than a thousand solutions in
 
 ### Why Python
 
-Python is almost always shorter than other languages (and has more libraries). There are exceptions, of course.
+Python is almost always shorter than other languages (and has relevant libraries). There are exceptions, of course.
 
 * https://leetcode.com/problems/k-th-symbol-in-grammar
 

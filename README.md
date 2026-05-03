@@ -30,7 +30,7 @@ Ruby can be shorter in newer version when Leetcode updates but it still lacks li
 (k-1).count_ones&1
 ```
 
-Even C++ is sometimes shorter than Python, well, in one particular case it's shorter by one character:
+Even C++ is sometimes shorter than Python (but mostly not). In this particular case it's shorter by one character:
 
 ```cpp
 return popcount(k-1u)&1;

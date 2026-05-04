@@ -6,7 +6,7 @@ Just FYI, this isn't just README.md, it's also more than a thousand solutions in
 
 ### Why Python
 
-Python is almost always shorter than other languages (and has relevant libraries). There are exceptions, of course.
+Python is almost always shorter than other languages (and has relevant libraries). There are, of course, exceptions.
 
 * https://leetcode.com/problems/k-th-symbol-in-grammar
 
@@ -23,7 +23,7 @@ Ruby or Scala can beat it sometimes because they don't need a return statement. 
 (k-1).to_s(2).count('1')&1
 ```
 
-Ruby can be shorter in newer version when Leetcode updates but it still lacks libraries. Ruby 3.3+ would be:
+Ruby 3.3+ can be shorter when Leetcode updates the launcher, so it could win in character count for simple tasks:
 
 ```ruby
 (k-1).count_ones&1

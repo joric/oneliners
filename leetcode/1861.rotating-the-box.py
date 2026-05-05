@@ -6,6 +6,16 @@ class Solution:
     def rotateTheBox(self, b: List[List[str]]) -> List[List[str]]:
         return zip(*['*'.join(''.join(sorted(p)[::-1])for p in''.join(r).split('*'))for r in b][::-1])
 
+# POTD 2026-05-06
+
+class Solution:
+    def rotateTheBox(self, b: List[List[str]]) -> List[List[str]]:
+        return[*zip(*['*'.join(''.join(sorted(p)[::-1])for p in''.join(r).split('*'))for r in b][::-1])]
+
+class Solution:
+    def rotateTheBox(self, b: List[List[str]]) -> List[List[str]]:
+        j=''.join;return[*zip(*['*'.join(j(sorted(p)[::-1])for p in j(r).split('*'))for r in b[::-1]])]
+
 test('''
 1861. Rotating the Box
 Medium

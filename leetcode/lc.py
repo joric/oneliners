@@ -49,6 +49,7 @@ import warnings
 import subprocess
 import os
 warnings.filterwarnings('ignore') 
+if sys.platform == "win32": os.system("")  # This weird hack forces ANSI support in Windows 10+ terminals
 
 class TreeNode:
     def __init__(self, x=0, left=None, right=None):
@@ -290,7 +291,6 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
         return args[:argc], args, orig[:argc]
 
     def print_res(passed, res, expected, *args):
-        if sys.platform == "win32": os.system("")  # This weird hack forces ANSI support in Windows 10+ terminals
         g = lambda t:str(t.serialize(t) if type(t) is ListNode or type(t) is TreeNode  else t)
         c = lambda c,t,w=50: '\x1b[{1}m{2}\x1b[0m'.format(s:=g(t), 30+c, s[:w]+'...' if len(s)>=w else s)
         e = 2 if passed else 1
@@ -361,7 +361,7 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
     exitcode = 0
 
     if not custom_class_tests:
-        for s in text.splitlines():
+        for s in [*text.splitlines(),'']:
             if s.startswith('Input:'):
                 t = 1
                 tests.append({'input':[],'output':[]})

@@ -51,22 +51,24 @@ class Solution:
         n=len(a);m=max(a);p=[0,0]+[1]*m;d=defaultdict(list)
         [setitem(p,j,0)for i in range(2,isqrt(m)+1)if p[i]for j in range(i*i,m+1,i)]
         [d[x].append(i)for i,x in enumerate(a)]
-        v={0};u=[0]*(m+1);q=deque([(0,0)])
+        u={0}
+        v={0}
+        q=deque([(0,0)])
 
         while q:
             i,c=q.popleft()
             if i==n-1:
                 return c
             for b in(i-1,i+1):
-                if 0<=b<n and b not in v:
+                if 0<=b<n and{b}-v:
                     v.add(b)
                     q.append((b,c+1))
             x=a[i]
-            if p[x]and not u[x]:
-                u[x]=1
+            if p[x]and x not in u:
+                u.add(x)
                 for k in range(x,m+1,x):
                     for j in d[k]:
-                        if j not in v:
+                        if {j}-v:
                             v.add(j)
                             q.append((j,c+1))
         return-1

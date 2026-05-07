@@ -78,7 +78,7 @@ class Solution:
         return pow(x:=2<<n,n+1,x*x+~x)%x
 
 # revisited 2026-05-07, shorter by 1 character
-# (a*X + b) % X = b => (a*X + b) // X = a
+# (a*x+b)%x = b => (a*x+b)//x = a
 
 class Solution:
     def fib(self, n: int) -> int:

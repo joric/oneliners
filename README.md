@@ -1475,7 +1475,7 @@ class Solution:
     def fib(self, n: int) -> int:
         r=5**.5;return round(((1+r)/2)**n/r)
 
-# quotent ring
+# polynomial dp
 
 class Solution:
     def fib(self, n: int) -> int:

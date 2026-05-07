@@ -1475,7 +1475,12 @@ class Solution:
     def fib(self, n: int) -> int:
         r=5**.5;return round(((1+r)/2)**n/r)
 
-# polynomial exponentiation
+# polynomial expontiation, https://blog.paulhankin.net/fibonacci2/
+
+class Solution:
+    def fib(self, n: int) -> int:
+        x = 1 << 32 # formal variable
+        return pow(x, n+1, x**2 - x - 1) % x
 
 class Solution:
     def fib(self, n: int) -> int:

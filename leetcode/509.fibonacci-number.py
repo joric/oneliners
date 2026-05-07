@@ -48,7 +48,7 @@ class Solution:
         phi = (1 + sqrt(5)) / 2
         return round(pow(phi, n) / sqrt(5))
 
-# same as climbing-stars but subtract 1 from n
+# same as climbing-stars but subtract 1 from n, see https://leetcode.com/problems/climbing-stairs
 
 class Solution:
     def fib(self, n: int) -> int:
@@ -57,6 +57,13 @@ class Solution:
 class Solution:
     def fib(self, n: int) -> int:
         r=5**.5;return round(((1+r)/2)**n/r)
+
+# polynomial expontiation, see https://blog.paulhankin.net/fibonacci2/
+
+class Solution:
+    def fib(self, n: int) -> int:
+        x = 1 << 32 # formal variable
+        return pow(x, n+1, x**2 - x - 1) % x
 
 class Solution:
     def fib(self, n: int) -> int:
@@ -69,22 +76,6 @@ class Solution:
 class Solution:
     def fib(self, n: int) -> int:
         return pow(x:=2<<n,n+1,x*x+~x)%x
-
-# also see climbing stairs solutions
-
-'''
-class Solution:
-    def climbStairs(self, n):
-        x=1<<32;return x**n*x*x//(x*x+~x)%x
-
-class Solution:
-    def climbStairs(self, n):
-        x=9**n;return x**-~-~n//(x*x+~x)%x
-
-class Solution:
-    def climbStairs(self, n):
-        return pow(x:=2<<n,n+2,x*x+~x)%x
-'''
 
 test('''
 509. Fibonacci Number

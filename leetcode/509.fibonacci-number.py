@@ -78,6 +78,7 @@ class Solution:
         return pow(x:=2<<n,n+1,x*x+~x)%x
 
 # revisited 2026-05-07, shorter by 1 character
+# (X^(n+1) mod M) % X = (X^n mod M) // X
 
 class Solution:
     def fib(self, n: int) -> int:

@@ -62,7 +62,7 @@ class Solution:
 
 class Solution:
     def fib(self, n: int) -> int:
-        x = 1 << 32 # formal variable
+        x = 1 << (n + 2)
         return pow(x, n+1, x**2 - x - 1) % x
 
 class Solution:

@@ -45,7 +45,6 @@ class Solution:
                                 q.append((j, c + 1))
         return -1
 
-# TODO
 class Solution:
     def minJumps(self, a: List[int]) -> int:
         n=len(a);m=max(a);p=[0,0]+[1]*m;d=defaultdict(list)
@@ -54,7 +53,6 @@ class Solution:
         u={0}
         v={0}
         q=deque([(0,0)])
-
         while q:
             i,c=q.popleft()
             if i==n-1:
@@ -64,7 +62,7 @@ class Solution:
                     v.add(b)
                     q.append((b,c+1))
             x=a[i]
-            if p[x]and x not in u:
+            if p[x]and{x}-u:
                 u.add(x)
                 for k in range(x,m+1,x):
                     for j in d[k]:
@@ -72,6 +70,16 @@ class Solution:
                             v.add(j)
                             q.append((j,c+1))
         return-1
+
+class Solution:
+    def minJumps(self, a: List[int]) -> int:
+        n,m,u,v,d,q=len(a),max(a),{0},{0},defaultdict(list),deque();p=[0,0]+[1]*m;[setitem(p,j,0) for i in range(2,isqrt(m)+1)if p[i]for j in range(i*i,m+1,i)];[d[x].append(i)for i,x in enumerate(a)];return(f:=lambda i,c:c if i==n-1 else([v.add(b)or q.append((b,c+1))for b in (i-1,i+1)if 0<=b<n and {b}-v],p[x:=a[i]]and{x}-u and(u.add(x)or[v.add(j)or q.append((j,c+1))for k in range(x,m+1,x)for j in d[k]if{j}-v]))and q and f(*q.popleft())or-1)(0,0)
+
+# 11771 ms
+
+class Solution:
+    def minJumps(self, a: List[int]) -> int:
+        r=range;n,m,v,d,q=len(a),max(a),{0},defaultdict(list),deque();s={0,1}|{j for i in r(2,m)for j in r(i*i,m+1,i)};[d[a[i]].append(i)for i in r(n)];return(f:=lambda i,c:c if i==n-1 else([v.add(b)or q.append((b,c+1))for b in(i-1,i+1)if 0<=b<n and{b}-v],{x:=a[i]}-s and(s.add(x)or[v.add(j)or q.append((j,c+1))for k in r(x,m+1,x)for j in d[k]if{j}-v]))and q and f(*q.popleft())or-1)(0,0)
 
 test('''
 3629. Minimum Jumps to Reach End via Prime Teleportation

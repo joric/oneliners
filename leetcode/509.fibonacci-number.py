@@ -1,15 +1,28 @@
 from lc import *
 
+# https://leetcode.com/problems/fibonacci-number/discuss/3439417/MATH-solution
+
+class Solution:
+    def fib(self, n: int) -> int:
+        return reduce(lambda p,_:[p[1],sum(p)],[0]*n,[0,1])[0]
+
+# generating function
+
+class Solution:
+    def fib(self, n: int) -> int:
+        p=[0]*(n+2)
+        p[1]=1
+        for i in range(n):
+            p[i+1]+=p[i]
+            p[i+2]+=p[i]
+        return p[n]
+
 class Solution:
     def fib(self, n: int) -> int:
         a, b = 0, 1
         for _ in range(n):
             a, b = b, a + b
         return a 
-
-class Solution:
-    def fib(self, n: int) -> int:
-        return reduce(lambda p,_:[p[1],sum(p)],[0]*n,[0,1])[0]
 
 # matrix exponential
 
@@ -28,8 +41,6 @@ class Solution:
     def fib(self, n: int) -> int:
         return (np:=__import__('numpy')) and n and np.dot((f:=lambda m,p:m if p==1 else (r:=np.dot(h:=f(m,p//2),h),1) and (np.dot(r,m) if p&1 else r))(np.matrix([[0,1],[1,1]]),n),np.matrix([[0],[1]])).item((0,0)) or 0
 
-# https://leetcode.com/problems/fibonacci-number/discuss/3439417/MATH-solution
-
 # classic Binet
 
 class Solution:
@@ -46,8 +57,6 @@ class Solution:
 class Solution:
     def fib(self, n: int) -> int:
         r=5**.5;return round(((1+r)/2)**n/r)
-
-# generating function (see climbing-stars)
 
 class Solution:
     def fib(self, n: int) -> int:

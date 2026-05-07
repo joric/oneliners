@@ -1441,6 +1441,18 @@ Many leetcode problems use Fibonacci sequence that can be calculated using a var
 * https://leetcode.com/problems/fibonacci-number
 
 ```python
+
+# generating function
+
+class Solution:
+    def fib(self, n: int) -> int:
+        p=[0]*(n+2)
+        p[1]=1
+        for i in range(n):
+            p[i+1]+=p[i]
+            p[i+2]+=p[i]
+        return p[n]
+
 class Solution:
     def fib(self, n: int) -> int:
         a,b = 0,1
@@ -1462,8 +1474,6 @@ class Solution:
 class Solution:
     def fib(self, n: int) -> int:
         r=5**.5;return round(((1+r)/2)**n/r)
-
-# generating function, https://en.wikipedia.org/wiki/Generating_function
 
 class Solution:
     def fib(self, n: int) -> int:

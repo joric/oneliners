@@ -74,8 +74,6 @@ class Solution:
     def climbStairs(self, n: int) -> int:
         r=5**.5;return round(((1+r)/2)**-~n/r)
 
-# https://en.wikipedia.org/wiki/Generating_function
-
 class Solution:
     def climbStairs(self, n):
         x=1<<32;return x**n*x*x//(x*x+~x)%x

@@ -79,7 +79,7 @@ class Solution:
 
 class Solution:
     def minJumps(self, a: List[int]) -> int:
-        r=range;n,m,v,d,q=len(a),max(a),{0},defaultdict(list),deque();s={0,1}|{j for i in r(2,m)for j in r(i*i,m+1,i)};[d[a[i]].append(i)for i in r(n)];return(f:=lambda i,c:c if i==n-1 else([v.add(b)or q.append((b,c+1))for b in(i-1,i+1)if 0<=b<n and{b}-v],{x:=a[i]}-s and(s.add(x)or[v.add(j)or q.append((j,c+1))for k in r(x,m+1,x)for j in d[k]if{j}-v]))and q and f(*q.popleft())or-1)(0,0)
+        r=range;n,m,v,d,q=len(a),max(a),{0},defaultdict(list),deque();s={0,1}|{j for i in r(2,m)for j in r(i*i,m+1,i)};[d[a[i]].append(i)for i in r(n)];return(f:=lambda i,c:i<n-1 and([v.add(b)or q.append((b,c+1))for b in(i-1,i+1)if 0<=b<n and{b}-v],{x:=a[i]}-s and(s.add(x)or[v.add(j)or q.append((j,c+1))for k in r(x,m+1,x)for j in d[k]if{j}-v]))and q and f(*q.popleft())or c)(0,0)
 
 test('''
 3629. Minimum Jumps to Reach End via Prime Teleportation

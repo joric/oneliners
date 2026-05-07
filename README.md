@@ -1493,6 +1493,10 @@ class Solution:
 class Solution:
     def fib(self, n: int) -> int:
         return pow(x:=2<<n,n+1,x*x+~x)%x
+
+class Solution:
+    def fib(self, n: int) -> int:
+        return pow(x:=2<<n,n,x*x+~x)//x
 ```
 
 * https://leetcode.com/problems/climbing-stairs

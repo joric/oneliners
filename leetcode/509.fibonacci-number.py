@@ -77,6 +77,10 @@ class Solution:
     def fib(self, n: int) -> int:
         return pow(x:=2<<n,n+1,x*x+~x)%x
 
+class Solution:
+    def fib(self, n: int) -> int:
+        return pow(x:=2<<n,n,x*x+~x)//x
+
 test('''
 509. Fibonacci Number
 Easy
@@ -119,6 +123,14 @@ Output: 0
 Example 5:
 Input: n = 1
 Output: 1
+
+Other examples:
+
+Input: n = 11
+Output: 89
+
+Input: n = 16
+Output: 987
 
 Constraints:
 

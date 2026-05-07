@@ -1475,6 +1475,8 @@ class Solution:
     def fib(self, n: int) -> int:
         r=5**.5;return round(((1+r)/2)**n/r)
 
+# modified Binet/quotent ring
+
 class Solution:
     def fib(self, n: int) -> int:
         x=1<<32;return x**~-n*x*x//(x*x+~x)%x

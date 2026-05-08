@@ -2,6 +2,8 @@ from lc import *
 
 # https://leetcode.com/problems/minimum-jumps-to-reach-end-via-prime-teleportation
 
+# 1869 ms
+
 class Solution:
     def minJumps(self, a: List[int]) -> int:
         n = len(a)
@@ -45,6 +47,8 @@ class Solution:
                                 q.append((j, c + 1))
         return -1
 
+# 3900 ms
+
 class Solution:
     def minJumps(self, a: List[int]) -> int:
         n=len(a);m=max(a);p=[0,0]+[1]*m;d=defaultdict(list)
@@ -70,6 +74,8 @@ class Solution:
                             v.add(j)
                             q.append((j,c+1))
         return-1
+
+# 4545 ms
 
 class Solution:
     def minJumps(self, a: List[int]) -> int:

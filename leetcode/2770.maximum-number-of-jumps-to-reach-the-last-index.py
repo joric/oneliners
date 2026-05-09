@@ -28,7 +28,7 @@ class Solution:
 
 class Solution:
     def maximumJumps(self, a: List[int], t: int) -> int:
-        return max(-1,(f:=cache(lambda i,n=len(a):~i+n and max([1+f(j)for j in range(i+1,n)if-t<=a[i]-a[j]<=t]+[-inf])))(0))
+        return max(-1,(f:=cache(lambda i:~i+len(a)and max([1+f(j)for j in range(i+1,len(a))if-t<=a[i]-a[j]<=t]+[-inf])))(0))
 
 class Solution:
     def maximumJumps(self, a: List[int], t: int) -> int:

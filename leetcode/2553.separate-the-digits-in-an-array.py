@@ -14,6 +14,10 @@ class Solution:
     def separateDigits(self, a: List[int]) -> List[int]:
         return[*map(int,''.join(map(str,a)))]
 
+class Solution:
+    def separateDigits(self, a: List[int]) -> List[int]:
+        return[*map(int,'%d'*len(a)%(*a,))]
+
 test('''
 2553. Separate the Digits in an Array
 Easy

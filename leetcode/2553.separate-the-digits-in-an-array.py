@@ -3,16 +3,16 @@ from lc import *
 # https://leetcode.com/problems/separate-the-digits-in-an-array/solutions/4529485/one-line-solution-by-ashishbaipalli369-ibl1/?envType=daily-question&envId=2026-05-11
 
 class Solution:
-    def separateDigits(self, n: List[int]) -> List[int]:
-        return[int(c)for x in n for c in str(x)]
+    def separateDigits(self, a: List[int]) -> List[int]:
+        return[int(c)for x in a for c in str(x)]
 
 class Solution:
-    def separateDigits(self, n: List[int]) -> List[int]:
-        return[*map(int,re.sub('\D','',str(n)))]
+    def separateDigits(self, a: List[int]) -> List[int]:
+        return[*map(int,re.sub('\D','',str(a)))]
 
 class Solution:
-    def separateDigits(self, n: List[int]) -> List[int]:
-        return[*map(int,''.join(map(str,n)))]
+    def separateDigits(self, a: List[int]) -> List[int]:
+        return[*map(int,''.join(map(str,a)))]
 
 test('''
 2553. Separate the Digits in an Array

@@ -4,6 +4,10 @@ from lc import *
 
 class Solution:
     def separateDigits(self, n: List[int]) -> List[int]:
+        return[int(c)for x in n for c in str(x)]
+
+class Solution:
+    def separateDigits(self, n: List[int]) -> List[int]:
         return[*map(int,re.sub('\D','',str(n)))]
 
 class Solution:

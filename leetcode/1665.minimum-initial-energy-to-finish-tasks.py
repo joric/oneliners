@@ -20,6 +20,10 @@ class Solution:
 
 class Solution:
     def minimumEffort(self, t: List[List[int]]) -> int:
+        t.sort(key=lambda x:sub(*x));return bisect_left(range(10**10),1,key=lambda m:all(m>=b and[m:=m-a]for a,b in t))
+
+class Solution:
+    def minimumEffort(self, t: List[List[int]]) -> int:
         return[*accumulate(sorted(t,key=lambda x:(x[1]-x[0])),lambda p,x:max(p+x[0],x[1]),initial=0)][-1]
 
 class Solution:

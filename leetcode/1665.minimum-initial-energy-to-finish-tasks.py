@@ -28,7 +28,11 @@ class Solution:
 
 class Solution:
     def minimumEffort(self, t: List[List[int]]) -> int:
-        r=0;[r:=max(r+a,m)for a,m in sorted(t,key=lambda x:x[1]-x[0])];return r
+        return reduce(lambda r,x:max(r+x[0],x[1]),sorted(t,key=lambda x:-sub(*x)),0)
+
+class Solution:
+    def minimumEffort(self, t: List[List[int]]) -> int:
+        r=0;[r:=max(r+a,b)for a,b in sorted(t,key=lambda x:-sub(*x))];return r
 
 test('''
 1665. Minimum Initial Energy to Finish Tasks

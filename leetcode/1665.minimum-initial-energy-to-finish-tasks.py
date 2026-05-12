@@ -36,6 +36,10 @@ class Solution:
 
 class Solution:
     def minimumEffort(self, t: List[List[int]]) -> int:
+        r=0;[r:=max(r+a,b)for a,b in sorted(t,key=lambda x:x[1]-x[0])];return r
+
+class Solution:
+    def minimumEffort(self, t: List[List[int]]) -> int:
         r=0;[r:=max(r+a,b)for a,b in sorted(t,key=lambda x:-sub(*x))];return r
 
 test('''

@@ -10,6 +10,10 @@ class Solution:
     def isGood(self, a: List[int]) -> bool:
         return[*range(1,max(a)+1),max(a)]==sorted(a)
 
+class Solution:
+    def isGood(self, a: List[int]) -> bool:
+        return[*range(1,n:=len(a)),n-1]==sorted(a)
+
 test('''
 2784. Check if Array is Good
 Easy

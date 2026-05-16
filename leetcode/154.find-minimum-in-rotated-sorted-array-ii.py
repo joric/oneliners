@@ -20,6 +20,7 @@ class Solution:
     def findMin(self, a: List[int]) -> int:
         return min(a)
 
+# one of the shortest solutions
 class Solution:findMin=min
 
 test('''

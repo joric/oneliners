@@ -28,7 +28,7 @@ class Solution:
 
 class Solution:
     def canReach(self, a: List[int], s: int) -> bool:
-        return(f:=lambda i,v=set():0<=i<len(a)and{i}-v and(1>(x:=a[i])or v.add(i)or f(i+x)or f(i-x)))(s)
+        return(f:=lambda i,v={-1}:0<=i<len(a)and{i}-v and(1>(x:=a[i])or v.add(i)or f(i+x)or f(i-x)))(s)
 
 test('''
 1306. Jump Game III

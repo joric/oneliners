@@ -24,7 +24,7 @@ class Solution:
 
 class Solution:
     def minJumps(s,a):
-        v,w,d={},{0},{-1};[v.setdefault(x,[]).append(i)for i,x in enumerate(a)];return next(c for c in count()if~-len(a)in w or d.update(w:={j for i in w for j in(i-1,i+1,*v.pop(a[i],()))}-d))
+        v,w,d={},{0},{-1};[v.setdefault(x,[]).append(i)for i,x in enumerate(a)];return next(c for c in count()if~-len(a)in w or d.update(w:={j for i in w for j in[i-1,i+1]+v.pop(a[i],[])}-d))
 
 test('''
 1345. Jump Game IV

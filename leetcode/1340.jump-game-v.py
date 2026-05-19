@@ -29,6 +29,10 @@ class Solution:
     def maxJumps(self, a: List[int], d: int) -> int:
         n=len(a);return max(map(f:=cache(lambda i:1+max([f(j)for r in(range(i+1,min(n,i-~d)),range(i-1,max(-1,i+~d),-1))for j in takewhile(lambda j:a[j]<a[i],r)]+[0])),range(n)))
 
+class Solution:
+    def maxJumps(self, a: List[int], d: int) -> int:
+        return max(map(f:=cache(lambda i:1+max([f(j)for r in(range(i+1,min(n,i-~d)),range(i-1,max(-1,i+~d),-1))for j in takewhile(lambda j:a[j]<a[i],r)]+[0])),range(n:=len(a))))
+
 test('''
 1340. Jump Game V
 Solved

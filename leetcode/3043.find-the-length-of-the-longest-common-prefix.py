@@ -34,6 +34,10 @@ class Solution:
 
 class Solution:
     def longestCommonPrefix(self, a: List[int], b: List[int]) -> int:
+        a,b=[{str(x)[:i]for x in l for i in range(9)}for l in(a,b)];return max(map(len,a&b))
+
+class Solution:
+    def longestCommonPrefix(self, a: List[int], b: List[int]) -> int:
         f=lambda l:{str(x)[:i]for x in l for i in range(9)};return max(map(len,f(a)&f(b)))
 
 test('''

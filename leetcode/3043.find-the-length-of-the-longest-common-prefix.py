@@ -30,6 +30,12 @@ class Solution:
     def longestCommonPrefix(self, a: List[int], b: List[int]) -> int:
         a,b=[{s[:i]for s in map(str,p)for i in range(1,len(s)+1)}for p in(a,b)];return max([0,*map(len,a&b)])
 
+# POTD 2026-05-21
+
+class Solution:
+    def longestCommonPrefix(self, a: List[int], b: List[int]) -> int:
+        f=lambda l:{str(x)[:i]for x in l for i in range(99)};return max(map(len,f(a)&f(b)))
+
 test('''
 3043. Find the Length of the Longest Common Prefix
 Medium

@@ -26,6 +26,10 @@ class Solution:
     def canReach(self, s: str, a: int, b: int) -> bool:
         n=len(s);d=[1]+n*[0];r=0;[setitem(d,i,s[i]<'1'*((r:=r+d[i-a]-d[~b+i])>0))for i in range(1,n)];return d[-2]
 
+class Solution:
+    def canReach(self, s: str, a: int, b: int) -> bool:
+        n=len(s);d=[1]+n*[r:=0];[setitem(d,i,s[i]<'1'*((r:=r+d[i-a]-d[~b+i])>0))for i in range(1,n)];return d[-2]
+
 test('''
 1871. Jump Game VII
 Medium

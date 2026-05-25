@@ -17,6 +17,10 @@ class Solution:
     def numberOfSpecialChars(self, w: str) -> int:
         return len({*w}&{*w.swapcase()})//2
 
+class Solution:
+    def numberOfSpecialChars(self, w: str) -> int:
+        return len({*w})-len({*w.lower()})
+
 test('''
 3120. Count the Number of Special Characters I
 Easy

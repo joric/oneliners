@@ -11,6 +11,12 @@ class Solution:
     def numberOfSpecialChars(self, w: str) -> int:
         return sum(c in w and c.upper()in w for c in ascii_lowercase)
 
+# POTD 2026-05-25
+
+class Solution:
+    def numberOfSpecialChars(self, w: str) -> int:
+        return len({*w}&{*w.swapcase()})//2
+
 test('''
 3120. Count the Number of Special Characters I
 Easy

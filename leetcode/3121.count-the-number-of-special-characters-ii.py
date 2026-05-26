@@ -15,6 +15,18 @@ class Solution:
     def numberOfSpecialChars(self, w: str) -> int:
         d=Counter();[setitem(d,c,i)for i,c in enumerate(w)if c not in d or c!=c.upper()];return sum(c in d and c.upper()in d and d[c]<d[c.upper()] for c in ascii_lowercase)
 
+# https://leetcode.com/problems/count-the-number-of-special-characters-ii/solutions/5072810/1-logical-line-python-by-stefanpochmann-ol91/?envType=daily-question&envId=2026-05-27
+
+# POTD 2026-05-26
+
+class Solution:
+    def numberOfSpecialChars(self, w: str) -> int:
+        return sum(0<=w.rfind(c)<w.find(c.upper())for c in ascii_lowercase)
+
+class Solution:
+    def numberOfSpecialChars(self, w: str) -> int:
+        return sum(0<=w.rfind(c)<w.find(c.upper())for c in{*w.lower()})
+
 test('''
 3121. Count the Number of Special Characters II
 Medium

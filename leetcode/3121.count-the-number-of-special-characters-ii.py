@@ -25,7 +25,7 @@ class Solution:
 
 class Solution:
     def numberOfSpecialChars(self, w: str) -> int:
-        return sum(0<=w.rfind(c)<w.find(c.upper())for c in{*w.lower()})
+        return sum(w.rfind(c)<w.find(c.upper())for c in{*w})
 
 test('''
 3121. Count the Number of Special Characters II

@@ -49,6 +49,10 @@ class Solution:
     def stringIndices(self, c: List[str], q: List[str]) -> List[int]:
         t=(T:=lambda:defaultdict(T))();[(n:=t,[setitem(n:=n[x],'$',-i)for x in'|'+w[::-1]])for _,i,w in sorted((-len(w),-i,w)for i,w in enumerate(c))];return[(n:=t['|'],all(x in n and[n:=n[x]]for x in w[::-1]),n['$'])[2]for w in q]
 
+class Solution:
+    def stringIndices(self, c: List[str], q: List[str]) -> List[int]:
+        t=(T:=lambda:defaultdict(T))();[(n:=t,[setitem(n:=n[x],'$',-i)for x in'|'+w[::-1]])for _,i,w in sorted((-len(w),-i,w)for i,w in enumerate(c))];return[n['$']for w in q if(n:=t['|'],all(x in n and[n:=n[x]]for x in w[::-1]))]
+
 test('''
 3093. Longest Common Suffix Queries
 Hard

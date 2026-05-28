@@ -59,7 +59,7 @@ class Solution:
 
 class Solution:
     def stringIndices(self, c: List[str], q: List[str]) -> List[int]:
-        t={};[(n:=t,[setitem(n:=n.setdefault(x,{}),0,-i)for x in'|'+w[::-1]])for _,i,w in sorted((-len(w),-i,w)for i,w in enumerate(c))];return[n[0]for w in q if(n:=t['|'],all(x in n and[n:=n[x]]for x in w[::-1]))]
+        t={};[(n:=t,[setitem(n:=n.setdefault(x,{}),0,-i)for x in'$'+w[::-1]])for _,i,w in sorted((-len(w),-i,w)for i,w in enumerate(c))];return[n[0]for w in q if(n:=t['$'],all(x in n and[n:=n[x]]for x in w[::-1]))]
 
 test('''
 3093. Longest Common Suffix Queries
@@ -102,7 +102,12 @@ Let's look at each wordsQuery[i] separately:
 For wordsQuery[0] = "gh", strings from wordsContainer that share the longest common suffix "gh" are at indices 0, 1, and 2. Among these, the answer is the string at index 2 because it has the shortest length of 6.
 For wordsQuery[1] = "acbfgh", only the string at index 0 shares the longest common suffix "fgh". Hence it is the answer, even though the string at index 2 is shorter.
 For wordsQuery[2] = "acbfegh", strings from wordsContainer that share the longest common suffix "gh" are at indices 0, 1, and 2. Among these, the answer is the string at index 2 because it has the shortest length of 6.
- 
+
+
+Other examples:
+
+Input: wordsContainer = ["abcd","bcda"], wordsQuery = ["cdf","afa"]
+Output: [0,1]
 
 Constraints:
 

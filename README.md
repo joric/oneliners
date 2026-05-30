@@ -10,7 +10,7 @@ Python is almost always shorter than other languages (and has relevant libraries
 
 * https://leetcode.com/problems/k-th-symbol-in-grammar
 
-Python (3.14.2):
+Python (3.14):
 
 
 ```python
@@ -35,7 +35,7 @@ Even C++ is sometimes shorter than Python (but mostly not). In this particular c
 return popcount(k-1u)&1;
 ```
 
-Note that `u` and `;` are mandatory. If I find a shorter solution in other language I usually add it in comments.
+Note that `u` and `;` are mandatory here. If I find a shorter solution in other language I usually add it in comments.
 
 
 ### Leetcode-specific

@@ -82,7 +82,7 @@ class Solution:
 
 class Solution:
     def getResults(self, q: List[List[int]]) -> List[bool]:
-        r,b,e=[],Counter(),lambda p,u=1:1e5>p>=0==[p]+e(u and~-(p&(p+1))or p|(p+1),u)or[];u=lambda p,x:[setitem(b,i,max(b[i],x))for i in e(p,0)];d=[0]+sorted(x for t,x,*s in q if t<2);[u(x,x-y)for y,x in zip(d,d[1:])];[(p:=bisect_left(d,x),t<2 and(d[p+1:]and u(d[p+1],d[p+1]-d[p-1]),d.pop(p))or r.append(max([x-d[p-1]]+[b[i]for i in e(x)])>=s[0]))for t,x,*s in q[::-1]];return r[::-1]
+        r,b,e=[],Counter(),lambda p,u=1:1e5>p>=0 and[p]+e(u and~-(p&(p+1))or p|(p+1),u)or[];u=lambda p,x:[setitem(b,i,max(b[i],x))for i in e(p,0)];d=[0]+sorted(x for t,x,*s in q if t<2);[u(x,x-y)for y,x in zip(d,d[1:])];[(p:=bisect_left(d,x),t<2 and(d[p+1:]and u(d[p+1],d[p+1]-d[p-1]),d.pop(p))or r.append(max([x-d[p-1]]+[b[i]for i in e(x)])>=s[0]))for t,x,*s in q[::-1]];return r[::-1]
 
 test('''
 3161. Block Placement Queries

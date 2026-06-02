@@ -1,38 +1,38 @@
 from lc import *
 
-# https://leetcode.com/problems/earliest-finish-time-for-land-and-water-rides-i/solutions/7039692/one-line-solution-by-xxxxkav-l779/?envType=daily-question&envId=2026-06-02
+# https://leetcode.com/problems/earliest-finish-time-for-land-and-water-rides-ii/solutions/7036614/simple-5-lines-code-by-silvia42-c2gm/?envType=daily-question&envId=2026-06-03
 
 class Solution:
     def earliestFinishTime(self, landStartTime: List[int], landDuration: List[int], waterStartTime: List[int], waterDuration: List[int]) -> int:
-        ans = inf
-        for sl, dl in zip(landStartTime, landDuration):
-            for sw, dw in zip(waterStartTime, waterDuration):
-                end_land = sl + dl
-                water_after_land = max(sw, end_land)
-                ans1 = water_after_land + dw
-
-                end_water = sw + dw
-                land_after_water = max(sl, end_water)
-                ans2 = land_after_water + dl
-    
-                ans = min(ans1, ans2, ans)
-        return ans
-
-class Solution:
-    def earliestFinishTime(self, landStartTime: List[int], landDuration: List[int], waterStartTime: List[int], waterDuration: List[int]) -> int:
-        return min(min(max(sw,sl+dl)+dw, max(sl,sw+dw)+dl) for (sl,dl),(sw,dw) in product(zip(landStartTime,landDuration),zip(waterStartTime,waterDuration)))
+        time1=min([a+b for a,b in zip(landStartTime,landDuration)])
+        time1=min([max(time1,a)+b for a,b in zip(waterStartTime,waterDuration)])
+        time2=min([a+b for a,b in zip(waterStartTime,waterDuration)])
+        time2=min([max(time2,a)+b  for a,b in zip(landStartTime,landDuration)])
+        return min(time1,time2)      
 
 class Solution:
     def earliestFinishTime(self, a: List[int], b: List[int], c: List[int], d: List[int]) -> int:
-        return min(min(max(g,e+f)+h,max(e,g+h)+f)for e,f in zip(a,b)for g,h in zip(c,d))
+        return min(min(max(min(x+y for x,y in zip(a,b)),x)+y for x,y in zip(c,d)), min(max(min(x+y for x,y in zip(c,d)),x)+y for x,y in zip(a,b)))
 
 class Solution:
     def earliestFinishTime(self, a: List[int], b: List[int], c: List[int], d: List[int]) -> int:
-        return min(max(e+f,g+h,min(e,g)+f+h)for e,f in zip(a,b)for g,h in zip(c,d))
+        return min(min(max(min(map(sum,zip(*k[:2]))),x)+y for x,y in zip(*k[2:]))for k in((a,b,c,d),(c,d,a,b)))
+
+class Solution:
+    def earliestFinishTime(self, a: List[int], b: List[int], c: List[int], d: List[int]) -> int:
+        u,v=min(x+y for x,y in zip(a,b)),min(x+y for x,y in zip(c,d));return min(min(max(u,x)+y for x,y in zip(c,d)),min(max(v,x)+y for x,y in zip(a,b)))
+
+class Solution:
+    def earliestFinishTime(self, a: List[int], b: List[int], c: List[int], d: List[int]) -> int:
+        return min(max(t,x)+y for k in((a,b,c,d),(c,d,a,b))for t in[min(map(add,*k[:2]))]for x,y in zip(*k[2:]))
+
+class Solution:
+    def earliestFinishTime(self, a: List[int], b: List[int], c: List[int], d: List[int]) -> int:
+        return min(max(t,x)+y for t,w,z in((min(map(add,a,b)),c,d),(min(map(add,c,d)),a,b))for x,y in zip(w,z))
 
 test('''
-3633. Earliest Finish Time for Land and Water Rides I
-Easy
+3635. Earliest Finish Time for Land and Water Rides II
+Medium
 Topics
 premium lock icon
 Companies
@@ -96,21 +96,21 @@ Plan A provides the earliest finish time of 14.​​​​​​​
 
 Constraints:
 
-1 <= n, m <= 100
+1 <= n, m <= 5 * 104
 landStartTime.length == landDuration.length == n
 waterStartTime.length == waterDuration.length == m
-1 <= landStartTime[i], landDuration[i], waterStartTime[j], waterDuration[j] <= 1000
+1 <= landStartTime[i], landDuration[i], waterStartTime[j], waterDuration[j] <= 105
  
 Seen this question in a real interview before?
 1/6
 Yes
 No
 Accepted
-34,147/54.9K
+16,142/41.3K
 Acceptance Rate
-62.2%
+39.1%
 Topics
-Mid Level
+Staff
 Array
 Two Pointers
 Binary Search
@@ -120,5 +120,11 @@ Biweekly Contest 162
 icon
 Companies
 Hint 1
-Use brute force
+Sort each ride list by opening time and build a prefix minimum of ride durations and a suffix minimum of ride finish times (start + duration).
+Hint 2
+Try both orders, land then water and water then land. For each ride in the first list compute finish1 = start1 + duration1.
+Hint 3
+Binary‑search the second list (sorted by start) to split rides into those with start <= finish1 and those with start > finish1. Use the prefix minimum duration on the early group to get an earliest finish of finish1 + minDuration and the suffix minimum finish time on the late group.
+Hint 4
+For each pairing take the smaller finish time and track the overall minimum.
 ''')

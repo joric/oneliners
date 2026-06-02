@@ -28,7 +28,12 @@ class Solution:
 
 class Solution:
     def earliestFinishTime(self, a: List[int], b: List[int], c: List[int], d: List[int]) -> int:
-        return min(max(t,x)+y for t,w,z in((min(map(add,a,b)),c,d),(min(map(add,c,d)),a,b))for x,y in zip(w,z))
+        return min(y+max(t,x)for t,w,z in((min(map(add,a,b)),c,d),(min(map(add,c,d)),a,b))for x,y in zip(w,z))
+
+#TLE
+class Solution:
+    def earliestFinishTime(self, a: List[int], b: List[int], c: List[int], d: List[int]) -> int:
+        return min(y+max(min(map(add,*k[:2])),x)for k in((a,b,c,d),(c,d,a,b))for x,y in zip(*k[2:]))
 
 test('''
 3635. Earliest Finish Time for Land and Water Rides II

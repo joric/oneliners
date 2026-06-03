@@ -2474,7 +2474,7 @@ Examples                                   | Results
 * You can replace `i!=n-1 and j!=m-1` with `i+j<n+m-2`, and `i<m and j<n` with `i-n<0>j-m`.
 * You can replace `x in s` where s is set with `{x}&s` (1 character shorter).
 * You can replace `x not in s` where s is set with `{x}-s` (5 characters shorter).
-* You can init a set using `{-1}` instead of `set()` (1 character shorter).
+* In some cases you can init a set using `{-1}` instead of `set()` (1 character shorter).
 
 ## References
 

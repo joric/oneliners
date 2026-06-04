@@ -8,7 +8,7 @@ class Solution:
         b = str(b)
         a = "0"*(len(b) - len(a)) + a
         @cache
-        def d(i, n, t, c, p, q, v):
+        def f(i, n, t, c, p, q, v):
             if i == len(a): 
                 return v
             r = 0
@@ -21,13 +21,13 @@ class Solution:
                 e = 0
                 if (q != -1 or p == -1) and n:
                     e = 1 if j > p < q or j < p > q else 0
-                r += d(i + 1, n, u, w, j, p, v + e)
+                r += f(i + 1, n, u, w, j, p, v + e)
             return r
         return d(0, 0, 1, 1, -1, -1, 0)
 
 class Solution:
     def totalWaviness(self, a: int, b: int) -> int:
-        a=str(a).zfill(k:=len(b:=str(b)));return(d:=cache(lambda i,n,t,c,p,q,v:i<k and(s:=c*int(a[i]),l:=[9,int(b[i])][t],m:=n|q>0)and sum(d(i+1,m,t*j==l,c*(j==s),j,p,v+(m*(j-p)*(q-p)>0<=q))for j in range(s,l+1))or v))(0,0,1,1,-1,-1,0)
+        a=str(a).zfill(k:=len(b:=str(b)));return(f:=cache(lambda i,n,t,c,p,q,v:i<k and(s:=c*int(a[i]),l:=[9,int(b[i])][t],m:=n|q>0)and sum(f(i+1,m,t*j==l,c*(j==s),j,p,v+(m*(j-p)*(q-p)>0<=q))for j in range(s,l+1))or v))(0,0,1,1,-1,-1,0)
 
 test('''
 3753. Total Waviness of Numbers in Range II

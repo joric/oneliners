@@ -4,6 +4,10 @@ from lc import *
 
 class Solution:
     def leftRightDifference(self, a: list[int]) -> list[int]:
+        return [abs(sum(a)-2*l-x) for l,x in zip([0,*accumulate(a)],a)]
+
+class Solution:
+    def leftRightDifference(self, a: list[int]) -> list[int]:
         return[abs(sum(a[i+1:])-sum(a[:i]))for i in range(len(a))]
 
 class Solution:

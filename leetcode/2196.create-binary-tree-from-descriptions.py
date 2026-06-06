@@ -26,6 +26,12 @@ class Solution:
     def createBinaryTree(self, a: List[List[int]]) -> Optional[TreeNode]:
         d={};q={setattr(d.setdefault(p,TreeNode(p)),('right','left')[l],d.setdefault(c,TreeNode(c)))or c for p,c,l in a};return d[({*d}-q).pop()]
 
+# POTD 2026-06-07
+
+class Solution:
+    def createBinaryTree(self, a: List[List[int]]) -> Optional[TreeNode]:
+        d={};T=TreeNode;s=d.setdefault;return d[({setattr(s(p,T(p)),l*'left'or'right',s(c,T(c)))or c for p,c,l in a}^{*d}).pop()]
+
 test('''
 2196. Create Binary Tree From Descriptions
 Medium

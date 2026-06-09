@@ -37,7 +37,11 @@ class Solution:
 
 class Solution:
     def maxTotalValue(self, a: list[int], k: int) -> int:
-        n=len(a);d=[0]*-~n;h=[];s=setitem;p=heappush;r=range;[s(d,i,d[i//2]+1)for i in r(2,n+1)];w=[[[0]*-~d[n]for _ in r(n)]for _ in(0,1)];z=[*zip(w,(min,max))];f=lambda l,r:sub(*[m(t[l][j:=d[r-l+1]],t[r-(1<<j)+1][j])for t,m in z]);[s(t[i],0,a[i])for i in r(n)for t in w];[s(t[i],j+1,m(t[i][j],t[i+2**j][j]))for j in r(n.bit_length()-1)for i in r(0,n-(2**-~j)+1)for t,m in z];[p(h,(f(l,n-1),l,n-1))for l in r(n)];return-sum((lambda v,l,r:r>l and p(h,(f(l,r-1),l,r-1))or v)(*heappop(h))for _ in r(k))
+        n=len(a);d=[0]*-~n;h=[];s=setitem;p=heappush;r=range;
+        [s(d,i,d[i//2]+1)for i in r(2,n+1)];w=[[[0]*-~d[n]for _ in r(n)]for _ in(0,1)];
+        z=[*zip(w,(min,max))];f=lambda l,r:sub(*[m(t[l][j:=d[r-l+1]],t[r-(1<<j)+1][j])for t,m in z]);
+        [s(t[i],0,a[i])for i in r(n)for t in w];[s(t[i],j+1,m(t[i][j],t[i+2**j][j]))for j in r(n.bit_length()-1)for i in r(0,n-(2**-~j)+1)for t,m in z];
+        [p(h,(f(l,n-1),l,n-1))for l in r(n)];return-sum((lambda v,l,r:r>l and p(h,(f(l,r-1),l,r-1))or v)(*heappop(h))for _ in r(k))
 
 class Solution:
     def maxTotalValue(self, a: list[int], k: int) -> int:

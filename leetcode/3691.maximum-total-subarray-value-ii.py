@@ -47,6 +47,14 @@ class Solution:
     def maxTotalValue(self, a: list[int], k: int) -> int:
         n=len(a);b=int.bit_length;d=~-b(n);h=[];p=heappush;r=range;z=[([[x]+d*[0]for x in a],m)for m in(min,max)];f=lambda x,y:sub(*[m(t[x][j:=~-b(y-x+1)],t[y-2**j+1][j])for t,m in z]);[setitem(t[i],j+1,m(t[i][j],t[i+2**j][j]))for j in r(d)for i in r(n-2**-~j+1)for t,m in z];[p(h,(f(i,n-1),i,n-1))for i in r(n)];return-sum((lambda v,x,y:y>x and p(h,(f(x,y-1),x,y-1))or v)(*heappop(h))for _ in r(k))
 
+class Solution:
+    def maxTotalValue(self, a: list[int], k: int) -> int:
+        n=len(a);b=int.bit_length;d=~-b(n);h=[];p=heappush;r=range;z=[([[x]+d*[0]for x in a],m)for m in(min,max)];f=lambda x,y:sub(*[m(t[x][j:=~-b(y-x)],t[y-2**j][j])for t,m in z]);[setitem(t[i],j+1,m(t[i][j],t[i+2**j][j]))for j in r(d)for i in r(n-2**-~j+1)for t,m in z];[p(h,(f(i,n),i,n-1))for i in r(n)];return-sum((lambda v,x,y:y>x and p(h,(f(x,y),x,y-1))or v)(*heappop(h))for _ in r(k))
+
+class Solution:
+    def maxTotalValue(self, a: list[int], k: int) -> int:
+        n=len(a);b=int.bit_length;r=range;z=[([[x]*b(n)for x in a],m)for m in(min,max)];f=lambda x,y:sub(*[m(t[x][j:=~-b(y-x)],t[y-2**j][j])for t,m in z]);[setitem(t[i],j+1,m(t[i][j],t[i+2**j][j]))for t,m in z for j in r(~-b(n))for i in r(n-2**-~j+1)];heapify(h:=[(f(i,n),i,n-1)for i in r(n)]);return-sum((lambda v,x,y:y>x and heappush(h,(f(x,y),x,y-1))or v)(*heappop(h))for _ in r(k))
+
 test('''
 3691. Maximum Total Subarray Value II
 Hard

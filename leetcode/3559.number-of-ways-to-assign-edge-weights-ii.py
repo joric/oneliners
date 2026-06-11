@@ -79,6 +79,11 @@ Query [3,4]: The path from Node 3 to Node 4 consists of one edge (3 → 4). Assi
 Query [2,5]: The path from Node 2 to Node 5 consists of three edges (2 → 1, 1 → 3, and 3 → 5). Assigning (1,2,2), (2,1,2), (2,2,1), or (1,1,1) makes the cost odd. Thus, the number of valid assignments is 4.
  
 
+Other examples:
+
+Input: edges = [[1,2],[1,3],[3,4],[3,5]], queries = [[1,4],[3,4],[2,5]]
+Output: [2,1,4]
+
 Constraints:
 
 2 <= n <= 105

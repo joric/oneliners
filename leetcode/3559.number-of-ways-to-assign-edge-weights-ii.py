@@ -5,7 +5,7 @@ from lc import *
 class Solution:
     def assignEdgeWeights(self, e: List[List[int]], q: List[List[int]]) -> List[int]:
         d,l,f={},{},{}
-        g,h=[defaultdict(set)for _ in(0,1)]
+        g,h=[defaultdict(set)for _ in(_,_)]
         [a[u].add(v)or a[v].add(u)for a,b in((g,e),(h,q))for u,v in b]
         def r(x):
             if x in f:

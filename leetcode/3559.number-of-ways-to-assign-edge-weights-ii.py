@@ -23,7 +23,7 @@ class Solution:
             for v in g[u]:
                 if v not in d:
                     t(v,w+1)
-                    setitem(f,v,u)
+                    f[v] = u
             for v in h[u]:
                 if v in d:
                     l[(u,v)]=r(v)

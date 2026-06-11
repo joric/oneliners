@@ -1,76 +1,17 @@
 from lc import *
 
-# https://leetcode.com/problems/number-of-ways-to-assign-edge-weights-i/solutions/6777062/python-dp-dfs-cache-by-pbelskiy-mb7i/?envType=daily-question&envId=2026-06-11
+# https://leetcode.com/problems/number-of-ways-to-assign-edge-weights-i/solutions/8327610/four-simple-lines-of-code-by-mikposp-hpa3/
 
 class Solution:
     def assignEdgeWeights(self, e: List[List[int]]) -> int:
         g = defaultdict(list)
-        for a, b in e:
-            g[a].append(b)
-            g[b].append(a)
-
-        @cache
-        def f(a, p, o, t):
-            if a == t:
-                return 1 if o else 0
-            m = 0
-            for b in g[a]:
-                if b == p: continue
-                m += f(b, a, not o, t)
-                m += f(b, a, o, t)
-            return m % (10**9 + 7)
-
-        def l(a, p, d):
-            if len(g[a]) == 1 and next(iter(g[a])) == p:
-                s[a] = d
-                return d
-            return max(l(b, a, d + 1) for b in g[a] if b != p)
-
-        s = {}
-        m = l(1, 0, 0)
-        for x, y in s.items():
-            if y == m:
-                r = f(1, 0, False, x)
-                f.cache_clear()
-                return r
-        return 0
-
+        for v,u in map(sorted,e): g[v].append(u)
+        f = lambda n,p:max([f(q,n)+1 for q in g[n] if q!=p]+[0])
+        return pow(2,f(1,0)-1,10**9+7)
 
 class Solution:
     def assignEdgeWeights(self, e: List[List[int]]) -> int:
-        g = defaultdict(list)
-        for a,b in e:
-            g[a].append(b)
-            g[b].append(a)
-
-        f=cache(lambda a,p,o,t:(1 if o else 0)if a==t else sum(f(b,a,not o,t)+f(b,a,o,t)for b in g[a]if b!=p)%(10**9+7))
-
-        def l(a, p, d):
-            if len(g[a]) == 1 and next(iter(g[a])) == p:
-                s[a] = d
-                return d
-            return max(l(b,a,d+1)for b in g[a]if b!=p)
-
-        s = {}
-        m = l(1,0,0)
-        for x,y in s.items():
-            if y == m:
-                r = f(1, 0, False, x)
-                f.cache_clear()
-                return r
-        return 0
-
-class Solution:
-    def assignEdgeWeights(self, e: List[List[int]]) -> int:
-        g=defaultdict(list);[(g[a].append(b),g[b].append(a))for a,b in e];s={};f=cache(lambda a,p,o,t:(o if a==t else sum(f(b,a,o^1,t)+f(b,a,o,t)for b in g[a]if b-p))%(10**9+7));l=lambda a,p,d:(setitem(s,a,d),d)[1]if len(g[a])==1and g[a][0]==p else max(l(b,a,d+1)for b in g[a]if b-p);m=l(1,0,0);return next((f(1,0,0,x)for x,y in s.items()if y==m),0)
-
-class Solution:
-    def assignEdgeWeights(self, e: List[List[int]]) -> int:
-        g=defaultdict(list);[g[a].append(b)or g[b].append(a)for a,b in e];l=lambda a,p,d:(d,a)if g[a]==[p]else max(l(b,a,d+1)for b in g[a]if b-p);t=l(1,0,0)[1];f=cache(lambda a,p,o:(o if a==t else sum(f(b,a,o^1)+f(b,a,o)for b in g[a]if b-p))%(10**9+7));return f(1,0,0)
-
-class Solution:
-    def assignEdgeWeights(self, e: List[List[int]]) -> int:
-        g=defaultdict(list);[g[a].append(b)or g[b].append(a)for a,b in e];f=lambda a,p:1+max([0]+[f(b,a)for b in g[a]if b-p]);return pow(2,f(1,0)-2,10**9+7)
+        g=defaultdict(list);[g[v].append(u)for v,u in map(sorted,e)];f=lambda a,p:max([0]+[f(b,a)+1 for b in g[a]if b-p]);return pow(2,f(1,0)-1,10**9+7)
 
 test('''
 3558. Number of Ways to Assign Edge Weights I

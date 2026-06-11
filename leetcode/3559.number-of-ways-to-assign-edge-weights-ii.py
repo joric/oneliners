@@ -4,6 +4,7 @@ from lc import *
 
 class Solution:
     def assignEdgeWeights(self, e: List[List[int]], q: List[List[int]]) -> List[int]:
+        d,l,f={},{},{}
         g=defaultdict(set)
         h=defaultdict(set)
         for u,v in e:
@@ -12,23 +13,17 @@ class Solution:
         for u,v in q:
             h[u].add(v)
             h[v].add(u)
-
-        d,l,f={},{},{}
-
         def r(x):
             if x in f:
                 f[x]=r(f[x])
                 return f[x]
             return x
-
         def t(u,w):
             d[u]=w
-
             for v in g[u]:
                 if v not in d:
                     t(v,w+1)
                     f[v] = u
-
             for v in h[u]:
                 if v in d:
                     l[(u,v)]=r(v)

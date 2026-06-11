@@ -38,14 +38,6 @@ class Solution:
 
 class Solution:
     def assignEdgeWeights(self,e:List[List[int]],q:List[List[int]])->List[int]:
-        s,m=setitem,defaultdict;g,h,d,l,f=m(set),m(set),{},{},{}
-        [a[u].add(v)or a[v].add(u)for a,b in((g,e),(h,q))for u,v in b]
-        r=lambda x:s(f,x,r(f[x]))or f[x]if x in f else x
-        t=lambda u,w:(s(d,u,w),[t(v,w+1)==s(f,v,u)for v in g[u]if(v in d)^1],[s(l,(u,v),r(v))or s(l,(v,u),r(v))for v in h[u]if v in d])
-        t(1,0);return[(i:=d[x]+d[y]-2*d[l[x,y]])and pow(2,i-1,10**9+7)for x,y in q]
-
-class Solution:
-    def assignEdgeWeights(self,e:List[List[int]],q:List[List[int]])->List[int]:
         s,m=setitem,defaultdict;g,h,d,l,f=m(set),m(set),{},{},{};[a[u].add(v)or a[v].add(u)for a,b in((g,e),(h,q))for u,v in b];r=lambda x:s(f,x,r(f[x]))or f[x]if x in f else x;t=lambda u,w:(s(d,u,w),[t(v,w+1)==s(f,v,u)for v in g[u]if(v in d)^1],[s(l,(u,v),r(v))or s(l,(v,u),r(v))for v in h[u]if v in d]);t(1,0);return[(i:=d[x]+d[y]-2*d[l[x,y]])and pow(2,i-1,10**9+7)for x,y in q]
 
 test('''

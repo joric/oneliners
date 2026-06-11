@@ -7,12 +7,7 @@ class Solution:
         d,l,f={},{},{}
         g=defaultdict(set)
         h=defaultdict(set)
-        for u,v in e:
-            g[u].add(v)
-            g[v].add(u)
-        for u,v in q:
-            h[u].add(v)
-            h[v].add(u)
+        [a[u].add(v)or a[v].add(u)for a,b in((g,e),(h,q))for u,v in b]
         def r(x):
             if x in f:
                 f[x]=r(f[x])

@@ -29,10 +29,7 @@ class Solution:
                     l[(u,v)]=r(v)
                     l[(v,u)]=r(v)
         t(1,0)
-        a=[d[x]+d[y]-2*d[l[x,y]]for x,y in q]
-        p = [1]
-        [p.extend([p[-1]*2%(10**9+7)])for _ in range(max(a+[1])-1)]
-        return[i and p[i-1]for i in a]
+        return [(i:=d[x]+d[y]-2*d[l[x,y]])and pow(2,i-1,10**9+7)for x,y in q]
 
 class Solution:
     def assignEdgeWeights(self,e:List[List[int]],q:List[List[int]])->List[int]:

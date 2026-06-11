@@ -68,6 +68,10 @@ class Solution:
     def assignEdgeWeights(self, e: List[List[int]]) -> int:
         g=defaultdict(list);[g[a].append(b)or g[b].append(a)for a,b in e];l=lambda a,p,d:(d,a)if g[a]==[p]else max(l(b,a,d+1)for b in g[a]if b-p);t=l(1,0,0)[1];f=cache(lambda a,p,o:(o if a==t else sum(f(b,a,o^1)+f(b,a,o)for b in g[a]if b-p))%(10**9+7));return f(1,0,0)
 
+class Solution:
+    def assignEdgeWeights(self, e: List[List[int]]) -> int:
+        g=defaultdict(list);[g[a].append(b)or g[b].append(a)for a,b in e];f=lambda a,p:1+max([0]+[f(b,a)for b in g[a]if b-p]);return pow(2,f(1,0)-2,10**9+7)
+
 test('''
 3558. Number of Ways to Assign Edge Weights I
 Medium

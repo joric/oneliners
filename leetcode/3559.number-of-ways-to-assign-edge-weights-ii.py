@@ -16,7 +16,7 @@ class Solution:
         d,l,f={},{},[*range(len(e)+2)]
         def r(x):
             if x!=f[x]:
-                setitem(f,x,r(f[x]))
+                f[x]=r(f[x])
             return f[x]
         def t(u,w):
             d[u]=w
@@ -26,8 +26,8 @@ class Solution:
                     setitem(f,v,u)
             for v in h[u]:
                 if v in d:
-                    setitem(l,(u,v),r(v))
-                    setitem(l,(v,u),l[u,v])
+                    l[(u,v)]=r(v)
+                    l[(v,u)]=r(v)
         t(1,0)
         a=[d[x]+d[y]-2*d[l[x,y]]for x,y in q]
         p = [1]

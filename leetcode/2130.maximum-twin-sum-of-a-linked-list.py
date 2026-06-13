@@ -29,6 +29,22 @@ class Solution:
     def pairSum(self, h: Optional[ListNode]) -> int:
         return max(map(sum,zip(r:=[(h.val,h:=h.next)[0]for _ in[1]*10**5 if h],r[::-1])))
 
+# POTD 2026-06-13
+
+class Solution:
+    def pairSum(self, h: Optional[ListNode]) -> int:
+        r=[]
+        while h:r+=[h.val];h=h.next
+        return max(map(sum,zip(r,r[::-1])))
+
+class Solution:
+    def pairSum(self, h: Optional[ListNode]) -> int:
+        return max(map(sum,zip(r:=[(h.val,h:=h.next)[0]for _ in[1]*9**6 if h],r[::-1])))
+
+class Solution:
+    def pairSum(self, h: Optional[ListNode]) -> int:
+        return max(map(sum,zip(r:=eval(h.serialize(h)),r[::-1])))
+
 test('''
 2130. Maximum Twin Sum of a Linked List
 Medium

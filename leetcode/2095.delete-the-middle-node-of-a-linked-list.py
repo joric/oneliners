@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/submissions/822021085/?envType=daily-question&envId=2026-06-15
+
 class Solution:
     def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
         dummy = ListNode()
@@ -11,6 +13,20 @@ class Solution:
         prev.next = slow.next
         return dummy.next
 
+class Solution:
+    def deleteMiddle(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        d = ListNode()
+        d.next,s,f,p =h,h,h,d
+        while f and f.next:
+            p=s
+            s=s.next
+            f=f.next.next
+        p.next = s.next
+        return d.next
+
+class Solution:
+    def deleteMiddle(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        d=ListNode();d.next,s,f,p =h,h,h,d;all(f and f.next and(p:=s,s:=s.next,f:=f.next.next)for _ in count());p.next=s.next;return d.next
 
 class Solution:
     def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
@@ -21,11 +37,19 @@ class Solution:
             return a
         return f(head, head.next)
 
+class Solution:
+    def deleteMiddle(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        return(f:=lambda a,b:setattr(a,'next',f(a.next,b.next.next)if b.next else f(a.next,b.next))or a if b else a.next)(h,h.next)
+
+# POTD 2026-06-14
 
 class Solution:
-    def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        return (f:=lambda a,b:setattr(a,'next', f(a.next, b.next.next) if b.next
-            else f(a.next, b.next)) or a if b else a.next)(head, head.next)
+    def deleteMiddle(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        a=eval(h.serialize(h));n=len(a)//2;return h.deserialize(str(a[:n]+a[n+1:]))
+
+class Solution:
+    def deleteMiddle(self, h: Optional[ListNode]) -> Optional[ListNode]:
+        a=eval(h.serialize(h));a.pop(len(a)//2);return h.deserialize(str(a))
 
 test('''
 2095. Delete the Middle Node of a Linked List

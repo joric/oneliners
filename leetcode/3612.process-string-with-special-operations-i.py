@@ -12,6 +12,10 @@ class Solution:
 
 class Solution:
     def processStr(self, s: str) -> str:
+        return reduce(lambda r,c:(r[:-1],r*2,r[::-1],r+c)['*#%'.find(c)],s,'')
+
+class Solution:
+    def processStr(self, s: str) -> str:
         r='';[r:=(r[:-1],r*2,r[::-1],r+c)['*#%'.find(c)]for c in s];return r
 
 test('''

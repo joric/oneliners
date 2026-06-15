@@ -67,7 +67,10 @@ i   s[i]    Operation   Current result
 2   '#' Duplicate the string    ""
 Thus, the final result is "".
 
- 
+Other examples:
+
+Input: s = "*%"
+Output: ""
 
 Constraints:
 

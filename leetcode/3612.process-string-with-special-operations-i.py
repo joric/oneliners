@@ -8,7 +8,7 @@ class Solution:
 
 class Solution:
     def processStr(self, s: str) -> str:
-        r='';[r:= r[:-1]if c=='*'else r+r if c=='#'else r[::-1]if c=='%'else r+c for c in s];return r
+        r='';[r:=r[:-1]if c=='*'else r+r if c=='#'else r[::-1]if c=='%'else r+c for c in s];return r
 
 class Solution:
     def processStr(self, s: str) -> str:

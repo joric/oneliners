@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/maximum-ice-cream-bars/?envType=daily-question&envId=2026-06-21
+
 class Solution:
     def maxIceCream(self, costs: List[int], coins: int) -> int:
         r, q = 0, Counter(costs)
@@ -53,6 +55,12 @@ class Solution:
 class Solution:
     def maxIceCream(self, p: List[int], c: int) -> int:
         return sum(1 for x in sorted(p)if(c:=c-x)>=0)
+
+# POTD 2026-06-21
+
+class Solution:
+    def maxIceCream(self, p: List[int], c: int) -> int:
+        return sum(0<=(c:=c-x)for x in sorted(p))
 
 test('''
 

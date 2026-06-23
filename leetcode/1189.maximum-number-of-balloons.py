@@ -16,6 +16,10 @@ class Solution:
     def maxNumberOfBalloons(self, t: str) -> int:
         return min(t.count(c)//((c in'lo')+1)for c in'balon')
 
+class Solution:
+    def maxNumberOfBalloons(self, t: str) -> int:
+        return min(t.count(c)//-~(c in'lo')for c in'balon')
+
 test('''
 1189. Maximum Number of Balloons
 Solved

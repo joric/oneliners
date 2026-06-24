@@ -21,6 +21,10 @@ class Solution:
     def zigZagArrays(self, n: int, l: int, r: int) -> int:
         return sum(reduce(lambda d,_:[0,*accumulate(d[:0:-1])],[0]*~-n,[1]*(r-l+1)))*2%(10**9+7)
 
+class Solution:
+    def zigZagArrays(self, n: int, l: int, r: int) -> int:
+        d=[1]*(r-l+1);[d:=[0,*accumulate(d[:0:-1])]for _ in[0]*~-n];return sum(d)*2%(10**9+7)
+
 test('''
 3699. Number of ZigZag Arrays I
 Hard

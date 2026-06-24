@@ -1,25 +1,17 @@
 from lc import *
 
-# https://leetcode.com/problems/count-subarrays-with-majority-element-i/solutions/8344364/count-subarrays-with-majority-element-i-9cfu5/?envType=daily-question&envId=2026-06-25
+# https://leetcode.com/problems/count-subarrays-with-majority-element-ii/description/
+
+# POTD 2026-06-27
 
 class Solution:
-    def countMajoritySubarrays(self, a: List[int], t: int) -> int:
-        return sum(sum(0<(c:=c+(x==t)*2-1)for x in a[i:])for i in range(len(a))if~(c:=0))
-
-class Solution:
-    def countMajoritySubarrays(self, a: List[int], t: int) -> int:
-        return sum((c:=0)+sum(0<(c:=c+(x==t)*2-1)for x in a[i:])for i in range(len(a)))
-
-# POTD 2026-06-26
-
-class Solution:
-    def countMajoritySubarrays(self, a: List[int], t: int) -> int:
-        return sum((c:=0)+sum(0<(c:=c+(x==t)*2-1)for x in a)+0*a.pop(0)for _ in a*1)
+    def countMajoritySubarrays(self, n: List[int], t: int) -> int:
+        s=SortedList([0]);c=0;return sum(s.add(c:=c+(x==t)*2-1)or s.bisect_left(c)for x in n)
 
 test('''
-3737. Count Subarrays With Majority Element I
+3739. Count Subarrays With Majority Element II
 Solved
-Medium
+Hard
 Topics
 premium lock icon
 Companies
@@ -73,7 +65,7 @@ target = 4 does not appear in nums at all. Therefore, there cannot be any subarr
 
 Constraints:
 
-1 <= nums.length <= 1000
+1 <= nums.length <= 10​​​​​​​5
 1 <= nums[i] <= 10​​​​​​​9
 1 <= target <= 109
  
@@ -82,23 +74,28 @@ Seen this question in a real interview before?
 Yes
 No
 Accepted
-28,155/42.8K
+7,675/16.6K
 Acceptance Rate
-65.8%
+46.1%
 Topics
-Senior
+Senior Staff
 Array
 Hash Table
 Divide and Conquer
 Segment Tree
 Merge Sort
-Counting
 Prefix Sum
 Biweekly Contest 169
 icon
 Companies
 Hint 1
-Use brute force
+Convert to +1/-1: let arr[i] = 1 if nums[i] == target else -1.
 Hint 2
-Count all subarrays where 2 * count(target) > length
+Build prefix sums: pref[0]=0, pref[k] = pref[k - 1] + arr[k - 1] for k=1..n.
+Hint 3
+Count pairs (i < j) with pref[j] > pref[i] (these correspond to subarrays where target is majority).
+Hint 4
+Use coordinate compression on all pref values and a Fenwick tree / ordered map: iterate k from 0..n, query how many previous pref are < current, add to ans, then update.
+Hint 5
+If target never appears return 0.
 ''')

@@ -12,7 +12,6 @@ class Solution:
     def countMajoritySubarrays(self, a: List[int], t: int) -> int:
         s=SortedList();c=1;return sum(s.add(c)or s.bisect_left(c:=c+2*(t==v)-1)for v in a)
 
-
 test('''
 3739. Count Subarrays With Majority Element II
 Solved

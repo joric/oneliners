@@ -28,7 +28,7 @@ class Solution:
     def maximumLength(self, a: List[int]) -> int:
         d={};[setitem(d,x,d.keys()>={x,x**2}and x!=1 and 2+d[x**2]or 1)for x in sorted(a)[::-1]];return max(max(d.values()),(c:=a.count(1))-(c%2<1))
 
-# POTD 2026-06-26
+# POTD 2026-06-27
 
 class Solution:
     def maximumLength(self, a: List[int]) -> int:

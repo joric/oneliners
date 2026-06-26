@@ -5,8 +5,13 @@ from lc import *
 # POTD 2026-06-27
 
 class Solution:
-    def countMajoritySubarrays(self, n: List[int], t: int) -> int:
-        s=SortedList([0]);c=0;return sum(s.add(c:=c+(x==t)*2-1)or s.bisect_left(c)for x in n)
+    def countMajoritySubarrays(self, a: List[int], t: int) -> int:
+        s=SortedList([0]);c=0;return sum(s.add(c:=c+(x==t)*2-1)or s.bisect_left(c)for x in a)
+
+class Solution:
+    def countMajoritySubarrays(self, a: List[int], t: int) -> int:
+        s=SortedList();c=1;return sum(s.add(c)or s.bisect_left(c:=c+2*(t==v)-1)for v in a)
+
 
 test('''
 3739. Count Subarrays With Majority Element II

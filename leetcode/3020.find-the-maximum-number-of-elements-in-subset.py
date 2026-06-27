@@ -32,7 +32,7 @@ class Solution:
 
 class Solution:
     def maximumLength(self, a: List[int]) -> int:
-        d={};[setitem(d,x,x>1and{x,x*x}<=d.keys()and 2+d[x*x]or 1)for x in sorted(a)[::-1]];return max(*d.values(),a.count(1)-1|1)
+        d={};[setitem(d,x,x>1and{x,x*x}<=d.keys()and 2+d[x*x]or 1)for x in sorted(a)[::-1]];return max(*d.values(),~-a.count(1)|1)
 
 test('''
 3020. Find the Maximum Number of Elements in Subset

@@ -34,6 +34,10 @@ class Solution:
     def maximumElementAfterDecrementingAndRearranging(self, a: List[int]) -> int:
         r=0;[r:=min(r+1,c)for c in sorted(a)];return r
 
+class Solution:
+    def maximumElementAfterDecrementingAndRearranging(self, a: List[int]) -> int:
+        r=0;[r:=r+(c>r)for c in sorted(a)];return r
+
 test('''
 1846. Maximum Element After Decreasing and Rearranging
 Medium

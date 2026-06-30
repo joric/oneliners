@@ -1538,6 +1538,14 @@ class Solution:
         return pow(x:=2<<n,n+2,~-x*x*x+~x)%x
 ```
 
+### Factorial
+
+Leetcode simply have a global import called `factorial()`. You could do lambda if you want:
+
+```python
+f=lambda x:0**x or x*f(x-1)
+```
+
 ### Regular expressions
 
 Many problems can be solved with a single regex:

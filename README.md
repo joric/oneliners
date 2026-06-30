@@ -1540,7 +1540,7 @@ class Solution:
 
 ### Factorial
 
-Leetcode simply have a global import called `factorial()`. You could do lambdas if you want.
+Leetcode simply have a global `math` import that includes `factorial()`. You could do lambdas if you want.
 
 ```python
 f=lambda x:x<2or x*f(x-1)

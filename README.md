@@ -1540,10 +1540,18 @@ class Solution:
 
 ### Factorial
 
-Leetcode simply have a global import called `factorial()`. You could do lambda if you want:
+Leetcode simply have a global import called `factorial()`. You could do lambdas if you want.
 
 ```python
-f=lambda x:0**x or x*f(x-1)
+f=lambda x:x<2or x*f(x-1)
+```
+
+```python
+prod(range(1,x+1))
+```
+
+```python
+factorial(x)
 ```
 
 ### Regular expressions

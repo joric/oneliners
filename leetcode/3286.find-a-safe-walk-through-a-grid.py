@@ -64,7 +64,32 @@ class Solution:
 
 class Solution:
     def findSafeWalk(self, g: List[List[int]], h: int) -> bool:
+        q=[];v=set();m=len(g);n=len(g[0]);d=(0,1,0,-1,0)
+        def f(c,r,x):
+            if (r,x) not in v:
+                v.add((r,x))
+                if (r,x)==(m-1,n-1) and h>c:
+                    return True
+                [0<=(a:=r+i)<m and 0<=(b:=x+j)<n and heappush(q,(c+g[a][b],a,b))for i,j in zip(d,d[1:])]
+            return q>[]and f(*heappop(q))
+        return f(g[0][0],0,0)
+
+class Solution:
+    def findSafeWalk(self, g: List[List[int]], h: int) -> bool:
+        q=[];v=set();m=len(g);n=len(g[0]);d=(0,1,0,-1,0);f=lambda c,r,x:((r,x)not in v and(v.add((r,x))or((r,x)==(m-1,n-1)and h>c)or([0<=(a:=r+i)<m and 0<=(b:=x+j)<n and heappush(q,(c+g[a][b],a,b)) for i,j in zip(d,d[1:])]>[]and False)))or(q>[]and f(*heappop(q)));return f(g[0][0],0,0)
+
+class Solution:
+    def findSafeWalk(self, g: List[List[int]], h: int) -> bool:
         q=[(g[0][0],(0,0))];v=set();m=len(g);n=len(g[0]);return any(q and((p:=heappop(q)),(u:=p[1])not in v and(v.add(u),[heappush(q,(p[0]+g[r][c],(r,c)))for x,y in((0,1),(1,0),(0,-1),(-1,0))if 0<=(r:=u[0]+x)<m and 0<=(c:=u[1]+y)<n]),u==(m-1,n-1)and h>p[0])[-1]for _ in range(m*n*5))
+
+class Solution:
+    def findSafeWalk(self, g: List[List[int]], h: int) -> bool:
+        q=[(g[0][0],(0,0))];v=set();m=len(g);n=len(g[0]);return any(q and((p:=heappop(q)),(u:=p[1])not in v and(v.add(u),[heappush(q,(p[0]+g[r][c],(r,c)))for x,y in((0,1),(1,0),(0,-1),(-1,0))if-1<(r:=u[0]+x)<m and-1<(c:=u[1]+y)<n]),u==(m-1,n-1)and h>p[0])[-1]for _ in range(m*n*5))
+
+class Solution:
+    def findSafeWalk(self, g: List[List[int]], h: int) -> bool:
+        q=[(g[0][0],(0,0))];v=set();m=len(g);n=len(g[0]);return any(q and((p:=heappop(q)),(u:=p[1])not in v and(v.add(u),[heappush(q,(p[0]+g[r][c],(r,c)))for x,y in((0,1),(1,0),(0,-1),(-1,0))if-1<(r:=u[0]+x)<m and-1<(c:=u[1]+y)<n]),u==(m-1,n-1)and h>p[0])[-1]for _ in range(m*n*5))
+
 
 test('''
 3286. Find a Safe Walk Through a Grid

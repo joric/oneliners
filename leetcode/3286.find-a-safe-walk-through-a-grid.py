@@ -121,7 +121,7 @@ class Solution:
 
 class Solution:
     def findSafeWalk(self, g: List[List[int]], h: int) -> bool:
-        q=[(g[0][0],(0,0))];v=set();m=len(g);n=len(g[0]);return any(q and((p:=heappop(q)),(u:=p[1])not in v and(v.add(u),[heappush(q,(p[0]+g[r][c],(r,c)))for x,y in((0,1),(1,0),(0,-1),(-1,0))if m>(r:=u[0]+x)>-1<(c:=u[1]+y)<n]),u==(m-1,n-1)and h>p[0])[-1]for _ in range(m*n*5))
+        q=[(g[0][0],(0,0))];v=set();m=len(g);n=len(g[0]);return any(q and((p:=heappop(q)),{u:=p[1]}-v and(v.add(u),[heappush(q,(p[0]+g[r][c],(r,c)))for x,y in((0,1),(1,0),(0,-1),(-1,0))if m>(r:=u[0]+x)>-1<(c:=u[1]+y)<n]),u==(m-1,n-1)and h>p[0])[-1]for _ in range(5**6))
 
 test('''
 3286. Find a Safe Walk Through a Grid

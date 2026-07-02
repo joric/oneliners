@@ -32,6 +32,35 @@ class Solution:
                         q.append((nx, ny))
         return False
 
+
+# https://leetcode.com/problems/find-a-safe-walk-through-a-grid/solutions/8370818/12-lines-of-python-code-beats-100-32ms-o-mnnj/
+
+class Solution:
+    def findSafeWalk(self, g: List[List[int]], h: int) -> bool:
+        m,n = len(g[0]), len(g)
+        d = [[0]*m for _ in range(n)]
+        d[0][0]=h-g[0][0]
+        q = deque([(d[0][0],0,0)])
+        while q:
+            h,i,j=q.popleft()
+            for x, y in (i+1,j), (i-1,j), (i,j+1), (i,j-1):
+                if 0 <= x < n and 0 <= y < m and (t := h - g[x][y]) > d[x][y]:
+                    d[x][y] = t
+                    (q.append,q.appendleft)[t==y]((t,x,y))
+        return d[-1][-1] > 0
+
+class Solution:
+    def findSafeWalk(self, g: List[List[int]], h: int) -> bool:
+        m,n=len(g[0]),len(g);d=[m*[0]for _ in g];d[0][0]=h-g[0][0];q=deque();f=lambda h,i,j:([setitem(d[x],y,t)or(q.append,q.appendleft)[t==y]((t,x,y))for x,y in((i+1,j),(i-1,j),(i,j+1),(i,j-1))if m>y>-1<x<n and(t:=h-g[x][y])>d[x][y]],q and f(*q.popleft()));return f(d[0][0],0,0)and d[-1][-1]>0
+
+class Solution:
+    def findSafeWalk(self, g: List[List[int]], h: int) -> bool:
+        m,n=len(g[0]),len(g);d=defaultdict(int);d[0,0]=h-g[0][0];q=deque();f=lambda c,i,j:any(setitem(d,(x,y),t)or(q.append,q.appendleft)[t==c]((t,x,y))for x,y in((i+1,j),(i-1,j),(i,j+1),(i,j-1))if n>x>-1<y<m and(t:=c-g[x][y])>d[x,y])or q and f(*q.popleft());return f(d[0,0],0,0)or d[n-1,m-1]>0
+
+class Solution:
+    def findSafeWalk(self, g: List[List[int]], h: int) -> bool:
+        q=[(g[0][0],(0,0))];v=set();m=len(g);n=len(g[0]);return any(q and((p:=q.pop(0)),(u:=p[1])not in v and(v.add(u),[q.insert(len(q)*(w:=g[r][c]),(p[0]+w,(r,c)))for x,y in((0,1),(1,0),(0,-1),(-1,0))if m>(r:=u[0]+x)>-1<(c:=u[1]+y)<n]),u==(m-1,n-1)and h>p[0])[-1]for _ in range(m*n*5))
+
 # https://leetcode.com/problems/find-a-safe-walk-through-a-grid/solutions/5787169/python-dfs-by-prashasst-mn44/?envType=daily-question&envId=2026-07-02
 
 class Solution:
@@ -89,7 +118,6 @@ class Solution:
 class Solution:
     def findSafeWalk(self, g: List[List[int]], h: int) -> bool:
         q=[(g[0][0],(0,0))];v=set();m=len(g);n=len(g[0]);return any(q and((p:=heappop(q)),(u:=p[1])not in v and(v.add(u),[heappush(q,(p[0]+g[r][c],(r,c)))for x,y in((0,1),(1,0),(0,-1),(-1,0))if-1<(r:=u[0]+x)<m and-1<(c:=u[1]+y)<n]),u==(m-1,n-1)and h>p[0])[-1]for _ in range(m*n*5))
-
 
 test('''
 3286. Find a Safe Walk Through a Grid

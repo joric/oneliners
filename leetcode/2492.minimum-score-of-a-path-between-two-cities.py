@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/minimum-score-of-a-path-between-two-cities/
+
 # dfs
 class Solution:
     def minScore(self, n: int, roads: List[List[int]]) -> int:
@@ -52,6 +54,10 @@ class Solution:
 class Solution:
     def minScore(self, n: int, r: List[List[int]]) -> int:
         g,q,t=defaultdict(list),[1],inf;[g[a].append((b,c))or g[b].append((a,c))for a,b,c in r];[(t:=min(t,c),q.append(b))for a in q for b,c in g.pop(a,[])];return t
+
+class Solution:
+    def minScore(self, n: int, r: List[List[int]]) -> int:
+        g,q=defaultdict(list),[1];[g[a].append((b,c))or g[b].append((a,c))for a,b,c in r];return min([(c,q.append(b))[0]for a in q for b,c in g.pop(a,[])]+[inf])
 
 test('''
 2492. Minimum Score of a Path Between Two Cities

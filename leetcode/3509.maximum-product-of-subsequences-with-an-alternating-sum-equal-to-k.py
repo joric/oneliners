@@ -30,7 +30,7 @@ class Solution:
                 if s == k and m <= l and not e:
                     return max(r, m)
                 return r
-            return f(i+1,s+(a[i]if 1-o else -a[i]),min(m*a[i],l+1),1-o,0,f(i+1,s,m,o,e,r))
+            return f(i+1,s+a[i]*(1-2*o),min(m*a[i],l+1),1-o,0,f(i+1,s,m,o,e,r))
         return(f(0,0,1,0,1,-1),f.cache_clear())[0]
 
 class Solution:

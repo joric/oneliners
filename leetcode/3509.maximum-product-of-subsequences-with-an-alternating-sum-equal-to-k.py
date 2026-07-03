@@ -107,7 +107,10 @@ Alternating Sum: 2 - 2 + 3 - 3 = 0
 Product: 2 * 2 * 3 * 3 = 36
 The subsequence [2, 2, 3, 3] has the greatest product with an alternating sum equal to k, but 36 > 9. The next greatest product is 9, which is within the limit.
 
- 
+Other solutions:
+
+Input: nums = [0], k = 0, limit = 10
+Output: 0
 
 Constraints:
 

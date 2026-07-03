@@ -37,11 +37,19 @@ class Solution:
 
 class Solution:
     def minScore(self, n: int, roads: List[List[int]]) -> int:
-        return (g:=defaultdict(list),s:=set(),all((g[u].append(v),g[v].append(u)) for u,v,_ in roads),
-            (f:=lambda u:u not in s and (s.add(u),[*map(f,g[u])]))(1)) and min(w for u,v,w in roads if s>={u,v})
+        return (g:=defaultdict(list),s:=set(),all((g[u].append(v),g[v].append(u)) for u,v,_ in roads),(f:=lambda u:u not in s and (s.add(u),[*map(f,g[u])]))(1)) and min(w for u,v,w in roads if s>={u,v})
+
+class Solution:
+    def minScore(self, n: int, r: List[List[int]]) -> int:
+        g=defaultdict(list);s=set();[g[u].append(v)or g[v].append(u)for u,v,_ in r];f=lambda u:{u}-s and(s.add(u),[*map(f,g[u])]);f(1);return min(w for u,v,w in r if{u,v}<=s)
+
+# POTD 2026-07-04
+
+class Solution:
+    def minScore(self, n: int, r: List[List[int]]) -> int:
+        g=defaultdict(list);s=set();[g[a].append(b)or g[b].append(a)for a,b,_ in r];f=lambda a:{a}-s and(s.add(a),[*map(f,g[a])]);f(1);return min(c for a,_,c in r if{a}&s)
 
 test('''
-
 2492. Minimum Score of a Path Between Two Cities
 Medium
 

@@ -1,26 +1,5 @@
 from lc import *
 
-# bfs
-class Solution:
-    def minScore(self, n: int, roads: List[List[int]]) -> int:
-        g,s,q,r = defaultdict(list),set(),[1],inf
-        for u,v,w in roads:
-            g[u].append((v,w))
-            g[v].append((u,w))
-        while q:
-            u = q.pop()
-            for v,w in g[u]:
-                r = min(r,w)
-                if v not in s:
-                    q.append(v)
-                    s.add(v)
-        return r
-
-class Solution:
-    def minScore(self, n: int, roads: List[List[int]]) -> int:
-        return next((r for _ in count() if not(q and (u:=q.pop(),[(r:=min(r,w),v not in s and (q.append(v),s.add(v))) for v,w in g[u]]))),
-            (g:=defaultdict(list),s:=set(),q:=[1],r:=inf,all((g[u].append((v,w)),g[v].append((u,w))) for u,v,w in roads)))
-
 # dfs
 class Solution:
     def minScore(self, n: int, roads: List[List[int]]) -> int:
@@ -48,6 +27,31 @@ class Solution:
 class Solution:
     def minScore(self, n: int, r: List[List[int]]) -> int:
         g=defaultdict(list);s=set();[g[a].append(b)or g[b].append(a)for a,b,_ in r];f=lambda a:{a}-s and(s.add(a),[*map(f,g[a])]);f(1);return min(c for a,_,c in r if{a}&s)
+
+# bfs
+class Solution:
+    def minScore(self, n: int, roads: List[List[int]]) -> int:
+        g,s,q,r = defaultdict(list),set(),[1],inf
+        for u,v,w in roads:
+            g[u].append((v,w))
+            g[v].append((u,w))
+        while q:
+            u = q.pop()
+            for v,w in g[u]:
+                r = min(r,w)
+                if v not in s:
+                    q.append(v)
+                    s.add(v)
+        return r
+
+class Solution:
+    def minScore(self, n: int, roads: List[List[int]]) -> int:
+        return next((r for _ in count() if not(q and (u:=q.pop(),[(r:=min(r,w),v not in s and (q.append(v),s.add(v))) for v,w in g[u]]))),
+            (g:=defaultdict(list),s:=set(),q:=[1],r:=inf,all((g[u].append((v,w)),g[v].append((u,w))) for u,v,w in roads)))
+
+class Solution:
+    def minScore(self, n: int, r: List[List[int]]) -> int:
+        g,q,t=defaultdict(list),[1],inf;[g[a].append((b,c))or g[b].append((a,c))for a,b,c in r];[(t:=min(t,c),q.append(b))for a in q for b,c in g.pop(a,[])];return t
 
 test('''
 2492. Minimum Score of a Path Between Two Cities

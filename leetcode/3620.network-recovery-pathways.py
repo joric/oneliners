@@ -70,6 +70,14 @@ class Solution:
     def findMaxPathScore(self,e:List[List[int]],o:List[bool],k:int)->int:
         n=len(o);g=[[]for _ in o];r=max([g[u].append((v,w))or w for u,v,w in e if o[u]&o[v]]+[0]);return(n>1)*~-bisect_left(range(r+2),1,key=lambda m:(f:=cache(lambda u:n+~u and min([w+f(v)for v,w in g[u]if w>=m]+[inf])))(0)>k)or-(k<0)
 
+class Solution:
+    def findMaxPathScore(self,e:List[List[int]],o:List[bool],k:int)->int:
+        n=len(o);g=[[]for _ in o];r=max([g[u].append((v,w))or w for u,v,w in e if o[u]&o[v]]+[0]);return(n>1)*~-bisect_left(range(r+2),1,key=lambda m:(f:=cache(lambda u:n+~u and min([w+f(v)for v,w in g[u]if w>=m]+[inf])))(0)>k)or-(k<0)
+
+class Solution:
+    def findMaxPathScore(self,e:List[List[int]],o:List[bool],k:int)->int:
+        n=len(o);g=[[]for _ in o];return(n>1)*~-bisect_left(range(max([g[u].append((v,w))or w for u,v,w in e if o[u]&o[v]]+[0])+2),1,key=lambda m:(f:=cache(lambda u:n+~u and min([w+f(v)for v,w in g[u]if w>=m]+[inf])))(0)>k)or-(k<0)
+
 test('''
 3620. Network Recovery Pathways
 Hard

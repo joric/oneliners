@@ -1141,6 +1141,36 @@ class Solution:
 
 ```
 
+### BFS
+
+DFS is usually shorter than BFS, but not always.
+The loop can be severely size-optimized. It's usually `all()`, `any()`, or the recursive function for unpacking the queue,
+but it can be a single comprehension. The trick is that queue is not getting reiterated each time, it continues from the last index.
+
+* https://leetcode.com/problems/minimum-score-of-a-path-between-two-cities/
+
+```python
+class Solution:
+    def minScore(self, n: int, roads: List[List[int]]) -> int:
+        g,s,q,r = defaultdict(list),set(),[1],inf
+        for u,v,w in roads:
+            g[u].append((v,w))
+            g[v].append((u,w))
+        while q:
+            u = q.pop()
+            for v,w in g[u]:
+                r = min(r,w)
+                if v not in s:
+                    q.append(v)
+                    s.add(v)
+        return r
+
+class Solution:
+    def minScore(self, n: int, r: List[List[int]]) -> int:
+        g,q=defaultdict(list),[1];[g[a].append((b,c))or g[b].append((a,c))for a,b,c in r];
+        return min([q.append(b)or c for a in q for b,c in g.pop(a,[])]+[inf])
+```
+
 ### Unicode Find
 
 Unicode find (NOT Union Find) is the greatest trick of all time to solve graph problems.

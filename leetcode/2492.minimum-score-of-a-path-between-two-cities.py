@@ -63,6 +63,10 @@ class Solution:
     def minScore(self, n: int, r: List[List[int]]) -> int:
         g,q=defaultdict(list),[1];[g[a].append((b,c))or g[b].append((a,c))for a,b,c in r];return min([q.append(b)or c for a in q for b,c in g.pop(a,[])]+[inf])
 
+class Solution:
+    def minScore(self, n: int, r: List[List[int]]) -> int:
+        g,q=defaultdict(list),[1];[g[u].append((v,w))or g[v].append((u,w))for u,v,w in r];return min([q.append(v)or w for u in q for v,w in g.pop(u,[])]+[inf])
+
 test('''
 2492. Minimum Score of a Path Between Two Cities
 Medium

@@ -73,7 +73,6 @@ class Solution:
             c=[*map(f,(i-1,i,i-1),(j,j-1,j-1))]
             b=max(x[0]for x in c)
             return[int(a[i][j])+b,sum(y for x,y in c if x==b)]
-
         m,p=f(n-1,n-1)
         return[p and m,p%(10**9+7)]
 

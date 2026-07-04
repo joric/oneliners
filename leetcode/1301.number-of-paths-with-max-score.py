@@ -70,9 +70,10 @@ class Solution:
         def f(i,j):
             if(i,j)==(0,0):return[0,1]
             if i<0 or j<0 or a[i][j]=='X':return[0,0]
-            c=[f(x,y)for x,y in((i-1,j),(i,j-1),(i-1,j-1))]
+            c=[*map(f,(i-1,i,i-1),(j,j-1,j-1))]
             b=max(x[0]for x in c)
-            return[int(a[i][j])+b,sum(x[1]for x in c if x[0]==b)]
+            return[int(a[i][j])+b,sum(y for x,y in c if x==b)]
+
         m,p=f(n-1,n-1)
         return[p and m,p%(10**9+7)]
 

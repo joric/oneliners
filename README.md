@@ -1168,7 +1168,7 @@ class Solution:
 class Solution:
     def minScore(self, n: int, r: List[List[int]]) -> int:
         g=defaultdict(list);[g[u].append((v,w))or g[v].append((u,w))for u,v,w in r];
-        q=[1];return min([q.append(v)or w for u in q for v,w in g.pop(u,[])]+[inf])
+        q=[1];return min(q.append(v)or w for u in q for v,w in g.pop(u,[]))
 ```
 
 ### Unicode Find

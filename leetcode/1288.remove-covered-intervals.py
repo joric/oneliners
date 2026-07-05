@@ -41,6 +41,10 @@ class Solution:
 
 class Solution:
     def removeCoveredIntervals(self, v: List[List[int]]) -> int:
+        return sum(all(a<c or d<b or(a,b)==(c,d)for c,d in v)for a,b in v)
+
+class Solution:
+    def removeCoveredIntervals(self, v: List[List[int]]) -> int:
         return sum(2>sum(c<=a<=b<=d for c,d in v)for a,b in v)
 
 test('''
@@ -68,7 +72,11 @@ Example 2:
 
 Input: intervals = [[1,4],[2,3]]
 Output: 1
- 
+
+Other examples:
+
+Input: intervals = [[3,10],[4,10],[5,11]]
+Output: 2
 
 Constraints:
 

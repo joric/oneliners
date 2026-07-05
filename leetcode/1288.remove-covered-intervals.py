@@ -37,7 +37,7 @@ class Solution:
 
 class Solution:
     def removeCoveredIntervals(self, v: List[List[int]]) -> int:
-        v.sort(key=lambda p:(p[0],-p[1]));t=0;return sum(t<(t:=max(t,b))for a,b in v)
+        t=0;v.sort(key=lambda p:(p[0],-p[1]));return sum(t<(t:=max(t,b))for a,b in v)
 
 class Solution:
     def removeCoveredIntervals(self, v: List[List[int]]) -> int:

@@ -18,7 +18,7 @@ class Solution:
 class Solution:
     def removeCoveredIntervals(self, v: List[List[int]]) -> int:
         r = t = 0
-        for i,j in sorted(v,key=lambda p:(p[0],-p[1])):
+        for _,j in sorted(v,key=lambda p:(p[0],-p[1])):
             r += j>t
             t = max(t,j)
         return r

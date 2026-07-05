@@ -2513,7 +2513,7 @@ Examples                                   | Results
 * You can check for set membership with `{x}&s` instead of `x in s` (1 character shorter).
 * Very often `x==0` can be replaced with `x<1` (1 character shorter).
 * A condition like `h>i>=0<=j<w` can be written as `h>i>-1<j<w` (1 character shorter).
-* A condition like `i>-1<j` can be written as `~i&~j` or `i|j>0` (1 character shorter).
+* A condition like `i>=0 and j>=0` can be written as `i>-1<j` or `~i&~j` or `i|j>0` (7 characters shorter).
 * A condition like `i==0 and j==0` can be written as `i==0==j` or `i+j<1` (7 characters shorter).
 * A condition like `i<0 or j<0` can be written as `min(i,j)<0` or `i|j<0` (5 characters shorter).
 * You can replace `q and q[-1]==c` with `q[-1:]==[c]` (3 characters shorter).

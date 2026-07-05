@@ -2508,7 +2508,7 @@ Examples                                   | Results
 * You can use the * operator on a list, e.g. `[1]*8` can replace `range(8)` (unless you really need the counter value).
 * Conditions like `if i<len(r)` may be replaced with `if r[i:]`, it's 3 characters shorter.
 * You can replace `set(n)` with `{*n}` (2 characters shorter).
-* You can convert bool with `~~()` instead of `int()` (as in js) or prepend with a single `+` (5 characters shorter).
+* You can convert bool with `~~()` instead of `int()` (as in js) or prepend with a single `+` (3 characters shorter).
 * You can subtract 1 or replace `not` operator with bitwise negation `~-` to save on space (1-5 characters shorter).
 * You can check for set membership with `{x}&s` instead of `x in s` (1 character shorter).
 * Very often `x==0` can be replaced with `x<1` (1 character shorter).
@@ -2519,7 +2519,7 @@ Examples                                   | Results
 * You can replace `q and q[-1]==c` with `q[-1:]==[c]` (3 characters shorter).
 * Shift precedence can be used to write `(a+b)//2` as `a+b>>1` (2 characters shorter).
 * You can replace `[...]==0` and `[...]!=0` with `[...]<()` or `[...]>()` to cut space (1 character shorter).
-* You can replace `i!=n-1 and j!=m-1` with `i+j<n+m-2`, and `i<m and j<n` with `i-n<0>j-m`.
+* You can replace `i!=n-1 and j!=m-1` with `i+j<n+m-2`, and `i<m and j<n` with `i-n<0>j-m` (3 characters shorter).
 * You can replace `x in s` where s is set with `{x}&s` (1 character shorter).
 * You can replace `x not in s` where s is set with `{x}-s` (5 characters shorter).
 * Very often you can declare a set using `{-1}` or `{0}` instead of `set()` (1-2 characters shorter).

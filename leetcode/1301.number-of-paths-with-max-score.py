@@ -80,6 +80,10 @@ class Solution:
     def pathsWithMaxScore(self, a: List[str]) -> List[int]:
         n=len(a);a[-1]=a[-1][:-1]+'0';f=cache(lambda i,j:[0,1]if(i,j)==(0,0)else[0,0]if i<0 or j<0 or a[i][j]=='X'else(c:=[*map(f,(i-1,i,i-1),(j,j-1,j-1))],b:=max(p[0]for p in c),[int(a[i][j])+b,sum(y for x,y in c if x==b)])[2]);m,p=f(n-1,n-1);return[p and m,p%(10**9+7)]
 
+class Solution:
+    def pathsWithMaxScore(self, a: List[str]) -> List[int]:
+        n=len(a)-1;f=cache(lambda i,j:[0,0]if min(i,j)<0 or a[i][j]>'S'else[0,1]if i+j<1 else(c:=[f(i-1,j),f(i,j-1),f(i-1,j-1)],[int(a[i][j]<'A'and a[i][j])+(b:=max(c)[0]),sum(y*(x==b)for x,y in c)])[1]);m,p=f(n,n);return[p and m,p%(10**9+7)]
+
 test('''
 1301. Number of Paths with Max Score
 Hard

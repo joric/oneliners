@@ -233,7 +233,7 @@ class Solution:
 
 class Solution:
     def pathExistenceQueries(self, n: int, v: List[int], d: int, q: List[List[int]]) -> List[int]:
-        a=sorted(range(n),key=v.__getitem__);v=[v[i]for i in a];p={x:i for i,x in enumerate(a)};t=[[bisect_right(v,x+d)-1 for x in v]];[t.append([t[-1][i]for i in t[-1]])for _ in range(17)];return[(lambda u,w:-1 if t[-1][u]<w else sum((u:=t[k][u])*0+(1<<k)for k in range(17,-1,-1)if t[k][u]<w)+(u<w))(*sorted([p[x],p[y]]))for x,y in q]
+        a=sorted(range(n),key=v.__getitem__);v=[v[i]for i in a];p={x:i for i,x in enumerate(a)};t=[[~-bisect_right(v,x+d)for x in v]];[t.append([t[-1][i]for i in t[-1]])for _ in range(17)];return[(lambda u,w:-1 if t[-1][u]<w else sum((u:=t[k][u])*0+(1<<k)for k in range(17,-1,-1)if t[k][u]<w)+(u<w))(*sorted([p[x],p[y]]))for x,y in q]
 
 test('''
 3534. Path Existence Queries in a Graph II

@@ -10,6 +10,10 @@ class Solution:
     def pathExistenceQueries(self, n: int, v: List[int], m: int, q: List[List[int]]) -> List[bool]:
         g=[c:=0]+[c:=c+(y-x>m)for x,y in pairwise(v)];return[g[a]==g[b]for a,b in q]
 
+class Solution:
+    def pathExistenceQueries(self, n: int, v: List[int], m: int, q: List[List[int]]) -> List[bool]:
+        p=x=0;r=[p:=[p,t][m+x<(x:=t)]for t in v];return[r[u]==r[v]for u,v in q]
+
 test('''
 3532. Path Existence Queries in a Graph I
 Medium

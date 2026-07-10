@@ -32,6 +32,10 @@ class Solution:
     def countCompleteComponents(self, n: int, e: List[List[int]]) -> int:
         a=[(1<<i)|sum(1<<x+y-i for x,y in e if i in (x,y))for i in range(n)];return sum(a.count(x)==x.bit_count()for x in{*a})
 
+class Solution:
+    def countCompleteComponents(self, n: int, e: List[List[int]]) -> int:
+        a=[sum(1<<x+y-i for x,y in e if i in(x,y))|1<<i for i in range(n)];return sum(a.count(x)==x.bit_count()for x in{*a})
+
 test('''
 2685. Count the Number of Complete Components
 Solved

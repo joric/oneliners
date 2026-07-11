@@ -14,6 +14,16 @@ class Solution:
     def arrayRankTransform(self, a: List[int]) -> List[int]:
         return map(dict(zip(sorted({*a}),count(1))).get,a)
 
+# POTD 2026-07-12
+
+class Solution:
+    def arrayRankTransform(self, a: List[int]) -> List[int]:
+        return[*map(dict(zip(sorted({*a}),count(1))).get,a)]
+
+class Solution:
+    def arrayRankTransform(self, a: List[int]) -> List[int]:
+        s=sorted({*a});return[bisect_right(s,x)for x in a]
+
 test('''
 1331. Rank Transform of an Array
 Easy

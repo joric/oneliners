@@ -20,6 +20,10 @@ class Solution:
     def arrayRankTransform(self, a: List[int]) -> List[int]:
         return[*map(dict(zip(sorted({*a}),count(1))).get,a)]
 
+class Solution: # TLE
+    def arrayRankTransform(self, a: List[int]) -> List[int]:
+        return[sum(x>=y for y in{*a})for x in a]
+
 class Solution:
     def arrayRankTransform(self, a: List[int]) -> List[int]:
         s=sorted({*a});return[bisect_right(s,x)for x in a]

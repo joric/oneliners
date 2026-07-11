@@ -107,7 +107,7 @@ class Solution:
         return h and h.deserialize(str(eval(h.serialize(h))[::-1]))
 ```
 
-There is also `has_sycle` function:
+There is also `has_cycle` function:
 
 * https://leetcode.com/problems/linked-list-cycle
 

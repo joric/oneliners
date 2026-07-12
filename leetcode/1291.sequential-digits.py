@@ -56,6 +56,11 @@ class Solution:
     def sequentialDigits(self, l: int, h: int) -> List[int]:
         return[x for i in range(90)if l<=(x:=int('0'+digits[1:][i%10:i%9+1]))<=h]
 
+# POTD 2026-07-14
+
+class Solution:
+    def sequentialDigits(self, l, h):
+        return[x for i in range(81)if l<=(x:=int('0'+digits[i%10+1:i%9+2]))<=h]
 
 test('''
 1291. Sequential Digits

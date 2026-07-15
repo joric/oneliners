@@ -6,6 +6,8 @@ class Solution:
     def gcdOfOddEvenSums(self, n: int) -> int:
         return n
 
+class Solution():gcdOfOddEvenSums=lambda _,n:n
+
 test('''
 3658. GCD of Odd and Even Sums
 Easy

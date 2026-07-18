@@ -30,6 +30,10 @@ class Solution:
     def smallestSubsequence(self, s: str) -> str:
         return(f:=lambda s:s and(c:=min(x for x in s if{*s[s.find(x):]}=={*s}))+f(s[s.find(c):].replace(c,'')))(s)
 
+class Solution:
+    def smallestSubsequence(self, s: str) -> str:
+        return(f:=lambda s:s and(c:=min(s[:min(map(s.rfind,s))+1]))+f(s[s.find(c):].replace(c,'')))(s)
+
 test('''
 1081. Smallest Subsequence of Distinct Characters
 Medium

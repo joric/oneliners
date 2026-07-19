@@ -30,13 +30,21 @@ class Solution:
     def shiftGrid(self, grid: List[List[int]], k: int) -> List[List[int]]:
         return (a:=deque(chain.from_iterable(grid)), a.rotate(k % len(a))) and [list(row) for row in zip(*[iter(a)]*len(grid[0]))]
 
-
 class Solution:
     def shiftGrid(self, grid: List[List[int]], k: int) -> List[List[int]]:
         return (m:=len(grid),n:=len(grid[0])) and [[grid[(pos:=(i*n+j-k)%(m*n))//n][pos%n] for j in range(n)] for i in range(m)]
 
-test('''
+# POTD 2026-07-20
 
+class Solution:
+    def shiftGrid(self, g: List[List[int]], k: int) -> List[List[int]]:
+        m,n=len(g),len(g[0]);return[[g[(p:=(i*n+j-k)%(m*n))//n][p%n]for j in range(n)]for i in range(m)]
+
+class Solution:
+    def shiftGrid(self, g: List[List[int]], k: int) -> List[List[int]]:
+        d=deque(sum(g,[]));d.rotate(k);return[[d.popleft()for x in r]for r in g]
+
+test('''
 1260. Shift 2D Grid
 Easy
 

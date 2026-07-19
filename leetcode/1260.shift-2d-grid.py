@@ -42,6 +42,10 @@ class Solution:
 
 class Solution:
     def shiftGrid(self, g: List[List[int]], k: int) -> List[List[int]]:
+        l=sum(g,[]);k%=len(l);l=l[-k:]+l[:-k];i=iter(l);return[[next(i)for _ in r]for r in g]
+
+class Solution:
+    def shiftGrid(self, g: List[List[int]], k: int) -> List[List[int]]:
         d=deque(sum(g,[]));d.rotate(k);return[[d.popleft()for x in r]for r in g]
 
 test('''

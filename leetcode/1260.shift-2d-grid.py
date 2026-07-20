@@ -48,6 +48,10 @@ class Solution:
     def shiftGrid(self, g: List[List[int]], k: int) -> List[List[int]]:
         d=deque(sum(g,[]));d.rotate(k);return[[d.popleft()for x in r]for r in g]
 
+class Solution:
+    def shiftGrid(self, g: List[List[int]], k: int) -> List[List[int]]:
+        return __import__('numpy').roll(g,k).tolist()
+
 test('''
 1260. Shift 2D Grid
 Easy

@@ -83,25 +83,19 @@ class Solution:
         return ans
 
 class Solution:
-    def maxActiveSectionsAfterTrade(self, s: str, q: List[List[int]]) -> List[int]:
-        c = s.count("1")
-        m = [x.span() for x in finditer("0+", s)]
-        l, r = zip(*m) if m else (m, m)
-        z = [y - x for x, y in m]
-        t = [list(map(sum, pairwise(z)))]
-
+    def maxActiveSectionsAfterTrade(self,s:str,q:List[List[int]])->List[int]:
+        c=s.count("1")
+        m=[x.span()for x in finditer("0+",s)]
+        l,r=zip(*m)if m else(m,m)
+        z=[y-x for x,y in m]
+        t=[list(map(sum,pairwise(z)))]
         for k in range(16):
-            t.append([max(x, y) for x, y in zip(t[-1], t[-1][1 << k:])])
-
+            t.append([max(x,y)for x,y in zip(t[-1],t[-1][1<<k:])])
         return [
-            c + (0 if i >= j else x + y if i + 1 == j else max(
-                x + z[i + 1], y + z[j - 1],
-                max(t[d][i + 1], t[d][j - 1 - (1 << d)])
-                if (d := (j - i - 2).bit_length() - 1) >= 0 else 0,
-            ))
-            for u, v in q
-            for i, j in [(bisect_right(r, u), bisect_right(l, v) - 1)]
-            for x, y in [((r[i] - max(l[i], u), min(r[j], v + 1) - l[j]) if i < j else (0, 0))]
+            c+(0 if i>=j else x+y if i+1==j else max(x+z[i+1],y+z[j-1],max(t[d][i+1],t[d][j-1-(1<<d)])if(d:=(j-i-2).bit_length()-1)>=0 else 0))
+            for u,v in q
+            for i,j in[(bisect_right(r,u),bisect_right(l,v)-1)]
+            for x,y in[((r[i]-max(l[i],u),min(r[j],v+1)-l[j])if i<j else(0,0))]
         ]
 
 class Solution:

@@ -22,6 +22,10 @@ class Solution:
     def uniqueXorTriplets(self, a: List[int]) -> int:
         return len({x^y for y in{x^y for x in a for y in a}for x in a})
 
+class Solution:
+    def uniqueXorTriplets(self, a: List[int]) -> int:
+        f=lambda s:{x^y for x in a for y in s};return len(f(f(a)))
+
 test('''
 3514. Number of Unique XOR Triplets II
 Medium

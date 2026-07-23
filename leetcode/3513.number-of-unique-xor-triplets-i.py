@@ -18,6 +18,14 @@ class Solution:
     def uniqueXorTriplets(self, a: List[int]) -> int:
         return 1<<max(a).bit_length()-(len(a)<3)
 
+class Solution:
+    def uniqueXorTriplets(self, a: List[int]) -> int:
+        return 1<<len(bin(n:=len(a))[n<3:])-2
+
+class Solution:
+    def uniqueXorTriplets(self, a: List[int]) -> int:
+        return 1<<len(bin(n:=len(a)))-2-(n<3)
+
 test('''
 3513. Number of Unique XOR Triplets I
 Medium

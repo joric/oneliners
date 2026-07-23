@@ -2523,6 +2523,7 @@ Examples                                   | Results
 * You can replace `x in s` where `s` is set with `{x}&s` (1 character shorter).
 * You can replace `x not in s` where `s` is set with `{x}-s` (5 characters shorter).
 * Very often you can declare a set using `{-1}` or `{0}` instead of `set()` (1-2 characters shorter).
+* You can use `len(bin(n))-2` instead of `n.bit_length()` (1 character shorter).
 
 ## References
 

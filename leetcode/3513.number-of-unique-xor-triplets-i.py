@@ -12,6 +12,10 @@ class Solution:
 
 class Solution:
     def uniqueXorTriplets(self, a: List[int]) -> int:
+        return[n:=len(a),1<<n.bit_length()][n>2]
+
+class Solution:
+    def uniqueXorTriplets(self, a: List[int]) -> int:
         return 1<<max(a).bit_length()-(len(a)<3)
 
 test('''

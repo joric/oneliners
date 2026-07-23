@@ -10,6 +10,10 @@ class Solution: # TLE
     def uniqueXorTriplets(self, a: List[int]) -> int:
         return len({x^y^z for x,y,z in product(a,a,a)})
 
+class Solution: #TLE
+    def uniqueXorTriplets(self, a: List[int]) -> int:
+        return len(eval("{x^y for x in a for y in"*2+" a}}"))
+
 class Solution:
     def uniqueXorTriplets(self, a: List[int]) -> int:
         s={*a};p={x^y for x in s for y in s};return len({x^y for x in s for y in p})

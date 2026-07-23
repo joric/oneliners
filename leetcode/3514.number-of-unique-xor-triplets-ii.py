@@ -24,7 +24,7 @@ class Solution:
 
 class Solution:
     def uniqueXorTriplets(self, a: List[int]) -> int:
-        f=lambda s:{x^y for x in a for y in s};return len(f(f(a)))
+        f=lambda s:{*starmap(xor,product(a,s))};return len(f(f(a)))
 
 test('''
 3514. Number of Unique XOR Triplets II

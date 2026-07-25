@@ -20,8 +20,21 @@ class Solution:
     def maximumProduct(self, nums: List[int]) -> int:
         return max(prod((v:=sorted(nums))[-3:]), v[0]*v[1]*v[-1])
 
-test('''
+# POTD 2027-07-25
 
+class Solution:
+    def maximumProduct(self, a: List[int]) -> int:
+        return max(prod(nsmallest(2,a))*max(a),prod(nlargest(3,a)))
+
+class Solution:
+    def maximumProduct(self, a: List[int]) -> int:
+        return max(prod((v:=sorted(a))[-3:]),v[0]*v[1]*v[-1])
+
+class Solution:
+    def maximumProduct(self, a: List[int]) -> int:
+        a.sort();return max(prod(a[-3:]),a[0]*a[1]*a[-1])
+
+test('''
 628. Maximum Product of Three Numbers
 Easy
 

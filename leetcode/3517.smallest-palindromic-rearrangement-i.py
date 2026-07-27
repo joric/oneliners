@@ -13,7 +13,11 @@ class Solution:
 
 class Solution:
     def smallestPalindrome(self, s: str) -> str:
-        n=len(s);h="".join(sorted(s[:n//2]));return h+["",s[n//2]][n%2]+h[::-1]
+        n=len(s);h=''.join(sorted(s[:n//2]));return h+['',s[n//2]][n%2]+h[::-1]
+
+class Solution:
+    def smallestPalindrome(self, s: str) -> str:
+        n=len(s);h=''.join(sorted(s[:n//2]));return h+s[n//2]*(n%2)+h[::-1]
 
 test('''
 3517. Smallest Palindromic Rearrangement I

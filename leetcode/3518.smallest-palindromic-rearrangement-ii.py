@@ -64,6 +64,10 @@ class Solution:
     def smallestPalindrome(self, s: str, k: int) -> str:
         p=len(s)//2;b=[s[:p].count(chr(i))for i in range(97,123)];j=[1];a=[];c=lambda n,x:(f:=[1],any(setitem(f,0,f[0]*(n-i+1)//i)or f[0]>k for i in range(1,min(x,n-x)+1)),f[0])[2];m=lambda q,d:(w:=[1],v:=[q],any(x and(setitem(w,0,w[0]*c(v[0],x)),setitem(v,0,v[0]-x))[0]or w[0]>k for x in d),w[0])[3];[any(b[i]and[setitem(b,i,b[i]-1),w:=m(p-len(a)-1,b)]and(j[0]+w>k and(a.append(chr(i+97))or 1)or[setitem(b,i,b[i]+1),setitem(j,0,j[0]+w)]and 0)for i in range(26))for _ in range(p)];z="".join(a);return z+(s[p]if len(s)%2 else"")+z[::-1]if len(a)==p else""
 
+class Solution:
+    def smallestPalindrome(self, s: str, k: int) -> str:
+        n=len(s)//2;c=Counter(s[:n]);t=factorial(n)//prod(map(factorial,c.values()));return''.join([]if k>t else(a:=[c.subtract(x:=next(j for j in sorted(c)if(q:=t*c[j]//(n-i))>=k or(k:=k-q)<0))or(t:=q)and x for i in range(n)])+[s[n:-n or 1]]+a[::-1])
+
 test('''
 3518. Smallest Palindromic Rearrangement II
 Hard

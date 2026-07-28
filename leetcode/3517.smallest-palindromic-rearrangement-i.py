@@ -1,5 +1,29 @@
 from lc import *
 
+# https://leetcode.com/problems/smallest-palindromic-rearrangement-i/solutions/8425020/python-one-line-on-by-l1ne-9zw3/?envType=daily-question&envId=2026-07-28
+
+class Solution:
+    def smallestPalindrome(self, s: str) -> str:
+        d, m = divmod(len(s), 2)
+        m = ('', s[d])[m]
+        t = ''.join(sorted(s[:d]))
+        return ''.join((t, m, t[::-1]))
+
+class Solution:
+    def smallestPalindrome(self, s: str) -> str:
+        return ''.join((t := ''.join(sorted(s[:(d := divmod(len(s), 2))[0]])), c := ('', s[d[0]])[d[1]], t[::-1]))
+
+class Solution:
+    def smallestPalindrome(self, s: str) -> str:
+        d, m = divmod(len(s), 2)
+        m = ('', s[d])[m]
+        t = ''.join(c * x for c,x in sorted(Counter(s[:d]).items()))
+        return ''.join((t, m, t[::-1]))
+
+class Solution:
+    def smallestPalindrome(self, s: str) -> str:
+        return ''.join((t := ''.join(starmap(mul, sorted(Counter(s[:(d := divmod(len(s), 2))[0]]).items()))), c := ('', s[d[0]])[d[1]], t[::-1]))
+
 # https://leetcode.com/problems/smallest-palindromic-rearrangement-i/solutions/6646188/python-one-line-counter-by-ante-3m5t/?envType=daily-question&envId=2026-07-28
 
 chars = string.ascii_lowercase
@@ -18,6 +42,10 @@ class Solution:
 class Solution:
     def smallestPalindrome(self, s: str) -> str:
         n=len(s);h=''.join(sorted(s[:n//2]));return h+s[n//2]*(n%2)+h[::-1]
+
+class Solution:
+    def smallestPalindrome(self,s):
+        return((a:=str(sorted(s)))+s[len(s)//2]*5+a[::-1])[7::10]
 
 test('''
 3517. Smallest Palindromic Rearrangement I

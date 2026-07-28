@@ -47,6 +47,10 @@ class Solution:
     def smallestPalindrome(self,s):
         return((a:=str(sorted(s)))+s[len(s)//2]*5+a[::-1])[7::10]
 
+class Solution:
+    def smallestPalindrome(self,s):
+        a=str(sorted(s));return(a+s[len(s)//2]*5+a[::-1])[7::10]
+
 test('''
 3517. Smallest Palindromic Rearrangement I
 Medium

@@ -1524,7 +1524,7 @@ class Solution:
     def fib(self, n: int) -> int:
         return pow(x:=2<<n,n+1,x*x+~x)%x
 
-# considering (a*X + b) % X = b => (a*X + b) // X = a
+# considering (a*X + b) % X = b implies that (a*X + b) // X = a
 
 class Solution:
     def fib(self, n: int) -> int:

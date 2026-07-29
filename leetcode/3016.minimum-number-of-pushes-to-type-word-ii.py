@@ -10,6 +10,14 @@ class Solution:
     def minimumPushes(self, w: str) -> int:
         return sum(f*(i//8+1)for i,(c,f)in enumerate(Counter(w).most_common()))
 
+class Solution:
+    def minimumPushes(self, w: str) -> int:
+        return sum((c:=sorted(map(w.count,{*w})))+c[:-8]+c[:-16]+c[:-24])
+
+class Solution:
+    def minimumPushes(self, w: str) -> int:
+        c=sorted(map(w.count,{*w}));return sum(c+c[:-8]+c[:-16]+c[:-24])
+
 test('''
 3016. Minimum Number of Pushes to Type Word II
 Medium

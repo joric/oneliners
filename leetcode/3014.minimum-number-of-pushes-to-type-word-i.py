@@ -24,6 +24,10 @@ class Solution:
     def minimumPushes(self, w: str) -> int:
         return((n:=len(w))-n//8*4)*(n//8+1)
 
+class Solution:
+    def minimumPushes(self, w: str) -> int:
+        n=len(w);t=n//8;return-~t*(n-t*4)
+
 test('''
 3014. Minimum Number of Pushes to Type Word I
 Solved

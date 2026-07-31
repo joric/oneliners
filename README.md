@@ -1303,6 +1303,16 @@ class Solution:
             or min(a[i]+f(i+1,j),b[j]+f(i,j+1),key=len))or a[i:]or b[j:]))(0,0)
 ```
 
+Cache decorator doesn't support list parameters, but you can unwrap lists without casting to tuple:
+
+* https://leetcode.com/problems/predict-the-winner
+
+```python
+class Solution:
+    def predictTheWinner(self, n: List[int]) -> bool:
+        return(f:=cache(lambda*t:t and max(t[0]-f(*t[1:]),t[-1]-f(*t[:-1]))or 0))(*n)>=0
+```
+
 ### Reduce
 
 Use it to flatten a loop.

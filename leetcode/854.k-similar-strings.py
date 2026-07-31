@@ -15,6 +15,10 @@ class Solution:
     def kSimilarity(self, a: str, b: str) -> int:
         return(f:=cache(lambda a,b:a and(a[0]!=b[0]and min(1+f(a[1:],b[1:i]+b[0]+b[i+1:])for i in range(len(a))if a[0]==b[i])or f(a[1:],b[1:]))or 0))(a,b)
 
+class Solution:
+    def kSimilarity(self, a: str, b: str) -> int:
+        return(f:=cache(lambda a,b:a and(a[0]!=b[0]and min(1+f(a[1:],b[1:i]+b[0]+b[i+1:])for i,c in enumerate(b)if c==a[0])or f(a[1:],b[1:]))or 0))(a,b)
+
 test('''
 854. K-Similar Strings
 Hard

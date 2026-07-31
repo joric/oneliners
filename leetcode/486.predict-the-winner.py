@@ -6,6 +6,12 @@ class Solution:
     def PredictTheWinner(self, n: List[int]) -> bool:
         return(f:=cache(lambda i,j:i<=j and max(n[i]-f(i+1,j),n[j]-f(i,j-1))))(0,len(n)-1)>=0
 
+# POTD 2026-08-01
+
+class Solution:
+    def predictTheWinner(self, n: List[int]) -> bool:
+        return(f:=cache(lambda*t:t and max(t[0]-f(*t[1:]),t[-1]-f(*t[:-1]))or 0))(*n)>=0
+
 test('''
 486. Predict the Winner
 Medium

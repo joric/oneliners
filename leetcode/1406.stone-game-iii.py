@@ -24,6 +24,10 @@ class Solution:
     def stoneGameIII(self, v: List[int]) -> str:
         s=0;d=0,0,0;[d:=((s:=s+x)-min(d),*d[:2])for x in v[::-1]];a=d[0]*2;return('Tie','Alice','Bob')[(a>s)-(a<s)]
 
+class Solution:
+    def stoneGameIII(self, v: List[int]) -> str:
+        d=[s:=0]*3;[d:=[(s:=s+x)-min(d)]+d[:2]for x in v[::-1]];a=d[0]*2;return('Tie','Alice','Bob')[(a>s)-(a<s)]
+
 test('''
 1406. Stone Game III
 Hard

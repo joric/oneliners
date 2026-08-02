@@ -288,6 +288,14 @@ class Solution:
         return 1
 ```
 
+Considering type autconversion stopped working in 2024:
+
+```python
+class Solution:
+    def stoneGame(self, piles: List[int]) -> bool:
+        return 2>1
+```
+
 You can also write:
 
 ```python

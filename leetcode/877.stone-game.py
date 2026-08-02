@@ -37,10 +37,19 @@ class Solution:
 
 # https://leetcode.com/problems/stone-game
 # shortest solution, except maybe strictly-palindromic-number
+# type autoconversion worked 31 Jan 2024 https://leetcode.com/problems/stone-game/submissions/1161837296/?envType=daily-question&envId=2026-08-02
 
 class Solution:
     def stoneGame(self, piles: List[int]) -> bool:
         return 1
+
+# POTD 2026-02-08
+
+class Solution:
+    def stoneGame(self, piles: List[int]) -> bool:
+        return 2>1
+
+class Solution:stoneGame=truth
 
 test('''
 877. Stone Game

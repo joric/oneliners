@@ -28,6 +28,14 @@ class Solution:
     def stoneGameIII(self, v: List[int]) -> str:
         d=[s:=0]*3;[d:=[(s:=s+x)-min(d)]+d[:2]for x in v[::-1]];a=d[0]*2;return('Tie','Alice','Bob')[(a>s)-(a<s)]
 
+class Solution:
+    def stoneGameIII(self, v: List[int]) -> str:
+        d=[0]*3;[d:=[n:=x-min(d),d[0]-x,d[1]-x]for x in v[::-1]];return'Alice'*(n>0)+'Bob'*(n<0)or'Tie'
+
+class Solution:
+    def stoneGameIII(self, v: List[int]) -> str:
+        d=0,0;[d:=(n:=x-min(d),d[0]-x,d[1]-x)for x in v[::-1]];return'Alice'*(n>0)+'Bob'*(n<0)or'Tie'
+
 test('''
 1406. Stone Game III
 Hard

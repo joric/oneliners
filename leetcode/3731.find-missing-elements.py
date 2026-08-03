@@ -4,7 +4,7 @@ from lc import *
 
 class Solution:
     def findMissingElements(self, a: List[int]) -> List[int]:
-        return sorted({*range(min(a),max(a)+1)}-{*a})
+        return sorted({*range(min(a),max(a))}-{*a})
 
 test('''
 3731. Find Missing Elements

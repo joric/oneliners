@@ -23,9 +23,21 @@ class Solution:
                     return list(range(n))
         return [i for i in range(n) if i not in s]
 
+class Solution: # TLE
+    def remainingMethods(self, n: int, k: int, i: List[List[int]]) -> List[int]:
+        g,s,q,r=defaultdict(set),{k},[k],range(n);[g[u].add(v)for u,v in i];[q.extend(g[u]-s)or s.update(g[u])for u in q];return[*(any(v in s==s-{u}for u,v in i)and r or{*r}-s)]
+
+class Solution: # TLE
+    def remainingMethods(self, n: int, k: int, i: List[List[int]]) -> List[int]:
+        g,s,r=defaultdict(set),{k},range(n);[g[u].add(v)for u,v in i];(f:=lambda u:[s.add(v)or f(v)for v in g[u]-s])(k);return[*(any(v in s==s-{u}for u,v in i)and r or{*r}-s)]
+
 class Solution:
     def remainingMethods(self, n: int, k: int, i: List[List[int]]) -> List[int]:
         g=defaultdict(set);r=range(n);[g[u].add(v)for u,v in i];s={k};(f:=lambda u:[s.add(v)or f(v)for v in g[u]-s])(k);return[*(any((v in s)>(u in s)for u,v in i)and r or{*r}-s)]
+
+class Solution:
+    def remainingMethods(self, n: int, k: int, i: List[List[int]]) -> List[int]:
+        g,r,s=defaultdict(set),range(n),{k};[g[u].add(v)for u,v in i];f=lambda u:[s.add(v)or f(v)for v in g[u]-s];f(k);return[*(any((v in s)>(u in s)for u,v in i)and r or{*r}-s)]
 
 test('''
 3310. Remove Methods From Project

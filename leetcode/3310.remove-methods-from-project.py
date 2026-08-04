@@ -25,10 +25,6 @@ class Solution:
 
 class Solution:
     def remainingMethods(self, n: int, k: int, i: List[List[int]]) -> List[int]:
-        g=defaultdict(set);[g[u].add(v)for u,v in i];s={k};(f:=lambda u:[s.add(v)or f(v)for v in g[u]-s])(k);return[*(any((v in s)>(u in s)for u,v in i)and range(n)or{*range(n)}-s)]
-
-class Solution:
-    def remainingMethods(self, n: int, k: int, i: List[List[int]]) -> List[int]:
         g=defaultdict(set);r=range(n);[g[u].add(v)for u,v in i];s={k};(f:=lambda u:[s.add(v)or f(v)for v in g[u]-s])(k);return[*(any((v in s)>(u in s)for u,v in i)and r or{*r}-s)]
 
 test('''

@@ -43,10 +43,6 @@ class Solution:
     def remainingMethods(self, n: int, k: int, i: List[List[int]]) -> List[int]:
         g,r,s=defaultdict(set),range(n),{k};[g[u].add(v)for u,v in i];f=lambda u:[s.add(v)or f(v)for v in g[u]-s];f(k);return[*(any((v in s)>(u in s)for u,v in i)and r or{*r}-s)]
 
-class Solution:
-    def remainingMethods(self, n: int, k: int, i: List[List[int]]) -> List[int]:
-        g=defaultdict(list);[g[u].append(v)for u,v in i];s={k};q=[k];[s.add(v)or q.append(v)for u in q for v in g[u]if v not in s];r=range(n);return[*(any((v in s)>(u in s)for u,v in i)and r or{*r}-s)]
-
 test('''
 3310. Remove Methods From Project
 Medium

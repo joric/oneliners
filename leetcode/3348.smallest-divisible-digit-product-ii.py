@@ -57,6 +57,10 @@ class Solution:
     def smallestNumber(self,n:str,t:int)->str:
         c=len(n);f=lambda x,y,z=9:'1'*y if z<2else f(x,y,z-1)if x%z else f(x//z,y-1,z)+str(z);h=[t];[h.append(h[-1]//gcd(h[-1],int(x)))for x in n.split('0')[0]];return'-1'if t>prod(map(int,f(t,0)))else n if c<len(h)and 1==h[-1]else next((n[:i]+str(j)+k for i in range(n.find('0')%c,-1,-1)for j in range(int(n[i])+1,10)if len(k:=f(h[i]//gcd(h[i],j),~i+c))==~i+c),f(t,c+1))
 
+class Solution:
+    def smallestNumber(self,n:str,t:int)->str:
+        c=len(n);f=lambda x,y,z=9:'1'*y if z<2else f(x,y,z-1)if x%z else f(x//z,y-1,z)+str(z);h=[t];[h.append(h[-1]//gcd(h[-1],int(x)))for x in n.split('0')[0]];return t>prod(map(int,f(t,0)))and'-1'or c<len(h)and h[-1]<2and n or next((n[:i]+str(j)+k for i in range(n.find('0')%c,-1,-1)for j in range(int(n[i])+1,10)if len(k:=f(h[i]//gcd(h[i],j),~i+c))==~i+c),f(t,c+1))
+
 test('''
 3348. Smallest Divisible Digit Product II
 Hard

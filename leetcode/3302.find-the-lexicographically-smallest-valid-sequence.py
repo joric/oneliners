@@ -39,7 +39,7 @@ class Solution: # TLE
 
 class Solution:
     def validSequence(self, a: str, b: str) -> List[int]:
-        t=[];p=t.append;f=cache(lambda i,j,k:j==len(b)or i<len(a)and(((m:=a.find(b[j],i))==i or k)and f(i+1,j+1,k*(m==i))and[p(i)]or~m and f(m+1,j+1,k)and[p(m)]));f(0,0,1);return t[::-1]
+        t=[];p=t.append;f=cache(lambda i,j,k:j==len(b)or i<len(a)and((i==(m:=a.find(b[j],i))or k)and f(i+1,j+1,k*(m==i))and[p(i)]or~m and f(m+1,j+1,k)and[p(m)]));f(0,0,1);return t[::-1]
 
 test('''
 3302. Find the Lexicographically Smallest Valid Sequence

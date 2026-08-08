@@ -10,7 +10,7 @@ class Solution:
 
 class Solution:
     def stoneGameII(self, p: List[int]) -> int:
-        return(f:=cache(lambda i,m:(s:=sum(p[i:]))and max(s-f(i+x,max(m,x))for x in range(1,2*m+1))))(0,1)
+        return(f:=cache(lambda i,m:(s:=sum(p[i:]))and max(s-f(i+j,max(m,j))for j in range(1,2*m+1))))(0,1)
 
 test('''
 1140. Stone Game II

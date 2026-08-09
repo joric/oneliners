@@ -23,6 +23,10 @@ class Solution:
     def winnerSquareGame(self, n: int) -> bool:
         return(f:=cache(lambda x:any(1-f(x-i*i)for i in range(1,isqrt(x)+1))))(n)
 
+class Solution:
+    def winnerSquareGame(self, n: int) -> bool:
+        return(f:=cache(lambda x:any(1-f(x-~i*~i)for i in range(isqrt(x)))))(n)
+
 test('''
 1510. Stone Game IV
 Solved

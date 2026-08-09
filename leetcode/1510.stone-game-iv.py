@@ -60,7 +60,12 @@ Example 3:
 Input: n = 4
 Output: true
 Explanation: n is already a perfect square, Alice can win with one move, removing 4 stones (4 -> 0).
- 
+
+Other examples:
+
+Input: n = 7
+Output: false
+
 
 Constraints:
 

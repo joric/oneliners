@@ -57,6 +57,15 @@ class Solution:
     def missingInteger(self, a: List[int]) -> int:
         s=sum(a[:sum(takewhile(int,map(eq,a,count(a[0]))))]);[s:=s+(s in a)for _ in a];return s
 
+class Solution:
+    def missingInteger(self, a: List[int]) -> int:
+        b=1;p=a[0]-1;return min({*range(sum(v*(b:=b*(p+1==(p:=v)))for v in a),5**5)}-{*a})
+
+
+class Solution:
+    def missingInteger(self, a: List[int]) -> int:
+        b=1;p=0;return min({*range(sum(v*(b:=b*(p+1in[p:=v,1]))for v in a),5**5)}-{*a})
+
 test('''
 2996. Smallest Missing Integer Greater Than Sequential Prefix Sum
 Solved

@@ -18,6 +18,24 @@ class Solution:
     def maxSubarrayLength(self, a: List[int], k: int) -> int:
         i,c=0,Counter();return max((c.update([x]),all(k<c[x]and(c.update({a[i]:-1}),i:=i+1)for _ in a),j-i+1)[2]for j,x in enumerate(a))
 
+# POTD 2026-08-12
+
+class Solution:
+    def maxSubarrayLength(self, a: List[int], k: int) -> int:
+        i,c=0,Counter();t=c.update;return max((t([x]),all(k<c[x]and(t({a[i]:-1}),i:=i+1)for _ in a),j-i+1)[2]for j,x in enumerate(a))
+
+class Solution:
+    def maxSubarrayLength(self,a:List[int],k:int)->int:
+        i,c=0,Counter();u=c.update;return max((u([x]),all(k<c[x]and(u({a[i]:-1}),i:=i+1)for _ in a),j-i+1)[2]for j,x in enumerate(a))
+
+class Solution:
+    def maxSubarrayLength(self, a: List[int], k: int) -> int:
+        i=v=0;c=Counter();[c.update([x])or(v:=v+(c[x]>k))and(c.subtract([a[i]]),v:=v-(c[a[i]]>=k),i:=i+1)for x in a];return len(a)-i
+
+class Solution:
+    def maxSubarrayLength(self, a: List[int], k: int) -> int:
+        i=v=0;c=Counter();t=c.update;[t([x])or(v:=v+(c[x]>k))and(t({a[i]:-1}),v:=v-(c[a[i]]>=k),i:=i+1)for x in a];return len(a)-i
+
 test('''
 2958. Length of Longest Subarray With at Most K Frequency
 Medium
@@ -59,7 +77,14 @@ Input: nums = [5,5,5,5,5,5,5], k = 4
 Output: 4
 Explanation: The longest possible good subarray is [5,5,5,5] since the value 5 occurs 4 times in this subarray.
 It can be shown that there are no good subarrays with length more than 4.
- 
+
+Other examples:
+
+Input: nums = [1,4,4,3], k = 1
+Output: 2
+
+Input: nums = [3,1,1], k = 1
+Output: 2
 
 Constraints:
 

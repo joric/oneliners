@@ -2,7 +2,7 @@
 
 Just FYI, this isn't just README.md, it's also more than a thousand solutions in the repository. There is also stats [here](https://joric.github.io/leetcode).
 
-* If you find a shorter solution, that passes online leetcode tests (no MLE, no TLE), post it to the [issues](https://github.com/joric/oneliners/issues) section.
+* If you find a shorter solution that passes online leetcode tests (no MLE, no TLE), post it to the [issues](https://github.com/joric/oneliners/issues) section.
 
 ### Why Python
 

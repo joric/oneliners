@@ -10,6 +10,10 @@ class Solution:
     def longestSubsequence(self, a: List[int]) -> int:
         return any(a)*(len(a)-(reduce(xor,a)==0))
 
+class Solution:
+    def longestSubsequence(self, a: List[int]) -> int:
+        return(len(a)-(reduce(xor,a)<1))*any(a)
+
 test('''
 3702. Longest Subsequence With Non-Zero Bitwise XOR
 Medium

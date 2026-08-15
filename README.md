@@ -42,7 +42,7 @@ Note that `u` and `;` are mandatory here. If I find a shorter solution in other 
 
 Leetcode imports modules as wildcards, so you don't have to specify module names. There are some exceptions:
 
-* Single `bisect()` without a prefix triggers `object is not callable`, use `bisect.bisect()` or `bisect_right()`.
+* Single `bisect()` without a prefix triggers `object is not callable`, use `bisect_left()` or `bisect_right()`.
 * You have to specify `re.sub` because `sub` without a prefix is `operator.sub`.
 * Default `pow` is `__builtins__['pow']` (supports up to 3 arguments, including the modulus), not `math.pow`.
 

@@ -1,8 +1,8 @@
 ## Oneliners
 
-Just FYI, this isn't just README.md, it's also more than a thousand solutions in the repository. There is also stats [here](https://joric.github.io/leetcode).
+Just FYI, this isn't just README.md, it's also more than a thousand solutions in the repository. There is also stats here:
 
-* If you find a shorter solution that passes online leetcode tests (no MLE, no TLE), post it to the [issues](https://github.com/joric/oneliners/issues) section.
+* https://joric.github.io/leetcode Leetcode Daily stats & calendar with scheduled update (now with contests!)
 
 ### Why Python
 
@@ -37,6 +37,7 @@ return popcount(k-1u)&1;
 
 Note that `u` and `;` are mandatory here. If I find a shorter solution in other language I usually add it in comments.
 
+* If you find a shorter solution that passes online leetcode tests (no MLE, no TLE), post it to the [issues](https://github.com/joric/oneliners/issues) section.
 
 ### Leetcode-specific
 

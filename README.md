@@ -2,7 +2,7 @@
 
 Just FYI, this isn't just README.md, it's also more than a thousand solutions in the repository. There is also stats here:
 
-* https://joric.github.io/leetcode Leetcode Daily stats & calendar with scheduled update (now with contests!)
+* https://joric.github.io/leetcode - Leetcode Daily stats & calendar with scheduled update (now with contests!)
 
 ### Why Python
 

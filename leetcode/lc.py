@@ -226,6 +226,9 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
         hint = str(tname)
         if type(v) is str:
             return v # see linked-list-cycle-ii
+
+        #print('---', type(v), hint)
+
         # unwrap some vars
         if 'List[lc.ListNode]' in hint or 'List[typing.Optional[lc.ListNode]]' in hint:
             return [ListNode.parse(x) for x in v]
@@ -330,6 +333,8 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
                 return list(res)==expected
             elif type(expected) is str:
                 return str(res)==expected
+            elif type(res) in (float,bool) and type(expected)==int:
+                return False
             else:
                 return res==expected
 

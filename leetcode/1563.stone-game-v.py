@@ -57,6 +57,10 @@ class Solution:
     def stoneGameV(self,s:List[int])->int:
         a=[0,*accumulate(s)];f=cache(lambda i,j:i-j and[(b:=[-inf]),next((1 for p in range(i,j)for l,r in[(a[p+1]-a[i],a[j+1]-a[p+1])]if 2*min(l,r)<b[0]or setitem(b,0,max(b[0],(l+f(i,p))if l<=r else-inf,(r+f(p+1,j))if r<=l else-inf))or 0),0)][0][0]);return f(0,len(s)-1)
 
+class Solution:
+    def stoneGameV(self,s:List[int])->int:
+        a=[0,*accumulate(s)];f=cache(lambda i,j:i-j and[(b:=[0]),any(2*min(l:=a[p+1]-a[i],r:=a[j+1]-a[p+1])<b[-1]or b.append(max(b[-1],l<=r and l+f(i,p),r<=l and r+f(p+1,j)))for p in range(i,j))][0][-1]);return f(0,len(s)-1)
+
 test('''
 1563. Stone Game V
 Hard

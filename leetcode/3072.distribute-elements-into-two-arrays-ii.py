@@ -29,7 +29,7 @@ class Solution:
 
 class Solution:
     def resultArray(self, n: List[int]) -> List[int]:
-        a,b=n[:1],n[1:2];p,q=map(SortedList,(a,b));l=len;[(a,b)[c:=(p.bisect(v)-l(a),l(a))>(q.bisect(v)-l(b),l(b))].append(v)or(p,q)[c].add(v)for v in n[2:]];return a+b
+        a,b=n[:1],n[1:2];p,q=map(SortedList,(a,b));l=len;[(a,b)[t:=(p.bisect(v)-l(a),l(a))>(q.bisect(v)-l(b),l(b))].append(v)or(p,q)[t].add(v)for v in n[2:]];return a+b
 
 test('''
 3072. Distribute Elements Into Two Arrays II

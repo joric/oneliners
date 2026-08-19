@@ -17,9 +17,15 @@ class Solution:
                 q.add(v)
         return a+b
 
+# POTD 2026-08-21
+
 class Solution:
     def resultArray(self, n: List[int]) -> List[int]:
-        a,b=[n[0]],[n[1]];p,q=map(__import__('sortedcontainers').SortedList,(a,b));t=(a,p),(b,q);[(lambda r,z:r.append(v)or z.add(v))(*t[(lambda x,y:1-(x>y or(x==y and len(b)>=len(a))))(*starmap(lambda r,z:len(r)-z.bisect_right(v),t))])for v in n[2:]];return a+b
+        a,b=[n[0]],[n[1]];p,q=map(SortedList,(a,b));t=(a,p),(b,q);[(lambda r,z:r.append(v)or z.add(v))(*t[(lambda x,y:1-(x>y or(x==y and len(b)>=len(a))))(*starmap(lambda r,z:len(r)-z.bisect_right(v),t))])for v in n[2:]];return a+b
+
+class Solution:
+    def resultArray(self, n: List[int]) -> List[int]:
+        a,b=n[:1],n[1:2];p,q=map(SortedList,(a,b));l=len;[((t:=((b,q),(a,p))[(p.bisect(v)-l(a),l(a))<=(q.bisect(v)-l(b),l(b))])[0].append(v),t[1].add(v))for v in n[2:]];return a+b
 
 test('''
 3072. Distribute Elements Into Two Arrays II

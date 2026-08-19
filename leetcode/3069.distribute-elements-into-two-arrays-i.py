@@ -17,6 +17,12 @@ class Solution:
     def resultArray(self, n: List[int]) -> List[int]:
         a,b=[n[0]],[n[1]];[(b,a)[a[-1]>b[-1]].append(x)for x in n[2:]];return a+b
 
+# POTD 2026-08-20
+
+class Solution:
+    def resultArray(self, n: List[int]) -> List[int]:
+        a,b=n[:1],n[1:2];[(b,a)[a[-1]>b[-1]].append(x)for x in n[2:]];return a+b
+
 test('''
 3069. Distribute Elements Into Two Arrays I
 User Accepted:18261
@@ -32,8 +38,6 @@ If the last element of arr1 is greater than the last element of arr2, append num
 The array result is formed by concatenating the arrays arr1 and arr2. For example, if arr1 == [1,2,3] and arr2 == [4,5,6], then result = [1,2,3,4,5,6].
 
 Return the array result.
-
- 
 
 Example 1:
 

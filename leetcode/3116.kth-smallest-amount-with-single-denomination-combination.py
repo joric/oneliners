@@ -23,6 +23,10 @@ class Solution:
     def findKthSmallest(self, c: List[int], k: int) -> int:
         return bisect_left(range(1<<60),k,key=lambda x:sum(x//lcm(*s)*(-1)**i for i in range(len(c))for s in combinations(c,i+1)))
 
+class Solution:
+    def findKthSmallest(self, c: List[int], k: int) -> int:
+        return bisect_left(range(1<<60),k,key=lambda x:sum(x//lcm(*s)*(-1)**i for i in range(99)for s in combinations(c,i+1)))
+
 test('''
 3116. Kth Smallest Amount With Single Denomination Combination
 Hard

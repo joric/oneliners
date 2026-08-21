@@ -28,6 +28,10 @@ class Solution:
 
 class Solution:
     def beautifulNumbers(self, l: int, r: int) -> int:
+        return sub(*map(f:=cache(lambda n,b=1,p=1,s=0,z=0:c+sum(f(n//10,(d<n%10,b)[d==n%10],p*d,s+d,d)for d in range(10))if(c:=z and p%s<1)*0<n else c*b),(r,l-1)))
+
+class Solution:
+    def beautifulNumbers(self, l: int, r: int) -> int:
         f=cache(lambda n,b=1,p=1,s=0,z=0:n and(z and p%s<1)+sum(f(n//10,(d<n%10,b)[d==n%10],p*d,s+d,d)for d in range(10))or(z and p%s<1)*b);return f(r)-f(l-1)
 
 class Solution:

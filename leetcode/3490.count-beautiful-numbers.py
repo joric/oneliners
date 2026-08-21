@@ -12,31 +12,7 @@ class Solution:
 
 class Solution:
     def beautifulNumbers(self, l: int, r: int) -> int:
-        f=cache(lambda n,b,p,s,z:z and p%s==0 and b if not n else(z and p%s==0)+sum(f(n[:-1],b if d==(v:=int(n[-1]))else d<v,p*d,s+d,d)for d in range(10)));return(g:=lambda x:f(str(x),1,1,0,0))(r)-g(l-1)
-
-class Solution:
-    def beautifulNumbers(self, l: int, r: int) -> int:
-        f=cache(lambda n,b=1,p=1,s=0,z=0:z and p%s<1 and b if not n else(z and p%s==0)+sum(f(n[:-1],b if d==(v:=int(n[-1]))else d<v,p*d,s+d,d)for d in range(10)));return f(str(r))-f(str(l-1))
-
-class Solution:
-    def beautifulNumbers(self, l: int, r: int) -> int:
-        f=cache(lambda n,b,p,s,z:(z and p%s<1)+sum(f(n[:-1],(d<(v:=int(n[-1])),b)[d==v],p*d,s+d,d)for d in range(10))if n else(z and p%s<1)*b);return f(str(r),1,1,0,0)-f(str(l-1),1,1,0,0)
-
-class Solution:
-    def beautifulNumbers(self, l: int, r: int) -> int:
-        f=cache(lambda n,b=1,p=1,s=0,z=0:(z and p%s<1)+sum(f(n[:-1],(d<(v:=int(n[-1])),b)[d==v],p*d,s+d,d)for d in range(10))if n else(z and p%s<1)*b);return f(str(r))-f(str(l-1))
-
-class Solution:
-    def beautifulNumbers(self, l: int, r: int) -> int:
-        return sub(*map(f:=cache(lambda n,b=1,p=1,s=0,z=0:c+sum(f(n//10,(d<n%10,b)[d==n%10],p*d,s+d,d)for d in range(10))if(c:=z and p%s<1)*0<n else c*b),(r,l-1)))
-
-class Solution:
-    def beautifulNumbers(self, l: int, r: int) -> int:
-        f=cache(lambda n,b=1,p=1,s=0,z=0:n and(z and p%s<1)+sum(f(n//10,(d<n%10,b)[d==n%10],p*d,s+d,d)for d in range(10))or(z and p%s<1)*b);return f(r)-f(l-1)
-
-class Solution:
-    def beautifulNumbers(self, l: int, r: int) -> int:
-        f=cache(lambda n,b=1,p=1,s=0,z=0:c+sum(f(n//10,(d<n%10,b)[d==n%10],p*d,s+d,d)for d in range(10))if(c:=z and p%s<1)*0<n else c*b);return f(r)-f(l-1)
+        f=cache(lambda n,b=1,p=1,s=0,c=0:n and c+sum(f(n//10,(d<n%10,b)[d==n%10],p*d,s+d,d and p*d%(s+d)<1)for d in range(10))or c*b);return f(r)-f(l-1)
 
 test('''
 3490. Count Beautiful Numbers

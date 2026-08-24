@@ -1001,6 +1001,20 @@ class Solution:
         return(f:=lambda n:n and n^f(n//2))(n)
 ```
 
+Itertools `dropwhile` function is sometimes useful to shorten the code:
+
+* https://leetcode.com/problems/smallest-missing-multiple-of-k.py
+
+```python
+class Solution:
+    def missingMultiple(self, a: List[int], k: int) -> int:
+        return next(v for v in count(k,k)if v not in a)
+
+class Solution:
+    def missingMultiple(self, a: List[int], k: int) -> int:
+        return next(dropwhile(a.count,count(k,k)))
+```
+
 ### Swap
 
 To swap values you can use either `exec` (inline version of `a,b=b,a`) or a temporary variable (`t:=a,a:=b,b:=t`).

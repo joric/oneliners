@@ -10,6 +10,10 @@ class Solution:
     def missingMultiple(self, a: List[int], k: int) -> int:
         return next(dropwhile(a.count,count(k,k)))
 
+class Solution:
+    def missingMultiple(self, a: List[int], k: int) -> int:
+        return min({*range(k,301,k)}-{*a})
+
 test('''
 3718. Smallest Missing Multiple of K
 Easy

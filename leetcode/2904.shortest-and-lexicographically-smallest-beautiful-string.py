@@ -30,6 +30,10 @@ class Solution:
         return(sorted(findall(f'(?=(1{"0*1"*(k-1)}))',s),key=int)+[''])[0]
 
 class Solution:
+    def shortestBeautifulSubstring(self, s: str, k: int) -> str:
+        return(sorted(findall(f'(?=(1{"0*1"*~-k}))',s),key=int)+[''])[0]
+
+class Solution:
     def shortestBeautifulSubstring(self,s:str,k:int)->str:
         return min(sorted(findall(f'(?=({"0*1"*k}))',s))or[''],key=len)
 
@@ -86,7 +90,11 @@ Example 3:
 Input: s = "000", k = 1
 Output: ""
 Explanation: There are no beautiful substrings in this example.
- 
+
+Other examples:
+
+Input: s = "001110101101101111", k = 10
+Output: "10101101101111"
 
 Constraints:
 

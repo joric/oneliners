@@ -25,6 +25,10 @@ class Solution:
     def shortestBeautifulSubstring(self, s: str, k: int) -> str:
         return min([*zip(map(len,x:=findall(f'(?=(1(?:0*1){{{k-1}}}))',s)),x),(inf,'')])[1]
 
+class Solution:
+    def shortestBeautifulSubstring(self,s:str,k:int)->str:
+        return min(sorted(findall(f'(?=({"0*1"*k}))',s))or[''],key=len)
+
 test('''
 2904. Shortest and Lexicographically Smallest Beautiful String
 Medium

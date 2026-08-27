@@ -8,15 +8,11 @@ class Solution: # TLE
 
 class Solution:
     def lexGreaterPermutation(self, s: str, t: str) -> str:
-        return (v:=''.join(u:=sorted(s)))>t and v or next((t[:i]+c+''.join(r[:j]+r[j+1:]) for i in range(len(s))[::-1] for r in [u[:]] if all(x in r and not r.remove(x) for x in t[:i]) for j,c in enumerate(r) if c>t[i]),"")
+        return(f:=lambda a,b:(x:=b[:1])and x in a and(r:=f(a.replace(x,'',1),b[1:]))and x+r or next((c+a.replace(c,'',1)for c in a if c>x),''))(''.join(sorted(s)),t)
 
 class Solution:
     def lexGreaterPermutation(self, s: str, t: str) -> str:
-        return(f:=lambda s,t:t and((r:=t[0]in s and f(s.replace(t[0],'',1),t[1:]))and t[0]+r or next((c+s.replace(c,'',1)for c in s if c>t[0]),'')))(''.join(sorted(s)),t)
-
-class Solution:
-    def lexGreaterPermutation(self, a: str, b: str) -> str:
-        return(f:=lambda a,b:(x:=b[:1])and((r:=x in a and f(a.replace(x,'',1),b[1:]))and x+r or next((c+a.replace(c,'',1)for c in a if c>x),'')))(''.join(sorted(a)),b)
+        return(f:=lambda a,b:next((y for c in sorted({*a})if c>=b[:1]and(y:=c+f(a.replace(c,'',1),b[1:]*(c==b[:1])))>b),''))(s,t)
 
 test('''
 3720. Lexicographically Smallest Permutation Greater Than Target

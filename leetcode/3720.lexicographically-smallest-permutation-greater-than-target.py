@@ -14,10 +14,6 @@ class Solution:
     def lexGreaterPermutation(self, s: str, t: str) -> str:
         return(f:=lambda a,b:next((y for c in sorted({*a})if c>=b[:1]and(y:=c+f(a.replace(c,'',1),b[1:]*(c==b[:1])))>b),''))(s,t)
 
-class Solution:
-    def lexGreaterPermutation(self, s: str, t: str) -> str:
-        return(f:=lambda a,b:next((y for c in sorted({*a})if c>=b[:1]and(y:=c+f(a.replace(c,'',1),b[1:]*(c==b[:1])))>b),''))(s,t)
-
 test('''
 3720. Lexicographically Smallest Permutation Greater Than Target
 Medium

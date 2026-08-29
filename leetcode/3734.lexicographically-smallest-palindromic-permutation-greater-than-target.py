@@ -32,7 +32,7 @@ class Solution:
 
 class Solution:
     def lexPalindromicPermutation(self,s:str,t:str)->str:
-        c=Counter(s);m=''.join(x*(c[x]%2)for x in c);f=lambda h,g,i:next((r for x in sorted(c)if c[x]>1 and(g or x>=t[i])for r in[c.subtract(x*2)or f(h+x,g or x>t[i],i+1)]for z in[c.update(x*2)]if r),'')if i<len(s)//2 else(w:=h+m+h[::-1])*(w>t);return len(m)<2 and f('',0,0)or''
+        c=Counter(s);m=''.join(x*(c[x]%2)for x in c);f=lambda h,g,i:next((r for x in sorted(c)if c[x]>1 and(g or x>=t[i])for r in[c.subtract(x*2)or f(h+x,g or x>t[i],i+1)]for z in[c.update(x*2)]if r),'')if i<len(s)//2 else(w:=h+m+h[::-1])*(w>t);return 2>len(m)and f('',0,0)or''
 
 test('''
 3734. Lexicographically Smallest Palindromic Permutation Greater Than Target

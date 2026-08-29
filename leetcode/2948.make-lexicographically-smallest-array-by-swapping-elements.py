@@ -28,6 +28,10 @@ class Solution:
     def lexicographicallySmallestArray(self, a: List[int], b: int) -> List[int]:
         g,p=[-b],{};[c-b>g[-1]and(g:=[])or p.setdefault(c,g).append(c)for c in sorted(a)];return[p[c].pop(0)for c in a]
 
+class Solution:
+    def lexicographicallySmallestArray(self, a: List[int], b: int) -> List[int]:
+        g=-b,;p={(g:=(g,[])[c-b>g[-1]]).append(c)or c:g for c in sorted(a)};return[p[c].pop(0)for c in a]
+
 test('''
 2948. Make Lexicographically Smallest Array by Swapping Elements
 Solved

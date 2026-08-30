@@ -55,6 +55,10 @@ class Solution:
 
 class Solution:
     def nodesBetweenCriticalPoints(self, h: Optional[ListNode]) -> List[int]:
+        p=q=0;c=-2;return[(m:=min(d:=[c-(c:=0)for b in eval(h.serialize(h))if(c:=c+1)*p*(p:=q-(q:=b))<0][1:]or[-1])),m!=0 and sum(d)]
+
+class Solution:
+    def nodesBetweenCriticalPoints(self, h: Optional[ListNode]) -> List[int]:
         import numpy;f=numpy.diff;e=f(eval(h.serialize(h)));return[min(d:=f(*numpy.where(e[1:]*e[:-1]<0)).tolist()or[-1]),sum(d)]
 
 class Solution:
@@ -64,6 +68,10 @@ class Solution:
 class Solution:
     def nodesBetweenCriticalPoints(self, h: Optional[ListNode]) -> List[int]:
         import numpy as n;f=n.diff;e=f(eval(h.serialize(h)));return[min(d:=f(*n.where(e[1:]*e[:-1]<0)).tolist()or[-1]),sum(d)]
+
+class Solution:
+    def nodesBetweenCriticalPoints(self, h: Optional[ListNode]) -> List[int]:
+        p=q=0;c=-2;return min(d:=[c-(c:=0)for b in eval(h.serialize(h))if(c:=c+1)*p*(p:=q-(q:=b))<0][1:]or[-1]),sum(d)
 
 class Solution:
     def nodesBetweenCriticalPoints(self, h: Optional[ListNode]) -> List[int]:

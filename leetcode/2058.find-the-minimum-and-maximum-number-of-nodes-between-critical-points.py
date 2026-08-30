@@ -69,7 +69,7 @@ class Solution:
     def nodesBetweenCriticalPoints(self, h: Optional[ListNode]) -> List[int]:
         import numpy as n;f=n.diff;e=f(eval(h.serialize(h)));return[min(d:=f(*n.where(e[1:]*e[:-1]<0)).tolist()or[-1]),sum(d)]
 
-# POTD 2026-09-01
+# POTD 2026-08-31
 
 class Solution:
     def nodesBetweenCriticalPoints(self, h: Optional[ListNode]) -> List[int]:

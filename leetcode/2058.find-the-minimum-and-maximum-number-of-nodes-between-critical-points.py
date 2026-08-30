@@ -53,6 +53,18 @@ class Solution:
     def nodesBetweenCriticalPoints(self, h: Optional[ListNode]) -> List[int]:
         r=eval(h.serialize(h));p=[i for i,(a,x,b)in enumerate(zip(r,r[1:],r[2:]))if(min(a,b)<=x<=max(a,b))-1];return p[1:]and(min(map(sub,p[1:],p)),p[-1]-p[0])or[-1]*2
 
+class Solution:
+    def nodesBetweenCriticalPoints(self, h: Optional[ListNode]) -> List[int]:
+        import numpy;f=numpy.diff;e=f(eval(h.serialize(h)));return[min(d:=f(*numpy.where(e[1:]*e[:-1]<0)).tolist()or[-1]),sum(d)]
+
+class Solution:
+    def nodesBetweenCriticalPoints(self, h: Optional[ListNode]) -> List[int]:
+        import numpy;f=numpy.diff;e=f(eval(h.serialize(h)));return[min(d:=f(*(e[1:]*e[:-1]<0).nonzero()).tolist()or[-1]),sum(d)]
+
+class Solution:
+    def nodesBetweenCriticalPoints(self, h: Optional[ListNode]) -> List[int]:
+        import numpy as n;f=n.diff;e=f(eval(h.serialize(h)));return[min(d:=f(*n.where(e[1:]*e[:-1]<0)).tolist()or[-1]),sum(d)]
+
 test('''
 2058. Find the Minimum and Maximum Number of Nodes Between Critical Points
 Medium

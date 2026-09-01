@@ -56,6 +56,10 @@ class Solution:
     def minMoves(self, c: List[str], e: int) -> int:
         b=len(c[0]);g=''.join(c);l={};[v>'L'and(q:=[(0,n,0)],s:={(n,0):e})or l.setdefault(n,1<<len(l))for n,v in enumerate(g)if v in'LS'];return l and next((m+1 for m,n,k,*_ in q for x in(n-b,n+b,n-1,n+1)if-1<x<len(g)and(b==abs(x-n)or x//b==n//b)and(v:=g[x])<'X'and[t:=k|l.get(x,0)]and(t==2**len(l)-1 or(f:=v=='R'and e or s[n,k]-1)>0 and f>s.get((x,t),0)and q.append((m+1,x,t,s.update({(x,t):f}))))),-1)or 0
 
+class Solution:
+    def minMoves(self, c: List[str], e: int) -> int:
+        b=-~len(c[0]);g='X'.join(c)+'X'*b;G=g.count('L');q=[(0,g.find('S'),0,e)];s={};return next((m for m,n,k,y in q for d in(b,-b,1,-1)if G==k.bit_count()or y*((v:=g[x:=n+d])<'X')and(f:=[y-1,e][v=='R'])>s.get(u:=(x,k|(v=='L')<<x),-1)and q.append(s.update({u:f})or(m+1,*u,f))),-1)
+
 test('''
 3568. Minimum Moves to Clean the Classroom
 Medium

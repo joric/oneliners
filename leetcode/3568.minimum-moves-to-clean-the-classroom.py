@@ -40,6 +40,22 @@ class Solution:
     def minMoves(self, c: List[str], e: int) -> int:
         return[a:=len(c),b:=len(c[0]),g:=''.join(c),l:={},[l.setdefault(n,len(l))if v=='L'else(q:=[(0,n,0)],s:={(n,0):e})for n,v in enumerate(g)if v in'LS'],0 if not l else next((m+1 for m,n,k in q for x in(n-b,n+b,n-1,n+1)if 0<=x<a*b and(abs(x-n)==b or x//b==n//b)and(v:=g[x])!='X'and(t:=k|(1<<l[x]if v=='L'else 0))==t and(v=='L'and t==2**len(l)-1 or(f:=e if v=='R'else s[n,k]-1)>0 and s.get((x,t),0)<f and[s.update({(x,t):f}),q.append((m+1,x,t))]and 0)),-1)][-1]
 
+class Solution:
+    def minMoves(self, c: List[str], e: int) -> int:
+        return[a:=len(c),b:=len(c[0]),g:=''.join(c),l:={},[l.setdefault(n,len(l))if v=='L'else(q:=[(0,n,0)],s:={(n,0):e})for n,v in enumerate(g)if v in'LS'],0 if not l else next((m+1 for m,n,k in q for x in(n-b,n+b,n-1,n+1)if 0<=x<a*b and(abs(x-n)==b or x//b==n//b)and(v:=g[x])!='X'and(t:=k|(1<<l[x]if v=='L'else 0))==t and(v=='L'and t==2**len(l)-1 or(f:=e if v=='R'else s[n,k]-1)>0 and s.get((x,t),0)<f and[s.update({(x,t):f}),q.append((m+1,x,t))]and 0)),-1)][-1]
+
+class Solution:
+    def minMoves(self, c: List[str], e: int) -> int:
+        return[a:=len(c),b:=len(c[0]),g:=''.join(c),l:={},[l.setdefault(n,len(l))if v=='L'else(q:=[(0,n,0)],s:={(n,0):e})for n,v in enumerate(g)if v in'LS'],next((m+1 for m,n,k in q for x in(n-b,n+b,n-1,n+1)if 0<=x<a*b and(abs(x-n)==b or x//b==n//b)and(v:=g[x])!='X'and(t:=k|(1<<l[x]if v=='L'else 0))==t and(v=='L'and t==2**len(l)-1 or(f:=e if v=='R'else s[n,k]-1)>0 and f>s.get((x,t),0)and[s.update({(x,t):f}),q.append((m+1,x,t))]and 0)),-bool(l))][-1]
+
+class Solution:
+    def minMoves(self, c: List[str], e: int) -> int:
+        return[b:=len(c[0]),g:=''.join(c),l:={},[v!='L'and(q:=[(0,n,0)],s:={(n,0):e})or l.setdefault(n,len(l))for n,v in enumerate(g)if v in'LS'],next((m+1 for m,n,k in q for x in(n-b,n+b,n-1,n+1)if 0<=x<len(g)and(abs(x-n)==b or x//b==n//b)and(v:=g[x])!='X'and(t:=k|(v=='L'and 1<<l[x]or 0))==t and(v=='L'and t==2**len(l)-1 or(f:=v=='R'and e or s[n,k]-1)>0 and f>s.get((x,t),0)and[s.update({(x,t):f}),q.append((m+1,x,t))]and 0)),-bool(l))][-1]
+
+class Solution:
+    def minMoves(self, c: List[str], e: int) -> int:
+        b=len(c[0]);g=''.join(c);l={};[v>'L'and(q:=[(0,n,0)],s:={(n,0):e})or l.setdefault(n,1<<len(l))for n,v in enumerate(g)if v in'LS'];return l and next((m+1 for m,n,k,*_ in q for x in(n-b,n+b,n-1,n+1)if 0<=x<len(g)and(abs(x-n)==b or x//b==n//b)and(v:=g[x])!='X'and[t:=k|l.get(x,0)]and(t==2**len(l)-1 or(f:=v=='R'and e or s[n,k]-1)>0 and f>s.get((x,t),0)and q.append((m+1,x,t,s.update({(x,t):f}))))),-1)or 0
+
 test('''
 3568. Minimum Moves to Clean the Classroom
 Medium
@@ -100,7 +116,10 @@ Explanation:
 
 No valid path collects all 'L'.
 
- 
+Other examples:
+
+Input: classroom = ["SR"], energy = 1
+Output: 0
 
 Constraints:
 

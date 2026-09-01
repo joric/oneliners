@@ -12,6 +12,8 @@ class Solution:uniformArray=bool
 
 class Solution:uniformArray=any
 
+class Solution:uniformArray=all
+
 test('''
 3875. Construct Uniform Parity Array I
 Easy

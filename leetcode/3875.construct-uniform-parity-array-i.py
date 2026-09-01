@@ -8,6 +8,8 @@ class Solution:
 
 class Solution:uniformArray=truth
 
+class Solution:uniformArray=bool
+
 test('''
 3875. Construct Uniform Parity Array I
 Easy

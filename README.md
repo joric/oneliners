@@ -301,6 +301,8 @@ You can also write:
 
 ```python
 class Solution:stoneGame=truth
+
+class Solution:stoneGame=bool
 ```
 
 

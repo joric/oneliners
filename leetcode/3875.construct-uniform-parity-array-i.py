@@ -6,6 +6,8 @@ class Solution:
     def uniformArray(self, nums1: list[int]) -> bool:
         return True
 
+Solution=type('',(),{'uniformArray':all})
+
 class Solution:uniformArray=truth
 
 class Solution:uniformArray=bool

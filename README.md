@@ -300,6 +300,9 @@ class Solution:
 You can also write:
 
 ```python
+
+Solution=type('',(),{'stoneGame':all})
+
 class Solution:stoneGame=truth
 
 class Solution:stoneGame=bool

@@ -32,6 +32,10 @@ class Solution:
     def minMoves(self, c: List[str], e: int) -> int:
         return[a:=len(c),b:=len(c[0]),l:={},[l.setdefault((i,j),len(l))if v=='L'else(q:=[(0,i,j,0)],s:={(i,j,0):e})for i in range(a)for j in range(b)if(v:=c[i][j])in'LS'],0 if not l else next((m+1 for m,i,j,k in q for x,y in((i-1,j),(i+1,j),(i,j-1),(i,j+1))if 0<=x<a and 0<=y<b and(v:=c[x][y])!='X'and(t:=k|(1<<l[x,y]if v=='L'else 0))==t and(v=='L'and t==2**len(l)-1 or(n:=e if v=='R'else s[i,j,k]-1)>0 and s.get((x,y,t),0)<n and[s.update({(x,y,t):n}),q.append((m+1,x,y,t))]and 0)),-1)][-1]
 
+class Solution:
+    def minMoves(self, c: List[str], e: int) -> int:
+        return[a:=len(c),b:=len(c[0]),l:={},[l.setdefault((i,j),len(l))if v=='L'else(q:=[(0,i,j,0)],s:={(i,j,0):e})for i in range(a)for j in range(b)if(v:=c[i][j])in'LS'],0 if not l else next((m+1 for m,i,j,k in q for x,y in((i-1,j),(i+1,j),(i,j-1),(i,j+1))if a>x>-1<y<b and(v:=c[x][y])!='X'and(t:=k|(1<<l[x,y]if v=='L'else 0))==t and(v=='L'and t==2**len(l)-1 or(n:=e if v=='R'else s[i,j,k]-1)>0 and s.get((x,y,t),0)<n and[s.update({(x,y,t):n}),q.append((m+1,x,y,t))]and 0)),-1)][-1]
+
 test('''
 3568. Minimum Moves to Clean the Classroom
 Medium

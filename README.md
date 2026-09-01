@@ -305,6 +305,8 @@ class Solution:stoneGame=truth
 class Solution:stoneGame=bool
 
 class Solution:stoneGame=any
+
+class Solution:stoneGame=all
 ```
 
 

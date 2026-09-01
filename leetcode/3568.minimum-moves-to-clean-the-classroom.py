@@ -58,7 +58,7 @@ class Solution:
 
 class Solution:
     def minMoves(self, c: List[str], e: int) -> int:
-        b=-~len(c[0]);g='X'.join(c)+'X'*b;G=g.count('L');q=[(0,g.find('S'),0,e)];s={};return next((m for m,n,k,y in q for d in(b,-b,1,-1)if G==k.bit_count()or y*((v:=g[x:=n+d])<'X')and(f:=[y-1,e][v=='R'])>s.get(u:=(x,k|(v=='L')<<x),-1)and q.append(s.update({u:f})or(m+1,*u,f))),-1)
+        b=-~len(c[0]);g='X'.join(c)+'X'*b;t=g.count('L');q=[(0,g.find('S'),0,e)];s={};return next((m for m,n,k,y in q for d in(b,-b,1,-1)if t==k.bit_count()or y*((v:=g[x:=n+d])<'X')and(f:=[y-1,e][v=='R'])>s.get(u:=(x,k|(v=='L')<<x),-1)and q.append(s.update({u:f})or(m+1,*u,f))),-1)
 
 test('''
 3568. Minimum Moves to Clean the Classroom

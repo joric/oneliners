@@ -303,6 +303,8 @@ You can also write:
 class Solution:stoneGame=truth
 
 class Solution:stoneGame=bool
+
+class Solution:stoneGame=any
 ```
 
 

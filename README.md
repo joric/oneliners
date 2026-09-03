@@ -297,11 +297,11 @@ class Solution:
         return 2>1
 ```
 
-You can also write:
+You can also write this (but `all` is lexicographically smaller):
 
 ```python
 
-Solution=type('',(),{'stoneGame':all})
+Solution=type('',(),{'stoneGame':truth})
 
 class Solution:stoneGame=truth
 

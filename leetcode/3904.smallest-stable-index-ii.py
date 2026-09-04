@@ -10,6 +10,10 @@ class Solution:
     def firstStableIndex(self, a: list[int], k: int) -> int:
         u=accumulate;return next((i for i,(x,y)in enumerate(zip(u(a,max),[*u(a[::-1],min)][::-1]))if x-y<=k),-1)
 
+class Solution:
+    def firstStableIndex(self, a: list[int], k: int) -> int:
+        u=accumulate;return[*[i for i,(x,y)in enumerate(zip(u(a,max),[*u(a[::-1],min)][::-1]))if x-y<=k],-1][0]
+
 test('''
 3904. Smallest Stable Index II
 Medium

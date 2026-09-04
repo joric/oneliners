@@ -6,6 +6,10 @@ class Solution:
     def firstStableIndex(self, a:list[int],k:int)->int:
         return next((i for i in range(len(a))if max(a[:i+1])-min(a[i:])<=k),-1)
 
+class Solution:
+    def firstStableIndex(self, a:list[int],k:int)->int:
+        return[*[i for i in range(len(a))if max(a[:i+1])-min(a[i:])<=k],-1][0]
+
 test('''
 3903. Smallest Stable Index I
 Easy

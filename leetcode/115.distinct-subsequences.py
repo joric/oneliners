@@ -67,6 +67,12 @@ class Solution:
     def numDistinct(self, s: str, t: str) -> int:
         p=[0]*len(t);all((d:=1,p:=[((c==j)*d)+(d:=i)for i,j in zip(p,t)])for c in s);return p[-1]
 
+# POTD 2026-09-06
+
+class Solution:
+    def numDistinct(self, s: str, t: str) -> int:
+        p=[0]*len(t);[(d:=1,p:=[(c==j)*d+(d:=i)for i,j in zip(p,t)])for c in s];return p[-1]
+
 test('''
 115. Distinct Subsequences
 Hard

@@ -33,6 +33,10 @@ class Solution:
     def distinctSubseqII(self, s: str) -> int:
         p={};[p:=p|{c:sum(p.values(),1)}for c in s];return sum(p.values())%(10**9+7)
 
+class Solution:
+    def distinctSubseqII(self, s: str) -> int:
+        p=[0]*123;exec("for c in s:p[ord(c)]=sum(p)+1");return sum(p)%(10**9+7)
+
 test('''
 940. Distinct Subsequences II
 Hard

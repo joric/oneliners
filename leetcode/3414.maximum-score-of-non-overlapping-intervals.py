@@ -16,7 +16,11 @@ class Solution:
 
 class Solution:
     def maximumWeight(self, a: List[List[int]]) -> List[int]:
-        d=sorted([e,s,w,i]for i,(s,e,w)in enumerate(a));f=cache(lambda i,k:i*k>0and min(f(i-1,k),((t:=f(bisect_left(d,[(x:=d[i-1])[1]]),k-1))[0]-x[2],sorted([x[3]]+t[1])))or(0,[]));return f(len(a),4)[1]
+        f=cache(lambda i,k:i*k>0and min(f(i-1,k),((t:=f(bisect_left(d:=sorted([e,s,w,i]for i,(s,e,w)in enumerate(a)),[(x:=d[i-1])[1]]),k-1))[0]-x[2],sorted([x[3]]+t[1])))or(0,[]));return f(len(a),4)[1]
+
+class Solution:
+    def maximumWeight(self, a: List[List[int]]) -> List[int]:
+        n=0;d=sorted(v+[n:=n-1]for v in a);f=cache(lambda i,k:i*k and min(f(i+1,k),sorted([(t:=f(bisect_left(d,[(x:=d[i])[1]+1])+n,k-1))[0]-x[2],~x[3]]+t[1:]))or[0]);return f(n,4)[1:]
 
 test('''
 3414. Maximum Score of Non-overlapping Intervals

@@ -67,6 +67,14 @@ class Solution:
         return __import__('numpy').linalg.matrix_rank([[1]+x for x in p])<3
 ```
 
+* https://leetcode.com/problems/image-overlap
+
+```python
+class Solution:
+    def largestOverlap(self, a: List[List[int]], b: List[List[int]]) -> int:
+        import scipy;return int(scipy.signal.correlate(a,b).max())
+```
+
 Sometimes you can save on casting of the return type, e.g. Leetcode autoconverted keys and mixed types to lists.
 
 * https://leetcode.com/problems/top-k-frequent-elements

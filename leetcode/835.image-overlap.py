@@ -63,28 +63,32 @@ class Solution:
 # POTD 2026-09-13
 
 class Solution:
-    def largestOverlap(self, a, b) -> int:
+    def largestOverlap(self, a: List[List[int]], b: List[List[int]]) -> int:
         return(f:=lambda v:(n:=len(v))and[i//n*50+i%n for i in range(n*n)if v[i//n][i%n]])and max(Counter(i-j for i in f(a)for j in f(b)).values()or[0])
 
 class Solution:
-    def largestOverlap(self, a, b) -> int:
+    def largestOverlap(self, a: List[List[int]], b: List[List[int]]) -> int:
         import numpy as n;import scipy.ndimage as s;b=n.pad(b,len(a),mode='constant',constant_values=(0,0));return n.amax(s.convolve(b,n.flip(n.flip(a,1),0),mode='constant'))
 
 class Solution:
-    def largestOverlap(self, a, b) -> int:
+    def largestOverlap(self, a: List[List[int]], b: List[List[int]]) -> int:
         e=enumerate;f=lambda m:[i+j*1j for i,r in e(m)for j,v in e(r)if v];return max(Counter(x-y for x in f(a)for y in f(b)).values()or[0])
 
 class Solution:
-    def largestOverlap(self, a, b) -> int:
+    def largestOverlap(self, a: List[List[int]], b: List[List[int]]) -> int:
         e=enumerate;return max(Counter((x-i,y-j)for x,r in e(a)for y,v in e(r)if v for i,s in e(b)for j,w in e(s)if w).values()or[0])
 
 class Solution:
-    def largestOverlap(self, a, b) -> int:
+    def largestOverlap(self, a: List[List[int]], b: List[List[int]]) -> int:
         import scipy.signal as s;return int(s.correlate2d(a,b).max())
 
 class Solution:
-    def largestOverlap(self, a, b) -> int:
+    def largestOverlap(self, a: List[List[int]], b: List[List[int]]) -> int:
         return int(__import__('scipy').signal.correlate2d(a,b).max())
+
+class Solution:
+    def largestOverlap(self, a: List[List[int]], b: List[List[int]]) -> int:
+        import scipy;return int(scipy.signal.correlate(a,b).max())
 
 test('''
 835. Image Overlap

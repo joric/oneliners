@@ -40,6 +40,14 @@ class Solution:
     def maxPalindromes(self, s: str, k: int) -> int:
         return+(f:=lambda s:k<=len(s)and(next((-~f(s[j:])for j in(k,k+1)if s[:j]==s[j-1::-1]),0)or f(s[1:])))(s)
 
+class Solution:
+    def maxPalindromes(self, s: str, k: int) -> int:
+        f=lambda s:k>len(s)or next(j//k+f(s[j:])for j in(k,k+1,1)if s[:j]==s[j-1::-1]);return~-f(s)
+
+class Solution:
+    def maxPalindromes(self, s: str, k: int) -> int:
+        f=lambda s:next((j//k+f(s[j:])for j in(k,k+1,1)if(s+' ')[:j]==s[j-1::-1]),0);return f(s)
+
 test('''
 2472. Maximum Number of Non-overlapping Palindrome Substrings
 Hard

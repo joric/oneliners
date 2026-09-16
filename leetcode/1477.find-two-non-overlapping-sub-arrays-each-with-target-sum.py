@@ -18,6 +18,10 @@ class Solution:
     def minSumOfLengths(self, a: List[int], t: int) -> int:
         n=7**6;d={t:n-1};b=[n]*n;s=0;return min(n,*(b.append(min(b[-1],l:=d.setdefault((s:=s+x)+t,len(b))-(j:=d.get(s,0))))or l-~b[j]for x in a))%n-1
 
+class Solution:
+    def minSumOfLengths(self, a: List[int], t: int) -> int:
+        n=7**6;d={0:n-1};b=[n]*n;s=0;return min(n,*(b.append(min(b[-1],l:=d.setdefault(s:=s+x,len(b))-(j:=d.get(s-t,0))))or l-~b[j]for x in a))%n-1
+
 test('''
 1477. Find Two Non-overlapping Sub-arrays Each With Target Sum
 Solved

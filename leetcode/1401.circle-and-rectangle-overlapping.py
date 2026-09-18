@@ -10,8 +10,10 @@ class Solution:
     def checkOverlap(self, r: int, x: int, y: int, a: int, b: int, c: int, d: int) -> bool:
         return hypot(x-max(a,min(x,c)),y-max(b,min(y,d)))<=r
 
+# POTD 2026-09-19
+
 class Solution:
-    def checkOverlap(self, r: int, x: int, y: int, a: int, b: int, c: int, d: int) -> bool:
+    def checkOverlap(self,r,x,y,a,b,c,d) -> bool:
         return max(0,a-x,x-c)**2+max(0,b-y,y-d)**2<=r*r
 
 test('''

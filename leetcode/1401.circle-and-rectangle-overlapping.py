@@ -16,6 +16,10 @@ class Solution:
     def checkOverlap(self,r,x,y,a,b,c,d) -> bool:
         return max(0,a-x,x-c)**2+max(0,b-y,y-d)**2<=r*r
 
+class Solution:
+    def checkOverlap(self,r,x,y,a,b,c,d):
+        return hypot(max(0,a-x,x-c),max(0,b-y,y-d))<=r
+
 test('''
 1401. Circle and Rectangle Overlapping
 Solved

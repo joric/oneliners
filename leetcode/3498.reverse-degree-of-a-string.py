@@ -10,6 +10,10 @@ class Solution:
     def reverseDegree(self, s: str) -> int:
         i=0;return sum((i:=i+1)*(123-ord(c))for c in s)
 
+class Solution:
+    def reverseDegree(self, s: str) -> int:
+        i=0;return sum(-ord(c)%41*(i:=i+1)for c in s)
+
 test('''
 3498. Reverse Degree of a String
 Easy

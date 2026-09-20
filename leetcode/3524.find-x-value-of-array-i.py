@@ -14,11 +14,6 @@ class Solution:
     def resultArray(self, a: List[int], k: int) -> List[int]:
         r=range(k);s=t=[0]*k;[t:=[*map(add,s:=[(x%k==i)+sum(s[b]*(b*x%k==i)for b in r)for i in r],t)]for x in a];return t
 
-# error in tests
-class Solution:
-    def resultArray(self, a: List[int], k: int) -> List[int]:
-        r=range(k);s=t=[0]*k;[t:=map(add,s:=[sum(s[b]+(b==1)for b in r if b*x%k==i)for i in r],t)for x in a];return t
-
 class Solution:
     def resultArray(self, a: List[int], k: int) -> List[int]:
         r=range(k);s=t=[0]*k;[t:=map(add,s:=[(x%k==i)+sum(s[b]*(b*x%k==i)for b in r)for i in r],t)for x in a];return t

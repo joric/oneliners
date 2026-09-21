@@ -1,28 +1,116 @@
 from lc import *
 
-# https://leetcode.com/problems/find-x-value-of-array-ii/solutions/6670846/ac-without-segtree-probably-weak-testcas-lp8k/?envType=daily-question&envId=2026-09-22
+# https://leetcode.com/problems/find-x-value-of-array-ii/solutions/6668800/segment-tree-explanation-pythonjavac-by-jyraa/?envType=daily-question&envId=2026-09-22
 
-# TLE
+class SegTree:
+    def __init__(self, nums: List[int], k: int):
+        self.k = k
+        self.n = len(nums)
+        s = 1
+        while s < self.n:
+            s <<= 1
+        self.s = s
+        self.tree = [([0 for _ in range(k)], 1) for _ in range(2 * s)]
+        for i in range(self.n):
+            a_mod = nums[i] % k
+            cnt = [0 for _ in range(k)]
+            cnt[a_mod] = 1
+            prod = a_mod
+            self.tree[s + i] = (cnt, prod)
+        for p in range(s - 1, 0, -1):
+            self.tree[p] = self.merge(self.tree[2 * p], self.tree[2 * p + 1])
+
+    def merge(self, l, r):
+        cnt_a, prod_a = l
+        cnt_b, prod_b = r
+        k = self.k
+        cnt = cnt_a.copy()
+        for r_b, c in enumerate(cnt_b):
+            if c:
+                r = (prod_a * r_b) % k
+                cnt[r] += c
+        prod = (prod_a * prod_b) % k
+        return cnt, prod
+
+    def update(self, idx, val):
+        pos = self.s + idx
+        a_mod = val % self.k
+        cnt = [0] * self.k
+        cnt[a_mod] = 1
+        prod = a_mod
+        self.tree[pos] = (cnt, prod)
+        pos //= 2
+        while pos:
+            self.tree[pos] = self.merge(self.tree[2 * pos], self.tree[2 * pos + 1])
+            pos //= 2
+
+    def query(self, l, r):
+        l += self.s
+        r += self.s
+        cnt_l, prod_l = [0]*self.k, 1
+        cnt_r, prod_r = [0]*self.k, 1
+        while l < r:
+            if l & 1:
+                cnt_l, prod_l = self.merge((cnt_l, prod_l), self.tree[l])
+                l += 1
+            if r & 1:
+                r -= 1
+                cnt_r, prod_r = self.merge(self.tree[r], (cnt_r, prod_r))
+            l //= 2
+            r //= 2
+        return self.merge((cnt_l, prod_l), (cnt_r, prod_r))
+
 class Solution:
     def resultArray(self, nums: List[int], k: int, queries: List[List[int]]) -> List[int]:
-        mods = [num % k for num in nums]
-        result = []
-        for index, value, start, xi in queries:
-            mods[index] = value % k
-            current_mod = 1
-            count = 0
-            sub_array_start = start
-            n = len(mods)
-            for i in range(sub_array_start, n):
-                current_mod = (current_mod * mods[i]) % k
-                if current_mod == xi:
-                    count += 1
-                if current_mod == 0:
-                    if xi == 0:
-                        count += n - i - 1
-                    break
-            result.append(count)
-        return result
+        st = SegTree(nums, k)
+        res = []
+        for idx, val, start, x in queries:
+            st.update(idx, val)
+            cnt_seg, _ = st.query(start, len(nums))
+            res.append(cnt_seg[x])
+        return res
+
+class Solution:
+    def resultArray(self, a: List[int], k: int, q: List[List[int]]) -> List[int]:
+        n = len(a)
+        s = 1 << (n - 1).bit_length()
+
+        def m(x, y):
+            p, u = x; r, v = y
+            c = p[:]
+            for i, z in enumerate(r): c[u*i % k] += z
+            return c, u*v % k
+
+        for i, v in enumerate(a):
+            b = v % k; c = [0]*k; c[b] = 1
+            t[s+i] = (c, b)
+        for i in range(s-1, 0, -1):
+            t[i] = m(t[2*i], t[2*i+1])
+
+        def f(i, v):
+            j = s + i; b = v % k; c = [0]*k; c[b] = 1
+            t[j] = (c, b); j >>= 1
+            while j:
+                t[j] = m(t[2*j], t[2*j+1]); j >>= 1
+
+        def g(l, r):
+            l += s; r += s
+            p, u = ([0]*k, 1), ([0]*k, 1)
+            while l < r:
+                if l & 1: p = m(p, t[l]); l += 1
+                if r & 1: r -= 1; u = m(t[r], u)
+                l >>= 1; r >>= 1
+            return m(p, u)
+
+        o = []
+        for i, v, w, x in q:
+            f(i, v)
+            o.append(g(w, n)[0][x])
+        return o
+
+class Solution:
+    def resultArray(self, a: List[int], k: int, q: List[List[int]]) -> List[int]:
+        e=enumerate;g=range;s=setitem;n=len(a);b=1<<n.bit_length();z=[0]*k,1;t=[z]*2*b;d=lambda v:s(c:=[0]*k,v%k,1)or(c,v%k);m=lambda x,w:(c:=x[0][:],[s(c,j:=x[1]*i%k,c[j]+h)for i,h in e(w[0])if h],(c,x[1]*w[1]%k))[2];[s(t,b+i,d(v))for i,v in e(a)];[s(t,i,m(t[2*i],t[2*i+1]))for i in g(~-b,0,-1)];return[(s(t,j:=b+i,d(v)),[s(t,j:=j//2,m(t[2*j],t[2*j+1]))for _ in g(18)if j>1],l:=b+w,r:=b+n,p:=z,u:=z,[(p:=l&1 and m(p,t[l])or p,u:=r&1 and m(t[r-1],u)or u,l:=(l+1)//2,r:=r//2)for _ in g(18)if l<r],m(p,u)[0][x])[-1]for i,v,w,x in q]
 
 # https://leetcode.com/problems/find-x-value-of-array-ii/solutions/6669392/square-root-decomposition-vs-segment-tre-tysm/?envType=daily-question&envId=2026-09-22
 
@@ -118,51 +206,6 @@ class Solution:
         f = [[0]*k for _ in range(m)]
         r=[]
 
-        #w=lambda i:all((t:=[0]*k,c:=p,all((c:=c*y%k,setitem(t,c,t[c]+1))for y in a[i*b:i*b+b]),setitem(f[i],p,c),setitem(h[i],p,t))for p in range(k))
-        #all(map(w,range(m)))
-
-        def w(i):
-            for p in range(k):
-                t=[0]*k
-                c=p
-                for y in a[i*b:i*b+b]:
-                    c = c*y%k
-                    t[c]+=1
-
-                f[i][p]=c
-                h[i][p]=t
-
-        for i in range(m):w(i)
-
-        #return[(setitem(a,i,v%k),w(i//b),n:=0,p:=1,c:=s//b,all((p:=p*y%k,n:=n+(p==x))for y in a[s:c*b+b]),all((n:=n+h[j][p][x],p:=f[j][p])for j in range(c+1,m)),n)[-1]for i,v,s,x in q]
-
-
-        for i,v,s,x in q:
-            a[i]=v%k
-            w(i//b)
-            n=0
-            p=1
-            c=s//b
-            for y in a[s:c*b+b]:
-                p=p*y%k
-                n+=p==x
-            for j in range(c+1,m):
-                n+=h[j][p][x]
-                p=f[j][p]
-            r.append(n)
-        return r
-
-
-class Solution:
-    def resultArray(self, a: List[int], k: int, q: List[List[int]]) -> List[int]:
-        l=len(a)
-        b=isqrt(l//k)or 1
-        m=(l-1)//b+1
-        a=[v%k for v in a]
-        h = [[0]*k for _ in range(m)]
-        f = [[0]*k for _ in range(m)]
-        r=[]
-
         def w(i):
             for p in range(k):
                 t=[0]*k
@@ -191,288 +234,17 @@ class Solution:
             r.append(n)
         return r
 
-# https://leetcode.com/problems/find-x-value-of-array-ii/solutions/6668800/segment-tree-explanation-pythonjavac-by-jyraa/?envType=daily-question&envId=2026-09-22
-
-class SegTree:
-    def __init__(self, nums: List[int], k: int):
-        self.k = k
-        self.n = len(nums)
-        s = 1
-        while s < self.n:
-            s <<= 1
-        self.s = s
-        self.tree = [([0 for _ in range(k)], 1) for _ in range(2 * s)]
-        for i in range(self.n):
-            a_mod = nums[i] % k
-            cnt = [0 for _ in range(k)]
-            cnt[a_mod] = 1
-            prod = a_mod
-            self.tree[s + i] = (cnt, prod)
-        for p in range(s - 1, 0, -1):
-            self.tree[p] = self.merge(self.tree[2 * p], self.tree[2 * p + 1])
-
-    def merge(self, l, r):
-        cnt_a, prod_a = l
-        cnt_b, prod_b = r
-        k = self.k
-        cnt = cnt_a.copy()
-        for r_b, c in enumerate(cnt_b):
-            if c:
-                r = (prod_a * r_b) % k
-                cnt[r] += c
-        prod = (prod_a * prod_b) % k
-        return cnt, prod
-
-    def update(self, idx, val):
-        pos = self.s + idx
-        a_mod = val % self.k
-        cnt = [0] * self.k
-        cnt[a_mod] = 1
-        prod = a_mod
-        self.tree[pos] = (cnt, prod)
-        pos //= 2
-        while pos:
-            self.tree[pos] = self.merge(self.tree[2 * pos], self.tree[2 * pos + 1])
-            pos //= 2
-
-    def query(self, l, r):
-        l += self.s
-        r += self.s
-        cnt_l, prod_l = [0]*self.k, 1
-        cnt_r, prod_r = [0]*self.k, 1
-        while l < r:
-            if l & 1:
-                cnt_l, prod_l = self.merge((cnt_l, prod_l), self.tree[l])
-                l += 1
-            if r & 1:
-                r -= 1
-                cnt_r, prod_r = self.merge(self.tree[r], (cnt_r, prod_r))
-            l //= 2
-            r //= 2
-        return self.merge((cnt_l, prod_l), (cnt_r, prod_r))
-
-class Solution:
-    def resultArray(self, nums: List[int], k: int, queries: List[List[int]]) -> List[int]:
-        st = SegTree(nums, k)
-        res = []
-        for idx, val, start, x in queries:
-            st.update(idx, val)
-            cnt_seg, _ = st.query(start, len(nums))
-            res.append(cnt_seg[x])
-        return res
-
-
-class SegTree:
-    def __init__(self, nums: List[int], k: int):
-        self.k = k
-        self.n = len(nums)
-        self.s = 1
-        while self.s < self.n:
-            self.s <<= 1
-        # each node: (counts list of size k, product mod k)
-        self.tree = [([0] * k, 1) for _ in range(2 * self.s)]
-        for i, v in enumerate(nums):
-            self._set(self.s + i, v)
-        for p in range(self.s - 1, 0, -1):
-            self.tree[p] = self._merge(self.tree[2 * p], self.tree[2 * p + 1])
-
-    def _merge(self, l, r):
-        cnt_a, prod_a = l
-        cnt_b, prod_b = r
-        k = self.k
-        cnt = cnt_a[:]
-        for rb, c in enumerate(cnt_b):
-            if c:
-                cnt[(prod_a * rb) % k] += c
-        return cnt, (prod_a * prod_b) % k
-
-    def _set(self, pos, val):
-        a = val % self.k
-        cnt = [0] * self.k
-        cnt[a] = 1
-        self.tree[pos] = (cnt, a)
-
-    def update(self, idx, val):
-        pos = self.s + idx
-        self._set(pos, val)
-        pos >>= 1
-        while pos:
-            self.tree[pos] = self._merge(self.tree[2 * pos], self.tree[2 * pos + 1])
-            pos >>= 1
-
-    def query(self, l, r):
-        l += self.s
-        r += self.s
-        left = ([0] * self.k, 1)
-        right = ([0] * self.k, 1)
-        while l < r:
-            if l & 1:
-                left = self._merge(left, self.tree[l])
-                l += 1
-            if r & 1:
-                r -= 1
-                right = self._merge(self.tree[r], right)
-            l >>= 1
-            r >>= 1
-        return self._merge(left, right)
-
-
-class Solution:
-    def resultArray(self, nums: List[int], k: int, queries: List[List[int]]) -> List[int]:
-        st = SegTree(nums, k)
-        res = []
-        for idx, val, start, x in queries:
-            st.update(idx, val)
-            cnt_seg, _ = st.query(start, len(nums))
-            res.append(cnt_seg[x])
-        return res
-
-class SegTree:
-    def __init__(self, nums, k):
-        self.k = k
-        n = len(nums)
-        self.n = n
-        self.tree = [None] * (4 * n)
-        self._build(1, 0, n - 1, nums)
-
-    def _build(self, node, l, r, nums):
-        if l == r:
-            a = nums[l] % self.k
-            cnt = [0] * self.k
-            cnt[a] = 1
-            self.tree[node] = (cnt, a)
-            return
-        m = (l + r) // 2
-        self._build(2*node, l, m, nums)
-        self._build(2*node+1, m+1, r, nums)
-        self.tree[node] = self._merge(self.tree[2*node], self.tree[2*node+1])
-
-    def _merge(self, l, r):
-        cnt_a, prod_a = l
-        cnt_b, prod_b = r
-        cnt = cnt_a[:]
-        for rb, c in enumerate(cnt_b):
-            cnt[(prod_a * rb) % self.k] += c
-        return cnt, (prod_a * prod_b) % self.k
-
-    def update(self, idx, val, node=1, l=0, r=None):
-        if r is None: r = self.n - 1
-        if l == r:
-            a = val % self.k
-            cnt = [0] * self.k
-            cnt[a] = 1
-            self.tree[node] = (cnt, a)
-            return
-        m = (l + r) // 2
-        if idx <= m: self.update(idx, val, 2*node, l, m)
-        else:        self.update(idx, val, 2*node+1, m+1, r)
-        self.tree[node] = self._merge(self.tree[2*node], self.tree[2*node+1])
-
-    def query(self, ql, qr, node=1, l=0, r=None):
-        if r is None: r = self.n - 1
-        if qr < l or r < ql: return ([0]*self.k, 1)
-        if ql <= l and r <= qr: return self.tree[node]
-        m = (l + r) // 2
-        return self._merge(self.query(ql, qr, 2*node, l, m),
-                           self.query(ql, qr, 2*node+1, m+1, r))
-
-class Solution:
-    def resultArray(self, nums: List[int], k: int, queries: List[List[int]]) -> List[int]:
-        st = SegTree(nums, k)
-        res = []
-        for idx, val, start, x in queries:
-            st.update(idx, val)
-            cnt_seg, _ = st.query(start, len(nums))
-            res.append(cnt_seg[x])
-        return res
-
-class Solution:
-    def resultArray(self, nums: List[int], k: int, queries: List[List[int]]) -> List[int]:
-        n = len(nums)
-        s = 1
-        while s < n: s <<= 1
-        T = [([0]*k, 1) for _ in range(2*s)]
-
-        def mg(a, b):
-            ca, pa = a; cb, pb = b
-            c = ca[:]
-            for r, x in enumerate(cb): c[pa*r % k] += x
-            return c, pa*pb % k
-
-        for i, v in enumerate(nums):
-            a = v % k; c = [0]*k; c[a] = 1
-            T[s+i] = (c, a)
-        for p in range(s-1, 0, -1):
-            T[p] = mg(T[2*p], T[2*p+1])
-
-        def upd(i, v):
-            p = s + i; a = v % k; c = [0]*k; c[a] = 1
-            T[p] = (c, a); p >>= 1
-            while p:
-                T[p] = mg(T[2*p], T[2*p+1]); p >>= 1
-
-        def qry(l, r):
-            l += s; r += s
-            L, R = ([0]*k, 1), ([0]*k, 1)
-            while l < r:
-                if l & 1: L = mg(L, T[l]); l += 1
-                if r & 1: r -= 1; R = mg(T[r], R)
-                l >>= 1; r >>= 1
-            return mg(L, R)
-
-        out = []
-        for i, v, st, x in queries:
-            upd(i, v)
-            out.append(qry(st, n)[0][x])
-        return out
+class Solution: # TLE
+    def resultArray(self, a: List[int], k: int, q: List[List[int]]) -> List[int]:
+        l=len(a);b=isqrt(l//k)or 1;m=(l-1)//b+1;a=[v%k for v in a];h,f=[[[0]*k for _ in range(m)]for _ in'..'];r=[];w=lambda i:all((t:=[0]*k,c:=p,all((c:=c*y%k,setitem(t,c,t[c]+1))for y in a[i*b:i*b+b]),setitem(f[i],p,c),setitem(h[i],p,t))for p in range(k));all(map(w,range(m)));return[(setitem(a,i,v%k),w(i//b),n:=0,p:=1,c:=s//b,all((p:=p*y%k,n:=n+(p==x))for y in a[s:c*b+b]),all((n:=n+h[j][p][x],p:=f[j][p])for j in range(c+1,m)),n)[-1]for i,v,s,x in q]
 
 class Solution:
     def resultArray(self, a: List[int], k: int, q: List[List[int]]) -> List[int]:
-        n = len(a)
-        s = 1 << (n - 1).bit_length()
-
-        def m(x, y):
-            p, u = x; r, v = y
-            c = p[:]
-            for i, z in enumerate(r): c[u*i % k] += z
-            return c, u*v % k
-
-        for i, v in enumerate(a):
-            b = v % k; c = [0]*k; c[b] = 1
-            t[s+i] = (c, b)
-        for i in range(s-1, 0, -1):
-            t[i] = m(t[2*i], t[2*i+1])
-
-        def f(i, v):
-            j = s + i; b = v % k; c = [0]*k; c[b] = 1
-            t[j] = (c, b); j >>= 1
-            while j:
-                t[j] = m(t[2*j], t[2*j+1]); j >>= 1
-
-        def g(l, r):
-            l += s; r += s
-            p, u = ([0]*k, 1), ([0]*k, 1)
-            while l < r:
-                if l & 1: p = m(p, t[l]); l += 1
-                if r & 1: r -= 1; u = m(t[r], u)
-                l >>= 1; r >>= 1
-            return m(p, u)
-
-        o = []
-        for i, v, w, x in q:
-            f(i, v)
-            o.append(g(w, n)[0][x])
-        return o
+        g=range;l=len(a);b=isqrt(l//k)or 1;m=(l-1)//b+1;a=[v%k for v in a];h,f=([[0]*k for _ in g(m)]for _ in'12');w=lambda i:(fq:=[0]*k,c:=1,[fq.__setitem__(c:=c*y%k,fq[c]+1)for y in a[i*b:i*b+b]],[(t:=[0]*k,[fq[x]and t.__setitem__(px:=p*x%k,t[px]+fq[x])for x in g(k)],f[i].__setitem__(p,p*c%k),h[i].__setitem__(p,t))for p in g(k)]);[w(i)for i in g(m)];return[l-s for _,_,s,_ in q]if k==1 else[(a.__setitem__(i,v%k),w(i//b),p:=1,n:=0,[n:=n+((p:=p*y%k)==x)for y in a[s:s//b*b+b]],[(n:=n+h[j][p][x],p:=f[j][p])for j in g(s//b+1,m)],n)[-1]for i,v,s,x in q]
 
 class Solution:
     def resultArray(self, a: List[int], k: int, q: List[List[int]]) -> List[int]:
-        e=enumerate;g=range;s=setitem;n=len(a);b=1<<n.bit_length();z=[0]*k,1;t=[z]*2*b;d=lambda v:s(c:=[0]*k,v%k,1)or(c,v%k);
-        m=lambda x,w:(c:=x[0][:],[s(c,j:=x[1]*i%k,c[j]+h)for i,h in e(w[0])if h],(c,x[1]*w[1]%k))[2];[s(t,b+i,d(v))for i,v in e(a)];[s(t,i,m(t[2*i],t[2*i+1]))for i in g(~-b,0,-1)];
-        return[(s(t,j:=b+i,d(v)),[s(t,j:=j//2,m(t[2*j],t[2*j+1]))for _ in g(18)if j>1],l:=b+w,r:=b+n,p:=z,u:=z,[(p:=l&1 and m(p,t[l])or p,u:=r&1 and m(t[r-1],u)or u,l:=(l+1)//2,r:=r//2)for _ in g(18)if l<r],m(p,u)[0][x])[-1]for i,v,w,x in q]
-
-class Solution:
-    def resultArray(self, a: List[int], k: int, q: List[List[int]]) -> List[int]:
-        e=enumerate;g=range;s=setitem;n=len(a);b=1<<n.bit_length();z=[0]*k,1;t=[z]*2*b;d=lambda v:s(c:=[0]*k,v%k,1)or(c,v%k);m=lambda x,w:(c:=x[0][:],[s(c,j:=x[1]*i%k,c[j]+h)for i,h in e(w[0])if h],(c,x[1]*w[1]%k))[2];[s(t,b+i,d(v))for i,v in e(a)];[s(t,i,m(t[2*i],t[2*i+1]))for i in g(~-b,0,-1)];return[(s(t,j:=b+i,d(v)),[s(t,j:=j//2,m(t[2*j],t[2*j+1]))for _ in g(18)if j>1],l:=b+w,r:=b+n,p:=z,u:=z,[(p:=l&1 and m(p,t[l])or p,u:=r&1 and m(t[r-1],u)or u,l:=(l+1)//2,r:=r//2)for _ in g(18)if l<r],m(p,u)[0][x])[-1]for i,v,w,x in q]
+        s=setitem;g=range;l=len(a);b=isqrt(l//k)or 1;m=(l-1)//b+1;a=[v%k for v in a];h,f=([k*[0]for _ in g(m)]for _ in'..');w=lambda i:(v:=[0]*k,c:=1,[s(v,c:=c*y%k,v[c]+1)for y in a[i*b:i*b+b]],[(t:=[0]*k,[v[x]and s(t,u:=p*x%k,t[u]+v[x])for x in g(k)],s(f[i],p,p*c%k),s(h[i],p,t))for p in g(k)]);[w(i)for i in g(m)];return[l-z for _,_,z,_ in q]if k==1 else[(s(a,i,v%k),w(i//b),p:=1,n:=0,[n:=n+((p:=p*y%k)==x)for y in a[z:z//b*b+b]],[(n:=n+h[j][p][x],p:=f[j][p])for j in g(z//b+1,m)],n)[-1]for i,v,z,x in q]
 
 test('''
 3525. Find X Value of Array II

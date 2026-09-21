@@ -466,76 +466,13 @@ class Solution:
 
 class Solution:
     def resultArray(self, a: List[int], k: int, q: List[List[int]]) -> List[int]:
-        n = len(a)
-        s = 1<<-~n.bit_length()
-        t = [([0]*k,1)for _ in range(2*s)]
-        def m(x, y):
-            p, u = x
-            r, v = y
-            c = p[:]
-            for i, z in enumerate(r):
-                c[u*i % k] += z
-            return c, u*v % k
-
-        for i, v in enumerate(a):
-            b = v % k
-            c = [0]*k
-            c[b] = 1
-            t[s+i] = (c, b)
-
-        for i in range(s-1,0,-1):
-            setitem(t,i,m(t[2*i],t[2*i+1]))
-
-        def f(i,v):
-            j = s + i
-            b = v % k
-            c = [0]*k
-            c[b] = 1
-            t[j]=(c,b)
-            j >>= 1
-            for b in range(j.bit_length()):
-                setitem(t,i:=j>>b,m(t[2*i],t[2*i+1]))
-
-        def g(l, r):
-            l += s; r += s
-            p = ([0]*k, 1)
-            u = ([0]*k, 1)
-            all(l<r and((l&1 and(p:=m(p,t[l]),l:=l+1)),(r&1 and(r:=r-1,u:=m(t[r],u))),(l:=l>>1,r:=r>>1))for _ in range(n.bit_length()))
-            return m(p,u)
-
-        return[f(i,v)or g(w,n)[0][x]for i,v,w,x in q]
+        e=enumerate;g=range;s=setitem;n=len(a);b=1<<n.bit_length();z=[0]*k,1;t=[z]*2*b;d=lambda v:s(c:=[0]*k,v%k,1)or(c,v%k);
+        m=lambda x,w:(c:=x[0][:],[s(c,j:=x[1]*i%k,c[j]+h)for i,h in e(w[0])if h],(c,x[1]*w[1]%k))[2];[s(t,b+i,d(v))for i,v in e(a)];[s(t,i,m(t[2*i],t[2*i+1]))for i in g(~-b,0,-1)];
+        return[(s(t,j:=b+i,d(v)),[s(t,j:=j//2,m(t[2*j],t[2*j+1]))for _ in g(18)if j>1],l:=b+w,r:=b+n,p:=z,u:=z,[(p:=l&1 and m(p,t[l])or p,u:=r&1 and m(t[r-1],u)or u,l:=(l+1)//2,r:=r//2)for _ in g(18)if l<r],m(p,u)[0][x])[-1]for i,v,w,x in q]
 
 class Solution:
     def resultArray(self, a: List[int], k: int, q: List[List[int]]) -> List[int]:
-        s=setitem;e=enumerate;n=len(a)
-        b=1<<-~n.bit_length()
-        t=[([0]*k,1)for _ in range(2*b)]
-        m=lambda x,y:(c:=x[0][:],[s(c,j:=x[1]*i%k,c[j]+z)for i,z in e(y[0])])and(c,x[1]*y[1]%k)
-        all((bb:=v%k,c:=[0]*k,s(c,bb,1),s(t,b+i,(c,bb)))for i, v in e(a))
-        any(s(t,i,m(t[2*i],t[2*i+1]))for i in range(b-1,0,-1))
-        f=lambda i,v:(j:=b+i,bb:=v%k,c:=[0]*k,s(c,bb,1),s(t,j,(c,bb)),j:=j>>1,any(s(t,i:=j>>bit,m(t[2*i],t[2*i+1]))for bit in range(j.bit_length())))
-        g=lambda l,r:(l:=l+b,r:=r+b,p:=([0]*k,1),u:=([0]*k,1),all(l<r and((l&1 and(p:=m(p,t[l]),l:=l+1)),(r&1 and(r:=r-1,u:=m(t[r],u))),(l:=l>>1,r:=r>>1))for _ in range(n.bit_length())))and m(p,u)
-        return[f(i,v)and g(w,n)[0][x]for i,v,w,x in q]
-
-class Solution:
-    def resultArray(self, a: List[int], k: int, q: List[List[int]]) -> List[int]:
-        s=setitem;e=enumerate;n=len(a);b=1<<-~n.bit_length();t=[([0]*k,1)for _ in range(2*b)];m=lambda x,y:(c:=x[0][:],[s(c,j:=x[1]*i%k,c[j]+z)for i,z in e(y[0])])and(c,x[1]*y[1]%k);all((d:=v%k,c:=[0]*k,s(c,d,1),s(t,b+i,(c,d)))for i, v in e(a));any(s(t,i,m(t[2*i],t[2*i+1]))for i in range(b-1,0,-1));f=lambda i,v:(j:=b+i,d:=v%k,c:=[0]*k,s(c,d,1),s(t,j,(c,d)),j:=j>>1,any(s(t,i:=j>>bit,m(t[2*i],t[2*i+1]))for bit in range(j.bit_length())));g=lambda l,r:(l:=l+b,r:=r+b,p:=([0]*k,1),u:=([0]*k,1),all(l<r and((l&1 and(p:=m(p,t[l]),l:=l+1)),(r&1 and(r:=r-1,u:=m(t[r],u))),(l:=l>>1,r:=r>>1))for _ in range(n.bit_length())))and m(p,u);return[f(i,v)and g(w,n)[0][x]for i,v,w,x in q]
-
-class Solution:
-    def resultArray(self, a: List[int], k: int, q: List[List[int]]) -> List[int]:
-        return(n:=len(a),b:=1<<n.bit_length(),r:=range(k),e:=([0]*k,1),t:=[e]*(2*b),g:=range(18),m:=lambda x,y:([x[0][i]+sum(y[0][j]for j in r if j*x[1]%k==i)for i in r],x[1]*y[1]%k),d:=lambda v:([i==v%k for i in r],v%k),u:=lambda i,v:(j:=b+i,t.__setitem__(j,d(v)),[t.__setitem__(j:=j//2,m(t[2*j],t[2*j+1]))for _ in g]),[u(i,v)for i,v in enumerate(a)],[(u(i,v),y:=b+w,z:=b+n,p:=e,s:=e,[y<z and(p:=m(p,t[y])if y&1 else p,s:=m(t[z-1],s)if z&1 else s,y:=(y+1)//2,z:=z//2)for _ in g],m(p,s)[0][x])[-1]for i,v,w,x in q])[-1]
-
-class Solution:
-    def resultArray(self, a: List[int], k: int, q: List[List[int]]) -> List[int]:
-        return(e:=enumerate,g:=range,n:=len(a),b:=1<<n.bit_length(),E:=([0]*k,1),t:=[E]*(2*b),d:=lambda v:(c:=[0]*k,c.__setitem__(w:=v%k,1),(c,w))[-1],m:=lambda x,y:(c:=x[0][:],[(c.__setitem__(j:=x[1]*i%k,c[j]+z))for i,z in e(y[0])if z],(c,x[1]*y[1]%k))[-1],[t.__setitem__(b+i,d(v))for i,v in e(a)],[t.__setitem__(i,m(t[2*i],t[2*i+1]))for i in g(b-1,0,-1)],u:=lambda i,v:(j:=b+i,t.__setitem__(j,d(v)),[t.__setitem__(j:=j>>1,m(t[2*j],t[2*j+1]))for _ in g(b.bit_length()-1)])[-1],[(u(i,v),l:=b+w,r:=b+n,p:=E,s:=E,[(p:=m(p,t[l])if l&1 else p,s:=m(t[r-1],s)if r&1 else s,l:=(l+(l&1))>>1,r:=r>>1)for _ in g(b.bit_length())if l<r],m(p,s)[0][x])[-1]for i,v,w,x in q])[-1]
-
-class Solution:
-    def resultArray(self, a: List[int], k: int, q: List[List[int]]) -> List[int]:
-        return(e:=enumerate,g:=range,n:=len(a),b:=1<<n.bit_length(),z:=([0]*k,1),t:=[z]*(2*b),d:=lambda v:(c:=[0]*k,setitem(c,w:=v%k,1),(c,w))[-1],m:=lambda x,y:(c:=x[0][:],[(setitem(c,j:=x[1]*i%k,c[j]+y2))for i,y2 in e(y[0])if y2],(c,x[1]*y[1]%k))[-1],[setitem(t,b+i,d(v))for i,v in e(a)],[setitem(t,i,m(t[2*i],t[2*i+1]))for i in g(b-1,0,-1)],u:=lambda i,v:(j:=b+i,setitem(t,j,d(v)),[setitem(t,j:=j>>1,m(t[2*j],t[2*j+1]))for _ in g(b.bit_length()-1)])[-1],[(u(i,v),l:=b+w,r:=b+n,p:=z,s:=z,[(p:=m(p,t[l])if l&1 else p,s:=m(t[r-1],s)if r&1 else s,l:=(l+(l&1))>>1,r:=r>>1)for _ in g(b.bit_length())if l<r],m(p,s)[0][x])[-1]for i,v,w,x in q])[-1]
-
-class Solution:
-    def resultArray(self, a: List[int], k: int, q: List[List[int]]) -> List[int]:
-        e=enumerate;g=range;n=len(a);b=1<<n.bit_length();z=[0]*k,1;t=[z]*2*b;d=lambda v:setitem(c:=[0]*k,v%k,1)or(c,v%k);m=lambda x,y:(c:=x[0][:],[setitem(c,j:=x[1]*i%k,c[j]+h)for i,h in e(y[0])if h],(c,x[1]*y[1]%k))[2];[setitem(t,b+i,d(v))for i,v in e(a)];[setitem(t,i,m(t[2*i],t[2*i+1]))for i in g(~-b,0,-1)];return[(setitem(t,j:=b+i,d(v)),[setitem(t,j:=j//2,m(t[2*j],t[2*j+1]))for _ in g(18)if j>1],l:=b+w,r:=b+n,p:=z,s:=z,[(p:=l&1 and m(p,t[l])or p,s:=r&1 and m(t[r-1],s)or s,l:=(l+1)//2,r:=r//2)for _ in g(18)if l<r],m(p,s)[0][x])[-1]for i,v,w,x in q]
+        e=enumerate;g=range;s=setitem;n=len(a);b=1<<n.bit_length();z=[0]*k,1;t=[z]*2*b;d=lambda v:s(c:=[0]*k,v%k,1)or(c,v%k);m=lambda x,w:(c:=x[0][:],[s(c,j:=x[1]*i%k,c[j]+h)for i,h in e(w[0])if h],(c,x[1]*w[1]%k))[2];[s(t,b+i,d(v))for i,v in e(a)];[s(t,i,m(t[2*i],t[2*i+1]))for i in g(~-b,0,-1)];return[(s(t,j:=b+i,d(v)),[s(t,j:=j//2,m(t[2*j],t[2*j+1]))for _ in g(18)if j>1],l:=b+w,r:=b+n,p:=z,u:=z,[(p:=l&1 and m(p,t[l])or p,u:=r&1 and m(t[r-1],u)or u,l:=(l+1)//2,r:=r//2)for _ in g(18)if l<r],m(p,u)[0][x])[-1]for i,v,w,x in q]
 
 test('''
 3525. Find X Value of Array II

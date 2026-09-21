@@ -269,7 +269,7 @@ class Solution:
 
 class Solution:
     def resultArray(self, a: List[int], k: int, q: List[List[int]]) -> List[int]:
-        s=setitem;g=range;n=g(k);b=isqrt(len(a))+1;h={};w=lambda i,c=1:(v:=[0]*k,[s(v,c:=c*y%k,v[c]+1)for y in a[i*b:i*b+b]],s(h,i,[[sum(v[x]*(p*x%k==r)for x in n)for r in n]for p in n]+[c]));*map(w,g(b)),;return[[s(a,i,v),w(i//b),p:=1]and sum([x==(p:=p*y%k)for y in a[z:z-z%b+b]]+[h[j][p][x]+0*(p:=p*h[j][-1]%k)for j in g(z//b+1,b)])for i,v,z,x in q]
+        s=setitem;g=range;n=g(k);b=isqrt(len(a))+1;h={};w=lambda i,c=1:(v:=[0]*k,[s(v,c:=c*y%k,v[c]+1)for y in a[i*b:i*b+b]],s(h,i,[[sum(v[x]*(p*x%k==r)for x in n)for r in n]for p in n]+[c]));*map(w,g(b)),;return[sum([x==(p:=p*y%k)for y in a[z:z-z%b+b]]+[h[j][p][x]+0*(p:=p*h[j][-1]%k)for j in g(z//b+1,b)])for i,v,z,x in q if(s(a,i,v),w(i//b),p:=1)]
 
 test('''
 3525. Find X Value of Array II

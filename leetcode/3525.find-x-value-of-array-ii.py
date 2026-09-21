@@ -240,11 +240,11 @@ class Solution: # TLE
 
 class Solution:
     def resultArray(self, a: List[int], k: int, q: List[List[int]]) -> List[int]:
-        g=range;l=len(a);b=isqrt(l//k)or 1;m=(l-1)//b+1;a=[v%k for v in a];h,f=([[0]*k for _ in g(m)]for _ in'12');w=lambda i:(fq:=[0]*k,c:=1,[fq.__setitem__(c:=c*y%k,fq[c]+1)for y in a[i*b:i*b+b]],[(t:=[0]*k,[fq[x]and t.__setitem__(px:=p*x%k,t[px]+fq[x])for x in g(k)],f[i].__setitem__(p,p*c%k),h[i].__setitem__(p,t))for p in g(k)]);[w(i)for i in g(m)];return[l-s for _,_,s,_ in q]if k==1 else[(a.__setitem__(i,v%k),w(i//b),p:=1,n:=0,[n:=n+((p:=p*y%k)==x)for y in a[s:s//b*b+b]],[(n:=n+h[j][p][x],p:=f[j][p])for j in g(s//b+1,m)],n)[-1]for i,v,s,x in q]
+        s=setitem;g=range;l=len(a);b=isqrt(l//k)or 1;m=(l-1)//b+1;a=[v%k for v in a];h,f=([k*[0]for _ in g(m)]for _ in'..');w=lambda i:(v:=[0]*k,c:=1,[s(v,c:=c*y%k,v[c]+1)for y in a[i*b:i*b+b]],[(t:=[0]*k,[v[x]and s(t,u:=p*x%k,t[u]+v[x])for x in g(k)],s(f[i],p,p*c%k),s(h[i],p,t))for p in g(k)]);[w(i)for i in g(m)];return[l-z for _,_,z,_ in q]if k==1 else[(s(a,i,v%k),w(i//b),p:=1,n:=0,[n:=n+((p:=p*y%k)==x)for y in a[z:z//b*b+b]],[(n:=n+h[j][p][x],p:=f[j][p])for j in g(z//b+1,m)],n)[-1]for i,v,z,x in q]
 
 class Solution:
     def resultArray(self, a: List[int], k: int, q: List[List[int]]) -> List[int]:
-        s=setitem;g=range;l=len(a);b=isqrt(l//k)or 1;m=(l-1)//b+1;a=[v%k for v in a];h,f=([k*[0]for _ in g(m)]for _ in'..');w=lambda i:(v:=[0]*k,c:=1,[s(v,c:=c*y%k,v[c]+1)for y in a[i*b:i*b+b]],[(t:=[0]*k,[v[x]and s(t,u:=p*x%k,t[u]+v[x])for x in g(k)],s(f[i],p,p*c%k),s(h[i],p,t))for p in g(k)]);[w(i)for i in g(m)];return[l-z for _,_,z,_ in q]if k==1 else[(s(a,i,v%k),w(i//b),p:=1,n:=0,[n:=n+((p:=p*y%k)==x)for y in a[z:z//b*b+b]],[(n:=n+h[j][p][x],p:=f[j][p])for j in g(z//b+1,m)],n)[-1]for i,v,z,x in q]
+        s=setitem;g=range;n=g(k);b=isqrt(len(a))+1;h={};w=lambda i,c=1:(v:=[0]*k,[s(v,c:=c*y%k,v[c]+1)for y in a[i*b:i*b+b]],s(h,i,[[sum(v[x]*(p*x%k==r)for x in n)for r in n]for p in n]+[c]));*map(w,g(b)),;return[[s(a,i,v),w(i//b),p:=1]and sum([(p:=p*y%k)==x for y in a[z:z-z%b+b]]+[h[j][p][x]+0*(p:=p*h[j][-1]%k)for j in g(z//b+1,b)])for i,v,z,x in q]
 
 test('''
 3525. Find X Value of Array II

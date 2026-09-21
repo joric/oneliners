@@ -253,8 +253,8 @@ class Solution:
         def w(i,c=1):
             v=[0]*k
             for y in a[i*b:i*b+b]:
-                s(v,c:=c*y%k,v[c]+1)
-            s(h,i,[[sum(v[x]*(p*x%k==r)for x in n)for r in n]for p in n]+[c])
+                v[c*y%k] += 1
+            h[i] = [[sum(v[x]*(p*x%k==r)for x in n)for r in n]for p in n]+[c]
 
         for i in g(b):
             w(i)
@@ -264,8 +264,12 @@ class Solution:
             s(a,i,v)
             w(i//b)
             p = 1
-            res.append(sum([x==(p:=p*y%k)for y in a[z:z-z%b+b]]+[h[j][p][x]+0*(p:=p*h[j][-1]%k)for j in g(z//b+1,b)]))
+            t = sum(x==(p:=p*y%k)for y in a[z:z-z%b+b])
+            t += sum(h[j][p][x]+0*(p:=p*h[j][-1]%k)for j in g(z//b+1,b))
+            res.append(t)
         return res
+
+test()
 
 class Solution:
     def resultArray(self, a: List[int], k: int, q: List[List[int]]) -> List[int]:

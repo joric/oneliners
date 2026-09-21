@@ -244,6 +244,49 @@ class Solution:
 
 class Solution:
     def resultArray(self, a: List[int], k: int, q: List[List[int]]) -> List[int]:
+        n = range(k)
+        b = isqrt(len(a)) + 1
+        h = {}
+        def w(i, c=1):
+            v = [0] * k
+            for y in a[i*b : i*b + b]:
+                c = c * y % k
+                v[c] += 1
+            table = []
+            for p in n:
+                row = []
+                for r in n:
+                    total = 0
+                    for x in n:
+                        if p * x % k == r:
+                            total += v[x]
+                    row.append(total)
+                table.append(row)
+            table.append(c)
+            h[i] = table
+
+        for i in range(b):
+            w(i)
+
+        result = []
+        for i, v, z, x in q:
+            a[i] = v
+            w(i // b)
+            p = 1
+            total = 0
+            end = z - z % b + b
+            for y in a[z:end]:
+                p = p * y % k
+                if p == x:
+                    total += 1
+            for j in range(z // b + 1, b):
+                total += h[j][p][x]
+                p = p * h[j][-1] % k
+            result.append(total)
+        return result
+
+class Solution:
+    def resultArray(self, a: List[int], k: int, q: List[List[int]]) -> List[int]:
         s=setitem;g=range;n=g(k);b=isqrt(len(a))+1;h={};w=lambda i,c=1:(v:=[0]*k,[s(v,c:=c*y%k,v[c]+1)for y in a[i*b:i*b+b]],s(h,i,[[sum(v[x]*(p*x%k==r)for x in n)for r in n]for p in n]+[c]));*map(w,g(b)),;return[[s(a,i,v),w(i//b),p:=1]and sum([(p:=p*y%k)==x for y in a[z:z-z%b+b]]+[h[j][p][x]+0*(p:=p*h[j][-1]%k)for j in g(z//b+1,b)])for i,v,z,x in q]
 
 test('''

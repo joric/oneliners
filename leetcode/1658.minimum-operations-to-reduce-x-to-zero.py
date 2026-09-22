@@ -6,6 +6,16 @@ class Solution:
     def minOperations(self, n: List[int], x: int) -> int:
         f=lambda v:enumerate(accumulate(v,initial=0));d={s:i for i,s in f(n)};return min((l for i,b in f(n[::-1])if x-b in d and(l:=i+d[x-b])<=len(n)),default=-1)
 
+class Solution:
+    def minOperations(self, n: List[int], x: int) -> int:
+        f=lambda v:enumerate(accumulate([0]+v));d={s:i for i,s in f(n)};return min((l for i,b in f(n[::-1])if(l:=i+d.get(x-b,1e9))<=len(n)),default=-1)
+
+# POTD 2026-09-23
+
+class Solution:
+    def minOperations(self, n: List[int], x: int) -> int:
+        f=lambda v:enumerate(accumulate([0]+v));d={s:i for i,s in f(n)};return min([l for i,b in f(n[::-1])if(l:=i+d.get(x-b,inf))<=len(n)]or[-1])
+
 test('''
 1658. Minimum Operations to Reduce X to Zero
 Medium

@@ -2,9 +2,7 @@ from lc import *
 
 # https://leetcode.com/problems/smallest-index-with-digit-sum-equal-to-index/solutions/7434163/one-line-by-khaled-alomari-rkxo/?envType=daily-question&envId=2026-09-24
 
-'''ts
-const smallestIndex=(a: number[])=>a.findIndex((v,i)=>i===`${v}`.split('').reduce((a,b) => a + +b,0));
-'''
+# typescript: const smallestIndex=(a: number[])=>a.findIndex((v,i)=>i===`${v}`.split('').reduce((a,b) => a + +b,0));
 
 class Solution:
     def smallestIndex(self, a: List[int]) -> int:
@@ -25,6 +23,10 @@ class Solution:
 class Solution:
     def smallestIndex(self, a: List[int]) -> int:
         i=-1;return bytes(sum(b'%d'%x)%48^(i:=i+1)for x in a).find(0)
+
+class Solution:
+    def smallestIndex(self, a: List[int]) -> int:
+        i=1;return bytes(sum(b'%04d'%x,i:=i-1)for x in a).find(192)
 
 test('''
 3550. Smallest Index With Digit Sum Equal to Index

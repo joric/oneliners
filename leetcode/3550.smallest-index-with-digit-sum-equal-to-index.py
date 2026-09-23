@@ -22,6 +22,10 @@ class Solution:
     def smallestIndex(self, a: List[int]) -> int:
         i=-1;return[*(i for x in a if(i:=i+1)==sum(b'%d'%x)%48),-1][0]
 
+class Solution:
+    def smallestIndex(self, a: List[int]) -> int:
+        i=-1;return bytes(sum(b'%d'%x)%48^(i:=i+1)for x in a).find(0)
+
 test('''
 3550. Smallest Index With Digit Sum Equal to Index
 Easy

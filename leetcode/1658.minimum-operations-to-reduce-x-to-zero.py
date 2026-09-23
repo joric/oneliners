@@ -16,6 +16,10 @@ class Solution:
     def minOperations(self, n: List[int], x: int) -> int:
         f=lambda v:enumerate(accumulate([0]+v));d={s:i for i,s in f(n)};return min([l for i,b in f(n[::-1])if(l:=i+d.get(x-b,inf))<=len(n)]or[-1])
 
+class Solution:
+    def minOperations(self, n: List[int], x: int) -> int:
+        i=1;d={(x:=x-v):(i:=i+1)for v in[0]+n};return~max(d.get(p+x,1)-d[p]for p in d)%i-1
+
 test('''
 1658. Minimum Operations to Reduce X to Zero
 Medium

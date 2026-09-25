@@ -50,16 +50,20 @@ class Solution:
         return sorted(set(res+cur))
 
 class Solution:
-    def braceExpansionII(self,e:str)->List[str]:
+    def braceExpansionII(self, e:str)->List[str]:
         return sorted({r for t in m[1].split(',')for r in self.braceExpansionII(m[0]+t+m[2])}if(m:=split('{([^{}]*)}',e,1))[1:]else{*e.split(',')})
 
 class Solution:
-    def braceExpansionII(self,e:str)->List[str]:
+    def braceExpansionII(self, e:str)->List[str]:
         return(f:=lambda e:sorted({r for t in m[1].split(',')for r in f(m[0]+t+m[2])}if(m:=split('{([^{}]*)}',e,1))[1:]else{*e.split(',')}))(e)
 
 class Solution:
-    def braceExpansionII(self,e:str)->List[str]:
+    def braceExpansionII(self, e:str)->List[str]:
         s=split;f=lambda e:sum([f(m[0]+t+m[2])for t in s(',',m[1])],[])if(m:=s('{([^{}]*)}',e,1))[1:]else s(',',e);return sorted({*f(e)})
+
+class Solution:
+    def braceExpansionII(self, e:str)->List[str]:
+        f=lambda e:sum([f(m[0]+t+m[2])for t in split(',',m[1])],[])if(m:=split('{([^{}]*)}',e,1))[1:]else m;return sorted({*f(e)})
 
 test('''
 1096. Brace Expansion II

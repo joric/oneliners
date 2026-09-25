@@ -18,13 +18,13 @@ class Solution:
     def evaluate(self, s: str, d: List[List[str]]) -> str:
         return re.sub(r'\((\w+)\)',lambda m,d=dict(d):d.get(m[1],'?'),s)
 
-class Solution:
+class Solution: # TLE
     def evaluate(self, s: str, d: List[List[str]]) -> str:
-        return s.translate({40:'%(',41:')s'})%defaultdict('?'.lower,d)
+        return re.sub('\((\w+)\)',lambda m:dict(d).get(m[1],'?'),s)
 
 class Solution:
     def evaluate(self, s: str, d: List[List[str]]) -> str:
-        return re.sub('\((\w+)\)',lambda m:dict(d).get(m[1],'?'),s)
+        return s.translate({40:'%(',41:')s'})%defaultdict('?'.lower,d)
 
 test('''
 1807. Evaluate the Bracket Pairs of a String

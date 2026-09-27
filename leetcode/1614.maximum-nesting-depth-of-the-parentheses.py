@@ -54,6 +54,12 @@ class Solution:
     def maxDepth(self, s: str) -> int:
         d=0;return max(d:=d+-')('.find(c)%3-1for c in s)
 
+# POTD 2026-09-28
+
+class Solution:
+    def maxDepth(self, s: str) -> int:
+        d=0;return max(d:=d+(c<')')-(c==')')for c in s)
+
 test('''
 1614. Maximum Nesting Depth of the Parentheses
 

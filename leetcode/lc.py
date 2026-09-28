@@ -336,7 +336,7 @@ def test(text=None, classname=None, check=None, init=None, custom=None, cast=Non
             elif type(res) in (float,bool) and type(expected)==int:
                 return False
             else:
-                return res==expected
+                return str(res)==str(expected)
 
     custom_class_tests = classname is not None and 'Launcher' not in str(classname) and custom!=False
 

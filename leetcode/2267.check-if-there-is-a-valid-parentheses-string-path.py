@@ -4,23 +4,7 @@ from lc import *
 
 class Solution:
     def hasValidPath(self, g: List[List[str]]) -> bool:
-        m,n=len(g),len(g[0]);f=cache(lambda x,y,r:(r:=r+(g[x][y]<")")*2-1)>=0 and(x==m-1 and y==n-1 and r==0 or x<m-1 and f(x+1,y,r) or y<n-1 and f(x,y+1,r)));return f(0,0,0)
-
-class Solution:
-    def hasValidPath(self, g: List[List[str]]) -> bool:
-        m,n=len(g),len(g[0]);f=cache(lambda x,y,k:x<m and y<n and(v:=k+(g[x][y]<')')*2-1)>=0 and(x+y==m+n-2 and v<1 or f(x+1,y,v)or f(x,y+1,v)));return f(0,0,0)
-
-class Solution:
-    def hasValidPath(self, g: List[List[str]]) -> bool:
-        m,n=len(g),len(g[0]);f=cache(lambda x,y,k:x<m and y<n and-1<(v:=k+(g[x][y]<')')*2-1)and((x+y+2==m+n)>v or f(x+1,y,v)or f(x,y+1,v)));return f(0,0,0)
-
-class Solution:
-    def hasValidPath(self, g: List[List[str]]) -> bool:
-        return(f:=cache(lambda x,y,k,m=len(g),n=len(g[0]):x<m and y<n and-1<(v:=k+(g[x][y]<')')*2-1)and((x+y+2==m+n)>v or f(x+1,y,v)or f(x,y+1,v))))(0,0,0)
-
-class Solution:
-    def hasValidPath(self, g: List[List[str]]) -> bool:
-        return(f:=cache(lambda x,y,k,m=len(g),n=len(g[0]):x<m*(y<n)and-1<(v:=k+(g[x][y]<')')*2-1)and(v<(x+y+2==m+n)or f(x+1,y,v)or f(x,y+1,v))))(0,0,0)
+        return(f:=cache(lambda x,y,k,m=len(g),n=len(g[0]):x<m*(y<n)and-1<(v:=k+(g[x][y]<')')*2-1)and(f(x+1,y,v)|f(x,y+1,v)or x+y+3>m+n+v)))(0,0,0)
 
 test('''
 2267. Check if There Is a Valid Parentheses String Path

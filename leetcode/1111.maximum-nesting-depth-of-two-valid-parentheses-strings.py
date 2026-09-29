@@ -23,6 +23,10 @@ class Solution:
     def maxDepthAfterSplit(self, s: str) -> List[int]:
         i=0;return[(i:=i+1)+ord(c)&1for c in s]
 
+class Solution:
+    def maxDepthAfterSplit(self, s: str) -> List[int]:
+        i=0;return[(i:=~i)+ord(c)&1for c in s]
+
 test('''
 1111. Maximum Nesting Depth of Two Valid Parentheses Strings
 Medium

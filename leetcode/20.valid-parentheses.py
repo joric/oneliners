@@ -60,6 +60,20 @@ class Solution:
     def isValid(self, s: str) -> bool:
         return not all(s:=re.sub(r'\(\)|\{\}|\[\]','',s)for _ in s)
 
+# POTD 2026-01-10
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        return not all(s:=re.sub('\(\)|\[]|{}','',s)for _ in s)
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        return all(s:=re.sub('\(\)|\[]|{}','',s)for i in s)<1
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        return''in(s:=re.sub('\(\)|\[]|{}','',s)for _ in s)
+
 test('''
 20. Valid Parentheses
 

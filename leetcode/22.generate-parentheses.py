@@ -30,7 +30,7 @@ class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
         s={''};[s:={x[:i]+'()'+x[i:]for x in s for i in range(99)}for _ in[0]*n];return[*s]
 
-# POTD 2026-10-02
+# POTD 2026-10-03
 
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:

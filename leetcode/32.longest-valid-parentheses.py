@@ -25,6 +25,41 @@ class Solution:
     def longestValidParentheses(self, s: str) -> int:
         return reduce(lambda a,i:(a[0],a[1]+[i]) if s[i]=='(' else ((a[0],[i]) if len(a[1])==1 else (max(a[0],i-a[1][-2]),a[1][:-1])),range(len(s)),(0,[-1]))[0]
 
+# POTD 2026-10-02
+
+class Solution:
+    def longestValidParentheses(self, s: str) -> int:
+        return reduce(lambda a,b:(max(a[0],b[0]-a[1][-2][0]), a[1][:-1]) if b[1]==')' and a[1][-1][1]=='(' else (a[0], a[1]+[(b)]), enumerate(s), (0,[(-1, ')')]))[0]
+
+class Solution:
+    def longestValidParentheses(self, s: str) -> int:
+        return reduce(lambda a,i:(a[0],a[1]+[i])if s[i]<')'else(max(a[0],i-a[1][-2]),a[1][:-1])if a[1][1:]else(a[0],[i]),range(len(s)),(0,[-1]))[0]
+
+class Solution:
+    def longestValidParentheses(self, s: str) -> int:
+        t=[-1];r=[0];[t.append(i)if c<')'else(t.pop(),t or t.append(i),r.append(i-t[-1]))for i,c in enumerate(s)];return max(r)
+
+class Solution:
+    def longestValidParentheses(self, s: str) -> int:
+        a=list.append;t=[-1];r=[0];[a(t,i)if c<')'else(t.pop(),t or a(t,i),a(r,i-t[-1]))for i,c in enumerate(s)];return max(r)
+
+class Solution:
+    def longestValidParentheses(self, s: str) -> int:
+        while s!=(s:=re.sub(r"\((g*)\)",r"g\1g",s)):0
+        return max(map(len,re.findall("g+",s)+[""]))
+
+class Solution:
+    def longestValidParentheses(self, s: str) -> int:
+        return max(map(len,re.findall("g+",reduce(lambda x,_:re.sub(r"\((g*)\)",r"g\1g",x),s,s))+[""]))
+
+class Solution:
+    def longestValidParentheses(self, s: str) -> int:
+        [s:=re.sub("\((g*)\)",r"g\1g",s)for _ in s];return max(map(len,re.findall("g*",s)))
+
+class Solution:
+    def longestValidParentheses(self, s: str) -> int:
+        all(s<(s:=re.sub("\((g*)\)",r"g\1g",s))for _ in s);return max(map(len,re.findall("g*",s)))
+
 test('''
 32. Longest Valid Parentheses
 Hard

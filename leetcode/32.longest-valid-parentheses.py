@@ -60,6 +60,11 @@ class Solution:
     def longestValidParentheses(self, s: str) -> int:
         all(s<(s:=re.sub('\((g*)\)','g\\1g',s))for _ in s);return max(map(len,re.findall('g*',s)))
 
+class Solution:
+    def longestValidParentheses(self, s: str) -> int:
+        all(s<(s:=re.sub('\((g*)\)','g\\1g',s))for x in s);return len(max(findall('g*',s)))
+
+
 test('''
 32. Longest Valid Parentheses
 Hard

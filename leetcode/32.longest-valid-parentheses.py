@@ -52,13 +52,13 @@ class Solution:
     def longestValidParentheses(self, s: str) -> int:
         return max(map(len,re.findall("g+",reduce(lambda x,_:re.sub(r"\((g*)\)",r"g\1g",x),s,s))+[""]))
 
-class Solution:
+class Solution: # TLE
     def longestValidParentheses(self, s: str) -> int:
         [s:=re.sub("\((g*)\)",r"g\1g",s)for _ in s];return max(map(len,re.findall("g*",s)))
 
 class Solution:
     def longestValidParentheses(self, s: str) -> int:
-        all(s<(s:=re.sub("\((g*)\)",r"g\1g",s))for _ in s);return max(map(len,re.findall("g*",s)))
+        all(s<(s:=re.sub('\((g*)\)','g\\1g',s))for _ in s);return max(map(len,re.findall('g*',s)))
 
 test('''
 32. Longest Valid Parentheses

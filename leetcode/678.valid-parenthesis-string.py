@@ -62,6 +62,7 @@ class Solution:
         return all((t:=0)<=min(t:=t-.5+(c!=r)for c in s)and(s:=s[::-1])for r in')(')
 
 '''
+# https://leetcode.com/problems/valid-parenthesis-string/solutions/8554397/bitset-dp-approach-brute-force-optimal-a-l50g/?envType=daily-question&envId=2026-10-04
 class Solution {
 public:
     bool checkValidString(string s) {

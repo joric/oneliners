@@ -37,7 +37,7 @@ return popcount(k-1u)&1;
 
 Note that `u` and `;` are mandatory here. If I find a shorter solution in other language I usually add it in comments.
 
-Another example:
+Another example where C++ is 1 character shorter:
 
 * https://leetcode.com/problems/valid-parenthesis-string
 
@@ -55,8 +55,6 @@ public:
     }
 };
 ```
-
-C++ here is 1 character shorter.
 
 * If you find a shorter solution that passes online leetcode tests (no MLE, no TLE), post it to the [issues](https://github.com/joric/oneliners/issues) section.
 

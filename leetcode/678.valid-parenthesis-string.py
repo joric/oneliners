@@ -61,6 +61,19 @@ class Solution:
     def checkValidString(self, s: str) -> bool:
         return all((t:=0)<=min(t:=t-.5+(c!=r)for c in s)and(s:=s[::-1])for r in')(')
 
+'''
+class Solution {
+public:
+    bool checkValidString(string s) {
+        __int128 m=1;for(char c:s)m=c<41?m*2:c<42?m/2:m|m*2|m/2;return m&1;
+    }
+};
+'''
+
+class Solution:
+    def checkValidString(self, s: str) -> bool:
+        b=1;[b:=(b*2,b//2,b|b*2|b//2)[ord(c)%5]for c in s];return b%2>0
+
 test('''
 678. Valid Parenthesis String
 Medium

@@ -39,6 +39,24 @@ class Solution:
     def checkValidString(self, s: str) -> bool:
         return all(0<=min(accumulate(2*(c!=r)-1for c in s))and(s:=s[::-1])for r in')(')
 
+# POTD 2026-10-04
+
+class Solution:
+    def checkValidString(self, s: str) -> bool:
+        return[s:=re.sub(r,r'\1',s)for r in('\((\**)\)','()\*\)|\(\*')for _ in s]and{*s}<={'*'}
+
+class Solution:
+    def checkValidString(self, s: str) -> bool:
+        return all(0<=min(accumulate((c!=r)-.5for c in s))and(s:=s[::-1])for r in')(')
+
+class Solution:
+    def checkValidString(self, s: str) -> bool:
+        return all((t:=0)<=min(t:=~-t+2*(c!=r)for c in s)and(s:=s[::-1])for r in')(')
+
+class Solution:
+    def checkValidString(self, s: str) -> bool:
+        return all((t:=0)<=min(t:=t+(c!=r)-.5for c in s)and(s:=s[::-1])for r in')(')
+
 test('''
 678. Valid Parenthesis String
 Medium

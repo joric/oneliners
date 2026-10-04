@@ -66,7 +66,7 @@ class Solution:
 class Solution {
 public:
     bool checkValidString(string s) {
-        __int128 m=1;for(char c:s)m=c<41?m*2:c<42?m/2:m|m*2|m/2;return m&1;
+        auto m=1lu;for(char c:s)m=c<41?m*2:c<42?m/2:m|m*2|m/2;return m&1;
     }
 };
 '''

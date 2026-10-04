@@ -37,6 +37,27 @@ return popcount(k-1u)&1;
 
 Note that `u` and `;` are mandatory here. If I find a shorter solution in other language I usually add it in comments.
 
+Another example:
+
+* https://leetcode.com/problems/valid-parenthesis-string
+
+```python
+class Solution:
+    def checkValidString(self, s: str) -> bool:
+        b=1;[b:=(b*2,b//2,b|b*2|b//2)[ord(c)%5]for c in s];return b%2>0
+```
+
+```cpp
+class Solution {
+public:
+    bool checkValidString(string s) {
+        auto m=1lu;for(int c:s)m=c&2?m|m*2|m/2:c&1?m/2:m*2;return m&1;
+    }
+};
+```
+
+C++ here is 1 character shorter.
+
 * If you find a shorter solution that passes online leetcode tests (no MLE, no TLE), post it to the [issues](https://github.com/joric/oneliners/issues) section.
 
 ### Leetcode-specific

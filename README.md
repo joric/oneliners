@@ -37,7 +37,7 @@ return popcount(k-1u)&1;
 
 Note that `u` and `;` are mandatory here. If I find a shorter solution in other language I usually add it in comments.
 
-Another example where C++ is 1 character shorter:
+Another rare example where C++ is 1 character shorter:
 
 * https://leetcode.com/problems/valid-parenthesis-string
 

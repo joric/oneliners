@@ -57,6 +57,10 @@ class Solution:
     def checkValidString(self, s: str) -> bool:
         return all((t:=0)<=min(t:=t+(c!=r)-.5for c in s)and(s:=s[::-1])for r in')(')
 
+class Solution:
+    def checkValidString(self, s: str) -> bool:
+        return all((t:=0)<=min(t:=t-.5+(c!=r)for c in s)and(s:=s[::-1])for r in')(')
+
 test('''
 678. Valid Parenthesis String
 Medium

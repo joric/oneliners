@@ -83,10 +83,6 @@ class Solution:
     def removeInvalidParentheses(self, s: str) -> List[str]:
         return(f:=lambda l:[x for x in l if reduce(lambda a,c:a and a+(c<')')-(c==')'),x,1)==1]or f({x[:i]+x[i+1:]for x in l for i in range(25)}))({s})
 
-class Solution:
-    def removeInvalidParentheses(self, s: str) -> List[str]:
-        return(f:=lambda l:[x for x in l if reduce(lambda a,c:a<<(c<')')>>(c==')'),x,1)==1]or f({x[:i]+x[i+1:]for x in l for i in range(25)}))({s})
-
 test('''
 301. Remove Invalid Parentheses
 Hard

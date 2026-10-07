@@ -31,6 +31,14 @@ class Solution:
     def removeOuterParentheses(self, s: str) -> str:
         t=0;return''.join(c for c in s if(t:=t+81-2*ord(c))>(c<')'))
 
+class Solution:
+    def removeOuterParentheses(self, s: str) -> str:
+        d=0;return''.join(c for c in s if(d:=d+2*(t:=c<')')-1)>t)
+
+class Solution:
+    def removeOuterParentheses(self, s: str) -> str:
+        d=0;return''.join(c for c in s if d*(d:=d-1+(c<')')*2))
+
 test('''
 1021. Remove Outermost Parentheses
 Solved

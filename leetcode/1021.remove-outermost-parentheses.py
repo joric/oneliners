@@ -43,6 +43,10 @@ class Solution:
     def removeOuterParentheses(self, s: str) -> str:
         d=0;return''.join(c for c in s if d*(d:=d+(c<')')-.5))
 
+class Solution:
+    def removeOuterParentheses(self, s: str) -> str:
+        d=0;return''.join(c[:d*(d:=d+(c<')'or-1))]for c in s)
+
 test('''
 1021. Remove Outermost Parentheses
 Solved

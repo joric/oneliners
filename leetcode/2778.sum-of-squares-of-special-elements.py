@@ -16,6 +16,10 @@ class Solution:
     def sumOfSquares(self, s: List[int]) -> int:
         return sum(v*v for i,v in enumerate(s,1)if len(s)%i<1)
 
+class Solution:
+    def sumOfSquares(self, s: List[int]) -> int:
+        return sum(v*v*(len(s)%i<1)for i,v in enumerate(s,1))
+
 test('''
 2778. Sum of Squares of Special Elements
 Easy

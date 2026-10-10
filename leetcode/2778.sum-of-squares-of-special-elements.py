@@ -6,6 +6,14 @@ class Solution:
     def sumOfSquares(self, s: List[int]) -> int:
         n=len(s);return sum(s[i-1]**2 for i in{x for i in range(1,ceil(sqrt(n))+1)if n%i==0 for x in(i,n//i)})
 
+class Solution:
+    def sumOfSquares(self, s: List[int]) -> int:
+        n=len(s);return sum(s[i-1]**2 for i in{x for i in range(1,isqrt(n)+1)if n%i<1for x in(i,n//i)})
+
+class Solution:
+    def sumOfSquares(self, s: List[int]) -> int:
+        return sum(v*v for i,v in enumerate(s,1)if len(s)%i<1)
+
 test('''
 2778. Sum of Squares of Special Elements
 Easy

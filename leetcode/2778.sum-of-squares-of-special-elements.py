@@ -10,7 +10,7 @@ class Solution:
     def sumOfSquares(self, s: List[int]) -> int:
         n=len(s);return sum(s[i-1]**2 for i in{x for i in range(1,isqrt(n)+1)if n%i<1for x in(i,n//i)})
 
-# POTD 2026-10-10
+# POTD 2026-10-11
 
 class Solution:
     def sumOfSquares(self, s: List[int]) -> int:

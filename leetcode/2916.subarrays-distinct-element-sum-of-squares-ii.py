@@ -27,18 +27,6 @@ class Solution:
     def sumCounts(self, a: List[int]) -> int:
         p=10**9+7;n=len(a);q=[-1]*n;m={};b=[0]*(n+2);c=[0]*(n+2);z=0;u=0;s=setitem
         any(s(q,i,m.get(a[i],-1))or s(m,a[i],i)for i in range(n))
-        d=lambda t,i,v:i<=n+1 and (s(t,i,t[i]+v),d(t,i+(i&-i),v))[0]is None or d(t,i+(i&-i),v) if i<=n+1 else None
-        e=lambda t,i:i>0 and (t[i]+e(t,i-(i&-i))) or 0
-        f=lambda l,r,v:(d(b,l,v),d(b,r+1,-v),d(c,l,v*(l-1)),d(c,r+1,-v*r))
-        g=lambda i:e(b,i)*i-e(c,i)
-        h=lambda l,r:g(r)-g(l-1)
-        all((l:=q[i]+2,r:=i+1,u:=(u+2*h(l,r)+r-l+1)%p,f(l,r,1),z:=(z+u)%p)for i in range(n))
-        return z%p
-
-class Solution:
-    def sumCounts(self, a: List[int]) -> int:
-        p=10**9+7;n=len(a);q=[-1]*n;m={};b=[0]*(n+2);c=[0]*(n+2);z=0;u=0;s=setitem
-        any(s(q,i,m.get(a[i],-1))or s(m,a[i],i)for i in range(n))
         d=lambda t,i,v:i<=n+1 and(s(t,i,t[i]+v)or d(t,i+(i&-i),v))
         e=lambda t,i:i>0 and (t[i]+e(t,i-(i&-i))) or 0
         f=lambda l,r,v:(d(b,l,v),d(b,r+1,-v),d(c,l,v*(l-1)),d(c,r+1,-v*r))
@@ -49,11 +37,11 @@ class Solution:
 
 class Solution:
     def sumCounts(self, a: List[int]) -> int:
-        p=10**9+7;n=len(a);q=[-1]*n;m={};b=[0]*(n+2);c=[0]*(n+2);z=0;u=0;s=setitem;d=lambda t,i,v:i<=n+1 and(s(t,i,t[i]+v)or d(t,i+(i&-i),v));e=lambda t,i:i>0 and t[i]+e(t,i-(i&-i))or 0;any([(s(q,i,m.get(a[i],-1)),s(m,a[i],i))for i in range(n)]);any([(l:=q[i]+2,r:=i+1,u:=(u+2*(e(b,r)*r-e(c,r)-e(b,l-1)*(l-1)+e(c,l-1))+r-l+1)%p,(d(b,l,1),d(b,r+1,-1),d(c,l,l-1),d(c,r+1,-r),z:=(z+u)%p))for i in range(n)]);return z%p
+        p=10**9+7;n=len(a);m={};b=[0]*(n+2);c=b[:];z=u=0;s=setitem;d=lambda t,i,v:i<n+2 and(s(t,i,t[i]+v)or d(t,i+(i&-i),v));e=lambda t,i:i and t[i]+e(t,i-(i&-i));[(l:=m.get(a[i],-1)+2,r:=i+1,s(m,a[i],i),u:=(u+2*(e(b,r)*r-e(c,r)+e(c,l-1)-e(b,l-1)*(l-1))+r-l+1)%p,d(b,l,1),d(b,r+1,-1),d(c,l,l-1),d(c,r+1,-r),z:=(z+u)%p)for i in range(n)];return z%p
 
 class Solution:
     def sumCounts(self, a: List[int]) -> int:
-        p=10**9+7;n=len(a);m={};b=[0]*(n+2);c=b[:];z=u=0;s=setitem;d=lambda t,i,v:i<n+2 and(s(t,i,t[i]+v)or d(t,i+(i&-i),v));e=lambda t,i:i and t[i]+e(t,i-(i&-i));[(l:=m.get(a[i],-1)+2,r:=i+1,s(m,a[i],i),u:=(u+2*(e(b,r)*r-e(c,r)+e(c,l-1)-e(b,l-1)*(l-1))+r-l+1)%p,d(b,l,1),d(b,r+1,-1),d(c,l,l-1),d(c,r+1,-r),z:=(z+u)%p)for i in range(n)];return z%p
+        n=len(a)+1;t=Counter();d=lambda x,v:x and(t.update({x:v})or d(x&x-1,v));q=lambda x:x<n and t[x]+q(x+(x&-x));return sum(d(p:=t[~y],-p*n-1)or setitem(t,~y,k)or d(k,k*n+1)or(n-k)*(2*((r:=q(p+1))//n-r%n*p)-k+p)for k,y in enumerate(a,1))%(10**9+7)
 
 test('''
 2916. Subarrays Distinct Element Sum of Squares II

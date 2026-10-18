@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/number-of-ways-to-reorder-array-to-get-same-bst/solutions/8577166/god-is-great-497-by-muthuvrn-3ezz/?envType=daily-question&envId=2026-10-18
+
 class Solution:
     def numOfWays(self, nums: List[int]) -> int:
         def f(a):
@@ -13,8 +15,18 @@ class Solution:
         f=lambda a:len(a)>2and comb(len(l:=[v for v in a if v<a[0]])+len(r:=[v for v in a if v>a[0]]),len(r))*f(l)*f(r)or 1;return(f(n)-1)%(10**9+7)
 
 class Solution:
-    def numOfWays(self, n):
+    def numOfWays(self, n: List[int]) -> int:
         f=lambda a:a and comb(len(a)-1,len(l:=[v for v in a if v<a[0]]))*f(l)*f([v for v in a if v>a[0]])or 1;return(f(n)-1)%(10**9+7)
+
+class Solution:
+    def numOfWays(self, n: List[int]) -> int:
+        f=lambda x=0,*a:x<1or x*f(*filter(x.__gt__,a))*f(*filter(x.__lt__,a))//-~len(a);return~-f(*n)%(10**9+7)
+
+# POTD 2026-10-18
+
+class Solution:
+    def numOfWays(self, n: List[int]) -> int:
+        s=[0,len(n)+1];return~-prod(n)//prod(insort(s,x)or~s[j:=s.index(x)-1]+s[j+2]for x in n)%(10**9+7)
 
 test('''
 1569. Number of Ways to Reorder Array to Get Same BST

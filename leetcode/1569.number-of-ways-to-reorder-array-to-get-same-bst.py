@@ -22,6 +22,10 @@ class Solution:
     def numOfWays(self, n: List[int]) -> int:
         f=lambda x=0,*a:x<1or x*f(*filter(x.__gt__,a))*f(*filter(x.__lt__,a))//-~len(a);return~-f(*n)%(10**9+7)
 
+class Solution:
+    def numOfWays(self, n: List[int]) -> int:
+        f=lambda x=0,*a,g=filter:x<1or x*f(*g(x.__gt__,a))*f(*g(x.__lt__,a))//-~len(a);return~-f(*n)%(10**9+7)
+
 # POTD 2026-10-18
 
 class Solution:

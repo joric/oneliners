@@ -10,6 +10,10 @@ class Solution:
     def minOperations(self, s:str)->int:
         t=sorted(s);a,*_,b=t*2;return([*s]!=t)*(s[2:]and 3-(a in s[:-1]or b in s[1:])-(a==s[0]or b==s[-1])or-1)
 
+class Solution:
+    def minOperations(self, s:str)->int:
+        t=sorted(s);a,*_,b=t*2;return([*s]>t)*(1+(s[0]>a<b>s[-1])|(not{a,b}&{*s[1:-1]})|-(len(s)<3))
+
 test('''
 3863. Minimum Operations to Sort a String
 Solved

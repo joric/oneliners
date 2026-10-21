@@ -30,6 +30,10 @@ class Solution:
     def minOperations(self, a: List[int]) -> int:
         n=len(a);j=a.index(0);r=[*range(1,n)];b=a[j+1:]+a[:j];return min(x:=[-1,j,n-j][b==r or(b[::-1]==r)*2],n-x+2)
 
+class Solution:
+    def minOperations(self, a: List[int]) -> int:
+        n=len(a);q,*b=a;d=sum(map(gt,a,b+a));return(q+d>1)*min(n-q,q+2)|-(1<d<n-1)
+
 test('''
 3942. Minimum Operations to Sort a Permutation
 Medium

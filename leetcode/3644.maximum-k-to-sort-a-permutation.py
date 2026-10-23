@@ -14,6 +14,14 @@ class Solution:
     def sortPermutation(self, a: List[int]) -> int:
         return reduce(and_,[x for x,y in zip(a,sorted(a))if x!=y]or[0])
 
+class Solution:
+    def sortPermutation(self, a: List[int]) -> int:
+        return reduce(and_,[x for x in a if x^a[x]]or[0])
+
+class Solution:
+    def sortPermutation(self, a: List[int]) -> int:
+        return reduce(and_,[x for x in a if x^a[x]]or a)
+
 test('''
 3644. Maximum K to Sort a Permutation
 Medium

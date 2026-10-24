@@ -46,6 +46,12 @@ class Solution:
     def closedIsland(self, g: List[List[str]]) -> int:
         e=enumerate;d={i+j*1j:1-x for i,r in e(g)for j,x in e(r)};f=lambda z:d.pop(z,0)and[f(z+1j**k)for k in range(4)]!=0;[f(z)for z in set(d)if not(0<z.real<len(g)-1 and 0<z.imag<len(g[0])-1)];return sum(map(f,set(d)))
 
+# POTD 2026-10-24
+
+class Solution:
+    def closedIsland(self, g: list[list[int]]) -> int:
+        import scipy.ndimage as s;return s.label(s.binary_fill_holes(g)-g)[1]
+
 test('''
 1254. Number of Closed Islands
 Medium

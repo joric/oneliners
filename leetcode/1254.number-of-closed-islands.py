@@ -1,5 +1,7 @@
 from lc import *
 
+# https://leetcode.com/problems/number-of-closed-islands/solutions/8587361/did-the-flood-escape-one-pass-dfs-bonus-3tlq6/?parent=3588607
+
 class Solution:
     def closedIsland(self, grid: List[List[int]]) -> int:
         h,w = len(grid), len(grid[0])

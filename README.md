@@ -356,10 +356,15 @@ class Solution:isStrictlyPalindromic=not_
 
 ### Esoteric
 
-You can encode solutions as Chinese characters (e.g. "猨" is 28 73 => "(s" and so on):
+You can encode solutions as Chinese characters (e.g. "猨" is 28 73 => "(s" and so on). It's technically shorter:
 
 
 ```python
+
+class Solution:
+    def closedIsland(self, g: list[list[int]]) -> int:
+        return(s:=__import__('scipy').ndimage).label(s.binary_fill_holes(g)-g)[1]
+
 class Solution:
     def closedIsland(self, g: list[list[int]]) -> int:
         import scipy.ndimage as s;return s.label(s.binary_fill_holes(g)-g)[1]
@@ -367,7 +372,14 @@ class Solution:
 class Solution:
     def closedIsland(self, g: list[list[int]]) -> int:
         return eval(bytes('猨㴺彟浩潰瑲彟✨捳灩❹⸩摮浩条⥥氮扡汥猨戮湩牡役楦汬桟汯獥木帩⥧ㅛ⁝','u16')[2:])
+
+class Solution:
+    def closedIsland(self, g: list[list[int]]) -> int:
+        exec(bytes('浩潰瑲猠楣祰渮楤慭敧愠⁳㭳汧扯污爠爻猽氮扡汥猨戮湩牡役楦汬桟汯獥木⴩⥧ㅛ⁝','u16')[2:]);return r
+
 ```
+
+Sadly, eval only accepts expressions, and import ...; is a statement.
 
 ### Lambdas
 

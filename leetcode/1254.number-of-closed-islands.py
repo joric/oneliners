@@ -50,11 +50,16 @@ class Solution:
 
 class Solution:
     def closedIsland(self, g: list[list[int]]) -> int:
+        return(s:=__import__('scipy').ndimage).label(s.binary_fill_holes(g)-g)[1]
+
+class Solution:
+    def closedIsland(self, g: list[list[int]]) -> int:
         import scipy.ndimage as s;return s.label(s.binary_fill_holes(g)-g)[1]
 
 class Solution:
     def closedIsland(self, g: list[list[int]]) -> int:
         return eval(bytes('猨㴺彟浩潰瑲彟✨捳灩❹⸩摮浩条⥥氮扡汥猨戮湩牡役楦汬桟汯獥木帩⥧ㅛ⁝','u16')[2:])
+
 
 test('''
 1254. Number of Closed Islands

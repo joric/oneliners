@@ -15,7 +15,7 @@ class Solution:
 
 class Solution:
     def countIslands(self, g: List[List[int]], k: int) -> int:
-        import scipy.ndimage as s;l,c=s.label(g);return sum(x%k<1for x in s.sum(g,l,range(1,c+1)))
+        import scipy.ndimage as s;l,c=s.label(g);return int(sum(x%k<1for x in s.sum(g,l,range(1,c+1))))
 
 test('''
 3619. Count Islands With Total Value Divisible by K

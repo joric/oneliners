@@ -60,7 +60,6 @@ class Solution:
     def closedIsland(self, g: list[list[int]]) -> int:
         return eval(bytes('猨㴺彟浩潰瑲彟✨捳灩❹⸩摮浩条⥥氮扡汥猨戮湩牡役楦汬桟汯獥木帩⥧ㅛ⁝','u16')[2:])
 
-
 test('''
 1254. Number of Closed Islands
 Medium

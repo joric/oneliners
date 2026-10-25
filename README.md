@@ -356,7 +356,7 @@ class Solution:isStrictlyPalindromic=not_
 
 ### Esoteric
 
-You can encode solutions as Chinese characters (e.g. "猨" is 28 73 => "(s" and so on). It's technically shorter:
+You can encode solutions as Chinese characters (e.g. "猨" is 28 73 => "(s" and so on). It's technically shorter by 3 chars:
 
 
 ```python

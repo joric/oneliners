@@ -358,6 +358,8 @@ class Solution:isStrictlyPalindromic=not_
 
 You can encode solutions as Chinese characters (e.g. "猨" is 28 73 => "(s" and so on). It's technically shorter by 3 chars:
 
+* https://leetcode.com/problems/number-of-closed-islands
+
 
 ```python
 
@@ -375,7 +377,7 @@ class Solution:
 
 ```
 
-Sadly, eval only accepts expressions, and import ...; is a statement (exec is longer).
+Sadly, `eval` only accepts expressions, and `import ...;` is a statement (`exec` is longer).
 
 ### Lambdas
 

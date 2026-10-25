@@ -373,13 +373,9 @@ class Solution:
     def closedIsland(self, g: list[list[int]]) -> int:
         return eval(bytes('猨㴺彟浩潰瑲彟✨捳灩❹⸩摮浩条⥥氮扡汥猨戮湩牡役楦汬桟汯獥木帩⥧ㅛ⁝','u16')[2:])
 
-class Solution:
-    def closedIsland(self, g: list[list[int]]) -> int:
-        exec(bytes('浩潰瑲猠楣祰渮楤慭敧愠⁳㭳汧扯污爠爻猽氮扡汥猨戮湩牡役楦汬桟汯獥木⴩⥧ㅛ⁝','u16')[2:]);return r
-
 ```
 
-Sadly, eval only accepts expressions, and import ...; is a statement.
+Sadly, eval only accepts expressions, and import ...; is a statement (exec is longer).
 
 ### Lambdas
 

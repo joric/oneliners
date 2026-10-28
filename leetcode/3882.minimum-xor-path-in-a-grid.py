@@ -30,7 +30,11 @@ class Solution:
 
 class Solution:
     def minCost(self, g: list[list[int]]) -> int:
-       return eval(bytes('業⡮敲畤散氨浡摢ౡⱄⱇ㵚絻嬺㩚笽幍㩕⁍潦ॲ⁕湩娉䑼瀮灯〨漩筲細晽牯䴠椉౮嵇本嬬絻⩝〱㐲嬩ㄭ⥝','u16')[2:])
+        return eval(bytes('業⡮敲畤散氨浡摢ౡⱄⱇ㵚絻嬺㩚笽幍㩕⁍潦ॲ⁕湩娉䑼瀮灯〨漩筲細晽牯䴠椉౮嵇本嬬絻⩝〱㐲嬩ㄭ⥝','u16')[2:])
+
+class Solution:
+    def minCost(self, g: list[list[int]]) -> int:
+        return eval(bytes('業⡮敲畤散氨浡摢ౡⱺⱘ⨪㩂䉛㴺捻牞ㄺ潦ॲॲ湩䈉穼瀮灯〨漩筲細晽牯按椉౮嵘本嬬絻⩝〱㐲嬩ㄭ⥝','u16')[2:])
 
 test('''
 3882. Minimum XOR Path in a Grid

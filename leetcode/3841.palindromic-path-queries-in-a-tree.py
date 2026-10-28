@@ -90,6 +90,10 @@ class Solution:
     def palindromePath(self, n: int, e: list[list[int]], s: str, q: list[str]) -> list[bool]:
         g=[[]for _ in s];[g[a].append(b)or g[b].append(a)for a,b in e];t=[(0,0)];o=[*t]+[t.extend(([(v,-1)]+[(w,v)for w in g[v]if w-r])*(r>=0))or(v,r)for v,r in iter(lambda:t and t.pop(),[])];I={v^r>>99:z for z,(v,r)in enumerate(o)};A=[I[r]for v,r in o];m=[1<<ord(s[v])for v,r in o];k=0;P=[k:=k^v for v in m];B=[0]*len(m);T=[A];[T.append([*map(min,u:=T[-1],u[1<<len(T)-1:])])for _ in T if T[-1]];f=lambda x:x and B[x]^f(x&x-1);h=lambda u,d:u<len(B)and(setitem(B,u,B[u]^d)or h(u+(u&-u),d));return[a==b or(c:=P[a]^P[b]^f(a)^f(b)^m[min(T[j:=len(bin(b-a))-3][a+1],T[j][b+1-2**j])])&c-1<1for d,x,y in map(str.split,q)if d<'u'or h(p:=I[i:=int(x)],c:=1<<ord(y)^m[p])or h(I[~i],c)or setitem(m,p,m[p]^c)for a,b in[sorted((I[int(x)],I[int(y)]))]]
 
+class Solution:
+    def palindromePath(self, n: int, e: list[list[int]], s: str, q: list[str]) -> list[bool]:
+        g=[[]for _ in s];[g[a].append(b)or g[b].append(a)for a,b in e];t=[0,(0,0)];o=[~r and t.extend([(v,-1)]+[(w,v)for w in g[v]if w-r])or(v,r)for v,r in iter(t.pop,0)];B=[0]*len(o);f=lambda x:x and B[x]^f(x&x-1);h=lambda u,d:u<len(B)and(setitem(B,u,B[u]^d)or h(u+(u&-u),d));I={v^r>>99:h(z,1<<ord(s[v]))or z for z,(v,r)in enumerate(o,1)};T=[[I[r]for v,r in o]];[T.append([*map(min,u,u[1<<len(T)-1:])])for u in T if u];return[(c:=f(a)^f(b)^f(k:=min(T[j:=len(bin(b-a))-3][a],T[j][b-2**j]))^f(k-1))&c-1<1for d,x,y in map(str.split,q)if d<'u'or h(p:=I[i:=int(x)],c:=1<<ord(y)^f(p)^f(p-1))or h(I[~i],c)for a,b in[sorted((I[int(x)],I[int(y)]))]]
+
 test('''
 3841. Palindromic Path Queries in a Tree
 Hard

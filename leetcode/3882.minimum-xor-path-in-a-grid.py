@@ -28,6 +28,12 @@ class Solution:
     def minCost(self, g: list[list[int]]) -> int:
         d=[{}]*1000;[[s:={},d:=[s:={x^v:x for v in s|d.pop(0)or{0}}for x in r]]for r in g];return min(s)
 
+'''
+class Solution:
+    def minCost(self, g: list[list[int]]) -> int:
+        return eval(bytes('業⡮敲畤散氨浡摢ॡⱤⱲ㵳絻嬺㩳笽幸㩶ॸ潦ॲॶ湩猉摼瀮灯〨漩筲細晽牯砉椉८嵲本嬬絻⩝〱〰️嬩ㄭ⥝','u16')[2:])
+'''
+
 test('''
 3882. Minimum XOR Path in a Grid
 Medium

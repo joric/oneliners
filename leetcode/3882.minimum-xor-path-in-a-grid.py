@@ -22,6 +22,10 @@ class Solution:
 
 class Solution:
     def minCost(self, g: list[list[int]]) -> int:
+        d=[{0}];[d:=[s:={x^v for v in s|(d or[s]).pop(0)}for x in r]for r in g if(s:=d[0])];return min(s)
+
+class Solution:
+    def minCost(self, g: list[list[int]]) -> int:
         d=[{}]*1000;[[s:={},d:=[s:={x^v:x for v in s|d.pop(0)or{0}}for x in r]]for r in g];return min(s)
 
 test('''

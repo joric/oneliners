@@ -28,11 +28,9 @@ class Solution:
     def minCost(self, g: list[list[int]]) -> int:
         d=[{}]*1000;[[s:={},d:=[s:={x^v:x for v in s|d.pop(0)or{0}}for x in r]]for r in g];return min(s)
 
-'''
 class Solution:
     def minCost(self, g: list[list[int]]) -> int:
-        return eval(bytes('業⡮敲畤散氨浡摢ॡⱤⱲ㵳絻嬺㩳笽幸㩶ॸ潦ॲॶ湩猉摼瀮灯〨漩筲細晽牯砉椉८嵲本嬬絻⩝〱〰️嬩ㄭ⥝','u16')[2:])
-'''
+       return eval(bytes('業⡮敲畤散氨浡摢ౡⱄⱇ㵚絻嬺㩚笽幍㩕⁍潦ॲ⁕湩娉䑼瀮灯〨漩筲細晽牯䴠椉౮嵇本嬬絻⩝〱㐲嬩ㄭ⥝','u16')[2:])
 
 test('''
 3882. Minimum XOR Path in a Grid
@@ -63,8 +61,8 @@ Explanation:
 
 There are two valid paths:
 
-(0, 0) → (0, 1) → (1, 1) with XOR: 1 XOR 2 XOR 4 = 7
-(0, 0) → (1, 0) → (1, 1) with XOR: 1 XOR 3 XOR 4 = 6
+(0, 0) в†’ (0, 1) в†’ (1, 1) with XOR: 1 XOR 2 XOR 4 = 7
+(0, 0) в†’ (1, 0) в†’ (1, 1) with XOR: 1 XOR 3 XOR 4 = 6
 The minimum XOR value among all valid paths is 6.
 
 Example 2:
@@ -77,8 +75,8 @@ Explanation:
 
 There are two valid paths:
 
-(0, 0) → (0, 1) → (1, 1) with XOR: 6 XOR 7 XOR 8 = 9
-(0, 0) → (1, 0) → (1, 1) with XOR: 6 XOR 5 XOR 8 = 11
+(0, 0) в†’ (0, 1) в†’ (1, 1) with XOR: 6 XOR 7 XOR 8 = 9
+(0, 0) в†’ (1, 0) в†’ (1, 1) with XOR: 6 XOR 5 XOR 8 = 11
 The minimum XOR value among all valid paths is 9.
 
 Example 3:
@@ -91,7 +89,7 @@ Explanation:
 
 There is only one valid path:
 
-(0, 0) → (0, 1) → (0, 2) with XOR: 2 XOR 7 XOR 5 = 0
+(0, 0) в†’ (0, 1) в†’ (0, 2) with XOR: 2 XOR 7 XOR 5 = 0
 The XOR value of this path is 0, which is the minimum possible.
 
  
@@ -101,7 +99,7 @@ Constraints:
 1 <= m == grid.length <= 1000
 1 <= n == grid[i].length <= 1000
 m * n <= 1000
-0 <= grid[i][j] <= 1023​
+0 <= grid[i][j] <= 1023вЂ‹
  
 Seen this question in a real interview before?
 1/6

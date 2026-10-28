@@ -356,7 +356,8 @@ class Solution:isStrictlyPalindromic=not_
 
 ### Esoteric
 
-You can encode solutions as Chinese characters (e.g. "猨" is 28 73 => "(s" and so on). It's technically shorter by 3 chars:
+You can encode solutions as Chinese characters (e.g. "猨" is 28 73 => "(s" and so on). It's technically shorter by 3 chars.
+Sadly, `eval` only accepts expressions, and `import ...;` is a statement (`exec` is longer).
 
 * https://leetcode.com/problems/number-of-closed-islands
 
@@ -376,8 +377,6 @@ class Solution:
         return eval(bytes('猨㴺彟浩潰瑲彟✨捳灩❹⸩摮浩条⥥氮扡汥猨戮湩牡役楦汬桟汯獥木帩⥧ㅛ⁝','u16')[2:])
 
 ```
-
-Sadly, `eval` only accepts expressions, and `import ...;` is a statement (`exec` is longer).
 
 ### Lambdas
 

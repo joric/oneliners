@@ -16,6 +16,10 @@ class Solution:
     def minCost(self, g: list[list[int]]) -> int:
         return min((f:=cache(lambda i,j:set()if i//len(g)|j//len(g[0])else{g[i][j]^v for v in f(i+1,j)|f(i,j+1)}or{g[i][j]}))(0,0))
 
+class Solution:
+    def minCost(self, g: list[list[int]]) -> int:
+        d=[[0]];[d:=[s:=[*{x^v for v in s+(d or[[]]).pop(0)}]for x in r]for r in g if[s:=[]]];return min(s)
+
 test('''
 3882. Minimum XOR Path in a Grid
 Medium

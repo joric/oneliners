@@ -94,6 +94,10 @@ class Solution:
     def palindromePath(self, n: int, e: list[list[int]], s: str, q: list[str]) -> list[bool]:
         g=[[]for _ in s];[g[a].append(b)or g[b].append(a)for a,b in e];t=[0,(0,0)];o=[~r and t.extend([(v,-1)]+[(w,v)for w in g[v]if w-r])or(v,r)for v,r in iter(t.pop,0)];B=[0]*len(o);f=lambda x:x and B[x]^f(x&x-1);h=lambda u,d:u<len(B)and(setitem(B,u,B[u]^d)or h(u+(u&-u),d));I={v^r>>99:h(z,1<<ord(s[v]))or z for z,(v,r)in enumerate(o,1)};T=[[I[r]for v,r in o]];[T.append([*map(min,u,u[1<<len(T)-1:])])for u in T if u];return[(c:=f(a)^f(b)^f(k:=min(T[j:=len(bin(b-a))-3][a],T[j][b-2**j]))^f(k-1))&c-1<1for d,x,y in map(str.split,q)if d<'u'or h(p:=I[i:=int(x)],c:=1<<ord(y)^f(p)^f(p-1))or h(I[~i],c)for a,b in[sorted((I[int(x)],I[int(y)]))]]
 
+class Solution:
+    def palindromePath(self, n: int, e: list[list[int]], s: str, q: list[str]) -> list[bool]:
+        g=defaultdict(set);[g[a].add(b)==g[b].add(a)for a,b in e];S=setitem;C={};H=lambda c,b:S(C,c,C.get(c,0)^b)or b;t=[(0,n)];[t.extend(zip(g[v]-{r},[v]*n))==S(g,v,g.get(r,0)|H(s[v],1<<(n:=n-1)))for v,r in t];return[sum(((U^(V:=g[int(y)])^U&V&-(U&V))&C[v]).bit_count()%2for v in C)<2for d,x,y in map(str.split,q)for U in[g[int(x)]]if d<'u'or[H(c,(b:=U&-U)&C[c])for c in C]==H(y,b)]
+
 test('''
 3841. Palindromic Path Queries in a Tree
 Hard

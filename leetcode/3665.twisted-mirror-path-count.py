@@ -31,6 +31,14 @@ class Solution:
     def uniquePaths(self, g: List[List[int]]) -> int:
         return(f:=cache(lambda i,j,q,n=len(g),m=len(g[0]):i-n<0>j-m and(i+j==m+n-2 or(f(i+q,j+1-q,1-q)if g[i][j]else f(i+1,j,0)+f(i,j+1,1)))))(0,0,0)%(10**9+7)
 
+class Solution:
+    def uniquePaths(self, g: List[List[int]]) -> int:
+        return reduce(lambda a,w,r=0:[x*(r-d)+(r:=d+r-x*r)for d,x in zip(a,w)],g,[1]+[0]*500)[-1]%(10**9+7)
+
+class Solution:
+    def uniquePaths(self, g: List[List[int]]) -> int:
+        return eval(bytes('敲畤散氨浡摢ॡⱪⱌ㵘㨰牛⠪ⵘ⥥⠫㩘攽堫爭堪昩牯攠爬椠८楺⡰ⱪ⥌ⱝⱧㅛ⭝せ⩝〹⤰ⵛ崱⠥〱⨪⬹⤷','u16')[2:])
+
 test('''
 3665. Twisted Mirror Path Count
 Medium

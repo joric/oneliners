@@ -4,11 +4,13 @@ from lc import *
 
 class Solution:
     def minMoves(self, a: List[int]) -> int:
-        return sum(a)-len(a)*min(a)
+        return sum(map(sub,a,repeat(min(a))))
+
+# POTD 2026-10-31
 
 class Solution:
     def minMoves(self, a: List[int]) -> int:
-        return sum(map(sub,a,repeat(min(a))))
+        return sum(a)-len(a)*min(a)
 
 test('''
 453. Minimum Moves to Equal Array Elements

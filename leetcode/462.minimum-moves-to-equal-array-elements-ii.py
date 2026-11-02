@@ -16,6 +16,10 @@ class Solution:
     def minMoves2(self, a: List[int]) -> int:
         return sum(map(abs,map(sub,a,repeat(median_low(a)))))
 
+class Solution:
+    def minMoves2(self, a: List[int]) -> int:
+        m=median_low(a);return sum(abs(x-m)for x in a)
+
 test('''
 462. Minimum Moves to Equal Array Elements II
 Solved

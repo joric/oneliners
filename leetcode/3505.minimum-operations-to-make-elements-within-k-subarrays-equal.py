@@ -38,6 +38,14 @@ class Solution:
     def minOperations(self, a: List[int], x: int, k: int) -> int:
         n=len(a);s=SortedList;l,r=s(),s();p=q=0;o=[0]*n;h=len;[((l.add(v),p:=p+v)if not l or v<=l[-1]else(r.add(v),q:=q+v),(w:=a[i-x],(l.remove(w),p:=p-w)if w in l else(r.remove(w),q:=q-w))if i>=x else 0,(u:=l.pop(),r.add(u),p:=p-u,q:=q+u)if h(l)>h(r)+1 else((u:=r.pop(0),l.add(u),p:=p+u,q:=q-u)if h(l)<h(r)else 0),setitem(o,i,(m:=l[-1])*h(l)-p+q-m*h(r))if i>=x-1 else 0)for i,v in enumerate(a)];d=[0]*(n+1);[d:=(c:=[inf]*(n+1),[setitem(c,i,min(c[i-1],d[i-x]+o[i-1]))for i in range(x,n+1)],c)[2]for _ in range(k)];return d[n]
 
+class Solution:
+    def minOperations(self, a: List[int], x: int, k: int) -> int:
+        n=len(a);s=SortedList;l,r=s(),s();p=q=0;o=[0]*n;h=len;[((not l or v<=l[-1])and(l.add(v),p:=p+v,1)or(r.add(v),q:=q+v),i>=x and((w:=a[i-x])in l and(l.remove(w),p:=p-w,1)or(r.remove(w),q:=q-w)),h(l)>1+h(r)and(u:=l.pop(),r.add(u),p:=p-u,q:=q+u,1)or h(l)<h(r)and(u:=r.pop(0),l.add(u),p:=p+u,q:=q-u),i>=x-1 and setitem(o,i,(m:=l[-1])*h(l)-p+q-m*h(r)))for i,v in enumerate(a)];d=[0]*(n+1);[d:=(c:=[inf]*(n+1),[setitem(c,i,min(c[i-1],d[i-x]+o[i-1]))for i in range(x,n+1)],c)[2]for _ in range(k)];return d[n]
+
+class Solution:
+    def minOperations(self, a: List[int], x: int, k: int) -> int:
+        h=len;n=h(a);l,r=SortedList(),SortedList();p=q=0;o=[0]*n;[((not l or v<=l[-1])and(l.add(v),p:=p+v,1)or(r.add(v),q:=q+v),i>=x and((w:=a[i-x])in l and(l.remove(w),p:=p-w,1)or(r.remove(w),q:=q-w)),h(l)>1+h(r)and(u:=l.pop(),r.add(u),p:=p-u,q:=q+u,1)or h(l)<h(r)and(u:=r.pop(0),l.add(u),p:=p+u,q:=q-u),i>=x-1 and setitem(o,i,(m:=l[-1])*h(l)-p+q-m*h(r)))for i,v in enumerate(a)];d=[0]*-~n;[d:=(c:=[inf]*-~n,[setitem(c,i,min(c[i-1],d[i-x]+o[i-1]))for i in range(x,-~n)],c)[2]for _ in range(k)];return d[n]
+
 test('''
 3505. Minimum Operations to Make Elements Within K Subarrays Equal
 Hard

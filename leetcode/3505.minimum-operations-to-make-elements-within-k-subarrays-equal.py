@@ -38,6 +38,21 @@ class Solution:
     def minOperations(self, a: List[int], x: int, k: int) -> int:
         h=len;n=h(a);t=SortedList;s=setitem;l,r=t(),t();p=q=0;o=[0]*n;[((not l or v<=l[-1])and(l.add(v),p:=p+v,1)or(r.add(v),q:=q+v),i>=x and((w:=a[i-x])in l and(l.remove(w),p:=p-w,1)or(r.remove(w),q:=q-w)),h(l)>1+h(r)and(u:=l.pop(),r.add(u),p:=p-u,q:=q+u,1)or h(l)<h(r)and(u:=r.pop(0),l.add(u),p:=p+u,q:=q-u),i>=x-1 and s(o,i,(m:=l[-1])*h(l)-p+q-m*h(r)))for i,v in enumerate(a)];d=[0]*-~n;[d:=(c:=[inf]*-~n,[s(c,i,min(c[i-1],d[i-x]+o[i-1]))for i in range(x,-~n)],c)[2]for _ in range(k)];return d[n]
 
+# shorter solution
+
+class Solution:
+    def minOperations(self, a: List[int], x: int, k: int) -> int:
+        o = [0]; s = SortedList([0] * x)
+        def f(v, *_):
+            return max(s[x // 2] - v, v - s[~x // 2])
+        for w, v in zip([0] * x + a, a):
+            o.append(o[-1] - f(w) + f(v, s.remove(w), s.add(v)))
+        return min(reduce(lambda d, j: accumulate(map(add, d, o[-~j * x:]), min), range(k), repeat(0)))
+
+class Solution:
+    def minOperations(self, a: List[int], x: int, k: int) -> int:
+        o=[0];s=SortedList(o*x);f=lambda v,*_:max(s[x//2]-v,v-s[~x//2]);[o.append(o[-1]-f(w)+f(v,s.remove(w),s.add(v)))for w,v in zip(o*x+a,a)];return min(reduce(lambda d,j:accumulate(map(add,d,o[-~j*x:]),min),range(k),repeat(0)))
+
 test('''
 3505. Minimum Operations to Make Elements Within K Subarrays Equal
 Hard

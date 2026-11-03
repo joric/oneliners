@@ -36,7 +36,7 @@ class Solution:
 
 class Solution:
     def minOperations(self, a: List[int], x: int, k: int) -> int:
-        h=len;n=h(a);s=setitem;g=SortedList;l,r=g(),g();p=q=0;o=[0]*n;[((not l or v<=l[-1])and(l.add(v),p:=p+v,1)or(r.add(v),q:=q+v),i>=x and((w:=a[i-x])in l and(l.remove(w),p:=p-w,1)or(r.remove(w),q:=q-w)),h(l)>1+h(r)and(u:=l.pop(),r.add(u),p:=p-u,q:=q+u,1)or h(l)<h(r)and(u:=r.pop(0),l.add(u),p:=p+u,q:=q-u),i>=x-1 and s(o,i,(m:=l[-1])*h(l)-p+q-m*h(r)))for i,v in enumerate(a)];d=[0]*-~n;[d:=(c:=[inf]*-~n,[s(c,i,min(c[i-1],d[i-x]+o[i-1]))for i in range(x,-~n)],c)[2]for _ in range(k)];return d[n]
+        h=len;n=h(a);g=SortedList;s=setitem;l,r=g(),g();p=q=0;o=[0]*n;[((not l or v<=l[-1])and(l.add(v),p:=p+v,1)or(r.add(v),q:=q+v),i>=x and((w:=a[i-x])in l and(l.remove(w),p:=p-w,1)or(r.remove(w),q:=q-w)),h(l)>1+h(r)and(u:=l.pop(),r.add(u),p:=p-u,q:=q+u,1)or h(l)<h(r)and(u:=r.pop(0),l.add(u),p:=p+u,q:=q-u),i>=x-1 and s(o,i,(m:=l[-1])*h(l)-p+q-m*h(r)))for i,v in enumerate(a)];d=[0]*-~n;[d:=(c:=[inf]*-~n,[s(c,i,min(c[i-1],d[i-x]+o[i-1]))for i in range(x,-~n)],c)[2]for _ in range(k)];return d[n]
 
 test('''
 3505. Minimum Operations to Make Elements Within K Subarrays Equal

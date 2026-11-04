@@ -2,6 +2,27 @@ from lc import *
 
 # https://leetcode.com/problems/find-the-distance-value-between-two-arrays/solutions/844558/python-one-line-by-mokar2001-sqia/?envType=daily-question&envId=2026-11-05
 
+class Solution:
+    def findTheDistanceValue(self, a: List[int], b: List[int], d: int) -> int:
+        b.sort()
+        c = 0
+        for x in a:
+            p = bisect_left(b, x)
+            if p == len(b) or abs(x - b[p]) > d:
+                if p == 0 or abs(x - b[p - 1]) > d:
+                    c += 1
+        return c
+
+class Solution:
+    def findTheDistanceValue(self, a: List[int], b: List[int], d: int) -> int:
+        b.sort();return sum(all(d<abs(x-b[j])for j in{max(0,p-1),min(p,len(b)-1)})for x,p in((x,bisect_left(b,x))for x in a))
+
+class Solution:
+    def findTheDistanceValue(self, a: List[int], b: List[int], d: int) -> int:
+        b.sort();return sum(bisect_left(b,x-d)==bisect_right(b,x+d)for x in a)
+
+# https://leetcode.com/problems/find-the-distance-value-between-two-arrays/solutions/844558/python-one-line-by-mokar2001-sqia/?envType=daily-question&envId=2026-11-05
+
 # scala: a.count(x=>b.forall(y=>(y-x).abs>d))
 
 class Solution:

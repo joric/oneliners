@@ -14,15 +14,15 @@ class Solution:
 
 class Solution:
     def findTheDistanceValue(self, a: list[int], b: list[int], d: int) -> int:
-        return sum(1-any([abs(i-j)<=d for j in b])for i in a)
-
-class Solution:
-    def findTheDistanceValue(self, a: list[int], b: list[int], d: int) -> int:
-        return sum(all(d<abs(x-y)for y in b)for x in a)
+        return sum(1-any(abs(i-j)<=d for j in b)for i in a)
 
 class Solution:
     def findTheDistanceValue(self, a: list[int], b: list[int], d: int) -> int:
         return sum(d<min(abs(x-y)for y in b)for x in a)
+
+class Solution:
+    def findTheDistanceValue(self, a: list[int], b: list[int], d: int) -> int:
+        return sum(all(d<abs(x-y)for y in b)for x in a)
 
 test('''
 1385. Find the Distance Value Between Two Arrays

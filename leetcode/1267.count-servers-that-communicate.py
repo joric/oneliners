@@ -6,6 +6,12 @@ class Solution:
     def countServers(self, g: List[List[int]]) -> int:
         p,q,e=[*map(sum,g)],[*map(sum,zip(*g))],enumerate;return sum(2<p[i]+q[j]for i,r in e(g)for j,v in e(r)if v)
 
+# POTD 2026-11-07
+
+class Solution:
+    def countServers(self, g: List[List[int]]) -> int:
+        return sum(v*(2<sum(r)+sum(c))for r in g for c,v in zip(zip(*g),r))
+
 test('''
 1267. Count Servers that Communicate
 Solved

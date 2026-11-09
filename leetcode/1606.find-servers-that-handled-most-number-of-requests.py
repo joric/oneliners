@@ -14,6 +14,10 @@ class Solution:
     def busiestServers(self, k: int, a: List[int], l: List[int]) -> List[int]:
         p,o=heappush,heappop;b=[9e99];f=[*range(k)];return multimode(p(b,(t+l[i])*k+j)or j for i,t in enumerate(a)for j in([p(f,i+(o(b)-i)%k)for _ in iter(lambda:b[0]<-~t*k,0)]or f)and[o(f)%k])
 
+class Solution:
+    def busiestServers(self, k: int, a: List[int], l: List[int]) -> List[int]:
+        p,o=heappush,heappop;b=[9e99];r=[*range(k)];return multimode(p(b,(t+l[i])*k+j)or j for i,t in enumerate(a)if[p(r,i+(o(b)-i)%k)for _ in iter(lambda:b[0]<-~t*k,0)]+r for j in[o(r)%k])
+
 test('''
 1606. Find Servers That Handled Most Number of Requests
 Hard

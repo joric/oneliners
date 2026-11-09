@@ -6,6 +6,10 @@ class Solution:
     def climbStairs(self, n: int, c: List[int]) -> int:
         return reduce(lambda s,x:(s[1]+5,s[2]+3,min(s)+x+1),c,(8,3,0))[2]
 
+class Solution:
+    def climbStairs(self, n: int, c: List[int]) -> int:
+        s=8,3,0;[s:=(s[1]+5,s[2]+3,min(s)+x+1)for x in c];return s[2]
+
 test('''
 3693. Climbing Stairs II
 Medium

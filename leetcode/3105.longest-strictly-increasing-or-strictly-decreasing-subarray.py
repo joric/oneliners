@@ -39,6 +39,14 @@ class Solution:
     def longestMonotonicSubarray(self, a: List[int]) -> int:
         return-~max(sum(g)for f in(lt,gt)for _,g in groupby(map(f,a,a[:1]+a)))
 
+class Solution:
+    def longestMonotonicSubarray(self, a: List[int]) -> int:
+        return-~max(sum(g)for _,g in groupby(starmap(gt,pairwise(a+a[::-1]))))
+
+class Solution:
+    def longestMonotonicSubarray(self, a: List[int]) -> int:
+        a+=a[::-1];return-~max(sum(g)for _,g in groupby(map(gt,a,a[1:])))
+
 test('''
 3105. Longest Strictly Increasing or Strictly Decreasing Subarray
 Easy

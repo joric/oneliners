@@ -10,6 +10,10 @@ class Solution:
     def minimumSumSubarray(self, a: List[int], l: int, r: int) -> int:
         return min([s for n in range(l,r+1)for i in range(len(a)-n+1)if(s:=sum(a[i:i+n]))>0]or[-1])
 
+class Solution:
+    def minimumSumSubarray(self, a: List[int], l: int, r: int) -> int:
+        return min([s for n in range(l,r+1)for i in range(len(a)+1)if(s:=sum(a[i-n:i]))>0]or[-1])
+
 test('''
 3364. Minimum Positive Sum Subarray 
 Easy

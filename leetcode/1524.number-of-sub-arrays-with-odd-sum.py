@@ -76,6 +76,10 @@ class Solution:
     def numOfSubarrays(self, a: List[int]) -> int:
         t=0;o=sum(t:=t^v&1for v in a);return(1-o+len(a))*o%(10**9+7)
 
+class Solution:
+    def numOfSubarrays(self, a: List[int]) -> int:
+        return(c:=Counter(a:=a!=v&1for v in[0]+a))[0]*c[1]%(10**9+7)
+
 test('''
 1524. Number of Sub-arrays With Odd Sum
 Solved

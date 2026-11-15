@@ -63,6 +63,8 @@ class Solution:
     def numOfSubarrays(self, a: List[int]) -> int:
         c=Counter(x&1 for x in accumulate(a));return-~c[0]*c[1]%(10**9+7)
 
+# POTD 2026-11-15
+
 class Solution:
     def numOfSubarrays(self, a: List[int]) -> int:
         s=0;return(t:=sum(1&(s:=s+x)for x in a))*(len(a)-t+1)%(10**9+7)

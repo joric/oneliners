@@ -10,6 +10,10 @@ class Solution:
     def digitSum(self, s: str, k: int) -> str:
         return s[k:]and self.digitSum(''.join(map(str,map(sum,batched(map(int,s),k)))),k)or s
 
+class Solution:
+    def digitSum(self, s: str, k: int) -> str:
+        [s:=''.join(map(str,map(sum,batched(map(int,s),k))))for _ in s if s[k:]];return s
+
 test('''
 2243. Calculate Digit Sum of a String
 Easy

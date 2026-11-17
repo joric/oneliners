@@ -20,6 +20,8 @@ class Solution:
     def minChanges(self, s: str) -> int:
         return sum(map(ne,s[::2],s[1::2]))
 
+# POTD 2026-11-17
+
 class Solution:
     def minChanges(self, s: str) -> int:
         return sum(map(ne,*[iter(s)]*2))

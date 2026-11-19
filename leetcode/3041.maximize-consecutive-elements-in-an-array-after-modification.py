@@ -15,6 +15,12 @@ class Solution:
     def maxSelectedElements(self, a: List[int]) -> int:
         c=Counter();[setitem(c,i+1,c[i]+1)or setitem(c,i,c[i-1]+1)for i in sorted(a)];return max(c.values())
 
+# POTD 2026-11-19
+
+class Solution:
+    def maxSelectedElements(self, a: List[int]) -> int:
+        c=Counter();[dict.update(c,{i+1:c[i]+1,i:c[i-1]+1})for i in sorted(a)];return max(c.values())
+
 test('''
 3041. Maximize Consecutive Elements in an Array After Modification
 User Accepted:799

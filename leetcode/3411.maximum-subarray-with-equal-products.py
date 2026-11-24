@@ -34,6 +34,10 @@ class Solution:
     def maxLength(self, a: List[int]) -> int:
         q=1,-1;[q:=(q:=(*q,x))[prod(q)!=lcm(*q):]for x in a];return len(q)
 
+class Solution:
+    def maxLength(self, a: List[int]) -> int:
+        q=1,-1;[q:=(*q,x)[prod(q)*x!=lcm(x,*q):]for x in a];return len(q)
+
 test('''
 3411. Maximum Subarray With Equal Products
 Easy

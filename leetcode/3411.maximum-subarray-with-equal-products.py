@@ -10,6 +10,22 @@ class Solution:
     def maxLength(self, a: List[int]) -> int:
         return max(2,*(j-i for i,j in combinations(range(len(a)+1),2)if prod(q:=a[i:j])==lcm(*q)))
 
+class Solution:
+    def maxLength(self, a: List[int]) -> int:
+        r=range(101);return max(2,*(len(q)for i,j in product(r,r)if prod(q:=a[j:i])==lcm(*q)))
+
+class Solution:
+    def maxLength(self, a: List[int]) -> int:
+        return max(2,*(len(q)for i in range(101)for j in range(i)if prod(q:=a[j:i])==lcm(*q)))
+
+class Solution:
+    def maxLength(self, a: List[int]) -> int:
+        return max(2,*(len(q)for i in range(1<<14)if prod(q:=a[i>>7:i&127])==lcm(*q)))
+
+class Solution:
+    def maxLength(self, a: List[int]) -> int:
+        return max(2,*(len(q)for i in range(5**6)if prod(q:=a[i>>7:i&127])==lcm(*q)))
+
 test('''
 3411. Maximum Subarray With Equal Products
 Easy

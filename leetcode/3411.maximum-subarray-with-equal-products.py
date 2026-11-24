@@ -26,6 +26,10 @@ class Solution:
     def maxLength(self, a: List[int]) -> int:
         return max(2,*(len(q)for i in range(5**6)if prod(q:=a[i>>7:i&127])==lcm(*q)))
 
+class Solution:
+    def maxLength(self, a: List[int]) -> int:
+        q=a[:2];[q:=(q:=q+[x])[lcm(*q)<prod(q):]for x in a[2:]];return len(q)
+
 test('''
 3411. Maximum Subarray With Equal Products
 Easy

@@ -12,13 +12,13 @@ class Solution:
     def canAliceWin(self, n: int) -> bool:
         return 9<n<19 or 26<n<34 or 39<n<45 or 48<n<52
 
+# cpp version return !!((int)ceil((sqrt(441 - 8 * n) - 1) / 2) % 2);
+
 # https://leetcode.com/problems/stone-removal-game/solutions/6079742/one-line-math-o1-by-xxxxkav-a64a/?envType=daily-question&envId=2026-11-26
 
 class Solution:
     def canAliceWin(self, n: int) -> bool:
         return ((21 - sqrt(21*21 - 8*n))//2) % 2 == 1
-
-# cpp version return !!((int)ceil((sqrt(441 - 8 * n) - 1) / 2) % 2);
 
 class Solution:
     def canAliceWin(self, n: int) -> bool:
@@ -30,7 +30,15 @@ class Solution:
 
 class Solution:
     def canAliceWin(self, n: int) -> bool:
+        return 1<(440-8*n)**.5%4<3
+
+class Solution:
+    def canAliceWin(self, n: int) -> bool:
         return(440-8*n)**.5%4%3>1
+
+class Solution:
+    def canAliceWin(self, n: int) -> bool:
+        return(57-n)**.4%.78>.4
 
 test('''
 3360. Stone Removal Game

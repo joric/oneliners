@@ -28,6 +28,14 @@ class Solution:
     def canAliceWin(self, n: int) -> bool:
         return 0<1<<n&0x61f03f807fc00
 
+class Solution:
+    def canAliceWin(self, n: int) -> bool:
+        return 0x61f03f807fc00>>n&1>0
+
+class Solution:
+    def canAliceWin(self, n: int) -> bool:
+        return 0<0x61f03f807fc00>>n&1
+
 # https://leetcode.com/problems/stone-removal-game/solutions/8624873/stone-cold-math-closed-form-o1-by-asnork-lq22/?envType=daily-question&envId=2026-11-26
 
 class Solution:

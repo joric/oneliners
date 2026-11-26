@@ -46,6 +46,10 @@ class Solution:
     def canAliceWin(self, n: int) -> bool:
         return(57-n)**.4%.78>.4
 
+class Solution:
+    def canAliceWin(self, n: int) -> bool:
+        return(52-n)**.555%2>1
+
 test('''
 3360. Stone Removal Game
 Easy

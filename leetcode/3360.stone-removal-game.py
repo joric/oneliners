@@ -28,6 +28,12 @@ class Solution:
     def canAliceWin(self, n: int) -> bool:
         return 0<1<<n&0x61f03f807fc00
 
+# https://leetcode.com/problems/stone-removal-game/solutions/8624873/stone-cold-math-closed-form-o1-by-asnork-lq22/?envType=daily-question&envId=2026-11-26
+
+class Solution:
+    def canAliceWin(self, n: int) -> bool:
+        return round(sqrt(110-2*n))%2==1
+
 class Solution:
     def canAliceWin(self, n: int) -> bool:
         return 1<(440-8*n)**.5%4<3

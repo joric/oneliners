@@ -348,7 +348,7 @@ class Solution:
         0
 ```
 
-This is 1-symbol solution (worked in 2023). Notice no return operator here, can be `pass`, as it returns None. This also works:
+This is 1-symbol solution (worked in 2023). No return operator, can be `pass`, as it returns None. This also works:
 
 ```python
 class Solution:isStrictlyPalindromic=not_

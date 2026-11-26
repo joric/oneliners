@@ -88,6 +88,13 @@ Explanation:
 Alice cannot remove 10 stones, so Alice loses.
  
 
+Input: n = 9
+Output: false
+
+Input: n = 27
+Output: true
+
+
 Constraints:
 
 1 <= n <= 50

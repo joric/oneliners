@@ -316,7 +316,7 @@ class Solution:
         return 1
 ```
 
-Considering type autconversion stopped working in 2024:
+Considering type autconversion stopped working in 2023:
 
 ```python
 class Solution:

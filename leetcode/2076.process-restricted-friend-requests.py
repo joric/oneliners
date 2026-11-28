@@ -30,6 +30,10 @@ class Solution:
     def friendRequests(self, n: int, r: list[list[int]], q: list[list[int]]) -> list[bool]:
         t=''.join(map(chr,range(n)));return[all({t[x],t[y]}!={t[u],t[v]}for x,y in r)and''<(t:=t.replace(t[u],t[v]))for u,v in q]
 
+class Solution:
+    def friendRequests(self, n: int, r: list[list[int]], q: list[list[int]]) -> list[bool]:
+        t='%c'*n%(*range(n),);return[(c:=t.replace(t[u],t[v]))and all(c[x]!=c[y]for x,y in r)and''<(t:=c)for u,v in q]
+
 test('''
 2076. Process Restricted Friend Requests
 Hard
